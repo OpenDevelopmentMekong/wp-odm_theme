@@ -1,0 +1,13 @@
+#masthead h1.with-logo,
+#masthead h1.with-logo a {
+	text-indent: -9999px;
+	line-height: 0;
+}
+
+#masthead h1.with-logo a img {
+	display: block;
+	max-width: 300px;
+	max-height: 200px;
+	width: auto;
+	height: auto;
+}

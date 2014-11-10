@@ -11,14 +11,24 @@ class OpenDev_Style {
 
 		add_action('admin_menu', array($this, 'admin_menu'));
 		add_action('admin_init', array($this, 'init_theme_settings'));
+		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
+
+	}
+
+	function enqueue_scripts() {
+
+		if(get_current_screen()->id == 'appearance_page_opendev_options') {
+			wp_enqueue_media();
+			wp_enqueue_script('opendev-theme-style', get_stylesheet_directory_uri() . '/inc/theme-style.js');
+		}
 
 	}
 
 	var $themes = array(
 		'Default' => '',
-		'theme 01' => '/css/theme_01.css',
-		'theme 02' => '/css/theme_02.css',
-		'theme 03' => '/css/theme_03.css'
+		'theme 01' => 'theme_01',
+		'theme 02' => 'theme_02',
+		'theme 03' => 'theme_03'
 	);
 
 	function admin_menu() {
@@ -29,7 +39,7 @@ class OpenDev_Style {
 
 	function admin_page() {
 
-		$this->options = get_option( 'opendev_options' );
+		$this->options = get_option('opendev_options');
 
 		?>
 		<div class="wrap">
@@ -76,7 +86,6 @@ class OpenDev_Style {
 	}
 
 	function style_field() {
-
 		?>
 		<select id="opendev_style" name="opendev_options[style]">
 			<?php foreach($this->themes as $theme => $path) { ?>
@@ -84,15 +93,21 @@ class OpenDev_Style {
 			<?php } ?>
 		</select>
 		<?php
-
 	}
 
 	function logo_field() {
-
+		$logo = $this->options['logo'];
 		?>
-		
+		<div class="uploader">
+			<input id="opendev_logo" name="opendev_options[logo]" type="text" placeholder="<?php _e('Logo url', 'opendev'); ?>" value="<?php echo $logo; ?>" size="80" />
+			<button id="opendev_logo_button" class="button" /><?php _e('Upload'); ?></button>
+		</div>
+		<?php if($logo) { ?>
+			<div class="logo-preview">
+				<img src="<?php echo $logo; ?>" style="max-width:300px;height:auto;" />
+			</div>
+			<?php } ?>
 		<?php
-
 	}
 
 }
