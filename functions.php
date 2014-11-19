@@ -3,6 +3,9 @@
 // Style manager
 require_once(STYLESHEETPATH . '/inc/theme-style.php');
 
+// Map category
+require_once(STYLESHEETPATH . '/inc/map-category.php');
+
 function opendev_styles() {
 
 	$options = get_option('opendev_options');
