@@ -39,7 +39,7 @@
 							if($logo)
 								$name = $logo;
 							echo '<div class="ms-dropdown-title">';
-							echo '<h2>' . $name . '</h2>';
+							echo '<h2>' . $name . '<span class="icon-arrow-down5"></span></h2>';
 							echo '<ul>';
 							foreach($sites as $site) {
 								if($current != $site['blog_id']) {

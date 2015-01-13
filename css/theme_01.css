@@ -1,0 +1,25 @@
+#od-head {
+	background: #234956;
+	color: #f0f0f0;
+}
+
+#od-head h1 a,
+#od-head h1 span {
+	text-decoration: none;
+	color: #A4CE39;
+}
+
+#od-head h2,
+#od-head a,
+#od-head p,
+#od-head span {
+	color: #fff;
+}
+
+#od-head .ms-dropdown-title ul {
+	background: #234956;
+}
+
+#od-head .ms-dropdown-title ul li {
+	border-bottom: 1px solid rgba(0,0,0,0.4);
+}

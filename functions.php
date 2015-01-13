@@ -18,7 +18,8 @@ function opendev_styles() {
 	//wp_dequeue_style('jeo-main');
 
 	wp_register_style('webfont-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700');
-	wp_register_style('opendev-base',  $css_base . 'opendev.css');
+	wp_register_style('webfont-opendev', get_stylesheet_directory_uri() . '/font/style.css');
+	wp_register_style('opendev-base',  $css_base . 'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
 	wp_register_style('opendev-theme_01',  $css_base . 'theme_01.css');
 	wp_register_style('opendev-theme_02',  $css_base . 'theme_02.css');
 	wp_register_style('opendev-theme_03',  $css_base . 'theme_03.css');
@@ -64,6 +65,7 @@ function opendev_logo() {
 		<h1>
 			<a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>">
 				<?php // bloginfo('name'); ?>
+				<span class="icon-od-logo"></span>
 				Op<sup>e</sup>nDevelopment
 			</a>
 		</h1>
