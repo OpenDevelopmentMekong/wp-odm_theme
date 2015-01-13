@@ -1,13 +1,139 @@
-#masthead h1.with-logo,
-#masthead h1.with-logo a {
+/*
+ * Header
+ */
+
+#od-head {
+	padding: 40px 0;
+}
+
+#od-head h1 {
+	font-family: 'Droid Serif';
+	font-size: 48px;
+	line-height: 48px;
+	margin: 0 40px 0 0;
+	font-family: 700;
+	letter-spacing: -4px;
+	float: left;
+}
+
+#od-head h1 sup {
+	font-size: 55%;
+	position: relative;
+	top: -10px;
+}
+
+#od-head h1 a {
+	text-decoration: none;
+	color: #3ab0e4;
+}
+
+#od-head h1:before {
+	content: url('../img/pre-logo.png');
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+
+#od-head h1.with-logo,
+#od-head h1.with-logo a {
 	text-indent: -9999px;
 	line-height: 0;
 }
 
-#masthead h1.with-logo a img {
+#od-head h1.with-logo a img {
 	display: block;
 	max-width: 300px;
 	max-height: 200px;
 	width: auto;
 	height: auto;
+}
+
+#od-head h2 {
+	font-family: 'Droid Serif';
+	font-size: 30px;
+	line-height: 48px;
+	float: left;
+	margin-top: 4px;
+}
+
+#od-head h2 img {
+	max-height: 38px;
+	display: block;
+	width: auto;
+	margin-top: 5px;
+}
+
+#od-head .ms-dropdown-title {
+	position: relative;
+	z-index: 10;
+	float: left;
+	cursor: default;
+}
+
+#od-head .ms-dropdown-title:hover ul {
+	display: block;
+}
+
+#od-head .ms-dropdown-title ul {
+	position: absolute;
+	top: 55px;
+	left: 0;
+	display: none;
+	background: #fff;
+}
+
+#od-head .ms-dropdown-title ul li {
+	border-bottom: 1px solid #f0f0f0;
+	margin: 0;
+	padding: 0;
+}
+
+#od-head .ms-dropdown-title ul li a {
+	display: block;
+	padding: 8px;
+	text-decoration: none;
+	min-width: 180px;
+}
+
+/*
+ * Header nav
+ */
+
+#od-head-nav #main-nav {
+	float: left;
+}
+
+#od-head-nav #searchform {
+	float: right;
+}
+
+/*
+ * Interactive Map ?
+ */
+
+.interactive-map-container {
+	width: 100%;
+	height: 600px;
+	position: relative;
+}
+
+.interactive-map-container .interactive-map {
+	height: 100%;
+}
+
+.interactive-map-container .map-container {
+	width: 66.66666%;
+	height: 100%;
+	float: left;
+}
+
+.interactive-map-container .map-nav-container {
+	width: 33.33333%;
+	height: 100%;
+	float: right;
+	background: #fff;
+}
+
+.interactive-map-container .map-nav-container .map-nav {
+	padding: 20px;
 }

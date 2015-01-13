@@ -10,6 +10,7 @@ class OpenDev_Map_Category {
 	function __construct() {
 
 		add_action('init', array($this, 'register_taxonomy'));
+		add_filter('jeo_map_data', array($this, 'jeo_map_data'));
 
 	}
 
@@ -25,7 +26,7 @@ class OpenDev_Map_Category {
 			'update_item'       => __( 'Update Map category' ),
 			'add_new_item'      => __( 'Add New Map category' ),
 			'new_item_name'     => __( 'New Map category Name' ),
-			'menu_name'         => __( 'Map category' ),
+			'menu_name'         => __( 'Map categories' ),
 		);
 		$args = array(
 			'hierarchical'      => true,
@@ -33,9 +34,15 @@ class OpenDev_Map_Category {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'Map category' ),
+			'rewrite'           => array( 'slug' => 'map-category' ),
 		);
 		register_taxonomy('map-category', array( 'map' ), $args );
+	}
+
+	function jeo_map_data($data) {
+		global $post;
+		$data['categories'] = get_the_terms($post->ID, 'map-category');
+		return $data;
 	}
 
 }
