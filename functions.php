@@ -9,6 +9,9 @@ require_once(STYLESHEETPATH . '/inc/briefings.php');
 // Map category
 require_once(STYLESHEETPATH . '/inc/map-category.php');
 
+// Live search
+require_once(STYLESHEETPATH . '/inc/live-search/live-search.php'); // Live search
+
 function opendev_styles() {
 
 	$options = get_option('opendev_options');
