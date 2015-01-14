@@ -58,11 +58,20 @@
 			<div class="five columns">
 				<div id="od-head-nav">
 					<div class="clearfix">
-						<nav id="main-nav">
-							<?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
+						<nav id="social-nav">
+							<a class="icon-facebook" href="#"></a>
+							<a class="icon-twitter" href="#"></a>
+							<a href="#">Contact</a>
 						</nav>
 					</div>
 				</div>
 			</div>
 		</div>
+		<nav id="main-nav">
+			<div class="container">
+				<div class="twelve columns">
+					<?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
+				</div>
+			</div>
+		</nav>
 	</header>

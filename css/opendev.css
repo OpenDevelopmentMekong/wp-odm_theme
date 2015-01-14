@@ -1,9 +1,13 @@
+body {
+	background: #fff;
+}
+
 /*
  * Header
  */
 
 #od-head {
-	padding: 40px 0;
+	padding: 40px 0 0;
 }
 
 #od-head h1 {
@@ -96,15 +100,63 @@
 }
 
 /*
- * Header nav
+ * Header social nav
  */
 
-#od-head-nav #main-nav {
-	float: left;
+#od-head #social-nav {
+	float: right;
 }
 
-#od-head-nav #searchform {
-	float: right;
+#od-head #social-nav a {
+	float: left;
+	line-height: 48px;
+	margin: 5px 0 0 20px;
+	text-decoration: none;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+/*
+ * Header main nav
+ */
+
+#od-head #main-nav {
+	background: #fff;
+	margin-top: 20px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #eee;
+}
+
+#od-head #main-nav ul,
+#od-head #main-nav ul li {
+	margin: 0;
+	padding: 0;
+}
+
+#od-head #main-nav ul {
+	width: 100%;
+}
+
+#od-head #main-nav ul li {
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+#od-head #main-nav a {
+	color: #333;
+	text-decoration: none;
+	display: block;
+	float: left;
+	padding: 20px 0;
+	text-transform: uppercase;
+}
+
+/*
+ * Headings
+ */
+
+.section-title, .single-post-header, .page-header {
+	background: #f0f0f0;
 }
 
 /*
