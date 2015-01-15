@@ -40,6 +40,16 @@ foreach($mapgroup['maps'] as $map) {
 				<?php endif; ?>
 			</ul>
 		</div>
+		<?php if(!is_single()) : ?>
+			<div class="map-sidebar">
+				<div class="viewing-post">
+				</div>
+				<?php
+				if(is_home() && !is_paged())
+					get_template_part('section', 'sticky-posts');
+				?>
+			</div>
+		<?php endif; ?>
 		<div class="map-container">
 			<div id="mapgroup_<?php echo jeo_get_the_ID(); ?>_map" class="map">
 			</div>

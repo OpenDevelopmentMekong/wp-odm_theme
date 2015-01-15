@@ -59,9 +59,30 @@
 				<div id="od-head-nav">
 					<div class="clearfix">
 						<nav id="social-nav">
-							<a class="icon-facebook" href="#"></a>
-							<a class="icon-twitter" href="#"></a>
-							<a href="#">Contact</a>
+							<?php
+							$fb = opendev_get_facebook_url();
+							if($fb) :
+								?>
+								<a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
+								<?php
+							endif;
+							?>
+							<?php
+							$tw = opendev_get_twitter_url();
+							if($tw) :
+								?>
+								<a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
+								<?php
+							endif;
+							?>
+							<?php
+							$contact_id = opendev_get_contact_page_id();
+							if($contact_id) :
+								?>
+								<a href="<?php echo get_permalink($contact_id); ?>">Contact</a>
+								<?php
+							endif;
+							?>
 						</nav>
 					</div>
 				</div>

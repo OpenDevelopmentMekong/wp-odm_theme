@@ -2,10 +2,10 @@
 
 /*
  * Open Development
- * Theme style
+ * Theme options
  */
 
-class OpenDev_Style {
+class OpenDev_Options {
 
 	function __construct() {
 
@@ -19,7 +19,7 @@ class OpenDev_Style {
 
 		if(get_current_screen()->id == 'appearance_page_opendev_options') {
 			wp_enqueue_media();
-			wp_enqueue_script('opendev-theme-style', get_stylesheet_directory_uri() . '/inc/theme-style.js');
+			wp_enqueue_script('opendev-theme-options', get_stylesheet_directory_uri() . '/inc/theme-options.js');
 		}
 
 	}
@@ -65,6 +65,13 @@ class OpenDev_Style {
 			'opendev_options'
 		);
 
+		add_settings_section(
+			'opendev_links_section',
+			__('Links', 'opendev'),
+			'',
+			'opendev_options'
+		);
+
 		add_settings_field(
 			'opendev_style',
 			__('Choose a style', 'opendev'),
@@ -79,6 +86,30 @@ class OpenDev_Style {
 			array($this, 'logo_field'),
 			'opendev_options',
 			'opendev_style_section'
+		);
+
+		add_settings_field(
+			'opendev_facebook',
+			__('Facebook url', 'opendev'),
+			array($this, 'facebook_field'),
+			'opendev_options',
+			'opendev_links_section'
+		);
+
+		add_settings_field(
+			'opendev_twitter',
+			__('Twitter url', 'opendev'),
+			array($this, 'twitter_field'),
+			'opendev_options',
+			'opendev_links_section'
+		);
+
+		add_settings_field(
+			'opendev_contact',
+			__('Contact page', 'opendev'),
+			array($this, 'contact_page_field'),
+			'opendev_options',
+			'opendev_links_section'
 		);
 
 		register_setting('opendev_options_group', 'opendev_options');
@@ -100,7 +131,7 @@ class OpenDev_Style {
 		?>
 		<div class="uploader">
 			<input id="opendev_logo" name="opendev_options[logo]" type="text" placeholder="<?php _e('Logo url', 'opendev'); ?>" value="<?php echo $logo; ?>" size="80" />
-			<button id="opendev_logo_button" class="button" /><?php _e('Upload'); ?></button>
+			<a  id="opendev_logo_button" class="button" /><?php _e('Upload'); ?></a>
 		</div>
 		<?php if($logo) { ?>
 			<div class="logo-preview">
@@ -110,7 +141,73 @@ class OpenDev_Style {
 		<?php
 	}
 
+	function facebook_field() {
+		$facebook = $this->options['facebook_url'];
+		?>
+		<input id="opendev_facebook_url" name="opendev_options[facebook_url]" type="text" value="<?php echo $facebook; ?>" size="70" />
+		<?php
+	}
+
+	function twitter_field() {
+		$twitter = $this->options['twitter_url'];
+		?>
+		<input id="opendev_twitter_url" name="opendev_options[twitter_url]" type="text" value="<?php echo $twitter; ?>" size="70" />
+		<?php
+	}
+
+	function contact_page_field() {
+		$contact_page = $this->options['contact_page'];
+		wp_dropdown_pages(array(
+			'name' => 'opendev_options[contact_page]',
+			'selected' => $contact_page,
+			'show_option_none' => __('None')
+		));
+	}
+
 }
 
 if(is_admin())
-	$GLOBALS['opendev_style'] = new OpenDev_Style();
+	$GLOBALS['opendev_options'] = new OpenDev_Options();
+
+function opendev_get_logo() {
+
+	$options = get_option('opendev_options');
+	if($options['logo'])
+		return '<img src="' . $options['logo'] . '" alt="' . get_bloginfo('name') . '" />';
+	else
+		return false;
+
+}
+
+function opendev_get_facebook_url() {
+
+	$options = get_option('opendev_options');
+	if($options['facebook_url']) {
+		return $options['facebook_url'];
+	} else {
+		return false;
+	}
+
+}
+
+function opendev_get_twitter_url() {
+
+	$options = get_option('opendev_options');
+	if($options['twitter_url']) {
+		return $options['twitter_url'];
+	} else {
+		return false;
+	}
+
+}
+
+function opendev_get_contact_page_id() {
+
+	$options = get_option('opendev_options');
+	if($options['contact_page']) {
+		return $options['contact_page'];
+	} else {
+		return false;
+	}
+
+}

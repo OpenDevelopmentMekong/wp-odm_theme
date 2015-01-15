@@ -81,7 +81,7 @@ html, body {
 #od-head .ms-dropdown-title ul {
 	position: absolute;
 	top: 55px;
-	left: 0;
+	left: -15px;
 	display: none;
 	background: #fff;
 }
@@ -94,7 +94,7 @@ html, body {
 
 #od-head .ms-dropdown-title ul li a {
 	display: block;
-	padding: 8px;
+	padding: 15px;
 	text-decoration: none;
 	min-width: 180px;
 }
@@ -156,7 +156,29 @@ html, body {
  */
 
 .section-title, .single-post-header, .page-header {
-	background: #f0f0f0;
+	background: transparent;
+	box-shadow: 0 0 0;
+	-webkit-box-shadow: 0 0 0;
+	-moz-box-shadow: 0 0 0;
+	-khtml-box-shadow: 0 0 0;
+	-o-box-shadow: 0 0 0;
+	margin: 0;
+}
+
+.section-title {
+	padding: 30px 0;
+}
+
+.section-title h2 {
+	margin: 0;
+	font-size: 18px;
+	line-height: 18px;
+	text-transform: uppercase;
+}
+
+.single-post-header h1,
+.page-header h1 {
+	font-family: "Droid Serif";
 }
 
 /*
@@ -164,7 +186,7 @@ html, body {
  */
 
 #site-intro {
-	padding: 40px 0;
+	padding: 40px 0 0;
 }
 
 #intro-texts [class^="icon-"],
@@ -192,6 +214,26 @@ html, body {
 	border-bottom: 1px solid #aaa;
 }
 
+#live-search ::-webkit-input-placeholder {
+	color: #999;
+	text-transform: uppercase;
+}
+
+#live-search :-moz-placeholder { /* Firefox 18- */
+	color: #999;
+	text-transform: uppercase;
+}
+
+#live-search ::-moz-placeholder {  /* Firefox 19+ */
+	color: #999;
+	text-transform: uppercase;
+}
+
+#live-search :-ms-input-placeholder {
+	color: #999;
+	text-transform: uppercase;
+}
+
 #live-search input[type=text] {
 	border: 0;
 	background: transparent;
@@ -204,6 +246,7 @@ html, body {
 	border-radius: 0;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
+	text-align: center;
 }
 #live-search input:focus {
 	outline: none;
@@ -279,6 +322,242 @@ html, body {
 #live-search .results.results-6 li.item-3 {
 	width: 50%;
 }
+
+/*
+ * News section
+ */
+
+#news.page-section .section-title {
+	margin: 0;
+}
+
+#news.page-section .section-map {
+	height: 600px;
+	border: 1px solid #ccc;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+	box-sizing: border-box;
+}
+
+#news.page-section .section-map .map-container {
+	height: 100%;
+}
+
+/*
+ * Sticky
+ */
+
+.sticky-posts {
+	height: 100%;
+	width: 100%;
+	color: #333;
+	position: relative;
+	z-index: 10;
+	border-left: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.sticky-posts .sticky-item {
+	height: 25%;
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.sticky-posts .sticky-item:last-child {
+	border-bottom: 0;
+}
+.sticky-posts .sticky-item article {
+	padding: 20px;
+}
+.sticky-posts .sticky-item article .post-thumbnail {
+	float: left;
+	margin: -20px 20px -20px -20px;
+	height: 82%;
+}
+.sticky-posts .sticky-item article .post-thumbnail img {
+	display: block;
+	width: auto;
+	height: 100%;
+}
+.sticky-posts .sticky-item article h2 {
+	color: #333;
+	font-family: "Droid Serif";
+	margin: 0;
+	font-size: 24px;
+	line-height: 28px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.sticky-posts .sticky-item article .post-content,
+.sticky-posts .sticky-item article .post-actions {
+	display: none;
+}
+.sticky-posts .sticky-item.active,
+.sticky-posts .sticky-item:hover {
+}
+.sticky-posts .sticky-item.active article h2 {
+	color: #000;
+	white-space: normal;
+	overflow: visible;
+	text-overflow: clip;
+}
+.sticky-posts.post-active .sticky-item {
+	height: 10%;
+}
+.sticky-posts.post-active .sticky-item article .post-thumbnail {
+	margin: -20px 20px -20px -20px;
+	height: 100%;
+}
+.sticky-posts.post-active .sticky-item article h2 {
+	font-size: 12px;
+	line-height: 12px;
+	margin: 0;
+	padding: 0;
+}
+.sticky-posts.post-active .sticky-item.active {
+	height: 70%;
+}
+.sticky-posts.post-active .sticky-item.active article .post-thumbnail {
+	margin: 0 20px 20px 0;
+	width: 33%;
+	height: auto;
+}
+.sticky-posts.post-active .sticky-item.active article .post-thumbnail img {
+	width: 100%;
+	height: auto;
+}
+.sticky-posts.post-active .sticky-item.active article h2 {
+	font-size: 24px;
+	line-height: 28px;
+	margin: 0 0 10px;
+}
+.sticky-posts.post-active .sticky-item.active article .post-area {
+	height: 238px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+.sticky-posts.post-active .sticky-item.active article .post-content,
+.sticky-posts.post-active .sticky-item.active article .post-actions {
+	display: block;
+}
+
+.map-sidebar {
+	color: #96979C;
+	height: 100%;
+	width: 35%;
+	min-width: 300px;
+	max-width: 640px;
+	z-index: 1000;
+	word-wrap: break-word;
+	overflow: hidden;
+	float: right;
+	position: relative;
+	z-index: 100;
+}
+.map-sidebar a {
+	text-decoration: none;
+	color: #fff;
+}
+.map-sidebar a.button,
+.map-sidebar .button {
+	color: #fff;
+}
+.map-sidebar .button.open-slideshow {
+	padding: 2px 7px;
+	font-size: 10px;
+	border-color: #555;
+}
+.map-sidebar .button.open-slideshow:hover {
+	background: #404040;
+}
+.map-sidebar .buttons {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #333;
+	padding: 10px;
+}
+.map-sidebar .buttons .button {
+	width: 1%;
+	display: table-cell;
+	border: 0;
+	border-right: 2px solid #333;
+	padding: 10px 0;
+}
+.map-sidebar .buttons .button:last-child {
+	border-right: 0;
+}
+.map-sidebar .media-limit img {
+	max-width: 9999px;
+	width: 100%;
+	height: auto;
+}
+.map-sidebar .sidebar-inner {
+	height: 100%;
+	position: relative;
+}
+.map-sidebar .viewing-post {
+	display: none;
+	position: relative;
+	height: 100%;
+}
+.map-sidebar .viewing-post .close-story {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	display: block;
+	font-size: 14px;
+	line-height: 26px;
+	padding: 0 9px 0 8px;
+	background: #77a832;
+	color: #f0f0f0;
+	font-weight: 800;
+}
+.map-sidebar .viewing-post.active {
+	display: block;
+}
+.map-sidebar .story {
+	padding: 30px 30px 60px;
+	height: 100%;
+	box-sizing: border-box;
+	overflow: auto;
+	position: relative;
+}
+.map-sidebar .story::-webkit-scrollbar {
+	background: #303030;
+	width: 15px;
+}
+.map-sidebar .story::-webkit-scrollbar-thumb {
+	background: #666;
+	border-radius: 15px;
+	border: 5px #303030 solid;
+}
+.map-sidebar h2 {
+	color: #fff;
+	margin: 10px 0;
+}
+.map-sidebar object,
+.map-sidebar object embed,
+.map-sidebar iframe,
+.map-sidebar img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+.map-sidebar .sharing .button {
+	margin: 5px 5px 5px 0;
+}
+.map-sidebar .sharing .social {
+	margin: 15px 0 0;
+}
+.map-sidebar .sharing .social .twitter-button,
+.map-sidebar .sharing .social .fb-like {
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
 
 
 /*
