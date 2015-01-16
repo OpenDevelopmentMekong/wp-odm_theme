@@ -6,6 +6,12 @@ require_once(STYLESHEETPATH . '/inc/theme-options.php');
 // Briefings
 require_once(STYLESHEETPATH . '/inc/briefings.php');
 
+// Announcements
+require_once(STYLESHEETPATH . '/inc/announcements.php');
+
+// Site updates
+require_once(STYLESHEETPATH . '/inc/site-updates.php');
+
 // Map category
 require_once(STYLESHEETPATH . '/inc/map-category.php');
 

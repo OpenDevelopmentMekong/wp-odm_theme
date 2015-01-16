@@ -51,26 +51,36 @@ if(is_front_page()) {
 		</div>
 	</section>
 	<div class="container">
-		<div class="nine columns">
-			<section id="briefs" class="page-section">
-				<div class="section-title">
-					<h2><?php _e('Issue briefs', 'opendev'); ?></h2>
-				</div>
-				<?php for($i = 1; $i <= 3; $i++) { ?>
-					<article id="brief-<?php echo $i; ?>" class="row">
-						<div class="two columns alpha">
-							<img src="http://lorempixum.com/400/400/?<?php echo $i; ?>" class="scale-with-grid" />
-						</div>
-						<div class="three columns">
-							<h3>A Brief</h3>
-						</div>
-						<div class="four columns omega">
-							<p>Lorem ipsum</p>
-						</div>
-					</article>
-				<?php } ?>
-			</section>
-		</div>
+		<?php
+		$briefing_query = new WP_Query(array('post_type' => 'briefing'));
+		if($briefing_query->have_posts()) :
+			?>
+			<div class="nine columns">
+				<section id="briefs" class="page-section">
+					<div class="section-title">
+						<h2><?php _e('Issue briefs', 'opendev'); ?></h2>
+					</div>
+					<?php
+					while($briefing_query->have_posts()) :
+						$briefing_query->the_post();
+						?>
+						<article id="briefing-<?php the_ID(); ?>" class="row">
+							<div class="two columns alpha">
+								<img src="http://lorempixum.com/400/400/?<?php echo $i; ?>" class="scale-with-grid" />
+							</div>
+							<div class="three columns">
+								<h3><?php the_title(); ?></h3>
+							</div>
+							<div class="four columns omega">
+								<?php the_excerpt(); ?>
+							</div>
+						</article>
+					<?php endwhile; ?>
+				</section>
+			</div>
+			<?php
+			endif;
+			?>
 		<div class="three columns">
 			<section id="site-updates">
 				<div class="section-title">
