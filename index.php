@@ -52,7 +52,7 @@ if(is_front_page()) {
 	</section>
 	<div class="container">
 		<?php
-		$briefing_query = new WP_Query(array('post_type' => 'briefing'));
+		$briefing_query = new WP_Query(array('post_type' => 'briefing', 'posts_per_page' => 5));
 		if($briefing_query->have_posts()) :
 			?>
 			<div class="nine columns">
@@ -65,12 +65,16 @@ if(is_front_page()) {
 						$briefing_query->the_post();
 						?>
 						<article id="briefing-<?php the_ID(); ?>" class="row">
-							<div class="two columns alpha">
-								<img src="http://lorempixum.com/400/400/?<?php echo $i; ?>" class="scale-with-grid" />
-							</div>
-							<div class="three columns">
-								<h3><?php the_title(); ?></h3>
-							</div>
+							<header>
+								<div class="two columns alpha">
+									<?php the_post_thumbnail('thumbnail'); ?>
+								</div>
+								<div class="three columns">
+									<h3><?php the_title(); ?></h3>
+									<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+									<p><span class="icon-user"></span> <?php the_author(); ?></p>
+								</div>
+							</header>
 							<div class="four columns omega">
 								<?php the_excerpt(); ?>
 							</div>
@@ -78,22 +82,49 @@ if(is_front_page()) {
 					<?php endwhile; ?>
 				</section>
 			</div>
-			<?php
-			endif;
-			?>
+			<?php endif; ?>
 		<div class="three columns">
-			<section id="site-updates">
-				<div class="section-title">
-					<h2><?php _e('Site updates', 'opendev'); ?></h2>
-				</div>
-				<h3>Um</h3>
-			</section>
-			<section id="events">
-				<div class="section-title">
-					<h2><?php _e('Events and opportunities', 'opendev'); ?></h2>
-				</div>
-				<h3>Um</h3>
-			</section>
+			<?php
+			$updates_query = new WP_Query(array('post_type' => 'site-update', 'posts_per_page' => 5));
+			if($updates_query->have_posts()) :
+				?>
+				<section id="site-updates">
+					<div class="section-title">
+						<h2><?php _e('Site updates', 'opendev'); ?></h2>
+					</div>
+					<div class="update-list">
+						<?php
+						while($updates_query->have_posts()) :
+							$updates_query->the_post();
+							?>
+							<article id="update-<?php the_ID(); ?>">
+								<h3><span class="date"><?php echo get_the_date(); ?></span> <?php the_title(); ?></h3>
+							</article>
+						<?php endwhile; ?>
+					</div>
+				</section>
+			<?php endif; ?>
+			<?php
+			$updates_query = new WP_Query(array('post_type' => 'announcement', 'posts_per_page' => 5));
+			if($updates_query->have_posts()) :
+				?>
+				<section id="announcements">
+					<div class="section-title">
+						<h2><?php _e('Events and opportunities', 'opendev'); ?></h2>
+					</div>
+					<div class="announce-list">
+						<?php
+						while($updates_query->have_posts()) :
+							$updates_query->the_post();
+							?>
+							<article id="announcement-<?php the_ID(); ?>">
+								<p class="date"><?php echo get_the_date(); ?></p>
+								<h3><?php the_title(); ?></h3>
+							</article>
+						<?php endwhile; ?>
+					</div>
+				</section>
+			<?php endif; ?>
 		</div>
 	</div>
 
