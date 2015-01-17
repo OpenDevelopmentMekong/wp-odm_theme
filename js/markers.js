@@ -18,18 +18,6 @@
 			activeIcon = new icon(opendev_markers.marker_active),
 			activeMarker;
 
-		// setup sidebar
-		if(!map.conf.disableSidebar) {
-			if($('.viewing-post').length) {
-				map.$.sidebar = $('.viewing-post');
-			} else {
-				map.$.parents('.map-container').wrapAll('<div class="content-map" />');
-				map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
-				map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
-			}
-			map.invalidateSize(true);
-		}
-
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
@@ -449,7 +437,8 @@
 				}
 			}
 
-			map.$.sidebar.addClass('active');
+			if(map.$.sidebar && map.$.sidebar.length)
+				map.$.sidebar.addClass('active');
 
 			jeo.runCallbacks('markerOpened', [map]);
 

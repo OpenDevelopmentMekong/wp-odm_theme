@@ -67,10 +67,10 @@ if(is_front_page()) {
 						<article id="briefing-<?php the_ID(); ?>" class="row">
 							<header>
 								<div class="two columns alpha">
-									<?php the_post_thumbnail('thumbnail'); ?>
+									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 								</div>
 								<div class="three columns">
-									<h3><?php the_title(); ?></h3>
+									<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 									<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
 									<p><span class="icon-user"></span> <?php the_author(); ?></p>
 								</div>
@@ -98,7 +98,7 @@ if(is_front_page()) {
 							$updates_query->the_post();
 							?>
 							<article id="update-<?php the_ID(); ?>">
-								<h3><span class="date"><?php echo get_the_date(); ?></span> <?php the_title(); ?></h3>
+								<h3><span class="date"><?php echo get_the_date(); ?></span> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 							</article>
 						<?php endwhile; ?>
 					</div>
@@ -119,7 +119,7 @@ if(is_front_page()) {
 							?>
 							<article id="announcement-<?php the_ID(); ?>">
 								<p class="date"><?php echo get_the_date(); ?></p>
-								<h3><?php the_title(); ?></h3>
+								<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 							</article>
 						<?php endwhile; ?>
 					</div>

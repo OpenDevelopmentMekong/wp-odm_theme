@@ -573,6 +573,10 @@ html, body {
 	margin: 0 0 20px;
 }
 
+#briefs.page-section article header h3 a {
+	text-decoration: none;
+}
+
 #briefs.page-section article header p {
 	margin: 0 0 10px;
 	color: #777;
@@ -603,6 +607,10 @@ html, body {
 	margin: 0;
 }
 
+#site-updates article h3 a {
+	text-decoration: none;
+}
+
 #site-updates article h3 span {
 	font-size: 12px;
 	color: #777;
@@ -628,6 +636,10 @@ html, body {
 	line-height: 20px;
 	font-weight: 400;
 	margin: 0;
+}
+
+#announcements article h3 a {
+	text-decoration: none;
 }
 
 #announcements article p {
