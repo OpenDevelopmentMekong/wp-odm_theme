@@ -48,7 +48,9 @@
 		<section class="content">
 			<div class="container">
 				<div class="eight columns">
-					<?php the_content(); ?>
+					<div class="post-content">
+						<?php the_content(); ?>
+					</div>
 					<?php
 					wp_link_pages( array(
 						'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jeo' ) . '</span>',
@@ -62,6 +64,24 @@
 				<div class="three columns offset-by-one">
 					<aside id="sidebar">
 						<ul class="widgets">
+							<li class="widget">
+								<div class="share clearfix">
+									<ul>
+										<li>
+											<div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="box_count" data-show-faces="false" data-send="false"></div>
+										</li>
+										<li>
+											<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a>
+										</li>
+										<li>
+											<div class="g-plusone" data-size="tall" data-href="<?php the_permalink(); ?>"></div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="widget">
+								<?php opendev_summary(); ?>
+							</li>
 							<?php dynamic_sidebar('post'); ?>
 						</ul>
 					</aside>

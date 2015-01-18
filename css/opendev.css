@@ -698,6 +698,35 @@ html, body {
 	line-height: 150%;
 }
 
+/*
+ * Share widget
+ */
+
+
+.widget .share ul {
+	width: 100%;
+	display: block;
+	margin: 0 0 20px;
+}
+
+.widget .share ul li {
+	float: left;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: 0 !important;
+}
+
+.widget .share ul li > * {
+	margin-right: 10px;
+}
+
+.widget .share ul li > .fb {
+	width: 90px;
+}
+
+.widget .share ul li > .twitter {
+	width: 120px;
+}
 
 
 /*
