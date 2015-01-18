@@ -648,6 +648,56 @@ html, body {
 	margin: 0;
 }
 
+/*
+ * Box section
+ */
+
+.box-section {
+	border: 1px solid #ccc;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+}
+
+.box-section .box-title {
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	padding: 15px 20px;
+}
+
+.box-section .box-title h2,
+.box-section .box-title h3 {
+	font-size: 16px;
+	line-height: 16px;
+	text-transform: uppercase;
+	margin: 0;
+	color: #444;
+}
+
+.box-section .box-items {
+	display: table;
+	width: 100%;
+}
+
+.box-section .box-items .box-item {
+	width: 1%;
+	display: table-cell;
+	border-left: 1px solid #ccc;
+	box-sizing: border-box;
+	padding: 15px 20px;
+}
+
+.box-section .box-items .box-item:first-child {
+	border-left: 0;
+}
+
+/*
+ * Single content
+ */
+
+.single section.content {
+	font-size: 16px;
+	line-height: 150%;
+}
+
 
 
 /*

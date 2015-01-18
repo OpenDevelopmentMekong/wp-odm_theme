@@ -24,6 +24,27 @@
 				</div>
 			</div>
 		</section>
+		<section id="datasets" class="row">
+			<div class="container">
+				<div class="box-section twelve columns">
+					<div class="box-title">
+						<h2><?php _e('Related resources', 'opendev'); ?></h2>
+					</div>
+					<div class="box-items">
+						<div class="box-item">
+							<h3>Test</h3>
+						</div>
+						<div class="box-item">
+							<h3>Test</h3>
+						</div>
+						<div class="box-item">
+							<h3>Test</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		</section>
 		<section class="content">
 			<div class="container">
 				<div class="eight columns">
