@@ -60,8 +60,8 @@ function opendev_jeo_scripts() {
 		'copy_embed_label' => __('Copy the embed code', 'opendev'),
 		'share_label' => __('Share', 'opendev'),
 		'print_label' => __('Print', 'opendev'),
-		'embed_base_url' => home_url('/' . $lang . '/embed/'),
-		'share_base_url' => home_url('/' . $lang . '/share/'),
+		'embed_base_url' => home_url('/embed/'),
+		'share_base_url' => home_url('/share/'),
 		'marker_active' => array(
 			'iconUrl' => get_stylesheet_directory_uri() . '/img/marker_active.png',
 			'iconSize' => array(26, 30),
@@ -69,7 +69,6 @@ function opendev_jeo_scripts() {
 			'popupAnchor' => array(0, -40),
 			'markerId' => 'none'
 		),
-		'language' => $lang,
 		'site_url' => home_url('/'),
 		'read_more_label' => __('Read more', 'opendev'),
 		'lightbox_label' => array(
@@ -188,7 +187,7 @@ function opendev_get_related_datasets($atts = false) {
 	if(!$atts)
 		$atts = array();
 
-	if(!$atts['post_id'])
+	if(!isset($atts['post_id']))
 		$atts['post_id'] = get_the_ID();
 
 	$related_datasets_json = get_post_meta( $atts['post_id'], 'wpckan_related_datasets', true );

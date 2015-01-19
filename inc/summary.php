@@ -67,9 +67,9 @@ class OpenDev_Summary {
 
 	function summary() {
 		wp_register_script('imagesloaded', '//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js', array('jquery'));
-		wp_register_script('hashchange', get_stylesheet_directory_uri() . '/js/jquery.hashchange.min.js', array('jquery'));
-		wp_register_script('follow-scroll', get_stylesheet_directory_uri() . '/js/jquery.followScroll.js', array('jquery', 'imagesloaded'));
-		wp_enqueue_script('opendev-summary', get_stylesheet_directory_uri() . '/js/summary.js', array('jquery', 'hashchange', 'follow-scroll'));
+		// wp_register_script('hashchange', get_stylesheet_directory_uri() . '/js/jquery.hashchange.min.js', array('jquery'));
+		// wp_register_script('follow-scroll', get_stylesheet_directory_uri() . '/js/jquery.followScroll.js', array('jquery', 'imagesloaded'));
+		wp_enqueue_script('opendev-summary', get_stylesheet_directory_uri() . '/js/summary.js', array('jquery'));
 		?>
 		<div class="opendev-summary">
 			<h2 class="widget-title"><?php _e('Table of Contents', 'opendev'); ?></h2>

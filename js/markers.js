@@ -306,7 +306,7 @@
 			if(map.$.sidebar && map.$.sidebar.length) {
 
 				var permalink_slug = marker.properties.permalink.replace(opendev_markers.site_url, '');
-				marker.properties.permalink = opendev_markers.site_url + opendev_markers.language + '/' + permalink_slug;
+				marker.properties.permalink = opendev_markers.site_url + '/' + permalink_slug;
 
 				if(!map.$.sidebar.story) {
 					map.$.sidebar.append('<div class="story" />');

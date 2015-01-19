@@ -31,27 +31,61 @@
 				</div>
 			</div>
 		</section>
-		<section id="datasets" class="row">
-			<div class="container">
-				<div class="box-section twelve columns">
-					<div class="box-title">
-						<h2><?php _e('Related resources', 'opendev'); ?></h2>
-					</div>
-					<?php //print_r(opendev_get_related_datasets()); ?>
-					<div class="box-items">
-						<div class="box-item">
-							<h3>Test</h3>
+		<?php
+		$datasets = opendev_get_related_datasets();
+		if(!empty($datasets)) {
+			$grouped = array();
+			foreach($datasets as $dataset) {
+				if(!empty($dataset['groups'])) {
+					foreach($dataset['groups'] as $group) {
+						if(!$grouped[$group['id']]) {
+							$grouped[$group['id']] = $group;
+							$grouped[$group['id']]['datasets'] = array();
+						}
+						$grouped[$group['id']]['datasets'][] = $dataset;
+					}
+				} else {
+
+					if(!$grouped['_other'])
+						$grouped['_other'] = array(
+							'display_name' => __('Other', 'opendev'),
+							'datasets' => array()
+						);
+
+					$grouped['_other']['datasets'][] = $dataset;
+				}
+			}
+		}
+		?>
+		<?php if(isset($grouped) && !empty($grouped)) : ?>
+			<section id="datasets" class="row">
+				<div class="container">
+					<div class="box-section twelve columns">
+						<div class="box-title">
+							<h2><?php _e('Related resources', 'opendev'); ?></h2>
 						</div>
-						<div class="box-item">
-							<h3>Test</h3>
-						</div>
-						<div class="box-item">
-							<h3>Test</h3>
+						<div class="box-items">
+							<?php
+							foreach($grouped as $group) :
+								if(!empty($group['datasets'])) :
+									?>
+									<div class="box-item">
+										<h3><?php echo $group['display_name']; ?></h3>
+										<ul>
+											<?php foreach($group['datasets'] as $dataset) : ?>
+												<li><?php echo $dataset['title']; ?></li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								<?php
+								endif;
+							endforeach;
+							?>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		<?php endif; ?>
 		<section class="content">
 			<div class="container">
 				<div class="eight columns">

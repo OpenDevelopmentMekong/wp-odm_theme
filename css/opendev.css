@@ -698,6 +698,13 @@ html, body {
 	line-height: 150%;
 }
 
+.single section.content h1 a,
+.single section.content h2 a,
+.single section.content h3 a,
+.single section.content h4 a {
+	text-decoration: none;
+}
+
 /*
  * Share widget
  */
