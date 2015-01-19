@@ -30,7 +30,6 @@
 					<div class="box-title">
 						<h2><?php _e('Related resources', 'opendev'); ?></h2>
 					</div>
-					<?php print_r(opendev_get_related_datasets()); ?>
 					<div class="box-items">
 						<div class="box-item">
 							<h3>Test</h3>
@@ -44,7 +43,6 @@
 					</div>
 				</div>
 			</div>
-		</section>
 		</section>
 		<section class="content">
 			<div class="container">
