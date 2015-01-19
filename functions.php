@@ -182,3 +182,30 @@ function opendev_social_apis() {
 	<?php
 }
 add_action('wp_footer', 'opendev_social_apis');
+
+function opendev_get_related_datasets($atts = false) {
+
+	if(!$atts)
+		$atts = array();
+
+	if(!$atts['post_id'])
+		$atts['post_id'] = get_the_ID();
+
+	$related_datasets_json = get_post_meta( $atts['post_id'], 'wpckan_related_datasets', true );
+	$related_datasets = array();
+	if (!IsNullOrEmptyString($related_datasets_json))
+		$related_datasets = json_decode($related_datasets_json,true);
+
+	$dataset_array = array();
+
+	foreach ($related_datasets as $dataset){
+		$dataset_atts = array("id" => $dataset["dataset_id"]);
+		try{
+			array_push($dataset_array,wpckan_api_get_dataset($dataset_atts));
+		} catch(Exception $e) {
+			wpckan_log($e->getMessage());
+		}
+		if (array_key_exists("limit",$atts) && (count($dataset_array) >= (int)($atts["limit"]))) break;
+	}
+	return $dataset_array;
+}
