@@ -84,7 +84,13 @@
 														<p class="dataset-description"><?php echo $dataset['notes']; ?></p>
 													<?php endif; ?>
 													<ul class="dataset-resources clearfix">
-														<?php foreach($dataset['resources'] as $resource) : ?>
+														<?php
+														$i = 0;
+														foreach($dataset['resources'] as $resource) :
+															if($i > 4)
+																continue;
+															$i++;
+															?>
 															<li class="resource-item">
 																<a href="<?php echo $resource['url']; ?>" target="_blank" rel="external">
 																	<?php echo $resource['description']; ?>
@@ -95,6 +101,7 @@
 															</li>
 														<?php endforeach; ?>
 													</ul>
+													<p><a href="<?php echo $dataset['']; ?>"><?php _e('Read more', 'opendev'); ?></a></p>
 												</li>
 											<?php endforeach; ?>
 										</ul>
