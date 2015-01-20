@@ -774,6 +774,10 @@ html, body {
 	margin: 0 0 10px;
 }
 
+#related-datasets .dataset-item p {
+	margin: 0;
+}
+
 #related-datasets .dataset-resources {
 	margin: 0 0 10px;
 	padding: 0;

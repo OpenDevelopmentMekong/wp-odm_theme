@@ -101,7 +101,7 @@
 															</li>
 														<?php endforeach; ?>
 													</ul>
-													<p class="read-more"><a href="<?php echo $dataset['']; ?>"><?php _e('Read more', 'opendev'); ?></a></p>
+													<p class="read-more"><a href="<?php echo $dataset['']; ?>"><?php _e('Read more...', 'opendev'); ?></a></p>
 												</li>
 											<?php endforeach; ?>
 										</ul>
