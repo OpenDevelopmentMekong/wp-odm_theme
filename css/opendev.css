@@ -802,6 +802,13 @@ html, body {
 	padding: 10px 0;
 }
 
+#related-datasets.collapsed .dataset-item h4,
+#related-datasets.collapsed .dataset-item p {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 /*
  * Interactive Map ?
  */
