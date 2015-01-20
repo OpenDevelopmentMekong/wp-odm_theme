@@ -8,6 +8,7 @@ html, body {
 
 #od-head {
 	padding: 40px 0 0;
+	background: #444;
 }
 
 #od-head h1 {
@@ -51,6 +52,7 @@ html, body {
 	line-height: 48px;
 	float: left;
 	margin: 8px 0 0 0;
+	color: #fff;
 }
 
 
@@ -83,11 +85,11 @@ html, body {
 	top: 55px;
 	left: -15px;
 	display: none;
-	background: #fff;
+	background: #444;
 }
 
 #od-head .ms-dropdown-title ul li {
-	border-bottom: 1px solid #f0f0f0;
+	border-bottom: 1px solid #000;
 	margin: 0;
 	padding: 0;
 }
@@ -97,6 +99,7 @@ html, body {
 	padding: 15px;
 	text-decoration: none;
 	min-width: 180px;
+	color: #fff;
 }
 
 /*
@@ -121,7 +124,7 @@ html, body {
  */
 
 #od-head #ms-nav {
-	background: #999;
+	background: #555;
 	margin-top: 20px;
 }
 
@@ -151,7 +154,7 @@ html, body {
 	text-decoration: none;
 	display: block;
 	float: left;
-	padding: 25px 20px;
+	padding: 20px;
 	text-transform: uppercase;
 	color: #fff;
 	font-weight: 600;
@@ -191,7 +194,8 @@ html, body {
 	background: #fff;
 	margin: 0;
 	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #c9c9c9;
+	box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
 }
 
 #od-head #main-nav ul,
