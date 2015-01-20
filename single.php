@@ -74,7 +74,7 @@
 										<h3><?php echo $group['display_name']; ?></h3>
 										<ul class="dataset-list">
 											<?php foreach($group['datasets'] as $dataset) : ?>
-												<li class="dataset-item clear">
+												<li class="dataset-item">
 													<h4>
 														<a href="<?php echo $dataset['']; ?>"><?php echo $dataset['title']; ?></a>
 													</h4>
@@ -83,7 +83,7 @@
 													<?php endif; ?>
 													<ul class="dataset-resources">
 														<?php foreach($dataset['resources'] as $resource) : ?>
-															<li class="resource-item">
+															<li class="resource-item clearfix">
 																<a href="<?php echo $resource['url']; ?>" target="_blank" rel="external">
 																	<?php echo $resource['description']; ?>
 																	<?php if($resource['format']) : ?>
