@@ -742,11 +742,16 @@ html, body {
 #related-datasets .dataset-resources {
 	margin: 0;
 	padding: 0;
+	width: 100%;
 }
 
 #related-datasets .dataset-resources .resource-item {
 	margin: 0 10px 10px 0;
 	float: left;
+}
+
+#related-datasets .dataset-resources .resource-item a {
+	text-decoration: none;
 }
 
 #related-datasets .dataset-resources .resource-item .format {

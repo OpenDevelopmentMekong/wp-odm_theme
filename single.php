@@ -74,19 +74,21 @@
 										<h3><?php echo $group['display_name']; ?></h3>
 										<ul class="dataset-list">
 											<?php foreach($group['datasets'] as $dataset) : ?>
-												<li class="dataset-item">
+												<li class="dataset-item clear">
 													<h4>
 														<a href="<?php echo $dataset['']; ?>"><?php echo $dataset['title']; ?></a>
 													</h4>
 													<?php if(isset($dataset['description'])) : ?>
 														<p><?php echo $dataset['description']; ?></p>
 													<?php endif; ?>
-													<ul class="dataset-resources clear">
+													<ul class="dataset-resources">
 														<?php foreach($dataset['resources'] as $resource) : ?>
 															<li class="resource-item">
 																<a href="<?php echo $resource['url']; ?>" target="_blank" rel="external">
 																	<?php echo $resource['description']; ?>
-																	<span class="format"><?php echo $resource['format']; ?></span>
+																	<?php if($resource['format']) : ?>
+																		<span class="format"><?php echo $resource['format']; ?></span>
+																	<?php endif; ?>
 																</a>
 															</li>
 														<?php endforeach; ?>
