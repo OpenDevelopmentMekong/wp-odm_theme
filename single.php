@@ -33,11 +33,12 @@
 		</section>
 		<?php
 		$datasets = opendev_get_related_datasets();
+		$groupby = 'groups';
 		if(!empty($datasets)) {
 			$grouped = array();
 			foreach($datasets as $dataset) {
-				if(!empty($dataset['groups'])) {
-					foreach($dataset['groups'] as $group) {
+				if(!empty($dataset[$groupby])) {
+					foreach($dataset[$groupby] as $group) {
 						if(!$grouped[$group['id']]) {
 							$grouped[$group['id']] = $group;
 							$grouped[$group['id']]['datasets'] = array();
@@ -58,7 +59,7 @@
 		}
 		?>
 		<?php if(isset($grouped) && !empty($grouped)) : ?>
-			<section id="datasets" class="row">
+			<section id="related-datasets" class="row">
 				<div class="container">
 					<div class="box-section twelve columns">
 						<div class="box-title">
@@ -69,11 +70,28 @@
 							foreach($grouped as $group) :
 								if(!empty($group['datasets'])) :
 									?>
-									<div class="box-item">
+									<div class="group-item box-item">
 										<h3><?php echo $group['display_name']; ?></h3>
-										<ul>
+										<ul class="dataset-list">
 											<?php foreach($group['datasets'] as $dataset) : ?>
-												<li><?php echo $dataset['title']; ?></li>
+												<li class="dataset-item">
+													<h4>
+														<a href="<?php echo $dataset['']; ?>"><?php echo $dataset['title']; ?></a>
+													</h4>
+													<?php if(isset($dataset['description'])) : ?>
+														<p><?php echo $dataset['description']; ?></p>
+													<?php endif; ?>
+													<ul class="dataset-resources clear">
+														<?php foreach($dataset['resources'] as $resource) : ?>
+															<li class="resource-item">
+																<a href="<?php echo $resource['url']; ?>" target="_blank" rel="external">
+																	<?php echo $resource['description']; ?>
+																	<span class="format"><?php echo $resource['format']; ?></span>
+																</a>
+															</li>
+														<?php endforeach; ?>
+													</ul>
+												</li>
 											<?php endforeach; ?>
 										</ul>
 									</div>

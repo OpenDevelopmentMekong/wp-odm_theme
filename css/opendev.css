@@ -735,6 +735,24 @@ html, body {
 	width: 120px;
 }
 
+/*
+ * Related datasets box
+ */
+
+#related-datasets .dataset-resources {
+	margin: 0;
+	padding: 0;
+}
+
+#related-datasets .dataset-resources .resource-item {
+	margin: 0 10px 10px 0;
+	float: left;
+}
+
+#related-datasets .dataset-resources .resource-item .format {
+	background: #f0f0f0;
+	margin-left: 5px;
+}
 
 /*
  * Interactive Map ?
