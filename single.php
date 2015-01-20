@@ -71,7 +71,9 @@
 								if(!empty($group['datasets'])) :
 									?>
 									<div class="group-item box-item">
-										<h3><?php echo $group['display_name']; ?></h3>
+										<?php if(count($grouped) > 1) : ?>
+											<h3><?php echo $group['display_name']; ?></h3>
+										<?php endif; ?>
 										<ul class="dataset-list">
 											<?php foreach($group['datasets'] as $dataset) : ?>
 												<li class="dataset-item">
