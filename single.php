@@ -87,7 +87,7 @@
 														<?php
 														$i = 0;
 														foreach($dataset['resources'] as $resource) :
-															if($i > 4)
+															if($i > 3)
 																continue;
 															$i++;
 															?>
