@@ -101,7 +101,7 @@
 															</li>
 														<?php endforeach; ?>
 													</ul>
-													<p><a href="<?php echo $dataset['']; ?>"><?php _e('Read more', 'opendev'); ?></a></p>
+													<p class="read-more"><a href="<?php echo $dataset['']; ?>"><?php _e('Read more', 'opendev'); ?></a></p>
 												</li>
 											<?php endforeach; ?>
 										</ul>
@@ -114,6 +114,8 @@
 						<a class="toggle-resources"><?php _e('Show resources details', 'opendev'); ?></a>
 						<script type="text/javascript">
 							jQuery(document).ready(function($) {
+
+								$('#related-datasets').addClass('collapsed');
 								$('.dataset-resources').hide();
 
 								var viewingAll = false;
@@ -134,11 +136,15 @@
 									if(!node) {
 										if(viewingAll) {
 											$('.dataset-resources').hide();
+											$('#related-datasets').addClass('collapsed');
 											viewingAll = false;
 										} else {
 											$('.dataset-resources').show();
+											$('#related-datasets').removeClass('collapsed');
 											viewingAll = true;
 										}
+									} else {
+
 									}
 
 								}
