@@ -82,6 +82,8 @@
 													</h4>
 													<?php if(isset($dataset['description'])) : ?>
 														<p><?php echo $dataset['description']; ?></p>
+													<?php elseif(isset($dataset['notes'])) : ?>
+														<p><?php echo $dataset['notes']; ?></p>
 													<?php endif; ?>
 													<ul class="dataset-resources clearfix">
 														<?php foreach($dataset['resources'] as $resource) : ?>

@@ -739,6 +739,14 @@ html, body {
  * Related datasets box
  */
 
+#related-datasets .dataset-item h4 {
+	font-size: 18px;
+}
+
+#related-datasets .dataset-item h4 a {
+	text-decoration: none;
+}
+
 #related-datasets .dataset-resources {
 	margin: 0;
 	padding: 0;
