@@ -771,7 +771,6 @@ html, body {
 	margin: 0;
 	padding: 10px;
 	border: 1px solid #eee;
-	float: left;
 }
 
 #related-datasets .dataset-resources .resource-item a {
