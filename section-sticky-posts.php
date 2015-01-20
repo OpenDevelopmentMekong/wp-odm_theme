@@ -18,6 +18,8 @@ if($sticky->have_posts()) :
 								</div>
 							<?php endif; ?>
 							<h2><?php the_title(); ?></h2>
+							<p class="date"><?php echo get_the_date(); ?></p>
+							<a class="link" href="<?php the_permalink(); ?>"></a>
 						</header>
 						<section class="post-content">
 							<?php the_excerpt(); ?>

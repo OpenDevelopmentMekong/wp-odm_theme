@@ -93,7 +93,9 @@
 					});
 					l.on('click', function(e) {
 						jeo.runCallbacks('markerClicked', [e]);
-						markers.openMarker(e.target, false);
+						console.log(e.target);
+						//markers.openMarker(e.target, false);
+						window.location = e.target.feature.properties.permalink;
 						return false;
 					});
 

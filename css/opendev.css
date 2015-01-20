@@ -388,8 +388,14 @@ html, body {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.sticky-posts .sticky-item.active article p.date {
+	font-size: 12px;
+	display: block;
+	color: #999;
+}
 .sticky-posts .sticky-item article .post-content,
-.sticky-posts .sticky-item article .post-actions {
+.sticky-posts .sticky-item article .post-actions,
+.sticky-posts .sticky-item article p.date {
 	display: none;
 }
 .sticky-posts .sticky-item.active,

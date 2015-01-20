@@ -81,6 +81,8 @@
 			if(!$(this).is('.active')) {
 				openSticky($(this).data('postid'));
 				return false;
+			} else {
+				window.location = $(this).find('.link').attr('href');
 			}
 		});
 
