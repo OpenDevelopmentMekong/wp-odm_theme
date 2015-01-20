@@ -81,9 +81,9 @@
 														<a href="<?php echo $dataset['']; ?>"><?php echo $dataset['title']; ?></a>
 													</h4>
 													<?php if(isset($dataset['description'])) : ?>
-														<p><?php echo $dataset['description']; ?></p>
+														<p class="dataset-description"><?php echo $dataset['description']; ?></p>
 													<?php elseif(isset($dataset['notes'])) : ?>
-														<p><?php echo $dataset['notes']; ?></p>
+														<p class="dataset-description"><?php echo $dataset['notes']; ?></p>
 													<?php endif; ?>
 													<ul class="dataset-resources clearfix">
 														<?php foreach($dataset['resources'] as $resource) : ?>
@@ -106,6 +106,34 @@
 							endforeach;
 							?>
 						</div>
+						<a class="toggle-resources"><?php _e('Show resources details', 'opendev'); ?></a>
+						<script type="text/javascript">
+							jQuery(document).ready(function($) {
+								$('.dataset-resources,.dataset-description').hide();
+
+								var viewingAll = false;
+
+								$('.toggle-resources').on('click', function() {
+									toggle();
+								});
+
+								function toggle(node) {
+
+									node = node || false;
+
+									if(!node) {
+										if(viewingAll) {
+											$('.dataset-resources,.dataset-description').hide();
+											viewingAll = false;
+										} else {
+											$('.dataset-resources,.dataset-description').show();
+											viewingAll = true;
+										}
+									}
+
+								}
+							});
+						</script>
 					</div>
 				</div>
 			</section>

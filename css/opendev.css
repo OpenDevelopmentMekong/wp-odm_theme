@@ -771,6 +771,14 @@ html, body {
 	margin-left: 10px;
 }
 
+#related-datasets .toggle-resources {
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #444;
+}
+
 /*
  * Interactive Map ?
  */
