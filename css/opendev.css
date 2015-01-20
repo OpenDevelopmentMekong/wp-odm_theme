@@ -752,11 +752,14 @@ html, body {
 
 #related-datasets .dataset-resources .resource-item a {
 	text-decoration: none;
+	display: block;
+	float: left;
 }
 
 #related-datasets .dataset-resources .resource-item .format {
 	background: #f0f0f0;
 	margin-left: 5px;
+	float: left;
 }
 
 /*
