@@ -81,9 +81,9 @@
 													<?php if(isset($dataset['description'])) : ?>
 														<p><?php echo $dataset['description']; ?></p>
 													<?php endif; ?>
-													<ul class="dataset-resources">
+													<ul class="dataset-resources clearfix">
 														<?php foreach($dataset['resources'] as $resource) : ?>
-															<li class="resource-item clearfix">
+															<li class="resource-item">
 																<a href="<?php echo $resource['url']; ?>" target="_blank" rel="external">
 																	<?php echo $resource['description']; ?>
 																	<?php if($resource['format']) : ?>
