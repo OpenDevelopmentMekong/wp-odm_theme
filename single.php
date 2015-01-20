@@ -114,12 +114,17 @@
 						<a class="toggle-resources"><?php _e('Show resources details', 'opendev'); ?></a>
 						<script type="text/javascript">
 							jQuery(document).ready(function($) {
-								$('.dataset-resources,.dataset-description').hide();
+								$('.dataset-resources').hide();
 
 								var viewingAll = false;
 
 								$('.toggle-resources').on('click', function() {
 									toggle();
+									if(viewingAll) {
+										$(this).text('<?php _e("Hide resources details", "opendev"); ?>');
+									} else {
+										$(this).text('<?php _e("Show resources details", "opendev"); ?>');
+									}
 								});
 
 								function toggle(node) {
@@ -128,10 +133,10 @@
 
 									if(!node) {
 										if(viewingAll) {
-											$('.dataset-resources,.dataset-description').hide();
+											$('.dataset-resources').hide();
 											viewingAll = false;
 										} else {
-											$('.dataset-resources,.dataset-description').show();
+											$('.dataset-resources').show();
 											viewingAll = true;
 										}
 									}
