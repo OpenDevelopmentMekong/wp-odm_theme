@@ -774,7 +774,7 @@ html, body {
 	margin: 0 0 10px;
 }
 
-#related-datasets .dataset-item p {
+#related-datasets .dataset-item p.read-more {
 	margin: 0;
 }
 
