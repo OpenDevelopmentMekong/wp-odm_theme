@@ -46,13 +46,11 @@
 						$grouped[$group['id']]['datasets'][] = $dataset;
 					}
 				} else {
-
 					if(!$grouped['_other'])
 						$grouped['_other'] = array(
 							'display_name' => __('Other', 'opendev'),
 							'datasets' => array()
 						);
-
 					$grouped['_other']['datasets'][] = $dataset;
 				}
 			}
@@ -72,7 +70,7 @@
 									?>
 									<div class="group-item box-item">
 										<?php if(count($grouped) > 1) : ?>
-											<h3><?php echo $group['display_name']; ?></h3>
+											<h3><?php echo isset($group['title']) ? $group['title'] : $group['display_name']; ?></h3>
 										<?php endif; ?>
 										<ul class="dataset-list">
 											<?php foreach($group['datasets'] as $dataset) : ?>
