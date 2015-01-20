@@ -739,6 +739,10 @@ html, body {
  * Related datasets box
  */
 
+#related-datasets .box-items {
+	table-layout: fixed;
+}
+
 #related-datasets .group-item h3 {
 	text-transform: uppercase;
 	font-size: 18px;
@@ -764,6 +768,10 @@ html, body {
 
 #related-datasets .dataset-item h4 a {
 	text-decoration: none;
+}
+
+#related-datasets .dataset-item p {
+	margin: 0 0 10px;
 }
 
 #related-datasets .dataset-resources {
