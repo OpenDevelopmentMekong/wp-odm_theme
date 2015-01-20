@@ -751,6 +751,11 @@ html, body {
 	margin: 0 0 20px;
 }
 
+#related-datasets .dataset-list {
+	margin: 0;
+	padding: 0;
+}
+
 #related-datasets .dataset-item {
 	margin: 0 -20px 20px;
 	padding: 0 20px 20px;
