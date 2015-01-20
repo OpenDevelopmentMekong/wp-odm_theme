@@ -88,6 +88,13 @@
 				</div>
 			</div>
 		</div>
+		<nav id="ms-nav">
+			<div class="container">
+				<div class="twelve columns">
+					<?php opendev_ms_nav(); ?>
+				</div>
+			</div>
+		</nav>
 		<nav id="main-nav">
 			<div class="container">
 				<div class="twelve columns">

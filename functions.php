@@ -1,5 +1,8 @@
 <?php
 
+// Query multisite
+require_once(STYLESHEETPATH . '/inc/query-multisite.php');
+
 // Theme options
 require_once(STYLESHEETPATH . '/inc/theme-options.php');
 
@@ -181,6 +184,41 @@ function opendev_social_apis() {
 	<?php
 }
 add_action('wp_footer', 'opendev_social_apis');
+
+function opendev_ms_nav() {
+
+	if(is_multisite()) {
+		$sites = wp_get_sites();
+		if(!empty($sites) && count($sites) > 1) {
+			$current = get_current_blog_id();
+			// $name = str_replace('Open Development ', '', get_bloginfo('name'));
+			// $logo = opendev_get_logo();
+			// if($logo)
+			// 	$name = $logo;
+			?>
+			<ul class="ms-nav">
+				<?php
+				foreach($sites as $site) {
+					if($current != $site['blog_id']) {
+						$details = get_blog_details($site['blog_id']);
+						$name = str_replace('Open Development ', '', $details->blogname);
+						?>
+						<li>
+							<a href="<?php echo $details->siteurl; ?>"><?php echo $name; ?></a>
+							<ul>
+								<li>Lorem ipsum dolor sit amet</li>
+							</ul>
+						</li>
+						<?php
+					}
+				}
+				?>
+			</ul>
+			<?php
+		}
+	}
+
+}
 
 function opendev_get_related_datasets($atts = false) {
 

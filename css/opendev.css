@@ -117,12 +117,79 @@ html, body {
 }
 
 /*
+ * Header MS nav
+ */
+
+#od-head #ms-nav {
+	background: #999;
+	margin-top: 20px;
+}
+
+#od-head #ms-nav ul,
+#od-head #ms-nav ul li {
+	margin: 0;
+	padding: 0;
+}
+
+#od-head #ms-nav ul.ms-nav {
+	width: 100%;
+}
+
+#od-head #ms-nav ul.ms-nav > li {
+	float: left;
+	margin: 0;
+	position: relative;
+	border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+#od-head #ms-nav ul.ms-nav > li:first-child {
+	border-left: 1px solid rgba(0,0,0,0.15);
+}
+
+#od-head #ms-nav ul.ms-nav > li > a {
+	color: #333;
+	text-decoration: none;
+	display: block;
+	float: left;
+	padding: 25px 20px;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+#od-head #ms-nav ul li ul {
+	display: none;
+	position: absolute;
+	top: 68px;
+	left: 0;
+	background: #fff;
+	width: 600px;
+	color: #333;
+	padding: 20px;
+	z-index: 999999;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+#od-head #ms-nav ul.ms-nav li:hover {
+	background: #fff;
+}
+
+#od-head #ms-nav ul.ms-nav li:hover a {
+	color: #333;
+}
+
+#od-head #ms-nav ul.ms-nav li:hover ul {
+	display: block;
+}
+
+/*
  * Header main nav
  */
 
 #od-head #main-nav {
 	background: #fff;
-	margin-top: 20px;
+	margin: 0;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #eee;
 }
@@ -147,7 +214,7 @@ html, body {
 	text-decoration: none;
 	display: block;
 	float: left;
-	padding: 20px 0;
+	padding: 15px 0;
 	text-transform: uppercase;
 }
 
