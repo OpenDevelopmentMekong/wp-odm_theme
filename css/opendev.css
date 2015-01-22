@@ -46,7 +46,7 @@ html, body {
 	height: auto;
 }
 
-#od-head h2 {
+#od-head h2.side-title {
 	font-family: 'Droid Serif';
 	font-size: 30px;
 	line-height: 48px;
@@ -161,7 +161,7 @@ html, body {
 	font-size: 14px;
 }
 
-#od-head #ms-nav ul li ul {
+#od-head #ms-nav ul li .sub-menu {
 	display: none;
 	position: absolute;
 	top: 58px;
@@ -169,20 +169,85 @@ html, body {
 	right: 0;
 	background: #fff;
 	color: #333;
-	padding: 20px;
+	padding: 20px 0 20px 20px;
 	z-index: 999999;
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+	border-bottom: 1px solid #c9c9c9;
+	border-left: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
 }
 
-#od-head #ms-nav ul.ms-nav li:hover {
+#od-head #ms-nav ul li .sub-menu .first-menu {
+	border-right: 1px solid #ccc;
+	float: left;
+	width: 15%;
+	box-sizing: border-box;
+}
+
+#od-head #ms-nav ul li .sub-menu .first-menu li a {
+	color: #666;
+	text-decoration: none;
+	padding: 20px 20px 0 0;
+	display: block;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+#od-head #ms-nav ul li .sub-menu .first-menu li a:hover {
+	color: #111;
+}
+
+#od-head #ms-nav ul li .sub-menu .first-menu li:first-child a {
+	padding-top: 0;
+}
+
+#od-head #ms-nav ul li .sub-menu .content {
+	float: left;
+	width: 85%;
+	padding: 0 0 0 20px;
+	box-sizing: border-box;
+}
+
+#od-head #ms-nav ul li .sub-menu .content h2 {
+	font-size: 14px;
+	line-height: 14px;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+	color: #999;
+}
+
+#od-head #ms-nav ul li .sub-menu .content ul {
+}
+
+#od-head #ms-nav ul li .sub-menu .content ul li {
+	width: 33.3333%;
+	float: left;
+	padding-right: 40px;
+	box-sizing: border-box;
+}
+
+#od-head #ms-nav ul li .sub-menu .content ul li h3 {
+	font-size: 16px;
+	margin: 0 0 10px;
+	line-height: 20px;
+}
+
+#od-head #ms-nav ul li .sub-menu .content ul li h3 a {
+	text-decoration: none;
+}
+
+#od-head #ms-nav ul.ms-nav > li:hover {
 	background: #fff;
+	border-left: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
 }
 
-#od-head #ms-nav ul.ms-nav li:hover a {
+#od-head #ms-nav ul.ms-nav > li:hover a {
 	color: #333;
 }
 
-#od-head #ms-nav ul.ms-nav li:hover ul {
+#od-head #ms-nav ul.ms-nav li:hover .sub-menu {
 	display: block;
 }
 

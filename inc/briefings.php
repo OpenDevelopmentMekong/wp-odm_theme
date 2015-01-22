@@ -39,7 +39,7 @@ class OpenDev_Briefing {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'briefing' ),
+			'rewrite'            => array( 'slug' => 'briefings' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
