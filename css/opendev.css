@@ -175,6 +175,9 @@ html, body {
 	border-left: 1px solid #c9c9c9;
 	border-right: 1px solid #c9c9c9;
 	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+	-o-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
 }
 
 #od-head #ms-nav ul li .sub-menu .first-menu {
@@ -187,19 +190,27 @@ html, body {
 #od-head #ms-nav ul li .sub-menu .first-menu li a {
 	color: #666;
 	text-decoration: none;
-	padding: 20px 20px 0 0;
+	padding: 15px 20px;
 	display: block;
 	text-transform: uppercase;
 	font-size: 14px;
+	line-height: 18px;
 	font-weight: 600;
+}
+
+#od-head #ms-nav ul li .sub-menu .first-menu li a span {
+	font-weight: normal;
+	margin-right: 10px;
+	font-size: 18px;
+	float: left;
+}
+
+#od-head #ms-nav ul li .sub-menu .first-menu li.active a {
+	background: #eee;
 }
 
 #od-head #ms-nav ul li .sub-menu .first-menu li a:hover {
 	color: #111;
-}
-
-#od-head #ms-nav ul li .sub-menu .first-menu li:first-child a {
-	padding-top: 0;
 }
 
 #od-head #ms-nav ul li .sub-menu .content {
@@ -211,8 +222,9 @@ html, body {
 
 #od-head #ms-nav ul li .sub-menu .content h2 {
 	font-size: 14px;
-	line-height: 14px;
-	margin: 0 0 10px;
+	line-height: 18px;
+	font-weight: 600px;
+	margin: 15px 0;
 	text-transform: uppercase;
 	color: #999;
 }

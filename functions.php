@@ -205,29 +205,73 @@ function opendev_ms_nav() {
 						$siteurl = $details->siteurl;
 						switch_to_blog($site['blog_id']);
 						?>
-						<li>
+						<li class="site-item">
 							<a href="<?php echo $siteurl; ?>"><?php echo $name; ?></a>
 							<div class="sub-menu">
 								<ul class="first-menu">
-									<li class="news"><a href="<?php echo $siteurl; ?>/news"><?php _e('News', 'opendev'); ?></a></li>
-									<li><a href="<?php echo get_post_type_archive_link('briefing'); ?>"><?php _e('Issues', 'opendev'); ?></a></li>
-									<li><a href="<?php echo get_post_type_archive_link('map'); ?>"><?php _e('Maps', 'opendev'); ?></a></li>
-									<li><a href="<?php echo $siteurl; ?>/data"><?php _e('Data', 'opendev'); ?></a></li>
+									<li data-content="news"><a href="<?php echo $siteurl; ?>/news">
+										<span class="icon-text"></span> <?php _e('News', 'opendev'); ?>
+									</a></li>
+									<li data-content="issues"><a href="<?php echo get_post_type_archive_link('briefing'); ?>">
+										<span class="icon-docs"></span> <?php _e('Issues', 'opendev'); ?>
+									</a></li>
+									<li data-content="maps"><a href="<?php echo get_post_type_archive_link('map'); ?>">
+										<span class="icon-map"></span> <?php _e('Maps', 'opendev'); ?>
+									</a></li>
+									<li><a href="<?php echo $siteurl; ?>/data">
+										<span class="icon-archive"></span> <?php _e('Data', 'opendev'); ?>
+									</a></li>
 								</ul>
 								<div class="content">
+
 									<?php query_posts(array('posts_per_page' => 3)); ?>
 									<?php if(have_posts()) : ?>
-										<h2><?php _e('Latest news', 'opendev'); ?></h2>
-										<ul class="news">
-											<?php while(have_posts()) : the_post(); ?>
-												<li>
-													<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-													<?php the_excerpt(); ?>
-												</li>
-											<?php endwhile; ?>
-										</ul>
+										<div class="news content-item">
+											<h2><?php _e('Latest news', 'opendev'); ?></h2>
+											<ul>
+												<?php while(have_posts()) : the_post(); ?>
+													<li>
+														<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+														<?php the_excerpt(); ?>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										</div>
 									<?php endif; ?>
 									<?php wp_reset_query(); ?>
+
+									<?php query_posts(array('post_type' => 'briefing', 'posts_per_page' => 3)); ?>
+									<?php if(have_posts()) : ?>
+										<div class="issues content-item">
+											<h2><?php _e('Latest issues', 'opendev'); ?></h2>
+											<ul>
+												<?php while(have_posts()) : the_post(); ?>
+													<li>
+														<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+														<?php the_excerpt(); ?>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										</div>
+									<?php endif; ?>
+									<?php wp_reset_query(); ?>
+
+									<?php query_posts(array('post_type' => 'map', 'posts_per_page' => 3)); ?>
+									<?php if(have_posts()) : ?>
+										<div class="maps content-item">
+											<h2><?php _e('Latest maps', 'opendev'); ?></h2>
+											<ul>
+												<?php while(have_posts()) : the_post(); ?>
+													<li>
+														<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+														<?php the_excerpt(); ?>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										</div>
+									<?php endif; ?>
+									<?php wp_reset_query(); ?>
+
 								</div>
 							</div>
 						</li>
@@ -237,6 +281,33 @@ function opendev_ms_nav() {
 				}
 				?>
 			</ul>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$('.ms-nav').each(function() {
+						$nav = $(this);
+
+						$nav.find('.site-item').each(function() {
+
+							var $siteNav = $(this);
+
+							$siteNav.find('.content-item').hide();
+
+							$siteNav.find('.content-item:first-child').show();
+							$siteNav.find('.first-menu li:first-child').addClass('active');
+
+							$siteNav.find('.first-menu li').on('mouseover', function() {
+
+								$siteNav.find('.first-menu li').removeClass('active');
+								$(this).addClass('active');
+
+								$siteNav.find('.content-item').hide();
+								$siteNav.find('.content-item.' + $(this).data('content')).show();
+							});
+
+						});
+					});
+				});
+			</script>
 			<?php
 		}
 	}
