@@ -224,7 +224,7 @@ function opendev_ms_nav() {
 								</ul>
 								<div class="content">
 
-									<?php query_posts(array('posts_per_page' => 3)); ?>
+									<?php query_posts(array('posts_per_page' => 3, 'without_map_query' => true)); ?>
 									<?php if(have_posts()) : ?>
 										<div class="news content-item">
 											<h2><?php _e('Latest news', 'opendev'); ?></h2>
@@ -240,7 +240,7 @@ function opendev_ms_nav() {
 									<?php endif; ?>
 									<?php wp_reset_query(); ?>
 
-									<?php query_posts(array('post_type' => 'briefing', 'posts_per_page' => 3)); ?>
+									<?php query_posts(array('post_type' => 'briefing', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
 									<?php if(have_posts()) : ?>
 										<div class="issues content-item">
 											<h2><?php _e('Latest issues', 'opendev'); ?></h2>
@@ -256,7 +256,7 @@ function opendev_ms_nav() {
 									<?php endif; ?>
 									<?php wp_reset_query(); ?>
 
-									<?php query_posts(array('post_type' => 'map', 'posts_per_page' => 3)); ?>
+									<?php query_posts(array('post_type' => 'map', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
 									<?php if(have_posts()) : ?>
 										<div class="maps content-item">
 											<h2><?php _e('Latest maps', 'opendev'); ?></h2>
