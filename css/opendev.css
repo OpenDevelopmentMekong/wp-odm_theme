@@ -203,6 +203,7 @@ html, body {
 	margin-right: 10px;
 	font-size: 18px;
 	float: left;
+	color: #777;
 }
 
 #od-head #ms-nav ul li .sub-menu .first-menu li.active a {
