@@ -297,11 +297,17 @@ function opendev_ms_nav() {
 
 							$siteNav.find('.first-menu li').on('mouseover', function() {
 
-								$siteNav.find('.first-menu li').removeClass('active');
-								$(this).addClass('active');
+								var $content = $siteNav.find('.content-item.' + $(this).data('content'));
 
-								$siteNav.find('.content-item').hide();
-								$siteNav.find('.content-item.' + $(this).data('content')).show();
+								if($content.length) {
+
+									$siteNav.find('.first-menu li').removeClass('active');
+									$(this).addClass('active');
+
+									$siteNav.find('.content-item').hide();
+									$siteNav.find('.content-item.' + $(this).data('content')).show();
+
+								}
 							});
 
 						});
