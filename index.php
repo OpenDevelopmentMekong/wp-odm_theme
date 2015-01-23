@@ -12,7 +12,7 @@ if(is_front_page()) {
 					<p>Lorem ipsum dolor sit</p>
 				</div>
 				<div class="four columns">
-					<p class="icon-database"></p>
+					<p class="icon-archive"></p>
 					<h3>Introduction text 2</h3>
 					<p>Lorem ipsum dolor sit</p>
 				</div>
