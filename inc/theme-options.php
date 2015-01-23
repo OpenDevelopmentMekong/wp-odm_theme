@@ -114,6 +114,14 @@ class OpenDev_Options {
 			'opendev_links_section'
 		);
 
+		add_settings_field(
+			'opendev_data_page',
+			__('Data page', 'opendev'),
+			array($this, 'data_page_field'),
+			'opendev_options',
+			'opendev_links_section'
+		);
+
 		register_setting('opendev_options_group', 'opendev_options');
 
 	}
@@ -166,6 +174,15 @@ class OpenDev_Options {
 		));
 	}
 
+	function data_page_field() {
+		$data_page = $this->options['data_page'];
+		wp_dropdown_pages(array(
+			'name' => 'opendev_options[data_page]',
+			'selected' => $data_page,
+			'show_option_none' => __('None')
+		));
+	}
+
 }
 
 if(is_admin())
@@ -208,6 +225,17 @@ function opendev_get_contact_page_id() {
 	$options = get_option('opendev_options');
 	if($options['contact_page']) {
 		return $options['contact_page'];
+	} else {
+		return false;
+	}
+
+}
+
+function opendev_get_data_page_id() {
+
+	$options = get_option('opendev_options');
+	if($options['data_page']) {
+		return $options['data_page'];
 	} else {
 		return false;
 	}

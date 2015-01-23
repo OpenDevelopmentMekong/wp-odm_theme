@@ -223,9 +223,16 @@ function opendev_ms_nav() {
 									<li data-content="maps"><a href="<?php echo get_post_type_archive_link('map'); ?>">
 										<span class="icon-map"></span> <?php _e('Maps', 'opendev'); ?>
 									</a></li>
-									<li data-content="data"><a href="<?php echo $siteurl; ?>/data">
-										<span class="icon-archive"></span> <?php _e('Data', 'opendev'); ?>
-									</a></li>
+									<?php
+									$data_page_id = opendev_get_data_page_id();
+									if($data_page_id) :
+										?>
+										<li data-content="data"><a href="<?php echo get_permalink($data_page_id); ?>">
+											<span class="icon-archive"></span> <?php _e('Data', 'opendev'); ?>
+										</a></li>
+										<?php
+									endif;
+									?>
 								</ul>
 								<div class="content">
 
