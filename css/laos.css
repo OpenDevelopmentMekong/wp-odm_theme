@@ -1,0 +1,28 @@
+#od-head {
+	background: #4a2d36;
+	color: #f0f0f0;
+}
+
+#od-head #ms-nav {
+	background: #583a43;
+}
+
+#od-head h1 a,
+#od-head h1 span {
+	text-decoration: none;
+	color: #f37914;
+}
+
+#od-head h2,
+#od-head a,
+#od-head span {
+	color: #fff;
+}
+
+#od-head .ms-dropdown-title ul {
+	background: #4a2d36;
+}
+
+#od-head .ms-dropdown-title ul li {
+	border-bottom: 1px solid rgba(0,0,0,0.4);
+}

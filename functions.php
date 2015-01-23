@@ -35,9 +35,11 @@ function opendev_styles() {
 	wp_register_style('webfont-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700');
 	wp_register_style('webfont-opendev', get_stylesheet_directory_uri() . '/font/style.css');
 	wp_register_style('opendev-base',  $css_base . 'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
-	wp_register_style('opendev-theme_01',  $css_base . 'theme_01.css');
-	wp_register_style('opendev-theme_02',  $css_base . 'theme_02.css');
-	wp_register_style('opendev-theme_03',  $css_base . 'theme_03.css');
+	wp_register_style('opendev-cambodia',  $css_base . 'cambodia.css');
+	wp_register_style('opendev-thailand',  $css_base . 'thailand.css');
+	wp_register_style('opendev-laos',  $css_base . 'laos.css');
+	wp_register_style('opendev-myanmar',  $css_base . 'myanmar.css');
+	wp_register_style('opendev-vietnam',  $css_base . 'vietnam.css');
 
 	wp_enqueue_style('opendev-base');
 	if($options['style']) {
@@ -345,4 +347,52 @@ function opendev_get_related_datasets($atts = false) {
 		if (array_key_exists("limit",$atts) && (count($dataset_array) >= (int)($atts["limit"]))) break;
 	}
 	return $dataset_array;
+}
+
+function opendev_wpckan_api_query_datasets($atts) {
+
+	if (is_null(wpckan_get_ckan_settings()))
+		wpckan_api_settings_error("wpckan_api_query_datasets");
+
+	if (!isset($atts['query']))
+		wpckan_api_call_error("wpckan_api_query_datasets",null);
+
+	try {
+
+		$settings = wpckan_get_ckan_settings();
+		$ckanClient = CkanClient::factory($settings);
+		$commandName = 'PackageSearch';
+		$arguments = array('q' => $atts['query']);
+
+		if (isset($atts['limit'])){
+			$arguments['rows'] = (int)$atts['limit'];
+
+			if (isset($atts['page'])){
+				$page = (int)$atts['page'];
+				if ($page > 0) $arguments['start'] = (int)$atts['limit'] * ($page - 1);
+			}
+		}
+
+		$filter = null;
+		if (isset($atts['organization'])) $filter = $filter . "+owner_org:" . $atts['organization'];
+		if (isset($atts['organization']) && isset($atts['group'])) $filter = $filter . " ";
+		if (isset($atts['group'])) $filter = $filter . "+groups:" . $atts['group'];
+		if (!is_null($filter)){
+			$arguments["fq"] = $filter;
+		}
+		$command = $ckanClient->getCommand($commandName,$arguments);
+		$response = $command->execute();
+
+		wpckan_log("wpckan_api_query_datasets commandName: " . $commandName . " arguments: " . print_r($arguments,true) . " settings: " . print_r($settings,true));
+
+		if ($response["success"]==false){
+			wpckan_api_call_error("wpckan_api_query_datasets",null);
+		}
+
+	} catch (Exception $e){
+		wpckan_api_call_error("wpckan_api_query_datasets",$e->getMessage());
+	}
+
+	return $response;
+
 }

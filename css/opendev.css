@@ -8,7 +8,7 @@ html, body {
 
 #od-head {
 	padding: 40px 0 0;
-	background: #444;
+	background: #292d56;
 }
 
 #od-head h1 {
@@ -29,7 +29,7 @@ html, body {
 
 #od-head h1 a {
 	text-decoration: none;
-	color: #3ab0e4;
+	color: #6393d2;
 }
 
 #od-head h1.with-logo,
@@ -85,7 +85,7 @@ html, body {
 	top: 55px;
 	left: -15px;
 	display: none;
-	background: #444;
+	background: #292d56;
 }
 
 #od-head .ms-dropdown-title ul li {
@@ -124,7 +124,7 @@ html, body {
  */
 
 #od-head #ms-nav {
-	background: #555;
+	background: #373c6a;
 	margin-top: 20px;
 }
 

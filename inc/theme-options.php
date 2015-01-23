@@ -26,9 +26,11 @@ class OpenDev_Options {
 
 	var $themes = array(
 		'Default' => '',
-		'theme 01' => 'theme_01',
-		'theme 02' => 'theme_02',
-		'theme 03' => 'theme_03'
+		'cambodia' => 'cambodia',
+		'thailand' => 'thailand',
+		'laos' => 'laos',
+		'myanmar' => 'myanmar',
+		'vietnam' => 'vietnam'
 	);
 
 	function admin_menu() {

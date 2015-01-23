@@ -16,7 +16,24 @@ Template Name: Data archive
 		</header>
 		<div class="container">
 			<div class="eight columns">
-				<?php echo do_shortcode('[wpckan_query_datasets limit="10"]'); ?>
+				<?php echo get_option('setting_ckan_url'); ?>
+				<form id="wpckan_search" method="GET">
+					<input type="text" name="ckan_s" placeholder="<?php _e('Type and hit enter', 'opendev'); ?>" />
+				</form>
+				<?php
+				// echo do_shortcode('[wpckan_query_datasets limit="10"]');
+				$atts = array(
+					'query' => 'a',
+					'limit' => 2,
+					'page' => 2
+				);
+				$datasets = wpckan_api_query_datasets($atts);
+				// echo '<ul>';
+				// foreach($datasets as $dataset) {
+				// 	echo '<li>' . $dataset['title'] . '</li>';
+				// }
+				// echo '</ul>';
+				?>
 			</div>
 			<div class="three columns offset-by-one">
 				<aside id="sidebar">
