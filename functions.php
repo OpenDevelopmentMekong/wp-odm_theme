@@ -324,6 +324,11 @@ function opendev_ms_nav() {
 
 }
 
+function opendev_wpckan_post_types() {
+	return array('post','page','briefing','layer');
+}
+add_filter('wpckan_post_types', 'opendev_wpckan_post_types');
+
 function opendev_get_related_datasets($atts = false) {
 
 	if(!$atts)
