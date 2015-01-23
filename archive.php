@@ -12,6 +12,8 @@
 						printf( __( 'Monthly Archives: %s', 'jeo' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'jeo' ) ) );
 					elseif ( is_year() ) :
 						printf( __( 'Yearly Archives: %s', 'jeo' ), get_the_date( _x( 'Y', 'yearly archives date format', 'jeo' ) ) );
+					elseif ( is_post_type_archive() ) :
+						post_type_archive_title();
 					else :
 						_e( 'Archives', 'jeo' );
 					endif;

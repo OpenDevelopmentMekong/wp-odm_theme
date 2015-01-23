@@ -327,7 +327,8 @@ html, body {
 }
 
 .single-post-header h1,
-.page-header h1 {
+.page-header h1,
+.archive-title {
 	font-family: "Droid Serif";
 }
 
@@ -720,25 +721,25 @@ html, body {
  * Briefing page section
  */
 
-#briefs.page-section article img {
+#briefs.list article img {
 	width: 100%;
 	height: auto;
 }
 
-#briefs.page-section article header h3 {
+#briefs.list article header h3 {
 	margin: 0 0 20px;
 }
 
-#briefs.page-section article header h3 a {
+#briefs.list article header h3 a {
 	text-decoration: none;
 }
 
-#briefs.page-section article header p {
+#briefs.list article header p {
 	margin: 0 0 10px;
 	color: #777;
 }
 
-#briefs.page-section article header p span {
+#briefs.list article header p span {
 	margin-right: 10px;
 }
 

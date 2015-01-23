@@ -56,9 +56,9 @@ if(is_front_page()) {
 		if($briefing_query->have_posts()) :
 			?>
 			<div class="nine columns">
-				<section id="briefs" class="page-section">
+				<section id="briefs" class="list">
 					<div class="section-title">
-						<h2><?php _e('Issue briefs', 'opendev'); ?></h2>
+						<h2><a href="<?php echo get_post_type_archive_link('briefing'); ?>"><?php _e('Issue briefs', 'opendev'); ?></a></h2>
 					</div>
 					<?php
 					while($briefing_query->have_posts()) :
