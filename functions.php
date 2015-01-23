@@ -52,6 +52,7 @@ add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 function opendev_jeo_scripts() {
 
 	wp_dequeue_script('jeo-site');
+	wp_enqueue_script('jquery-isotope');
 
 	wp_register_script('twttr', 'http://platform.twitter.com/widgets.js');
 
