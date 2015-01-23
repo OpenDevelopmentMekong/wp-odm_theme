@@ -221,7 +221,7 @@ function opendev_ms_nav() {
 										<span class="icon-map"></span> <?php _e('Maps', 'opendev'); ?>
 									</a></li>
 									<li><a href="<?php echo $siteurl; ?>/data">
-										<span class="icon-archive"></span> <?php _e('Data', 'opendev'); ?>
+										<span class="icon-database"></span> <?php _e('Data', 'opendev'); ?>
 									</a></li>
 								</ul>
 								<div class="content">
