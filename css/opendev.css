@@ -1101,10 +1101,12 @@ a.button,
 	margin: 10px;
 	border: 1px solid #ccc;
 	box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.1);
+	line-height: 150%;
 }
 
 #wpckan_archive .wpckan_dataset_list .wpckan_dataset_title {
 	font-size: 18px;
+	line-height: 150%;
 	font-weight: 600;
 	margin: 0 0 20px;
 }
