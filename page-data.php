@@ -16,7 +16,7 @@ Template Name: Data archive
 		</header>
 		<div class="container">
 			<div class="eight columns">
-				<?php do_shortcode('[wpckan_query_datasets limit="10"]'); ?>
+				<?php echo do_shortcode('[wpckan_query_datasets limit="10"]'); ?>
 			</div>
 			<div class="three columns offset-by-one">
 				<aside id="sidebar">
