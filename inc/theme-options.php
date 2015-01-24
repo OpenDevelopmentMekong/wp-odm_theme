@@ -116,6 +116,14 @@ class OpenDev_Options {
 		);
 
 		add_settings_field(
+			'opendev_legal_disclaimer',
+			__('Legal disclaimer', 'opendev'),
+			array($this, 'legal_disclaimer_field'),
+			'opendev_options',
+			'opendev_links_section'
+		);
+
+		add_settings_field(
 			'opendev_contact',
 			__('Contact page', 'opendev'),
 			array($this, 'contact_page_field'),
@@ -198,6 +206,13 @@ class OpenDev_Options {
 			'selected' => $data_page,
 			'show_option_none' => __('None')
 		));
+	}
+
+	function legal_disclaimer_field() {
+		$disclaimer = $this->options['legal_disclaimer'];
+		?>
+		<textarea id="opendev_legal_disclaimer" name="opendev_options[legal_disclaimer]" rows="10" cols="70"><?php echo $disclaimer; ?></textarea>
+		<?php
 	}
 
 	function interactive_map_field() {
@@ -388,6 +403,17 @@ function opendev_get_twitter_url() {
 	$options = get_option('opendev_options');
 	if($options['twitter_url']) {
 		return $options['twitter_url'];
+	} else {
+		return false;
+	}
+
+}
+
+function opendev_get_legal_disclaimer() {
+
+	$options = get_option('opendev_options');
+	if($options['legal_disclaimer']) {
+		return $options['legal_disclaimer'];
 	} else {
 		return false;
 	}

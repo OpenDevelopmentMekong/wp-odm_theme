@@ -26,7 +26,7 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
 	<header id="od-head">
 		<div class="container">
-			<div class="seven columns">
+			<div class="eight columns">
 				<div class="site-meta">
 					<?php opendev_logo(); ?>
 					<?php
@@ -55,7 +55,7 @@
 					?>
 				</div>
 			</div>
-			<div class="five columns">
+			<div class="four columns">
 				<div id="od-head-nav">
 					<div class="clearfix">
 						<nav id="social-nav">

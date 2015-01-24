@@ -315,6 +315,11 @@ a.button,
  * Headings
  */
 
+.search .section-title h1 {
+	font-family: "Droid Serif";
+	margin: 10px 0;
+}
+
 .section-title, .single-post-header, .page-header {
 	background: transparent;
 	box-shadow: 0 0 0;
@@ -334,6 +339,10 @@ a.button,
 	font-size: 18px;
 	line-height: 18px;
 	text-transform: uppercase;
+}
+
+.section-title h2 a {
+	text-decoration: none;
 }
 
 .single-post-header h1,
@@ -436,6 +445,9 @@ a.button,
 	text-overflow: ellipsis;
 	margin: 0;
 }
+#live-search .results li h2 a {
+	text-decoration: none;
+}
 #live-search .results li p {
 	color: #999;
 	margin: 0;
@@ -462,7 +474,11 @@ a.button,
 #live-search .results li.more a {
 	display: block;
 	text-align: center;
-	color: #999;
+	color: #f0f0f0;
+	background: #6393d2;
+	padding: 10px 0;
+	margin-bottom: -15px;
+	text-decoration: none;
 }
 #live-search .results li.more a:hover {
 	text-decoration: none;
@@ -751,6 +767,53 @@ a.button,
 
 #briefs.list article header p span {
 	margin-right: 10px;
+}
+
+.posts-section #briefs article header p {
+	font-size: 12px;
+}
+
+.posts-section #briefs article p {
+	font-size: 16px;
+	line-height: 150%;
+}
+
+/*
+ * Post list
+ */
+
+.opendev-posts-list li article {
+	border: 1px solid #ccc;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+	padding: 20px;
+}
+.opendev-posts-list li article h3 a {
+	text-decoration: none;
+}
+.opendev-posts-list li article .meta {
+	margin: 0 0 20px;
+}
+.opendev-posts-list li article .meta p {
+	margin: 0 0 5px;
+	font-size: 14px;
+	color: #666;
+}
+.opendev-posts-list li article .meta p span {
+	margin-right: 10px;
+}
+
+#wpckan_search_results h2 {
+	text-transform: uppercase;
+	font-size: 18px;
+	line-height: 18px;
+	margin: 0 0 22px;
+}
+#wpckan_search_results .wpckan_dataset_list > ul > li {
+	margin: 0 0 20px;
+}
+#wpckan_search_results .button {
+	display: block;
+	text-align: center;
 }
 
 /*
@@ -1172,34 +1235,38 @@ a.button,
 }
 
 #wpckan_archive .wpckan_dataset_list > ul > li .wpckan_dataset {
-	padding: 20px;
 	margin: 10px;
+}
+
+.wpckan_dataset_list > ul > li .wpckan_dataset {
+	padding: 20px;
+	margin: 0;
 	border: 1px solid #ccc;
 	box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.1);
 	line-height: 150%;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_dataset_title {
+.wpckan_dataset_list .wpckan_dataset_title {
 	font-size: 18px;
 	line-height: 150%;
 	font-weight: 600;
 	margin: 0 0 20px;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_dataset_title a {
+.wpckan_dataset_list .wpckan_dataset_title a {
 	text-decoration: none;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_resources_list {
+.wpckan_dataset_list .wpckan_resources_list {
 	margin: 20px 0 0;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_resources_list ul {
+.wpckan_dataset_list .wpckan_resources_list ul {
 	margin: 0 -20px -20px;
 	padding: 0;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_resources_list ul li {
+.wpckan_dataset_list .wpckan_resources_list ul li {
 	border-top: 1px solid #ccc;
 	padding: 10px 20px;
 	margin: 0;
@@ -1207,11 +1274,11 @@ a.button,
 	background: #f7f7f7;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_resources_list ul li:hover {
+.wpckan_dataset_list .wpckan_resources_list ul li:hover {
 	background: #fff;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_resources_list ul li a {
+.wpckan_dataset_list .wpckan_resources_list ul li a {
 	color: #333;
 	font-weight: 400;
 	text-decoration: none;
@@ -1219,7 +1286,7 @@ a.button,
 	display: block;
 }
 
-#wpckan_archive .wpckan_dataset_list .wpckan_resources_list ul li a:before {
+.wpckan_dataset_list .wpckan_resources_list ul li a:before {
 	content: '\e6a4';
 	font-family: 'opendev';
 	speak: none;
