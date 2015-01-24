@@ -90,7 +90,7 @@ class OpenDev_InteractiveMap {
 						//map.$.find('.jeo-filter-layers').appendTo($layers);
 						for(var key in term_rel) {
 							var $item = $layers.find('.cat-item-' + key);
-							$item.append($('<ul class="cat-layers switch-layers" />'));
+							$item.find(' > a').after($('<ul class="cat-layers switch-layers" />'));
 							$.each(term_rel[key], function(i, layerId) {
 								var $layer = map.$.find('[data-layer="' + layerId + '"]');
 								$layer.appendTo($item.find('.cat-layers'));

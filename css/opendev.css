@@ -1008,7 +1008,7 @@ a.button,
  */
 
 .interactive-map {
-	height: 500px;
+	height: 600px;
 	border: 1px solid #ccc;
 	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
 	box-sizing: border-box;
@@ -1016,6 +1016,7 @@ a.button,
 
 .interactive-map .map-container {
 	width: 66.66666%;
+	height: 100%;
 	float: left;
 }
 
@@ -1023,7 +1024,89 @@ a.button,
 	width: 33.33333%;
 	float: left;
 	box-sizing: border-box;
+	border-left: 1px solid #ccc;
+	height: 100%;
+	overflow: auto;
+}
+
+.interactive-map .interactive-map-layers  ul {
+	margin: 0;
+	padding: 0;
+}
+
+.interactive-map .interactive-map-layers  ul li {
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+}
+
+.interactive-map .interactive-map-layers  ul li a {
+	text-decoration: none;
+	font-weight: 600;
+	display: block;
 	padding: 20px;
+}
+
+.interactive-map .interactive-map-layers  ul li a:before,
+.interactive-map .interactive-map-layers .cat-layers li:before {
+	font-family: 'opendev';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	float: left;
+	font-size: 16px;
+	margin: 0 10px 0 0;
+	color: #999;
+}
+
+.interactive-map .interactive-map-layers  ul li a:before {
+	content: '\e6d5';
+}
+
+.interactive-map .interactive-map-layers  ul li a.active:before {
+	content: '\e6d3';
+}
+
+.interactive-map .interactive-map-layers  ul li ul {
+	margin-top: 0;
+	background: #f7f7f7;
+}
+
+.interactive-map .interactive-map-layers  ul li ul li {
+	border-bottom: 0;
+	border-top: 1px solid #ccc;
+	padding: 10px 20px;
+	box-shadow: 0 0 0;
+}
+
+.interactive-map .interactive-map-layers  ul li ul li:hover {
+	background: #fff;
+	cursor: pointer;
+}
+
+.interactive-map .interactive-map-layers  ul li ul li a {
+	padding: 10px 0;
+}
+
+.interactive-map .interactive-map-layers  ul li ul li ul {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.interactive-map .interactive-map-layers .cat-layers li:before {
+	content: '\e65d';
+	color: #999;
+}
+
+.interactive-map .interactive-map-layers .cat-layers li.active:before {
+	color: #000;
 }
 
 /*
