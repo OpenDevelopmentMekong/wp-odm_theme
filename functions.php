@@ -217,7 +217,7 @@ function opendev_ms_nav() {
 							<a href="<?php echo $siteurl; ?>"><?php echo $name; ?></a>
 							<div class="sub-menu">
 								<ul class="first-menu">
-									<li data-content="news"><a href="<?php echo $siteurl; ?>/news">
+									<li data-content="news"><a href="<?php echo $siteurl; ?>">
 										<span class="icon-text"></span> <?php _e('News', 'opendev'); ?>
 									</a></li>
 									<li data-content="issues"><a href="<?php echo get_post_type_archive_link('briefing'); ?>">
