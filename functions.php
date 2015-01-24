@@ -16,13 +16,16 @@ require_once(STYLESHEETPATH . '/inc/announcements.php');
 require_once(STYLESHEETPATH . '/inc/site-updates.php');
 
 // Map category
-require_once(STYLESHEETPATH . '/inc/map-category.php');
+require_once(STYLESHEETPATH . '/inc/layer-category.php');
 
 // summary
 require_once(STYLESHEETPATH . '/inc/summary.php');
 
 // Live search
 require_once(STYLESHEETPATH . '/inc/live-search/live-search.php');
+
+// Interactive map
+require_once(STYLESHEETPATH . '/inc/interactive-map.php');
 
 function opendev_styles() {
 

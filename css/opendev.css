@@ -1007,30 +1007,22 @@ a.button,
  * Interactive Map ?
  */
 
-.interactive-map-container {
-	width: 100%;
-	height: 600px;
-	position: relative;
+.interactive-map {
+	height: 500px;
+	border: 1px solid #ccc;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+	box-sizing: border-box;
 }
 
-.interactive-map-container .interactive-map {
-	height: 100%;
-}
-
-.interactive-map-container .map-container {
+.interactive-map .map-container {
 	width: 66.66666%;
-	height: 100%;
 	float: left;
 }
 
-.interactive-map-container .map-nav-container {
+.interactive-map .interactive-map-layers {
 	width: 33.33333%;
-	height: 100%;
-	float: right;
-	background: #fff;
-}
-
-.interactive-map-container .map-nav-container .map-nav {
+	float: left;
+	box-sizing: border-box;
 	padding: 20px;
 }
 
