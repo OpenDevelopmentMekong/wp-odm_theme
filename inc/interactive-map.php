@@ -96,6 +96,7 @@ class OpenDev_InteractiveMap {
 								$layer.appendTo($item.find('.cat-layers'));
 							});
 						}
+						$('.jeo-filter-layers').hide();
 					}
 
 					$layers.find('.categories ul').hide();
