@@ -13,12 +13,7 @@ class OpenDev_InteractiveMap {
 
 	}
 
-	function shortcode($atts) {
-
-		$args = shortcode_atts(array(
-			'base-layer' => 'osm',
-			'fixed-layers' => ''
-		));
+	function shortcode() {
 
 		$layer_query = new WP_Query(array(
 			'post_type' => 'map-layer',
