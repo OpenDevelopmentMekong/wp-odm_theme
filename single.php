@@ -18,19 +18,21 @@
 				</div>
 			</div>
 		</header>
-		<section id="featured-media" class="row">
-			<div class="container">
-				<div class="twelve columns">
-					<div style="height:500px;">
-						<?php
-						if(jeo_has_marker_location()) {
-							jeo_map();
-						}
-						?>
+		<?php
+		if(jeo_has_marker_location()) {
+			?>
+			<section id="featured-media" class="row">
+				<div class="container">
+					<div class="twelve columns">
+						<div style="height:500px;">
+							<?php jeo_map(); ?>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+			<?php
+		}
+		?>
 		<?php get_template_part('section', 'related-datasets'); ?>
 		<section class="content">
 			<div class="container">
