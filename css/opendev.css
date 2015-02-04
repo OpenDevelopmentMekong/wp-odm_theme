@@ -2,6 +2,10 @@ html, body {
 	background: #fff;
 }
 
+img {
+	max-width: 100%;
+}
+
 a.button,
 .button {
 	background: #6393d2;
