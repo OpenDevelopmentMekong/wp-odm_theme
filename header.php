@@ -98,6 +98,9 @@
 		<nav id="main-nav">
 			<div class="container">
 				<div class="twelve columns">
+					<?php if(function_exists('qtrans_generateLanguageSelectCode')) : ?>
+						<?php echo qtrans_generateLanguageSelectCode('text'); ?>
+					<?php endif; ?>
 					<?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
 				</div>
 			</div>

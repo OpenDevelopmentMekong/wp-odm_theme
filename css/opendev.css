@@ -291,6 +291,16 @@ a.button,
 	box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
 }
 
+#od-head #main-nav .qtrans_language_chooser {
+	float: right;
+	font-size: 12px;
+	width: auto;
+}
+
+#od-head #main-nav .qtrans_language_chooser li {
+	margin: 0 0 0 20px;
+}
+
 #od-head #main-nav ul,
 #od-head #main-nav ul li {
 	margin: 0;
