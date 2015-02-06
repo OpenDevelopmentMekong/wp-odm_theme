@@ -1,3 +1,9 @@
+button,
+a.button,
+.button {
+	background: #f7904d;
+}
+
 #od-head {
 	background: #64161d;
 	color: #f0f0f0;
@@ -26,3 +32,11 @@
 #od-head .ms-dropdown-title ul li {
 	border-bottom: 1px solid rgba(0,0,0,0.4);
 }
+
+#news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
+	background: #f7904d;
+	border-color: #f7904d;
+}
+
+#news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
+	border-top: 10px solid #f7904d;
