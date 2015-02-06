@@ -16,6 +16,22 @@ a.button,
 	font-weight: 600;
 }
 
+.leaflet-div-icon {
+	background: url(../img/marker.png) no-repeat !important;
+	width: 25px !important;
+	height: 30px !important;
+	margin-top: -30px !important;
+	margin-left: -12px !important;
+	border: 0 !important;
+	box-sizing: border-box !important;
+	text-align: center;
+	padding-top: 5px;
+	padding-left: 1px;
+	font-weight: 800;
+	font-size: 10px;
+	line-height: 10px;
+}
+
 /*
  * Header
  */
