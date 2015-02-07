@@ -317,6 +317,10 @@ a.button,
 	margin: 0 0 0 20px;
 }
 
+#od-head #main-nav .qtrans_language_chooser li a span {
+	color: #333;
+}
+
 #od-head #main-nav ul,
 #od-head #main-nav ul li {
 	margin: 0;
