@@ -414,3 +414,20 @@ function opendev_wpckan_api_query_datasets($atts) {
 	return $response;
 
 }
+
+// Disable mousewheel zoom by default
+function opendev_map_data($data) {
+	$data['disable_mousewheel'] = true;
+	return $data;
+}
+add_filter('jeo_map_data', 'opendev_map_data');
+add_filter('jeo_mapgroup_data', 'opendev_map_data');
+
+function opendev_custom_admin_css() {
+	?>
+	<style>
+		.handlers.map-setting { display: none !important; }
+	</style>
+	<?php
+}
+add_action('admin_footer', 'opendev_custom_admin_css');
