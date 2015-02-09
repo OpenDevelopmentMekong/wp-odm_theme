@@ -41,6 +41,7 @@ class OpenDev_Briefing {
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'briefings' ),
 			'capability_type'    => 'post',
+			'taxonomies'         => array('category', 'post_tag'),
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 4,
