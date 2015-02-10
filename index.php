@@ -103,7 +103,8 @@ if(is_front_page()) {
 							$updates_query->the_post();
 							?>
 							<article id="update-<?php the_ID(); ?>">
-								<h3><span class="date"><?php echo get_the_date(); ?></span> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+								<p class="date"><?php echo get_the_date(); ?></p>
+								<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 							</article>
 						<?php endwhile; ?>
 					</div>

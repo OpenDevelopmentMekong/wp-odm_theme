@@ -886,50 +886,22 @@ a.button,
 }
 
 /*
- * Site updates section
+ * Site updates and announcements section
  */
 
-#site-updates article {
-	margin: 0;
-	padding: 10px 0;
-	border-bottom: 1px dotted #ccc;
-}
-
-#site-updates .update-list {
-	margin-top: -15px;
-}
-
-#site-updates article h3 {
-	font-size: 16px;
-	line-height: 20px;
-	font-weight: 400;
-	margin: 0;
-}
-
-#site-updates article h3 a {
-	text-decoration: none;
-}
-
-#site-updates article h3 span {
-	font-size: 12px;
-	color: #777;
-	margin-right: 10px;
-}
-
-/*
- * Announcements section
- */
-
+#site-updates article,
 #announcements article {
 	margin: 0;
 	padding: 10px 0;
 	border-bottom: 1px dotted #ccc;
 }
 
+#site-updates .announce-list,
 #announcements .announce-list {
 	margin-top: -15px;
 }
 
+#site-updates article h3,
 #announcements article h3 {
 	font-size: 16px;
 	line-height: 20px;
@@ -937,10 +909,12 @@ a.button,
 	margin: 0;
 }
 
+#site-updates article h3 a,
 #announcements article h3 a {
 	text-decoration: none;
 }
 
+#site-updates article p,
 #announcements article p {
 	font-size: 12px;
 	color: #777;
