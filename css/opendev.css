@@ -409,17 +409,30 @@ a.button,
 #intro-texts [class^="icon-"],
 #intro-texts [class*=" icon-"] {
 	float: left;
-	font-size: 30px;
-	line-height: 60px;
+	font-size: 40px;
+	line-height: 100%;
 	margin: 0 40px 0 0;
+	padding-top: 20px;
 }
+
+#intro-texts .text-item {
+	display: table;
+}
+
+#intro-texts .text-item .icon,
+#intro-texts .text-item .content {
+	display: table-cell;
+	vertical-align: top;
+}
+
 
 #intro-texts h3 {
 	font-size: 24px;
 }
 
 #intro-texts p {
-	font-size: 18px;
+	font-size: 16px;
+	line-height: 150%;
 }
 
 /*

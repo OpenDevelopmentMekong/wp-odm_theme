@@ -77,6 +77,13 @@ class OpenDev_Options {
 		);
 
 		add_settings_section(
+			'opendev_introduction_texts_section',
+			__('Introduction texts', 'opendev'),
+			'',
+			'opendev_options'
+		);
+
+		add_settings_section(
 			'opendev_interactive_map_section',
 			__('Interactive map', 'opendev'),
 			'',
@@ -137,6 +144,30 @@ class OpenDev_Options {
 			array($this, 'data_page_field'),
 			'opendev_options',
 			'opendev_links_section'
+		);
+
+		add_settings_field(
+			'opendev_intro_text_1',
+			__('Introduction text #1', 'opendev'),
+			array($this, 'intro_text_1'),
+			'opendev_options',
+			'opendev_introduction_texts_section'
+		);
+
+		add_settings_field(
+			'opendev_intro_text_2',
+			__('Introduction text #2', 'opendev'),
+			array($this, 'intro_text_2'),
+			'opendev_options',
+			'opendev_introduction_texts_section'
+		);
+
+		add_settings_field(
+			'opendev_intro_text_3',
+			__('Introduction text #3', 'opendev'),
+			array($this, 'intro_text_3'),
+			'opendev_options',
+			'opendev_introduction_texts_section'
 		);
 
 		add_settings_field(
@@ -212,6 +243,28 @@ class OpenDev_Options {
 		$disclaimer = $this->options['legal_disclaimer'];
 		?>
 		<textarea id="opendev_legal_disclaimer" name="opendev_options[legal_disclaimer]" rows="10" cols="70"><?php echo $disclaimer; ?></textarea>
+		<?php
+	}
+
+	function intro_text_1() {
+		$this->introduction_text_item(1);
+	}
+
+	function intro_text_2() {
+		$this->introduction_text_item(2);
+	}
+
+	function intro_text_3() {
+		$this->introduction_text_item(3);
+	}
+
+	function introduction_text_item($i) {
+		$intro_text = $this->options['intro_text_' . $i];
+		$title = $intro_text['title'] ? $intro_text['title'] : '';
+		$content = $intro_text['content'] ? $intro_text['title'] : '';
+		?>
+		<p><input name="opendev_options[intro_text_<?php echo $i; ?>][title]" type="text" placeholder="<?php _e('Title'); ?>" value="<?php echo $title; ?>" size="50" /></p>
+		<p><textarea name="opendev_options[intro_text_<?php echo $i; ?>][content]" placeholder="<?php _e('Content'); ?>" rows="5" cols="50"><?php echo $content; ?></textarea></p>
 		<?php
 	}
 
@@ -451,4 +504,20 @@ function opendev_get_interactive_map_data() {
 		return false;
 	}
 
+}
+
+function opendev_get_intro_texts($t = array(1,2,3)) {
+
+	$options = get_option('opendev_options');
+
+	$texts = array();
+	foreach($t as $i) {
+		if(isset($options['intro_text_' . $i])) {
+			$text = $options['intro_text_' . $i];
+			if(isset($text['title']) && $text['title'])
+				$texts[$i] = $text;
+		}
+	}
+
+	return $texts;
 }

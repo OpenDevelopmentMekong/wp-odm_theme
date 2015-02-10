@@ -4,25 +4,56 @@
 if(is_front_page()) {
 	?>
 	<section id="site-intro">
-		<div class="container">
-			<div id="intro-texts" class="row">
-				<div class="four columns">
-					<p class="icon-map"></p>
-					<h3>Introduction text 1</h3>
-					<p>Lorem ipsum dolor sit</p>
-				</div>
-				<div class="four columns">
-					<p class="icon-archive"></p>
-					<h3>Introduction text 2</h3>
-					<p>Lorem ipsum dolor sit</p>
-				</div>
-				<div class="four columns">
-					<p class="icon-docs"></p>
-					<h3>Introduction text 3</h3>
-					<p>Lorem ipsum dolor sit</p>
+		<?php
+		$intro_texts = opendev_get_intro_texts();
+		if(!empty($intro_texts)) :
+			?>
+			<div class="container">
+				<div id="intro-texts" class="row">
+					<?php if($intro_texts[1]) : ?>
+						<div class="four columns">
+							<div class="text-item">
+								<div class="icon">
+									<p class="icon-map"></p>
+								</div>
+								<div class="content">
+									<h3><?php echo $intro_texts[1]['title']; ?></h3>
+									<p><?php echo $intro_texts[1]['content']; ?></p>
+								</div>
+							</div>
+						</div>
+					<?php endif; ?>
+					<?php if($intro_texts[2]) : ?>
+						<div class="four columns">
+							<div class="text-item">
+								<div class="icon">
+									<p class="icon-archive"></p>
+								</div>
+								<div class="content">
+									<h3><?php echo $intro_texts[2]['title']; ?></h3>
+									<p><?php echo $intro_texts[2]['content']; ?></p>
+								</div>
+							</div>
+						</div>
+					<?php endif; ?>
+					<?php if($intro_texts[3]) : ?>
+						<div class="four columns">
+							<div class="text-item">
+								<div class="icon">
+									<p class="icon-docs"></p>
+								</div>
+								<div class="content">
+									<h3><?php echo $intro_texts[3]['title']; ?></h3>
+									<p><?php echo $intro_texts[3]['content']; ?></p>
+								</div>
+							</div>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
-		</div>
+			<?php
+		endif;
+		?>
 		<div id="live-search">
 			<div class="container">
 				<div class="twelve columns">
