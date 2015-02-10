@@ -27,6 +27,18 @@ require_once(STYLESHEETPATH . '/inc/live-search/live-search.php');
 // Interactive map
 require_once(STYLESHEETPATH . '/inc/interactive-map.php');
 
+function opendev_setup_theme() {
+
+	register_sidebar(array(
+		'name' => __('Briefing sidebar', 'jeo'),
+		'id' => 'briefing',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
+	));
+
+}
+add_action('after_setup_theme', 'opendev_setup_theme');
+
 function opendev_styles() {
 
 	$options = get_option('opendev_options');

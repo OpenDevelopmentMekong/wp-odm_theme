@@ -33,9 +33,13 @@ a.button,
 	border-bottom: 1px solid rgba(0,0,0,0.4);
 }
 
-#news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
+.mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
 	background: #97d320;
 	border-color: #97d320;
+}
+
+.mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
+	border-bottom: 10px solid #97d320;
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {

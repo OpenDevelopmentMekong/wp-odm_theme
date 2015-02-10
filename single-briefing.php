@@ -64,7 +64,7 @@
 							<li class="widget">
 								<?php opendev_summary(); ?>
 							</li>
-							<?php dynamic_sidebar('post'); ?>
+							<?php dynamic_sidebar('briefing'); ?>
 						</ul>
 					</aside>
 				</div>

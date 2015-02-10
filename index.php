@@ -52,7 +52,7 @@ if(is_front_page()) {
 	</section>
 	<div class="container">
 		<?php
-		$briefing_query = new WP_Query(array('post_type' => 'briefing', 'posts_per_page' => 5));
+		$briefing_query = new WP_Query(array('post_type' => 'briefing', 'posts_per_page' => 3));
 		if($briefing_query->have_posts()) :
 			?>
 			<div class="nine columns">
@@ -67,7 +67,11 @@ if(is_front_page()) {
 						<article id="briefing-<?php the_ID(); ?>" class="row">
 							<header>
 								<div class="two columns alpha">
-									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+									<?php if(has_post_thumbnail()) : ?>
+										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+									<?php else : ?>
+										&nbsp;
+									<?php endif; ?>
 								</div>
 								<div class="three columns">
 									<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
@@ -80,6 +84,7 @@ if(is_front_page()) {
 							</div>
 						</article>
 					<?php endwhile; ?>
+					<a class="button main-section-link" href="<?php echo get_post_type_archive_link('briefing'); ?>"><?php _e('Access the briefings archive', 'opendev'); ?></a>
 				</section>
 			</div>
 			<?php endif; ?>
