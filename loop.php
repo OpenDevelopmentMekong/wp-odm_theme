@@ -11,7 +11,11 @@
 							<article id="briefing-<?php the_ID(); ?>" class="row">
 								<header>
 									<div class="three columns alpha">
-										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+										<?php if(has_post_thumbnail()) : ?>
+											<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+										<?php else : ?>
+											&nbsp;
+										<?php endif; ?>
 									</div>
 									<div class="four columns">
 										<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
