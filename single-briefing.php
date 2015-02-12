@@ -46,7 +46,7 @@
 				<div class="three columns offset-by-one">
 					<aside id="sidebar">
 						<ul class="widgets">
-							<li class="widget">
+							<li class="widget share-widget">
 								<div class="share clearfix">
 									<ul>
 										<li>

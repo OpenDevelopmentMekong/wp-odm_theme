@@ -27,6 +27,9 @@ require_once(STYLESHEETPATH . '/inc/live-search/live-search.php');
 // Interactive map
 require_once(STYLESHEETPATH . '/inc/interactive-map.php');
 
+// Category widget
+require_once(STYLESHEETPATH . '/inc/category-widget.php');
+
 function opendev_setup_theme() {
 
 	register_sidebar(array(
