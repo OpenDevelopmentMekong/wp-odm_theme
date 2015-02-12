@@ -30,6 +30,9 @@ require_once(STYLESHEETPATH . '/inc/interactive-map.php');
 // Category widget
 require_once(STYLESHEETPATH . '/inc/category-widget.php');
 
+// Related resources
+require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
+
 function opendev_setup_theme() {
 
 	register_sidebar(array(

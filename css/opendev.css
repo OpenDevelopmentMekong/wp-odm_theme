@@ -1473,3 +1473,33 @@ a.button,
 .widget .od-tax-widget-tax-item:last-child {
 	margin: 0;
 }
+
+.widget .wpckan_dataset_list > ul > li {
+	margin: 0 0 10px !important;
+	padding: 0 !important;
+}
+
+.widget .wpckan_dataset_list > ul > li:last-child {
+	margin: 0 !important;
+}
+
+.widget .wpckan_dataset_list > ul > li .wpckan_dataset {
+	padding: 0;
+	box-shadow: 0 0 0;
+	border: 0;
+}
+
+.widget .wpckan_dataset_list .wpckan_dataset_title {
+	margin: 0;
+}
+
+.widget .wpckan_dataset_list > ul > li .wpckan_dataset ul {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.widget .wpckan_dataset_list > ul > li .wpckan_dataset ul li {
+	padding: 5px 10px !important;
+	margin: 0 !important;
+}
