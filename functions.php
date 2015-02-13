@@ -447,3 +447,68 @@ function opendev_custom_admin_css() {
 	<?php
 }
 add_action('admin_footer', 'opendev_custom_admin_css');
+
+function opendev_search_pre_get_posts($query) {
+	if(!is_admin() && ($query->is_search || $query->is_tax || $query->is_category || $query->is_tag)) {
+		$query->set('post_type', get_post_types(array('public' => true)));
+	}
+}
+add_action('pre_get_posts', 'opendev_search_pre_get_posts');
+
+
+function opendev_posts_clauses_join($join) {
+
+	global $wpdb;
+
+	$join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
+
+	return $join;
+}
+//add_filter('jeo_posts_clauses_join', 'opendev_posts_clauses_join');
+
+function opendev_posts_clauses_where($where) {
+
+	$map_id = jeo_get_map_id();
+
+	$where = '';
+
+	// MAP
+	if(get_post_type($map_id) == 'map') {
+
+		$where = " AND ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$map_id}' ) ";
+
+	// MAPGROUP
+	} elseif(get_post_type($map_id) == 'map-group') {
+
+		$groupdata = get_post_meta($map_id, 'mapgroup_data', true);
+
+		if(isset($groupdata['maps']) && is_array($groupdata['maps'])) {
+
+			$where = " AND ( ";
+
+			$size = count($groupdata['maps']);
+			$i = 1;
+
+			foreach($groupdata['maps'] as $m) {
+
+				$c_map_id = $m['id'];
+
+				$where .= " ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$c_map_id}' ) ";
+
+				if($i < $size) {
+					$where .= ' OR ';
+				}
+
+				$i++;
+
+			}
+
+			$where .= " ) ";
+
+		}
+
+	}
+
+	return $where;
+}
+//add_filter('jeo_posts_clauses_where', 'opendev_posts_clauses_where');

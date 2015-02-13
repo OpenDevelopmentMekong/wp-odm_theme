@@ -24,7 +24,7 @@
 			<section id="featured-media" class="row">
 				<div class="container">
 					<div class="twelve columns">
-						<div style="height:500px;">
+						<div style="height:400px;">
 							<?php jeo_map(); ?>
 						</div>
 					</div>

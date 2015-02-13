@@ -575,6 +575,9 @@ a.button,
 	box-sizing: border-box;
 }
 
+.map-container {
+	min-height: 0 !important;
+}
 
 #news.page-section .section-map .map-container,
 #news.page-section .section-map .mapgroup-container {

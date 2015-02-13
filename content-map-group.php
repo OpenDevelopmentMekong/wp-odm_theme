@@ -40,7 +40,7 @@ foreach($mapgroup['maps'] as $map) {
 				<?php endif; ?>
 			</ul>
 		</div>
-		<?php if(!is_single()) : ?>
+		<?php if(is_home() && !is_paged()) : ?>
 			<div class="map-sidebar">
 				<div class="viewing-post">
 				</div>
