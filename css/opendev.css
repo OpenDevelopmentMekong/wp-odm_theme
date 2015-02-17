@@ -381,21 +381,73 @@ a.button,
 	margin: 0 0 40px;
 }
 
-.section-title h2 {
+.section-title h2,
+.section-title h3 {
 	margin: 0;
 	font-size: 18px;
 	line-height: 18px;
 	text-transform: uppercase;
 }
 
-.section-title h2 a {
+.section-title h2 a,
+.section-title h3 a {
 	text-decoration: none;
+}
+
+.section-title.main-title h3 {
+	font-size: 14px;
+	margin: 0 0 10px;
+}
+
+.section-title.main-title h3 a {
+	color: #999;
+}
+
+.section-title.main-title h3 a:hover {
+	color: #333;
+}
+
+.section-title.main-title h2 {
+	margin: 0 0 20px;
+	font-size: 32px;
+	line-height: 32px;
+	text-transform: none;
 }
 
 .single-post-header h1,
 .page-header h1,
 .archive-title {
 	font-family: "Droid Serif";
+}
+
+#main-title-nav {
+	border-top: 1px solid #dedede;
+	padding: 0;
+	margin: 15px 0 -15px;
+}
+
+#main-title-nav ul {
+	margin: 0;
+	padding: 0;
+	border-left: 1px solid #dedede;
+}
+
+#main-title-nav ul li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#main-title-nav ul li a {
+	text-decoration: none;
+	display: block;
+	padding: 10px 15px;
+	border-right: 1px solid #dedede;
+	color: #999;
+}
+
+#main-title-nav ul li a:hover {
+	color: #333;
 }
 
 /*
@@ -861,6 +913,77 @@ a.button,
 .posts-section #briefs article p {
 	font-size: 16px;
 	line-height: 150%;
+}
+
+/*
+ * Tabbed post list
+ */
+
+.tabbed-posts-section {
+	border: 1px solid #ddd;
+	box-shadow: 0 0 2px rgba(0,0,0,0.1);
+}
+
+.tabbed-posts-list {
+	margin: 0;
+	padding: 0;
+}
+
+.tabbed-posts-list li {
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.tabbed-posts-list li article h3 a {
+	text-decoration: none;
+}
+.tabbed-posts-list li article .meta {
+	margin: 0 0 20px;
+}
+.tabbed-posts-list li article .meta p {
+	margin: 0 0 5px;
+	font-size: 14px;
+	color: #666;
+}
+.tabbed-posts-list li article .meta p span {
+	margin-right: 10px;
+}
+
+#tabbed-post-type-nav ul {
+	width: 100%;
+	display: table;
+	margin: 0 0 20px;
+	padding: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+#tabbed-post-type-nav ul li:last-child {
+	border-right: 0;
+}
+
+#tabbed-post-type-nav ul li {
+	display: table-cell;
+	width: 1%;
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+
+#tabbed-post-type-nav ul li a {
+	display: block;
+	padding: 20px 0;
+	width: 100%;
+	text-decoration: none;
+	text-transform: uppercase;
+	background: #f0f0f0;
+}
+
+#tabbed-post-type-nav ul li.active a {
+	background: #fff;
+	font-weight: 600;
+}
+
+#tabbed-post-type-nav ul li a:hover {
+	background: #fff;
 }
 
 /*

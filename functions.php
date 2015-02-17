@@ -455,6 +455,14 @@ function opendev_search_pre_get_posts($query) {
 }
 add_action('pre_get_posts', 'opendev_search_pre_get_posts');
 
+function opendev_category_pre_get_posts($query) {
+	if($query->is_category) {
+		$post_type = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
+		$query->set('post_type', array($post_type));
+	}
+}
+add_action('pre_get_posts', 'opendev_category_pre_get_posts', 20, 1);
+
 
 function opendev_posts_clauses_join($join) {
 
@@ -512,3 +520,4 @@ function opendev_posts_clauses_where($where) {
 	return $where;
 }
 //add_filter('jeo_posts_clauses_where', 'opendev_posts_clauses_where');
+
