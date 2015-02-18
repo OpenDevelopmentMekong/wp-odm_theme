@@ -1110,6 +1110,15 @@ a.button,
 	line-height: 150%;
 }
 
+.single section.content h1,
+.single section.content h2,
+.single section.content h3,
+.single section.content h4 {
+	font-family: 'Droid Serif';
+	font-weight: 200;
+	margin: 40px 0;
+}
+
 .single section.content h1 a,
 .single section.content h2 a,
 .single section.content h3 a,
@@ -1527,6 +1536,8 @@ a.button,
 
 #sidebar .widgets .widget .widget-title,
 .widget .widget-title {
+	font-family: 'Open Sans';
+	font-weight: 800;
 	margin: -11px -10px 10px;
 	padding: 10px;
 	border-top: 1px solid #ddd;

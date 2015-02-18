@@ -21,13 +21,6 @@
 				) );
 				?>
 			</div>
-			<div class="three columns offset-by-one">
-				<aside id="sidebar">
-					<ul class="widgets">
-						<?php dynamic_sidebar('general'); ?>
-					</ul>
-				</aside>
-			</div>
 		</div>
 	</section>
 <?php endif; ?>
