@@ -45,3 +45,7 @@ a.button,
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
 	border-top: 10px solid #eeca0a;
 }
+
+#site-intro {
+	background: #eeca0a;
+}

@@ -3,7 +3,33 @@
 <?php
 if(is_front_page()) {
 	?>
-	<section id="site-intro">
+	<div id="live-search">
+		<div class="container">
+			<div class="twelve columns">
+				<input type="text" placeholder="Search for posts, maps and briefings..." />
+				<div class="results-container"></div>
+			</div>
+		</div>
+	</div>
+	<section id="news" class="page-section row">
+		<div class="section-title">
+			<div class="container">
+				<div class="twelve columns">
+					<h2><?php _e('Geolocated news', 'opendev'); ?></h2>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="twelve columns">
+				<div class="section-map">
+					<?php
+					jeo_map();
+					?>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="site-intro" class="row">
 		<?php
 		$intro_texts = opendev_get_intro_texts();
 		if(!empty($intro_texts)) :
@@ -54,32 +80,6 @@ if(is_front_page()) {
 			<?php
 		endif;
 		?>
-		<div id="live-search">
-			<div class="container">
-				<div class="twelve columns">
-					<input type="text" placeholder="Search for posts, maps and briefings..." />
-					<div class="results-container"></div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="news" class="page-section row">
-		<div class="section-title">
-			<div class="container">
-				<div class="twelve columns">
-					<h2><?php _e('Geolocated news', 'opendev'); ?></h2>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="twelve columns">
-				<div class="section-map">
-					<?php
-					jeo_map();
-					?>
-				</div>
-			</div>
-		</div>
 	</section>
 	<div class="container">
 		<?php
