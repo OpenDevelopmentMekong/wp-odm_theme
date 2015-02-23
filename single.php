@@ -5,38 +5,28 @@
 	<article id="content" class="single-post">
 		<header class="single-post-header" class="clearfix">
 			<div class="container">
-				<div class="eight columns">
+				<div class="twelve columns">
 					<?php the_category(); ?>
 					<h1><?php the_title(); ?></h1>
-				</div>
-				<div class="three columns offset-by-one">
-					<div class="post-meta">
-						<p class="author"><span class="lsf">&#xE137;</span> <?php _e('by', 'jeo'); ?> <?php the_author(); ?></p>
-						<p class="date"><span class="lsf">&#xE12b;</span> <?php the_date(); ?></p>
-						<?php the_tags('<p class="tags"><span class="lsf">&#xE128;</span> ', ', ', '</p>'); ?>
-					</div>
+					<p class="date"><span class="lsf">&#xE12b;</span> <?php the_date(); ?></p>
 				</div>
 			</div>
 		</header>
-		<?php
-		if(jeo_has_marker_location()) {
-			?>
-			<section id="featured-media" class="row">
-				<div class="container">
-					<div class="twelve columns">
-						<div style="height:400px;">
-							<?php jeo_map(); ?>
-						</div>
-					</div>
-				</div>
-			</section>
-			<?php
-		}
-		?>
 		<?php get_template_part('section', 'related-datasets'); ?>
 		<section class="content">
 			<div class="container">
 				<div class="eight columns">
+					<?php
+					if(jeo_has_marker_location()) {
+						?>
+						<section id="featured-media" class="row">
+							<div style="height:350px;">
+								<?php jeo_map(); ?>
+							</div>
+						</section>
+						<?php
+					}
+					?>
 					<?php the_content(); ?>
 					<?php
 					wp_link_pages( array(

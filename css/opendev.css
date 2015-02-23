@@ -375,6 +375,16 @@ a.button,
 	margin: 0;
 }
 
+.single-post-header p.date {
+	font-size: 14px;
+	color: #999;
+}
+
+.single-post-header p.date .lsf {
+	margin-right: 5px;
+	color: #666;
+}
+
 .section-title {
 	padding: 30px 0 15px;
 	border-bottom: 1px solid #ddd;

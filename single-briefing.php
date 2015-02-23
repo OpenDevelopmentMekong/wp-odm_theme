@@ -5,7 +5,7 @@
 	<article id="content" class="single-post">
 		<header class="single-post-header" class="clearfix">
 			<div class="container">
-				<div class="eight columns">
+				<div class="twelve columns">
 					<?php the_category(); ?>
 					<h1><?php the_title(); ?></h1>
 				</div>
