@@ -40,7 +40,9 @@ if(is_front_page()) {
 						<div class="four columns">
 							<div class="text-item">
 								<div class="icon">
-									<p class="icon-map"></p>
+									<?php if($intro_texts[1]['icon']) : ?>
+										<p class="icon-<?php echo $intro_texts[1]['icon']; ?>"></p>
+									<?php endif; ?>
 								</div>
 								<div class="content">
 									<h3><?php echo $intro_texts[1]['title']; ?></h3>
@@ -53,7 +55,9 @@ if(is_front_page()) {
 						<div class="four columns">
 							<div class="text-item">
 								<div class="icon">
-									<p class="icon-archive"></p>
+									<?php if($intro_texts[2]['icon']) : ?>
+										<p class="icon-<?php echo $intro_texts[2]['icon']; ?>"></p>
+									<?php endif; ?>
 								</div>
 								<div class="content">
 									<h3><?php echo $intro_texts[2]['title']; ?></h3>
@@ -66,7 +70,9 @@ if(is_front_page()) {
 						<div class="four columns">
 							<div class="text-item">
 								<div class="icon">
-									<p class="icon-docs"></p>
+									<?php if($intro_texts[3]['icon']) : ?>
+										<p class="icon-<?php echo $intro_texts[3]['icon']; ?>"></p>
+									<?php endif; ?>
 								</div>
 								<div class="content">
 									<h3><?php echo $intro_texts[3]['title']; ?></h3>
