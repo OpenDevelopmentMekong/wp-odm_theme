@@ -261,7 +261,7 @@ class OpenDev_Options {
 	function introduction_text_item($i) {
 		$intro_text = $this->options['intro_text_' . $i];
 		$title = $intro_text['title'] ? $intro_text['title'] : '';
-		$content = $intro_text['content'] ? $intro_text['title'] : '';
+		$content = $intro_text['content'] ? $intro_text['content'] : '';
 		?>
 		<p><input name="opendev_options[intro_text_<?php echo $i; ?>][title]" type="text" placeholder="<?php _e('Title'); ?>" value="<?php echo $title; ?>" size="50" /></p>
 		<p><textarea name="opendev_options[intro_text_<?php echo $i; ?>][content]" placeholder="<?php _e('Content'); ?>" rows="5" cols="50"><?php echo $content; ?></textarea></p>
