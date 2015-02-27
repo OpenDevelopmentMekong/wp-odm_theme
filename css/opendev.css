@@ -41,6 +41,10 @@ a.button,
 	border-bottom: 10px solid #6393d2;
 }
 
+.lang-en, .lang-pt, .lang-es {
+	display: block;
+}
+
 
 
 /*
