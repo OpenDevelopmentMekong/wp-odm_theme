@@ -356,8 +356,10 @@ function opendev_wpckan_post_types() {
 }
 add_filter('wpckan_post_types', 'opendev_wpckan_post_types');
 
-function IsNullOrEmptyString($question){
-	return (!isset($question) || trim($question)==='');
+if(!function_exists('IsNullOrEmptyString')) {
+	function IsNullOrEmptyString($question){
+		return (!isset($question) || trim($question)==='');
+	}
 }
 
 function opendev_get_related_datasets($atts = false) {
