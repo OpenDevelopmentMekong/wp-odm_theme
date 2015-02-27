@@ -172,6 +172,8 @@ a.button,
 #od-head #ms-nav {
 	background: #373c6a;
 	margin-top: 20px;
+	position: relative;
+	z-index: 99999;
 }
 
 #od-head #ms-nav ul,
@@ -342,13 +344,58 @@ a.button,
 	padding: 0;
 }
 
-#od-head #main-nav ul {
+#od-head #main-nav ul.menu {
 	width: 100%;
+	z-index: 9999;
+	position: relative;
 }
 
-#od-head #main-nav ul li {
+#od-head #main-nav ul.menu > li,
+#od-head #main-nav .qtrans_language_chooser li {
 	float: left;
 	margin: 0 20px 0 0;
+	position: relative;
+}
+
+#od-head #main-nav ul.menu > li > ul {
+	display: none;
+	position: absolute;
+	top: 48px;
+	left: -5px;
+	background: #fff;
+	padding: 5px 0 0;
+	width: 200px;
+	border-left: 1px solid #c9c9c9;
+	border-bottom: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+#od-head #main-nav ul.menu > li > ul li {
+	float: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+#od-head #main-nav ul.menu > li > ul li a {
+	padding: 0 10px 10px;
+	margin: 0 0 10px;
+	border-bottom: 1px solid #ddd;
+	display: block;
+	float: none;
+	text-transform: none;
+}
+
+#od-head #main-nav ul.menu > li > ul li:last-child a {
+	margin: 0;
+	border: 0;
+}
+
+#od-head #main-nav ul.menu > li:hover > ul {
+	display: block;
 }
 
 #od-head #main-nav a {
