@@ -1,5 +1,5 @@
 <?php if(have_posts()) : ?>
-	<section class="posts-section">
+	<section class="posts-section row">
 		<div class="container">
 			<?php if(is_post_type_archive('briefing')) : ?>
 				<div class="twelve columns">

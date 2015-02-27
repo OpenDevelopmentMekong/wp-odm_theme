@@ -33,6 +33,9 @@ require_once(STYLESHEETPATH . '/inc/category-widget.php');
 // Related resources
 require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
 
+// Advanced nav
+require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');
+
 function opendev_setup_theme() {
 
 	register_sidebar(array(

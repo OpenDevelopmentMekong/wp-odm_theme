@@ -4,6 +4,9 @@
 	<div class="container">
 		<div class="twelve columns">
 			<h1><?php _e('Search results for:', 'jeo'); ?> <?php echo $_GET['s']; ?></h1>
+			<div class="more-filters-content">
+				<?php opendev_adv_nav_filters(); ?>
+			</div>
 		</div>
 	</div>
 </div>
