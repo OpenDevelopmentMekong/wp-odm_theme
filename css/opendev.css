@@ -478,6 +478,15 @@ a.button,
 
 .query-actions {
 	text-align: right;
+	margin-bottom: 20px;
+}
+
+.query-actions .query-actions-title {
+	font-weight: 600;
+	margin-right: 10px;
+	text-transform: uppercase;
+	color: #999;
+	font-size: 12px;
 }
 
 .query-actions a {
@@ -485,6 +494,12 @@ a.button,
 	text-transform: uppercase;
 	margin-left: 10px;
 	font-size: 12px;
+}
+
+.query-actions [class^="icon-"],
+.query-actions [class*=" icon-"] {
+	margin-right: 5px;
+	color: #999;
 }
 
 .single-post-header h1,
@@ -1824,7 +1839,6 @@ a.button,
 }
 .list-posts li {
   height: 365px;
-  overflow: hidden;
 }
 .list-posts li article {
 	height: 340px;

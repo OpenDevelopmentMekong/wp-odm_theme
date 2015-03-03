@@ -4,6 +4,7 @@
 			<?php if(is_post_type_archive('briefing')) : ?>
 				<div class="twelve columns">
 					<section id="briefs" class="list">
+						<?php get_template_part('section', 'query-actions'); ?>
 						<?php
 						while(have_posts()) :
 							the_post();
@@ -31,30 +32,33 @@
 					</section>
 				</div>
 			<?php else : ?>
-				<ul class="opendev-posts-list eight columns">
-					<?php while(have_posts()) : the_post(); ?>
-						<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-							<article id="post-<?php the_ID(); ?>">
-								<header class="post-header">
-									<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
-									<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
-										<div class="meta">
-											<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+				<div class="eight columns">
+					<?php get_template_part('section', 'query-actions'); ?>
+					<ul class="opendev-posts-list">
+						<?php while(have_posts()) : the_post(); ?>
+							<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
+								<article id="post-<?php the_ID(); ?>">
+									<header class="post-header">
+										<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+										<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
+											<div class="meta">
+												<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+											</div>
+										<?php } ?>
+									</header>
+									<section class="post-content">
+										<div class="post-excerpt">
+											<?php the_excerpt(); ?>
 										</div>
-									<?php } ?>
-								</header>
-								<section class="post-content">
-									<div class="post-excerpt">
-										<?php the_excerpt(); ?>
-									</div>
-								</section>
-								<aside class="actions clearfix">
-									<a href="<?php the_permalink(); ?>"><?php _e('Read more', 'jeo'); ?></a>
-								</aside>
-							</article>
-						</li>
-					<?php endwhile; ?>
-				</ul>
+									</section>
+									<aside class="actions clearfix">
+										<a href="<?php the_permalink(); ?>"><?php _e('Read more', 'jeo'); ?></a>
+									</aside>
+								</article>
+							</li>
+						<?php endwhile; ?>
+					</ul>
+				</div>
 				<?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
 					<section id="wpckan_search_results" class="four columns">
 						<h2><?php _e('Data results'); ?></h2>
