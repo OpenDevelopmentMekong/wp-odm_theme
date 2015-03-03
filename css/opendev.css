@@ -117,7 +117,7 @@ a.button,
 
 #od-head .ms-dropdown-title {
 	position: relative;
-	z-index: 10;
+	z-index: 99999;
 	float: left;
 	cursor: default;
 }
@@ -174,7 +174,7 @@ a.button,
 	background: #373c6a;
 	margin-top: 20px;
 	position: relative;
-	z-index: 99999;
+	z-index: 9999;
 }
 
 #od-head #ms-nav ul,
@@ -347,7 +347,7 @@ a.button,
 
 #od-head #main-nav ul.menu {
 	width: 100%;
-	z-index: 9999;
+	z-index: 999;
 	position: relative;
 }
 
