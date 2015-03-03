@@ -939,6 +939,22 @@ a.button,
 	margin: 0 10px 10px 0;
 }
 
+/*
+ * Latest news
+ */
+
+#latest-news .section-title h2 {
+	float: left;
+	margin-right: 20px;
+}
+
+#latest-news .section-title .query-actions a {
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-right: 10px;
+	font-size: 12px;
+}
+
 
 
 /*
@@ -1184,6 +1200,10 @@ a.button,
 	font-family: 'Droid Serif';
 	font-weight: 200;
 	margin: 40px 0;
+}
+
+.single section.content .wp-feature-box .wp-feature-box-header h2 {
+	margin: 0px auto 20px;
 }
 
 .single section.content h1 a,
@@ -1764,4 +1784,78 @@ a.button,
   display: block;
   width: 100%;
   cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+.list-posts {
+}
+.list-posts li {
+  height: 315px;
+  overflow: hidden;
+}
+.list-posts li article {
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 5px 0px rgba(0,0,0,0.1);
+  margin: 0;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.list-posts li article h2 {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+}
+.list-posts li article h2 a {
+	text-decoration: none;
+}
+.list-posts li article p.meta {
+  color: #96979C;
+  font: 0.75px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: table;
+  width: 100%;
+  margin: 0 0 10px;
+}
+.list-posts li article p.meta > span {
+  display: table-cell;
+}
+.list-posts li article p.meta > span .lsf {
+  margin-right: 5px;
+}
+.list-posts li article .post-content {
+  height: 120px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.list-posts li article .post-content p {
+  margin: 0;
+  line-height: 200%;
+}
+.list-posts li article .post-actions {
+  border-top: 1px dotted rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+}
+.list-posts li article .post-actions .buttons {
+  display: table;
+  width: 100%;
+  margin-top: 10px;
+}
+.list-posts li article .post-actions .buttons .button {
+  width: 1%;
+  text-align: center;
+  display: table-cell;
+  border: 0;
+  border-right: 2px solid #fff;
+  padding: 10px 0;
+}
+.list-posts li article .post-actions .buttons .button:last-child {
+  border-right: 0;
 }

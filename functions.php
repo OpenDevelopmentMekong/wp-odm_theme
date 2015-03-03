@@ -533,3 +533,11 @@ function opendev_posts_clauses_where($where) {
 }
 //add_filter('jeo_posts_clauses_where', 'opendev_posts_clauses_where');
 
+
+
+function opendev_ignore_sticky($query) {
+	if($query->is_main_query()) {
+		$query->set('ignore_sticky_posts', true);
+	}
+}
+add_action('pre_get_posts', 'opendev_ignore_sticky');
