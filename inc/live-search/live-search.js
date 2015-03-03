@@ -43,13 +43,9 @@
 
 		var more = $('<li class="more" />');
 
-		if(data.found_posts > 7) {
-			var link = $('<a href="' + livesearch.siteurl + '?s=' + s + '" />');
-			link.text(livesearch.labels.more);
-			more.append(link);
-		} else {
-			more.text(livesearch.labels.no_more);
-		}
+		var link = $('<a href="' + livesearch.siteurl + '?s=' + s + '" />');
+		link.text(livesearch.labels.more);
+		more.append(link);
 
 		results.append(more);
 

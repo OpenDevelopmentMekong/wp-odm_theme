@@ -17,7 +17,7 @@ class OpenDev_LiveSearch {
 			'siteurl' => get_site_url(),
 			'action' => $this->ajax_action,
 			'labels' => array(
-				'more' => __('Click to view all results', 'opendev'),
+				'more' => __('Go to the advanced search', 'opendev'),
 				'no_more' => __('Showing all results', 'opendev'),
 				'post' => __('Post', 'opendev'),
 				'briefing' => __('Briefing', 'opendev'),

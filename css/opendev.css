@@ -606,10 +606,16 @@ a.button,
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	text-align: center;
+	border-bottom: 1px solid #aaa;
+	margin-bottom: -1px;
 }
 #live-search input:focus {
 	outline: none;
 	border: 0;
+	box-shadow: 0 0 0;
+	-webkit-box-shadow: 0 0 0;
+	-moz-box-shadow: 0 0 0;
+	border-bottom: 1px solid #aaa;
 }
 #live-search .results {
 	margin: 0;
