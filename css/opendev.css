@@ -1797,7 +1797,7 @@ a.button,
 .list-posts {
 }
 .list-posts li {
-  height: 335px;
+  height: 355px;
   overflow: hidden;
 }
 .list-posts li article {
@@ -1831,13 +1831,13 @@ a.button,
   margin-right: 5px;
 }
 .list-posts li article .post-content {
-  height: 120px;
+  height: 114px;
   margin-bottom: 10px;
   overflow: hidden;
 }
 .list-posts li article .post-content p {
   margin: 0;
-  line-height: 200%;
+  line-height: 22px;
 }
 .list-posts li article .post-actions {
   border-top: 1px dotted rgba(0, 0, 0, 0.2);
