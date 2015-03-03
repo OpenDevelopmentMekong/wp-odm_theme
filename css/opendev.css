@@ -1797,7 +1797,7 @@ a.button,
 .list-posts {
 }
 .list-posts li {
-  height: 315px;
+  height: 335px;
   overflow: hidden;
 }
 .list-posts li article {
@@ -1819,7 +1819,7 @@ a.button,
 }
 .list-posts li article p.meta {
   color: #96979C;
-  font: 0.75px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
   display: table;
   width: 100%;
   margin: 0 0 10px;
@@ -1827,7 +1827,7 @@ a.button,
 .list-posts li article p.meta > span {
   display: table-cell;
 }
-.list-posts li article p.meta > span .lsf {
+.list-posts li article p.meta > span .icon-calendar {
   margin-right: 5px;
 }
 .list-posts li article .post-content {

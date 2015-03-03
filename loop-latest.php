@@ -6,23 +6,9 @@
 					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<p class="meta clearfix">
 						<span class="date">
-							<span class="lsf">&#xE15e;</span>
+							<span class="icon-calendar"></span>
 							<span class="date-content"><?php echo get_the_date(_x('m/d/Y', 'reduced date format', 'opendev')); ?></span>
 						</span>
-						<?php
-						if(get_the_terms($post->ID, 'publisher')) :
-							?>
-							<span class="publisher">
-								<span class="lsf">clip</span>
-								<span class="publisher-content">
-									<?php
-									echo array_shift(get_the_terms($post->ID, 'publisher'))->name;
-									?>
-								</span>
-							</span>
-							<?php
-						endif;
-						?>
 					</p>
 				</header>
 				<section class="post-content">
