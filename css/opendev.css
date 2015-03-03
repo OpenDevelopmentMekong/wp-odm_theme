@@ -564,6 +564,11 @@ a.button,
 	line-height: 150%;
 }
 
+
+#intro-texts p a {
+	color: #fff;
+}
+
 /*
  * Live search
  */
