@@ -1711,3 +1711,57 @@ a.button,
 #colophon {
 	margin-top: 0;
 }
+
+
+
+/*
+ * Advanced Navigation
+ */
+
+.advanced-nav-filters {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+.advanced-nav-filters label {
+  display: inline;
+  color: #444;
+  cursor: pointer;
+}
+.advanced-nav-filters input {
+  width: 100%;
+}
+.advanced-nav-filters .chosen-container {
+  width: 100% !important;
+}
+.advanced-nav-filters .chosen-choices {
+  border-color: #ccc !important;
+  background-image: none !important;
+}
+.advanced-nav-filters .chosen-choices input[type="text"] {
+  color: #999 !important;
+}
+.advanced-nav-filters .date-input .date-range-inputs > div {
+  width: 50%;
+  float: left;
+}
+.advanced-nav-filters .date-input .date-range-inputs > div .sublabel {
+  float: left;
+  line-height: 30px;
+  padding-right: 10px;
+  font-size: 10px;
+}
+.advanced-nav-filters .date-input .date-range-inputs > div input {
+  float: left;
+  width: 100px;
+}
+.advanced-nav-filters .adv-nav-input {
+  margin: 0 0 20px;
+}
+.advanced-nav-filters input[type=submit] {
+  margin-top: 35px;
+  padding: 8px 0;
+  text-align: center;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}

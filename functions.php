@@ -36,6 +36,9 @@ require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
 // Advanced nav
 require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');
 
+// Advanced nav
+require_once(STYLESHEETPATH . '/inc/category-walker.php');
+
 function opendev_setup_theme() {
 
 	register_sidebar(array(
@@ -458,7 +461,7 @@ function opendev_custom_admin_css() {
 add_action('admin_footer', 'opendev_custom_admin_css');
 
 function opendev_search_pre_get_posts($query) {
-	if(!is_admin() && ($query->is_search || $query->is_tax || $query->is_category || $query->is_tag)) {
+	if(!is_admin() && ($query->is_search || get_query_var('opendev_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
 		$query->set('post_type', get_post_types(array('public' => true)));
 	}
 }

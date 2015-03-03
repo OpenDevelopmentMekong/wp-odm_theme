@@ -40,7 +40,6 @@
 									<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
 										<div class="meta">
 											<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
-											<p><span class="icon-user"></span> <?php _e('by', 'jeo'); ?> <?php the_author(); ?></p>
 										</div>
 									<?php } ?>
 								</header>
@@ -56,8 +55,8 @@
 						</li>
 					<?php endwhile; ?>
 				</ul>
-				<?php if(is_search()) : ?>
-					<section id="wpckan_search_results" class="three columns">
+				<?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
+					<section id="wpckan_search_results" class="four columns">
 						<h2><?php _e('Data results'); ?></h2>
 						<?php echo do_shortcode('[wpckan_query_datasets query="' . $_GET['s'] . '" limit="2"]'); ?>
 						<?php
