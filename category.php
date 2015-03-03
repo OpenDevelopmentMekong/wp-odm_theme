@@ -23,6 +23,7 @@ foreach($post_types as $pt) {
 			endif;
 			?>
 			<h1 class="archive-title"><?php single_cat_title(); ?></h1>
+			<?php get_template_part('section', 'query-actions'); ?>
 		</div>
 	</div>
 	<?php
