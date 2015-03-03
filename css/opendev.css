@@ -704,6 +704,10 @@ a.button,
  * News section
  */
 
+#news {
+	padding-top: 60px;
+}
+
 #news.page-section .section-title {
 	margin: 0;
 	border: 0;

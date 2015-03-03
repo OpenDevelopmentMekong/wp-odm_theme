@@ -12,13 +12,6 @@ if(is_front_page()) {
 		</div>
 	</div>
 	<section id="news" class="page-section row">
-		<div class="section-title">
-			<div class="container">
-				<div class="twelve columns">
-					<h2><?php _e('Geolocated news', 'opendev'); ?></h2>
-				</div>
-			</div>
-		</div>
 		<div class="container">
 			<div class="twelve columns">
 				<div class="section-map">
