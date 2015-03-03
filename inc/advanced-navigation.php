@@ -128,26 +128,6 @@ class opendev_AdvancedNav {
 				</div>
 			</div>
 			<?php
-			$post_types = get_post_types(array('public' => true), 'object');
-			unset($post_types['map']);
-			unset($post_types['map-layer']);
-			unset($post_types['map-group']);
-			unset($post_types['attachment']);
-			$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
-			if($post_types) :
-				?>
-				<div class="two columns">
-					<div class="post-type-input adv-nav-input">
-						<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'opendev'); ?></label></p>
-						<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select categories', 'opendev'); ?>">
-							<?php foreach($post_types as $post_type) : ?>
-								<option value="<?php echo $post_type->name; ?>" <?php if(in_array($post_type->name, $active_types)) echo 'selected'; ?>><?php echo $post_type->labels->name; ?></option>
-							<?php endforeach; ?>
-						</select>
-					</div>
-				</div>
-			<?php endif; ?>
-			<?php
 			$categories = get_categories();
 			$active_cats = isset($_GET[$this->prefix . 'category']) ? $_GET[$this->prefix . 'category'] : array();
 			if($categories) :
@@ -168,7 +148,27 @@ class opendev_AdvancedNav {
 			$before = $oldest->post_date;
 			$after = $newest->post_date;
 			?>
-			<div class="four columns omega">
+			<?php
+			$post_types = get_post_types(array('public' => true), 'object');
+			if($post_types) :
+				unset($post_types['map']);
+				unset($post_types['map-layer']);
+				unset($post_types['map-group']);
+				unset($post_types['attachment']);
+				$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
+				?>
+				<div class="two columns">
+					<div class="post-type-input adv-nav-input">
+						<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'opendev'); ?></label></p>
+						<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select content types', 'opendev'); ?>">
+							<?php foreach($post_types as $post_type) : ?>
+								<option value="<?php echo $post_type->name; ?>" <?php if(in_array($post_type->name, $active_types)) echo 'selected'; ?>><?php echo $post_type->labels->name; ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+				</div>
+			<?php endif; ?>
+			<div class="four columns">
 				<div class="date-input adv-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'opendev'); ?></label></p>
 					<div class="date-range-inputs">
@@ -183,7 +183,7 @@ class opendev_AdvancedNav {
 					</div>
 				</div>
 			</div>
-			<div class="two columns">
+			<div class="two columns omega">
 				<input type="submit" class="button" value="<?php _e('Filter', 'opendev'); ?>" />
 			</div>
 		</form>

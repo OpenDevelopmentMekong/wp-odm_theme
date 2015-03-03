@@ -476,6 +476,17 @@ a.button,
 	text-transform: none;
 }
 
+.query-actions {
+	text-align: right;
+}
+
+.query-actions a {
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-left: 10px;
+	font-size: 12px;
+}
+
 .single-post-header h1,
 .page-header h1,
 .archive-title {
