@@ -1801,11 +1801,13 @@ a.button,
   overflow: hidden;
 }
 .list-posts li article {
+	height: 340px;
   border: 1px solid #ccc;
   box-shadow: 0 1px 5px 0px rgba(0,0,0,0.1);
   margin: 0;
   box-sizing: border-box;
   padding: 20px;
+  position: relative;
 }
 .list-posts li article h2 {
   font-size: 18px;
@@ -1842,6 +1844,10 @@ a.button,
 .list-posts li article .post-actions {
   border-top: 1px dotted rgba(0, 0, 0, 0.2);
   padding-top: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
 }
 .list-posts li article .post-actions .buttons {
   display: table;
