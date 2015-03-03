@@ -502,10 +502,18 @@ a.button,
 	color: #999;
 }
 
+.archive .query-actions {
+	margin-top: 25px;
+}
+
 .single-post-header h1,
 .page-header h1,
 .archive-title {
 	font-family: "Droid Serif";
+}
+
+.archive-title {
+	float: left;
 }
 
 #main-title-nav {

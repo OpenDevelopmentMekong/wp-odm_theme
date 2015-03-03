@@ -24,6 +24,7 @@ get_header();
 						_e( 'Archives', 'jeo' );
 					endif;
 				?></h1>
+				<?php get_template_part('section', 'query-actions'); ?>
 		</div>
 	</div>
 </div>

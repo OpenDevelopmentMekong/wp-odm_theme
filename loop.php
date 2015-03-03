@@ -4,7 +4,6 @@
 			<?php if(is_post_type_archive('briefing')) : ?>
 				<div class="twelve columns">
 					<section id="briefs" class="list">
-						<?php get_template_part('section', 'query-actions'); ?>
 						<?php
 						while(have_posts()) :
 							the_post();
