@@ -7,6 +7,7 @@
 			<div class="container">
 				<div class="twelve columns">
 					<?php the_category(); ?>
+					<br />
 					<h1><?php the_title(); ?></h1>
 				</div>
 			</div>
