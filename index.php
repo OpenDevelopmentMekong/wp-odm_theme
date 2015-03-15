@@ -11,17 +11,6 @@ if(is_front_page()) {
 			</div>
 		</div>
 	</div>
-	<section id="news" class="page-section row">
-		<div class="container">
-			<div class="twelve columns">
-				<div class="section-map">
-					<?php
-					jeo_map();
-					?>
-				</div>
-			</div>
-		</div>
-	</section>
 	<section id="site-intro">
 		<?php
 		$intro_texts = opendev_get_intro_texts();
@@ -79,6 +68,18 @@ if(is_front_page()) {
 			<?php
 		endif;
 		?>
+	</section>
+
+	<section id="news" class="page-section row">
+		<div class="container">
+			<div class="twelve columns">
+				<div class="section-map">
+					<?php
+					jeo_map();
+					?>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<section id="latest-news">
