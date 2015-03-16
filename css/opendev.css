@@ -356,6 +356,7 @@ a.button,
 	float: left;
 	margin: 0 20px 0 0;
 	position: relative;
+	display:inline;
 }
 
 #od-head #main-nav ul.menu > li > ul {
