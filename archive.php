@@ -19,7 +19,7 @@ get_header();
 					elseif ( is_year() ) :
 						printf( __( 'Yearly Archives: %s', 'jeo' ), get_the_date( _x( 'Y', 'yearly archives date format', 'jeo' ) ) );
 					elseif ( is_post_type_archive() ) :
-						post_type_archive_title();
+						_e(post_type_archive_title('', 0));
 					else :
 						_e( 'Archives', 'jeo' );
 					endif;

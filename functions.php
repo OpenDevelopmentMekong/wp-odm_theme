@@ -40,7 +40,9 @@ require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');
 require_once(STYLESHEETPATH . '/inc/category-walker.php');
 
 function opendev_setup_theme() {
-
+	
+	$gsd = explode('wp-content', get_stylesheet_directory());
+	load_theme_textdomain('opendev',$gsd[0].'/wp-content/languages');
 	register_sidebar(array(
 		'name' => __('Briefing sidebar', 'jeo'),
 		'id' => 'briefing',
@@ -236,71 +238,25 @@ function opendev_ms_nav() {
 					$siteurl = $details->siteurl;
 					switch_to_blog($site['blog_id']);
 					?>
-					<li class="site-item">
-					<?php
-						$lang = qtrans_getLanguage();
-						switch ($lang){
-							case "kh": 
-								if ($name == "Mekong") $name = "មេគង្គ";
-								if ($name == "Cambodia") $name = "កម្ពុជា";
-								if ($name == "Laos") $name = "ឡាវ";
-								if ($name == "Myanmar") $name = "មីយ៉ាន់ម៉ា";
-								if ($name == "Thailand") $name = "ថៃ";
-								if ($name == "Vietnam") $name = "វៀតណាម";
-								$news_headline = "ព័ត៌មាន​";
-								$news_headline = "ប្រធានបទ";
-								$headline_maps = "ផែនទី";
-								$headline_data = "ទិន្នន័យ";
-								$headline_lastestnews = "ព័ត៌មានថ្មីបំផុត";
-								$headline_lastestmaps = "ផែនទីថ្មីបំផុត";
-								$headline_lastestissues = "ប្រធានបទថ្មីបំផុត";
-								break;
-							case "vi": 
-								if ($name == "Mekong") $name = "Mekong";
-								if ($name == "Cambodia") $name = "Cambodia";
-								if ($name == "Laos") $name = "Laos";
-								if ($name == "Myanmar") $name = "Myanmar";
-								if ($name == "Thailand") $name = "Thailand";
-								if ($name == "Vietnam") $name = "Vietnam";
-								$headline_news = "News​";
-								$headline_issues = "Issues";
-								$headline_issues = "Issues";
-								$headline_maps = "Maps";
-								$headline_data = "Data";
-								$headline_lastestnews = "Latest news";
-								$headline_lastestmaps = "Latest maps";
-								$headline_lastestissues = "Latest issues";
-								break;      
-							default: 
-								$name = $name;
-								$headline_news = "News​";
-								$headline_issues = "Issues";
-								$headline_maps = "Maps";
-								$headline_data = "Data";
-								$headline_lastestnews = "Latest news";
-								$headline_lastestmaps = "Latest maps";
-								$headline_lastestissues = "Latest issues";
-								break;
-						}
-						?>
-						<a href="<?php echo $siteurl; ?>"><?php echo $name; ?></a>
+					<li class="site-item"> 
+						<a href="<?php echo $siteurl; ?>"><?php _e($name, 'opendev');?></a>
 						<div class="sub-menu">
 							<ul class="first-menu">
 								<li data-content="news"><a href="<?php echo $siteurl; ?>">
-									<span class="icon-text"></span> <?php _e($news_headline, 'opendev'); ?>
+									<span class="icon-text"></span> <?php _e('News', 'opendev'); ?>
 								</a></li>
 								<li data-content="issues"><a href="<?php echo get_post_type_archive_link('briefing'); ?>">
-									<span class="icon-docs"></span> <?php _e($headline_issues , 'opendev'); ?>
+									<span class="icon-docs"></span> <?php _e('Issues' , 'opendev'); ?>
 								</a></li>
 								<li data-content="maps"><a href="<?php echo get_post_type_archive_link('map'); ?>">
-									<span class="icon-map"></span> <?php _e($headline_maps, 'opendev'); ?>
+									<span class="icon-map"></span> <?php _e('Maps', 'opendev'); ?>
 								</a></li>
 								<?php
 								$data_page_id = opendev_get_data_page_id();
 								if($data_page_id) :
 									?>
 									<li data-content="data"><a href="<?php echo get_permalink($data_page_id); ?>">
-										<span class="icon-archive"></span> <?php _e($headline_data, 'opendev'); ?>
+										<span class="icon-archive"></span> <?php _e('Data', 'opendev'); ?>
 									</a></li>
 									<?php
 								endif;
@@ -311,7 +267,7 @@ function opendev_ms_nav() {
 								<?php query_posts(array('posts_per_page' => 3, 'without_map_query' => true)); ?>
 								<?php if(have_posts()) : ?>
 									<div class="news content-item">
-										<h2><?php _e($headline_lastestnews, 'opendev'); ?></h2>
+										<h2><?php _e('Latest news', 'opendev'); ?></h2>
 										<ul>
 											<?php while(have_posts()) : the_post(); ?>
 												<li>
@@ -327,7 +283,7 @@ function opendev_ms_nav() {
 								<?php query_posts(array('post_type' => 'briefing', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
 								<?php if(have_posts()) : ?>
 									<div class="issues content-item">
-										<h2><?php _e($headline_lastestissues, 'opendev'); ?></h2>
+										<h2><?php _e('Latest issues', 'opendev'); ?></h2>
 										<ul>
 											<?php while(have_posts()) : the_post(); ?>
 												<li>
@@ -343,7 +299,7 @@ function opendev_ms_nav() {
 								<?php query_posts(array('post_type' => 'map', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
 								<?php if(have_posts()) : ?>
 									<div class="maps content-item">
-										<h2><?php _e($headline_lastestmaps, 'opendev'); ?></h2>
+										<h2><?php _e('Latest maps', 'opendev'); ?></h2>
 										<ul>
 											<?php while(have_posts()) : the_post(); ?>
 												<li>
