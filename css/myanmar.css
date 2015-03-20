@@ -49,3 +49,10 @@ a.button,
 #site-intro {
 	background: #eeca0a;
 }
+.current-site-myanmar{
+	background: #eeca0a;
+}
+#od-head #main-nav ul li.current_page_item a{
+	color: #eeca0a;
+	font-weight: bold; 
+}

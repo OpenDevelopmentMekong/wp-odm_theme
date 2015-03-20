@@ -40,7 +40,7 @@
 								$name = $logo;
 							echo '<div class="ms-dropdown-title">';
 							echo '<h2 class="side-title">' . $name . '<span class="icon-arrow-down5"></span></h2>';
-							echo '<ul>';
+							/* echo '<ul>';
 							foreach($sites as $site) {
 								if($current != $site['blog_id']) {
 									$details = get_blog_details($site['blog_id']);
@@ -48,7 +48,7 @@
 									echo '<li><a href="' . $details->siteurl . '">' . $name . '</a></li>';
 								}
 							}
-							echo '</ul>';
+							echo '</ul>'; */
 							echo '</div>';
 						}
 					}

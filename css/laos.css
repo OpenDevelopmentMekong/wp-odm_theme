@@ -49,3 +49,10 @@ a.button,
 #site-intro {
 	background: #f37914;
 }
+.current-site-laos{
+	background: #f37914;
+}
+#od-head #main-nav ul li.current_page_item a{
+	color: #f37914;
+	font-weight: bold; 
+}

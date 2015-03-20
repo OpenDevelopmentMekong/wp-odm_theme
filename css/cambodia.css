@@ -49,3 +49,10 @@ a.button,
 #site-intro {
 	background: #97d320;
 }
+.current-site-cambodia{
+	background: #97d320;
+}
+#od-head #main-nav ul li.current_page_item a{
+	color: #97d320;
+	font-weight: bold; 
+}

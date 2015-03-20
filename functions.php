@@ -231,7 +231,7 @@ function opendev_ms_nav() {
 			// 	$name = $logo;
 			?>
 			<ul class="ms-nav">
-				<?php
+				<?php 
 				foreach($sites as $site) {
 					$details = get_blog_details($site['blog_id']);
 					$name = str_replace('Open Development ', '', $details->blogname);
@@ -239,7 +239,7 @@ function opendev_ms_nav() {
 					switch_to_blog($site['blog_id']);
 					?>
 					<li class="site-item"> 
-						<a href="<?php echo $siteurl; ?>"><?php _e($name, 'opendev');?></a>
+						<a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
 						<div class="sub-menu">
 							<ul class="first-menu">
 								<li data-content="news"><a href="<?php echo $siteurl; ?>">

@@ -408,7 +408,13 @@ a.button,
 	padding: 15px 0;
 	text-transform: uppercase;
 }
-
+.current-site-mekong{
+	background: #6393D2;
+}
+#od-head #main-nav ul li.current_page_item a{
+	color: #6393D2;
+	font-weight: bold; 
+}
 /*
  * Headings
  */

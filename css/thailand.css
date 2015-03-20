@@ -49,3 +49,10 @@ a.button,
 #site-intro {
 	background: #f7904d;
 }
+.current-site-thailand{
+	background: #f7904d;
+}
+#od-head #main-nav ul li.current_page_item a{
+	color: #f7904d;
+	font-weight: bold; 
+}

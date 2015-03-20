@@ -49,3 +49,10 @@ a.button,
 #site-intro {
 	background: #d61e2a;
 }
+.current-site-vietnam{
+	background: #d61e2a;
+}
+#od-head #main-nav ul li.current_page_item a{
+	color: #d61e2a;
+	font-weight: bold; 
+}
