@@ -43,6 +43,7 @@ function opendev_setup_theme() {
 	
 	$gsd = explode('wp-content', get_stylesheet_directory());
 	load_theme_textdomain('opendev',$gsd[0].'/wp-content/languages');
+	load_theme_textdomain('jeo',$gsd[0].'/wp-content/languages');
 	register_sidebar(array(
 		'name' => __('Briefing sidebar', 'jeo'),
 		'id' => 'briefing',
