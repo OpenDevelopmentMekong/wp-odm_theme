@@ -75,7 +75,7 @@ foreach($post_types as $pt) {
 									<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
 										<div class="meta">
 											<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
-											<p><span class="icon-user"></span> <?php _e('by', 'jeo'); ?> <?php the_author(); ?></p>
+											<!-- <p><span class="icon-user"></span> <?php _e('by', 'jeo'); ?> <?php //the_author(); ?></p> -->
 										</div>
 									<?php } ?>
 								</header>
