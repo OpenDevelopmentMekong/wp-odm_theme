@@ -24,7 +24,7 @@ if(!empty($datasets)) {
 }
 ?>
 <?php if(isset($grouped) && !empty($grouped)) : ?>
-	<section id="related-datasets" class="row">
+	<section id="related-datasets" class="row" style="display:none;">
 		<div class="container">
 			<div class="box-section twelve columns">
 				<div class="box-title">
