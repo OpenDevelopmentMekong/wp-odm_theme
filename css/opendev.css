@@ -78,6 +78,7 @@ a.button,
 	font-size: 55%;
 	position: relative;
 	top: -10px;
+	vertical-align: baseline;
 }
 
 #od-head h1 a {
