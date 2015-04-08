@@ -8,7 +8,8 @@ img {
 sup{
 	vertical-align: super; 
 	font-size:small;
-}sup{
+}
+sub{
 	vertical-align: sub; 
 	font-size:small;
 }
