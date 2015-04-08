@@ -8,6 +8,9 @@ img {
 sup{
 	vertical-align: super; 
 	font-size:small;
+}sup{
+	vertical-align: sub; 
+	font-size:small;
 }
 a.button,
 .button {
