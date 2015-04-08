@@ -82,6 +82,7 @@ a.button,
 #od-head h1 sup {
 	font-size: 55%;
 	position: relative;
+	vertical-align: baseline;
 	top: -10px;
 }
 
