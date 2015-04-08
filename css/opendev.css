@@ -13,6 +13,11 @@ sub{
 	vertical-align: sub; 
 	font-size:small;
 }
+blockquote {
+	padding:15px 15px 0;
+	border: 1px solid #DDD;
+	background: #f4f4f4;
+}
 a.button,
 .button {
 	background: #6393d2;
