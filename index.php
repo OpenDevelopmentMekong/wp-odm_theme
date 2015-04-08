@@ -6,7 +6,7 @@ if(is_front_page()) {
 	<div id="live-search">
 		<div class="container">
 			<div class="twelve columns">				
-				<input type="text" placeholder="<?php _e('Search for posts, maps and briefings...');?>" />
+				<input type="text" placeholder="<?php _e('Search &#128270;');?>" />
 				<div class="results-container"></div>
 			</div>
 		</div>
