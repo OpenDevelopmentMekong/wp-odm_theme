@@ -1,15 +1,46 @@
 <?php
-class OpenDev_Category_Turbo_Widget extends WP_Widget {
+class OpenDev_Taxonomy_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
 		parent::__construct(
-			'opendev_category_turbo_widget', // Base ID
-			__( 'OD Category Turbo Widget', 'opendev' ), // Name
-			array( 'description' => __( 'Display OD categories according to Dans specification', 'opendev' ), ) // Args
+			'opendev_taxonomy_widget', // Base ID
+			__( 'OD Content Taxonomy Widget', 'opendev' ), // Name
+			array( 'description' => __( 'Display OD taxonomy for content', 'opendev' ), ) // Args
 		);
+	}
+
+	function post_is_in_descendant_category( $cats, $_post = null ) {
+		foreach ( (array) $cats as $cat ) {
+			// get_term_children() accepts integer ID only
+			$descendants = get_term_children( (int) $cat, 'category' );
+			if ( $descendants && in_category( $descendants, $_post ) )
+				return true;
+		}
+		return false;
+	}
+
+	public function print_category( $category ) {
+		
+		echo '<a href="' . get_category_link( $category->term_id ) . '">';
+		
+		$in_category = in_category( $category->term_id );
+		
+		if ($in_category){
+			
+			 echo "<strong>";
+		}
+		
+		echo $category->name;
+		
+		if ($in_category){
+			
+			 echo "</strong>";
+		}
+		
+		echo "</a><br/>";	
 	}
 
 	/**
@@ -33,13 +64,43 @@ class OpenDev_Category_Turbo_Widget extends WP_Widget {
 		
 		echo "<ul>";
 		foreach($categories as $category){
+			
+			$jackpot = false;
+			$children = array();
+			
+			if ( in_category( $category->term_id ) || $this->post_is_in_descendant_category( $category->term_id ) )
+			{
+				$jackpot = true;
+				$children = get_categories( array('child_of' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+				
+			}
+			
 			echo "<li>";
-			echo '<a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a><br/>';
+			$this -> print_category($category);
+
+			if ( !empty($children) ) {			
+				echo '<ul>';
+			
+				wp_list_categories( array(
+				
+					'hierarchial' => 1,
+					'title_li' => '',
+					'current_category' => 1,
+					'child_of' => $category->term_id,
+					'hide_empty' => 1,
+					'orderby' => 'term_id',
+			
+				));
+			
+				echo '</ul>';
+			}
+			
 			echo "</li>";
 			
 		}
 		echo "</ul>";
 		echo "</div>";
+		
 		
 		echo $args['after_widget'];
 	}
@@ -79,4 +140,4 @@ class OpenDev_Category_Turbo_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("OpenDev_Category_Turbo_Widget");'));
+add_action( 'widgets_init', create_function('', 'register_widget("OpenDev_Taxonomy_Widget");'));
