@@ -546,8 +546,9 @@ function opendev_ignore_sticky($query) {
 add_action('pre_get_posts', 'opendev_ignore_sticky');
 
 function my_mce_buttons_2($buttons) {	 
+	array_unshift($buttons, 'fontselect', 'fontsizeselect');
 	$buttons[] = 'superscript';
-	$buttons[] = 'subscript'; 
+	$buttons[] = 'subscript';  
 	return $buttons;
 }
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
