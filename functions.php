@@ -31,7 +31,7 @@ require_once(STYLESHEETPATH . '/inc/interactive-map.php');
 require_once(STYLESHEETPATH . '/inc/category-widget.php');
 
 // Category widget
-require_once(STYLESHEETPATH . '/inc/category-turbo-widget.php');
+require_once(STYLESHEETPATH . '/inc/odm-taxonomy-widget.php');
 
 // Related resources
 require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
