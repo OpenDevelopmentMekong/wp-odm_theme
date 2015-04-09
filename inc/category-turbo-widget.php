@@ -42,6 +42,29 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 		
 		echo "</a><br/>";	
 	}
+	
+	public function walk_child_category( $children ) {
+				
+		foreach($children as $child){
+						
+			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+			
+			echo "<li>";
+			$this -> print_category($child);
+			
+			if ( !empty($cat_children) ) {
+				echo "<ul>";
+				$this->walk_child_category( $cat_children );
+				echo "</ul>";
+			
+			}
+			
+			echo "</li>";
+						
+		}
+		
+
+	}
 
 	/**
 	 * Front-end display of widget.
@@ -71,7 +94,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			if ( in_category( $category->term_id ) || $this->post_is_in_descendant_category( $category->term_id ) )
 			{
 				$jackpot = true;
-				$children = get_categories( array('child_of' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
 				
 			}
 			
@@ -81,16 +104,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			if ( !empty($children) ) {			
 				echo '<ul>';
 			
-				wp_list_categories( array(
-				
-					'hierarchial' => 1,
-					'title_li' => '',
-					'current_category' => 1,
-					'child_of' => $category->term_id,
-					'hide_empty' => 1,
-					'orderby' => 'term_id',
-			
-				));
+				$this->walk_child_category( $children );
 			
 				echo '</ul>';
 			}
