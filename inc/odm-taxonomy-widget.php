@@ -12,6 +12,12 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 		);
 	}
 
+	/**
+	 * Checks to see if post is a descendent of given categories
+	 * from: https://codex.wordpress.org/Function_Reference/in_category
+	 * @param mixed $categories
+	 * @param mixed $_post
+	 */
 	function post_is_in_descendant_category( $cats, $_post = null ) {
 		foreach ( (array) $cats as $cat ) {
 			// get_term_children() accepts integer ID only
@@ -21,6 +27,13 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 		}
 		return false;
 	}
+
+	/**
+	 * Outputs HTML containing a string of the category name as a link
+	 * and if the current post is in the category, to make it <strong>
+	 * 
+	 * @param category $category a category object to display
+	 */
 
 	public function print_category( $category ) {
 		
@@ -43,17 +56,31 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 		echo "</a><br/>";	
 	}
 	
+	/**
+	 * Walks through a list of categories and prints all children descendant
+	 * in a hierarchy.
+	 * 
+	 * @param array $children an array of categories to display
+	 */
 	public function walk_child_category( $children ) {
 				
 		foreach($children as $child){
-						
+			
+			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
 			
 			echo "<li>";
+			
+			// Display current category
 			$this -> print_category($child);
 			
+			// if current category has children
 			if ( !empty($cat_children) ) {
+				
+				// add a sublevel
 				echo "<ul>";
+				
+				// display the children
 				$this->walk_child_category( $cat_children );
 				echo "</ul>";
 			
@@ -127,13 +154,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New title', 'text_domain' );
-		?>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<?php 
+
 	}
 
 	/**
@@ -147,10 +168,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-		return $instance;
 	}
 }
 
