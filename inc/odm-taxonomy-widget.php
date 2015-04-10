@@ -35,25 +35,18 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 
-	public function print_category( $category ) {
-		
-		echo '<a href="' . get_category_link( $category->term_id ) . '">';
-		
-		$in_category = in_category( $category->term_id );
-		
-		if ($in_category){
+	public function print_category( $category ) {		
+		//echo '<a href="' . get_category_link( $category->term_id ) . '">';		
+			$in_category = in_category( $category->term_id );
 			
-			 echo "<strong>";
-		}
-		
-		echo $category->name;
-		
-		if ($in_category){
-			
-			 echo "</strong>";
-		}
-		
-		echo "</a><br/>";	
+			if ($in_category){ 
+				 echo "<strong>";
+			} 
+			echo $category->name; 		
+			if ($in_category){			
+				 echo "</strong>";
+			}		
+			//echo "</a><br/>";	
 	}
 	
 	/**
@@ -62,18 +55,13 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * 
 	 * @param array $children an array of categories to display
 	 */
-	public function walk_child_category( $children ) {
-				
-		foreach($children as $child){
-			
+	public function walk_child_category( $children ) {				
+		foreach($children as $child){			
 			// Get immediate children of current category
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
-			
-			echo "<li>";
-			
+			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );			
+			echo "<li>";			
 			// Display current category
-			$this -> print_category($child);
-			
+			$this -> print_category($child);			
 			// if current category has children
 			if ( !empty($cat_children) ) {
 				
@@ -82,15 +70,10 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 				
 				// display the children
 				$this->walk_child_category( $cat_children );
-				echo "</ul>";
-			
-			}
-			
-			echo "</li>";
-						
-		}
-		
-
+				echo "</ul>";			
+			}			
+			echo "</li>";						
+		}	
 	}
 
 	/**
@@ -102,11 +85,22 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		echo $args['before_widget'];
-		echo "<div>";
-		
+		echo $args['before_widget']; 
+		if ( ! empty( $instance['od_title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['od_title'] ). $args['after_title'];
+		} 
+		if ( ! empty( $instance['od_include'] ) ) {
+			$cat_included_id_arr = explode(",", $instance['od_include']);
+		}
+		if ( ! empty( $instance['od_exclude'] ) ) {
+			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
+		//	$cat_excluded_id_arr = str_split($instance['od_exclude']);  
+		} 
+		echo "<div>"; 
 		$args = array(
 		  'orderby' => 'term_id',
+		  'exclude' => $cat_excluded_id_arr,
+		  'include' => $cat_included_id_arr,
 		  'parent' => 0
 		  );
 		
@@ -154,7 +148,24 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-
+		// outputs the options form on 
+		$title = ! empty( $instance['od_title'] ) ? $instance['od_title'] : __( 'Topic areas', 'opendev' ); 
+		$od_include = $instance['od_include']; 
+		$od_exclude = $instance['od_exclude'];
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'od_title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'od_title' ); ?>" name="<?php echo $this->get_field_name( 'od_title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'od_include' ); ?>"><?php _e( 'Include Category by IDs (separated by commas):' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'od_include' ); ?>" name="<?php echo $this->get_field_name( 'od_include' ); ?>" type="text" value="<?php echo esc_attr( $od_include ); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'od_exclude' ); ?>"><?php _e( 'Exclude Category by IDs (separated by commas):' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'od_exclude' ); ?>" name="<?php echo $this->get_field_name( 'od_exclude' ); ?>" type="text" value="<?php echo esc_attr( $od_exclude ); ?>">
+		</p>
+		<?php
 	}
 
 	/**
@@ -168,7 +179,14 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
+		// processes widget options to be saved
+		$instance = array();
+		$instance['od_title'] = ( ! empty( $new_instance['od_title'] ) ) ? strip_tags( $new_instance['od_title'] ) : '';
+	 
+		$instance['od_include'] = $new_instance['od_include'] ;
+		$instance['od_exclude'] = $new_instance['od_exclude'] ; 
 
+		return $instance;
 	}
 }
 
