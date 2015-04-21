@@ -555,3 +555,72 @@ function my_mce_buttons_2($buttons) {
 	return $buttons;
 }
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
+
+
+
+/** Using in briefing pages
+	 * Outputs HTML containing a string of the category name as a link
+	 * Show only the category that the current post in. 
+	 * 
+	 * @param category $category a category object to display
+	 */
+function print_category_belong_to_post( $category ) {			
+		$in_category = in_category( $category->term_id );			
+		if ($in_category){ 
+			echo '<a href="' . get_category_link( $category->term_id ) . '">';	
+				echo $category->name ; 	
+			echo '</a>';
+		}		 
+	}
+	
+/**
+ * Walks through a list of categories of post and prints all children descendant
+ * in a hierarchy.
+ * 
+ * @param array $children an array of categories to display
+ */
+function list_child_category_belong_to_post( $children ) {				
+	foreach($children as $child){			
+		// Get immediate children of current category
+		$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );	 
+		// Display current category
+			print_category_belong_to_post($child);	
+			
+		// if current category has children
+		if ( !empty($cat_children) ) { 
+			// display the children
+			 list_child_category_belong_to_post( $cat_children ); 
+		}			 			
+	}	
+}
+/**
+ * Front-end display function  
+ * @param array $args of category or term
+ */	 
+ function show_all_category_belong_to_post($args) {  	
+	$objod = new OpenDev_Taxonomy_Widget;
+	$args = array(
+	  'orderby' => 'term_id',
+	  //'exclude' => $cat_excluded_id_arr,
+	  //'include' => $cat_included_id_arr,
+	  'parent' => 0
+	  );
+	
+	$categories = get_categories( $args );
+	echo "<div class='post-categories_tags'>";
+	foreach($categories as $category){ 
+		$children = array();			
+		if ( in_category( $category->term_id ) ||  $objod->post_is_in_descendant_category( $category->term_id ) ){ 
+			$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );				
+		}
+		 
+		print_category_belong_to_post($category);		 
+		if ( !empty($children) ) {			 
+			list_child_category_belong_to_post( $children ); 
+		} 
+	} //foreach
+		
+	echo '</div>';	 
+}//end function
+//###Using in briefing pages
+

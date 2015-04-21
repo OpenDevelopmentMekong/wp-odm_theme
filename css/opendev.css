@@ -29,6 +29,24 @@ a.button,
 	border: 0;
 }
 
+.post-categories_tags {
+	margin-bottom: 1em;
+	float:left
+}
+.post-categories_tags a {
+    display: block;
+    font-weight: 800;
+    padding: 5px;
+    background: none repeat scroll 0% 0% #EEE;
+    border-radius: 3px;
+    margin: 0px 5px 0px 0px;
+    font-size: 11px;
+    line-height: 11px;
+    text-decoration: none;
+    color: #333;
+    text-transform: uppercase;
+	float:left;
+}
 .leaflet-div-icon {
 	background: url(../img/marker.png) no-repeat !important;
 	width: 25px !important;
