@@ -6,8 +6,16 @@
 		<header class="single-post-header" class="clearfix">
 			<div class="container">
 				<div class="twelve columns">
-					<?php the_category(); ?>
-					<br />
+					<?php //the_category();   	
+					$args = array(
+						  'orderby' => 'term_id',
+						  //'exclude' => $cat_excluded_id_arr,
+						  //'include' => $cat_included_id_arr,
+						  'parent' => 0
+						  );
+					show_all_category_belong_to_post($args );					 
+					?>  
+					<div class='clear'><br /></div> 
 					<h1><?php the_title(); ?></h1>
 				</div>
 			</div>
