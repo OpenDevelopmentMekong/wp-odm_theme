@@ -1969,4 +1969,44 @@ div.cartodb-legend.custom ul li.graph{
 	width: 100%;
 	margin: -5px 0 5px;
 }
-
+/*round image*/
+#round { 
+	float:left
+}	
+#round ul{
+	margin:1em 0 1em 0;	
+	float:left
+}
+#round li{
+	text-align:center;
+	float:left;
+	list-style:none;
+	width:120px;
+	margin-right:20px;
+	}
+#round p{
+	clear:both;
+	width:110%; 
+	background:#f4f4f4;
+}
+#round img{
+	margin-top:10px;
+	max-width:120px;
+	max-height:120px;
+	width:120px;
+	border: 1px solid #ddd;	
+	padding: 6px;
+	-webkit-border-radius: 150px;
+   -moz-border-radius: 80px;
+   -ms-border-radius: 80px;
+   -o-border-radius: 80px;
+	border-radius: 80px;
+	border: 1px solid #ddd;	padding: 6px;
+	}
+#round li img:hover{
+	opacity:0.7;
+	}
+#round img.alignleft {
+	margin-bottom:.5em
+	}
+/*round image*/
