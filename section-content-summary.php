@@ -1,18 +1,18 @@
 <div class="container">
 	<?php
-	$briefing_query = new WP_Query(array('post_type' => 'briefing', 'posts_per_page' => 3));
-	if($briefing_query->have_posts()) :
+	$topic_query = new WP_Query(array('post_type' => 'topic', 'posts_per_page' => 3));
+	if($topic_query->have_posts()) :
 		?>
 		<div class="nine columns">
 			<section id="briefs" class="list">
 				<div class="section-title">
-					<h2><a href="<?php echo get_post_type_archive_link('briefing'); ?>"><?php _e('Issue briefs', 'opendev'); ?></a></h2>
+					<h2><a href="<?php echo get_post_type_archive_link('topic'); ?>"><?php _e('Issue briefs', 'opendev'); ?></a></h2>
 				</div>
 				<?php
-				while($briefing_query->have_posts()) :
-					$briefing_query->the_post();
+				while($topic_query->have_posts()) :
+					$topic_query->the_post();
 					?>
-					<article id="briefing-<?php the_ID(); ?>" class="row">
+					<article id="topic-<?php the_ID(); ?>" class="row">
 						<header>
 							<div class="two columns alpha">
 								<?php if(has_post_thumbnail()) : ?>
@@ -32,7 +32,7 @@
 						</div>
 					</article>
 				<?php endwhile; ?>
-				<a class="button main-section-link" href="<?php echo get_post_type_archive_link('briefing'); ?>"><?php _e('Access the briefings archive', 'opendev'); ?></a>
+				<a class="button main-section-link" href="<?php echo get_post_type_archive_link('topic'); ?>"><?php _e('Access the topics archive', 'opendev'); ?></a>
 			</section>
 		</div>
 		<?php endif; ?>

@@ -6,8 +6,8 @@ require_once(STYLESHEETPATH . '/inc/query-multisite.php');
 // Theme options
 require_once(STYLESHEETPATH . '/inc/theme-options.php');
 
-// Briefings
-require_once(STYLESHEETPATH . '/inc/briefings.php');
+// Topics
+require_once(STYLESHEETPATH . '/inc/topics.php');
 
 // Announcements
 require_once(STYLESHEETPATH . '/inc/announcements.php');
@@ -48,8 +48,8 @@ function opendev_setup_theme() {
 	load_theme_textdomain('opendev',$gsd[0].'/wp-content/languages');
 	load_theme_textdomain('jeo',$gsd[0].'/wp-content/languages');
 	register_sidebar(array(
-		'name' => __('Briefing sidebar', 'jeo'),
-		'id' => 'briefing',
+		'name' => __('Topic sidebar', 'jeo'),
+		'id' => 'topic',
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>'
 	));
@@ -284,7 +284,7 @@ function opendev_ms_nav() {
 								<?php endif; ?>
 								<?php wp_reset_query(); ?>
 
-								<?php query_posts(array('post_type' => 'briefing', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
+								<?php query_posts(array('post_type' => 'topic', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
 								<?php if(have_posts()) : ?>
 									<div class="issues content-item">
 										<h2><?php _e('Latest topics', 'opendev'); ?></h2>
@@ -364,7 +364,7 @@ function opendev_ms_nav() {
 }
 
 function opendev_wpckan_post_types() {
-	return array('post','page','briefing','layer');
+	return array('post','page','topic','layer');
 }
 add_filter('wpckan_post_types', 'opendev_wpckan_post_types');
 
@@ -558,7 +558,7 @@ add_filter('mce_buttons_2', 'my_mce_buttons_2');
 
 
 
-/** Using in briefing pages
+/** Using in topic pages
 	 * Outputs HTML containing a string of the category name as a link
 	 * Show only the category that the current post in. 
 	 * 
@@ -622,5 +622,5 @@ function list_child_category_belong_to_post( $children ) {
 		
 	echo '</div>';	 
 }//end function
-//###Using in briefing pages
+//###Using in topic pages
 

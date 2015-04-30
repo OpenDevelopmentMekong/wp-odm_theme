@@ -1,14 +1,14 @@
 <?php if(have_posts()) : ?>
 	<section class="posts-section row">
 		<div class="container">
-			<?php if(is_post_type_archive('briefing')) : ?>
+			<?php if(is_post_type_archive('topic')) : ?>
 				<div class="twelve columns">
 					<section id="briefs" class="list">
 						<?php
 						while(have_posts()) :
 							the_post();
 							?>
-							<article id="briefing-<?php the_ID(); ?>" class="row">
+							<article id="topic-<?php the_ID(); ?>" class="row">
 								<header>
 									<div class="three columns alpha">
 										<?php if(has_post_thumbnail()) : ?>
