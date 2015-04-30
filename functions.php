@@ -247,10 +247,10 @@ function opendev_ms_nav() {
 						<div class="sub-menu">
 							<ul class="first-menu">
 								<li data-content="news"><a href="<?php echo $siteurl; ?>">
-									<span class="icon-text"></span> <?php _e('News', 'opendev'); ?>
+									<span class="icon-news"></span> <?php _e('News', 'opendev'); ?>
 								</a></li>
-								<li data-content="issues"><a href="<?php echo get_post_type_archive_link('briefing'); ?>">
-									<span class="icon-docs"></span> <?php _e('Issues' , 'opendev'); ?>
+								<li data-content="issues"><a href="<?php echo get_post_type_archive_link('topic'); ?>">
+									<span class="icon-text-document"></span> <?php _e('Topics' , 'opendev'); ?>
 								</a></li>
 								<li data-content="maps"><a href="<?php echo get_post_type_archive_link('map'); ?>">
 									<span class="icon-map"></span> <?php _e('Maps', 'opendev'); ?>
@@ -287,7 +287,7 @@ function opendev_ms_nav() {
 								<?php query_posts(array('post_type' => 'briefing', 'posts_per_page' => 3, 'without_map_query' => true)); ?>
 								<?php if(have_posts()) : ?>
 									<div class="issues content-item">
-										<h2><?php _e('Latest issues', 'opendev'); ?></h2>
+										<h2><?php _e('Latest topics', 'opendev'); ?></h2>
 										<ul>
 											<?php while(have_posts()) : the_post(); ?>
 												<li>
