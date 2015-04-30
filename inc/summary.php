@@ -72,7 +72,7 @@ class OpenDev_Summary {
 		wp_enqueue_script('opendev-summary', get_stylesheet_directory_uri() . '/js/summary.js', array('jquery'));
 		?>
 		<div class="opendev-summary">
-			<h2 class="widget-title"><?php _e('Table of Contents', 'opendev'); ?></h2>
+			<h2 class="widget-title"><?php _e('On this page', 'opendev'); ?></h2>
 			<div class="table-of-contents">
 			</div>
 		</div>
