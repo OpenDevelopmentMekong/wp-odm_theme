@@ -20,7 +20,7 @@ class OpenDev_LiveSearch {
 				'more' => __('Go to the advanced search', 'opendev'),
 				'no_more' => __('Showing all results', 'opendev'),
 				'post' => __('Post', 'opendev'),
-				'briefing' => __('Briefing', 'opendev'),
+				'topic' => __('Topic', 'opendev'),
 				'map' => __('Map', 'opendev')
 			)
 		));
@@ -31,7 +31,7 @@ class OpenDev_LiveSearch {
 		if(isset($_REQUEST['s']) && $_REQUEST['s']) {
 			$query = new WP_Query(array(
 				's' => $_REQUEST['s'],
-				'post_type' => array('post', 'briefing', 'map'),
+				'post_type' => array('post', 'topic', 'map'),
 				'posts_per_page' => 7
 			));
 			$response = array(
