@@ -1,3 +1,7 @@
+a:hover{	
+	color: #eeca0a ; /*eec800;*/
+	text-decoration:underline
+}
 button,
 a.button,
 .button {
@@ -12,13 +16,17 @@ a.button,
 #od-head #ms-nav {
 	background: #3d2b46;
 }
-
+#od-head #main-nav .menu ul > li:hover a,
+#od-head #main-nav ul.menu > li:hover,  
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
+	background-color: #eeca0a;  
+}
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
 	color: #eeca0a;
 }
-
 #od-head h2,
 #od-head a,
 #od-head span {
@@ -55,4 +63,8 @@ a.button,
 #od-head #main-nav ul li.current_page_item a{
 	color: #eeca0a;
 	font-weight: bold; 
+}
+.widget .opendev-summary ol li a:hover {
+	color: #eeca0a;  
+	text-decoration:underline
 }

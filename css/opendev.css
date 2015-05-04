@@ -18,6 +18,10 @@ blockquote {
 	border: 1px solid #DDD;
 	background: #f4f4f4;
 }
+a:hover{	
+	color: #4683d2; /*6393D2, 2774da;*/
+	text-decoration:underline
+}
 a.button,
 .button {
 	background: #6393d2;
@@ -347,7 +351,6 @@ a.button,
 /*
  * Header main nav
  */
-
 #od-head #main-nav {
 	background: #fff;
 	margin: 0;
@@ -385,18 +388,25 @@ a.button,
 #od-head #main-nav ul.menu > li,
 #od-head #main-nav .qtrans_language_chooser li {
 	float: left;
-	margin: 0 20px 0 0;
+	margin: 0 20px 0 1px;
 	position: relative;
 	display:inline;
+} 
+#od-head #main-nav ul.menu  ul.sub-menu  li  a {
+	color: #333;
 }
+
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover > ul.sub-menu  {
+	background-color: #fff;
+}   
 
 #od-head #main-nav ul.menu > li > ul {
 	display: none;
 	position: absolute;
 	top: 48px;
-	left: -5px;
+	left: 0px;
 	background: #fff;
-	padding: 5px 0 0;
+	padding: 1px 0 0;
 	width: 200px;
 	border-left: 1px solid #c9c9c9;
 	border-bottom: 1px solid #c9c9c9;
@@ -414,8 +424,8 @@ a.button,
 }
 
 #od-head #main-nav ul.menu > li > ul li a {
-	padding: 0 10px 10px;
-	margin: 0 0 10px;
+	padding: 10px 10px;
+	margin: 0 0 0;
 	border-bottom: 1px solid #ddd;
 	display: block;
 	float: none;
@@ -436,7 +446,7 @@ a.button,
 	text-decoration: none;
 	display: block;
 	float: left;
-	padding: 15px 0;
+	padding: 15px 8px;
 	text-transform: uppercase;
 }
 .current-site-mekong{
@@ -446,6 +456,16 @@ a.button,
 	color: #6393D2;
 	font-weight: bold; 
 }
+#od-head #main-nav .menu li:hover > a,
+#od-head #main-nav ul.menu li:hover > a  {
+	color: #fff;  
+} 
+#od-head #main-nav .menu ul > li:hover a,
+#od-head #main-nav ul.menu > li:hover,  
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
+	background-color: #6393D2;  
+}  
 /*
  * Headings
  */
@@ -1779,6 +1799,10 @@ a.button,
 	color: #333;
 }
 
+.widget .opendev-summary ol li a:hover {
+	color: #4683d2; /*6393D2, 2774da;*/
+	text-decoration:underline
+}
 .widget .od-tax-widget-tax-item {
 	margin: 0 0 20px;
 }

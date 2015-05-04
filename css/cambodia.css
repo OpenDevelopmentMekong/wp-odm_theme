@@ -1,3 +1,7 @@
+a:hover{
+	color: #97D320;
+	text-decoration:underline
+}
 button,
 a.button,
 .button {
@@ -12,6 +16,13 @@ a.button,
 #od-head #ms-nav {
 	background: #213d49;
 }
+
+#od-head #main-nav .menu ul > li:hover a,
+#od-head #main-nav ul.menu > li:hover,  
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
+	background-color: #97D320;  
+}  
 
 #od-head h1 a,
 #od-head h1 span {
@@ -56,3 +67,7 @@ a.button,
 	color: #97d320;
 	font-weight: bold; 
 }
+.widget .opendev-summary ol li a:hover {
+	color: #97D320; 
+	text-decoration:underline
+} 
