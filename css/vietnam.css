@@ -19,7 +19,7 @@ a.button,
 #od-head #main-nav .menu ul > li:hover a,
 #od-head #main-nav ul.menu > li:hover,  
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
 	background-color: #D61E2A;  
 }
 #od-head h1 a,

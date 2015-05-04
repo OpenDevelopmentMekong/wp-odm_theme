@@ -348,9 +348,11 @@ a.button,
 	display: block;
 }
 
+
 /*
  * Header main nav
  */
+
 #od-head #main-nav {
 	background: #fff;
 	margin: 0;
@@ -397,7 +399,7 @@ a.button,
 }
 
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover > ul.sub-menu  {
-	background-color: #fff;
+	background: #fff;
 }   
 
 #od-head #main-nav ul.menu > li > ul {
@@ -465,7 +467,13 @@ a.button,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
 	background-color: #6393D2;  
+} 
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover > ul a  {	
+	background-color: #fff;
 }  
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
+	background-color: #6393D2;  
+} 
 /*
  * Headings
  */
