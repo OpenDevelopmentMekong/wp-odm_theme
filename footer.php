@@ -1,3 +1,4 @@
+<div id="clear"><br/></div>
 <footer id="colophon">
 	<div class="container">
 		<?php

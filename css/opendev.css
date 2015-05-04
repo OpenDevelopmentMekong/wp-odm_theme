@@ -1314,7 +1314,9 @@ a.button,
 	font-size: 16px;
 	line-height: 150%;
 }
-
+#clear{
+	clear:both;
+}
 /*
  * Share widget
  */
