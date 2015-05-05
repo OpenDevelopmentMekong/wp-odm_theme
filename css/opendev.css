@@ -32,7 +32,9 @@ a.button,
 	font-weight: 600;
 	border: 0;
 }
-
+a.button:hover{
+	color:#333;
+}
 .post-categories_tags {
 	margin-bottom: 1em;
 	float:left
@@ -2044,3 +2046,46 @@ div.cartodb-legend.custom ul li.graph{
 	margin-bottom:.5em
 	}
 /*round image*/
+/*menu*/
+ul#menu-header-menu{
+			padding: 0px;
+		}
+		ul#menu-header-menu li{
+			float: left;
+			list-style: none;
+			position: relative;
+		}
+		ul#menu-header-menu li a{
+			padding:10px 20px;
+			display: block;
+		}
+		ul#menu-header-menu ul{
+			width: 200px;
+			display: none;
+			position: absolute;
+			border: 1px solid #c9c9c9;
+			border-top: 0px;
+		}
+		
+		ul#menu-header-menu ul li{
+			width: auto;
+		}
+		ul#menu-header-menu ul ul{
+			margin-top: -1px !important;
+			position: absolute;
+			top: 0px;
+			left: 100%;
+			border-top: 1px solid #c9c9c9;
+		}
+		
+		ul#menu-header-menu li:hover > ul{
+			display: block;
+		}
+		
+		#od-head #main-nav ul.menu > li > ul li:last-child a{
+		border-bottom: 0px;	
+		}
+		#od-head #main-nav ul.menu > li > ul li a, #od-head #main-nav ul.menu > li > ul li:last-child > ul li a{
+			border-bottom: 1px solid #ddd;
+		}
+/*menu*/
