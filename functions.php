@@ -244,6 +244,10 @@ function opendev_ms_nav() {
 					?>
 					<li class="site-item"> 
 						<a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
+						<?php 
+						$options = get_option('opendev_options');
+						if($options['dropbox_menu']) {
+						?>
 						<div class="sub-menu">
 							<ul class="first-menu">
 								<li data-content="news"><a href="<?php echo $siteurl; ?>">
@@ -317,7 +321,8 @@ function opendev_ms_nav() {
 								<?php wp_reset_query(); ?>
 
 							</div>
-						</div>
+						</div><!--sub-menu-->
+					<?php } ?>
 					</li>
 					<?php
 					restore_current_blog();

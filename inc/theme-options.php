@@ -97,7 +97,15 @@ class OpenDev_Options {
 			'opendev_options',
 			'opendev_style_section'
 		);
-
+		
+		add_settings_field(
+			'opendev_dropbox_menu',
+			__('Enable dropdown box once hover on country name', 'opendev'),
+			array($this, 'dropbox_menu_field'),
+			'opendev_options',
+			'opendev_style_section'
+		);
+		
 		add_settings_field(
 			'opendev_logo',
 			__('Upload a custom logo', 'opendev'),
@@ -190,6 +198,17 @@ class OpenDev_Options {
 			<?php } ?>
 		</select>
 		<?php
+	}
+
+	function dropbox_menu_field() {
+		$dropbox_menu = $this->options['dropbox_menu'];  //echo $dropbox_menu;
+		?> 
+		<input type="checkbox" name="opendev_options[dropbox_menu]" id="opendev_dropbox_menu" <?php echo checked( $dropbox_menu, 'on', true ); ?> />  
+		<label for="opendev_dropbox_menu"><strong><?php _e('Enable', 'opendev'); ?></strong></label><br/>
+		 <br/>
+				<i><?php _e("(Select if you'd like to enable drop box menu once hover on country names.)", 'opendev'); ?></i>
+		</p>
+	<?php
 	}
 
 	function logo_field() {
