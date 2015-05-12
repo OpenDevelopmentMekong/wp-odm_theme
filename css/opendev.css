@@ -619,7 +619,7 @@ a.button:hover{
  */
 
 #site-intro {
-	padding: 20px 0 0px;
+	padding: 15px 0 0;
 	background: #6393D2;
 }
 
@@ -628,9 +628,13 @@ a.button:hover{
 	float: left;
 	font-size: 40px;
 	line-height: 100%;
-	margin: 0 40px 0 0;
-	padding-top: 20px;
+	margin: 0 20px 0 0;
+	padding-top: 10px;
 	color: #fff;
+}
+#intro-texts .four.columns {
+    width: 370px;
+	margin-right:0
 }
 
 #intro-texts .text-item {
@@ -693,7 +697,7 @@ a.button:hover{
 	border: 0;
 	background: transparent;
 	color: #333;
-	padding: 20px 0;
+	padding: 12px 0;
 	font-size: 16px;
 	display: block;
 	margin: 0;
@@ -714,19 +718,21 @@ a.button:hover{
 	border-bottom: 1px solid #aaa;
 }
 #live-search .results {
-	margin: 0;
-	padding: 0;
+	margin: 0 0 20px;
+	padding: 0 20px 20px;
+	background: #f4f4f4;
+	border-top: 1px solid #aaa;
 }
 #live-search .results li {
 	margin: 0;
 	padding: 0;
-	padding: 15px 20px 15px 0;
+	padding: 0 0 10px 0;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	width: 33.3333%;
 	float: left;
-	background: rgba(255, 255, 255, 0.15);
+	/* background: rgba(255, 255, 255, 0.15); */
 }
 #live-search .results li h2 {
 	font-size: 20px;
@@ -748,7 +754,7 @@ a.button:hover{
 }
 #live-search .results li.item-1 {
 	width: 100% !important;
-	padding: 20px 20px 20px 0;
+	padding: 10px 20px 20px 0;
 }
 #live-search .results li.item-1 h2 {
 	font-size: 24px;
@@ -794,9 +800,12 @@ a.button:hover{
 /*
  * News section
  */
-
+ 
+.row {
+    margin-bottom: 10px;
+}
 #news {
-	padding-top: 60px;
+	padding-top: 20px;
 }
 
 #news.page-section .section-title {

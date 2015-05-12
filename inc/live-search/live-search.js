@@ -23,7 +23,9 @@
 		var results = $('<ul class="results clearfix" />');
 
 		_.each(data.posts, function(item, i) {
-
+			if(livesearch.labels[item.post_type] == "Post"){
+				livesearch.labels[item.post_type] = "News";
+			}
 			var type = $('<p class="type">' + livesearch.labels[item.post_type] + '</p>');
 			var title = $('<h2>' + item.title + '</h2>');
 			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
