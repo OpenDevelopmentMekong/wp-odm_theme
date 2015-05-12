@@ -155,6 +155,8 @@ class opendev_AdvancedNav {
 				unset($post_types['map-layer']);
 				unset($post_types['map-group']);
 				unset($post_types['attachment']);
+				unset($post_types['rssmi_feed']);
+				unset($post_types['rssmi_feed_item']);
 				$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
 				?>
 				<div class="two columns">
