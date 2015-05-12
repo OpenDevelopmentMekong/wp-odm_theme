@@ -1230,7 +1230,12 @@ a.button:hover{
 .opendev-posts-list li article .meta p span {
 	margin-right: 10px;
 }
-
+#advanced_search_results h2 {
+	text-transform: uppercase;
+	font-size: 18px;
+	line-height: 18px;
+	margin: -2em 0 22px;
+}
 #wpckan_search_results h2 {
 	text-transform: uppercase;
 	font-size: 18px;

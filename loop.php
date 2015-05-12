@@ -33,6 +33,11 @@
 			<?php else : ?>
 				<div class="eight columns">
 					<?php get_template_part('section', 'query-actions'); ?>
+                    <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
+							<?php $search_results =& new WP_Query("s=$s & showposts=-1");
+                                  $NumResults = $search_results->post_count; ?>
+                            <div id="advanced_search_results"><h2>Site Results</h2> (<?php echo $NumResults; ?>)</div>
+                    <?php endif; ?>
 					<ul class="opendev-posts-list">
 						<?php while(have_posts()) : the_post(); ?>
 							<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
