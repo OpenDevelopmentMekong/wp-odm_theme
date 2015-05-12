@@ -5,6 +5,11 @@ html, body {
 img {
 	max-width: 100%;
 }
+img.border{
+	border: 1px solid #ccc;
+	background: #f8f8f8;
+	padding: 3px 3px 2px;
+}
 sup{
 	vertical-align: super; 
 	font-size:small;
@@ -82,7 +87,14 @@ a.button:hover{
 	display: block;
 }
 
-
+.align-left{
+	float:left;
+	margin: 5px 10px 0 0;
+}
+.align-right{
+	float:left;
+	margin: 5px 0 0 10px;
+}
 
 /*
  * Header
@@ -720,7 +732,7 @@ a.button:hover{
 #live-search .results {
 	margin: 0 0 20px;
 	padding: 0 20px 20px;
-	background: #f4f4f4;
+	background: #f7f7f7;
 	border-top: 1px solid #aaa;
 }
 #live-search .results li {
@@ -749,7 +761,7 @@ a.button:hover{
 	color: #999;
 	margin: 0;
 }
-#live-search .results li p.excerpt {
+#live-search .results li p.excerpt, #live-search .results li img {
 	display: none;
 }
 #live-search .results li.item-1 {
@@ -759,7 +771,7 @@ a.button:hover{
 #live-search .results li.item-1 h2 {
 	font-size: 24px;
 }
-#live-search .results li.item-1 p.excerpt {
+#live-search .results li.item-1 p.excerpt, #live-search .results li.item-1 img{
 	display: block;
 }
 #live-search .results li.more {

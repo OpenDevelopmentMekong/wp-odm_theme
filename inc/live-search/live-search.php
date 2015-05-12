@@ -27,12 +27,12 @@ class OpenDev_LiveSearch {
 	}
 
 	function query() {
-
 		if(isset($_REQUEST['s']) && $_REQUEST['s']) {
 			$query = new WP_Query(array(
 				's' => $_REQUEST['s'],
 				'post_type' => array('post', 'topic', 'map'),
-				'posts_per_page' => 7
+				'posts_per_page' => 10,
+				'post_status' => 'publish'
 			));
 			$response = array(
 				'posts' => array(),
@@ -45,7 +45,10 @@ class OpenDev_LiveSearch {
 						'title' => get_the_title(),
 						'excerpt' => get_the_excerpt(),
 						'post_type' => get_post_type($post->ID),
-						'url' => get_permalink()
+						'url' => get_permalink(),
+						'thumbnail' => get_the_post_thumbnail( $page->ID, array(50,50), array('class'	=> "attachment-$size border align-left",
+																							   'alt'	=> trim( strip_tags( $attachment->post_excerpt ) )
+																							))
 					);
 					wp_reset_postdata();
 				}

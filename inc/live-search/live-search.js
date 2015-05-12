@@ -26,8 +26,10 @@
 			if(livesearch.labels[item.post_type] == "Post"){
 				livesearch.labels[item.post_type] = "News";
 			}
+			 
 			var type = $('<p class="type">' + livesearch.labels[item.post_type] + '</p>');
 			var title = $('<h2>' + item.title + '</h2>');
+			var thumbnail = $(item.thumbnail);
 			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
 
 			var link = $('<a href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
@@ -35,6 +37,7 @@
 			var item = $('<li />')
 				.append(type)
 				.append(title.html(link))
+				.append(thumbnail)
 				.append(desc);
 
 			item.addClass('item-' + (i+1));
