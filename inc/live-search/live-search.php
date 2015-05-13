@@ -19,7 +19,7 @@ class OpenDev_LiveSearch {
 			'labels' => array(
 				'more' => __('Go to the advanced search', 'opendev'),
 				'no_more' => __('Showing all results', 'opendev'),
-				'post' => __('Post', 'opendev'),
+				'post' => __('News', 'opendev'),
 				'topic' => __('Topic', 'opendev'),
 				'map' => __('Map', 'opendev')
 			)

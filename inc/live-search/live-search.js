@@ -23,10 +23,7 @@
 		var results = $('<ul class="results clearfix" />');
 
 		_.each(data.posts, function(item, i) {
-			if(livesearch.labels[item.post_type] == "Post"){
-				livesearch.labels[item.post_type] = "News";
-			}
-			 
+		
 			var type = $('<p class="type">' + livesearch.labels[item.post_type] + '</p>');
 			var title = $('<h2>' + item.title + '</h2>');
 			var thumbnail = $(item.thumbnail);
@@ -58,6 +55,7 @@
 
 		container.find('.results').remove();
 		container.find('.results-container').append(results);
+		$('#loading').hide();
 
 	};
 
@@ -72,8 +70,8 @@
 				var self = $(this);
 
 				var s = $(this).val();
-
 				if(s) {
+					$('#loading').show();
 					query(s, function(data) {
 						if(self.val())
 							display($livesearch, data, s);
@@ -81,6 +79,7 @@
 							$livesearch.find('.results').remove();
 					});
 				} else {
+					$('#loading').hide();
 					$livesearch.find('.results').remove();
 				}
 

@@ -630,14 +630,21 @@ function list_child_category_belong_to_post( $children ) {
 //###Using in topic pages
 
 //to set get_the_excerpt() limit words
-function excerpt($num, $read_more) {
-        $limit = $num+1;
+function excerpt($num, $read_more="") {
+        $limit = $num+1;		
         $excerpt = explode(' ', get_the_excerpt(), $limit);
         array_pop($excerpt);
-        $excerpt_string = implode(" ", $excerpt) . "[...]";
+        $excerpt_string = implode(" ", $excerpt);
+		
+		
+        $excerpt_hidden_space = explode('​', $excerpt_string, $limit);		
+        array_pop($excerpt_hidden_space);
+        $$excerpt_string = implode("​", $excerpt_hidden_space) ;
+		
+		$excerpt_words = $excerpt_string. " ...";
 		if ($read_more !=""){
-			//$excerpt_string .= "... (<a href='" .get_permalink($post->ID) ." '>".$read_more."</a>)";
+			$excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." '>".$read_more."</a>)";
 		}
 		 
-        return $excerpt_string;
+        return $excerpt_words;
 }

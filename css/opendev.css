@@ -40,6 +40,12 @@ a.button,
 a.button:hover{
 	color:#333;
 }
+#loading{	
+	position:relative;
+	top: -2.6em;
+	margin-left: 2em;
+	display:none;
+}
 .post-categories_tags {
 	margin-bottom: 1em;
 	float:left
@@ -731,14 +737,14 @@ a.button:hover{
 }
 #live-search .results {
 	margin: 0 0 20px;
-	padding: 0 20px 20px;
-	background: #f7f7f7;
+	padding: 10px 20px 20px;
+	background: #f9f9f9;
 	border-top: 1px solid #aaa;
 }
 #live-search .results li {
 	margin: 0;
 	padding: 0;
-	padding: 0 0 10px 0;
+	padding: 0 20px 10px 0;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -758,12 +764,16 @@ a.button:hover{
 	text-decoration: none;
 }
 #live-search .results li p {
-	color: #999;
+	color: #333;
 	margin: 0;
 }
-#live-search .results li p.excerpt, #live-search .results li img {
-	display: none;
+#live-search .results li p.type {
+	color: #999;
+	text-transform:uppercase
 }
+/* #live-search .results li p.excerpt, #live-search .results li img {
+	display: none;
+} 
 #live-search .results li.item-1 {
 	width: 100% !important;
 	padding: 10px 20px 20px 0;
@@ -773,6 +783,12 @@ a.button:hover{
 }
 #live-search .results li.item-1 p.excerpt, #live-search .results li.item-1 img{
 	display: block;
+}*/
+#live-search .results li.item-3, #live-search .results li.item-6, #live-search .results li.item-9{
+	padding-right:0
+}
+#live-search .results li.item-4, #live-search .results li.item-7{
+	clear: both
 }
 #live-search .results li.more {
 	width: 100% !important;
@@ -937,13 +953,14 @@ a.button:hover{
 	height: 70%;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail {
-	margin: 0 20px 20px 0;
+	margin: 0 20px 5px 0;
 	width: 33%;
 	height: auto;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail img {
 	width: 100%;
 	height: auto;
+	padding: 0; 
 }
 .sticky-posts.post-active .sticky-item.active article h2 {
 	font-size: 24px;
@@ -1058,12 +1075,18 @@ a.button:hover{
 }
 .map-sidebar object,
 .map-sidebar object embed,
-.map-sidebar iframe,
+.map-sidebar iframe {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
 .map-sidebar img {
 	max-width: 100%;
 	max-height: 100%;
 	width: auto;
 	height: auto;
+	padding: 6px;
 }
 .map-sidebar .sharing .button {
 	margin: 5px 5px 5px 0;
