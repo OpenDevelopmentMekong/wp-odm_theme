@@ -89,7 +89,23 @@ class OpenDev_Options {
 			'',
 			'opendev_options'
 		);
-
+		
+		add_settings_field(
+			'opendev_site_in_development',
+			__('Site in development', 'opendev'),
+			array($this, 'site_in_development_field'),
+			'opendev_options',
+			'opendev_style_section'
+		);
+		
+		add_settings_field(
+			'opendev_message_construction',
+			__('Message of construction', 'opendev'),
+			array($this, 'message_construction_field'),
+			'opendev_options',
+			'opendev_style_section'
+		);
+		
 		add_settings_field(
 			'opendev_style',
 			__('Choose a style', 'opendev'),
@@ -100,7 +116,7 @@ class OpenDev_Options {
 		
 		add_settings_field(
 			'opendev_dropbox_menu',
-			__('Enable dropdown box once hover on country name', 'opendev'),
+			__('Enable dropdown box of the country menu', 'opendev'),
 			array($this, 'dropbox_menu_field'),
 			'opendev_options',
 			'opendev_style_section'
@@ -113,7 +129,7 @@ class OpenDev_Options {
 			'opendev_options',
 			'opendev_style_section'
 		);
-
+		
 		add_settings_field(
 			'opendev_facebook',
 			__('Facebook url', 'opendev'),
@@ -189,7 +205,23 @@ class OpenDev_Options {
 		register_setting('opendev_options_group', 'opendev_options');
 
 	}
-
+	
+	function site_in_development_field() {
+		$site_in_development = $this->options['site_in_development'];    
+		?> 
+		<input type="checkbox" name="opendev_options[site_in_development]" id="opendev_site_in_development" <?php echo checked( $site_in_development, 'true', true );?> value="true" />  
+		<label for="opendev_site_in_development"><strong><?php _e('Active', 'opendev'); ?></strong></label><br/> 
+				<i><?php _e("(Activate to disable the link of the web site on the country menu, and present a message below.)", 'opendev'); ?></i>		
+	<?php
+	}
+	
+	function message_construction_field() {
+		$message_construction = $this->options['message_construction'];
+		?>
+		<input id="opendev_message_construction" name="opendev_options[message_construction]" type="text" placeholder="<?php _e('Site coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Site coming soon.');?>'" value="<?php echo $message_construction; ?>" size="70" />
+		<?php
+	}   
+	
 	function style_field() {
 		?>
 		<select id="opendev_style" name="opendev_options[style]">
@@ -199,15 +231,14 @@ class OpenDev_Options {
 		</select>
 		<?php
 	}
-
+	
 	function dropbox_menu_field() {
-		$dropbox_menu = $this->options['dropbox_menu'];  //echo $dropbox_menu;
+		$dropbox_menu = $this->options['dropbox_menu']; 		//echo $dropbox_menu;
 		?> 
-		<input type="checkbox" name="opendev_options[dropbox_menu]" id="opendev_dropbox_menu" <?php echo checked( $dropbox_menu, 'on', true ); ?> />  
-		<label for="opendev_dropbox_menu"><strong><?php _e('Enable', 'opendev'); ?></strong></label><br/>
-		 <br/>
+		<input type="checkbox" name="opendev_options[dropbox_menu]" id="opendev_dropbox_menu" <?php echo checked( $dropbox_menu, 'on', true ); ?> /> 
+		<label for="opendev_dropbox_menu"><strong><?php _e('Enable', 'opendev'); ?></strong></label><br/> 
 				<i><?php _e("(Select if you'd like to enable drop box menu once hover on country names.)", 'opendev'); ?></i>
-		</p>
+		 
 	<?php
 	}
 
@@ -225,7 +256,8 @@ class OpenDev_Options {
 			<?php } ?>
 		<?php
 	}
-
+		
+	
 	function facebook_field() {
 		$facebook = $this->options['facebook_url'];
 		?>

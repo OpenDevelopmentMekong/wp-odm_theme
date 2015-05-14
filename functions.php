@@ -224,7 +224,26 @@ function opendev_social_apis() {
 add_action('wp_footer', 'opendev_social_apis');
 
 function opendev_ms_nav() {
-
+?>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+  <script>
+  jQuery(function($) { 
+	    $( document ).tooltip({
+		  position: { 
+			using: function( position, feedback ) {
+			  $( this ).css( position );
+			  $( "<div>" )
+				.addClass( "arrow" )
+				.addClass( feedback.vertical )
+				.addClass( feedback.horizontal )
+				.appendTo( this );
+			}
+		  }
+		});
+  });
+  </script>
+<?php
 	if(is_multisite()) {
 		$sites = wp_get_sites();
 		if(!empty($sites) && count($sites) > 1) {
@@ -240,9 +259,15 @@ function opendev_ms_nav() {
 					$details = get_blog_details($site['blog_id']);
 					$name = str_replace('Open Development ', '', $details->blogname);
 					$siteurl = $details->siteurl;
-					switch_to_blog($site['blog_id']);
+					switch_to_blog($site['blog_id']); 
 					?>
 					<li class="site-item"> 
+					<?php
+					$options = get_option('opendev_options'); 
+					if ($options['site_in_development']=="true"){  
+					?>
+						<a href="#"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?> title="<?php if ($options['message_construction']!="") _e($options['message_construction'],'opendev'); else _e("Site coming soon.", 'opendev');?>"><?php _e($name, 'opendev');?></a>
+			  <?php }else{ ?>							
 						<a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
 						<?php 
 						$options = get_option('opendev_options');
@@ -322,7 +347,8 @@ function opendev_ms_nav() {
 
 							</div>
 						</div><!--sub-menu-->
-					<?php } ?>
+					<?php } //if $options['dropbox_menu'] ?>					
+				<?php } // if $options['site_in_development'] ?>
 					</li>
 					<?php
 					restore_current_blog();
