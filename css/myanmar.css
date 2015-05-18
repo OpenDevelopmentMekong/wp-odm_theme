@@ -2,6 +2,10 @@ a:hover{
 	color: #eeca0a ; /*eec800;*/
 	text-decoration:underline
 }
+a strong:hover {	
+	color: #eeca0a;
+	text-decoration:underline
+}
 button,
 a.button,
 .button {
