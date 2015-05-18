@@ -229,7 +229,7 @@ function opendev_ms_nav() {
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
   <script>
   jQuery(function($) { 
-	    $( document ).tooltip({
+	    $('.ms-nav li a').tooltip({
 		  position: { 
 			using: function( position, feedback ) {
 			  $( this ).css( position );
