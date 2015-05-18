@@ -27,6 +27,10 @@ a:hover{
 	color: #4683d2; /*6393D2, 2774da;*/
 	text-decoration:underline
 }
+a strong:hover {	
+	color: #4683d2;
+	text-decoration:underline
+}
 a.button,
 .button {
 	background: #6393d2;
@@ -1806,7 +1810,9 @@ a.button:hover{
 .widget li a {
 	text-decoration: none;
 }
-
+#sidebar .widget li a:hover{
+	text-decoration:underline;
+}
 #sidebar .widgets .widget li:last-child,
 .widget li:last-child {
 	border-bottom: 0;

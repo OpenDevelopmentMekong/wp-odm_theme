@@ -36,17 +36,25 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 */
 
 	public function print_category( $category ) {		
-		//echo '<a href="' . get_category_link( $category->term_id ) . '">';		
-			$in_category = in_category( $category->term_id );
+			$post_type =  get_post_type( get_the_ID() ); 
+			//echo '<a href="' . get_category_link( $category->term_id ) . '">';		
+			$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));   
+			$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type );    
+			if ($topical_page_exist){
+				echo '<a href="' . get_permalink( $topical_page_exist ) . '">';	
+			}  
+				$in_category = in_category( $category->term_id ); 
+				if ($in_category){ 
+					 echo "<strong>";
+				} 
+				echo $category->name; 		
+				if ($in_category){			
+					 echo "</strong>";
+				}	
+			if ($topical_page_exist){
+				echo "</a><br/>";	
+			} 			
 			
-			if ($in_category){ 
-				 echo "<strong>";
-			} 
-			echo $category->name; 		
-			if ($in_category){			
-				 echo "</strong>";
-			}		
-			//echo "</a><br/>";	
 	}
 	
 	/**
