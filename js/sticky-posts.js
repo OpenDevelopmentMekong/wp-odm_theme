@@ -59,8 +59,8 @@
 
 					var imgT = setInterval(function() {
 						img.css({
-							width: img.parents('.sticky-item').innerHeight(),
-							height: img.parents('.sticky-item').innerHeight()
+							width: img.parents('.sticky-item').innerHeight()-10,
+							height: img.parents('.sticky-item').innerHeight()-10
 						});
 					}, 10);
 
