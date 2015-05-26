@@ -19,7 +19,7 @@
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
-<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" /> 
+<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php $sit_name = str_replace('Open Development ', '', get_bloginfo('name')); ?>
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/<?php echo strtolower($sit_name); ?>-favicon.ico" type="image/x-icon" />
 <?php wp_head(); ?>
@@ -87,7 +87,17 @@
 						</nav>
 					</div>
 				</div>
-			</div>
+			</div><!-- four column -->
+
+			<div id="live-search">
+        		<div class="container">
+        			<div class="three columns align-right">
+        				<input type="text" placeholder="<?php _e('Search &#128270;');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;');?>'" />
+        				<img src="<?php bloginfo('stylesheet_directory')?>/img/loading.gif" alt="loading" id="loading" />
+        		    </div>
+                    <div class="results-container"></div>
+        		</div>
+        	</div><!-- live-search -->
 		</div>
 		<nav id="ms-nav">
 			<div class="container">

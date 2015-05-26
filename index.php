@@ -3,15 +3,15 @@
 <?php
 if(is_front_page()) {
 	?>
-	<div id="live-search">
+	<!-- <div id="live-search">
 		<div class="container">
-			<div class="twelve columns">				
-				<input type="text" placeholder="<?php _e('Search &#128270;');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;');?>'" />
-				<img src="<?php bloginfo('stylesheet_directory')?>/img/loading.gif" alt="loading" id="loading" />
+			<div class="twelve columns">
+				<input type="text" placeholder="<?php //_e('Search &#128270;');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php //_e('Search &#128270;');?>'" />
+				<img src="<?php // bloginfo('stylesheet_directory')?>/img/loading.gif" alt="loading" id="loading" />
 				<div class="results-container"></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<section id="site-intro">
 		<?php
 		$intro_texts = opendev_get_intro_texts();

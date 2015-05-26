@@ -11,11 +11,11 @@ img.border{
 	padding: 3px 3px 2px;
 }
 sup{
-	vertical-align: super; 
+	vertical-align: super;
 	font-size:small;
 }
 sub{
-	vertical-align: sub; 
+	vertical-align: sub;
 	font-size:small;
 }
 blockquote {
@@ -23,11 +23,11 @@ blockquote {
 	border: 1px solid #DDD;
 	background: #f4f4f4;
 }
-a:hover{	
+a:hover{
 	color: #4683d2; /*6393D2, 2774da;*/
 	text-decoration:underline
 }
-a strong:hover {	
+a strong:hover {
 	color: #4683d2;
 	text-decoration:underline
 }
@@ -44,11 +44,14 @@ a.button,
 a.button:hover{
 	color:#333;
 }
-#loading{	
-	position:relative;
-	top: -2.6em;
-	margin-left: 2em;
-	display:none;
+#loading{
+	position: relative;
+    margin-top: -2em;
+    float: left;
+    display: none;
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5em;
 }
 .post-categories_tags {
 	margin-bottom: 1em;
@@ -102,7 +105,7 @@ a.button:hover{
 	margin: 5px 10px 0 0;
 }
 .align-right{
-	float:left;
+	float:right;
 	margin: 5px 0 0 10px;
 }
 
@@ -417,14 +420,14 @@ a.button:hover{
 	margin: 0 20px 0 1px;
 	position: relative;
 	display:inline;
-} 
+}
 #od-head #main-nav ul.menu  ul.sub-menu  li  a {
 	color: #333;
 }
 
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover > ul.sub-menu  {
 	background: #fff;
-}   
+}
 
 #od-head #main-nav ul.menu > li > ul {
 	display: none;
@@ -480,24 +483,24 @@ a.button:hover{
 }
 #od-head #main-nav ul li.current_page_item a{
 	color: #6393D2;
-	font-weight: bold; 
+	font-weight: bold;
 }
 #od-head #main-nav .menu li:hover > a,
 #od-head #main-nav ul.menu li:hover > a  {
-	color: #fff;  
-} 
+	color: #fff;
+}
 #od-head #main-nav .menu ul > li:hover a,
-#od-head #main-nav ul.menu > li:hover,  
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu > li:hover,
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover ,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
-	background-color: #6393D2;  
-} 
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover > ul a  {	
+	background-color: #6393D2;
+}
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover > ul a  {
 	background-color: #fff;
-}  
+}
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #6393D2;  
-} 
+	background-color: #6393D2;
+}
 /*
  * Headings
  */
@@ -691,8 +694,12 @@ a.button:hover{
  */
 
 #live-search {
-	border-top: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;
+	/* border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa; */
+	clear: both;
+    float: right;
+    margin-top: -1em;
+    margin-bottom: -0.5em;
 }
 
 #live-search ::-webkit-input-placeholder {
@@ -717,33 +724,38 @@ a.button:hover{
 
 #live-search input[type=text] {
 	border: 0;
-	background: transparent;
+	background: #EEE;
 	color: #333;
-	padding: 12px 0;
+	padding: 6px 0;
 	font-size: 16px;
 	display: block;
 	margin: 0;
-	width: 100%;
+	width: 95%;
 	border-radius: 0;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	text-align: center;
+	border-right: 1px solid #aaa;
 	border-bottom: 1px solid #aaa;
 	margin-bottom: -1px;
+	margin-left: -5px;
 }
 #live-search input:focus {
 	outline: none;
 	border: 0;
+	background: #f4f4f4;
+	background: ddd;
 	box-shadow: 0 0 0;
 	-webkit-box-shadow: 0 0 0;
 	-moz-box-shadow: 0 0 0;
+	border-right: 1px solid #aaa;
 	border-bottom: 1px solid #aaa;
 }
 #live-search .results {
 	margin: 0 0 20px;
 	padding: 10px 20px 20px;
-	background: #f9f9f9;
-	border-top: 1px solid #aaa;
+	background: #f7f7f7;
+	border: 1px solid #333;
 }
 #live-search .results li {
 	margin: 0;
@@ -775,9 +787,19 @@ a.button:hover{
 	color: #999;
 	text-transform:uppercase
 }
+.results-container{
+    clear: both;
+    position: absolute;
+    z-index: 10000;
+    margin-top: 2.7em;
+    width: 97%;
+    right: 0;
+    margin-right: 1.1em;
+}
+
 /* #live-search .results li p.excerpt, #live-search .results li img {
 	display: none;
-} 
+}
 #live-search .results li.item-1 {
 	width: 100% !important;
 	padding: 10px 20px 20px 0;
@@ -832,7 +854,7 @@ a.button:hover{
 /*
  * News section
  */
- 
+
 .row {
     margin-bottom: 10px;
 }
@@ -964,7 +986,7 @@ a.button:hover{
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail img {
 	width: 100%;
 	height: auto;
-	padding: 0; 
+	padding: 0;
 }
 .sticky-posts.post-active .sticky-item.active article h2 {
 	font-size: 24px;
@@ -1906,6 +1928,12 @@ a.button:hover{
 	margin: 0 !important;
 }
 
+
+/* Sidebar Topical Category */
+.sub-topical-cat{
+	display: none;
+}
+/* End sidebar Topical Category */
 #colophon {
 	margin-top: 0;
 }
@@ -1963,14 +1991,6 @@ a.button:hover{
   width: 100%;
   cursor: pointer;
 }
-
-
-
-
-
-
-
-
 
 .list-posts {
 }
@@ -2052,20 +2072,20 @@ div.cartodb-legend ul li.graph .bubbles {
     width: 110px;
     height: 30px;
 }
-div.cartodb-legend { 
+div.cartodb-legend {
     width: 130px;
 }
-div.cartodb-legend.custom ul li.graph{ 
+div.cartodb-legend.custom ul li.graph{
 	height:30px;
 	width: 100%;
 	margin: -5px 0 5px;
 }
 /*round image*/
-#round { 
+#round {
 	float:left
-}	
+}
 #round ul{
-	margin:1em 0 1em 0;	
+	margin:1em 0 1em 0;
 	float:left
 }
 #round li{
@@ -2077,7 +2097,7 @@ div.cartodb-legend.custom ul li.graph{
 	}
 #round p{
 	clear:both;
-	width:110%; 
+	width:110%;
 	background:#f4f4f4;
 }
 #round img{
@@ -2085,7 +2105,7 @@ div.cartodb-legend.custom ul li.graph{
 	max-width:120px;
 	max-height:120px;
 	width:120px;
-	border: 1px solid #ddd;	
+	border: 1px solid #ddd;
 	padding: 6px;
 	-webkit-border-radius: 150px;
    -moz-border-radius: 80px;
@@ -2109,9 +2129,9 @@ div.cartodb-legend.custom ul li.graph{
   }
   .ui-tooltip {
     padding: 10px 10px;
-    color: #333;  
+    color: #333;
 	border:0;
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 0 0 #888;
   }
   .arrow {
     width: 70px;
@@ -2146,7 +2166,6 @@ div.cartodb-legend.custom ul li.graph{
     top: auto;
   }
  /*end tooltips*/
- 
 /*menu*/
 ul#menu-header-menu{
 			padding: 0px;
@@ -2167,7 +2186,7 @@ ul#menu-header-menu{
 			border: 1px solid #c9c9c9;
 			border-top: 0px;
 		}
-		
+
 		ul#menu-header-menu ul li{
 			width: auto;
 		}
@@ -2178,13 +2197,13 @@ ul#menu-header-menu{
 			left: 100%;
 			border-top: 1px solid #c9c9c9;
 		}
-		
+
 		ul#menu-header-menu li:hover > ul{
 			display: block;
 		}
-		
+
 		#od-head #main-nav ul.menu > li > ul li:last-child a{
-		border-bottom: 0px;	
+		border-bottom: 0px;
 		}
 		#od-head #main-nav ul.menu > li > ul li a, #od-head #main-nav ul.menu > li > ul li:last-child > ul li a{
 			border-bottom: 1px solid #ddd;
