@@ -533,7 +533,7 @@ a.button:hover{
 .section-title {
 	padding: 30px 0 15px;
 	border-bottom: 1px solid #ddd;
-	margin: 0 0 40px;
+	margin: 0 0 0;
 }
 
 .section-title h2,
@@ -902,13 +902,17 @@ a.button:hover{
  */
 
 .sticky-posts {
-	height: 100%;
+	height: 600px;
 	width: 100%;
 	color: #333;
 	position: relative;
 	z-index: 10;
 	border-left: 1px solid #ccc;
 	box-sizing: border-box;
+	overflow: hidden;
+}
+.sticky-posts:hover{
+    overflow-y: auto;
 }
 .sticky-posts .sticky-item {
 	height: 25%;
@@ -921,7 +925,7 @@ a.button:hover{
 	border-bottom: 0;
 }
 .sticky-posts .sticky-item article {
-	padding: 20px;
+	padding: 10px 20px 0;
 }
 .sticky-posts .sticky-item article .post-thumbnail {
 	float: left;
@@ -963,7 +967,7 @@ a.button:hover{
 	text-overflow: clip;
 }
 .sticky-posts.post-active .sticky-item {
-	height: 10%;
+	height: 6%;
 }
 .sticky-posts.post-active .sticky-item article .post-thumbnail {
 	margin: -20px 20px -20px -20px;
@@ -971,12 +975,12 @@ a.button:hover{
 }
 .sticky-posts.post-active .sticky-item article h2 {
 	font-size: 12px;
-	line-height: 12px;
+	line-height: 16px;
 	margin: 0;
 	padding: 0;
 }
 .sticky-posts.post-active .sticky-item.active {
-	height: 70%;
+	height: auto;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail {
 	margin: 0 20px 5px 0;
@@ -994,7 +998,7 @@ a.button:hover{
 	margin: 0 0 10px;
 }
 .sticky-posts.post-active .sticky-item.active article .post-area {
-	height: 238px;
+	/* height: 238px; */
 	margin-bottom: 15px;
 	overflow: hidden;
 }
@@ -1002,7 +1006,9 @@ a.button:hover{
 .sticky-posts.post-active .sticky-item.active article .post-actions {
 	display: block;
 }
-
+.sticky-posts.post-active .sticky-item.active article .post-area p.date{
+    margin: 0 0 5px 0;
+}
 .map-sidebar {
 	color: #96979C;
 	height: 100%;
@@ -2003,7 +2009,7 @@ a.button:hover{
   box-shadow: 0 1px 5px 0px rgba(0,0,0,0.1);
   margin: 0;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 10px 20px 20px;
   position: relative;
 }
 .list-posts li article h2 {
@@ -2021,7 +2027,7 @@ a.button:hover{
   font-size: 12px;
   display: table;
   width: 100%;
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 .list-posts li article p.meta > span {
   display: table-cell;

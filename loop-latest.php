@@ -1,5 +1,21 @@
+<?php
+//Excluding 20 latest posts from the loop including the sticky post (eg sticky post 2 + latest post 18=20)
+//count sticky post
+$sticky_count = new WP_Query(array(
+	'posts_per_page' => 20,
+	'post__in' => get_option('sticky_posts'),
+	'ignore_sticky_posts' => 1
+));
+$number_excluded = 20 - $sticky_count->found_posts;
+
+$latest_post = new WP_Query(array(
+	'posts_per_page' => 12,
+	'offset'=> $number_excluded,
+	'post__not_in' => get_option('sticky_posts')
+));
+?>
 <ul class="list-posts">
-	<?php while(have_posts()) : the_post(); ?>
+	<?php while($latest_post->have_posts()) : $latest_post->the_post(); ?>
 		<li id="post-<?php the_ID(); ?>" <?php post_class('post-item four columns'); ?>>
 			<article>
 				<header class="post-header">
