@@ -45,7 +45,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			}  
 				$in_category = in_category( $category->term_id ); 
 				if ($in_category){ 
-					 echo "<strong>";
+					 echo "<strong class='".COUNTRY_NAME."-color'>";
 				} 
 				echo $category->name; 		
 				if ($in_category){			

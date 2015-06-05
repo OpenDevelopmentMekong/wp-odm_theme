@@ -42,6 +42,9 @@ require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');
 // Advanced nav
 require_once(STYLESHEETPATH . '/inc/category-walker.php');
 
+$country_name = str_replace('Open Development ', '', get_bloginfo('name'));
+define('COUNTRY_NAME', strtolower($country_name));
+
 function opendev_setup_theme() {
 	
 	$gsd = explode('wp-content', get_stylesheet_directory());

@@ -23,6 +23,9 @@ blockquote {
 	border: 1px solid #DDD;
 	background: #f4f4f4;
 }
+.mekong-color{
+    color: #4683d2;
+}
 a:hover{
 	color: #4683d2; /*6393D2, 2774da;*/
 	text-decoration:underline
