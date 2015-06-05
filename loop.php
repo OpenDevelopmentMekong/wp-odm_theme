@@ -14,7 +14,7 @@
 										<?php if(has_post_thumbnail()) : ?>
 											<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 										<?php else : ?>
-											&nbsp;
+											<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/thumbnail.png" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" />
 										<?php endif; ?>
 									</div>
 									<!-- <div class="four columns">
