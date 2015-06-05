@@ -17,13 +17,15 @@
 											&nbsp;
 										<?php endif; ?>
 									</div>
-									<div class="four columns">
+									<!-- <div class="four columns">
 										<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 										<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
-										<!-- <p><span class="icon-user"></span> <?php //the_author(); ?></p> -->
-									</div>
+									</div> -->
 								</header>
-								<div class="five columns omega">
+								<div class="nine columns omega">
+								    <h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+										<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+										<!-- <p><span class="icon-user"></span> <?php //the_author(); ?></p> -->
 									<?php the_excerpt(); ?>
 								</div>
 							</article>

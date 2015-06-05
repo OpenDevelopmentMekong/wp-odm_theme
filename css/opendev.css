@@ -111,7 +111,7 @@ a.button:hover{
 	float:right;
 	margin: 5px 0 0 10px;
 }
-
+ 
 /*
  * Header
  */
@@ -859,7 +859,8 @@ a.button:hover{
  */
 
 .row {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    clear: both;
 }
 #news {
 	padding-top: 20px;
