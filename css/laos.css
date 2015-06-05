@@ -1,5 +1,8 @@
+.laos-color{
+    color: #F37914;
+}
 a:hover{	
-	color: #eeca0a ; /*eec800;*/
+	color: #F37914; /*eec800;*/
 	text-decoration:underline
 }
 a strong:hover {	
