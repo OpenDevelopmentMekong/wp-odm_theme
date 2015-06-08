@@ -68,7 +68,7 @@ function opendev_styles() {
 
 	//wp_dequeue_style('jeo-main');
 
-	wp_register_style('webfont-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+	wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
 	wp_register_style('webfont-opendev', get_stylesheet_directory_uri() . '/font/style.css');
 	wp_register_style('opendev-base',  $css_base . 'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
 	wp_register_style('opendev-cambodia',  $css_base . 'cambodia.css');
@@ -90,7 +90,7 @@ function opendev_jeo_scripts() {
 	wp_dequeue_script('jeo-site');
 	wp_enqueue_script('jquery-isotope');
 
-	wp_register_script('twttr', 'http://platform.twitter.com/widgets.js');
+	wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
 
 	// custom marker system
 	global $jeo_markers;
@@ -228,8 +228,8 @@ add_action('wp_footer', 'opendev_social_apis');
 
 function opendev_ms_nav() {
 ?>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
-  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
   <script>
   jQuery(function($) { 
 	    $('.ms-nav li a').tooltip({
