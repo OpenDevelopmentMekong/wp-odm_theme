@@ -34,7 +34,11 @@ require_once(STYLESHEETPATH . '/inc/category-widget.php');
 require_once(STYLESHEETPATH . '/inc/odm-taxonomy-widget.php');
 
 // Related resources
-require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
+require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');  
+
+// Related recent news
+require_once(STYLESHEETPATH . '/inc/od-related-recent-news-widget.php');
+
 
 // Advanced nav
 require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');
