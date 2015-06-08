@@ -859,8 +859,7 @@ a.button:hover{
  */
 
 .row {
-    margin-bottom: 20px;
-    clear: both;
+    margin-bottom: 20px; 
 }
 #news {
 	padding-top: 20px;
@@ -1931,7 +1930,11 @@ a.button:hover{
 	padding: 5px 10px !important;
 	margin: 0 !important;
 }
-
+/* Sidebar Related News  */
+.widget_opendev_related_recent_news_widget img{
+    width: 80px;
+    height: 80px;
+}
 
 /* Sidebar Topical Category */
 .sub-topical-cat{

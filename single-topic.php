@@ -74,6 +74,28 @@
 								<?php opendev_summary(); ?>
 							</li>
 							<?php dynamic_sidebar('topic'); ?>
+							<?php if (get_group('related_link') != "" && get_group('related_link') != NULL) { ?>
+                        	<li class="widget widget_opendev_related_link_widget" style="clear:left">
+                                <div>
+                                <h2 class="widget-title">Related Links</h2>
+							<?php
+                                    $related_link  = get_group('related_link');
+                                    echo '<ul>';
+                                    foreach ($related_link as $related) {
+                                        echo '<li>';
+                                        if($related['related_link_link'][1]!="")
+											echo '<a title="Click to view." href="'.$related['related_link_link'][1].'">';
+										if($related['related_link_label'][1]!="")
+										 	echo $related['related_link_label'][1];
+										if($related['related_link_link'][1]!="")
+                                        	echo '</a>';
+                                        echo '</li>';
+                                    }
+                                    echo '</ul>';
+                                ?>
+                                </div>
+							</li>
+						<?php } ?>
 						</ul>
 					</aside>
 				</div>
