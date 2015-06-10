@@ -791,21 +791,18 @@ function the_breadcrumb () {
                 $post_type_slug = $post_type_data->rewrite['slug'];
             }
             echo '<li class="item-current item-current-' . $post_type_slug . '"> ';
-            echo '<strong class="bread-current bread-current-' . $post_type_slug . '" title="' . post_type_archive_title() . '">';
+            echo '<div class="bread-current bread-current-' . $post_type_slug . '">';
                 //echo '<a class="bread-link bread-posttype-archive" href="' . get_post_type_archive_link($post_type) . '">';
                 echo post_type_archive_title() ;
                //echo  '</a>';
-            echo '</strong>';
+            echo '</div>';
             echo '</li>';
         }
     }
     echo '</ul>';
 
 }
- /****end Breadcrumb**/
- 
- 
- 
+ /****end Breadcrumb**/ 
 
 //to set get_the_excerpt() limit words
 function excerpt($num, $read_more="") {

@@ -526,6 +526,9 @@ a.button:hover{
     margin-right:10px;
 }
 
+#breadcrumbs a.bread-link, #breadcrumbs li{
+     color: #333;
+}
 #breadcrumbs .separator{
     background: url(../img/breadcrumb-separator.png) center  no-repeat;
     width: 14px;
@@ -541,6 +544,7 @@ a.button:hover{
 .bread-current{
      font-weight: bold;
  }
+ 
 /*
  * Headings
  */
@@ -571,7 +575,7 @@ a.button:hover{
 }
 
 .section-title {
-	padding: 30px 0 15px;
+	padding: 5px 0 15px;
 	border-bottom: 1px solid #ddd;
 	margin: 0 0 40px;
 }
