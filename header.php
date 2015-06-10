@@ -116,4 +116,11 @@
 				</div>
 			</div>
 		</nav>
+		<nav id="main-breadcrumb"><br />
+            <div class="container">
+                <div class="twelve columns">
+	               <?php the_breadcrumb(); ?>
+                </div>
+			</div>
+        </nav>
 	</header>

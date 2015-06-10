@@ -594,73 +594,218 @@ function my_mce_buttons_2($buttons) {
 }
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
 
+/****Breadcrumbs****/
+//Get parent of category
+function get_all_parent_category($sub_cat_id, $post_type, $separator="", $current_page_name=""){
+    $parent_cat = get_category_parents( $sub_cat_id, false );
+    $parent_cats = explode('/', substr($parent_cat, 0, -1));
+  	 foreach ($parent_cats as $p_cat) {
+         $page_title = $p_cat;
+    	 $page_slug = strtolower(preg_replace('/\s+/', '-', $p_cat));
+      	 $topic_page_exist = get_topic_page_link($page_slug, $post_type);
 
+         echo '<li class="item-topic item-topic-' . $topic_page_exist->ID . ' item-topic-' . $page_slug . '">';
+      	    if ($topic_page_exist){
+      	             $page_name_title = trim(strtolower($page_title)); 
+      	         if ( $page_name_title == $current_page_name){
+                      echo '<div class="bread-current bread-current-' . $topic_page_exist->ID . '" title="' . $page_title . '">';   
+                }else{
+                    echo '<a class="bread-topic bread-topic-' . $topic_page_exist->ID. ' bread-topic-' . $page_slug. '" href="' . get_permalink( $topic_page_exist ) . '" title="' . $page_title . '">';
+                }
+            }
+            echo $page_title;
 
-/** Using in topic pages
-	 * Outputs HTML containing a string of the category name as a link
-	 * Show only the category that the current post in. 
-	 * 
-	 * @param category $category a category object to display
-	 */
-function print_category_belong_to_post( $category ) {			
-		$in_category = in_category( $category->term_id );			
-		if ($in_category){ 
-			echo '<a href="' . get_category_link( $category->term_id ) . '">';	
-				echo $category->name ; 	
-			echo '</a>';
-		}		 
-	}
-	
-/**
- * Walks through a list of categories of post and prints all children descendant
- * in a hierarchy.
- * 
- * @param array $children an array of categories to display
- */
-function list_child_category_belong_to_post( $children ) {				
-	foreach($children as $child){			
-		// Get immediate children of current category
-		$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );	 
-		// Display current category
-			print_category_belong_to_post($child);	
-			
-		// if current category has children
-		if ( !empty($cat_children) ) { 
-			// display the children
-			 list_child_category_belong_to_post( $cat_children ); 
-		}			 			
-	}	
+            if ($topic_page_exist){
+                if ( $page_slug == $current_page_name){
+                    echo '</div>';
+                }else{
+                    echo "</a>";
+                }
+            }
+            echo '</li>';
+            echo '<li class="separator separator-topic separator-' . $topic_page_exist->ID. '"> ' . $separator . ' </li>';
+  	 }
 }
-/**
- * Front-end display function  
- * @param array $args of category or term
- */	 
- function show_all_category_belong_to_post($args) {  	
-	$objod = new OpenDev_Taxonomy_Widget;
-	$args = array(
-	  'orderby' => 'term_id',
-	  //'exclude' => $cat_excluded_id_arr,
-	  //'include' => $cat_included_id_arr,
-	  'parent' => 0
-	  );
-	
-	$categories = get_categories( $args );
-	echo "<div class='post-categories_tags'>";
-	foreach($categories as $category){ 
-		$children = array();			
-		if ( in_category( $category->term_id ) ||  $objod->post_is_in_descendant_category( $category->term_id ) ){ 
-			$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );				
-		}
-		 
-		print_category_belong_to_post($category);		 
-		if ( !empty($children) ) {			 
-			list_child_category_belong_to_post( $children ); 
-		} 
-	} //foreach
-		
-	echo '</div>';	 
-}//end function
-//###Using in topic pages
+/***
+ *
+ *  Get the topic page link by the name of category as it was assumpted the same name
+ */
+//$name is the catogory name or slug
+function get_topic_page_link($name, $post_type){
+        $topical_page_url = get_page_by_path($name, OBJECT, $post_type );
+		//chekc if topic page exist
+        	if ($topical_page_url){
+				return  $topical_page_url;
+			}else {
+                return false;
+            }
+}
+
+ // Creating Breadcrumbs for the site
+function the_breadcrumb () {
+    // Settings
+    $separator  = ''; //'&gt;';
+    $id         = 'breadcrumbs';
+    $class      = 'breadcrumbs';
+    $home_title = 'Home';
+
+    // Get the query & post information
+    global $post,$wp_query;
+    $category = get_the_category();
+
+    // Build the breadcrums
+    echo '<ul id="' . $id . '" class="' . $class . '">';
+    // Do not display on the homepage
+    if ( !is_front_page() ) {
+        // Home page
+        echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+        echo '<li class="separator separator-home"> ' . $separator . ' </li>';
+
+        if ( is_single() ) {
+            //Single post of post type "Topic"
+
+            if (get_post_type( get_the_ID())  == "topic") {
+                $post_type_topic = get_post_type( get_the_ID() );
+                $cats = get_the_category(get_the_ID());
+                    // if post is in this category
+                    foreach ($cats as $cat){
+    		            if ( in_category( $cat->term_id) ){
+        		          	//$page_slug = strtolower(preg_replace('/\s+/', '-', get_the_title()));
+        		          	$page_title = trim(strtolower(get_the_title()));
+        		          	$cat_name = trim(strtolower($cat->name));
+        		          	// Which Category and Post have the same name
+                            if ($cat_name == $page_title){
+                                 $cat_id = $cat->term_id;
+                                 get_all_parent_category($cat_id, $post_type_topic, $separator, $page_title);
+                            }
+                        }
+                    }
+
+            } else{
+                // Single post (Only display the first category)
+                /* echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id ) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>'; */
+                //echo '<li class="separator separator-' . $category[0]->term_id . '"> ' . $separator . ' </li>';
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+            }
+        } else if ( is_category() ) {
+            // Category page
+            echo '<li class="item-current item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><strong class="bread-current bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '">' . $category[0]->cat_name . '</strong></li>';
+
+        } else if ( is_page() ) {
+            // Standard page
+            if( $post->post_parent ){
+                // If child page, get parents
+                $anc = get_post_ancestors( $post->ID );
+                // Get parents in the right order
+                $anc = array_reverse($anc);
+
+                // Parent page loop
+                foreach ( $anc as $ancestor ) {
+                    $parents .= '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+                    $parents .= '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
+                }
+
+                // Display parent pages
+                echo $parents;
+
+                // Current page
+                echo '<li class="item-current item-' . $post->ID . '"><strong title="' . get_the_title() . '"> ' . get_the_title() . '</strong></li>';
+
+            } else {
+
+                // Just display current page if not parents
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '"> ' . get_the_title() . '</strong></li>';
+
+            }
+
+        } else if ( is_tag() ) {
+
+            // Tag page
+
+            // Get tag information
+            $term_id = get_query_var('tag_id');
+            $taxonomy = 'post_tag';
+            $args ='include=' . $term_id;
+            $terms = get_terms( $taxonomy, $args );
+
+            // Display the tag name
+            echo '<li class="item-current item-tag-' . $terms[0]->term_id . ' item-tag-' . $terms[0]->slug . '"><strong class="bread-current bread-tag-' . $terms[0]->term_id . ' bread-tag-' . $terms[0]->slug . '">' . $terms[0]->name . '</strong></li>';
+
+        } elseif ( is_day() ) {
+
+            // Day archive
+
+            // Year link
+            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
+
+            // Month link
+            echo '<li class="item-month item-month-' . get_the_time('m') . '"><a class="bread-month bread-month-' . get_the_time('m') . '" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('m') . '"> ' . $separator . ' </li>';
+
+            // Day display
+            echo '<li class="item-current item-' . get_the_time('j') . '"><strong class="bread-current bread-' . get_the_time('j') . '"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</strong></li>';
+
+        } else if ( is_month() ) {
+
+            // Month Archive
+
+            // Year link
+            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
+
+            // Month display
+            echo '<li class="item-month item-month-' . get_the_time('m') . '"><strong class="bread-month bread-month-' . get_the_time('m') . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</strong></li>';
+
+        } else if ( is_year() ) {
+
+            // Display year archive
+            echo '<li class="item-current item-current-' . get_the_time('Y') . '"><strong class="bread-current bread-current-' . get_the_time('Y') . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</strong></li>';
+
+        } else if ( is_author() ) {
+            // Auhor archive
+            // Get the author information
+            global $author;
+            $userdata = get_userdata( $author );
+
+            // Display author name
+            echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</strong></li>';
+
+        } else if ( get_query_var('paged') ) {
+
+            // Paginated archives
+            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
+
+        } else if ( is_search() ) {
+
+            // Search results page
+            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</strong></li>';
+
+        } elseif ( is_404() ) {
+            // 404 page
+            echo '<li>' . 'Error 404' . '</li>';
+        } elseif( is_post_type_archive() ) {
+            $post_type = get_post_type();
+            if ( $post_type ) {
+                $post_type_data = get_post_type_object( $post_type );
+                $post_type_slug = $post_type_data->rewrite['slug'];
+            }
+            echo '<li class="item-current item-current-' . $post_type_slug . '"> ';
+            echo '<strong class="bread-current bread-current-' . $post_type_slug . '" title="' . post_type_archive_title() . '">';
+                //echo '<a class="bread-link bread-posttype-archive" href="' . get_post_type_archive_link($post_type) . '">';
+                echo post_type_archive_title() ;
+               //echo  '</a>';
+            echo '</strong>';
+            echo '</li>';
+        }
+    }
+    echo '</ul>';
+
+}
+ /****end Breadcrumb**/
+ 
+ 
+ 
 
 //to set get_the_excerpt() limit words
 function excerpt($num, $read_more="") {

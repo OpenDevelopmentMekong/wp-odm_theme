@@ -504,6 +504,43 @@ a.button:hover{
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
 	background-color: #6393D2;
 }
+        
+/*
+ *
+  breadcrumbs
+ *
+ */
+ 
+ #main-breadcrumb{
+      background: #fff;
+ }
+ #breadcrumbs{
+    list-style:none;
+    margin:10px 0;
+    overflow:hidden;
+}
+
+#breadcrumbs li{
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:10px;
+}
+
+#breadcrumbs .separator{
+    background: url(../img/breadcrumb-separator.png) center  no-repeat;
+    width: 14px;
+    height: 11px;
+    font-size:18px;
+    font-weight:100;
+    color:#ccc;
+    margin-top: 3px;
+}
+#breadcrumbs .separator-topic:last-child{
+    display: none;
+}
+.bread-current{
+     font-weight: bold;
+ }
 /*
  * Headings
  */
