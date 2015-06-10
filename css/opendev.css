@@ -111,7 +111,7 @@ a.button:hover{
 	float:right;
 	margin: 5px 0 0 10px;
 }
- 
+
 /*
  * Header
  */
@@ -504,13 +504,13 @@ a.button:hover{
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
 	background-color: #6393D2;
 }
-        
+
 /*
  *
   breadcrumbs
  *
  */
- 
+
  #main-breadcrumb{
       background: #fff;
  }
@@ -544,7 +544,7 @@ a.button:hover{
 .bread-current{
      font-weight: bold;
  }
- 
+
 /*
  * Headings
  */
@@ -900,7 +900,7 @@ a.button:hover{
  */
 
 .row {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 #news {
 	padding-top: 20px;
@@ -1780,32 +1780,49 @@ a.button:hover{
 }
 
 .wpckan_dataset_list .wpckan_resources_list {
-	margin: 20px 0 0;
+	margin: 10px 0 0;
+	width: 100%;
+	clear: both;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul {
-	margin: 0 -20px -20px;
-	padding: 0;
+	list-style-type: none;
+  width: 100%;
+  overflow: auto;
+  margin: 0 auto;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul li {
-	border-top: 1px solid #ccc;
-	padding: 10px 20px;
-	margin: 0;
-	color: #999;
-	background: #f7f7f7;
+	border-bottom: none !important;
+	float:left;
+	display: inline-block;
+	margin: 4px 4px !important;
+	padding: 0px 0px !important;
+	font-weight: bold;
+	background: #333;
+	color: #FFF;
+	white-space: nowrap;
+	-webkit-border-radius:3px !important;
+	-moz-border-radius:3px !important;
+	border-radius:3px !important;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.25);
+}
+
+.wpckan_resource_format{
+	padding: 2px 4px;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul li:hover {
-	background: #fff;
+	background: #CCC;
+	color: #333;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul li a {
-	color: #333;
-	font-weight: 400;
+	font-weight: bold;
+	line-height:14px;
 	text-decoration: none;
-	margin: 0 0 8px;
 	display: block;
+	margin: 0 0;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul li a:before {
@@ -1968,8 +1985,8 @@ a.button:hover{
 }
 
 .widget .wpckan_dataset_list > ul > li .wpckan_dataset ul li {
-	padding: 5px 10px !important;
-	margin: 0 !important;
+	padding: 5px 10px;
+	margin: 0;
 }
 /* Sidebar Related News  */
 .widget_opendev_related_recent_news_widget img{

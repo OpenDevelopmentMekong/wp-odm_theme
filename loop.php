@@ -40,7 +40,7 @@
                                   $NumResults = $search_results->post_count; ?>
                             <div id="advanced_search_results"><h2>Site Results (<?php echo $NumResults; ?>)</h2> </div>
                     <?php endif; ?>
-					
+
 					<ul class="opendev-posts-list">
 						<?php while(have_posts()) : the_post(); ?>
 							<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
@@ -69,7 +69,7 @@
 				<?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
 					<section id="wpckan_search_results" class="four columns">
 						<h2><?php _e('Data results'); ?></h2>
-						<?php echo do_shortcode('[wpckan_query_datasets query="' . $_GET['s'] . '" limit="2"]'); ?>
+						<?php echo do_shortcode('[wpckan_query_datasets query="' . $_GET['s'] . '" limit="10" include_fields_resources="format"]'); ?>
 						<?php
 						$data_page_id = opendev_get_data_page_id();
 						if($data_page_id) {
