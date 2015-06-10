@@ -526,7 +526,7 @@ a.button:hover{
     margin-right:10px;
 }
 
-#breadcrumbs a.bread-link, #breadcrumbs li{
+#od-head #breadcrumbs a, #breadcrumbs a.bread-link, #breadcrumbs li{
      color: #333;
 }
 #breadcrumbs .separator{
