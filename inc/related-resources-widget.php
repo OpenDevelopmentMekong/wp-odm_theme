@@ -28,7 +28,7 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
 		}
 
 		global $post;
-		echo do_shortcode('[wpckan_related_datasets]');
+		echo do_shortcode('[wpckan_related_datasets include_fields_resources="format"]');
 
 		echo $args['after_widget'];
 	}
