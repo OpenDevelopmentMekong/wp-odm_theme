@@ -55,8 +55,8 @@ define('COUNTRY_NAME', strtolower($country_name));
 function opendev_setup_theme() {
 
 	$gsd = explode('wp-content', get_stylesheet_directory());
-	load_theme_textdomain('opendev',$gsd[0].'/wp-content/languages');
-	load_theme_textdomain('jeo',$gsd[0].'/wp-content/languages');
+	load_theme_textdomain('opendev',$gsd[0].'/wp-content/themes/jeo-odm/languages');
+	load_theme_textdomain('jeo',$gsd[0].'/wp-content/themes/jeo-odm/languages');
 	register_sidebar(array(
 		'name' => __('Topic sidebar', 'jeo'),
 		'id' => 'topic',
@@ -661,7 +661,9 @@ function the_breadcrumb () {
     // Do not display on the homepage
     if ( !is_front_page() ) {
         // Home page
-        echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+        echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">';
+        _e('Home' ,'opendev');
+        echo '</a></li>';
         echo '<li class="separator separator-home"> ' . $separator . ' </li>';
 
         if ( is_single() ) {

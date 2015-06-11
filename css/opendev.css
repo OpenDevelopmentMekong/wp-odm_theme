@@ -23,6 +23,25 @@ blockquote {
  border: 1px solid #DDD;
  background: #f4f4f4;
 }
+/******Image Caption**********/
+.wp-caption {
+    max-width: 750px;
+    margin-bottom: 24px;
+    padding: 15px 0px 15px 15px;
+    border: 1px solid #DDD;
+    background: #F4F4F4 none repeat scroll 0%;
+}
+.wp-caption img{
+    max-width: 735px;
+}
+.wp-caption-text {
+    font-size: 17px;
+    line-height: 24px;
+    color: #777;
+    font-style: italic;
+}
+
+/******* Image Caption *******/
 .mekong-color{
     color: #4683d2;
 }
@@ -770,8 +789,9 @@ a.button:hover{
  border: 0;
  background: #EEE;
  color: #333;
- padding: 6px 0;
- font-size: 16px;
+ padding: 2px 0;
+ font-size: 16px;       
+ line-height: 26px;
  display: block;
  margin: 0;
  width: 95%;
