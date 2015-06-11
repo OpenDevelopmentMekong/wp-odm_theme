@@ -117,18 +117,8 @@ a.button:hover{
  */
 
 #od-head {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	padding: 30px 0 0;
 	background: #292d56;
-=======
- padding: 40px 0 0;
- background: #292d56;
->>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
-=======
-	padding: 30px 0 0;
-	background: #292d56;
->>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
 }
 
 #od-head h1 {
@@ -704,38 +694,16 @@ a.button:hover{
 
 #intro-texts [class^="icon-"],
 #intro-texts [class*=" icon-"] {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
 	float: left;
 	font-size: 40px;
 	line-height: 100%;
 	margin: 0 12px 0 0;
 	padding-top: 10px;
 	color: #fff;
-<<<<<<< HEAD
-}
-#intro-texts .four.columns { 
-	margin-right:0
-=======
- float: left;
- font-size: 40px;
- line-height: 100%;
- margin: 0 20px 0 0;
- padding-top: 10px;
- color: #fff;
-}
-#intro-texts .four.columns {
-    width: 370px;
- margin-right:0
->>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
-=======
 }
 #intro-texts .four.columns {
     /* width: 370px; */
 	margin-right:0
->>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
 }
 
 #intro-texts .text-item {
@@ -751,14 +719,8 @@ a.button:hover{
 
 
 #intro-texts h3 {
-<<<<<<< HEAD
-	font-size: 24px;
-	color: #fff;
-    line-height: 28px;
-=======
  font-size: 24px;
  color: #fff;
->>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
 }
 
 #intro-texts p {
@@ -941,11 +903,7 @@ a.button:hover{
     margin-bottom: 20px;
 }
 #news {
-<<<<<<< HEAD
-	padding-top: 5px;
-=======
  padding-top: 20px;
->>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
 }
 
 #news.page-section .section-title {
@@ -2045,6 +2003,8 @@ a.button:hover{
  margin-top: 0;
 }
 
+
+
 /*
  * Advanced Navigation
  */
@@ -2273,55 +2233,6 @@ div.cartodb-legend.custom ul li.graph{
  /*end tooltips*/
 /*menu*/
 ul#menu-header-menu{
-			padding: 0px;
-		}
-		ul#menu-header-menu li{
-			float: left;
-			list-style: none;
-			position: relative;
-		}
-		ul#menu-header-menu li a{
-			padding:10px 20px;
-			display: block;
-		}
-		ul#menu-header-menu ul{
-			width: 200px;
-			display: none;
-			position: absolute;
-			border: 1px solid #c9c9c9;
-			border-top: 0px;
-		}
-
-		ul#menu-header-menu ul li{
-			width: auto;
-		}
-		ul#menu-header-menu ul ul{
-			margin-top: -1px !important;
-			position: absolute;
-			top: 0px;
-			left: 100%;
-			border-top: 1px solid #c9c9c9;
-		}
-
-		ul#menu-header-menu li:hover > ul{
-			display: block;
-		}
-
-		#od-head #main-nav ul.menu > li > ul li:last-child a{
-		border-bottom: 0px;
-		}
-		#od-head #main-nav ul.menu > li > ul li a, #od-head #main-nav ul.menu > li > ul li:last-child > ul li a{
-			border-bottom: 1px solid #ddd;
-		}
-/*menu*/
-
-@media screen and (max-width: 800px) {         
-    #od-head h1 {
-      font-size: 40px;
-      margin: 0 14px 0 0;
-    }
-}
-=======
    padding: 0px;
   }
   ul#menu-header-menu li{
@@ -2363,9 +2274,6 @@ ul#menu-header-menu{
    border-bottom: 1px solid #ddd;
   }
 /*menu*/
-<<<<<<< HEAD
->>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
-=======
 
 @media screen and (max-width: 800px) {
     #od-head h1 {
@@ -2376,4 +2284,3 @@ ul#menu-header-menu{
         margin: 4px 0 0 0;
     }
 }
->>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514

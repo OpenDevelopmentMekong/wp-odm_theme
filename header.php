@@ -117,15 +117,6 @@
 			</div>
 		</nav>
 		<?php if ( !is_front_page() ) { ?>
-<<<<<<< HEAD
-    	    <nav id="main-breadcrumb"><br />
-                <div class="container">
-                    <div class="twelve columns">
-    	               <?php the_breadcrumb(); ?>
-                    </div>
-    			</div>
-            </nav>
-=======
 		<nav id="main-breadcrumb"><br />
             <div class="container">
                 <div class="twelve columns">
@@ -133,6 +124,5 @@
                 </div>
 			</div>
         </nav>
->>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
         <?php } ?>
 	</header>
