@@ -77,7 +77,7 @@ if(is_front_page()) {
     <div class="section-featured-content">
       <?php
         if( function_exists('fa_display_slider') ){
-            fa_display_slider( 288872 );
+            fa_display_slider( 289173 );
         }
       ?>
     </div>
@@ -116,10 +116,10 @@ if(is_front_page()) {
    <div class="container">
      <div class="row">
       <div class="eight columns">
-        <?php dynamic_sidebar('announcements'); ?>
+        <?php dynamic_sidebar('frontpage-footer-left'); ?>
       </div>
       <div class="four columns">
-        <?php dynamic_sidebar('site-updates'); ?>
+        <?php dynamic_sidebar('frontpage-footer-right'); ?>
       </div>
     </div>
    </div>
