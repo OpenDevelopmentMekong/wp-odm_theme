@@ -688,8 +688,8 @@ a.button:hover{
  */
 
 #site-intro {
- padding: 15px 0 0;
- background: #6393D2;
+	padding: 15px 0 0;
+	background: #6393D2;
 }
 
 #intro-texts [class^="icon-"],
@@ -745,7 +745,6 @@ a.button:hover{
     margin-top: -1.5em;
     margin-bottom: -0.5em;
 }
-
 
 #live-search ::-webkit-input-placeholder {
  color: #666;
@@ -2275,12 +2274,8 @@ ul#menu-header-menu{
    border-bottom: 1px solid #ddd;
   }
 /*menu*/
-<<<<<<< HEAD
- 
- @media screen and (max-width: 800px) {
-=======
+
 @media screen and (max-width: 800px) {
->>>>>>> master
     #od-head h1 {
       font-size: 40px;
       margin: 0 14px 0 0;
