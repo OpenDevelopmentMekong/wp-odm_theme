@@ -63,6 +63,18 @@ function opendev_setup_theme() {
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>'
 	));
+	register_sidebar(array(
+		'name' => __('Announcements sidebar', 'jeo'),
+		'id' => 'announcements',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
+	));
+	register_sidebar(array(
+		'name' => __('Site updates sidebar', 'jeo'),
+		'id' => 'site-updates',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>'
+	));
 
 }
 add_action('after_setup_theme', 'opendev_setup_theme');

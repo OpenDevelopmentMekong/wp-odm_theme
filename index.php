@@ -98,18 +98,31 @@ if(is_front_page()) {
   </div>
  </section>
 
- <section id="latest-news">
+ <!-- <section id="latest-news">
   <div class="section-title">
    <div class="container">
     <div class="twelve columns">
-     <h2><?php _e('Latest news', 'opendev'); ?></h2>
-     <?php get_template_part('section', 'query-actions'); ?>
+     <h2>//<?php _e('Latest news', 'opendev'); ?></h2>
+     //<?php get_template_part('section', 'query-actions'); ?>
     </div>
    </div>
   </div>
   <div class="container">
-   <?php get_template_part('loop', 'latest'); ?>
+   //<?php get_template_part('loop', 'latest'); ?>
   </div>
+ </section> -->
+
+ <section id="announcements-and-updates" class="page-section row">
+   <div class="container">
+     <div class="row">
+      <div class="eight columns">
+        <?php dynamic_sidebar('announcements'); ?>
+      </div>
+      <div class="four columns">
+        <?php dynamic_sidebar('site-updates'); ?>
+      </div>
+    </div>
+   </div>
  </section>
 
  <?php //get_template_part('section', 'content-summary'); ?>

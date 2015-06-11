@@ -918,13 +918,6 @@ a.button:hover{
  box-sizing: border-box;
 }
 
-#featured-content.page-section .section-featured-content {
- max-height: 400px;
- border: 1px solid #ccc;
- box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
- box-sizing: border-box;
-}
-
 .map-container {
  min-height: 0 !important;
 }
@@ -948,6 +941,28 @@ a.button:hover{
  bottom: -10px;
 }
 
+#featured-content.page-section .section-featured-content {
+ max-height: 400px;
+ border: 1px solid #ccc;
+ box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+ box-sizing: border-box;
+}
+
+#announcements-and-updates {
+  list-style: none;
+}
+.post-widget{
+  clear:both;
+}
+.post-widget-image{
+  float: left;
+
+}
+.post-widget-image img{
+  height: 96px;
+  width: 96px;
+  margin-right: 10px;
+}
 /*
  * Sticky
  */
