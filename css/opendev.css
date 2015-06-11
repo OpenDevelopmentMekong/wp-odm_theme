@@ -136,18 +136,18 @@ a.button:hover{
  */
 
 #od-head {
- padding: 40px 0 0;
- background: #292d56;
+	padding: 30px 0 0;
+	background: #292d56;
 }
 
 #od-head h1 {
- font-family: 'Droid Serif';
- font-size: 48px;
- line-height: 48px;
- margin: 0 40px 0 0;
- font-family: 700;
- letter-spacing: -4px;
- float: left;
+	font-family: 'Droid Serif';
+	font-size: 48px;
+	line-height: 48px;
+	margin: 0 24px 0 0;
+	font-family: 700;
+	letter-spacing: -4px;
+	float: left;
 }
 
 #od-head h1 sup {
@@ -707,22 +707,22 @@ a.button:hover{
  */
 
 #site-intro {
- padding: 15px 0 0;
- background: #6393D2;
+	padding: 15px 0 0;
+	background: #6393D2;
 }
 
 #intro-texts [class^="icon-"],
 #intro-texts [class*=" icon-"] {
- float: left;
- font-size: 40px;
- line-height: 100%;
- margin: 0 20px 0 0;
- padding-top: 10px;
- color: #fff;
+	float: left;
+	font-size: 40px;
+	line-height: 100%;
+	margin: 0 12px 0 0;
+	padding-top: 10px;
+	color: #fff;
 }
 #intro-texts .four.columns {
-    width: 370px;
- margin-right:0
+    /* width: 370px; */
+	margin-right:0
 }
 
 #intro-texts .text-item {
@@ -757,11 +757,11 @@ a.button:hover{
  */
 
 #live-search {
- /* border-top: 1px solid #aaa;
- border-bottom: 1px solid #aaa; */
- clear: both;
+	/* border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa; */
+	clear: both;
     float: right;
-    margin-top: -1em;
+    margin-top: -1.5em;
     margin-bottom: -0.5em;
 }
 
@@ -790,7 +790,7 @@ a.button:hover{
  background: #EEE;
  color: #333;
  padding: 2px 0;
- font-size: 16px;       
+ font-size: 16px;
  line-height: 26px;
  display: block;
  margin: 0;
@@ -933,13 +933,6 @@ a.button:hover{
 
 #news.page-section .section-map {
  height: 600px;
- border: 1px solid #ccc;
- box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
- box-sizing: border-box;
-}
-
-#featured-content.page-section .section-featured-content {
- max-height: 400px;
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
@@ -2301,3 +2294,13 @@ ul#menu-header-menu{
    border-bottom: 1px solid #ddd;
   }
 /*menu*/
+
+@media screen and (max-width: 800px) {
+    #od-head h1 {
+      font-size: 40px;
+      margin: 0 14px 0 0;
+    }
+    #od-head h2.side-title {
+        margin: 4px 0 0 0;
+    }
+}
