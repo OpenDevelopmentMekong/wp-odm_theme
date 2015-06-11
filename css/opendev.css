@@ -118,22 +118,27 @@ a.button:hover{
 
 #od-head {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	padding: 30px 0 0;
 	background: #292d56;
 =======
  padding: 40px 0 0;
  background: #292d56;
 >>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
+=======
+	padding: 30px 0 0;
+	background: #292d56;
+>>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
 }
 
 #od-head h1 {
- font-family: 'Droid Serif';
- font-size: 48px;
- line-height: 48px;
- margin: 0 40px 0 0;
- font-family: 700;
- letter-spacing: -4px;
- float: left;
+	font-family: 'Droid Serif';
+	font-size: 48px;
+	line-height: 48px;
+	margin: 0 40px 0 0;
+	font-family: 700;
+	letter-spacing: -4px;
+	float: left;
 }
 
 #od-head h1 sup {
@@ -693,19 +698,23 @@ a.button:hover{
  */
 
 #site-intro {
- padding: 15px 0 0;
- background: #6393D2;
+	padding: 15px 0 0;
+	background: #6393D2;
 }
 
 #intro-texts [class^="icon-"],
 #intro-texts [class*=" icon-"] {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
 	float: left;
 	font-size: 40px;
 	line-height: 100%;
 	margin: 0 12px 0 0;
 	padding-top: 10px;
 	color: #fff;
+<<<<<<< HEAD
 }
 #intro-texts .four.columns { 
 	margin-right:0
@@ -721,6 +730,12 @@ a.button:hover{
     width: 370px;
  margin-right:0
 >>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
+=======
+}
+#intro-texts .four.columns {
+    /* width: 370px; */
+	margin-right:0
+>>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
 }
 
 #intro-texts .text-item {
@@ -761,9 +776,9 @@ a.button:hover{
  */
 
 #live-search {
- /* border-top: 1px solid #aaa;
- border-bottom: 1px solid #aaa; */
- clear: both;
+	/* border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa; */
+	clear: both;
     float: right;
     margin-top: -1.5em;
     margin-bottom: -0.5em;
@@ -2348,4 +2363,17 @@ ul#menu-header-menu{
    border-bottom: 1px solid #ddd;
   }
 /*menu*/
+<<<<<<< HEAD
 >>>>>>> 15b9dfc8bbb0cfb1a05bfea8ece9d7e898632019
+=======
+
+@media screen and (max-width: 800px) {
+    #od-head h1 {
+      font-size: 40px;
+      margin: 0 14px 0 0;
+    }
+    #od-head h2.side-title {
+        margin: 4px 0 0 0;
+    }
+}
+>>>>>>> cd4269f89dcf975ca3df815bc4d740d26af32514
