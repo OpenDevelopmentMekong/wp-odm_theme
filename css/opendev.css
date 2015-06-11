@@ -1986,8 +1986,6 @@ a.button:hover{
 	margin-top: 0;
 }
 
-
-
 /*
  * Advanced Navigation
  */
@@ -2257,3 +2255,10 @@ ul#menu-header-menu{
 			border-bottom: 1px solid #ddd;
 		}
 /*menu*/
+
+@media screen and (max-width: 800px) {         
+    #od-head h1 {
+      font-size: 40px;
+      margin: 0 14px 0 0;
+    }
+}
