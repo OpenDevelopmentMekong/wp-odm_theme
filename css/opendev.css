@@ -2275,8 +2275,12 @@ ul#menu-header-menu{
    border-bottom: 1px solid #ddd;
   }
 /*menu*/
+<<<<<<< HEAD
  
  @media screen and (max-width: 800px) {
+=======
+@media screen and (max-width: 800px) {
+>>>>>>> master
     #od-head h1 {
       font-size: 40px;
       margin: 0 14px 0 0;
