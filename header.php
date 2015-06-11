@@ -124,5 +124,8 @@
                 </div>
 			</div>
         </nav>
-        <?php } ?>
+        <?php } ?> 
 	</header>
+    <?php //Add Contact form button
+        button_user_feedback_form();
+    ?>  
