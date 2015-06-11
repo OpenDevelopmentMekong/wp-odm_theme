@@ -34,7 +34,10 @@ require_once(STYLESHEETPATH . '/inc/category-widget.php');
 require_once(STYLESHEETPATH . '/inc/odm-taxonomy-widget.php');
 
 // Related resources
-require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');  
+require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
+
+// Query resources
+require_once(STYLESHEETPATH . '/inc/query-resources-widget.php');
 
 // Related recent news
 require_once(STYLESHEETPATH . '/inc/od-related-recent-news-widget.php');
@@ -50,7 +53,7 @@ $country_name = str_replace('Open Development ', '', get_bloginfo('name'));
 define('COUNTRY_NAME', strtolower($country_name));
 
 function opendev_setup_theme() {
-	
+
 	$gsd = explode('wp-content', get_stylesheet_directory());
 	load_theme_textdomain('opendev',$gsd[0].'/wp-content/languages');
 	load_theme_textdomain('jeo',$gsd[0].'/wp-content/languages');
@@ -232,12 +235,12 @@ add_action('wp_footer', 'opendev_social_apis');
 
 function opendev_ms_nav() {
 ?>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script>
-  jQuery(function($) { 
+  jQuery(function($) {
 	    $('.ms-nav li a').tooltip({
-		  position: { 
+		  position: {
 			using: function( position, feedback ) {
 			  $( this ).css( position );
 			  $( "<div>" )
@@ -261,22 +264,22 @@ function opendev_ms_nav() {
 			// 	$name = $logo;
 			?>
 			<ul class="ms-nav">
-				<?php 
+				<?php
 				foreach($sites as $site) {
 					$details = get_blog_details($site['blog_id']);
 					$name = str_replace('Open Development ', '', $details->blogname);
 					$siteurl = $details->siteurl;
-					switch_to_blog($site['blog_id']); 
+					switch_to_blog($site['blog_id']);
 					?>
-					<li class="site-item"> 
+					<li class="site-item">
 					<?php
-					$options = get_option('opendev_options'); 
-					if ($options['site_in_development']=="true"){  
+					$options = get_option('opendev_options');
+					if ($options['site_in_development']=="true"){
 					?>
 						<a href="#"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?> title="<?php if ($options['message_construction']!="") _e($options['message_construction'],'opendev'); else _e("Site coming soon.", 'opendev');?>"><?php _e($name, 'opendev');?></a>
-			  <?php }else{ ?>							
+			  <?php }else{ ?>
 						<a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
-						<?php 
+						<?php
 						$options = get_option('opendev_options');
 						if($options['dropbox_menu']) {
 						?>
@@ -354,7 +357,7 @@ function opendev_ms_nav() {
 
 							</div>
 						</div><!--sub-menu-->
-					<?php } //if $options['dropbox_menu'] ?>					
+					<?php } //if $options['dropbox_menu'] ?>
 				<?php } // if $options['site_in_development'] ?>
 					</li>
 					<?php
@@ -586,10 +589,10 @@ function opendev_ignore_sticky($query) {
 }
 add_action('pre_get_posts', 'opendev_ignore_sticky');
 
-function my_mce_buttons_2($buttons) {	 
+function my_mce_buttons_2($buttons) {
 	array_unshift($buttons, 'fontselect', 'fontsizeselect');
 	$buttons[] = 'superscript';
-	$buttons[] = 'subscript';  
+	$buttons[] = 'subscript';
 	return $buttons;
 }
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
@@ -606,9 +609,9 @@ function get_all_parent_category($sub_cat_id, $post_type, $separator="", $curren
 
          echo '<li class="item-topic item-topic-' . $topic_page_exist->ID . ' item-topic-' . $page_slug . '">';
       	    if ($topic_page_exist){
-      	             $page_name_title = trim(strtolower($page_title)); 
+      	             $page_name_title = trim(strtolower($page_title));
       	         if ( $page_name_title == $current_page_name){
-                      echo '<div class="bread-current bread-current-' . $topic_page_exist->ID . '" title="' . $page_title . '">';   
+                      echo '<div class="bread-current bread-current-' . $topic_page_exist->ID . '" title="' . $page_title . '">';
                 }else{
                     echo '<a class="bread-topic bread-topic-' . $topic_page_exist->ID. ' bread-topic-' . $page_slug. '" href="' . get_permalink( $topic_page_exist ) . '" title="' . $page_title . '">';
                 }
@@ -802,24 +805,24 @@ function the_breadcrumb () {
     echo '</ul>';
 
 }
- /****end Breadcrumb**/ 
+ /****end Breadcrumb**/
 
 //to set get_the_excerpt() limit words
 function excerpt($num, $read_more="") {
-        $limit = $num+1;		
+        $limit = $num+1;
         $excerpt = explode(' ', get_the_excerpt(), $limit);
         array_pop($excerpt);
         $excerpt_string = implode(" ", $excerpt);
-		
-		
-        $excerpt_hidden_space = explode('​', $excerpt_string, $limit);		
+
+
+        $excerpt_hidden_space = explode('​', $excerpt_string, $limit);
         array_pop($excerpt_hidden_space);
         $$excerpt_string = implode("​", $excerpt_hidden_space) ;
-		
+
 		$excerpt_words = $excerpt_string. " ...";
 		if ($read_more !=""){
 			$excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." '>".$read_more."</a>)";
 		}
-		 
+
         return $excerpt_words;
 }
