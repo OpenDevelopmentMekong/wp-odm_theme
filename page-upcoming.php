@@ -7,9 +7,69 @@ Template Name: Upcoming site
 
 <?php if(have_posts()) : the_post(); ?>
 
- <!--blank row-->
- <section class="page-section row">
- </section>
+ <?php
+  $options = get_option('opendev_options');
+  if($options['site_intro']) :
+   $intro_texts = opendev_get_intro_texts();
+   if(!empty($intro_texts)) :
+   ?>
+   <section id="site-intro">
+    <div class="container">
+     <div id="intro-texts" class="row">
+      <?php if($intro_texts[1]) : ?>
+       <div class="four columns">
+        <div class="text-item">
+         <div class="icon">
+          <?php if($intro_texts[1]['icon']) : ?>
+           <p class="icon-<?php echo $intro_texts[1]['icon']; ?>"></p>
+          <?php endif; ?>
+         </div>
+         <div class="content">
+          <h3><?php echo $intro_texts[1]['title']; ?></h3>
+          <p><?php echo $intro_texts[1]['content']; ?></p>
+         </div>
+        </div>
+       </div>
+      <?php endif; ?>
+      <?php if($intro_texts[2]) : ?>
+       <div class="four columns">
+        <div class="text-item">
+         <div class="icon">
+          <?php if($intro_texts[2]['icon']) : ?>
+           <p class="icon-<?php echo $intro_texts[2]['icon']; ?>"></p>
+          <?php endif; ?>
+         </div>
+         <div class="content">
+          <h3><?php echo $intro_texts[2]['title']; ?></h3>
+          <p><?php echo $intro_texts[2]['content']; ?></p>
+         </div>
+        </div>
+       </div>
+      <?php endif; ?>
+      <?php if($intro_texts[3]) : ?>
+       <div class="four columns">
+        <div class="text-item">
+         <div class="icon">
+          <?php if($intro_texts[3]['icon']) : ?>
+           <p class="icon-<?php echo $intro_texts[3]['icon']; ?>"></p>
+          <?php endif; ?>
+         </div>
+         <div class="content">
+          <h3><?php echo $intro_texts[3]['title']; ?></h3>
+          <p><?php echo $intro_texts[3]['content']; ?></p>
+         </div>
+        </div>
+       </div>
+      <?php endif; ?>
+     </div>
+    </div>
+   </section>
+  <?php endif; ?>
+ <?php else: ?>
+  <!--blank row-->
+  <section class="page-section row">
+  </section>
+ <?php endif; ?>
 
  <section id="featured-content" class="page-section row">
   <div class="container">
