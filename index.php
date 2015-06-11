@@ -72,7 +72,7 @@ if(is_front_page()) {
 	</section>
 
 	<?php $is_mapgroup = jeo_get_mapgroup_data(); ?>
-	<section id="news" class="page-section row" <?php if($is_mapgroup) : echo "style='padding-top:60px'"; endif; ?>>
+	<section id="news" class="page-section row" <?php if($is_mapgroup) : echo "style='padding-top:35px'"; endif; ?>>
 		<div class="container">
 			<div class="twelve columns">
 				<div class="section-map">
