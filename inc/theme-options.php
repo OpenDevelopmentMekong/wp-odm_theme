@@ -131,6 +131,14 @@ class OpenDev_Options {
   );
 
   add_settings_field(
+   'opendev_frontpage_slider_id',
+   __('Frontpage slider id', 'opendev'),
+   array($this, 'frontpage_slider_id_field'),
+   'opendev_options',
+   'opendev_style_section'
+  );
+
+  add_settings_field(
    'opendev_logo',
    __('Upload a custom logo', 'opendev'),
    array($this, 'logo_field'),
@@ -257,6 +265,14 @@ class OpenDev_Options {
   <label for="opendev_site_intro"><strong><?php _e('Enable', 'opendev'); ?></strong></label><br/>
 
  <?php
+ }
+
+ function frontpage_slider_id_field() {
+  $frontpage_slider_id = $this->options['frontpage_slider_id'];
+  ?>
+  <input id="opendev_frontpage_slider_id" name="opendev_options[frontpage_slider_id]" type="text" placeholder="<?php _e('281321');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');?>'" value="<?php echo $frontpage_slider_id; ?>" size="70" /><br/>
+  <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'opendev'); ?></i>
+  <?php
  }
 
  function logo_field() {

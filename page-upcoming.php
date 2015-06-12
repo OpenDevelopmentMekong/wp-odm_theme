@@ -71,19 +71,21 @@ Template Name: Upcoming site
   </section>
  <?php endif; ?>
 
- <section id="featured-content" class="page-section row">
-  <div class="container">
-   <div class="twelve columns">
-    <div class="section-featured-content">
-      <?php
-        if( function_exists('fa_display_slider') ){
-            fa_display_slider( 289173 );
-        }
-      ?>
+ <?php if($options['frontpage_slider_id']) : ?>
+   <section id="featured-content" class="page-section row">
+    <div class="container">
+     <div class="twelve columns">
+      <div class="section-featured-content">
+        <?php
+          if( function_exists('fa_display_slider') ){
+              fa_display_slider( $options['frontpage_slider_id'] );
+          }
+        ?>
+      </div>
+     </div>
     </div>
-   </div>
-  </div>
- </section>
+   </section>
+ <?php endif; ?>
 
  <section id="page-content">
   <div class="section-title">
