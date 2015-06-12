@@ -949,15 +949,50 @@ a.button:hover{
 }
 
 #announcements-and-updates {
-  list-style: none;
+ list-style: none;
 }
-.post-widget{
-  clear:both;
+.announcements-list{
+ overflow:auto;
 }
-.post-widget-image{
-  float: left;
+.announcements-list ul{
+ list-style-type: none;
+}
+.announcements-list li{
+ width: 30.33%;
+ display: -moz-inline-stack;
+ display: inline-block;
+ vertical-align: top;
+ margin: 10px 1%;
+ zoom: 1;
+ *display: inline;
+}
+.announcements-list li:last-child{
 
 }
+.announcements-list li img{
+ float: left;
+}
+.updates-list{
+ list-style-type: circle;
+}
+.updates-list ul{
+ overflow:auto;
+ margin-bottom: 0px;
+}
+.updates-list li{
+ width: 100%;
+ border-bottom: 1px solid #ccc;
+ padding-bottom: 10px;
+}
+.updates-list li:last-child{
+ padding-bottom: 10px;
+}
+/*.post-widget{
+ float: left;
+}
+.post-widget-image{
+ float: left;
+}*/
 .post-widget-image img{
   height: 96px;
   width: 96px;

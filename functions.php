@@ -82,6 +82,12 @@ function opendev_setup_theme() {
   'after_title' => '</h2>'
  ));
  register_sidebar(array(
+  'name' => __('Upcoming footer middle', 'jeo'),
+  'id' => 'upcoming-footer-middle',
+  'before_title' => '<h2 class="widget-title">',
+  'after_title' => '</h2>'
+ ));
+ register_sidebar(array(
   'name' => __('Upcoming footer right', 'jeo'),
   'id' => 'upcoming-footer-right',
   'before_title' => '<h2 class="widget-title">',

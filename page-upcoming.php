@@ -99,8 +99,11 @@ Template Name: Upcoming site
  <section id="announcements-and-updates" class="page-section row">
    <div class="container">
      <div class="row">
-      <div class="eight columns">
+      <div class="four columns">
         <?php dynamic_sidebar('upcoming-footer-left'); ?>
+      </div>
+      <div class="four columns">
+        <?php dynamic_sidebar('upcoming-footer-middle'); ?>
       </div>
       <div class="four columns">
         <?php dynamic_sidebar('upcoming-footer-right'); ?>

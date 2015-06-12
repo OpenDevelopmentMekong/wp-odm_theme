@@ -20,15 +20,17 @@ if ( !empty($title) )
 
 if( $flexible_posts->have_posts() ):
 ?>
+<div class="updates-list">
  <ul class="dpe-flexible-posts">
  <?php while( $flexible_posts->have_posts() ) : $flexible_posts->the_post(); global $post; ?>
-  <li class="post-widget" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
    <a href="<?php echo the_permalink(); ?>">
     <?php the_title(); ?>
    </a>
   </li>
  <?php endwhile; ?>
  </ul><!-- .dpe-flexible-posts -->
+</div>
 <?php else: // We have no posts ?>
  <div class="dpe-flexible-posts no-posts">
   <p><?php _e( 'No post found', 'flexible-posts-widget' ); ?></p>
