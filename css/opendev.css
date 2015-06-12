@@ -2,6 +2,12 @@ html, body {
  background: #fff;                                	
  font-family: "Khmer OS", "Open Sans","Helvetica","Arial",sans-serif; 
 }
+h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}
+h2 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
+h3 { font-size: 28px; line-height: 30px; margin-bottom: 5px; }
+h4 { font-size: 25px; line-height: 28px; margin-bottom: 4px; }
+h5 { font-size: 22px; line-height: 24px; }
+h6 { font-size: 16px; line-height: 16px; }
 
 img {
  max-width: 100%;
@@ -582,6 +588,7 @@ a.button:hover{
  -khtml-box-shadow: 0 0 0;
  -o-box-shadow: 0 0 0;
  margin: 0;
+ padding-top: 0;
 }
 
 .single-post-header p.date {
@@ -1456,7 +1463,7 @@ a.button:hover{
 .single section.content h4 {
  font-family: 'Droid Serif';
  font-weight: 200;
- margin: 40px 0;
+ margin: 10px 0;
 }
 
 .single section.content .wp-feature-box .wp-feature-box-header h2 {
@@ -1484,6 +1491,19 @@ a.button:hover{
  font-size: 16px;
  line-height: 150%;
 }
+#content ul{
+    margin-left: 1.5em;
+}                             
+#content ul li {
+	list-style-type: square;
+}
+#content #reference-list{
+    margin-left: 0;
+}
+#content #references li, #content #reference-list li{
+	list-style-type: none;
+}
+
 #clear{
  clear:both;
 }
