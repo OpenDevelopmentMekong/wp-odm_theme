@@ -1,8 +1,11 @@
+<?php
+/*
+Template Name: Upcoming site
+*/
+?>
 <?php get_header(); ?>
 
-<?php
-if(is_front_page()) {
- ?>
+<?php if(have_posts()) : the_post(); ?>
 
  <?php
   $options = get_option('opendev_options');
@@ -84,50 +87,35 @@ if(is_front_page()) {
    </section>
  <?php endif; ?>
 
- <?php $is_mapgroup = jeo_get_mapgroup_data(); ?>
- <section id="news" class="page-section row" <?php if($is_mapgroup) : echo "style='padding-top:60px'"; endif; ?>>
-  <div class="container">
-   <div class="twelve columns">
-    <div class="section-map">
-     <?php
-     jeo_map();
-     ?>
+ <section id="page-content">
+  <div class="section-title">
+   <div class="container">
+    <div class="twelve columns">
+     <h1><?php the_title(); ?></h1>
+     <?php the_content(); ?>
     </div>
    </div>
   </div>
  </section>
-
- <!-- <section id="latest-news">
-  <div class="section-title">
-   <div class="container">
-    <div class="twelve columns">
-     <h2>//<?php _e('Latest news', 'opendev'); ?></h2>
-     //<?php get_template_part('section', 'query-actions'); ?>
-    </div>
-   </div>
-  </div>
-  <div class="container">
-   //<?php get_template_part('loop', 'latest'); ?>
-  </div>
- </section> -->
 
  <section id="announcements-and-updates" class="page-section row">
    <div class="container">
      <div class="row">
-      <div class="eight columns">
-        <?php dynamic_sidebar('frontpage-footer-left'); ?>
+      <div class="four columns">
+        <?php dynamic_sidebar('upcoming-footer-left'); ?>
       </div>
       <div class="four columns">
-        <?php dynamic_sidebar('frontpage-footer-right'); ?>
+        <?php dynamic_sidebar('upcoming-footer-middle'); ?>
+      </div>
+      <div class="four columns">
+        <?php dynamic_sidebar('upcoming-footer-right'); ?>
       </div>
     </div>
    </div>
  </section>
+<?php endif; ?>
 
- <?php //get_template_part('section', 'content-summary'); ?>
-
-<?php } ?>
-
+<?php //get_template_part('section', 'content-summary'); ?>
 <?php // get_template_part('content', 'interactive-map'); ?>
 
 <?php get_footer(); ?>

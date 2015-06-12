@@ -44,7 +44,7 @@ class OpenDev_SiteUpdates {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 4,
-			'supports'           => array( 'title', 'editor', 'excerpt' )
+			'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' )
 		);
 
 		register_post_type( 'site-update', $args );
