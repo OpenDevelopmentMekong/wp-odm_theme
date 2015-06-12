@@ -54,17 +54,6 @@ define('COUNTRY_NAME', strtolower($country_name));
 
 function opendev_setup_theme() {
 
-<<<<<<< HEAD
-	$gsd = explode('wp-content', get_stylesheet_directory());
-	load_theme_textdomain('opendev',$gsd[0].'/wp-content/themes/jeo-odm/languages');
-	load_theme_textdomain('jeo',$gsd[0].'/wp-content/themes/jeo-odm/languages');
-	register_sidebar(array(
-		'name' => __('Topic sidebar', 'jeo'),
-		'id' => 'topic',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>'
-	));
-=======
  $gsd = explode('wp-content', get_stylesheet_directory());
  load_theme_textdomain('opendev',$gsd[0].'/wp-content/languages');
  load_theme_textdomain('jeo',$gsd[0].'/wp-content/languages');
@@ -104,7 +93,6 @@ function opendev_setup_theme() {
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>'
  ));
->>>>>>> impl-127
 
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
