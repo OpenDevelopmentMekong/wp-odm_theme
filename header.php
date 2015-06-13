@@ -92,7 +92,7 @@
 			<div id="live-search">
         		<div class="container">
         			<div class="three columns align-right">
-        				<input type="text" placeholder="<?php _e('Search &#128270;');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;');?>'" />
+        				<input type="text" placeholder="<?php _e('Search &#128270;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
         				<img src="<?php bloginfo('stylesheet_directory')?>/img/loading.gif" alt="loading" id="loading" />
         		    </div>
                     <div class="results-container"></div>

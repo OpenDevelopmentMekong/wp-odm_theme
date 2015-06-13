@@ -704,11 +704,11 @@ function the_breadcrumb () {
                 if($cats){
                     // if post is in this category
                     foreach ($cats as $cat){
-    		            if ( in_category( $cat->term_id) ){
-        		          	//$page_slug = strtolower(preg_replace('/\s+/', '-', get_the_title()));
-        		          	$page_title = trim(strtolower(get_the_title()));
-        		          	$cat_name = trim(strtolower($cat->name));
-        		          	// Which Category and Post have the same name
+                  if ( in_category( $cat->term_id) ){
+                     //$page_slug = strtolower(preg_replace('/\s+/', '-', get_the_title()));
+                     $page_title = trim(strtolower(get_the_title()));
+                     $cat_name = trim(strtolower($cat->name));
+                     // Which Category and Post have the same name
                             if ($cat_name == $page_title){
                                  $cat_id = $cat->term_id;
                                  get_all_parent_category($cat_id, $post_type_topic, $separator, $page_title);
