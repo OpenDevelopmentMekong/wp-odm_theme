@@ -2009,14 +2009,11 @@ a.button:hover{
  list-style-type: none !important;
 }
 
-<<<<<<< HEAD
 #sidebar .widgets .widget div ul li ul li{
  list-style: disc !important;
  list-style-type: disc !important;
 }
 
-=======
->>>>>>> master
 #sidebar .widgets .widget ol,
 .widget ol {
  margin-left: 10px;

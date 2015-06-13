@@ -712,8 +712,6 @@ function the_breadcrumb () {
                             if ($cat_name == $page_title){
                                  $cat_id = $cat->term_id;
                                  get_all_parent_category($cat_id, $post_type_topic, $separator, $page_title);
-                            }else{
-                                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
                             }
                         }
                     }//end foreach
