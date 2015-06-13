@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Additional String\n"
-"POT-Creation-Date: 2015-06-11 21:54+0700\n"
-"PO-Revision-Date: 2015-06-11 22:09+0700\n"
+"POT-Creation-Date: 2015-06-13 15:39+0700\n"
+"PO-Revision-Date: 2015-06-13 16:25+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -22,11 +22,6 @@ msgstr ""
 #: ..\..\jeo/lib/cartodb.mod.torque.js:2
 msgid "<%=filename%>:<%=line%>:<%=column%> <%=message%>"
 msgstr ""
-
-#: ../--single-briefing.php:48 ../page.php:17 ../single-topic.php:48
-#: ../single.php:34 ..\..\jeo/page.php:17 ..\..\jeo/single.php:29
-msgid "Pages:"
-msgstr "ទំព័រ"
 
 #: ../archive.php:14 ..\..\jeo/archive.php:10
 #, php-format
@@ -62,7 +57,7 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: ../category.php:61 ../functions - Copy.php:308 ../functions.php:308
+#: ../category.php:61 ../functions.php:319
 #: ../inc/live-search/live-search.php:22
 #: ../languages/odm-localization-templete.php:15
 #: .\odm-localization-templete.php:15 odm-localization-templete.php:15
@@ -87,6 +82,11 @@ msgstr "បន្ថែម..."
 msgid "View all maps"
 msgstr ""
 
+#: ../flexible-posts-widget/opendev-announcements.php:52
+#: ../flexible-posts-widget/opendev-site-updates.php:36
+msgid "No post found"
+msgstr ""
+
 #: ../footer.php:18 ..\..\jeo/footer.php:10
 #, php-format
 msgid ""
@@ -95,109 +95,123 @@ msgid ""
 "\">JEO Beta</a> theme"
 msgstr ""
 
-#: ../functions - Copy.php:79 ../functions.php:79
+#: ../functions.php:61
 msgid "Topic sidebar"
 msgstr ""
 
-#: ../functions - Copy.php:127 ../functions.php:127
+#: ../functions.php:67
+msgid "Frontpage footer left"
+msgstr ""
+
+#: ../functions.php:73
+msgid "Frontpage footer right"
+msgstr ""
+
+#: ../functions.php:79
+msgid "Upcoming footer left"
+msgstr ""
+
+#: ../functions.php:85
+msgid "Upcoming footer middle"
+msgstr ""
+
+#: ../functions.php:91
+msgid "Upcoming footer right"
+msgstr ""
+
+#: ../functions.php:139
 msgid "stories"
 msgstr ""
 
-#: ../functions - Copy.php:129 ../functions.php:129
+#: ../functions.php:141
 msgid "Copy the embed code"
 msgstr ""
 
-#: ../functions - Copy.php:130 ../functions.php:130 ../loop-latest.php:37
-#: ..\..\jeo/content-share.php:9 ..\..\jeo/content-share.php:237
-#: ..\..\jeo/inc/share-widget.php:34
+#: ../functions.php:142 ../loop-latest.php:21 ..\..\jeo/content-share.php:9
+#: ..\..\jeo/content-share.php:237 ..\..\jeo/inc/share-widget.php:34
 msgid "Share"
 msgstr "ចែករំលែក"
 
-#: ../functions - Copy.php:131 ../functions.php:131
+#: ../functions.php:143
 msgid "Print"
 msgstr "បោះពុម្ព"
 
-#: ../functions - Copy.php:142 ../functions.php:142 ../loop-latest.php:35
-#: ../loop.php:58 ..\..\jeo/content-featured.php:32 ..\..\jeo/loop.php:22
+#: ../functions.php:154 ../loop-latest.php:19 ../loop.php:62
+#: ..\..\jeo/content-featured.php:32 ..\..\jeo/loop.php:22
 msgid "Read more"
 msgstr "អានបន្ថែម"
 
-#: ../functions - Copy.php:144 ../functions.php:144
+#: ../functions.php:156
 msgid "Open slideshow"
 msgstr ""
 
-#: ../functions - Copy.php:145 ../functions.php:145
+#: ../functions.php:157
 msgid "Watch video gallery"
 msgstr ""
 
-#: ../functions - Copy.php:146 ../functions.php:146
+#: ../functions.php:158
 msgid "Watch video"
 msgstr ""
 
-#: ../functions - Copy.php:147 ../functions.php:147
+#: ../functions.php:159
 msgid "View image gallery"
 msgstr ""
 
-#: ../functions - Copy.php:148 ../functions.php:148
+#: ../functions.php:160
 msgid "View fullscreen image"
 msgstr ""
 
-#: ../functions - Copy.php:149 ../functions.php:149
+#: ../functions.php:161
 msgid "View infographic"
 msgstr ""
 
-#: ../functions - Copy.php:150 ../functions.php:150
+#: ../functions.php:162
 msgid "View infographics"
 msgstr ""
 
-#: ../functions - Copy.php:297 ../functions.php:297
-#: ../inc/theme-options.php:221
+#: ../functions.php:309 ../inc/theme-options.php:237
 msgid "Site coming soon."
 msgstr ""
 
-#: ../functions - Copy.php:311 ../functions.php:311
-#: ../section-content-summary.php:9
+#: ../functions.php:322
 msgid "Topics"
-msgstr ""
+msgstr "ប្រធានបទ"
 
-#: ../functions - Copy.php:314 ../functions.php:314
-#: ../languages/odm-localization-templete.php:17
+#: ../functions.php:325 ../languages/odm-localization-templete.php:17
 #: ..\..\jeo/inc/admin/settings.php:23 ..\..\jeo/inc/core.php:169
 #: ..\..\jeo/inc/core.php:179 .\odm-localization-templete.php:17
 #: odm-localization-templete.php:17
 msgid "Maps"
 msgstr "ផែនទី"
 
-#: ../functions - Copy.php:321 ../functions.php:321
-#: ../languages/odm-localization-templete.php:18
+#: ../functions.php:332 ../languages/odm-localization-templete.php:18
 #: .\odm-localization-templete.php:18 odm-localization-templete.php:18
 msgid "Data"
 msgstr "ទិន្នន័យ"
 
-#: ../functions - Copy.php:332 ../functions.php:332 ../index.php:91
+#: ../functions.php:343 ../index.php:104
 #: ../languages/odm-localization-templete.php:10
 #: .\odm-localization-templete.php:10 odm-localization-templete.php:10
 msgid "Latest news"
 msgstr "ព័ត៌មានថ្មីបំផុត"
 
-#: ../functions - Copy.php:348 ../functions.php:348
+#: ../functions.php:359
 msgid "Latest topics"
-msgstr ""
+msgstr "ប្រធានបទថ្មីបំផុត"
 
-#: ../functions - Copy.php:364 ../functions.php:364
-#: ../languages/odm-localization-templete.php:11
+#: ../functions.php:375 ../languages/odm-localization-templete.php:11
 #: .\odm-localization-templete.php:11 odm-localization-templete.php:11
 msgid "Latest maps"
 msgstr "ផែនទីថ្មីបំផុត"
 
-#: ../functions - Copy.php:799 ../functions.php:801 ../header.php:17
-#: ..\..\jeo/content-embed.php:16 ..\..\jeo/header.php:17
-msgid "Page"
-msgstr "ទំព័រ"
-
-#: ../functions.php:684
+#: ../functions.php:695
 msgid "Home"
 msgstr "ទំព័រដើម"
+
+#: ../functions.php:812 ../header.php:17 ..\..\jeo/content-embed.php:16
+#: ..\..\jeo/header.php:17
+msgid "Page"
+msgstr "ទំព័រ"
 
 #: ../header.php:95
 msgid "Search &#128270;"
@@ -205,49 +219,49 @@ msgstr "ស្វែងរក &#128270;"
 
 #: ../inc/advanced-navigation.php:126
 msgid "Text search"
-msgstr ""
+msgstr "ពាក្យស្វែងរក"
 
 #: ../inc/advanced-navigation.php:127
 msgid "Type your search here"
-msgstr ""
+msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
 #: ../inc/advanced-navigation.php:137
 msgid "Categories"
-msgstr ""
+msgstr "ប្រធានបទ"
 
 #: ../inc/advanced-navigation.php:138
 msgid "Select categories"
-msgstr ""
+msgstr "ជ្រើសរើសប្រធានបទ"
+
+#: ../inc/advanced-navigation.php:164
+msgid "Content type"
+msgstr "ប្រភេទអត្ថបទ"
 
 #: ../inc/advanced-navigation.php:165
-msgid "Content type"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:166
 msgid "Select content types"
-msgstr ""
+msgstr "ជ្រើសរើសប្រភេទអត្ថបទ"
 
-#: ../inc/advanced-navigation.php:176
+#: ../inc/advanced-navigation.php:175
 msgid "Date range"
-msgstr ""
+msgstr "អំឡុងពេល"
 
-#: ../inc/advanced-navigation.php:179
+#: ../inc/advanced-navigation.php:178
 msgid "From"
 msgstr "ពី"
 
-#: ../inc/advanced-navigation.php:183
+#: ../inc/advanced-navigation.php:182
 msgid "To"
 msgstr "ដល់"
 
-#: ../inc/advanced-navigation.php:190
+#: ../inc/advanced-navigation.php:189
 msgid "Filter"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:201 ../inc/advanced-navigation.php:212
+#: ../inc/advanced-navigation.php:200 ../inc/advanced-navigation.php:211
 msgid "Cancel filters"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:209
+#: ../inc/advanced-navigation.php:208
 msgid "More filters"
 msgstr ""
 
@@ -312,67 +326,6 @@ msgstr ""
 msgid "No announcements found in trash."
 msgstr ""
 
-#: ../inc/briefings.php:19 ../inc/topics.php:19
-msgctxt "post type general name"
-msgid "Topics"
-msgstr ""
-
-#: ../inc/briefings.php:20 ../inc/topics.php:20
-msgctxt "post type singular name"
-msgid "Topic"
-msgstr ""
-
-#: ../inc/briefings.php:21 ../inc/topics.php:21
-msgctxt "admin menu"
-msgid "Topics"
-msgstr ""
-
-#: ../inc/briefings.php:22 ../inc/topics.php:22
-msgctxt "add new on admin bar"
-msgid "Topic"
-msgstr ""
-
-#: ../inc/briefings.php:23 ../inc/topics.php:23
-msgctxt "topic"
-msgid "Add new"
-msgstr ""
-
-#: ../inc/briefings.php:24 ../inc/topics.php:24
-msgid "Add new topic"
-msgstr ""
-
-#: ../inc/briefings.php:25 ../inc/topics.php:25
-msgid "New topic"
-msgstr ""
-
-#: ../inc/briefings.php:26 ../inc/topics.php:26
-msgid "Edit topic"
-msgstr ""
-
-#: ../inc/briefings.php:27 ../inc/topics.php:27
-msgid "View topic"
-msgstr ""
-
-#: ../inc/briefings.php:28 ../inc/topics.php:28
-msgid "All topics"
-msgstr ""
-
-#: ../inc/briefings.php:29 ../inc/topics.php:29
-msgid "Search topics"
-msgstr ""
-
-#: ../inc/briefings.php:30 ../inc/topics.php:30
-msgid "Parent topics:"
-msgstr ""
-
-#: ../inc/briefings.php:31 ../inc/topics.php:31
-msgid "No topics found."
-msgstr ""
-
-#: ../inc/briefings.php:32 ../inc/topics.php:32
-msgid "No topics found in trash."
-msgstr ""
-
 #: ../inc/category-widget.php:12
 msgid "OD Post Taxonomy"
 msgstr ""
@@ -435,144 +388,6 @@ msgstr ""
 msgid "New Layer category Name"
 msgstr ""
 
-#: ../inc/layers-setting.php:14 ..\..\jeo/inc/layers.php:132
-msgid "Layer type"
-msgstr ""
-
-#: ../inc/layers-setting.php:17 ..\..\jeo/inc/layers.php:135
-msgid "Tilelayer"
-msgstr ""
-
-#: ../inc/layers-setting.php:20
-msgid "Geoserver WMS"
-msgstr ""
-
-#: ../inc/layers-setting.php:23 ..\..\jeo/inc/layers.php:138
-msgid "MapBox"
-msgstr ""
-
-#: ../inc/layers-setting.php:26 ..\..\jeo/inc/layers.php:141
-msgid "CartoDB"
-msgstr ""
-
-#: ../inc/layers-setting.php:40 ..\..\jeo/content-share.php:219
-#: ..\..\jeo/inc/layers.php:155
-msgid "URL"
-msgstr ""
-
-#: ../inc/layers-setting.php:42 ..\..\jeo/inc/layers.php:157
-msgid "http://{s}.example.com/{z}/{x}/{y}.png"
-msgstr ""
-
-#: ../inc/layers-setting.php:43 ..\..\jeo/inc/layers.php:158
-msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
-msgstr ""
-
-#: ../inc/layers-setting.php:47 ..\..\jeo/inc/layers.php:162
-msgid "UTFGrid URL (optional)"
-msgstr ""
-
-#: ../inc/layers-setting.php:49 ..\..\jeo/inc/layers.php:164
-msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
-msgstr ""
-
-#: ../inc/layers-setting.php:50 ..\..\jeo/inc/layers.php:165
-msgid ""
-"Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
-msgstr ""
-
-#: ../inc/layers-setting.php:54 ..\..\jeo/inc/layers.php:169
-msgid "UTFGrid Template (optional)"
-msgstr ""
-
-#: ../inc/layers-setting.php:57 ../inc/layers-setting.php:151
-#: ..\..\jeo/inc/layers.php:172 ..\..\jeo/inc/layers.php:266
-msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
-msgstr ""
-
-#: ../inc/layers-setting.php:61 ..\..\jeo/inc/layers.php:176
-msgid "TMS"
-msgstr ""
-
-#: ../inc/layers-setting.php:63 ..\..\jeo/inc/layers.php:178
-msgid "Enable TMS"
-msgstr ""
-
-#: ../inc/layers-setting.php:64 ..\..\jeo/inc/layers.php:179
-msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
-msgstr ""
-
-#: ../inc/layers-setting.php:77 ..\..\jeo/inc/layers.php:192
-msgid "MapBox ID"
-msgstr ""
-
-#: ../inc/layers-setting.php:80 ..\..\jeo/inc/layers.php:195
-msgid "MapBox map ID. E.g.: examples.map-20v6611k"
-msgstr ""
-
-#: ../inc/layers-setting.php:104 ..\..\jeo/inc/layers.php:219
-msgid "Visualization type"
-msgstr ""
-
-#: ../inc/layers-setting.php:107 ..\..\jeo/inc/layers.php:222
-msgid "Visualization"
-msgstr ""
-
-#: ../inc/layers-setting.php:109 ..\..\jeo/inc/layers.php:224
-msgid "Advanced (build from your tables)"
-msgstr ""
-
-#: ../inc/layers-setting.php:109 ..\..\jeo/inc/layers.php:224
-msgid "coming soon"
-msgstr ""
-
-#: ../inc/layers-setting.php:113 ..\..\jeo/inc/layers.php:228
-msgid "CartoDB URL"
-msgstr ""
-
-#: ../inc/layers-setting.php:116 ..\..\jeo/inc/layers.php:231
-msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
-"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
-msgstr ""
-
-#: ../inc/layers-setting.php:120 ..\..\jeo/inc/layers.php:235
-msgid "Username"
-msgstr ""
-
-#: ../inc/layers-setting.php:123 ..\..\jeo/inc/layers.php:238
-msgid "Your CartoDB username."
-msgstr ""
-
-#: ../inc/layers-setting.php:127 ..\..\jeo/inc/layers.php:242
-msgid "Table"
-msgstr ""
-
-#: ../inc/layers-setting.php:130 ..\..\jeo/inc/layers.php:245
-msgid "The CartoDB table you'd like to visualize."
-msgstr ""
-
-#: ../inc/layers-setting.php:134 ..\..\jeo/inc/layers.php:249
-msgid "Where (optional)"
-msgstr ""
-
-#: ../inc/layers-setting.php:137 ..\..\jeo/inc/layers.php:252
-msgid "Query data from your table.<br/>E.g.: region = \"north\""
-msgstr ""
-
-#: ../inc/layers-setting.php:141 ..\..\jeo/inc/layers.php:256
-msgid "CartoCSS"
-msgstr ""
-
-#: ../inc/layers-setting.php:144 ..\..\jeo/inc/layers.php:259
-#, php-format
-msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
-msgstr ""
-
-#: ../inc/layers-setting.php:148 ..\..\jeo/inc/layers.php:263
-msgid "Template"
-msgstr ""
-
 #: ../inc/live-search/live-search.php:20
 msgid "Go to the advanced search"
 msgstr ""
@@ -602,7 +417,8 @@ msgid "Related News"
 msgstr "ព័ត៌មានពាក់ព័ន្ធ"
 
 #: ../inc/od-related-recent-news-widget.php:95
-#: ../inc/odm-taxonomy-widget.php:169 ../inc/related-resources-widget.php:46
+#: ../inc/odm-taxonomy-widget.php:165 ../inc/query-resources-widget.php:73
+#: ../inc/related-resources-widget.php:72
 msgid "Title:"
 msgstr ""
 
@@ -618,16 +434,46 @@ msgstr ""
 msgid "Display OD taxonomy for content"
 msgstr ""
 
-#: ../inc/odm-taxonomy-widget.php:164
+#: ../inc/odm-taxonomy-widget.php:160
 msgid "Topic areas"
 msgstr ""
 
-#: ../inc/odm-taxonomy-widget.php:173
+#: ../inc/odm-taxonomy-widget.php:169
 msgid "Include Category by IDs (separated by commas):"
 msgstr ""
 
-#: ../inc/odm-taxonomy-widget.php:177
+#: ../inc/odm-taxonomy-widget.php:173
 msgid "Exclude Category by IDs (separated by commas):"
+msgstr ""
+
+#: ../inc/query-resources-widget.php:12
+msgid "OD Query Resources"
+msgstr ""
+
+#: ../inc/query-resources-widget.php:13
+msgid "Query resources and displays them in a post or page."
+msgstr ""
+
+#: ../inc/query-resources-widget.php:50 ../inc/related-resources-widget.php:50
+msgid "Related Resources"
+msgstr "ទិន្នន័យពាក់ព័ន្ធ"
+
+#: ../inc/query-resources-widget.php:75
+msgid "Query:"
+msgstr ""
+
+#: ../inc/query-resources-widget.php:77 ../inc/related-resources-widget.php:74
+msgid "CKAN Organization:"
+msgstr ""
+
+#: ../inc/query-resources-widget.php:79 ../inc/query-resources-widget.php:86
+#: ../inc/related-resources-widget.php:76
+#: ../inc/related-resources-widget.php:83
+msgid "All"
+msgstr ""
+
+#: ../inc/query-resources-widget.php:84 ../inc/related-resources-widget.php:81
+msgid "CKAN Group:"
 msgstr ""
 
 #: ../inc/related-resources-widget.php:12
@@ -637,10 +483,6 @@ msgstr ""
 #: ../inc/related-resources-widget.php:13
 msgid "Display post related resources."
 msgstr ""
-
-#: ../inc/related-resources-widget.php:43
-msgid "Related Resources"
-msgstr "ទិន្នន័យពាក់ព័ន្ធ"
 
 #: ../inc/site-updates.php:19
 msgctxt "post type general name"
@@ -703,7 +545,7 @@ msgstr ""
 msgid "No site updates found in trash."
 msgstr ""
 
-#: ../inc/summary.php:71
+#: ../inc/summary.php:75
 msgid "On this page"
 msgstr "នៅលើទំព័រនេះ"
 
@@ -752,213 +594,291 @@ msgid "Enable dropdown box of the country menu"
 msgstr ""
 
 #: ../inc/theme-options.php:127
-msgid "Upload a custom logo"
+msgid "Show site intro texts"
 msgstr ""
 
 #: ../inc/theme-options.php:135
-msgid "Facebook url"
+msgid "Frontpage slider id"
 msgstr ""
 
 #: ../inc/theme-options.php:143
-msgid "Twitter url"
+msgid "Upload a custom logo"
 msgstr ""
 
 #: ../inc/theme-options.php:151
-msgid "Legal disclaimer"
+msgid "Facebook url"
 msgstr ""
 
 #: ../inc/theme-options.php:159
+msgid "Twitter url"
+msgstr ""
+
+#: ../inc/theme-options.php:167
+msgid "Legal disclaimer"
+msgstr ""
+
+#: ../inc/theme-options.php:175
 msgid "Contact page"
 msgstr "ទំព័រទំនាក់ទំនង"
 
-#: ../inc/theme-options.php:167
+#: ../inc/theme-options.php:183
 msgid "Data page"
 msgstr "ទំព័រទិន្នន័យ"
 
-#: ../inc/theme-options.php:175
+#: ../inc/theme-options.php:191
 msgid "Introduction text #1"
 msgstr ""
 
-#: ../inc/theme-options.php:183
+#: ../inc/theme-options.php:199
 msgid "Introduction text #2"
 msgstr ""
 
-#: ../inc/theme-options.php:191
+#: ../inc/theme-options.php:207
 msgid "Introduction text #3"
 msgstr ""
 
-#: ../inc/theme-options.php:199
+#: ../inc/theme-options.php:215
 msgid "Base map settings"
 msgstr ""
 
-#: ../inc/theme-options.php:213
+#: ../inc/theme-options.php:229
 msgid "Active"
 msgstr ""
 
-#: ../inc/theme-options.php:214
+#: ../inc/theme-options.php:230
 msgid ""
 "(Activate to disable the link of the web site on the country menu, and "
 "present a message below.)"
 msgstr ""
 
-#: ../inc/theme-options.php:239 ..\..\jeo/inc/admin/settings.php:137
-#: ..\..\jeo/inc/admin/settings.php:145 ..\..\jeo/inc/admin/settings.php:153
-#: ..\..\jeo/inc/api.php:55 ..\..\jeo/inc/share-widget.php:76
+#: ../inc/theme-options.php:255 ../inc/theme-options.php:265
+#: ..\..\jeo/inc/admin/settings.php:137 ..\..\jeo/inc/admin/settings.php:145
+#: ..\..\jeo/inc/admin/settings.php:153 ..\..\jeo/inc/api.php:55
+#: ..\..\jeo/inc/share-widget.php:76
 msgid "Enable"
 msgstr ""
 
-#: ../inc/theme-options.php:240
+#: ../inc/theme-options.php:256
 msgid ""
 "(Select if you'd like to enable drop box menu once hover on country names.)"
 msgstr ""
 
-#: ../inc/theme-options.php:249
+#: ../inc/theme-options.php:273
+msgid "281321"
+msgstr ""
+
+#: ../inc/theme-options.php:274
+msgid "(This id can be found on the Featured Area plugin slider's settings.)"
+msgstr ""
+
+#: ../inc/theme-options.php:282
 msgid "Logo url"
 msgstr ""
 
-#: ../inc/theme-options.php:250
+#: ../inc/theme-options.php:283
 msgid "Upload"
 msgstr ""
 
-#: ../inc/theme-options.php:280 ../inc/theme-options.php:289
-#: ../inc/theme-options.php:356 ..\..\jeo/metaboxes/mapbox/mapbox.php:59
+#: ../inc/theme-options.php:313 ../inc/theme-options.php:322
+#: ../inc/theme-options.php:389 ..\..\jeo/metaboxes/mapbox/mapbox.php:59
 msgid "None"
 msgstr ""
 
-#: ../inc/theme-options.php:318
+#: ../inc/theme-options.php:351
 msgid "Icon"
 msgstr ""
 
-#: ../inc/theme-options.php:319
+#: ../inc/theme-options.php:352
 msgid "Title"
 msgstr ""
 
-#: ../inc/theme-options.php:320
+#: ../inc/theme-options.php:353
 msgid "Content"
 msgstr ""
 
-#: ../inc/theme-options.php:347 ..\..\jeo/metaboxes/mapbox/mapbox.php:50
+#: ../inc/theme-options.php:380 ..\..\jeo/metaboxes/mapbox/mapbox.php:50
 msgid "Select base layer"
 msgstr ""
 
-#: ../inc/theme-options.php:354 ..\..\jeo/metaboxes/mapbox/mapbox.php:57
+#: ../inc/theme-options.php:387 ..\..\jeo/metaboxes/mapbox/mapbox.php:57
 msgid "(USA Only)"
 msgstr ""
 
-#: ../inc/theme-options.php:355 ..\..\jeo/metaboxes/mapbox/mapbox.php:58
+#: ../inc/theme-options.php:388 ..\..\jeo/metaboxes/mapbox/mapbox.php:58
 msgid "Custom"
 msgstr ""
 
-#: ../inc/theme-options.php:358 ..\..\jeo/metaboxes/mapbox/mapbox.php:61
+#: ../inc/theme-options.php:391 ..\..\jeo/metaboxes/mapbox/mapbox.php:61
 msgid "Enter layer URL"
 msgstr ""
 
-#: ../inc/theme-options.php:361 ../inc/theme-options.php:472
+#: ../inc/theme-options.php:394 ../inc/theme-options.php:505
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:64
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:175
 msgid "Update preview"
 msgstr ""
 
-#: ../inc/theme-options.php:363 ..\..\jeo/metaboxes/mapbox/mapbox.php:66
+#: ../inc/theme-options.php:396 ..\..\jeo/metaboxes/mapbox/mapbox.php:66
 msgid "Preview map"
 msgstr ""
 
-#: ../inc/theme-options.php:368 ..\..\jeo/metaboxes/mapbox/mapbox.php:71
+#: ../inc/theme-options.php:401 ..\..\jeo/metaboxes/mapbox/mapbox.php:71
 msgid "Map settings"
 msgstr ""
 
-#: ../inc/theme-options.php:370 ..\..\jeo/metaboxes/mapbox/mapbox.php:73
+#: ../inc/theme-options.php:403 ..\..\jeo/metaboxes/mapbox/mapbox.php:73
 msgid "Currently viewing"
 msgstr ""
 
-#: ../inc/theme-options.php:373 ../inc/theme-options.php:403
+#: ../inc/theme-options.php:406 ../inc/theme-options.php:436
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:76
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:106
 msgid "Center"
 msgstr ""
 
-#: ../inc/theme-options.php:377 ../inc/theme-options.php:407
+#: ../inc/theme-options.php:410 ../inc/theme-options.php:440
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:80
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:110
 msgid "Zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:381 ../inc/theme-options.php:434
+#: ../inc/theme-options.php:414 ../inc/theme-options.php:467
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:84
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:137
 msgid "East"
 msgstr ""
 
-#: ../inc/theme-options.php:385 ../inc/theme-options.php:438
+#: ../inc/theme-options.php:418 ../inc/theme-options.php:471
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:88
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:141
 msgid "North"
 msgstr ""
 
-#: ../inc/theme-options.php:389 ../inc/theme-options.php:442
+#: ../inc/theme-options.php:422 ../inc/theme-options.php:475
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:92
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:145
 msgid "South"
 msgstr ""
 
-#: ../inc/theme-options.php:393 ../inc/theme-options.php:446
+#: ../inc/theme-options.php:426 ../inc/theme-options.php:479
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:96
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:149
 msgid "West"
 msgstr ""
 
-#: ../inc/theme-options.php:399 ..\..\jeo/metaboxes/mapbox/mapbox.php:102
+#: ../inc/theme-options.php:432 ..\..\jeo/metaboxes/mapbox/mapbox.php:102
 msgid "Map center & zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:400 ..\..\jeo/metaboxes/mapbox/mapbox.php:103
+#: ../inc/theme-options.php:433 ..\..\jeo/metaboxes/mapbox/mapbox.php:103
 msgid "Set current as map center & zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:411 ..\..\jeo/metaboxes/mapbox/mapbox.php:114
+#: ../inc/theme-options.php:444 ..\..\jeo/metaboxes/mapbox/mapbox.php:114
 msgid "Min zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:414 ../inc/theme-options.php:421
+#: ../inc/theme-options.php:447 ../inc/theme-options.php:454
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:117
 #: ..\..\jeo/metaboxes/mapbox/mapbox.php:124
 msgid "Current"
 msgstr ""
 
-#: ../inc/theme-options.php:418 ..\..\jeo/metaboxes/mapbox/mapbox.php:121
+#: ../inc/theme-options.php:451 ..\..\jeo/metaboxes/mapbox/mapbox.php:121
 msgid "Max zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:430 ..\..\jeo/metaboxes/mapbox/mapbox.php:133
+#: ../inc/theme-options.php:463 ..\..\jeo/metaboxes/mapbox/mapbox.php:133
 msgid "Pan limits"
 msgstr ""
 
-#: ../inc/theme-options.php:431 ..\..\jeo/metaboxes/mapbox/mapbox.php:134
+#: ../inc/theme-options.php:464 ..\..\jeo/metaboxes/mapbox/mapbox.php:134
 msgid "Set current as map panning limits"
 msgstr ""
 
-#: ../inc/theme-options.php:456 ..\..\jeo/metaboxes/mapbox/mapbox.php:159
+#: ../inc/theme-options.php:489 ..\..\jeo/metaboxes/mapbox/mapbox.php:159
 msgid "Enable geocoding service"
 msgstr ""
 
-#: ../inc/theme-options.php:459 ..\..\jeo/metaboxes/mapbox/mapbox.php:162
+#: ../inc/theme-options.php:492 ..\..\jeo/metaboxes/mapbox/mapbox.php:162
 msgid "Enable geocode search service"
 msgstr ""
 
-#: ../inc/theme-options.php:463 ..\..\jeo/metaboxes/mapbox/mapbox.php:166
+#: ../inc/theme-options.php:496 ..\..\jeo/metaboxes/mapbox/mapbox.php:166
 msgid "Map handlers"
 msgstr ""
 
-#: ../inc/theme-options.php:466 ..\..\jeo/metaboxes/mapbox/mapbox.php:169
+#: ../inc/theme-options.php:499 ..\..\jeo/metaboxes/mapbox/mapbox.php:169
 msgid "Disable mousewheel zooming"
 msgstr ""
 
-#: ../inc/theme-options.php:473 ..\..\jeo/metaboxes/mapbox/mapbox.php:176
+#: ../inc/theme-options.php:506 ..\..\jeo/metaboxes/mapbox/mapbox.php:176
 msgid "Preview mode"
 msgstr ""
 
-#: ../inc/theme-options.php:474 ..\..\jeo/metaboxes/mapbox/mapbox.php:177
+#: ../inc/theme-options.php:507 ..\..\jeo/metaboxes/mapbox/mapbox.php:177
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
+msgstr ""
+
+#: ../inc/topics.php:19
+msgctxt "post type general name"
+msgid "Topics"
+msgstr ""
+
+#: ../inc/topics.php:20
+msgctxt "post type singular name"
+msgid "Topic"
+msgstr ""
+
+#: ../inc/topics.php:21
+msgctxt "admin menu"
+msgid "Topics"
+msgstr ""
+
+#: ../inc/topics.php:22
+msgctxt "add new on admin bar"
+msgid "Topic"
+msgstr ""
+
+#: ../inc/topics.php:23
+msgctxt "topic"
+msgid "Add new"
+msgstr ""
+
+#: ../inc/topics.php:24
+msgid "Add new topic"
+msgstr ""
+
+#: ../inc/topics.php:25
+msgid "New topic"
+msgstr ""
+
+#: ../inc/topics.php:26
+msgid "Edit topic"
+msgstr ""
+
+#: ../inc/topics.php:27
+msgid "View topic"
+msgstr ""
+
+#: ../inc/topics.php:28
+msgid "All topics"
+msgstr ""
+
+#: ../inc/topics.php:29
+msgid "Search topics"
+msgstr ""
+
+#: ../inc/topics.php:30
+msgid "Parent topics:"
+msgstr ""
+
+#: ../inc/topics.php:31
+msgid "No topics found."
+msgstr ""
+
+#: ../inc/topics.php:32
+msgid "No topics found in trash."
 msgstr ""
 
 #: ../languages/odm-localization-templete.php:2
@@ -1032,37 +952,46 @@ msgstr "ចែករំលែកផែនទី"
 msgid "Search for posts, maps and briefings..."
 msgstr "ស្វែងរកអត្ថបទ ផែនទី និងអត្ថបទសង្ខេប..."
 
-#: ../loop-latest.php:26 ..\..\jeo/inc/markers.php:539
+#: ../loop-latest.php:10 ..\..\jeo/inc/markers.php:539
 msgctxt "reduced date format"
 msgid "m/d/Y"
 msgstr ""
 
-#: ../loop.php:67
+#: ../loop.php:71
 msgid "Data results"
 msgstr ""
 
-#: ../loop.php:73
+#: ../loop.php:77
 msgid "View all data results"
 msgstr ""
 
-#: ../page-data.php:14 ../page-laws.php:14
+#: ../page-data.php:14
 msgid "Access the complete database"
 msgstr ""
 
-#: ../page-data.php:25 ../page-laws.php:25
+#: ../page-data.php:25
 msgid "Type your search and hit enter"
 msgstr ""
 
-#: ../page-data.php:37 ../page-laws.php:37
+#: ../page-data.php:37
 msgid "Previous page"
 msgstr "ទំព័រមុខ"
 
-#: ../page-data.php:39 ../page-laws.php:39
+#: ../page-data.php:39
 msgid "Next page"
 msgstr "ទំព័របន្ទាប់"
 
-#: ../search.php:6
-msgid "Site results"
+#: ../page.php:17 ../single-topic.php:37 ../single.php:34
+#: ..\..\jeo/page.php:17 ..\..\jeo/single.php:29
+msgid "Pages:"
+msgstr "ទំព័រ"
+
+#: ../search.php:6 ..\..\jeo/inc/layers.php:445
+msgid "Search results"
+msgstr ""
+
+#: ../section-content-summary.php:9
+msgid "Issue briefs"
 msgstr ""
 
 #: ../section-content-summary.php:35
@@ -1247,6 +1176,10 @@ msgstr ""
 msgid ""
 "Copy and paste this code into an HTML page to embed with it's current "
 "settings and location"
+msgstr ""
+
+#: ..\..\jeo/content-share.php:219 ..\..\jeo/inc/layers.php:155
+msgid "URL"
 msgstr ""
 
 #: ..\..\jeo/content-share.php:223
@@ -1741,6 +1674,134 @@ msgstr ""
 msgid "Layer legend"
 msgstr ""
 
+#: ..\..\jeo/inc/layers.php:132
+msgid "Layer type"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:135
+msgid "Tilelayer"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:138
+msgid "MapBox"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:141
+msgid "CartoDB"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:157
+msgid "http://{s}.example.com/{z}/{x}/{y}.png"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:158
+msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:162
+msgid "UTFGrid URL (optional)"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:164
+msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:165
+msgid ""
+"Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:169
+msgid "UTFGrid Template (optional)"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:172 ..\..\jeo/inc/layers.php:266
+msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:176
+msgid "TMS"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:178
+msgid "Enable TMS"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:179
+msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:192
+msgid "MapBox ID"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:195
+msgid "MapBox map ID. E.g.: examples.map-20v6611k"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:219
+msgid "Visualization type"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:222
+msgid "Visualization"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:224
+msgid "Advanced (build from your tables)"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:224
+msgid "coming soon"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:228
+msgid "CartoDB URL"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:231
+msgid ""
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
+"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:235
+msgid "Username"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:238
+msgid "Your CartoDB username."
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:242
+msgid "Table"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:245
+msgid "The CartoDB table you'd like to visualize."
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:249
+msgid "Where (optional)"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:252
+msgid "Query data from your table.<br/>E.g.: region = \"north\""
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:256
+msgid "CartoCSS"
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:259
+#, php-format
+msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
+msgstr ""
+
+#: ..\..\jeo/inc/layers.php:263
+msgid "Template"
+msgstr ""
+
 #: ..\..\jeo/inc/layers.php:331
 msgid "Enter your HTML code to use as legend on the layer"
 msgstr ""
@@ -1763,10 +1824,6 @@ msgstr ""
 
 #: ..\..\jeo/inc/layers.php:441
 msgid "Latest layers"
-msgstr ""
-
-#: ..\..\jeo/inc/layers.php:445
-msgid "Search results"
 msgstr ""
 
 #: ..\..\jeo/inc/layers.php:449
