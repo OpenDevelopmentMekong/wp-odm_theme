@@ -98,6 +98,16 @@ Template Name: Upcoming site
   </div>
  </section>
 
+ <!-- <section id="page-content">
+  <div class="section-title">
+   <div class="container">
+    <div class="twelve columns">
+     <?php //get_template_part('content', 'interactive-map'); ?>
+    </div>
+   </div>
+  </div>
+ </section> -->
+
  <section id="announcements-and-updates" class="page-section row">
    <div class="container">
      <div class="row">

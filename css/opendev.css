@@ -143,18 +143,18 @@ a.button:hover{
  */
 
 #od-head {
-	padding: 30px 0 0;
-	background: #292d56;
+ padding: 30px 0 0;
+ background: #292d56;
 }
 
 #od-head h1 {
-	font-family: 'Droid Serif';
-	font-size: 48px;
-	line-height: 48px;
-	margin: 0 24px 0 0;
-	font-family: 700;
-	letter-spacing: -4px;
-	float: left;
+ font-family: 'Droid Serif';
+ font-size: 48px;
+ line-height: 48px;
+ margin: 0 24px 0 0;
+ font-family: 700;
+ letter-spacing: -4px;
+ float: left;
 }
 
 #od-head h1 sup {
@@ -715,22 +715,22 @@ a.button:hover{
  */
 
 #site-intro {
-	padding: 15px 0 0;
-	background: #6393D2;
+ padding: 15px 0 0;
+ background: #6393D2;
 }
 
 #intro-texts [class^="icon-"],
 #intro-texts [class*=" icon-"] {
-	float: left;
-	font-size: 40px;
-	line-height: 100%;
-	margin: 0 12px 0 0;
-	padding-top: 10px;
-	color: #fff;
+ float: left;
+ font-size: 40px;
+ line-height: 100%;
+ margin: 0 12px 0 0;
+ padding-top: 10px;
+ color: #fff;
 }
 #intro-texts .four.columns {
     /* width: 370px; */
-	margin-right:0
+ margin-right:0
 }
 
 #intro-texts .text-item {
@@ -765,9 +765,9 @@ a.button:hover{
  */
 
 #live-search {
-	/* border-top: 1px solid #aaa;
-	border-bottom: 1px solid #aaa; */
-	clear: both;
+ /* border-top: 1px solid #aaa;
+ border-bottom: 1px solid #aaa; */
+ clear: both;
     float: right;
     margin-top: -1.5em;
     margin-bottom: -0.5em;
@@ -1552,13 +1552,13 @@ a.button:hover{
     margin-left: 1.5em;
 }
 #content ul li {
-	list-style-type: square;
+ list-style-type: square;
 }
 #content #reference-list{
     margin-left: 0;
 }
 #content #references li, #content #reference-list li{
-	list-style-type: none;
+ list-style-type: none;
 }
 
 #clear{
@@ -1998,12 +1998,15 @@ a.button:hover{
 .widget li:last-child {
  border-bottom: 0;
 }
-
 #sidebar .widgets .widget ul li ul,
 .widget ul li ul {
- list-style: disc;
  margin-left: 10px;
  padding-left: 10px;
+}
+
+#sidebar .widgets li{
+ list-style: none !important;
+ list-style-type: none !important;
 }
 
 #sidebar .widgets .widget ol,
