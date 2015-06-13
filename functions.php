@@ -698,10 +698,10 @@ function the_breadcrumb () {
 
         if ( is_single() ) {
             //Single post of post type "Topic"
-
             if (get_post_type( get_the_ID())  == "topic") {
                 $post_type_topic = get_post_type( get_the_ID() );
                 $cats = get_the_category(get_the_ID());
+                if($cats){
                     // if post is in this category
                     foreach ($cats as $cat){
                   if ( in_category( $cat->term_id) ){
@@ -712,10 +712,14 @@ function the_breadcrumb () {
                             if ($cat_name == $page_title){
                                  $cat_id = $cat->term_id;
                                  get_all_parent_category($cat_id, $post_type_topic, $separator, $page_title);
+                            }else{
+                                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
                             }
                         }
-                    }
-
+                    }//end foreach
+                }else{ //if topic page is not categoried or the topic name is different from the category
+                    echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+                }
             } else{
                 // Single post (Only display the first category)
                 /* echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id ) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>'; */
