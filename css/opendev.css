@@ -1,5 +1,6 @@
 html, body {
  background: #fff;
+ font-family: "Khmer OS", "Open Sans","Helvetica","Arial",sans-serif;
 }
 h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}
 h2 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
@@ -29,6 +30,25 @@ blockquote {
  border: 1px solid #DDD;
  background: #f4f4f4;
 }
+/******Image Caption**********/
+.wp-caption {
+    max-width: 750px;
+    margin-bottom: 24px;
+    padding: 15px 0px 15px 15px;
+    border: 1px solid #DDD;
+    background: #F4F4F4 none repeat scroll 0%;
+}
+.wp-caption img{
+    max-width: 735px;
+}
+.wp-caption-text {
+    font-size: 17px;
+    line-height: 24px;
+    color: #777;
+    font-style: italic;
+}
+
+/******* Image Caption *******/
 .mekong-color{
     color: #4683d2;
 }
@@ -123,18 +143,18 @@ a.button:hover{
  */
 
 #od-head {
-	padding: 30px 0 0;
-	background: #292d56;
+ padding: 30px 0 0;
+ background: #292d56;
 }
 
 #od-head h1 {
-	font-family: 'Droid Serif';
-	font-size: 48px;
-	line-height: 48px;
-	margin: 0 24px 0 0;
-	font-family: 700;
-	letter-spacing: -4px;
-	float: left;
+ font-family: 'Droid Serif';
+ font-size: 48px;
+ line-height: 48px;
+ margin: 0 24px 0 0;
+ font-family: 700;
+ letter-spacing: -4px;
+ float: left;
 }
 
 #od-head h1 sup {
@@ -695,22 +715,22 @@ a.button:hover{
  */
 
 #site-intro {
-	padding: 15px 0 0;
-	background: #6393D2;
+ padding: 15px 0 0;
+ background: #6393D2;
 }
 
 #intro-texts [class^="icon-"],
 #intro-texts [class*=" icon-"] {
-	float: left;
-	font-size: 40px;
-	line-height: 100%;
-	margin: 0 12px 0 0;
-	padding-top: 10px;
-	color: #fff;
+ float: left;
+ font-size: 40px;
+ line-height: 100%;
+ margin: 0 12px 0 0;
+ padding-top: 10px;
+ color: #fff;
 }
 #intro-texts .four.columns {
     /* width: 370px; */
-	margin-right:0
+ margin-right:0
 }
 
 #intro-texts .text-item {
@@ -745,9 +765,9 @@ a.button:hover{
  */
 
 #live-search {
-	/* border-top: 1px solid #aaa;
-	border-bottom: 1px solid #aaa; */
-	clear: both;
+ /* border-top: 1px solid #aaa;
+ border-bottom: 1px solid #aaa; */
+ clear: both;
     float: right;
     margin-top: -1.5em;
     margin-bottom: -0.5em;
@@ -777,8 +797,9 @@ a.button:hover{
  border: 0;
  background: #EEE;
  color: #333;
- padding: 6px 0;
+ padding: 2px 0;
  font-size: 16px;
+ line-height: 26px;
  display: block;
  margin: 0;
  width: 95%;
@@ -948,6 +969,63 @@ a.button:hover{
  bottom: -10px;
 }
 
+#featured-content.page-section .section-featured-content {
+ max-height: 400px;
+ border: 1px solid #ccc;
+ box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+ box-sizing: border-box;
+}
+
+#announcements-and-updates {
+ list-style: none;
+}
+.announcements-list{
+ overflow:auto;
+}
+.announcements-list ul{
+ list-style-type: none;
+}
+.announcements-list li{
+ width: 30.33%;
+ display: -moz-inline-stack;
+ display: inline-block;
+ vertical-align: top;
+ margin: 10px 1%;
+ zoom: 1;
+ *display: inline;
+}
+.announcements-list li:last-child{
+
+}
+.announcements-list li img{
+ float: left;
+}
+.updates-list{
+ list-style-type: circle;
+}
+.updates-list ul{
+ overflow:auto;
+ margin-bottom: 0px;
+}
+.updates-list li{
+ width: 100%;
+ border-bottom: 1px solid #ccc;
+ padding-bottom: 10px;
+}
+.updates-list li:last-child{
+ padding-bottom: 10px;
+}
+/*.post-widget{
+ float: left;
+}
+.post-widget-image{
+ float: left;
+}*/
+.post-widget-image img{
+  height: 96px;
+  width: 96px;
+  margin-right: 10px;
+}
 /*
  * Sticky
  */
@@ -1472,15 +1550,15 @@ a.button:hover{
 }
 #content ul{
     margin-left: 1.5em;
-}                             
+}
 #content ul li {
-	list-style-type: square;
+ list-style-type: square;
 }
 #content #reference-list{
     margin-left: 0;
 }
 #content #references li, #content #reference-list li{
-	list-style-type: none;
+ list-style-type: none;
 }
 
 #clear{
@@ -1920,12 +1998,20 @@ a.button:hover{
 .widget li:last-child {
  border-bottom: 0;
 }
-
 #sidebar .widgets .widget ul li ul,
 .widget ul li ul {
- list-style: disc;
  margin-left: 10px;
  padding-left: 10px;
+}
+
+#sidebar .widgets li{
+ list-style: none !important;
+ list-style-type: none !important;
+}
+
+#sidebar .widgets .widget div ul li ul li{
+ list-style: disc !important;
+ list-style-type: disc !important;
 }
 
 #sidebar .widgets .widget ol,
