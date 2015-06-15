@@ -126,6 +126,8 @@
         </nav>
         <?php } ?> 
 	</header>
-    <?php //Add Contact form button
-        button_user_feedback_form();
+    <?php //Add Contact form button 
+        if( function_exists('button_user_feedback_form') ){
+            button_user_feedback_form();
+        }
     ?>  
