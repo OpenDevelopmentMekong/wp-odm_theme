@@ -29,13 +29,18 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
 
   global $post;
   if ((!empty($instance['group']) && $instance['group'] != '-1') && (!empty($instance['organization']) && $instance['organization'] != '-1'))
-   echo do_shortcode('[wpckan_query_datasets query="' . $instance['query'] . '" organization="' . $instance['organization'] . '" group="' . $instance['group'] . '" include_fields_resources="format"]');
+   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] . '" organization="' . $instance['organization'] . '" group="' . $instance['group'] . '" include_fields_resources="format" blank_on_empty="true"]');
   else if (!empty($instance['organization']) && $instance['organization'] != '-1')
-   echo do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" organization="' . $instance['organization'] . '" include_fields_resources="format"]');
+   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" organization="' . $instance['organization'] . '" include_fields_resources="format" blank_on_empty="true"]');
   else if (!empty($instance['group']) && $instance['group'] != '-1')
-   echo do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" group="' . $instance['group'] . '" include_fields_resources="format"]');
+   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" group="' . $instance['group'] . '" include_fields_resources="format" blank_on_empty="true"]');
   else
-   echo do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" include_fields_resources="format"]');
+   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" include_fields_resources="format" blank_on_empty="true"]');
+
+  if (!empty($output) && $output != "")
+   echo $output;
+  else
+   echo __('No results returned...','opendev');
 
   echo $args['after_widget'];
  }
