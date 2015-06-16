@@ -1691,7 +1691,7 @@ a.button:hover{
  */
 
 .interactive-map {
- height: 600px;
+ height: 500px;
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
@@ -1751,11 +1751,23 @@ a.button:hover{
 }
 
 .interactive-map .interactive-map-layers  ul li a:before {
- content: '\e6d5';
+ content: '\2261';
 }
 
 .interactive-map .interactive-map-layers  ul li a.active:before {
- content: '\e6d3';
+ content: '\2261';
+}
+
+.categories li.over {
+  border: 1px dashed #333;
+}
+
+.layer-item h2 {
+ font-size: 12px;
+}
+
+.layer-item p {
+ margin-top: 4px;
 }
 
 .interactive-map .interactive-map-layers  ul li ul {
@@ -1768,10 +1780,16 @@ a.button:hover{
  border-top: 1px solid #ccc;
  padding: 10px 20px;
  box-shadow: 0 0 0;
+ background: #fff;
 }
 
 .interactive-map .interactive-map-layers  ul li ul li:hover {
- background: #fff;
+ background: #ccc;
+ cursor: pointer;
+}
+
+.interactive-map .interactive-map-layers  ul li ul li.active {
+ background: #ddd;
  cursor: pointer;
 }
 
@@ -1785,12 +1803,29 @@ a.button:hover{
 }
 
 .interactive-map .interactive-map-layers .cat-layers li:before {
- content: '\e65d';
+ /*content: '\2192';*/
  color: #999;
 }
 
 .interactive-map .interactive-map-layers .cat-layers li.active:before {
  color: #000;
+}
+
+#interactive-map-layer-info{
+ border: 1px solid #ccc;
+ /*border: 1px solid rgba(0, 0, 0, 0.4);*/
+ border-radius: 3px;
+ box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+ box-sizing: border-box;
+ padding: 10px;
+ height: 80px;
+ width: 50%;
+ position: absolute;
+ top: 10px;
+ left: 10px;
+ z-index: 99;
+ background: #fff;
+ display: none;
 }
 
 /*
@@ -2101,6 +2136,22 @@ a.button:hover{
     height: 80px;
 }
 
+.widget_opendev_related_resources_widget {
+ font-size: 90%;
+}
+
+.widget_opendev_related_resources_widget p{
+ margin: 0px;
+}
+
+.widget_opendev_query_resources_widget {
+ font-size: 90%;
+}
+
+.widget_opendev_query_resources_widget p{
+ margin: 0px;
+}
+
 /* Sidebar Topical Category */
 .sub-topical-cat{
  display: none;
@@ -2239,13 +2290,13 @@ a.button:hover{
 
 /****************Cartodb*****************/
 div.cartodb-legend ul li.graph .bubbles {
-    background: url("//cartodb-libs.global.ssl.fastly.net/cartodbui/assets/3.8.3/images/themes/bubbles.png") no-repeat scroll left top transparent;
+ background: url("//cartodb-libs.global.ssl.fastly.net/cartodbui/assets/3.8.3/images/themes/bubbles.png") no-repeat scroll left top transparent;
  background-size: 100px;
-    width: 110px;
-    height: 30px;
+ width: 110px;
+ height: 30px;
 }
 div.cartodb-legend {
-    width: 130px;
+ width: 130px;
 }
 div.cartodb-legend.custom ul li.graph{
  height:30px;

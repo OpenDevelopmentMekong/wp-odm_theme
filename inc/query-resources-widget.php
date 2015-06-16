@@ -40,7 +40,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   if (!empty($output) && $output != "")
    echo $output;
   else
-   echo __('No results returned...','opendev');
+   echo "<p>" . __('No results returned.','opendev') . "</p>";
 
   echo $args['after_widget'];
  }
