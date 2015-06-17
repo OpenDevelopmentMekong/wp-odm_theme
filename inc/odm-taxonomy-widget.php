@@ -35,13 +35,20 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 
+		/**
+	 * Outputs HTML containing a string of the category name as a link
+	 * and if the current post is in the category, to make it <strong>
+	 *
+	 * @param category $category a category object to display
+	 */
 	public function print_category( $category ) {
 			$post_type =  get_post_type( get_the_ID() );
 			//echo '<a href="' . get_category_link( $category->term_id ) . '">';
-			$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
-			$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type );
-			if ($topical_page_exist){
-				echo '<a href="' . get_permalink( $topical_page_exist ) . '">';
+			$get_post_title = $this->wp_exist_post_by_title($category->name);
+			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
+			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type );
+			if ($get_post_title){
+				echo '<a href="' . get_permalink( $get_post_title->ID) . '">';
 			}
 				$in_category = in_category( $category->term_id );
 				if ($in_category){
@@ -51,12 +58,30 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 				if ($in_category){
 					 echo "</strong>";
 				}
-			if ($topical_page_exist){
+			if ($get_post_title){
 				echo "</a><br/>";
 			}
 
 	}
-
+	/**
+	 * Outputs Object containing post information if check the Topic page exist based on the name of category name
+	 *
+	 * @param  $title_str a category's name to find the topic page
+	 */
+     public function wp_exist_post_by_title($title_str) {
+        global $wpdb;
+        $get_post = $wpdb->get_row( $wpdb->prepare(
+        	"SELECT * FROM wp_posts WHERE LOWER(post_title) LIKE %s
+        	    AND post_type = %s
+                AND post_status = %s
+        	",
+        	'<!--:en-->' . $title_str . '<!--:-->%',
+        	"topic",
+        	"publish"
+            )
+        );
+        return $get_post ;
+    }
 	/**
 	 * Walks through a list of categories and prints all children descendant
 	 * in a hierarchy.
