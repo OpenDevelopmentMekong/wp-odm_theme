@@ -32,7 +32,6 @@ class OpenDev_InteractiveMap {
     $layer = array();
     $layer['filtering'] = 'switch';
     $layer['hidden'] = 1;
-    $count = 0;
     foreach($categories as $key=>$val) {
     $cat = $categories[$key];
      if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
