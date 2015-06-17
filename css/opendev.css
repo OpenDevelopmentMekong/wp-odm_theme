@@ -1762,6 +1762,14 @@ a.button:hover{
   border: 1px dashed #333;
 }
 
+.layer-item a{
+  display:inline !important;
+}
+
+.layer-item a:before{
+ content:none !important;
+}
+
 .layer-item h2 {
  font-size: 12px;
 }
@@ -1811,22 +1819,20 @@ a.button:hover{
  color: #000;
 }
 
-#interactive-map-layer-info{
- border: 1px solid #ccc;
- /*border: 1px solid rgba(0, 0, 0, 0.4);*/
- border-radius: 3px;
- box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
- box-sizing: border-box;
- padding: 10px;
- height: 80px;
- width: 50%;
- position: absolute;
- top: 10px;
- left: 10px;
- z-index: 99;
- background: #fff;
- display: none;
+.map-legend {
+  display:none !important;
 }
+
+.cartodb-legend {
+  text-align:center !important;
+  position: static !important;
+  width:80% !important;
+}
+
+.cartodb-legend ul{
+  display: block !important;
+}
+
 
 /*
  * CKAN search
