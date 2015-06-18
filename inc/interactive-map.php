@@ -65,7 +65,6 @@ class OpenDev_InteractiveMap {
   <div class="interactive-map">
    <div class="map-container">
     <div id="map_interactive_map_0" class="map"></div>
-
    </div>
    <div class="interactive-map-layers">
     <ul class="categories">
@@ -186,14 +185,27 @@ class OpenDev_InteractiveMap {
         return false;
        });
 
-       $layers.find('.cat-layers li').on('click', function() {
+       $layers.find('.cat-layers h2').on('click', function() {
         map.filterLayers._switchLayer($(this).data('layer'));
         if(map.filterLayers._getStatus($(this).data('layer')).on) {
          $(this).addClass('active');
+         $(this).parent().find('.layer-status').addClass('active');
         } else {
          $(this).removeClass('active');
+         $(this).parent().find('.layer-status').removeClass('active');
         }
+      });
 
+        $layers.find('.layer-item .toggles a').on('click', function() {
+         if($(this).html() == "Show legend"){
+          $(this).addClass('active');
+          $(this).parent().parent().find('.legend').show();
+          $(this).html('Hide legend');
+         } else {
+          $(this).removeClass('active');
+          $(this).parent().parent().find('.legend').hide();
+          $(this).html('Show legend');
+         }
      });
 
      if (ENABLE_DND){
