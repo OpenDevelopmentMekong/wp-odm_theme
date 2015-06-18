@@ -1723,6 +1723,7 @@ a.button:hover{
  margin: 0;
  border-bottom: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+ background: #eee;
 }
 
 .interactive-map .interactive-map-layers  ul li a {
@@ -1797,6 +1798,12 @@ a.button:hover{
 .layer-item h2.active {
   color: #333;
 }
+.layer-item .layer-excerpt{
+
+}
+.layer-item .layer-content{
+  display:none;
+}
 .layer-item p {
  margin-top: 10px;
  margin-bottom: 4px;
@@ -1809,6 +1816,12 @@ a.button:hover{
   font-size: 10px;
   padding: 2px !important;
   color: #ccc;
+  display: block;
+  border: 1px #ccc solid;
+  border-radius: 4px;
+  padding: 0px 10px !important;
+  margin-right: 10px;
+
 }
 .layer-item .toggles a.active{
   color: #000;

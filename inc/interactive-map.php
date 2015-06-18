@@ -186,8 +186,8 @@ class OpenDev_InteractiveMap {
        });
 
        $layers.find('.cat-layers h2').on('click', function() {
-        map.filterLayers._switchLayer($(this).data('layer'));
-        if(map.filterLayers._getStatus($(this).data('layer')).on) {
+        map.filterLayers._switchLayer($(this).parent().data('layer'));
+        if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
          $(this).addClass('active');
          $(this).parent().find('.layer-status').addClass('active');
         } else {
@@ -196,16 +196,30 @@ class OpenDev_InteractiveMap {
         }
       });
 
-        $layers.find('.layer-item .toggles a').on('click', function() {
-         if($(this).html() == "Show legend"){
-          $(this).addClass('active');
-          $(this).parent().parent().find('.legend').show();
-          $(this).html('Hide legend');
-         } else {
-          $(this).removeClass('active');
-          $(this).parent().parent().find('.legend').hide();
-          $(this).html('Show legend');
-         }
+      $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
+       if($(this).html() == "More"){
+        $(this).addClass('active');
+        $(this).parent().parent().find('.layer-excerpt').hide();
+        $(this).parent().parent().find('.layer-content').show();
+        $(this).html('Less');
+       } else {
+        $(this).removeClass('active');
+        $(this).parent().parent().find('.layer-excerpt').show();
+        $(this).parent().parent().find('.layer-content').hide();
+        $(this).html('More');
+       }
+     });
+
+      $layers.find('.layer-item .toggles .toggle-legend').on('click', function() {
+       if($(this).html() == "Show legend"){
+        $(this).addClass('active');
+        $(this).parent().parent().find('.legend').show();
+        $(this).html('Hide legend');
+       } else {
+        $(this).removeClass('active');
+        $(this).parent().parent().find('.legend').hide();
+        $(this).html('Show legend');
+       }
      });
 
      if (ENABLE_DND){
