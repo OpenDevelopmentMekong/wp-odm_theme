@@ -98,15 +98,17 @@ Template Name: Upcoming site
   </div>
  </section>
 
- <!-- <section id="page-content">
+ <section id="map">
   <div class="section-title">
    <div class="container">
     <div class="twelve columns">
+     <h1>Maps</h1>
+     <?php echo do_shortcode('[odmap]'); ?>
      <?php //get_template_part('content', 'interactive-map'); ?>
     </div>
    </div>
   </div>
- </section> -->
+ </section>
 
  <section id="announcements-and-updates" class="page-section row">
    <div class="container">
