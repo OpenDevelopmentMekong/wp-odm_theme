@@ -64,7 +64,11 @@ class OpenDev_InteractiveMap {
   ?>
   <div class="interactive-map">
    <div class="map-container">
-    <div id="map_interactive_map_0" class="map"></div>
+    <div id="map_interactive_map_0" class="map">
+     <div class="layer-toggle active">
+       <a class="active"></a>
+     </div>
+    </div>
    </div>
    <div class="interactive-map-layers">
     <ul class="categories">
@@ -150,9 +154,48 @@ class OpenDev_InteractiveMap {
      });
     }
 
+    var $layer_toggles;
     var term_rel = <?php echo json_encode($parsed_cats); ?>;
     var jeo_map;
     jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
+
+    function enableAllLayers() {
+     console.log("enableAllLayer");
+     // this/e.target is the source node.
+
+     $layer_toggles.each(function(){
+      $(this).addClass('active');
+      $(this).parent().find('.layer-status').addClass('active');
+     });
+
+     for(var key in term_rel) {
+      $.each(term_rel[key], function(i, layerId) {
+       jeo_map.filterLayers._enableLayer(layerId);
+      });
+     }
+
+     jeo_map.filterLayers._update();
+
+    }
+
+    function disableAllLayers() {
+     console.log("disableAllLayers");
+     // this/e.target is the source node.
+
+     $layer_toggles.each(function(){
+      $(this).removeClass('active');
+      $(this).parent().find('.layer-status').removeClass('active');
+     });
+
+     for(var key in term_rel) {
+      $.each(term_rel[key], function(i, layerId) {
+       jeo_map.filterLayers._disableLayer(layerId);
+      });
+     }
+
+     jeo_map.filterLayers._update();
+
+    }
 
     jeo.mapReady(function(map) {
 
@@ -185,16 +228,22 @@ class OpenDev_InteractiveMap {
         return false;
        });
 
-       $layers.find('.cat-layers h2').on('click', function() {
-        map.filterLayers._switchLayer($(this).parent().data('layer'));
-        if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
-         $(this).addClass('active');
-         $(this).parent().find('.layer-status').addClass('active');
-        } else {
-         $(this).removeClass('active');
-         $(this).parent().find('.layer-status').removeClass('active');
-        }
-      });
+       $layer_toggles = $layers.find('.cat-layers h2');
+       $layer_toggles.each(function(){
+        var $layer_toggle = $(this);
+        $layer_toggle.on('click', function() {
+         map.filterLayers._switchLayer($(this).parent().data('layer'));
+         if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
+          $(this).addClass('active');
+          $(this).parent().find('.layer-status').addClass('active');
+         } else {
+          $(this).removeClass('active');
+          $(this).parent().find('.layer-status').removeClass('active');
+         }
+       })
+       });
+
+       ;
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
@@ -221,6 +270,17 @@ class OpenDev_InteractiveMap {
         $(this).html('Show legend');
        }
      });
+
+     var $category_toggles = $('.map .layer-toggle')
+     $category_toggles.find('a').on('click', function() {
+      if($(this).hasClass('active')){
+       disableAllLayers();
+       $(this).removeClass('active');
+      } else {
+       enableAllLayers();
+       $(this).addClass('active');
+      }
+    });
 
      if (ENABLE_DND){
        [].forEach.call(category_items, function(item) {
