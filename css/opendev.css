@@ -1820,7 +1820,7 @@ a.button:hover{
 .layer-item .toggles a{
   font-size: 10px;
   padding: 2px !important;
-  color: #ccc;
+  color: #333;
   display: block;
   border: 1px #ccc solid;
   border-radius: 4px;
@@ -1829,10 +1829,10 @@ a.button:hover{
 
 }
 .layer-item .toggles a.active{
-  color: #000;
+  color: #333;
 }
 .layer-item .toggles a:hover{
-  color: #333;
+  color: #ccc;
 }
 .layer-item .toggles a:before{
   /*content: '\2261';*/
