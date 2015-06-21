@@ -860,3 +860,15 @@ function excerpt($num, $read_more="") {
 
         return $excerpt_words;
 }
+
+/**
+ * Allow embed iframe
+ *****/
+
+function add_iframe($initArray) {
+  $initArray['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width]";
+  return $initArray;
+}
+
+// this function alters the way the WordPress editor filters your code
+add_filter('tiny_mce_before_init', 'add_iframe');
