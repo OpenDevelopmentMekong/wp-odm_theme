@@ -1106,6 +1106,8 @@ a.button:hover{
 }
 .sticky-posts.post-active .sticky-item.active {
  height: 50%;
+ overflow:scroll;
+ text-overflow: ellipsis;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail {
  margin: 0 10px 5px 0;
