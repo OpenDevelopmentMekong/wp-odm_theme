@@ -1040,7 +1040,7 @@ a.button:hover{
  box-sizing: border-box;
 }
 .sticky-posts .sticky-item {
- height: 25%;
+ height: 20%;
  width: 100%;
  border-bottom: 1px solid #ccc;
  box-sizing: border-box;
@@ -1064,7 +1064,7 @@ a.button:hover{
 }
 .sticky-posts .sticky-item article h2 {
  color: #333;
- font-family: "Droid Serif";
+ /*font-family: "Droid Serif";*/
  margin: 0;
  font-size: 24px;
  line-height: 28px;
@@ -1105,11 +1105,11 @@ a.button:hover{
  padding: 0;
 }
 .sticky-posts.post-active .sticky-item.active {
- height: 70%;
+ height: 50%;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail {
- margin: 0 20px 5px 0;
- width: 33%;
+ margin: 0 10px 5px 0;
+ width: 60px;
  height: auto;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail img {
@@ -1123,7 +1123,7 @@ a.button:hover{
  margin: 0 0 10px;
 }
 .sticky-posts.post-active .sticky-item.active article .post-area {
- height: 238px;
+ height: 100%;
  margin-bottom: 15px;
  overflow: hidden;
 }
