@@ -28,14 +28,17 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   }
 
   global $post;
-  if ((!empty($instance['group']) && $instance['group'] != '-1') && (!empty($instance['organization']) && $instance['organization'] != '-1'))
-   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] . '" organization="' . $instance['organization'] . '" group="' . $instance['group'] . '" include_fields_resources="format" blank_on_empty="true"]');
-  else if (!empty($instance['organization']) && $instance['organization'] != '-1')
-   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" organization="' . $instance['organization'] . '" include_fields_resources="format" blank_on_empty="true"]');
-  else if (!empty($instance['group']) && $instance['group'] != '-1')
-   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" group="' . $instance['group'] . '" include_fields_resources="format" blank_on_empty="true"]');
-  else
-   $output = do_shortcode('[wpckan_query_datasets query="' . $instance['query'] .'" include_fields_resources="format" blank_on_empty="true"]');
+
+   $shortcode = '[wpckan_query_datasets query="' . $instance['query'] . '"';
+   if (!empty($instance['group']) && $instance['group'] != '-1')
+     $shortcode .= ' group="' . $instance['group'] . '"';
+   if (!empty($instance['organization']) && $instance['organization'] != '-1')
+     $shortcode .= ' organization="' . $instance['organization'] . '"';
+   if (!empty($instance['limit']) && $instance['limit'] > 0)
+     $shortcode .= ' limit="' . $instance['limit'] . '"';
+   $shortcode .= ' include_fields_resources="format" blank_on_empty="true"]';
+
+   $output = do_shortcode($shortcode);
 
   if (!empty($output) && $output != "")
    echo $output;
@@ -54,6 +57,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   // outputs the options form on admin
   $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Related Resources', 'opendev' );
   $query = $instance['query'];
+  $limit = ! empty( $instance['limit'] ) ? $instance['limit'] : 0;
   $organization = $instance['organization'];
   $organization_list = [];
   if (function_exists('wpckan_api_get_organizations_list')){
@@ -93,6 +97,8 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
        <option <?php if($dataset_group['name'] == $group) echo 'selected="selected"' ?> value="<?php echo $dataset_group['name']; ?>"><?php echo $dataset_group['display_name']; ?></option>
       <?php } ?>
     </select>
+    <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:' ); ?></label>
+    <input class="widefat" type="number" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo $limit; ?>">
   </p>
   <?php
  }
@@ -110,6 +116,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   $instance['query'] = ( ! empty( $new_instance['query'] ) ) ? strip_tags( $new_instance['query'] ) : '';
   $instance['organization'] = ( ! empty( $new_instance['organization'] ) ) ? strip_tags( $new_instance['organization'] ) : '';
   $instance['group'] = ( ! empty( $new_instance['group'] ) ) ? strip_tags( $new_instance['group'] ) : '';
+  $instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? $new_instance['limit'] : 0;
 
   return $instance;
  }
