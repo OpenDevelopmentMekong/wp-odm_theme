@@ -269,19 +269,41 @@ function opendev_ms_nav() {
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script>
   jQuery(function($) {
-     $('.ms-nav li a').tooltip({
-    position: {
-   using: function( position, feedback ) {
-     $( this ).css( position );
-     $( "<div>" )
-    .addClass( "arrow" )
-    .addClass( feedback.vertical )
-    .addClass( feedback.horizontal )
-    .appendTo( this );
-   }
-    }
-  });
-  });
+         $('.ms-nav li a').tooltip({
+            position: {
+                using: function( position, feedback ) {
+                    $( this ).css( position );
+                    $( "<div>" )
+                    .addClass( "arrow" )
+                    .addClass( feedback.vertical )
+                    .addClass( feedback.horizontal )
+                    .appendTo( this );
+                }
+            }
+        });
+        $('#menu-header-menu a').tooltip({
+		  position: {
+			using: function( position, feedback ) {
+			  $( this ).css( position );
+			  $( "<div>" )
+				.addClass( "arrow" )
+				.addClass( feedback.vertical )
+				.addClass( feedback.horizontal )
+				.appendTo( this );
+			}
+		  }
+		});
+		<?php
+		$options_msg = get_option('opendev_options');
+        if ($options_msg['message_data'] !="") { ?>
+		    $('#menu-header-menu li.datahub a').attr( "title", "<?php echo $options_msg['message_data'] ?>");
+        <?php } ?>
+        <?php 
+        if ($options_msg['message_library']!="") { ?>
+		    $('#menu-header-menu li.library a').attr( "title", "<?php echo $options_msg['message_library']?>");
+        <?php } ?>
+        
+  });   //jQuery
   </script>
 <?php
  if(is_multisite()) {
