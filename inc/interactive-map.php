@@ -247,28 +247,37 @@ class OpenDev_InteractiveMap {
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
-        $(this).addClass('active');
+        //$(this).addClass('active');
         $(this).parent().parent().find('.layer-excerpt').hide();
         $(this).parent().parent().find('.layer-content').show();
         $(this).html('Less');
        } else {
-        $(this).removeClass('active');
+        //$(this).removeClass('active');
         $(this).parent().parent().find('.layer-excerpt').show();
         $(this).parent().parent().find('.layer-content').hide();
         $(this).html('More');
        }
      });
 
-      $layers.find('.layer-item .toggles .toggle-legend').on('click', function() {
+     $layers.find('.layer-item .toggles .toggle-legend').on('click', function() {
        if($(this).html() == "Show legend"){
-        $(this).addClass('active');
+        //$(this).addClass('active');
         $(this).parent().parent().find('.legend').show();
         $(this).html('Hide legend');
        } else {
-        $(this).removeClass('active');
+        //$(this).removeClass('active');
         $(this).parent().parent().find('.legend').hide();
         $(this).html('Show legend');
        }
+     });
+
+     $layers.find('.layer-item .toggles .download-url').on('click', function() {
+      window.open(
+       $(this).attr('href'),
+       '_blank' // <- This is what makes it open in a new window.
+      );
+
+
      });
 
      var $category_toggles = $('.map .layer-toggle')
