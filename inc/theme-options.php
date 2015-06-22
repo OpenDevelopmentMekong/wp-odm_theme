@@ -105,7 +105,20 @@ class OpenDev_Options {
    'opendev_options',
    'opendev_style_section'
   );
-
+  add_settings_field(
+	'opendev_message_data',
+	__('Tooltip Message of Data Hub', 'opendev'),
+	array($this, 'message_data_field'),
+	'opendev_options',
+	'opendev_style_section'
+    );
+    add_settings_field(
+    	'opendev_message_library',
+    	__('Tooltip Message of Library', 'opendev'),
+    	array($this, 'message_library_field'),
+    	'opendev_options',
+    	'opendev_style_section'
+    );
   add_settings_field(
    'opendev_style',
    __('Choose a style', 'opendev'),
@@ -237,7 +250,18 @@ class OpenDev_Options {
   <input id="opendev_message_construction" name="opendev_options[message_construction]" type="text" placeholder="<?php _e('Site coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Site coming soon.');?>'" value="<?php echo $message_construction; ?>" size="70" />
   <?php
  }
-
+ function message_data_field() {
+		$message_data = $this->options['message_data'];
+		?>
+		<input id="opendev_message_data" name="opendev_options[message_data]" type="text" placeholder="<?php _e('Informed message.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Informed message.');?>'" value="<?php echo $message_data; ?>" size="70" />
+		<?php
+	}
+	function message_library_field() {
+		$message_library = $this->options['message_library'];
+		?>
+		<input id="opendev_message_library" name="opendev_options[message_library]" type="text" placeholder="<?php _e('Informed message.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Informed message.');?>'" value="<?php echo $message_library; ?>" size="70" />
+		<?php
+	}
  function style_field() {
   ?>
   <select id="opendev_style" name="opendev_options[style]">

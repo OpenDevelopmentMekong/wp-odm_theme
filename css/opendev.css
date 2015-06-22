@@ -2493,7 +2493,7 @@ div.cartodb-legend.custom ul li.graph{
     bottom: auto;
   }
   .arrow.left {
-    left: 20%;
+    left: 10%;
   }
   .arrow:after {
     content: "";
