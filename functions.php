@@ -281,7 +281,7 @@ function opendev_ms_nav() {
                 }
             }
         });
-        $('#menu-header-menu a').tooltip({
+        $('#menu-header-menu li a').tooltip({
 		  position: {
 			using: function( position, feedback ) {
 			  $( this ).css( position );
@@ -293,17 +293,38 @@ function opendev_ms_nav() {
 			}
 		  }
 		});
+
 		<?php
-		$options_msg = get_option('opendev_options');
-        if ($options_msg['message_data'] !="") { ?>
-		    $('#menu-header-menu li.datahub a').attr( "title", "<?php echo $options_msg['message_data'] ?>");
-        <?php } ?>
-        <?php 
-        if ($options_msg['message_library']!="") { ?>
-		    $('#menu-header-menu li.library a').attr( "title", "<?php echo $options_msg['message_library']?>");
-        <?php } ?>
-        
-  });   //jQuery
+		    $options_msg = get_option('opendev_options');
+        	 $m = array(1,2,3);
+             foreach($m as $i) {
+            		if(isset($options_msg['tooltip_message_' . $i])) {
+            			$tooltip = $options_msg['tooltip_message_' . $i];
+            			if(isset($tooltip['menu_name']) && $tooltip['menu_name']!= "Tooltip"){
+            			   if(isset($tooltip['message']) && $tooltip['message']){
+                            // Looking for menu item that match with menu_name of tooltip
+                             $menu_obj = get_term_by( 'name', 'Header Menu', 'nav_menu' );
+                             $menu_items = wp_get_nav_menu_items($menu_obj->term_id);
+                                foreach ( (array) $menu_items as $key => $menu_item ) {
+                                    if ($menu_item->menu_item_parent != 0 ) continue;
+                                    $title = $menu_item->title;
+                                    $menu_id = $menu_item->ID;
+                                    if (strtolower(trim($title)) == strtolower(trim($tooltip['menu_name']))){?>
+                                        $('#menu-header-menu li.menu-item-<?php echo $menu_id; ?> a').attr( "title", "<?php echo trim($tooltip['message']); ?>");
+                                <?php   break;
+                                    }
+                                } //foreach
+                            } //if isset($tooltip['message'])
+                        }//if isset($tooltip['message'])
+                        elseif(isset($tooltip['menu_name']) && $tooltip['menu_name']== "Tooltip"){
+            			   if(isset($tooltip['message']) && $tooltip['message']){ ?>
+                              $('#menu-header-menu li.tooltip a').attr( "title", "<?php echo trim($tooltip['message']); ?>");
+                    <?php   }
+                        }
+            		}//isset($options_msg['tooltip_message_' . $i])
+            	}
+          ?>
+  });
   </script>
 <?php
  if(is_multisite()) {
