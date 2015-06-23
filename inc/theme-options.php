@@ -106,19 +106,26 @@ class OpenDev_Options {
    'opendev_style_section'
   );
   add_settings_field(
-	'opendev_message_data',
-	__('Tooltip Message of Data Hub', 'opendev'),
-	array($this, 'message_data_field'),
-	'opendev_options',
-	'opendev_style_section'
-    );
-    add_settings_field(
-    	'opendev_message_library',
-    	__('Tooltip Message of Library', 'opendev'),
-    	array($this, 'message_library_field'),
+    	'opendev_tooltip_message_1',
+    	__('Tooltip Message 1', 'opendev'),
+    	array($this, 'tooltip_message_1'),
     	'opendev_options',
     	'opendev_style_section'
-    );
+  );
+  add_settings_field(
+    	'opendev_tooltip_message_2',
+    	__('Tooltip Message 2', 'opendev'),
+    	array($this, 'tooltip_message_2'),
+    	'opendev_options',
+    	'opendev_style_section'
+  );
+  add_settings_field(
+    	'opendev_tooltip_message_3',
+    	__('Tooltip Message 3', 'opendev'),
+    	array($this, 'tooltip_message_3'),
+    	'opendev_options',
+    	'opendev_style_section'
+  );
   add_settings_field(
    'opendev_style',
    __('Choose a style', 'opendev'),
@@ -244,32 +251,40 @@ class OpenDev_Options {
  <?php
  }
 
- function message_construction_field() {
-  $message_construction = $this->options['message_construction'];
-  ?>
-  <input id="opendev_message_construction" name="opendev_options[message_construction]" type="text" placeholder="<?php _e('Site coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Site coming soon.');?>'" value="<?php echo $message_construction; ?>" size="70" />
-  <?php
- }
- function message_data_field() {
-		$message_data = $this->options['message_data'];
-		?>
-		<input id="opendev_message_data" name="opendev_options[message_data]" type="text" placeholder="<?php _e('Informed message.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Informed message.');?>'" value="<?php echo $message_data; ?>" size="70" />
-		<?php
+   function message_construction_field() {
+      $message_construction = $this->options['message_construction'];
+      ?>
+      <input id="opendev_message_construction" name="opendev_options[message_construction]" type="text" placeholder="<?php _e('Site coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Site coming soon.');?>'" value="<?php echo $message_construction; ?>" size="70" />
+      <?php
+   }
+   function tooltip_message_1() {
+		$this->tooltip_message(1);
 	}
-	function message_library_field() {
-		$message_library = $this->options['message_library'];
+    function tooltip_message_2() {
+		$this->tooltip_message(2);
+	}
+	function tooltip_message_3() {
+		$this->tooltip_message(3);
+	}
+	function tooltip_message($i) {
+		$tooltip_message = $this->options['tooltip_message_' . $i];
+		$menu_name = $tooltip_message['menu_name'] ? $tooltip_message['menu_name'] : '';
+		$message = $tooltip_message['message'] ? $tooltip_message['message'] : '';
 		?>
-		<input id="opendev_message_library" name="opendev_options[message_library]" type="text" placeholder="<?php _e('Informed message.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Informed message.');?>'" value="<?php echo $message_library; ?>" size="70" />
+		<p><input name="opendev_options[tooltip_message_<?php echo $i; ?>][menu_name]" type="text" placeholder="<?php _e('Menu Name', 'opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Menu Name','opendev');?>'" value="<?php echo $menu_name; ?>" size="70" /></p>
+		<small><i>Apply to all elements of nav menu, please add "Tooltip" into Menu Name text box, and add class 'tooltip' to menu items. </i></small>
+		<p><textarea name="opendev_options[tooltip_message_<?php echo $i; ?>][message]" placeholder="<?php _e('Informed message','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Informed message','opendev');?>'" rows="2" cols="68"><?php echo $message; ?></textarea></p>
 		<?php
+		
 	}
  function style_field() {
-  ?>
-  <select id="opendev_style" name="opendev_options[style]">
-   <?php foreach($this->themes as $theme => $path) { ?>
-    <option <?php if($this->options['style'] == $path) echo 'selected'; ?> value="<?php echo $path; ?>"><?php _e($theme); ?></option>
-   <?php } ?>
-  </select>
-  <?php
+      ?>
+      <select id="opendev_style" name="opendev_options[style]">
+       <?php foreach($this->themes as $theme => $path) { ?>
+        <option <?php if($this->options['style'] == $path) echo 'selected'; ?> value="<?php echo $path; ?>"><?php _e($theme); ?></option>
+       <?php } ?>
+      </select>
+      <?php
  }
 
  function dropbox_menu_field() {
