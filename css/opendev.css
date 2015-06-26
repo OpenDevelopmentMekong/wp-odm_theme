@@ -137,7 +137,9 @@ a.button:hover{
  float:right;
  margin: 5px 0 0 10px;
 }
-
+.no-margin-left{
+    margin-left: 0;
+}
 /*
  * Header
  */
@@ -957,8 +959,10 @@ a.button:hover{
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container {
  display: block;
- top: -40px;
- right: 35%;
+ top: 0;
+ right: 40%;
+ /* top: -40px;
+ right: -2px; */
  left: auto;
 }
 
@@ -1038,9 +1042,13 @@ a.button:hover{
  z-index: 10;
  border-left: 1px solid #ccc;
  box-sizing: border-box;
+ overflow: hidden;
+}
+.sticky-posts:hover{
+    overflow-y: auto;
 }
 .sticky-posts .sticky-item {
- height: 20%;
+ height: 12%;
  width: 100%;
  border-bottom: 1px solid #ccc;
  box-sizing: border-box;
@@ -1050,63 +1058,68 @@ a.button:hover{
  border-bottom: 0;
 }
 .sticky-posts .sticky-item article {
- padding: 20px;
+ padding: 10px 20px 15px;
 }
 .sticky-posts .sticky-item article .post-thumbnail {
  float: left;
- margin: -20px 20px -20px -20px;
+ margin: -5px 10px 0 -5px;
  height: 82%;
 }
 .sticky-posts .sticky-item article .post-thumbnail img {
  display: block;
- width: auto;
- height: 100%;
+ width: 50px;
+ height: 50px;
 }
-.sticky-posts .sticky-item article h2 {
+.sticky-posts .sticky-item article h3 {
  color: #333;
  /*font-family: "Droid Serif";*/
  margin: 0;
- font-size: 24px;
- line-height: 28px;
+ font-size: 16px;
+ line-height: 20px;
  white-space: nowrap;
  overflow: hidden;
  text-overflow: ellipsis;
 }
+
+.sticky-posts .sticky-item article p.date,
 .sticky-posts .sticky-item.active article p.date {
  font-size: 12px;
  display: block;
  color: #999;
+ margin-bottom: 5px;
 }
 .sticky-posts .sticky-item article .post-content,
-.sticky-posts .sticky-item article .post-actions,
-.sticky-posts .sticky-item article p.date {
+.sticky-posts .sticky-item article .post-actions{
  display: none;
 }
 .sticky-posts .sticky-item.active,
 .sticky-posts .sticky-item:hover {
 }
-.sticky-posts .sticky-item.active article h2 {
+.sticky-posts .sticky-item.active article h3 {
  color: #000;
  white-space: normal;
  overflow: visible;
  text-overflow: clip;
 }
 .sticky-posts.post-active .sticky-item {
- height: 10%;
+ height: 12%;
+ clear: left;
 }
 .sticky-posts.post-active .sticky-item article .post-thumbnail {
- margin: -20px 20px -20px -20px;
+ margin: -5px 10px 0 -5px;
  height: 100%;
 }
-.sticky-posts.post-active .sticky-item article h2 {
- font-size: 12px;
- line-height: 12px;
- margin: 0;
+.sticky-posts.post-active .sticky-item article h3 {
+ font-size: 16px;
+ line-height: 20px;
+ margin: 0 0 5px;
  padding: 0;
 }
 .sticky-posts.post-active .sticky-item.active {
- height: 50%;
- overflow:scroll;
+ /* height: 40%; */
+ height: auto;
+ padding-bottom: 15px;
+ overflow:hidden;
  text-overflow: ellipsis;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail {
@@ -1119,8 +1132,8 @@ a.button:hover{
  height: auto;
  padding: 0;
 }
-.sticky-posts.post-active .sticky-item.active article h2 {
- font-size: 24px;
+.sticky-posts.post-active .sticky-item.active article h3 {
+ font-size: 20px;
  line-height: 28px;
  margin: 0 0 10px;
 }
@@ -1137,7 +1150,7 @@ a.button:hover{
 .map-sidebar {
  color: #96979C;
  height: 100%;
- width: 35%;
+ width: 40%;
  min-width: 300px;
  max-width: 640px;
  z-index: 1000;
@@ -1149,7 +1162,7 @@ a.button:hover{
 }
 .map-sidebar a {
  text-decoration: none;
- color: #fff;
+ /* color: #fff; */
 }
 .map-sidebar a.button,
 .map-sidebar .button {
@@ -1369,7 +1382,7 @@ a.button:hover{
  border-right: 1px solid #ddd;
 }
 
-#tabbed-post-type-nav ul li a {
+#tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name {
  display: block;
  padding: 20px 0;
  width: 100%;
@@ -1378,13 +1391,14 @@ a.button:hover{
  background: #f0f0f0;
 }
 
-#tabbed-post-type-nav ul li.active a {
+#tabbed-post-type-nav ul li.active a, #tabbed-post-type-nav ul li.tab-tag-active div.tag-name{
  background: #fff;
  font-weight: 600;
 }
 
-#tabbed-post-type-nav ul li a:hover {
+#tabbed-post-type-nav ul li a:hover, #tabbed-post-type-nav ul li div.tag-name:hover {
  background: #fff;
+ cursor: pointer;
 }
 
 /*
@@ -2342,6 +2356,9 @@ a.button:hover{
 }
 .list-posts li {
   height: 365px;
+  /* width: 45%; */
+  margin: 0 20px 10px 20px;
+  float: left;
 }
 .list-posts li article {
  height: 340px;

@@ -165,6 +165,14 @@ class OpenDev_Options {
    'opendev_options',
    'opendev_style_section'
   );
+  
+  add_settings_field(
+   'opendev_news_tags',
+   __('Filter News By Tags', 'opendev'),
+   array($this, 'news_tags_field'),
+   'opendev_options',
+   'opendev_news_section'
+  );
 
   add_settings_field(
    'opendev_facebook',
@@ -328,7 +336,13 @@ class OpenDev_Options {
    <?php } ?>
   <?php
  }
-
+ function news_tags_field() {
+      $news_tags = $this->options['news_tags'];
+      ?>
+      <input id="opendev_news_tags" name="opendev_options[news_tags]" type="text" placeholder="<?php _e('Add tags');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Add tags.');?>'" value="<?php echo $news_tags; ?>" size="70" /> <br />
+      <i><?php _e('Separate tags with commas. Only 5 tags are allowed. ');?></i>
+      <?php
+   }
 
  function facebook_field() {
   $facebook = $this->options['facebook_url'];

@@ -88,6 +88,55 @@ if(is_front_page()) {
  <section id="news" class="page-section row" <?php if($is_mapgroup) : echo "style='padding-top:60px'"; endif; ?>>
   <div class="container">
    <div class="twelve columns">
+   <section class="tabbed-posts-section">
+            <script>
+              jQuery(function($) {
+                  $('#tabbed-post-type-nav li').first().addClass('tab-tag-active');
+                  $('.sticky-posts').first().addClass('sticky-posts-active');
+            	   // $('#tabbed-post-type-nav li').first().css('backgrond', 'red');
+                    var tab_active_id = $('#tabbed-post-type-nav li.active').attr('id');
+                    $("#sticky-"+tab_active_id).show();
+                    $('#tabbed-post-type-nav li div.tag-name').click(function(event){
+                            $('#tabbed-post-type-nav li').removeClass('tab-tag-active');
+                            $('.sticky-posts').removeClass('sticky-posts-active');
+                            $( event.target).parent().addClass('tab-tag-active');
+                            var target = $( event.target );
+                            var current_active_id = $(this).parent().attr('id');
+                            $('.sticky-posts').hide();
+                            $("#sticky-"+current_active_id).addClass('sticky-posts-active');
+                            $("#sticky-"+current_active_id).show();
+                           // $( event.target ).css('background-color', 'red');
+
+                    });
+              });
+            </script>
+            <nav id="tabbed-post-type-nav">
+            	<ul>
+            		<?php
+            	    $options_news_tags = get_option('opendev_options');
+                    if ($options_news_tags['news_tags'] ){
+            	    $news_tags = preg_replace('/,$/', '', $options_news_tags['news_tags']);
+            	    //$news_tags = rtrim($options_news_tags['news_tags'], ',');
+            	    $news_tags = explode(",", $news_tags);              	    
+            	        $tag_count = 1;
+            		    foreach($news_tags as $tag){
+            		       if($tag_count <= 6){
+                              echo '<li class="tab-tag" id="tag-' .strtolower(str_replace(" ", "-", trim($tag))).'"><div class="tag-name">'.ucwords($tag).'</div></li>';
+                           }
+                           $tag_count++;
+                        }
+                    }else {
+                        echo '<li class="tab-tag" id="tag-regional"><div class="tag-name">Regional</div></li>';
+                        echo '<li class="tab-tag" id="tag-cambodia"><div class="tag-name">Cambodia</div></li>';
+                        echo '<li class="tab-tag" id="tag-laos"><div class="tag-name">Laos</div></li>';
+                        echo '<li class="tab-tag" id="tag-myanmar"><div class="tag-name">Myanmar</div></li>';
+                        echo '<li class="tab-tag" id="tag-thailand"><div class="tag-name">Thailand</div></li>';
+                        echo '<li class="tab-tag" id="tag-vietnam"><div class="tag-name">Vietnam</div></li>';
+                    }
+            	    ?>
+            	</ul>
+            </nav>
+        </section>
     <div class="section-map">
      <?php
      jeo_map();
