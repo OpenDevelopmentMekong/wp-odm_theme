@@ -68,7 +68,12 @@ class OpenDev_Options {
    '',
    'opendev_options'
   );
-
+  add_settings_section(
+   'opendev_news_section',
+   __('News: Filtered By Tags', 'opendev'),
+   '',
+   'opendev_options'
+  );
   add_settings_section(
    'opendev_links_section',
    __('Links', 'opendev'),
