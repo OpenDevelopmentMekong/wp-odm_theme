@@ -1,22 +1,22 @@
 .laos-color{
-    color: #F37914;
+    color: #D61E2A;
 }
-a:hover{	
-	color: #F37914; /*eec800;*/
+a:hover{
+	color: #D61E2A; /*eec800;*/
 	text-decoration:underline
 }
-a strong:hover {	
-	color: #F37914;
+a strong:hover {
+	color: #D61E2A;
 	text-decoration:underline
 }
 button,
 a.button,
 .button {
-	background: #f37914;
+	background: #D61E2A;
 }
 
 #od-head {
-	background: #4a2d36;
+	background: #3b2226;
 	color: #f0f0f0;
 }
 
@@ -24,15 +24,15 @@ a.button,
 	background: #583a43;
 }
 #od-head #main-nav .menu ul > li:hover a,
-#od-head #main-nav ul.menu > li:hover,  
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu > li:hover,
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover ,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #F37914;  
+	background-color: #D61E2A;
 }
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
-	color: #f37914;
+	color: #D61E2A;
 }
 
 #od-head h2,
@@ -42,7 +42,7 @@ a.button,
 }
 
 #od-head .ms-dropdown-title ul {
-	background: #4a2d36;
+	background: #3b2226;
 }
 
 #od-head .ms-dropdown-title ul li {
@@ -50,29 +50,29 @@ a.button,
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
-	background: #f37914;
-	border-color: #f37914;
+	background: #D61E2A;
+	border-color: #D61E2A;
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-bottom: 10px solid #f37914;
+	border-bottom: 10px solid #D61E2A;
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-top: 10px solid #f37914;
+	border-top: 10px solid #D61E2A;
 }
 
 #site-intro {
-	background: #f37914;
+	background: #D61E2A;
 }
 .current-site-laos{
-	background: #f37914;
+	background: #D61E2A;
 }
 #od-head #main-nav ul li.current_page_item a{
-	color: #f37914;
-	font-weight: bold; 
+	color: #D61E2A;
+	font-weight: bold;
 }
 .widget .opendev-summary ol li a:hover {
-	color: #f37914;  
+	color: #D61E2A;
 	text-decoration:underline
 }

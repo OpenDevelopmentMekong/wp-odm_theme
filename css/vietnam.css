@@ -1,38 +1,38 @@
 .vietnam-color{
-    color: #B8B45B;
+    color: #C6C366;
 }
-a:hover{	
-	color: #B8B45B;
+a:hover{
+	color: #C6C366;
 	text-decoration:underline
 }
-a strong:hover {	
-	color: #B8B45B;
+a strong:hover {
+	color: #C6C366;
 	text-decoration:underline
 }
 button,
 a.button,
 .button {
-	background: #B8B45B;
+	background: #C6C366;
 }
 
 #od-head {
-	background: #3b2226;
+	background: #3D9C00;
 	color: #f0f0f0;
 }
 
 #od-head #ms-nav {
-	background: #4b2f34;
+	background: #42aa00;
 }
 #od-head #main-nav .menu ul > li:hover a,
-#od-head #main-nav ul.menu > li:hover,  
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu > li:hover,
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover ,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #B8B45B;  
+	background-color: #C6C366;
 }
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
-	color: #B8B45B;
+	color: #C6C366;
 }
 
 #od-head h2,
@@ -42,7 +42,7 @@ a.button,
 }
 
 #od-head .ms-dropdown-title ul {
-	background: #3b2226;
+	background: #3D9C00;
 }
 
 #od-head .ms-dropdown-title ul li {
@@ -50,29 +50,29 @@ a.button,
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
-	background: #B8B45B;
-	border-color: #B8B45B;
+	background: #C6C366;
+	border-color: #C6C366;
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-bottom: 10px solid #B8B45B;
+	border-bottom: 10px solid #C6C366;
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-top: 10px solid #B8B45B;
+	border-top: 10px solid #C6C366;
 }
 
 #site-intro {
-	background: #B8B45B;
+	background: #C6C366;
 }
 .current-site-vietnam{
-	background: #B8B45B;
+	background: #C6C366;
 }
 #od-head #main-nav ul li.current_page_item a{
-	color: #B8B45B;
-	font-weight: bold; 
+	color: #C6C366;
+	font-weight: bold;
 }
 .widget .opendev-summary ol li a:hover {
-	color: #B8B45B;
+	color: #C6C366;
 	text-decoration:underline
 }
