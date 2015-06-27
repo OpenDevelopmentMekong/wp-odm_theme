@@ -1,18 +1,18 @@
 .vietnam-color{
-    color: #D61E2A;
+    color: #B8B45B;
 }
 a:hover{	
-	color: #D61E2A;
+	color: #B8B45B;
 	text-decoration:underline
 }
 a strong:hover {	
-	color: #D61E2A;
+	color: #B8B45B;
 	text-decoration:underline
 }
 button,
 a.button,
 .button {
-	background: #d61e2a;
+	background: #B8B45B;
 }
 
 #od-head {
@@ -27,12 +27,12 @@ a.button,
 #od-head #main-nav ul.menu > li:hover,  
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #D61E2A;  
+	background-color: #B8B45B;  
 }
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
-	color: #d61e2a;
+	color: #B8B45B;
 }
 
 #od-head h2,
@@ -50,29 +50,29 @@ a.button,
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
-	background: #d61e2a;
-	border-color: #d61e2a;
+	background: #B8B45B;
+	border-color: #B8B45B;
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-bottom: 10px solid #d61e2a;
+	border-bottom: 10px solid #B8B45B;
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-top: 10px solid #d61e2a;
+	border-top: 10px solid #B8B45B;
 }
 
 #site-intro {
-	background: #d61e2a;
+	background: #B8B45B;
 }
 .current-site-vietnam{
-	background: #d61e2a;
+	background: #B8B45B;
 }
 #od-head #main-nav ul li.current_page_item a{
-	color: #d61e2a;
+	color: #B8B45B;
 	font-weight: bold; 
 }
 .widget .opendev-summary ol li a:hover {
-	color: #d61e2a;
+	color: #B8B45B;
 	text-decoration:underline
 }
