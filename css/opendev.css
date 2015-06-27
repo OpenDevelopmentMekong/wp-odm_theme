@@ -2581,10 +2581,13 @@ ul#menu-header-menu{
     #od-head h2.side-title {
         margin: 4px 0 0 0;
     }
-    .wp-caption {
-        max-width: 610px;
+}
+
+@media screen and (max-width: 1020px) {
+     .wp-caption {
+        max-width: 600px;
     }
     .wp-caption img {
-        max-width: 595px;
+        max-width: 585px;
     }
 }
