@@ -2180,6 +2180,7 @@ a.button:hover{
 #sidebar .widgets li{
  list-style: none !important;
  list-style-type: none !important;
+ word-wrap: break-word;
 }
 
 #sidebar .widgets .widget div ul li ul li{
