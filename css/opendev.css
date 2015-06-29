@@ -2268,9 +2268,20 @@ a.button:hover{
  margin: 0;
 }
 /* Sidebar Related News  */
+.widget_opendev_related_recent_news_widget{
+    float: left;
+}
 .widget_opendev_related_recent_news_widget img{
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
+    margin-top: 0;
+    float: left;
+}
+#sidebar .widgets li.widget_opendev_related_recent_news_widget ul li{
+    clear: left;
+    float: left;
+    padding: 8px 0;
+    display: block;
 }
 
 .widget_opendev_related_resources_widget {
