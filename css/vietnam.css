@@ -14,7 +14,9 @@ a.button,
 .button {
 	background: #C6C366;
 }
-
+tr:nth-child(2n+1) { 
+    background-color: #f4f3db;
+}
 #od-head {
 	background: #3D9C00;
 	color: #f0f0f0;

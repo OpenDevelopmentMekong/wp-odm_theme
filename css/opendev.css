@@ -32,7 +32,10 @@ blockquote {
  border: 1px solid #DDD;
  background: #f4f4f4;
 }
-
+table {
+    border-collapse: collapse;
+    margin: 25px auto 20px;
+}
 .tableauPlaceholder{
     margin: 5px auto 10px;
 }
