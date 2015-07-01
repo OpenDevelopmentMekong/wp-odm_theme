@@ -91,23 +91,36 @@ a.button:hover{
     height: 24px;
     margin-left: 0.5em;
 }
+.post-categories{
+  margin: 0px !important;
+  height: 20px !important;
+  display: inline;
+}
+.post-categories li{
+  display: inline-block;
+  float: none !important;
+}
+.post-categories li a:hover{
+  background: #333;
+  color: #eee;
+}
 .post-categories_tags {
  margin-bottom: 1em;
  float:left
 }
 .post-categories_tags a {
-    display: block;
-    font-weight: 800;
-    padding: 5px;
-    background: none repeat scroll 0% 0% #EEE;
-    border-radius: 3px;
-    margin: 0px 5px 0px 0px;
-    font-size: 11px;
-    line-height: 11px;
-    text-decoration: none;
-    color: #333;
-    text-transform: uppercase;
- float:left;
+  display: block;
+  font-weight: 800;
+  padding: 5px;
+  background: none repeat scroll 0% 0% #EEE;
+  border-radius: 3px;
+  margin: 0px 5px 0px 0px;
+  font-size: 11px;
+  line-height: 11px;
+  text-decoration: none;
+  color: #333;
+  text-transform: uppercase;
+  float:left;
 }
 .leaflet-div-icon {
  background: url(../img/marker.png) no-repeat !important;
@@ -602,12 +615,18 @@ a.button:hover{
  padding-top: 0;
 }
 
-.single-post-header p.date {
+.single-post-header .date {
  font-size: 14px;
  color: #999;
 }
 
-.single-post-header p.date .lsf {
+.single-post-header .categories {
+ padding-top: 4px;
+ font-size: 14px;
+ color: #999;
+}
+
+.single-post-header .lsf {
  margin-right: 5px;
  color: #666;
 }
@@ -1577,7 +1596,7 @@ a.button:hover{
     margin-left: 1.5em;
 }
 #content ul li {
- list-style-type: square;
+ list-style-type: none;
 }
 #content #reference-list{
     margin-left: 0;

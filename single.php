@@ -6,10 +6,13 @@
 		<header class="single-post-header" class="clearfix">
 			<div class="container">
 				<div class="twelve columns">
-					<?php the_category(); ?>
-					<br/>
 					<h1><?php the_title(); ?></h1>
-					<p class="date"><span class="lsf">&#xE12b;</span> <?php the_date(); ?></p>
+					<div class="date">
+							<span class="lsf">&#xE12b;</span> <?php the_date(); ?>
+					</div>
+					<div class="categories">
+						  <span class="lsf">&#9776;</span> Filed under: <?php the_category(); ?>
+					</div>
 				</div>
 			</div>
 		</header>

@@ -7,6 +7,9 @@
 			<div class="container">
 				<div class="twelve columns">
 					<h1><?php the_title(); ?></h1>
+					<div class="categories">
+						  <span class="lsf">&#9776;</span> Filed under: <?php the_category(); ?>
+					</div>
 				</div>
 			</div>
 		</header>
