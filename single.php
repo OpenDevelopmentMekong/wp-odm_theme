@@ -11,7 +11,7 @@
 							<span class="lsf">&#xE12b;</span> <?php the_date(); ?>
 					</div>
 					<div class="categories">
-						  <span class="lsf">&#9776;</span> Filed under: <?php the_category(); ?>
+						  <span class="lsf">&#9776;</span> <?php echo __( 'Filed under:', 'jeo' ); ?> <?php the_category(); ?>
 					</div>
 				</div>
 			</div>
