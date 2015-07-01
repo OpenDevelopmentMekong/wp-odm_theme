@@ -2049,9 +2049,8 @@ a.button:hover{
 }
 
 .wpckan_dataset_list .wpckan_dataset_title {
- font-size: 18px;
- line-height: 150%;
- font-weight: 600;
+ font-size: 12px;
+ font-weight: bold;
  margin: 0 0 20px;
 }
 
@@ -2076,8 +2075,8 @@ a.button:hover{
  border-bottom: none !important;
  float:left;
  display: inline-block;
- margin: 4px 4px !important;
- padding: 0px 0px !important;
+ margin: 0px 4px 0px 0px !important;
+ padding: 4px 4px 2px 4px!important;
  font-weight: bold;
  background: #333;
  color: #FFF;
@@ -2089,7 +2088,8 @@ a.button:hover{
 }
 
 .wpckan_resource_format{
- padding: 2px 4px;
+ font-size: 10px;
+ text-transform: uppercase;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul li:hover {

@@ -21,11 +21,6 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   * @param array $instance
   */
  public function widget( $args, $instance ) {
-  // outputs the content of the widget
-  echo $args['before_widget'];
-  if ( ! empty( $instance['title'] ) ) {
-   echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-  }
 
   global $post;
 
@@ -40,12 +35,19 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
 
    $output = do_shortcode($shortcode);
 
-  if (!empty($output) && $output != "")
-   echo $output;
-  else
-   echo "<p>" . __('No results returned.','opendev') . "</p>";
+   if (!empty($output) && $output != ""){
 
-  echo $args['after_widget'];
+     echo $args['before_widget'];
+     if ( ! empty( $instance['title'] ) ) {
+      echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+     }
+
+     echo $output;
+
+     echo $args['after_widget'];
+
+   }
+
  }
 
  /**
