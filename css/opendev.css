@@ -49,7 +49,7 @@ tr:nth-child(2n) {
 }
 tr:nth-child(2n+1) {
     background-color: #9fd8fa;
-}
+} 
 td{
     padding: 8px;
     line-height: 1.42857;
@@ -57,9 +57,12 @@ td{
     border-top: 1px solid #AAA;
 }
 .tableauPlaceholder{
-    margin: 5px auto 10px;
+    margin: 5px auto 20px;
 }
 
+.aligncenter{
+    margin-bottom: 0;
+}
 /******Image Caption**********/
 .wp-caption {
     max-width: 750px;
