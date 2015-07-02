@@ -635,7 +635,9 @@ a.button:hover{
  margin: 0;
  padding-top: 0;
 }
-
+.single-post-header ul li{
+ list-style-type: none;
+}
 .single-post-header .date {
  font-size: 14px;
  color: #999;
@@ -1617,7 +1619,7 @@ a.button:hover{
     margin-left: 1.5em;
 }
 #content ul li {
- list-style-type: none;
+ list-style-type: square;
 }
 #content #reference-list{
     margin-left: 0;
