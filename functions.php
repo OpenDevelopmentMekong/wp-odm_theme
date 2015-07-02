@@ -907,9 +907,8 @@ function excerpt($num, $read_more="") {
 /**
  * Allow embed iframe
  *****/
-
 function add_iframe($initArray) {
-  $initArray['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width]";
+  $initArray['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width|allowtransparency|allowfullscreen|webkitallowfullscreen|mozallowfullscreen|oallowfullscreen|msallowfullscreen]";
   return $initArray;
 }
 
