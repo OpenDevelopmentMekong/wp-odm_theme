@@ -65,9 +65,9 @@ class OpenDev_InteractiveMap {
   <div class="interactive-map">
    <div class="map-container">
     <div id="map_interactive_map_0" class="map">
-     <div class="layer-toggle active">
+     <!-- <div class="layer-toggle active">
        <a class="active"></a>
-     </div>
+     </div> -->
     </div>
    </div>
    <div class="interactive-map-layers">
@@ -280,7 +280,7 @@ class OpenDev_InteractiveMap {
 
      });
 
-     var $category_toggles = $('.map .layer-toggle')
+     /*var $category_toggles = $('.map .layer-toggle')
      $category_toggles.find('a').on('click', function() {
       if($(this).hasClass('active')){
        disableAllLayers();
@@ -289,7 +289,7 @@ class OpenDev_InteractiveMap {
        enableAllLayers();
        $(this).addClass('active');
       }
-    });
+    });*/
 
      if (ENABLE_DND){
        [].forEach.call(category_items, function(item) {
