@@ -17,7 +17,7 @@ class OpenDev_InteractiveMap {
 
   $layer_query = new WP_Query(array(
    'post_type' => 'map-layer',
-   'posts_per_page' -1
+   'posts_per_page' => -1
   ));
 
   $layers = array();
