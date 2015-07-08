@@ -31,11 +31,11 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
             $news = "<ul>";
               while ($news_query->have_posts()) : $news_query->the_post();       
                 $news .= "<li>";
-                 if(has_post_thumbnail()) :  
+                 /* if(has_post_thumbnail()) :
 				    $news .= '<a href="'.get_the_permalink().'" title="'.get_the_title().'">';
-                         $news .= get_the_post_thumbnail(get_the_ID(), array(50,50), array('class' => 'align-left')); 
+                         $news .= get_the_post_thumbnail(get_the_ID(), array(50,50), array('class' => 'align-left'));
                     $news .="</a>";
-			     endif; 
+			     endif; */
                  $news .= '<a href="'.get_the_permalink().'" rel="bookmark" title="Permanent Link to '.get_the_title().'">'.get_the_title().'</a></li>'; 
               endwhile;
              $news .= '</ul>';
