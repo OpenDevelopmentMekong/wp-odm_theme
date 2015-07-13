@@ -910,7 +910,58 @@ function excerpt($num, $read_more="") {
 function add_iframe($initArray) {
   $initArray['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width|allowtransparency|allowfullscreen|webkitallowfullscreen|mozallowfullscreen|oallowfullscreen|msallowfullscreen]";
   return $initArray;
-}
-
+}                                                                     
 // this function alters the way the WordPress editor filters your code
 add_filter('tiny_mce_before_init', 'add_iframe');
+
+//###############
+// Remove WordPress Auto br and p tags
+//###############
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );
+// function aus advanced tinymce plugin
+if ( ! function_exists('tmce_replace') ) {
+        function tmce_replace() {
+                $tadv_options = get_option('tadv_options', array());
+                $tadv_plugins = get_option('tadv_plugins', array());
+
+?>
+        <script type="text/javascript">
+            if ( typeof(jQuery) != 'undefined' ) {
+              jQuery('body').bind('afterPreWpautop', function(e, o){
+                o.data = o.unfiltered
+                .replace(/caption\]\ +?<\/object>/g, function(a) {
+                  return a.replace(/[\r\n]+/g, ' ');
+                });
+              }).bind('afterWpautop', function(e, o){
+                o.data = o.unfiltered;
+              });
+            }
+        </script>
+<?php
+        }//end function
+        add_action( 'after_wp_tiny_mce', 'tmce_replace' );   }
+// eof advanced tinymce plugin
+// http://tinymce.moxiecode.com/wiki.php/Configuration
+function teslina_tinymce_config( $init ) {
+// Change code cleanup/content filtering config
+    // Don't remove line breaks
+    $init['remove_linebreaks'] = false;
+    // Convert newline characters to BR tags
+    //$init['convert_newlines_to_brs'] = true;
+    //$init['force_br_newlines '] = true;
+
+    // With this option set to false, the line breaks are stripped from the HTML source.
+    $init['apply_source_formatting'] = true;
+    // Preserve tab/space whitespace
+    $init['preformatted'] = true;
+    // Do not remove redundant BR tags
+    $init['remove_redundant_brs'] = false;
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
+//- See more at: http://www.teslina.com/en/748/wordpress/qtranslate-code
+//###############
+// End Remove WordPress Auto br and p tags
+//###############
+
