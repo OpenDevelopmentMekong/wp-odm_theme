@@ -42,7 +42,10 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
      }
 
-     echo $output;
+     echo $output;                 
+
+    if(!empty($instance['more_link']) && $instance['more_link'] != "" )
+      echo '<div style="text-align:right"><a href="'.$instance['more_link'].'" target="_blank">'.$instance['more_text'].'</a></div>';
 
      echo $args['after_widget'];
 
@@ -59,7 +62,9 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   // outputs the options form on admin
   $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Related Resources', 'opendev' );
   $query = $instance['query'];
-  $limit = ! empty( $instance['limit'] ) ? $instance['limit'] : 0;
+  $limit = ! empty( $instance['limit'] ) ? $instance['limit'] : 0;       
+  $more_text = ! empty( $instance['more_text'] ) ? $instance['more_text'] : 'Search for more';
+  $more_link = ! empty( $instance['more_link'] ) ? $instance['more_link'] : '';
   $organization = $instance['organization'];
   $organization_list = [];
   if (function_exists('wpckan_api_get_organizations_list')){
@@ -101,6 +106,11 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
     </select>
     <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:' ); ?></label>
     <input class="widefat" type="number" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo $limit; ?>">
+    <label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'More dataset: Link label' ); ?></label>
+    <input class="widefat" type="text" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" placeholder="Search for more" value="<?php echo esc_attr( $more_text ); ?>">
+
+    <label for="<?php echo $this->get_field_id( 'more_link' ); ?>"><?php _e( 'More dataset: Link (URL)' ); ?></label>
+    <input class="widefat" type="text" id="<?php echo $this->get_field_id( 'more_link' ); ?>" name="<?php echo $this->get_field_name( 'more_link' ); ?>" value="<?php echo esc_attr( $more_link ); ?>">
   </p>
   <?php
  }
