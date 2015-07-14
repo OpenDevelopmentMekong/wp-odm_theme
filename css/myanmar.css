@@ -1,40 +1,39 @@
 .myanmar-color{
-    color: #eeca0a;
+    color: #F8BF42;
 }        
 a:hover{	
-	color: #eeca0a ; /*eec800;*/
+	color: #F8BF42 ; /*eec800;*/
 	text-decoration:underline
 }
 a strong:hover {	
-	color: #eeca0a;
+	color: #F8BF42;
 	text-decoration:underline
 }
 button,
 a.button,
 .button {
-	background: #eeca0a;
+	background: #F8BF42;
 }
 tr:nth-child(2n+1) {
     background-color: #fbf1bb;
 }
 #od-head {
-	background: #312139;
+	background: #4f2367; /* 59396C */
 	color: #f0f0f0;
 }
-
 #od-head #ms-nav {
-	background: #3d2b46;
+	background: #59396C /*67449b;*/
 }
 #od-head #main-nav .menu ul > li:hover a,
 #od-head #main-nav ul.menu > li:hover,  
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #eeca0a;  
+	background-color: #F8BF42;  
 }
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
-	color: #eeca0a;
+	color: #F8BF42;
 }
 #od-head h2,
 #od-head a,
@@ -43,7 +42,7 @@ tr:nth-child(2n+1) {
 }
 
 #od-head .ms-dropdown-title ul {
-	background: #312139;
+	background: #59396C;
 }
 
 #od-head .ms-dropdown-title ul li {
@@ -51,29 +50,29 @@ tr:nth-child(2n+1) {
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
-	background: #eeca0a;
-	border-color: #eeca0a;
+	background: #F8BF42;
+	border-color: #F8BF42;
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-bottom: 10px solid #eeca0a;
+	border-bottom: 10px solid #F8BF42;
 }
 
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
-	border-top: 10px solid #eeca0a;
+	border-top: 10px solid #F8BF42;
 }
 
 #site-intro {
-	background: #eeca0a;
+	background: #F8BF42;
 }
 .current-site-myanmar{
-	background: #eeca0a;
+	background: #F8BF42;
 }
 #od-head #main-nav ul li.current_page_item a{
-	color: #eeca0a;
+	color: #F8BF42;
 	font-weight: bold; 
 }
 .widget .opendev-summary ol li a:hover {
-	color: #eeca0a;  
+	color: #F8BF42;  
 	text-decoration:underline
 }
