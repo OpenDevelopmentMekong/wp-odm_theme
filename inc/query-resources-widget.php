@@ -128,7 +128,9 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   $instance['query'] = ( ! empty( $new_instance['query'] ) ) ? strip_tags( $new_instance['query'] ) : '';
   $instance['organization'] = ( ! empty( $new_instance['organization'] ) ) ? strip_tags( $new_instance['organization'] ) : '';
   $instance['group'] = ( ! empty( $new_instance['group'] ) ) ? strip_tags( $new_instance['group'] ) : '';
-  $instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? $new_instance['limit'] : 0;
+  $instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? $new_instance['limit'] : 0;    
+  $instance['more_text'] = ( ! empty( $new_instance['more_text'] ) ) ? $new_instance['more_text'] : 0;
+  $instance['more_link'] = ( ! empty( $new_instance['more_link'] ) ) ? $new_instance['more_link'] : 0;
 
   return $instance;
  }
