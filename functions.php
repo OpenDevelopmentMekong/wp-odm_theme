@@ -294,6 +294,20 @@ function opendev_ms_nav() {
 		  }
 		});
 
+        $('#intro-texts p a.tooltip').tooltip({
+		  track: true,
+          position: {
+			using: function( position, feedback ) {
+			  $( this ).css( position );
+			  $( "<div>" )
+				.addClass( "arrow" )
+				.addClass( feedback.vertical )
+				.addClass( feedback.horizontal )
+				.appendTo( this );
+			}
+		  }
+		});
+
 		<?php
 		    $options_msg = get_option('opendev_options');
         	 $m = array(1,2,3);
@@ -324,6 +338,11 @@ function opendev_ms_nav() {
             		}//isset($options_msg['tooltip_message_' . $i])
             	}
           ?>
+           <?php //page under construction
+            if(isset($options_msg['message_page_construction']) && $options_msg['message_page_construction']!= ""){ ?>
+                 $('#intro-texts p a.tooltip').removeAttr('href');
+                 $('#intro-texts p a.tooltip').attr( "title", "<?php echo trim($options_msg['message_page_construction']); ?>");
+          <?php } ?>
   });
   </script>
 <?php

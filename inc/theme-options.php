@@ -105,11 +105,20 @@ class OpenDev_Options {
 
   add_settings_field(
    'opendev_message_construction',
-   __('Message of construction', 'opendev'),
+   __('Message for site constructing', 'opendev'),
    array($this, 'message_construction_field'),
    'opendev_options',
    'opendev_style_section'
   );
+  
+  add_settings_field(
+   'opendev_message_page_construction',
+   __('Message for pages constructing', 'opendev'),
+   array($this, 'message_page_construction_field'),
+   'opendev_options',
+   'opendev_style_section'
+  );
+  
   add_settings_field(
     	'opendev_tooltip_message_1',
     	__('Tooltip Message 1', 'opendev'),
@@ -268,6 +277,13 @@ class OpenDev_Options {
       $message_construction = $this->options['message_construction'];
       ?>
       <input id="opendev_message_construction" name="opendev_options[message_construction]" type="text" placeholder="<?php _e('Site coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Site coming soon.');?>'" value="<?php echo $message_construction; ?>" size="70" />
+      <?php
+   }
+   function message_page_construction_field() {
+      $message_page_construction = $this->options['message_page_construction'];
+      ?>
+      <input id="opendev_message_page_construction" name="opendev_options[message_page_construction]" type="text" placeholder="<?php _e('Page coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Page coming soon.');?>'" value="<?php echo $message_page_construction; ?>" size="70" /></br>
+      <i><?php _e("(Enter the massage to inform about the page under construction. </br>To be active: please add the class 'tooltip' into the topical menu items' hyperlink. eg &lt;a class='tooltip' href='url'&gt;Infrastructure&lt;/a&gt;. </br> Note: all the topical menu items which have the class 'tooltip' will not be clickable and message above will appear on hover. )", 'opendev'); ?></i>
       <?php
    }
    function tooltip_message_1() {
