@@ -40,7 +40,9 @@ tr:nth-child(2n+1) {
 #od-head span {
 	color: #fff;
 }
-
+#od-head a:hover{
+	color: #F8BF42;
+}
 #od-head .ms-dropdown-title ul {
 	background: #59396C;
 }
@@ -72,6 +74,14 @@ tr:nth-child(2n+1) {
 	color: #F8BF42;
 	font-weight: bold;
 }
+#od-head .notification-message-box a{
+    color: #333;
+}
+.notification-message-box{
+    border: 2px solid #F8BF42;
+    color: #59396C;
+}
+
 .widget .opendev-summary ol li a:hover {
 	color: #F8BF42;
 	text-decoration:underline

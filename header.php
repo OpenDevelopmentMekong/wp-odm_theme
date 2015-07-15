@@ -120,6 +120,20 @@
 				</div>
 			</div>
 		</nav>
+		<?php
+        $options_msg = get_option('opendev_options');
+        if (isset($options_msg['notice_message']) && $options_msg['notice_message']!='') {
+        ?>
+            <nav id="notification-message">
+                <div class="container">
+                    <div class="twelve columns">
+                        <div class="notification-message-box">
+                          <?php echo $options_msg['notice_message']; ?>
+                       </div>
+                    </div>
+    			</div>
+            </nav>
+        <?php } ?>
 		<?php if ( !is_front_page() ) { ?>
 		<nav id="main-breadcrumb"><br />
             <div class="container">

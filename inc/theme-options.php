@@ -110,7 +110,7 @@ class OpenDev_Options {
    'opendev_options',
    'opendev_style_section'
   );
-  
+
   add_settings_field(
    'opendev_message_page_construction',
    __('Message for pages constructing', 'opendev'),
@@ -119,6 +119,13 @@ class OpenDev_Options {
    'opendev_style_section'
   );
   
+  add_settings_field(
+   'opendev_notice_message',
+   __('Notice Message appear above the slider', 'opendev'),
+   array($this, 'notice_message_field'),
+   'opendev_options',
+   'opendev_style_section'
+  );
   add_settings_field(
     	'opendev_tooltip_message_1',
     	__('Tooltip Message 1', 'opendev'),
@@ -284,6 +291,14 @@ class OpenDev_Options {
       ?>
       <input id="opendev_message_page_construction" name="opendev_options[message_page_construction]" type="text" placeholder="<?php _e('Page coming soon.');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Page coming soon.');?>'" value="<?php echo $message_page_construction; ?>" size="70" /></br>
       <i><?php _e("(Enter the massage to inform about the page under construction. </br>To be active: please add the class 'tooltip' into the topical menu items' hyperlink. eg &lt;a class='tooltip' href='url'&gt;Infrastructure&lt;/a&gt;. </br> Note: all the topical menu items which have the class 'tooltip' will not be clickable and message above will appear on hover. )", 'opendev'); ?></i>
+      <?php
+   }
+   
+   function notice_message_field() {
+      $notice_message = $this->options['notice_message'];
+      ?> 
+      <textarea id="opendev_notice_message" name="opendev_options[notice_message]" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
+      <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'opendev'); ?></i>
       <?php
    }
    function tooltip_message_1() {
