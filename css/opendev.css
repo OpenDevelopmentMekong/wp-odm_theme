@@ -995,7 +995,7 @@ a.button:hover{
     margin-bottom: 20px;
 }
 #news {
- padding-top: 20px;
+ padding-top: 0;
 }
 
 #news.page-section .section-title {
@@ -2656,7 +2656,7 @@ ul#menu-header-menu{
     /* background-color: #292D56;
     color:#fff; */
     padding: .8em;
-    margin: 1em 0;
+    margin: 1em 0 0;
     text-align:center;
     font-size: 15px;
 }

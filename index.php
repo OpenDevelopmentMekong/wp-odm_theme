@@ -9,8 +9,8 @@ if(is_front_page()) {
   if($options['site_intro']) :
    $intro_texts = opendev_get_intro_texts();
    if(!empty($intro_texts)) :
-   ?>
-   <section id="site-intro">
+   ?>                                                 
+   <section id="site-intro" <?php $options_msg = get_option('opendev_options'); if(!empty($options_msg['notice_message']) ): echo "style='margin-top:1em'"; endif; ?>>
     <div class="container">
      <div id="intro-texts" class="row">
       <?php if($intro_texts[1]) : ?>
