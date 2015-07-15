@@ -42,13 +42,23 @@ tr:nth-child(2n+1) {
 #od-head span {
 	color: #fff;
 }
-
+#od-head a:hover{
+	color: #D61E2A;
+}
 #od-head .ms-dropdown-title ul {
 	background: #3b2226;
 }
 
 #od-head .ms-dropdown-title ul li {
 	border-bottom: 1px solid rgba(0,0,0,0.4);
+}
+.notification-message-box{
+    border: 2px solid #D61E2A;
+    color: #3b2226;
+}
+.mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
+	background: #97d320;
+	border-color: #97d320;
 }
 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {

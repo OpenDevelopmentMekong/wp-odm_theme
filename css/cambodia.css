@@ -43,8 +43,10 @@ tr:nth-child(2n+1) {
 #od-head a,
 #od-head span {
 	color: #fff;
+}           
+#od-head a:hover{
+	color: #97d320;
 }
-
 #od-head .ms-dropdown-title ul {
 	background: #17303a;
 }
@@ -52,7 +54,14 @@ tr:nth-child(2n+1) {
 #od-head .ms-dropdown-title ul li {
 	border-bottom: 1px solid rgba(0,0,0,0.4);
 }
-
+ 
+#od-head .notification-message-box a{
+    color: #333;
+}
+.notification-message-box{
+    border: 2px solid #97D320;
+    color: #17303a;
+} 
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
 	background: #97d320;
 	border-color: #97d320;
