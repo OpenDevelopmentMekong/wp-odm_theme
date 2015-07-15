@@ -1,11 +1,11 @@
 .myanmar-color{
     color: #F8BF42;
-}        
-a:hover{	
+}
+a:hover{
 	color: #F8BF42 ; /*eec800;*/
 	text-decoration:underline
 }
-a strong:hover {	
+a strong:hover {
 	color: #F8BF42;
 	text-decoration:underline
 }
@@ -15,20 +15,20 @@ a.button,
 	background: #F8BF42;
 }
 tr:nth-child(2n+1) {
-    background-color: #fbf1bb;
+    background-color: #f7be40;
 }
 #od-head {
-	background: #4f2367; /* 59396C */
+	background: #59396C; /* 59396C */
 	color: #f0f0f0;
 }
 #od-head #ms-nav {
-	background: #59396C /*67449b;*/
+	background: #704C98 /*67449b;*/
 }
 #od-head #main-nav .menu ul > li:hover a,
-#od-head #main-nav ul.menu > li:hover,  
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu > li:hover,
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover ,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #F8BF42;  
+	background-color: #F8BF42;
 }
 #od-head h1 a,
 #od-head h1 span {
@@ -70,9 +70,9 @@ tr:nth-child(2n+1) {
 }
 #od-head #main-nav ul li.current_page_item a{
 	color: #F8BF42;
-	font-weight: bold; 
+	font-weight: bold;
 }
 .widget .opendev-summary ol li a:hover {
-	color: #F8BF42;  
+	color: #F8BF42;
 	text-decoration:underline
 }
