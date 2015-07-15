@@ -978,6 +978,14 @@ a.button:hover{
 #live-search .results.results-6 li.item-3 {
  width: 50%;
 }
+/*
+ * Slider
+ * 
+ */
+ .fa_slider_opendev.default .fa_slide_content div.description p a,
+ .fa_slider_opendev.default .fa_slide_content div.description p a:visited {
+     color: #888;
+ } 
 
 /*
  * News section
@@ -1193,7 +1201,7 @@ a.button:hover{
 }
 .sticky-posts.post-active .sticky-item.active article .post-area {
  height: 100%;
- margin-bottom: 15px;
+ margin-bottom: 25px;
  overflow: hidden;
 }
 .sticky-posts.post-active .sticky-item.active article .post-content,
