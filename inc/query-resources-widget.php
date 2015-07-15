@@ -31,7 +31,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
      $shortcode .= ' organization="' . $instance['organization'] . '"';
    if (!empty($instance['limit']) && $instance['limit'] > 0)
      $shortcode .= ' limit="' . $instance['limit'] . '"';
-   $shortcode .= ' include_fields_resources="format" blank_on_empty="true"]';
+   $shortcode .= ' include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]';
 
    $output = do_shortcode($shortcode);
 
@@ -42,7 +42,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
      }
 
-     echo $output;                 
+     echo $output;
 
     if(!empty($instance['more_link']) && $instance['more_link'] != "" )
       echo '<div style="text-align:right"><a href="'.$instance['more_link'].'" target="_blank">'.$instance['more_text'].'</a></div>';
@@ -62,7 +62,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   // outputs the options form on admin
   $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Related Resources', 'opendev' );
   $query = $instance['query'];
-  $limit = ! empty( $instance['limit'] ) ? $instance['limit'] : 0;       
+  $limit = ! empty( $instance['limit'] ) ? $instance['limit'] : 0;
   $more_text = ! empty( $instance['more_text'] ) ? $instance['more_text'] : 'Search for more';
   $more_link = ! empty( $instance['more_link'] ) ? $instance['more_link'] : '';
   $organization = $instance['organization'];
@@ -128,7 +128,7 @@ class OpenDev_Query_Resources_Widget extends WP_Widget {
   $instance['query'] = ( ! empty( $new_instance['query'] ) ) ? strip_tags( $new_instance['query'] ) : '';
   $instance['organization'] = ( ! empty( $new_instance['organization'] ) ) ? strip_tags( $new_instance['organization'] ) : '';
   $instance['group'] = ( ! empty( $new_instance['group'] ) ) ? strip_tags( $new_instance['group'] ) : '';
-  $instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? $new_instance['limit'] : 0;    
+  $instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? $new_instance['limit'] : 0;
   $instance['more_text'] = ( ! empty( $new_instance['more_text'] ) ) ? $new_instance['more_text'] : 0;
   $instance['more_link'] = ( ! empty( $new_instance['more_link'] ) ) ? $new_instance['more_link'] : 0;
 

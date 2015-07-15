@@ -33,7 +33,7 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
     $shortcode .= ' organization="' . $instance['organization'] . '"';
   if (!empty($instance['limit']) && $instance['limit'] > 0)
     $shortcode .= ' limit="' . $instance['limit'] . '"';
-  $shortcode .= ' include_fields_resources="format" blank_on_empty="true"]';
+  $shortcode .= ' include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]';
 
   $output = do_shortcode($shortcode);
 
