@@ -95,7 +95,8 @@
 						jeo.runCallbacks('markerClicked', [e]);
 						console.log(e.target);
 						//markers.openMarker(e.target, false);
-						window.location = e.target.feature.properties.permalink;
+						//window.location = e.target.feature.properties.permalink; 
+						window.open(e.target.feature.properties.permalink, '_blank');
 						return false;
 					});
 
