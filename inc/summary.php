@@ -40,7 +40,8 @@ class OpenDev_Summary {
 					$el->setAttribute('class', 'summary-item');
 					$link = $dom->createElement('a');
 					$link->setAttribute('href', '#' . sanitize_title($name));
-					$link->nodeValue = htmlspecialchars($name);
+					$link->setAttribute("title", $name);
+					//$link->nodeValue = htmlspecialchars($name);
 
 					/*
 					 * Enable link for now
@@ -50,7 +51,7 @@ class OpenDev_Summary {
 					$link->nodeValue = $name;
 					*/
 
-					$el->nodeValue = '';
+					$el->nodeValue = htmlspecialchars($name);
 					$el->appendChild($link);
 
 				}
