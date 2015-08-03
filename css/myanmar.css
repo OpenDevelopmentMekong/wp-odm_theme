@@ -1,6 +1,10 @@
 .myanmar-color{
     color: #F8BF42;
 }
+a, a:visited{
+ color: #F8BF42; /*6393D2, 2774da;*/
+ text-decoration:none
+}
 a:hover{
 	color: #F8BF42 ; /*eec800;*/
 	text-decoration:underline

@@ -1,6 +1,10 @@
 .cambodia-color{
     color: #97D320;
 }
+a, a:visited{
+ color: #97D320; /* #7BCC2E; #6393D2, #2774da;*/
+ text-decoration:none
+}
 a:hover{
 	color: #97D320;
 	text-decoration:underline

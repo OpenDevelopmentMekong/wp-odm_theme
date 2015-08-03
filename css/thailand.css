@@ -1,6 +1,10 @@
 .thailand-color{
     color: #F7904D;
 }
+a, a:visited{
+ color: #F7904D; /*6393D2, 2774da;*/
+ text-decoration:none
+}
 a:hover{	
 	color: #F7904D;
 	text-decoration:underline
