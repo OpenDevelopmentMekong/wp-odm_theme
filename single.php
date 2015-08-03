@@ -40,7 +40,7 @@
 						'link_after'  => '</span>',
 					) );
 					?>
-					<?php comments_template(); ?>
+					<?php //comments_template(); ?>
 				</div>
 				<div class="three columns offset-by-one">
 					<aside id="sidebar">
