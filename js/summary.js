@@ -23,7 +23,9 @@
 			hItems.each(function() {
 				if($(this).is('.summary-item')) {
 					var item = $('<li/>').addClass($(this).attr('id') + ' ' + $(this).attr('class'));
-					item.append($(this).find('a').clone());
+                    var clone = $(this).find('a').clone();
+                    clone.text($(this).find('a').attr('title'));
+					item.append(clone);
 					container.find('ol').append(item);
 				}
 			});
