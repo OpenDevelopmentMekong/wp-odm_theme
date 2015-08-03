@@ -86,6 +86,10 @@ td{
 .mekong-color{
     color: #4683d2;
 }
+a, a:visited{
+ color: #4683d2; /*6393D2, 2774da;*/
+ text-decoration:none
+}
 a:hover{
  color: #4683d2; /*6393D2, 2774da;*/
  text-decoration:underline
@@ -93,7 +97,7 @@ a:hover{
 a strong:hover {
  color: #4683d2;
  text-decoration:underline
-}
+} 
 a.button,
 .button {
  background: #6393d2;

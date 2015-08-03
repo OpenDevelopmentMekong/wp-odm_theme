@@ -1,5 +1,9 @@
 .laos-color{
     color: #D61E2A;
+} 
+a, a:visited{
+ color: #D61E2A; /*6393D2, 2774da;*/
+ text-decoration:none
 }
 a:hover{
 	color: #D61E2A; /*eec800;*/

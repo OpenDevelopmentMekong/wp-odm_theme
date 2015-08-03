@@ -1,6 +1,10 @@
 .vietnam-color{
     color: #C6C366;
 }
+a, a:visited{
+ color: #C6C366; /*6393D2, 2774da;*/
+ text-decoration:none
+}
 a:hover{
 	color: #C6C366;
 	text-decoration:underline

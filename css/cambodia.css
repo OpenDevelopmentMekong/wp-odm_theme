@@ -1,6 +1,11 @@
 .cambodia-color{
     color: #97D320;
 }
+a, a:visited{
+ds
+ color: #97D320; /* #7BCC2E; #6393D2, #2774da;*/
+ text-decoration:none
+}
 a:hover{
 	color: #97D320;
 	text-decoration:underline
@@ -80,12 +85,3 @@ tr:nth-child(2n+1) {
 }
 .current-site-cambodia{
 	background: #97d320;
-}
-#od-head #main-nav ul li.current_page_item a{
-	color: #97d320;
-	font-weight: bold; 
-}
-.widget .opendev-summary ol li a:hover {
-	color: #97D320; 
-	text-decoration:underline
-} 
