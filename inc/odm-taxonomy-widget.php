@@ -47,22 +47,14 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			$get_post_title = $this->wp_exist_post_by_title($category->name);
 			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
 			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type );
-<<<<<<< HEAD
-			if ($get_post_title){
-				$highlight_cat =  " class='".COUNTRY_NAME."-color'";
-				echo '<a href="' . get_permalink( $get_post_title->ID) . '">';
-			}else{
-                  $highlight_cat = "";
-            }
-=======
+ 
 			if ($get_post_title){                           
 				$highlight_cat =  " class='".COUNTRY_NAME."-color'";   
                  // $highlight_cat = "";
 				echo '<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
 			}else{
                   $highlight_cat = "";
-           }
->>>>>>> master
+           } 
 				$in_category = in_category( $category->term_id );
 				if ($in_category){
 					 echo "<strong class='".COUNTRY_NAME."-color'>";
