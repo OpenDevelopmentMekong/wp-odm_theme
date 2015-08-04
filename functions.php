@@ -40,8 +40,10 @@ require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
 require_once(STYLESHEETPATH . '/inc/query-resources-widget.php');
 
 // Related recent news
-require_once(STYLESHEETPATH . '/inc/od-related-recent-news-widget.php');
+require_once(STYLESHEETPATH . '/inc/od-related-recent-news-widget.php');    
 
+// Mekong Floods
+require_once(STYLESHEETPATH . '/inc/mekong-floods.php');
 
 // Advanced nav
 require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');

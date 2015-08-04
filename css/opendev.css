@@ -2133,7 +2133,7 @@ a.button:hover{
  border-bottom: none !important;
  float:left;
  display: inline-block;
- margin: 0px 4px 0px 0px !important;
+ margin: 0px 4px 4px 0px !important;
  padding: 4px 4px 2px 4px!important;
  font-weight: bold;
  background: #333;
