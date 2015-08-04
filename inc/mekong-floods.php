@@ -39,7 +39,7 @@ class OpenDev_Mekong_Floods {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'mekong_floods' ),
+			'rewrite'            => array( 'slug' => 'mekong-floods' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
@@ -47,7 +47,7 @@ class OpenDev_Mekong_Floods {
 			'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' )
 		);
 
-		register_post_type( 'mekong_floods', $args );
+		register_post_type( 'mekong-floods', $args );
 
 	}
 
