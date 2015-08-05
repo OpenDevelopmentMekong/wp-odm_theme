@@ -104,7 +104,12 @@
 										</ul>
 									</div>
 								</li>
-								<?php dynamic_sidebar('general'); ?>
+								<?php if ( get_post_type() == 'mekong-floods'){
+                                          dynamic_sidebar('mekong-floods');
+                                      } else{
+								          dynamic_sidebar('general');
+                                       }
+                                ?>
 							</ul>
 						</aside>
 					</div>
