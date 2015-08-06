@@ -146,7 +146,7 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
              } else echo "show_by_cat_slug"; ?>'>
 			<label for="<?php echo $this->get_field_id( 'od_related_news_by_cat_slug' ); ?>"><?php _e( 'Category slugs:' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'od_related_news_by_cat_slug' ); ?>" name="<?php echo $this->get_field_name( 'od_related_news_by_cat_slug' ); ?>" type="text" value="<?php echo esc_attr( $by_cat_slug ); ?>" />  <br />
-            <i>Split the slug by "+". eg. agriculture-and-fishing,sugarcane-bagasse</i>
+            <i>Split the slug by comma (,). eg. agriculture-and-fishing,sugarcane-bagasse</i>
 
 		</p>
 		<?php
