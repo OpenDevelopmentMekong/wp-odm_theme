@@ -101,7 +101,7 @@ class WP_Query_Multisite {
 	function the_post($post) {
 		global $blog_id;
 
-		if(!$this->loop_end && $post->site_ID && $blog_id !== $post->site_ID) {
+		if(!$post->loop_end && $post->site_ID && $blog_id !== $post->site_ID) {
 			switch_to_blog($post->site_ID);
 		}
 
