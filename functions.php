@@ -40,10 +40,10 @@ require_once(STYLESHEETPATH . '/inc/related-resources-widget.php');
 require_once(STYLESHEETPATH . '/inc/query-resources-widget.php');
 
 // Related recent news
-require_once(STYLESHEETPATH . '/inc/od-related-recent-news-widget.php');    
+require_once(STYLESHEETPATH . '/inc/od-related-recent-news-widget.php');
 
-// Mekong Floods
-require_once(STYLESHEETPATH . '/inc/mekong-floods.php');
+// Mekong region storms and floods
+require_once(STYLESHEETPATH . '/inc/mekong-region-storms-and-floods.php');
 
 // Advanced nav
 require_once(STYLESHEETPATH . '/inc/advanced-navigation.php');
@@ -62,6 +62,12 @@ function opendev_setup_theme() {
  register_sidebar(array(
   'name' => __('Topic sidebar', 'jeo'),
   'id' => 'topic',
+  'before_title' => '<h2 class="widget-title">',
+  'after_title' => '</h2>'
+ ));
+  register_sidebar(array(
+  'name' => __('Mekong Floods sidebar', 'opendev'),
+  'id' => 'mekong-floods',
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>'
  ));
@@ -931,7 +937,7 @@ function excerpt($num, $read_more="") {
 function add_iframe($initArray) {
   $initArray['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width|allowtransparency|allowfullscreen|webkitallowfullscreen|mozallowfullscreen|oallowfullscreen|msallowfullscreen]";
   return $initArray;
-}                                                                     
+}
 // this function alters the way the WordPress editor filters your code
 add_filter('tiny_mce_before_init', 'add_iframe');
 
