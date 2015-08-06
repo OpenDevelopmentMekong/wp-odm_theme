@@ -107,19 +107,7 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
                          $('.'+get_select_id+'_by_cat_slug').hide();
                          $('.show_by_cat_slug').hide();
                      }
-             });
-            /*  alert(get_select_id);
-             if(get_select_id !=""){
-                $('.od_related_news_option').change(function(){
-                    get_select_id = $(this).attr("id");
-                      if($(this).val() == "Show By specific category slug"){
-                         $('.'+get_select_id+'_by_cat_slug').show();
-                     }else {
-                         $('.by_cat_slug').hide();
-                     }
-                 });
-             } */
-
+             }); 
            });
          </script>
 		<p>
