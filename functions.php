@@ -374,14 +374,13 @@ function opendev_ms_nav() {
      <li class="site-item">
      <?php
      $options = get_option('opendev_options');
-     if ($options['site_in_development']=="true"){
+     if (isset($options['site_in_development']) && ($options['site_in_development']=="true")){
      ?>
       <a href="#"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?> title="<?php if ($options['message_construction']!="") _e($options['message_construction'],'opendev'); else _e("Site coming soon.", 'opendev');?>"><?php _e($name, 'opendev');?></a>
      <?php }else{ ?>
       <a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
-      <?php
-      $options = get_option('opendev_options');
-      if($options['dropbox_menu']) {
+      <?php     
+    if (isset($options['dropbox_menu']) && ($options['dropbox_menu'] == "on")) {
       ?>
       <div class="sub-menu">
        <ul class="first-menu">
