@@ -66,8 +66,8 @@ function opendev_setup_theme() {
   'after_title' => '</h2>'
  ));
   register_sidebar(array(
-  'name' => __('Mekong Floods sidebar', 'opendev'),
-  'id' => 'mekong-floods',
+  'name' => __('Mekong Storms and Floods sidebar', 'opendev'),
+  'id' => 'mekong-storm-flood',
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>'
  ));
