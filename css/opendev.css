@@ -1016,7 +1016,8 @@ a.button:hover{
 }
 
 .map-container {
- min-height: 0 !important;
+ min-height: 0 !important; 
+ margin-bottom:1em;
 }
 
 #news.page-section .section-map .map-container,
