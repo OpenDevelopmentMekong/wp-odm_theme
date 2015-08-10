@@ -18,29 +18,30 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 
-	public function get_related_news( $category = "") {
+	public function get_related_news( $category = "") {  
         $args=array(
               'post_type' => 'post',
               'post_status' => 'publish',
               'category_name' => $category,
-              'showposts' => 10
+              'numberposts' => 10 
               );
-        $news_query = new WP_Query($args);
-        if( $news_query->have_posts() ) {
+        
+        $rel_news_query = get_posts( $args );;     
+        if( !empty($rel_news_query) ) { 
             $news = "<ul>";
-              while ($news_query->have_posts()) : $news_query->the_post();
+              foreach( $rel_news_query as  $rel_post ) : 
                 $news .= "<li>";
                  /* if(has_post_thumbnail()) :
-				    $news .= '<a href="'.get_the_permalink().'" title="'.get_the_title().'">';
-                         $news .= get_the_post_thumbnail(get_the_ID(), array(50,50), array('class' => 'align-left'));
+				    $news .= '<a href="'.get_permalink($rel_post->ID).'" title="'.$rel_post->post_title.'">';
+                         $news .= get_the_post_thumbnail($rel_post->ID, array(50,50), array('class' => 'align-left'));
                     $news .="</a>";
 			     endif; */
-                 $news .= '<a href="'.get_the_permalink().'" rel="bookmark" title="Permanent Link to '.get_the_title().'">'.get_the_title().'</a></li>';
-              endwhile;
-             $news .= '</ul>';
+                 $news .= '<a href="'.get_permalink($rel_post->ID).'" rel="bookmark" title="Click to view '.$rel_post->post_title.'">'.$rel_post->post_title.'</a></li>';
+              endforeach;
+             $news .= '</ul>'; 
+            //wp_reset_query();
+             return $news;
         }
-        wp_reset_query();
-        return $news;
      }
 
 	/**

@@ -10,8 +10,8 @@ unset($get_post_type['site-update']); */
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 query_posts(array(
 	'post_type' => jeo_get_mapped_post_types(),
-	'paged' => $paged,
-	'post_status' => 'publish',
+	'paged' => $paged,                       
+	'post_status' => 'publish', 
 	'meta_query' => array(
         'relation' => 'AND',
         array(
@@ -19,7 +19,7 @@ query_posts(array(
             'value'   => 1 ),
         array('
             key'      => 'maps',
-            'value'   => get_the_ID()
+            'value'   => get_the_ID() 
         )
     ),
 	's' => isset($_GET['s']) ? $_GET['s'] : null
