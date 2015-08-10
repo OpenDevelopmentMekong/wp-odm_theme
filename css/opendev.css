@@ -65,14 +65,14 @@ td{
 }
 /******Image Caption**********/
 .wp-caption {
-    max-width: 750px;
+    max-width: 100%;
     margin-bottom: 24px;
-    padding: 15px 7px 15px 15px;
+    padding: 15px 15px 15px 15px;
     border: 1px solid #DDD;
     background: #F4F4F4 none repeat scroll 0%;
 }
 .wp-caption img{
-    max-width: 735px;
+    max-width: 100%;
     /* border:1px solid #ddd */
 }
 .wp-caption-text {
@@ -2678,10 +2678,5 @@ ul#menu-header-menu{
 }
 
 @media screen and (max-width: 1020px) {
-     .wp-caption {
-        max-width: 600px;
-    }
-    .wp-caption img {
-        max-width: 585px;
-    }
+     
 }
