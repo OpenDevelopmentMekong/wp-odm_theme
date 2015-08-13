@@ -44,7 +44,8 @@ if( $flexible_posts->have_posts() ):
      <?php the_excerpt(); ?>
     </p>
    </li>
-  <?php endwhile; ?>
+  <?php endwhile; ?>   
+  <p style="background:#f4f4f4;text-align:center"><a href="<?php echo  get_bloginfo('url')."/". get_post_type();?>">See all</a></p>
   </ul><!-- .dpe-flexible-posts -->
  </div>
 <?php else: // We have no posts ?>

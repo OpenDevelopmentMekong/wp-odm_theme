@@ -4,10 +4,10 @@ html, body {
 }
 h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}
 h2 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
-h3 { font-size: 28px; line-height: 30px; margin-bottom: 10px; }
-h4 { font-size: 25px; line-height: 28px; margin-bottom: 10px; }
-h5 { font-size: 22px; line-height: 24px; margin-bottom: 5px; }
-h6 { font-size: 16px; line-height: 16px; }
+h3 { font-size: 26px; line-height: 28px; margin-bottom: 10px; }
+h4 { font-size: 21px; line-height: 25px; margin-bottom: 10px; }
+h5 { font-size: 18px; line-height: 20px; margin-bottom: 5px; }
+h6 { font-size: 15px; line-height: 16px; }
 h5 a {
     text-decoration: none;
 }
