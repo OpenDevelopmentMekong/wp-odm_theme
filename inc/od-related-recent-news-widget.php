@@ -18,27 +18,28 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 
-	public function get_related_news( $category = "") {  
+	public function get_related_news( $category = "") {
         $args=array(
               'post_type' => 'post',
               'post_status' => 'publish',
               'category_name' => $category,
-              'numberposts' => 10 
+              'numberposts' => 10
               );
-        
-        $rel_news_query = get_posts( $args );;     
-        if( !empty($rel_news_query) ) { 
+
+        $rel_news_query = get_posts( $args );
+        if( !empty($rel_news_query) ) {
             $news = "<ul>";
-              foreach( $rel_news_query as  $rel_post ) : 
+              foreach( $rel_news_query as  $rel_post ) :
                 $news .= "<li>";
                  /* if(has_post_thumbnail()) :
 				    $news .= '<a href="'.get_permalink($rel_post->ID).'" title="'.$rel_post->post_title.'">';
                          $news .= get_the_post_thumbnail($rel_post->ID, array(50,50), array('class' => 'align-left'));
                     $news .="</a>";
 			     endif; */
-                 $news .= '<a href="'.get_permalink($rel_post->ID).'" rel="bookmark" title="Click to view '.$rel_post->post_title.'">'.$rel_post->post_title.'</a></li>';
+			     $related_post_title = qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage($rel_post->post_title);
+                 $news .= '<a href="'.get_permalink($rel_post->ID).'" rel="bookmark" title="Click to view '.$related_post_title.'">'.$related_post_title.'</a></li>';
               endforeach;
-             $news .= '</ul>'; 
+             $news .= '</ul>';
             //wp_reset_query();
              return $news;
         }
@@ -53,11 +54,23 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
+	        global $wpdb;
     		if ( ! empty( $instance['od_related_news_option'] ) ) {
     			$news_option = $instance['od_related_news_option'];
     			if ($news_option == 'Related To The Topics'){
-                    $post_title = get_the_title();
-            		$category_slug = strtolower(preg_replace('/\s+/', '-', $post_title));
+                     if (function_exists(qtrans_getLanguage) && (qtrans_getLanguage()!="en")){
+                            $page_id = get_the_ID();
+                            $post_type = get_post_type( $page_id );
+                            $page_results = $wpdb->get_results($wpdb->prepare(
+                                        "SELECT `post_title` FROM $wpdb->posts WHERE `post_type` = %s AND `ID` = %d",
+                                        $post_type,
+                                        $page_id),
+                                ARRAY_A );
+                            $english_pagetitle = qtrans_use('en', $page_results[0]['post_title'], false);
+                     }else {
+                            $english_pagetitle = get_the_title();
+                     }
+            		$category_slug = strtolower(preg_replace('/\s+/', '-', $english_pagetitle));
                 }else if ($news_option == 'Show By specific category slug'){
                     if (!empty ($instance['od_related_news_by_cat_slug']))
                         $category_slug = $instance['od_related_news_by_cat_slug'];
@@ -108,7 +121,7 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
                          $('.'+get_select_id+'_by_cat_slug').hide();
                          $('.show_by_cat_slug').hide();
                      }
-             }); 
+             });
            });
          </script>
 		<p>
