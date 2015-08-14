@@ -1641,6 +1641,9 @@ a.button:hover{
 #content #reference-list{
     margin-left: 0;
 }
+#content .post-content iframe{
+    max-width:100%;
+}
 #content #references li, #content #reference-list li{
  list-style-type: none;
 }
