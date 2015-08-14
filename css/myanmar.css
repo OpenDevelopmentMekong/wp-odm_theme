@@ -1,18 +1,19 @@
 .myanmar-color{
     color: #F8BF42;
 }
-a, a:visited{
+a, a:visited, #sidebar .widget li a{
  color: #F8BF42; /*6393D2, 2774da;*/
  text-decoration:none
 }
-a:hover{
-	color: #F8BF42 ; /*eec800;*/
+a:hover, #sidebar .widget li a:hover{
+	color: #59396C ; /*eec800;*/
 	text-decoration:underline
 }
 a strong:hover {
-	color: #F8BF42;
+	color: #59396C;
 	text-decoration:underline
 }
+
 button,
 a.button,
 .button {
