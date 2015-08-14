@@ -1,22 +1,22 @@
 .cambodia-color{
-    color: #97D320;
+    color: #66CC00;
 }
-a, a:visited{ 
- color: #97D320; /* #7BCC2E; #6393D2, #2774da;*/
+a, a:visited, #sidebar .widget li a{
+ color: #66CC00; /* #7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
 }
-a:hover{
-	color: #97D320;
+a:hover, #sidebar .widget li a:hover{
+	color: #213D49;
 	text-decoration:underline
 }
-a strong:hover {	
-	color: #97D320;
+a strong:hover {
+	color: #213D49;
 	text-decoration:underline
 }
 button,
 a.button,
 .button {
-	background: #97d320;
+	background: #66CC00;
 }
 tr:nth-child(2n+1) {
     background-color: #eefbe6;
@@ -31,25 +31,25 @@ tr:nth-child(2n+1) {
 }
 
 #od-head #main-nav .menu ul > li:hover a,
-#od-head #main-nav ul.menu > li:hover,  
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu > li:hover,
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover ,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #97D320;  
-}  
+	background-color: #97d320;
+}
 
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
-	color: #97d320;
+	color: #66CC00;
 }
 
 #od-head h2,
 #od-head a,
 #od-head span {
 	color: #fff;
-}           
+}
 #od-head a:hover{
-	color: #97d320;
+	color: #66CC00;
 }
 #od-head .ms-dropdown-title ul {
 	background: #17303a;
@@ -58,14 +58,14 @@ tr:nth-child(2n+1) {
 #od-head .ms-dropdown-title ul li {
 	border-bottom: 1px solid rgba(0,0,0,0.4);
 }
- 
+
 #od-head .notification-message-box a{
     color: #333;
 }
 .notification-message-box{
     border: 2px solid #97D320;
     color: #17303a;
-} 
+}
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
 	background: #97d320;
 	border-color: #97d320;

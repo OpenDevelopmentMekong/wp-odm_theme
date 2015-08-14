@@ -1,18 +1,18 @@
 .laos-color{
     color: #D61E2A;
 } 
-a, a:visited{
+a, a:visited, #sidebar .widget li a{
  color: #D61E2A; /*6393D2, 2774da;*/
  text-decoration:none
 }
-a:hover{
-	color: #D61E2A; /*eec800;*/
+a:hover, #sidebar .widget li a:hover{
+	color: #3b2226; /*eec800;*/
 	text-decoration:underline
 }
 a strong:hover {
-	color: #D61E2A;
+	color: #3b2226;
 	text-decoration:underline
-}
+} 
 button,
 a.button,
 .button {
