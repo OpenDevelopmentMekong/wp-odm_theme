@@ -35,7 +35,25 @@ foreach ($filter_by_tags as $tag_name){
                                     </div>
                                <?php endif; ?>
                                <a href="<?php the_permalink(); ?>"><h3><?php echo the_title(); ?></h3></a>
-                               <p class="date"><?php echo get_the_date(); ?></p>
+                               <div class="date"><span class="lsf">&#xE12b;</span> <?php echo get_the_date(); ?></div>
+                               <div class="news-source">
+            						<span class="icon-news"></span>
+        							<?php
+                					$terms_news_sources = get_the_terms($post->ID,'news_source');
+                					$news_sources = "";
+                					if ($terms_news_sources){
+                					  foreach ($terms_news_sources as $term) {
+                							//Always check if it's an error before continuing. get_term_link() can be finicky sometimes
+                							$term_link = get_term_link( $term, 'news_source' );
+                							if( is_wp_error( $term_link ) )
+                								continue;
+                							//We successfully got a link. Print it out.
+                							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+                						}
+                						echo substr($news_sources, 0, -1);
+                					}
+                					?>
+            					</div>
                           </header>
                           <section class="post-content">
 
@@ -76,7 +94,25 @@ foreach ($filter_by_tags as $tag_name){
                                     </div>
                                <?php endif; ?>
                                <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
-                               <p class="date"><?php echo get_the_date(); ?></p>
+                               <div class="date"><span class="lsf">&#xE12b;</span> <?php echo get_the_date(); ?></div>
+                               <div class="news-source">
+            						<span class="icon-news"></span>
+        							<?php
+                					$terms_news_sources = get_the_terms($post->ID,'news_source');
+                					$news_sources = "";
+                					if ($terms_news_sources){
+                					  foreach ($terms_news_sources as $term) {
+                							//Always check if it's an error before continuing. get_term_link() can be finicky sometimes
+                							$term_link = get_term_link( $term, 'news_source' );
+                							if( is_wp_error( $term_link ) )
+                								continue;
+                							//We successfully got a link. Print it out.
+                							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+                						}
+                						echo substr($news_sources, 0, -1);
+                					}
+                					?>
+            					</div>
                           </header>
                           <section class="post-content">
 

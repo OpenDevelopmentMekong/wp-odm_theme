@@ -10,12 +10,33 @@
     					<div class="date">
     							<span class="lsf">&#xE12b;</span> <?php the_date(); ?>
     					</div>
+    					&nbsp;
+    					<div class="news-source">
+    						<span class="icon-news"></span>
+							<?php
+        					$terms_news_sources = get_the_terms($post->ID,'news_source');
+        					$news_sources = "";
+        					if ($terms_news_sources){
+        					  foreach ($terms_news_sources as $term) {
+        							//Always check if it's an error before continuing. get_term_link() can be finicky sometimes
+        							$term_link = get_term_link( $term, 'news_source' );
+        							if( is_wp_error( $term_link ) )
+        								continue;
+        							//We successfully got a link. Print it out.
+        							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+        						}
+        						echo substr($news_sources, 0, -1);
+        					}
+        					?>
+    					</div>
+
     					<div class="categories">
     						  <span class="lsf">&#9776;</span> <?php echo __( 'Filed under:', 'jeo' ); ?> <?php the_category(); ?>
     					</div>
 		            </header>
+
 					<?php get_template_part('section', 'related-datasets'); ?>
-            		<section class="content">
+            		<section class="content section-content">
     					<?php
     					if(jeo_has_marker_location()) {
     						?>
@@ -28,6 +49,37 @@
     					}
     					?>
     					<?php the_content(); ?>
+
+                        <!-- News Source: author and link -->
+                        <?php
+                        if (function_exists(qtrans_getLanguage)){
+                            if (qtrans_getLanguage() <> "en") $lang = "_". qtrans_getLanguage(); else $lang = "";
+                        }
+                        //Get author
+                        if (get('author')=="" && get('author'.$lang)==""){
+                            echo "";
+                        }else{
+                            $news_source = '<span class="lsf">&#xE041;</span> ';
+                            if (get('author'.$lang)!= "") $news_source .= get('author'.$lang)."<br />" ; else $news_source .= get('author')."<br />"; ?>
+                  <?php }
+                        //Get url
+                        if (get('article_link')=="" && get('article_link'.$lang)==""){
+                            echo "";
+                        }else{
+                            if (get('article_link'.$lang)!= "") $source = get('article_link'.$lang); else $source = get('article_link');
+                			if($source !=""){
+            					if(substr($source, 0, 7)!= "http://") {
+                                    $news_source .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+                                }else{
+                                    $news_source .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+                                }
+                		   }
+                        }
+                        if ($news_source!="") echo "<p>".$news_source."</p>";
+               	?>
+    					<div class="post-tags">
+    						  <span class="lsf">&#xE128;</span> <?php echo __( 'Tags:', 'opendev' ); ?> <?php the_tags('',''); ?>
+    					</div>
     					<?php
     					wp_link_pages( array(
     						'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jeo' ) . '</span>',
@@ -36,6 +88,7 @@
     						'link_after'  => '</span>',
     					) );
     					?>
+
     					<?php //comments_template(); ?>
             		</section>
 				</div> <!-- eight -->
