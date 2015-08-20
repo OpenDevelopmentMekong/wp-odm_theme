@@ -59,9 +59,7 @@ td{
 .tableauPlaceholder{
     margin: 5px auto 20px;
 }
-.aligncenter{
-    margin-bottom: 0;
-}
+
 /******Image Caption**********/
 .wp-caption {
     max-width: 95%;
@@ -1242,6 +1240,7 @@ a.button:hover{
 .sticky-posts.post-active .sticky-item.active article .post-content,
 .sticky-posts.post-active .sticky-item.active article .post-actions {
  display: block;
+ margin-top: 8px;
 }
 
 .map-sidebar {
