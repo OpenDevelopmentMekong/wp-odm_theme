@@ -26,8 +26,7 @@ if( $flexible_posts->have_posts() ):
    <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <a href="<?php echo the_permalink(); ?>">
      <h4><?php the_title(); ?></h4>
-    </a>
-    <p>
+    </a> 
      <div class="post-widget-image">
       <?php
        if( $thumbnail == true ) {
@@ -41,8 +40,7 @@ if( $flexible_posts->have_posts() ):
        }
       ?>
      </div>
-     <?php the_excerpt(); ?>
-    </p>
+     <?php the_excerpt(); ?> 
    </li>
   <?php endwhile; ?>
   </ul><!-- .dpe-flexible-posts -->
