@@ -49,7 +49,7 @@ tr:nth-child(2n) {
 }
 tr:nth-child(2n+1) {
     background-color: #9fd8fa;
-} 
+}
 td{
     padding: 8px;
     line-height: 1.42857;
@@ -60,9 +60,6 @@ td{
     margin: 5px auto 20px;
 }
 
-.aligncenter{
-    margin-bottom: 0;
-}
 /******Image Caption**********/
 .wp-caption {
     max-width: 95%;
@@ -97,7 +94,7 @@ a:hover{
 a strong:hover {
  color: #4683d2;
  text-decoration:underline
-} 
+}
 a.button,
 .button {
  background: #6393d2;
@@ -150,6 +147,27 @@ a.button:hover{
   color: #333;
   text-transform: uppercase;
   float:left;
+}
+.section-content .post-categories li, .section-content .post-tags{
+    margin-bottom: 0
+}
+.section-content .post-categories li a, .section-content .post-tags a{
+    display: inline-block;
+    padding: 5px;
+    background: #EEE none repeat scroll 0% 0%;
+    border-radius: 3px;
+    margin: 0px 5px 2px 0px;
+    font-size: 11px;
+    line-height: 11px;
+    text-decoration: none;
+    color: #333;
+    width: auto;
+    text-transform: uppercase;
+}
+
+.section-content .post-categories li a:hover, .section-content .post-tags a:hover{
+    background: #333 none repeat scroll 0% 0%;
+    color: #fff;
 }
 .leaflet-div-icon {
  background: url(../img/marker.png) no-repeat !important;
@@ -518,7 +536,7 @@ a.button:hover{
  left: 0px;
  background: #fff;
  padding: 1px 0 0;
- width: 200px;         
+ width: 200px;
  z-index:9999;
  border-left: 1px solid #c9c9c9;
  border-bottom: 1px solid #c9c9c9;
@@ -647,12 +665,20 @@ a.button:hover{
 .single-post-header ul li{
  list-style-type: none;
 }
-.single-post-header .date {
+.post-header .date, .single-post-header .date {
  font-size: 14px;
  color: #999;
+ display:inline
 }
-
-.single-post-header .categories {
+.post-header .icon-news, .single-post-header .icon-news{
+   font-size: 18px;
+}
+.post-header .news-source, .single-post-header .news-source {
+ font-size: 14px;
+ color: #999;
+ display:inline
+}
+.single-post-header .categories, .section-content .post-tags {
  padding-top: 4px;
  font-size: 14px;
  color: #999;
@@ -986,12 +1012,12 @@ a.button:hover{
 }
 /*
  * Slider
- * 
+ *
  */
  .fa_slider_opendev.default .fa_slide_content div.description p a,
  .fa_slider_opendev.default .fa_slide_content div.description p a:visited {
      color: #888;
- } 
+ }
 
 /*
  * News section
@@ -1017,7 +1043,7 @@ a.button:hover{
 }
 
 .map-container {
- min-height: 0 !important; 
+ min-height: 0 !important;
  margin-bottom:1em;
 }
 
@@ -1214,6 +1240,7 @@ a.button:hover{
 .sticky-posts.post-active .sticky-item.active article .post-content,
 .sticky-posts.post-active .sticky-item.active article .post-actions {
  display: block;
+ margin-top: 8px;
 }
 
 .map-sidebar {
@@ -2255,7 +2282,7 @@ a.button:hover{
  list-style-type: none !important;
  word-wrap: break-word;
 }
- 
+
 
 #sidebar .widgets .widget div ul li ul li{
  list-style: disc !important;

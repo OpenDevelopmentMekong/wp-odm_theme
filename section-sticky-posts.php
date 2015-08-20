@@ -35,7 +35,30 @@ foreach ($filter_by_tags as $tag_name){
                                     </div>
                                <?php endif; ?>
                                <a href="<?php the_permalink(); ?>"><h3><?php echo the_title(); ?></h3></a>
-                               <p class="date"><?php echo get_the_date(); ?></p>
+                               <div class="date"><span class="lsf">&#xE12b;</span> <?php echo get_the_date(); ?></div>
+                               <div class="news-source">
+        							<?php
+                					if (taxonomy_exists('news_source')){
+                					    $terms_news_sources = get_the_terms($post->ID,'news_source');
+                					    if ($terms_news_sources){
+                					        $news_sources = "";
+                                            echo '<span class="icon-news"></span>';
+                        					foreach ($terms_news_sources as $term) {
+                    							$term_link = get_term_link( $term, 'news_source' );
+                    							if( is_wp_error( $term_link ) )
+                    								continue;
+                    							//We successfully got a link. Print it out.
+                    							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+                    						}
+                						    echo substr($news_sources, 0, -1);
+                						}
+                					}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+                                        echo '<span class="icon-news"></span> ';
+                                        $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+                                        echo get_the_title($news_source_id);
+                                    }
+                					?>
+            					</div>
                           </header>
                           <section class="post-content">
 
@@ -76,7 +99,30 @@ foreach ($filter_by_tags as $tag_name){
                                     </div>
                                <?php endif; ?>
                                <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
-                               <p class="date"><?php echo get_the_date(); ?></p>
+                               <div class="date"><span class="lsf">&#xE12b;</span> <?php echo get_the_date(); ?></div>
+                               <div class="news-source">
+        							<?php
+                					if (taxonomy_exists('news_source')){
+                					    $terms_news_sources = get_the_terms($post->ID,'news_source');
+                					    if ($terms_news_sources){
+                					        $news_sources = "";
+                                            echo '<span class="icon-news"></span>';
+                        					foreach ($terms_news_sources as $term) {
+                    							$term_link = get_term_link( $term, 'news_source' );
+                    							if( is_wp_error( $term_link ) )
+                    								continue;
+                    							//We successfully got a link. Print it out.
+                    							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+                    						}
+                						    echo substr($news_sources, 0, -1);
+                						}
+                					}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+                                        echo '<span class="icon-news"></span> ';
+                                        $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+                                        echo get_the_title($news_source_id);
+                                    }
+                					?>
+            					</div>
                           </header>
                           <section class="post-content">
 
