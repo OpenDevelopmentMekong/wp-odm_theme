@@ -518,7 +518,8 @@ a.button:hover{
  left: 0px;
  background: #fff;
  padding: 1px 0 0;
- width: 200px;
+ width: 200px;         
+ z-index:9999;
  border-left: 1px solid #c9c9c9;
  border-bottom: 1px solid #c9c9c9;
  border-right: 1px solid #c9c9c9;
@@ -2670,16 +2671,127 @@ ul#menu-header-menu{
     font-size: 15px;
 }
 
-@media screen and (max-width: 800px) {
-    #od-head h1 {
-      font-size: 40px;
-      margin: 0 14px 0 0;
-    }
-    #od-head h2.side-title {
-        margin: 4px 0 0 0;
-    }
-}
 
 @media screen and (max-width: 1020px) {
-     
+
+}
+
+@media screen and (max-width: 800px) {
+    #od-head h1{
+        font-size: 25px;
+        font-family: "Droid Serif";
+        margin: 0px 14px 0px 0px;
+    }
+    #od-head h2.side-title{
+        font-size: 18px;
+        line-height: 42px;
+    }
+    #od-head #social-nav a{
+    line-height: 31px;
+    font-size: 15px;
+    margin: 5px 0px 0px 8px;
+
+    }
+    #live-search input[type="text"]{
+        width:50%;
+        margin-top:-20px;
+        margin-left: 1px;
+    }
+    #od-head #ms-nav{
+        margin-top: 10px;
+    }
+    #od-head #ms-nav ul.ms-nav > li{
+    }
+    #od-head #ms-nav ul.ms-nav > li > a {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+    #od-head #main-nav a{
+        padding:7px 10px;
+        font-size:12px
+    }
+    #od-head #main-nav ul.menu > li > ul{
+        top: 28px;
+    }
+
+    #tabbed-post-type-nav ul li{
+        float: left;
+        display: inline;
+        margin: 0;
+        width: auto;
+    }
+    #tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name{
+        padding:10px;
+    }
+    .announcements-list li{
+        width:98%;
+    }
+}
+@media only screen and (max-width: 400px) {
+    #od-head {
+        padding: 10px 0px 0px;
+    }
+    #od-head h1{
+        font-size: 25px;
+        font-family: "Droid Serif";
+        margin: 0px 14px 0px 0px;
+    }
+    #od-head h2.side-title{
+        font-size: 18px;
+        line-height: 42px;
+    }
+    #od-head #social-nav a{
+    line-height: 31px;
+    font-size: 15px;
+    margin: 5px 0px 0px 8px;
+
+    }
+    #live-search input[type="text"]{
+        width:50%;
+        margin-top:-20px;
+        margin-left: 1px;
+    }
+    #od-head #ms-nav{
+        margin-top: 10px;
+    }
+    #od-head #ms-nav ul.ms-nav > li{
+    }
+    #od-head #ms-nav ul.ms-nav > li > a {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+    #od-head #main-nav a{
+        padding:7px 10px;
+        font-size:12px
+    }
+    #od-head #main-nav ul.menu > li > ul{
+        top: 28px;
+    }
+    #sidebar .widgets .widget, .widget{
+        width:auto;
+    }
+    #sidebar .widgets .widget .widget-title, .widget .widget-title{
+        font-size:small;
+    }
+    #tabbed-post-type-nav ul li{
+        float: left;
+        display: inline;
+        margin: 0;
+        width: auto;
+    }
+    #tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name{
+        padding:10px;
+    }
+    .announcements-list li{
+        width:98%;
+    }
+}
+/*IE10*/
+@-ms-viewport{
+    width: extend-to-zoom;
+    zoom: 1.0;
+}
+@viewport{
+    zoom: 1.0;
+    width: extend-to-zoom;
 }
