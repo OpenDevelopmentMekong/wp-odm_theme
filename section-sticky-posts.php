@@ -42,7 +42,7 @@ foreach ($filter_by_tags as $tag_name){
                 					    $terms_news_sources = get_the_terms($post->ID,'news_source');
                 					    if ($terms_news_sources){
                 					        $news_sources = "";
-                                            echo '<span class="icon-news"></span>';
+                                            echo '<span class="icon-news"></span> ';
                         					foreach ($terms_news_sources as $term) {
                     							$term_link = get_term_link( $term, 'news_source' );
                     							if( is_wp_error( $term_link ) )
@@ -106,7 +106,7 @@ foreach ($filter_by_tags as $tag_name){
                 					    $terms_news_sources = get_the_terms($post->ID,'news_source');
                 					    if ($terms_news_sources){
                 					        $news_sources = "";
-                                            echo '<span class="icon-news"></span>';
+                                            echo '<span class="icon-news"></span> ';
                         					foreach ($terms_news_sources as $term) {
                     							$term_link = get_term_link( $term, 'news_source' );
                     							if( is_wp_error( $term_link ) )

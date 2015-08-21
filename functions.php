@@ -180,6 +180,36 @@ function opendev_jeo_scripts() {
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
+// hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_news_source_taxonomies', 0 );     
+// create two taxonomies, genres and writers for the post type "book"
+function create_news_source_taxonomies() {
+	// Add new taxonomy, make it hierarchical (like categories)
+	$labels = array(
+		'name'              => _x( 'News Sources', 'taxonomy general name' ),
+		'singular_name'     => _x( 'News Source', 'taxonomy singular name' ),
+		'search_items'      => __( 'Search News Source' ),
+		'all_items'         => __( 'All News Sources' ),
+		'parent_item'       => __( 'Parent News Source' ),
+		'parent_item_colon' => __( 'Parent News Source:' ),
+		'edit_item'         => __( 'Edit News Source' ),
+		'update_item'       => __( 'Update News Source' ),
+		'add_new_item'      => __( 'Add New News Source' ),
+		'new_item_name'     => __( 'New News Source Name' ),
+		'menu_name'         => __( 'News Source' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true/* ,
+		'rewrite'           => array( 'slug' => 'news_source' ) */
+	);
+
+	register_taxonomy( 'news_source', array( 'post' ), $args );
+}
 // custom marker data
 function opendev_marker_data($data, $post) {
  global $post;
