@@ -4,8 +4,8 @@ html, body {
 }
 h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}
 h2 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
-h3 { font-size: 26px; line-height: 28px; margin-bottom: 10px; }
-h4 { font-size: 21px; line-height: 25px; margin-bottom: 10px; }
+h3 { font-size: 26px; line-height: 28px; margin-bottom: 15px; }
+h4 { font-size: 21px; line-height: 25px; margin-bottom: 15px; }
 h5 { font-size: 18px; line-height: 20px; margin-bottom: 5px; }
 h6 { font-size: 15px; line-height: 16px; }
 h5 a {
@@ -64,7 +64,7 @@ td{
 .wp-caption {
     max-width: 95%;
     margin-bottom: 24px;
-    padding: 15px 15px 15px 15px;
+    padding: 15px 5px 15px 15px;
     border: 1px solid #DDD;
     background: #F4F4F4 none repeat scroll 0%;
 }
@@ -1645,7 +1645,9 @@ a.button:hover{
 .single section.content h4 a {
  text-decoration: none;
 }
-
+.wp-feature-box{
+    margin-bottom: 20px;
+}
 #featured-media .map-container,
 #featured-media .mapgroup-container {
  height: 100%;
