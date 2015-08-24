@@ -27,17 +27,25 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
   global $post;
 
   $shortcode = '[wpckan_related_datasets';
-  if (!empty($instance['group']) && $instance['group'] != '-1')
+  if (!empty($instance['group']) && $instance['group'] != '-1'){
     $shortcode .= ' group="' . $instance['group'] . '"';
-  if (!empty($instance['organization']) && $instance['organization'] != '-1')
+    $group =  $instance['group'];
+  }if (!empty($instance['organization']) && $instance['organization'] != '-1'){
     $shortcode .= ' organization="' . $instance['organization'] . '"';
-  if (!empty($instance['limit']) && $instance['limit'] > 0)
+    $organization =  ucwords(str_replace("-organization", "", $instance['organization']));
+  }if (!empty($instance['limit']) && $instance['limit'] > 0){
     $shortcode .= ' limit="' . $instance['limit'] . '"';
+  }
   $shortcode .= ' include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]';
-
   $output = do_shortcode($shortcode);
 
-  if (!empty($output) && $output != ""){
+      //get the taxonomy
+      $get_page_title = get_the_title();
+      $term = get_term_by('name', $get_page_title, 'category');
+      if($term->parent==0);
+        $taxonomy = $get_page_title;
+      $more_link = "https://data.opendevelopmentmekong.net/dataset?odm_spatial_range=".$organization."&groups=".$group."&vocab_taxonomy=".$taxonomy;
+      if (!empty($output) && $output != ""){
 
     echo $args['before_widget'];
     if ( ! empty( $instance['title'] ) ) {
@@ -45,7 +53,7 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
     }
 
     echo $output;
-
+    echo '<div style="text-align:right"><a href="'.$more_link.'" target="_blank">More...</a></div>';
     echo $args['after_widget'];
 
   }
