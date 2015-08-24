@@ -2705,7 +2705,12 @@ ul#menu-header-menu{
 
 
 @media screen and (max-width: 1020px) {
-
+    table {
+		overflow-x: auto;
+        max-height: 800px;
+		overflow-y: auto;
+		display: block;
+	}                                       
 }
 
 @media screen and (max-width: 800px) {
@@ -2758,6 +2763,12 @@ ul#menu-header-menu{
     .announcements-list li{
         width:98%;
     }
+     table {
+		overflow-x: auto;
+        max-height: 500px;
+		overflow-y: auto;
+		display: block;
+	}     
 }
 @media only screen and (max-width: 400px) {
     #od-head {
