@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Additional String\n"
-"POT-Creation-Date: 2015-08-25 12:29+0700\n"
-"PO-Revision-Date: 2015-08-25 13:42+0700\n"
+"POT-Creation-Date: 2015-08-25 15:21+0700\n"
+"PO-Revision-Date: 2015-08-25 15:25+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -82,7 +82,11 @@ msgstr "បន្ថែម..."
 msgid "View all maps"
 msgstr ""
 
-#: ../flexible-posts-widget/opendev-announcements.php:72
+#: ../flexible-posts-widget/opendev-announcements.php:89
+msgid "See all"
+msgstr "មើលទាំងអស់"
+
+#: ../flexible-posts-widget/opendev-announcements.php:95
 #: ../flexible-posts-widget/opendev-site-updates.php:36
 msgid "No post found"
 msgstr ""
@@ -1083,35 +1087,39 @@ msgstr ""
 msgid "No topics found in trash."
 msgstr ""
 
-#: ../languages/odm-localization-templete.php:2
-#: .\odm-localization-templete.php:2 odm-localization-templete.php:2
-msgid "Mekong"
-msgstr "មេគង្គ"
+#: ../index.php:129
+msgid "Regional"
+msgstr "តំបន់"
 
-#: ../languages/odm-localization-templete.php:3
+#: ../index.php:130 ../languages/odm-localization-templete.php:3
 #: .\odm-localization-templete.php:3 odm-localization-templete.php:3
 msgid "Cambodia"
 msgstr "កម្ពុជា"
 
-#: ../languages/odm-localization-templete.php:4
+#: ../index.php:131 ../languages/odm-localization-templete.php:4
 #: .\odm-localization-templete.php:4 odm-localization-templete.php:4
 msgid "Laos"
 msgstr "ឡាវ"
 
-#: ../languages/odm-localization-templete.php:5
+#: ../index.php:132 ../languages/odm-localization-templete.php:5
 #: .\odm-localization-templete.php:5 odm-localization-templete.php:5
 msgid "Myanmar"
 msgstr "មីយ៉ាន់ម៉ា"
 
-#: ../languages/odm-localization-templete.php:6
+#: ../index.php:133 ../languages/odm-localization-templete.php:6
 #: .\odm-localization-templete.php:6 odm-localization-templete.php:6
 msgid "Thailand"
 msgstr "ថៃ"
 
-#: ../languages/odm-localization-templete.php:7
+#: ../index.php:134 ../languages/odm-localization-templete.php:7
 #: .\odm-localization-templete.php:7 odm-localization-templete.php:7
 msgid "Vietnam"
 msgstr "វៀតណាម"
+
+#: ../languages/odm-localization-templete.php:2
+#: .\odm-localization-templete.php:2 odm-localization-templete.php:2
+msgid "Mekong"
+msgstr "មេគង្គ"
 
 #: ../languages/odm-localization-templete.php:8
 #: .\odm-localization-templete.php:8 odm-localization-templete.php:8
@@ -1183,7 +1191,7 @@ msgstr "ទំព័រមុខ"
 msgid "Next page"
 msgstr "ទំព័របន្ទាប់"
 
-#: ../page.php:17 ../single-announcement.php:130 ../single-topic.php:37
+#: ../page.php:17 ../single-announcement.php:136 ../single-topic.php:37
 #: ../single.php:90 ..\..\jeo/page.php:17 ..\..\jeo/single.php:29
 msgid "Pages:"
 msgstr "ទំព័រ"
@@ -1248,35 +1256,35 @@ msgstr ""
 msgid "Filed under:"
 msgstr "ចំណាត់ថ្នាក់:"
 
-#: ../single-announcement.php:62
+#: ../single-announcement.php:68
 msgid "Summary translated by ODC Team"
 msgstr "ប្រែសម្រួលដោយក្រុមការងារអូឌីស៊ី"
 
-#: ../single-announcement.php:72
+#: ../single-announcement.php:78
 msgid "Download: "
 msgstr "ទាញយកៈ "
 
-#: ../single-announcement.php:76
+#: ../single-announcement.php:82
 msgid "English PDF"
 msgstr " ភាសា​អង់​គ្លេស​ PDF"
 
-#: ../single-announcement.php:80
+#: ../single-announcement.php:86
 msgid "English PDF not available"
 msgstr "ភាសា​អង់​គ្លេស​ពុំ​អាច​រក​បាន"
 
-#: ../single-announcement.php:86
+#: ../single-announcement.php:92
 msgid "Khmer PDF"
 msgstr "ភាសា​ខ្មែរ​ PDF"
 
-#: ../single-announcement.php:90
+#: ../single-announcement.php:96
 msgid "Khmer PDF not available"
 msgstr "ភាសា​ខ្មែរ​ពុំ​អាច​រក​បាន"
 
-#: ../single-announcement.php:102
+#: ../single-announcement.php:108
 msgid "Source: "
 msgstr "ប្រភព: "
 
-#: ../single-announcement.php:125 ../single.php:86
+#: ../single-announcement.php:131 ../single.php:86
 msgid "Tags:"
 msgstr "ស្លាក:"
 

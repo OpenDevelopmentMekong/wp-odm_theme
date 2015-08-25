@@ -121,17 +121,17 @@ if(is_front_page()) {
             	        $tag_count = 1;
             		    foreach($news_tags as $tag){
             		       if($tag_count <= 6){
-                              echo '<li class="tab-tag" id="tag-' .strtolower(str_replace(" ", "-", trim($tag))).'"><div class="tag-name">'.ucwords($tag).'</div></li>';
+                              echo '<li class="tab-tag" id="tag-' .strtolower(str_replace(" ", "-", trim($tag))).'"><div class="tag-name">'.__(ucwords($tag)).'</div></li>';
                            }
                            $tag_count++;
                         }
                     }else {
-                        echo '<li class="tab-tag" id="tag-regional"><div class="tag-name">Regional</div></li>';
-                        echo '<li class="tab-tag" id="tag-cambodia"><div class="tag-name">Cambodia</div></li>';
-                        echo '<li class="tab-tag" id="tag-laos"><div class="tag-name">Laos</div></li>';
-                        echo '<li class="tab-tag" id="tag-myanmar"><div class="tag-name">Myanmar</div></li>';
-                        echo '<li class="tab-tag" id="tag-thailand"><div class="tag-name">Thailand</div></li>';
-                        echo '<li class="tab-tag" id="tag-vietnam"><div class="tag-name">Vietnam</div></li>';
+                        echo '<li class="tab-tag" id="tag-regional"><div class="tag-name">'.__("Regional").'</div></li>';
+                        echo '<li class="tab-tag" id="tag-cambodia"><div class="tag-name">'.__("Cambodia").'</div></li>';
+                        echo '<li class="tab-tag" id="tag-laos"><div class="tag-name">'.__("Laos").'</div></li>';
+                        echo '<li class="tab-tag" id="tag-myanmar"><div class="tag-name">'.__("Myanmar").'</div></li>';
+                        echo '<li class="tab-tag" id="tag-thailand"><div class="tag-name">'.__("Thailand").'</div></li>';
+                        echo '<li class="tab-tag" id="tag-vietnam"><div class="tag-name">'.__("Vietnam").'</div></li>';
                     }
             	    ?>
             	</ul>
