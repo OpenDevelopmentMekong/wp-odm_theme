@@ -1113,8 +1113,10 @@ a.button:hover{
  width:14%;
 }
 .announcements-singlepage-content{
-    float: right;
-    width:84%;
+    display: table-cell;
+}
+.announcement-source{
+    color:#888;
 }
 .translated-by-odc{
   background-color:#DBDBDB;
