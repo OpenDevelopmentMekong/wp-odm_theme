@@ -665,7 +665,10 @@ a.button:hover{
 .single-post-header ul li{
  list-style-type: none;
 }
-.post-header .date, .single-post-header .date {
+.poat-date-source{
+    padding:5px 0 10px;
+}
+.post-header .date, .single-post-header .date, .date  {
  font-size: 14px;
  color: #999;
  display:inline
@@ -673,7 +676,7 @@ a.button:hover{
 .post-header .icon-news, .single-post-header .icon-news{
    font-size: 18px;
 }
-.post-header .news-source, .single-post-header .news-source {
+.post-header .news-source, .single-post-header .news-source, .source {
  font-size: 14px;
  color: #999;
  display:inline
@@ -1081,6 +1084,9 @@ a.button:hover{
 .announcements-list{
  overflow:auto;
 }
+.announcements-list h4{
+ margin-bottom: 5px;
+}
 .announcements-list ul{
  list-style-type: none;
 }
@@ -1098,6 +1104,22 @@ a.button:hover{
 }
 .announcements-list li img{
  float: left;
+ border:1px solid #ddd;
+}
+.announcements-singlepage-img{
+ float:left;
+ margin-right : 15px;
+ border:1px solid #ddd;
+ width:14%;
+}
+.announcements-singlepage-content{
+    float: right;
+    width:84%;
+}
+.translated-by-odc{
+  background-color:#DBDBDB;
+  padding: 2px 0 0 5px;
+  color: #404040 ;
 }
 .updates-list{
  list-style-type: circle;
