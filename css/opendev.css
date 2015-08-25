@@ -1110,7 +1110,7 @@ a.button:hover{
  float:left;
  margin-right : 15px;
  border:1px solid #ddd;
- width:14%;
+ width: 100px;
 }
 .announcements-singlepage-content{
     float: right;
