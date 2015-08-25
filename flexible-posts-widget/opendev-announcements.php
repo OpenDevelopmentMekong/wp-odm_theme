@@ -86,7 +86,7 @@ if( $flexible_posts->have_posts() ):
      <?php the_excerpt(); ?>
    </li>
   <?php endwhile; ?>
-   <p style="background:#f4f4f4;text-align:center"><a href="<?php echo  get_bloginfo('url')."/". get_post_type();?>">See all</a></p>
+   <p style="background:#f4f4f4;text-align:center"><a href="<?php echo  get_bloginfo('url')."/". get_post_type();?>"><?php _e("See all") ?></a></p>
   </ul><!-- .dpe-flexible-posts -->
 
  </div>
