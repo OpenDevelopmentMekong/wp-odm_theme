@@ -56,7 +56,7 @@ foreach ($filter_by_tags as $tag_name){
                 						    echo substr($news_sources, 0, -1);
                 						}
                 					}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
-                                        echo '<span class="icon-news"></span> '; 
+                                        echo '<span class="icon-news"></span> ';
                                         $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
                                         echo get_the_title($news_source_id);
                                     }
@@ -103,15 +103,15 @@ foreach ($filter_by_tags as $tag_name){
                                <?php endif; ?>
                                <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
                                <div class="date">
-    							     <span class="lsf">&#xE12b;</span> <?php the_date(); ?>
+    							     <span class="lsf">&#xE12b;</span> <?php echo get_the_date(); ?>
             					</div>
             					&nbsp;
             					<div class="news-source">
         							<?php
                 					if (taxonomy_exists('news_source'))
                 					$terms_news_source = get_the_terms( $post->ID, 'news_source' );
-                                     						
-                                    if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) { 
+
+                                    if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
                 					        $news_sources = "";
                                             echo '<span class="icon-news"></span> ';
                         					foreach ($terms_news_sources as $term) {
@@ -121,7 +121,7 @@ foreach ($filter_by_tags as $tag_name){
                     							//We successfully got a link. Print it out.
                     							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
                     						}
-                						    echo substr($news_sources, 0, -1); 
+                						    echo substr($news_sources, 0, -1);
                 					}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
                                         echo '<span class="icon-news"></span> ';
                                         $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
