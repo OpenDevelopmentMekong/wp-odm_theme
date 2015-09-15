@@ -110,14 +110,6 @@ class OpenDev_Options {
    'opendev_options',
    'opendev_style_section'
   );
-
-  add_settings_field(
-   'opendev_message_page_construction',
-   __('Message for pages constructing', 'opendev'),
-   array($this, 'message_page_construction_field'),
-   'opendev_options',
-   'opendev_style_section'
-  );
   
   add_settings_field(
    'opendev_notice_message',
@@ -126,6 +118,15 @@ class OpenDev_Options {
    'opendev_options',
    'opendev_style_section'
   );
+  
+  add_settings_field(
+   'opendev_message_page_construction',
+   __('Message for pages constructing', 'opendev'),
+   array($this, 'message_page_construction_field'),
+   'opendev_options',
+   'opendev_style_section'
+  );
+  
   add_settings_field(
     	'opendev_tooltip_message_1',
     	__('Tooltip Message 1', 'opendev'),
