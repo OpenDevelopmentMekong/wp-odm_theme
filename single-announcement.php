@@ -85,7 +85,7 @@ if (function_exists(qtrans_getLanguage)){
                                 //Get English PDF
                                 if(get('upload_document')!=""){                                     
                                     $file_name_en = substr(strrchr(get('upload_document'), '/'), 1);
-                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf'.$file_name_en.'">';      
+                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name_en.'">';      
                                         echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                         _e ('English PDF');
                                     echo '</a>'; 
