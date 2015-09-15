@@ -112,7 +112,8 @@ foreach ($filter_by_tags as $tag_name){
                 					$terms_news_source = get_the_terms( $post->ID, 'news_source' );
 
                                     if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
-                					        $news_sources = "";
+                                        if ($terms_news_sources){
+                					        $news_sources = "";          
                                             echo '<span class="icon-news"></span> ';
                         					foreach ($terms_news_sources as $term) {
                     							$term_link = get_term_link( $term, 'news_source' );
@@ -122,6 +123,7 @@ foreach ($filter_by_tags as $tag_name){
                     							 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
                     						}
                 						    echo substr($news_sources, 0, -1);
+                						}
                 					}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
                                         echo '<span class="icon-news"></span> ';
                                         $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
