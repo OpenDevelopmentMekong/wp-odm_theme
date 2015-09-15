@@ -83,10 +83,12 @@ if (function_exists(qtrans_getLanguage)){
                                 echo "<span>";
                                 _e("Download: ");
                                 //Get English PDF
-                                if(get('upload_document')!=""){
-                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=wp-content/files_mf/'.get('upload_document').'">';            echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
+                                if(get('upload_document')!=""){                                     
+                                    $file_name_en = substr(strrchr(get('upload_document'), '/'), 1);
+                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf'.$file_name_en.'">';      
+                                        echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                         _e ('English PDF');
-                                    echo '</a>';
+                                    echo '</a>'; 
                                 } else{
                                     echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                     _e("English PDF not available");
@@ -94,9 +96,11 @@ if (function_exists(qtrans_getLanguage)){
                                 echo "&nbsp; &nbsp;";
                                 //Get Khmer PDF
                                 if(get('upload_document'.$local_lang)!=""){
-                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=wp-content/files_mf/'.get('upload_document'.$local_lang).'">';      echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
+                                    $file_name = substr(strrchr(get('upload_document'.$local_lang), '/'), 1);
+                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name.'">';      
+                                        echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
                                         _e ('Khmer PDF');
-                                    echo '</a>';
+                                    echo '</a>'; 
                                 } else{
                                     echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
                                     _e("Khmer PDF not available");
