@@ -488,17 +488,17 @@ a.button:hover{
  box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
 }
 
-#od-head #main-nav .qtrans_language_chooser {
+#od-head #main-nav #qtranslate-chooser {
  float: right;
  font-size: 12px;
  width: auto;
 }
 
-#od-head #main-nav .qtrans_language_chooser li {
+#od-head #main-nav #qtranslate-chooser li {
  margin: 0 0 0 20px;
 }
 
-#od-head #main-nav .qtrans_language_chooser li a span {
+#od-head #main-nav #qtranslate-chooser li a span {
  color: #333;
 }
 
