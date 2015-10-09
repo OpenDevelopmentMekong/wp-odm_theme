@@ -110,11 +110,11 @@
 		<nav id="main-nav">
 			<div class="container">
 				<div class="twelve columns">
-					<?php if(function_exists('qtrans_generateLanguageSelectCode')) : ?>
+					<?php if(function_exists('qtranxf_generateLanguageSelectCode')) : ?>
 					    <?php $current_site = get_current_site();
                               $current_site_id = get_current_blog_id();
                                 if ($current_site_id != 1){
-                                        echo qtrans_generateLanguageSelectCode('text');
+                                        echo qtranxf_generateLanguageSelectCode('text');
                                 }?>
 					<?php endif; ?>
 					<?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
