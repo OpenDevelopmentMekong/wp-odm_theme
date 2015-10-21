@@ -33,10 +33,10 @@ if( $flexible_posts->have_posts() ):
     	</div>
     	<div class="source">
         <?php
-        if (function_exists(qtrans_getLanguage)){
-            if (qtrans_getLanguage() <> "en") $lang = "_". qtrans_getLanguage(); else $lang = "";
+        if (function_exists(qtranxf_getLanguage)){
+            if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
             //Get all languages that is available
-            $languages = qtrans_getSortedLanguages();
+            $languages = qtranxf_getSortedLanguages();
             $local_lang =  "_".$languages[1];
         }else $lang ="";
         if (get('author')=="" && get('author'.$lang)==""){

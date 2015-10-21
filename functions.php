@@ -216,8 +216,8 @@ function opendev_marker_data($data, $post) {
 
  $permalink = $data['url'];
 
- if(function_exists('qtrans_getLanguage'))
-  $permalink = add_query_arg(array('lang' => qtrans_getLanguage()), $permalink);
+ if(function_exists('qtranxf_getLanguage'))
+  $permalink = add_query_arg(array('lang' => qtranxf_getLanguage()), $permalink);
 
  $data['permalink'] = $permalink;
  $data['url'] = $permalink;

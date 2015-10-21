@@ -58,7 +58,7 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
     		if ( ! empty( $instance['od_related_news_option'] ) ) {
     			$news_option = $instance['od_related_news_option'];
     			if ($news_option == 'Related To The Topics'){
-                     if (function_exists(qtrans_getLanguage) && (qtrans_getLanguage()!="en")){
+                     if (function_exists(qtranxf_getLanguage) && (qtranxf_getLanguage()!="en")){
                             $page_id = get_the_ID();
                             $post_type = get_post_type( $page_id );
                             $page_results = $wpdb->get_results($wpdb->prepare(
