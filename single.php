@@ -2,10 +2,10 @@
 
 <?php if(have_posts()) : the_post(); ?>
 <?php
-if (function_exists(qtrans_getLanguage)){
-    if (qtrans_getLanguage() <> "en") $lang = "_". qtrans_getLanguage(); else $lang = "";
+if (function_exists(qtranxf_getLanguage)){
+    if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
     //Get all languages that is available
-    $languages = qtrans_getSortedLanguages();
+    $languages = qtranxf_getSortedLanguages();
     $local_language = $languages[1];
     $local_lang =  "_".$languages[1];
 }else $lang ="";
@@ -62,11 +62,11 @@ if (function_exists(qtrans_getLanguage)){
     					}
     					?>
     					<?php
-                        if (function_exists(qtrans_getLanguage)){
-                            if ((qtrans_getLanguage() == "en") && (has_term('english-translated','language'))){ ?>
+                        if (function_exists(qtranxf_getLanguage)){
+                            if ((qtranxf_getLanguage() == "en") && (has_term('english-translated','language'))){ ?>
                                 <p class="translated-by-odc"><strong><?php _e("Summary translated by ODC Team"); ?></strong></p>
                             <?php } ?>
-                            <?php if ((qtrans_getLanguage() == $local_language) && (has_term('khmer-translated','language'))){ ?>
+                            <?php if ((qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated','language'))){ ?>
                                 <p class="translated-by-odc"><strong><?php _e("Summary translated by ODC Team"); ?></strong></p>
                             <?php } ?>
                         <?php } ?>
@@ -74,8 +74,8 @@ if (function_exists(qtrans_getLanguage)){
 
                         <!-- News Source: author and link -->
                         <?php
-                        if (function_exists(qtrans_getLanguage)){
-                            if (qtrans_getLanguage() <> "en") $lang = "_". qtrans_getLanguage(); else $lang = "";
+                        if (function_exists(qtranxf_getLanguage)){
+                            if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
                         }
                         //Get author
                         if (get('author')=="" && get('author'.$lang)==""){
