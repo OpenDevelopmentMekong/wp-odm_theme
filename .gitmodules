@@ -1,0 +1,3 @@
+[submodule "odm-taxonomy"]
+	path = odm-taxonomy
+	url = https://github.com/OpenDevelopmentMekong/odm-taxonomy.git
