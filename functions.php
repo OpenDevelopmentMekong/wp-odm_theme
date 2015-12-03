@@ -121,8 +121,10 @@ function opendev_styles() {
  wp_register_style('opendev-laos',  $css_base . 'laos.css');
  wp_register_style('opendev-myanmar',  $css_base . 'myanmar.css');
  wp_register_style('opendev-vietnam',  $css_base . 'vietnam.css');
+ wp_register_style('aeviator-nav-concept',  $css_base . 'aeviator.css');
 
  wp_enqueue_style('opendev-base');
+ wp_enqueue_style('aeviator-nav-concept');
  if($options['style']) {
   wp_enqueue_style('opendev-' . $options['style']);
  }
@@ -181,7 +183,7 @@ function opendev_jeo_scripts() {
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
 // hook into the init action and call create_book_taxonomies when it fires
-add_action( 'init', 'create_news_source_taxonomies', 0 );     
+add_action( 'init', 'create_news_source_taxonomies', 0 );
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
@@ -409,7 +411,7 @@ function opendev_ms_nav() {
       <a href="#"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?> title="<?php if ($options['message_construction']!="") _e($options['message_construction'],'opendev'); else _e("Site coming soon.", 'opendev');?>"><?php _e($name, 'opendev');?></a>
      <?php }else{ ?>
       <a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
-      <?php     
+      <?php
     if (isset($options['dropbox_menu']) && ($options['dropbox_menu'] == "on")) {
       ?>
       <div class="sub-menu">
@@ -1020,4 +1022,3 @@ add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 //###############
 // End Remove WordPress Auto br and p tags
 //###############
-
