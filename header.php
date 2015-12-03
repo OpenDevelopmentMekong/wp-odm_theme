@@ -1,29 +1,21 @@
 <?php
-function setTransitionCookie($data, $limit=4096, $cookie_name="user_data")
-	{
-
-	}
-?>
-<?php
 	// delete cookie data
-	unset($_COOKIE['Data']);
-
 	// set user data array and encode in json for transport
 
 	$user_data = array(
-			'utm_source' => 'goodsddle',
+			'utm_source' => 'Germadddn',
 			'utm_medium' => 'fbshare',
 			'utm_campaign' => 'camp1',
 			'test_cat' => 'red',
 			'test_sub' => 'Category',
 			'test_ref' => 'rjdepe'
 	);
-	// base64 encode and put into json
-	$user_data = base64_encode(json_encode($user_data));
-	setcookie('odm_transtion_data', $user_data, (time()+3600), "/");
+;
+
+	// removeCookie('odm_transtion_data');
 ?>
 <?php
-$cookie = $_COOKIE['odm_transtion_data'];
+// $cookie = $_COOKIE('odm_transtion_data');
 $cookie = json_decode(base64_decode($cookie));
 
 ?>
