@@ -1,5 +1,36 @@
+<?php
+function setTransitionCookie($data, $limit=4096, $cookie_name="user_data")
+	{
+
+	}
+?>
+<?php
+	// delete cookie data
+	unset($_COOKIE['Data']);
+
+	// set user data array and encode in json for transport
+
+	$user_data = array(
+			'utm_source' => 'goodsddle',
+			'utm_medium' => 'fbshare',
+			'utm_campaign' => 'camp1',
+			'test_cat' => 'red',
+			'test_sub' => 'Category',
+			'test_ref' => 'rjdepe'
+	);
+	// base64 encode and put into json
+	$user_data = base64_encode(json_encode($user_data));
+	setcookie('odm_transtion_data', $user_data, (time()+3600), "/");
+?>
+<?php
+$cookie = $_COOKIE['odm_transtion_data'];
+$cookie = json_decode(base64_decode($cookie));
+
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
+<h1><?php  echo $cookie->utm_source;?></h1>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?php bloginfo('charset'); ?>" />
@@ -143,10 +174,10 @@
                 </div>
 			</div>
         </nav>
-        <?php } ?> 
+        <?php } ?>
 	</header>
-    <?php //Add Contact form button 
+    <?php //Add Contact form button
         if( function_exists('button_user_feedback_form') ){
             button_user_feedback_form();
         }
-    ?>  
+    ?>
