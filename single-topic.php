@@ -2,9 +2,9 @@
 
 <?php if(have_posts()) : the_post(); ?>
 
-	<article id="content" class="single-post">         		
+	<article id="content" class="single-post">
 		<?php get_template_part('section', 'related-datasets'); ?>
-		
+
 			<div class="container">
 				<div class="eight columns">
 				    <header class="single-post-header" class="clearfix">
@@ -41,7 +41,7 @@
     					) );
     					?>
     					<?php comments_template(); ?>
-        				</div> 
+        				</div>
     	       	   </section>
     				<div class="three columns offset-by-one">
     					<aside id="sidebar">

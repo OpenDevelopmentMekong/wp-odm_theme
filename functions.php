@@ -1023,11 +1023,9 @@ add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 // End Remove WordPress Auto br and p tags
 //###############
 
-function setTransitionCookies($user_data, $cookie_name="odm_transition_data" ){
+function setTransitionCookies($user_data,$limit=4096,$cookie_name="odm_transition_data" ){
   // retrieve old cookie
-
-
   // base64 encode and put into json
-  $user_data = base64_encode(json_encode($user_data))
+  $user_data = base64_encode(json_encode($user_data));
   setcookie('$cookie_name', $user_data, (time()+3600), "/");
 }

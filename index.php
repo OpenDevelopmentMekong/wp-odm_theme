@@ -66,6 +66,7 @@ if (is_front_page()) {
     ?>
          </div>
          <div class="content">
+  
           <h3><?php echo $intro_texts[1]['title'];
     ?></h3>
           <p><?php echo $intro_texts[1]['content'];
