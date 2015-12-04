@@ -1,44 +1,5 @@
 <?php get_header(); ?>
-<div id="mainNav" class="mainNavOdc">
-      <div class="mainNav-logo">
-        <a href="index.html" target="_self">
-          <span class="icon-od-logo"></span>
 
-        </a>
-      </div>
-
-      <div class="mainNav-inner">
-        <ul id="mainNavElement" class="level1 clearfix">
-          <li class="first jtop act"><a href="index.html" target="_self" id="uid-2">MEKONG</a></li>
-
-          <li class="second"><a href="odc.html" id="uid-3">CAMBODIA</a></li>
-
-          <li class="third"><a href="odl.html" target="_self" id="uid-4">LAOS</a></li>
-
-          <li class="fourth"><a href="odmy.html" target="_self" id="uid-42">MYANMAR</a></li>
-
-          <li class="last jbottom"><a href="odt.html" target="_self" id="uid-5">THAILAND</a></li>
-
-          <li class="last jbottom"><a href="odv.html" target="_self" id="uid-5142">VIETNAM</a></li>
-
-        </ul>
-
-      </div>
-      <!-- <div id="mainNav-social">
-        <a href="#" target="_blank">
-          <span class="sicons twitter"></span>
-        </a>
-        <a href="#" target="_blank">
-          <span class="sicons facebook"></span>
-        </a>
-        <a href="http://www.flickr.com/photos/" target="_blank">
-          <span class="sicons google"></span>
-        </a>
-        <a href="http://vimeo.com/odm/videos" target="_blank">
-          <span class="sicons vimeo"></span>
-        </a>
-      </div> -->
-    </div>
 <?php
 if (is_front_page()) {
     ?>
@@ -66,7 +27,7 @@ if (is_front_page()) {
     ?>
          </div>
          <div class="content">
-  
+
           <h3><?php echo $intro_texts[1]['title'];
     ?></h3>
           <p><?php echo $intro_texts[1]['content'];

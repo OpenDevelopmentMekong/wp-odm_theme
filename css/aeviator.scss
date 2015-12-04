@@ -1,0 +1,338 @@
+/* boilerplate code*/
+
+/*screen.css*/
+
+#cNavNew {
+  li {
+    list-style: none;
+    float: left;
+    margin-left: 0;
+    overflow: hidden;
+    display: table-cell;
+    height: 29px;
+    &.cur > ul {
+      display: block;
+    }
+    a {
+      font-size: 12px;
+      color: #555;
+      padding: 0 10px;
+      text-decoration: none;
+      display: inline-block;
+      font-family: TheSansPlain;
+      position: relative;
+      height: 29px;
+      line-height: 29px;
+      .cNavState {
+        width: 4px;
+        height: 4px;
+        position: absolute;
+        margin-top: -5px;
+        left: 50%;
+        display: none;
+      }
+    }
+    .level2, .level3 {
+      display: none;
+      position: absolute;
+      left: 0;
+      width: 845px;
+      padding-left: 200px;
+    }
+    .level2 {
+      top: 29px;
+      li, a {
+        height: 29px;
+      }
+      li {
+        /*background: url("/fileadmin/images/cNav_spacer.png") no-repeat;*/
+        background-position: top right;
+        margin: 0;
+        &.cur > a, &.act > a, &:hover > a, &.notcur > a, &.notact > a {
+          color: #0773B6;
+        }
+      }
+    }
+    .level3 {
+      top: 29px;
+      li, a {
+        height: 29px;
+      }
+      li {
+        &.cur > a, &.act > a, &:hover > a, &.notcur > a, &.notact > a {
+          color: #0773B6;
+        }
+      }
+    }
+  }
+  &.level1 li:hover .level2, .level2 > li:hover .level3 {
+    display: block;
+  }
+  &.level1 li {
+    &.act .level2 {
+      display: block;
+      li:hover .level3 {
+        display: block;
+      }
+    }
+    .level2 li.act .level3 {
+      display: block;
+    }
+  }
+}
+
+.white {
+  #mainNav-inner .level1 > li > a {
+    color: #97d320;
+  }
+  #cNavNew {
+    background: #97d320;
+    &.level1 > li {
+      > a {
+        color: #fff;
+      }
+      &.notcur > a, &.notact > a {
+        background: #07578b;
+      }
+    }
+  }
+}
+
+.blue #cNavNew {
+  .level2 {
+    border-top: 1px solid #ddd;
+    top: 29px;
+  }
+  .level3 {
+    top: 29px;
+  }
+  li {
+    &.cur > a, &.act > a, &:hover > a, &.notcur > a, &.notact > a {
+      color: #0773B6;
+    }
+  }
+}
+
+/*odm.css*/
+
+.white {
+  #cNavNew.current-site-mekong {
+    background: #373c6a;
+  }
+  #headerText span a {
+    color: #6393D2;
+    text-decoration: none;
+    font-family: 'Droid Serif', serif;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  #cNavNew.level1 {
+    padding-top: 0px;
+  }
+}
+
+/*header text*/
+
+/*level 1*/
+
+#cNavNew .one-line {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/*.white #cNavNew.level1 img{width:45px!important;}*/
+
+.white #cNavNew.level1 {
+  li.icon_menu {
+    height: 45px;
+    padding-top: 3px;
+  }
+  > li:hover {
+    background: #6393D2;
+    padding-bottom: 16px;
+    > a {
+      /*background: #6393D2;*/
+      background: transparent;
+      color: white;
+    }
+  }
+}
+
+/*level 1 hover*/
+
+/*level 1 active*/
+
+/*#cNavNew.level1>li.cur>a, .white #cNavNew.level1>li.act>a{background: red;}*/
+
+/*sub-nav oben*/
+
+/*level 2*/
+
+li.top-topic {
+  width: 200px;
+  background: #6393D2;
+  color: white;
+  font-size: 12px;
+  /*color: #555;*/
+  padding: 0 10px;
+  text-decoration: none;
+  display: inline-block;
+  /*font-family: TheSansPlain;*/
+  position: relative;
+  /*height: 29px;*/
+  line-height: 29px;
+  border-bottom: 1px solid white;
+}
+
+#cNavNew {
+  li {
+    .level2 li {
+      clear: both;
+    }
+    &:hover {
+      .level2 {
+        width: 220px;
+        left: 548px;
+        top: 60px;
+        padding-left: 0;
+        margin: 0;
+      }
+      .menu_environment {
+        left: 40px;
+      }
+      .menu_economy {
+        left: 105px;
+      }
+      .menu_people {
+        left: 170px;
+      }
+      .level2 a {
+        background: #6393D2;
+        color: white;
+        width: 200px;
+      }
+    }
+    .level2 {
+      li:hover > a {
+        background: #373c6a;
+        color: white;
+        width: 200px;
+        padding-bottom: 20px;
+      }
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .level3 {
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+  &.level1 li:hover .level2, .level2 > li:hover .level3 {
+    display: block;
+  }
+}
+
+/*level 2 hover*/
+
+/*general*/
+
+[class^="icon-"], [class*=" icon-"] {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
+}
+
+.container {
+  margin-left: 140px;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  display: inline-block;
+}
+
+/*main menu*/
+
+.mainNav-inner {
+  position: absolute;
+  width: 140px;
+  top: 340px;
+}
+
+.mainNavOdc {
+  height: 100%;
+  width: 140px;
+  float: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: #292d56;
+}
+
+.headerODM {
+  background: #292d56;
+}
+
+.mainNav-logo {
+  margin: 35px 20px;
+  float: none;
+  font-size: 100px;
+}
+
+.icon-od-logo {
+  font-family: 'icomoon';
+  &:before {
+    content: "\e600";
+  }
+}
+
+ul.level1 {
+  height: 60px;
+}
+
+.mainNav-inner {
+  .level1 li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: block;
+    width: 140px;
+    text-align: right;
+    border-top: 1px solid #07578B;
+    float: left;
+    a {
+      text-decoration: none;
+      line-height: 30px;
+      padding-right: 10px;
+      display: block;
+      font-size: 16px;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+  }
+  ul.level1 > li.act > a {
+    padding-right: 12px;
+    color: #0773B6;
+    background: #fff;
+    border-right: 1px solid #dddddd;
+  }
+}
+
+#mainNav-inner .level1 li a {
+  font-family: sans-serif !important;
+}
