@@ -2,12 +2,8 @@
 <?php
     // set user data array and encode in json for transport
     $user_data = array(
-            'utm_source' => 'Germadddn',
-            'utm_medium' => 'fbshare',
-            'utm_campaign' => 'camp1',
-            'test_cat' => 'red',
-            'test_sub' => 'Category',
-            'test_ref' => 'rjdepe',
+            'language' => 'german',
+            'country' => 'germany'
     );
     setTransitionCookies($user_data);
 ?>

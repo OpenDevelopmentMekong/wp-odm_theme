@@ -5,7 +5,7 @@
 // $cookie = json_decode(base64_decode($cookie));
 
 ?>
-	<h1><?php echo $cookie->utm_source;?></h1>
+
 <!-- //cookie -->
 <?php if(have_posts()) : the_post(); ?>
 	<section id="content" class="single-post">
