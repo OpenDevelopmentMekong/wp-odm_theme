@@ -2,7 +2,7 @@
     // set user data array and encode in json for transport
     $user_data = array(
             'language' => 'german',
-            'country' => 'germany'
+            'country' => 'germany',
     );
     setTransitionCookies($user_data);
 ?>
@@ -155,6 +155,13 @@
           <a href="/map-explorer" target="_self">Map Explorer<span class="cNavState"></span></a>
         </li>
 
+        <li class="one-line">
+          <a href="/map-explorer" target="_self">–EN–<span class="cNavState"></span></a>
+        </li>
+
+        <li class="one-line">
+          <a href="/map-explorer" target="_self">–TH–<span class="cNavState"></span></a>
+        </li>
 
     </ul>
 
@@ -185,6 +192,7 @@
     			</div>
             </nav>
         <?php
+
         } ?>
 		<?php if (!is_front_page()) {
     ?>
@@ -197,6 +205,7 @@
 			</div>
         </nav>
         <?php
+
 } ?>
 	</header>
     <?php //Add Contact form button
