@@ -396,3 +396,7 @@ div#wrap-feedback {
   right: -40px;
   left: initial;
 }
+#news{
+  position: relative;
+  top:220px;
+}
