@@ -152,8 +152,9 @@
         </li> -->
 
         <li class="one-line">
-          <a href="#" target="_self">Map Explorer<span class="cNavState"></span></a>
+          <a href="/map-explorer" target="_self">Map Explorer<span class="cNavState"></span></a>
         </li>
+
 
     </ul>
 
@@ -226,7 +227,6 @@
 		          <li class="last jbottom"><a href="odv.html" target="_self" id="uid-5142">VIETNAM</a></li>
 
 		        </ul>
-
 		      </div>
 		      <!-- <div id="mainNav-social">
 		        <a href="#" target="_blank">

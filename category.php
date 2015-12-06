@@ -46,7 +46,7 @@ foreach($post_types as $pt) {
 	endif;
 	?>
 </div>
-<div class="container">
+<div class="container category-container">
 	<div class="eight columns">
 		<section class="tabbed-posts-section">
 			<?php if(count($tax_post_types) > 1) : ?>

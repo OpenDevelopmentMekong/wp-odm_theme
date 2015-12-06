@@ -1170,7 +1170,7 @@ function buildStyledTopTopicNav($lang)
       echo '<li class="first icon_menu '. $menu .'">';
       echo '<a href="#" target="_self">';
       $icon_url=get_stylesheet_directory_uri() . "/img/" . $icon;
-      echo '<img src="' . $icon_url . '" style="width:45px;height:auto;margin-top:5px;" alt="Top Topic Icon for ' . $menu .'">';
+      echo '<img src="' . $icon_url . '" alt="Top Topic Icon for ' . $menu .'">';
       echo '<span class="cNavState"></span></a>';
 
       echo '<ul class="level2 ' . $menu . '">';
@@ -1178,7 +1178,7 @@ function buildStyledTopTopicNav($lang)
       // counter
        // get entries -->
        foreach ($json_a[$key]['children'] as $child) {
-         
+
          // make wp url from title
           $url = sanitize_title($child['name']);
 

@@ -373,6 +373,21 @@ ul.level1 {
   padding-top: 3px;
 }
 
+li.menu_environment img{
+  width: 45px;
+  height: auto;
+  margin-top: 5px;
+}
+
+li.menu_economy img{
+  width: 45px;
+  margin-top: -1px;
+}
+
+li.menu_people img{
+  height: 34px;
+    padding-top: 8px;
+}
 /*header*/
 
 header#od-head .icon-od-logo {
@@ -385,6 +400,14 @@ header#od-head .icon-od-logo {
   top: 0;
   width: 100%;
   z-index: 9988;
+}
+
+article#content,section#page-content{
+  margin-top:255px;
+}
+
+.category-container{
+  margin-top:150px;
 }
 #site-intro {
   margin-top: 165px;

@@ -959,6 +959,7 @@ a.button:hover{
     width: 97%;
     right: 0;
     margin-right: 1.1em;
+    background: white;
 }
 
 /* #live-search .results li p.excerpt, #live-search .results li img {
@@ -2735,7 +2736,7 @@ ul#menu-header-menu{
         max-height: 800px;
 		overflow-y: auto;
 		display: block;
-	}                                       
+	}
 }
 
 @media screen and (max-width: 800px) {
@@ -2793,7 +2794,7 @@ ul#menu-header-menu{
         max-height: 500px;
 		overflow-y: auto;
 		display: block;
-	}     
+	}
 }
 @media only screen and (max-width: 400px) {
     #od-head {
