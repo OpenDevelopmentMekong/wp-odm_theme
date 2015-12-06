@@ -119,57 +119,8 @@
 
       <ul id="cNavNew" class="level1 clearfix current-site-mekong">
 
-        <li class="first icon_menu">
-          <a href="#" target="_self">
-            <img src="<?php bloginfo('stylesheet_directory')?>/img/icon_tree.png" style="width:45px;height:auto;margin-top:5px;" alt="">
-            <span class="cNavState"></span>
-          </a>
-
-          <ul class="level2 menu_environment">
-            <li class="top-topic">LAND</li>
-            <li class="first"><a href="#" target="_self">Agriculture and fishing<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Disasters and emergency response<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Environment and natural resources<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Extractive industries<span class="cNavState"></span></a></li>
-            <li class="last"><a href="#" target="_self">Land<span class="cNavState"></span></a></li>
-            <span class="border"></span>
-          </ul>
-        </li>
-
-        <li class="first icon_menu">
-          <a href="#" target="_self">
-            <img src="<?php bloginfo('stylesheet_directory')?>/img/icon_industry.png" style="width:45px;height=auto;margin-top:-1px;" alt="">
-            <span class="cNavState"></span>
-          </a>
-
-          <ul class="level2 menu_economy">
-            <li class="top-topic">ECONOMY</li>
-            <li class="first"><a href="#" target="_self">Economy and commerce<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Energy<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Infrastructure<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Industry<span class="cNavState"></span></a></li>
-            <li class="last"><a href="#" target="_self">Labor<span class="cNavState"></span></a></li>
-            <span class="border"></span>
-          </ul>
-        </li>
-
-        <li class="first icon_menu">
-          <a href="#" target="_self">
-            <img src="<?php bloginfo('stylesheet_directory')?>/img/icon_mensch.png" style="height:34px;padding-top:8px;" alt="">
-            <span class="cNavState"></span>
-          </a>
-
-          <ul class="level2 menu_people">
-            <li class="top-topic">PEOPLE</li>
-            <li class="first"><a href="#" target="_self">Aid and development<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Government<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Law and judiciary<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Population and census<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Social development<span class="cNavState"></span></a></li>
-            <li class="last"><a href="#" target="_self">Urban administration and development<span class="cNavState"></span></a></li>
-            <span class="border"></span>
-          </ul>
-        </li>
+        <!-- build top topics nav -->
+        <?php buildStyledTopTopicNav('en');?>
 
         <li class="one-line"><a href="#" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
 
@@ -268,7 +219,7 @@
     ?>
 		<div id="mainNav" class="mainNavOdc">
 		      <div class="mainNav-logo">
-		        <a href="index.html" target="_self">
+		        <a href="/" target="_self">
 		          <span class="icon-od-logo"></span>
 
 		        </a>
