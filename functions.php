@@ -1128,7 +1128,7 @@ function setTransitionCookies($user_data, $limit = 4096, $cookie_name = 'odm_tra
     setcookie('$cookie_name', $user_data, (time() + 3600), '/');
 }
 
-function buildTopTopicNav($lang = 'th')
+function buildTopTopicNav($lang)
 {
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
     $json_a = json_decode($navigation_vocab, true);
@@ -1138,7 +1138,9 @@ function buildTopTopicNav($lang = 'th')
         echo '<ul>'.$value['titles'][$lang].'</ul>';
         // get entries
         foreach ($json_a[0]['children'] as $child) {
-            echo '<li>'.$child['titles'][$lang].'</li>';
+          // make wp url from title
+          $url=sanitize_title($child['name']);
+            echo '<li><a href="topics/' . $url . '">' . $child['titles'][$lang] . '</a></li>';
         }
     }
 }

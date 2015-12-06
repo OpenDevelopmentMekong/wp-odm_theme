@@ -90,7 +90,7 @@ if (is_front_page()) {
  <?php endif;
     ?>
 <div style="margin-left:240px;">
-  <?php buildTopTopicNav(); ?>
+  <?php buildTopTopicNav('en'); ?>
 </div>
 
  <?php if ($options['frontpage_slider_id']) : ?>
