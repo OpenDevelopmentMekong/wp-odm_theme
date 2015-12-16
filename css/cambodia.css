@@ -84,3 +84,30 @@ tr:nth-child(2n+1) {
 }
 .current-site-cambodia{
 	background: #97d320;
+}
+/*## Nav Concept ##*/
+/*logo*/
+[class^="icon-"], [class*=" icon-"]{ color: #97d320;}
+
+/*L kasten links*/
+.mainNavOdc,.headerODM{background:#17303a;}
+/*nav oben*/
+.white #cNavNew.current-site-mekong{background:#213d49;}
+/*header text*/
+.white #headerText span a{color:#97d320;text-decoration: none;}
+  /*level 1 hover*/
+ .white #cNavNew.level1>li:hover>a{background:white;color:black;}
+  /*level 1 active*/
+  /*#cNavNew.level1>li.cur>a, .white #cNavNew.level1>li.act>a{background: red;}*/
+
+/*sub-nav oben*/
+  /*level 2*/
+  #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#97d320; color:white;}
+  /*level 2 hover*/
+  #cNavNew li .level2 li:hover>a{background:white;color:black;}
+
+
+/*Ländernav liks*/
+  .white #mainNav-inner .level1>li>a{color: white;}
+  /*hover*/
+  .white #mainNav-inner ul.level1>li:hover>a{background:#373c6a;}

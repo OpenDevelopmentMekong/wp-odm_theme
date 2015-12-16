@@ -122,6 +122,7 @@ function opendev_styles()
     wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
     wp_register_style('aeviator-nav-concept',  $css_base.'aeviator.css');
 
+      wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
     wp_enqueue_style('opendev-base');
     wp_enqueue_style('aeviator-nav-concept');
     if ($options['style']) {
@@ -1124,8 +1125,11 @@ function setTransitionCookies($user_data, $limit = 4096, $cookie_name = 'odm_tra
 {
     // retrieve old cookie
   // base64 encode and put into json
-  $user_data = base64_encode(json_encode($user_data));
-    setcookie('$cookie_name', $user_data, (time() + 3600), '/');
+  // $user_data = base64_encode(json_encode($user_data));
+  $user_data = json_encode($user_data);
+  // $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
+  $domain='192.168.33.10';
+    setcookie($cookie_name, $user_data, (time() + 3600), '/');
 }
 
 function buildTopTopicNav($lang)

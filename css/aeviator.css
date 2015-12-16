@@ -1,3 +1,6 @@
+/*hide wp country menu*/
+#od-head #ms-nav{display: none;}
+
 /* boilerplate code*/
 
 
@@ -340,7 +343,7 @@ ul.level1 {
   display: table-cell;
   height: 29px;
 }
-#cNavNew .one-line {
+#cNavNew .one-line, #cNavNew .menu-item {
   padding-top: 15px;
   padding-bottom: 20px;
   text-transform: uppercase;

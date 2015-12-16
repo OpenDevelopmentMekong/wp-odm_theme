@@ -1,14 +1,18 @@
 <?php
     // set user data array and encode in json for transport
+    // to depricate
     $user_data = array(
             'language' => 'german',
-            'country' => 'germany',
+            'country' => 'mekong',
     );
     setTransitionCookies($user_data);
+    //
+    $ckanDomain='192.168.33.10:8081';
+    $country=$_COOKIE['country'];
 ?>
 <?php ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html data-country="<?php echo $country ?>" <?php language_attributes(); ?>>
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -122,20 +126,20 @@
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav('en');?>
 
-        <li class="one-line"><a href="#" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
+        <li class="one-line"><a href="/laws" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
 
 
         </li>
 
-        <li class="one-line"><a class="library" href="#" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain ?>/library" target="_self">Publications Library<span class="cNavState"></span></a>
 
 
         </li>
 
         <li class="one-line">
-          <a class="datahub" href="#" target="_self">Data<span class="cNavState"></span></a>
+          <a class="datahub" href="http://<?php echo $ckanDomain ?>" target="_self">Data<span class="cNavState"></span></a>
           <ul class="level2">
-            <li class="first"><a href="#" target="_self">All records<span class="cNavState"></span></a></li>
+            <li class="first"><a href="/" target="_self">All records<span class="cNavState"></span></a></li>
 
             <li><a href="#" target="_self">Records by type<span class="cNavState"></span></a></li>
             <li><a href="#" target="_self">Records by country<span class="cNavState"></span></a></li>
@@ -155,14 +159,21 @@
           <a href="/map-explorer" target="_self">Map Explorer<span class="cNavState"></span></a>
         </li>
 
-        <li class="one-line">
+        <!-- <li class="one-line">
           <a href="/map-explorer" target="_self">–EN–<span class="cNavState"></span></a>
         </li>
 
         <li class="one-line">
           <a href="/map-explorer" target="_self">–TH–<span class="cNavState"></span></a>
-        </li>
+        </li> -->
+        <!-- render country specific links -->
+        <?php wp_nav_menu( array(
+          'menu' => 'country-specific-menu',
+          'container'       => false,
+          'items_wrap'      => '%3$s',
+          'fallback_cb'     => false
 
+       )); ?>
     </ul>
 
 		<!-- end nav new -->
@@ -223,17 +234,17 @@
 
 		      <div class="mainNav-inner">
 		        <ul id="mainNavElement" class="level1 clearfix">
-		          <li class="first jtop act"><a href="index.html" target="_self" id="uid-2">MEKONG</a></li>
+		          <li class="first jtop act"><a class="toCkan" data-country="mekong" href="/" target="_self" id="uid-2">MEKONG</a></li>
 
-		          <li class="second"><a href="odc.html" id="uid-3">CAMBODIA</a></li>
+		          <li class="second"><a class="toCkan" data-country="cambodia" href="<?php echo $domain?>/cambodia" id="uid-3">CAMBODIA</a></li>
 
-		          <li class="third"><a href="odl.html" target="_self" id="uid-4">LAOS</a></li>
+		          <li class="third"><a class="toCkan" data-country="laos" href="/" target="_self" id="uid-4">LAOS</a></li>
 
-		          <li class="fourth"><a href="odmy.html" target="_self" id="uid-42">MYANMAR</a></li>
+		          <li class="fourth"><a class="toCkan" data-country="myanmar" href="/" target="_self" id="uid-42">MYANMAR</a></li>
 
-		          <li class="last jbottom"><a href="odt.html" target="_self" id="uid-5">THAILAND</a></li>
+		          <li class="last jbottom"><a class="toCkan" data-country="thailand" href="/" target="_self" id="uid-5">THAILAND</a></li>
 
-		          <li class="last jbottom"><a href="odv.html" target="_self" id="uid-5142">VIETNAM</a></li>
+		          <li class="last jbottom"><a class="toCkan" data-country="vietnam" href="/" target="_self" id="uid-5142">VIETNAM</a></li>
 
 		        </ul>
 		      </div>
