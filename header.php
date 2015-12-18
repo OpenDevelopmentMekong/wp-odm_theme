@@ -1,14 +1,14 @@
 <?php
     // set user data array and encode in json for transport
     // to depricate
-    $user_data = array(
-            'language' => 'german',
-            'country' => 'mekong',
-    );
-    setTransitionCookies($user_data);
+    // $user_data = array(
+    //         'language' => 'german',
+    //         'country' => 'mekong',
+    // );
+    // setTransitionCookies($user_data);
     //
     $ckanDomain='192.168.33.10:8081';
-    $country=$_COOKIE['country'];
+    $country=$_COOKIE['odm_transition_country'];
 ?>
 <?php ?>
 <!DOCTYPE html>
@@ -131,7 +131,7 @@
 
         </li>
 
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain ?>/library" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain ?>/library<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country) ?>" target="_self">Publications Library<span class="cNavState"></span></a>
 
 
         </li>

@@ -150,7 +150,7 @@ jQuery(document).ready(function() {
   // jQuery()
   $("a.toCkan").on("click", function() {
     console.log("switching to " + $(this).data("country"));
-    Cookies.set('country', $(this).data("country"), { expires: 7, path: '/' });
+    Cookies.set('odm_transition_country', $(this).data("country"), { expires: 7, path: '/' });
 
   });
   country = $("html").data("country");
