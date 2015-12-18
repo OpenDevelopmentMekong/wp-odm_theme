@@ -157,16 +157,16 @@ jQuery(document).ready(function() {
   console.log("country "+country);
   LinkData=$("a.datahub").attr("href");
   // var NewLink;
-  if (country == "mekong") NewLink=LinkData;
-  else if (country == "cambodia") NewLink=LinkData.concat("/dataset?odm_spatial_range=Cambodia");
-  else if (country == "laos") NewLink=LinkData.concat("/dataset?odm_spatial_range=Laos");
-  else if (country == "myanmar") NewLink=LinkData.concat("/dataset?odm_spatial_range=Myanmar");
-  else if (country == "thailand") NewLink=LinkData.concat("/dataset?odm_spatial_range=Thailand");
-  else if (country == "vietnam") NewLink=LinkData.concat("/dataset?odm_spatial_range=Cambodia");
-  else  NewLink=LinkData;
-
-  // if (country == "mekong") $('a.datahub').attr("href", LinkData.concat("/"));
-  // if (country == "cambodia") $('a.datahub').attr("href", LinkData.concat("/dataset?odm_spatial_range=Cambodia"));
-  $('a.datahub').attr("href", NewLink);
+  // if (country == "mekong") NewLink=LinkData;
+  // else if (country == "cambodia") NewLink=LinkData.concat("/dataset?odm_spatial_range=Cambodia");
+  // else if (country == "laos") NewLink=LinkData.concat("/dataset?odm_spatial_range=Laos");
+  // else if (country == "myanmar") NewLink=LinkData.concat("/dataset?odm_spatial_range=Myanmar");
+  // else if (country == "thailand") NewLink=LinkData.concat("/dataset?odm_spatial_range=Thailand");
+  // else if (country == "vietnam") NewLink=LinkData.concat("/dataset?odm_spatial_range=Cambodia");
+  // else  NewLink=LinkData;
+  //
+  // // if (country == "mekong") $('a.datahub').attr("href", LinkData.concat("/"));
+  // // if (country == "cambodia") $('a.datahub').attr("href", LinkData.concat("/dataset?odm_spatial_range=Cambodia"));
+  // $('a.datahub').attr("href", NewLink);
 
 });

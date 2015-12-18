@@ -9,6 +9,7 @@
     //
     $ckanDomain='192.168.33.10:8081';
     $country=$_COOKIE['odm_transition_country'];
+    $wpDomain=$_SERVER["HTTP_HOST"];
 ?>
 <?php ?>
 <!DOCTYPE html>
@@ -131,17 +132,17 @@
 
         </li>
 
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain ?>/library<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country) ?>" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Publications Library<span class="cNavState"></span></a>
 
 
         </li>
 
         <li class="one-line">
-          <a class="datahub" href="http://<?php echo $ckanDomain ?>" target="_self">Data<span class="cNavState"></span></a>
+          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Data<span class="cNavState"></span></a>
           <ul class="level2">
-            <li class="first"><a href="/" target="_self">All records<span class="cNavState"></span></a></li>
+            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
-            <li><a href="#" target="_self">Records by type<span class="cNavState"></span></a></li>
+            <li><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a></li>
             <li><a href="#" target="_self">Records by country<span class="cNavState"></span></a></li>
             <li class="last"><a href="#" target="_self">Records by language<span class="cNavState"></span></a></li>
 
@@ -234,17 +235,17 @@
 
 		      <div class="mainNav-inner">
 		        <ul id="mainNavElement" class="level1 clearfix">
-		          <li class="first jtop act"><a class="toCkan" data-country="mekong" href="/" target="_self" id="uid-2">MEKONG</a></li>
+		          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="/" target="_self" id="uid-2">MEKONG</a></li>
 
-		          <li class="second"><a class="toCkan" data-country="cambodia" href="<?php echo $domain?>/cambodia" id="uid-3">CAMBODIA</a></li>
+		          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="<?php echo $domain?>/cambodia" id="uid-3">CAMBODIA</a></li>
 
-		          <li class="third"><a class="toCkan" data-country="laos" href="/" target="_self" id="uid-4">LAOS</a></li>
+		          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="/" target="_self" id="uid-4">LAOS</a></li>
 
-		          <li class="fourth"><a class="toCkan" data-country="myanmar" href="/" target="_self" id="uid-42">MYANMAR</a></li>
+		          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="/" target="_self" id="uid-42">MYANMAR</a></li>
 
-		          <li class="last jbottom"><a class="toCkan" data-country="thailand" href="/" target="_self" id="uid-5">THAILAND</a></li>
+		          <li class="last jbottom <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="/" target="_self" id="uid-5">THAILAND</a></li>
 
-		          <li class="last jbottom"><a class="toCkan" data-country="vietnam" href="/" target="_self" id="uid-5142">VIETNAM</a></li>
+		          <li class="last jbottom <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="/" target="_self" id="uid-5142">VIETNAM</a></li>
 
 		        </ul>
 		      </div>
