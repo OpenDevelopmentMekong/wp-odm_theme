@@ -7,9 +7,13 @@
     // );
     // setTransitionCookies($user_data);
     //
-    $ckanDomain='192.168.33.10:8081';
+
+
     $country=$_COOKIE['odm_transition_country'];
     $wpDomain=$_SERVER["HTTP_HOST"];
+
+    if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
+    else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
 ?>
 <?php ?>
 <!DOCTYPE html>
