@@ -9,7 +9,10 @@
     //
 
 
-    $country=$_COOKIE['odm_transition_country'];
+    if(!isset($_COOKIE['odm_transition_country'])) {$country='mekong';}
+    else{$country=$_COOKIE['odm_transition_country'];}
+
+
     $wpDomain=$_SERVER["HTTP_HOST"];
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
@@ -142,7 +145,7 @@
         </li>
 
         <li class="one-line">
-          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Data<span class="cNavState"></span></a>
+          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Data<span class="cNavState"></span></a>
           <ul class="level2">
             <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
