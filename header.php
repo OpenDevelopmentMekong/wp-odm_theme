@@ -50,7 +50,6 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
-  <?php echo $wpDomain; ?>
 	<header class="white"id="od-head">
 		<div class="container">
 			<div class="eight columns">
