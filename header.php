@@ -9,18 +9,30 @@
     //
 
 
-    if(!isset($_COOKIE['odm_transition_country'])) {$country='mekong';}
-    else{$country=$_COOKIE['odm_transition_country'];}
+
 
 
     $wpDomain=$_SERVER["HTTP_HOST"];
+    $domain='opendevelopmentmekong.net';
+
+    if(!isset($_COOKIE['odm_transition_country'])) {
+      if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
+      else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';}
+      else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';}
+      else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';}
+      else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';}
+      else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';}
+      else {$country='mekong';}
+
+    }
+    else{$country=$_COOKIE['odm_transition_country'];}
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
     else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
 ?>
 <?php ?>
 <!DOCTYPE html>
-<html data-country="<?php echo $country ?>" <?php language_attributes(); ?>>
+<html data-country="<?php echo $country; ?>" <?php language_attributes(); ?>>
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -119,7 +131,7 @@
         		<div class="container">
         			<div class="three columns align-right">
         				<input type="text" placeholder="<?php _e('Search &#128270;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
-        				<img src="<?php bloginfo('stylesheet_directory')?>/img/loading.gif" alt="loading" id="loading" />
+        				<img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
         		    </div>
                     <div class="results-container"></div>
         		</div>
@@ -242,17 +254,17 @@
 
 		      <div class="mainNav-inner">
 		        <ul id="mainNavElement" class="level1 clearfix">
-		          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="/" target="_self" id="uid-2">MEKONG</a></li>
+		          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="http://pp.<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
 
-		          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="<?php echo $domain?>/cambodia" id="uid-3">CAMBODIA</a></li>
+		          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="http://pp-cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
 
-		          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="/" target="_self" id="uid-4">LAOS</a></li>
+		          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="http://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
 
-		          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="/" target="_self" id="uid-42">MYANMAR</a></li>
+		          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="http://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
 
-		          <li class="last jbottom <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="/" target="_self" id="uid-5">THAILAND</a></li>
+		          <li class="last jbottom <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="http://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
 
-		          <li class="last jbottom <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="/" target="_self" id="uid-5142">VIETNAM</a></li>
+		          <li class="last jbottom <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="http://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
 
 		        </ul>
 		      </div>
