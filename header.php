@@ -25,7 +25,15 @@
       else {$country='mekong';$country_short='';}
 
     }
-    else{$country=$_COOKIE['odm_transition_country'];$country_short='';}
+    else{
+      $country=$_COOKIE['odm_transition_country'];
+      if ($country== 'cambodia'){$country_short='kh';}
+      else if ($country== 'laos'){$country_short='la';}
+      else if ($country== 'myanmar'){$country_short='mm';}
+      else if ($country== 'thailand'){$country_short='th';}
+      else if ($country== 'vietnam'){$country_short='vn';}
+      else{$country_short='';}
+        }
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
     else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
