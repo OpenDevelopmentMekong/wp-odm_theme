@@ -64,7 +64,7 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
 	<header class="white"id="od-head">
 		<div class="container">
-			<div class="eight columns">
+			<div class="six columns organization">
 				<div class="site-meta">
 					<?php opendev_logo(); ?>
 					<?php
@@ -94,49 +94,47 @@
                     ?>
 				</div>
 			</div>
-			<div class="four columns">
-				<div id="od-head-nav">
-					<div class="clearfix">
-						<nav id="social-nav">
-							<?php
-                            $fb = opendev_get_facebook_url();
-                            if ($fb) :
-                                ?>
-								<a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
-								<?php
-                            endif;
+			<div class="six columns align-right social">
+        <nav id="social-nav">
+          <?php
+                        $fb = opendev_get_facebook_url();
+                        if ($fb) :
                             ?>
-							<?php
-                            $tw = opendev_get_twitter_url();
-                            if ($tw) :
-                                ?>
-								<a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
-								<?php
-                            endif;
+            <a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
+            <?php
+                        endif;
+                        ?>
+          <?php
+                        $tw = opendev_get_twitter_url();
+                        if ($tw) :
                             ?>
-							<?php
-                            $contact_id = opendev_get_contact_page_id();
-                            if ($contact_id) :
-                                ?>
-								<a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
-								<?php
-                            endif;
+            <a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
+            <?php
+                        endif;
+                        ?>
+          <?php
+                        $contact_id = opendev_get_contact_page_id();
+                        if ($contact_id) :
                             ?>
-						</nav>
-					</div>
-				</div>
+            <a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
+            <?php
+                        endif;
+                        ?>
+        </nav>
+
+        <div id="live-search">
+          		<div class="container">
+          			<div class="three columns align-right">
+          				<input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
+          				<img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
+          		    </div>
+                      <div class="results-container"></div>
+          		</div>
+          	</div><!-- live-search -->
+  		</div>
 			</div><!-- four column -->
 
-			<div id="live-search">
-        		<div class="container">
-        			<div class="three columns align-right">
-        				<input type="text" placeholder="<?php _e('Search &#128270;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
-        				<img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-        		    </div>
-                    <div class="results-container"></div>
-        		</div>
-        	</div><!-- live-search -->
-		</div>
+
 		<!-- #################### -->
 		<!-- NEW NAV -->
 		<div class="contentNavigation">

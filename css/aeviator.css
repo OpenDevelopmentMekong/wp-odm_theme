@@ -316,8 +316,6 @@ ul.level1 {
 
 .contentNavigation {
   height: 70px;
-  top: 30px;
-  position: relative;
   padding-left: 140px;
   /*z-index: 100;*/
   /*margin-left: -30px;*/
@@ -389,7 +387,7 @@ li.menu_economy img{
 
 li.menu_people img{
   height: 34px;
-    padding-top: 8px;
+  padding-top: 8px;
 }
 /*header*/
 
@@ -397,16 +395,24 @@ header#od-head .icon-od-logo {
   display: none;
 }
 #od-head {
-  padding: 30px 0 0;
+  padding: 10px 0 0;
   background: #292d56;
-  position: fixed;
-  top: 0;
+  /*position: fixed;*/
+  height: 70px;
   width: 100%;
   z-index: 9988;
 }
 
-article#content,section#page-content{
-  margin-top:255px;
+#od-head .container{height: inherit;}
+
+.container.six.organization, .container.six.social,.container .six.columns{width: 600px;}
+.six.social{
+  position: relative;
+  bottom: 55px;
+}
+.contentNavigation{
+  position: relative;
+  bottom: 44px;
 }
 
 .category-container{
@@ -416,6 +422,41 @@ article#content,section#page-content{
   margin-top: 165px;
 }
 
+/*@media only screen and (max-width: 1280px){
+  .container.six.organization, .container.six.social{width: 600px;}
+  .six.social{
+    position: relative;
+    bottom: 55px;
+  }
+}*/
+@media only screen and (min-width: 1280px){
+.container .six.columns,.contentNavigation{ position: static;}
+.container .six.columns {
+    width: 560px;
+}
+}
+
+/*social*/
+#od-head #social-nav {
+    float: left;
+    padding-left: 165px;
+}
+/*live search*/
+#live-search{
+  width: 200px;
+  display: inline-block;
+  clear: none;
+  float: none;
+  margin: 0;
+}
+  #live-search .container{
+    position: static;
+    width: 200px;
+    margin-left: 80px;
+    margin-top: 10px;
+  }
+
+    #live-search input[type=text]{width: 180px;}
 /*temp*/
 
 div#wrap-feedback {
@@ -423,6 +464,6 @@ div#wrap-feedback {
   left: initial;
 }
 #news{
-  position: relative;
-  top:220px;
+  /*position: relative;*/
+  margin-top: 80px;
 }
