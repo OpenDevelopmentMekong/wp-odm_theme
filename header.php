@@ -144,12 +144,12 @@
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav('en');?>
 
-        <li class="one-line"><a href="/laws" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
+        <li class="one-line"><a href="/laws_record" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
 
 
         </li>
 
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Publications Library<span class="cNavState"></span></a>
 
 
         </li>
