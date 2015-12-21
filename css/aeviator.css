@@ -463,6 +463,7 @@ div#wrap-feedback {
   margin-top: 80px;
 }
 
+/*responsive stuff*/
 @media only screen and (min-width: 1280px){
 .container .five.social,.container .six.columns,.contentNavigation{ position: static;}
 .container .six.columns {width: 600px!important;}
