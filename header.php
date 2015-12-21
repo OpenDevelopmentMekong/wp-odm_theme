@@ -17,15 +17,15 @@
 
     if(!isset($_COOKIE['odm_transition_country'])) {
       if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
-      else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';}
-      else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';}
-      else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';}
-      else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';}
-      else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';}
-      else {$country='mekong';}
+      else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
+      else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
+      else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
+      else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
+      else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
+      else {$country='mekong';$country_short='';}
 
     }
-    else{$country=$_COOKIE['odm_transition_country'];}
+    else{$country=$_COOKIE['odm_transition_country'];$country_short='';}
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
     else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
@@ -149,15 +149,15 @@
 
         </li>
 
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Publications Library<span class="cNavState"></span></a>
 
 
         </li>
 
         <li class="one-line">
-          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Data<span class="cNavState"></span></a>
+          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Data<span class="cNavState"></span></a>
           <ul class="level2">
-            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>"target="_self">All records<span class="cNavState"></span></a></li>
+            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
             <li><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a></li>
             <li><a href="#" target="_self">Records by country<span class="cNavState"></span></a></li>
