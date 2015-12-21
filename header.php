@@ -94,7 +94,7 @@
                     ?>
 				</div>
 			</div>
-			<div class="six columns align-right social">
+			<div class="five columns align-right social">
         <nav id="social-nav">
           <?php
                         $fb = opendev_get_facebook_url();
