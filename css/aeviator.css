@@ -405,8 +405,9 @@ header#od-head .icon-od-logo {
 
 #od-head .container{height: inherit;}
 
-.container.six.organization, .container.six.social,.container .six.columns{width: 600px;}
-.six.social{
+.container.six.organization, .container .six.columns{width: 600px;}
+.container .five.social{width: 490px;}
+.five.social{
   position: relative;
   bottom: 55px;
 }
@@ -429,17 +430,11 @@ header#od-head .icon-od-logo {
     bottom: 55px;
   }
 }*/
-@media only screen and (min-width: 1280px){
-.container .six.columns,.contentNavigation{ position: static;}
-.container .six.columns {
-    width: 560px;
-}
-}
 
 /*social*/
 #od-head #social-nav {
     float: left;
-    padding-left: 165px;
+    padding-left: 65px;
 }
 /*live search*/
 #live-search{
@@ -466,4 +461,11 @@ div#wrap-feedback {
 #news{
   /*position: relative;*/
   margin-top: 80px;
+}
+
+@media only screen and (min-width: 1280px){
+.container .five.social,.container .six.columns,.contentNavigation{ position: static;}
+.container .six.columns {width: 560px;}
+.container .five.social{width: 490px;}
+#od-head #social-nav{padding-left: 94px;}
 }
