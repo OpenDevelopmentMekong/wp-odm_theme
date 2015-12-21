@@ -465,7 +465,7 @@ div#wrap-feedback {
 
 @media only screen and (min-width: 1280px){
 .container .five.social,.container .six.columns,.contentNavigation{ position: static;}
-.container .six.columns {width: 560px;}
+.container .six.columns {width: 600px!important;}
 .container .five.social{width: 490px;}
 #od-head #social-nav{padding-left: 94px;}
 }
