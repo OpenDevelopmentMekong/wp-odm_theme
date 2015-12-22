@@ -23,7 +23,7 @@
     else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
     else {$country='mekong';$country_short='';}
 
-    // setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
+    setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
 
     // if(!isset($_COOKIE['odm_transition_country'])) {
     //   ;
