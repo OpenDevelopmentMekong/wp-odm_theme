@@ -15,25 +15,29 @@
     $wpDomain=$_SERVER["HTTP_HOST"];
     $domain='opendevelopmentmekong.net';
 
-    if(!isset($_COOKIE['odm_transition_country'])) {
-      if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
-      else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
-      else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
-      else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
-      else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
-      else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
-      else {$country='mekong';$country_short='';}
+    if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
+    else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
+    else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
+    else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
+    else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
+    else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
+    else {$country='mekong';$country_short='';}
 
-    }
-    else{
-      $country=$_COOKIE['odm_transition_country'];
-      if ($country== 'cambodia'){$country_short='kh';}
-      else if ($country== 'laos'){$country_short='la';}
-      else if ($country== 'myanmar'){$country_short='mm';}
-      else if ($country== 'thailand'){$country_short='th';}
-      else if ($country== 'vietnam'){$country_short='vn';}
-      else{$country_short='';}
-        }
+    setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
+
+    // if(!isset($_COOKIE['odm_transition_country'])) {
+    //   ;
+    //
+    // }
+    // else{
+    //   $country=$_COOKIE['odm_transition_country'];
+    //   if ($country== 'cambodia'){$country_short='kh';}
+    //   else if ($country== 'laos'){$country_short='la';}
+    //   else if ($country== 'myanmar'){$country_short='mm';}
+    //   else if ($country== 'thailand'){$country_short='th';}
+    //   else if ($country== 'vietnam'){$country_short='vn';}
+    //   else{$country_short='';}
+    //     }
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
     else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
