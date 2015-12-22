@@ -268,9 +268,9 @@
 
 		          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="http://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
 
-		          <li class="last jbottom <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="http://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
+		          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="http://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
 
-		          <li class="last jbottom <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="http://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
+		          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="http://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
 
 		        </ul>
 		      </div>

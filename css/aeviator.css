@@ -153,6 +153,8 @@
   background: transparent;
   color: white;
 }
+.mainNav-inner .level1 li:hover a{color: white;}
+.mainNav-inner .level1 li:hover {background: #373c6a;}
 
 /*level 1 active*/
 
@@ -287,10 +289,12 @@ ul.level1 {
   display: block;
   width: 140px;
   text-align: right;
-  border-top: 1px solid #07578B;
+  border-top: 1px solid white;
   float: left;
 }
+.mainNav-inner .level1 li.last{border-bottom: 1px solid white;}
 .mainNav-inner .level1 li a {
+  color:white;
   text-decoration: none;
   line-height: 30px;
   padding-right: 10px;
