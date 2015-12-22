@@ -157,7 +157,7 @@
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav('en');?>
 
-        <li class="one-line"><a href="/laws_record" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
+        <li class="one-line"><a href="/laws" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
 
 
         </li>
