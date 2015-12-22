@@ -104,6 +104,7 @@
 			</div>
 			<div class="five columns align-right social">
         <nav id="social-nav">
+
           <?php
                         $fb = opendev_get_facebook_url();
                         if ($fb) :
@@ -125,6 +126,10 @@
                         if ($contact_id) :
                             ?>
             <a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
+            <?php
+                        else:
+                          ?>
+                          &nbsp;
             <?php
                         endif;
                         ?>

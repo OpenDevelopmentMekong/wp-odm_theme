@@ -442,6 +442,7 @@ header#od-head .icon-od-logo {
 /*social*/
 #od-head #social-nav {
     float: left;
+    min-width: 178px;
     padding-left: 65px;
 }
 /*live search*/
