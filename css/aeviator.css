@@ -402,6 +402,8 @@ li.menu_people img{
 header#od-head .icon-od-logo {
   display: none;
 }
+
+.mainNav-logo a:hover,.mainNav-logo a:active, .mainNav-logo a:visited, .mainNav-logo a{text-decoration: none;}
 #od-head {
   padding: 10px 0 0;
   background: #292d56;
@@ -442,6 +444,7 @@ header#od-head .icon-od-logo {
 /*social*/
 #od-head #social-nav {
     float: left;
+    min-width: 178px;
     padding-left: 65px;
 }
 /*live search*/
