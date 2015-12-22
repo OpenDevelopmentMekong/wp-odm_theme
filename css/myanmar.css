@@ -98,7 +98,7 @@ tr:nth-child(2n+1) {
 /*L kasten links*/
 .mainNavOdc,.headerODM{background:#59396C;}
 /*nav oben*/
-.white #cNavNew.current-site-mekong{background:#704C98;}
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#704C98;}
 /*header text*/
 .white #headerText span a{color:#F8BF42;text-decoration: none;}
   /*level 1 hover*/
