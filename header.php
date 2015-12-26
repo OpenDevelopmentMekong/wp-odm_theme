@@ -177,7 +177,7 @@
             <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
             <li><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Records by country<span class="cNavState"></span></a>
+            <li class="by_country"><a href="#" target="_self">Records by country<span class="cNavState"></span></a>
               <ul class="level3">
                 <li class="first"><a href="#" target="_self">Cambodia<span class="cNavState"></span></a></li>
                 <li class="first"><a href="#" target="_self">Laos<span class="cNavState"></span></a></li>
@@ -188,8 +188,15 @@
               </ul>
             </li>
 
-            <li class="last"><a href="#" target="_self">Records by language<span class="cNavState"></span></a></li>
+            <li class="last by_country"><a href="#" target="_self">Records by language<span class="cNavState"></span></a>
+              <ul class="level3">
+                <li class="first"><a href="#" target="_self">EN<span class="cNavState"></span></a></li>
+                <li class="first"><a href="#" target="_self">KH<span class="cNavState"></span></a></li>
+                <li class="first"><a href="#" target="_self">VI<span class="cNavState"></span></a></li>
+                <span class="border"></span>
+              </ul>
 
+            </li>
 
             <span class="border"></span>
           </ul>

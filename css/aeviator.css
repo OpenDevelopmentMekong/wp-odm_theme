@@ -215,7 +215,7 @@ li.top-topic {
   background: #292d56;
   color: white;
   width: 200px;
-  padding-bottom: 20px;
+  /*padding-bottom: 20px;*/
 }
 #cNavNew li .level2, #cNavNew li .level3 {
   -moz-box-shadow: none;
@@ -381,7 +381,22 @@ ul.level1 {
   height: 45px;
   padding-top: 3px;
 }
+#cNavNew .level2 li.by_country:hover{
+  height: 174px;
+}
+#cNavNew .level2>li.by_country:hover .level3{
+  position: static;
+  display: table-cell;
+  padding-left: 0!important;
+  width: 220px;
+}
 
+#cNavNew li .level3 a {
+    background: #292d56!important;
+}
+#cNavNew li .level3 a:hover{
+  background: #6393D2!important;
+}
 li.menu_environment img{
   width: 45px;
   height: auto;
