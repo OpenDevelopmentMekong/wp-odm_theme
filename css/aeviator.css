@@ -226,6 +226,18 @@ li.top-topic {
   display: block;
 }
 
+/*level 3*/
+
+#cNavNew li .level3 {
+    padding: 0;
+    top: 29px;
+}
+#cNavNew li .level3 li {
+    position: relative;
+    right: 30px;
+}
+#cNavNew li .level3 li level3-by-country{height: 175px!important;}
+
 /*general*/
 
 [class^="icon-"], [class*=" icon-"] {
@@ -240,7 +252,7 @@ li.top-topic {
   margin-top: 0;
 }
 .container {
-  margin-left: 180px;
+  margin-left: 40px;
 }
 .clearfix:after {
   content: ".";
@@ -318,12 +330,20 @@ ul.level1 {
 /*end boilerplate*/
 /*#############################################################################################
 ############################################################################################*/
+
+.content_wrapper{
+  margin-left: 140px;
+  overflow: hidden;
+
+}
 /*top nav*/
+
 
 .contentNavigation {
   height: 60px;
-  padding-left: 180px;
+  padding-left: 40px;
   color:#704C98;
+  width: 100%;
 
   /*z-index: 100;*/
   /*margin-left: -30px;*/
@@ -424,6 +444,7 @@ header#od-head .icon-od-logo {
 .contentNavigation{
   position: relative;
   bottom: 44px;
+  overflow: hidden;
 }
 
 .category-container{
