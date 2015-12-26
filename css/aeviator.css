@@ -112,7 +112,7 @@
 .white #cNavNew.current-site-mekong {
   background: #373c6a;
   max-width: 100%;
-  padding-left: 0!important;
+  /*padding-left: 0!important;*/
 }
 .contentNavigation{background: #373c6a;}
 /*header text*/
@@ -252,7 +252,7 @@ li.top-topic {
   margin-top: 0;
 }
 .container {
-  margin-left: 40px;
+  margin-left: 0px;
 }
 .clearfix:after {
   content: ".";
@@ -333,7 +333,7 @@ ul.level1 {
 
 .content_wrapper{
   margin-left: 140px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 
 }
 /*top nav*/
@@ -341,19 +341,18 @@ ul.level1 {
 
 .contentNavigation {
   height: 60px;
-  padding-left: 40px;
   color:#704C98;
   width: 100%;
 
   /*z-index: 100;*/
   /*margin-left: -30px;*/
 }
+
 #cNavNew {
   display: inline-block;
   position: relative;
   width: 100%;
   /*width: 100vw;*/
-  padding-left: 40px;
   z-index: 8888;
   /*-moz-box-shadow: 0px 2px 3px 0px #ddd;
       -webkit-box-shadow: 0px 2px 3px 0px #ddd;
@@ -369,6 +368,8 @@ ul.level1 {
   display: table-cell;
   height: 29px;
 }
+
+  #cNavNew li:first-of-type{padding-left: 40px;}
 #cNavNew .one-line, #cNavNew .menu-item {
   padding-top: 15px;
   padding-bottom: 20px;
@@ -436,6 +437,7 @@ header#od-head .icon-od-logo {
 #od-head .container{height: inherit;}
 
 .container.six.organization, .container .six.columns{width: 600px;}
+  div.six.columns.organization{margin-left: 60px!important;}
 .container .five.social{width: 490px;}
 .five.social{
   position: relative;
@@ -444,7 +446,7 @@ header#od-head .icon-od-logo {
 .contentNavigation{
   position: relative;
   bottom: 44px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .category-container{
@@ -507,4 +509,8 @@ div#wrap-feedback {
 .container .six.columns {width: 600px!important;}
 .container .five.social{width: 490px;}
 #od-head #social-nav{padding-left: 94px;}
+.container .twelve.columns {
+    /*width: 1120px;*/
+    /*margin-left: 60px;*/
+  }
 }
