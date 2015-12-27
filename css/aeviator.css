@@ -494,11 +494,17 @@ div#wrap-feedback {
 
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail img{height: 50px!important;}
 
-
+od-head #social-nav{padding-left: 64px;}
 /*responsive stuff*/
 @media only screen and (min-width: 1280px){
 .container .five.social,.container .six.columns,.contentNavigation{ position: static;}
 .container .six.columns {width: 600px!important;}
 .container .five.social{width: 490px;}
 #od-head #social-nav{padding-left: 94px;}
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1359px) {
+  #od-head #social-nav{
+    padding-left: 64px;
+  }
 }
