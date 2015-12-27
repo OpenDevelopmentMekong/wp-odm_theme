@@ -179,20 +179,20 @@
             <li><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a></li>
             <li class="by_country"><a href="#" target="_self">Records by country<span class="cNavState"></span></a>
               <ul class="level3">
-                <li class="first"><a href="#" target="_self">Cambodia<span class="cNavState"></span></a></li>
-                <li class="first"><a href="#" target="_self">Laos<span class="cNavState"></span></a></li>
-                <li class="first"><a href="#" target="_self">Myanmar<span class="cNavState"></span></a></li>
-                <li class="first"><a href="#" target="_self">Thailand<span class="cNavState"></span></a></li>
-                <li class="first"><a href="#" target="_self">Vietnam<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=cambodia" target="_self">Cambodia<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=laos" target="_self">Laos<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=myanmar" target="_self">Myanmar<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=thailand" target="_self">Thailand<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vietnam" target="_self">Vietnam<span class="cNavState"></span></a></li>
                 <span class="border"></span>
               </ul>
             </li>
 
             <li class="last by_country"><a href="#" target="_self">Records by language<span class="cNavState"></span></a>
               <ul class="level3">
-                <li class="first"><a href="#" target="_self">EN<span class="cNavState"></span></a></li>
-                <li class="first"><a href="#" target="_self">KH<span class="cNavState"></span></a></li>
-                <li class="first"><a href="#" target="_self">VI<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=en" target="_self">EN<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=km" target="_self">KH<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=vi" target="_self">VI<span class="cNavState"></span></a></li>
                 <span class="border"></span>
               </ul>
 
