@@ -45,6 +45,7 @@
 }
 #cNavNew li .level2 {
   top: 29px;
+  background: transparent!important;
 }
 #cNavNew li .level2 li, #cNavNew li .level2 a {
   height: 29px;
@@ -225,6 +226,9 @@ li.top-topic {
 }
 #cNavNew.level1 li:hover .level2, #cNavNew .level2>li:hover .level3 {
   display: block;
+
+}
+#cNavNew .level2>li:hover .level3{
   background: transparent;
 }
 

@@ -176,7 +176,7 @@
           <ul class="level2">
             <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
-            <li class="by_country by_type"><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a>
+            <li class="by_country by_type"><a href="#" target="_self">Records by type<span class="cNavState"></span></a>
               <ul class="level3">
                 <li class="first"><a href="http://<?php echo $ckanDomain; ?>/group/laws-group<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Laws<span class="cNavState"></span></a></li>
                 <li class="first"><a href="http://<?php echo $ckanDomain; ?>/group/maps-group<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Maps<span class="cNavState"></span></a></li>
