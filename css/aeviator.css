@@ -384,6 +384,7 @@ ul.level1 {
 #cNavNew .level2 li.by_country:hover{
   height: 174px;
 }
+#cNavNew .level2 li.by_type:hover{height: 100%;}
 #cNavNew .level2>li.by_country:hover .level3{
   position: static;
   display: table-cell;
