@@ -216,6 +216,7 @@ li.top-topic {
   color: white;
   width: 200px;
   /*padding-bottom: 20px;*/
+  /*border-bottom: 1px solid white;*/
 }
 #cNavNew li .level2, #cNavNew li .level3 {
   -moz-box-shadow: none;
@@ -224,6 +225,7 @@ li.top-topic {
 }
 #cNavNew.level1 li:hover .level2, #cNavNew .level2>li:hover .level3 {
   display: block;
+  background: transparent;
 }
 
 /*general*/
@@ -392,11 +394,12 @@ ul.level1 {
   width: 220px;
 }
 
-#cNavNew li .level3 a {
-    background: #292d56!important;
+#cNavNew li:hover .level3 a {
+    background: #292d56;
 }
-#cNavNew li .level3 a:hover{
-  background: #6393D2!important;
+
+#cNavNew li:hover .level3 a:hover{
+  background: #6393D2;
 }
 li.menu_environment img{
   width: 45px;

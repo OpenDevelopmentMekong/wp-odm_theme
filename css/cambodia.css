@@ -108,7 +108,13 @@ tr:nth-child(2n+1) {
   #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#97d320; color:white;}
   /*level 2 hover*/
   #cNavNew li .level2 li:hover>a{background:#213d49;color:white;}
-
+  /*level 3*/
+  #cNavNew li:hover .level3 a {
+      background: #17303a;
+  }
+  #cNavNew li:hover .level3 a:hover{
+    background: #97d320;
+  }
 
 /*Ländernav liks*/
   .white #mainNav-inner .level1>li>a{color: white;}
