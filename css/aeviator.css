@@ -131,6 +131,7 @@
 
 .white #cNavNew.level1 {
   padding-top: 0px;
+  padding-left: 40px;
 }
 #cNavNew .one-line {
   padding-top: 15px;
@@ -190,19 +191,19 @@ li.top-topic {
 }
 #cNavNew li:hover .level2 {
   width: 220px;
-  left: 508px;
+  left: 548px;
   top: 60px;
   padding-left: 0;
   margin: 0;
 }
 #cNavNew li:hover .menu_environment {
-  left: 0;
+  left: 40px;
 }
 #cNavNew li:hover .menu_economy {
-  left: 65px;
+  left: 105px;
 }
 #cNavNew li:hover .menu_people {
-  left: 130px;
+  left: 170px;
 }
 #cNavNew li:hover .level2 a {
   background: #6393D2;
@@ -238,10 +239,10 @@ li.top-topic {
     padding: 0;
     top: 29px;
 }
-#cNavNew li .level3 li {
+/*#cNavNew li .level3 li {
     position: relative;
     right: 30px;
-}
+}*/
 #cNavNew li .level3 li level3-by-country{height: 175px!important;}
 
 /*general*/
@@ -375,7 +376,7 @@ ul.level1 {
   height: 29px;
 }
 
-  #cNavNew li:first-of-type{padding-left: 40px;}
+  /*#cNavNew li:first-of-type{padding-left: 40px;}*/
 #cNavNew .one-line, #cNavNew .menu-item {
   padding-top: 15px;
   padding-bottom: 20px;
