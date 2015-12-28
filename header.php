@@ -74,6 +74,7 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
+  <div class="content_wrapper">
 	<header class="white"id="od-head">
 		<div class="container">
 			<div class="six columns organization">
