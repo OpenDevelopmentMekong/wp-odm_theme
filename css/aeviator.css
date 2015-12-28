@@ -258,7 +258,7 @@ li.top-topic {
   margin-top: 0;
 }
 .container {
-  margin-left: 0px;
+  margin-left: 40px;
 }
 .clearfix:after {
   content: ".";
@@ -461,7 +461,7 @@ header#od-head .icon-od-logo {
 #od-head .container{height: inherit;}
 
 .container.six.organization, .container .six.columns{width: 600px;}
-  div.six.columns.organization{margin-left: 60px!important;}
+  /*div.six.columns.organization{margin-left: 60px!important;}*/
 .container .five.social{width: 490px;}
 .five.social{
   position: relative;
