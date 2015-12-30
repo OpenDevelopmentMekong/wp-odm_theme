@@ -177,20 +177,35 @@
           <ul class="level2">
             <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
-            <li><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a></li>
-            <li class="level3-by-country">
-              <a href="#" target="_self">Records by country<span class="cNavState"></span></a>
+            <li class="by_country by_type"><a href="#" target="_self">Records by type<span class="cNavState"></span></a>
               <ul class="level3">
-                <li class="first"><a href="#" target="_self">Cambodia<span class="cNavState"></span></a></li>
-                <li><a href="#" target="_self">Laos<span class="cNavState"></span></a></li>
-                <li><a href="#" target="_self">Myanmar<span class="cNavState"></span></a></li>
-                <li><a href="#" target="_self">Thailand<span class="cNavState"></span></a></li>
-                <li class="last"><a href="#" target="_self">Vietnam<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/group/laws-group<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country; ?>" target="_self">Laws<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/group/maps-group<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country; ?>" target="_self">Maps<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/group/news-group<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country; ?>" target="_self">News<span class="cNavState"></span></a></li>
                 <span class="border"></span>
               </ul>
             </li>
-            <li class="last"><a href="#" target="_self">Records by language<span class="cNavState"></span></a></li>
 
+            <li class="by_country"><a href="#" target="_self">Records by country<span class="cNavState"></span></a>
+              <ul class="level3">
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=cambodia" target="_self">Cambodia<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=laos" target="_self">Laos<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=myanmar" target="_self">Myanmar<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=thailand" target="_self">Thailand<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vietnam" target="_self">Vietnam<span class="cNavState"></span></a></li>
+                <span class="border"></span>
+              </ul>
+            </li>
+
+            <li class="last by_country"><a href="#" target="_self">Records by language<span class="cNavState"></span></a>
+              <ul class="level3">
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=en" target="_self">EN<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=km" target="_self">KH<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=vi" target="_self">VI<span class="cNavState"></span></a></li>
+                <span class="border"></span>
+              </ul>
+
+            </li>
 
             <span class="border"></span>
           </ul>

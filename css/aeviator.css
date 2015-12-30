@@ -45,6 +45,7 @@
 }
 #cNavNew li .level2 {
   top: 29px;
+  background: transparent!important;
 }
 #cNavNew li .level2 li, #cNavNew li .level2 a {
   height: 29px;
@@ -130,6 +131,7 @@
 
 .white #cNavNew.level1 {
   padding-top: 0px;
+  padding-left: 40px;
 }
 #cNavNew .one-line {
   padding-top: 15px;
@@ -189,19 +191,19 @@ li.top-topic {
 }
 #cNavNew li:hover .level2 {
   width: 220px;
-  left: 508px;
+  left: 548px;
   top: 60px;
   padding-left: 0;
   margin: 0;
 }
 #cNavNew li:hover .menu_environment {
-  left: 0;
+  left: 40px;
 }
 #cNavNew li:hover .menu_economy {
-  left: 65px;
+  left: 105px;
 }
 #cNavNew li:hover .menu_people {
-  left: 130px;
+  left: 170px;
 }
 #cNavNew li:hover .level2 a {
   background: #6393D2;
@@ -215,7 +217,8 @@ li.top-topic {
   background: #292d56;
   color: white;
   width: 200px;
-  padding-bottom: 20px;
+  /*padding-bottom: 20px;*/
+  /*border-bottom: 1px solid white;*/
 }
 #cNavNew li .level2, #cNavNew li .level3 {
   -moz-box-shadow: none;
@@ -224,6 +227,10 @@ li.top-topic {
 }
 #cNavNew.level1 li:hover .level2, #cNavNew .level2>li:hover .level3 {
   display: block;
+
+}
+#cNavNew .level2>li:hover .level3{
+  background: transparent;
 }
 
 /*level 3*/
@@ -232,10 +239,10 @@ li.top-topic {
     padding: 0;
     top: 29px;
 }
-#cNavNew li .level3 li {
+/*#cNavNew li .level3 li {
     position: relative;
     right: 30px;
-}
+}*/
 #cNavNew li .level3 li level3-by-country{height: 175px!important;}
 
 /*general*/
@@ -252,7 +259,7 @@ li.top-topic {
   margin-top: 0;
 }
 .container {
-  margin-left: 0px;
+  margin-left: 40px;
 }
 .clearfix:after {
   content: ".";
@@ -333,7 +340,7 @@ ul.level1 {
 
 .content_wrapper{
   margin-left: 140px;
-  /*overflow: hidden;*/
+  overflow: hidden;
 
 }
 /*top nav*/
@@ -369,7 +376,7 @@ ul.level1 {
   height: 29px;
 }
 
-  #cNavNew li:first-of-type{padding-left: 40px;}
+  /*#cNavNew li:first-of-type{padding-left: 40px;}*/
 #cNavNew .one-line, #cNavNew .menu-item {
   padding-top: 15px;
   padding-bottom: 20px;
@@ -398,11 +405,29 @@ ul.level1 {
   height: 29px;
   line-height: 29px;
 }
+
 .white #cNavNew.level1 li.icon_menu {
   height: 45px;
   padding-top: 3px;
 }
+#cNavNew .level2 li.by_country:hover{
+  height: 174px;
+}
+#cNavNew .level2 li.by_type:hover{height: 100%;}
+#cNavNew .level2>li.by_country:hover .level3{
+  position: static;
+  display: table-cell;
+  padding-left: 0!important;
+  width: 220px;
+}
 
+#cNavNew li:hover .level3 a {
+    background: #292d56;
+}
+
+#cNavNew li:hover .level3 a:hover{
+  background: #6393D2;
+}
 li.menu_environment img{
   width: 45px;
   height: auto;
@@ -437,7 +462,7 @@ header#od-head .icon-od-logo {
 #od-head .container{height: inherit;}
 
 .container.six.organization, .container .six.columns{width: 600px;}
-  div.six.columns.organization{margin-left: 60px!important;}
+  /*div.six.columns.organization{margin-left: 60px!important;}*/
 .container .five.social{width: 490px;}
 .five.social{
   position: relative;
@@ -502,6 +527,10 @@ div#wrap-feedback {
 
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail img{height: 50px!important;}
 
+od-head #social-nav{padding-left: 64px;}
+
+footer#colophon{overflow: hidden;}
+
 
 /*responsive stuff*/
 @media only screen and (min-width: 1280px){
@@ -513,6 +542,25 @@ div#wrap-feedback {
     /*width: 1120px;*/
     /*margin-left: 60px;*/
   }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1359px) {
+  #od-head #social-nav{
+    padding-left: 64px;
+  }
+
+  .contentNavigation{
+    bottom:0px;
+  }
+  .white #cNavNew.level1{
+    bottom:45px;
+  }
+  .container .five.social, .container .six.columns, .contentNavigation{
+    position: relative;
+  }
+  .container .five.social {
+    left: 23px;
+}
 }
 
 

@@ -107,7 +107,13 @@ tr:nth-child(2n+1) {
   #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#C6C366; color:white;}
   /*level 2 hover*/
   #cNavNew li .level2 li:hover>a{background:white;color:black;}
-
+  /*level 3 hover*/
+  #cNavNew li:hover .level3 a {
+      background: #3D9C00;
+  }
+  #cNavNew li:hover .level3 a:hover{
+    background: #C6C366;
+  }
 
 /*Ländernav liks*/
   .white #mainNav-inner .level1>li>a{color: white;}
@@ -119,4 +125,4 @@ tr:nth-child(2n+1) {
   .mainNav-inner .level1 li:hover {background: #42aa00;}
   .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
   .mainNav-inner ul.level1>li.act>a{background: #C6C366;}
-  #cNavNew li .level2 li:hover>a{background:#C6C366;color:white;}
+  #cNavNew li .level2 li:hover>a{background:#3D9C00;color:white;}
