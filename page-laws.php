@@ -21,8 +21,10 @@
 				) );
 				?>
 				<?php
-				 echo do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_laws_version_date" format="json"]');
-				 
+				 $law_records_json = do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_laws_version_date" format="json"]');
+				//  $laws=json_decode($law_records_json);
+				var_dump($laws_record_json);
+
 				 ?>
 
 			</div>
