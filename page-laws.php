@@ -24,26 +24,38 @@ require 'lib/kint/Kint.class.php';
 					'link_after'  => '</span>',
 				) );
 				?>
+
 				<?php
-				$laws_json=do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_laws_version_date" format="json"]');
-				$laws=json_decode($laws_json,true);
+					function get_law_datasets_sorted_by_document_type(){
+						$laws_json=do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_laws_version_date" format="json"]');
+						$laws=json_decode($laws_json,true);
+						// sort by document type
+						uasort($laws["wpckan_dataset_list"], 'compare_by_dataset_list');
+						return $laws;
+					}
+				 ?>
+				 <?php
+				 function array_push_assoc($array, $key, $value){
+						$array[$key] = $value;
+						return $array;
+						}
+				  ?>
+
+				<?php
+				$laws=get_law_datasets_sorted_by_document_type();
 				?>
 
-
 				<?php
-					// <!-- Sorting for document type -->
-					// $document_types=$laws[]
-					function compare($a, $b) {
-					    return strcmp($a['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'], $b['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type']);
-					}
-
-					uasort($laws["wpckan_dataset_list"], 'compare');
-
-
 
 				?>
 				<ul>
+					<?php
+						$laws_sorted = array();
+					?>
 					<?php foreach ($laws['wpckan_dataset_list'] as $key => $law) { ?>
+							<?php
+							if ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "anukretsub-decree") {$laws_sorted["anukretsub-decree"]=array_push_assoc($laws_sorted["anukretsub-decree"], $key, $law);}
+							?>
 
 						<!--  -->
 						<li>
@@ -52,6 +64,7 @@ require 'lib/kint/Kint.class.php';
 				<?php } ?>
 				</ul>
 				<!-- debug -->
+				<?php d($laws_sorted);?>
 				<?php d($laws);?>
 			</div>
 		</div>

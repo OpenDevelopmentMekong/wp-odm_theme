@@ -1149,6 +1149,11 @@ function buildTopTopicNav($lang)
     }
 }
 
+
+function compare_by_dataset_list($a, $b) {
+    return strcmp($a['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'], $b['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type']);
+}
+
 // redundant
 function buildStyledTopTopicNav($lang)
 {
