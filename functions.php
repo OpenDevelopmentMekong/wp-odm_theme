@@ -1157,9 +1157,9 @@ function array_push_assoc($array, $key, $value){
    $array[$key] = $value;
    return $array;
    }
-   
+
 function get_law_datasets_sorted_by_document_type(){
-  $laws_json=do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_laws_version_date" format="json"]');
+  $laws_json=do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_laws_version_date,odm_laws_status" format="json"]');
   $laws=json_decode($laws_json,true);
   // sort by document type
   uasort($laws["wpckan_dataset_list"], 'compare_by_dataset_list');
