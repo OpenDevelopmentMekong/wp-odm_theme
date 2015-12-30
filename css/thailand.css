@@ -5,11 +5,11 @@ a, a:visited, #sidebar .widget li a{
  color: #F7904D; /*6393D2, 2774da;*/
  text-decoration:none
 }
-a:hover, #sidebar .widget li a:hover{	
+a:hover, #sidebar .widget li a:hover{
 	color: #64161d;
 	text-decoration:underline
 }
-a strong:hover{	
+a strong:hover{
 	color: #64161d;
 	text-decoration:underline
 }
@@ -31,10 +31,10 @@ tr:nth-child(2n+1) {
 	background: #772028;
 }
 #od-head #main-nav .menu ul > li:hover a,
-#od-head #main-nav ul.menu > li:hover,  
-#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover , 
+#od-head #main-nav ul.menu > li:hover,
+#od-head #main-nav ul.menu  > li  > ul.sub-menu > li:hover ,
 #od-head #main-nav ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
-	background-color: #F7904D;  
+	background-color: #F7904D;
 }
 #od-head h1 a,
 #od-head h1 span {
@@ -57,7 +57,7 @@ tr:nth-child(2n+1) {
 #od-head .ms-dropdown-title ul li {
 	border-bottom: 1px solid rgba(0,0,0,0.4);
 }
- 
+
 #od-head .notification-message-box a{
     color: #333;
 }
@@ -86,9 +86,40 @@ tr:nth-child(2n+1) {
 }
 #od-head #main-nav ul li.current_page_item a{
 	color: #f7904d;
-	font-weight: bold; 
+	font-weight: bold;
 }
 .widget .opendev-summary ol li a:hover {
-	color: #f7904d; 
+	color: #f7904d;
 	text-decoration:underline
 }
+
+/*logo*/
+[class^="icon-"], [class*=" icon-"]{ color: #f7904d;}
+
+/*L kasten links*/
+.mainNavOdc,.headerODM{background:#64161d;}
+/*nav oben*/
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#772028;}
+/*header text*/
+.white #headerText span a{color:#f7904d;text-decoration: none;}
+  /*level 1 hover*/
+
+
+/*sub-nav oben*/
+  /*level 2*/
+  #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#f7904d; color:white;}
+  /*level 2 hover*/
+  #cNavNew li .level2 li:hover>a{background:white;color:black;}
+
+
+/*Ländernav liks*/
+  .white #mainNav-inner .level1>li>a{color: white;}
+  /*hover*/
+  .white #mainNav-inner ul.level1>li:hover>a{background:#373c6a;}
+
+  /*After prototype fixes*/
+  .white #cNavNew.level1>li:hover,li.top-topic{background:#f7904d;}
+  .mainNav-inner .level1 li:hover {background: #772028;}
+  .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
+  .mainNav-inner ul.level1>li.act>a{background: #f7904d;}
+  #cNavNew li .level2 li:hover>a{background:#64161d;color:white;}

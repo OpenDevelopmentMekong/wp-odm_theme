@@ -15,17 +15,29 @@
     $wpDomain=$_SERVER["HTTP_HOST"];
     $domain='opendevelopmentmekong.net';
 
-    if(!isset($_COOKIE['odm_transition_country'])) {
-      if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
-      else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';}
-      else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';}
-      else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';}
-      else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';}
-      else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';}
-      else {$country='mekong';}
+    if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
+    else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
+    else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
+    else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
+    else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
+    else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
+    else {$country='mekong';$country_short='';}
 
-    }
-    else{$country=$_COOKIE['odm_transition_country'];}
+    setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
+
+    // if(!isset($_COOKIE['odm_transition_country'])) {
+    //   ;
+    //
+    // }
+    // else{
+    //   $country=$_COOKIE['odm_transition_country'];
+    //   if ($country== 'cambodia'){$country_short='kh';}
+    //   else if ($country== 'laos'){$country_short='la';}
+    //   else if ($country== 'myanmar'){$country_short='mm';}
+    //   else if ($country== 'thailand'){$country_short='th';}
+    //   else if ($country== 'vietnam'){$country_short='vn';}
+    //   else{$country_short='';}
+    //     }
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
     else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
@@ -62,9 +74,10 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
+  <div class="content_wrapper">
 	<header class="white"id="od-head">
 		<div class="container">
-			<div class="eight columns">
+			<div class="six columns organization">
 				<div class="site-meta">
 					<?php opendev_logo(); ?>
 					<?php
@@ -94,49 +107,52 @@
                     ?>
 				</div>
 			</div>
-			<div class="four columns">
-				<div id="od-head-nav">
-					<div class="clearfix">
-						<nav id="social-nav">
-							<?php
-                            $fb = opendev_get_facebook_url();
-                            if ($fb) :
-                                ?>
-								<a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
-								<?php
-                            endif;
+			<div class="five columns align-right social">
+        <nav id="social-nav">
+
+          <?php
+                        $fb = opendev_get_facebook_url();
+                        if ($fb) :
                             ?>
-							<?php
-                            $tw = opendev_get_twitter_url();
-                            if ($tw) :
-                                ?>
-								<a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
-								<?php
-                            endif;
+            <a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
+            <?php
+                        endif;
+                        ?>
+          <?php
+                        $tw = opendev_get_twitter_url();
+                        if ($tw) :
                             ?>
-							<?php
-                            $contact_id = opendev_get_contact_page_id();
-                            if ($contact_id) :
-                                ?>
-								<a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
-								<?php
-                            endif;
+            <a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
+            <?php
+                        endif;
+                        ?>
+          <?php
+                        $contact_id = opendev_get_contact_page_id();
+                        if ($contact_id) :
                             ?>
-						</nav>
-					</div>
-				</div>
+            <a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
+            <?php
+                        else:
+                          ?>
+                          &nbsp;
+            <?php
+                        endif;
+                        ?>
+        </nav>
+
+        <div id="live-search">
+          		<div class="container">
+          			<div class="three columns align-right">
+          				<input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
+          				<img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
+          		    </div>
+                      <div class="results-container"></div>
+          		</div>
+          	</div><!-- live-search -->
+  		</div>
 			</div><!-- four column -->
 
-			<div id="live-search">
-        		<div class="container">
-        			<div class="three columns align-right">
-        				<input type="text" placeholder="<?php _e('Search &#128270;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
-        				<img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-        		    </div>
-                    <div class="results-container"></div>
-        		</div>
-        	</div><!-- live-search -->
-		</div>
+
 		<!-- #################### -->
 		<!-- NEW NAV -->
 		<div class="contentNavigation">
@@ -151,18 +167,28 @@
 
         </li>
 
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library<?php if ($country !='mekong') echo '?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Publications Library<span class="cNavState"></span></a>
 
 
         </li>
 
         <li class="one-line">
-          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>" target="_self">Data<span class="cNavState"></span></a>
+          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Data<span class="cNavState"></span></a>
           <ul class="level2">
-            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?odm_spatial_range=' . ucfirst($country); ?>"target="_self">All records<span class="cNavState"></span></a></li>
+            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self">All records<span class="cNavState"></span></a></li>
 
             <li><a href="http://<?php echo $ckanDomain; ?>/group" target="_self">Records by type<span class="cNavState"></span></a></li>
-            <li><a href="#" target="_self">Records by country<span class="cNavState"></span></a></li>
+            <li class="level3-by-country">
+              <a href="#" target="_self">Records by country<span class="cNavState"></span></a>
+              <ul class="level3">
+                <li class="first"><a href="#" target="_self">Cambodia<span class="cNavState"></span></a></li>
+                <li><a href="#" target="_self">Laos<span class="cNavState"></span></a></li>
+                <li><a href="#" target="_self">Myanmar<span class="cNavState"></span></a></li>
+                <li><a href="#" target="_self">Thailand<span class="cNavState"></span></a></li>
+                <li class="last"><a href="#" target="_self">Vietnam<span class="cNavState"></span></a></li>
+                <span class="border"></span>
+              </ul>
+            </li>
             <li class="last"><a href="#" target="_self">Records by language<span class="cNavState"></span></a></li>
 
 
@@ -262,9 +288,9 @@
 
 		          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="http://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
 
-		          <li class="last jbottom <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="http://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
+		          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="http://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
 
-		          <li class="last jbottom <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="http://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
+		          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="http://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
 
 		        </ul>
 		      </div>

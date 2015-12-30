@@ -18,7 +18,7 @@ a.button,
 .button {
 	background: #C6C366;
 }
-tr:nth-child(2n+1) { 
+tr:nth-child(2n+1) {
     background-color: #f4f3db;
 }
 #od-head {
@@ -91,3 +91,32 @@ tr:nth-child(2n+1) {
 	color: #C6C366;
 	text-decoration:underline
 }
+
+/*logo*/
+[class^="icon-"], [class*=" icon-"]{ color: #C6C366;}
+
+/*L kasten links*/
+.mainNavOdc,.headerODM{background:#3D9C00;}
+/*nav oben*/
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#42aa00;}
+/*header text*/
+.white #headerText span a{color:#C6C366;text-decoration: none;}
+
+/*sub-nav oben*/
+  /*level 2*/
+  #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#C6C366; color:white;}
+  /*level 2 hover*/
+  #cNavNew li .level2 li:hover>a{background:white;color:black;}
+
+
+/*Ländernav liks*/
+  .white #mainNav-inner .level1>li>a{color: white;}
+  /*hover*/
+  .white #mainNav-inner ul.level1>li:hover>a{background:#373c6a;}
+
+  /*After prototype fixes*/
+  .white #cNavNew.level1>li:hover,li.top-topic{background:#C6C366;}
+  .mainNav-inner .level1 li:hover {background: #42aa00;}
+  .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
+  .mainNav-inner ul.level1>li.act>a{background: #C6C366;}
+  #cNavNew li .level2 li:hover>a{background:#C6C366;color:white;}

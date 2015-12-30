@@ -91,3 +91,36 @@ tr:nth-child(2n+1) {
 	color: #F8BF42;
 	text-decoration:underline
 }
+
+/*logo*/
+[class^="icon-"], [class*=" icon-"]{ color: #F8BF42;}
+
+/*L kasten links*/
+.mainNavOdc,.headerODM{background:#59396C;}
+/*nav oben*/
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#704C98;}
+/*header text*/
+.white #headerText span a{color:#F8BF42;text-decoration: none;}
+  /*level 1 hover*/
+ /*.white #cNavNew.level1>li:hover>a{background:white;color:black;}*/
+  /*level 1 active*/
+  /*#cNavNew.level1>li.cur>a, .white #cNavNew.level1>li.act>a{background: red;}*/
+
+/*sub-nav oben*/
+  /*level 2*/
+  #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#F8BF42; color:white;}
+  /*level 2 hover*/
+  #cNavNew li .level2 li:hover>a{background:white;color:black;}
+
+
+/*Ländernav liks*/
+  .white #mainNav-inner .level1>li>a{color: white;}
+  /*hover*/
+  .white #mainNav-inner ul.level1>li:hover>a{background:#373c6a;}
+
+  /*After prototype fixes*/
+  .white #cNavNew.level1>li:hover,li.top-topic{background:#F8BF42;}
+  .mainNav-inner .level1 li:hover {background: #704C98;}
+  .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
+  .mainNav-inner ul.level1>li.act>a{background: #F8BF42;}
+  #cNavNew li .level2 li:hover>a{background:#59396C;color:white;}
