@@ -33,19 +33,19 @@ require 'lib/kint/Kint.class.php';
 					<?php
 						$laws_sorted=get_law_datasets_sorted_by_document_type();
 
-						foreach ($laws_sorted as $key => $law){
-						// foreach ($laws['wpckan_dataset_list'] as $key => $law) {
-							?>
-
-						<!--  -->
-						<li>
-							<a href="<?php echo $law['wpckan_dataset_title_url'];?>"><?php echo $key;?></a>
-						</li>
+						foreach ($laws_sorted as $key => $law){?>
+							<li><?php echo $key?>
+									<ul>
+										<?php foreach ($law as $title => $law_record) {?>
+											<li>
+												<a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $title;?></a>
+											</li>
+										<?php } ?>
+									</ul>
 				<?php } ?>
 				</ul>
 				<!-- debug -->
 				<?php d($laws_sorted);?>
-				<?php d($laws);?>
 			</div>
 		</div>
 
