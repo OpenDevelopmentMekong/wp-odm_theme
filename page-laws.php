@@ -45,10 +45,10 @@ require 'lib/kint/Kint.class.php';
 												<td class="law_title">
 													<a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $title;?></a>
 												<td class="law_status">
-													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_laws_status'];?>
+													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_promulgation_date'];?>
 												</td>
 												<td class="law_version">
-													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_laws_version_date'];?>
+													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_application_date'];?>
 												</td>
 												<td class="law_download_en law_download">
 													<span class="law_download en">
