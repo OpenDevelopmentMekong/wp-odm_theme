@@ -567,3 +567,48 @@ footer#colophon{overflow: hidden;}
 /*laws section*/
 
 .laws-container{margin-top: 200px;}
+.document_type_header{
+  width: 100%;
+  background: #292d56;
+  line-height: 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: white;
+  padding: 10px 10px;
+}
+table.law_datasets{
+  width: 100%;
+  background: none;
+  border:none;
+  margin:0 10px;
+}
+  table.law_datasets tr,table.law_datasets td{
+    background: none;
+    border:none;
+  }
+td.law_title {
+    width: 40%;
+}
+
+/*text color*/
+td.law_title a, td.law_status, td.law_version{
+  color: #6393d2;
+}
+td.law_download{
+  width: 7%;
+  padding: 8px 0;
+}
+  td.law_download span.law_download{
+    /*background: rgba(0,0,0,0.701961);*/
+    background: rgb(75,75,75);
+    border-radius: 6px;
+  }
+  td.law_download span.icon-arrow-down{
+    position: relative;
+    top:2px;
+  }
+    td.law_download span a{
+      color: white;
+      text-decoration: none;
+      padding: 3px;
+    }
