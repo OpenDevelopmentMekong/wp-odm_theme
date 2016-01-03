@@ -588,7 +588,7 @@ table.law_datasets{
   table.law_datasets tr,table.law_datasets td{
     background: none;
     border:none;
-    padding: 0 4px;
+    padding: 8px 5px;
   }
 td.law_title {
     width: 40%;

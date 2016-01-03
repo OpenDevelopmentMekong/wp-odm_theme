@@ -85,7 +85,7 @@
 								</table>
 				<?php } ?>
 
-				<!-- debug -->
+				<!-- dbug -->
 				<?php// d($laws_sorted);?>
 
 			</div>
