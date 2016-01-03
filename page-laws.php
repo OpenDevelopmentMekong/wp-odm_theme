@@ -87,7 +87,18 @@ require 'lib/kint/Kint.class.php';
 
 				<!-- debug -->
 				<?php d($laws_sorted);?>
-				<input type="text" id="Search_All">
+
+			</div>
+			<div class="one column">&nbsp;</div>
+			<div class="three columns">
+				<div class="law_search_box">
+					<div class="law_search_box_header">
+						<span class="big">SEARCH</span> in Laws
+					</div>
+					<div class="law_search_box_wrapper">
+						<input type="text" id="Search_All" placeholder="Search all Laws">
+					</div>
+				</div>
 			</div>
 		</div>
 
