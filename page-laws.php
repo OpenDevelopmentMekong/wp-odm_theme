@@ -1,6 +1,6 @@
 <?php
 // dbug
-require 'lib/kint/Kint.class.php';
+// require 'lib/kint/Kint.class.php';
 ?>
 <?php get_header(); ?>
 
@@ -96,7 +96,7 @@ require 'lib/kint/Kint.class.php';
 				<?php } ?>
 
 				<!-- dbug -->
-				<?php d($laws_sorted);?>
+				<?php// d($laws_sorted);?>
 
 
 			</div>
