@@ -585,6 +585,8 @@ table.law_datasets{
   table.law_datasets thead,.dataTables_filter,.dataTables_info{
     display: none;
   }
+
+  .dataTables_length{display: none;}
   table.law_datasets tr,table.law_datasets td{
     background: none;
     border:none;
@@ -620,6 +622,10 @@ td.law_download{
   margin-bottom: 1em;
 }
 
+/*pagination*/
+.law_pagination{
+  display: inline;
+}
 /*search box for laws*/
 .law_search_box{
   background: rgb(246,246,246);

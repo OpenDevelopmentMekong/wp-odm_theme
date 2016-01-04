@@ -1,6 +1,6 @@
 <?php
 // dbug
-// require 'lib/kint/Kint.class.php';
+require 'lib/kint/Kint.class.php';
 ?>
 <?php get_header(); ?>
 
@@ -15,6 +15,16 @@
 		</header>
 		<div class="container laws-container">
 			<div class="eight columns">
+				<div class="pagination">
+					show
+					<select id="law_pagination" name="law_pagination">
+					  <option value="10" selected>10</option>
+						<option value="25">25</option>
+					  <option value="50">50</option>
+					  <option value="100">100</option>
+					</select>
+					entries
+				</div>
 				<?php the_content(); ?>
 				<?php
 				wp_link_pages( array(
@@ -86,7 +96,8 @@
 				<?php } ?>
 
 				<!-- dbug -->
-				<?php// d($laws_sorted);?>
+				<?php d($laws_sorted);?>
+
 
 			</div>
 			<div class="one column">&nbsp;</div>
@@ -122,7 +133,7 @@ $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRege
 
            $(document).ready(function () {
                $('#law_datasets_anukretsub-decree').dataTable({
-                   "bPaginate": false,
+                   "bPaginate": true,
 
                });
                var oTable0 = $("#law_datasets_anukretsub-decree").dataTable();
@@ -135,7 +146,7 @@ $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRege
 
            $(document).ready(function () {
                $('#law_datasets_other').dataTable({
-                   "bPaginate": false,
+                   "bPaginate": true,
 
                });
                var oTable1 = $("#law_datasets_other").dataTable();
@@ -147,7 +158,14 @@ $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRege
            });
 
 
+					// detect pagination change
+					$(document).ready(function () {
+						$('#law_pagination').on('change', function() {
+							$('div.dataTables_length select').val(this.value);
+							// alert( this.value ); // or $(this).val()
+						});
 
+					});
 
 
 
