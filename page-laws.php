@@ -132,40 +132,74 @@ $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRege
            };
 
            $(document).ready(function () {
-               $('#law_datasets_anukretsub-decree').dataTable({
+               $('.law_datasets').dataTable({
                    "bPaginate": true,
 
                });
+							//  set datatables
                var oTable0 = $("#law_datasets_anukretsub-decree").dataTable();
+							 var oTable1 = $("#law_datasets_chbablawkram").dataTable();
+							 var oTable2 = $("#law_datasets_constitution-of-cambodia").dataTable();
+							 var oTable3 = $("#law_datasets_international-treatiesagreements").dataTable();
+							 var oTable4 = $("#law_datasets_kech-sonyacontractagreement").dataTable();
+							 var oTable5 = $("#law_datasets_kolkar-nenomguidelines").dataTable();
+							 var oTable6 = $("#law_datasets_kolnyobaypolicy").dataTable();
+							 var oTable7 = $("#law_datasets_likhetletter").dataTable();
+							 var oTable8 = $("#law_datasets_prakasjoint-prakasproclamation").dataTable();
+							 var oTable9 = $("#law_datasets_preah-reach-kramroyal-kram").dataTable();
+							 var oTable10 = $("#law_datasets_sarachorcircular").dataTable();
+							 var oTable11 = $("#law_datasets_sechkdei-chhun-damneoungnoticeannouncement").dataTable();
+							 var oTable12 = $("#law_datasets_sechkdei-nenuminstruction").dataTable();
+							 var oTable13 = $("#law_datasets_sechkdei-preang-chbabdraft-laws-amp-regulations").dataTable();
+							 var oTable14 = $("#law_datasets_sechkdei-samrechdecision").dataTable();
+							 var oTable15 = $("#law_datasets_other").dataTable();
 
                $("#Search_All").keyup(function () {
                    // Filter on the column (the index) of this element
+									//  set filters
                    oTable0.fnFilterAll(this.value);
+									 oTable1.fnFilterAll(this.value);
+									 oTable2.fnFilterAll(this.value);
+									 oTable3.fnFilterAll(this.value);
+									 oTable4.fnFilterAll(this.value);
+									 oTable5.fnFilterAll(this.value);
+									 oTable5.fnFilterAll(this.value);
+									 oTable6.fnFilterAll(this.value);
+									 oTable7.fnFilterAll(this.value);
+									 oTable8.fnFilterAll(this.value);
+									 oTable9.fnFilterAll(this.value);
+									 oTable10.fnFilterAll(this.value);
+									 oTable11.fnFilterAll(this.value);
+									 oTable12.fnFilterAll(this.value);
+									 oTable13.fnFilterAll(this.value);
+									 oTable14.fnFilterAll(this.value);
+									 oTable15.fnFilterAll(this.value);
+
                });
            });
 
-           $(document).ready(function () {
-               $('#law_datasets_other').dataTable({
-                   "bPaginate": true,
-
-               });
-               var oTable1 = $("#law_datasets_other").dataTable();
-
-               $("#Search_All").keyup(function () {
-                   // Filter on the column (the index) of this element
-                   oTable1.fnFilterAll(this.value);
-               });
-           });
+          //  $(document).ready(function () {
+          //      $('#law_datasets_other').dataTable({
+          //          "bPaginate": true,
+					 //
+          //      });
+          //      var oTable1 = $("#law_datasets_other").dataTable();
+					 //
+          //      $("#Search_All").keyup(function () {
+          //          // Filter on the column (the index) of this element
+          //          oTable1.fnFilterAll(this.value);
+          //      });
+          //  });
 
 
 					// detect pagination change
-					$(document).ready(function () {
-						$('#law_pagination').on('change', function() {
-							$('div.dataTables_length select').val(this.value);
-							// alert( this.value ); // or $(this).val()
-						});
-
-					});
+					// $(document).ready(function () {
+					// 	$('#law_pagination').on('change', function() {
+					// 		$('div.dataTables_length select').val(this.value);
+					// 		// alert( this.value ); // or $(this).val()
+					// 	});
+					//
+					// });
 
 
 
