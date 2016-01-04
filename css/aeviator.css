@@ -623,8 +623,13 @@ td.law_download{
 }
 
 /*pagination*/
-.law_pagination{
-  display: inline;
+.pagination{
+  text-align: right;
+}
+#law_pagination{
+  display: inline-block;
+  width: 55px;
+  text-align: right;
 }
 /*search box for laws*/
 .law_search_box{
