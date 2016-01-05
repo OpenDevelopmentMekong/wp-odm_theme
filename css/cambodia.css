@@ -120,3 +120,7 @@ tr:nth-child(2n+1) {
   .white #mainNav-inner ul.level1>li:hover>a{background:#97d320;}
   /*active*/
   .mainNav-inner ul.level1>li.act>a{color:white;background:#97d320;}
+
+  footer#colophon{
+    background:#213d49;
+  }
