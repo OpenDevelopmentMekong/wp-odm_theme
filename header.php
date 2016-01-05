@@ -311,18 +311,5 @@
 
 		        </ul>
 		      </div>
-		      <!-- <div id="mainNav-social">
-		        <a href="#" target="_blank">
-		          <span class="sicons twitter"></span>
-		        </a>
-		        <a href="#" target="_blank">
-		          <span class="sicons facebook"></span>
-		        </a>
-		        <a href="http://www.flickr.com/photos/" target="_blank">
-		          <span class="sicons google"></span>
-		        </a>
-		        <a href="http://vimeo.com/odm/videos" target="_blank">
-		          <span class="sicons vimeo"></span>
-		        </a>
-		      </div> -->
+
 		    </div>
