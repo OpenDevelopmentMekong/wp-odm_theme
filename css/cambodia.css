@@ -49,7 +49,7 @@ tr:nth-child(2n+1) {
 	color: #fff;
 }
 #od-head a:hover{
-	color: #66CC00;
+	/*color: #66CC00;*/
 }
 #od-head .ms-dropdown-title ul {
 	background: #17303a;
