@@ -513,10 +513,8 @@ header#od-head .icon-od-logo {
   }
 
     #live-search input[type=text]{width: 180px;}
-/*temp*/
 
-
-section#page-content{margin-top: 60px;}
+section#page-content{margin-top: 80px;}
 div#wrap-feedback {
   right: -40px;
   left: initial;
@@ -533,6 +531,7 @@ od-head #social-nav{padding-left: 64px;}
 
 footer#colophon{
   overflow: hidden;
+  background: #373c6a;
   }
 
 
@@ -658,3 +657,6 @@ td.law_download{
     }
 
 .icon-envelop{width: 18px;height: 18px;}
+.section-title{
+  border: 0!important;
+}
