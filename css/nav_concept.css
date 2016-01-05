@@ -529,7 +529,9 @@ div#wrap-feedback {
 
 od-head #social-nav{padding-left: 64px;}
 
-footer#colophon{overflow: hidden;}
+footer#colophon{
+  overflow: hidden;
+  }
 
 
 /*responsive stuff*/

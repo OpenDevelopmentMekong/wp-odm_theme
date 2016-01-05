@@ -120,7 +120,7 @@ function opendev_styles()
     wp_register_style('opendev-laos',  $css_base.'laos.css');
     wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
     wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-    wp_register_style('aeviator-nav-concept',  $css_base.'aeviator.css');
+    wp_register_style('aeviator-nav-concept',  $css_base.'nav_concept.css');
     wp_register_style('skeleton_new_nav',  $css_base.'skeleton_new_nav.css');
 
       wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
