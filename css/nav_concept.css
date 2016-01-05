@@ -175,14 +175,15 @@ li.top-topic {
   width: 200px;
   background: #6393D2;
   color: white;
-  font-size: 12px;
-  /*color: #555;*/
-  padding: 0 10px;
-  text-decoration: none;
-  display: inline-block;
-  /*font-family: TheSansPlain;*/
-  position: relative;
-  /*height: 29px;*/
+  font-size: 16px;
+ /* color: #555; */
+ padding: 0 10px;
+ text-decoration: none;
+ display: inline-block;
+ position: relative;
+ font-weight: bold;
+ text-transform: uppercase;
+ /* height: 29px; */
   line-height: 29px;
   border-bottom: 1px solid white;
 }
@@ -209,6 +210,7 @@ li.top-topic {
   background: #6393D2;
   color: white;
   width: 200px;
+  font-weight: normal;
 }
 
 /*level 2 hover*/
