@@ -1,4 +1,9 @@
 <?php
+/*
+Template Name: Laws page
+*/
+?>
+<?php
 // dbug
 // require 'lib/kint/Kint.class.php';
 ?>

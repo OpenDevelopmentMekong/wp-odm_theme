@@ -1,9 +1,4 @@
 <?php
-/*
-Template Name: Laws page
-*/
-?>
-<?php
     $wpDomain=$_SERVER["HTTP_HOST"];
     $domain='opendevelopmentmekong.net';
 
