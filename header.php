@@ -132,7 +132,7 @@
                         $contact_id = opendev_get_contact_page_id();
                         if ($contact_id) :
                             ?>
-            <a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
+            <a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"></a>
             <?php
                         else:
                           ?>
