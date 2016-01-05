@@ -132,7 +132,7 @@
                         $contact_id = opendev_get_contact_page_id();
                         if ($contact_id) :
                             ?>
-            <a href="<?php echo get_permalink($contact_id); ?>"><?php  _e(get_the_title($contact_id)); ?> </a>
+            <a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"</a>
             <?php
                         else:
                           ?>
@@ -311,18 +311,5 @@
 
 		        </ul>
 		      </div>
-		      <!-- <div id="mainNav-social">
-		        <a href="#" target="_blank">
-		          <span class="sicons twitter"></span>
-		        </a>
-		        <a href="#" target="_blank">
-		          <span class="sicons facebook"></span>
-		        </a>
-		        <a href="http://www.flickr.com/photos/" target="_blank">
-		          <span class="sicons google"></span>
-		        </a>
-		        <a href="http://vimeo.com/odm/videos" target="_blank">
-		          <span class="sicons vimeo"></span>
-		        </a>
-		      </div> -->
+		
 		    </div>
