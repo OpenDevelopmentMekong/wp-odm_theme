@@ -1,17 +1,4 @@
 <?php
-    // set user data array and encode in json for transport
-    // to depricate
-    // $user_data = array(
-    //         'language' => 'german',
-    //         'country' => 'mekong',
-    // );
-    // setTransitionCookies($user_data);
-    //
-
-
-
-
-
     $wpDomain=$_SERVER["HTTP_HOST"];
     $domain='opendevelopmentmekong.net';
 
@@ -24,20 +11,6 @@
     else {$country='mekong';$country_short='';}
 
     setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
-
-    // if(!isset($_COOKIE['odm_transition_country'])) {
-    //   ;
-    //
-    // }
-    // else{
-    //   $country=$_COOKIE['odm_transition_country'];
-    //   if ($country== 'cambodia'){$country_short='kh';}
-    //   else if ($country== 'laos'){$country_short='la';}
-    //   else if ($country== 'myanmar'){$country_short='mm';}
-    //   else if ($country== 'thailand'){$country_short='th';}
-    //   else if ($country== 'vietnam'){$country_short='vn';}
-    //   else{$country_short='';}
-    //     }
 
     if ($wpDomain == '192.168.33.10'){$ckanDomain='192.168.33.10:8081';}
     else {$ckanDomain='pp-data.opendevelopmentmekong.net';}
@@ -94,15 +67,6 @@
                             }
                             echo '<div class="ms-dropdown-title">';
                             echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
-                            /* echo '<ul>';
-                            foreach($sites as $site) {
-                                if($current != $site['blog_id']) {
-                                    $details = get_blog_details($site['blog_id']);
-                                    $name = str_replace('Open Development ', '', $details->blogname);
-                                    echo '<li><a href="' . $details->siteurl . '">' . $name . '</a></li>';
-                                }
-                            }
-                            echo '</ul>'; */
                             echo '</div>';
                         }
                     }
@@ -214,22 +178,11 @@
 
         </li>
 
-        <!-- <li>
-          <a href="#" target="_self">Toolkits<span class="cNavState"></span></a>
-        </li> -->
 
         <li class="one-line">
           <a href="/map-explorer" target="_self">Map Explorer<span class="cNavState"></span></a>
         </li>
 
-        <!-- <li class="one-line">
-          <a href="/map-explorer" target="_self">–EN–<span class="cNavState"></span></a>
-        </li>
-
-        <li class="one-line">
-          <a href="/map-explorer" target="_self">–TH–<span class="cNavState"></span></a>
-        </li> -->
-        <!-- render country specific links -->
         <?php wp_nav_menu( array(
           'menu' => 'country-specific-menu',
           'container'       => false,
@@ -311,18 +264,5 @@
 
 		        </ul>
 		      </div>
-		      <!-- <div id="mainNav-social">
-		        <a href="#" target="_blank">
-		          <span class="sicons twitter"></span>
-		        </a>
-		        <a href="#" target="_blank">
-		          <span class="sicons facebook"></span>
-		        </a>
-		        <a href="http://www.flickr.com/photos/" target="_blank">
-		          <span class="sicons google"></span>
-		        </a>
-		        <a href="http://vimeo.com/odm/videos" target="_blank">
-		          <span class="sicons vimeo"></span>
-		        </a>
-		      </div> -->
+		    
 		    </div>
