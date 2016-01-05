@@ -1,5 +1,12 @@
 <?php get_header(); ?>
+<!-- //cookie -->
+<?php
+// $cookie = $_COOKIE('odm_transition_data');
+// $cookie = json_decode(base64_decode($cookie));
 
+?>
+
+<!-- //cookie -->
 <?php if(have_posts()) : the_post(); ?>
 	<section id="content" class="single-post">
 		<header class="single-post-header">
