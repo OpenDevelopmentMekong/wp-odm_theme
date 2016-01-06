@@ -1189,6 +1189,14 @@ function get_law_datasets_sorted_by_document_type(){
   return $laws_sorted;
 }
 
+function get_total_number_of_sorted_datasets($datasets){
+  $count = 0;
+  foreach ($datasets as $key => $dataset) {
+    $count += count($dataset);
+  }
+  return $count;
+}
+
 // redundant
 function buildStyledTopTopicNav($lang)
 {
