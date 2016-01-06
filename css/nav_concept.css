@@ -660,3 +660,7 @@ td.law_download{
 .section-title{
   border: 0!important;
 }
+#featured-content.page-section .section-featured-content{
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
