@@ -1162,7 +1162,7 @@ function array_push_assoc($array, $key, $value){
    }
 
 function get_law_datasets_sorted_by_document_type(){
-  $laws_json=do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_application_date" format="json"]');
+  $laws_json=do_shortcode('[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_application_date" format="json"]');
   $laws=json_decode($laws_json,true);
   // sort by document type
   uasort($laws["wpckan_dataset_list"], 'compare_by_dataset_list');
@@ -1223,15 +1223,11 @@ function buildStyledTopTopicNav($lang)
        // get entries -->
        foreach ($json_a[$key]['children'] as $child) {
 
-         // make wp url from title
-          $url = sanitize_title($child['name']);
-
+        $url = sanitize_title($child['name']);
         echo '<li><a href="/topics/' . $url . '">' . $child['titles'][$lang] . '</a></li>';
+      }
 
-
-        }
-
-        ?>
+?>
         <span class="border"></span>
       </ul><?php
 
