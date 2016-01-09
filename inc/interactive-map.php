@@ -76,7 +76,8 @@ class OpenDev_InteractiveMap {
      <?php
       $categories = get_categories('taxonomy=layer-category');
       foreach ($categories as $category){ ?>
-        <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?>">
+
+        <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?> cat-<?php echo $category->slug?>">
           <span class="category-color">&nbsp;</span>
           <a href="#"><?php echo $category->cat_name; ?></a>
 
