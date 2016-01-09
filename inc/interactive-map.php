@@ -70,16 +70,22 @@ class OpenDev_InteractiveMap {
      </div> -->
     </div>
    </div>
+ </div>
    <div class="interactive-map-layers">
     <ul class="categories">
      <?php
       $categories = get_categories('taxonomy=layer-category');
       foreach ($categories as $category){ ?>
-       <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?>"><a href="#"><?php echo $category->cat_name; ?></a></li>
+
+        <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?> cat-<?php echo $category->slug?>">
+          <span class="category-color">&nbsp;</span>
+          <a href="#"><?php echo $category->cat_name; ?></a>
+
+        </li>
      <?php } ?>
     </ul>
    </div>
-  </div>
+
   <script type="text/javascript">
 
    (function($) {
@@ -201,7 +207,7 @@ class OpenDev_InteractiveMap {
 
        jeo_map = map;
 
-       var $layers = $('.interactive-map .interactive-map-layers');
+       var $layers = $('.interactive-map-layers');
        if(map.postID == 'interactive_map') {
         //map.$.find('.jeo-filter-layers').appendTo($layers);
         for(var key in term_rel) {
