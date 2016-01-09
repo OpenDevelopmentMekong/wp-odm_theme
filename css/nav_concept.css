@@ -672,3 +672,28 @@ td.law_download{
     height: 100%;
     float: none;
   }
+
+.page-template-page-map-explorer .interactive-map-layers .categories{
+  width: 100%;
+
+}
+  .page-template-page-map-explorer .interactive-map-layers .categories li {
+      float: left;
+      margin: 0 10px;
+      font-size: 12px;
+      text-align: center;
+      text-transform: uppercase;
+      /*font-weight: bold;*/
+  }
+.page-template-page-map-explorer .category-color{
+    display: block;
+    width: 210px;
+    background: red;
+    position: relative;
+    bottom:20px;
+}
+
+.page-template-page-map-explorer .cat-layers{
+  width: 200px;
+  display: block;
+}
