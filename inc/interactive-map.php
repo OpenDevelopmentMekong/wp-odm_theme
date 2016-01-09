@@ -70,6 +70,7 @@ class OpenDev_InteractiveMap {
      </div> -->
     </div>
    </div>
+ </div>
    <div class="interactive-map-layers">
     <ul class="categories">
      <?php
@@ -79,7 +80,7 @@ class OpenDev_InteractiveMap {
      <?php } ?>
     </ul>
    </div>
-  </div>
+
   <script type="text/javascript">
 
    (function($) {

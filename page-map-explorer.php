@@ -7,15 +7,12 @@ Template Name: Map explorer
 
 <?php if(have_posts()) : the_post(); ?>
 
+
  <section id="map">
-  <div class="section-title">
-   <div class="container">
-    <div class="twelve columns">
-     <?php echo do_shortcode('[odmap]'); ?>
-     <?php //get_template_part('content', 'interactive-map'); ?>
-    </div>
-   </div>
-  </div>
+  <?php echo do_shortcode('[odmap]'); ?>
+  <?php //get_template_part('content', 'interactive-map'); ?>
+
+  
  </section>
 
 <?php endif; ?>

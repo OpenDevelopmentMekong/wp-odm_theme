@@ -660,3 +660,15 @@ td.law_download{
 .section-title{
   border: 0!important;
 }
+
+
+/*map explorer*/
+.page-template-page-map-explorer #main-breadcrumb{
+  display: none;
+}
+
+.page-template-page-map-explorer .interactive-map .map-container {
+    width: 100%;
+    height: 100%;
+    float: none;
+  }
