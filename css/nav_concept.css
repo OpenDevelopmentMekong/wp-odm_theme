@@ -664,11 +664,11 @@ td.law_download{
 
 /*map explorer*/
 
-.interactive-map{
+.page-template-page-map-explorer .interactive-map{
   border: 0;
   box-shadow: none;
 }
-.interactive-map-layers {
+.page-template-page-map-explorer .interactive-map-layers {
     bottom: 18px;
     position: relative;
     z-index: 100;
