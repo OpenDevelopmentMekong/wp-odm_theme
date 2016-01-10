@@ -756,10 +756,11 @@ footer#colophon{
   border: none;
 }
 
-*laws section*/
+/*laws section*/
 
 .law_search_box{
   background: rgb(246,246,246);
+  margin-top: 34px;
 }
 
 .law_search_box_header{
@@ -781,6 +782,33 @@ footer#colophon{
 
 #search_all{
   width:150px;
+}
+
+.dataTables_length select{
+  margin: 0px !important;
+  width: 40px;
+  display: inline;
+}
+
+.top{
+  padding-bottom: 10px;
+}
+
+.no-padd{
+  margin: 0px;
+}
+
+.pagination{
+  text-align: right;
+}
+
+.length{
+  text-align: right;
+  margin-right: 20px;
+}
+
+.bottom{
+  padding-top: 10px;
 }
 
 .icon-envelop{
@@ -811,45 +839,41 @@ table.law_datasets thead{
   color: #fff;
 }
 
-.dataTables_length{
-  width: 100%;
-}
-
-.dataTables_filter{
-  display: none;
-}
-
 table.law_datasets tr,table.law_datasets td{
   background: none;
   border:none;
-  padding: 8px 5px;
+  padding: 12px 5px;
+  margin-bottom: 4px;
+}
+
+.law_datasets_download_header,.law_datasets_download_value{
+  min-width: 110px;
+  text-align: center;
+}
+
+.law_datasets_promulgation_date_header,.law_datasets_promulgation_date_value{
+  min-width: 110px;
+  text-align: center;
+}
+
+.law_datasets_document_number_header,.law_datasets_document_number_value{
+  min-width: 110px;
+  text-align: center;
 }
 
 td.law_title a{
   color: #6393d2;
 }
 
-td.law_download{
-  padding: 8px 0;
-}
-
-td.law_download span.law_download{
-  /*background: rgba(0,0,0,0.701961);*/
-  background: rgb(75,75,75);
-  border-radius: 6px;
-}
-
-td.law_download span.icon-arrow-down{
+td.law_datasets_download_value span.icon-arrow-down{
   position: relative;
   top:2px;
 }
 
-td.law_download span a{
+td.law_datasets_download_value span a{
   color: white;
   text-decoration: none;
-  padding: 3px;
-}
-
-.pagination{
-  text-align: right;
+  padding: 3px 2px;
+  background: rgb(75,75,75);
+  border-radius: 6px;
 }

@@ -47,21 +47,21 @@ Template Name: Laws page
                 <td class="law_title">
                   <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-title_translated']['en'];?></a>
                 </td>
-                <td class="law_odm_document_number">
+                <td class="law_datasets_document_number_value">
                   <?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_number']['en'];?>
                 </td>
-                <td class="law_odm_promulgation_date">
+                <td class="law_datasets_promulgation_date_value">
                   <?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_promulgation_date'];?>
                 </td>
-                <td class="law_download">
-                  <span class="law_download en">
+                <td class="law_datasets_download_value">
+                  <span>
                     <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
                       <?php if ($resource['odm_language'][0] == 'en'){?>
                         <a href="<?php echo $resource['url'];?>">
                           <span class="icon-arrow-down"></span>EN</span></a>
                       <?php } ?>
                     <?php endforeach; ?>
-                  <span class="law_download km">
+                  <span>
                     <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
                       <?php if ($resource['odm_language'][0] == 'km'){?>
                         <a href="<?php echo $resource['url'];?>">
@@ -128,6 +128,17 @@ jQuery(document).ready(function($) {
         "visible": false,
         "targets": 0
       }
+    ],
+    "dom": '<"top"<"six columns info no-padd"i><"two columns length no-padd"l><"two columns pagination no-padd"p>>rt<"bottom"<"six columns info no-padd"i><"two columns length no-padd"l><"two columns pagination no-padd"p>>',
+    "stateSave": true,
+    "processing": true,
+     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "columns": [
+      null,
+      null,
+      { className: "law_datasets_document_number_header" },
+      { className: "law_datasets_promulgation_date_header" },
+      { className: "law_datasets_download_header" }
     ],
     "order": [[ 0, 'asc' ]],
     "displayLength": 25,
