@@ -659,43 +659,6 @@ footer#colophon{
 
 }
 
-
-/*laws section*/
-
-.law_search_box{
-  background: rgb(246,246,246);
-}
-
-.law_search_box_header{
-  line-height: 20px;
-  background: #292d56;
-  color: white;
-  padding: 7px;
-  font-style: italic;
-}
-
-.law_search_box_header .big{
-  font-weight: bolder;
-  font-style: normal;
-}
-
-.law_search_box_wrapper{
-  padding: 10px 5px
-}
-
-#search_all{
-  width:150px;
-}
-
-.icon-envelop{
-  width: 18px;
-  height: 18px;
-}
-
-.section-title{
-  border: 0!important;
-}
-
 /*map explorer*/
 
 .interactive-map{
@@ -749,7 +712,6 @@ footer#colophon{
 .cat-land .category-color {background: rgb(81,144,224);}
 .cat-infrastructure .category-color {background: rgb(223,0,100);}
 
-
 .page-template-page-map-explorer .cat-layers{
   width: 200px;
   display: block;
@@ -791,3 +753,103 @@ footer#colophon{
 
 #law_datasets{
   width:100%;
+  border: none;
+}
+
+*laws section*/
+
+.law_search_box{
+  background: rgb(246,246,246);
+}
+
+.law_search_box_header{
+  line-height: 20px;
+  background: #292d56;
+  color: white;
+  padding: 7px;
+  font-style: italic;
+}
+
+.law_search_box_header .big{
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.law_search_box_wrapper{
+  padding: 10px 5px
+}
+
+#search_all{
+  width:150px;
+}
+
+.icon-envelop{
+  width: 18px;
+  height: 18px;
+}
+
+.section-title{
+  border: 0!important;
+}
+
+.sorting{
+  text-align: left;
+  padding: 4px 10px;
+}
+
+.group{
+  background: rgb(246,246,246) !important;
+  line-height: 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #333;
+  padding: 10px 10px;
+}
+
+table.law_datasets thead{
+  background: #292d56;
+  color: #fff;
+}
+
+.dataTables_length{
+  width: 100%;
+}
+
+.dataTables_filter{
+  display: none;
+}
+
+table.law_datasets tr,table.law_datasets td{
+  background: none;
+  border:none;
+  padding: 8px 5px;
+}
+
+td.law_title a{
+  color: #6393d2;
+}
+
+td.law_download{
+  padding: 8px 0;
+}
+
+td.law_download span.law_download{
+  /*background: rgba(0,0,0,0.701961);*/
+  background: rgb(75,75,75);
+  border-radius: 6px;
+}
+
+td.law_download span.icon-arrow-down{
+  position: relative;
+  top:2px;
+}
+
+td.law_download span a{
+  color: white;
+  text-decoration: none;
+  padding: 3px;
+}
+
+.pagination{
+  text-align: right;
+}
