@@ -112,25 +112,6 @@ jQuery(document).ready(function($) {
     oTable.fnFilterAll(this.value);
  });
 
-  $('#law_pagination').on('change', function() {
-    console.log("changing page " + this.value);
-
-    var entries_per_page = this.value;
-    setPaginationCounter(this.value);
-  });
-
-  var setPaginationCounter = function(entries_per_page){
-
-    var records_from = 1;
-    var records_to = total_laws;
-
-    $('.records_from').text(records_from);
-    $('.records_to').text(records_to);
-    $('div.dataTables_length select').val(entries_per_page);
-  }
-
-  setPaginationCounter(10);
-
 });
 
 </script>
