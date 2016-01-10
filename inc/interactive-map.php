@@ -69,6 +69,18 @@ class OpenDev_InteractiveMap {
        <a class="active"></a>
      </div> -->
     </div>
+    <div class="map-active-layers">
+      <?php
+       $categories = get_categories('taxonomy=layer-category');
+       foreach ($categories as $category){ ?>
+
+         <div draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "active-layer active-layer-" . $category->cat_ID ?> layer-<?php echo $category->slug?>">
+           <span>
+             <h1><?php echo $category->cat_ID;?></h1>
+           </span>
+         </div>
+      <?php } ?>
+    </div>
    </div>
  </div>
    <div class="interactive-map-layers">

@@ -751,3 +751,9 @@ td.law_download{
   .page-template-page-map-explorer .cat-layers .layer-excerpt,.page-template-page-map-explorer .cat-layers .layer-content,.page-template-page-map-explorer .cat-layers .layer-item .toggles{
     display: none;
   }
+  .map-active-layers {
+      position: absolute;
+      right: 200px;
+      top: 200px;
+      z-index: 200;
+    }
