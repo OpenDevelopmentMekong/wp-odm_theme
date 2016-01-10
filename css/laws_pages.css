@@ -8,7 +8,7 @@
   margin-top: 34px;
 }
 
-.law_search_box_header{
+.sidebar_header{
   line-height: 20px;
   background: #292d56;
   color: white;
@@ -16,12 +16,12 @@
   font-style: italic;
 }
 
-.law_search_box_header .big{
+.sidebar_header .big{
   font-weight: bolder;
   font-style: normal;
 }
 
-.law_search_box_wrapper{
+.sidebar_box_wrapper{
   padding: 10px 5px
 }
 
