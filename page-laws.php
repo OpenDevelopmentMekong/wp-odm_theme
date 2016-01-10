@@ -3,16 +3,11 @@
 Template Name: Laws page
 */
 ?>
-<?php
-// dbug
-// require 'lib/kint/Kint.class.php';
-?>
 <?php get_header(); ?>
 
 <?php if(have_posts()) : the_post(); ?>
 
-  <?php $laws_sorted = get_law_datasets_sorted_by_document_type(); ?>
-  <?php $total_laws = get_total_number_of_sorted_datasets($laws_sorted) ?>
+  <?php $laws = get_law_datasets(); ?>
 
   <section id="content" class="single-post">
 		<header class="single-post-header">
@@ -22,100 +17,64 @@ Template Name: Laws page
 				</div>
 			</div>
 		</header>
-		<div class="container laws-container">
-      <div class="four columns">
-        <div class="counter">
-          Showing <p class="number_records_from">1</p> to <p class="number_records_to"> of <?php echo $total_laws ?> entries
-        </div>
-      </div>
-      <div class="four columns">
-        <div class="pagination">
-          show
-          <select id="law_pagination" name="law_pagination">
-            <option value="1" selected>10</option>
-            <option value="2">25</option>
-            <option value="3">50</option>
-            <option value="4">100</option>
-          </select>
-          entries
-        </div>
-      </div>
-			<div class="eight columns">
-      	<?php the_content(); ?>
+		<div class="container">
+			<div class="ten columns">
 				<?php
-				wp_link_pages( array(
-					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jeo' ) . '</span>',
-					'after'       => '</div>',
-					'link_before' => '<span>',
-					'link_after'  => '</span>',
-				) );
+  				wp_link_pages( array(
+  					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jeo' ) . '</span>',
+  					'after'       => '</div>',
+  					'link_before' => '<span>',
+  					'link_after'  => '</span>',
+  				) );
 				?>
-					<?php
-						foreach ($laws_sorted as $key => $law){?>
-							<div class="document_type_header"><?php echo $key?></div>
-								<table class="law_datasets" id="law_datasets_<?php echo $key;?>">
-									<thead>
-							        <tr>
-							            <th>Column 1</th>
-							            <th>Column 2</th>
-													<th>Column 3</th>
-													<th>Column 4</th>
-													<th>Column 5</th>
-													<th>Column 6</th>
-							        </tr>
-							    </thead>
-									<tbody
-										<?php foreach ($law as $title => $law_record) {?>
-											<tr>
-												<td class="law_title">
-													<a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $title;?></a>
-												<td class="law_status">
-													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_promulgation_date'];?>
-												</td>
-												<td class="law_version">
-													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_application_date'];?>
-												</td>
-												<td class="law_download_en law_download">
-													<span class="law_download en">
-														<?php foreach ($law_record['wpckan_resources_list'] as $key => $resource) {?>
-															<?php if ($resource['wpckan_resource_language'] == 'en'){?>
-																<a href="<?php echo $resource['wpckan_resource_name_link'];?>/download/<?php echo $title;?>">
-																	<span class="icon-arrow-down"></span>EN</span></a>
-															<?php } ?>
-														<?php } ?>
-												</td>
-												<td class="law_download_km law_download">
-													<span class="law_download km">
-														<?php foreach ($law_record['wpckan_resources_list'] as $key => $resource) {?>
-															<?php if ($resource['wpckan_resource_language'] == 'km'){?>
-																<a href="<?php echo $resource['wpckan_resource_name_link'];?>/download/<?php echo $resource['wpckan_resource_name'];?>">
-																	<span class="icon-arrow-down"></span>KM</span></a>
-															<?php } ?>
-														<?php } ?>
-												</td>
-												<td class="law_download_th law_download">
-													<span class="law_download th">
-														<?php foreach ($law_record['wpckan_resources_list'] as $key => $resource) {?>
-															<?php if ($resource['wpckan_resource_language'] == 'th'){?>
-																<a href="<?php echo $resource['wpckan_resource_name_link'];?>/download/<?php echo $resource['wpckan_resource_name'];?>">
-																	<span class="icon-arrow-down"></span>TH</span></a>
-															<?php } ?>
-														<?php } ?>
-												</td>
-											</tr>
-											<?php// d($law_record);?>
-
-										<?php } ?>
-									</tbody>
-								</table>
-				<?php } ?>
-
-				<!-- dbug -->
-				<?php// d($laws_sorted);?>
-
+        <?php the_content(); ?>
+        <table class="law_datasets" id="law_datasets">
+          <thead>
+            <tr>
+              <th>Document type</th>
+              <th>Title</th>
+              <th>Document number</th>
+              <th>Promulgation date</th>
+              <th>Download</th>
+            </tr>
+          </thead>
+          <tbody
+            <?php foreach ($laws["wpckan_dataset_list"] as $law_record): ?>
+              <tr>
+                <td class="law_odm_document_type">
+                  <?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'];?>
+                </td>
+                <td class="law_title">
+                  <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-title_translated']['en'];?></a>
+                </td>
+                <td class="law_odm_document_number">
+                  <?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_number']['en'];?>
+                </td>
+                <td class="law_odm_promulgation_date">
+                  <?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_promulgation_date'];?>
+                </td>
+                <td class="law_download">
+                  <span class="law_download en">
+                    <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
+                      <?php if ($resource['odm_language'][0] == 'en'){?>
+                        <a href="<?php echo $resource['url'];?>">
+                          <span class="icon-arrow-down"></span>EN</span></a>
+                      <?php } ?>
+                    <?php endforeach; ?>
+                  <span class="law_download km">
+                    <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
+                      <?php if ($resource['odm_language'][0] == 'km'){?>
+                        <a href="<?php echo $resource['url'];?>">
+                          <span class="icon-arrow-down"></span>KM</span></a>
+                      <?php } ?>
+                    <?php endforeach; ?>
+                </td>
+              </tr>
+    				<?php endforeach; ?>
+  				</tbody>
+  			</table>
 			</div>
-			<div class="one column">&nbsp;</div>
-			<div class="three columns">
+			<div class="two columns">
 				<div class="law_search_box">
 					<div class="law_search_box_header">
 						<span class="big">SEARCH</span> in Laws
@@ -126,88 +85,51 @@ Template Name: Laws page
 				</div>
 			</div>
 		</div>
-
 	</section>
 <?php endif; ?>
 
 <?php get_footer(); ?>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
+
 <script type="text/javascript">
 
 jQuery(document).ready(function($) {
-	// $('#law_datasets_anukretsub-decree').dataTable();
-  // multiple tables
+
+  console.log("laws pages init");
+
+  var total_laws = $('.records_total').text();
+
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
    for (var i = 0; i < settings.length; i++) {
      settings[i].oInstance.fnFilter(sInput, iColumn, bRegex, bSmart);
    }
-  };
+ };
 
-  $(document).ready(function () {
-     $('.law_datasets').dataTable({
-       "bPaginate": true,
-     });
+  var oTable = $("#law_datasets").dataTable();
 
-		//  set datatables
-     var oTable0 = $("#law_datasets_anukretsub-decree").dataTable();
-		 var oTable1 = $("#law_datasets_chbablawkram").dataTable();
-		 var oTable2 = $("#law_datasets_constitution-of-cambodia").dataTable();
-		 var oTable3 = $("#law_datasets_international-treatiesagreements").dataTable();
-		 var oTable4 = $("#law_datasets_kech-sonyacontractagreement").dataTable();
-		 var oTable5 = $("#law_datasets_kolkar-nenomguidelines").dataTable();
-		 var oTable6 = $("#law_datasets_kolnyobaypolicy").dataTable();
-		 var oTable7 = $("#law_datasets_likhetletter").dataTable();
-		 var oTable8 = $("#law_datasets_prakasjoint-prakasproclamation").dataTable();
-		 var oTable9 = $("#law_datasets_preah-reach-kramroyal-kram").dataTable();
-		 var oTable10 = $("#law_datasets_sarachorcircular").dataTable();
-		 var oTable11 = $("#law_datasets_sechkdei-chhun-damneoungnoticeannouncement").dataTable();
-		 var oTable12 = $("#law_datasets_sechkdei-nenuminstruction").dataTable();
-		 var oTable13 = $("#law_datasets_sechkdei-preang-chbabdraft-laws-amp-regulations").dataTable();
-		 var oTable14 = $("#law_datasets_sechkdei-samrechdecision").dataTable();
-		 var oTable15 = $("#law_datasets_other").dataTable();
+  $("#search_all").keyup(function () {
+    console.log("filtering page " + this.value);
+    oTable.fnFilterAll(this.value);
+ });
 
-     $("#search_all").keyup(function () {
-       console.log("filtering page " + this.value);
-			 //  set filters
-       oTable0.fnFilterAll(this.value);
-  		 oTable1.fnFilterAll(this.value);
-  		 oTable2.fnFilterAll(this.value);
-  		 oTable3.fnFilterAll(this.value);
-  		 oTable4.fnFilterAll(this.value);
-  		 oTable5.fnFilterAll(this.value);
-  		 oTable5.fnFilterAll(this.value);
-  		 oTable6.fnFilterAll(this.value);
-  		 oTable7.fnFilterAll(this.value);
-  		 oTable8.fnFilterAll(this.value);
-  		 oTable9.fnFilterAll(this.value);
-  		 oTable10.fnFilterAll(this.value);
-  		 oTable11.fnFilterAll(this.value);
-  		 oTable12.fnFilterAll(this.value);
-  		 oTable13.fnFilterAll(this.value);
-  		 oTable14.fnFilterAll(this.value);
-  		 oTable15.fnFilterAll(this.value);
-    });
+  $('#law_pagination').on('change', function() {
+    console.log("changing page " + this.value);
+
+    var entries_per_page = this.value;
+    setPaginationCounter(this.value);
   });
 
-  //  $(document).ready(function () {
-  //    $('#law_datasets_other').dataTable({
-  //        "bPaginate": true,
-  //    });
-  //    var oTable1 = $("#law_datasets_other").dataTable();
-  //
-  //    $("#search_all").keyup(function () {
-  //        oTable1.fnFilterAll(this.value);
-  //    });
-  //  });
-  //
-	$(document).ready(function () {
-		$('#law_pagination').on('change', function() {
-      console.log("changing page " + this.value);
-			$('div.dataTables_length select').val(this.value);
-		});
-	});
+  var setPaginationCounter = function(entries_per_page){
 
+    var records_from = 1;
+    var records_to = total_laws;
+
+    $('.records_from').text(records_from);
+    $('.records_to').text(records_to);
+    $('div.dataTables_length select').val(entries_per_page);
+  }
+
+  setPaginationCounter(10);
 
 });
 
