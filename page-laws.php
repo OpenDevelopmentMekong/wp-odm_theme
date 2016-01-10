@@ -165,9 +165,9 @@ jQuery(document).ready(function($) {
     "columns": [
       null,
       null,
-      { className: "law_datasets_document_number_header" },
-      { className: "law_datasets_promulgation_date_header" },
-      { className: "law_datasets_download_header" }
+      { className: "law_datasets_document_number_col" },
+      { className: "law_datasets_promulgation_date_col " },
+      { className: "law_datasets_download_col" }
     ],
     "order": [[ 0, 'asc' ]],
     "displayLength": 25,

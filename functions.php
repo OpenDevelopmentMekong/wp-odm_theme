@@ -1184,7 +1184,7 @@ function buildStyledTopTopicListForLaws($lang)
 }
 
 // redundant
-function buildStyledTopTopicNav($lang)
+function law_datasets_document_number_col($lang)
 {
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
     $json_a = json_decode($navigation_vocab, true);
