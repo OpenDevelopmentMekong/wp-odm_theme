@@ -106,65 +106,63 @@ add_action('after_setup_theme', 'opendev_setup_theme');
 
 function opendev_styles()
 {
-    $options = get_option('opendev_options');
+  $options = get_option('opendev_options');
 
-    $css_base = get_stylesheet_directory_uri().'/css/';
+  $css_base = get_stylesheet_directory_uri().'/css/';
 
- //wp_dequeue_style('jeo-main');
+    //wp_dequeue_style('jeo-main');
 
- wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
-    wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
-    wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
-    wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
-    wp_register_style('opendev-thailand',  $css_base.'thailand.css');
-    wp_register_style('opendev-laos',  $css_base.'laos.css');
-    wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
-    wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-    wp_register_style('aeviator-nav-concept',  $css_base.'nav_concept.css');
-    wp_register_style('skeleton_new_nav',  $css_base.'skeleton_new_nav.css');
+  wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+  wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
+  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
+  wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
+  wp_register_style('opendev-thailand',  $css_base.'thailand.css');
+  wp_register_style('opendev-laos',  $css_base.'laos.css');
+  wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
+  wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
+  wp_register_style('nav-concept',  $css_base.'nav_concept.css');
+  wp_register_style('skeleton_new_nav',  $css_base.'skeleton_new_nav.css');
 
-      wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
-
-    wp_enqueue_style('opendev-base');
-    wp_enqueue_style('aeviator-nav-concept');
-    wp_enqueue_style('skeleton_new_nav');
-    if ($options['style']) {
-        wp_enqueue_style('opendev-'.$options['style']);
-    }
+  wp_enqueue_style('opendev-base');
+  wp_enqueue_style('nav-concept');
+  wp_enqueue_style('skeleton_new_nav');
+  if ($options['style']) {
+      wp_enqueue_style('opendev-'.$options['style']);
+  }
 }
 add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 
 function opendev_jeo_scripts()
 {
-    wp_dequeue_script('jeo-site');
-    wp_enqueue_script('jquery-isotope');
+  wp_dequeue_script('jeo-site');
+  wp_enqueue_script('jquery-isotope');
 
-    wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
+  wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
 
- // custom marker system
- global $jeo_markers;
-    wp_deregister_script('jeo.markers');
-    wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-    wp_localize_script('jeo.markers', 'opendev_markers', array(
-  'ajaxurl' => admin_url('admin-ajax.php'),
-  'query' => $jeo_markers->query(),
-  'stories_label' => __('stories', 'opendev'),
-  'home' => (is_home() && !is_paged() && !$_REQUEST['opendev_filter_']),
-  'copy_embed_label' => __('Copy the embed code', 'opendev'),
-  'share_label' => __('Share', 'opendev'),
-  'print_label' => __('Print', 'opendev'),
-  'embed_base_url' => home_url('/embed/'),
-  'share_base_url' => home_url('/share/'),
-  'marker_active' => array(
-   'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active.png',
-   'iconSize' => array(26, 30),
-   'iconAnchor' => array(13, 30),
-   'popupAnchor' => array(0, -40),
-   'markerId' => 'none',
+  // custom marker system
+  global $jeo_markers;
+  wp_deregister_script('jeo.markers');
+  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
+  wp_localize_script('jeo.markers', 'opendev_markers', array(
+    'ajaxurl' => admin_url('admin-ajax.php'),
+    'query' => $jeo_markers->query(),
+    'stories_label' => __('stories', 'opendev'),
+    'home' => (is_home() && !is_paged() && !$_REQUEST['opendev_filter_']),
+    'copy_embed_label' => __('Copy the embed code', 'opendev'),
+    'share_label' => __('Share', 'opendev'),
+    'print_label' => __('Print', 'opendev'),
+    'embed_base_url' => home_url('/embed/'),
+    'share_base_url' => home_url('/share/'),
+    'marker_active' => array(
+    'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active.png',
+    'iconSize' => array(26, 30),
+    'iconAnchor' => array(13, 30),
+    'popupAnchor' => array(0, -40),
+    'markerId' => 'none',
   ),
-  'site_url' => home_url('/'),
-  'read_more_label' => __('Read more', 'opendev'),
-  'lightbox_label' => array(
+   'site_url' => home_url('/'),
+   'read_more_label' => __('Read more', 'opendev'),
+   'lightbox_label' => array(
    'slideshow' => __('Open slideshow', 'opendev'),
    'videos' => __('Watch video gallery', 'opendev'),
    'video' => __('Watch video', 'opendev'),
@@ -173,17 +171,24 @@ function opendev_jeo_scripts()
    'infographic' => __('View infographic', 'opendev'),
    'infographics' => __('View infographics', 'opendev'),
   ),
-  'enable_clustering' => jeo_use_clustering() ? true : false,
-  'default_icon' => jeo_formatted_default_marker(),
- ));
+   'enable_clustering' => jeo_use_clustering() ? true : false,
+   'default_icon' => jeo_formatted_default_marker(),
+  ));
 
-    if (is_home()) {
-        wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
-    }
-
+  if (is_home()) {
+      wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
+  }
  //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
+
+function nav_concept_scripts()
+{
+  wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
+  wp_enqueue_script('data-tables', get_stylesheet_directory_uri().'/js/dataTables.js', array('jquery'), '1.10.10');
+}
+
+add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
 
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
@@ -386,23 +391,20 @@ function opendev_ms_nav()
                         $menu_id = $menu_item->ID;
                         if (strtolower(trim($title)) == strtolower(trim($tooltip['menu_name']))) {
                             ?>
-                                        $('#menu-header-menu li.menu-item-<?php echo $menu_id;
-                            ?> a').attr( "title", "<?php echo trim($tooltip['message']);
-                            ?>");
-                                <?php   break;
+                              $('#menu-header-menu li.menu-item-<?php echo $menu_id;?> a').attr( "title", "<?php echo trim($tooltip['message']);?>");
+                            <?php   break;
                         }
                     } //foreach
                 } //if isset($tooltip['message'])
             }//if isset($tooltip['message'])
-                        elseif (isset($tooltip['menu_name']) && $tooltip['menu_name'] == 'Tooltip') {
-                            if (isset($tooltip['message']) && $tooltip['message']) {
-                                ?>
-                              $('#menu-header-menu li.tooltip a').attr( "title", "<?php echo trim($tooltip['message']);
-                                ?>");
-                    <?php
+            elseif (isset($tooltip['menu_name']) && $tooltip['menu_name'] == 'Tooltip') {
+                if (isset($tooltip['message']) && $tooltip['message']) {
+                    ?>
+                  $('#menu-header-menu li.tooltip a').attr( "title", "<?php echo trim($tooltip['message']);?>");
+        <?php
 
-                            }
-                        }
+                }
+            }
         }//isset($options_msg['tooltip_message_' . $i])
     }
     ?>
@@ -410,8 +412,7 @@ function opendev_ms_nav()
             if (isset($options_msg['message_page_construction']) && $options_msg['message_page_construction'] != '') {
                 ?>
                  $('#intro-texts p a.tooltip').removeAttr('href');
-                 $('#intro-texts p a.tooltip').attr( "title", "<?php echo trim($options_msg['message_page_construction']);
-                ?>");
+                 $('#intro-texts p a.tooltip').attr( "title", "<?php echo trim($options_msg['message_page_construction']);?>");
           <?php
 
             }
@@ -1096,7 +1097,7 @@ if (!function_exists('tmce_replace')) {
 <?php
 
     }//end function
-        add_action('after_wp_tiny_mce', 'tmce_replace');
+  add_action('after_wp_tiny_mce', 'tmce_replace');
 }
 // eof advanced tinymce plugin
 // http://tinymce.moxiecode.com/wiki.php/Configuration
@@ -1119,20 +1120,16 @@ function teslina_tinymce_config($init)
     return $init;
 }
 add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
-//- See more at: http://www.teslina.com/en/748/wordpress/qtranslate-code
-//###############
-// End Remove WordPress Auto br and p tags
-//###############
 
 function setTransitionCookies($user_data, $limit = 4096, $cookie_name = 'odm_transition_data')
 {
-    // retrieve old cookie
+  // retrieve old cookie
   // base64 encode and put into json
   // $user_data = base64_encode(json_encode($user_data));
   $user_data = json_encode($user_data);
   // $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
-  $domain='192.168.33.10';
-    setcookie($cookie_name, $user_data, (time() + 3600), '/');
+  //$domain = '192.168.33.10';
+  setcookie($cookie_name, $user_data, (time() + 3600), '/');
 }
 
 function buildTopTopicNav($lang)
@@ -1152,41 +1149,78 @@ function buildTopTopicNav($lang)
     }
 }
 
-
-function compare_by_dataset_list($a, $b) {
+function compare_by_dataset_list($a, $b)
+{
     return strcmp($a['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'], $b['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type']);
 }
-function array_push_assoc($array, $key, $value){
-   $array[$key] = $value;
-   return $array;
-   }
+function array_push_assoc($array, $key, $value)
+{
+    $array[$key] = $value;
 
-function get_law_datasets_sorted_by_document_type(){
-  $laws_json=do_shortcode('[wpckan_query_datasets query="*:*" type="laws_record" include_fields_extra="odm_document_type,odm_promulgation_date,odm_application_date" format="json"]');
-  $laws=json_decode($laws_json,true);
-  // sort by document type
-  uasort($laws["wpckan_dataset_list"], 'compare_by_dataset_list');
-  foreach ($laws['wpckan_dataset_list'] as $key => $law) {
-    if ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "anukretsub-decree") {$laws_sorted["anukretsub-decree"]=array_push_assoc($laws_sorted["anukretsub-decree"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "chbablawkram") {$laws_sorted["chbablawkram"]=array_push_assoc($laws_sorted["chbablawkram"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "constitution-of-cambodia") {$laws_sorted["constitution-of-cambodia"]=array_push_assoc($laws_sorted["constitution-of-cambodia"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "international-treatiesagreements") {$laws_sorted["international-treatiesagreements"]=array_push_assoc($laws_sorted["international-treatiesagreements"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "kech-sonyacontractagreement") {$laws_sorted["kech-sonyacontractagreement"]=array_push_assoc($laws_sorted["kech-sonyacontractagreement"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "kolkar-nenomguidelines") {$laws_sorted["kolkar-nenomguidelines"]=array_push_assoc($laws_sorted["kolkar-nenomguidelines"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "kolnyobaypolicy") {$laws_sorted["kolnyobaypolicy"]=array_push_assoc($laws_sorted["kolnyobaypolicy"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "likhetletter") {$laws_sorted["likhetletter"]=array_push_assoc($laws_sorted["likhetletter"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "prakasjoint-prakasproclamation") {$laws_sorted["prakasjoint-prakasproclamation"]=array_push_assoc($laws_sorted["prakasjoint-prakasproclamation"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "preah-reach-kramroyal-kram") {$laws_sorted["preah-reach-kramroyal-kram"]=array_push_assoc($laws_sorted["preah-reach-kramroyal-kram"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "sarachorcircular") {$laws_sorted["sarachorcircular"]=array_push_assoc($laws_sorted["sarachorcircular"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "sechkdei-chhun-damneoungnoticeannouncement") {$laws_sorted["sechkdei-chhun-damneoungnoticeannouncement"]=array_push_assoc($laws_sorted["sechkdei-chhun-damneoungnoticeannouncement"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "sechkdei-nenuminstruction") {$laws_sorted["sechkdei-nenuminstruction"]=array_push_assoc($laws_sorted["sechkdei-nenuminstruction"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "sechkdei-preang-chbabdraft-laws-amp-regulations") {$laws_sorted["sechkdei-preang-chbabdraft-laws-amp-regulations"]=array_push_assoc($laws_sorted["sechkdei-preang-chbabdraft-laws-amp-regulations"], $key, $law);}
-    elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == "sechkdei-samrechdecision") {$laws_sorted["sechkdei-samrechdecision"]=array_push_assoc($laws_sorted["sechkdei-samrechdecision"], $key, $law);}
-    else {$laws_sorted["other"]=array_push_assoc($laws_sorted["other"], $key, $law);}
-  }
-  // sort alphabetic
-  ksort($laws_sorted);
-  return $laws_sorted;
+    return $array;
+}
+
+function get_law_datasets(){
+  $laws_json = do_shortcode('[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]');
+  $laws = json_decode($laws_json,true);
+  return $laws;
+}
+
+// function get_law_datasets_sorted_by_document_type()
+// {
+//     $laws_json = do_shortcode('[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="odm_document_type,odm_document_number,odm_promulgation_date,odm_application_date" format="json"]');
+//     $laws = json_decode($laws_json, true);
+//   // sort by document type
+//   uasort($laws['wpckan_dataset_list'], 'compare_by_dataset_list');
+//   foreach ($laws['wpckan_dataset_list'] as $key => $law) {
+//     if ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'anukretsub-decree') {
+//         $laws_sorted['anukretsub-decree'] = array_push_assoc($laws_sorted['anukretsub-decree'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'chbablawkram') {
+//         $laws_sorted['chbablawkram'] = array_push_assoc($laws_sorted['chbablawkram'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'constitution-of-cambodia') {
+//         $laws_sorted['constitution-of-cambodia'] = array_push_assoc($laws_sorted['constitution-of-cambodia'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'international-treatiesagreements') {
+//         $laws_sorted['international-treatiesagreements'] = array_push_assoc($laws_sorted['international-treatiesagreements'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'kech-sonyacontractagreement') {
+//         $laws_sorted['kech-sonyacontractagreement'] = array_push_assoc($laws_sorted['kech-sonyacontractagreement'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'kolkar-nenomguidelines') {
+//         $laws_sorted['kolkar-nenomguidelines'] = array_push_assoc($laws_sorted['kolkar-nenomguidelines'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'kolnyobaypolicy') {
+//         $laws_sorted['kolnyobaypolicy'] = array_push_assoc($laws_sorted['kolnyobaypolicy'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'likhetletter') {
+//         $laws_sorted['likhetletter'] = array_push_assoc($laws_sorted['likhetletter'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'prakasjoint-prakasproclamation') {
+//         $laws_sorted['prakasjoint-prakasproclamation'] = array_push_assoc($laws_sorted['prakasjoint-prakasproclamation'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'preah-reach-kramroyal-kram') {
+//         $laws_sorted['preah-reach-kramroyal-kram'] = array_push_assoc($laws_sorted['preah-reach-kramroyal-kram'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sarachorcircular') {
+//         $laws_sorted['sarachorcircular'] = array_push_assoc($laws_sorted['sarachorcircular'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-chhun-damneoungnoticeannouncement') {
+//         $laws_sorted['sechkdei-chhun-damneoungnoticeannouncement'] = array_push_assoc($laws_sorted['sechkdei-chhun-damneoungnoticeannouncement'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-nenuminstruction') {
+//         $laws_sorted['sechkdei-nenuminstruction'] = array_push_assoc($laws_sorted['sechkdei-nenuminstruction'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-preang-chbabdraft-laws-amp-regulations') {
+//         $laws_sorted['sechkdei-preang-chbabdraft-laws-amp-regulations'] = array_push_assoc($laws_sorted['sechkdei-preang-chbabdraft-laws-amp-regulations'], $key, $law);
+//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-samrechdecision') {
+//         $laws_sorted['sechkdei-samrechdecision'] = array_push_assoc($laws_sorted['sechkdei-samrechdecision'], $key, $law);
+//     } else {
+//         $laws_sorted['other'] = array_push_assoc($laws_sorted['other'], $key, $law);
+//     }
+//   }
+//   // sort alphabetic
+//   ksort($laws_sorted);
+//
+//     return $laws_sorted;
+// }
+
+function get_total_number_of_sorted_datasets($datasets)
+{
+    $count = 0;
+    foreach ($datasets as $key => $dataset) {
+        $count += count($dataset);
+    }
+
+    return $count;
 }
 
 // redundant
@@ -1199,37 +1233,32 @@ function buildStyledTopTopicNav($lang)
     foreach ($json_a as $key => $value) {
         switch ($key) {
           case 0:
-              $icon="icon_tree.png";
-              $menu="menu_environment";
+              $icon = 'icon_tree.png';
+              $menu = 'menu_environment';
               break;
           case 1:
-              $icon="icon_industry.png";
-              $menu="menu_economy";
+              $icon = 'icon_industry.png';
+              $menu = 'menu_economy';
               break;
           case 2:
-              $icon="icon_mensch.png";
-              $menu="menu_people";
+              $icon = 'icon_mensch.png';
+              $menu = 'menu_people';
               break;
       }
-      echo '<li class="first icon_menu '. $menu .'">';
-      echo '<a href="#" target="_self">';
-      $icon_url=get_stylesheet_directory_uri() . "/img/" . $icon;
-      echo '<img src="' . $icon_url . '" alt="Top Topic Icon for ' . $menu .'">';
-      echo '<span class="cNavState"></span></a>';
+        echo '<li class="first icon_menu '.$menu.'">';
+        echo '<a href="#" target="_self">';
+        $icon_url = get_stylesheet_directory_uri().'/img/'.$icon;
+        echo '<img src="'.$icon_url.'" alt="Top Topic Icon for '.$menu.'">';
+        echo '<span class="cNavState"></span></a>';
 
-      echo '<ul class="level2 ' . $menu . '">';
-      echo '<li class="top-topic">' . $value['titles'][$lang] . '</li>';
+        echo '<ul class="level2 '.$menu.'">';
+        echo '<li class="top-topic">'.$value['titles'][$lang].'</li>';
       // counter
        // get entries -->
        foreach ($json_a[$key]['children'] as $child) {
-
-         // make wp url from title
-          $url = sanitize_title($child['name']);
-
-        echo '<li><a href="/topics/' . $url . '">' . $child['titles'][$lang] . '</a></li>';
-
-
-        }
+           $url = sanitize_title($child['name']);
+           echo '<li><a href="/topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
+       }
 
         ?>
         <span class="border"></span>
