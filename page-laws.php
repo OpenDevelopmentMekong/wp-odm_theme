@@ -103,7 +103,49 @@ jQuery(document).ready(function($) {
    }
   };
 
-  var oTable = $("#law_datasets").dataTable();
+  var mapGroupLabel = {
+    "anukretsub-decree": "Anukret/Sub-Decree",
+    "chbablawkram": "Chbab/Law/Kram",
+    "constitution-of-cambodia": "Constitution of Cambodia",
+    "international-treatiesagreements": "International Treaties/Agreements",
+    "kech-sonyacontractagreement": "Kech Sonya/Contract/Agreement",
+    "kolkar-nenomguidelines": "Kolkar Nenom/Guidelines",
+    "kolnyobaypolicy": "Kolnyobay/Policy",
+    "likhetletter": "Likhet/Letter",
+    "prakasjoint-prakasproclamation": "Prakas/Joint-Prakas/Proclamation",
+    "preah-reach-kramroyal-kram": "Preah Reach Kram/Royal Kram",
+    "sarachorcircular": "Sarachor/Circular",
+    "sechkdei-chhun-damneoungnoticeannouncement": "Sechkdei Chhun  Damneoung/Notice/Announcement",
+    "sechkdei-nenuminstruction": "Sechkdei Nenum/Instruction",
+    "sechkdei-preang-chbabdraft-laws-amp-regulationsn": "Sechkdei Preang Chbab/Draft Laws & Regulations",
+    "sechkdei-samrechdecision": "Sechkdei Samrech/Decision",
+    "others": "Others"
+  }
+
+  var oTable = $("#law_datasets").dataTable({
+    "columnDefs": [
+      {
+        "visible": false,
+        "targets": 0
+      }
+    ],
+    "order": [[ 0, 'asc' ]],
+    "displayLength": 25,
+    "drawCallback": function ( settings ) {
+      var api = this.api();
+      var rows = api.rows( {page:'current'} ).nodes();
+      var last=null;
+
+      api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+        if ( last !== group ) {
+          $(rows).eq( i ).before(
+              '<tr class="group"><td colspan="5">'+mapGroupLabel[group]+'</td></tr>'
+          );
+          last = group;
+        }
+      });
+    }
+  });
 
   $("#search_all").keyup(function () {
     console.log("filtering page " + this.value);
