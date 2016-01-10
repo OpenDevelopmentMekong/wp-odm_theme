@@ -254,20 +254,26 @@ class OpenDev_InteractiveMap {
 
 
        $layer_toggles = $layers.find('.cat-layers h2');
+
        $layer_toggles.each(function(){
         var $layer_toggle = $(this);
         $layer_toggle.on('click', function() {
          var category_id=$(this).closest('.cat-item').data( "category" );
+
+
          map.filterLayers._switchLayer($(this).parent().data('layer'));
          if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
           $(this).addClass('active');
           $(this).parent().find('.layer-status').addClass('active');
           $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
+          var $category_length=$('.cat-item[data-category="'+ category_id +'"] div.layer-status.active').length;
+          console.log($category_length);
          } else {
           $(this).removeClass('active');
           $(this).parent().find('.layer-status').removeClass('active');
-          $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
-
+          if ($category_length <=0 ){
+            $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
+          }
          }
        })
        });
