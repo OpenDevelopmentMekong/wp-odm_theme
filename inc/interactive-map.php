@@ -235,28 +235,39 @@ class OpenDev_InteractiveMap {
 
        $layers.find('.categories ul').hide();
 
+
        $layers.find('.categories li a').on('click', function() {
+        // var category_id=$(this).parent().data( "category" )
         if($(this).hasClass('active')) {
          $(this).removeClass('active');
          $(this).parent().find('ul').hide();
+          // $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
         } else {
          $(this).addClass('active');
          $(this).parent().find('> ul').show();
+          // $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
+
         }
         return false;
        });
+
+
 
        $layer_toggles = $layers.find('.cat-layers h2');
        $layer_toggles.each(function(){
         var $layer_toggle = $(this);
         $layer_toggle.on('click', function() {
+         var category_id=$(this).closest('.cat-item').data( "category" );
          map.filterLayers._switchLayer($(this).parent().data('layer'));
          if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
           $(this).addClass('active');
           $(this).parent().find('.layer-status').addClass('active');
+          $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
          } else {
           $(this).removeClass('active');
           $(this).parent().find('.layer-status').removeClass('active');
+          $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
+
          }
        })
        });

@@ -756,4 +756,7 @@ td.law_download{
       right: 200px;
       top: 200px;
       z-index: 200;
+
     }
+    .map-active-layers .active-layer{display: none;}
+      .map-active-layers .active-layer.active{display: block;}
