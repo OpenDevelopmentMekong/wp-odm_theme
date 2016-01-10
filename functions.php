@@ -1153,78 +1153,34 @@ function buildTopTopicNav($lang)
     }
 }
 
-function compare_by_dataset_list($a, $b)
-{
-    return strcmp($a['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'], $b['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type']);
-}
-function array_push_assoc($array, $key, $value)
-{
-    $array[$key] = $value;
-
-    return $array;
-}
-
-function get_law_datasets(){
-  $laws_json = do_shortcode('[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]');
+function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
+  $shortcode = '[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="taxonomy,odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]';
+  $laws_json = do_shortcode($shortcode);
   $laws = json_decode($laws_json,true);
+  foreach ($laws["wpckan_dataset_list"] as $key => $law_record){
+    if (!empty($filter_odm_document_type) && $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'] != $filter_odm_document_type){
+      unset($laws["wpckan_dataset_list"][$key]);
+    }
+    if (!empty($filter_odm_taxonomy) && !in_array($filter_odm_taxonomy,$law_record['wpckan_dataset_extras']['wpckan_dataset_extras-taxonomy'])){
+      unset($laws["wpckan_dataset_list"][$key]);
+    }
+  }
   return $laws;
 }
 
-// function get_law_datasets_sorted_by_document_type()
-// {
-//     $laws_json = do_shortcode('[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="odm_document_type,odm_document_number,odm_promulgation_date,odm_application_date" format="json"]');
-//     $laws = json_decode($laws_json, true);
-//   // sort by document type
-//   uasort($laws['wpckan_dataset_list'], 'compare_by_dataset_list');
-//   foreach ($laws['wpckan_dataset_list'] as $key => $law) {
-//     if ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'anukretsub-decree') {
-//         $laws_sorted['anukretsub-decree'] = array_push_assoc($laws_sorted['anukretsub-decree'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'chbablawkram') {
-//         $laws_sorted['chbablawkram'] = array_push_assoc($laws_sorted['chbablawkram'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'constitution-of-cambodia') {
-//         $laws_sorted['constitution-of-cambodia'] = array_push_assoc($laws_sorted['constitution-of-cambodia'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'international-treatiesagreements') {
-//         $laws_sorted['international-treatiesagreements'] = array_push_assoc($laws_sorted['international-treatiesagreements'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'kech-sonyacontractagreement') {
-//         $laws_sorted['kech-sonyacontractagreement'] = array_push_assoc($laws_sorted['kech-sonyacontractagreement'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'kolkar-nenomguidelines') {
-//         $laws_sorted['kolkar-nenomguidelines'] = array_push_assoc($laws_sorted['kolkar-nenomguidelines'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'kolnyobaypolicy') {
-//         $laws_sorted['kolnyobaypolicy'] = array_push_assoc($laws_sorted['kolnyobaypolicy'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'likhetletter') {
-//         $laws_sorted['likhetletter'] = array_push_assoc($laws_sorted['likhetletter'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'prakasjoint-prakasproclamation') {
-//         $laws_sorted['prakasjoint-prakasproclamation'] = array_push_assoc($laws_sorted['prakasjoint-prakasproclamation'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'preah-reach-kramroyal-kram') {
-//         $laws_sorted['preah-reach-kramroyal-kram'] = array_push_assoc($laws_sorted['preah-reach-kramroyal-kram'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sarachorcircular') {
-//         $laws_sorted['sarachorcircular'] = array_push_assoc($laws_sorted['sarachorcircular'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-chhun-damneoungnoticeannouncement') {
-//         $laws_sorted['sechkdei-chhun-damneoungnoticeannouncement'] = array_push_assoc($laws_sorted['sechkdei-chhun-damneoungnoticeannouncement'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-nenuminstruction') {
-//         $laws_sorted['sechkdei-nenuminstruction'] = array_push_assoc($laws_sorted['sechkdei-nenuminstruction'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-preang-chbabdraft-laws-amp-regulations') {
-//         $laws_sorted['sechkdei-preang-chbabdraft-laws-amp-regulations'] = array_push_assoc($laws_sorted['sechkdei-preang-chbabdraft-laws-amp-regulations'], $key, $law);
-//     } elseif ($law['wpckan_dataset_extras']['wpkan_dataset_extras-odm_document_type'] == 'sechkdei-samrechdecision') {
-//         $laws_sorted['sechkdei-samrechdecision'] = array_push_assoc($laws_sorted['sechkdei-samrechdecision'], $key, $law);
-//     } else {
-//         $laws_sorted['other'] = array_push_assoc($laws_sorted['other'], $key, $law);
-//     }
-//   }
-//   // sort alphabetic
-//   ksort($laws_sorted);
-//
-//     return $laws_sorted;
-// }
-
-function get_total_number_of_sorted_datasets($datasets)
+function buildStyledTopTopicListForLaws($lang)
 {
-    $count = 0;
-    foreach ($datasets as $key => $dataset) {
-        $count += count($dataset);
-    }
+    $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
+    $json_a = json_decode($navigation_vocab, true);
 
-    return $count;
+    echo '<ul>';
+    // get Top Topic Names
+    foreach ($json_a as $key => $value) {
+      foreach ($json_a[$key]['children'] as $child) {
+         echo '<li><a href="/laws/?odm_taxonomy='.$child['titles'][$lang].'">'. $child['titles'][$lang] .'</a></li>';
+      }
+    }
+    echo '</ul>';
 }
 
 // redundant
