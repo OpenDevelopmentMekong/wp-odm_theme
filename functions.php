@@ -137,6 +137,14 @@ function opendev_jeo_scripts() {
 
  wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
 
+ //HE//
+  //wp_enqueue_script('leaflet_v.0.8', get_stylesheet_directory_uri() . '/lib/leaflet/leaflet.js', array( 'jquery' ), '0.8-dev' );
+
+  //wp_enqueue_script( 'wms_leaflet_jeo', get_stylesheet_directory_uri() . '/lib/leaflet/leaflet.wms.js', array( 'mapbox-js','leaflet' ), '1.0' );
+
+   //wp_enqueue_script( 'leaflet_BetterWMS', get_stylesheet_directory_uri() . '/lib/leaflet/L.TileLayer.BetterWMS.js', array( 'leaflet' ), '1.0' );
+  //*HE*//
+
  // custom marker system
  global $jeo_markers;
  wp_deregister_script('jeo.markers');
@@ -176,12 +184,14 @@ function opendev_jeo_scripts() {
  if(is_home())
   wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri() . '/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
 
- //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
+
+
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
 // hook into the init action and call create_book_taxonomies when it fires
-add_action( 'init', 'create_news_source_taxonomies', 0 );     
+add_action( 'init', 'create_news_source_taxonomies', 0 );
+
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
@@ -210,6 +220,7 @@ function create_news_source_taxonomies() {
 
 	register_taxonomy( 'news_source', array( 'post' ), $args );
 }
+
 // custom marker data
 function opendev_marker_data($data, $post) {
  global $post;
@@ -409,7 +420,7 @@ function opendev_ms_nav() {
       <a href="#"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?> title="<?php if ($options['message_construction']!="") _e($options['message_construction'],'opendev'); else _e("Site coming soon.", 'opendev');?>"><?php _e($name, 'opendev');?></a>
      <?php }else{ ?>
       <a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
-      <?php     
+      <?php
     if (isset($options['dropbox_menu']) && ($options['dropbox_menu'] == "on")) {
       ?>
       <div class="sub-menu">
@@ -948,9 +959,9 @@ function excerpt($num, $read_more="") {
         $excerpt_string = implode(" ", $excerpt);
 
 
-        $excerpt_hidden_space = explode('​', $excerpt_string, $limit);
+        $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
         array_pop($excerpt_hidden_space);
-        $$excerpt_string = implode("​", $excerpt_hidden_space) ;
+        $$excerpt_string = implode("?", $excerpt_hidden_space) ;
 
   $excerpt_words = $excerpt_string. " ...";
   if ($read_more !=""){
@@ -959,6 +970,28 @@ function excerpt($num, $read_more="") {
 
         return $excerpt_words;
 }
+/// Hide template files of other country_name
+function get_pages_templates_for_othersites($pages_templates) {
+    $templates = get_page_templates();
+	foreach ( $templates as $template_name => $template_filename ) {
+	    $template_files = explode ("/", $template_filename);
+		if(count($template_files) > 1){
+			if (strtolower($template_files[0]) != COUNTRY_NAME){
+				$template_need_to_hide[] = $template_filename;
+				unset( $pages_templates[$template_filename] );
+			}
+		}
+	}
+	return $pages_templates;
+}
+
+function hide_other_country_page_template ($pages_templates) {
+    return $pages_templates;
+}
+add_filter( 'theme_page_templates', 'hide_other_country_page_template' );
+
+
+
 
 /**
  * Allow embed iframe
@@ -967,6 +1000,8 @@ function add_iframe($initArray) {
   $initArray['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width|allowtransparency|allowfullscreen|webkitallowfullscreen|mozallowfullscreen|oallowfullscreen|msallowfullscreen]";
   return $initArray;
 }
+
+
 // this function alters the way the WordPress editor filters your code
 add_filter('tiny_mce_before_init', 'add_iframe');
 
@@ -1021,3 +1056,10 @@ add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 // End Remove WordPress Auto br and p tags
 //###############
 
+
+//*******************//
+// include backend layer interface for adding wms layer into map explorer of child theme
+add_action( 'after_setup_theme', function() {
+    include(STYLESHEETPATH . '/inc/layers.php');
+}, 42 );
+?>
