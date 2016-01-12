@@ -667,11 +667,15 @@ td.law_download{
 .page-template-page-map-explorer .interactive-map{
   border: 0;
   box-shadow: none;
+  /*overflow-y: hidden;*/
+
 }
 .page-template-page-map-explorer .interactive-map-layers {
-    bottom: 18px;
-    position: relative;
+    bottom: 0;
+    position: fixed;
     z-index: 100;
+    background: white;
+    width: 100%;
   }
 .page-template-page-map-explorer #main-breadcrumb{
   display: none;
@@ -778,3 +782,5 @@ td.law_download{
         .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{background: rgb(243,165,48);}
         .map-active-layers .active-layer.layer-land h6 {background: rgb(81,144,224);}
         .map-active-layers .active-layer.layer-infrastructure h6 {background: rgb(223,0,100);}
+
+    .page-template-page-map-explorer footer{display: none;}
