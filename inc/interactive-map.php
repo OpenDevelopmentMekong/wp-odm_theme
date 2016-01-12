@@ -76,7 +76,8 @@ class OpenDev_InteractiveMap {
 
          <div draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "active-layer active-layer-" . $category->cat_ID ?> layer-<?php echo $category->slug?>">
            <span>
-             <h1><?php echo $category->cat_ID;?></h1>
+
+             <h6><?php echo $category->cat_name;?></h6>
            </span>
          </div>
       <?php } ?>

@@ -706,7 +706,6 @@ td.law_download{
         background: red;
         position: relative;
         bottom:20px;
-        /*bottom:10px;*/
     }
     /*layer category colors*/
       .cat-energy .category-color{ background: rgb(124,212,55);}
@@ -753,10 +752,29 @@ td.law_download{
   }
   .map-active-layers {
       position: absolute;
-      right: 200px;
-      top: 200px;
+      right: 20px;
+      top: 100px;
       z-index: 200;
 
     }
     .map-active-layers .active-layer{display: none;}
-      .map-active-layers .active-layer.active{display: block;}
+      .map-active-layers .active-layer.active{
+        display: block;
+         min-height: 90px;
+         min-width: 220px;
+         margin-bottom: 10px;
+         background: white;
+
+      }
+        .map-active-layers .active-layer.active h6{
+          padding: 10px 5px;
+          padding-left: 20px;
+          color: white;
+          text-transform: uppercase;
+          background: red;
+          text-align: left;
+        }
+        .map-active-layers .active-layer.layer-energy h6{ background: rgb(124,212,55);}
+        .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{background: rgb(243,165,48);}
+        .map-active-layers .active-layer.layer-land h6 {background: rgb(81,144,224);}
+        .map-active-layers .active-layer.layer-infrastructure h6 {background: rgb(223,0,100);}
