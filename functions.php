@@ -1153,7 +1153,6 @@ function buildTopTopicNav($lang)
           }
       }
     }
-
 }
 
 function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
