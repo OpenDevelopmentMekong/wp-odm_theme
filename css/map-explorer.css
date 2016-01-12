@@ -1,0 +1,98 @@
+/*map explorer*/
+
+.page-template-page-map-explorer .interactive-map{
+  border: 0;
+  box-shadow: none;
+}
+.page-template-page-map-explorer .interactive-map-layers {
+    bottom: 18px;
+    position: relative;
+    z-index: 100;
+  }
+.page-template-page-map-explorer #main-breadcrumb{
+  display: none;
+}
+
+.page-template-page-map-explorer .interactive-map .map-container {
+    width: 100%;
+    height: 100%;
+    float: none;
+  }
+
+.page-template-page-map-explorer .interactive-map-layers .categories{
+  width: 100%;
+
+}
+  .page-template-page-map-explorer li.cat-item {
+      float: left;
+      margin: 0 10px;
+      font-size: 12px;
+      text-align: center;
+      text-transform: uppercase;
+      /*font-weight: bold;*/
+      position: relative;
+
+  }
+  .page-template-page-map-explorer li.cat-item:hover  ul.cat-layers{
+    display: block!important;
+  }
+    .page-template-page-map-explorer .category-color{
+        display: block;
+        width: 210px;
+        background: red;
+        position: relative;
+        bottom:20px;
+        /*bottom:10px;*/
+    }
+    /*layer category colors*/
+      .cat-energy .category-color{ background: rgb(124,212,55);}
+      .cat-map-environment-and-natural-resources .category-color{background: rgb(243,165,48);}
+      .cat-land .category-color {background: rgb(81,144,224);}
+      .cat-infrastructure .category-color {background: rgb(223,0,100);}
+
+
+.page-template-page-map-explorer .cat-layers{
+  width: 200px;
+  display: block;
+  position: absolute;
+  bottom: 51px;
+  background: white;
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+  .page-template-page-map-explorer .cat-item{
+    padding: 0 5px;
+    /*padding-top: 0;*/
+  }
+
+  .page-template-page-map-explorer .layer-item{
+    padding-left:0;
+    margin-left: 10px;
+    text-align: left;
+    max-width: 180px;
+  }
+  .layer-item h2 {
+    left: 20px;
+    position: relative;
+  }
+    .layer-item .layer-status{
+      left: 5px;
+     padding-bottom: 0;
+     padding-right: 0;
+      position: relative;
+      top: 10px;
+    }
+  .page-template-page-map-explorer .cat-layers .layer-excerpt,.page-template-page-map-explorer .cat-layers .layer-content,.page-template-page-map-explorer .cat-layers .layer-item .toggles{
+    display: none;
+  }
+  .map-active-layers {
+      position: absolute;
+      right: 200px;
+      top: 200px;
+      z-index: 200;
+
+    }
+    .map-active-layers .active-layer{display: none;}
+      .map-active-layers .active-layer.active{display: block;}

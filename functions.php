@@ -121,10 +121,12 @@ function opendev_styles()
   wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
   wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
+  wp_register_style('map-explorer',  $css_base.'map-explorer.css');
   wp_register_style('skeleton_new_nav',  $css_base.'skeleton_new_nav.css');
 
   wp_enqueue_style('opendev-base');
   wp_enqueue_style('nav-concept');
+  wp_enqueue_style('map-explorer');
   wp_enqueue_style('skeleton_new_nav');
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);
