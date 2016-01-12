@@ -786,4 +786,10 @@ td.law_download{
         .map-active-layers .active-layer.layer-land h6 {background: rgb(81,144,224);}
         .map-active-layers .active-layer.layer-infrastructure h6 {background: rgb(223,0,100);}
 
+        .map-active-layers .active-layer .layer-item{
+          display: block;
+        }
+        .map-active-layers .active-layer .layer-item .toggles, .map-active-layers .active-layer .layer-item .legend, .map-active-layers .active-layer .layer-item .layer-excerpt, .map-active-layers .active-layer .layer-item .layer-content{
+          display: none;
+        }
     .page-template-page-map-explorer footer{display: none;}

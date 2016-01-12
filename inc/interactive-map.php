@@ -260,15 +260,31 @@ class OpenDev_InteractiveMap {
          $category_length=0;
         $layer_toggle.on('click', function() {
           var category_id=$(this).closest('.cat-item').data( "category" );
-
-          console.log(term_rel);
-          console.log(map.filterLayers._layers.status);
+          var category_container=$('.map-active-layers .active-layer[data-category="'+ category_id +'"]');
+          var layer=$(this).closest('li.layer-item');
+          category_container.append(layer.clone());
+          var layer_status=$('.map-active-layers').find('.active-layer[data-category="'+ category_id +'"] li.layer-item div.layer-status').addClass('active');
+          // category_container.
+          console.log(layer_status);
+          // console.log(term_rel);
+          // console.log(map.filterLayers._layers.status);
         // counting layers
         layersD=map.filterLayers._layers.status;
         $.each(layersD, function( index, value )
-        {   console.log( value.ID );
-          console.log(value.on);
+        {  // console.log( value.ID );
+          //console.log(value.on);
          });
+
+         $.each(term_rel, function(index, value)
+         {
+          //  console.log(index);
+          //   console.log(value);
+            // activeLayerLength={};
+
+
+         }
+       );
+      //  console.log(activeLayerLength);
         // var countActiveLayersForCat(category_id){
         //   var countActive = 0;
         //   for( var layer in term_rel[category_id){
