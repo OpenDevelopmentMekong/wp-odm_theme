@@ -257,23 +257,47 @@ class OpenDev_InteractiveMap {
 
        $layer_toggles.each(function(){
         var $layer_toggle = $(this);
+         $category_length=0;
         $layer_toggle.on('click', function() {
-         var category_id=$(this).closest('.cat-item').data( "category" );
+          var category_id=$(this).closest('.cat-item').data( "category" );
+
+          console.log(term_rel[category_id]);
+          console.log(map.filterLayers._layers.status);
+        // counting layers
+        layersD=map.filterLayers._layers.status;
+        $.each(layersD, function( index, value )
+        {   console.log( value.ID );
+          console.log(value.on);
+         });
+        // var countActiveLayersForCat(category_id){
+        //   var countActive = 0;
+        //   for( var layer in term_rel[category_id){
+        //      if (status[layer.id] == "active"){
+        //         countActive++;
+        //
+        //   }
+        // }
+
+        //
+        //  $category_length=$('.cat-item[data-category="'+ category_id +'"] div.layer-status.active').length;
 
 
          map.filterLayers._switchLayer($(this).parent().data('layer'));
          if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
+          ++$category_length;
           $(this).addClass('active');
           $(this).parent().find('.layer-status').addClass('active');
           $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
-          var $category_length=$('.cat-item[data-category="'+ category_id +'"] div.layer-status.active').length;
-          console.log($category_length);
+          console.log($category_length)
+
          } else {
+          --$category_length;
           $(this).removeClass('active');
           $(this).parent().find('.layer-status').removeClass('active');
-          if ($category_length <=0 ){
-            $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
-          }
+          console.log($category_length);
+          // if ($category_length == 0 ){
+          //   $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
+          // }
          }
        })
        });
