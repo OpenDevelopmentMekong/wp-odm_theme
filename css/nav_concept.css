@@ -699,6 +699,7 @@ td.law_download{
       text-transform: uppercase;
       /*font-weight: bold;*/
       position: relative;
+      bottom:7px;
 
   }
   .page-template-page-map-explorer li.cat-item:hover  ul.cat-layers{
@@ -709,7 +710,7 @@ td.law_download{
         width: 210px;
         background: red;
         position: relative;
-        bottom:20px;
+        bottom:11px;
     }
     /*layer category colors*/
       .cat-energy .category-color{ background: rgb(124,212,55);}
@@ -722,7 +723,7 @@ td.law_download{
   width: 200px;
   display: block;
   position: absolute;
-  bottom: 51px;
+  bottom: 42px;
   background: white;
   margin-left: 0;
   padding-left: 0;
@@ -734,11 +735,13 @@ td.law_download{
     /*padding-top: 0;*/
   }
 
+    .page-template-page-map-explorer .cat-item a{color:black;}
   .page-template-page-map-explorer .layer-item{
     padding-left:0;
     margin-left: 10px;
     text-align: left;
     max-width: 180px;
+    line-height: 14px;
   }
   .layer-item h2 {
     left: 20px;

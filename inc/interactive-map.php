@@ -76,7 +76,6 @@ class OpenDev_InteractiveMap {
 
          <div draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "active-layer active-layer-" . $category->cat_ID ?> layer-<?php echo $category->slug?>">
            <span>
-
              <h6><?php echo $category->cat_name;?></h6>
            </span>
          </div>
@@ -262,7 +261,7 @@ class OpenDev_InteractiveMap {
         $layer_toggle.on('click', function() {
           var category_id=$(this).closest('.cat-item').data( "category" );
 
-          console.log(term_rel[category_id]);
+          console.log(term_rel);
           console.log(map.filterLayers._layers.status);
         // counting layers
         layersD=map.filterLayers._layers.status;
