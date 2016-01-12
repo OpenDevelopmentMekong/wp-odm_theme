@@ -1139,18 +1139,21 @@ function setTransitionCookies($user_data, $limit = 4096, $cookie_name = 'odm_tra
 function buildTopTopicNav($lang)
 {
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
-    $json_a = json_decode($navigation_vocab, true);
+    if ($navigation_vocab){
+      $json_a = json_decode($navigation_vocab, true);
 
-    // get Top Topic Names
-    foreach ($json_a as $key => $value) {
-        echo '<ul>'.$value['titles'][$lang].'</ul>';
-        // get entries
-        foreach ($json_a[$key]['children'] as $child) {
-            // make wp url from title
-          $url = sanitize_title($child['name']);
-            echo '<li><a href="topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
-        }
+      // get Top Topic Names
+      foreach ($json_a as $key => $value) {
+          echo '<ul>'.$value['titles'][$lang].'</ul>';
+          // get entries
+          foreach ($json_a[$key]['children'] as $child) {
+              // make wp url from title
+            $url = sanitize_title($child['name']);
+              echo '<li><a href="topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
+          }
+      }
     }
+
 }
 
 function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
@@ -1187,6 +1190,9 @@ function buildStyledTopTopicListForLaws($lang)
 function buildStyledTopTopicNav($lang)
 {
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
+    if (is_null($navigation_vocab)){
+      return;
+    }
     $json_a = json_decode($navigation_vocab, true);
 
     // get Top Topic Names
