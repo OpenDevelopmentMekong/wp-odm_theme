@@ -10,6 +10,10 @@ Template Name: Laws page
   <?php $filter_odm_document_type = htmlspecialchars($_GET["odm_document_type"]); ?>
   <?php $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]); ?>
   <?php $laws = get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type); ?>
+  <?php $lang = 'en';
+  if (function_exists("qtranxf_getLanguage")){
+    $lang = qtranxf_getLanguage();
+  }?>
 
   <section id="content" class="single-post">
 		<header class="single-post-header">
@@ -25,11 +29,11 @@ Template Name: Laws page
         <table class="law_datasets" id="law_datasets">
           <thead>
             <tr>
-              <th>Document type</th>
-              <th>Title</th>
-              <th>Document number</th>
-              <th>Promulgation date</th>
-              <th>Download</th>
+              <th><?php _e( 'Document type', 'document_type' );?></th>
+              <th><?php _e( 'Title', 'title' );?></th>
+              <th><?php _e( 'Document number', 'document_number' );?></th>
+              <th><?php _e( 'Promulgation date', 'promulgation_date' );?></th>
+              <th><?php _e( 'Download', 'download' );?></th>
             </tr>
           </thead>
           <tbody
@@ -39,10 +43,10 @@ Template Name: Laws page
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];?>
                 </td>
                 <td class="law_title">
-                  <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated']['en'];?></a>
+                  <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated'][$lang];?></a>
                 </td>
                 <td class="law_datasets_document_number_value">
-                  <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_number']['en'];?>
+                  <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_number'][$lang];?>
                 </td>
                 <td class="law_datasets_promulgation_date_value">
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_promulgation_date'];?>
@@ -70,7 +74,7 @@ Template Name: Laws page
 
 				<div class="law_search_box">
 					<div class="sidebar_header">
-						<span class="big">SEARCH</span> in Laws
+						<span class="big"><?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in Laws', 'in_laws' );?>
 					</div>
 					<div class="sidebar_box_wrapper">
 						<input type="text" id="search_all" placeholder="Search all Laws">
@@ -79,35 +83,35 @@ Template Name: Laws page
 
         <div class="law_search_box">
 					<div class="sidebar_header">
-						<span class="big">LAW COMPENDIUM</span>
+						<span class="big"><?php _e( 'LAW COMPENDIUM', 'law_compendium' );?></span>
 					</div>
 					<div class="sidebar_box_wrapper">
-            <?php echo buildStyledTopTopicListForLaws('en'); ?>
+            <?php echo buildStyledTopTopicListForLaws($lang); ?>
 					</div>
 				</div>
 
         <div class="law_search_box">
 					<div class="sidebar_header">
-						<span class="big">TYPE OF LAWS</span>
+						<span class="big"><?php _e( 'TYPE OF LAWS', 'type_of_laws' );?></span>
 					</div>
 					<div class="sidebar_box_wrapper">
             <ul>
-              <li><a href="/laws/?odm_document_type=anukretsub-decree">Anukret/Sub-Decree</a></li>
-              <li><a href="/laws/?odm_document_type=chbablawkram">Chbab/Law/Kram</a></li>
-              <li><a href="/laws/?odm_document_type=constitution-of-cambodia">Constitution of Cambodia</a></li>
-              <li><a href="/laws/?odm_document_type=international-treatiesagreements">International Treaties/Agreements</a></li>
-              <li><a href="/laws/?odm_document_type=kech-sonyacontractagreement">Kech Sonya/Contract/Agreemente</a></li>
-              <li><a href="/laws/?odm_document_type=kolkar-nenomguidelines">Kolkar Nenom/Guidelines</a></li>
-              <li><a href="/laws/?odm_document_type=kolnyobaypolicy">Kolnyobay/Policy</a></li>
-              <li><a href="/laws/?odm_document_type=likhetletter">Likhet/Letter</a></li>
-              <li><a href="/laws/?odm_document_type=prakasjoint-prakasproclamation">Prakas/Joint-Prakas/Proclamation</a></li>
-              <li><a href="/laws/?odm_document_type=preah-reach-kramroyal-kram">Preah Reach Kram/Royal Kram</a></li>
-              <li><a href="/laws/?odm_document_type=sarachorcircular">Sarachor/Circular</a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-chhun-damneoungnoticeannouncement">Sechkdei Chhun  Damneoung/Notice/Announcement</a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-nenuminstruction">Sechkdei Nenum/Instruction</a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-preang-chbabdraft-laws-amp-regulations">Sechkdei Preang Chbab/Draft Laws & Regulations</a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-samrechdecision">Sechkdei Samrech/Decision</a></li>
-              <li><a href="/laws/?odm_document_type=others">Others</a></li>
+              <li><a href="/laws/?odm_document_type=anukretsub-decree"><?php _e( 'Anukret/Sub-Decree', 'anukretsub-decree' );?></a></li>
+              <li><a href="/laws/?odm_document_type=chbablawkram"><?php _e( 'Chbab/Law/Kram', 'chbablawkram' );?></a></li>
+              <li><a href="/laws/?odm_document_type=constitution-of-cambodia"><?php _e( 'Constitution of Cambodia', 'constitution-of-cambodia' );?></a></li>
+              <li><a href="/laws/?odm_document_type=international-treatiesagreements"><?php _e( 'International Treaties/Agreements', 'international-treatiesagreements' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kech-sonyacontractagreement"><?php _e( 'Kech Sonya/Contract/Agreement', 'kech-sonyacontractagreement' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kolkar-nenomguidelines"><?php _e( 'Kolkar Nenom/Guidelines', 'kolkar-nenomguidelines' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kolnyobaypolicy"><?php _e( 'Kolnyobay/Policy', 'kolnyobaypolicy' );?></a></li>
+              <li><a href="/laws/?odm_document_type=likhetletter"><?php _e( 'Likhet/Letter', 'likhetletter' );?></a></li>
+              <li><a href="/laws/?odm_document_type=prakasjoint-prakasproclamation"><?php _e( 'Prakas/Joint-Prakas/Proclamation', 'prakasjoint-prakasproclamation' );?></a></li>
+              <li><a href="/laws/?odm_document_type=preah-reach-kramroyal-kram"><?php _e( 'Preah Reach Kram/Royal Kram', 'preah-reach-kramroyal-kram' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sarachorcircular"><?php _e( 'Sarachor/Circular', 'sarachorcircular' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-chhun-damneoungnoticeannouncement"><?php _e( 'Sechkdei Chhun  Damneoung/Notice/Announcement', 'sechkdei-chhun-damneoungnoticeannouncement' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-nenuminstruction"><?php _e( 'Sechkdei Nenum/Instruction', 'sechkdei-nenuminstruction' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-preang-chbabdraft-laws-amp-regulations"><?php _e( 'Sechkdei Preang Chbab/Draft Laws & Regulations', 'sechkdei-preang-chbabdraft-laws-amp-regulations' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-samrechdecision"><?php _e( 'Sechkdei Samrech/Decision', 'sechkdei-samrechdecision' );?></a></li>
+              <li><a href="/laws/?odm_document_type=others"><?php _e( 'Others', 'others' );?></a></li>
             </ul>
 					</div>
 				</div>
