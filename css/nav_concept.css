@@ -3,6 +3,19 @@
 
 /* boilerplate code*/
 
+/*fonts*/
+
+@font-face {
+    font-family: 'Droid Serif';
+    src: url('droidserif_regular/DroidSerif-Regular-webfont.eot');
+    src: url('droidserif_regular/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('droidserif_regular/DroidSerif-Regular-webfont.woff') format('woff'),
+         url('droidserif_regular/DroidSerif-Regular-webfont.ttf') format('truetype'),
+         url('droidserif_regular/DroidSerif-Regular-webfont.svg#droid_serifregular') format('svg');
+
+    font-weight: normal;
+    font-style: normal;
+}
 
 /*screen.css*/
 
@@ -461,7 +474,39 @@ header#od-head .icon-od-logo {
   z-index: 9988;
 }
 
-#od-head .container{height: inherit;}
+#od-head .container{
+  height: inherit;
+  min-height: 55px;
+}
+
+h1.header-text{
+  font-family: "Open Sans","Helvetica","Arial",sans-serif !important;
+  font-size: 48px !important;
+  line-height: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -4px !important;
+}
+
+.header-image span{
+  font-family: 'Droid Serif', serif;
+}
+
+.header-text a{text-decoration: none;}
+.header-text sup{
+  font-size: 55%;
+  position: relative;
+  vertical-align: baseline;
+  top: -10px;
+}
+
+.header-text span{
+  line-height: 51px !important;
+  font-size: 24px !important;
+  font-family: 'Droid Serif', serif !important;
+  padding-left: 10px !important;
+  letter-spacing: normal !important;
+  color: white;
+}
 
 .container.six.organization, .container .six.columns{width: 600px;}
   /*div.six.columns.organization{margin-left: 60px!important;}*/

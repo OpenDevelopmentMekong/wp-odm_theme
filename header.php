@@ -50,27 +50,27 @@
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
   <div class="content_wrapper">
-	<header class="white"id="od-head">
+	<header class="white" id="od-head">
 		<div class="container">
 			<div class="six columns organization">
 				<div class="site-meta">
 					<?php opendev_logo(); ?>
 					<?php
-                    if (is_multisite()) {
-                        $sites = wp_get_sites();
-                        if (!empty($sites)) {
-                            $current = get_current_blog_id();
-                            $name = str_replace('Open Development ', '', get_bloginfo('name'));
-                            $logo = opendev_get_logo();
-                            if ($logo) {
-                                $name = $logo;
-                            }
-                            echo '<div class="ms-dropdown-title">';
-                            echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
-                            echo '</div>';
-                        }
-                    }
-                    ?>
+              if (is_multisite()) {
+                  $sites = wp_get_sites();
+                  if (!empty($sites)) {
+                      $current = get_current_blog_id();
+                      $name = str_replace('Open Development ', '', get_bloginfo('name'));
+                      $logo = opendev_get_logo();
+                      if ($logo) {
+                          $name = $logo;
+                      }
+                      echo '<div class="ms-dropdown-title">';
+                      echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
+                      echo '</div>';
+                  }
+              }
+              ?>
 				</div>
 			</div>
 			<div class="five columns align-right social">

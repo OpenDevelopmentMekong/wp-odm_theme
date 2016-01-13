@@ -285,15 +285,9 @@ function opendev_logo()
 
     } else {
         ?>
-  <h1>
-   <a href="<?php echo home_url('/');
-        ?>" title="<?php bloginfo('name');
-        ?>">
-    <?php // bloginfo('name'); ?>
-    <span class="icon-od-logo"></span>
-    Op<sup>e</sup>nDevelopment
-   </a>
-  </h1>
+   <h1 class="header-text"><a href="#" target="_self">Op<sup>e</sup>nDevelopment</a>
+			<span>Datahub</span>
+		</h1>
   <?php
 
     }
@@ -1045,16 +1039,16 @@ function the_breadcrumb()
  /****end Breadcrumb**/
 
 //to set get_the_excerpt() limit words
-function excerpt($num = 20, $read_more = '') { 
-    $limit = $num + 1;         
-    $excerpt = explode(' ', get_the_excerpt(), $limit); 
+function excerpt($num = 20, $read_more = '') {
+    $limit = $num + 1;
+    $excerpt = explode(' ', get_the_excerpt(), $limit);
     array_pop($excerpt);
     $excerpt_string = implode(' ', $excerpt);
-       
-    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit); 
-    
+
+    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit);
+
     //array_pop($excerpt_hidden_space);
-    
+
     //$excerpt_string = implode('​', $excerpt_hidden_space);
     $excerpt_words = $excerpt_string.' ...';
     if ($read_more != '') {
