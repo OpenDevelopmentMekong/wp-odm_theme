@@ -43,7 +43,7 @@ Template Name: Laws page
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];?>
                 </td>
                 <td class="law_title">
-                  <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated'][$lang];?></a>
+                  <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo getMultilingualValueOrFallback($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated'],$lang);?></a>
                 </td>
                 <td class="law_datasets_document_number_value">
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_number'][$lang];?>

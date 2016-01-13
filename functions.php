@@ -1045,16 +1045,16 @@ function the_breadcrumb()
  /****end Breadcrumb**/
 
 //to set get_the_excerpt() limit words
-function excerpt($num = 20, $read_more = '') { 
-    $limit = $num + 1;         
-    $excerpt = explode(' ', get_the_excerpt(), $limit); 
+function excerpt($num = 20, $read_more = '') {
+    $limit = $num + 1;
+    $excerpt = explode(' ', get_the_excerpt(), $limit);
     array_pop($excerpt);
     $excerpt_string = implode(' ', $excerpt);
-       
-    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit); 
-    
+
+    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit);
+
     //array_pop($excerpt_hidden_space);
-    
+
     //$excerpt_string = implode('​', $excerpt_hidden_space);
     $excerpt_words = $excerpt_string.' ...';
     if ($read_more != '') {
@@ -1189,7 +1189,6 @@ function buildStyledTopTopicListForLaws($lang)
     echo '</ul>';
 }
 
-// redundant
 function buildStyledTopTopicNav($lang)
 {
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
@@ -1235,4 +1234,17 @@ function buildStyledTopTopicNav($lang)
 
     }
 }
+
+function getMultilingualValueOrFallback($field,$lang){
+  $result = $field[$lang];
+
+  if (is_null($result)){
+    $result = $field['en'];
+  }
+
+  return $result;
+
+}
+
+
 ?>
