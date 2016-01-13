@@ -115,6 +115,7 @@ function opendev_styles()
   wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
   wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
   wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
+  wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
   wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
   wp_register_style('opendev-thailand',  $css_base.'thailand.css');
   wp_register_style('opendev-laos',  $css_base.'laos.css');
@@ -125,6 +126,7 @@ function opendev_styles()
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
   wp_register_style('laws-pages',  $css_base.'laws_pages.css');
 
+  wp_enqueue_style('mCustomScrollbar');
   wp_enqueue_style('opendev-base');
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('laws-pages');
@@ -182,6 +184,7 @@ function opendev_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
+  wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
  //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
@@ -1042,17 +1045,17 @@ function the_breadcrumb()
  /****end Breadcrumb**/
 
 //to set get_the_excerpt() limit words
-function excerpt($num, $read_more = '')
-{
-    $limit = $num + 1;
-    $excerpt = explode(' ', get_the_excerpt(), $limit);
+function excerpt($num = 20, $read_more = '') { 
+    $limit = $num + 1;         
+    $excerpt = explode(' ', get_the_excerpt(), $limit); 
     array_pop($excerpt);
     $excerpt_string = implode(' ', $excerpt);
-
-    $excerpt_hidden_space = explode('​', $excerpt_string, $limit);
-    array_pop($excerpt_hidden_space);
-    $$excerpt_string = implode('​', $excerpt_hidden_space);
-
+       
+    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit); 
+    
+    //array_pop($excerpt_hidden_space);
+    
+    //$excerpt_string = implode('​', $excerpt_hidden_space);
     $excerpt_words = $excerpt_string.' ...';
     if ($read_more != '') {
         $excerpt_words .=  " (<a href='".get_permalink($post->ID)." '>".$read_more.'</a>)';

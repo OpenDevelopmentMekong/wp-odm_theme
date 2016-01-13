@@ -455,8 +455,8 @@ header#od-head .icon-od-logo {
 #od-head {
   padding: 10px 0 0;
   background: #292d56;
-  /*position: fixed;*/
-  height: 70px;
+  /*position: fixed;
+  height: 70px;      */
   width: 100%;
   z-index: 9988;
 }
@@ -520,8 +520,8 @@ div#wrap-feedback {
   left: initial;
 }
 #news{
-  /*position: relative;*/
-  margin-top: 80px;
+  /*position: relative;
+  margin-top: 80px;*/
 }
 
 
