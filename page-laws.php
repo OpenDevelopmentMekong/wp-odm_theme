@@ -20,7 +20,7 @@ Template Name: Laws page
 			</div>
 		</header>
 		<div class="container">
-			<div class="ten columns">
+			<div class="nine columns">
         <?php the_content(); ?>
         <table class="law_datasets" id="law_datasets">
           <thead>
@@ -48,18 +48,16 @@ Template Name: Laws page
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_promulgation_date'];?>
                 </td>
                 <td class="law_datasets_download_value">
-                  <span>
                     <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
                       <?php if ($resource['odm_language'][0] == 'en'){?>
-                        <a href="<?php echo $resource['url'];?>">
-                          <span class="icon-arrow-down"></span>EN</span></a>
+                        <span><a href="<?php echo $resource['url'];?>">
+                          <span class="icon-arrow-down"></span>EN</a></span>
                       <?php } ?>
                     <?php endforeach; ?>
-                  <span>
                     <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
                       <?php if ($resource['odm_language'][0] == 'km'){?>
-                        <a href="<?php echo $resource['url'];?>">
-                          <span class="icon-arrow-down"></span>KM</span></a>
+                        <span><a href="<?php echo $resource['url'];?>">
+                          <span class="icon-arrow-down"></span>KM</a></span>
                       <?php } ?>
                     <?php endforeach; ?>
                 </td>
@@ -68,7 +66,7 @@ Template Name: Laws page
   				</tbody>
   			</table>
 			</div>
-			<div class="two columns">
+			<div class="three columns">
 
 				<div class="law_search_box">
 					<div class="sidebar_header">
@@ -159,7 +157,7 @@ jQuery(document).ready(function($) {
         "targets": 0
       }
     ],
-    "dom": '<"top"<"six columns info no-padd"i><"two columns length no-padd"l><"two columns pagination no-padd"p>>rt<"bottom"<"six columns info no-padd"i><"two columns length no-padd"l><"two columns pagination no-padd"p>>',
+    "dom": '<"top"<"six columns info no-padd"i><"one columns length no-padd"l><"one columns pagination no-padd"p>>rt',
     "processing": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columns": [
@@ -176,7 +174,10 @@ jQuery(document).ready(function($) {
       var rows = api.rows( {page:'current'} ).nodes();
       var last=null;
 
-      api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+      api.column(0, {
+        page:'current'
+      }
+    ).data().each( function ( group, i ) {
         if ( last !== group ) {
           $(rows).eq( i ).before(
               '<tr class="group"><td colspan="5">'+mapGroupLabel[group]+'</td></tr>'
