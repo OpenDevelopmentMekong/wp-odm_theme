@@ -7,19 +7,24 @@ Template Name: Laws page
 
 <?php if(have_posts()) : the_post(); ?>
 
-  <?php $filter_odm_document_type = htmlspecialchars($_GET["odm_document_type"]); ?>
-  <?php $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]); ?>
-  <?php $laws = get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type); ?>
-  <?php $lang = 'en';
-  if (function_exists("qtranxf_getLanguage")){
-    $lang = qtranxf_getLanguage();
-  }?>
+  <?php
+    $filter_odm_document_type = htmlspecialchars($_GET["odm_document_type"]);
+    $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]);
+    $laws = get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type);
+    $lang = 'en';
+    $headline = $filter_odm_taxonomy ?: 'Laws';
+
+    if (function_exists("qtranxf_getLanguage")){
+      $lang = qtranxf_getLanguage();
+    }
+
+  ?>
 
   <section id="content" class="single-post">
 		<header class="single-post-header">
 			<div class="container">
 				<div class="twelve columns">
-					<h1><?php the_title(); ?></h1>
+					<span><h1><?php the_title(); ?></h1> <?php _e( $headline, 'sub_title_taxonomy' ); ?><span>
 				</div>
 			</div>
 		</header>
@@ -74,7 +79,8 @@ Template Name: Laws page
 
 				<div class="law_search_box">
 					<div class="sidebar_header">
-						<span class="big"><?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in Laws', 'in_laws' );?>
+						<span class="big">
+              <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( $headline, 'sub_title_taxonomy' ); ?>
 					</div>
 					<div class="sidebar_box_wrapper">
 						<input type="text" id="search_all" placeholder="Search all Laws">

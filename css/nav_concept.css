@@ -5,7 +5,6 @@
 
 
 /*screen.css*/
-
 #cNavNew li {
   list-style: none;
   float: left;
@@ -561,5 +560,5 @@ footer#colophon{
   }
   .container .five.social {
     left: 23px;
-}
+  } 
 }
