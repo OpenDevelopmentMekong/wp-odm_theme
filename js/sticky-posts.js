@@ -1,5 +1,5 @@
-(function($) {
-	jeo.markersReady(function(map) {
+(function($) { //the codes were commented because the template was changed
+	/* jeo.markersReady(function(map) {
 
 		var t;
 
@@ -118,9 +118,9 @@
 			setTimeout(function() {
 				openSticky($('.sticky-posts-active .sticky-item:first-child').data('postid'));
 				t = setInterval(runSticky, 6000);
-			}, 800);       
+			}, 800);
 		}
 
-	}); 
+	}); */
 
 })(jQuery);

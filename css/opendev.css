@@ -11,6 +11,9 @@ h6 { font-size: 15px; line-height: 16px; }
 h5 a {
     text-decoration: none;
 }
+h2 em {
+    font-weight: normal;
+}
 img {
  max-width: 100%;
 }
@@ -1029,7 +1032,7 @@ a.button:hover{
  */
 
 .row {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 #news {
  padding-top: 0;
@@ -1045,6 +1048,7 @@ a.button:hover{
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
+ margin-top: 15px;
 }
 
 .map-container {
@@ -1074,10 +1078,12 @@ a.button:hover{
 }
 
 #featured-content.page-section .section-featured-content {
+ clear: both;
  max-height: 400px;
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
+ margin-top: .5em;
 }
 
 #announcements-and-updates {
@@ -1157,48 +1163,95 @@ a.button:hover{
 
 .sticky-posts {
  height: 100%;
- width: 100%;
+ width: 102%;
  color: #333;
  position: relative;
  z-index: 10;
  border-left: 1px solid #ccc;
  box-sizing: border-box;
- overflow: hidden;
+ overflow: hidden;  
 }
 .sticky-posts:hover{
     overflow-y: auto;
 }
+.sticky-posts .sticky-item:first-child{
+    
+}
 .sticky-posts .sticky-item {
- height: 12%;
+/*  height: 12%; */
  width: 100%;
+ border-right: 1px solid #ccc; 
  border-bottom: 1px solid #ccc;
  box-sizing: border-box;
- cursor: pointer;
-}
+ cursor: pointer; 
+}  
 .sticky-posts .sticky-item:last-child {
  border-bottom: 0;
+}      
+.sticky-posts .sticky-item:nth-child(2),
+.sticky-posts .sticky-item:nth-child(3),
+.sticky-posts .sticky-item:nth-child(4){   
+    display: table-cell;
+    width: 33.33%;
+    display: inline;
+    float: left;
+    height: 70%;
+    
+} 
+.sticky-posts .sticky-item:nth-child(4){ 
+    border-right: 0;
+    float: right;
 }
+.sticky-posts .sticky-item:nth-child(5){ 
+     clear-left: both;
+     width: 50%;
+     display: table-cell;
+} 
+.sticky-posts .sticky-item:nth-child(n+5){ 
+     width: 50%;
+     height: 35%;
+     float: left;
+}
+
+.sticky-posts .two_per_row:nth-child(even){
+    border-right: 0; 
+}   
 .sticky-posts .sticky-item article {
- padding: 10px 20px 15px;
+ padding: 0 0 15px 20px;
 }
-.sticky-posts .sticky-item article .post-thumbnail {
- float: left;
- margin: -5px 10px 0 -5px;
- height: 82%;
+.sticky-posts .sticky-item:first-child article .post-area:first-child{ 
+    height: 140px;          
+    padding:1em 0.3em 0;
+}
+.sticky-posts .sticky-item article .post-area{
+    padding:1em 0.3em 0; 
+}
+.sticky-posts .sticky-item:first-child article .post-thumbnail {
+ display: block;
+}
+.sticky-posts .sticky-item:first-child article .post-thumbnail img {  
+ float: right; 
+ width: 300px;
+ height: 100%;
+ margin: -15px -5px 0px 1em;
+ 
 }
 .sticky-posts .sticky-item article .post-thumbnail img {
  display: block;
- width: 50px;
- height: 50px;
+ width: 100%;
+ height: 150px;     
+ margin: 0 0 5% 0; 
 }
+
 .sticky-posts .sticky-item article h3 {
  color: #333;
  /*font-family: "Droid Serif";*/
  margin: 0;
- font-size: 16px;
- line-height: 20px;
+ font-size: 18px;
+ line-height: 25px;
  white-space: nowrap;
  overflow: hidden;
+ margin-bottom: 5px;
  text-overflow: ellipsis;
 }
 
@@ -1209,9 +1262,15 @@ a.button:hover{
  color: #999;
  margin-bottom: 5px;
 }
-.sticky-posts .sticky-item article .post-content,
+.sticky-posts .sticky-item article .post-content{
+ /* display: none; */ 
+    margin-top: 0.5em; 
+    margin-bottom: 0.3em 
+}
+
 .sticky-posts .sticky-item article .post-actions{
- display: none;
+    text-align: right;
+    padding-right: 1.5em
 }
 .sticky-posts .sticky-item.active,
 .sticky-posts .sticky-item:hover {
@@ -1268,13 +1327,32 @@ a.button:hover{
  display: block;
  margin-top: 8px;
 }
+.sticky-posts .sticky-item article .post-actions .button{
+    background: none;     
+    padding:0 5px; 
+} 
+.sticky-posts .sticky-item:nth-child(n+5) .post-thumbnail{
+    display: none;
+}
+.sticky-posts .sticky-item:nth-child(n+5) .date, .sticky-posts .sticky-item:nth-child(n+5) .news-source{
+    height: 1px;
+}
+.sticky-posts .sticky-item:nth-child(n+5) .button img{
+    width: 6%
+}
+.sticky-posts .sticky-item:nth-child(n+5)  article{
+    padding: 5px 0px 5px 20px;
+}
+.sticky-posts .sticky-item:nth-child(n+5)  article .post-area {
+    padding: .2em 0.1em 0px;
+}
 
 .map-sidebar {
  color: #96979C;
  height: 100%;
- width: 40%;
+ width: 70%;
  min-width: 300px;
- max-width: 640px;
+ max-width: 655px;
  z-index: 1000;
  word-wrap: break-word;
  overflow: hidden;
@@ -1373,12 +1451,16 @@ a.button:hover{
  width: auto;
  height: auto;
 }
+
 .map-sidebar img {
  max-width: 100%;
  max-height: 100%;
  width: auto;
  height: auto;
  padding: 6px;
+} 
+.map-sidebar img:first-child{
+    padding:0;
 }
 .map-sidebar .sharing .button {
  margin: 5px 5px 5px 0;
@@ -2727,7 +2809,7 @@ ul#menu-header-menu{
     margin: 1em 0 0;
     text-align:center;
     font-size: 15px;
-}
+} 
 
 
 @media screen and (max-width: 1020px) {
