@@ -60,47 +60,50 @@ function opendev_setup_theme()
     load_theme_textdomain('opendev', $gsd[0].'/wp-content/languages');
     load_theme_textdomain('jeo', $gsd[0].'/wp-content/languages');
     register_sidebar(array(
-  'name' => __('Topic sidebar', 'jeo'),
-  'id' => 'topic',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Topic sidebar', 'jeo'),
+      'id' => 'topic',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
     register_sidebar(array(
-  'name' => __('Mekong Storms and Floods sidebar', 'opendev'),
-  'id' => 'mekong-storm-flood',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Mekong Storms and Floods sidebar', 'opendev'),
+      'id' => 'mekong-storm-flood',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
     register_sidebar(array(
-  'name' => __('Frontpage footer left', 'jeo'),
-  'id' => 'frontpage-footer-left',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Frontpage footer left', 'jeo'),
+      'id' => 'frontpage-footer-left',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
     register_sidebar(array(
-  'name' => __('Frontpage footer right', 'jeo'),
-  'id' => 'frontpage-footer-right',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Frontpage footer right', 'jeo'),
+      'id' => 'frontpage-footer-right',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
     register_sidebar(array(
-  'name' => __('Upcoming footer left', 'jeo'),
-  'id' => 'upcoming-footer-left',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Upcoming footer left', 'jeo'),
+      'id' => 'upcoming-footer-left',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
     register_sidebar(array(
-  'name' => __('Upcoming footer middle', 'jeo'),
-  'id' => 'upcoming-footer-middle',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Upcoming footer middle', 'jeo'),
+      'id' => 'upcoming-footer-middle',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
     register_sidebar(array(
-  'name' => __('Upcoming footer right', 'jeo'),
-  'id' => 'upcoming-footer-right',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+      'name' => __('Upcoming footer right', 'jeo'),
+      'id' => 'upcoming-footer-right',
+      'before_title' => '<h2 class="widget-title">',
+      'after_title' => '</h2>',
+     ));
+
+     // Extended layers
+     include(STYLESHEETPATH . '/inc/layers.php');
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
@@ -186,6 +189,7 @@ function opendev_jeo_scripts()
   }
   wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
  //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
+
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
@@ -198,7 +202,8 @@ function nav_concept_scripts()
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
 
 // hook into the init action and call create_book_taxonomies when it fires
-add_action('init', 'create_news_source_taxonomies', 0);
+add_action( 'init', 'create_news_source_taxonomies', 0 );
+
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
 {
@@ -228,6 +233,7 @@ function create_news_source_taxonomies()
 
     register_taxonomy('news_source', array('post'), $args);
 }
+
 // custom marker data
 function opendev_marker_data($data, $post)
 {
@@ -447,31 +453,16 @@ function opendev_ms_nav()
      <li class="site-item">
      <?php
      $options = get_option('opendev_options');
-        if (isset($options['site_in_development']) && ($options['site_in_development'] == 'true')) {
-            ?>
-      <a href="#"<?php if ($current == $site['blog_id']) {
-    echo ' class="current-site-'.strtolower($name).'"';
-}
-            ?> title="<?php if ($options['message_construction'] != '') {
-    _e($options['message_construction'], 'opendev');
-} else {
-    _e('Site coming soon.', 'opendev');
-}
-            ?>"><?php _e($name, 'opendev');
-            ?></a>
-     <?php
 
-        } else {
-            ?>
-      <a href="<?php echo $siteurl;
-            ?>"<?php if ($current == $site['blog_id']) {
-    echo ' class="current-site-'.strtolower($name).'"';
-}
-            ?>><?php _e($name, 'opendev');
-            ?></a>
-      <?php
-    if (isset($options['dropbox_menu']) && ($options['dropbox_menu'] == 'on')) {
-        ?>
+      if (isset($options['site_in_development']) && ($options['site_in_development']=="true")){
+      ?>
+       <a href="#"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?> title="<?php if ($options['message_construction']!="") _e($options['message_construction'],'opendev'); else _e("Site coming soon.", 'opendev');?>"><?php _e($name, 'opendev');?></a>
+      <?php }else{ ?>
+       <a href="<?php echo $siteurl; ?>"<?php if ($current == $site['blog_id']) echo ' class="current-site-'.strtolower($name).'"';?>><?php _e($name, 'opendev');?></a>
+       <?php
+      if (isset($options['dropbox_menu']) && ($options['dropbox_menu'] == "on")) {
+       ?>
+
       <div class="sub-menu">
        <ul class="first-menu">
         <li data-content="news"><a href="<?php echo $siteurl;
@@ -810,7 +801,6 @@ function opendev_posts_clauses_where($where)
                  $where .= ' OR ';
              }
 
-             ++$i;
          }
 
          $where .= ' ) ';
@@ -1045,24 +1035,45 @@ function the_breadcrumb()
  /****end Breadcrumb**/
 
 //to set get_the_excerpt() limit words
-function excerpt($num = 20, $read_more = '') {
-    $limit = $num + 1;
-    $excerpt = explode(' ', get_the_excerpt(), $limit);
-    array_pop($excerpt);
-    $excerpt_string = implode(' ', $excerpt);
 
-    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit);
+function excerpt($num=20, $read_more="") {
+  $limit = $num+1;
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  array_pop($excerpt);
+  $excerpt_string = implode(" ", $excerpt);
 
-    //array_pop($excerpt_hidden_space);
+  $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
+  array_pop($excerpt_hidden_space);
+  $excerpt_string = implode("?", $excerpt_hidden_space) ;
 
-    //$excerpt_string = implode('​', $excerpt_hidden_space);
-    $excerpt_words = $excerpt_string.' ...';
-    if ($read_more != '') {
-        $excerpt_words .=  " (<a href='".get_permalink($post->ID)." '>".$read_more.'</a>)';
-    }
+  //$excerpt_string = implode('​', $excerpt_hidden_space);
+  $excerpt_words = $excerpt_string.' ...';
+  if ($read_more != '') {
+      $excerpt_words .=  " (<a href='".get_permalink($post->ID)." '>".$read_more.'</a>)';
+  }
 
-    return $excerpt_words;
+  return $excerpt_words;
 }
+
+/// Hide template files of other country_name
+function get_pages_templates_for_othersites($pages_templates) {
+    $templates = get_page_templates();
+	foreach ( $templates as $template_name => $template_filename ) {
+	    $template_files = explode ("/", $template_filename);
+		if(count($template_files) > 1){
+			if (strtolower($template_files[0]) != COUNTRY_NAME){
+				$template_need_to_hide[] = $template_filename;
+				unset( $pages_templates[$template_filename] );
+			}
+		}
+	}
+	return $pages_templates;
+}
+
+function hide_other_country_page_template ($pages_templates) {
+    return $pages_templates;
+}
+add_filter( 'theme_page_templates', 'hide_other_country_page_template' );
 
 /**
  * Allow embed iframe.
@@ -1073,6 +1084,7 @@ function add_iframe($initArray)
 
     return $initArray;
 }
+
 // this function alters the way the WordPress editor filters your code
 add_filter('tiny_mce_before_init', 'add_iframe');
 
@@ -1245,6 +1257,5 @@ function getMultilingualValueOrFallback($field,$lang){
   return $result;
 
 }
-
 
 ?>

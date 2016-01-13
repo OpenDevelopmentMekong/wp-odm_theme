@@ -3,18 +3,16 @@
 <?php
 if (is_front_page()) {
     ?>
- 
-
 
  <?php
-     $options = get_option('opendev_options'); 
+     $options = get_option('opendev_options');
     if ($options['frontpage_slider_id']) : ?>
    <section id="featured-content" class="page-section row">
     <div class="container">
      <div class="twelve columns">
       <div class="section-featured-content">
         <?php
-          if (function_exists('fa_display_slider')) {    
+          if (function_exists('fa_display_slider')) {
               fa_display_slider($options['frontpage_slider_id']);
           }
     ?>
@@ -30,8 +28,10 @@ if (is_front_page()) {
  <section id="news" class="page-section row" <?php // if($is_mapgroup) : echo "style='padding-top:60px'"; endif; ?>>
   <div class="container">
    <div class="twelve columns">
-   <?php $site_name = str_replace('Open Development ', '', get_bloginfo('name'));?>
-   <h2>News <em>from <?php echo $site_name; ?></em></h2>
+   <?php $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+    ?>
+   <h2>News <em>from <?php echo $site_name;
+    ?></em></h2>
    <!-- <section class="tabbed-posts-section">
             <script>
               /* jQuery(function($) {
@@ -79,7 +79,7 @@ if (is_front_page()) {
     } */
     ?>
             	</ul>
-            </nav> 
+            </nav>
         </section>   -->
     <div class="section-map">
      <?php
@@ -109,6 +109,7 @@ if (is_front_page()) {
  <?php //get_template_part('section', 'content-summary'); ?>
 
 <?php
+
 } ?>
 
 <?php // get_template_part('content', 'interactive-map'); ?>

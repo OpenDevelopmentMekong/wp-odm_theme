@@ -5,63 +5,69 @@
  * Interactive Map
  */
 
-class OpenDev_InteractiveMap {
+class OpenDev_InteractiveMap
+{
+    public function __construct()
+    {
+        add_shortcode('odmap', array($this, 'shortcode'));
+    }
 
- function __construct() {
-
-  add_shortcode('odmap', array($this, 'shortcode'));
-
- }
-
- function shortcode() {
-
-  $layer_query = new WP_Query(array(
+    public function shortcode()
+    {
+        $layer_query = new WP_Query(array(
    'post_type' => 'map-layer',
-   'posts_per_page' => -1
+   'posts_per_page' => -1,
   ));
 
-  $layers = array();
+        $layers = array();
 
-  $categories = get_terms('layer-category');
+        $categories = get_terms('layer-category');
 
-  $parsed_cats = array();
+        $parsed_cats = array();
 
-  if($layer_query->have_posts()) {
-   while($layer_query->have_posts()) {
-    $layer_query->the_post();
-    $layer = array();
-    $layer['filtering'] = 'switch';
-    $layer['hidden'] = 1;
-    foreach($categories as $key=>$val) {
-    $cat = $categories[$key];
-     if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
-      if(!isset($parsed_cats[$cat->term_id]))
-       $parsed_cats[$cat->term_id] = array();
-      $parsed_cats[$cat->term_id][] = get_the_ID();
-      $parsed_cats[$cat->term_id]['order'] = $key;
-     }
-    }
-    $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
-    $layers[] = $layer;
-    wp_reset_postdata();
-   }
-  }
+        if ($layer_query->have_posts()) {
+            while ($layer_query->have_posts()) {
+                $layer_query->the_post();
+                $layer = array();
+                $layer['filtering'] = 'switch';
+                $layer['hidden'] = 1;
+                foreach ($categories as $key => $val) {
+                    $cat = $categories[$key];
+                    if (is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
+                        if (!isset($parsed_cats[$cat->term_id])) {
+                            $parsed_cats[$cat->term_id] = array();
+                        }
+                        $parsed_cats[$cat->term_id][] = get_the_ID();
+                        $parsed_cats[$cat->term_id]['order'] = $key;
+                    }
+                }
 
-  $map = opendev_get_interactive_map_data();
-  $map['dataReady'] = true;
-  $map['postID'] = 'interactive_map';
-  $map['layers'] = $layers;
-  $map['count'] = 0;
-  $map['title'] = __('Interactive Map', 'opendev');
-  if($map['base_layer']) {
-   array_unshift($map['layers'], array(
+                if (function_exists('extended_jeo_get_layer')) {
+                    $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID()));
+                } else {
+                    $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
+                }
+
+                $layers[] = $layer;
+                wp_reset_postdata();
+            }
+        }
+
+        $map = opendev_get_interactive_map_data();
+        $map['dataReady'] = true;
+        $map['postID'] = 'interactive_map';
+        $map['layers'] = $layers;
+        $map['count'] = 0;
+        $map['title'] = __('Interactive Map', 'opendev');
+        if ($map['base_layer']) {
+            array_unshift($map['layers'], array(
     'type' => 'tilelayer',
-    'tile_url' => $map['base_layer']['url']
+    'tile_url' => $map['base_layer']['url'],
    ));
-  }
+        }
 
-  ob_start();
-  ?>
+        ob_start();
+        ?>
   <div class="interactive-map">
    <div class="map-container">
     <div id="map_interactive_map_0" class="map">
@@ -75,14 +81,18 @@ class OpenDev_InteractiveMap {
     <ul class="categories">
      <?php
       $categories = get_categories('taxonomy=layer-category');
-      foreach ($categories as $category){ ?>
+        foreach ($categories as $category) {
+            ?>
 
-        <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?> cat-<?php echo $category->slug?>">
+        <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo 'cat-item cat-item-'.$category->cat_ID ?> cat-<?php echo $category->slug?>">
           <span class="category-color">&nbsp;</span>
-          <a href="#"><?php echo $category->cat_name; ?></a>
+          <a href="#"><?php echo $category->cat_name;
+            ?></a>
 
         </li>
-     <?php } ?>
+     <?php
+        }
+        ?>
     </ul>
    </div>
 
@@ -161,9 +171,11 @@ class OpenDev_InteractiveMap {
     }
 
     var $layer_toggles;
-    var term_rel = <?php echo json_encode($parsed_cats); ?>;
+    var term_rel = <?php echo json_encode($parsed_cats);
+        ?>;
     var jeo_map;
-    jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
+    jeo(jeo.parseConf(<?php echo json_encode($map);
+        ?>));
 
     function enableAllLayers() {
      console.log("enableAllLayer");
@@ -314,9 +326,9 @@ class OpenDev_InteractiveMap {
   </script>
   <?php
   $html = ob_get_clean();
-  return $html;
- }
 
+        return $html;
+    }
 }
 
 new OpenDev_InteractiveMap();

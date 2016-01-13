@@ -1,0 +1,36 @@
+.leaflet-popup-content-wrapper .leaflet-popup-content{ 
+    max-width: 250px; 
+    word-wrap: break-word;
+}                                    
+ 
+.leaflet-container a.leaflet-popup-close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 4px 0 0;
+    text-align: center;
+    width: 20px;
+    height: 20px;  
+    text-decoration: none;
+    font-weight: 700;                      
+    display: inline !important;
+    background-image: url(icons-000000@2x.png);  
+    background-size: 26px 260px; 
+    background-position: 0 -58px;
+}
+.leaflet-popup-tip-container {
+    width: 40px; 
+}
+.leaflet-popup-tip {
+	width: 17px;
+	height: 17px;
+	padding: 1px;
+
+	margin: -10px auto 0;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	     -o-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
