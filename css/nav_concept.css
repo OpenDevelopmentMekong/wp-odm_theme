@@ -455,8 +455,6 @@ header#od-head .icon-od-logo {
 #od-head {
   padding: 10px 0 0;
   background: #292d56;
-  /*position: fixed;
-  height: 70px;      */
   width: 100%;
   z-index: 9988;
 }
