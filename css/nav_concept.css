@@ -456,6 +456,8 @@ header#od-head .icon-od-logo {
   background: #292d56;
   width: 100%;
   z-index: 9988;
+  min-height: 55px;
+  height: 70px;
 }
 
 #od-head .container{height: inherit;}
@@ -560,5 +562,5 @@ footer#colophon{
   }
   .container .five.social {
     left: 23px;
-  } 
+  }
 }

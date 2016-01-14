@@ -52,30 +52,13 @@
   <div class="content_wrapper">
 	<header class="white"id="od-head">
 		<div class="container">
-			<div class="six columns organization">
+			<div class="five columns organization">
 				<div class="site-meta">
-					<?php opendev_logo(); ?>
-					<?php
-                    if (is_multisite()) {
-                        $sites = wp_get_sites();
-                        if (!empty($sites)) {
-                            $current = get_current_blog_id();
-                            $name = str_replace('Open Development ', '', get_bloginfo('name'));
-                            $logo = opendev_get_logo();
-                            if ($logo) {
-                                $name = $logo;
-                            }
-                            echo '<div class="ms-dropdown-title">';
-                            echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
-                            echo '</div>';
-                        }
-                    }
-                    ?>
+          <?php opendev_logo(); ?>
 				</div>
 			</div>
 			<div class="five columns align-right social">
         <nav id="social-nav">
-
           <?php
                         $fb = opendev_get_facebook_url();
                         if ($fb) :
@@ -107,19 +90,19 @@
         </nav>
 
         <div id="live-search">
-          		<div class="container">
-          			<div class="three columns align-right">
-          				<input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
-          				<img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-          		    </div>
-                      <div class="results-container"></div>
-          		</div>
-          	</div><!-- live-search -->
+          <div class="container">
+            <div class="three columns align-right">
+              <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
+              <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
+              </div>
+                  <div class="results-container"></div>
+          </div>
+        </div><!-- live-search -->
+
   		</div>
-			</div><!-- four column -->
 
+		</div><!-- four column -->
 
-		<!-- #################### -->
 		<!-- NEW NAV -->
 		<div class="contentNavigation">
 

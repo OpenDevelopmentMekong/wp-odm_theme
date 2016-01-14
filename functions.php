@@ -269,32 +269,31 @@ function opendev_logo()
 {
     $logo = opendev_get_logo();
 
-    if ($logo && !is_multisite()) {
-        ?>
-  <h1 class="with-logo">
-   <a href="<?php echo home_url('/');
-        ?>" title="<?php bloginfo('name');
-        ?>">
-    <?php bloginfo('name');
-        ?>
-    <?php echo $logo;
-        ?>
-   </a>
-  </h1>
-  <?php
-
+    if (is_multisite()) {
+      $sites = wp_get_sites();
+      if (!empty($sites)) {
+        $current = get_current_blog_id();
+        $name = str_replace('Open Development ', '', get_bloginfo('name'));
+        $logo = opendev_get_logo();
+        if ($logo) {
+            $name = $logo;
+        }
+        echo '<div class="ms-dropdown-title">';
+        echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
+        echo '</div>';
+      }
     } else {
         ?>
-  <h1>
-   <a href="<?php echo home_url('/');
-        ?>" title="<?php bloginfo('name');
-        ?>">
-    <?php // bloginfo('name'); ?>
-    <span class="icon-od-logo"></span>
-    Op<sup>e</sup>nDevelopment
-   </a>
-  </h1>
-  <?php
+      <h1>
+       <a href="<?php echo home_url('/');
+            ?>" title="<?php bloginfo('name');
+            ?>">
+        <?php // bloginfo('name'); ?>
+        <span class="icon-od-logo"></span>
+        Op<sup>e</sup>nDevelopment
+       </a>
+      </h1>
+        <?php
 
     }
 }
