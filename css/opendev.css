@@ -223,11 +223,10 @@ a.button:hover{
 
 #od-head h1 {
  font-family: 'Droid Serif' !important;
- font-size: 48px;
- line-height: 48px;
- margin: 0 24px 0 0;
- font-family: 700;
- letter-spacing: -4px;
+ font-size: 48px !important;
+ line-height: 48px !important;
+ font-family: 700 !important;
+ letter-spacing: -4px !important;
  float: left;
 }
 
@@ -319,6 +318,7 @@ a.button:hover{
 
 #od-head #social-nav {
  float: right;
+ padding-left: 0px !important;
 }
 
 #od-head #social-nav a {
