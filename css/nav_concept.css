@@ -175,18 +175,12 @@
 .mainNav-inner .level1 li:hover a{color: white;}
 .mainNav-inner .level1 li:hover {background: #373c6a;}
 
+#od-head h1{
+  margin-right: 15px;
+}
 #od-head h2.side-title{
   margin-top: 6px;
 }
-/*level 1 active*/
-
-
-/*#cNavNew.level1>li.cur>a, .white #cNavNew.level1>li.act>a{background: red;}*/
-
-
-/*sub-nav oben*/
-
-
 /*level 2*/
 
 li.top-topic {
