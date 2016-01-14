@@ -43,6 +43,9 @@ Template Name: Laws page
           </thead>
           <tbody
             <?php foreach ($laws["wpckan_dataset_list"] as $law_record): ?>
+              <?php if (IsNullOrEmptyString($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'])){
+                continue;
+              }?>
               <tr>
                 <td class="law_odm_document_type">
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];?>
@@ -188,9 +191,9 @@ jQuery(document).ready(function($) {
         page:'current'
       }
     ).data().each( function ( group, i ) {
-        if ( last !== group ) {
+        if ( last !== group && mapGroupLabel[group] ) {
           $(rows).eq( i ).before(
-              '<tr class="group"><td colspan="5">'+mapGroupLabel[group]+'</td></tr>'
+            '<tr class="group"><td colspan="5">'+mapGroupLabel[group]+'</td></tr>'
           );
           last = group;
         }
