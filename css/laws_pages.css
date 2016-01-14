@@ -61,29 +61,17 @@
   font-size: 10px ;
 }
 
-.no-padd{
-  margin: 0px;
+.info{
+  float:left;
+  margin-right: 10px;
 }
-
-.pagination{
-  text-align: right;
-}
-
-.paginate_button{
-  padding-right: 2px;
-}
-
 .length{
+  float:right;
   margin-right: 10px;
 }
 
-.bottom{
-  padding-top: 10px;
-}
-
-.icon-envelop{
-  width: 18px;
-  height: 18px;
+.pagination{
+  float:right;
 }
 
 .section-title{
