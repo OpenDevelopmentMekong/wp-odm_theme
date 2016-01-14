@@ -228,7 +228,7 @@ a.button:hover{
  font-family: 700;
  letter-spacing: -4px;
  float: left;
- margin: 0 24px;
+ margin: 0 24px 0px 0px;
 }
 
 #od-head h1 sup {

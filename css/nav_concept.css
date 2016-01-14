@@ -478,18 +478,7 @@ header#od-head .icon-od-logo {
 
 #od-head .container{height: inherit;}
 
-.container.six.organization, .container .six.columns{width: 600px;}
-  /*div.six.columns.organization{margin-left: 60px!important;}*/
 
-.social{
-  position: relative;
-  bottom: 55px;
-}
-.contentNavigation{
-  position: relative;
-  bottom: 44px;
-  /*overflow: hidden;*/
-}
 
 .category-container{
   margin-top:150px;
@@ -546,36 +535,4 @@ od-head #social-nav{padding-left: 64px;}
 footer#colophon{
   overflow: hidden;
   background: #373c6a;
-  }
-
-
-/*responsive stuff*/
-@media only screen and (min-width: 1280px){
-.container .five.social,.container .six.columns,.contentNavigation{ position: static;}
-.container .six.columns {width: 600px!important;}
-.container .five.social{width: 490px;}
-#od-head #social-nav{padding-left: 94px;}
-.container .twelve.columns {
-    /*width: 1120px;*/
-    /*margin-left: 60px;*/
-  }
-}
-
-@media only screen and (min-width: 960px) and (max-width: 1359px) {
-  #od-head #social-nav{
-    padding-left: 64px;
-  }
-
-  .contentNavigation{
-    bottom:0px;
-  }
-  .white #cNavNew.level1{
-    /*bottom:45px;*/
-  }
-  .container .five.social, .container .six.columns, .contentNavigation{
-    /*position: relative;*/
-  }
-  .container .five.social {
-    left: 23px;
-  }
 }
