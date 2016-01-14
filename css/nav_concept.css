@@ -270,9 +270,7 @@ li.top-topic {
   background-repeat: repeat;
   margin-top: 0;
 }
-.container {
-  margin-left: 40px;
-}
+
 .clearfix:after {
   content: ".";
   display: block;
