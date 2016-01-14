@@ -1169,78 +1169,79 @@ a.button:hover{
  z-index: 10;
  border-left: 1px solid #ccc;
  box-sizing: border-box;
- overflow: hidden;  
+ overflow: hidden;
 }
 .sticky-posts:hover{
     overflow-y: auto;
 }
 .sticky-posts .sticky-item:first-child{
-    
+
 }
 .sticky-posts .sticky-item {
 /*  height: 12%; */
  width: 100%;
- border-right: 1px solid #ccc; 
+ border-right: 1px solid #ccc;
  border-bottom: 1px solid #ccc;
  box-sizing: border-box;
- cursor: pointer; 
-}  
+ cursor: pointer;
+ display: inline-block;
+}
 .sticky-posts .sticky-item:last-child {
  border-bottom: 0;
-}      
+}
 .sticky-posts .sticky-item:nth-child(2),
 .sticky-posts .sticky-item:nth-child(3),
-.sticky-posts .sticky-item:nth-child(4){   
+.sticky-posts .sticky-item:nth-child(4){
     display: table-cell;
     width: 33.33%;
     display: inline;
     float: left;
     height: 70%;
-    
-} 
-.sticky-posts .sticky-item:nth-child(4){ 
+
+}
+.sticky-posts .sticky-item:nth-child(4){
     border-right: 0;
     float: right;
 }
-.sticky-posts .sticky-item:nth-child(5){ 
+.sticky-posts .sticky-item:nth-child(5){
      clear-left: both;
      width: 50%;
      display: table-cell;
-} 
-.sticky-posts .sticky-item:nth-child(n+5){ 
+}
+.sticky-posts .sticky-item:nth-child(n+5){
      width: 50%;
      height: 35%;
      float: left;
 }
 
 .sticky-posts .two_per_row:nth-child(even){
-    border-right: 0; 
-}   
+    border-right: 0;
+}
 .sticky-posts .sticky-item article {
  padding: 0 0 15px 20px;
 }
-.sticky-posts .sticky-item:first-child article .post-area:first-child{ 
-    height: 140px;          
+.sticky-posts .sticky-item:first-child article .post-area:first-child{
+    height: 100%;
     padding:1em 0.3em 0;
 }
 .sticky-posts .sticky-item article .post-area{
-    padding:1em 0.3em 0; 
+    padding:1em 0.3em 0;
 }
 .sticky-posts .sticky-item:first-child article .post-thumbnail {
  display: block;
 }
-.sticky-posts .sticky-item:first-child article .post-thumbnail img {  
- float: right; 
+.sticky-posts .sticky-item:first-child article .post-thumbnail img {
+ float: right;
  width: 300px;
  height: 100%;
  margin: -15px -5px 0px 1em;
- 
+
 }
 .sticky-posts .sticky-item article .post-thumbnail img {
  display: block;
  width: 100%;
- height: 150px;     
- margin: 0 0 5% 0; 
+ height: 150px;
+ margin: 0 0 5% 0;
 }
 
 .sticky-posts .sticky-item article h3 {
@@ -1263,9 +1264,9 @@ a.button:hover{
  margin-bottom: 5px;
 }
 .sticky-posts .sticky-item article .post-content{
- /* display: none; */ 
-    margin-top: 0.5em; 
-    margin-bottom: 0.3em 
+ /* display: none; */
+    margin-top: 0.5em;
+    margin-bottom: 0.3em
 }
 
 .sticky-posts .sticky-item article .post-actions{
@@ -1328,9 +1329,9 @@ a.button:hover{
  margin-top: 8px;
 }
 .sticky-posts .sticky-item article .post-actions .button{
-    background: none;     
-    padding:0 5px; 
-} 
+    background: none;
+    padding:0 5px;
+}
 .sticky-posts .sticky-item:nth-child(n+5) .post-thumbnail{
     display: none;
 }
@@ -1458,7 +1459,7 @@ a.button:hover{
  width: auto;
  height: auto;
  padding: 6px;
-} 
+}
 .map-sidebar img:first-child{
     padding:0;
 }
@@ -2809,7 +2810,7 @@ ul#menu-header-menu{
     margin: 1em 0 0;
     text-align:center;
     font-size: 15px;
-} 
+}
 
 
 @media screen and (max-width: 1020px) {

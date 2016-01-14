@@ -1,37 +1,32 @@
 <script>
-    (function($){
+    (function($){  
         $(window).load(function(){
             $(".scroll-sticky-posts").mCustomScrollbar({
                  axis:"y",
                  theme:"dark",
                  autoHideScrollbar: 1
-            }); 
-            var highestBox = 0;             
-            $(".three_per_row").each(function(){     
-                if($(this).height() > highestBox) 
-                   highestBox = $(this).height(); 
-            });                                                
-            $(".three_per_row").height(highestBox);  
-            
-            // Set of the two colum of each posts items in News Container equal height
-            for(var i = 1; i <= $(".two_per_row").length; i+=2) {
-                var next = i+1; 
-                var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
-                $(".two_per_row"+i).height(highestCol);                                                    
-                $(".two_per_row"+next).height(highestCol);
-            }
-           /*  $(".two_per_row").each(function(){
+            });
+            var highestBox = 0;
+            $(".three_per_row").each(function(){
                 if($(this).height() > highestBox)
                    highestBox = $(this).height();
             });
-            $(".two_per_row").height(highestBox); */
-            
+            $(".three_per_row").height(highestBox);
+
+            // Set of the two colum of each posts items in News Container equal height
+            for(var i = 1; i <= $(".two_per_row").length; i+=2) {
+                var next = i+1;
+                var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
+                $(".two_per_row"+i).height(highestCol);
+                $(".two_per_row"+next).height(highestCol);
+            }
+
         });
     })(jQuery);
 </script>
- 
+
 <?php
-// some parts in code were commented because the news container won't filter by country news any more 
+// some parts in code were commented because the news container won't filter by country news any more
 /* $options_news_tags = get_option('opendev_options');
 if ($options_news_tags['news_tags']) {
     $filter_by_tags = preg_replace('/,$/', '', $options_news_tags['news_tags']);
@@ -50,15 +45,15 @@ if ($options_news_tags['news_tags']) {
         'caller_get_posts' => 0,
     	'ignore_sticky_posts' => 1
     ));
-    $number_sticky_post = 0;  
-    $number_two_item_in_column = 0;  
+    $number_sticky_post = 0;
+    $number_two_item_in_column = 0;
     $number_item = 0; //count number of posts
-  ?> 
-	<div class="sticky-posts scroll-sticky-posts" id="sticky-tag-<?php echo strtolower($tag_name);?>"  data-mcs-theme="dark">   
+  ?>
+	<div class="sticky-posts scroll-sticky-posts" id="sticky-tag-<?php echo strtolower($tag_name);?>"  data-mcs-theme="dark">
         <?php if($sticky->have_posts()) :?>
             <?php while($sticky->have_posts()) : $sticky->the_post(); ?>
                 <?php if (!is_sticky()) continue; ?>
-                <?php $number_sticky_post++; ?> 
+                <?php $number_sticky_post++; ?>
                 <?php
                     $number_item++;
                     if($number_item > 1 && $number_item <= 4 ){
@@ -71,7 +66,7 @@ if ($options_news_tags['news_tags']) {
                              $group_sticky_item = "";
                       }
                 ?>
-                <div class="sticky-item <?php echo $group_sticky_item . $group_sticky_item_index; ?>" data-postid="<?php the_ID(); ?>">
+                <div class="sticky-item<?php echo $group_sticky_item . $group_sticky_item_index; ?>" id="<?php the_ID(); ?>" data-postid="<?php the_ID(); ?>">
                     <article id="sticky-post-<?php the_ID(); ?>" <?php post_class(); ?>>
                      <div class="post-area">
                           <header class="post-header">
@@ -109,19 +104,19 @@ if ($options_news_tags['news_tags']) {
                 					?>
             					</div>
                           </header>
-                          <section class="post-content">      
+                          <section class="post-content">
                               <?php
                                if($post->post_excerpt) the_excerpt();
                                else echo excerpt(20);
                               ?>
                           </section>
                      </div>
-                     <footer class="post-actions"> 
-                          <a class="button" href="<?php the_permalink(); ?>">             
+                     <footer class="post-actions">
+                          <a class="button" href="<?php the_permalink(); ?>">
                           <img src="<?php echo get_stylesheet_directory_uri()?>/img/info-icon.png"/>
                           <?php //_e('Read more', 'opendev'); ?></a>
                           <a class="button share-button" href="<?php echo jeo_get_share_url(array('p' => get_the_ID())); ?>">
-                          <img src=<?php get_stylesheet_directory_uri()?>"/img/share-icon.png"/> 
+                          <img src=<?php get_stylesheet_directory_uri()?>"/img/share-icon.png"/>
                           <?php //_e('Share', 'opendev'); ?></a>
                      </footer>
                     </article>
@@ -143,20 +138,20 @@ if ($options_news_tags['news_tags']) {
             ?>
 		<!-- List lastest posts that is not sticky -->
 		<?php  if($latest_post->have_posts()) :?>
-           <?php while($latest_post->have_posts()) : $latest_post->the_post(); ?>     
+           <?php while($latest_post->have_posts()) : $latest_post->the_post(); ?>
                <?php
-                    $number_item++; 
+                    $number_item++;
                     if($number_item > 1 && $number_item <= 4 ){
                              $group_sticky_item = " three_per_row";
                       }else if ($number_item > 4){
                               $number_two_item_in_column = $number_two_item_in_column +1;
-                              $group_sticky_item = " two_per_row"; 
-                              $group_sticky_item_index = " two_per_row".$number_two_item_in_column; 
+                              $group_sticky_item = " two_per_row";
+                              $group_sticky_item_index = " two_per_row".$number_two_item_in_column;
                       }else {
                              $group_sticky_item = "";
                       }
                 ?>
-                <div class="sticky-item <?php echo $group_sticky_item . $group_sticky_item_index; ?>" data-postid="<?php the_ID(); ?>">
+                <div class="sticky-item<?php echo $group_sticky_item . $group_sticky_item_index; ?>" id="<?php the_ID(); ?>"  data-postid="<?php the_ID(); ?>">
                     <article id="sticky-post-<?php the_ID(); ?>" <?php post_class(); ?>>
                      <div class="post-area">
                           <header class="post-header">
@@ -177,7 +172,7 @@ if ($options_news_tags['news_tags']) {
 
                                     if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
                                         if ($terms_news_sources){
-                					        $news_sources = "";          
+                					        $news_sources = "";
                                             echo '<span class="icon-news"></span> ';
                         					foreach ($terms_news_sources as $term) {
                     							$term_link = get_term_link( $term, 'news_source' );
@@ -199,12 +194,12 @@ if ($options_news_tags['news_tags']) {
                           <section class="post-content">
                             <?php
                                if($post->post_excerpt) the_excerpt();
-                               else echo excerpt(20);        
-                            ?> 
+                               else echo excerpt(20);
+                            ?>
                           </section>
                      </div>
-                     <footer class="post-actions">    
-                          <a class="button" href="<?php the_permalink(); ?>">                                   
+                     <footer class="post-actions">
+                          <a class="button" href="<?php the_permalink(); ?>">
                           <img src="<?php echo get_stylesheet_directory_uri()?>/img/info-icon.png"/>
                           <?php // _e('Read more', 'opendev'); ?></a>
                           <a class="button share-button" href="<?php echo jeo_get_share_url(array('p' => get_the_ID())); ?>">
@@ -215,5 +210,10 @@ if ($options_news_tags['news_tags']) {
                </div>
            <?php endwhile; ?>
        <?php endif; ?>
-       </div> <!-- sticky-posts -->    
+       </div> <!-- sticky-posts -->
 <?php //} //filter_by_tag  ?>
+<script>
+    (function($) { 
+        $('.sticky-posts .sticky-item:first').addClass('sticky-posts-active');
+	})(jQuery);
+   </script>
