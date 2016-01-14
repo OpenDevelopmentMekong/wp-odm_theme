@@ -52,7 +52,7 @@
   <div class="content_wrapper">
 	<header class="white"id="od-head">
 		<div class="container">
-			<div class="six columns organization">
+			<div class="seven columns organization">
 				<div class="site-meta">
           <?php opendev_logo(); ?>
 				</div>
