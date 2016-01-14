@@ -52,12 +52,12 @@
   <div class="content_wrapper">
 	<header class="white"id="od-head">
 		<div class="container">
-			<div class="five columns organization">
+			<div class="six columns organization">
 				<div class="site-meta">
           <?php opendev_logo(); ?>
 				</div>
 			</div>
-			<div class="five columns align-right social">
+			<div class="four columns align-right social">
         <nav id="social-nav">
           <?php
                         $fb = opendev_get_facebook_url();
