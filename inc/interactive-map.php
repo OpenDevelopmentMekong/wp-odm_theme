@@ -262,8 +262,20 @@ class OpenDev_InteractiveMap {
           var category_id=$(this).closest('.cat-item').data( "category" );
           var category_container=$('.map-active-layers .active-layer[data-category="'+ category_id +'"]');
           var layer=$(this).closest('li.layer-item');
-          category_container.append(layer.clone());
-          var layer_status=$('.map-active-layers').find('.active-layer[data-category="'+ category_id +'"] li.layer-item div.layer-status').addClass('active');
+          var layer_id=layer.data('layer');
+
+
+
+          if ($(this).hasClass('active')==false)
+            {
+              // $(this).closest('.layer-status').addClass('active');
+              category_container.append(layer.clone().addClass('active'));
+              var layer_status=$('.map-active-layers').find('.active-layer[data-category="'+ category_id +'"] li.layer-item div.layer-status').addClass('active');
+
+            }
+          else{
+            $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
+          }
           // category_container.
           console.log(layer_status);
           // console.log(term_rel);
