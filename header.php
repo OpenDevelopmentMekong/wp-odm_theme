@@ -57,7 +57,7 @@
           <?php opendev_logo(); ?>
 				</div>
 			</div>
-			<div class="five columns social">
+			<div class="five columns social align-right">
         <nav id="social-nav">
           <?php
                         $fb = opendev_get_facebook_url();

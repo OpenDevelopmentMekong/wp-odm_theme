@@ -3,6 +3,17 @@
 
 /* boilerplate code*/
 
+@font-face {
+  font-family: 'Droid Serif';
+  src: url('fonts/droidserif_regular/DroidSerif-Regular-webfont.eot');
+  src: url('fonts/droidserif_regular/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/droidserif_regular/DroidSerif-Regular-webfont.woff') format('woff'),
+       url('fonts/droidserif_regular/DroidSerif-Regular-webfont.ttf') format('truetype'),
+       url('fonts/droidserif_regular/DroidSerif-Regular-webfont.svg#droid_serifregular') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}
 
 .nav_concept_spacer{
   width:100%;
