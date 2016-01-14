@@ -333,6 +333,10 @@ a.button:hover{
  color: #fff;
 }
 
+#od-head #social-nav img {
+  width: 18px;
+  height: 18px;
+}
 /*
  * Header MS nav
  */
