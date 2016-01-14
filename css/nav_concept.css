@@ -316,6 +316,10 @@ li.top-topic {
   top:8px;
 }
 
+.admin-bar .mainNav-logo{
+  top:40px;
+}
+
 .icon-od-logo{font-size: inherit;}
 .icon-od-logo {
   font-family: 'icomoon';
