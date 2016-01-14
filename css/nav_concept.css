@@ -480,8 +480,8 @@ header#od-head .icon-od-logo {
 
 .container.six.organization, .container .six.columns{width: 600px;}
   /*div.six.columns.organization{margin-left: 60px!important;}*/
-.container .five.social{width: 490px;}
-.five.social{
+
+.social{
   position: relative;
   bottom: 55px;
 }
@@ -509,13 +509,14 @@ header#od-head .icon-od-logo {
 /*social*/
 #od-head #social-nav {
   float: left;
+  margin-right: 10px;
 }
 /*live search*/
 #live-search{
   width: 200px;
   display: inline-block;
   clear: none;
-  float: none;
+  float: right;
   margin: 0;
 }
 
