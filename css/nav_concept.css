@@ -492,9 +492,7 @@ header#od-head .icon-od-logo {
 
 /*social*/
 #od-head #social-nav {
-    float: left;
-    min-width: 178px;
-    padding-left: 65px;
+  float: left;
 }
 /*live search*/
 #live-search{
@@ -504,12 +502,12 @@ header#od-head .icon-od-logo {
   float: none;
   margin: 0;
 }
-  #live-search .container{
-    position: static;
-    width: 200px;
-    margin-left: 80px;
-    margin-top: 10px;
-  }
+
+#live-search .container{
+  position: static;
+  width: 200px;
+  margin-top: 10px;
+}
 
     #live-search input[type=text]{width: 180px;}
 
