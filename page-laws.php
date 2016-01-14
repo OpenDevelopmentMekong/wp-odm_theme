@@ -188,6 +188,7 @@ jQuery(document).ready(function($) {
         page:'current'
       }
     ).data().each( function ( group, i ) {
+       console.log(group);
         if ( last !== group && mapGroupLabel[group] ) {
           $(rows).eq( i ).before(
             '<tr class="group"><td colspan="5">'+mapGroupLabel[group]+'</td></tr>'
