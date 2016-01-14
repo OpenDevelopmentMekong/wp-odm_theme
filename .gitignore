@@ -4,3 +4,5 @@ font/opendev.ttf
 font/opendev.woff
 **/.DS_STORE
 .remote-sync.json
+**.bak
+**.bak**
