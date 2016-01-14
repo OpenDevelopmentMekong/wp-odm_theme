@@ -1,7 +1,4 @@
-/*hide wp country menu*/
 #od-head #ms-nav{display: none;}
-
-/* boilerplate code*/
 
 @font-face {
   font-family: 'Droid Serif';
@@ -20,6 +17,7 @@
   height: 80px;
   display: clear;
 }
+/* boilerplate code*/
 /*screen.css*/
 #cNavNew li {
   list-style: none;
