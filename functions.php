@@ -1036,25 +1036,40 @@ function the_breadcrumb()
 }
  /****end Breadcrumb**/
 
-//to set get_the_excerpt() limit words
-function excerpt($num = 20, $read_more = '') {
-    $limit = $num + 1;
-    $excerpt = explode(' ', get_the_excerpt(), $limit);
-    array_pop($excerpt);
-    $excerpt_string = implode(' ', $excerpt);
+ //to set get_the_excerpt() limit words
+ function excerpt($num, $read_more="") {
+   $limit = $num+1;
+   $excerpt = explode(' ', get_the_excerpt(), $limit);
+   array_pop($excerpt);
+   $excerpt_string = implode(" ", $excerpt);
+   $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
+   array_pop($excerpt_hidden_space);
+   $$excerpt_string = implode("?", $excerpt_hidden_space) ;
+   $excerpt_words = $excerpt_string. " ...";
+   if ($read_more !=""){
+    $excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." '>".$read_more."</a>)";
+   }
+         return $excerpt_words;
+ }
 
-    //$excerpt_hidden_space = explode('​', $excerpt_string, $limit);
+ function get_pages_templates_for_othersites($pages_templates) {
+     $templates = get_page_templates();
+ 	foreach ( $templates as $template_name => $template_filename ) {
+ 	    $template_files = explode ("/", $template_filename);
+ 		if(count($template_files) > 1){
+ 			if (strtolower($template_files[0]) != COUNTRY_NAME){
+ 				$template_need_to_hide[] = $template_filename;
+ 				unset( $pages_templates[$template_filename] );
+ 			}
+ 		}
+ 	}
+ 	return $pages_templates;
+ }
 
-    //array_pop($excerpt_hidden_space);
-
-    //$excerpt_string = implode('​', $excerpt_hidden_space);
-    $excerpt_words = $excerpt_string.' ...';
-    if ($read_more != '') {
-        $excerpt_words .=  " <a href='".get_permalink($post->ID)." '>".$read_more.'</a>';
-    }
-
-    return $excerpt_words;
-}
+ function hide_other_country_page_template ($pages_templates) {
+     return $pages_templates;
+ }
+ add_filter( 'theme_page_templates', 'hide_other_country_page_template' );
 
 /**
  * Allow embed iframe.
@@ -1238,5 +1253,9 @@ function getMultilingualValueOrFallback($field,$lang){
 
 }
 
+// include backend layer interface for adding wms layer into map explorer of child theme
+add_action( 'after_setup_theme', function() {
+    include(STYLESHEETPATH . '/inc/layers.php');
+}, 42 );
 
 ?>

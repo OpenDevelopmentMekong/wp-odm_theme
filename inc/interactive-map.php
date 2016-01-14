@@ -41,7 +41,11 @@ class OpenDev_InteractiveMap {
       $parsed_cats[$cat->term_id]['order'] = $key;
      }
     }
-    $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
+    if (function_exists(extended_jeo_get_layer)){
+      $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
+    }else {
+      $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
+    }
     $layers[] = $layer;
     wp_reset_postdata();
    }
