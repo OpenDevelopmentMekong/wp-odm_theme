@@ -1163,13 +1163,14 @@ a.button:hover{
 
 .sticky-posts {
  height: 100%;
- width: 102%;
+ width: 100%;
  color: #333;
  position: relative;
  z-index: 10;
  border-left: 1px solid #ccc;
  box-sizing: border-box;
  overflow: hidden;
+ padding-left: 10px;
 }
 .sticky-posts:hover{
     overflow-y: auto;
