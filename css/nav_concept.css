@@ -175,6 +175,9 @@
 .mainNav-inner .level1 li:hover a{color: white;}
 .mainNav-inner .level1 li:hover {background: #373c6a;}
 
+#od-head h2.side-title{
+  margin-top: 6px;
+}
 /*level 1 active*/
 
 
@@ -289,6 +292,11 @@ li.top-topic {
 
 /*main menu*/
 
+#mainNav,.mainNavinner,#mainNavElement{
+  width: 110px;
+}
+
+
 .mainNav-inner {
     position: absolute;
     width: 140px;
@@ -307,10 +315,13 @@ li.top-topic {
   background: #292d56;
 }
 .mainNav-logo {
-  margin: 35px 20px;
+  margin: 5px 30px;
+  margin-left: 50px;
+  margin-right: auto;
   float: none;
-  font-size: 100px;
+  font-size: 48px;
 }
+.icon-od-logo{font-size: inherit;}
 .icon-od-logo {
   font-family: 'icomoon';
 }
@@ -325,7 +336,7 @@ ul.level1 {
   padding: 0;
   list-style-type: none;
   display: block;
-  width: 140px;
+  width: inherit;
   text-align: right;
   border-top: 1px solid white;
   float: left;
@@ -355,8 +366,17 @@ ul.level1 {
 /*#############################################################################################
 ############################################################################################*/
 
+
+#od-head .organization{
+  margin-left: 0;
+  margin-top: 5px;
+}
+
+#od-head .container{
+  margin-left: 0;
+}
 .content_wrapper{
-  margin-left: 140px;
+  margin-left: 110px;
   overflow: hidden;
 
 }
