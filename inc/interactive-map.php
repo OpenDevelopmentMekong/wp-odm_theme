@@ -88,12 +88,10 @@ class OpenDev_InteractiveMap {
      <?php
       $categories = get_categories('taxonomy=layer-category');
       foreach ($categories as $category){ ?>
-
-        <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?> cat-<?php echo $category->slug?>">
-          <span class="category-color">&nbsp;</span>
-          <a href="#"><?php echo $category->cat_name; ?></a>
-
-        </li>
+          <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?> cat-<?php echo $category->slug?>">
+            <span class="category-color">&nbsp;</span>
+            <a href="#"><?php echo $category->cat_name; ?></a>
+          </li>
      <?php } ?>
     </ul>
    </div>
@@ -257,75 +255,36 @@ class OpenDev_InteractiveMap {
 
        $layer_toggles.each(function(){
         var $layer_toggle = $(this);
-         $category_length=0;
         $layer_toggle.on('click', function() {
+          var layers_active_count={};
           var category_id=$(this).closest('.cat-item').data( "category" );
           var category_container=$('.map-active-layers .active-layer[data-category="'+ category_id +'"]');
           var layer=$(this).closest('li.layer-item');
           var layer_id=layer.data('layer');
-
-
-
-          if ($(this).hasClass('active')==false)
-            {
-              // $(this).closest('.layer-status').addClass('active');
-              category_container.append(layer.clone().addClass('active'));
-              var layer_status=$('.map-active-layers').find('.active-layer[data-category="'+ category_id +'"] li.layer-item div.layer-status').addClass('active');
+          if ($(this).hasClass('active')==false){
+            category_container.append(layer.clone().addClass('active'));
+            var layer_status=$('.map-active-layers').find('.active-layer[data-category="'+ category_id +'"] li.layer-item div.layer-status').addClass('active');
 
             }
           else{
             $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
+
+            layers_active_count[category_id]=$('.map-active-layers div[data-category="'+ category_id +'"]').children('.active').length;
+            if (layers_active_count[category_id] == 0){
+              $('.map-active-layers .active-layer[data-category="'+ category_id +'"]').removeClass('active');
+            }
           }
-          // category_container.
-          console.log(layer_status);
-          // console.log(term_rel);
-          // console.log(map.filterLayers._layers.status);
-        // counting layers
-        layersD=map.filterLayers._layers.status;
-        $.each(layersD, function( index, value )
-        {  // console.log( value.ID );
-          //console.log(value.on);
-         });
-
-         $.each(term_rel, function(index, value)
-         {
-          //  console.log(index);
-          //   console.log(value);
-            // activeLayerLength={};
-
-
-         }
-       );
-      //  console.log(activeLayerLength);
-        // var countActiveLayersForCat(category_id){
-        //   var countActive = 0;
-        //   for( var layer in term_rel[category_id){
-        //      if (status[layer.id] == "active"){
-        //         countActive++;
-        //
-        //   }
-        // }
-
-        //
-        //  $category_length=$('.cat-item[data-category="'+ category_id +'"] div.layer-status.active').length;
-
 
          map.filterLayers._switchLayer($(this).parent().data('layer'));
          if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
-          ++$category_length;
           $(this).addClass('active');
           $(this).parent().find('.layer-status').addClass('active');
           $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
-          console.log($category_length)
+
 
          } else {
-          --$category_length;
           $(this).removeClass('active');
           $(this).parent().find('.layer-status').removeClass('active');
-          console.log($category_length);
-          // if ($category_length == 0 ){
-          //   $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
-          // }
          }
        })
        });
