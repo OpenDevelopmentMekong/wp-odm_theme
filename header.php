@@ -52,7 +52,7 @@
   <div class="content_wrapper">
 	<header class="white"id="od-head">
 		<div class="container">
-			<div class="seven columns organization">
+			<div class="six columns organization">
 				<div class="site-meta">
           <?php opendev_logo(); ?>
 				</div>
@@ -93,8 +93,8 @@
             <div class="three columns align-right">
               <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
               <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-              </div>
-              <div class="results-container"></div>
+            </div>
+            <div class="results-container"></div>
           </div>
         </div><!-- live-search -->
 
