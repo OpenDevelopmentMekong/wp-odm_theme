@@ -315,12 +315,15 @@ li.top-topic {
   background: #292d56;
 }
 .mainNav-logo {
-  margin: 5px 30px;
+  margin: 0 0 auto 30px;
   margin-left: 50px;
   margin-right: auto;
   float: none;
   font-size: 48px;
+  position: relative;
+  top:8px;
 }
+
 .icon-od-logo{font-size: inherit;}
 .icon-od-logo {
   font-family: 'icomoon';
@@ -556,3 +559,10 @@ footer#colophon{
   overflow: hidden;
   background: #373c6a;
 }
+
+
+/*mozilla hack for misplaced logo*/
+@-moz-document url-prefix() {
+  .mainNav-logo {
+     margin-top:-5px;
+  }
