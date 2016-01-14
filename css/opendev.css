@@ -222,12 +222,13 @@ a.button:hover{
 }
 
 #od-head h1 {
- font-family: 'Droid Serif' !important;
- font-size: 48px !important;
- line-height: 48px !important;
- font-family: 700 !important;
- letter-spacing: -4px !important;
+ font-family: 'Droid Serif';
+ font-size: 48px;
+ line-height: 48px;
+ font-family: 700;
+ letter-spacing: -4px;
  float: left;
+ margin: 0 24px;
 }
 
 #od-head h1 sup {
