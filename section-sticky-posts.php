@@ -114,7 +114,9 @@ if ($options_news_tags['news_tags']) {
               <header class="post-header">
                     <?php if(has_post_thumbnail()) : ?>
                         <div class="post-thumbnail">
-                            <?php the_post_thumbnail(array(300, 250)); ?>
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_post_thumbnail(array(300, 250)); ?>
+                            </a>
                         </div>
                    <?php endif; ?>
                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
@@ -158,17 +160,22 @@ if ($options_news_tags['news_tags']) {
          <footer class="post-actions">
               <!-- <a class="button" href="<?php the_permalink(); ?>">
               <img src="<?php // echo get_stylesheet_directory_uri()?>/img/info-icon.png"/> 
-              <?php // _e('Read more', 'opendev'); ?></a>-->                               
-              <a class="button share-button" href="<?php echo jeo_get_share_url(array('p' => get_the_ID())); ?>">
-              <img src="<?php echo get_stylesheet_directory_uri()?>/img/share-icon.png"/>
-              <?php //_e('Share', 'opendev'); ?></a>
+              <?php // _e('Read more', 'opendev'); ?></a>-->    
+             <div class="share-box">                       
+                  <div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>    
+                  <div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
+                  <div class="g-plusone" data-size="medium" data-href="<?php the_permalink(); ?>" data-count="false"></div> 
+                  <!-- <a class="button share-button" href="<?php //echo jeo_get_share_url(array('p' => get_the_ID())); ?>">
+                  <img src="<?php //echo get_stylesheet_directory_uri()?>/img/share-icon.png"/> -->
+                  <?php //_e('Share', 'opendev'); ?></a>
+              </div>
          </footer>
         </article>
 <?php
     }
 ?> 
 <script>
-    (function($) { 
-        $('.sticky-posts .sticky-item:first').addClass('sticky-posts-active');
-	})(jQuery);
-   </script>
+(function($) { 
+    $('.sticky-posts .sticky-item:first').addClass('sticky-posts-active');
+})(jQuery);
+</script>
