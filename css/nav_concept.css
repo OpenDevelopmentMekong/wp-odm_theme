@@ -551,3 +551,9 @@ footer#colophon{
   overflow: hidden;
   background: #373c6a;
 }
+
+
+/*mozilla hack for misplaced logo*/
+@-moz-document url-prefix() {
+  .mainNav-logo {
+     margin-top:-5px;
