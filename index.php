@@ -4,9 +4,6 @@
   if (is_front_page()) {
 ?>
 
-
- <div class="nav_concept_spacer"></div>
- 
  <?php
      $options = get_option('opendev_options');
     if ($options['frontpage_slider_id']) : ?>
