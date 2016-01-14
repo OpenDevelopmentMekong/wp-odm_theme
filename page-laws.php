@@ -23,9 +23,11 @@ Template Name: Laws page
   <section id="content" class="single-post">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
-					<span><h1><?php the_title(); ?></h1> <?php _e( $headline, 'sub_title_taxonomy' ); ?><span>
-				</div>
+        <div class="row">
+  				<div class="twelve columns">
+  					<span><h1><?php the_title(); ?></h1> <?php _e( $headline, 'sub_title_taxonomy' ); ?><span>
+  				</div>
+        </div>
 			</div>
 		</header>
 		<div class="container">
@@ -170,7 +172,7 @@ jQuery(document).ready(function($) {
         "targets": 0
       }
     ],
-    "dom": '<"top"<"six columns info no-padd"i><"one columns length no-padd"l><"one columns pagination no-padd"p>>rt',
+    "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
     "processing": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columns": [
