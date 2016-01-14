@@ -89,6 +89,9 @@ Template Name: Laws page
 					</div>
 					<div class="sidebar_box_wrapper">
 						<input type="text" id="search_all" placeholder="Search all Laws">
+            <?php if (!IsNullOrEmptyString($filter_odm_document_type) || !IsNullOrEmptyString($filter_odm_taxonomy)): ?>
+              <a href="/laws"><?php _e( 'Clear filter', 'clear_filter' ) ?>
+            <?php endif; ?>
 					</div>
 				</div>
 
