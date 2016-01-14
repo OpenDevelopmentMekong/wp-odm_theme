@@ -1058,7 +1058,7 @@ function excerpt($num = 20, $read_more = '') {
     //$excerpt_string = implode('​', $excerpt_hidden_space);
     $excerpt_words = $excerpt_string.' ...';
     if ($read_more != '') {
-        $excerpt_words .=  " (<a href='".get_permalink($post->ID)." '>".$read_more.'</a>)';
+        $excerpt_words .=  " <a href='".get_permalink($post->ID)." '>".$read_more.'</a>';
     }
 
     return $excerpt_words;
