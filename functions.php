@@ -267,37 +267,28 @@ function opendev_get_thumbnail($post_id = false)
 
 function opendev_logo()
 {
+  $name = "Mekong";
   if (is_multisite()) {
     $sites = wp_get_sites();
     if (!empty($sites)) {
       $current = get_current_blog_id();
       $name = str_replace('Open Development ', '', get_bloginfo('name'));
-      $logo = opendev_get_logo();
-      if ($logo) {
-          $name = $logo;
-      }?>
-      <h1>
-       <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
-        <span class="icon-od-logo"></span>
-        Op<sup>e</sup>nDevelopment
-       </a>
-      </h1>
-      <?php
-      echo '<div class="ms-dropdown-title">';
-      echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
-      echo '</div>';
     }
-  } else {
-    ?>
-      <h1>
-       <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
-        <span class="icon-od-logo"></span>
-        Op<sup>e</sup>nDevelopment
-       </a>
-      </h1>
-    <?php
-
   }
+  $logo = opendev_get_logo();
+  if ($logo) {
+      $name = $logo;
+  }?>
+  <h1>
+   <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
+    <span class="icon-od-logo"></span>
+    Op<sup>e</sup>nDevelopment
+   </a>
+  </h1>
+  <?php
+  echo '<div class="ms-dropdown-title">';
+  echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
+  echo '</div>';
 }
 
 function opendev_social_apis()
