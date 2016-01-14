@@ -217,8 +217,9 @@ a.button:hover{
  */
 
 #od-head {
- padding: 30px 0 0;
+ padding: 10px 0 0;
  background: #292d56;
+ min-height: 55px;
 }
 
 #od-head h1 {

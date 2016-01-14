@@ -57,7 +57,7 @@
           <?php opendev_logo(); ?>
 				</div>
 			</div>
-			<div class="five columns social">
+      <div class="three columns social">
         <nav id="social-nav">
           <?php
             $fb = opendev_get_facebook_url();
@@ -87,10 +87,11 @@
             endif;
           ?>
         </nav>
-
+      </div>
+			<div class="three columns social">
         <div id="live-search">
           <div class="container">
-            <div class="three columns align-right">
+            <div class="three columns">
               <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
               <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
             </div>
