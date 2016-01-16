@@ -283,7 +283,7 @@ class OpenDev_InteractiveMap {
          if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
           $(this).addClass('active');
           $(this).parent().find('.layer-status').addClass('active');
-          $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
+          $('.active-layer[data-category="'+ category_id +'"]').addClass('active'); // add listener
 
 
          } else {
@@ -293,7 +293,12 @@ class OpenDev_InteractiveMap {
        })
        });
 
-       ;
+       $(document).on('mouseover mouseout', '.map-active-layers', function(){
+         $('h2').off('click').on("click",function(){
+              alert("hallo");
+              console.log($(this));
+         });
+      });
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
