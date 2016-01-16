@@ -294,11 +294,19 @@ class OpenDev_InteractiveMap {
        });
 
        $(document).on('mouseover mouseout', '.map-active-layers', function(){
-         $('h2').off('click').on("click",function(){
-              alert("hallo");
-              console.log($(this));
-         });
-      });
+          $('h2').off('click').on("click",function(){
+               console.log($(this));
+               var layer_id=$(this).closest('.layer-item').data('layer');
+               var controlling_layer=$('.categories .cat-item .layer-item[data-layer="'+ layer_id +'"] h2');
+               controlling_layer.trigger('click');
+              //  $layer_toggle=controlling_layer;
+              //  $layer_toggle.off().trigger('click');
+               console.log(controlling_layer);
+
+               });
+
+          });
+
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
