@@ -2,6 +2,14 @@
     $wpDomain=$_SERVER["HTTP_HOST"];
     $domain='opendevelopmentmekong.net';
 
+    if($wpDomain == 'opendevelopmentmekong.net'){$country='mekong';}
+    else if ($wpDomain == 'cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
+    else if ($wpDomain == 'laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
+    else if ($wpDomain == 'myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
+    else if ($wpDomain == 'thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
+    else if ($wpDomain == 'vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
+    else {$country='mekong';$country_short='';}
+
     if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
     else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
     else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
