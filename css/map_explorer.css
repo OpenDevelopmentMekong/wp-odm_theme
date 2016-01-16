@@ -251,7 +251,7 @@
           text-align: left;
         }
 
-        .map-active-layers .active-layer.active .layer-item h2{color: red;}
+        .map-active-layers .active-layer.active .layer-item h2{color: red; font-size: 12px;}
         .map-active-layers .active-layer.layer-energy .layer-item h2{color: rgb(124,212,55);}
         .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2{color:rgb(243,165,48);}
         .map-active-layers .active-layer.layer-land .layer-item h2{color:rgb(81,144,224);}
