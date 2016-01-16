@@ -272,6 +272,14 @@
           display: block;
         }
         .map-active-layers .active-layer .layer-item .toggles, .map-active-layers .active-layer .layer-item .legend, .map-active-layers .active-layer .layer-item .layer-excerpt, .map-active-layers .active-layer .layer-item .layer-content{
-          display: none;
+          display: none!important;
         }
     .page-template-page-map-explorer footer{display: none;}
+
+
+     .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-text , .page-template-page-map-explorer .cat-layers .layer-item .toggles{
+      display: inline-block;
+
+    }
+    .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-legend,.page-template-page-map-explorer .cat-layers .layer-item .download-url{display: none;}
+/*.interactive-map-layers .layer-item .toggles,.interactive-map-layers .layer-item .toggles*/
