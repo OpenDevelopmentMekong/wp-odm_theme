@@ -1,8 +1,5 @@
 
 /*map explorer*/
-#map {
-
-}
 .page-template-page-map-explorer .interactive-map{
   border: 0;
   box-shadow: none;
@@ -27,17 +24,31 @@
 }
 
 .page-template-page-map-explorer .interactive-map .map-container {
-    width: auto !important;
-    height: auto !important;
+    width: auto;
+    height: auto;
     float: none;
     overflow: hidden;
-    position: fixed !important;
+    position: fixed;
     bottom: 0;
     left: 100px;
     right: 0;
     top: 140px;
 
   }
+
+  .page-template-page-map-explorer .interactive-map .fullscreen-map, .page-template-page-map-explorer .fullscreen-map.map-container {
+    bottom: 0;
+    height: auto !important;
+    left: 0;
+    position: fixed !important;
+    right: 0;
+    top: 0;
+    width: auto !important;
+    z-index: 9999999;
+  }
+    .page-template-page-map-explorer .interactive-map .map-container .leaflet-left{
+      left: 20px;
+    }
 
 .page-template-page-map-explorer .interactive-map-layers .categories{
   width: 100%;
@@ -201,11 +212,15 @@ map explorer*/
   }
   .map-active-layers {
       position: absolute;
-      right: 20px;
+      right: 120px;
       top: 100px;
       z-index: 200;
 
     }
+
+      .page-template-page-map-explorer .fullscreen-map.map-container .map-active-layers{
+        right:20px;
+      }
     .map-active-layers .active-layer{display: none;}
       .map-active-layers .active-layer.active{
         display: block;
