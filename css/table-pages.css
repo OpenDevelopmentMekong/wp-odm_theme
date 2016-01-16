@@ -26,15 +26,15 @@
   font-style: normal;
 }
 
-.sidebar_box_wrapper{
+.sidebar_box_content{
   padding: 10px 5px
 }
 
-.sidebar_box_wrapper ul li{
+.sidebar_box_content ul li{
   list-style: circle !important;
 }
 
-.sidebar_box_wrapper ul li a{
+.sidebar_box_content ul li a{
   color: #292D56;
 }
 
@@ -120,12 +120,12 @@ td.entry_title a{
   color: #292D56;
 }
 
-td.download_buttons span.icon-arrow-down{
+.download_buttons span.icon-arrow-down{
   position: relative;
   top:2px;
 }
 
-td.download_buttons span a{
+.download_buttons span a{
   color: white;
   text-decoration: none;
   padding: 3px 4px;
