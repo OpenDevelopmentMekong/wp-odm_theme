@@ -60,7 +60,7 @@ $ELC_DOWNLOAD_URLS = array(
     <div class="container">
       <div class="row">
   			<div class="twelve columns">
-          <div id="map"></div>
+          <div id="profiles_map"></div>
         </div>
       </div>
     </div>
@@ -205,6 +205,6 @@ jQuery(document).ready(function($) {
 <script>
   window.onload = function() {
     console.log(cartodb);
-    cartodb.createVis('map', 'https://odm.cartodb.com/api/v2/viz/f07860f2-bc4a-11e5-bea2-0ecd1babdde5/viz.json');
+    cartodb.createVis('profiles_map', 'https://odm.cartodb.com/api/v2/viz/f07860f2-bc4a-11e5-bea2-0ecd1babdde5/viz.json');
   }
 </script>
