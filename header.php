@@ -152,9 +152,12 @@
 
         </li>
 
+        <li class="one-line">
+          <a href="/map-explorer" target="_self">Map<span class="cNavState"></span></a>
+        </li>
 
         <li class="one-line">
-          <a href="/map-explorer" target="_self">Map Explorer<span class="cNavState"></span></a>
+          <a href="/economic-land-concessions" target="_self">ELC<span class="cNavState"></span></a>
         </li>
 
         <?php wp_nav_menu( array(
