@@ -32,7 +32,7 @@ Template Name: Profile page
 		<div class="container">
 			<div class="nine columns">
         <?php the_content(); ?>
-        <table class="profiles" id="profiles">
+        <table class="data_table" id="profiles">
           <thead>
             <tr>
               <th><?php _e( 'Data class', 'data_class' );?></th>
@@ -52,7 +52,7 @@ Template Name: Profile page
                 <td class="data_class">
                   <?php echo $profiles['data_class'];?>
                 </td>
-                <td class="developer">
+                <td class="entry_title">
                   <?php echo $profiles['developer'];?>
                 </td>
                 <td class="district">

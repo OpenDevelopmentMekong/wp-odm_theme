@@ -1,4 +1,4 @@
-#law_datasets{
+.data_table{
   width:100%;
   border: none;
 }
@@ -93,44 +93,34 @@
   padding: 10px 10px;
 }
 
-table.law_datasets thead{
+table.data_table thead{
   background: rgb(246,246,246);
   color: #000;
   font-size: 10px;
 }
 
-table.law_datasets tr,table.law_datasets td{
+table.data_table tr,table.data_table td{
   background: none;
   border:none;
   padding: 12px 5px;
   margin-bottom: 4px;
 }
 
-.law_datasets_download_header,.law_datasets_download_value{
+.centered_column{
   min-width: 110px;
   text-align: center;
 }
 
-.law_datasets_promulgation_date_header,.law_datasets_promulgation_date_value{
-  min-width: 110px;
-  text-align: center;
-}
-
-.law_datasets_document_number_header,.law_datasets_document_number_value{
-  min-width: 110px;
-  text-align: center;
-}
-
-td.law_title a{
+td.entry_title a{
   color: #292D56;
 }
 
-td.law_datasets_download_value span.icon-arrow-down{
+td.download_buttons span.icon-arrow-down{
   position: relative;
   top:2px;
 }
 
-td.law_datasets_download_value span a{
+td.download_buttons span a{
   color: white;
   text-decoration: none;
   padding: 3px 4px;

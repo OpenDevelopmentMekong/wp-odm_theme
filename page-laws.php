@@ -33,7 +33,7 @@ Template Name: Laws page
 		<div class="container">
 			<div class="nine columns">
         <?php the_content(); ?>
-        <table class="law_datasets" id="law_datasets">
+        <table class="data_table" id="law_datasets">
           <thead>
             <tr>
               <th><?php _e( 'Document type', 'document_type' );?></th>
@@ -44,24 +44,24 @@ Template Name: Laws page
             </tr>
           </thead>
           <tbody
-            <?php foreach ($laws["wpckan_dataset_list"] as $law_record): ?>
+            <?php foreach ($laws as $law_record): ?>
               <?php if (IsNullOrEmptyString($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'])){
                 continue;
               }?>
               <tr>
-                <td class="law_odm_document_type">
+                <td>
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];?>
                 </td>
-                <td class="law_title">
+                <td class="entry_title">
                   <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo getMultilingualValueOrFallback($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated'],$lang);?></a>
                 </td>
-                <td class="law_datasets_document_number_value">
+                <td class="centered_column">
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_number'][$lang];?>
                 </td>
-                <td class="law_datasets_promulgation_date_value">
+                <td class="centered_column">
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_promulgation_date'];?>
                 </td>
-                <td class="law_datasets_download_value">
+                <td class="centered_column download_buttons">
                     <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
                       <?php if ($resource['odm_language'][0] == 'en'){?>
                         <span><a href="<?php echo $resource['url'];?>">
@@ -181,9 +181,9 @@ jQuery(document).ready(function($) {
     "columns": [
       null,
       null,
-      { className: "law_datasets_document_number_header" },
-      { className: "law_datasets_promulgation_date_header" },
-      { className: "law_datasets_download_header" }
+      { className: "centered_column" },
+      { className: "centered_column" },
+      { className: "centered_column" }
     ],
     "order": [[ 0, 'asc' ]],
     "displayLength": 25,
