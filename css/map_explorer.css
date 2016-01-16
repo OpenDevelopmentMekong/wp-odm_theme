@@ -214,13 +214,15 @@
       height: 5px;
     }
 
-    .map-active-layers .active-layer .layer-item .layer-status.active {
+    .map-active-layers .layer-item .layer-status.active {
         background-color: red;
     }
-    .map-active-layers .active-layer.layer-energy .layer-status.active{ background: rgb(124,212,55);}
-    .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-status.active{background: rgb(243,165,48);}
-    .map-active-layers .active-layer.layer-land .layer-status.active {background: rgb(81,144,224);}
-    .map-active-layers .active-layer.layer-infrastructure .layer-status.active {background: rgb(223,0,100);}
+
+
+    .map-active-layers .layer-energy .layer-status.active, .categories .cat-energy .layer-status.active{ background: rgb(124,212,55);}
+    .map-active-layers .layer-map-environment-and-natural-resources .layer-status.active,.categories .cat-map-environment-and-natural-resources .layer-status.active{background: rgb(243,165,48);}
+    .map-active-layers .layer-land .layer-status.active, .categories .cat-land .layer-status.active {background: rgb(81,144,224);}
+    .map-active-layers .layer-infrastructure .layer-status.active,.categories .cat-infrastructure .layer-status.active {background: rgb(223,0,100);}
 
   .page-template-page-map-explorer .cat-layers .layer-excerpt,.page-template-page-map-explorer .cat-layers .layer-content,.page-template-page-map-explorer .cat-layers .layer-item .toggles{
     display: none;
@@ -255,11 +257,11 @@
           text-align: left;
         }
 
-        .map-active-layers .active-layer.active .layer-item h2{color: red; font-size: 12px;}
-        .map-active-layers .active-layer.layer-energy .layer-item h2,.cat-item.cat-energy .layer-item h2:hover{color: rgb(124,212,55);}
-        .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2,.cat-item.cat-map-environment-and-natural-resources .layer-item h2:hover{color:rgb(243,165,48);}
-        .map-active-layers .active-layer.layer-land .layer-item h2,.cat-item.cat-land .layer-item h2:hover{color:rgb(81,144,224);}
-        .map-active-layers .active-layer.layer-infrastructure .layer-item h2,.cat-item.cat-infrastructure .layer-item h2:hover{color:rgb(223,0,100);}
+        .map-active-layers .active-layer.active .layer-item h2,.map-active-layers .active-layer.active .layer-item h2:hover,.map-active-layers .active-layer.active .layer-item h2.active{color: red; font-size: 12px;}
+        .map-active-layers .active-layer.layer-energy .layer-item h2,.cat-item.cat-energy .layer-item h2:hover,.cat-item.cat-energy .layer-item h2.active{color: rgb(124,212,55);}
+        .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2,.cat-item.cat-map-environment-and-natural-resources .layer-item h2:hover,.cat-item.cat-map-environment-and-natural-resources .layer-item h2.active{color:rgb(243,165,48);}
+        .map-active-layers .active-layer.layer-land .layer-item h2,.cat-item.cat-land .layer-item h2:hover,.cat-item.cat-land .layer-item h2.active{color:rgb(81,144,224);}
+        .map-active-layers .active-layer.layer-infrastructure .layer-item h2,.cat-item.cat-infrastructure .layer-item h2:hover,.cat-item.cat-infrastructure .layer-item h2.active{color:rgb(223,0,100);}
 
       .map-active-layers .active-layer.layer-energy h6{ background: rgb(124,212,55);}
       .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{background: rgb(243,165,48);}
