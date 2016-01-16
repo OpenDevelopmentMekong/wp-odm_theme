@@ -153,7 +153,7 @@
         </li>
 
         <li class="one-line">
-          <a href="/map-explorer" target="_self">Map<span class="cNavState"></span></a>
+          <a href="/map-explorer" target="_self">Maps<span class="cNavState"></span></a>
         </li>
 
         <li class="one-line">
