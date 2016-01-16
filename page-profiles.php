@@ -36,7 +36,6 @@ $ELC_DOWNLOAD_URLS = array(
 <?php if(have_posts()) : the_post(); ?>
 
   <?php
-    $filter_dev_nation = htmlspecialchars($_GET["dev_nation"]);
 
     $lang = 'en';
     if (function_exists("qtranxf_getLanguage")){
@@ -44,7 +43,6 @@ $ELC_DOWNLOAD_URLS = array(
     }
 
     $profiles = get_elc_profiles($ELC_RESOURCE_IDS[$lang]["csv"]);
-
   ?>
 
   <section id="content" class="single-post">
@@ -52,7 +50,7 @@ $ELC_DOWNLOAD_URLS = array(
 			<div class="container">
         <div class="row">
   				<div class="twelve columns">
-  					<span><h1><?php the_title(); ?></h1> <?php _e( $headline, 'sub_title_taxonomy' ); ?><span>
+            <h1 class="align-left"><?php the_title(); ?></h1>        
   				</div>
         </div>
 			</div>

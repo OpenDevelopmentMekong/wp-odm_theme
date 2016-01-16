@@ -12,7 +12,7 @@ Template Name: Laws page
     $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]);
     $laws = get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type);
     $lang = 'en';
-    $headline = $filter_odm_taxonomy ?: 'Laws';
+    $headline = $filter_odm_taxonomy;
 
     if (function_exists("qtranxf_getLanguage")){
       $lang = qtranxf_getLanguage();
@@ -25,7 +25,8 @@ Template Name: Laws page
 			<div class="container">
         <div class="row">
   				<div class="twelve columns">
-  					<span><h1><?php the_title(); ?></h1> <?php _e( $headline, 'sub_title_taxonomy' ); ?><span>
+  					<h1 class="align-left"><?php the_title(); ?></h1>
+            <h1 class="align-left"><?php _e( $headline, 'sub_title_taxonomy' ); ?></h1>
   				</div>
         </div>
 			</div>
@@ -85,7 +86,7 @@ Template Name: Laws page
 				<div class="law_search_box">
 					<div class="sidebar_header">
 						<span class="big">
-              <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( $headline, 'sub_title_taxonomy' ); ?>
+              <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( $headline  ?: 'Laws', 'sub_title_taxonomy' ); ?>
 					</div>
 					<div class="sidebar_box_content">
 						<input type="text" id="search_all" placeholder="Search all Laws">
