@@ -114,7 +114,7 @@
   display: none;
 }
 
-map explorer*/
+
 
 .page-template-page-map-explorer .interactive-map{
   border: 0;
@@ -198,14 +198,26 @@ map explorer*/
   .layer-item h2 {
     left: 20px;
     position: relative;
+    font-size: 12px;
   }
     .layer-item .layer-status{
       left: 5px;
-     padding-bottom: 0;
-     padding-right: 0;
+      padding-bottom: 0;
+      padding-right: 0;
       position: relative;
       top: 10px;
+      width: 5px;
+      height: 5px;
     }
+
+    .map-active-layers .active-layer .layer-item .layer-status.active {
+        background-color: red;
+    }
+    .map-active-layers .active-layer.layer-energy .layer-status.active{ background: rgb(124,212,55);}
+    .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-status.active{background: rgb(243,165,48);}
+    .map-active-layers .active-layer.layer-land .layer-status.active {background: rgb(81,144,224);}
+    .map-active-layers .active-layer.layer-infrastructure .layer-status.active {background: rgb(223,0,100);}
+
   .page-template-page-map-explorer .cat-layers .layer-excerpt,.page-template-page-map-explorer .cat-layers .layer-content,.page-template-page-map-explorer .cat-layers .layer-item .toggles{
     display: none;
 
@@ -238,10 +250,17 @@ map explorer*/
           background: red;
           text-align: left;
         }
-        .map-active-layers .active-layer.layer-energy h6{ background: rgb(124,212,55);}
-        .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{background: rgb(243,165,48);}
-        .map-active-layers .active-layer.layer-land h6 {background: rgb(81,144,224);}
-        .map-active-layers .active-layer.layer-infrastructure h6 {background: rgb(223,0,100);}
+
+        .map-active-layers .active-layer.active .layer-item h2{color: red;}
+        .map-active-layers .active-layer.layer-energy .layer-item h2{color: rgb(124,212,55);}
+        .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2{color:rgb(243,165,48);}
+        .map-active-layers .active-layer.layer-land .layer-item h2{color:rgb(81,144,224);}
+        .map-active-layers .active-layer.layer-infrastructure .layer-item h2{color:rgb(223,0,100);}
+
+      .map-active-layers .active-layer.layer-energy h6{ background: rgb(124,212,55);}
+      .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{background: rgb(243,165,48);}
+      .map-active-layers .active-layer.layer-land h6 {background: rgb(81,144,224);}
+      .map-active-layers .active-layer.layer-infrastructure h6 {background: rgb(223,0,100);}
 
         .map-active-layers .active-layer .layer-item{
           display: block;
