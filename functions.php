@@ -123,12 +123,12 @@ function opendev_styles()
   wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
-  wp_register_style('laws-pages',  $css_base.'laws_pages.css');
+  wp_register_style('table-pages',  $css_base.'table-pages.css');
 
   wp_enqueue_style('mCustomScrollbar');
   wp_enqueue_style('opendev-base');
   wp_enqueue_style('nav-concept');
-  wp_enqueue_style('laws-pages');
+  wp_enqueue_style('table-pages');
   wp_enqueue_style('map-explorer');
 
   if ($options['style']) {
@@ -1167,7 +1167,14 @@ function buildTopTopicNav($lang)
 
 function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
   $shortcode = '[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="taxonomy,odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]';
-  $laws_json = do_shortcode($shortcode);
+  $laws_json = null;
+
+  try{
+    $laws_json = do_shortcode($shortcode);
+  } catch (Exception $e){
+    return [];
+  }
+
   $laws = json_decode($laws_json,true);
   foreach ($laws["wpckan_dataset_list"] as $key => $law_record){
     if (!empty($filter_odm_document_type) && $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'] != $filter_odm_document_type){
@@ -1177,7 +1184,7 @@ function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
       unset($laws["wpckan_dataset_list"][$key]);
     }
   }
-  return $laws;
+  return $laws["wpckan_dataset_list"];
 }
 
 function get_elc_profiles($dan){
