@@ -29,6 +29,13 @@ Template Name: Profile page
         </div>
 			</div>
 		</header>
+    <div class="container">
+      <div class="row">
+  			<div class="twelve columns">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
 		<div class="container">
 			<div class="nine columns">
         <?php the_content(); ?>
@@ -153,4 +160,11 @@ jQuery(document).ready(function($) {
 
 });
 
+</script>
+
+<script>
+  window.onload = function() {
+    console.log(cartodb);
+    cartodb.createVis('map', 'https://odm.cartodb.com/api/v2/viz/f07860f2-bc4a-11e5-bea2-0ecd1babdde5/viz.json');
+  }
 </script>
