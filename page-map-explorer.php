@@ -7,9 +7,11 @@ Template Name: Map explorer
 
 <?php if(have_posts()) : the_post(); ?>
 
-   <section id="map">
-    <?php echo do_shortcode('[odmap]'); ?>
-   </section>
+  <div id="map-explorer-wrapper">
+    <section id="map">
+     <?php echo do_shortcode('[odmap]'); ?>
+    </section>
+  </div>
 
 <?php endif; ?>
 

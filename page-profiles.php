@@ -60,7 +60,7 @@ $ELC_DOWNLOAD_URLS = array(
     <div class="container">
       <div class="row">
   			<div class="twelve columns">
-          <div id="map"></div>
+          <div id="profiles_map"></div>
         </div>
       </div>
     </div>
