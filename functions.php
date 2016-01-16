@@ -130,7 +130,7 @@ function opendev_styles()
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('laws-pages');
   wp_enqueue_style('map-explorer');
-  
+
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);
   }
@@ -1178,6 +1178,11 @@ function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
     }
   }
   return $laws;
+}
+
+function get_elc_profiles($dan){
+  $profiles = [];
+  return $profiles;
 }
 
 function buildStyledTopTopicListForLaws($lang)
