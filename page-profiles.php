@@ -4,27 +4,24 @@ Template Name: Profile page
 */
 
 // CONFIG
+$CKAN_DOMAIN = "data.opendevelopmentmekong.net";
 $ELC_RESOURCE_IDS = array(
   "en" => array(
-    "csv" => "7686745b-516d-4ea4-b8ad-d7dc19ad76ea",
-    "geojson" => "",
-    "kml" => ""
+    "csv" => "3b817bce-9823-493b-8429-e5233ba3bd87",
   ),
   "km" => array(
-    "csv" => "a1dd1689-f5e4-480e-9272-2bfd7e5429f1",
-    "geojson" => "",
-    "kml" => ""
+    "csv" => "a9abd771-40e9-4393-829d-2c1bc588a9a8",
   )
 );
 
 $ELC_DOWNLOAD_URLS = array(
   "en" => array(
-    "csv" => "https://pp-data.opendevelopmentmekong.net/dataset/91187871-7835-49a5-aba1-dbf60e6b0887/resource/7686745b-516d-4ea4-b8ad-d7dc19ad76ea/download/ELCtemplate---ELCen.csv",
+    "csv" => "https://data.opendevelopmentmekong.net/dataset/1cd6c00a-867b-4e90-887b-f47a55fb87a3/resource/a9abd771-40e9-4393-829d-2c1bc588a9a8/download/elckm.csv",
     "geojson" => "",
     "kml" => ""
   ),
   "km" => array(
-    "csv" => "https://pp-data.opendevelopmentmekong.net/dataset/91187871-7835-49a5-aba1-dbf60e6b0887/resource/a1dd1689-f5e4-480e-9272-2bfd7e5429f1/download/ELCtemplate---ELCkm.csv",
+    "csv" => "https://data.opendevelopmentmekong.net/dataset/1cd6c00a-867b-4e90-887b-f47a55fb87a3/resource/a9abd771-40e9-4393-829d-2c1bc588a9a8/download/elckm.csv",
     "geojson" => "",
     "kml" => ""
   )
@@ -42,7 +39,7 @@ $ELC_DOWNLOAD_URLS = array(
       $lang = qtranxf_getLanguage();
     }
 
-    $profiles = get_elc_profiles($ELC_RESOURCE_IDS[$lang]["csv"]);
+    $profiles = get_elc_profiles($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["csv"]);
   ?>
 
   <section id="content" class="single-post">
@@ -50,7 +47,7 @@ $ELC_DOWNLOAD_URLS = array(
 			<div class="container">
         <div class="row">
   				<div class="twelve columns">
-            <h1 class="align-left"><?php the_title(); ?></h1>        
+            <h1 class="align-left"><?php the_title(); ?></h1>
   				</div>
         </div>
 			</div>
@@ -68,6 +65,7 @@ $ELC_DOWNLOAD_URLS = array(
         <table class="data_table" id="profiles">
           <thead>
             <tr>
+              <th><?php _e( 'Map id', 'map_id' );?></th>
               <th><?php _e( 'Data class', 'data_class' );?></th>
               <th><?php _e( 'Developer', 'developer' );?></th>
               <th><?php _e( 'District', 'district' );?></th>
@@ -82,6 +80,9 @@ $ELC_DOWNLOAD_URLS = array(
                 continue;
               }?>
               <tr>
+                <td class="map_id">
+                  <?php echo $profile['map_id'];?>
+                </td>
                 <td class="data_class">
                   <?php echo $profile['data_class'];?>
                 </td>
@@ -141,6 +142,24 @@ $ELC_DOWNLOAD_URLS = array(
 
 <script type="text/javascript">
 
+var mapViz;
+var config = {
+	cartodbUrl: "https://odm.cartodb.com/api/v2/viz/f07860f2-bc4a-11e5-bea2-0ecd1babdde5/viz.json",
+	cartodbTable: "elc_high_res",
+	cartodbUser: "odm"
+};
+var cartodbSql = new cartodb.SQL({ user: config.cartodbUser });
+
+var filterEntriesMap = function(mapIds){
+  var layers = mapViz.getLayers();
+	var mapIdsString = "('" + mapIds.join('\',\'') + "')";
+	var sql = "SELECT * FROM " + config.cartodbTable + " WHERE map_id in " + mapIdsString;
+	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
+		mapViz.getNativeMap().fitBounds(bounds);
+	});
+	layers[1].getSubLayer(0).setSQL(sql);
+}
+
 jQuery(document).ready(function($) {
 
   console.log("profile pages init");
@@ -157,12 +176,17 @@ jQuery(document).ready(function($) {
       {
         "visible": false,
         "targets": 0
+      },
+      {
+        "visible": false,
+        "targets": 1
       }
     ],
     "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
     "processing": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columns": [
+      null,
       null,
       null,
       null,
@@ -180,29 +204,36 @@ jQuery(document).ready(function($) {
       api.column(0, {
         page:'current'
       }
-    ).data().each( function ( group, i ) {
-        if ( last !== group ) {
-          $(rows).eq( i ).before(
-            '<tr class="group"><td colspan="6">'+ group +'</td></tr>'
-          );
-          last = group;
-        }
-      });
+      ).data().each( function ( group, i ) {
+          if ( last !== group ) {
+            $(rows).eq( i ).before(
+              '<tr class="group"><td colspan="6">'+ group +'</td></tr>'
+            );
+            last = group;
+          }
+        });
     }
   });
 
   $("#search_all").keyup(function () {
     console.log("filtering page " + this.value);
     oTable.fnFilterAll(this.value);
- });
+    var filtered = oTable._('tr', {"filter":"applied"});
+    filterEntriesMap(_.pluck(filtered,'0'));
+  });
 
 });
 
-</script>
+window.onload = function() {
 
-<script>
-  window.onload = function() {
-    console.log(cartodb);
-    cartodb.createVis('profiles_map', 'https://odm.cartodb.com/api/v2/viz/f07860f2-bc4a-11e5-bea2-0ecd1babdde5/viz.json');
-  }
+	cartodb.createVis('profiles_map', config.cartodbUrl, {
+		search: false,
+		shareable: true,
+		https: true
+	}).done(function(vis, layers) {
+		mapViz = vis;
+	});
+
+}
+
 </script>
