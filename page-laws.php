@@ -87,7 +87,7 @@ Template Name: Laws page
 						<span class="big">
               <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( $headline, 'sub_title_taxonomy' ); ?>
 					</div>
-					<div class="sidebar_box_wrapper">
+					<div class="sidebar_box_content">
 						<input type="text" id="search_all" placeholder="Search all Laws">
             <?php if (!IsNullOrEmptyString($filter_odm_document_type) || !IsNullOrEmptyString($filter_odm_taxonomy)): ?>
               <a href="/laws"><?php _e( 'Clear filter', 'clear_filter' ) ?>
@@ -99,7 +99,7 @@ Template Name: Laws page
 					<div class="sidebar_header">
 						<span class="big"><?php _e( 'LAW COMPENDIUM', 'law_compendium' );?></span>
 					</div>
-					<div class="sidebar_box_wrapper">
+					<div class="sidebar_box_content">
             <?php echo buildStyledTopTopicListForLaws($lang); ?>
 					</div>
 				</div>
@@ -108,7 +108,7 @@ Template Name: Laws page
 					<div class="sidebar_header">
 						<span class="big"><?php _e( 'TYPE OF LAWS', 'type_of_laws' );?></span>
 					</div>
-					<div class="sidebar_box_wrapper">
+					<div class="sidebar_box_content">
             <ul>
               <li><a href="/laws/?odm_document_type=anukretsub-decree"><?php _e( 'Anukret/Sub-Decree', 'anukretsub-decree' );?></a></li>
               <li><a href="/laws/?odm_document_type=chbablawkram"><?php _e( 'Chbab/Law/Kram', 'chbablawkram' );?></a></li>

@@ -1187,9 +1187,11 @@ function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
   return $laws["wpckan_dataset_list"];
 }
 
-function get_elc_profiles($dan){
-  $profiles = [];
-  return $profiles;
+function get_elc_profiles($resource_id){
+  $datastore_url = "https://pp-data.opendevelopmentmekong.net/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000";
+  $json = file_get_contents($datastore_url);
+  $profiles = json_decode($json, true) ?: [];
+  return $profiles["result"]["records"];
 }
 
 function buildStyledTopTopicListForLaws($lang)

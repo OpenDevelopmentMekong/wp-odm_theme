@@ -2,6 +2,34 @@
 /*
 Template Name: Profile page
 */
+
+// CONFIG
+$ELC_RESOURCE_IDS = array(
+  "en" => array(
+    "csv" => "7686745b-516d-4ea4-b8ad-d7dc19ad76ea",
+    "geojson" => "",
+    "kml" => ""
+  ),
+  "km" => array(
+    "csv" => "a1dd1689-f5e4-480e-9272-2bfd7e5429f1",
+    "geojson" => "",
+    "kml" => ""
+  )
+);
+
+$ELC_DOWNLOAD_URLS = array(
+  "en" => array(
+    "csv" => "https://pp-data.opendevelopmentmekong.net/dataset/91187871-7835-49a5-aba1-dbf60e6b0887/resource/7686745b-516d-4ea4-b8ad-d7dc19ad76ea/download/ELCtemplate---ELCen.csv",
+    "geojson" => "",
+    "kml" => ""
+  ),
+  "km" => array(
+    "csv" => "https://pp-data.opendevelopmentmekong.net/dataset/91187871-7835-49a5-aba1-dbf60e6b0887/resource/a1dd1689-f5e4-480e-9272-2bfd7e5429f1/download/ELCtemplate---ELCkm.csv",
+    "geojson" => "",
+    "kml" => ""
+  )
+);
+
 ?>
 <?php get_header(); ?>
 
@@ -15,7 +43,7 @@ Template Name: Profile page
       $lang = qtranxf_getLanguage();
     }
 
-    $profiles = get_elc_profiles($lang);
+    $profiles = get_elc_profiles($ELC_RESOURCE_IDS[$lang]["csv"]);
 
   ?>
 
@@ -57,22 +85,22 @@ Template Name: Profile page
               }?>
               <tr>
                 <td class="data_class">
-                  <?php echo $profiles['data_class'];?>
+                  <?php echo $profile['data_class'];?>
                 </td>
                 <td class="entry_title">
-                  <?php echo $profiles['developer'];?>
+                  <?php echo $profile['developer'];?>
                 </td>
                 <td class="district">
-                  <?php echo $profiles['district'];?>
+                  <?php echo $profile['district'];?>
                 </td>
                 <td class="contract_0">
-                  <?php echo $profiles['contract_0'];?>
+                  <?php echo $profile['contract_0'];?>
                 </td>
                 <td class="original_s">
-                  <?php echo $profiles['original_s'];?>
+                  <?php echo $profile['original_s'];?>
                 </td>
                 <td class="dev_nation">
-                  <?php echo $profiles['dev_nation'];?>
+                  <?php echo $profile['dev_nation'];?>
                 </td>
               </tr>
     				<?php endforeach; ?>
@@ -91,6 +119,18 @@ Template Name: Profile page
             <?php if (!IsNullOrEmptyString($filter_dev_nation)): ?>
               <a href="/profile"><?php _e( 'Clear filter', 'clear_filter' ) ?>
             <?php endif; ?>
+					</div>
+				</div>
+
+        <div class="sidebar_box">
+					<div class="sidebar_header">
+						<span class="big">
+              <?php _e( 'DOWNLOAD', 'search' );?></span>
+					</div>
+					<div class="sidebar_box_content download_buttons">
+						<?php foreach ($ELC_DOWNLOAD_URLS[$lang] as $key => $value) : ?>
+              <span><a href="<?php echo $value; ?>"><?php echo $key; ?></a></span>
+						<?php endforeach; ?>
 					</div>
 				</div>
 
@@ -145,7 +185,7 @@ jQuery(document).ready(function($) {
     ).data().each( function ( group, i ) {
         if ( last !== group ) {
           $(rows).eq( i ).before(
-            '<tr class="group"><td colspan="5">'+ group +'</td></tr>'
+            '<tr class="group"><td colspan="6">'+ group +'</td></tr>'
           );
           last = group;
         }
