@@ -5,11 +5,7 @@
   box-shadow: none;
   position: relative;
   top: 60px;
-  /*margin-top: 60px;*/
-  /*overflow: hidden;*/
-  /*height: 100%;
-  -webkit-box-sizing:border-box;*/
-  /*overflow-y: hidden;*/
+
 
 }
 .page-template-page-map-explorer .interactive-map-layers {
@@ -217,6 +213,12 @@ map explorer*/
       z-index: 200;
 
     }
+
+    .map-active-layers-inner{
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
 
       .page-template-page-map-explorer .fullscreen-map.map-container .map-active-layers{
         right:20px;
