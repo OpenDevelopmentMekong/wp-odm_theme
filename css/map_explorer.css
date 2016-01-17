@@ -272,7 +272,7 @@
           display: block;
         }
         .map-active-layers .active-layer .layer-item .toggles, .map-active-layers .active-layer .layer-item .legend, .map-active-layers .active-layer .layer-item .layer-excerpt, .map-active-layers .active-layer .layer-item .layer-content{
-          display: none!important;
+          display: none;
         }
     .page-template-page-map-explorer footer{display: none;}
 
@@ -281,5 +281,20 @@
       display: inline-block;
 
     }
-    .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-legend,.page-template-page-map-explorer .cat-layers .layer-item .download-url{display: none;}
-/*.interactive-map-layers .layer-item .toggles,.interactive-map-layers .layer-item .toggles*/
+    .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-legend,.page-template-page-map-explorer .cat-layers .layer-item .download-url{display: none!important;}
+
+    .page-template-page-map-explorer .layer-item .toggles a{
+      border: 0;
+    }
+
+    .page-template-page-map-explorer .layer-item .toggles .toggle-text > img{
+      height: 12px;
+      width: auto;
+    }
+
+    .page-template-page-map-explorer .layer-item .toggles .toggle-text {
+    bottom: 40px;
+    left: 160px;
+    position: relative;
+    width: 5px;
+    }
