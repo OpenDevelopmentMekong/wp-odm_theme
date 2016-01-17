@@ -180,6 +180,8 @@
   margin-left: 0;
   padding-left: 0;
   padding-right: 10px;
+  max-height: 60vh;
+  overflow: auto;
 }
 
   .page-template-page-map-explorer .cat-item{
@@ -195,6 +197,7 @@
     max-width: 200px;
     width: 200px;
     line-height: 14px;
+    clear: both;
   }
   .layer-item h2 {
     left: 20px;
@@ -202,6 +205,8 @@
     font-size: 12px;
     font-weight: normal;
     width: 140px;
+    float: left;
+
   }
 
   .cat-item .layer-item h2:hover {
@@ -297,8 +302,6 @@
     }
 
     .page-template-page-map-explorer .layer-item .toggles .toggle-text {
-    bottom: 40px;
-    left: 160px;
-    position: relative;
     width: 5px;
+    margin-left: 10px;
     }
