@@ -53,7 +53,7 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
     }
 
     echo $output;
-    echo '<div style="text-align:right"><a href="'.$more_link.'" target="_blank">More...</a></div>';
+    echo '<div style="text-align:right"><a href="'.$more_link.'" target="_blank">'.__('More...', 'opendev').'</a></div>';
     echo $args['after_widget'];
 
   }

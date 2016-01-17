@@ -130,7 +130,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
 		if ( ! empty( $instance['od_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['od_title'] ). $args['after_title'];
+			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'opendev' ) ). $args['after_title'];
 		}
 		if ( ! empty( $instance['od_include'] ) ) {
 			$cat_included_id_arr = explode(",", $instance['od_include']);
@@ -192,7 +192,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_title'] ) ? $instance['od_title'] : __( 'Topic areas', 'opendev' );
+		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'opendev' ) : __( 'Topic areas', 'opendev' );
 		$od_include = $instance['od_include'];
 		$od_exclude = $instance['od_exclude'];
 		?>
