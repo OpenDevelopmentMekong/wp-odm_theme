@@ -1241,6 +1241,7 @@ a.button:hover{
  float: right;
  width: 300px;
  height: 100%;
+ max-height: 225px;
  margin: -15px -5px 0px 1em;
 
 }
@@ -2029,7 +2030,7 @@ a.button:hover{
   background-color: green;
 }
 .layer-item h2 {
- font-size: 14px !important;
+ font-size: 14px;
  color: #ccc;
  text-transform: none;
 }
@@ -2365,6 +2366,7 @@ a.button:hover{
  box-shadow: 0 0 0;
  padding: 0;
  border: 0;
+ margin-bottom: 3.5em;
 }
 
 .widget.widget_search input {

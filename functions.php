@@ -1045,8 +1045,9 @@ function the_breadcrumb()
    array_pop($excerpt_hidden_space);
    $$excerpt_string = implode("?", $excerpt_hidden_space) ;
    $excerpt_words = $excerpt_string. " ...";
-   if ($read_more !=""){
-    $excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." '>".$read_more."</a>)";
+   if ($read_more !=""){	
+    $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')))."-color";       
+    $excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." ' class='".$color_name."'>". __($read_more,"opendev")."</a>)";
    }
          return $excerpt_words;
  }

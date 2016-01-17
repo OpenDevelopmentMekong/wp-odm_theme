@@ -1,16 +1,18 @@
 <script>
     (function($){  
+        var three_per_row_highest; 
         $(window).load(function(){
-            $(".scroll-sticky-posts").mCustomScrollbar({
+            /* $(".scroll-sticky-posts").mCustomScrollbar({
                  axis:"y",
                  theme:"dark",
                  autoHideScrollbar: 1
-            });
+            }); */
             var highestBox = 0;
             $(".three_per_row").each(function(){
                 if($(this).height() > highestBox)
                    highestBox = $(this).height();
             });
+            three_per_row_highest = highestBox;
             $(".three_per_row").height(highestBox);
 
             // Set of the two colum of each posts items in News Container equal height
@@ -19,7 +21,7 @@
                 var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
                 $(".two_per_row"+i).height(highestCol);
                 $(".two_per_row"+next).height(highestCol);
-            }
+            } 
 
         });
     })(jQuery);

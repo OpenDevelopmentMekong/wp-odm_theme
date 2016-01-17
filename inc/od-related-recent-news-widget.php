@@ -84,7 +84,7 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
     	   echo $args['before_widget'];
 
            if ( ! empty( $instance['od_related_news_title'] ) ) {
-    			echo $args['before_title'] . apply_filters( 'widget_title', $instance['od_related_news_title'] ). $args['after_title'];
+    			echo $args['before_title'] . apply_filters( 'widget_title', __($instance['od_related_news_title'], 'opendev') ). $args['after_title'];
     		}
 
     		echo "<div>";
