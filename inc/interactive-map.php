@@ -294,11 +294,17 @@ class OpenDev_InteractiveMap {
        });
 
        $(document).on('mouseover mouseout', '.map-active-layers', function(){
-          $('h2').off('click').on("click",function(){
+          $('.active-layer h2').off('click').on("click",function(){
                console.log($(this));
                var layer_id=$(this).closest('.layer-item').data('layer');
                var controlling_layer=$('.categories .cat-item .layer-item[data-layer="'+ layer_id +'"] h2');
-               controlling_layer.trigger('click');
+
+               map.filterLayers._switchLayer($(this).parent().data('layer'));
+               $(this).removeClass('active');
+               $(this).parent().find('.layer-status').removeClass('active');
+               $(controlling_layer).removeClass('active');
+               $(controlling_layer).parent().find('.layer-status').removeClass('active');
+
               //  $layer_toggle=controlling_layer;
               //  $layer_toggle.off().trigger('click');
                console.log(controlling_layer);
