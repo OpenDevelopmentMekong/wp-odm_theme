@@ -132,12 +132,24 @@ require_once('page-profiles-config.php');
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
-                  <th><?php _e( 'Map id', 'map_id' );?></th>
                   <th><?php _e( 'Developer', 'developer' );?></th>
-                  <th><?php _e( 'Granted land area (hectare)/Khan', 'district' );?></th>
-                  <th><?php _e( 'Contract date', 'contract_0' );?></th>
-                  <th><?php _e( 'Size', 'original_s' );?></th>
-                  <th><?php _e( 'Developer/Nationality', 'dev_nation' );?></th>
+									<th><?php _e( 'Developer country', 'dev_nation' );?></th>
+									<th><?php _e( 'Contract date', 'contract_0' );?></th>
+									<th><?php _e( 'Contract term (year)', 'contract_d' );?></th>
+									<th><?php _e( 'Granted land area (hectare)', 'original_s' );?></th>
+									<th><?php _e( 'Source of land size', 'size_refer' );?></th>
+									<th><?php _e( 'Intended investment ', 'intended_p' );?></th>
+                  <th><?php _e( 'Intended crop or project', 'inv_intent' );?></th>
+									<th><?php _e( 'Province/Capital city', 'province' );?></th>
+									<th><?php _e( 'Contract authority', 'contractin' );?></th>
+									<th><?php _e( 'Previous land use', 'land_conv' );?></th>
+									<th><?php _e( 'Sub-decree reclassifying land use', 'sub_decree' );?></th>
+									<th><?php _e( 'Legal documents', 'legal_docu' );?></th>
+									<th><?php _e( 'Developer land use plan', 'land_utili' );?></th>
+									<th><?php _e( 'EIA status', 'eia_status' );?></th>
+									<th><?php _e( 'Adjustment classification ', 'adjustment' );?></th>
+									<th><?php _e( 'Data classification', 'data_class' );?></th>
+                  <th><?php _e( 'Map id', 'map_id' );?></th>
                 </tr>
               </thead>
               <tbody>
@@ -146,23 +158,59 @@ require_once('page-profiles-config.php');
                     continue;
                   }?>
                   <tr>
-                    <td class="map_id">
-                      <?php echo $profile['map_id'];?>
-                    </td>
                     <td class="entry_title">
                       <a href="?map_id=<?php echo $profile['map_id'];?>"><?php echo $profile['developer'];?></a>
                     </td>
-                    <td class="district">
-                      <?php echo $profile['district'];?>
+                    <td>
+                      <?php echo $profile['dev_nation'];?>
                     </td>
-                    <td class="contract_0">
+										<td>
                       <?php echo $profile['contract_0'];?>
                     </td>
-                    <td class="original_s">
+										<td>
+                      <?php echo $profile['contract_d'];?>
+                    </td>
+										<td>
                       <?php echo $profile['original_s'];?>
                     </td>
-                    <td class="dev_nation">
-                      <?php echo $profile['dev_nation'];?>
+										<td>
+                      <?php echo $profile['size_refer'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['intended_p'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['inv_intent'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['province'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['contractin'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['land_conv'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['sub_decree'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['legal_docu'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['land_utili'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['eia_status'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['adjustment'];?>
+                    </td>
+										<td>
+                      <?php echo $profile['data_class'];?>
+                    </td>
+                    <td>
+                      <?php echo $profile['map_id'];?>
                     </td>
                   </tr>
         				<?php endforeach; ?>
@@ -242,23 +290,12 @@ jQuery(document).ready(function($) {
 
   if (!singleProfile){
     oTable = $("#profiles").dataTable({
-      "columnDefs": [
-        {
-          "visible": false,
-          "targets": 0
-        }
-      ],
+      "autoWidth": true,
+      "scrollX": true,
+      "responsive": true,
       "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
       "processing": true,
       "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-      "columns": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
       "order": [[ 1, 'asc' ]],
       "displayLength": 25
     });

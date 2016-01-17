@@ -39,7 +39,7 @@ require_once('page-laws-config.php');
 		<div class="container">
 			<div class="nine columns">
         <?php the_content(); ?>
-        <table class="data-table" id="law_datasets">
+        <table id="law_datasets" class="data-table">
           <thead>
             <tr>
               <th><?php _e( 'Title', 'title' );?></th>
@@ -159,17 +159,13 @@ jQuery(document).ready(function($) {
   };
 
   var oTable = $("#law_datasets").dataTable({
-    "responsive": true,
+    "scrollX": false,
+    "responsive": {
+      details: false
+    },
     "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
     "processing": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "columns": [
-      null,
-      null,
-      { className: "centered_column" },
-      { className: "centered_column" },
-      { className: "centered_column" }
-    ],
     "order": [[ 0, 'asc' ]],
     "displayLength": 25
   });
