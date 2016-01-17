@@ -219,7 +219,7 @@
     float: left;
 
   }
-
+  .page-template-page-map-explorer .active-layer h2{float: none;}
   .cat-item .layer-item h2:hover {
     color: red;
   }

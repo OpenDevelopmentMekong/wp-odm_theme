@@ -2079,7 +2079,7 @@ a.button:hover{
   /*content: '\2191';*/
 }
 .layer-item .legend{
-  /*display:none;*/
+  display:none;
 }
 .layer-item .legend ul li{
   padding: 2px 10px !important;
