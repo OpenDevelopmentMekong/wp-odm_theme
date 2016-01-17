@@ -40,7 +40,7 @@
     "director" => "Director",
     "director_n" => "Director nationality",
     "contract_0" => "Contract date",
-    "sub_decree" => "Date of sub-decree grating concession",
+    "sub_decree" => "Sub-decree reclassifying land use",
     "province" => "Province/Capital city",
     "district" => "Granted land area (hectare)/Khan(s)",
     "commune" => "Commune/Sangkat",
