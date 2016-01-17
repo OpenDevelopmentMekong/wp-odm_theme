@@ -1,6 +1,7 @@
 <?php
     $wpDomain=$_SERVER["HTTP_HOST"];
     $domain='opendevelopmentmekong.net';
+    $preprod = false;
 
     if($wpDomain == 'opendevelopmentmekong.net'){$country='mekong';}
     else if ($wpDomain == 'cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
@@ -10,12 +11,12 @@
     else if ($wpDomain == 'vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
     else {$country='mekong';$country_short='';}
 
-    if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';}
-    else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
-    else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
-    else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
-    else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
-    else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
+    if($wpDomain == 'pp.opendevelopmentmekong.net'){$country='mekong';$preprod=true;}
+    else if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';$preprod=true;}
+    else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';$preprod=true;}
+    else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';$preprod=true;}
+    else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';$preprod=true;}
+    else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';$preprod=true;}
     else {$country='mekong';$country_short='';}
 
     setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
@@ -226,28 +227,31 @@
         }
     ?>
 		<div id="mainNav" class="mainNavOdc">
-		      <div class="mainNav-logo">
-		        <a href="/" target="_self">
-		          <span class="icon-od-logo"></span>
+      <div class="mainNav-logo">
+        <a href="/" target="_self">
+          <span class="icon-od-logo"></span>
 
-		        </a>
-		      </div>
+        </a>
+      </div>
 
-		      <div class="mainNav-inner">
-		        <ul id="mainNavElement" class="level1 clearfix">
-		          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="http://pp.<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
+      <div class="mainNav-inner">
+        <ul id="mainNavElement" class="level1 clearfix">
+          <?php if ($preprod=true): ?>
+	          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://pp.<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
+	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://pp-cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
+	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
+	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
+	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
+	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
+          <?php else: ?>
+            <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
+	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
+	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
+	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
+	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
+	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
+          <?php endif; ?>
+        </ul>
+      </div>
 
-		          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="http://pp-cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
-
-		          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="http://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
-
-		          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="http://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
-
-		          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="http://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
-
-		          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="http://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
-
-		        </ul>
-		      </div>
-
-		    </div>
+    </div>
