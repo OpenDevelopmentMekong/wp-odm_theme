@@ -3,6 +3,11 @@
 Template Name: Laws page
 */
 ?>
+
+<?php
+require_once('page-laws-config.php');
+?>
+
 <?php get_header(); ?>
 
 <?php if(have_posts()) : the_post(); ?>
@@ -37,8 +42,8 @@ Template Name: Laws page
         <table class="data-table" id="law_datasets">
           <thead>
             <tr>
-              <th><?php _e( 'Document type', 'document_type' );?></th>
               <th><?php _e( 'Title', 'title' );?></th>
+              <th><?php _e( 'Document type', 'document_type' );?></th>
               <th><?php _e( 'Document number', 'document_number' );?></th>
               <th><?php _e( 'Promulgation date', 'promulgation_date' );?></th>
               <th><?php _e( 'Download', 'download' );?></th>
@@ -50,19 +55,22 @@ Template Name: Laws page
                 continue;
               }?>
               <tr>
-                <td>
-                  <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];?>
-                </td>
                 <td class="entry_title">
                   <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo getMultilingualValueOrFallback($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated'],$lang);?></a>
                 </td>
-                <td class="centered_column">
+                <td>
+                  <?php
+                    $doc_type = $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];
+                    echo $LAWS_DOCUMENT_TYPE[$doc_type];
+                  ?>
+                </td>
+                <td>
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_number'][$lang];?>
                 </td>
-                <td class="centered_column">
+                <td>
                   <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_promulgation_date'];?>
                 </td>
-                <td class="centered_column download_buttons">
+                <td class="download_buttons">
                     <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
                       <?php if ($resource['odm_language'][0] == 'en'){?>
                         <span><a href="<?php echo $resource['url'];?>">
@@ -150,32 +158,8 @@ jQuery(document).ready(function($) {
    }
   };
 
-  var mapGroupLabel = {
-    "anukretsub-decree": "Anukret/Sub-Decree",
-    "chbablawkram": "Chbab/Law/Kram",
-    "constitution-of-cambodia": "Constitution of Cambodia",
-    "international-treatiesagreements": "International Treaties/Agreements",
-    "kech-sonyacontractagreement": "Kech Sonya/Contract/Agreement",
-    "kolkar-nenomguidelines": "Kolkar Nenom/Guidelines",
-    "kolnyobaypolicy": "Kolnyobay/Policy",
-    "likhetletter": "Likhet/Letter",
-    "prakasjoint-prakasproclamation": "Prakas/Joint-Prakas/Proclamation",
-    "preah-reach-kramroyal-kram": "Preah Reach Kram/Royal Kram",
-    "sarachorcircular": "Sarachor/Circular",
-    "sechkdei-chhun-damneoungnoticeannouncement": "Sechkdei Chhun  Damneoung/Notice/Announcement",
-    "sechkdei-nenuminstruction": "Sechkdei Nenum/Instruction",
-    "sechkdei-preang-chbabdraft-laws-amp-regulations": "Sechkdei Preang Chbab/Draft Laws & Regulations",
-    "sechkdei-samrechdecision": "Sechkdei Samrech/Decision",
-    "others": "Others"
-  }
-
   var oTable = $("#law_datasets").dataTable({
-    "columnDefs": [
-      {
-        "visible": false,
-        "targets": 0
-      }
-    ],
+    "responsive": true,
     "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
     "processing": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
@@ -187,24 +171,7 @@ jQuery(document).ready(function($) {
       { className: "centered_column" }
     ],
     "order": [[ 0, 'asc' ]],
-    "displayLength": 25,
-    "drawCallback": function ( settings ) {
-      var api = this.api();
-      var rows = api.rows( {page:'current'} ).nodes();
-      var last=null;
-
-      api.column(0, {
-        page:'current'
-      }
-    ).data().each( function ( group, i ) {
-        if ( last !== group && mapGroupLabel[group] ) {
-          $(rows).eq( i ).before(
-            '<tr class="group"><td colspan="5">'+mapGroupLabel[group]+'</td></tr>'
-          );
-          last = group;
-        }
-      });
-    }
+    "displayLength": 25
   });
 
   $("#search_all").keyup(function () {
