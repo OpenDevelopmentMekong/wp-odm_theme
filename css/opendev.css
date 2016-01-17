@@ -2030,7 +2030,7 @@ a.button:hover{
   background-color: green;
 }
 .layer-item h2 {
- font-size: 14px !important;
+ font-size: 14px;
  color: #ccc;
  text-transform: none;
 }
