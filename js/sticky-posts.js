@@ -48,7 +48,8 @@
 			var closed = $(tab_sticky_posts_active + '.sticky-item');
 			
 			opened.height(h);
-			closed.height("100%");   
+			//closed.height("100%");   //if enable the mCustomScrollbar
+			closed.height("auto");  
             
              var highestBox = 0;
             $(".three_per_row").each(function(){
