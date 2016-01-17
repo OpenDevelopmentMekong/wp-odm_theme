@@ -49,7 +49,7 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
 
     echo $args['before_widget'];
     if ( ! empty( $instance['title'] ) ) {
-     echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+     echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['title'], 'opendev') ). $args['after_title'];
     }
 
     echo $output;
@@ -71,7 +71,7 @@ class OpenDev_Related_Resources_Widget extends WP_Widget {
   */
  public function form( $instance ) {
   // outputs the options form on admin
-  $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Related Resources', 'opendev' );
+  $title = ! empty( $instance['title'] ) ? __( $instance['title'], 'opendev') : __( 'Related Resources', 'opendev' );
   $limit = ! empty( $instance['limit'] ) ? $instance['limit'] : 0;
   $organization = $instance['organization'];
   $organization_list = [];
