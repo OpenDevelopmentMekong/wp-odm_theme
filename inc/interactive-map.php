@@ -300,11 +300,13 @@ class OpenDev_InteractiveMap {
         //$(this).addClass('active');
         $(this).parent().parent().find('.layer-excerpt').hide();
         $(this).parent().parent().find('.layer-content').show();
+        $(this).parent().parent().find('.legend').show();
         $(this).html('Less');
        } else {
         //$(this).removeClass('active');
         $(this).parent().parent().find('.layer-excerpt').show();
         $(this).parent().parent().find('.layer-content').hide();
+        $(this).parent().parent().find('.legend').hide();
         $(this).html('More');
        }
      });
