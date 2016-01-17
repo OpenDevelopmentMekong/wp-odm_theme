@@ -72,7 +72,7 @@ require_once('page-profiles-config.php');
             </div>
 						<?php if (count($ammendements) > 0): ?>
 							<div class="profile-metadata">
-	              <h2>Ammendments</h2>
+	              <h2>Amendments</h2>
 	              <table id="tracking" class="data-table">
 	                <tbody>
 										<thead>
