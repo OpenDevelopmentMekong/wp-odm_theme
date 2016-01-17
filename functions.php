@@ -192,6 +192,7 @@ function nav_concept_scripts()
 {
   wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
   wp_enqueue_script('data-tables', get_stylesheet_directory_uri().'/js/dataTables.js', array('jquery'), '1.10.10');
+  wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
 }
 
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
@@ -1185,6 +1186,13 @@ function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
     }
   }
   return $laws["wpckan_dataset_list"];
+}
+
+function get_elc_profile($ckan_domain,$resource_id, $map_id){
+  $datastore_url = "https://" . $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters='{\"map_id\":\"" . $map_id . "\"}'";
+  $json = file_get_contents($datastore_url);
+  $profiles = json_decode($json, true) ?: [];
+  return $profiles;
 }
 
 function get_elc_profiles($ckan_domain,$resource_id){

@@ -3,6 +3,10 @@
   height: 400px;
 }
 
+.hidden {
+  display:none;
+}
+
 .data_table{
   width:100%;
   border: none;
