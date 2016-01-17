@@ -172,10 +172,6 @@
           <a href="/map-explorer" target="_self">Maps<span class="cNavState"></span></a>
         </li>
 
-        <li class="one-line">
-          <a href="/economic-land-concessions" target="_self">ELC<span class="cNavState"></span></a>
-        </li>
-
         <?php wp_nav_menu( array(
           'menu' => 'country-specific-menu',
           'container'       => false,
