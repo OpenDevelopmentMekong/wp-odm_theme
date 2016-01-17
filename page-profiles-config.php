@@ -1,7 +1,7 @@
 <?php
 
   // CONFIG
-  $CKAN_DOMAIN = "data.opendevelopmentmekong.net";
+  $CKAN_DOMAIN = "https://data.opendevelopmentmekong.net";
   $ELC_RESOURCE_IDS = array(
     "en" => array(
       "metadata" => "3b817bce-9823-493b-8429-e5233ba3bd87",
@@ -29,24 +29,24 @@
   $ELC_METADATA = array(
     "developer" => "Developer",
     "adjustment" => "Adjustment classification",
-    "dev_nation" => "Developer nationality",
+    "dev_nation" => "Developer country",
     "dev_addres" => "Developer address",
-    "intended_p" => "Intended purpose",
-    "inv_intent" => "Investment intention",
-    "contract_d" => "Original contract duration(year)",
-    "original_s" => "Original contract size (hectare)",
-    "size_refer" => "Contract size reported by",
-    "contractin" => "Contracting authority",
+    "intended_p" => "Intended investment",
+    "inv_intent" => "Intended crop or project",
+    "contract_d" => "Contract term (year)",
+    "original_s" => "Granted land area (hectare)",
+    "size_refer" => "Source of land size",
+    "contractin" => "Contract authority",
     "director" => "Director",
     "director_n" => "Director nationality",
     "contract_0" => "Contract date",
     "sub_decree" => "Date of sub-decree grating concession",
-    "province" => "Province(s)",
-    "district" => "District(s)",
-    "commune" => "Commune(s)",
-    "municipali" => "Municipality",
-    "land_conv" => "Land converted from",
-    "land_utili" => "Land utilization plan",
+    "province" => "Province/Capital city",
+    "district" => "Granted land area (hectare)/Khan(s)",
+    "commune" => "Commune/Sangkat",
+    "municipali" => "Town/Municipality",
+    "land_conv" => "Previous land use",
+    "land_utili" => "Developer land use plan",
     "eia_status" => "IEIA/EIA status"
   );
 

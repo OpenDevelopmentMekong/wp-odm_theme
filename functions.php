@@ -110,8 +110,6 @@ function opendev_styles()
 
   $css_base = get_stylesheet_directory_uri().'/css/';
 
-    //wp_dequeue_style('jeo-main');
-
   wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
   wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
   wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev'));
@@ -1188,15 +1186,22 @@ function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
   return $laws["wpckan_dataset_list"];
 }
 
-function get_datastore_resource_filter_map_id($ckan_domain,$resource_id, $map_id){
-  $datastore_url = "https://" . $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters={\"map_id\":\"" . $map_id . "\"}";
+function get_datasets_filter($ckan_domain,$key,$value){
+  $ckanapi_url = $ckan_domain . "/api/3/action/package_search?fq=" . $key . ":" . $value;
+  $json = file_get_contents($ckanapi_url);
+  $datasets = json_decode($json, true) ?: [];
+  return $datasets["result"]["results"];
+}
+
+function get_datastore_resources_filter($ckan_domain,$resource_id,$key,$value){
+  $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters={\"" . $key . "\":\"" . $value . "\"}";
   $json = file_get_contents($datastore_url);
   $profiles = json_decode($json, true) ?: [];
-  return $profiles["result"]["records"][0];
+  return $profiles["result"]["records"];
 }
 
 function get_datastore_resource($ckan_domain,$resource_id){
-  $datastore_url = "https://" . $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000";
+  $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000";
   $json = file_get_contents($datastore_url);
   $profiles = json_decode($json, true) ?: [];
   return $profiles["result"]["records"];

@@ -34,7 +34,7 @@ Template Name: Laws page
 		<div class="container">
 			<div class="nine columns">
         <?php the_content(); ?>
-        <table class="data_table" id="law_datasets">
+        <table class="data-table" id="law_datasets">
           <thead>
             <tr>
               <th><?php _e( 'Document type', 'document_type' );?></th>

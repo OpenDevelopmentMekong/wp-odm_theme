@@ -20,11 +20,11 @@ require_once('page-profiles-config.php');
     }
     $filter_map_id = htmlspecialchars($_GET["map_id"]);
     $profile = null;
-    $tracking = null;
+    $ammendements = null;
     $profiles = null;
     if (!IsNullOrEmptyString($filter_map_id)){
-      $profile = get_datastore_resource_filter_map_id($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"],$filter_map_id);
-      $tracking = get_datastore_resource_filter_map_id($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["tracking"],$filter_map_id);
+      $profile = get_datastore_resources_filter($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"],"map_id",$filter_map_id)[0];
+      $ammendements = get_datastore_resources_filter($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["tracking"],"map_id",$filter_map_id);
     }else{
       $profiles = get_datastore_resource($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"]);
     }
@@ -63,48 +63,78 @@ require_once('page-profiles-config.php');
                 <tbody>
                   <?php foreach ($ELC_METADATA as $key => $value): ?>
                   <tr>
-                    <td><?php _e( $ELC_METADATA[$key], $value ); ?></td>
+                    <td class="row-key"><?php _e( $ELC_METADATA[$key], $value ); ?></td>
                     <td><?php echo $profile[$key]; ?></td>
                   </tr>
                   <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
-            <div class="profile-metadata">
-              <h2>Ammendments</h2>
-              <table id="tracking" class="data-table">
-                <tbody>
-                  <?php foreach ($ELC_TRACKING as $key => $value): ?>
-                  <tr>
-                    <td><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
-                    <td><?php echo $tracking[$key]; ?></td>
-                  </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
-            </div>
-            <div class="profile-metadata">
-              <h2>Reference documents</h2>
-              <table id="reference" class="data-table">
-                <tbody>
-                  <?php foreach ($ELC_TRACKING as $key => $value): ?>
-                  <tr>
-                    <td><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
-                    <td><?php echo $tracking[$key]; ?></td>
-                  </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
-            </div>
+						<?php if (count($ammendements) > 0): ?>
+							<div class="profile-metadata">
+	              <h2>Ammendments</h2>
+	              <table id="tracking" class="data-table">
+	                <tbody>
+										<thead>
+											<tr>
+												<?php foreach ($ELC_TRACKING as $key => $value): ?>
+			                    <td class="row-key"><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
+												<?php endforeach; ?>
+											</tr>
+										</thead>
+	                  <?php foreach ($ammendements as $key => $ammendement): ?>
+											<tr>
+												<?php foreach ($ELC_TRACKING as $key => $value): ?>
+			                    <td><?php echo $ammendement[$key]; ?></td>
+												<?php endforeach; ?>
+	                  	</tr>
+	                  <?php endforeach; ?>
+	                </tbody>
+	              </table>
+							</div>
+						<?php endif; ?>
+						<?php
+							$ref_docs = explode(";", $profile["reference"]);
+							if ($ref_docs): ?>
+							<div class="profile-metadata">
+	              <h2>Reference documents</h2>
+	              <table id="reference" class="data-table">
+	                <tbody>
+	                  <?php
+	                    foreach ($ref_docs as $key => $ref_doc):
+	                      $ref_doc_metadata = get_datasets_filter($CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
+												if (count($ref_doc_metadata) > 0):
+													foreach ($ref_doc_metadata as $key => $metadata):
+	                    ?>
+	                    <tr>
+	                      <td class="row-key">
+													<a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo $metadata["title_translated"][$lang] ?></a></br>
+													<?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
+		                        <?php echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
+		                      <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
+		                        <?php echo "(" . $metadata["odm_publication_date"]  . ")" ?>
+		                      <?php endif; ?>
+												</td>
+	                      <td><?php echo $metadata["notes_translated"][$lang] ?></td>
+	                    </tr>
+	                    <?php
+												 endforeach;
+	                      endif;
+	                   endforeach;
+	                  ?>
+	                </tbody>
+	              </table>
+	            </div>
+						<?php endif; ?>
           </div>
         <?php else: ?>
           <div class="nine columns">
-            <table id="profiles" class="data_table">
+            <table id="profiles" class="data-table">
               <thead>
                 <tr>
                   <th><?php _e( 'Map id', 'map_id' );?></th>
                   <th><?php _e( 'Developer', 'developer' );?></th>
-                  <th><?php _e( 'District', 'district' );?></th>
+                  <th><?php _e( 'Granted land area (hectare)/Khan', 'district' );?></th>
                   <th><?php _e( 'Contract date', 'contract_0' );?></th>
                   <th><?php _e( 'Size', 'original_s' );?></th>
                   <th><?php _e( 'Developer/Nationality', 'dev_nation' );?></th>
