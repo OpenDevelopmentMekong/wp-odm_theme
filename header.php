@@ -144,11 +144,11 @@
 
             <li class="by_country"><a href="#" target="_self">Records by country<span class="cNavState"></span></a>
               <ul class="level3">
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=cambodia" target="_self">Cambodia<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=laos" target="_self">Laos<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=myanmar" target="_self">Myanmar<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=thailand" target="_self">Thailand<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vietnam" target="_self">Vietnam<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=kh" target="_self">Cambodia<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=la" target="_self">Laos<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=mm" target="_self">Myanmar<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=th" target="_self">Thailand<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vn" target="_self">Vietnam<span class="cNavState"></span></a></li>
                 <span class="border"></span>
               </ul>
             </li>
