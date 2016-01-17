@@ -2,7 +2,7 @@
     color: #66CC00;
 }
 a, a:visited, #sidebar .widget li a{
- color: white; /* #7BCC2E; #6393D2, #2774da;*/
+ color: #66CC00; /* #7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
