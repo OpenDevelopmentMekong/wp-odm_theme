@@ -20,11 +20,13 @@ require_once('page-profiles-config.php');
     }
     $filter_map_id = htmlspecialchars($_GET["map_id"]);
     $profile = null;
+    $tracking = null;
     $profiles = null;
     if (!IsNullOrEmptyString($filter_map_id)){
-      $profile = get_elc_profile($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["csv"],$filter_map_id);
+      $profile = get_datastore_resource_filter_map_id($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"],$filter_map_id);
+      $tracking = get_datastore_resource_filter_map_id($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["tracking"],$filter_map_id);
     }else{
-      $profiles = get_elc_profiles($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["csv"]);
+      $profiles = get_datastore_resource($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"]);
     }
 
   ?>
@@ -55,7 +57,45 @@ require_once('page-profiles-config.php');
         <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
           <div class="twelve columns">
             <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
-            <h1><?php echo $profile["Developer"]; ?><h1>
+            <div class="profile-metadata">
+              <h2><?php echo $profile["developer"]; ?></h2>
+              <table id="profile" class="data-table">
+                <tbody>
+                  <?php foreach ($ELC_METADATA as $key => $value): ?>
+                  <tr>
+                    <td><?php _e( $ELC_METADATA[$key], $value ); ?></td>
+                    <td><?php echo $profile[$key]; ?></td>
+                  </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+            <div class="profile-metadata">
+              <h2>Ammendments</h2>
+              <table id="tracking" class="data-table">
+                <tbody>
+                  <?php foreach ($ELC_TRACKING as $key => $value): ?>
+                  <tr>
+                    <td><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
+                    <td><?php echo $tracking[$key]; ?></td>
+                  </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+            <div class="profile-metadata">
+              <h2>Reference documents</h2>
+              <table id="reference" class="data-table">
+                <tbody>
+                  <?php foreach ($ELC_TRACKING as $key => $value): ?>
+                  <tr>
+                    <td><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
+                    <td><?php echo $tracking[$key]; ?></td>
+                  </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
           </div>
         <?php else: ?>
           <div class="nine columns">
@@ -70,7 +110,7 @@ require_once('page-profiles-config.php');
                   <th><?php _e( 'Developer/Nationality', 'dev_nation' );?></th>
                 </tr>
               </thead>
-              <tbody
+              <tbody>
                 <?php foreach ($profiles as $profile): ?>
                   <?php if (IsNullOrEmptyString($profile['data_class'])){
                     continue;
@@ -108,9 +148,6 @@ require_once('page-profiles-config.php');
     					</div>
     					<div class="sidebar_box_content">
     						<input type="text" id="search_all" placeholder="Search all profiles">
-                <?php if (!IsNullOrEmptyString($filter_dev_nation)): ?>
-                  <a href="/profile"><?php _e( 'Clear filter', 'clear_filter' ) ?>
-                <?php endif; ?>
     					</div>
     				</div>
 
@@ -142,6 +179,15 @@ var singleProfileMapId = $("#profile-map-id").text();
 var mapViz;
 var oTable;
 var cartodbSql = new cartodb.SQL({ user: cartodbConfig.user });
+
+var showAllEntries = function(){
+  var layers = mapViz.getLayers();
+	var sql = "SELECT * FROM " + cartodbConfig.elc.table;
+	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
+		mapViz.getNativeMap().fitBounds(bounds);
+	});
+	layers[1].getSubLayer(0).setSQL(sql);
+}
 
 var filterEntriesMap = function(mapIds){
   var layers = mapViz.getLayers();
@@ -209,6 +255,8 @@ window.onload = function() {
         maxZoom: 10
       });
       filterEntriesMap([singleProfileMapId]);
+    }else{
+      showAllEntries();
     }
 	});
 

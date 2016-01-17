@@ -12,11 +12,6 @@
   border: none;
 }
 
-.law_search_box{
-  background: rgb(246,246,246);
-  margin-top: 34px;
-}
-
 .sidebar_header{
   line-height: 20px;
   background: #292d56;
@@ -30,8 +25,13 @@
   font-style: normal;
 }
 
+.sidebar_box{
+  margin-bottom: 20px;
+}
+
 .sidebar_box_content{
-  padding: 10px 5px
+  padding: 10px 5px;
+  background: rgb(246,246,246);
 }
 
 .sidebar_box_content ul li{

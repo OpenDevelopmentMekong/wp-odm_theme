@@ -1188,14 +1188,14 @@ function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
   return $laws["wpckan_dataset_list"];
 }
 
-function get_elc_profile($ckan_domain,$resource_id, $map_id){
-  $datastore_url = "https://" . $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters='{\"map_id\":\"" . $map_id . "\"}'";
+function get_datastore_resource_filter_map_id($ckan_domain,$resource_id, $map_id){
+  $datastore_url = "https://" . $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters={\"map_id\":\"" . $map_id . "\"}";
   $json = file_get_contents($datastore_url);
   $profiles = json_decode($json, true) ?: [];
-  return $profiles;
+  return $profiles["result"]["records"][0];
 }
 
-function get_elc_profiles($ckan_domain,$resource_id){
+function get_datastore_resource($ckan_domain,$resource_id){
   $datastore_url = "https://" . $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000";
   $json = file_get_contents($datastore_url);
   $profiles = json_decode($json, true) ?: [];

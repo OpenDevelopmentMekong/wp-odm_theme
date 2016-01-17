@@ -44,7 +44,7 @@ Template Name: Laws page
               <th><?php _e( 'Download', 'download' );?></th>
             </tr>
           </thead>
-          <tbody
+          <tbody>
             <?php foreach ($laws as $law_record): ?>
               <?php if (IsNullOrEmptyString($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'])){
                 continue;
@@ -83,7 +83,7 @@ Template Name: Laws page
 			</div>
 			<div class="three columns">
 
-				<div class="law_search_box">
+				<div class="sidebar_box">
 					<div class="sidebar_header">
 						<span class="big">
               <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( $headline  ?: 'Laws', 'sub_title_taxonomy' ); ?>
@@ -96,7 +96,7 @@ Template Name: Laws page
 					</div>
 				</div>
 
-        <div class="law_search_box">
+        <div class="sidebar_box">
 					<div class="sidebar_header">
 						<span class="big"><?php _e( 'LAW COMPENDIUM', 'law_compendium' );?></span>
 					</div>
