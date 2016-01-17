@@ -236,7 +236,7 @@
 
       <div class="mainNav-inner">
         <ul id="mainNavElement" class="level1 clearfix">
-          <?php if ($preprod=true): ?>
+          <?php if ($preprod==true): ?>
 	          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://pp.<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
 	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://pp-cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
 	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
