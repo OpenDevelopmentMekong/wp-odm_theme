@@ -80,7 +80,7 @@ require_once('page-profiles-config.php');
                       <?php echo $profile['map_id'];?>
                     </td>
                     <td class="entry_title">
-                      <?php echo $profile['developer'];?>
+                      <a href="?map_id=<?php echo $profile['map_id'];?>"><?php echo $profile['developer'];?></a>
                     </td>
                     <td class="district">
                       <?php echo $profile['district'];?>
