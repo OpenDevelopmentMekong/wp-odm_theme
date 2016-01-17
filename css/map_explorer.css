@@ -199,6 +199,7 @@
     left: 20px;
     position: relative;
     font-size: 12px;
+    font-weight: normal;
   }
 
   .cat-item .layer-item h2:hover {
