@@ -192,7 +192,8 @@
     padding-left:0;
     margin-left: 10px;
     text-align: left;
-    max-width: 180px;
+    max-width: 200px;
+    width: 200px;
     line-height: 14px;
   }
   .layer-item h2 {
@@ -200,6 +201,7 @@
     position: relative;
     font-size: 12px;
     font-weight: normal;
+    width: 140px;
   }
 
   .cat-item .layer-item h2:hover {
@@ -213,6 +215,7 @@
       top: 15px;
       width: 5px;
       height: 5px;
+      margin-right: 0;
     }
 
     .map-active-layers .layer-item .layer-status.active {
