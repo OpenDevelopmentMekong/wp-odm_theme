@@ -298,8 +298,6 @@ class OpenDev_InteractiveMap {
                  var layer_id=$(this).closest('.layer-item').data('layer');
                  var controlling_layer=$('.categories .cat-item .layer-item[data-layer="'+ layer_id +'"] h2');
                  var category_id=$(this).closest('.active-layer').data( "category" );
-                 console.log(category_id);
-
                  map.filterLayers._switchLayer($(this).parent().data('layer'));
                  $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
 
