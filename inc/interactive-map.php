@@ -294,24 +294,24 @@ class OpenDev_InteractiveMap {
        });
 
       //  deactivating active layers in box
-      $('.map-active-layers h2').mouseover(function(){
-         $('.active-layer h2').off('click').on("click",function(){
-                layers_active_count={};
-                var layer_id=$(this).closest('.layer-item').data('layer');
-                var controlling_layer=$('.categories .cat-item .layer-item[data-layer="'+ layer_id +'"] h2');
-                var category_id=$(this).closest('.active-layer').data( "category" );
-                map.filterLayers._switchLayer($(this).parent().data('layer'));
-                $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
+       $(document).on('mouseover mouseout', '.map-active-layers', function(){
+          $('.active-layer h2').off('click').on("click",function(){
+                 layers_active_count={};
+                 var layer_id=$(this).closest('.layer-item').data('layer');
+                 var controlling_layer=$('.categories .cat-item .layer-item[data-layer="'+ layer_id +'"] h2');
+                 var category_id=$(this).closest('.active-layer').data( "category" );
+                 map.filterLayers._switchLayer($(this).parent().data('layer'));
+                 $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
 
-                layers_active_count[category_id]=$('.map-active-layers div[data-category="'+ category_id +'"]').children('li').length;
-                if (layers_active_count[category_id] == 0){
-                  $('.map-active-layers .active-layer[data-category="'+ category_id +'"]').removeClass('active');
-                }
-                $(controlling_layer).removeClass('active');
-                $(controlling_layer).parent().find('.layer-status').removeClass('active');
-              });
+                 layers_active_count[category_id]=$('.map-active-layers div[data-category="'+ category_id +'"]').children('li').length;
+                 if (layers_active_count[category_id] == 0){
+                   $('.map-active-layers .active-layer[data-category="'+ category_id +'"]').removeClass('active');
+                 }
+                 $(controlling_layer).removeClass('active');
+                 $(controlling_layer).parent().find('.layer-status').removeClass('active');
+               });
 
-         });
+          });
 
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
