@@ -100,16 +100,27 @@
 
     .page-template-page-map-explorer .cat-item a{color:black;}
   .page-template-page-map-explorer .layer-item{
-    padding-left:0;
-    margin-left: 10px;
+    padding-left:10px;
     text-align: left;
     max-width: 180px;
     line-height: 14px;
+    /*border-bottom: 1px solid rgb(204,​ 204,​ 204);*/
   }
   .layer-item h2 {
     left: 20px;
     position: relative;
   }
+  svg.icon-info{
+    width: 12px;
+    height: 12px;
+  }
+  .layer-item .icon-info-path{
+    fill: rgb(204,​ 204,​ 204);
+  }
+
+  .layer-item .icon-info:hover .icon-info-path {
+  fill: red;
+}
 .page-template-page-map-explorer .cat-layers .layer-excerpt,.page-template-page-map-explorer .cat-layers .layer-content,.page-template-page-map-explorer .cat-layers .layer-item .toggles{
   display: none;
 }
@@ -191,8 +202,8 @@
 
     .page-template-page-map-explorer .cat-item a{color:black;}
   .page-template-page-map-explorer .layer-item{
-    padding-left:0;
-    margin-left: 10px;
+    padding-left:10px;
+    margin-left: 0;
     text-align: left;
     max-width: 200px;
     width: 200px;
@@ -226,6 +237,11 @@
     .map-active-layers .layer-item .layer-status.active {
         background-color: red;
     }
+      .cat-item .layer-item:hover .icon-info-path{fill:red;}
+      .cat-energy .layer-item:hover .icon-info-path{fill:rgb(124,212,55);}
+      .cat-map-environment-and-natural-resources .layer-item:hover .icon-info-path{fill:rgb(243,165,48);}
+      .cat-land .layer-item:hover .icon-info-path{fill:rgb(81,144,224);}
+      .cat-infrastructure .layer-item:hover .icon-info-path{fill:rgb(223,0,100);}
 
 
     .map-active-layers .layer-energy .layer-status.active, .categories .cat-energy .layer-status.active{ background: rgb(124,212,55);}
