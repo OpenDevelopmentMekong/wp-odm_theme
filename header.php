@@ -244,19 +244,19 @@
       <div class="mainNav-inner">
         <ul id="mainNavElement" class="level1 clearfix">
           <?php if ($preprod==true): ?>
-	          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://pp.<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
-	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://pp-cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
-	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
-	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
-	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
-	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
+	          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://pp.<?php echo $domain;?>" target="_self" id="uid-2"><?php _e("Mekong", "opendev");?></a></li>
+	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://pp-cambodia.<?php echo $domain;?>" id="uid-3"><?php _e("Cambodia", "opendev");?></a></li>
+	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4"><?php _e("Laos", "opendev");?></a></li>
+	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42"><?php _e("Myanmar", "opendev");?></a></li>
+	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://pp-thailand.<?php echo $domain;?>" target="_self" id="uid-5"><?php _e("Thailand", "opendev");?></a></li>
+	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://pp-vietnam.<?php echo $domain;?>" target="_self" id="uid-5142"><?php _e("Vietnam", "opendev");?></a></li>
           <?php else: ?>
-            <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://<?php echo $domain;?>" target="_self" id="uid-2">MEKONG</a></li>
-	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://cambodia.<?php echo $domain;?>" id="uid-3">CAMBODIA</a></li>
-	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://laos.<?php echo $domain;?>" target="_self" id="uid-4">LAOS</a></li>
-	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://myanmar.<?php echo $domain;?>" target="_self" id="uid-42">MYANMAR</a></li>
-	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://thailand.<?php echo $domain;?>" target="_self" id="uid-5">THAILAND</a></li>
-	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://vietnam.<?php echo $domain;?>" target="_self" id="uid-5142">VIETNAM</a></li>
+            <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://<?php echo $domain;?>" target="_self" id="uid-2"><?php _e("Mekong", "opendev");?></a></li>
+	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://cambodia.<?php echo $domain;?>" id="uid-3"><?php _e("Cambodia", "opendev");?></a></li>
+	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://laos.<?php echo $domain;?>" target="_self" id="uid-4"><?php _e("Laos", "opendev");?></a></li>
+	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://myanmar.<?php echo $domain;?>" target="_self" id="uid-42"><?php _e("Myanmar", "opendev");?></a></li>
+	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://thailand.<?php echo $domain;?>" target="_self" id="uid-5"><?php _e("Thailand", "opendev");?></a></li>
+	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://vietnam.<?php echo $domain;?>" target="_self" id="uid-5142"><?php _e("Vietnam", "opendev");?></a></li>
           <?php endif; ?>
         </ul>
       </div>
