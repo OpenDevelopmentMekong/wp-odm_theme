@@ -1241,6 +1241,7 @@ a.button:hover{
  float: right;
  width: 300px;
  height: 100%;
+ max-height: 225px;
  margin: -15px -5px 0px 1em;
 
 }
