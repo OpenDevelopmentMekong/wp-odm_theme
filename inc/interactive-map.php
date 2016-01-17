@@ -292,7 +292,7 @@ class OpenDev_InteractiveMap {
        });
 
       //  deactivating active layers in box
-       $(document).on('mouseover mouseout', '.map-active-layers', function(){
+       $(document).on('mouseover', '.map-active-layers', function(){
           $('.active-layer h2').off('click').on("click",function(){
                  layers_active_count={};
                  var layer_id=$(this).closest('.layer-item').data('layer');
