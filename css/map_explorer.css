@@ -207,6 +207,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
     width: 200px;
     line-height: 14px;
     clear: both;
+    margin-bottom: 0;
   }
   .layer-item h2 {
     left: 20px;
@@ -251,6 +252,13 @@ body.page-template-page-map-explorer{overflow: hidden;}
     display: none;
 
   }
+  .page-template-page-map-explorer .layer-item .toggles{
+    clear: both;
+  }
+
+  .page-template-page-map-explorer .layer-content,.page-template-page-map-explorer .layer-excerpt{
+    padding-left: 10px;
+  }
   .map-active-layers {
       position: absolute;
       right: 120px;
@@ -287,7 +295,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
         }
 
         .map-active-layers .active-layer.active .layer-item h2,.map-active-layers .active-layer.active .layer-item h2:hover,.map-active-layers .active-layer.active .layer-item h2.active{
-          color: red; font-size: 12px;float: left;
+          color: black; font-size: 12px;float: left;
         }
         .map-active-layers .active-layer.layer-energy .layer-item h2,.cat-item.cat-energy .layer-item h2:hover,.cat-item.cat-energy .layer-item h2.active{color: rgb(124,212,55);}
         .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2,.cat-item.cat-map-environment-and-natural-resources .layer-item h2:hover,.cat-item.cat-map-environment-and-natural-resources .layer-item h2.active{color:rgb(243,165,48);}
