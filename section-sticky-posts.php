@@ -21,8 +21,7 @@
                 var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
                 $(".two_per_row"+i).height(highestCol);
                 $(".two_per_row"+next).height(highestCol);
-            }   */
-
+            }   */  
         });
     })(jQuery);
 </script>

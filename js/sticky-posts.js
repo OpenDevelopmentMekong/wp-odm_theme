@@ -142,7 +142,7 @@
 			setTimeout(function() {
 				openSticky($(tab_sticky_posts_active + '.sticky-item:first-child').data('postid'));
 				t = setInterval(runSticky, 6000);
-			}, 800);
+			}, 700);
 		}
 
 	});

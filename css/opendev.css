@@ -1181,8 +1181,7 @@ a.button:hover{
 .sticky-posts:hover{
     overflow-y: auto;
 }
-.sticky-posts .sticky-item:first-child{
-
+.sticky-posts .sticky-item:first-child{   
 }
 .sticky-posts .sticky-item {
 /*  height: 12%; */
@@ -1192,7 +1191,7 @@ a.button:hover{
  box-sizing: border-box;
  cursor: pointer;
  display: inline-block;
- max-height:  320px
+ max-height: 320px
 }
 /*.sticky-posts .sticky-item:last-child {
  border-bottom: 0;
