@@ -176,7 +176,8 @@
           'menu' => 'country-specific-menu',
           'container'       => false,
           'items_wrap'      => '%3$s',
-          'fallback_cb'     => false
+          'fallback_cb'     => false,
+          'walker'          => new country_specific_sub_menus(),
 
        )); ?>
     </ul>

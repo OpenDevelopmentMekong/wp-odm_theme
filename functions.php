@@ -1292,4 +1292,17 @@ add_action( 'after_setup_theme', function() {
     include(STYLESHEETPATH . '/inc/layers.php');
 }, 42 );
 
+
+//custom submenus for country specific menu
+class country_specific_sub_menus extends Walker_Nav_Menu {
+  function start_lvl(&$output, $depth) {
+    $level=$depth+2;
+    $indent = str_repeat("\t", $depth);
+    $output .= "\n$indent<ul class=\"level$level \">\n";
+  }
+  function end_lvl(&$output, $depth) {
+    $indent = str_repeat("\t", $depth);
+    $output .= "$indent</ul>\n";
+  }
+}
 ?>
