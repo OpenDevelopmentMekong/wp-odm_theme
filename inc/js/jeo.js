@@ -1,5 +1,5 @@
 var jeo = {};
-var layer_name, geoserver_URL;
+var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 (function($) {
 
  jeo = function(conf, callback) {
@@ -228,7 +228,14 @@ var layer_name, geoserver_URL;
        var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
             //geoserver_URL = spited_wms_tile_url[0]+"/"; for sample test 2
             geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
-            layer_name = layer.wms_layer_name;
+            detect_lang_site = $('html').attr('lang');
+            //alert(layer.wms_layer_name_localization);
+            if(detect_lang_site == "en-US"){  
+                 layer_name = layer.wms_layer_name;
+            }else{                  
+                 layer_name = layer.wms_layer_name_localization;
+            }                     
+            
 
         var options = {
             layers: layer_name,
