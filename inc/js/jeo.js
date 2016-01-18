@@ -1,5 +1,5 @@
 var jeo = {};
-var layer_name, geoserver_URL;
+var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 (function($) {
 
  jeo = function(conf, callback) {
@@ -228,7 +228,14 @@ var layer_name, geoserver_URL;
        var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
             //geoserver_URL = spited_wms_tile_url[0]+"/"; for sample test 2
             geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
-            layer_name = layer.wms_layer_name;
+            detect_lang_site = $('html').attr('lang');
+            //alert(layer.wms_layer_name_localization);
+            if(detect_lang_site == "en-US"){  
+                 layer_name = layer.wms_layer_name;
+            }else{                  
+                 layer_name = layer.wms_layer_name_localization;
+            }                     
+            
 
         var options = {
             layers: layer_name,
@@ -254,32 +261,34 @@ var layer_name, geoserver_URL;
                 format_options : 'callback:getJson',
                 SrsName : 'EPSG:4326'
             };
-                var parameters = L.Util.extend(defaultParameters);
-                var URL = geoserver_URL + L.Util.getParamString(parameters);
-                //console.log(URL);
+            var parameters = L.Util.extend(defaultParameters);
+            var URL = geoserver_URL + L.Util.getParamString(parameters);
+            //console.log(URL);
 
-                var WFSLayer = null;
-                var ajax = $.ajax({
-                    url : URL,
-                    dataType : 'jsonp',
-                    jsonpCallback : 'getJson',
-                    success : function (response) {
-                        WFSLayer = L.geoJson(response, {
-                            style: function (feature) {
-                                return {
-                                    stroke: false,
-                                    fillColor: 'FFFFFF',
-                                    fillOpacity: 0
-                                };
-                            },
-                            pointToLayer: function(feature, latlng) {
-                                return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
-                            },
-                            onEachFeature: function (feature, layer) {
-                                popupOptions = {maxWidth: 400, maxHeight:200};
-                                var content = "";
-                                var count_properties = 0;
-                                for (var name in feature.properties) {
+            var WFSLayer = null;
+            var ajax = $.ajax({
+                url : URL,
+                dataType : 'jsonp',
+                jsonpCallback : 'getJson',
+                success : function (response) {
+                    WFSLayer = L.geoJson(response, {
+                        style: function (feature) {
+                            return {
+                                stroke: false,
+                                fillColor: 'FFFFFF',
+                                fillOpacity: 0
+                            };
+                        },
+                        pointToLayer: function(feature, latlng) {
+                            return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
+                        },
+                        onEachFeature: function (feature, layer) {
+                            popupOptions = {maxWidth: 400, maxHeight:200};
+                            var content = "";
+                            var count_properties = 0;
+                            var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
+                            for (var name in feature.properties) {
+                                if ( $.inArray(name, exclude) == -1 ) {
                                     var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
                                     var field_value = feature.properties[name] ;
                                     //if (field_value == "") field_value = "Not found";  //How about Khmer?
@@ -305,44 +314,45 @@ var layer_name, geoserver_URL;
 
                                     }
                                     count_properties= count_properties + 1;
-                                };
-                                layer.bindPopup(content ,popupOptions);
-                                layer.on({
-                                    mouseover: function highlightFeature(e) {
-                                        var layer = e.target;
+                                }//if exclude
+                            }; //for
+                            layer.bindPopup(content ,popupOptions);
+                            layer.on({
+                                mouseover: function highlightFeature(e) {
+                                    var layer = e.target;
 
-                                        if (feature.geometry.type != "Point"){
-                                            layer.setStyle({
-                                                //fillColor: "yellow",
-                                                stroke: true,
-                                                color: "orange",
-                                                weight: 2,
-                                                opacity: 0.7,
-                                                fillOpacity: 0.2
-                                            });
-                                        }else {
-                                            layer.setStyle({
-                                                stroke: true,
-                                                color: "orange",
-                                                radius: 5,
-                                                weight: 4,
-                                                opacity: 0.7,
-                                                fillOpacity: 0.2
-                                            });
-                                        }
-
-                                        if (!L.Browser.ie && !L.Browser.opera) {
-                                            layer.bringToFront();
-                                        }
-                                    },
-                                    mouseout: function resetHighlight(e) {
-                                            WFSLayer.resetStyle(e.target);
-                                            //info.update();
+                                    if (feature.geometry.type != "Point"){
+                                        layer.setStyle({
+                                            //fillColor: "yellow",
+                                            stroke: true,
+                                            color: "orange",
+                                            weight: 2,
+                                            opacity: 0.7,
+                                            fillOpacity: 0.2
+                                        });
+                                    }else {
+                                        layer.setStyle({
+                                            stroke: true,
+                                            color: "orange",
+                                            radius: 5,
+                                            weight: 4,
+                                            opacity: 0.7,
+                                            fillOpacity: 0.2
+                                        });
                                     }
-                                });
-                            }
-                        }).addTo(map);
-                        //map.fitBounds(WFSLayer.getBounds());
+
+                                    if (!L.Browser.ie && !L.Browser.opera) {
+                                        layer.bringToFront();
+                                    }
+                                },
+                                mouseout: function resetHighlight(e) {
+                                        WFSLayer.resetStyle(e.target);
+                                        //info.update();
+                                }
+                            });
+                        }
+                    }).addTo(map);
+                    //map.fitBounds(WFSLayer.getBounds());
                     }
                 });
 
