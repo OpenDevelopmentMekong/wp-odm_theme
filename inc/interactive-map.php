@@ -338,7 +338,7 @@ class OpenDev_InteractiveMap {
                  $(this).parent().find('.toggles').css('display','block');
 
                  $layers_active.find('.layer-item .toggles .toggle-legend').on('click', function() {
-                   if($(this).html() == "Show legend"){
+                   if($(this).html() == "Show legend"){ 
                     //$(this).addClass('active');
                     $(this).parent().parent().find('.legend').show();
                     $(this).html('Hide legend');
