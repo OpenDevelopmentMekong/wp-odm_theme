@@ -286,33 +286,36 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
                                 popupOptions = {maxWidth: 400, maxHeight:200};
                                 var content = "";
                                 var count_properties = 0;
+                                var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
                                 for (var name in feature.properties) {
-                                    var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
-                                    var field_value = feature.properties[name] ;
-                                    //if (field_value == "") field_value = "Not found";  //How about Khmer?
-                                    if (name != "map_id"){
-                                        if (count_properties == 1)
-                                             content = content + "<h5>"  + field_value + " </h5>";
-                                        else{
-                                            // Set the regex string
-                                             var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
-                                            // Replace plain text links by hyperlinks
-                                            if (regexp.test(field_value)){
-                                                var field_url_value = field_value.split(";");
-                                                console.log(field_url_value.length);
-                                                var url_doc = "";
-                                                for(var url =0; url < field_url_value.length; url++ ){
-                                                     url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
+                                    if ( $.inArray(name, exclude) == -1 ) {
+                                        var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
+                                        var field_value = feature.properties[name] ;
+                                        //if (field_value == "") field_value = "Not found";  //How about Khmer?
+                                        if (name != "map_id"){
+                                            if (count_properties == 1)
+                                                 content = content + "<h5>"  + field_value + " </h5>";
+                                            else{
+                                                // Set the regex string
+                                                 var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
+                                                // Replace plain text links by hyperlinks
+                                                if (regexp.test(field_value)){
+                                                    var field_url_value = field_value.split(";");
+                                                    console.log(field_url_value.length);
+                                                    var url_doc = "";
+                                                    for(var url =0; url < field_url_value.length; url++ ){
+                                                         url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
+                                                    }
+                                                    field_value = url_doc;
                                                 }
-                                                field_value = url_doc;
+    
+                                                content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
                                             }
-
-                                            content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
+    
                                         }
-
-                                    }
-                                    count_properties= count_properties + 1;
-                                };
+                                        count_properties= count_properties + 1;
+                                    }//if exclude
+                                }; //for
                                 layer.bindPopup(content ,popupOptions);
                                 layer.on({
                                     mouseover: function highlightFeature(e) {

@@ -1,30 +1,75 @@
 <?php
-// Extend parent theme class
- class Extended_JEO_Layers extends JEO_Layers {
+// Extend parent theme class     
+ class Extended_JEO_Layers extends JEO_Layers {       
     function __construct() {
+        $this->language = array('ODM' => "", 'Cambodia' => "Khmer", 'Laos' => "Lao", 'Myanmar' => "Burmese",'Thailand' => "Thai", 'Vietnam' => "Vietnamese");
          // Call parent class constructor
         // parent::__construct();
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
-        add_action('save_post', array($this, 'layer_save'));
-        add_action('save_post', array($this, 'layer_save'));
-    }
+        add_action('save_post', array($this, 'layer_save'));         
+    } 
     /* function unregister_parent_post_type_again() {
         remove_action( 'init', 'register_post_type', 0 );
         }
        add_action ('init', array($this, 'unregister_parent_post_type_again')); */
+    function get_localization_language($site=""){
+        $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+        $language['ODM'] = "";
+        $language['Cambodia'] = "Khmer";
+        $language['Laos'] = "Lao";
+        $language['Myanmar'] = "Burmese";
+        $language['Thailand'] = "Thai";
+        $language['Vietnam'] = "Vietnamese";
+        return $language[$site_name];
+    }
+    function add_meta_box() {
+          // Layer settings
+          add_meta_box(
+           'layer-settings',
+           __('Layer settings', 'jeo'),
+           array($this, 'settings_box'),
+           'map-layer',
+           'advanced',
+           'high'
+          );
+          // Layer legend
+          add_meta_box(
+           'layer-legend',
+           __('Layer legend', 'jeo'),
+           array($this, 'legend_box'),
+           'map-layer',
+           'side',
+           'default'
+          );
+          // Post layers
+          add_meta_box(
+           'post-layers',
+           __('Layers', 'jeo'),
+           array($this, 'post_layers_box'),
+           'map',
+           'advanced',
+           'high'
+          );
+         }
+    
+     function legend_box($post = false) {
 
+          $legend = $post ? get_post_meta($post->ID, '_layer_legend', true) : '';
+          $legend_localization = $post ? get_post_meta($post->ID, '_layer_legend_localization', true) : '';
+
+          ?>
+          <h4><?php _e('Enter your HTML code to use as legend on the layer (English)', 'jeo'); ?></h4>
+          <textarea name="_layer_legend" style="width:100%;height: 200px;"><?php echo $legend; ?></textarea>
+
+          <h4><?php _e('Enter your HTML code to use as legend on the layer ('.$this->get_localization_language().')', 'jeo'); ?></h4>
+          <textarea name="_layer_legend_localization" style="width:100%;height: 200px;"><?php echo $legend_localization; ?></textarea>
+          <?php
+
+         }
     function settings_box($post = false) {
       $layer_type = $post ? $this->get_layer_type($post->ID) : false;
       $layer_download_link = get_post_meta($post->ID, '_layer_download_link', true);  
-      $layer_download_link_localization = get_post_meta($post->ID, '_layer_download_link_localization', true);
-      
-      $language['ODM'] = "";
-      $language['Cambodia'] = "Khmer";
-      $language['Laos'] = "Lao";
-      $language['Myanmar'] = "Burmese";
-      $language['Thailand'] = "Thai";
-      $language['Vietnam'] = "Vietnamese";
-	  $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+      $layer_download_link_localization = get_post_meta($post->ID, '_layer_download_link_localization', true);       
       ?>
       <div id="layer_settings_box">
        <div class="layer-download-link">
@@ -37,7 +82,7 @@
           </td>
          </tr>
          <tr>
-          <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.$language[$site_name].')', 'jeo'); ?></label></th>
+          <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.$this->get_localization_language().')', 'jeo'); ?></label></th>
           <td>
            <input id="_layer_download_link_localization" type="text" placeholder="https://" size="40" name="_layer_download_link_localization" value="<?php echo $layer_download_link_localization; ?>" />
            <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'jeo'); ?></p>
@@ -126,7 +171,7 @@
          </tr>
          <?php if ($site_name != "ODM"){ ?>
           <tr>
-          <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.$language[$site_name].')', 'opendev'); ?></label></th>
+          <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.$this->get_localization_language().')', 'opendev'); ?></label></th>
           <td>
            <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
            <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
@@ -315,7 +360,10 @@
                 */
                if(isset($_REQUEST['_layer_legend']))
                 update_post_meta($post_id, '_layer_legend', $_REQUEST['_layer_legend']);
-
+               
+               if(isset($_REQUEST['_layer_legend_localization']))
+                update_post_meta($post_id, '_layer_legend_localization', $_REQUEST['_layer_legend_localization']);
+               
                /*
                 * Layer type
                 */
