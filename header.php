@@ -105,7 +105,7 @@
           ?>
         </nav>
       </div>
-			<div class="three columns social">
+			<div class="three columns social search language">
         <?php qtranxf_generateLanguageSelectCode($type,$id);?>
         <div id="live-search">
           <div class="container">
