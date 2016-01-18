@@ -63,6 +63,20 @@
   background-position: top right;
   margin: 0;
 }
+#cNavNew li .level2 li.menu-item{
+  padding: 0;
+  position: relative;
+  left: 106px;
+}
+
+#cNavNew  li.country-2 .level2 li{
+  left: 216px;
+}
+
+#cNavNew li.country-3 .level2 li{
+  left: 336px;
+}
+
 #cNavNew li .level2 li.cur>a, #cNavNew li .level2 li.act>a, #cNavNew li .level2 li:hover>a {
   color: #0773B6;
 }
