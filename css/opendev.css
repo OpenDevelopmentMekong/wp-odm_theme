@@ -2188,8 +2188,21 @@ a.button:hover{
 .cartodb-legend ul{
   display: block !important;
 }
+.cartodb-legend.category ul li{
+  width: 100%;
+  height: auto!important;
+  text-decoration: none;
+}
+.cartodb-legend ul li {
+    list-style-type: none!important;
+}
+div.cartodb-legend .legend-title{
+  margin-left: 18px!important;
+}
 
-
+div.cartodb-legend-stack{
+  width: 250px;
+}
 /*
  * CKAN search
  */
