@@ -73,6 +73,7 @@
           <?php opendev_logo(); ?>
 				</div>
 			</div>
+
       <div class="three columns social">
         <nav id="social-nav">
           <?php
@@ -105,6 +106,7 @@
         </nav>
       </div>
 			<div class="three columns social">
+        <?php qtranxf_generateLanguageSelectCode($type,$id);?>
         <div id="live-search">
           <div class="container">
             <div class="three columns">
