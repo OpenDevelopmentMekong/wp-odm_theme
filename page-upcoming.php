@@ -87,7 +87,7 @@ Template Name: Upcoming site
    </section>
  <?php endif; ?>
 
- <section id="page-content">
+ <section id="page-content" style="margin-top:0">
   <div class="section-title no-margin-buttom">
    <div class="container">
     <div class="twelve columns">
