@@ -108,7 +108,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
     left: 20px;
     position: relative;
   }
-  svg.icon-info{
+  svg.icon-info, svg.icon-download{
     width: 12px;
     height: 12px;
   }
@@ -323,7 +323,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
       width: auto;
     }
 
-    .page-template-page-map-explorer .layer-item .toggle-info {
+    .page-template-page-map-explorer .layer-item .toggle-info,.page-template-page-map-explorer .active-layer .layer-item .download-url {
       left: 30px;
       position: relative;
       top: 10px;
@@ -331,5 +331,8 @@ body.page-template-page-map-explorer{overflow: hidden;}
     }
 
     .page-template-page-map-explorer .active-layer .layer-item .toggle-info {
-      left: 90px;
+      left: 80px;
+    }
+    .page-template-page-map-explorer .active-layer .layer-item .download-url{
+      left:75px;
     }
