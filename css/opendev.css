@@ -1193,9 +1193,9 @@ a.button:hover{
  cursor: pointer;
  display: inline-block;
 }
-.sticky-posts .sticky-item:last-child {
+/*.sticky-posts .sticky-item:last-child {
  border-bottom: 0;
-}
+}*/
 .sticky-posts .sticky-item:nth-child(2),
 .sticky-posts .sticky-item:nth-child(3),
 .sticky-posts .sticky-item:nth-child(4){
