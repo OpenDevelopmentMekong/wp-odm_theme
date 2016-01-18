@@ -328,6 +328,7 @@ class OpenDev_InteractiveMap {
                  $(controlling_layer).removeClass('active');
                  $(controlling_layer).parent().find('.layer-status').removeClass('active');
                });
+
            $layers_active.find('.layer-item .toggle-info').off('click').on('click', function() {
                $(this).toggleClass('active');
 
@@ -335,7 +336,20 @@ class OpenDev_InteractiveMap {
                  $(this).parent().find('.layer-content').show();
                  $(this).parent().find('.toggle-text').show();
                  $(this).parent().find('.toggles').css('display','block');
-                //  $(this).parent().find('.toggle-legend').css('display','inline-block');
+
+                 $layers_active.find('.layer-item .toggles .toggle-legend').on('click', function() {
+                   if($(this).html() == "Show legend"){
+                    //$(this).addClass('active');
+                    $(this).parent().parent().find('.legend').show();
+                    $(this).html('Hide legend');
+                   } else {
+                    //$(this).removeClass('active');
+                    $(this).parent().parent().find('.legend').hide();
+                    $(this).html('Show legend');
+                   }
+                 });
+
+
                }
                else{
                  $(this).parent().find('.layer-content').hide();
