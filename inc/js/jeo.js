@@ -261,98 +261,98 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
                 format_options : 'callback:getJson',
                 SrsName : 'EPSG:4326'
             };
-                var parameters = L.Util.extend(defaultParameters);
-                var URL = geoserver_URL + L.Util.getParamString(parameters);
-                //console.log(URL);
+            var parameters = L.Util.extend(defaultParameters);
+            var URL = geoserver_URL + L.Util.getParamString(parameters);
+            //console.log(URL);
 
-                var WFSLayer = null;
-                var ajax = $.ajax({
-                    url : URL,
-                    dataType : 'jsonp',
-                    jsonpCallback : 'getJson',
-                    success : function (response) {
-                        WFSLayer = L.geoJson(response, {
-                            style: function (feature) {
-                                return {
-                                    stroke: false,
-                                    fillColor: 'FFFFFF',
-                                    fillOpacity: 0
-                                };
-                            },
-                            pointToLayer: function(feature, latlng) {
-                                return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
-                            },
-                            onEachFeature: function (feature, layer) {
-                                popupOptions = {maxWidth: 400, maxHeight:200};
-                                var content = "";
-                                var count_properties = 0;
-                                var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
-                                for (var name in feature.properties) {
-                                    if ( $.inArray(name, exclude) == -1 ) {
-                                        var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
-                                        var field_value = feature.properties[name] ;
-                                        //if (field_value == "") field_value = "Not found";  //How about Khmer?
-                                        if (name != "map_id"){
-                                            if (count_properties == 1)
-                                                 content = content + "<h5>"  + field_value + " </h5>";
-                                            else{
-                                                // Set the regex string
-                                                 var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
-                                                // Replace plain text links by hyperlinks
-                                                if (regexp.test(field_value)){
-                                                    var field_url_value = field_value.split(";");
-                                                    console.log(field_url_value.length);
-                                                    var url_doc = "";
-                                                    for(var url =0; url < field_url_value.length; url++ ){
-                                                         url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
-                                                    }
-                                                    field_value = url_doc;
+            var WFSLayer = null;
+            var ajax = $.ajax({
+                url : URL,
+                dataType : 'jsonp',
+                jsonpCallback : 'getJson',
+                success : function (response) {
+                    WFSLayer = L.geoJson(response, {
+                        style: function (feature) {
+                            return {
+                                stroke: false,
+                                fillColor: 'FFFFFF',
+                                fillOpacity: 0
+                            };
+                        },
+                        pointToLayer: function(feature, latlng) {
+                            return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
+                        },
+                        onEachFeature: function (feature, layer) {
+                            popupOptions = {maxWidth: 400, maxHeight:200};
+                            var content = "";
+                            var count_properties = 0;
+                            var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
+                            for (var name in feature.properties) {
+                                if ( $.inArray(name, exclude) == -1 ) {
+                                    var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
+                                    var field_value = feature.properties[name] ;
+                                    //if (field_value == "") field_value = "Not found";  //How about Khmer?
+                                    if (name != "map_id"){
+                                        if (count_properties == 1)
+                                             content = content + "<h5>"  + field_value + " </h5>";
+                                        else{
+                                            // Set the regex string
+                                             var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
+                                            // Replace plain text links by hyperlinks
+                                            if (regexp.test(field_value)){
+                                                var field_url_value = field_value.split(";");
+                                                console.log(field_url_value.length);
+                                                var url_doc = "";
+                                                for(var url =0; url < field_url_value.length; url++ ){
+                                                     url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
                                                 }
-    
-                                                content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
+                                                field_value = url_doc;
                                             }
-    
-                                        }
-                                        count_properties= count_properties + 1;
-                                    }//if exclude
-                                }; //for
-                                layer.bindPopup(content ,popupOptions);
-                                layer.on({
-                                    mouseover: function highlightFeature(e) {
-                                        var layer = e.target;
 
-                                        if (feature.geometry.type != "Point"){
-                                            layer.setStyle({
-                                                //fillColor: "yellow",
-                                                stroke: true,
-                                                color: "orange",
-                                                weight: 2,
-                                                opacity: 0.7,
-                                                fillOpacity: 0.2
-                                            });
-                                        }else {
-                                            layer.setStyle({
-                                                stroke: true,
-                                                color: "orange",
-                                                radius: 5,
-                                                weight: 4,
-                                                opacity: 0.7,
-                                                fillOpacity: 0.2
-                                            });
+                                            content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
                                         }
 
-                                        if (!L.Browser.ie && !L.Browser.opera) {
-                                            layer.bringToFront();
-                                        }
-                                    },
-                                    mouseout: function resetHighlight(e) {
-                                            WFSLayer.resetStyle(e.target);
-                                            //info.update();
                                     }
-                                });
-                            }
-                        }).addTo(map);
-                        //map.fitBounds(WFSLayer.getBounds());
+                                    count_properties= count_properties + 1;
+                                }//if exclude
+                            }; //for
+                            layer.bindPopup(content ,popupOptions);
+                            layer.on({
+                                mouseover: function highlightFeature(e) {
+                                    var layer = e.target;
+
+                                    if (feature.geometry.type != "Point"){
+                                        layer.setStyle({
+                                            //fillColor: "yellow",
+                                            stroke: true,
+                                            color: "orange",
+                                            weight: 2,
+                                            opacity: 0.7,
+                                            fillOpacity: 0.2
+                                        });
+                                    }else {
+                                        layer.setStyle({
+                                            stroke: true,
+                                            color: "orange",
+                                            radius: 5,
+                                            weight: 4,
+                                            opacity: 0.7,
+                                            fillOpacity: 0.2
+                                        });
+                                    }
+
+                                    if (!L.Browser.ie && !L.Browser.opera) {
+                                        layer.bringToFront();
+                                    }
+                                },
+                                mouseout: function resetHighlight(e) {
+                                        WFSLayer.resetStyle(e.target);
+                                        //info.update();
+                                }
+                            });
+                        }
+                    }).addTo(map);
+                    //map.fitBounds(WFSLayer.getBounds());
                     }
                 });
 
