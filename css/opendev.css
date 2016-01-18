@@ -2538,8 +2538,12 @@ a.button:hover{
 #colophon {
  margin-top: 0;
 }
-
-
+.no-margin-buttom{
+    margin-bottom: 0;
+}
+.no-margin-top{
+    margin-top: 0;
+}
 
 /*
  * Advanced Navigation
