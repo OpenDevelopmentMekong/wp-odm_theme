@@ -1,5 +1,5 @@
 #od-head #ms-nav{display: none;}
-
+.clearfix{clear: both;height: 0;}
 @font-face {
   font-family: 'Droid Serif';
   src: url('fonts/droidserif_regular/DroidSerif-Regular-webfont.eot');
@@ -284,7 +284,7 @@ li.top-topic {
   width: 110px;
   text-transform: uppercase;
 }
-                    
+
 .mainNav-inner {
     position: absolute;
     width: 140px;
