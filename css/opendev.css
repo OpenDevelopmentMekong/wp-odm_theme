@@ -1192,10 +1192,11 @@ a.button:hover{
  box-sizing: border-box;
  cursor: pointer;
  display: inline-block;
+ max-height:  320px
 }
-.sticky-posts .sticky-item:last-child {
+/*.sticky-posts .sticky-item:last-child {
  border-bottom: 0;
-}
+}*/
 .sticky-posts .sticky-item:nth-child(2),
 .sticky-posts .sticky-item:nth-child(3),
 .sticky-posts .sticky-item:nth-child(4){
