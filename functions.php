@@ -122,12 +122,14 @@ function opendev_styles()
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
   wp_register_style('table-pages',  $css_base.'table-pages.css');
+  wp_register_style('forest-cover',  $css_base.'forest-cover.css');
 
   wp_enqueue_style('mCustomScrollbar');
   wp_enqueue_style('opendev-base');
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('table-pages');
   wp_enqueue_style('map-explorer');
+  wp_enqueue_style('forest-cover');
 
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);
@@ -138,10 +140,9 @@ add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 function opendev_jeo_scripts()
 {
   wp_dequeue_script('jeo-site');
-  wp_enqueue_script('jquery-isotope');
-
+  wp_enqueue_script('jquery-isotope'); 
   wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
-
+  $site_name = str_replace('Open Development ', '', get_bloginfo('name'));   
   // custom marker system
   global $jeo_markers;
   wp_deregister_script('jeo.markers');
@@ -157,7 +158,7 @@ function opendev_jeo_scripts()
     'embed_base_url' => home_url('/embed/'),
     'share_base_url' => home_url('/share/'),
     'marker_active' => array(
-    'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active.png',
+    'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
     'iconSize' => array(26, 30),
     'iconAnchor' => array(13, 30),
     'popupAnchor' => array(0, -40),
