@@ -1,12 +1,12 @@
 <script>
-    (function($){  
-        var three_per_row_highest; 
+    (function($){
+        var three_per_row_highest;
         $(window).load(function(){
             /* $(".scroll-sticky-posts").mCustomScrollbar({
                  axis:"y",
                  theme:"dark",
                  autoHideScrollbar: 1
-            }); */
+            });
             var highestBox = 0;
             $(".three_per_row").each(function(){
                 if($(this).height() > highestBox)
@@ -21,8 +21,7 @@
                 var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
                 $(".two_per_row"+i).height(highestCol);
                 $(".two_per_row"+next).height(highestCol);
-            } 
-
+            }   */  
         });
     })(jQuery);
 </script>
@@ -69,7 +68,7 @@ if ($options_news_tags['news_tags']) {
                       }
                 ?>
                 <div class="sticky-item<?php echo $group_sticky_item . $group_sticky_item_index; ?>" id="<?php the_ID(); ?>" data-postid="<?php the_ID(); ?>">
-                     <?php show_queried_posts(); ?>   
+                     <?php show_queried_posts(); ?>
                </div>
            <?php endwhile; ?>
         <?php endif; ?>
@@ -99,16 +98,16 @@ if ($options_news_tags['news_tags']) {
                               $group_sticky_item_index = " two_per_row".$number_two_item_in_column;
                       }else {
                              $group_sticky_item = "";
-                      } 
+                      }
                 ?>
-                
+
                 <div class="sticky-item<?php echo $group_sticky_item . $group_sticky_item_index; ?>" id="<?php the_ID(); ?>"  data-postid="<?php the_ID(); ?>">
-                    <?php show_queried_posts(); ?>   
+                    <?php show_queried_posts(); ?>
                </div>
            <?php endwhile; ?>
        <?php endif; ?>
        </div> <!-- sticky-posts -->
-<?php //} //filter_by_tag   ?> 
+<?php //} //filter_by_tag   ?>
 
 <?php function show_queried_posts(){    ?>
         <article id="sticky-post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -161,12 +160,12 @@ if ($options_news_tags['news_tags']) {
          </div>
          <footer class="post-actions">
               <!-- <a class="button" href="<?php the_permalink(); ?>">
-              <img src="<?php // echo get_stylesheet_directory_uri()?>/img/info-icon.png"/> 
-              <?php // _e('Read more', 'opendev'); ?></a>-->    
-             <div class="share-box">                       
-                  <div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>    
+              <img src="<?php // echo get_stylesheet_directory_uri()?>/img/info-icon.png"/>
+              <?php // _e('Read more', 'opendev'); ?></a>-->
+             <div class="share-box">
+                  <div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
                   <div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
-                  <div class="g-plusone" data-size="medium" data-href="<?php the_permalink(); ?>" data-count="false"></div> 
+                  <div class="g-plusone" data-size="medium" data-href="<?php the_permalink(); ?>" data-count="false"></div>
                   <!-- <a class="button share-button" href="<?php //echo jeo_get_share_url(array('p' => get_the_ID())); ?>">
                   <img src="<?php //echo get_stylesheet_directory_uri()?>/img/share-icon.png"/> -->
                   <?php //_e('Share', 'opendev'); ?></a>
@@ -175,9 +174,9 @@ if ($options_news_tags['news_tags']) {
         </article>
 <?php
     }
-?> 
+?>
 <script>
-(function($) { 
+(function($) {
     $('.sticky-posts .sticky-item:first').addClass('sticky-posts-active');
 })(jQuery);
 </script>

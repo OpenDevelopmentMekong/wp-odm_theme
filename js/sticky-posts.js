@@ -2,7 +2,7 @@
 	jeo.markersReady(function(map) {
 
 		var t;
-        //var tab_sticky_posts_active  = ".sticky-posts-active " ;  
+        //var tab_sticky_posts_active  = ".sticky-posts-active " ;
         var tab_sticky_posts_active  = "" ;
 		function openSticky(postid) {
 
@@ -13,7 +13,7 @@
 			$(tab_sticky_posts_active + '.sticky-item').removeClass('active');
 			$('.sticky-posts-active').addClass('post-active');
 			item.addClass('active');
-			//$('.sticky-posts-active').height(($('.sticky-posts-active').height()));    
+			//$('.sticky-posts-active').height(($('.sticky-posts-active').height()));
 			//item.height(($('.sticky-posts-active').height()));
             adjustPostItem_height($('.sticky-posts-active').height());
 			//adjustImageSize();
@@ -21,7 +21,7 @@
 		}
 
 		function closeSticky() {
-			$('.sticky-posts-active').removeClass('post-active');  
+			$('.sticky-posts-active').removeClass('post-active');
 			$(tab_sticky_posts_active + '.sticky-item').removeClass('active');
 
 			adjustImageSize();
@@ -46,12 +46,12 @@
         function adjustPostItem_height(h) {
             var opened = $(tab_sticky_posts_active + '.sticky-item.active');
 			var closed = $(tab_sticky_posts_active + '.sticky-item');
-			
+
 			opened.height(h);
 			//closed.height("100%");   //if enable the mCustomScrollbar
-			closed.height("auto");  
-            
-             /* var highestBox = 0;
+			closed.height("auto");
+
+            var highestBox = 0;
             $(".three_per_row").each(function(){
                 if($(this).height() > highestBox)
                    highestBox = $(this).height();
@@ -64,7 +64,7 @@
                 var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
                 $(".two_per_row"+i).height(highestCol);
                 $(".two_per_row"+next).height(highestCol);
-            } */ 
+            }
         }
 		function adjustImageSize() {
 
@@ -98,7 +98,7 @@
 					img.attr('style', '');
 				}
 
-			});  
+			});
 
 		}
 
@@ -109,7 +109,7 @@
 				return false;
 			} else {
 				window.location = $(this).find('.link').attr('href');
-			} 
+			}
 		});
 
 		if($('.sticky-posts-active').length) {
@@ -120,7 +120,6 @@
 			});
 
 			$(tab_sticky_posts_active + '.sticky-item').each(function() {
-
 				var $item = $(this);
 				$item.data('shareUrl', $(this).find('.share-button').attr('href'));
 				$item.find('.share-button').attr('href', $item.data('shareUrl') + '&map_id=' + map.currentMapID);
@@ -143,7 +142,7 @@
 			setTimeout(function() {
 				openSticky($(tab_sticky_posts_active + '.sticky-item:first-child').data('postid'));
 				t = setInterval(runSticky, 6000);
-			}, 800);
+			}, 700);
 		}
 
 	});
