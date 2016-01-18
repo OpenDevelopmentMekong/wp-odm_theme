@@ -322,6 +322,9 @@ body.page-template-page-map-explorer{overflow: hidden;}
     }
     .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-text,.page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-legend,.page-template-page-map-explorer .cat-layers .layer-item .download-url{display: none!important;}
 
+    .layer-item .legend {
+    padding-left: 10px; 
+  }
     .page-template-page-map-explorer .layer-item .toggles a{
       border: 0;
     }
