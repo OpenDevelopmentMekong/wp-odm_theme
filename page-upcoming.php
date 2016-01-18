@@ -87,12 +87,12 @@ Template Name: Upcoming site
    </section>
  <?php endif; ?>
 
- <section id="page-content">
+ <section id="page-content" style="margin-top:0">
   <div class="section-title no-margin-buttom">
    <div class="container">
     <div class="twelve columns">
-        <header class="single-post-header"> 
-					<h1><?php the_title(); ?></h1> 
+        <header class="single-post-header">
+					<h1><?php the_title(); ?></h1>
 		</header>
      <?php the_content(); ?>
     </div>
