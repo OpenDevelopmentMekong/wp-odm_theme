@@ -7,11 +7,6 @@
   display:none;
 }
 
-.data-table{
-  width:100%;
-  border: none;
-}
-
 .row-key{
   font-weight: bold;
 }
@@ -106,6 +101,10 @@
   padding: 10px 10px;
 }
 
+.data-table{
+  border: none;
+}
+
 table.data-table thead{
   background: rgb(246,246,246);
   color: #000;
@@ -120,12 +119,19 @@ table.data-table tr,table.data-table td{
 }
 
 .centered_column{
-  min-width: 110px;
   text-align: center;
+}
+
+td.entry_title{
+  min-width: 100px;
 }
 
 td.entry_title a{
   color: #292D56;
+}
+
+.download_buttons{
+  min-width: 100px;
 }
 
 .download_buttons span.icon-arrow-down{
@@ -136,7 +142,7 @@ td.entry_title a{
 .download_buttons span a{
   color: white;
   text-decoration: none;
-  padding: 3px 4px;
+  padding: 4px 6px;
   background: rgb(75,75,75);
   border-radius: 6px;
   font-size:10px;

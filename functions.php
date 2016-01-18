@@ -188,9 +188,16 @@ add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
 function nav_concept_scripts()
 {
+
+	wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/jquery.dataTables.min.css');
+  wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/responsive.dataTables.css');
+
   wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
-  wp_enqueue_script('data-tables', get_stylesheet_directory_uri().'/js/dataTables.js', array('jquery'), '1.10.10');
+  wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
+	wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
   wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
+
+	wp_enqueue_style('dataTables-css');
 }
 
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
@@ -1044,8 +1051,8 @@ function the_breadcrumb()
    array_pop($excerpt_hidden_space);
    $$excerpt_string = implode("?", $excerpt_hidden_space) ;
    $excerpt_words = $excerpt_string. " ...";
-   if ($read_more !=""){	
-    $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')))."-color";       
+   if ($read_more !=""){
+    $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')))."-color";
     $excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." ' class='".$color_name."'>". __($read_more,"opendev")."</a>)";
    }
          return $excerpt_words;
