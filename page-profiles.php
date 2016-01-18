@@ -314,16 +314,17 @@ window.onload = function() {
 	cartodb.createVis('profiles_map', cartodbConfig.elc.vizUrl, {
 		search: false,
 		shareable: true,
+    zoom: 7,
+    center_lat: 12.54384,
+    center_long: 105.60059,
 		https: true
 	}).done(function(vis, layers) {
 		mapViz = vis;
-    if (!singleProfile){
+    if (singleProfile){
       mapViz.map.set({
         maxZoom: 10
       });
       filterEntriesMap([singleProfileMapId]);
-    }else{
-      showAllEntries();
     }
 	});
 
