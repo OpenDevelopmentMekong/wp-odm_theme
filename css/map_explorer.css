@@ -1,6 +1,7 @@
 
 /*map explorer*/
 body.page-template-page-map-explorer{overflow: hidden;}
+.page-template-page-map-explorer #wrap-feedback{display: none;}
 .page-template-page-map-explorer .interactive-map{
   border: 0;
   box-shadow: none;
