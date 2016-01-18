@@ -548,7 +548,9 @@ footer#colophon{
     float: left;
     margin: 0 5px;
   }
-
+    .qtranxs_language_chooser li a{
+      color: white;
+    }
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
