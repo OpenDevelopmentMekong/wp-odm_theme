@@ -102,7 +102,6 @@
 }
 
 .data-table{
-  width:100%;
   border: none;
 }
 
@@ -132,7 +131,7 @@ td.entry_title a{
 }
 
 .download_buttons{
-  width: 100px;
+  min-width: 100px;
 }
 
 .download_buttons span.icon-arrow-down{
@@ -143,7 +142,7 @@ td.entry_title a{
 .download_buttons span a{
   color: white;
   text-decoration: none;
-  padding: 3px 4px;
+  padding: 4px 6px;
   background: rgb(75,75,75);
   border-radius: 6px;
   font-size:10px;

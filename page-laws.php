@@ -159,15 +159,13 @@ jQuery(document).ready(function($) {
   };
 
   var oTable = $("#law_datasets").dataTable({
-    "scrollX": false,
-    "responsive": {
-      details: false
-    },
-    "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
-    "processing": true,
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "order": [[ 0, 'asc' ]],
-    "displayLength": 25
+    scrollX: false,
+    responsive: true,
+    dom: '<"top"<"info"i><"pagination"p><"length"l>>rt',
+    processing: true,
+    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    order: [[ 0, 'asc' ]],
+    displayLength: 25
   });
 
   $("#search_all").keyup(function () {

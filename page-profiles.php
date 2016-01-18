@@ -252,20 +252,12 @@ require_once('page-profiles-config.php');
 
 <script type="text/javascript">
 
-var singleProfile = $("#profiles") == null;
-var singleProfileMapId = $("#profile-map-id").text();
+var singleProfile = false;
+var singleProfileMapId;
 var mapViz;
 var oTable;
+var mapIdColNumber = 17;
 var cartodbSql = new cartodb.SQL({ user: cartodbConfig.user });
-
-var showAllEntries = function(){
-  var layers = mapViz.getLayers();
-	var sql = "SELECT * FROM " + cartodbConfig.elc.table;
-	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
-		mapViz.getNativeMap().fitBounds(bounds);
-	});
-	layers[1].getSubLayer(0).setSQL(sql);
-}
 
 var filterEntriesMap = function(mapIds){
   var layers = mapViz.getLayers();
@@ -274,11 +266,15 @@ var filterEntriesMap = function(mapIds){
 	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
 		mapViz.getNativeMap().fitBounds(bounds);
 	});
+  if (mapIds.length==1){
+    mapViz.map.set({
+      maxZoom: 10
+    });
+  }
 	layers[1].getSubLayer(0).setSQL(sql);
 }
 
 jQuery(document).ready(function($) {
-
   console.log("profile pages init");
 
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
@@ -290,28 +286,27 @@ jQuery(document).ready(function($) {
 
   if (!singleProfile){
     oTable = $("#profiles").dataTable({
-      "autoWidth": true,
-      "scrollX": true,
-      "responsive": true,
-      "dom": '<"top"<"info"i><"pagination"p><"length"l>>rt',
-      "processing": true,
-      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-      "order": [[ 1, 'asc' ]],
-      "displayLength": 25
+      scrollX: true,
+      responsive: false,
+      dom: '<"top"<"info"i><"pagination"p><"length"l>>rt',
+      processing: true,
+      lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      order: [[ 0, 'asc' ]],
+      displayLength: 25
     });
   }
 
   $("#search_all").keyup(function () {
     oTable.fnFilterAll(this.value);
     var filtered = oTable._('tr', {"filter":"applied"});
-    filterEntriesMap(_.pluck(filtered,'0'));
+    filterEntriesMap(_.pluck(filtered,mapIdColNumber));
   });
 
 });
 
 window.onload = function() {
 
-	cartodb.createVis('profiles_map', cartodbConfig.elc.vizUrl, {
+  cartodb.createVis('profiles_map', cartodbConfig.elc.vizUrl, {
 		search: false,
 		shareable: true,
     zoom: 7,
@@ -319,11 +314,11 @@ window.onload = function() {
     center_long: 105.60059,
 		https: true
 	}).done(function(vis, layers) {
+    singleProfile = $('#profiles').length <= 0;
+    console.log("cartodb viz created. singleProfile: " + singleProfile);
 		mapViz = vis;
     if (singleProfile){
-      mapViz.map.set({
-        maxZoom: 10
-      });
+      singleProfileMapId  = $("#profile-map-id").text();
       filterEntriesMap([singleProfileMapId]);
     }
 	});
