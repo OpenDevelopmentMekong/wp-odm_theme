@@ -51,7 +51,7 @@
 			//closed.height("100%");   //if enable the mCustomScrollbar
 			closed.height("auto");  
             
-             /* var highestBox = 0;
+             var highestBox = 0;
             $(".three_per_row").each(function(){
                 if($(this).height() > highestBox)
                    highestBox = $(this).height();
@@ -64,7 +64,7 @@
                 var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
                 $(".two_per_row"+i).height(highestCol);
                 $(".two_per_row"+next).height(highestCol);
-            } */ 
+            }  
         }
 		function adjustImageSize() {
 
