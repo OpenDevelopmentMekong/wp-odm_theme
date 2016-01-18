@@ -2,6 +2,7 @@
 /*map explorer*/
 body.page-template-page-map-explorer{overflow: hidden;}
 .page-template-page-map-explorer #wrap-feedback{display: none;}
+
 .page-template-page-map-explorer .interactive-map{
   border: 0;
   box-shadow: none;
@@ -352,4 +353,20 @@ body.page-template-page-map-explorer{overflow: hidden;}
     }
     .page-template-page-map-explorer .active-layer .layer-item .download-url{
       left:75px;
+    }
+
+    .page-template-page-map-explorer .jeo-geocode.leaflet-control {
+        position: fixed;
+        right: 10px;
+        top: 185px;
+        width: 270px;
+    }
+
+
+    .page-template-page-map-explorer .geocode-results{
+      position: absolute;
+      right: 280px;
+      top: 0;
+      width: 200px;
+      background: white;
     }
