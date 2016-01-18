@@ -299,10 +299,13 @@ class OpenDev_InteractiveMap {
            if ($(this).hasClass('active')==true){
              console.log($(this));
              $(this).parent().find('.layer-content').show();
+             $(this).parent().find('.toggle-text').show();
            }
            else{
              console.log($(this));
              $(this).parent().find('.layer-content').hide();
+             $(this).parent().find('.layer-excerpt').hide();
+             $(this).parent().find('toggle-text').hide();
            }
        });
 
