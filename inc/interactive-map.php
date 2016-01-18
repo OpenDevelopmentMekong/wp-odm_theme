@@ -293,6 +293,19 @@ class OpenDev_InteractiveMap {
        })
        });
 
+       $layers.find('.layer-item .toggle-info').on('click', function() {
+          //  $(this).toggleClass('active');
+
+           if ($(this).hasClass('active')==true){
+             console.log($(this));
+             $(this).parent().find('.layer-content').show();
+           }
+           else{
+             console.log($(this));
+             $(this).parent().find('.layer-content').hide();
+           }
+       });
+
       //  deactivating active layers in box
        $(document).on('mouseover', '.map-active-layers', function(){
           $('.active-layer h2').off('click').on("click",function(){
@@ -314,9 +327,14 @@ class OpenDev_InteractiveMap {
           });
 
 
-      $layers.find('.layer-item .toggles .toggle-info').on('click', function() {
-          $(this).toggleClass('active');
-      });
+      // $layers.find('.layer-item .toggle-info').on('click', function() {
+      //     $(this).toggleClass('active');
+      //     $(this).closest('.layer-excerpt').show();
+      //
+      // });
+
+
+
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
         //$(this).addClass('active');
