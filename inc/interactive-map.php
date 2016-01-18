@@ -314,6 +314,9 @@ class OpenDev_InteractiveMap {
           });
 
 
+      $layers.find('.layer-item .toggles .toggle-info').on('click', function() {
+          $(this).toggleClass('active');
+      });
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
         //$(this).addClass('active');

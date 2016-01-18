@@ -305,7 +305,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
     .page-template-page-map-explorer footer{display: none;}
 
 
-     .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-text , .page-template-page-map-explorer .cat-layers .layer-item .toggles{
+     .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-text,.page-template-page-map-explorer .cat-layers .layer-item .toggle-info , .page-template-page-map-explorer .cat-layers .layer-item .toggles{
       display: inline-block;
 
     }
@@ -315,12 +315,13 @@ body.page-template-page-map-explorer{overflow: hidden;}
       border: 0;
     }
 
-    .page-template-page-map-explorer .layer-item .toggles .toggle-text > img{
+    .page-template-page-map-explorer .layer-item .toggle-info > img{
       height: 12px;
       width: auto;
     }
 
-    .page-template-page-map-explorer .layer-item .toggles .toggle-text {
+    .page-template-page-map-explorer .layer-item .toggle-info {
     width: 5px;
-    margin-left: 10px;
+    position: relative;
+    left: 10px;
     }
