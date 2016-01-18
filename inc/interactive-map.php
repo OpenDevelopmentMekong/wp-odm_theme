@@ -224,6 +224,7 @@ class OpenDev_InteractiveMap {
        jeo_map = map;
 
        var $layers = $('.interactive-map-layers');
+       var $layers_active = $('.map-active-layers');
        if(map.postID == 'interactive_map') {
         //map.$.find('.jeo-filter-layers').appendTo($layers);
         for(var key in term_rel) {
@@ -293,6 +294,23 @@ class OpenDev_InteractiveMap {
        })
        });
 
+       $layers.find('.layer-item .toggle-info').on('click', function() {
+          //  $(this).toggleClass('active');
+
+           if ($(this).hasClass('active')==true){
+             $(this).parent().find('.layer-content').show();
+             $(this).parent().find('.toggle-text').show();
+           }
+           else{
+             $(this).parent().find('.layer-content').hide();
+             $(this).parent().find('.layer-excerpt').hide();
+             $(this).parent().find('toggle-text').hide();
+           }
+       });
+
+
+
+
       //  deactivating active layers in box
        $(document).on('mouseover', '.map-active-layers', function(){
           $('.active-layer h2').off('click').on("click",function(){
@@ -311,7 +329,44 @@ class OpenDev_InteractiveMap {
                  $(controlling_layer).parent().find('.layer-status').removeClass('active');
                });
 
+           $layers_active.find('.layer-item .toggle-info').off('click').on('click', function() {
+               $(this).toggleClass('active');
+
+               if ($(this).hasClass('active')==true){
+                 $(this).parent().find('.layer-content').show();
+                 $(this).parent().find('.toggle-text').show();
+                 $(this).parent().find('.toggles').css('display','block');
+
+                 $layers_active.find('.layer-item .toggles .toggle-legend').on('click', function() {
+                   if($(this).html() == "Show legend"){ 
+                    //$(this).addClass('active');
+                    $(this).parent().parent().find('.legend').show();
+                    $(this).html('Hide legend');
+                   } else {
+                    //$(this).removeClass('active');
+                    $(this).parent().parent().find('.legend').hide();
+                    $(this).html('Show legend');
+                   }
+                 });
+
+
+               }
+               else{
+                 $(this).parent().find('.layer-content').hide();
+                 $(this).parent().find('.layer-excerpt').hide();
+                 $(this).parent().find('.toggles').css('display','none');
+                 $(this).parent().find('toggle-text').hide();
+               }
+           });
           });
+
+
+      // $layers.find('.layer-item .toggle-info').on('click', function() {
+      //     $(this).toggleClass('active');
+      //     $(this).closest('.layer-excerpt').show();
+      //
+      // });
+
 
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
