@@ -224,6 +224,7 @@ class OpenDev_InteractiveMap {
        jeo_map = map;
 
        var $layers = $('.interactive-map-layers');
+       var $layers_active = $('.map-active-layers');
        if(map.postID == 'interactive_map') {
         //map.$.find('.jeo-filter-layers').appendTo($layers);
         for(var key in term_rel) {
@@ -297,17 +298,18 @@ class OpenDev_InteractiveMap {
           //  $(this).toggleClass('active');
 
            if ($(this).hasClass('active')==true){
-             console.log($(this));
              $(this).parent().find('.layer-content').show();
              $(this).parent().find('.toggle-text').show();
            }
            else{
-             console.log($(this));
              $(this).parent().find('.layer-content').hide();
              $(this).parent().find('.layer-excerpt').hide();
              $(this).parent().find('toggle-text').hide();
            }
        });
+
+
+
 
       //  deactivating active layers in box
        $(document).on('mouseover', '.map-active-layers', function(){
@@ -326,7 +328,22 @@ class OpenDev_InteractiveMap {
                  $(controlling_layer).removeClass('active');
                  $(controlling_layer).parent().find('.layer-status').removeClass('active');
                });
+           $layers_active.find('.layer-item .toggle-info').off('click').on('click', function() {
+               $(this).toggleClass('active');
 
+               if ($(this).hasClass('active')==true){
+                 $(this).parent().find('.layer-content').show();
+                 $(this).parent().find('.toggle-text').show();
+                 $(this).parent().find('.toggles').css('display','block');
+                //  $(this).parent().find('.toggle-legend').css('display','inline-block');
+               }
+               else{
+                 $(this).parent().find('.layer-content').hide();
+                 $(this).parent().find('.layer-excerpt').hide();
+                 $(this).parent().find('.toggles').css('display','none');
+                 $(this).parent().find('toggle-text').hide();
+               }
+           });
           });
 
 
