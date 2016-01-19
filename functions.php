@@ -1230,11 +1230,15 @@ function get_datasets_filter($ckan_domain,$key,$value){
 }
 
 function get_datastore_resources_filter($ckan_domain,$resource_id,$key,$value){
-  $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters={\"" . $key . "\":\"" . $value . "\"}";
-  $json = file_get_contents($datastore_url);
-  if ($json == FALSE) return [];
-  $profiles = json_decode($json, true) ?: [];
-  return $profiles["result"]["records"];
+  try{
+    $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters={\"" . $key . "\":\"" . $value . "\"}";
+    $json = file_get_contents($datastore_url);
+    if ($json == FALSE) return [];
+    $profiles = json_decode($json, true) ?: [];
+    return $profiles["result"]["records"];
+  } catch (Exception $e) {
+    return [];
+  }
 }
 
 function get_datastore_resource($ckan_domain,$resource_id){
