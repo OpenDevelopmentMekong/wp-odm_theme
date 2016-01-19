@@ -8,3 +8,10 @@
 #profiles tbody{
   width:100%;
 }
+.disclaimer {
+  font-size: 12px;
+  margin-top: 20px;
+}
+.disclaimer p{
+  margin-bottom: 6px;
+}
