@@ -44,13 +44,13 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	public function print_category( $category ) {
 			$post_type =  get_post_type( get_the_ID() );
 			//echo '<a href="' . get_category_link( $category->term_id ) . '">';
-			$get_post_title = $this->wp_exist_post_by_title($category->name);
+			$get_post_id = $this->wp_exist_post_by_title($category->name);
 			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
 			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type ); 
-			if ($get_post_title->ID == get_the_ID()){                       
+			if ($get_post_id){                       
 				$highlight_cat =  " class='".COUNTRY_NAME."-color'";   
                  // $highlight_cat = "";
-				echo $get_post_title->ID.'<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
+				echo $get_post_title->ID.'<a'.$highlight_cat.' href="' . get_permalink( $get_post_id ) . '">';
 			}else{
                   $highlight_cat = "";
                   //echo '<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
@@ -79,20 +79,39 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 */
      public function wp_exist_post_by_title($title_str) { 
         global $wpdb;
-        $get_post = $wpdb->get_row( $wpdb->prepare(
-        	"SELECT * FROM $wpdb->posts WHERE post_title LIKE %s
-        	    AND post_type = %s
+            /* $args = array(
+            	'post_type' => 'topic'
+            	,'post_status' => 'publish'
+            );
+
+           $pages = new WP_Query ( $args );
+            while($pages->have_posts()): $pages->the_post();
+            echo $title_str . " ddkkkkkkd ". get_the_title()." <br />";
+            if ($title_str == get_the_title()){
+                echo "YYYYY";
+                $page_id = get_the_ID();
+            }
+            endwhile;
+            wp_reset_query();
+         */ 
+         $get_post = $wpdb->get_results( $wpdb->prepare(
+        	"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
                 AND post_status = %s
-        	",  
-        	'<!--en:-->'. $title_str . '<!--:-->%',
+        	",
         	"topic",
         	"publish"
             )
-        );  
-        //print_r($get_post);
-        //$get_page  = get_page_by_title( "Agriculture and fishing", "OBJECT", "topic" );
-        //echo $get_page->ID . " dddddddddddddddddddddddddd";
-        return $get_post ;
+        ); 
+        
+        foreach ( $get_post as $page_topic ) 
+        { 
+                $page_title = explode("<!--:-->", $page_topic->post_title);
+                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));                  
+            if (trim($title_str) == $page_title){
+                $page_id = $page_topic->ID; 
+            } 
+        } 
+        return $page_id ;
     }
 	/**
 	 * Walks through a list of categories and prints all children descendant
