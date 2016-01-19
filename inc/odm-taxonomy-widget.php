@@ -78,22 +78,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param  $title_str a category's name to find the topic page
 	 */
      public function wp_exist_post_by_title($title_str) { 
-        global $wpdb;
-            /* $args = array(
-            	'post_type' => 'topic'
-            	,'post_status' => 'publish'
-            );
-
-           $pages = new WP_Query ( $args );
-            while($pages->have_posts()): $pages->the_post();
-            echo $title_str . " ddkkkkkkd ". get_the_title()." <br />";
-            if ($title_str == get_the_title()){
-                echo "YYYYY";
-                $page_id = get_the_ID();
-            }
-            endwhile;
-            wp_reset_query();
-         */ 
+        global $wpdb; 
          $get_post = $wpdb->get_results( $wpdb->prepare(
         	"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
                 AND post_status = %s
@@ -105,11 +90,14 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
         
         foreach ( $get_post as $page_topic ) 
         { 
-                $page_title = explode("<!--:-->", $page_topic->post_title);
-                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));                  
-            if (trim($title_str) == $page_title){
+            $page_title = explode("<!--:-->", $page_topic->post_title);
+            if(qtranxf_getLanguage()!="en")                                                    
+                $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1]));
+            else 
+                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
+            if (trim($title_str) == $page_title){ 
                 $page_id = $page_topic->ID; 
-            } 
+            }  
         } 
         return $page_id ;
     }
