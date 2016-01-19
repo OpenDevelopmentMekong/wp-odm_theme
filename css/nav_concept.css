@@ -105,6 +105,11 @@
 #cNavNew.level1 li.act .level2 li:hover .level3, #cNavNew.level1 li .level2 li.act .level3 {
   display: block;
 }
+/* REVIEW:  */
+#cNavNew .icon_menu:hover .level2{margin-top:-12px;}
+#cNavNew .icon_menu:hover .menu_economy{margin-top: -13px;}
+
+/*#cNavNew li:hover .icon_menu .level2*/
 .white #mainNav-inner .level1>li>a {
   color: #97d320;
 }
@@ -464,7 +469,6 @@ li.top-topic {
 
 .white #cNavNew.level1 li.icon_menu {
   height: 60px;
-  line-height: 60px;
   padding-top: 3px;
 }
 .white #cNavNew.level1 li.icon_menu ul{
