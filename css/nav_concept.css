@@ -458,8 +458,15 @@ li.top-topic {
 }
 
 .white #cNavNew.level1 li.icon_menu {
-  height: 45px;
+  height: 60px;
+  line-height: 60px;
   padding-top: 3px;
+}
+.white #cNavNew.level1 li.icon_menu ul{
+  margin-top:-12px;
+}
+.white #cNavNew.level1 li.icon_menu ul.menu_economy{
+  margin-top:-13px;
 }
 #cNavNew .level2 li.by_country:hover{
   height: 174px;
