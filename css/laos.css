@@ -2,7 +2,7 @@
     color: #D61E2A;
 }
 .menu-laos .icon_menu{
-  display: none;
+  display: none!important;
 }
 a, a:visited, #sidebar .widget li a{
  color: #D61E2A; /*6393D2, 2774da;*/

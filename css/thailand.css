@@ -2,7 +2,7 @@
     color: #F7904D;
 }
 .menu-thailand .icon_menu{
-  display: none;
+  display: none!important;
 }
 a, a:visited, #sidebar .widget li a{
  color: #F7904D; /*6393D2, 2774da;*/
