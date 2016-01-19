@@ -1,6 +1,9 @@
 .vietnam-color{
     color: #C6C366;
 }
+.menu-vietnam .icon_menu{
+  display: none;
+}
 a, a:visited, #sidebar .widget li a{
  color: #C6C366; /*6393D2, 2774da;*/
  text-decoration:none

@@ -122,8 +122,8 @@
 		</div><!-- four column -->
 
 		<!-- NEW NAV -->
-	<div class="contentNavigation"> 
-      <ul id="cNavNew" class="level1 clearfix current-site-mekong">
+	<div class="contentNavigation">
+      <ul id="cNavNew" class="level1 clearfix current-site-mekong menu-<?php echo $country;?>">
 
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav(qtranxf_getLanguage());?>

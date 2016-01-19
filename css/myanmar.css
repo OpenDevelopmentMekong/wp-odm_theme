@@ -1,6 +1,9 @@
 .myanmar-color{
     color: #F8BF42;
 }
+.menu-myanmar .icon_menu{
+  display: none;
+}
 a, a:visited, #sidebar .widget li a{
  color: #F8BF42; /*6393D2, 2774da;*/
  text-decoration:none
