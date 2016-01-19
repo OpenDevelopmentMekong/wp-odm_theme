@@ -156,11 +156,7 @@
   padding-top: 0px;
   padding-left: 40px;
 }
-#cNavNew .one-line {
-  padding-top: 15px;
-  padding-bottom: 20px;
-  text-transform: uppercase;
-}
+
 
 /*.white #cNavNew.level1 img{width:45px!important;}*/
 
@@ -392,6 +388,7 @@ li.top-topic {
 .content_wrapper{
   margin-left: 110px;
   overflow: hidden;
+  overflow-y:visible;
   height: 100%;
 
 }
@@ -433,6 +430,14 @@ li.top-topic {
   padding-bottom: 20px;
   text-transform: uppercase;
 }
+
+#cNavNew .one-line {
+  padding:0!important;
+  margin: 0;
+  line-height: 60px;
+  height: 60px;
+  text-transform: uppercase;
+}
 #cNavNew li a {
   font-size: 12px;
   color: #555;
@@ -458,8 +463,15 @@ li.top-topic {
 }
 
 .white #cNavNew.level1 li.icon_menu {
-  height: 45px;
+  height: 60px;
+  line-height: 60px;
   padding-top: 3px;
+}
+.white #cNavNew.level1 li.icon_menu ul{
+  margin-top:-12px;
+}
+.white #cNavNew.level1 li.icon_menu ul.menu_economy{
+  margin-top:-13px;
 }
 #cNavNew .level2 li.by_country:hover{
   height: 174px;
