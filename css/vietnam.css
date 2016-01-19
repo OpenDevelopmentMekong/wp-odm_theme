@@ -132,3 +132,24 @@ tr:nth-child(2n+1) {
   footer#colophon{
     background:#42aa00;
   }
+
+  /* Table data pages*/
+	.sidebar_header{
+	  background: #C6C366 !important;
+	}
+
+	.sidebar_box_content ul li a{
+	  color: #C6C366 !important;
+	}
+
+	.top a{
+	  color: #C6C366 !important;
+	}
+
+	.top a:active{
+	  color: #C6C366 !important;
+	}
+
+	td.entry_title a{
+	  color: #C6C366 !important;
+	}
