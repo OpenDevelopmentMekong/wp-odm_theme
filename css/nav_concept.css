@@ -383,6 +383,7 @@ li.top-topic {
 .content_wrapper{
   margin-left: 110px;
   overflow: hidden;
+  height: 100%;
 
 }
 /*top nav*/
@@ -551,7 +552,7 @@ footer#colophon{
     }
   .social.search.language{
     position: relative;
-  }  
+  }
 
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
