@@ -1306,4 +1306,94 @@ class country_specific_sub_menus extends Walker_Nav_Menu {
     $output .= "$indent</ul>\n";
   }
 }
+/****** Add function convert date, H-E/**/
+//echo convert_date_to_kh_date("18.05.2014");
+function convert_date_to_kh_date($date_string, $splitted_by = "."){ //$date_string = Day.Month.Year
+		$splitted_date = explode($splitted_by,$date_string); // split the date by "."
+		$joined_date = "";
+		if (count($splitted_date ) > 1){       
+			if (strlen($date_string) == 7){ //month and year //Month.Year  02.2014
+				$month_year = $splitted_date; //get Month.Year  02.2014 
+					if ($month_year[0] != "00")
+						$joined_date .= " ខែ".convert_to_kh_month($month_year[0]);
+					if ($month_year[1] != "0000")
+						$joined_date .= " ឆ្នាំ".convert_to_kh_number($month_year[1]); 
+			}else {
+				$day_month_year = $splitted_date; //get Day.Month.Year  20.02.2014 
+					if ($day_month_year[0] != "00")
+						$joined_date .= "ថ្ងៃទី ". convert_to_kh_number($day_month_year[0]);
+					if ($day_month_year[1] != "00")
+						$joined_date .= " ខែ".convert_to_kh_month($day_month_year[1]);
+					if ($day_month_year[2] != "0000")
+						$joined_date .= " ឆ្នាំ".convert_to_kh_number($day_month_year[2]); 
+			}
+
+	   }else{
+			if (strlen($date_string) == 4){ //only year
+				$joined_date = " ឆ្នាំ".convert_to_kh_number($date_string); 
+			}
+	   }
+	   return $joined_date; 
+}
+function convert_to_kh_month($month="") {
+	if ($month=="Jan"){	$kh_month =  "មករា";	}
+	else if ($month=="Feb"){	$kh_month = "កុម្ភៈ";	}
+	else if ($month=="Mar"){	$kh_month =  "មីនា";	}
+	else if ($month=="Apr"){	$kh_month =  "មេសា";	}
+	else if ($month=="May"){	$kh_month =  "ឧសភា";	}
+	else if ($month=="Jun"){	$kh_month =  "មិថុនា";	}
+	else if ($month=="Jul"){	$kh_month =  "កក្កដា"; }
+	else if ($month=="Aug"){	$kh_month =  "សីហា";	}
+	else if ($month=="Sep"){	$kh_month =  "កញ្ញា";	}
+	else if ($month=="Oct"){	$kh_month =  "តុលា";	}
+	else if ($month=="Nov"){	$kh_month =  "វិច្ឆិកា";	}
+	else if ($month=="Dec"){	$kh_month =  "ធ្នូ"; }
+
+	else if ($month=="01"){	$kh_month =  "មករា";	}
+	else if ($month=="02"){	$kh_month =  "កុម្ភៈ";	}
+	else if ($month=="03"){	$kh_month =  "មីនា";	}
+	else if ($month=="04"){	$kh_month =  "មេសា";	}
+	else if ($month=="05"){	$kh_month =  "ឧសភា";	}
+	else if ($month=="06"){	$kh_month =  "មិថុនា";	}
+	else if ($month=="07"){	$kh_month =  "កក្កដា"; }
+	else if ($month=="08"){	$kh_month =  "សីហា";	}
+	else if ($month=="09"){	$kh_month =  "កញ្ញា";	}
+	else if ($month=="10"){	$kh_month =  "តុលា";	}
+	else if ($month=="11"){	$kh_month =  "វិច្ឆិកា";	}
+	else if ($month=="12"){	$kh_month =  "ធ្នូ"; }
+
+	else if ($month=="០១"){	$kh_month =  "មករា";	}
+	else if ($month=="០២"){	$kh_month =  "កុម្ភៈ";	}
+	else if ($month=="០៣"){	$kh_month =  "មីនា";	}
+	else if ($month=="០៤"){	$kh_month =  "មេសា";	}
+	else if ($month=="០៥"){	$kh_month =  "ឧសភា";	}
+	else if ($month=="០៦"){	$kh_month =  "មិថុនា";	}
+	else if ($month=="០៧"){	$kh_month =  "កក្កដា"; }
+	else if ($month=="០៨"){	$kh_month =  "សីហា";	}
+	else if ($month=="០៩"){	$kh_month =  "កញ្ញា";	}
+	else if ($month=="១០"){	$kh_month =  "តុលា";	}
+	else if ($month=="១១"){	$kh_month =  "វិច្ឆិកា";	}
+	else if ($month=="១២"){	$kh_month =  "ធ្នូ"; }
+return $kh_month;
+
+}
+function convert_to_kh_number($number) {
+	$conbine_num = "";
+	$split_num = str_split($number);
+	foreach( $split_num as $num){
+		if ($num=="0"){	$kh_num =  "០";	}
+		else if ($num=="1"){	$kh_num = "១";	}
+		else if ($num=="2"){	$kh_num =  "២";	}
+		else if ($num=="3"){	$kh_num =  "៣";	}
+		else if ($num=="4"){	$kh_num =  "៤";	}
+		else if ($num=="5"){	$kh_num =  "៥";	}
+		else if ($num=="6"){	$kh_num =  "៦";	}
+		else if ($num=="7"){	$kh_num =  "៧";	}
+		else if ($num=="8"){	$kh_num =  "៨";	}
+		else if ($num=="9"){	$kh_num =  "៩";	}
+
+	$conbine_num .= $kh_num;
+	}
+return $conbine_num;
+}
 ?>
