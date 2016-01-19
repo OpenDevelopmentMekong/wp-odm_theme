@@ -24,7 +24,7 @@ require_once('page-profiles-config.php');
     if ($lang == "kh"){
       $lang = "km";
     }
-    
+
     $filter_map_id = htmlspecialchars($_GET["map_id"]);
     $profile = null;
     $ammendements = null;
@@ -56,18 +56,14 @@ require_once('page-profiles-config.php');
   			<div class="twelve columns">
           <div id="profiles_map" class="profiles_map"></div>
           <div class="disclaimer">
-
-            <p><strong>Disclaimer:</strong> This dataset contains data for ELCs in Cambodia with known contract dates starting from 1996 to 2012. The list was updated in June 2015 to include adjustments to ELCs as a result of the Order 01, starting in 2012, such as land cuts and cancellations of licenses. Due to the lack of publicly available information, this dataset does not include information on reductions of contract durations as a result of the evaluation process in 2015. </p>
-            <p>Open Development Cambodia endeavors to keep all company and investment data up to date and accurate; however, this information is constantly changing, and ODC cannot guarantee that the data reflects the actual company and investment situation. Some companies have abandoned ELCs or left them inactive, and some ELCs have been cancelled or resized. There are also projects that have been approved but that are not included here because ODC does not have access to reliable data. We recommend that site users make the effort to verify any data they take from ODC. Please inform us if you identify any mistakes or omissions.</p>
-            <p><strong>Note:</strong> Publicly available information on land area cut from ELCs does not include maps or spatial data demarcating the excisions. Thus, ODC cannot present the reductions in land area as shapes. As a result, the ELC projects that are visualized on the interactive map represent the original sizes.</p>
-
+            <?php the_content(); ?>
           </div>
         </div>
       </div>
     </div>
 		<div class="container">
       <div class="row">
-  			<?php the_content(); ?>
+
         <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
           <div class="twelve columns">
             <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
