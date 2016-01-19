@@ -126,7 +126,7 @@
       <ul id="cNavNew" class="level1 clearfix current-site-mekong">
 
         <!-- build top topics nav -->
-        <?php buildStyledTopTopicNav('en');?>
+        <?php buildStyledTopTopicNav(qtranxf_getLanguage());?>
 
         <li class="one-line"><a href="/laws" target="_self"><?php _e("Laws and agreements")?><span class="cNavState"></span></a>
 
