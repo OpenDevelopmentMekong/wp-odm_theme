@@ -572,6 +572,7 @@ footer#colophon{
   .qtranxs_language_chooser li{
     float: left;
     margin: 0 5px;
+    display: inline;
   }
     .qtranxs_language_chooser li a{
       color: white;

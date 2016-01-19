@@ -46,15 +46,15 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			//echo '<a href="' . get_category_link( $category->term_id ) . '">';
 			$get_post_title = $this->wp_exist_post_by_title($category->name);
 			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
-			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type );
- 
-			if ($get_post_title){                           
+			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type ); 
+			if ($get_post_title->ID == get_the_ID()){                       
 				$highlight_cat =  " class='".COUNTRY_NAME."-color'";   
                  // $highlight_cat = "";
-				echo '<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
+				echo $get_post_title->ID.'<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
 			}else{
                   $highlight_cat = "";
-           } 
+                  //echo '<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
+             }                                  
 				$in_category = in_category( $category->term_id );
 				if ($in_category){
 					 echo "<strong class='".COUNTRY_NAME."-color'>";
@@ -67,9 +67,9 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 				if ($in_category){
 					 echo "</strong>";
 				}
-			if ($get_post_title){
+		//	if ($get_post_title)
 				echo "</a><br/>";
-			}
+			
 
 	}
 	/**
@@ -77,19 +77,21 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param  $title_str a category's name to find the topic page
 	 */
-     public function wp_exist_post_by_title($title_str) {
+     public function wp_exist_post_by_title($title_str) { 
         global $wpdb;
         $get_post = $wpdb->get_row( $wpdb->prepare(
-        	"SELECT * FROM $wpdb->posts WHERE LOWER(post_title) LIKE %s
+        	"SELECT * FROM $wpdb->posts WHERE post_title LIKE %s
         	    AND post_type = %s
                 AND post_status = %s
-        	",
-        	'<!--:en-->' . $title_str . '%',
+        	",  
+        	'<!--en:-->'. $title_str . '<!--:-->%',
         	"topic",
         	"publish"
             )
-        );
-
+        );  
+        //print_r($get_post);
+        //$get_page  = get_page_by_title( "Agriculture and fishing", "OBJECT", "topic" );
+        //echo $get_page->ID . " dddddddddddddddddddddddddd";
         return $get_post ;
     }
 	/**
