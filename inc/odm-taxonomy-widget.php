@@ -105,11 +105,14 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
         
         foreach ( $get_post as $page_topic ) 
         { 
-                $page_title = explode("<!--:-->", $page_topic->post_title);
-                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));                  
+            $page_title = explode("<!--:-->", $page_topic->post_title);
+            $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
+            echo  $page_title . " OOOOO". $title_str;            
             if (trim($title_str) == $page_title){
+            echo " YYYY ";
                 $page_id = $page_topic->ID; 
             } 
+            echo $page_topic->ID;
         } 
         return $page_id ;
     }
