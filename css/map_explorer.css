@@ -184,16 +184,17 @@ body.page-template-page-map-explorer{overflow: hidden;}
 
 
 .page-template-page-map-explorer .cat-layers{
-  width: 200px;
+  width: 210px;
   display: block;
   position: absolute;
   bottom: 42px;
   background: white;
   margin-left: 0;
   padding-left: 0;
-  padding-right: 10px;
+  padding-right: 0;
   max-height: 60vh;
   overflow: auto;
+  overflow-x: hidden;
 }
 
   .page-template-page-map-explorer .cat-item{
@@ -208,7 +209,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
       color: white;
     }
   .page-template-page-map-explorer .layer-item{
-    padding-left:10px;
+    padding-left:5px;
     margin-left: 0;
     text-align: left;
     max-width: 200px;
@@ -219,6 +220,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
   }
   .layer-item h2 {
     left: 20px;
+    top: 2px;
     position: relative;
     font-size: 12px;
     font-weight: normal;
@@ -328,6 +330,10 @@ body.page-template-page-map-explorer{overflow: hidden;}
 
     }
     .page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-text,.page-template-page-map-explorer .cat-layers .layer-item .toggles .toggle-legend,.page-template-page-map-explorer .cat-layers .layer-item .download-url{display: none!important;}
+
+    .page-template-page-map-explorer .cat-layers .layer-item .toggle-info{
+      left: 25px!important;
+    }
 
     .layer-item .legend {
     padding-left: 10px;
