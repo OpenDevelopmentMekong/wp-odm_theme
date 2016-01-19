@@ -129,7 +129,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
                 
             }     
             echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-            if (trim($title_str) == $pagetitle){   
+            if (trim(strtolower($title_str)) == strtolower($pagetitle)){   
                 $page_id = $page_topic->ID;   
                //echo $page_topic->ID;
             }                   
