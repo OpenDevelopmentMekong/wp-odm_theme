@@ -48,12 +48,13 @@
   display: none;
   position: absolute;
   left: 0;
-  width: 845px;
+  width: 0!important;
   padding-left: 200px;
 }
 #cNavNew li .level2 {
   top: 29px;
   background: transparent!important;
+  position: static!important;
 }
 #cNavNew li .level2 li, #cNavNew li .level2 a {
   height: 29px;
@@ -172,7 +173,11 @@
 
 .white #cNavNew.level1>li:hover {
   background: #6393D2;
-  padding-bottom: 16px;
+  position: static!important;
+  height: 60px;
+  line-height: 60px;
+  overflow:visible!important;
+  padding: 0!important;
 }
 .white #cNavNew.level1>li:hover>a {
   /*background: #6393D2;*/
@@ -218,6 +223,10 @@ li.top-topic {
   top: 60px;
   padding-left: 0;
   margin: 0;
+}
+
+#cNavNew li:hover .level2 li{
+  position: static!important;
 }
 #cNavNew li:hover .menu_environment {
   left: 40px;
@@ -383,6 +392,7 @@ li.top-topic {
 .content_wrapper{
   margin-left: 110px;
   overflow: hidden;
+  height: 100%;
 
 }
 /*top nav*/
@@ -400,6 +410,7 @@ li.top-topic {
   display: inline-block;
   position: relative;
   width: 100%;
+  height: 100%;
   z-index: 8888;
   /*-moz-box-shadow: 0px 2px 3px 0px #ddd;
       -webkit-box-shadow: 0px 2px 3px 0px #ddd;
@@ -551,7 +562,7 @@ footer#colophon{
     }
   .social.search.language{
     position: relative;
-  }  
+  }
 
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
