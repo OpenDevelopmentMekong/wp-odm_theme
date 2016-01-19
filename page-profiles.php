@@ -18,6 +18,13 @@ require_once('page-profiles-config.php');
     if (function_exists("qtranxf_getLanguage")){
       $lang = qtranxf_getLanguage();
     }
+
+    // NOTE: This is a hack to harmonize language code between WP and CKAN.
+    // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
+    if ($lang == "kh"){
+      $lang = "km";
+    }
+    
     $filter_map_id = htmlspecialchars($_GET["map_id"]);
     $profile = null;
     $ammendements = null;
