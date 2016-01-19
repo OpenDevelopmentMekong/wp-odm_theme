@@ -388,11 +388,10 @@ li.top-topic {
 /*top nav*/
 
 
-.contentNavigation {
+.contentNavigation {    
+  width: 100%;
   height: 60px;
   color:#704C98;
-  width: 100%;
-
   /*z-index: 100;*/
   /*margin-left: -30px;*/
 }
@@ -553,7 +552,7 @@ footer#colophon{
     }
   .social.search.language{
     position: relative;
-  }
+  }  
 
 
 /**** Huy Eng **/
