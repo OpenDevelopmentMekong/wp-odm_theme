@@ -260,3 +260,4 @@
       </div>
 
     </div>
+    <span style="color:white;"><?php echo $wpDomain; ?></span>
