@@ -121,10 +121,6 @@ tr:nth-child(2n+1) {
   /*active*/
   .mainNav-inner ul.level1>li.act>a{color:white;background:#97d320;}
 
-  /*ELC*/
-  .sidebar_box .sidebar_header{
-    background: #213d49;
-  }
   footer#colophon{
     background:#213d49;
   }
