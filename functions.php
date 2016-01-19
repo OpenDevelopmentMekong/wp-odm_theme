@@ -1233,6 +1233,8 @@ function buildStyledTopTopicListForLaws($lang)
 
 function buildStyledTopTopicNav($lang)
 {
+	if ($lang == "kh")
+		$lang = "km";
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
     if (is_null($navigation_vocab)){
       return;
