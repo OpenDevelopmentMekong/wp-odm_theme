@@ -37,7 +37,7 @@ require_once('page-laws-config.php');
       $lang = qtranxf_getLanguage();
     }
 
-    // NOTE: This is a hack to harmonize language code between WP and CKAN. 
+    // NOTE: This is a hack to harmonize language code between WP and CKAN.
     // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
     if ($lang == "kh"){
       $lang = "km";
@@ -83,7 +83,7 @@ require_once('page-laws-config.php');
                   <?php
                     if (isset($law_record['odm_document_type'])){
                       $doc_type = $law_record['odm_document_type'];
-                      echo $LAWS_DOCUMENT_TYPE[$doc_type];
+                      echo _e( $LAWS_DOCUMENT_TYPE[$doc_type], 'odm_document_type' );
                     }
                   ?>
                 </td>
