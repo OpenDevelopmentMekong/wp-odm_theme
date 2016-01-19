@@ -106,7 +106,10 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
         foreach ( $get_post as $page_topic ) 
         { 
             $page_title = explode("<!--:-->", $page_topic->post_title);
-            $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
+            if(qtranxf_getLanguage()!="en")                                                    
+                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[1]));
+            else 
+                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
             echo  $page_title . " OOOOO". $title_str;            
             if (trim($title_str) == $page_title){
             echo " YYYY ";
