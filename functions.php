@@ -122,12 +122,14 @@ function opendev_styles()
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
   wp_register_style('table-pages',  $css_base.'table-pages.css');
+  wp_register_style('elc',  $css_base.'elc.css');
 
   wp_enqueue_style('mCustomScrollbar');
   wp_enqueue_style('opendev-base');
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('table-pages');
   wp_enqueue_style('map-explorer');
+  wp_enqueue_style('elc');
 
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);

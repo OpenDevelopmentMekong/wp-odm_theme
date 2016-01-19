@@ -1,3 +1,7 @@
-.profiles td{
+#profiles td{
   line-height: 12px;
+}
+/*temporary hiding references*/
+#profiles td ul{
+  display: none;
 }
