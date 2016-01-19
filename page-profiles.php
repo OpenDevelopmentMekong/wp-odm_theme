@@ -25,7 +25,10 @@ require_once('page-profiles-config.php');
       $lang = "km";
     }
 
-    $filter_map_id = htmlspecialchars($_GET["map_id"]);
+    $filter_map_id = NULL;
+    if (isset($_GET["map_id"])){
+      $filter_map_id = htmlspecialchars($_GET["map_id"]);
+    }
     $profile = null;
     $ammendements = null;
     $profiles = null;
@@ -74,7 +77,9 @@ require_once('page-profiles-config.php');
                   <?php foreach ($ELC_METADATA as $key => $value): ?>
                   <tr>
                     <td class="row-key"><?php _e( $ELC_METADATA[$key], $value ); ?></td>
-                    <td><?php echo $profile[$key]; ?></td>
+                    <td><?php if (isset($profile[$key])){
+                        echo $profile[$key];
+                    } ?></td>
                   </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -95,7 +100,13 @@ require_once('page-profiles-config.php');
 	                  <?php foreach ($ammendements as $key => $ammendement): ?>
 											<tr>
 												<?php foreach ($ELC_TRACKING as $key => $value): ?>
-			                    <td><?php echo $ammendement[$key]; ?></td>
+			                    <td>
+                            <?php
+                              if (isset($ammendement[$key])){
+                                  echo $ammendement[$key];
+                                }
+                            ?>
+                          </td>
 												<?php endforeach; ?>
 	                  	</tr>
 	                  <?php endforeach; ?>
