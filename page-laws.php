@@ -13,9 +13,23 @@ require_once('page-laws-config.php');
 <?php if(have_posts()) : the_post(); ?>
 
   <?php
-    $filter_odm_document_type = htmlspecialchars($_GET["odm_document_type"]);
-    $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]);
-    $laws = get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type);
+    $filter_odm_document_type = NULL;
+    if (isset($_GET["odm_document_type"])){
+      $filter_odm_document_type = htmlspecialchars($_GET["odm_document_type"]);
+    }
+    $filter_odm_taxonomy = NULL;
+    if (isset($_GET["odm_taxonomy"])){
+      $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]);
+    }
+    $laws = array();
+    if (!IsNullOrEmptyString($filter_odm_taxonomy)){
+      $laws = get_law_datasets($CKAN_DOMAIN,"taxonomy",$filter_odm_taxonomy);
+    }else if (!IsNullOrEmptyString($filter_odm_document_type)){
+      $laws = get_law_datasets($CKAN_DOMAIN,"odm_document_type",$filter_odm_document_type);
+    }else{
+      $laws = get_law_datasets($CKAN_DOMAIN,NULL,NULL);
+    }
+
     $lang = 'en';
     $headline = $filter_odm_taxonomy;
 
@@ -38,6 +52,7 @@ require_once('page-laws-config.php');
 		</header>
 		<div class="container">
 			<div class="nine columns">
+        <!-- <?php //print_r($laws); ?> -->
         <?php the_content(); ?>
         <table id="law_datasets" class="data-table">
           <thead>
@@ -51,34 +66,42 @@ require_once('page-laws-config.php');
           </thead>
           <tbody>
             <?php foreach ($laws as $law_record): ?>
-              <?php if (IsNullOrEmptyString($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'])){
+              <?php if (IsNullOrEmptyString($law_record['odm_document_type'])){
                 continue;
               }?>
               <tr>
                 <td class="entry_title">
-                  <a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo getMultilingualValueOrFallback($law_record['wpckan_dataset_extras']['wpckan_dataset_extras-title_translated'],$lang);?></a>
+                  <a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $law_record['id'];?>"><?php echo getMultilingualValueOrFallback($law_record['title_translated'],$lang);?></a>
                 </td>
                 <td>
                   <?php
-                    $doc_type = $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'];
-                    echo $LAWS_DOCUMENT_TYPE[$doc_type];
+                    if (isset($law_record['odm_document_type'])){
+                      $doc_type = $law_record['odm_document_type'];
+                      echo $LAWS_DOCUMENT_TYPE[$doc_type];
+                    }
                   ?>
                 </td>
                 <td>
-                  <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_number'][$lang];?>
+                  <?php
+                  if (isset($law_record['odm_document_number'])){
+                    echo $law_record['odm_document_number'][$lang];
+                  }?>
                 </td>
                 <td>
-                  <?php echo $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_promulgation_date'];?>
+                  <?php
+                  if (isset($law_record['odm_promulgation_date'])){
+                    echo $law_record['odm_promulgation_date'];
+                  }?>
                 </td>
                 <td class="download_buttons">
-                    <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
-                      <?php if ($resource['odm_language'][0] == 'en'){?>
+                    <?php foreach ($law_record['resources'] as $resource) :?>
+                      <?php if ( isset($resource['odm_language']) && $resource['odm_language'][0] == 'en'){?>
                         <span><a href="<?php echo $resource['url'];?>">
                           <span class="icon-arrow-down"></span>EN</a></span>
                       <?php } ?>
                     <?php endforeach; ?>
-                    <?php foreach ($law_record['wpckan_resources_list'] as $resource) :?>
-                      <?php if ($resource['odm_language'][0] == 'km'){?>
+                    <?php foreach ($law_record['resources'] as $resource) :?>
+                      <?php if ( isset($resource['odm_language']) && $resource['odm_language'][0] == 'km'){?>
                         <span><a href="<?php echo $resource['url'];?>">
                           <span class="icon-arrow-down"></span>KM</a></span>
                       <?php } ?>
