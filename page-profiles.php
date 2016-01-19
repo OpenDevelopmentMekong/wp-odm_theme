@@ -133,14 +133,14 @@ require_once('page-profiles-config.php');
                       ?>
                       <tr>
                         <td class="row-key">
-                          <a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo $metadata["title_translated"][$lang] ?></a></br>
+                          <a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a></br>
                           <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
                             <?php echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
                           <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
                             <?php echo "(" . $metadata["odm_publication_date"]  . ")" ?>
                           <?php endif; ?>
                         </td>
-                        <td><?php echo $metadata["notes_translated"][$lang] ?></td>
+                        <td><?php echo getMultilingualValueOrFallback($metadata['notes_translated'],$lang); ?></td>
                       </tr>
                       <?php
                          endforeach;
