@@ -128,10 +128,10 @@
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav('en');?>
 
-        <li class="one-line"><a href="/laws" target="_self"><?php _e("Laws and agreements")?><span class="cNavState"></span></a>
+        <!-- <li class="one-line"><a href="/laws" target="_self"><?//php _e("Laws and agreements")?><span class="cNavState"></span></a>
 
 
-        </li>
+        </li> -->
 
         <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self"><?php _e("Publications Library"); ?><span class="cNavState"></span></a>
 
