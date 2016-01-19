@@ -156,11 +156,7 @@
   padding-top: 0px;
   padding-left: 40px;
 }
-#cNavNew .one-line {
-  padding-top: 15px;
-  padding-bottom: 20px;
-  text-transform: uppercase;
-}
+
 
 /*.white #cNavNew.level1 img{width:45px!important;}*/
 
@@ -431,6 +427,14 @@ li.top-topic {
 #cNavNew .one-line, #cNavNew .menu-item {
   padding-top: 15px;
   padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#cNavNew .one-line {
+  padding:0!important;
+  margin: 0;
+  line-height: 60px;
+  height: 60px;
   text-transform: uppercase;
 }
 #cNavNew li a {
