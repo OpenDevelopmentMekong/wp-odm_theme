@@ -123,7 +123,7 @@
 
 		<!-- NEW NAV -->
 	<div class="contentNavigation">
-      <ul id="cNavNew" class="level1 clearfix current-site-<?php echo $country;?>">
+      <ul id="cNavNew" class="level1 clearfix current-site-mekong menu-<?php echo $country;?>">
 
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav('en');?>
