@@ -1250,7 +1250,7 @@ function buildStyledTopTopicListForLaws($lang)
     // get Top Topic Names
     foreach ($json_a as $key => $value) {
       foreach ($json_a[$key]['children'] as $child) {
-         echo '<li><a href="/laws/?odm_taxonomy='.$child['titles'][$lang].'">'. $child['titles'][$lang] .'</a></li>';
+         echo '<li><a href="/laws/?odm_taxonomy='.$child['titles']['en'].'">'. $child['titles'][$lang] .'</a></li>';
       }
     }
     echo '</ul>';
