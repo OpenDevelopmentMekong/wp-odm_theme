@@ -86,8 +86,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
         	"topic",
         	"publish"
             )
-        ); 
-        
+        );  
         foreach ( $get_post as $page_topic ) {   
             $lang_tag = "[:".qtranxf_getLanguage()."]";
             $lang_tag_finder = "/".$lang_tag ."/";
@@ -129,7 +128,8 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
                 }
                 
             }     
-            if (trim($title_str) == $pagetitle){ 
+            echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
+            if (trim($title_str) == $pagetitle){   
                 $page_id = $page_topic->ID;   
                //echo $page_topic->ID;
             }                   
