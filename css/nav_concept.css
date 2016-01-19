@@ -399,8 +399,7 @@ li.top-topic {
 #cNavNew {
   display: inline-block;
   position: relative;
-  width: 100%;
-  /*width: 100vw;*/
+  width: 100%; 
   z-index: 8888;
   /*-moz-box-shadow: 0px 2px 3px 0px #ddd;
       -webkit-box-shadow: 0px 2px 3px 0px #ddd;
@@ -553,102 +552,7 @@ footer#colophon{
   .social.search.language{
     position: relative;
   }  
-
-
-/**** Huy Eng **/
-  .contentNavigation{
-      width: auto;
-      float: left
-  }
-  .white #cNavNew.level1 {
-        padding-top: 0px;
-        padding-left: 40px;  
-        padding-right: 10px;
-    }
-  .menu-header{
-      float:left;
-      background: #373C6A none repeat scroll 0% 0%;
-  } 
-  ul#menu-header-menu{
-   padding: 0px;
-  }
-  ul#menu-header-menu li{
-   float: left;
-   list-style: none;
-   line-height: 40px;
-   position: relative;
-   margin-bottom: 0
-  }
-  ul#menu-header-menu li a{
-   font-weight: bold;
-   font-family: sans-serif; 
-   padding:0px 10px;
-   line-height: 60px;
-   color: #fff;
-   text-transform: uppercase ;
-   font-size: 12px;
-   display: block;
-  }
-  ul#menu-header-menu ul.sub-menu{  
-   background: #6393D2;
-   width: 200px;
-   display: none;
-   position: absolute;
-   border: 1px solid #c9c9c9;
-   border-top: 0px;
-   margin-left: 0;
-   margin-top:0;
-  }
-  ul#menu-header-menu ul.sub-menu li ul.sub-menu{       
-   position: relative;   
-   display: none;
-   left: 0 ;
-   border: 0;
-  }
-  ul#menu-header-menu ul a{
-    color: #fff;
-    line-height: 30px;
-  }
-
-  ul#menu-header-menu ul li{
-    width: 100%;
-  }
-  ul#menu-header-menu ul ul{
-   margin-top: -1px !important;
-   position: absolute;
-   top: 0px;
-   left: 100%;
-   border-top: 1px solid #c9c9c9;
-  }
-  
-   ul#menu-header-menu li:hover ul, ul#menu-header-menu li ul.sum-menu > li:hover ul.sub-menu {
-      display: block;
-    }
  
-  ul#menu-header-menu > li:hover {
-     background: #6393D2; 
-    }
-    
-  ul#menu-header-menu > li:hover a {
-     color: #fff;
-     text-decoration: none;
-    } 
-   
-   ul#menu-header-menu li:hover > ul{
-    display: block;
-    background: #6393D2;
-   } 
-   ul#menu-header-menu li ul.sub-menu > li:hover > ul{
-        display: block;
-    }
-   ul#menu-header-menu > li  > ul.sub-menu > li:hover ,
-   ul#menu-header-menu  > li  > ul.sub-menu > li > ul.sub-menu > li:hover {
-     background-color: #292d56; 
-   }  
-   /* ul#menu-header-menu > li  > ul.sub-menu > li > ul.sub-menu > li:hover ,
-   ul#menu-header-menu  > li  > ul.sub-menu > li > ul.sub-menu > li > ul.sub-menu > li:hover{
-     background-color: #6393D2;
-   } */
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
