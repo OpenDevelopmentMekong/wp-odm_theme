@@ -73,6 +73,7 @@
           <?php opendev_logo(); ?>
 				</div>
 			</div>
+
       <div class="three columns social">
         <nav id="social-nav">
           <?php
@@ -104,7 +105,8 @@
           ?>
         </nav>
       </div>
-			<div class="three columns social">
+			<div class="three columns social search language">
+        <?php qtranxf_generateLanguageSelectCode($type,$id);?>
         <div id="live-search">
           <div class="container">
             <div class="three columns">
@@ -120,19 +122,18 @@
 		</div><!-- four column -->
 
 		<!-- NEW NAV -->
-		<div class="contentNavigation">
-
+	<div class="contentNavigation"> 
       <ul id="cNavNew" class="level1 clearfix current-site-mekong">
 
         <!-- build top topics nav -->
         <?php buildStyledTopTopicNav('en');?>
 
-        <li class="one-line"><a href="/laws" target="_self">LAWS AND AGREEMENTS<span class="cNavState"></span></a>
+        <li class="one-line"><a href="/laws" target="_self"><?php _e("Laws and agreements")?><span class="cNavState"></span></a>
 
 
         </li>
 
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Publications Library<span class="cNavState"></span></a>
+        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self"><?php _e("Publications Library"); ?><span class="cNavState"></span></a>
 
 
         </li>
@@ -140,24 +141,24 @@
         <li class="one-line">
           <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>" target="_self">Data<span class="cNavState"></span></a>
           <ul class="level2">
-            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self">All records<span class="cNavState"></span></a></li>
+            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self"><?php _e("All records")?><span class="cNavState"></span></a></li>
 
-            <li class="by_country"><a href="#" target="_self">Records by country<span class="cNavState"></span></a>
+            <li class="by_country"><a href="#" target="_self"><?php _e("Records by country")?><span class="cNavState"></span></a>
               <ul class="level3">
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=kh" target="_self">Cambodia<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=la" target="_self">Laos<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=mm" target="_self">Myanmar<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=th" target="_self">Thailand<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vn" target="_self">Vietnam<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=kh" target="_self"><?php _e("Cambodia")?><span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=la" target="_self"><?php _e("Laos")?><span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=mm" target="_self"><?php _e("Myanmar")?><span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=th" target="_self"><?php _e("Thailand")?><span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vn" target="_self"><?php _e("Vietnam")?><span class="cNavState"></span></a></li>
                 <span class="border"></span>
               </ul>
             </li>
 
-            <li class="last by_country"><a href="#" target="_self">Records by language<span class="cNavState"></span></a>
+            <li class="last by_country"><a href="#" target="_self"><?php _e("Records by language")?><span class="cNavState"></span></a>
               <ul class="level3">
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=en" target="_self">EN<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=km" target="_self">KH<span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=vi" target="_self">VI<span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=en" target="_self"><?php _e("English")?><span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=km" target="_self"><?php _e("Khmer")?><span class="cNavState"></span></a></li>
+                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=vi" target="_self"><?php _e("Vietnamese")?><span class="cNavState"></span></a></li>
                 <span class="border"></span>
               </ul>
 
@@ -169,7 +170,7 @@
         </li>
 
         <li class="one-line">
-          <a href="/map-explorer" target="_self">Maps<span class="cNavState"></span></a>
+          <a href="/map-explorer" target="_self"><?php _e("Maps")?><span class="cNavState"></span></a>
         </li>
 
         <?php wp_nav_menu( array(
