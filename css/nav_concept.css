@@ -581,6 +581,7 @@ footer#colophon{
     position: relative;
   }
 
+  .404{margin-bottom: 200px;}
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
