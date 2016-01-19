@@ -388,7 +388,7 @@ li.top-topic {
 /*top nav*/
 
 
-.contentNavigation {    
+.contentNavigation {
   width: 100%;
   height: 60px;
   color:#704C98;
@@ -399,7 +399,7 @@ li.top-topic {
 #cNavNew {
   display: inline-block;
   position: relative;
-  width: 100%; 
+  width: 100%;
   z-index: 8888;
   /*-moz-box-shadow: 0px 2px 3px 0px #ddd;
       -webkit-box-shadow: 0px 2px 3px 0px #ddd;
@@ -552,7 +552,7 @@ footer#colophon{
   .social.search.language{
     position: relative;
   }  
- 
+
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
