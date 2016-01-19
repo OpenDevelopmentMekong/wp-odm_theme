@@ -159,9 +159,6 @@ require_once('page-profiles-config.php');
         <div class="row">
     			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
-            <div class="disclaimer">
-              <?php the_content(); ?>
-            </div>
           </div>
           <div class="three columns">
 
@@ -187,6 +184,13 @@ require_once('page-profiles-config.php');
               </div>
             </div>
 
+          </div>
+        </div>
+        <div class="row">
+          <div class="twelve columns">
+            <div class="disclaimer">
+              <?php the_content(); ?>
+            </div>
           </div>
         </div>
         <div class="row">
