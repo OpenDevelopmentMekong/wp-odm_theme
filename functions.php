@@ -1306,7 +1306,7 @@ function buildStyledTopTopicNav($lang)
 function getMultilingualValueOrFallback($field,$lang){
   $result = $field[$lang];
 
-  if (IsNullOrEmptyString($result)){
+  if (!IsNullOrEmptyString($result)){
     $result = $field['en'];
   }
 
