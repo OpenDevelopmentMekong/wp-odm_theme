@@ -1304,13 +1304,12 @@ function buildStyledTopTopicNav($lang)
 }
 
 function getMultilingualValueOrFallback($field,$lang){
-  $result = $field[$lang];
 
-  if (!IsNullOrEmptyString($result)){
-    $result = $field['en'];
+  if (!isset($field[$lang]) || IsNullOrEmptyString($field[$lang])){
+    return $field['en'];
   }
 
-  return $result;
+  return $field[$lang];
 
 }
 
