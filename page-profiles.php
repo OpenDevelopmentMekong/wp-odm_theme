@@ -55,21 +55,10 @@ require_once('page-profiles-config.php');
         </div>
 			</div>
 		</header>
-    <div class="container">
-      <div class="row">
-  			<div class="twelve columns">
-          <div id="profiles_map" class="profiles_map"></div>
-          <div class="disclaimer">
-            <?php the_content(); ?>
-          </div>
-        </div>
-      </div>
-    </div>
-		<div class="container">
-      <div class="row">
-
-        <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
-          <div class="twelve columns">
+    <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
+      <div class="container">
+        <div class="row">
+          <div class="eight columns">
             <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
             <div class="profile-metadata">
               <h2><?php echo $profile["developer"]; ?></h2>
@@ -86,22 +75,29 @@ require_once('page-profiles-config.php');
                 </tbody>
               </table>
             </div>
-						<?php if (count($ammendements) > 0): ?>
-							<div class="profile-metadata">
-	              <h2>Amendments</h2>
-	              <table id="tracking" class="data-table">
-	                <tbody>
-										<thead>
-											<tr>
-												<?php foreach ($ELC_TRACKING as $key => $value): ?>
-			                    <td class="row-key"><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
-												<?php endforeach; ?>
-											</tr>
-										</thead>
-	                  <?php foreach ($ammendements as $key => $ammendement): ?>
-											<tr>
-												<?php foreach ($ELC_TRACKING as $key => $value): ?>
-			                    <td>
+          </div>
+          <div class="four columns">
+            <div id="profiles_map" class="profiles_map"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="twelve columns">
+            <?php if (count($ammendements) > 0): ?>
+              <div class="profile-metadata">
+                <h2>Amendments</h2>
+                <table id="tracking" class="data-table">
+                  <tbody>
+                    <thead>
+                      <tr>
+                        <?php foreach ($ELC_TRACKING as $key => $value): ?>
+                          <td class="row-key"><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
+                        <?php endforeach; ?>
+                      </tr>
+                    </thead>
+                    <?php foreach ($ammendements as $key => $ammendement): ?>
+                      <tr>
+                        <?php foreach ($ELC_TRACKING as $key => $value): ?>
+                          <td>
                             <?php
                               //NOTE: this hack is to make possible to show following fields: change_type , ammendement_text and description
                               // which have currently a language code appended. Solution for this would be to update the CSV files on CKAN and remove the hack
@@ -115,49 +111,86 @@ require_once('page-profiles-config.php');
                                 }
                             ?>
                           </td>
-												<?php endforeach; ?>
-	                  	</tr>
-	                  <?php endforeach; ?>
-	                </tbody>
-	              </table>
-							</div>
-						<?php endif; ?>
-						<?php
-							$ref_docs = explode(";", $profile["reference"]);
-							if ($ref_docs): ?>
-							<div class="profile-metadata">
-	              <h2>Reference documents</h2>
-	              <table id="reference" class="data-table">
-	                <tbody>
-	                  <?php
-	                    foreach ($ref_docs as $key => $ref_doc):
-	                      $ref_doc_metadata = get_datasets_filter($CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
-												if (count($ref_doc_metadata) > 0):
-													foreach ($ref_doc_metadata as $key => $metadata):
-	                    ?>
-	                    <tr>
-	                      <td class="row-key">
-													<a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo $metadata["title_translated"][$lang] ?></a></br>
-													<?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
-		                        <?php echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
-		                      <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
-		                        <?php echo "(" . $metadata["odm_publication_date"]  . ")" ?>
-		                      <?php endif; ?>
-												</td>
-	                      <td><?php echo $metadata["notes_translated"][$lang] ?></td>
-	                    </tr>
-	                    <?php
-												 endforeach;
-	                      endif;
-	                   endforeach;
-	                  ?>
-	                </tbody>
-	              </table>
-	            </div>
-						<?php endif; ?>
+                        <?php endforeach; ?>
+                      </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+            <?php endif; ?>
+            <?php
+              $ref_docs = explode(";", $profile["reference"]);
+              if ($ref_docs): ?>
+              <div class="profile-metadata">
+                <h2>Reference documents</h2>
+                <table id="reference" class="data-table">
+                  <tbody>
+                    <?php
+                      foreach ($ref_docs as $key => $ref_doc):
+                        $ref_doc_metadata = get_datasets_filter($CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
+                        if (count($ref_doc_metadata) > 0):
+                          foreach ($ref_doc_metadata as $key => $metadata):
+                      ?>
+                      <tr>
+                        <td class="row-key">
+                          <a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo $metadata["title_translated"][$lang] ?></a></br>
+                          <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
+                            <?php echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
+                          <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
+                            <?php echo "(" . $metadata["odm_publication_date"]  . ")" ?>
+                          <?php endif; ?>
+                        </td>
+                        <td><?php echo $metadata["notes_translated"][$lang] ?></td>
+                      </tr>
+                      <?php
+                         endforeach;
+                        endif;
+                     endforeach;
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          <?php endif; ?>
+        </div>
+      </div>
+    <?php else: ?>
+      <div class="container">
+        <div class="row">
+    			<div class="nine columns">
+            <div id="profiles_map" class="profiles_map"></div>
+            <div class="disclaimer">
+              <?php the_content(); ?>
+            </div>
           </div>
-        <?php else: ?>
-          <div class="nine columns">
+          <div class="three columns">
+
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
+              </div>
+              <div class="sidebar_box_content">
+                <input type="text" id="search_all" placeholder="Search all profiles">
+              </div>
+            </div>
+
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'DOWNLOAD', 'search' );?></span>
+              </div>
+              <div class="sidebar_box_content download_buttons">
+                <?php foreach ($ELC_DOWNLOAD_URLS[$lang] as $key => $value) : ?>
+                  <span><a href="<?php echo $value; ?>"><?php echo $key; ?></a></span>
+                <?php endforeach; ?>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="twelve columns">
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -246,34 +279,9 @@ require_once('page-profiles-config.php');
       				</tbody>
       			</table>
           </div>
-          <div class="three columns">
-
-    				<div class="sidebar_box">
-    					<div class="sidebar_header">
-    						<span class="big">
-                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
-    					</div>
-    					<div class="sidebar_box_content">
-    						<input type="text" id="search_all" placeholder="Search all profiles">
-    					</div>
-    				</div>
-
-            <div class="sidebar_box">
-    					<div class="sidebar_header">
-    						<span class="big">
-                  <?php _e( 'DOWNLOAD', 'search' );?></span>
-    					</div>
-    					<div class="sidebar_box_content download_buttons">
-    						<?php foreach ($ELC_DOWNLOAD_URLS[$lang] as $key => $value) : ?>
-                  <span><a href="<?php echo $value; ?>"><?php echo $key; ?></a></span>
-    						<?php endforeach; ?>
-    					</div>
-    				</div>
-
-    			</div>
-        <?php endif; ?>
+        </div>
       </div>
-		</div>
+    <?php endif; ?>
 	</section>
 <?php endif; ?>
 
