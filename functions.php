@@ -1178,6 +1178,7 @@ function buildTopTopicNav($lang)
 function get_law_datasets($ckan_domain,$filter_key,$filter_value){
   $ckanapi_url = $ckan_domain . "/api/3/action/package_search?q=*:*&fq=type:laws_record&rows=1000";
   $json = file_get_contents($ckanapi_url);
+  if ($json == FALSE) return [];
   $result = json_decode($json, true) ?: [];
   $datasets = $result["result"]["results"];
   if (isset($filter_key) && isset($filter_value)){
@@ -1223,6 +1224,7 @@ function get_law_datasets($ckan_domain,$filter_key,$filter_value){
 function get_datasets_filter($ckan_domain,$key,$value){
   $ckanapi_url = $ckan_domain . "/api/3/action/package_search?fq=" . $key . ":" . $value;
   $json = file_get_contents($ckanapi_url);
+  if ($json == FALSE) return [];
   $datasets = json_decode($json, true) ?: [];
   return $datasets["result"]["results"];
 }
@@ -1230,6 +1232,7 @@ function get_datasets_filter($ckan_domain,$key,$value){
 function get_datastore_resources_filter($ckan_domain,$resource_id,$key,$value){
   $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1&filters={\"" . $key . "\":\"" . $value . "\"}";
   $json = file_get_contents($datastore_url);
+  if ($json == FALSE) return [];
   $profiles = json_decode($json, true) ?: [];
   return $profiles["result"]["records"];
 }
@@ -1237,6 +1240,7 @@ function get_datastore_resources_filter($ckan_domain,$resource_id,$key,$value){
 function get_datastore_resource($ckan_domain,$resource_id){
   $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000";
   $json = file_get_contents($datastore_url);
+  if ($json == FALSE) return [];
   $profiles = json_decode($json, true) ?: [];
   return $profiles["result"]["records"];
 }
@@ -1244,6 +1248,7 @@ function get_datastore_resource($ckan_domain,$resource_id){
 function buildStyledTopTopicListForLaws($lang)
 {
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
+    if ($navigation_vocab == FALSE) echo '<ul></ul>';
     $json_a = json_decode($navigation_vocab, true);
 
     echo '<ul>';
@@ -1260,7 +1265,7 @@ function buildStyledTopTopicNav($lang)
 {	if ($lang == "kh")
 		$lang = "km";
     $navigation_vocab = file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
-    if (is_null($navigation_vocab)){
+    if ($navigation_vocab == FALSE || is_null($navigation_vocab)){
       return;
     }
     $json_a = json_decode($navigation_vocab, true);
