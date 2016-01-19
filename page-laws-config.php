@@ -1,5 +1,6 @@
 <?php
 
+$CKAN_DOMAIN = "https://data.opendevelopmentmekong.net";
 $LAWS_DOCUMENT_TYPE = array(
   "anukretsub-decree" => "Anukret/Sub-Decree",
   "chbablawkram" => "Chbab/Law/Kram",

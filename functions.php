@@ -1175,27 +1175,50 @@ function buildTopTopicNav($lang)
 
 }
 
-function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
-  $shortcode = '[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="taxonomy,odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]';
-  $laws_json = null;
-
-  try{
-    $laws_json = do_shortcode($shortcode);
-  } catch (Exception $e){
-    return [];
-  }
-
-  $laws = json_decode($laws_json,true);
-  foreach ($laws["wpckan_dataset_list"] as $key => $law_record){
-    if (!empty($filter_odm_document_type) && $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'] != $filter_odm_document_type){
-      unset($laws["wpckan_dataset_list"][$key]);
+function get_law_datasets($ckan_domain,$filter_key,$filter_value){
+  $ckanapi_url = $ckan_domain . "/api/3/action/package_search?q=*:*&fq=type:laws_record&rows=1000";
+  $json = file_get_contents($ckanapi_url);
+  $result = json_decode($json, true) ?: [];
+  $datasets = $result["result"]["results"];
+  if (isset($filter_key) && isset($filter_value)){
+    foreach ($datasets as $key => $dataset){
+      if ( !isset($dataset[$filter_key])){
+        unset($datasets[$key]);
+      }else{
+        if (is_array($dataset[$filter_key])){
+          if (!in_array($filter_value,$dataset[$filter_key])){
+            unset($datasets[$key]);
+          }
+        }else if ($dataset[$filter_key] != $filter_value){
+          unset($datasets[$key]);
+        }
+      }
     }
-    if (!empty($filter_odm_taxonomy) && !in_array($filter_odm_taxonomy,$law_record['wpckan_dataset_extras']['wpckan_dataset_extras-taxonomy'])){
-      unset($laws["wpckan_dataset_list"][$key]);
-    }
   }
-  return $laws["wpckan_dataset_list"];
+  return $datasets;
 }
+
+// function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
+//   $shortcode = '[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="taxonomy,odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]';
+//   $laws_json = null;
+//
+//   try{
+//     $laws_json = do_shortcode($shortcode);
+//   } catch (Exception $e){
+//     return [];
+//   }
+//
+//   $laws = json_decode($laws_json,true);
+//   foreach ($laws["wpckan_dataset_list"] as $key => $law_record){
+//     if (!empty($filter_odm_document_type) && $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'] != $filter_odm_document_type){
+//       unset($laws["wpckan_dataset_list"][$key]);
+//     }
+//     if (!empty($filter_odm_taxonomy) && !in_array($filter_odm_taxonomy,$law_record['wpckan_dataset_extras']['wpckan_dataset_extras-taxonomy'])){
+//       unset($laws["wpckan_dataset_list"][$key]);
+//     }
+//   }
+//   return $laws["wpckan_dataset_list"];
+// }
 
 function get_datasets_filter($ckan_domain,$key,$value){
   $ckanapi_url = $ckan_domain . "/api/3/action/package_search?fq=" . $key . ":" . $value;
