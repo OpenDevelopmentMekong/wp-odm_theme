@@ -86,18 +86,52 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
         	"topic",
         	"publish"
             )
-        ); 
-        
-        foreach ( $get_post as $page_topic ) 
-        { 
-            $page_title = explode("<!--:-->", $page_topic->post_title);
-            if(qtranxf_getLanguage()!="en")                                                    
-                $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1]));
-            else 
-                $page_title = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
-            if (trim($title_str) == $page_title){ 
-                $page_id = $page_topic->ID; 
-            }  
+        );  
+        foreach ( $get_post as $page_topic ) {   
+            $lang_tag = "[:".qtranxf_getLanguage()."]";
+            $lang_tag_finder = "/".$lang_tag ."/";
+             
+            if(qtranxf_getLanguage()!="en"){
+                // if Kh                                                     
+                if (strpos($page_topic->post_title, '[:kh]') !== false) {                      
+                    $page_title = explode($lang_tag, $page_topic->post_title);
+                    $pagetitle = trim(str_replace("[:]", "", $page_title[1])) ;
+                    //echo " <pre>1111111 ".$pagetitle."</pre>";
+                }else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
+                        $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title);                      
+                        $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1])); 
+                        $pagetitle = trim(str_replace("<!--:-->", "" , $page_title)); 
+                    //echo " <pre>1111111 ".$pagetitle."</pre>";  
+                }
+           }else {             
+                //if (preg_match("/[:kh]/" ,$page_topic->post_title)){  
+                if (strpos($page_topic->post_title, '[:kh]') !== false) { 
+                    $page_title = explode("[:kh]", $page_topic->post_title);           
+                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));  
+                //echo " <pre>1111111 ".$pagetitle."</pre>";
+                }elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
+                    $page_title = explode("[:vi]", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0])); 
+                //echo " <pre>22222222222222222222".$page_title."</pre>";
+                }else if (strpos($page_topic->post_title, '[:]')){
+                    $page_title = explode("[:]", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
+                //echo " <pre>333333333333333".$page_title."</pre>";
+                } else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->')){ 
+                    $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title); 
+                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
+                //echo " <pre>444444444444".$page_title."</pre>";
+                }else if (strpos($page_topic->post_title, '<!--:--><!--:vi-->')){ 
+                    $page_title = explode("<!--:--><!--:vi-->", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
+                //echo " <pre>5555555555555".$page_title."</pre>";
+                }
+                
+            }     
+            echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
+            if (trim(strtolower($title_str)) == strtolower($pagetitle)){   
+                $page_id = $page_topic->ID;   
+            }                   
         } 
         return $page_id ;
     }
