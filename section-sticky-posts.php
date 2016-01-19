@@ -122,7 +122,13 @@ if ($options_news_tags['news_tags']) {
                    <?php endif; ?>
                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
                    <div class="date">
-					     <span class="lsf">&#xE12b;</span> <?php the_time('j F Y')?>
+					     <span class="lsf">&#xE12b;</span> 
+						 <?php 
+						 if (qtrans_getLanguage() =="kh"){ 
+							echo convert_date_to_kh_date(get_the_time('j.M.Y'));
+						 }else {
+							echo get_the_time('j F Y');
+						 } ?>
 					</div>
 					&nbsp;
 					<div class="news-source">
