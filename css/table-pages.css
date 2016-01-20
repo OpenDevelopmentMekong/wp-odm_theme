@@ -103,6 +103,7 @@
 
 .data-table{
   border: none;
+  font-size: 12px;
 }
 
 table.data-table thead{
