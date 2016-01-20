@@ -44,15 +44,8 @@ require_once('page-profiles-config.php');
 
   <section id="content" class="single-post">
 		<header class="single-post-header">
-			<div class="container">
-        <div class="row">
-  				<div class="twelve columns">
-            <h1 class="align-left"><?php the_title(); ?></h1>
-            <?php if (!IsNullOrEmptyString($profile)): ?>
-              <h2 class="align-left"><?php echo $profile["developer"]; ?></h2>
-            <?php endif; ?>
-  				</div>
-        </div>
+			<div class="twelve columns">
+        <h1 class="align-left"><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
 			</div>
 		</header>
     <?php if (!IsNullOrEmptyString($filter_map_id)): ?>

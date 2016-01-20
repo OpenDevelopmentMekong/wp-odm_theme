@@ -775,6 +775,8 @@ a.button:hover{
 .page-header h1,
 .archive-title {
  font-family: "Droid Serif";
+ padding-bottom: 20px;
+ padding-left: 20px;
 }
 
 .archive-title {
@@ -1181,7 +1183,7 @@ a.button:hover{
 .sticky-posts:hover{
     overflow-y: auto;
 }
-.sticky-posts .sticky-item:first-child{   
+.sticky-posts .sticky-item:first-child{
 }
 .sticky-posts .sticky-item {
 /*  height: 12%; */

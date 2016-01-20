@@ -46,14 +46,10 @@ require_once('page-laws-config.php');
   ?>
 
   <section id="content" class="single-post">
-		<header class="single-post-header">
-			<div class="container">
-        <div class="row">
-  				<div class="twelve columns">
-  					<h1 class="align-left"><?php the_title(); ?></h1>
-            <h1 class="align-left"><?php _e( $headline, 'sub_title_taxonomy' ); ?></h1>
-  				</div>
-        </div>
+    <header class="single-post-header">
+			<div class="twelve columns">
+        <h1 class="align-left"><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
+        <h2 class="align-left"><?php _e( $headline, 'sub_title_taxonomy' ); ?></h2>
 			</div>
 		</header>
 		<div class="container">
