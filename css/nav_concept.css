@@ -388,6 +388,8 @@ li.top-topic {
 
 #od-head .organization{
   height: 70px;
+  position: relative;
+  left: 18px;
 }
 
 .content_wrapper{
