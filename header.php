@@ -115,8 +115,7 @@
 						endif;
 					  ?>
 					</nav>
-				</div>
-				
+				</div>				
 			</div> 
 		</div> 
 		<!-- NEW NAV -->
