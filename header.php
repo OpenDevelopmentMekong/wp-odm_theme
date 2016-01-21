@@ -69,26 +69,23 @@
 	<header class="white"id="od-head">
 		
 		<div class="organization">	
-			<div class="six columns">
+			<div class="six columns left_organization">
 				<div class="site-meta">
 					<?php opendev_logo(); ?>
 				</div>
 			</div>
-			<div class="columns right_organization">
-				<div class="three columns social search language float-right">
-					<?php qtranxf_generateLanguageSelectCode($type,$id);?>
-					<div id="live-search">
-					  <div class="container">
-						<div class="three columns">
-						  <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
-						  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-						</div>
-						<div class="results-container"></div>
-					  </div>
-					</div><!-- live-search --> 
+			<div class="language float-right">
+					<?php qtranxf_generateLanguageSelectCode($type,$id);?>					
 				</div> 
-				
-				<div class="three columns social float-right">
+			<div class="right_organization"> 				
+				<div class="search">
+					<div id="live-search">  
+						  <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
+						  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" /> 
+						<div class="results-container"></div> 
+					</div><!-- live-search --> 				
+				</div> 
+				<div class="social">
 					<nav id="social-nav">
 					  <?php
 						$fb = opendev_get_facebook_url();
