@@ -541,7 +541,7 @@ header#od-head .icon-od-logo {
   display: inline-block;
   clear: none;
   float: right;
-  margin: 10px 0 0 20%;
+  margin: 10px 0 0 20% ;
 }
 
 #live-search .container{
