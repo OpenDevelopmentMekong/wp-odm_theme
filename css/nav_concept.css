@@ -388,10 +388,12 @@ li.top-topic {
 
 #od-head .organization{
   height: 70px;
-  max-width: 1280px; 
+  max-width: 1200px;
+  margin-right: 20px; 
 }
 #od-head .right_organization{
-  width: 48.5%
+  width: 45%;
+  float: right;
 }
 .content_wrapper{
   margin-left: 110px;
@@ -535,11 +537,11 @@ header#od-head .icon-od-logo {
 }
 
 #live-search{
-  width: 200px;
+  /* width: 200px; */
   display: inline-block;
   clear: none;
   float: right;
-  margin: 0;
+  margin: 10px 0 0 20% ;
 }
 
 #live-search .container{
@@ -567,10 +569,10 @@ footer#colophon{
 }
 
 .qtranxs_language_chooser{
-  float: left;
+  /* float: left;
   position: absolute;
   left: 72px;
-  top: 48px;
+  top: 48px; */
 }
   .qtranxs_language_chooser li{
     float: left;
