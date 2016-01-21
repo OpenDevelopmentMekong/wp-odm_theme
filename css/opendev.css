@@ -1776,7 +1776,9 @@ a.button:hover{
 /*
  * page
  */
-
+.container{
+    width: 97%;
+}
 #content.single-post {
  font-size: 16px;
  line-height: 150%;
@@ -1797,8 +1799,14 @@ a.button:hover{
  list-style-type: none;
 }
 
-#clear{
+.clear, #clear{
  clear:both;
+}
+.float-right {
+    float: right
+}
+.float-left {
+    float: left
 }
 /*
  * Share widget
@@ -2845,140 +2853,4 @@ div.cartodb-legend.custom ul li.graph{
     margin: 1em 0 0;
     text-align:center;
     font-size: 15px;
-}
-
-
-@media screen and (max-width: 1020px) {
-    table {
-		overflow-x: auto;
-        max-height: 800px;
-		overflow-y: auto;
-		display: block;
-	}
-}
-
-@media screen and (max-width: 800px) {
-    #od-head h1{
-        font-size: 25px;
-        font-family: "Droid Serif";
-        margin: 0px 14px 0px 0px;
-    }
-    #od-head h2.side-title{
-        font-size: 18px;
-        line-height: 42px;
-    }
-    #od-head #social-nav a{
-    line-height: 31px;
-    font-size: 15px;
-    margin: 5px 0px 0px 8px;
-
-    }
-    #live-search input[type="text"]{
-        width:50%;
-        margin-top:-20px;
-        margin-left: 1px;
-    }
-    #od-head #ms-nav{
-        margin-top: 10px;
-    }
-    #od-head #ms-nav ul.ms-nav > li{
-    }
-    #od-head #ms-nav ul.ms-nav > li > a {
-        padding: 10px 16px;
-        font-size: 12px;
-    }
-    #od-head #main-nav a{
-        padding:7px 10px;
-        font-size:12px
-    }
-    #od-head #main-nav ul.menu > li > ul{
-        top: 28px;
-    }
-
-    #tabbed-post-type-nav ul li{
-        float: left;
-        display: inline;
-        margin: 0;
-        width: auto;
-    }
-    #tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name{
-        padding:10px;
-    }
-    .announcements-list li{
-        width:98%;
-    }
-     table {
-		overflow-x: auto;
-        max-height: 500px;
-		overflow-y: auto;
-		display: block;
-	}
-}
-@media only screen and (max-width: 400px) {
-    #od-head {
-        padding: 10px 0px 0px;
-    }
-    #od-head h1{
-        font-size: 25px;
-        font-family: "Droid Serif";
-        margin: 0px 14px 0px 0px;
-    }
-    #od-head h2.side-title{
-        font-size: 18px;
-        line-height: 42px;
-    }
-    #od-head #social-nav a{
-    line-height: 31px;
-    font-size: 15px;
-    margin: 5px 0px 0px 8px;
-
-    }
-    #live-search input[type="text"]{
-        width:50%;
-        margin-top:-20px;
-        margin-left: 1px;
-    }
-    #od-head #ms-nav{
-        margin-top: 10px;
-    }
-    #od-head #ms-nav ul.ms-nav > li{
-    }
-    #od-head #ms-nav ul.ms-nav > li > a {
-        padding: 10px 16px;
-        font-size: 12px;
-    }
-    #od-head #main-nav a{
-        padding:7px 10px;
-        font-size:12px
-    }
-    #od-head #main-nav ul.menu > li > ul{
-        top: 28px;
-    }
-    #sidebar .widgets .widget, .widget{
-        width:auto;
-    }
-    #sidebar .widgets .widget .widget-title, .widget .widget-title{
-        font-size:small;
-    }
-    #tabbed-post-type-nav ul li{
-        float: left;
-        display: inline;
-        margin: 0;
-        width: auto;
-    }
-    #tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name{
-        padding:10px;
-    }
-    .announcements-list li{
-        width:98%;
-    }
-}
-/*IE10*/
-@-ms-viewport{
-    width: extend-to-zoom;
-    zoom: 1.0;
-}
-@viewport{
-    zoom: 1.0;
-    width: extend-to-zoom;
 }

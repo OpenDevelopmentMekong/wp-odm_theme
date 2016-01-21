@@ -124,6 +124,7 @@ function opendev_styles()
   wp_register_style('table-pages',  $css_base.'table-pages.css');
   wp_register_style('elc',  $css_base.'elc.css');
   wp_register_style('forest-cover',  $css_base.'forest-cover.css');
+  wp_register_style('responsive',  $css_base.'responsive.css');
 
   wp_enqueue_style('mCustomScrollbar');
   wp_enqueue_style('opendev-base');
@@ -132,6 +133,7 @@ function opendev_styles()
   wp_enqueue_style('map-explorer');
   wp_enqueue_style('elc');
   wp_enqueue_style('forest-cover');
+  wp_enqueue_style('responsive');
 
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);

@@ -388,8 +388,11 @@ li.top-topic {
 
 #od-head .organization{
   height: 70px;
+  max-width: 1280px; 
 }
-
+#od-head .right_organization{
+  width: 48.5%
+}
 .content_wrapper{
   margin-left: 110px;
   overflow: hidden;
