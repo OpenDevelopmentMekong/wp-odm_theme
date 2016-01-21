@@ -67,60 +67,61 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
   <div class="content_wrapper">
 	<header class="white"id="od-head">
-		<div class="container">
-			<div class="six columns organization">
+		
+		<div class="organization">	
+			<div class="six columns">
 				<div class="site-meta">
-          <?php opendev_logo(); ?>
+					<?php opendev_logo(); ?>
 				</div>
 			</div>
-
-      <div class="three columns social">
-        <nav id="social-nav">
-          <?php
-            $fb = opendev_get_facebook_url();
-            if ($fb) :
-          ?>
-            <a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
-          <?php
-            endif;
-          ?>
-          <?php
-            $tw = opendev_get_twitter_url();
-            if ($tw) :
-          ?>
-            <a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
-          <?php
-            endif;
-          ?>
-          <?php
-            $contact_id = opendev_get_contact_page_id();
-            if ($contact_id) :
-          ?>
-            <a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"></a>
-          <?php
-            else:
-          ?>
-          <?php
-            endif;
-          ?>
-        </nav>
-      </div>
-			<div class="three columns social search language">
-        <?php qtranxf_generateLanguageSelectCode($type,$id);?>
-        <div id="live-search">
-          <div class="container">
-            <div class="three columns">
-              <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
-              <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-            </div>
-            <div class="results-container"></div>
-          </div>
-        </div><!-- live-search -->
-
-  		</div>
-
-		</div><!-- four column -->
-
+			<div class="columns right_organization">
+				<div class="three columns social search language float-right">
+					<?php qtranxf_generateLanguageSelectCode($type,$id);?>
+					<div id="live-search">
+					  <div class="container">
+						<div class="three columns">
+						  <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
+						  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
+						</div>
+						<div class="results-container"></div>
+					  </div>
+					</div><!-- live-search --> 
+				</div> 
+				
+				<div class="three columns social float-right">
+					<nav id="social-nav">
+					  <?php
+						$fb = opendev_get_facebook_url();
+						if ($fb) :
+					  ?>
+						<a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
+					  <?php
+						endif;
+					  ?>
+					  <?php
+						$tw = opendev_get_twitter_url();
+						if ($tw) :
+					  ?>
+						<a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
+					  <?php
+						endif;
+					  ?>
+					  <?php
+						$contact_id = opendev_get_contact_page_id();
+						if ($contact_id) :
+					  ?>
+						<a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"></a>
+					  <?php
+						else:
+					  ?>
+					  <?php
+						endif;
+					  ?>
+					</nav>
+				</div>
+				
+			</div> 
+		</div> 
 		<!-- NEW NAV -->
 	<div class="contentNavigation">
       <ul id="cNavNew" class="level1 clearfix current-site-mekong menu-<?php echo $country;?>">
