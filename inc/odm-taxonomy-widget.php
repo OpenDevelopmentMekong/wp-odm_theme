@@ -125,8 +125,10 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
                 }else if (strpos($page_topic->post_title, '<!--:-->')){ 
                     $page_title = explode("<!--:-->", $page_topic->post_title); 
                     $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
-                }
-                
+                }else {
+					$page_title = $page_topic->post_title; 
+                    $pagetitle = trim($page_title);   
+				}                
             }     
             echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
             if (trim(strtolower($title_str)) == strtolower($pagetitle)){   
