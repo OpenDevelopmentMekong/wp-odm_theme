@@ -881,27 +881,27 @@ a.button:hover{
 
 #live-search ::-webkit-input-placeholder {
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search :-moz-placeholder { /* Firefox 18- */
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search ::-moz-placeholder {  /* Firefox 19+ */
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search :-ms-input-placeholder {
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search input[type=text] {
  border: 0;
- background: #EEE;
+ background: #FFF;
  color: #333;
  padding: 2px 0;
  font-size: 16px;

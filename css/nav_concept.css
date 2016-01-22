@@ -394,6 +394,7 @@ li.top-topic {
 #od-head .right_organization{
   width: 45%;
   float: right;
+  clear: right;
 }
 .content_wrapper{
   margin-left: 110px;
