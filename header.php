@@ -80,7 +80,7 @@
 			<div class="right_organization"> 				
 				<div class="search">
 					<div id="live-search">  
-						  <input type="text" placeholder="<?php _e('Search', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search &#128270;', 'opendev');?>'" />
+						  <input type="text" placeholder="<?php _e('Search site...', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search site... &#128270;', 'opendev');?>'" />
 						  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" /> 
 						<div class="results-container"></div> 
 					</div><!-- live-search --> 				
