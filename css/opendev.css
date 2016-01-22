@@ -1817,7 +1817,7 @@ a.button:hover{
     text-align: right;
 }
 .share-box div{
-    margin-right: 10px;
+    margin-right: 8px;
     float:left;
 }
 .widget .share ul {
@@ -2449,7 +2449,9 @@ div.cartodb-legend-stack{
 .widget ol li {
  padding-left: 10px;
 }
-
+#sidebar .widgets .widget.share-widget, .widget.share-widget{
+    padding-left: 3em
+}
 .widget .opendev-summary ol {
  margin-left: -40px !important;
  margin-right: -10px !important;
