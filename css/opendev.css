@@ -25,6 +25,7 @@ img.border{
 sup{
  vertical-align: super;
  font-size:small;
+ line-height: 0;
 }
 sub{
  vertical-align: sub;
@@ -62,7 +63,9 @@ td{
 .tableauPlaceholder{
     margin: 5px auto 20px;
 }
-
+ .table-of-contents sup{
+     display: none;
+ }
 /******Image Caption**********/
 .wp-caption {
     max-width: 95%;
