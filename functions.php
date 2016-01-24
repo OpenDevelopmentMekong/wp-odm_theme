@@ -1223,6 +1223,14 @@ function get_law_datasets($ckan_domain,$filter_key,$filter_value){
 //   return $laws["wpckan_dataset_list"];
 // }
 
+function get_dataset_by_id($ckan_domain,$id){
+  $ckanapi_url = $ckan_domain . "/api/3/action/package_show?id=" . $id;
+  $json = @file_get_contents($ckanapi_url);
+  if ($json === FALSE) return [];
+  $datasets = json_decode($json, true) ?: [];
+  return $datasets["result"];
+}
+
 function get_datasets_filter($ckan_domain,$key,$value){
   $ckanapi_url = $ckan_domain . "/api/3/action/package_search?fq=" . $key . ":" . $value;
   $json = @file_get_contents($ckanapi_url);
