@@ -57,11 +57,11 @@
   );
 
   $ELC_TRACKING = array(
-    "amendment_text" => "Amendment text",
     "change_type" => "Change type",
     "concession_or_developer" => "Amendment object",
     "amendment_date" => "Amendment date",
     "description" => "Description",
+    "amendment_text" => "Amendment text"
   );
 
 ?>
