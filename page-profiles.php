@@ -91,14 +91,7 @@ require_once('page-profiles-config.php');
                       <tr>
                         <?php foreach ($ELC_TRACKING as $key => $value): ?>
                           <td>
-                            <?php
-                              //NOTE: this hack is to make possible to show following fields: change_type , ammendement_text and description
-                              // which have currently a language code appended. Solution for this would be to update the CSV files on CKAN and remove the hack
-                              $fields_to_append_lang = array("change_type", "ammendement_text", "description");
-                              if (in_array($key,$fields_to_append_lang)){
-                                $key = $key . "_" . $lang;
-                              }
-                              // End of hack
+                            <?php                              
                               if (isset($ammendement[$key])){
                                   echo $ammendement[$key];
                                 }
