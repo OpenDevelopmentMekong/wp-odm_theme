@@ -30,6 +30,7 @@ require_once('page-profiles-config.php');
     if (isset($_GET["map_id"])){
       $filter_map_id = htmlspecialchars($_GET["map_id"]);
     }
+    $dataset = get_dataset_by_id($CKAN_DOMAIN,$ELC_DATASET_ID);
     $profile = null;
     $ref_docs_profile = array();
     $ref_docs_tracking = array();
@@ -171,8 +172,8 @@ require_once('page-profiles-config.php');
                   <?php _e( 'DOWNLOAD', 'search' );?></span>
               </div>
               <div class="sidebar_box_content download_buttons">
-                <?php foreach ($ELC_DOWNLOAD_URLS[$lang] as $key => $value) : ?>
-                  <span><a href="<?php echo $value; ?>"><?php echo $key; ?></a></span>
+                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
+                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
                 <?php endforeach; ?>
               </div>
             </div>
