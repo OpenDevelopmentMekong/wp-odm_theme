@@ -110,13 +110,7 @@
 		<nav id="main-nav">
 			<div class="container">
 				<div class="twelve columns">
-					<?php if(function_exists('qtranxf_generateLanguageSelectCode')) : ?>
-					    <?php $current_site = get_current_site();
-                              $current_site_id = get_current_blog_id();
-                                if ($current_site_id != 1){
-                                        echo qtranxf_generateLanguageSelectCode('text');
-                                }?>
-					<?php endif; ?>
+				  <?php qtranxf_generateLanguageSelectCode($type,$id);?>	
 					<?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
 				</div>
 			</div>
@@ -143,10 +137,10 @@
                 </div>
 			</div>
         </nav>
-        <?php } ?> 
+        <?php } ?>
 	</header>
-    <?php //Add Contact form button 
+    <?php //Add Contact form button
         if( function_exists('button_user_feedback_form') ){
             button_user_feedback_form();
         }
-    ?>  
+    ?>
