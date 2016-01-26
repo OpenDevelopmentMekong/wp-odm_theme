@@ -1,5 +1,8 @@
 .vietnam-color{
-    color: #C6C366;
+    color: #C6C366!important
+}
+#vietnam-bgcolor, .vietnam-bgcolor{
+    background: #C6C366 !important
 }
 .menu-vietnam .icon_menu{
   display: none!important;
@@ -44,11 +47,11 @@ tr:nth-child(2n+1) {
 	color: #C6C366;
 }
 
-#od-head h2,
+/* #od-head h2,
 #od-head a,
 #od-head span {
 	color: #fff;
-}
+} */
 #od-head a:hover{
 	color: #C6C366;
 }

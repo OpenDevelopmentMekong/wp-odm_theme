@@ -1,5 +1,8 @@
-.cambodia-color{
-    color: #66CC00;
+#cambodia-color, .cambodia-color{
+    color: #66CC00 !important
+}
+#cambodia-bgcolor, .cambodia-bgcolor{    
+    background: #66CC00 !important
 }
 a, a:visited, #sidebar .widget li a{
  color: #66CC00; /* #7BCC2E; #6393D2, #2774da;*/
@@ -43,11 +46,11 @@ tr:nth-child(2n+1) {
 	color: #97d320;
 }
 
-#od-head h2,
+/* #od-head h2,
 #od-head a,
 #od-head span {
 	color: #fff;
-}
+} */
 
 #od-head .ms-dropdown-title ul {
 	background: #17303a;
