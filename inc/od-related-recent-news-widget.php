@@ -19,10 +19,15 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
 	 */
 
 	public function get_related_news( $category = "") {
+		if( qtranxf_getLanguage() == "kh") 
+			$language = "khmer";
+		else $language = "";
+		
         $args=array(
               'post_type' => 'post',
               'post_status' => 'publish',
               'category_name' => $category,
+              'language'=> $language,
               'numberposts' => 10
               );
 
@@ -70,7 +75,12 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
                      }else {
                             $english_pagetitle = get_the_title();
                      }
-            		$category_slug = strtolower(preg_replace('/\s+/', '-', $english_pagetitle));
+					
+					//$category_id = get_cat_ID($english_pagetitle); 
+            		//$category_slug = strtolower(preg_replace('/\s+/', '-', $english_pagetitle));
+					$category_filter = get_term_by('name', $english_pagetitle, 'category'); 
+					$category_id = $category_filter->term_id;
+					$category_slug = $category_filter->slug;
                 }else if ($news_option == 'Show By specific category slug'){
                     if (!empty ($instance['od_related_news_by_cat_slug']))
                         $category_slug = $instance['od_related_news_by_cat_slug'];
