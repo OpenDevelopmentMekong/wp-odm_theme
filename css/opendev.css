@@ -1246,15 +1246,15 @@ a.button:hover{
 .sticky-posts .sticky-item:first-child article .post-thumbnail img {
  float: right;
  max-width: 300px;
- height: 100%;
+ /* height: 100%; */
  max-height: 225px;
  margin: -15px -5px 0px 1em;
 
 }
 .sticky-posts .sticky-item article .post-thumbnail img {
  display: block;
- width: 100%;
- height: 150px;
+/* width: 100%;
+ height: 150px; */
  max-width: 188px;
  max-height: 150px;
  margin: 0 0 5% 0;
