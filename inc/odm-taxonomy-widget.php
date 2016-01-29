@@ -22,7 +22,8 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 		foreach ( (array) $cats as $cat ) {
 			// get_term_children() accepts integer ID only
 			$descendants = get_term_children( (int) $cat, 'category' );
-			if ( $descendants && in_category( $descendants, $_post ) )
+			//if ( $descendants && in_category( $descendants, $_post ) )
+			if ( $descendants)
 				return true;
 		}
 		return false;
@@ -41,32 +42,31 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category( $category ) {
+	public function print_category( $category ) { 
+			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
 			$post_type =  get_post_type( get_the_ID() );
 			//echo '<a href="' . get_category_link( $category->term_id ) . '">';
 			$get_post_id = $this->wp_exist_post_by_title($category->name);
 			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
 			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type ); 
 			if ($get_post_id){                       
-				$highlight_cat =  " class='".COUNTRY_NAME."-color'";   
-                 // $highlight_cat = "";
-				echo $get_post_title->ID.'<a'.$highlight_cat.' href="' . get_permalink( $get_post_id ) . '">';
+				$hyperlink_color =  " class='".COUNTRY_NAME."-color'";    
+				echo $get_post_title->ID.'<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
 			}else{
-                  $highlight_cat = "";
-                  //echo '<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
-             }                                  
-				$in_category = in_category( $category->term_id );
-				if ($in_category){
-					 echo "<strong class='".COUNTRY_NAME."-color'>";
-					 $highlight_cat =  " class='".COUNTRY_NAME."-color'";
-				}else {
-                    $highlight_cat = "";
-                }
-				//echo "<div".$highlight_cat.">".$category->name."</div>"; 
-			     echo $category->name;
-				if ($in_category){
-					 echo "</strong>";
-				}
+                $hyperlink_color = ""; 
+            } 
+			
+			$in_category = in_category( $category->term_id );
+			if ($in_category){
+				 echo "<strong class='".COUNTRY_NAME."-color'>";
+				 $hyperlink_color =  " class='".COUNTRY_NAME."-color'";
+			}else {
+				$hyperlink_color = "";
+			}  
+			echo "<span class='nochildimage-".$site_name."'>".$category->name."</span>";
+			if ($in_category){
+				 echo "</strong>";
+			}
 		//	if ($get_post_title)
 				echo "</a><br/>";
 			
@@ -130,7 +130,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
                     $pagetitle = trim($page_title);   
 				}                
             }     
-            echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
+            //echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
             if (trim(strtolower($title_str)) == strtolower($pagetitle)){   
                 $page_id = $page_topic->ID;   
             }                   
@@ -172,7 +172,25 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Saved values from database.
 	 */
-	public function widget( $args, $instance ) {
+	public function widget( $args, $instance ) { 
+	$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
+	?>  
+	<script type="text/javascript">
+    jQuery(document).ready(function($) {   
+		if($('.opendev_taxonomy_widget_ul > li.topic_nav_item').find('ul')){
+			$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
+			$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");	
+		} 
+		$('.opendev_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
+			if($(event.target).parent("li").find('ul').length){ 
+				$(event.target).parent("li").find('ul:first').slideToggle();	
+				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");	
+				$(event.target).toggleClass('minusimage-<?php echo $site_name;?>');		 
+			}
+		});
+    });
+   </script>
+	<?php
 		echo $args['before_widget'];
 		if ( ! empty( $instance['od_title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'opendev' ) ). $args['after_title'];
@@ -194,21 +212,20 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 
 		$categories = get_categories( $args );
 
-		echo "<ul>";
+		echo "<ul class='opendev_taxonomy_widget_ul'>";
 		foreach($categories as $category){
-
 			$jackpot = false;
 			$children = array();
 
 			if ( in_category( $category->term_id ) || $this->post_is_in_descendant_category( $category->term_id ) )
 			{
 				$jackpot = true;
-				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
 
 			}
 
-			echo "<li>";
-			$this -> print_category($category);
+			echo "<li class='topic_nav_item'>";
+					$this -> print_category($category);
 
 			if ( !empty($children) ) {
 				echo '<ul>';

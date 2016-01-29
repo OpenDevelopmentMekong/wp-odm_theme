@@ -1847,8 +1847,36 @@ a.button:hover{
 
 .widget .share ul li > .twitter {
  width: 120px;
+}             
+/* Taxonomy Navigation */
+.opendev_taxonomy_widget_ul li.topic_nav_item ul{
+    display: none;
+}
+#sidebar .widgets .widget ul li span.plusimage-mekong{ 
+    display: inline-block;
+    background: url("../img/expand-mekong.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-mekong{ 
+    display: inline-block;
+    background: url("../img/collapse-mekong.png") no-repeat 0 2px!important;
+    padding-left: 20px;      
+} 
+#sidebar .widgets .widget ul li span.nochildimage-mekong{       
+    display: inline-block;
+    background: url("../img/no-child-mekong.png") no-repeat 0 2px!important;
+    padding-left: 20px; 
 }
 
+#sidebar .widgets .widget div ul.opendev_taxonomy_widget_ul li ul li { 
+    list-style: none !important;
+    list-style-type: none !important;
+} 
+.widget_opendev_taxonomy_widget ul:first-child{
+    max-height: 650px;
+    overflow-y: auto;
+
+} 
 /*
  * Related datasets box
  */

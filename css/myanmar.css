@@ -162,3 +162,19 @@ tr:nth-child(2n+1) {
 	td.entry_title a{
 	  color: #F8BF42 !important;
 	}
+/* collapse & expend */
+#sidebar .widgets .widget ul li span.plusimage-myanmar{
+    display: inline-block;
+    background: url("../img/expand-my.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-myanmar{
+    display: inline-block;
+    background: url("../img/collapse-my.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-myanmar{
+    display: inline-block;
+    background: url("../img/no-child-my.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
