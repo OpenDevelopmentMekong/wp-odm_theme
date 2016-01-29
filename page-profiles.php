@@ -209,6 +209,7 @@ require_once('page-profiles-config.php');
 									<th><?php _e( 'EIA status', 'eia_status' );?></th>
 									<th><?php _e( 'Adjustment classification ', 'adjustment' );?></th>
 									<th><?php _e( 'Data classification', 'data_class' );?></th>
+                  <th><?php _e( 'Map id', 'map_id' );?></th>
                 </tr>
               </thead>
               <tbody>
@@ -268,6 +269,9 @@ require_once('page-profiles-config.php');
 										<td>
                       <?php echo $profile['data_class'];?>
                     </td>
+                    <td>
+                      <?php echo $profile['map_id'];?>
+                    </td>
                   </tr>
         				<?php endforeach; ?>
       				</tbody>
@@ -323,7 +327,13 @@ jQuery(document).ready(function($) {
       processing: true,
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       order: [[ 0, 'asc' ]],
-      displayLength: 25
+      displayLength: 25,
+      columnDefs: [
+        {
+          "targets": [ 17 ],
+          "visible": false
+        }
+      ]
     });
   }
 
