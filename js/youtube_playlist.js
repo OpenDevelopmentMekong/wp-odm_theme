@@ -57,7 +57,7 @@
       var title = document.createElement( "p" );
       title.appendChild( document.createTextNode( titles[i] ) );
       var img = document.createElement( "img" );
-      img.src = "http://img.youtube.com/vi/" + ytplayer_playlist[ i ] + "/default.jpg";
+      img.src = "https://img.youtube.com/vi/" + ytplayer_playlist[ i ] + "/default.jpg";
       var a = document.createElement( "a" );
       a.href = "#ytplayer";
       a.className = "ytplayer_title";
