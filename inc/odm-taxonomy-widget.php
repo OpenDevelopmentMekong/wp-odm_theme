@@ -98,7 +98,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
         	",
         	"topic",
         	"publish",
-			"%".$title_str."%"
+			"%". trim($title_str)."%"
             )
         );   		
         foreach ( $get_post as $page_topic ) {   
