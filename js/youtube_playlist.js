@@ -22,7 +22,7 @@
   {
     swfobject.embedSWF
     (
-      'http://www.youtube.com/v/' + ytplayer_playlist[ ytplayer_playitem ] + '&enablejsapi=1&rel=0&fs=1&version=3',
+      'https://www.youtube.com/v/' + ytplayer_playlist[ ytplayer_playitem ] + '&enablejsapi=1&rel=0&fs=1&version=3',
       'ytplayer_div1',
       '740',
       '500',
