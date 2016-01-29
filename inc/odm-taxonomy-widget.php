@@ -45,13 +45,12 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	public function print_category( $category ) { 
 			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
 			$post_type =  get_post_type( get_the_ID() );
-			//echo '<a href="' . get_category_link( $category->term_id ) . '">';
-			$get_post_id = $this->wp_exist_post_by_title($category->name);
-			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
-			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type ); 
+			
+			$get_post_id = $this->wp_exist_post_by_title($category->name); 
+			echo "<span class='nochildimage-".$site_name."'>";
 			if ($get_post_id){                       
 				$hyperlink_color =  " class='".COUNTRY_NAME."-color'";    
-				echo $get_post_title->ID.'<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
+				echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
 			}else{
                 $hyperlink_color = ""; 
             } 
@@ -63,13 +62,15 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			}else {
 				$hyperlink_color = "";
 			}  
-			echo "<span class='nochildimage-".$site_name."'>".$category->name."</span>";
+			echo $category->name;
+			
 			if ($in_category){
 				 echo "</strong>";
-			}
-		//	if ($get_post_title)
-				echo "</a><br/>";
+			} 
+			if ($get_post_id)
+				echo "</a>";
 			
+			echo "</span>";
 
 	}
 	/**
@@ -78,15 +79,17 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param  $title_str a category's name to find the topic page
 	 */
      public function wp_exist_post_by_title($title_str) { 
-        global $wpdb; 
+        global $wpdb;   
          $get_post = $wpdb->get_results( $wpdb->prepare(
         	"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
-                AND post_status = %s
+             AND post_status = %s
+			 AND post_title like %s
         	",
         	"topic",
-        	"publish"
+        	"publish",
+			"%".$title_str."%"
             )
-        );  
+        );   		
         foreach ( $get_post as $page_topic ) {   
             $lang_tag = "[:".qtranxf_getLanguage()."]";
             $lang_tag_finder = "/".$lang_tag ."/";
@@ -177,10 +180,13 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	?>  
 	<script type="text/javascript">
     jQuery(document).ready(function($) {   
-		if($('.opendev_taxonomy_widget_ul > li.topic_nav_item').find('ul')){
-			$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
-			$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");	
-		} 
+		$('.opendev_taxonomy_widget_ul > li.topic_nav_item').each(function(){
+			if($('.opendev_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){ 
+				//alert($('.opendev_taxonomy_widget_ul > li.topic_nav_item a span').text());
+				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
+				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");	
+			} 
+		});
 		$('.opendev_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
 			if($(event.target).parent("li").find('ul').length){ 
 				$(event.target).parent("li").find('ul:first').slideToggle();	
