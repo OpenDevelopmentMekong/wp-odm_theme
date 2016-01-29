@@ -1088,7 +1088,7 @@ function the_breadcrumb()
 function add_iframe($initArray)
 {
     $initArray['extended_valid_elements'] = 'iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width|allowtransparency|allowfullscreen|webkitallowfullscreen|mozallowfullscreen|oallowfullscreen|msallowfullscreen]';
-
+    $initArray['extended_valid_elements_div'] = 'div[id|style]';
     return $initArray;
 }
 // this function alters the way the WordPress editor filters your code

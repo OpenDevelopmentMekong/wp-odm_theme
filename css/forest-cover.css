@@ -1,0 +1,103 @@
+/* Youtube Playlist */
+.myYoutubePlaylist_YoutubePlaylist{ width:600px; height:500px;float:left;}
+.myYoutubePlaylist_YoutubePlaylist ul li img{width:80px; border:1px solid #fff;}
+.myYoutubePlaylist_YoutubeMovie, .myYoutubePlaylist_YoutubeMovie embed, .myYoutubePlaylist_YoutubeMovie object {height: 450px;width: 600px;}
+html > body .entry .myYoutubePlaylist_YoutubePlaylist ul li, .myYoutubePlaylist_YoutubePlaylist ul li{ padding:5px 0px 10px 0px; margin-right:5px;}
+.myYoutubePlaylist_YoutubePlaylist{ padding-bottom:0;}
+.myYoutubePlaylist_YoutubePlaylist ul li, .myYoutubePlaylist_YoutubePlaylist ul li a, .myYoutubePlaylist_YoutubePlaylist ul li img{ width:80px; height:60px;}
+.myYoutubePlaylist *{ width:600px; background:none;}
+/* end youtube playlist */
+
+/* Tab */
+#tabs {width: 100%;height:30px; border-bottom: solid 0px #CCC;padding-right: 2px;margin-top: 30px;}
+a {cursor:pointer;}
+#tabs li {float:left; list-style:none; border-top:1px solid #ccc; border-left:1px solid #ccc; border-right:1px solid #ccc; margin-right:2px; border-top-left-radius:3px; border-top-right-radius:3px;outline:none;}
+
+#tabs li a {font-family:Arial, Helvetica, sans-serif; font-size: 12px;font-weight: bold; color: #5685bc;padding-top: 5px;padding-left: 7px;padding-right: 7px;padding-bottom: 8px; display:block; background: #FFF;border-top-left-radius:3px;border-top-right-radius:3px;text-decoration:none;
+outline:none;
+  
+}
+#tabs li a.inactive{padding-top:5px;padding-bottom:8px;padding-left: 8px;padding-right: 8px;color:#666666;background: #EEE;outline:none;border-bottom: solid 1px #CCC;}
+#tabs li a:hover, #tabs li a.inactive:hover {color: #5685bc;outline:none;}
+/*.container {clear:both; width:100%; border: solid 1px #CCC;text-align:justify;padding-top: 0px; height:518px; overflow:auto;
+background: #FAFAFA;-webkit-box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.55);-moz-box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.55);
+box-shadow: 0px 0px 3px rgba(50, 50, 50, 0.55);
+}*/
+/*
+.container h2 { margin-left: 15px;  margin-right: 15px;  margin-bottom: 10px; color: #5685bc; }
+.container p { margin-left: 15px; margin-right: 15px;  margin-top: 10px; margin-bottom: 10px;}
+.container ul { margin-left: 25px; font-size: small; line-height: 1.4; list-style-type: disc; }
+.container ol { margin-left: 15px; margin-right: 15px;  margin-top: 10px; margin-bottom: 10px;}
+.container li { padding-bottom: 5px; margin-left: 5px;}
+ul, ol{ margin: 0 0 10px 0px;}
+*/
+/* end tab */
+
+/* Infographic section */
+/* end infographic */
+/*.column-1 {border: 1px solid #ddd; border-top-color: rgb(221, 221, 221); border-top-style: solid; border-top-width: 0px;}*/
+.column-1 {width: 48%;}
+.column-1 iframe {box-shadow: none; border: 1px solid #ccc; padding: 7px;}
+.youtube-title{ width:600px; margin:0; padding:0;}
+.youtube-title ul{ margin:0 !important; padding:0; list-style:none;}
+.youtube-title ul li{ float: left; border: 0px solid #000; width: 105px; text-align: center; color: #fff; font-size: 12px; margin: 0; padding: 0; position: relative; top: -10px; list-style-type: none !important;}
+#ytplayer_list a{ float:left; width:14%; border:0px solid #fff; text-align: center;}
+#ytplayer_list a p { padding:0; margin:0; color:#fff;}
+#ytplayer_list img {width: 105px !important; margin-bottom: -10px;}
+
+.graph_slide_container {
+    margin-top: 1em;
+    position: relative;
+}
+.graph_slide {
+    width: 760px;
+    height: 268px;
+}
+.graph_slide .fc_graph, .graph_slide .fc_graph_per {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.graph_bg {
+    width: 100%;
+    height: 21px;
+    background: url(https://cambodia.opendevelopmentmekong.net/wp-content/uploads/sites/2/2016/01/graph_bg.png) no-repeat bottom;
+}
+
+.entry-content img, .comment-content img, .widget img {
+    max-width: 97.5%;
+}
+
+.selected_option_ha, .selected_option_per {
+    position: relative;
+    top: -2px;
+}
+
+.graph_options, .graph_options_per {
+    cursor: pointer;
+    position: relative;
+    top: -6px;
+    margin-top: 0;
+    margin-left: 3em;
+    margin-right: 1.8em;
+}
+
+.graph_year ul {
+    margin: 0;
+    padding: 0;
+    list-style: disc;
+}
+
+.graph_year li {
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 1.2em;
+}
+
+.entry-content img, .comment-content img, .widget img {
+    max-width: 97.5%;
+}
