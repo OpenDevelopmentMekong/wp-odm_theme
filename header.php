@@ -67,24 +67,24 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
   <div class="content_wrapper">
 	<header class="white"id="od-head">
-		
-		<div class="organization">	
+
+		<div class="organization">
 			<div class="six columns left_organization">
 				<div class="site-meta">
 					<?php opendev_logo(); ?>
 				</div>
 			</div>
 			<div class="language float-right">
-					<?php qtranxf_generateLanguageSelectCode($type,$id);?>					
-				</div> 
-			<div class="right_organization"> 				
+					<?php qtranxf_generateLanguageSelectCode($type,$id);?>
+				</div>
+			<div class="right_organization">
 				<div class="search">
-					<div id="live-search">  
+					<div id="live-search">
 						  <input type="text" placeholder="<?php _e('Search site... &#128269;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search site... &#128269;', 'opendev');?>'" />
-						  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" /> 
-						<div class="results-container"></div> 
-					</div><!-- live-search --> 				
-				</div> 
+						  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
+						<div class="results-container"></div>
+					</div><!-- live-search -->
+				</div>
 				<div class="social">
 					<nav id="social-nav">
 					  <?php
@@ -115,9 +115,9 @@
 						endif;
 					  ?>
 					</nav>
-				</div>				
-			</div> 
-		</div> 
+				</div>
+			</div>
+		</div>
 		<!-- NEW NAV -->
 	<div class="contentNavigation">
       <ul id="cNavNew" class="level1 clearfix current-site-mekong menu-<?php echo $country;?>">

@@ -1308,7 +1308,7 @@ function buildStyledTopTopicNav($lang)
        // get entries -->
        foreach ($json_a[$key]['children'] as $child) {
            $url = sanitize_title($child['name']);
-           echo '<li><a href="/topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
+           echo '<li class="'. $child['class'] .'"><a href="/topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
        }
 
         ?>
