@@ -389,7 +389,7 @@ li.top-topic {
 #od-head .organization{
   height: 70px;
   max-width: 1200px;
-  margin-right: 20px; 
+  margin-right: 20px;
 }
 #od-head .right_organization{
   width: 45%;
@@ -588,6 +588,8 @@ footer#colophon{
   }
 
   .404{margin-bottom: 200px;}
+
+  .multiline-menu-item, .multiline-menu-item a{height: 60px!important;}
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
