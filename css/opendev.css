@@ -1805,6 +1805,8 @@ a.button:hover{
 #content #references li, #content #reference-list li{
  list-style-type: none;
 }
+ 
+.container .eight.columns{ width: 700px;}
 
 .clear, #clear{
  clear:both;
