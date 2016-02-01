@@ -1044,7 +1044,8 @@ a.button:hover{
  */
 
 .row {
-    margin-top: 20px;
+    margin-top: 20px; 
+    clear: both;
 }
 #news {
  padding-top: 0;
