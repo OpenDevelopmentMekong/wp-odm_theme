@@ -19,7 +19,7 @@
   else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';$preprod=true;}
   else {$country='mekong';$country_short='';}
 
-  setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
+  // setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
 
   if ($wpDomain == '192.168.33.10'){
     $ckanDomain='192.168.33.10:8081';
@@ -33,7 +33,7 @@
 ?>
 <?php ?>
 <!DOCTYPE html>
-<html data-country="<?php echo $country; ?>" <?php language_attributes(); ?>>
+<html data-country="<?php echo $country; ?>" data-domain="<?php echo $wpDomain; ?>" <?php language_attributes(); ?>>
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
