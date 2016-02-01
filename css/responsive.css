@@ -5,6 +5,9 @@
 		overflow-y: auto;
 		display: block;
 	}
+	.container .eight.columns{
+        width: 700px; 
+    }
 }
 
 @media screen and (max-width: 980px) {
