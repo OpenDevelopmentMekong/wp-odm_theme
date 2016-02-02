@@ -212,9 +212,7 @@ a.button:hover{
  float:right;
  margin: 5px 0 0 10px;
 }
-.no-margin-left{
-    margin-left: 0;
-}
+
 /*
  * Header
  */
@@ -1807,6 +1805,7 @@ a.button:hover{
 }
  
 .container .eight.columns{ width: 700px;}
+.container .nine.columns { width: 835px;}
 
 .clear, #clear{
  clear:both;
@@ -2599,6 +2598,9 @@ div.cartodb-legend-stack{
 /* End sidebar Topical Category */
 #colophon {
  margin-top: 0;
+}
+.no-margin-left{
+    margin-left: 0;
 }
 .no-margin-buttom{
     margin-bottom: 0;
