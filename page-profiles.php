@@ -310,23 +310,9 @@ var filterEntriesMap = function(mapIds){
     });
   }
 	layers[1].getSubLayer(0).setSQL(sql);
-}
-
+} 
 jQuery(document).ready(function($) {
-  console.log("profile pages init");
-var get_datatable = $('#profiles').offset().top;
-	get_datatable = get_datatable -170;	
-	$(window).on('scroll', function() {  
-		alert($(".content_wrapper").scrollTop()  +"==="+ get_datatable);
-			if ($(".content_wrapper").scrollTop()  >= get_datatable) { 
-				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
-				$('.dataTables_scrollHead').css('z-index',9999);
-				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
-		   }
-		   else {			     
-				$('.dataTables_scrollHead').css('position','static');
-		   }  
-     }); 
+  console.log("profile pages init");	
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
    for (var i = 0; i < settings.length; i++) {
@@ -335,6 +321,18 @@ var get_datatable = $('#profiles').offset().top;
   };
   
   if (!singleProfile){  	
+	var get_datatable = $('#profiles').offset().top;
+	get_datatable = get_datatable -30;	 
+	$(".content_wrapper").scroll(function(){ 
+			if ($(".content_wrapper").scrollTop()   >= get_datatable) { 
+				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
+				$('.dataTables_scrollHead').css('z-index',9999);
+				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
+		   }
+		   else {			     
+				$('.dataTables_scrollHead').css('position','static');
+		   }  
+     }); 
     oTable = $("#profiles").dataTable({
       scrollX: true,
       responsive: false,
