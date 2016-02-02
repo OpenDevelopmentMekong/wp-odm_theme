@@ -194,12 +194,14 @@ add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 function nav_concept_scripts()
 {
 
-	wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/jquery.dataTables.min.css');
-  wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/responsive.dataTables.css');
+  wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/jquery.dataTables.min.css');
+  wp_register_style('dataTables-responsive-css', get_stylesheet_directory_uri().'/lib/dataTables/css/responsive.dataTables.css');
+  wp_register_style('dataTables-fixedHeader-css', get_stylesheet_directory_uri().'/lib/dataTables/css/fixedHeader.dataTables.min.css');
 
   wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
   wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
-	wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
+  wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
+  wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0');  
   wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
 
 	wp_enqueue_style('dataTables-css');
@@ -311,7 +313,8 @@ function opendev_social_apis()
    var js, fjs = d.getElementsByTagName(s)[0];
    if (d.getElementById(id)) return;
    js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1413694808863403";
+   //js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1413694808863403";
+   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1066174610071139";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));</script>
  <?php
