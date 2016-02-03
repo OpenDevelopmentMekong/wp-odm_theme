@@ -194,7 +194,7 @@ require_once('page-profiles-config.php');
 									<th><?php _e( 'Granted land area (hectare)', 'original_s' );?></th>
 									<th><?php _e( 'Source of land size', 'size_refer' );?></th>
 									<th><?php _e( 'Intended investment ', 'intended_p' );?></th>
-                  <th><?php _e( 'Intended crop or project', 'inv_intent' );?></th>
+									<th><?php _e( 'Intended crop or project', 'inv_intent' );?></th>
 									<th><?php _e( 'Province/Capital city', 'province' );?></th>
 									<th><?php _e( 'Contract authority', 'contractin' );?></th>
 									<th><?php _e( 'Previous land use', 'land_conv' );?></th>
@@ -232,11 +232,12 @@ require_once('page-profiles-config.php');
                       <?php echo $profile['size_refer'];?>
                     </td>
 										<td>
-                      <?php echo $profile['intended_p'];?>
-                    </td>
-										<td>
                       <?php echo $profile['inv_intent'];?>
                     </td>
+										<td>
+                      <?php echo $profile['intended_p'];?>
+                    </td>
+										
 										<td>
                       <?php echo $profile['province'];?>
                     </td>
