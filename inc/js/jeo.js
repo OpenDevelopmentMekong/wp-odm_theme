@@ -247,10 +247,10 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
             tiled:true
             };
         //geoserver_URL = "https://geoserver.opendevelopmentmekong.net/geoserver/wms";
-        //var pLayer = L.tileLayer.betterWms(geoserver_URL, options);
-        var pLayer = L.tileLayer.wms(geoserver_URL, options);
+        var pLayer = L.tileLayer.betterWms(geoserver_URL, options);
+        //var pLayer = L.tileLayer.wms(geoserver_URL, options);
 
-            var defaultParameters = {
+            /* var defaultParameters = {
                 service: 'WFS',
                 version: '1.0.0',
                 request: 'GetFeature',
@@ -262,10 +262,10 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
                 SrsName : 'EPSG:4326'
             };
             var parameters = L.Util.extend(defaultParameters);
-            var URL = geoserver_URL + L.Util.getParamString(parameters);
+            var URL = geoserver_URL + L.Util.getParamString(parameters); */
             //console.log(URL);
 
-            var WFSLayer = null;
+            /*var WFSLayer = null;
             var ajax = $.ajax({
                 url : URL,
                 dataType : 'jsonp',
@@ -354,7 +354,7 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
                     }).addTo(map);
                     //map.fitBounds(WFSLayer.getBounds());
                     }
-                });
+                });*/ //var ajax = $.ajax({
 
         if(layer.legend) {
              pLayer._legend = layer.legend;
