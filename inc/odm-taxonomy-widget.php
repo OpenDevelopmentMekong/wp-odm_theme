@@ -198,6 +198,12 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
 				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");	 
 			} 
+			//if parent is showed, child need to expend
+			$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
+			$('span.<?php echo $current_page_slug; ?>').toggleClass('minusimage-<?php echo $site_name;?>');
+			$('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');	
+			
+			//if child is showed, parent expended
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").show();
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');			
