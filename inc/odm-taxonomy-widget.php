@@ -45,7 +45,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	public function print_category( $category, $current_page_slug ="") { 
 			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
 			$post_type =  get_post_type( get_the_ID() );			
-			$get_post_id = $this->wp_exist_post_by_title($category->name); 			
+			$get_post_id = get_post_or_page_id_by_title($category->name);  			
 			if ($get_post_id){ // if page of the topic exists
 				$topic_page = get_post($get_post_id); 
 				$topic_slug = $topic_page->post_name;
@@ -83,74 +83,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			
 			echo "</span>";
 
-	}
-	/**
-	 * Outputs Object containing post information if check the Topic page exist based on the name of category name
-	 *
-	 * @param  $title_str a category's name to find the topic page
-	 */
-     public function wp_exist_post_by_title($title_str) { 
-        global $wpdb;   
-         $get_post = $wpdb->get_results( $wpdb->prepare(
-        	"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
-             AND post_status = %s
-			 AND post_title like %s
-        	",
-        	"topic",
-        	"publish",
-			"%". trim($title_str)."%"
-            )
-        );   		
-        foreach ( $get_post as $page_topic ) {   
-            $lang_tag = "[:".qtranxf_getLanguage()."]";
-            $lang_tag_finder = "/".$lang_tag ."/";
-             
-            if(qtranxf_getLanguage()!="en"){
-                // if Kh                                                     
-                if (strpos($page_topic->post_title, '[:kh]') !== false) {                      
-                    $page_title = explode($lang_tag, $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:]", "", $page_title[1])) ; 
-                }else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
-                        $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title);
-                        $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1])); 
-                        $pagetitle = trim(str_replace("<!--:-->", "" , $page_title)); 
-                    //echo " <pre>1111111 ".$pagetitle."</pre>";  
-                }else if (strpos($page_topic->post_title, '<!--:-->')){ 
-                    $page_title = explode("<!--:-->", $page_topic->post_title); 
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
-                }
-           }else {             
-                //if (preg_match("/[:kh]/" ,$page_topic->post_title)){  
-                if (strpos($page_topic->post_title, '[:kh]') !== false) { 
-                    $page_title = explode("[:kh]", $page_topic->post_title);           
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0])); 
-                }elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
-                    $page_title = explode("[:vi]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));  
-                }else if (strpos($page_topic->post_title, '[:]')){
-                    $page_title = explode("[:]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0])); 
-                } else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->')){ 
-                    $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title); 
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
-                }else if (strpos($page_topic->post_title, '<!--:--><!--:vi-->')){ 
-                    $page_title = explode("<!--:--><!--:vi-->", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
-                }else if (strpos($page_topic->post_title, '<!--:-->')){ 
-                    $page_title = explode("<!--:-->", $page_topic->post_title); 
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
-                }else {
-					$page_title = $page_topic->post_title; 
-                    $pagetitle = trim($page_title);   
-				}                
-            }     
-            //echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-            if (trim(strtolower($title_str)) == strtolower($pagetitle)){   
-                $page_id = $page_topic->ID;   
-            }                   
-        } 
-        return $page_id ;
-    }
+	}       
 	/**
 	 * Walks through a list of categories and prints all children descendant
 	 * in a hierarchy.
