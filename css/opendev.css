@@ -273,7 +273,7 @@ a.button:hover{
 #od-head h2 [class*=" icon-"] {
  font-size: 50%;
  margin-left: 10px;
-}
+} 
 
 #od-head h2 img {
  max-height: 38px;
@@ -627,6 +627,7 @@ a.button:hover{
     list-style:none;
     margin:10px 0;
     overflow:hidden;
+    color: #444;
 }
 
 #breadcrumbs li{
@@ -646,6 +647,15 @@ a.button:hover{
     font-weight:100;
     color:#ccc;
     margin-top: 3px;
+}
+#breadcrumbs .separator_by{  
+    font-size:18px; 
+}
+.breadcrumb .fa-home {
+    font-size: 24px;
+    width: 24px;
+    position: relative;
+    top: -3px;
 }
 #breadcrumbs .separator-topic:last-child{
     display: none;
