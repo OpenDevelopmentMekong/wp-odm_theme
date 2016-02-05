@@ -1389,6 +1389,8 @@ function buildStyledTopTopicListForLaws($lang)
 function buildStyledTopTopicNav($lang)
 {	if ($lang == "kh")
 		$lang = "km";
+	
+	/*"class":"tooltip" or "multiline-menu-item"  class that can use in json*/ 
     $navigation_vocab = @file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
     if ($navigation_vocab === FALSE || is_null($navigation_vocab)){
       return;
