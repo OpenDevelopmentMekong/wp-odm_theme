@@ -200,10 +200,10 @@
 /*level 2*/
 
 li.top-topic {
-  width: 200px;
+  width: 215px;
   background: #6393D2;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
  /* color: #555; */
  padding: 0 10px;
  text-decoration: none;
@@ -241,7 +241,7 @@ li.top-topic {
 #cNavNew li:hover .level2 a {
   background: #6393D2;
   color: white;
-  width: 200px;
+  width: 215px;
   font-weight: normal;
 }
 
@@ -250,7 +250,7 @@ li.top-topic {
 #cNavNew li .level2 li:hover>a {
   background: #292d56;
   color: white;
-  width: 200px;
+  width: 215px;
   /*padding-bottom: 20px;*/
   /*border-bottom: 1px solid white;*/
 }
