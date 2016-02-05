@@ -1793,6 +1793,7 @@ a.button:hover{
  */
 .container{
     width: 97%;
+    clear: both;
 }
 #content.single-post {
  font-size: 16px;
