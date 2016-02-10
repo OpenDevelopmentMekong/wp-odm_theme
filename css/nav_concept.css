@@ -573,11 +573,17 @@ div#wrap-feedback {
     float: left;
     left: 0px;
     top: auto;
-    bottom: 10px;
+    bottom: 30px;
     transform: rotate(0deg);
 }
 a#user_feedback_form {
     width: 107px;
+} 
+a#user_feedback_form:hover{
+    font-weight: bold;
+    color: #000;
+    padding-top:0;
+	border-bottom: none;
 }
 .sticky-posts.post-active .sticky-item.active article .post-thumbnail img{height: 50px!important;}
 
