@@ -21,7 +21,7 @@
                 var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
                 $(".two_per_row"+i).height(highestCol);
                 $(".two_per_row"+next).height(highestCol);
-            }   */  
+            }   */
         });
     })(jQuery);
 </script>
@@ -36,16 +36,32 @@ if ($options_news_tags['news_tags']) {
     $filter_by_tags  = array('Regional','Cambodia','Laos','Myanmar','Thailand','Vietnam');
 } */
 //foreach ($filter_by_tags as $tag_name){
+
+    $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
     $tag_name = trim($tag_name);
-    $sticky = new WP_Query(array(
-    	'posts_per_page' => 6,
-    	'post__in' => get_option('sticky_posts'),
-    	//'tag' => $tag_name,
-    	'post_type' => 'post',
-    	'post_status' => 'publish',
-        'caller_get_posts' => 0,
-    	'ignore_sticky_posts' => 1
-    ));
+      if ($site_name == "Cambodia"){
+          $sticky = new WP_Query(array(
+          	'posts_per_page' => 6,
+          	'post__in' => get_option('sticky_posts'),
+          	//'tag' => $tag_name,
+          	'post_type' => 'post',
+            'language'=> strtolower(get_localization_language_by_language_code(qtrans_getLanguage())),
+          	'post_status' => 'publish',
+              'caller_get_posts' => 0,
+          	'ignore_sticky_posts' => 1
+          ));
+      }else {
+          $sticky = new WP_Query(array(
+            'posts_per_page' => 6,
+            'post__in' => get_option('sticky_posts'),
+            //'tag' => $tag_name,
+            'post_type' => 'post', 
+            'post_status' => 'publish',
+              'caller_get_posts' => 0,
+            'ignore_sticky_posts' => 1
+          ));
+
+      }
     $number_sticky_post = 0;
     $number_two_item_in_column = 0;
     $number_item = 0; //count number of posts
@@ -76,14 +92,27 @@ if ($options_news_tags['news_tags']) {
         //Query the latest posts to fill the number of maximun number of post, but ignoring sticky post
             //$number_latest_post = 6 - $sticky->found_posts;
             $number_latest_post = 20 - $number_sticky_post;
-            $latest_post = new WP_Query(array(
-            	'posts_per_page' => $number_latest_post,
-            	'post__not_in' => get_option('sticky_posts'),
-            	//'tag' => $tag_name,
-            	'post_type' => 'post',
-            	'post_status' => 'publish',
-            	'ignore_sticky_posts' => 1
-            ));
+
+            if ($site_name == "Cambodia"){
+                $latest_post = new WP_Query(array(
+                	'posts_per_page' => $number_latest_post,
+                	'post__not_in' => get_option('sticky_posts'),
+                	//'tag' => $tag_name,
+                	'post_type' => 'post',
+                  'language'=> strtolower(get_localization_language_by_language_code(qtrans_getLanguage())),
+                	'post_status' => 'publish',
+                	'ignore_sticky_posts' => 1
+                ));
+            }else {
+                $latest_post = new WP_Query(array(
+                	'posts_per_page' => $number_latest_post,
+                	'post__not_in' => get_option('sticky_posts'),
+                	//'tag' => $tag_name,
+                	'post_type' => 'post',
+                	'post_status' => 'publish',
+                	'ignore_sticky_posts' => 1
+                ));
+            }
             ?>
 		<!-- List lastest posts that is not sticky -->
 		<?php  if($latest_post->have_posts()) :?>
@@ -122,9 +151,9 @@ if ($options_news_tags['news_tags']) {
                    <?php endif; ?>
                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
                    <div class="date">
-					     <span class="lsf">&#xE12b;</span> 
-						 <?php 
-						 if (qtrans_getLanguage() =="kh"){ 
+					     <span class="lsf">&#xE12b;</span>
+						 <?php
+						 if (qtrans_getLanguage() =="kh"){
 							echo convert_date_to_kh_date(get_the_time('j.M.Y'));
 						 }else {
 							echo get_the_time('j F Y');

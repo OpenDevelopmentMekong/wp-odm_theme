@@ -202,7 +202,7 @@ function nav_concept_scripts()
   wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
   wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
   wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
- // wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0'); 
+ // wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0');
   wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
 
 	wp_enqueue_style('dataTables-css');
@@ -637,7 +637,16 @@ function opendev_ms_nav()
      }
  }
 }
-
+function get_localization_language_by_language_code($lang_code ="en"){ 
+        $language['en'] = "English";
+        $language['kh'] = "Khmer";
+        $language['km'] = "Khmer";
+        $language['lo'] = "Lao";
+        $language['my'] = "Burmese";
+        $language['th'] = "Thai";
+        $language['vi'] = "Vietnamese";
+        return $language[$lang_code];
+    }
 function opendev_wpckan_post_types()
 {
     return array('post', 'page', 'topic', 'layer');
@@ -849,20 +858,20 @@ add_filter('mce_buttons_2', 'my_mce_buttons_2');
 //Get parent of category
 function get_all_parent_category($current_cat_id, $post_type, $separator = '', $current_page_name = ''){
     $parent_cat = get_category_parents($current_cat_id, false);
-    $parent_cats = explode('/', substr($parent_cat, 0, -1)); 
+    $parent_cats = explode('/', substr($parent_cat, 0, -1));
     foreach ($parent_cats as $p_cat) {
-        $page_title = $p_cat; 
+        $page_title = $p_cat;
 		$page_id_exist = get_post_or_page_id_by_title($page_title);
-		$page = get_post($page_id_exist); 
-		$page_slug = $post->post_name; 
-		
+		$page = get_post($page_id_exist);
+		$page_slug = $post->post_name;
+
         echo '<li class="item-topic item-topic-'.$page_id_exist.' item-topic-'.$page_slug.'">';
         if ($page_id_exist) {
-            $page_name_title = trim(strtolower($page_title));			
+            $page_name_title = trim(strtolower($page_title));
             if ($page_name_title == $current_page_name) {
-                echo '<strong class="bread-current bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page 
+                echo '<strong class="bread-current bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page
             }
-                echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'" title="'.$page_title.'">';            
+                echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'" title="'.$page_title.'">';
         }
         echo $page_title;
 
@@ -870,14 +879,14 @@ function get_all_parent_category($current_cat_id, $post_type, $separator = '', $
 			//Strong if current page
              if ($page_name_title == $current_page_name) {
                 echo '</strong>';
-            }  
-            echo '</a>';            
+            }
+            echo '</a>';
         }
         echo '</li>';
-		echo the_separated_breadcrumb($separator, $topic_page_exist->ID, $post_type);	 
+		echo the_separated_breadcrumb($separator, $topic_page_exist->ID, $post_type);
     }
 }
- 
+
 // Creating Breadcrumbs for the site
 function the_separated_breadcrumb($separator="", $id, $category){
 	if ($separator !="")
@@ -907,7 +916,7 @@ function the_breadcrumb()
         //_e('Home', 'opendev');
 		echo '<i class="fa fa-home"></i>';
         echo '</a></li>';
-		echo the_separated_breadcrumb($separator, "", "home"); 
+		echo the_separated_breadcrumb($separator, "", "home");
 
         if (is_single()) {
             //Single post of post type "Topic"
@@ -918,7 +927,7 @@ function the_breadcrumb()
                 if ($cats) {
                     // if post is in this category
                     foreach ($cats as $cat) {
-                        if (in_category($cat->term_id)) { 
+                        if (in_category($cat->term_id)) {
 							$page_title = trim(strtolower($get_topic_title));
                             $cat_name = trim(strtolower($cat->name));
 							// Which Category and Post have the same name
@@ -928,7 +937,7 @@ function the_breadcrumb()
                             }
                         }
                     }//end foreach
-                } else { 
+                } else {
 				//if topic page is not categorized or the topic name is different from the category
                     echo '<li class="item-current item-'.$post->ID.'"><strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong></li>';
                 }
@@ -943,26 +952,26 @@ function the_breadcrumb()
 				echo '</li>';
             }
         } elseif (is_category()) {
-            // Category page  			
-			$parent_cat = get_category_parents($category->term_id, true, '||' ); 
+            // Category page
+			$parent_cat = get_category_parents($category->term_id, true, '||' );
 			$parent_cat = substr($parent_cat, 0, -2);
-			$parent_cats = explode('||', $parent_cat);  
-			foreach ($parent_cats as $cat) {			
+			$parent_cats = explode('||', $parent_cat);
+			foreach ($parent_cats as $cat) {
 				echo '<li class="item-current item-cat-'.$category->term_id.' item-cat-'.$category->category_nicename.'">';
 				if ($cat === end($parent_cats))
 					echo '<strong class="bread-current bread-cat-'.$category->term_id.' bread-cat-'.$category->category_nicename.'">';
-				 
-				echo $cat;					
+
+				echo $cat;
 
 				if ($cat === end($parent_cats))
 					echo '</strong>';
 				echo '</li>';
-									
+
 				//add separated
-				if ($cat != end($parent_cats)){	  
-					echo the_separated_breadcrumb($separator, $category->term_id, "category"); 				
-					 
-				} 
+				if ($cat != end($parent_cats)){
+					echo the_separated_breadcrumb($separator, $category->term_id, "category");
+
+				}
 			}
         } elseif (is_page()) {
             // Standard page
@@ -978,11 +987,11 @@ function the_breadcrumb()
                 }
 
                 // Display parent pages
-                echo $parents; 
-				echo the_separated_breadcrumb($separator, $ancestor, "page"); 
+                echo $parents;
+				echo the_separated_breadcrumb($separator, $ancestor, "page");
 				// Current page
 					echo '<li class="item-current item-'.$post->ID.'">';
-					
+
 					if (!isset($_GET["map_id"]) and $_GET["map_id"]!="")
 					echo '<strong title="'.get_the_title().'">';
 					echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
@@ -991,10 +1000,10 @@ function the_breadcrumb()
 					if (!isset($_GET["map_id"]) && $_GET["map_id"]!="")
 					echo '</strong>';
 					echo '</li>';
-					
-					
-				if (isset($_GET["map_id"])){ 
-					$filter_map_id = htmlspecialchars($_GET["map_id"]); 
+
+
+				if (isset($_GET["map_id"])){
+					$filter_map_id = htmlspecialchars($_GET["map_id"]);
 					$ELC_RESOURCE_IDS = array(
 						"en" => array(
 						  "metadata" => "3b817bce-9823-493b-8429-e5233ba3bd87",
@@ -1005,10 +1014,10 @@ function the_breadcrumb()
 						  "tracking" => "7f02292b-e228-4152-86a6-cd5fce929262"
 						)
 					  );
-					  
-					$profile = get_datastore_resources_filter("https://data.opendevelopmentmekong.net",$ELC_RESOURCE_IDS[qtranxf_getLanguage()]["metadata"],"map_id",$filter_map_id)[0];	
-					
-					echo the_separated_breadcrumb($separator, $ancestor, "page"); 
+
+					$profile = get_datastore_resources_filter("https://data.opendevelopmentmekong.net",$ELC_RESOURCE_IDS[qtranxf_getLanguage()]["metadata"],"map_id",$filter_map_id)[0];
+
+					echo the_separated_breadcrumb($separator, $ancestor, "page");
 					echo '<li class="item-current item-'.$post->ID.'">';
 					echo '<strong title="'.get_the_title().'">';
 					echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_site_url().$_SERVER['REQUEST_URI'].'" title="'.get_the_title().'">';
@@ -1016,7 +1025,7 @@ function the_breadcrumb()
 					echo "</a>";
 					echo '</strong>';
 					echo '</li>';
-				} 
+				}
             } else {
 
                 // Just display current page if not parents
@@ -1038,23 +1047,23 @@ function the_breadcrumb()
 				echo $terms[0]->name;
 			echo '</a>';
 			echo '</strong></li>';
-        } elseif (is_day()) { 
-            //**** Day archive 
+        } elseif (is_day()) {
+            //**** Day archive
             // Year link
             echo '<li class="item-year item-year-'.get_the_time('Y').'"><a class="bread-year bread-year-'.get_the_time('Y').'" href="'.get_year_link(get_the_time('Y')).'" title="'.get_the_time('Y').'">'.get_the_time('Y').' </a></li>';
-			echo the_separated_breadcrumb($separator, get_the_time('Y'), "archive"); 
-			 
+			echo the_separated_breadcrumb($separator, get_the_time('Y'), "archive");
+
             // Month link
             echo '<li class="item-month item-month-'.get_the_time('m').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_month_link(get_the_time('Y'), get_the_time('m')).'" title="'.get_the_time('M').'">'.get_the_time('M').' </a></li>';
-			echo the_separated_breadcrumb($separator, get_the_time('m'), "archive");  
-			
+			echo the_separated_breadcrumb($separator, get_the_time('m'), "archive");
+
             // Day display
             echo '<li class="item-current item-'.get_the_time('j').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_day_link(get_the_time('Y'), get_the_time('m'),get_the_time('j')).'" title="'.get_the_time('M').'"><strong class="bread-current bread-'.get_the_time('j').'"> '.get_the_time('jS').'</strong></a> Archives</li>';
-        } elseif (is_month()) { 
-            // Month Archive 
+        } elseif (is_month()) {
+            // Month Archive
             // Year link
             echo '<li class="item-year item-year-'.get_the_time('Y').'"><a class="bread-year bread-year-'.get_the_time('Y').'" href="'.get_year_link(get_the_time('Y')).'" title="'.get_the_time('Y').'">'.get_the_time('Y').' </a></li>';
-			echo the_separated_breadcrumb($separator, get_the_time('Y'), "archive"); 
+			echo the_separated_breadcrumb($separator, get_the_time('Y'), "archive");
 
             // Month displaydisplay
             echo '<li class="item-month item-month-'.get_the_time('m').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_month_link(get_the_time('Y'), get_the_time('m')).'" title="'.get_the_time('M').'"><strong class="bread-month bread-month-'.get_the_time('m').'" title="'.get_the_time('M').'">'.get_the_time('M').'</strong></a> Archives</li>';
@@ -1098,8 +1107,8 @@ function the_breadcrumb()
     }
     echo '</ul>';
 }
-function get_post_or_page_id_by_title($title_str, $post_type="topic") { 
-        global $wpdb;   
+function get_post_or_page_id_by_title($title_str, $post_type="topic") {
+        global $wpdb;
          $get_post = $wpdb->get_results( $wpdb->prepare(
         	"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
              AND post_status = %s
@@ -1109,54 +1118,54 @@ function get_post_or_page_id_by_title($title_str, $post_type="topic") {
         	"publish",
 			"%". trim($title_str)."%"
             )
-        );   		
-        foreach ( $get_post as $page_topic ) {   
+        );
+        foreach ( $get_post as $page_topic ) {
             $lang_tag = "[:".qtranxf_getLanguage()."]";
             $lang_tag_finder = "/".$lang_tag ."/";
-             
+
             if(qtranxf_getLanguage()!="en"){
-                // if Kh                                                     
-                if (strpos($page_topic->post_title, '[:kh]') !== false) {                      
+                // if Kh
+                if (strpos($page_topic->post_title, '[:kh]') !== false) {
                     $page_title = explode($lang_tag, $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:]", "", $page_title[1])) ; 
+                    $pagetitle = trim(str_replace("[:]", "", $page_title[1])) ;
                 }else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
                         $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title);
-                        $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1])); 
-                        $pagetitle = trim(str_replace("<!--:-->", "" , $page_title)); 
-                }else if (strpos($page_topic->post_title, '<!--:-->')){ 
-                    $page_title = explode("<!--:-->", $page_topic->post_title); 
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
+                        $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1]));
+                        $pagetitle = trim(str_replace("<!--:-->", "" , $page_title));
+                }else if (strpos($page_topic->post_title, '<!--:-->')){
+                    $page_title = explode("<!--:-->", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
                 }
-           }else {             
-                //if (preg_match("/[:kh]/" ,$page_topic->post_title)){  
-                if (strpos($page_topic->post_title, '[:kh]') !== false) { 
-                    $page_title = explode("[:kh]", $page_topic->post_title);           
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0])); 
+           }else {
+                //if (preg_match("/[:kh]/" ,$page_topic->post_title)){
+                if (strpos($page_topic->post_title, '[:kh]') !== false) {
+                    $page_title = explode("[:kh]", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
                 }elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
                     $page_title = explode("[:vi]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));  
+                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
                 }else if (strpos($page_topic->post_title, '[:]')){
                     $page_title = explode("[:]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0])); 
-                } else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->')){ 
-                    $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title); 
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
-                }else if (strpos($page_topic->post_title, '<!--:--><!--:vi-->')){ 
+                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
+                } else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->')){
+                    $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
+                }else if (strpos($page_topic->post_title, '<!--:--><!--:vi-->')){
                     $page_title = explode("<!--:--><!--:vi-->", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));    
-                }else if (strpos($page_topic->post_title, '<!--:-->')){ 
-                    $page_title = explode("<!--:-->", $page_topic->post_title); 
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));   
+                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
+                }else if (strpos($page_topic->post_title, '<!--:-->')){
+                    $page_title = explode("<!--:-->", $page_topic->post_title);
+                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
                 }else {
-					$page_title = $page_topic->post_title; 
-                    $pagetitle = trim($page_title);   
-				}                
-            }     
+					$page_title = $page_topic->post_title;
+                    $pagetitle = trim($page_title);
+				}
+            }
             //echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-            if (trim(strtolower($title_str)) == strtolower($pagetitle)){   
-                $page_id = $page_topic->ID;   
-            }                   
-        } 
+            if (trim(strtolower($title_str)) == strtolower($pagetitle)){
+                $page_id = $page_topic->ID;
+            }
+        }
         return $page_id ;
     }
  /****end Breadcrumb**/
@@ -1389,8 +1398,8 @@ function buildStyledTopTopicListForLaws($lang)
 function buildStyledTopTopicNav($lang)
 {	if ($lang == "kh")
 		$lang = "km";
-	
-	/*"class":"tooltip" or "multiline-menu-item"  class that can use in json*/ 
+
+	/*"class":"tooltip" or "multiline-menu-item"  class that can use in json*/
     $navigation_vocab = @file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
     if ($navigation_vocab === FALSE || is_null($navigation_vocab)){
       return;
