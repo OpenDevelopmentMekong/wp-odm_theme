@@ -1,11 +1,11 @@
 #cambodia-color, .cambodia-color{
-    color: #66CC00 !important
+    color: #97D320 !important;  /* #66cc00*/
 }
-#cambodia-bgcolor, .cambodia-bgcolor{    
-    background: #66CC00 !important
+#cambodia-bgcolor, .cambodia-bgcolor{
+    background: #97D320 !important
 }
 a, a:visited, #sidebar .widget li a{
- color: #66CC00; /* #7BCC2E; #6393D2, #2774da;*/
+ color: #97D320; /* #7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
@@ -19,7 +19,7 @@ a strong:hover {
 button,
 a.button,
 .button {
-	background: #66CC00;
+	background: #97D320;
 }
 tr:nth-child(2n+1) {
     background-color: #eefbe6;
@@ -134,9 +134,12 @@ tr:nth-child(2n+1) {
 }
 
 .sidebar_box_content ul li a{
-  color: #97D320 !important;
+  color: #97D320;
 }
 
+.sidebar_box_content ul li a:hover{
+  color: #213D49;
+}
 .top a{
   color: #97D320 !important;
 }
@@ -145,10 +148,12 @@ tr:nth-child(2n+1) {
   color: #97D320 !important;
 }
 
-td.entry_title a{
-  color: #97D320 !important;
+td.entry_title a:hover{
+  color: #97D320 ;
 }
-
+td.entry_title a{
+	color: #213D49;
+}
 
 /* Cambodia collapse & expend */
 #sidebar .widgets .widget ul li span.plusimage-cambodia{

@@ -48,8 +48,8 @@ require_once('page-laws-config.php');
   <section id="content" class="single-post">
     <header class="single-post-header">
 			<div class="twelve columns">
-        <h1 class="align-left"><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
-        <h2 class="align-left"><?php _e( $headline, 'sub_title_taxonomy' ); ?></h2>
+        <h1 class=""><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
+        <h2 class=""><?php _e( $headline, 'opendev' ); ?></h2>
 			</div>
 		</header>
 		<div class="container">
@@ -59,11 +59,11 @@ require_once('page-laws-config.php');
         <table id="law_datasets" class="data-table">
           <thead>
             <tr>
-              <th><?php _e( 'Title', 'title' );?></th>
-              <th><?php _e( 'Document type', 'document_type' );?></th>
-              <th><?php _e( 'Document number', 'document_number' );?></th>
-              <th><?php _e( 'Promulgation date', 'promulgation_date' );?></th>
-              <th><?php _e( 'Download', 'download' );?></th>
+              <th><?php _e( 'Title', 'opendev' );?></th>
+              <th><?php _e( 'Document type', 'opendev' );?></th>
+              <th><?php _e( 'Document number', 'opendev' );?></th>
+              <th><?php _e( 'Promulgation date', 'opendev' );?></th>
+              <th><?php _e( 'Download', 'opendev' );?></th>
             </tr>
           </thead>
           <tbody>
@@ -79,7 +79,7 @@ require_once('page-laws-config.php');
                   <?php
                     if (isset($law_record['odm_document_type'])){
                       $doc_type = $law_record['odm_document_type'];
-                      echo _e( $LAWS_DOCUMENT_TYPE[$doc_type], 'odm_document_type' );
+                      echo _e( $LAWS_DOCUMENT_TYPE[$doc_type], 'opendev' );
                     }
                   ?>
                 </td>
@@ -118,48 +118,52 @@ require_once('page-laws-config.php');
 
 				<div class="sidebar_box">
 					<div class="sidebar_header">
-						<span class="big">
-              <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( $headline  ?: 'Laws', 'sub_title_taxonomy' ); ?>
+
+            <?php if( $headline ) { ?>
+              <span class="big"><?php _e( 'SEARCH', 'opendev' );?></span> <?php _e( 'Laws in', 'opendev' );?> <?php _e( $headline , 'opendev' ); ?>
+            <?php }else { ?>
+	               <span class="big"><?php _e( 'SEARCH', 'opendev' );?></span> <?php _e( 'in Laws', 'opendev' ); ?>
+           <?php } ?>
 					</div>
 					<div class="sidebar_box_content">
-						<input type="text" id="search_all" placeholder="Search all Laws">
+						<input type="text" id="search_all" placeholder=<?php _e( "Search all Laws", 'opendev');?>>
             <?php if (!IsNullOrEmptyString($filter_odm_document_type) || !IsNullOrEmptyString($filter_odm_taxonomy)): ?>
-              <a href="/laws"><?php _e( 'Clear filter', 'clear_filter' ) ?>
+              <a href="/laws"><?php _e( 'Clear filter', 'opendev' ) ?>
             <?php endif; ?>
 					</div>
 				</div>
 
         <div class="sidebar_box">
 					<div class="sidebar_header">
-						<span class="big"><?php _e( 'LAW COMPENDIUM', 'law_compendium' );?></span>
+						<span class="big"><?php _e( 'LAW COMPENDIUM', 'opendev' );?></span>
 					</div>
 					<div class="sidebar_box_content">
             <?php echo buildStyledTopTopicListForLaws($lang); ?>
 					</div>
 				</div>
 
-        <div class="law_search_box">
+        <div class="sidebar_box law_search_box">
 					<div class="sidebar_header">
-						<span class="big"><?php _e( 'TYPE OF LAWS', 'type_of_laws' );?></span>
+						<span class="big"><?php _e( 'TYPE OF LAWS', 'opendev' );?></span>
 					</div>
 					<div class="sidebar_box_content">
             <ul>
-              <li><a href="/laws/?odm_document_type=anukretsub-decree"><?php _e( 'Anukret/Sub-Decree', 'anukretsub-decree' );?></a></li>
-              <li><a href="/laws/?odm_document_type=chbablawkram"><?php _e( 'Chbab/Law/Kram', 'chbablawkram' );?></a></li>
-              <li><a href="/laws/?odm_document_type=constitution-of-cambodia"><?php _e( 'Constitution of Cambodia', 'constitution-of-cambodia' );?></a></li>
-              <li><a href="/laws/?odm_document_type=international-treatiesagreements"><?php _e( 'International Treaties/Agreements', 'international-treatiesagreements' );?></a></li>
-              <li><a href="/laws/?odm_document_type=kech-sonyacontractagreement"><?php _e( 'Kech Sonya/Contract/Agreement', 'kech-sonyacontractagreement' );?></a></li>
-              <li><a href="/laws/?odm_document_type=kolkar-nenomguidelines"><?php _e( 'Kolkar Nenom/Guidelines', 'kolkar-nenomguidelines' );?></a></li>
-              <li><a href="/laws/?odm_document_type=kolnyobaypolicy"><?php _e( 'Kolnyobay/Policy', 'kolnyobaypolicy' );?></a></li>
-              <li><a href="/laws/?odm_document_type=likhetletter"><?php _e( 'Likhet/Letter', 'likhetletter' );?></a></li>
-              <li><a href="/laws/?odm_document_type=prakasjoint-prakasproclamation"><?php _e( 'Prakas/Joint-Prakas/Proclamation', 'prakasjoint-prakasproclamation' );?></a></li>
-              <li><a href="/laws/?odm_document_type=preah-reach-kramroyal-kram"><?php _e( 'Preah Reach Kram/Royal Kram', 'preah-reach-kramroyal-kram' );?></a></li>
-              <li><a href="/laws/?odm_document_type=sarachorcircular"><?php _e( 'Sarachor/Circular', 'sarachorcircular' );?></a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-chhun-damneoungnoticeannouncement"><?php _e( 'Sechkdei Chhun  Damneoung/Notice/Announcement', 'sechkdei-chhun-damneoungnoticeannouncement' );?></a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-nenuminstruction"><?php _e( 'Sechkdei Nenum/Instruction', 'sechkdei-nenuminstruction' );?></a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-preang-chbabdraft-laws-amp-regulations"><?php _e( 'Sechkdei Preang Chbab/Draft Laws & Regulations', 'sechkdei-preang-chbabdraft-laws-amp-regulations' );?></a></li>
-              <li><a href="/laws/?odm_document_type=sechkdei-samrechdecision"><?php _e( 'Sechkdei Samrech/Decision', 'sechkdei-samrechdecision' );?></a></li>
-              <li><a href="/laws/?odm_document_type=others"><?php _e( 'Others', 'others' );?></a></li>
+              <li><a href="/laws/?odm_document_type=anukretsub-decree"><?php _e( 'Anukret/Sub-Decree', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=chbablawkram"><?php _e( 'Chbab/Law/Kram', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=constitution-of-cambodia"><?php _e( 'Constitution of Cambodia', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=international-treatiesagreements"><?php _e( 'International Treaties/Agreements', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kech-sonyacontractagreement"><?php _e( 'Kech Sonya/Contract/Agreement', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kolkar-nenomguidelines"><?php _e( 'Kolkar Nenom/Guidelines', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kolnyobaypolicy"><?php _e( 'Kolnyobay/Policy', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=likhetletter"><?php _e( 'Likhet/Letter', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=prakasjoint-prakasproclamation"><?php _e( 'Prakas/Joint-Prakas/Proclamation', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=preah-reach-kramroyal-kram"><?php _e( 'Preah Reach Kram/Royal Kram', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sarachorcircular"><?php _e( 'Sarachor/Circular', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-chhun-damneoungnoticeannouncement"><?php _e( 'Sechkdei Chhun Damneoung/Notice/Announcement', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-nenuminstruction"><?php _e( 'Sechkdei Nenum/Instruction', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-preang-chbabdraft-laws-amp-regulations"><?php _e( 'Sechkdei Preang Chbab/Draft Laws & Regulations', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-samrechdecision"><?php _e( 'Sechkdei Samrech/Decision', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=others"><?php _e( 'Others', 'opendev' );?></a></li>
             </ul>
 					</div>
 				</div>
