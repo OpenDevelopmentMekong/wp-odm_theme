@@ -92,7 +92,11 @@ require_once('page-laws-config.php');
                 <td>
                   <?php
                   if (isset($law_record['odm_promulgation_date'])){
-                    echo $law_record['odm_promulgation_date'];
+                    if ((qtranxf_getLanguage() == "kh") || (qtranxf_getLanguage == "km")){
+                      echo convert_date_to_kh_date(date("d.m.Y", strtotime($law_record['odm_promulgation_date'])));
+                    }else{
+                       echo ($law_record['odm_promulgation_date']);
+                    }
                   }?>
                 </td>
                 <td class="download_buttons">
