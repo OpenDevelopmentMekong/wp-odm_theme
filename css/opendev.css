@@ -273,7 +273,7 @@ a.button:hover{
 #od-head h2 [class*=" icon-"] {
  font-size: 50%;
  margin-left: 10px;
-} 
+}
 
 #od-head h2 img {
  max-height: 38px;
@@ -648,8 +648,8 @@ a.button:hover{
     color:#ccc;
     margin-top: 3px;
 }
-#breadcrumbs .separator_by{  
-    font-size:18px; 
+#breadcrumbs .separator_by{
+    font-size:18px;
 }
 .breadcrumb .fa-home {
     font-size: 24px;
@@ -790,6 +790,9 @@ a.button:hover{
  padding-left: 20px;
 }
 
+.single-post-header h2{
+ padding-left: 20px;
+}
 .archive-title {
  float: left;
 }
@@ -970,7 +973,7 @@ a.button:hover{
 }
 #live-search .results li p.type {
  color: #999;
- text-transform:uppercase;      
+ text-transform:uppercase;
  background: #f4f4f4;
  padding: 5px 0 0 5px;
 }
@@ -987,7 +990,7 @@ a.button:hover{
     border: 1px solid #333;
     padding-bottom: 1.5em;
     display: none;
-} 
+}
 .results-container .close_result{
     color: #000;
     font-weight: bold;
@@ -997,7 +1000,7 @@ a.button:hover{
     top: -5px;
     right: -14px;
 }
- 
+
 #live-search .results li.item-3, #live-search .results li.item-6, #live-search .results li.item-9{
  padding-right:0
 }
@@ -1052,7 +1055,7 @@ a.button:hover{
  */
 
 .row {
-    margin-top: 20px; 
+    margin-top: 20px;
     clear: both;
 }
 #news {
@@ -1814,7 +1817,7 @@ a.button:hover{
 #content #references li, #content #reference-list li{
  list-style-type: none;
 }
- 
+
 .container .eight.columns{ width: 700px;}
 .container .nine.columns { width: 835px;}
 
@@ -1862,36 +1865,36 @@ a.button:hover{
 
 .widget .share ul li > .twitter {
  width: 120px;
-}             
+}
 /* Taxonomy Navigation */
 .opendev_taxonomy_widget_ul li.topic_nav_item ul{
     display: none;
 }
-#sidebar .widgets .widget ul li span.plusimage-mekong{ 
+#sidebar .widgets .widget ul li span.plusimage-mekong{
     display: inline-block;
     background: url("../img/expand-mekong.png") no-repeat 0 2px!important;
     padding-left: 20px;
 }
-#sidebar .widgets .widget ul li span.minusimage-mekong{ 
+#sidebar .widgets .widget ul li span.minusimage-mekong{
     display: inline-block;
     background: url("../img/collapse-mekong.png") no-repeat 0 2px!important;
-    padding-left: 20px;      
-} 
-#sidebar .widgets .widget ul li span.nochildimage-mekong{       
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-mekong{
     display: inline-block;
     background: url("../img/no-child-mekong.png") no-repeat 0 2px!important;
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 
-#sidebar .widgets .widget div ul.opendev_taxonomy_widget_ul li ul li { 
+#sidebar .widgets .widget div ul.opendev_taxonomy_widget_ul li ul li {
     list-style: none !important;
     list-style-type: none !important;
-} 
+}
 .widget_opendev_taxonomy_widget ul:first-child{
     max-height: 650px;
     overflow-y: auto;
 
-} 
+}
 /*
  * Related datasets box
  */
@@ -1983,7 +1986,6 @@ a.button:hover{
  overflow: hidden;
  text-overflow: ellipsis;
 }
-
 /*
  * Interactive Map ?
  */
@@ -2416,7 +2418,9 @@ div.cartodb-legend-stack{
 /*
  * Widgets
  */
-
+#sidebar .widgets .widget{
+  margin-bottom: 30px;
+}
 #sidebar .widgets .widget,
 .widget {
  border: 1px solid #ddd;
@@ -2452,9 +2456,10 @@ div.cartodb-legend-stack{
  padding: 10px;
  border-top: 1px solid #ddd;
  border-bottom: 1px solid #ddd;
- color: #666;
+ color: #fff;
  text-transform: uppercase;
  font-size: 14px;
+ background: #97D320 none repeat scroll 0% 0%;
 }
 
 #sidebar .widgets .widget li a,
