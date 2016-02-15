@@ -156,6 +156,10 @@ td.entry_title a{
 }
 
 /* Cambodia collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title { 
+ background: #97D320 none repeat scroll 0% 0%;
+}
 #sidebar .widgets .widget ul li span.plusimage-cambodia{
     display: inline-block;
     background: url("../img/expand-kh.png") no-repeat 0 2px!important;

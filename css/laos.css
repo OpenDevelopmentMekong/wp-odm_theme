@@ -164,6 +164,10 @@ td.entry_title a{
 }
 
 /* collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title {
+ background: #D61E2A none repeat scroll 0% 0%;
+}
 #sidebar .widgets .widget ul li span.plusimage-laos{
     display: inline-block;
     background: url("../img/expand-lo.png") no-repeat 0 2px!important;
