@@ -177,9 +177,56 @@ td.entry_title a{
 }
 
 /*map explorer category colors*/
-.cat-item.cat-infrascructure .category-color{background: #0EB20B;}
-.cat-item.cat-map-environment-and-natural-resources .category-color{background: #FFEE07;}
-.cat-item.cat-hydrology .category-color{background: #FF8600;}
-.cat-item.cat-demographic .category-color{background: #FF003E;}
-.cat-item.cat-energy .category-color{background: #2E0CCC;}
-.cat-item.cat-agriculture .category-color{background: #00C7A4;}
+.cat-infrascructure .category-color{background: #0EB20B;}
+.cat-infrascructure .layer-item:hover .icon-info-path{fill:#0EB20B;}
+.cat-infrascructure .layer-item:hover h2{color:#0EB20B;}
+.map-active-layers .layer-infrascructure .layer-status.active,
+ .categories .cat-infrascructure .layer-status.active,
+ .map-active-layers .active-layer.layer-infrascructure h6{
+  background: #0EB20B;
+}
+
+.cat-map-environment-and-natural-resources .category-color{background: #FFEE07;}
+.cat-map-environment-and-natural-resources .layer-item:hover .icon-info-path{fill:#FFEE07;}
+.cat-map-environment-and-natural-resources .layer-item:hover h2{color:#FFEE07;}
+.map-active-layers .layer-map-environment-and-natural-resources .layer-status.active,
+ .categories .cat-map-environment-and-natural-resources .layer-status.active,
+ .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{
+  background: #FFEE07;
+}
+
+.cat-hydrology .category-color{background: #FF8600;}
+.cat-hydrology .layer-item:hover .icon-info-path{fill:#FF8600;}
+.cat-hydrology .layer-item:hover h2{color:#FF8600;}
+.map-active-layers .layer-hydrology .layer-status.active,
+ .categories .cat-hydrology .layer-status.active,
+ .map-active-layers .active-layer.layer-hydrology h6{
+  background: #FF8600;
+}
+
+.cat-demographic .category-color{background: #FF003E;}
+.cat-demographic .layer-item:hover .icon-info-path{fill:#FF003E;}
+.cat-demographic .layer-item:hover h2{color:#FF003E;}
+.map-active-layers .layer-demographic .layer-status.active,
+ .categories .cat-demographic .layer-status.active,
+ .map-active-layers .active-layer.layer-demographic h6{
+  background: #FF003E;
+}
+
+.cat-energy .category-color{background: #2E0CCC;}
+.cat-energy .layer-item:hover .icon-info-path{fill:#2E0CCC;}
+.cat-energy .layer-item:hover h2{color:#2E0CCC;}
+.map-active-layers .layer-energy .layer-status.active,
+ .categories .cat-energy .layer-status.active,
+ .map-active-layers .active-layer.layer-energy h6{
+  background: #2E0CCC;
+}
+
+.cat-agriculture .category-color{background: #00C7A4;}
+.cat-agriculture .layer-item:hover .icon-info-path{fill:#00C7A4;}
+.cat-agriculture .layer-item:hover h2{color:#00C7A4;}
+.map-active-layers .layer-agriculture .layer-status.active,
+ .categories .cat-agriculture .layer-status.active,
+ .map-active-layers .active-layer.layer-agriculture h6{
+  background: #00C7A4;
+}
