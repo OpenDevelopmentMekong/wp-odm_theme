@@ -33,7 +33,7 @@ tr:nth-child(2n+1) {
 }
 
 #od-head #ms-nav {
-	background: #42aa00;
+	background: #4AB208;
 }
 #od-head #main-nav .menu ul > li:hover a,
 #od-head #main-nav ul.menu > li:hover,
@@ -104,7 +104,7 @@ tr:nth-child(2n+1) {
 /*L kasten links*/
 .mainNavOdc,.headerODM{background:#3D9C00;}
 /*nav oben*/
-.white #cNavNew.current-site-mekong,.contentNavigation{background:#42aa00;}
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#4AB208;}
 /*header text*/
 .white #headerText span a{color:#C6C366;text-decoration: none;}
 
@@ -128,12 +128,12 @@ tr:nth-child(2n+1) {
 
   /*After prototype fixes*/
   .white #cNavNew.level1>li:hover,li.top-topic{background:#C6C366;}
-  .mainNav-inner .level1 li:hover {background: #42aa00;}
+  .mainNav-inner .level1 li:hover {background: #4AB208;}
   .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
   .mainNav-inner ul.level1>li.act>a{background: #C6C366;}
   #cNavNew li .level2 li:hover>a{background:#3D9C00;color:white;}
   footer#colophon{
-    background:#42aa00;
+    background:#4AB208;
   }
 
   /* Table data pages*/
