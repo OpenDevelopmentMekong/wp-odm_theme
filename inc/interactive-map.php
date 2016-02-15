@@ -337,16 +337,17 @@ class OpenDev_InteractiveMap {
                  $(this).parent().find('.toggle-text').show();
                  $(this).parent().find('.toggles').css('display','block');
 
-                 $layers_active.find('.layer-item .toggles .toggle-legend').on('click', function() {
+                 $layers_active.find('.layer-item .toggles .toggle-legend').off('click').on('click', function() {
                    if($(this).html() == "Show legend"){
-                    //$(this).addClass('active');
-                    $(this).parent().parent().find('.legend').show();
-                    $(this).html('Hide legend');
-                   } else {
-                    //$(this).removeClass('active');
-                    $(this).parent().parent().find('.legend').hide();
-                    $(this).html('Show legend');
-                   }
+                  //$(this).addClass('active');
+                  $(this).parent().parent().find('.legend').show();
+                  $(this).html('Hide legend');
+                 } else {
+                  //$(this).removeClass('active');
+                  $(this).parent().parent().find('.legend').hide();
+                  $(this).html('Show legend');
+                 }
+
                  });
 
 
@@ -361,15 +362,6 @@ class OpenDev_InteractiveMap {
                }
            });
           });
-
-
-      // $layers.find('.layer-item .toggle-info').on('click', function() {
-      //     $(this).toggleClass('active');
-      //     $(this).closest('.layer-excerpt').show();
-      //
-      // });
-
-
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
@@ -407,17 +399,6 @@ class OpenDev_InteractiveMap {
 
 
      });
-
-     /*var $category_toggles = $('.map .layer-toggle')
-     $category_toggles.find('a').on('click', function() {
-      if($(this).hasClass('active')){
-       disableAllLayers();
-       $(this).removeClass('active');
-      } else {
-       enableAllLayers();
-       $(this).addClass('active');
-      }
-    });*/
 
      if (ENABLE_DND){
        [].forEach.call(category_items, function(item) {
