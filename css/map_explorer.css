@@ -207,6 +207,8 @@ body.page-template-page-map-explorer{overflow: hidden;}
       position: relative;
       bottom: 30px;
       color: white;
+      display: inline-block;
+      width: 100%;
     }
   .page-template-page-map-explorer .layer-item{
     padding-left:5px;
