@@ -160,8 +160,12 @@ tr:nth-child(2n+1) {
 	td.entry_title a{
 	  color: #F7904D !important;
 	}
-	
+
 /* collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title {
+ background: #F7904D none repeat scroll 0% 0%;
+}
 #sidebar .widgets .widget ul li span.plusimage-thailand{
     display: inline-block;
     background: url("../img/expand-th.png") no-repeat 0 2px!important;

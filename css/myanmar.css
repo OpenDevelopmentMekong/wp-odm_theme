@@ -163,6 +163,10 @@ tr:nth-child(2n+1) {
 	  color: #F8BF42 !important;
 	}
 /* collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title {
+ background: #F8BF42 none repeat scroll 0% 0%;
+}
 #sidebar .widgets .widget ul li span.plusimage-myanmar{
     display: inline-block;
     background: url("../img/expand-my.png") no-repeat 0 2px!important;
