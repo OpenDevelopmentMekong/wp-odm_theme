@@ -11,6 +11,9 @@ h6 { font-size: 15px; line-height: 16px; }
 h5 a {
     text-decoration: none;
 }
+h2 em {
+    font-weight: normal;
+}
 img {
  max-width: 100%;
 }
@@ -22,6 +25,7 @@ img.border{
 sup{
  vertical-align: super;
  font-size:small;
+ line-height: 0;
 }
 sub{
  vertical-align: sub;
@@ -59,7 +63,9 @@ td{
 .tableauPlaceholder{
     margin: 5px auto 20px;
 }
-
+ .table-of-contents sup{
+     display: none;
+ }
 /******Image Caption**********/
 .wp-caption {
     max-width: 95%;
@@ -206,26 +212,25 @@ a.button:hover{
  float:right;
  margin: 5px 0 0 10px;
 }
-.no-margin-left{
-    margin-left: 0;
-}
+
 /*
  * Header
  */
 
 #od-head {
- padding: 30px 0 0;
+ padding: 10px 0 0;
  background: #292d56;
+ min-height: 55px;
 }
 
 #od-head h1 {
  font-family: 'Droid Serif';
  font-size: 48px;
  line-height: 48px;
- margin: 0 24px 0 0;
  font-family: 700;
  letter-spacing: -4px;
  float: left;
+ margin: 0 24px 0px 0px;
 }
 
 #od-head h1 sup {
@@ -316,6 +321,7 @@ a.button:hover{
 
 #od-head #social-nav {
  float: right;
+ padding-left: 0px !important;
 }
 
 #od-head #social-nav a {
@@ -328,6 +334,10 @@ a.button:hover{
  color: #fff;
 }
 
+#od-head #social-nav img {
+  width: 18px;
+  height: 18px;
+}
 /*
  * Header MS nav
  */
@@ -461,7 +471,7 @@ a.button:hover{
  text-decoration: none;
 }
 
-#od-head #ms-nav ul.ms-nav > li:hover {
+/* #od-head #ms-nav ul.ms-nav > li:hover {
  background: #fff;
  border-left: 1px solid #c9c9c9;
  border-right: 1px solid #c9c9c9;
@@ -473,7 +483,7 @@ a.button:hover{
 
 #od-head #ms-nav ul.ms-nav li:hover .sub-menu {
  display: block;
-}
+} */
 
 
 /*
@@ -617,6 +627,7 @@ a.button:hover{
     list-style:none;
     margin:10px 0;
     overflow:hidden;
+    color: #444;
 }
 
 #breadcrumbs li{
@@ -636,6 +647,15 @@ a.button:hover{
     font-weight:100;
     color:#ccc;
     margin-top: 3px;
+}
+#breadcrumbs .separator_by{
+    font-size:18px;
+}
+.breadcrumb .fa-home {
+    font-size: 24px;
+    width: 24px;
+    position: relative;
+    top: -3px;
 }
 #breadcrumbs .separator-topic:last-child{
     display: none;
@@ -766,8 +786,13 @@ a.button:hover{
 .page-header h1,
 .archive-title {
  font-family: "Droid Serif";
+ padding-bottom: 20px;
+ padding-left: 20px;
 }
 
+.single-post-header h2{
+ padding-left: 20px;
+}
 .archive-title {
  float: left;
 }
@@ -867,27 +892,27 @@ a.button:hover{
 
 #live-search ::-webkit-input-placeholder {
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search :-moz-placeholder { /* Firefox 18- */
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search ::-moz-placeholder {  /* Firefox 19+ */
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search :-ms-input-placeholder {
  color: #666;
- text-transform: uppercase;
+ text-transform: lowercase;
 }
 
 #live-search input[type=text] {
  border: 0;
- background: #EEE;
+ background: #FFF;
  color: #333;
  padding: 2px 0;
  font-size: 16px;
@@ -918,8 +943,7 @@ a.button:hover{
 #live-search .results {
  margin: 0 0 20px;
  padding: 10px 20px 20px;
- background: #f7f7f7;
- border: 1px solid #333;
+/*  border: 1px solid #333; */
 }
 #live-search .results li {
  margin: 0;
@@ -949,32 +973,34 @@ a.button:hover{
 }
 #live-search .results li p.type {
  color: #999;
- text-transform:uppercase
+ text-transform:uppercase;
+ background: #f4f4f4;
+ padding: 5px 0 0 5px;
 }
 .results-container{
     clear: both;
     position: absolute;
     z-index: 10000;
-    margin-top: 2.7em;
-    width: 97%;
+    margin-top: 0.7em;
+    margin-right: 3em;
+    width: 90.55%;
     right: 0;
     margin-right: 1.1em;
     background: white;
+    border: 1px solid #333;
+    padding-bottom: 1.5em;
+    display: none;
+}
+.results-container .close_result{
+    color: #000;
+    font-weight: bold;
+    position: relative;
+    float: right;
+    margin-bottom: -2em;
+    top: -5px;
+    right: -14px;
 }
 
-/* #live-search .results li p.excerpt, #live-search .results li img {
- display: none;
-}
-#live-search .results li.item-1 {
- width: 100% !important;
- padding: 10px 20px 20px 0;
-}
-#live-search .results li.item-1 h2 {
- font-size: 24px;
-}
-#live-search .results li.item-1 p.excerpt, #live-search .results li.item-1 img{
- display: block;
-}*/
 #live-search .results li.item-3, #live-search .results li.item-6, #live-search .results li.item-9{
  padding-right:0
 }
@@ -1029,7 +1055,8 @@ a.button:hover{
  */
 
 .row {
-    margin-bottom: 20px;
+    margin-top: 20px;
+    clear: both;
 }
 #news {
  padding-top: 0;
@@ -1045,6 +1072,7 @@ a.button:hover{
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
+ margin-top: 15px;
 }
 
 .map-container {
@@ -1074,10 +1102,12 @@ a.button:hover{
 }
 
 #featured-content.page-section .section-featured-content {
+ clear: both;
  max-height: 400px;
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
+ margin-top: .5em;
 }
 
 #announcements-and-updates {
@@ -1164,41 +1194,93 @@ a.button:hover{
  border-left: 1px solid #ccc;
  box-sizing: border-box;
  overflow: hidden;
+ padding-left: 10px;
 }
 .sticky-posts:hover{
     overflow-y: auto;
 }
+.sticky-posts .sticky-item:first-child{
+}
 .sticky-posts .sticky-item {
- height: 12%;
+/*  height: 12%; */
  width: 100%;
+ border-right: 1px solid #ccc;
  border-bottom: 1px solid #ccc;
  box-sizing: border-box;
  cursor: pointer;
+ display: inline-block;
+/*  max-height: 320px */
 }
-.sticky-posts .sticky-item:last-child {
+/*.sticky-posts .sticky-item:last-child {
  border-bottom: 0;
+}*/
+.sticky-posts .sticky-item:nth-child(2),
+.sticky-posts .sticky-item:nth-child(3),
+.sticky-posts .sticky-item:nth-child(4){
+    display: table-cell;
+    width: 33.33%;
+    display: inline;
+    float: left;
+    height: 70%;
+
+}
+.sticky-posts .sticky-item:nth-child(4){
+    border-right: 0;
+    float: right;
+}
+.sticky-posts .sticky-item:nth-child(5){
+     clear-left: both;
+     width: 50%;
+     display: table-cell;
+}
+.sticky-posts .sticky-item:nth-child(n+5){
+     width: 50%;
+     height: 35%;
+     float: left;
+}
+
+.sticky-posts .two_per_row:nth-child(even){
+    border-right: 0;
 }
 .sticky-posts .sticky-item article {
- padding: 10px 20px 15px;
+ padding: 0 0 15px 10px;
 }
-.sticky-posts .sticky-item article .post-thumbnail {
- float: left;
- margin: -5px 10px 0 -5px;
- height: 82%;
+.sticky-posts .sticky-item:first-child article .post-area:first-child{
+    height: 100%;
+    padding:1em 0.3em 0;
+}
+.sticky-posts .sticky-item article .post-area{
+    padding:1em 0.3em 0;
+}
+.sticky-posts .sticky-item:first-child article .post-thumbnail {
+ display: block;
+}
+.sticky-posts .sticky-item:first-child article .post-thumbnail img {
+ float: right;
+ max-width: 300px;
+ /* height: 100%; */
+ max-height: 225px;
+ margin: -15px -5px 0px 1em;
+
 }
 .sticky-posts .sticky-item article .post-thumbnail img {
  display: block;
- width: 50px;
- height: 50px;
+/* width: 100%;
+ height: 150px; */
+ max-width: 188px;
+ max-height: 150px;
+ margin: 0 0 5% 0;
 }
+
 .sticky-posts .sticky-item article h3 {
  color: #333;
  /*font-family: "Droid Serif";*/
  margin: 0;
- font-size: 16px;
- line-height: 20px;
+ font-size: 18px;
+ line-height: 25px;
  white-space: nowrap;
  overflow: hidden;
+ margin-bottom: 5px;
  text-overflow: ellipsis;
 }
 
@@ -1209,9 +1291,15 @@ a.button:hover{
  color: #999;
  margin-bottom: 5px;
 }
-.sticky-posts .sticky-item article .post-content,
+.sticky-posts .sticky-item article .post-content{
+ /* display: none; */
+    margin-top: 0.5em;
+    margin-bottom: 0.3em
+}
+
 .sticky-posts .sticky-item article .post-actions{
- display: none;
+    text-align: right;
+    padding-right: .5em
 }
 .sticky-posts .sticky-item.active,
 .sticky-posts .sticky-item:hover {
@@ -1268,13 +1356,32 @@ a.button:hover{
  display: block;
  margin-top: 8px;
 }
+.sticky-posts .sticky-item article .post-actions .button{
+    background: none;
+    padding:0 5px;
+}
+.sticky-posts .sticky-item:nth-child(n+5) .post-thumbnail{
+    display: none;
+}
+.sticky-posts .sticky-item:nth-child(n+5) .date, .sticky-posts .sticky-item:nth-child(n+5) .news-source{
+    height: 1px;
+}
+.sticky-posts .sticky-item:nth-child(n+5) .button img{
+    width: 6%
+}
+.sticky-posts .sticky-item:nth-child(n+5)  article{
+    padding: 5px 0px 5px 20px;
+}
+.sticky-posts .sticky-item:nth-child(n+5)  article .post-area {
+    padding: .2em 0.1em 0px;
+}
 
 .map-sidebar {
  color: #96979C;
  height: 100%;
- width: 40%;
+ width: 70%;
  min-width: 300px;
- max-width: 640px;
+ max-width: 655px;
  z-index: 1000;
  word-wrap: break-word;
  overflow: hidden;
@@ -1373,12 +1480,16 @@ a.button:hover{
  width: auto;
  height: auto;
 }
+
 .map-sidebar img {
  max-width: 100%;
  max-height: 100%;
  width: auto;
  height: auto;
  padding: 6px;
+}
+.map-sidebar img:first-child{
+    padding:0;
 }
 .map-sidebar .sharing .button {
  margin: 5px 5px 5px 0;
@@ -1683,7 +1794,10 @@ a.button:hover{
 /*
  * page
  */
-
+.container{
+    width: 97%;
+    clear: both;
+}
 #content.single-post {
  font-size: 16px;
  line-height: 150%;
@@ -1704,14 +1818,30 @@ a.button:hover{
  list-style-type: none;
 }
 
-#clear{
+.container .eight.columns{ width: 700px;}
+.container .nine.columns { width: 835px;}
+
+.clear, #clear{
  clear:both;
+}
+.float-right {
+    float: right
+}
+.float-left {
+    float: left
 }
 /*
  * Share widget
  */
 
-
+.share-box{
+    display: inline-block;
+    text-align: right;
+}
+.share-box div{
+    margin-right: 8px;
+    float:left;
+}
 .widget .share ul {
  width: 100%;
  display: block;
@@ -1736,7 +1866,35 @@ a.button:hover{
 .widget .share ul li > .twitter {
  width: 120px;
 }
+/* Taxonomy Navigation */
+.opendev_taxonomy_widget_ul li.topic_nav_item ul{
+    display: none;
+}
+#sidebar .widgets .widget ul li span.plusimage-mekong{
+    display: inline-block;
+    background: url("../img/expand-mekong.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-mekong{
+    display: inline-block;
+    background: url("../img/collapse-mekong.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-mekong{
+    display: inline-block;
+    background: url("../img/no-child-mekong.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
 
+#sidebar .widgets .widget div ul.opendev_taxonomy_widget_ul li ul li {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+.widget_opendev_taxonomy_widget ul:first-child{
+    max-height: 650px;
+    overflow-y: auto;
+
+}
 /*
  * Related datasets box
  */
@@ -1828,13 +1986,12 @@ a.button:hover{
  overflow: hidden;
  text-overflow: ellipsis;
 }
-
 /*
  * Interactive Map ?
  */
 
 .interactive-map {
- height: 600px;
+ height: 100%;
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
  box-sizing: border-box;
@@ -1932,7 +2089,7 @@ a.button:hover{
   background-color: green;
 }
 .layer-item h2 {
- font-size: 14px !important;
+ font-size: 14px;
  color: #ccc;
  text-transform: none;
 }
@@ -2090,8 +2247,21 @@ a.button:hover{
 .cartodb-legend ul{
   display: block !important;
 }
+.cartodb-legend.category ul li{
+  width: 100%;
+  height: auto!important;
+  text-decoration: none;
+}
+.cartodb-legend ul li {
+    list-style-type: none!important;
+}
+div.cartodb-legend .legend-title{
+  margin-left: 18px!important;
+}
 
-
+div.cartodb-legend-stack{
+  width: 250px;
+}
 /*
  * CKAN search
  */
@@ -2248,7 +2418,9 @@ a.button:hover{
 /*
  * Widgets
  */
-
+#sidebar .widgets .widget{
+  margin-bottom: 30px;
+}
 #sidebar .widgets .widget,
 .widget {
  border: 1px solid #ddd;
@@ -2268,6 +2440,7 @@ a.button:hover{
  box-shadow: 0 0 0;
  padding: 0;
  border: 0;
+ margin-bottom: 3.5em;
 }
 
 .widget.widget_search input {
@@ -2283,9 +2456,10 @@ a.button:hover{
  padding: 10px;
  border-top: 1px solid #ddd;
  border-bottom: 1px solid #ddd;
- color: #666;
+ color: #fff;
  text-transform: uppercase;
  font-size: 14px;
+ background: #4683D2 none repeat scroll 0% 0%;
 }
 
 #sidebar .widgets .widget li a,
@@ -2327,7 +2501,9 @@ a.button:hover{
 .widget ol li {
  padding-left: 10px;
 }
-
+#sidebar .widgets .widget.share-widget, .widget.share-widget{
+    padding-left: 3em
+}
 .widget .opendev-summary ol {
  margin-left: -40px !important;
  margin-right: -10px !important;
@@ -2439,8 +2615,15 @@ a.button:hover{
 #colophon {
  margin-top: 0;
 }
-
-
+.no-margin-left{
+    margin-left: 0;
+}
+.no-margin-buttom{
+    margin-bottom: 0;
+}
+.no-margin-top{
+    margin-top: 0;
+}
 
 /*
  * Advanced Navigation
@@ -2672,7 +2855,7 @@ div.cartodb-legend.custom ul li.graph{
   }
  /*end tooltips*/
 /*menu*/
-ul#menu-header-menu{
+/* ul#menu-header-menu{
    padding: 0px;
   }
   ul#menu-header-menu li{
@@ -2705,7 +2888,7 @@ ul#menu-header-menu{
 
   ul#menu-header-menu li:hover > ul{
    display: block;
-  }
+  } */
 
   #od-head #main-nav ul.menu > li > ul li:last-child a{
   border-bottom: 0px;
@@ -2727,140 +2910,4 @@ ul#menu-header-menu{
     margin: 1em 0 0;
     text-align:center;
     font-size: 15px;
-}
-
-
-@media screen and (max-width: 1020px) {
-    table {
-		overflow-x: auto;
-        max-height: 800px;
-		overflow-y: auto;
-		display: block;
-	}
-}
-
-@media screen and (max-width: 800px) {
-    #od-head h1{
-        font-size: 25px;
-        font-family: "Droid Serif";
-        margin: 0px 14px 0px 0px;
-    }
-    #od-head h2.side-title{
-        font-size: 18px;
-        line-height: 42px;
-    }
-    #od-head #social-nav a{
-    line-height: 31px;
-    font-size: 15px;
-    margin: 5px 0px 0px 8px;
-
-    }
-    #live-search input[type="text"]{
-        width:50%;
-        margin-top:-20px;
-        margin-left: 1px;
-    }
-    #od-head #ms-nav{
-        margin-top: 10px;
-    }
-    #od-head #ms-nav ul.ms-nav > li{
-    }
-    #od-head #ms-nav ul.ms-nav > li > a {
-        padding: 10px 16px;
-        font-size: 12px;
-    }
-    #od-head #main-nav a{
-        padding:7px 10px;
-        font-size:12px
-    }
-    #od-head #main-nav ul.menu > li > ul{
-        top: 28px;
-    }
-
-    #tabbed-post-type-nav ul li{
-        float: left;
-        display: inline;
-        margin: 0;
-        width: auto;
-    }
-    #tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name{
-        padding:10px;
-    }
-    .announcements-list li{
-        width:98%;
-    }
-     table {
-		overflow-x: auto;
-        max-height: 500px;
-		overflow-y: auto;
-		display: block;
-	}
-}
-@media only screen and (max-width: 400px) {
-    #od-head {
-        padding: 10px 0px 0px;
-    }
-    #od-head h1{
-        font-size: 25px;
-        font-family: "Droid Serif";
-        margin: 0px 14px 0px 0px;
-    }
-    #od-head h2.side-title{
-        font-size: 18px;
-        line-height: 42px;
-    }
-    #od-head #social-nav a{
-    line-height: 31px;
-    font-size: 15px;
-    margin: 5px 0px 0px 8px;
-
-    }
-    #live-search input[type="text"]{
-        width:50%;
-        margin-top:-20px;
-        margin-left: 1px;
-    }
-    #od-head #ms-nav{
-        margin-top: 10px;
-    }
-    #od-head #ms-nav ul.ms-nav > li{
-    }
-    #od-head #ms-nav ul.ms-nav > li > a {
-        padding: 10px 16px;
-        font-size: 12px;
-    }
-    #od-head #main-nav a{
-        padding:7px 10px;
-        font-size:12px
-    }
-    #od-head #main-nav ul.menu > li > ul{
-        top: 28px;
-    }
-    #sidebar .widgets .widget, .widget{
-        width:auto;
-    }
-    #sidebar .widgets .widget .widget-title, .widget .widget-title{
-        font-size:small;
-    }
-    #tabbed-post-type-nav ul li{
-        float: left;
-        display: inline;
-        margin: 0;
-        width: auto;
-    }
-    #tabbed-post-type-nav ul li a, #tabbed-post-type-nav ul li div.tag-name{
-        padding:10px;
-    }
-    .announcements-list li{
-        width:98%;
-    }
-}
-/*IE10*/
-@-ms-viewport{
-    width: extend-to-zoom;
-    zoom: 1.0;
-}
-@viewport{
-    zoom: 1.0;
-    width: extend-to-zoom;
 }

@@ -1,5 +1,11 @@
 .vietnam-color{
-    color: #C6C366;
+    color: #C6C366!important
+}
+#vietnam-bgcolor, .vietnam-bgcolor{
+    background: #C6C366 !important
+}
+.menu-vietnam .icon_menu{
+  display: none!important;
 }
 a, a:visited, #sidebar .widget li a{
  color: #C6C366; /*6393D2, 2774da;*/
@@ -27,7 +33,7 @@ tr:nth-child(2n+1) {
 }
 
 #od-head #ms-nav {
-	background: #42aa00;
+	background: #4AB208;
 }
 #od-head #main-nav .menu ul > li:hover a,
 #od-head #main-nav ul.menu > li:hover,
@@ -41,11 +47,11 @@ tr:nth-child(2n+1) {
 	color: #C6C366;
 }
 
-#od-head h2,
+/* #od-head h2,
 #od-head a,
 #od-head span {
 	color: #fff;
-}
+} */
 #od-head a:hover{
 	color: #C6C366;
 }
@@ -98,7 +104,7 @@ tr:nth-child(2n+1) {
 /*L kasten links*/
 .mainNavOdc,.headerODM{background:#3D9C00;}
 /*nav oben*/
-.white #cNavNew.current-site-mekong,.contentNavigation{background:#42aa00;}
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#4AB208;}
 /*header text*/
 .white #headerText span a{color:#C6C366;text-decoration: none;}
 
@@ -122,10 +128,51 @@ tr:nth-child(2n+1) {
 
   /*After prototype fixes*/
   .white #cNavNew.level1>li:hover,li.top-topic{background:#C6C366;}
-  .mainNav-inner .level1 li:hover {background: #42aa00;}
+  .mainNav-inner .level1 li:hover {background: #4AB208;}
   .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
   .mainNav-inner ul.level1>li.act>a{background: #C6C366;}
   #cNavNew li .level2 li:hover>a{background:#3D9C00;color:white;}
   footer#colophon{
-    background:#42aa00;
+    background:#4AB208;
   }
+
+  /* Table data pages*/
+	.sidebar_header{
+	  background: #C6C366 !important;
+	}
+
+	.sidebar_box_content ul li a{
+	  color: #C6C366 !important;
+	}
+
+	.top a{
+	  color: #C6C366 !important;
+	}
+
+	.top a:active{
+	  color: #C6C366 !important;
+	}
+
+	td.entry_title a{
+	  color: #C6C366 !important;
+	}
+/* collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title {
+ background: #C6C366 none repeat scroll 0% 0%;
+}
+#sidebar .widgets .widget ul li span.plusimage-vietnam{
+    display: inline-block;
+    background: url("../img/expand-vn.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-vietnam{
+    display: inline-block;
+    background: url("../img/collapse-vn.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-vietnam{
+    display: inline-block;
+    background: url("../img/no-child-vn.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}

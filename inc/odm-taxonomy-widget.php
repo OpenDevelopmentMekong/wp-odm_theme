@@ -22,7 +22,8 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 		foreach ( (array) $cats as $cat ) {
 			// get_term_children() accepts integer ID only
 			$descendants = get_term_children( (int) $cat, 'category' );
-			if ( $descendants && in_category( $descendants, $_post ) )
+			//if ( $descendants && in_category( $descendants, $_post ) )
+			if ( $descendants)
 				return true;
 		}
 		return false;
@@ -41,57 +42,48 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category( $category ) {
-			$post_type =  get_post_type( get_the_ID() );
-			//echo '<a href="' . get_category_link( $category->term_id ) . '">';
-			$get_post_title = $this->wp_exist_post_by_title($category->name);
-			//$page_slug = strtolower(preg_replace('/\s+/', '-', $category->name));
-			//$topical_page_exist = get_page_by_path($page_slug, OBJECT, $post_type );
- 
-			if ($get_post_title){                           
-				$highlight_cat =  " class='".COUNTRY_NAME."-color'";   
-                 // $highlight_cat = "";
-				echo '<a'.$highlight_cat.' href="' . get_permalink( $get_post_title->ID) . '">';
-			}else{
-                  $highlight_cat = "";
-           } 
-				$in_category = in_category( $category->term_id );
-				if ($in_category){
-					 echo "<strong class='".COUNTRY_NAME."-color'>";
-					 $highlight_cat =  " class='".COUNTRY_NAME."-color'";
-				}else {
-                    $highlight_cat = "";
-                }
-				//echo "<div".$highlight_cat.">".$category->name."</div>"; 
-			     echo $category->name;
-				if ($in_category){
-					 echo "</strong>";
+	public function print_category( $category, $current_page_slug ="") { 
+			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
+			$post_type =  get_post_type( get_the_ID() );			
+			$get_post_id = get_post_or_page_id_by_title($category->name);  			
+			if ($get_post_id){ // if page of the topic exists
+				$topic_page = get_post($get_post_id); 
+				$topic_slug = $topic_page->post_name;
+				if ($topic_slug == $current_page_slug){ 
+					 $current_page = " ".$current_page_slug;
+				}else { 
+					 $current_page = "";
 				}
-			if ($get_post_title){
-				echo "</a><br/>";
 			}
+			
+			echo "<span class='nochildimage-".$site_name.$current_page."'>";
+			
+			if ($get_post_id){ // if page of the topic exists                      
+				$hyperlink_color =  " class='".COUNTRY_NAME."-color'";     
+				echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
+			}else{
+                $hyperlink_color = ""; 
+            } 
+			
+			$in_category = in_category( $category->term_id );
+			if ($in_category){
+				 echo "<strong class='".COUNTRY_NAME."-color'>";
+				 $hyperlink_color =  " class='".COUNTRY_NAME."-color'";
+			}else {
+				$hyperlink_color = "";
+			}  
+				echo $category->name;
+			
+			if ($in_category){
+				 echo "</strong>";
+			} 
+			
+			if ($get_post_id)
+				echo "</a>";
+			
+			echo "</span>";
 
-	}
-	/**
-	 * Outputs Object containing post information if check the Topic page exist based on the name of category name
-	 *
-	 * @param  $title_str a category's name to find the topic page
-	 */
-     public function wp_exist_post_by_title($title_str) {
-        global $wpdb;
-        $get_post = $wpdb->get_row( $wpdb->prepare(
-        	"SELECT * FROM $wpdb->posts WHERE LOWER(post_title) LIKE %s
-        	    AND post_type = %s
-                AND post_status = %s
-        	",
-        	'<!--:en-->' . $title_str . '%',
-        	"topic",
-        	"publish"
-            )
-        );
-
-        return $get_post ;
-    }
+	}       
 	/**
 	 * Walks through a list of categories and prints all children descendant
 	 * in a hierarchy.
@@ -99,18 +91,18 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $children an array of categories to display
 	 */
 	public function walk_child_category( $children ) {
+		$current_page = get_post(); 
+		$current_page_slug = $current_page->post_name; 
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
 			echo "<li>";
 			// Display current category
-			$this -> print_category($child);
+			$this -> print_category($child, $current_page_slug);
 			// if current category has children
-			if ( !empty($cat_children) ) {
-
+			if ( !empty($cat_children) ) { 
 				// add a sublevel
 				echo "<ul>";
-
 				// display the children
 				$this->walk_child_category( $cat_children );
 				echo "</ul>";
@@ -127,10 +119,41 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Saved values from database.
 	 */
-	public function widget( $args, $instance ) {
+	public function widget( $args, $instance ) { 
+	$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
+	$current_page = get_post(); 
+	$current_page_slug = $current_page->post_name;
+	?>  
+	<script type="text/javascript">
+    jQuery(document).ready(function($) {   
+		$('.opendev_taxonomy_widget_ul > li.topic_nav_item').each(function(){
+			if($('.opendev_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){  
+				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
+				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");	 
+			} 
+			//if parent is showed, child need to expend
+			$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
+			$('span.<?php echo $current_page_slug; ?>').toggleClass('minusimage-<?php echo $site_name;?>');
+			$('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');	
+			
+			//if child is showed, parent expended
+			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").show();
+			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
+			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');			
+		});
+		$('.opendev_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
+			if($(event.target).parent("li").find('ul').length){ 
+				$(event.target).parent("li").find('ul:first').slideToggle();	
+				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");	
+				$(event.target).toggleClass('minusimage-<?php echo $site_name;?>');		 
+			}
+		});
+    });
+   </script>
+	<?php
 		echo $args['before_widget'];
 		if ( ! empty( $instance['od_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['od_title'] ). $args['after_title'];
+			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'opendev' ) ). $args['after_title'];
 		}
 		if ( ! empty( $instance['od_include'] ) ) {
 			$cat_included_id_arr = explode(",", $instance['od_include']);
@@ -149,21 +172,20 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 
 		$categories = get_categories( $args );
 
-		echo "<ul>";
+		echo "<ul class='opendev_taxonomy_widget_ul'>";
 		foreach($categories as $category){
-
 			$jackpot = false;
 			$children = array();
 
 			if ( in_category( $category->term_id ) || $this->post_is_in_descendant_category( $category->term_id ) )
 			{
 				$jackpot = true;
-				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
 
 			}
 
-			echo "<li>";
-			$this -> print_category($category);
+			echo "<li class='topic_nav_item'>";
+					$this -> print_category($category, $current_page_slug);
 
 			if ( !empty($children) ) {
 				echo '<ul>';
@@ -192,7 +214,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_title'] ) ? $instance['od_title'] : __( 'Topic areas', 'opendev' );
+		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'opendev' ) : __( 'Topic areas', 'opendev' );
 		$od_include = $instance['od_include'];
 		$od_exclude = $instance['od_exclude'];
 		?>

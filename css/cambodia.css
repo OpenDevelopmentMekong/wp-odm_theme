@@ -1,33 +1,36 @@
-.cambodia-color{
-    color: #66CC00;
+#cambodia-color, .cambodia-color{
+    color: #97D320 !important;  /* #66cc00*/
+}
+#cambodia-bgcolor, .cambodia-bgcolor{
+    background: #97D320 !important
 }
 a, a:visited, #sidebar .widget li a{
- color: white; /* #7BCC2E; #6393D2, #2774da;*/
+ color: #97D320; /* #7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
-	color: #213D49;
+	color: #12414E;
 	text-decoration:underline
 }
 a strong:hover {
-	color: #213D49;
+	color: #12414E;
 	text-decoration:underline
 }
 button,
 a.button,
 .button {
-	background: #66CC00;
+	background: #97D320;
 }
 tr:nth-child(2n+1) {
     background-color: #eefbe6;
 }
 #od-head {
-	background: #17303a;
+	background: #06323D;
 	color: #f0f0f0;
 }
 
 #od-head #ms-nav {
-	background: #213d49;
+	background: #12414E;
 }
 
 #od-head #main-nav .menu ul > li:hover a,
@@ -43,14 +46,14 @@ tr:nth-child(2n+1) {
 	color: #97d320;
 }
 
-#od-head h2,
+/* #od-head h2,
 #od-head a,
 #od-head span {
 	color: #fff;
-}
+} */
 
 #od-head .ms-dropdown-title ul {
-	background: #17303a;
+	background: #06323D;
 }
 
 #od-head .ms-dropdown-title ul li {
@@ -62,7 +65,7 @@ tr:nth-child(2n+1) {
 }
 .notification-message-box{
     border: 2px solid #97D320;
-    color: #17303a;
+    color: #06323D;
 }
 .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
 	background: #97d320;
@@ -88,15 +91,15 @@ tr:nth-child(2n+1) {
 [class^="icon-"], [class*=" icon-"]{ color: #97d320;}
 
 /*L kasten links*/
-.mainNavOdc,.headerODM{background:#17303a;}
+.mainNavOdc,.headerODM{background:#06323D;}
 /*nav oben*/
-.white #cNavNew.current-site-mekong,.contentNavigation{background:#213d49;}
+.white #cNavNew.current-site-mekong,.contentNavigation{background:#12414E;}
 /*header text*/
 .white #headerText span a{color:#97d320;text-decoration: none;}
   /*level 1 hover*/
 
 .white #cNavNew.level1>li:hover,li.top-topic{background:#97d320;}
-.mainNav-inner .level1 li:hover {background: #213d49;}
+.mainNav-inner .level1 li:hover {background: #12414E;}
 .mainNav-inner .level1 li:hover a{color: white;}
   /*level 1 active*/
   /*#cNavNew.level1>li.cur>a, .white #cNavNew.level1>li.act>a{background: red;}*/
@@ -105,10 +108,10 @@ tr:nth-child(2n+1) {
   /*level 2*/
   #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#97d320; color:white;}
   /*level 2 hover*/
-  #cNavNew li .level2 li:hover>a{background:#213d49;color:white;}
+  #cNavNew li .level2 li:hover>a{background:#12414E;color:white;}
   /*level 3*/
   #cNavNew li:hover .level3 a {
-      background: #17303a;
+      background: #06323D;
   }
   #cNavNew li:hover .level3 a:hover{
     background: #97d320;
@@ -122,5 +125,53 @@ tr:nth-child(2n+1) {
   .mainNav-inner ul.level1>li.act>a{color:white;background:#97d320;}
 
   footer#colophon{
-    background:#213d49;
+    background:#12414E;
   }
+
+/* Table data pages*/
+.sidebar_header{
+  background: #97D320 !important;
+}
+
+.sidebar_box_content ul li a{
+  color: #97D320;
+}
+
+.sidebar_box_content ul li a:hover{
+  color: #12414E;
+}
+.top a{
+  color: #97D320 !important;
+}
+
+.top a:active{
+  color: #97D320 !important;
+}
+
+td.entry_title a:hover{
+  color: #97D320 ;
+}
+td.entry_title a{
+	color: #12414E;
+}
+
+/* Cambodia collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title {
+ background: #97D320 none repeat scroll 0% 0%;
+}
+#sidebar .widgets .widget ul li span.plusimage-cambodia{
+    display: inline-block;
+    background: url("../img/expand-kh.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-cambodia{
+    display: inline-block;
+    background: url("../img/collapse-kh.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-cambodia{
+    display: inline-block;
+    background: url("../img/no-child-kh.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}

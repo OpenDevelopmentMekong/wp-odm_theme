@@ -1,5 +1,11 @@
 .laos-color{
-    color: #D61E2A;
+    color: #D61E2A!important
+}
+#laos-bgcolor, .laos-bgcolor{
+    background: #D61E2A !important
+}
+.menu-laos .icon_menu{
+  display: none!important;
 }
 a, a:visited, #sidebar .widget li a{
  color: #D61E2A; /*6393D2, 2774da;*/
@@ -41,11 +47,11 @@ tr:nth-child(2n+1) {
 	color: #D61E2A;
 }
 
-#od-head h2,
+/* #od-head h2,
 #od-head a,
 #od-head span {
 	color: #fff;
-}
+} */
 #od-head a:hover{
 	color: #D61E2A;
 }
@@ -134,4 +140,46 @@ tr:nth-child(2n+1) {
 #cNavNew li .level2 li:hover>a{background:#3b2226;color:white;}
 footer#colophon{
   background:#583a43;
+}
+
+/* Table data pages*/
+.sidebar_header{
+  background: #D61E2A !important;
+}
+
+.sidebar_box_content ul li a{
+  color: #D61E2A !important;
+}
+
+.top a{
+  color: #D61E2A !important;
+}
+
+.top a:active{
+  color: #D61E2A !important;
+}
+
+td.entry_title a{
+  color: #D61E2A !important;
+}
+
+/* collapse & expend */
+#sidebar .widgets .widget .widget-title,
+.widget .widget-title {
+ background: #D61E2A none repeat scroll 0% 0%;
+}
+#sidebar .widgets .widget ul li span.plusimage-laos{
+    display: inline-block;
+    background: url("../img/expand-lo.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-laos{
+    display: inline-block;
+    background: url("../img/collapse-lo.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-laos{
+    display: inline-block;
+    background: url("../img/no-child-lo.png") no-repeat 0 2px!important;
+    padding-left: 20px;
 }

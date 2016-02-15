@@ -41,7 +41,11 @@ class OpenDev_InteractiveMap {
       $parsed_cats[$cat->term_id]['order'] = $key;
      }
     }
-    $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
+    if (function_exists(extended_jeo_get_layer)){
+      $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
+    }else {
+      $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
+    }
     $layers[] = $layer;
     wp_reset_postdata();
    }
@@ -69,17 +73,35 @@ class OpenDev_InteractiveMap {
        <a class="active"></a>
      </div> -->
     </div>
+    <div class="map-active-layers">
+      <div class="map-active-layers-inner">
+        <?php
+         $categories = get_categories('taxonomy=layer-category');
+         foreach ($categories as $category){ ?>
+
+           <div draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "active-layer active-layer-" . $category->cat_ID ?> layer-<?php echo $category->slug?>">
+             <span>
+               <h6><?php echo $category->cat_name;?></h6>
+             </span>
+           </div>
+        <?php } ?>
+      </div>
+    </div>
    </div>
+ </div>
    <div class="interactive-map-layers">
     <ul class="categories">
      <?php
       $categories = get_categories('taxonomy=layer-category');
       foreach ($categories as $category){ ?>
-       <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?>"><a href="#"><?php echo $category->cat_name; ?></a></li>
+          <li draggable="true" data-category="<?php echo $category->cat_ID ?>" class="<?php echo "cat-item cat-item-" . $category->cat_ID ?> cat-<?php echo $category->slug?>">
+            <span class="category-color">&nbsp;</span>
+            <a href="#"><?php echo $category->cat_name; ?></a>
+          </li>
      <?php } ?>
     </ul>
    </div>
-  </div>
+
   <script type="text/javascript">
 
    (function($) {
@@ -201,7 +223,8 @@ class OpenDev_InteractiveMap {
 
        jeo_map = map;
 
-       var $layers = $('.interactive-map .interactive-map-layers');
+       var $layers = $('.interactive-map-layers');
+       var $layers_active = $('.map-active-layers');
        if(map.postID == 'interactive_map') {
         //map.$.find('.jeo-filter-layers').appendTo($layers);
         for(var key in term_rel) {
@@ -217,25 +240,53 @@ class OpenDev_InteractiveMap {
 
        $layers.find('.categories ul').hide();
 
+
        $layers.find('.categories li a').on('click', function() {
+        // var category_id=$(this).parent().data( "category" )
         if($(this).hasClass('active')) {
          $(this).removeClass('active');
          $(this).parent().find('ul').hide();
+          // $('.active-layer[data-category="'+ category_id +'"]').removeClass('active');
         } else {
          $(this).addClass('active');
          $(this).parent().find('> ul').show();
+          // $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
+
         }
         return false;
        });
 
+
+
        $layer_toggles = $layers.find('.cat-layers h2');
+
        $layer_toggles.each(function(){
         var $layer_toggle = $(this);
         $layer_toggle.on('click', function() {
+          var layers_active_count={};
+          var category_id=$(this).closest('.cat-item').data( "category" );
+          var category_container=$('.map-active-layers .active-layer[data-category="'+ category_id +'"]');
+          var layer=$(this).closest('li.layer-item');
+          var layer_id=layer.data('layer');
+          if ($(this).hasClass('active')==false){
+            category_container.append(layer.clone().addClass('active'));
+            var layer_status=$('.map-active-layers').find('.active-layer[data-category="'+ category_id +'"] li.layer-item div.layer-status').addClass('active');
+
+            }
+          else{
+            $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
+
+            layers_active_count[category_id]=$('.map-active-layers div[data-category="'+ category_id +'"]').children('.active').length;
+            if (layers_active_count[category_id] == 0){
+              $('.map-active-layers .active-layer[data-category="'+ category_id +'"]').removeClass('active');
+            }
+          }
+
          map.filterLayers._switchLayer($(this).parent().data('layer'));
          if(map.filterLayers._getStatus($(this).parent().data('layer')).on) {
           $(this).addClass('active');
           $(this).parent().find('.layer-status').addClass('active');
+          $('.active-layer[data-category="'+ category_id +'"]').addClass('active');
          } else {
           $(this).removeClass('active');
           $(this).parent().find('.layer-status').removeClass('active');
@@ -243,18 +294,93 @@ class OpenDev_InteractiveMap {
        })
        });
 
-       ;
+       $layers.find('.layer-item .toggle-info').on('click', function() {
+          //  $(this).toggleClass('active');
+
+           if ($(this).hasClass('active')==true){
+             $(this).parent().find('.layer-content').show();
+             $(this).parent().find('.toggle-text').show();
+           }
+           else{
+             $(this).parent().find('.layer-content').hide();
+             $(this).parent().find('.layer-excerpt').hide();
+             $(this).parent().find('toggle-text').hide();
+           }
+       });
+
+
+
+
+      //  deactivating active layers in box
+       $(document).on('mouseover', '.map-active-layers', function(){
+          $('.active-layer h2').off('click').on("click",function(){
+                 layers_active_count={};
+                 var layer_id=$(this).closest('.layer-item').data('layer');
+                 var controlling_layer=$('.categories .cat-item .layer-item[data-layer="'+ layer_id +'"] h2');
+                 var category_id=$(this).closest('.active-layer').data( "category" );
+                 map.filterLayers._switchLayer($(this).parent().data('layer'));
+                 $('.map-active-layers li[data-layer="'+ layer_id+'"]').remove();
+
+                 layers_active_count[category_id]=$('.map-active-layers div[data-category="'+ category_id +'"]').children('li').length;
+                 if (layers_active_count[category_id] == 0){
+                   $('.map-active-layers .active-layer[data-category="'+ category_id +'"]').removeClass('active');
+                 }
+                 $(controlling_layer).removeClass('active');
+                 $(controlling_layer).parent().find('.layer-status').removeClass('active');
+               });
+
+           $layers_active.find('.layer-item .toggle-info').off('click').on('click', function() {
+               $(this).toggleClass('active');
+
+               if ($(this).hasClass('active')==true){
+                 $(this).parent().find('.layer-content').show();
+                 $(this).parent().find('.toggle-text').show();
+                 $(this).parent().find('.toggles').css('display','block');
+
+                 $layers_active.find('.layer-item .toggles .toggle-legend').on('click', function() {
+                   if($(this).html() == "Show legend"){ 
+                    //$(this).addClass('active');
+                    $(this).parent().parent().find('.legend').show();
+                    $(this).html('Hide legend');
+                   } else {
+                    //$(this).removeClass('active');
+                    $(this).parent().parent().find('.legend').hide();
+                    $(this).html('Show legend');
+                   }
+                 });
+
+
+               }
+               else{
+                 $(this).parent().find('.layer-content').hide();
+                 $(this).parent().find('.layer-excerpt').hide();
+                 $(this).parent().find('.toggles').css('display','none');
+                 $(this).parent().find('toggle-text').hide();
+               }
+           });
+          });
+
+
+      // $layers.find('.layer-item .toggle-info').on('click', function() {
+      //     $(this).toggleClass('active');
+      //     $(this).closest('.layer-excerpt').show();
+      //
+      // });
+
+
 
       $layers.find('.layer-item .toggles .toggle-text').on('click', function() {
        if($(this).html() == "More"){
         //$(this).addClass('active');
         $(this).parent().parent().find('.layer-excerpt').hide();
         $(this).parent().parent().find('.layer-content').show();
+        $(this).parent().parent().find('.legend').show();
         $(this).html('Less');
        } else {
         //$(this).removeClass('active');
         $(this).parent().parent().find('.layer-excerpt').show();
         $(this).parent().parent().find('.layer-content').hide();
+        $(this).parent().parent().find('.legend').hide();
         $(this).html('More');
        }
      });

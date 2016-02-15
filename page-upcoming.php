@@ -87,11 +87,13 @@ Template Name: Upcoming site
    </section>
  <?php endif; ?>
 
- <section id="page-content">
-  <div class="section-title">
+ <section id="page-content" style="margin-top:0">
+  <div class="section-title no-margin-buttom">
    <div class="container">
     <div class="twelve columns">
-     <h1><?php the_title(); ?></h1>
+        <header class="single-post-header">
+					<h1><?php the_title(); ?></h1>
+		</header>
      <?php the_content(); ?>
     </div>
    </div>
@@ -110,7 +112,7 @@ Template Name: Upcoming site
   </div>
  </section>  -->
 
- <section id="announcements-and-updates" class="page-section row">
+ <section id="announcements-and-updates" class="page-section row no-margin-top" >
    <div class="container">
      <div class="row">
       <div class="four columns">

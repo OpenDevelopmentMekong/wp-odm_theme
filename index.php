@@ -1,36 +1,37 @@
 <?php get_header(); ?>
 
 <?php
-if (is_front_page()) {
-    ?>
+  if (is_front_page()) {
+?>
 
-
-
- <?php if ($options['frontpage_slider_id']) : ?>
-   <section id="featured-content" class="page-section row">
-    <div class="container">
-     <div class="twelve columns">
-      <div class="section-featured-content">
-        <?php
-          if (function_exists('fa_display_slider')) {
-              fa_display_slider($options['frontpage_slider_id']);
-          }
-    ?>
+ <?php
+     $options = get_option('opendev_options');
+    if ($options['frontpage_slider_id']) : ?>
+     <section id="featured-content" class="page-section row">
+      <div class="container">
+       <div class="twelve columns">
+        <div class="section-featured-content">
+          <?php
+            if (function_exists('fa_display_slider')) {
+                fa_display_slider($options['frontpage_slider_id']);
+            }
+          ?>
+        </div>
+       </div>
       </div>
-     </div>
-    </div>
-   </section>
- <?php endif;
-    ?>
+     </section>
+ <?php endif;?>
 
- <?php $is_mapgroup = jeo_get_mapgroup_data();
-    ?>
+ <?php $is_mapgroup = jeo_get_mapgroup_data(); ?>
  <section id="news" class="page-section row" <?php // if($is_mapgroup) : echo "style='padding-top:60px'"; endif; ?>>
   <div class="container">
    <div class="twelve columns">
-   <section class="tabbed-posts-section">
+   <?php $site_name = str_replace('Open Development ', '', get_bloginfo('name'));?> 
+   <h2><?php _e("News <em> from ", "opendev"); _e($site_name, "opendev") ?></em></h2> 
+
+   <!-- <section class="tabbed-posts-section">
             <script>
-              jQuery(function($) {
+              /* jQuery(function($) {
                   $('#tabbed-post-type-nav li').first().addClass('tab-tag-active');
                   $('.sticky-posts').first().addClass('sticky-posts-active');
             	   // $('#tabbed-post-type-nav li').first().css('backgrond', 'red');
@@ -48,12 +49,12 @@ if (is_front_page()) {
                            // $( event.target ).css('background-color', 'red');
 
                     });
-              });
+              }); */
             </script>
             <nav id="tabbed-post-type-nav">
             	<ul>
             		<?php
-                    $options_news_tags = get_option('opendev_options');
+                    /* $options_news_tags = get_option('opendev_options');
     if ($options_news_tags['news_tags']) {
         $news_tags = preg_replace('/,$/', '', $options_news_tags['news_tags']);
                     //$news_tags = rtrim($options_news_tags['news_tags'], ',');
@@ -72,11 +73,11 @@ if (is_front_page()) {
         echo '<li class="tab-tag" id="tag-myanmar"><div class="tag-name">Myanmar</div></li>';
         echo '<li class="tab-tag" id="tag-thailand"><div class="tag-name">Thailand</div></li>';
         echo '<li class="tab-tag" id="tag-vietnam"><div class="tag-name">Vietnam</div></li>';
-    }
+    } */
     ?>
             	</ul>
             </nav>
-        </section>
+        </section>   -->
     <div class="section-map">
      <?php
      jeo_map();
@@ -91,12 +92,10 @@ if (is_front_page()) {
    <div class="container">
      <div class="row">
       <div class="eight columns">
-        <?php dynamic_sidebar('frontpage-footer-left');
-    ?>
+        <?php dynamic_sidebar('frontpage-footer-left'); ?>
       </div>
       <div class="four columns">
-        <?php dynamic_sidebar('frontpage-footer-right');
-    ?>
+        <?php dynamic_sidebar('frontpage-footer-right'); ?>
       </div>
     </div>
    </div>
@@ -105,7 +104,8 @@ if (is_front_page()) {
  <?php //get_template_part('section', 'content-summary'); ?>
 
 <?php
-} ?>
+}
+?>
 
 <?php // get_template_part('content', 'interactive-map'); ?>
 

@@ -2,5 +2,8 @@ font/opendev.eot
 font/opendev.svg
 font/opendev.ttf
 font/opendev.woff
+.editorconfig
 **/.DS_STORE
 .remote-sync.json
+**.bak
+**.bak**

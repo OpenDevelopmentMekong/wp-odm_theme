@@ -3,212 +3,208 @@
 Template Name: Laws page
 */
 ?>
+
 <?php
-// dbug
-// require 'lib/kint/Kint.class.php';
+require_once('page-laws-config.php');
 ?>
+
 <?php get_header(); ?>
 
 <?php if(have_posts()) : the_post(); ?>
-	<section id="content" class="single-post">
-		<header class="single-post-header">
-			<div class="container">
-				<div class="twelve columns">
-					<h1><?php the_title(); ?></h1>
-				</div>
+
+  <?php
+    $filter_odm_document_type = NULL;
+    if (isset($_GET["odm_document_type"])){
+      $filter_odm_document_type = htmlspecialchars($_GET["odm_document_type"]);
+    }
+    $filter_odm_taxonomy = NULL;
+    if (isset($_GET["odm_taxonomy"])){
+      $filter_odm_taxonomy = htmlspecialchars($_GET["odm_taxonomy"]);
+    }
+    $laws = array();
+    if (!IsNullOrEmptyString($filter_odm_taxonomy)){
+      $laws = get_law_datasets($CKAN_DOMAIN,"taxonomy",$filter_odm_taxonomy);
+    }else if (!IsNullOrEmptyString($filter_odm_document_type)){
+      $laws = get_law_datasets($CKAN_DOMAIN,"odm_document_type",$filter_odm_document_type);
+    }else{
+      $laws = get_law_datasets($CKAN_DOMAIN,NULL,NULL);
+    }
+
+    $lang = 'en';
+    $headline = $filter_odm_taxonomy;
+
+    if (function_exists("qtranxf_getLanguage")){
+      $lang = qtranxf_getLanguage();
+    }
+
+    // NOTE: This is a hack to harmonize language code between WP and CKAN.
+    // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
+    if ($lang == "kh"){
+      $lang = "km";
+    }
+
+  ?>
+
+  <section id="content" class="single-post">
+    <header class="single-post-header">
+			<div class="twelve columns">
+        <h1 class=""><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
+        <h2 class=""><?php _e( $headline, 'opendev' ); ?></h2>
 			</div>
 		</header>
-		<div class="container laws-container">
-			<div class="eight columns">
-				<div class="pagination">
-					show
-					<select id="law_pagination" name="law_pagination">
-					  <option value="10" selected>10</option>
-						<option value="25">25</option>
-					  <option value="50">50</option>
-					  <option value="100">100</option>
-					</select>
-					entries
-				</div>
-				<?php the_content(); ?>
-				<?php
-				wp_link_pages( array(
-					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jeo' ) . '</span>',
-					'after'       => '</div>',
-					'link_before' => '<span>',
-					'link_after'  => '</span>',
-				) );
-				?>
-					<?php
-						$laws_sorted=get_law_datasets_sorted_by_document_type();
-						foreach ($laws_sorted as $key => $law){?>
-							<div class="document_type_header"><?php echo $key?></div>
-								<table class="law_datasets" id="law_datasets_<?php echo $key;?>">
-									<thead>
-							        <tr>
-							            <th>Column 1</th>
-							            <th>Column 2</th>
-													<th>Column 3</th>
-													<th>Column 4</th>
-													<th>Column 5</th>
-													<th>Column 6</th>
-							        </tr>
-							    </thead>
-									<tbody
-										<?php foreach ($law as $title => $law_record) {?>
-											<tr>
-												<td class="law_title">
-													<a href="<?php echo $law_record['wpckan_dataset_title_url'];?>"><?php echo $title;?></a>
-												<td class="law_status">
-													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_promulgation_date'];?>
-												</td>
-												<td class="law_version">
-													<?php echo $law_record['wpckan_dataset_extras']['wpkan_dataset_extras-odm_application_date'];?>
-												</td>
-												<td class="law_download_en law_download">
-													<span class="law_download en">
-														<?php foreach ($law_record['wpckan_resources_list'] as $key => $resource) {?>
-															<?php if ($resource['wpckan_resource_language'] == 'en'){?>
-																<a href="<?php echo $resource['wpckan_resource_name_link'];?>/download/<?php echo $title;?>">
-																	<span class="icon-arrow-down"></span>EN</span></a>
-															<?php } ?>
-														<?php } ?>
-												</td>
-												<td class="law_download_km law_download">
-													<span class="law_download km">
-														<?php foreach ($law_record['wpckan_resources_list'] as $key => $resource) {?>
-															<?php if ($resource['wpckan_resource_language'] == 'km'){?>
-																<a href="<?php echo $resource['wpckan_resource_name_link'];?>/download/<?php echo $resource['wpckan_resource_name'];?>">
-																	<span class="icon-arrow-down"></span>KM</span></a>
-															<?php } ?>
-														<?php } ?>
-												</td>
-												<td class="law_download_th law_download">
-													<span class="law_download th">
-														<?php foreach ($law_record['wpckan_resources_list'] as $key => $resource) {?>
-															<?php if ($resource['wpckan_resource_language'] == 'th'){?>
-																<a href="<?php echo $resource['wpckan_resource_name_link'];?>/download/<?php echo $resource['wpckan_resource_name'];?>">
-																	<span class="icon-arrow-down"></span>TH</span></a>
-															<?php } ?>
-														<?php } ?>
-												</td>
-											</tr>
-											<?php// d($law_record);?>
-
-										<?php } ?>
-									</tbody>
-								</table>
-				<?php } ?>
-
-				<!-- dbug -->
-				<?php// d($laws_sorted);?>
-
-
+		<div class="container">
+			<div class="nine columns">
+        <!-- <?php //print_r($laws); ?> -->
+        <?php the_content(); ?>
+        <table id="law_datasets" class="data-table">
+          <thead>
+            <tr>
+              <th><?php _e( 'Title', 'opendev' );?></th>
+              <th><?php _e( 'Document type', 'opendev' );?></th>
+              <th><?php _e( 'Document number', 'opendev' );?></th>
+              <th><?php _e( 'Promulgation date', 'opendev' );?></th>
+              <th><?php _e( 'Download', 'opendev' );?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($laws as $law_record): ?>
+              <?php if (IsNullOrEmptyString($law_record['odm_document_type'])){
+                continue;
+              }?>
+              <tr>
+                <td class="entry_title">
+                  <a href="<?php echo $CKAN_DOMAIN . "/dataset/" . $law_record['id'];?>"><?php echo getMultilingualValueOrFallback($law_record['title_translated'],$lang);?></a>
+                </td>
+                <td>
+                  <?php
+                    if (isset($law_record['odm_document_type'])){
+                      $doc_type = $law_record['odm_document_type'];
+                      echo _e( $LAWS_DOCUMENT_TYPE[$doc_type], 'opendev' );
+                    }
+                  ?>
+                </td>
+                <td>
+                  <?php
+                  if (isset($law_record['odm_document_number'])){
+                    echo $law_record['odm_document_number'][$lang];
+                  }?>
+                </td>
+                <td>
+                  <?php
+                  if (isset($law_record['odm_promulgation_date'])){
+                    if ((qtranxf_getLanguage() == "kh") || (qtranxf_getLanguage == "km")){
+                      echo convert_date_to_kh_date(date("d.m.Y", strtotime($law_record['odm_promulgation_date'])));
+                    }else{
+                       echo ($law_record['odm_promulgation_date']);
+                    }
+                  }?>
+                </td>
+                <td class="download_buttons">
+                    <?php foreach ($law_record['resources'] as $resource) :?>
+                      <?php if ( isset($resource['odm_language']) && $resource['odm_language'][0] == 'en'){?>
+                        <span><a href="<?php echo $resource['url'];?>">
+                          <span class="icon-arrow-down"></span>EN</a></span>
+                      <?php } ?>
+                    <?php endforeach; ?>
+                    <?php foreach ($law_record['resources'] as $resource) :?>
+                      <?php if ( isset($resource['odm_language']) && $resource['odm_language'][0] == 'km'){?>
+                        <span><a href="<?php echo $resource['url'];?>">
+                          <span class="icon-arrow-down"></span>KM</a></span>
+                      <?php } ?>
+                    <?php endforeach; ?>
+                </td>
+              </tr>
+    				<?php endforeach; ?>
+  				</tbody>
+  			</table>
 			</div>
-			<div class="one column">&nbsp;</div>
 			<div class="three columns">
-				<div class="law_search_box">
-					<div class="law_search_box_header">
-						<span class="big">SEARCH</span> in Laws
+
+				<div class="sidebar_box">
+					<div class="sidebar_header">
+
+            <?php if( $headline ) { ?>
+              <span class="big"><?php _e( 'SEARCH', 'opendev' );?></span> <?php _e( 'Laws in', 'opendev' );?> <?php _e( $headline , 'opendev' ); ?>
+            <?php }else { ?>
+	               <span class="big"><?php _e( 'SEARCH', 'opendev' );?></span> <?php _e( 'in Laws', 'opendev' ); ?>
+           <?php } ?>
 					</div>
-					<div class="law_search_box_wrapper">
-						<input type="text" id="Search_All" placeholder="Search all Laws">
+					<div class="sidebar_box_content">
+						<input type="text" id="search_all" placeholder=<?php _e( "Search all Laws", 'opendev');?>>
+            <?php if (!IsNullOrEmptyString($filter_odm_document_type) || !IsNullOrEmptyString($filter_odm_taxonomy)): ?>
+              <a href="/laws"><?php _e( 'Clear filter', 'opendev' ) ?>
+            <?php endif; ?>
+					</div>
+				</div>
+
+        <div class="sidebar_box">
+					<div class="sidebar_header">
+						<span class="big"><?php _e( 'LAW COMPENDIUM', 'opendev' );?></span>
+					</div>
+					<div class="sidebar_box_content">
+            <?php echo buildStyledTopTopicListForLaws($lang); ?>
+					</div>
+				</div>
+
+        <div class="sidebar_box law_search_box">
+					<div class="sidebar_header">
+						<span class="big"><?php _e( 'TYPE OF LAWS', 'opendev' );?></span>
+					</div>
+					<div class="sidebar_box_content">
+            <ul>
+              <li><a href="/laws/?odm_document_type=anukretsub-decree"><?php _e( 'Anukret/Sub-Decree', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=chbablawkram"><?php _e( 'Chbab/Law/Kram', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=constitution-of-cambodia"><?php _e( 'Constitution of Cambodia', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=international-treatiesagreements"><?php _e( 'International Treaties/Agreements', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kech-sonyacontractagreement"><?php _e( 'Kech Sonya/Contract/Agreement', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kolkar-nenomguidelines"><?php _e( 'Kolkar Nenom/Guidelines', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=kolnyobaypolicy"><?php _e( 'Kolnyobay/Policy', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=likhetletter"><?php _e( 'Likhet/Letter', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=prakasjoint-prakasproclamation"><?php _e( 'Prakas/Joint-Prakas/Proclamation', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=preah-reach-kramroyal-kram"><?php _e( 'Preah Reach Kram/Royal Kram', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sarachorcircular"><?php _e( 'Sarachor/Circular', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-chhun-damneoungnoticeannouncement"><?php _e( 'Sechkdei Chhun Damneoung/Notice/Announcement', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-nenuminstruction"><?php _e( 'Sechkdei Nenum/Instruction', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-preang-chbabdraft-laws-amp-regulations"><?php _e( 'Sechkdei Preang Chbab/Draft Laws & Regulations', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=sechkdei-samrechdecision"><?php _e( 'Sechkdei Samrech/Decision', 'opendev' );?></a></li>
+              <li><a href="/laws/?odm_document_type=others"><?php _e( 'Others', 'opendev' );?></a></li>
+            </ul>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</section>
 <?php endif; ?>
 
 <?php get_footer(); ?>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
+
 <script type="text/javascript">
+
 jQuery(document).ready(function($) {
-	// $('#law_datasets_anukretsub-decree').dataTable();
 
-// multiple tables
-$.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
-               var settings = $.fn.dataTableSettings;
+  console.log("laws pages init");
 
-               for (var i = 0; i < settings.length; i++) {
-                   settings[i].oInstance.fnFilter(sInput, iColumn, bRegex, bSmart);
-               }
-           };
+  $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
+   var settings = $.fn.dataTableSettings;
+   for (var i = 0; i < settings.length; i++) {
+     settings[i].oInstance.fnFilter(sInput, iColumn, bRegex, bSmart);
+   }
+  };
 
-           $(document).ready(function () {
-               $('.law_datasets').dataTable({
-                   "bPaginate": true,
+  var oTable = $("#law_datasets").dataTable({
+    scrollX: false,
+    responsive: true,
+    dom: '<"top"<"info"i><"pagination"p><"length"l>>rt',
+    processing: true,
+    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    order: [[ 0, 'asc' ]],
+    displayLength: 25
+  });
 
-               });
-							//  set datatables
-               var oTable0 = $("#law_datasets_anukretsub-decree").dataTable();
-							 var oTable1 = $("#law_datasets_chbablawkram").dataTable();
-							 var oTable2 = $("#law_datasets_constitution-of-cambodia").dataTable();
-							 var oTable3 = $("#law_datasets_international-treatiesagreements").dataTable();
-							 var oTable4 = $("#law_datasets_kech-sonyacontractagreement").dataTable();
-							 var oTable5 = $("#law_datasets_kolkar-nenomguidelines").dataTable();
-							 var oTable6 = $("#law_datasets_kolnyobaypolicy").dataTable();
-							 var oTable7 = $("#law_datasets_likhetletter").dataTable();
-							 var oTable8 = $("#law_datasets_prakasjoint-prakasproclamation").dataTable();
-							 var oTable9 = $("#law_datasets_preah-reach-kramroyal-kram").dataTable();
-							 var oTable10 = $("#law_datasets_sarachorcircular").dataTable();
-							 var oTable11 = $("#law_datasets_sechkdei-chhun-damneoungnoticeannouncement").dataTable();
-							 var oTable12 = $("#law_datasets_sechkdei-nenuminstruction").dataTable();
-							 var oTable13 = $("#law_datasets_sechkdei-preang-chbabdraft-laws-amp-regulations").dataTable();
-							 var oTable14 = $("#law_datasets_sechkdei-samrechdecision").dataTable();
-							 var oTable15 = $("#law_datasets_other").dataTable();
-
-               $("#Search_All").keyup(function () {
-                   // Filter on the column (the index) of this element
-									//  set filters
-                   oTable0.fnFilterAll(this.value);
-									 oTable1.fnFilterAll(this.value);
-									 oTable2.fnFilterAll(this.value);
-									 oTable3.fnFilterAll(this.value);
-									 oTable4.fnFilterAll(this.value);
-									 oTable5.fnFilterAll(this.value);
-									 oTable5.fnFilterAll(this.value);
-									 oTable6.fnFilterAll(this.value);
-									 oTable7.fnFilterAll(this.value);
-									 oTable8.fnFilterAll(this.value);
-									 oTable9.fnFilterAll(this.value);
-									 oTable10.fnFilterAll(this.value);
-									 oTable11.fnFilterAll(this.value);
-									 oTable12.fnFilterAll(this.value);
-									 oTable13.fnFilterAll(this.value);
-									 oTable14.fnFilterAll(this.value);
-									 oTable15.fnFilterAll(this.value);
-
-               });
-           });
-
-          //  $(document).ready(function () {
-          //      $('#law_datasets_other').dataTable({
-          //          "bPaginate": true,
-					 //
-          //      });
-          //      var oTable1 = $("#law_datasets_other").dataTable();
-					 //
-          //      $("#Search_All").keyup(function () {
-          //          // Filter on the column (the index) of this element
-          //          oTable1.fnFilterAll(this.value);
-          //      });
-          //  });
-
-
-					// detect pagination change
-					// $(document).ready(function () {
-					// 	$('#law_pagination').on('change', function() {
-					// 		$('div.dataTables_length select').val(this.value);
-					// 		// alert( this.value ); // or $(this).val()
-					// 	});
-					//
-					// });
-
-
-
-
+  $("#search_all").keyup(function () {
+    console.log("filtering page " + this.value);
+    oTable.fnFilterAll(this.value);
+ });
 
 });
 

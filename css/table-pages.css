@@ -1,0 +1,161 @@
+#profiles_map{
+  width: 100%;
+  height: 400px;
+}
+
+.hidden {
+  display:none;
+}
+
+.row-key{
+  font-weight: bold;
+}
+
+.sidebar_header{
+  line-height: 20px;
+  background: #292d56;
+  color: white;
+  padding: 7px;
+  font-style: italic;
+}
+
+.sidebar_header .big{
+  font-weight: bolder;
+  font-style: normal;
+}
+.sidebar_box{
+      margin-bottom: 30px;
+      border: 1px solid #DDD;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar_box_content{
+  font-size: 90%;
+  padding: 10px 10px;
+}
+.sidebar_box_content ul{
+  margin-left: 0 !important;
+  margin-bottom: 0;
+}
+.sidebar_box_content ul li{
+  list-style: none !important;
+  word-wrap: break-word;
+  border-bottom: 1px dotted #CCC;
+  padding: 5px 0px;
+  margin-bottom: 0;
+}
+.sidebar_box_content ul li:last-child{
+  border-bottom: 0;
+}
+.sidebar_box_content ul li a{
+  color: #4683D2;
+}
+#search_all{
+  width:90%;
+  margin: 0px auto;
+}
+
+.dataTables_length select{
+  margin: 0px !important;
+  width: 40px;
+  display: inline;
+}
+
+.top{
+  padding-bottom: 10px;
+  font-size: 10px ;
+}
+
+.top a{
+  color: #292D56;
+}
+
+.top a:active{
+  color: #292D56;
+}
+
+.top label{
+  font-size: 12px ;
+}
+
+.info{
+  float:left;
+  margin-right: 10px;
+}
+.length{
+  float:right;
+  margin-right: 10px;
+}
+
+.pagination{
+  float:right;
+}
+
+.section-title{
+  border: 0!important;
+}
+
+.sorting{
+  text-align: left;
+  padding: 4px 10px;
+  font-size: 10px !important;
+}
+
+.group{
+  background: #292d56 !important;
+  line-height: 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px 10px;
+}
+
+.data-table{
+  border: none;
+  font-size: 13px;
+}
+
+table.data-table thead{
+  background: rgb(246,246,246);
+  color: #000;
+  font-size: 12px;
+}
+
+table.data-table tr,table.data-table td{
+  background: none;
+  border:none;
+  padding: 12px 5px;
+  margin-bottom: 4px; 
+}
+
+.centered_column{
+  text-align: center;
+}
+
+td.entry_title{
+  min-width: 100px;
+}
+
+td.entry_title a{
+  color: #292D56;
+}
+
+.download_buttons{
+  min-width: 100px;
+}
+
+.download_buttons span.icon-arrow-down{
+  position: relative;
+  top:2px;
+}
+
+.download_buttons span a{
+  color: white;
+  text-decoration: none;
+  padding: 4px 6px;
+  background: rgb(75,75,75);
+  border-radius: 6px;
+  font-size:10px;
+  float: left;
+  margin: 0px 4px 4px 0px;
+}
