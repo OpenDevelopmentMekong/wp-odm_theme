@@ -194,9 +194,9 @@ td.entry_title a{
 .cat-map-environment-and-natural-resources .category-color{background: #FFEE07;}
 .cat-map-environment-and-natural-resources .layer-item:hover .icon-info-path{fill:#FFEE07;}
 .cat-map-environment-and-natural-resources .layer-item:hover h2,
-  .map-active-layers .active-layer.layer-map-environment-and-natural-resource .layer-item h2,
-  .cat-item.cat-map-environment-and-natural-resource .layer-item h2:hover,
-  .cat-item.cat-map-environment-and-natural-resource .layer-item h2.active{
+  .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2,
+  .cat-item.cat-map-environment-and-natural-resources .layer-item h2:hover,
+  .cat-item.cat-map-environment-and-natural-resources .layer-item h2.active{
     color:#FFEE07;
   }
 .map-active-layers .layer-map-environment-and-natural-resources .layer-status.active,
