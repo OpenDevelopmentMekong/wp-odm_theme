@@ -175,11 +175,3 @@ td.entry_title a{
     background: url("../img/no-child-kh.png") no-repeat 0 2px!important;
     padding-left: 20px;
 }
-
-/*map explorer category colors*/
-.cat-item.cat-infrascructure .category-color{background: #0EB20B;}
-.cat-item.cat-map-environment-and-natural-resources .category-color{background: #FFEE07;}
-.cat-item.cat-hydrology .category-color{background: #FF8600;}
-.cat-item.cat-demographic .category-color{background: #FF003E;}
-.cat-item.cat-energy .category-color{background: #2E0CCC;}
-.cat-item.cat-agriculture .category-color{background: #00C7A4;}
