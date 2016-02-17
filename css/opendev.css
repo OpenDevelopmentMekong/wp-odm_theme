@@ -1870,6 +1870,15 @@ a.button:hover{
 .opendev_taxonomy_widget_ul li.topic_nav_item ul{
     display: none;
 }
+.sidebar_header h2{
+  font-family: 'Open Sans';
+  font-weight: 800;
+  font-style: normal; 
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 20px;
+}
 #sidebar .widgets .widget ul li span.plusimage-mekong{
     display: inline-block;
     background: url("../img/expand-mekong.png") no-repeat 0 2px!important;
