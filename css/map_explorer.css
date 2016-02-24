@@ -327,12 +327,6 @@ body.page-template-page-map-explorer{overflow: hidden;}
       .map-active-layers .active-layer.layer-infrastructure h6 {background: rgb(223,0,100);}
 
       /*map explorer category colors*/
-      /*2do
-        - red einfügen
-        - farben einfügen
-        */
-
-
       .category-color{background: red;}
       .layer-item:hover .icon-info-path,
         .active-layer .icon-info-path, .active-layer .icon-download path{
@@ -350,94 +344,74 @@ body.page-template-page-map-explorer{overflow: hidden;}
         background: red;
       }
 
-      .cat-map-environment-and-natural-resources .category-color{background: #FFD825;}
+      .cat-map-environment-and-natural-resources .category-color{background: rgb(243,165,48);}
       .cat-map-environment-and-natural-resources .layer-item:hover .icon-info-path,
         .active-layer.layer-map-environment-and-natural-resources .icon-info-path, .active-layer.layer-map-environment-and-natural-resources .icon-download path{
-          fill:#FFD825;
+          fill:rgb(243,165,48);
         }
       .cat-map-environment-and-natural-resources .layer-item:hover h2,
         .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2,
         .cat-item.cat-map-environment-and-natural-resources .layer-item h2:hover,
         .cat-item.cat-map-environment-and-natural-resources .layer-item h2.active{
-          color:#FFD825;
+          color:rgb(243,165,48);
         }
       .map-active-layers .layer-map-environment-and-natural-resources .layer-status.active,
        .categories .cat-map-environment-and-natural-resources .layer-status.active,
        .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{
-        background: #FFD825;
+        background: rgb(243,165,48);
       }
 
 
-      .cat-hydrology .category-color{background: #FF8600;}
-      .cat-hydrology .layer-item:hover .icon-info-path,
-        .active-layer.layer-hydrology .icon-info-path, .active-layer.layer-hydrology .icon-download path{
-          fill:#FF8600;
+      .cat-infrastructure .category-color{background: rgb(223,0,100);}
+      .cat-infrastructure .layer-item:hover .icon-info-path,
+        .active-layer.layer-infrastructure .icon-info-path, .active-layer.layer-infrastructure .icon-download path{
+          fill:rgb(223,0,100);
         }
-      .cat-hydrology .layer-item:hover h2,
-        .map-active-layers .active-layer.layer-hydrology .layer-item h2,
-        .cat-item.cat-hydrology .layer-item h2:hover,
-        .cat-item.cat-hydrology .layer-item h2.active{
-        color:#FF8600;
-      }
-      .map-active-layers .layer-hydrology .layer-status.active,
-       .categories .cat-hydrology .layer-status.active,
-       .map-active-layers .active-layer.layer-hydrology h6{
-        background: #FF8600;
-      }
-
-      .cat-demographic .category-color{background: #FF003E;}
-      .cat-demographic .layer-item:hover .icon-info-path,
-        .active-layer.layer-demographic .icon-info-path, .active-layer.layer-demographic .icon-download path{
-          fill:#FF003E;
-        }
-      .cat-demographic .layer-item:hover h2,
-        .map-active-layers .active-layer.layer-demographic .layer-item h2,
-        .cat-item.cat-demographic .layer-item h2:hover,
-        .cat-item.cat-demographic .layer-item h2.active{
-        color:#FF003E;
+      .cat-infrastructure .layer-item:hover h2,
+        .map-active-layers .active-layer.layer-infrastructure .layer-item h2,
+        .cat-item.cat-infrastructure .layer-item h2:hover,
+        .cat-item.cat-infrastructure .layer-item h2.active{
+        color:rgb(223,0,100);
       }
       .map-active-layers .layer-demographic .layer-status.active,
        .categories .cat-demographic .layer-status.active,
        .map-active-layers .active-layer.layer-demographic h6{
-        background: #FF003E;
+        background: rgb(223,0,100);
       }
 
-      .cat-energy .category-color{background: #2E0CCC;}
+      .cat-energy .category-color{background: rgb(124,212,55);}
       .cat-energy .layer-item:hover .icon-info-path,
         .active-layer.layer-energy .icon-info-path, .active-layer.layer-energy .icon-download path{
-          fill:#2E0CCC;
+          fill:rgb(124,212,55);
         }
       .cat-energy .layer-item:hover h2,
         .map-active-layers .active-layer.layer-energy .layer-item h2,
         .cat-item.cat-energy .layer-item h2:hover,
         .cat-item.cat-energy .layer-item h2.active{
-        color:#2E0CCC;
+        color:rgb(124,212,55);
       }
       .map-active-layers .layer-energy .layer-status.active,
        .categories .cat-energy .layer-status.active,
        .map-active-layers .active-layer.layer-energy h6{
-        background: #2E0CCC;
+        background: rgb(124,212,55);
       }
 
-      .cat-agriculture .category-color{background: #00C7A4;}
-      .cat-agriculture .layer-item:hover .icon-info-path,
-        .active-layer.layer-agriculture .icon-info-path, .active-layer.layer-agriculture .icon-download path{
-          fill:#00C7A4;
+      .cat-land .category-color{background: rgb(81,144,224);}
+      .cat-land .layer-item:hover .icon-info-path,
+        .active-layer.layer-land .icon-info-path, .active-layer.layer-land .icon-download path{
+          fill:rgb(81,144,224);
         }
-      .cat-agriculture .layer-item:hover h2,
-        .map-active-layers .active-layer.layer-agriculture .layer-item h2,
-        .cat-item.cat-agriculture .layer-item h2:hover,
-        .cat-item.cat-agriculture .layer-item h2.active{
-        color:#00C7A4;
+      .cat-land .layer-item:hover h2,
+        .map-active-layers .active-layer.layer-land .layer-item h2,
+        .cat-item.cat-land .layer-item h2:hover,
+        .cat-item.cat-land .layer-item h2.active{
+        color:rgb(81,144,224);
       }
-      .map-active-layers .layer-agriculture .layer-status.active,
-       .categories .cat-agriculture .layer-status.active,
-       .map-active-layers .active-layer.layer-agriculture h6{
-        background: #00C7A4;
+      .map-active-layers .layer-land .layer-status.active,
+       .categories .cat-land .layer-status.active,
+       .map-active-layers .active-layer.layer-land h6{
+        background: rgb(81,144,224);
       }
-
-
-
 
         .map-active-layers .active-layer .layer-item{
           display: block;
