@@ -117,8 +117,8 @@ body.page-template-page-map-explorer{overflow: hidden;}
     fill: rgb(204,​ 204,​ 204);
   }
 
-  .layer-item .icon-info:hover .icon-info-path {
-  fill: red;
+  .active-layer .icon-info-path, .active-layer .icon-download path {
+    fill: red;
 }
 .page-template-page-map-explorer .cat-layers .layer-excerpt,.page-template-page-map-explorer .cat-layers .layer-content,.page-template-page-map-explorer .cat-layers .layer-item .toggles{
   display: none;
@@ -253,6 +253,12 @@ body.page-template-page-map-explorer{overflow: hidden;}
       .cat-map-environment-and-natural-resources .layer-item:hover .icon-info-path{fill:rgb(243,165,48);}
       .cat-land .layer-item:hover .icon-info-path{fill:rgb(81,144,224);}
       .cat-infrastructure .layer-item:hover .icon-info-path{fill:rgb(223,0,100);}
+
+      .active-layer.layer-item .icon-info-path, .active-layer.layer-item .icon-download path{fill:red;}
+      .active-layer.layer-energy .icon-info-path, .active-layer.layer-energy .icon-download path{fill:rgb(124,212,55);}
+      .active-layer.layer-map-environment-and-natural-resources .icon-info-path, .active-layer.layer-map-environment-and-natural-resources .icon-download path{fill:rgb(243,165,48);}
+      .active-layer.layer-land .icon-info-path, .active-layer.layer-land .icon-download path{fill:rgb(81,144,224);}
+      .active-layer.layer-infrastructure .icon-info-path, .active-layer.layer-infrastructure .icon-download path{fill:rgb(223,0,100);}
 
 
     .map-active-layers .layer-energy .layer-status.active, .categories .cat-energy .layer-status.active{ background: rgb(124,212,55);}
