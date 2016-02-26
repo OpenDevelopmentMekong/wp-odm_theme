@@ -148,6 +148,11 @@ td.entry_title a{
   float: left;
   padding: 2px;
 }
+
+.download_buttons span {
+    display: inline-block;
+}
+
 .download_buttons span.icon-arrow-down{
   position: relative;
   top:2px;
