@@ -1873,7 +1873,7 @@ a.button:hover{
 .sidebar_header h2{
   font-family: 'Open Sans';
   font-weight: 800;
-  font-style: normal; 
+  font-style: normal;
   color: #fff;
   text-transform: uppercase;
   font-size: 14px;
@@ -2359,6 +2359,7 @@ div.cartodb-legend-stack{
  margin: 2px 0 4px 0;
  width: 100%;
  clear: both;
+ display: none;
 }
 
 .wpckan_dataset_list .wpckan_resources_list ul {
