@@ -94,15 +94,17 @@ if ($options_news_tags['news_tags']) {
             $number_latest_post = 20 - $number_sticky_post;
 
             if ($site_name == "Cambodia"){
+				$filter_by_lang = strtolower(get_localization_language_by_language_code(qtrans_getLanguage()));
                 $latest_post = new WP_Query(array(
                 	'posts_per_page' => $number_latest_post,
                 	'post__not_in' => get_option('sticky_posts'),
-                	//'tag' => $tag_name,
+                	'tag' => $tag_name,
                 	'post_type' => 'post',
-                  'language'=> strtolower(get_localization_language_by_language_code(qtrans_getLanguage())),
                 	'post_status' => 'publish',
+					'language'=> $filter_by_lang,
                 	'ignore_sticky_posts' => 1
                 ));
+				//print_r($latest_post);
             }else {
                 $latest_post = new WP_Query(array(
                 	'posts_per_page' => $number_latest_post,
@@ -166,10 +168,10 @@ if ($options_news_tags['news_tags']) {
     					$terms_news_source = get_the_terms( $post->ID, 'news_source' );
 
                         if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
-                            if ($terms_news_sources){
+                            if ($terms_news_source){
     					        $news_sources = "";
                                 echo '<span class="icon-news"></span> ';
-            					foreach ($terms_news_sources as $term) {
+            					foreach ($terms_news_source as $term) {
         							$term_link = get_term_link( $term, 'news_source' );
         							if( is_wp_error( $term_link ) )
         								continue;
