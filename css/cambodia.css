@@ -79,7 +79,15 @@ tr:nth-child(2n+1) {
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
 	border-top: 10px solid #97d320;
 }
-
+.interactive-map .interactive-map-layers  ul li {
+ border-bottom: 1px solid #97D320;
+}
+.interactive-map .interactive-map-layers  ul li a:hover {
+  color: #97D320;
+}
+.interactive-map .interactive-map-layers > ul >li > a.active {
+    border-bottom: 1px solid #97D320;
+}
 #site-intro {
 	background: #97d320;
 }
