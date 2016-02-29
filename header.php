@@ -77,7 +77,7 @@
 			<div class="language float-right">
 					<?php qtranxf_generateLanguageSelectCode($type,$id);?>
 				</div>
-			<div class="right_organization">
+			<div class="six columns right_organization">
 				<div class="search">
 					<div id="live-search">
 						  <input type="text" placeholder="<?php _e('Search site... &#128269;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search site... &#128269;', 'opendev');?>'" />
