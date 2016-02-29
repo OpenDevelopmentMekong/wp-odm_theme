@@ -541,6 +541,8 @@ header#od-head .icon-od-logo {
   text-align: right;
 }
 
+#social-nav{padding-right: 50px;}
+
 #live-search{
   /* width: 200px; */
   display: inline-block;
