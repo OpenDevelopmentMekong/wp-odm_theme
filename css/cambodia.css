@@ -88,6 +88,12 @@ tr:nth-child(2n+1) {
 .interactive-map .interactive-map-layers > ul >li > a.active {
     border-bottom: 1px solid #97D320;
 }
+.color-line{
+  border: #97D320 solid 1px;
+  margin: 0 0 5px;
+  width: 99%;
+  height: 0;
+}
 #site-intro {
 	background: #97d320;
 }

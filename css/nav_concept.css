@@ -311,12 +311,12 @@ li.top-topic {
 
 .mainNav-inner {
     position: absolute;
-    width: 140px;
+    width: 110px;
     top: 230px;
 }
 .mainNavOdc {
   height: 100%;
-  width: 140px;
+  width: 110px;
   float: left;
   position: fixed;
   top: 0;

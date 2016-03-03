@@ -187,6 +187,9 @@ function opendev_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
+  if (is_page('map-explorer') || is_page('maps')){
+      wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+  }
   wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
  //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
 }
@@ -637,7 +640,7 @@ function opendev_ms_nav()
      }
  }
 }
-function get_localization_language_by_language_code($lang_code ="en"){ 
+function get_localization_language_by_language_code($lang_code ="en"){
         $language['en'] = "English";
         $language['kh'] = "Khmer";
         $language['km'] = "Khmer";

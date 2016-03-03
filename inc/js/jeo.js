@@ -129,6 +129,11 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   map.addControl(new jeo.fullscreen());
 
   /*
+   * Clearscreen
+   */
+  map.addControl(new jeo.clearscreen());
+
+  /*
    * Geocode
    */
   if(map.conf.geocode)
@@ -230,12 +235,12 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
             geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
             detect_lang_site = $('html').attr('lang');
             //alert(layer.wms_layer_name_localization);
-            if(detect_lang_site == "en-US"){  
+            if(detect_lang_site == "en-US"){
                  layer_name = layer.wms_layer_name;
-            }else{                  
+            }else{
                  layer_name = layer.wms_layer_name_localization;
-            }                     
-            
+            }
+
 
         var options = {
             layers: layer_name,
@@ -417,27 +422,56 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   $.each(conf.layers, function(i, layer) {
    newConf.layers.push(_.clone(layer));
    if(layer.filtering == 'switch') {
-    var switchLayer = {
-     ID: layer.ID,
-     title: layer.title,
-     content: layer.post_content,
-     excerpt: layer.excerpt,
-     download: layer.download_url,
-     legend: layer.legend
-    };
+     var detect_lang_site = document.documentElement.lang;
+     if(detect_lang_site == "en-US")
+        var switchLayer = {
+         ID: layer.ID,
+         title: layer.title,
+         content: layer.post_content,
+         excerpt: layer.excerpt,
+         download: layer.download_url,
+         profilepage: layer.profilepage_url,
+         legend: layer.legend
+        };
+    else{
+      var switchLayer = {
+       ID: layer.ID,
+       title: layer.title,
+       content: layer.post_content,
+       excerpt: layer.excerpt,
+       download: layer.download_url_localization,
+       profilepage: layer.profilepage_url_localization,
+       legend: layer.legend_localization
+      };
+    }
+
     if(layer.hidden){
          switchLayer.hidden = true;
     }
     newConf.filteringLayers.switchLayers.push(switchLayer);
    }
    if(layer.filtering == 'swap') {
-    var swapLayer = {
-     ID: layer.ID,
-     title: layer.title,
-     content: layer.post_content,
-     excerpt: layer.excerpt,
-     legend: layer.legend
-    };
+      if(detect_lang_site == "en-US")
+          var swapLayer = {
+           ID: layer.ID,
+           title: layer.title,
+           content: layer.post_content,
+           excerpt: layer.excerpt,
+           download: layer.download_url,
+           profilepage: layer.profilepage_url,
+           legend: layer.legend
+          };
+      else{
+        var swapLayer = {
+         ID: layer.ID,
+         title: layer.title,
+         content: layer.post_content,
+         excerpt: layer.excerpt,
+         download: layer.download_url_localization,
+         profilepage: layer.profilepage_url_localization,
+         legend: layer.legend_localization
+        };
+      }
     if(layer.first_swap)
      swapLayer.first = true;
     newConf.filteringLayers.swapLayers.push(swapLayer);
