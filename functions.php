@@ -141,7 +141,6 @@ function opendev_styles()
   }
 }
 add_action('wp_enqueue_scripts', 'opendev_styles', 15);
-
 function opendev_jeo_scripts()
 {
   wp_dequeue_script('jeo-site');
@@ -194,6 +193,14 @@ function opendev_jeo_scripts()
  //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
+
+
+function opendev_jeo_admin_scripts() {
+    if ( file_exists( STYLESHEETPATH . '/inc/js/filter-layers.js')){
+			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+		}
+}
+add_action( 'admin_enqueue_scripts', 'opendev_jeo_admin_scripts' );
 
 function nav_concept_scripts()
 {

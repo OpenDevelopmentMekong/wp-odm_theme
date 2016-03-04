@@ -54,8 +54,6 @@
  		// print_r($map);
 		ob_start();
 		?>
-                <a href="" class="map-aaa">AAA<i class="fa fa-map-o"></i></a>
-                <a href="" class="map-bbb">BBB<i class="fa fa-sun-o"></i></a>
 		<div class="interactive-map">
 			<div class="map-container">
 				    <div id="map_interactive_map_0" class="map"></div>
@@ -65,6 +63,34 @@
             $cat_baselayers = 'base-layers';
             $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
             $cat_baselayers_id =  $term_baselayers->term_id;
+          /*  $args_base_layer = array( 'posts_per_page' => 5,
+                                       'post_type' => 'map-layer',
+                                    	 'post_status' => 'publish',
+                                       'tax_query' => array(
+                                                           array(
+                                                             'taxonomy' => 'layer-category',
+                                                             'field' => 'slug',
+                                                             'terms' => $cat_baselayers
+                                                           )
+                                                         )
+                                       ); //'offset'=> 1,
+            $base_layer_posts = get_posts( $args_base_layer );
+            if($base_layer_posts){
+                $base_layers_array = array();
+                echo '<div class="baselayers">';
+                foreach ( $base_layer_posts as $baselayer ) :
+                    setup_postdata( $baselayer ); ?>
+                        <div class="b_layer <?php echo $baselayer->ID; ?>" ><?php echo $baselayer->post_title; ?></div>
+                <?php
+                    if (get_post_meta($baselayer->ID, '_mapbox_id', true))
+                        $base_layers_array[$baselayer->ID] =  array("mapbox_id", get_post_meta($baselayer->ID, '_mapbox_id', true));
+                    else if(get_post_meta($baselayer->ID, '_tilelayer_tile_url', true))
+                        $base_layers_array[$baselayer->ID] = array("tilelayer_tile_url", get_post_meta($baselayer->ID, '_tilelayer_tile_url', true));
+                endforeach;
+
+                wp_reset_postdata();
+            }
+            echo '</div>'; //baselayers */
           ?>
       <div class="category-map-layers box-shadow hide_show_container">
             <h2 class="sidebar_header widget_headline"><?php _e("Map Layers", "opendev"); ?>
