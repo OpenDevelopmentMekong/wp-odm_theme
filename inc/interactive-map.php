@@ -114,12 +114,9 @@
          <ul class="map-legend-ul">
          </ul>
        </div>
-     </div><!--map-legend-container--> 
+     </div><!--map-legend-container-->
 
-     <?php   /*foreach($map['layers'] as $individual_layer){
-         echo $individual_layer['ID'] . " -- ".$individual_layer['post_content'] ."<br/>";
-      } */
-     ?>
+     <?php //  print_r($map['layers']);   ?>
      <div class="box-shadow layer-toggle-info-container layer-right-screen">
        <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
         <?php $lang = 'en';
@@ -194,6 +191,7 @@
                 //echo "I: ".$i." ID: ".$individual_layer['ID']." HAS CONTENT " . $get_post_content_by_id ."<br/>"; ?>
                         <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
                             <div class="layer-toggle-info-content">
+                                <h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
                                 <?php echo $get_post_content_by_id ?>
                                 <?php //echo $individual_layer['excerpt']; ?>
                             </div>
