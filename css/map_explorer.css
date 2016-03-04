@@ -154,20 +154,9 @@ body.page-template-page-map-explorer{overflow: hidden;}
 .interactive-map .interactive-map-layers  ul li ul li ul{
   border: none !important;
 }
-/*.interactive-map .interactive-map-layers  ul li ul li:hover {
- background: #ccc;
- cursor: pointer;
-}
-
-.interactive-map .interactive-map-layers  ul li ul li.active {
- background: #ddd;
- cursor: pointer;
-}*/
-
 .interactive-map .interactive-map-layers  ul li ul li a {
  padding: 8px 0;
 }
-
 .interactive-map .interactive-map-layers  ul li ul li ul {
  border-left: 1px solid #ccc;
  border-right: 1px solid #ccc;
@@ -191,6 +180,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
 }
 
 /* For top level of taxonomy */
+
 .interactive-map .interactive-map-layers > ul >li {
   border-bottom: 1px solid #6393D2;
 }
@@ -241,7 +231,17 @@ body.page-template-page-map-explorer{overflow: hidden;}
 .interactive-map .interactive-map-layers .active .list-circle-o{
   display: none;
 }
-.interactive-map .interactive-map-layers li.active:before {
+
+.interactive-map .interactive-map-layers .layer-item .list-circle-active{
+  display: none;
+  margin: 0 9px 0 -1px;
+  position: relative;
+  top: 1px;
+}
+.interactive-map .interactive-map-layers .active .list-circle-active{
+  display: inline-block ;
+}
+.interactive-map .interactive-map-layers .layer-item .list-circle-active:before {
   content: url(../img/cycle-list-active.png);
   margin: 2px 8px 0 0;
 }
@@ -250,7 +250,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
   float: right;
   margin-left: 5px;
 }
-/*
+
 .interactive-map .interactive-map-layers .fa-info{
   font-size: 12px;
   float: none;
@@ -269,117 +269,14 @@ body.page-template-page-map-explorer{overflow: hidden;}
   margin: 0 0;
   text-align: center;
 }
-interactive-map .interactive-map-layers span:hover{
+.interactive-map .interactive-map-layers span:hover{
   border: 2px solid #6393D2;
   color: #6393D2;
-} */
-/*.layer-item .layer-status {
-  display:inline;
-  padding: 2px 0px 0px 2px;
-  width:14px;
-  height:14px;
-  background-color: #ccc;
-  border-radius:10px;
-  float:left;
-  margin-right: 10px;
 }
-.layer-item .layer-status.active {
-  background-color: green;
-}
-.layer-item h2 {
- font-size: 14px;
- color: #ccc;
- text-transform: none;
-}
-.layer-item h2:hover {
-  color: #333;
-  cursor: pointer;
-}
-.layer-item h2.active {
-  color: #333;
-}*/
-.layer-item .layer-excerpt{
 
-}
-.layer-item .layer-content{
-  display:none;
-}
-.layer-item p {
- margin-top: 10px;
- margin-bottom: 4px;
- font-size: 10px;
-}
-.layer-item .toggles{
-  margin-top: 10px;
-  margin-bottom: 6px;
-}
-.layer-item .toggles a{
-  font-size: 10px;
-  padding: 2px !important;
-  color: #333;
-  display: block;
-  border: 1px #ccc solid;
-  border-radius: 4px;
-  padding: 0px 10px !important;
-  margin-right: 10px;
-
-}
-.layer-item .toggles a.active{
-  color: #333;
-}
-.layer-item .toggles a:hover{
-  color: #ccc;
-}
-.layer-item .toggles a:before{
-  /*content: '\2261';*/
-}
-.layer-item .toggles a.active:before{
-  /*content: '\2191';*/
-}
 .layer-item .legend{
-  display:none;
+  display: none
 }
-.layer-item .legend ul li{
-  padding: 2px 10px !important;
-}
-.layer-item .legend .bullet{
-
-}
-/*
-.layer-toggle{
- position: absolute;
- width: 34px;
- height: 34px;
- border-radius: 4px;
- border: 1px solid #333;
- top: 10px;
- right: 10px;
- padding: 4px 10px;
- text-align: right;
- background: #fff;
- z-index: 999;
-}
-
-.layer-toggle a{
- text-decoration: none !important;
- display: block !important;
- color: #ccc !important;
- font-weight: 600 !important;
- font-size: 14px !important;
- font-size: 20px !important;
-}
-
-.layer-toggle a:hover{
- color: #000 !important;
-}
-
-.layer-toggle a:before{
- content: '\2261';
-}
-
-.layer-toggle a.active:before{
- content: '\2262';
-} */
 .map-legend-container{
   width: 250px;
   max-height: 350px;
@@ -461,7 +358,6 @@ div.cartodb-legend .legend-title{
 div.cartodb-legend-stack{
   width: 250px;
 }
-
 .layer-cental-screen{
   width: 30%;
   top: 20%;
@@ -480,7 +376,7 @@ div.cartodb-legend-stack{
 }
 .layer-toggle-info-container{
   display: none;
-  max-height: 60%;
+  max-height: 50%;
   height: auto;
 }
 .layer-toggle-info-content{
@@ -505,14 +401,12 @@ div.cartodb-legend-stack{
 .layer-toggle-info table{
   margin-top: 0;
 }
-
 .atlernative_links{
   display: inline-block;
   margin-left: 3.5em;
   float: right;
   margin-bottom: 0.5em;
 }
-
 .div-button{
   border-radius: 15px;
   -moz-border-radius: 15px 15px 15px 15px;

@@ -127,8 +127,9 @@
 
        var status = self._getStatus(layer.ID).on ? " active" : "";
        list += '<li class="layer-item" data-layer="' + layer.ID + '" ' + attrs + '>';
+       list += '<span class="list-circle-active"></span>';
        list += '<span class="list-circle-o"></span>';
-       list += '<span class="layer-item-name">'+layer.title+'</span>'; 
+       list += '<span class="layer-item-name">'+layer.title+'</span>';
 
        if (layer.download)
        list += '<a class="download-url" href="'+layer.download+'"  target="_blank"><i class="fa fa-arrow-down"></i></a>';

@@ -214,10 +214,12 @@
         var resize_height_map_container = window.innerHeight - $("#od-head").height()+75 + "px"; //map, layer cat, and legend
         var resize_height_map_category = window.innerHeight - $("#od-head").height()+ "px";
         var resize_height_map_layer = window.innerHeight - $("#od-head").height() + "px";
+        var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -30 + "px";
 
         $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
         $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
         $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
+        $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
         $(window).resize(function() {
           $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
           $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
@@ -264,7 +266,8 @@
           var cancel = false;
 					$layers.find('.cat-layers li').on('click', function(e) {
             var target =  $( e.target );
-                if ( target.is( "li" ) || target.is( "span" ) ) {
+                //if ( target.is( "li" ) || target.is( "span" ) ) {
+                  if (target.is( "span" ) ) {
     						      map.filterLayers._switchLayer($(this).data('layer'));
     						      if(map.filterLayers._getStatus($(this).data('layer')).on) {
           							$(this).addClass('active');
