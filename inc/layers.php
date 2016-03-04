@@ -1,13 +1,13 @@
 <?php
-// Extend parent theme class     
- class Extended_JEO_Layers extends JEO_Layers {       
+// Extend parent theme class
+ class Extended_JEO_Layers extends JEO_Layers {
     function __construct() {
         $this->language = array('ODM' => "", 'Cambodia' => "Khmer", 'Laos' => "Lao", 'Myanmar' => "Burmese",'Thailand' => "Thai", 'Vietnam' => "Vietnamese");
          // Call parent class constructor
         // parent::__construct();
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
-        add_action('save_post', array($this, 'layer_save'));         
-    } 
+        add_action('save_post', array($this, 'layer_save'));
+    }
     /* function unregister_parent_post_type_again() {
         remove_action( 'init', 'register_post_type', 0 );
         }
@@ -51,7 +51,7 @@
            'high'
           );
          }
-    
+
      function legend_box($post = false) {
 
           $legend = $post ? get_post_meta($post->ID, '_layer_legend', true) : '';
@@ -68,11 +68,14 @@
          }
     function settings_box($post = false) {
       $layer_type = $post ? $this->get_layer_type($post->ID) : false;
-      $layer_download_link = get_post_meta($post->ID, '_layer_download_link', true);  
-      $layer_download_link_localization = get_post_meta($post->ID, '_layer_download_link_localization', true);       
+      $layer_download_link = get_post_meta($post->ID, '_layer_download_link', true);
+      $layer_download_link_localization = get_post_meta($post->ID, '_layer_download_link_localization', true);
+      $layer_profilepage_link = get_post_meta($post->ID, '_layer_profilepage_link', true);
+      $layer_profilepage_link_localization = get_post_meta($post->ID, '_layer_profilepage_link_localization', true);
       ?>
       <div id="layer_settings_box">
        <div class="layer-download-link">
+        <h4><?php _e('Download Page URL', 'jeo'); ?></h4>
         <tbody>
          <tr>
           <th><label for="_layer_download_link"><?php _e('Download URL (English)', 'jeo'); ?></label></th>
@@ -86,6 +89,26 @@
           <td>
            <input id="_layer_download_link_localization" type="text" placeholder="https://" size="40" name="_layer_download_link_localization" value="<?php echo $layer_download_link_localization; ?>" />
            <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'jeo'); ?></p>
+          </td>
+         </tr>
+        </tbody>
+       </div>
+
+       <div class="layer-profilepage-link">
+        <h4><?php _e('Profile Page URL', 'jeo'); ?></h4>
+        <tbody>
+         <tr>
+          <th><label for="_layer_profilepage_link"><?php _e('Profile Page URL (English)', 'jeo'); ?></label></th>
+          <td>
+           <input id="_layer_profilepage_link" type="text" placeholder="https://" size="40" name="_layer_profilepage_link" value="<?php echo $layer_profilepage_link; ?>" />
+           <p class="description"><?php _e('A link to profile page on Wordpress', 'jeo'); ?></p>
+          </td>
+         </tr>
+         <tr>
+          <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.$this->get_localization_language().')', 'jeo'); ?></label></th>
+          <td>
+           <input id="_layer_profilepage_link_localization" type="text" placeholder="https://" size="40" name="_layer_profilepage_link_localization" value="<?php echo $layer_profilepage_link_localization; ?>" />
+           <p class="description"><?php _e('A link to profile page on Wordpress', 'jeo'); ?></p>
           </td>
          </tr>
         </tbody>
@@ -106,8 +129,9 @@
          <label for="layer_type_cartodb"><?php _e('CartoDB', 'jeo'); ?></label>
         </p>
        </div>
+
        <table class="form-table type-setting tilelayer">
-        <?php		
+        <?php
         $tileurl = $post ? get_post_meta($post->ID, '_tilelayer_tile_url', true) : '';
         $utfgridurl = $post ? get_post_meta($post->ID, '_tilelayer_utfgrid_url', true) : '';
         $utfgrid_template = $post ? get_post_meta($post->ID, '_tilelayer_utfgrid_template', true) : '';
@@ -333,7 +357,7 @@
 
        });
       </script>
-      <?php            
+      <?php
     }
 
     function layer_save($post_id) {
@@ -348,22 +372,33 @@
                 * Download URL
                 */
                 if(isset($_REQUEST['_layer_download_link']))
-                 update_post_meta($post_id, '_layer_download_link', $_REQUEST['_layer_download_link']);  
+                 update_post_meta($post_id, '_layer_download_link', $_REQUEST['_layer_download_link']);
                /*
                 * Download URL in other language
                 */
                 if(isset($_REQUEST['_layer_download_link_localization']))
                  update_post_meta($post_id, '_layer_download_link_localization', $_REQUEST['_layer_download_link_localization']);
 
+              /*
+               * Profile Page URL
+               */
+               if(isset($_REQUEST['_layer_profilepage_link']))
+                update_post_meta($post_id, '_layer_profilepage_link', $_REQUEST['_layer_profilepage_link']);
+              /*
+               * Profile Page URL in other language
+               */
+               if(isset($_REQUEST['_layer_profilepage_link_localization']))
+                update_post_meta($post_id, '_layer_profilepage_link_localization', $_REQUEST['_layer_profilepage_link_localization']);
+
                /*
                 * Layer legend
                 */
                if(isset($_REQUEST['_layer_legend']))
                 update_post_meta($post_id, '_layer_legend', $_REQUEST['_layer_legend']);
-               
+
                if(isset($_REQUEST['_layer_legend_localization']))
                 update_post_meta($post_id, '_layer_legend_localization', $_REQUEST['_layer_legend_localization']);
-               
+
                /*
                 * Layer type
                 */
@@ -399,7 +434,7 @@
 
                if(isset($_REQUEST['_wmslayer_layer_name']))
                 update_post_meta($post_id, '_wmslayer_layer_name', $_REQUEST['_wmslayer_layer_name']);
-				
+
 			   if(isset($_REQUEST['_wmslayer_layer_name_localization']))
                 update_post_meta($post_id, '_wmslayer_layer_name_localization', $_REQUEST['_wmslayer_layer_name_localization']);
 
@@ -459,15 +494,20 @@
 
           $type = $this->get_layer_type();
 
+          //$content = apply_filters('the_content', $post->post_content);
+          $content = qtrans_use($lang, $post->post_content,false);//get content by langauge
           $layer = array(
            'ID' => $post->ID,
            'title' => get_the_title(),
-           'post_content' => content(999),
+           'post_content' => $content, //content(999)
            'excerpt' => content(40),
-           'download_url' => get_post_meta($post->ID, '_layer_download_link', true),              
+           'download_url' => get_post_meta($post->ID, '_layer_download_link', true),
            'download_url_localization' => get_post_meta($post->ID, '_layer_download_link_localization', true),
+           'profilepage_url' => get_post_meta($post->ID, '_layer_profilepage_link', true),
+           'profilepage_url_localization' => get_post_meta($post->ID, '_layer_profilepage_link_localization', true),
            'type' => $type,
-           'legend' => get_post_meta($post->ID, '_layer_legend', true)
+           'legend' => get_post_meta($post->ID, '_layer_legend', true),
+           'legend_localization' => get_post_meta($post->ID, '_layer_legend_localization', true)
           );
 
           if($type == 'tilelayer') {

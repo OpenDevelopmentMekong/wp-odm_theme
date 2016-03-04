@@ -82,7 +82,21 @@ tr:nth-child(2n+1) {
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
 	border-top: 10px solid #C6C366;
 }
-
+.interactive-map .interactive-map-layers  ul li {
+  border-bottom: 1px solid #C6C366;
+}
+.interactive-map .interactive-map-layers > ul >li > a.active {
+    border-bottom: 1px solid #C6C366;
+}
+.interactive-map .interactive-map-layers  ul li a:hover {
+  color: #C6C366;
+}
+.color-line{
+  border: #C6C366 solid 1px;
+  margin: 0 0 5px;
+  width: 99%;
+  height: 0;
+}
 #site-intro {
 	background: #C6C366;
 }

@@ -4,7 +4,6 @@
 #thailand-bgcolor, .thailand-bgcolor{
     background: #F7904D !important
 }
-}
 .menu-thailand .icon_menu{
   display: none!important;
 }
@@ -84,7 +83,21 @@ tr:nth-child(2n+1) {
 #news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
 	border-top: 10px solid #f7904d;
 }
-
+.interactive-map .interactive-map-layers  ul li {
+  border-bottom: 1px solid #F7904D;
+}
+.interactive-map .interactive-map-layers > ul >li > a.active {
+    border-bottom: 1px solid #F7904D;
+}
+.interactive-map .interactive-map-layers  ul li a:hover {
+  color: #F7904D;
+}
+.color-line{
+  border: #F7904D solid 1px;
+  margin: 0 0 5px;
+  width: 99%;
+  height: 0;
+}
 #site-intro {
 	background: #f7904d;
 }
