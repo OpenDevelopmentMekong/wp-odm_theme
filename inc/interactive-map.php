@@ -54,6 +54,8 @@
  		// print_r($map);
 		ob_start();
 		?>
+                <a href="" class="map-aaa">AAA<i class="fa fa-map-o"></i></a>
+                <a href="" class="map-bbb">BBB<i class="fa fa-sun-o"></i></a>
 		<div class="interactive-map">
 			<div class="map-container">
 				    <div id="map_interactive_map_0" class="map"></div>
@@ -112,9 +114,8 @@
          <ul class="map-legend-ul">
          </ul>
        </div>
-     </div><!--map-legend-container-->
+     </div><!--map-legend-container--> 
 
-     <pre><?php //print_r($map['layers']); ?> </pre>
      <?php   /*foreach($map['layers'] as $individual_layer){
          echo $individual_layer['ID'] . " -- ".$individual_layer['post_content'] ."<br/>";
       } */
