@@ -224,6 +224,7 @@
           $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
           $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
           $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
+          $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
         });
         // End Resize
 
@@ -311,8 +312,8 @@
                 //Get the tool tip container width adn height
                 var toolTipWidth = $(".layer-toggle-info-container").width();
                 var toolTipHeight = $(".layer-toggle-info-container").height();
-                $('.layer-toggle-info-container').toggle();
                 $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
+                $('.layer-toggle-info-container').toggle();
                 $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
                 if ( target.is( "i.fa-info-circle" )) {
                   if ($('.toggle-info-'+$(this).attr('id')).length){
