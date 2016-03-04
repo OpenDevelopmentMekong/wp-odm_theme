@@ -54,17 +54,26 @@
  		// print_r($map);
 		ob_start();
 		?>
+                <a href="" class="map-aaa">AAA<i class="fa fa-map-o"></i></a>
+                <a href="" class="map-bbb">BBB<i class="fa fa-sun-o"></i></a>
 		<div class="interactive-map">
 			<div class="map-container">
 				    <div id="map_interactive_map_0" class="map"></div>
 			</div>
+
+      <?php
+            $cat_baselayers = 'base-layers';
+            $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
+            $cat_baselayers_id =  $term_baselayers->term_id;
+          ?>
       <div class="category-map-layers box-shadow hide_show_container">
             <h2 class="sidebar_header widget_headline"><?php _e("Map Layers", "opendev"); ?>
              <i class='fa fa-caret-down hide_show_icon'></i>
             </h2>
       			<div class="interactive-map-layers dropdown">
       				<ul class="categories">
-      					<?php wp_list_categories(array('taxonomy' => 'layer-category', 'title_li' => '', 'depth'=> 2,)); ?>
+      					<?php // get all layers form different categories, but not base-layers category
+                  wp_list_categories(array('taxonomy' => 'layer-category', 'title_li' => '', 'depth'=> 2, 'exclude'=> $cat_baselayers_id)); //43002 ?>
       				</ul>
       			</div>
       		</div>
@@ -268,70 +277,69 @@
 
               // if mouseover on info icon on cick/mouseover
 
-              //$layers.find('.cat-layers li i.fa-info-circle').mouseover( "cick", function(e) {
-              $layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
-                    var target =  $( e.target );
-                    //Get the tool tip container width adn height
-                    var toolTipWidth = $(".layer-toggle-info-container").width();
-                    var toolTipHeight = $(".layer-toggle-info-container").height();
-                    $('.layer-toggle-info-container').toggle();
-                    $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
-                    $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
-                    if ( target.is( "i.fa-info-circle" )) {
-                      if ($('.toggle-info-'+$(this).attr('id')).length){
-                            //$('.layer-toggle-info').hide();
-                            //get the height position of the current object
-                                  var elementHeight = $(this).height();
-                                  var offsetWidth = 40;
-                                  var offsetHeight = 30;
-                                  var marginright = 10;
-                                  var marginbttom = 10;
+          //$layers.find('.cat-layers li i.fa-info-circle').mouseover( "cick", function(e) {
+          $layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
+                var target =  $( e.target );
+                //Get the tool tip container width adn height
+                var toolTipWidth = $(".layer-toggle-info-container").width();
+                var toolTipHeight = $(".layer-toggle-info-container").height();
+                $('.layer-toggle-info-container').toggle();
+                $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
+                $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
+                if ( target.is( "i.fa-info-circle" )) {
+                  if ($('.toggle-info-'+$(this).attr('id')).length){
+                        //$('.layer-toggle-info').hide();
+                        //get the height position of the current object
+                              var elementHeight = $(this).height();
+                              var offsetWidth = 40;
+                              var offsetHeight = 30;
+                              var marginright = 10;
+                              var marginbttom = 10;
 
-                                  //Get the HTML document width and height
-                                  var documentWidth = $(document).width();
-                                  var documentHeight = $(document).height();
+                              //Get the HTML document width and height
+                              var documentWidth = $(document).width();
+                              var documentHeight = $(document).height();
 
-                                  //Set top and bottom position of the tool tip
-                                  var top = $(this).offset().top;
-                                  if (top + toolTipHeight > documentHeight) {
-                                      // flip the tool tip position to the top of the object
-                                      // so it won't go out of the current Html document height
-                                      // and show up in the correct place
-                                      top = documentHeight - toolTipHeight - offsetHeight - (2 * elementHeight) - marginbttom;
-                                  }
+                              //Set top and bottom position of the tool tip
+                              var top = $(this).offset().top;
+                              if (top + toolTipHeight > documentHeight) {
+                                  // flip the tool tip position to the top of the object
+                                  // so it won't go out of the current Html document height
+                                  // and show up in the correct place
+                                  top = documentHeight - toolTipHeight - offsetHeight - (2 * elementHeight) - marginbttom;
+                              }
 
-                                  //set  the left and right position of the tool tip
-                                  var left = $(this).offset().left + (2*offsetWidth);
+                              //set  the left and right position of the tool tip
+                              var left = $(this).offset().left + (2*offsetWidth);
 
-                                  if (left + toolTipWidth > documentWidth) {
-                                      // shift the tool tip position to the left of the object
-                                      // so it won't go out of width of current HTML document width
-                                      // and show up in the correct place
-                                      //left = documentWidth - toolTipWidth - (2 * offsetWidth);
-                                      left = $(this).offset().left - toolTipWidth - (offsetWidth) + marginright;
-                                  }
+                              if (left + toolTipWidth > documentWidth) {
+                                  // shift the tool tip position to the left of the object
+                                  // so it won't go out of width of current HTML document width
+                                  // and show up in the correct place
+                                  //left = documentWidth - toolTipWidth - (2 * offsetWidth);
+                                  left = $(this).offset().left - toolTipWidth - (offsetWidth) + marginright;
+                              }
 
-                                  //set the position of the tool tip
-                                  $('.toggle-info-'+$(this).attr('id')).css("max-height", toolTipHeight-offsetHeight);
-                                  $('.toggle-info-'+$(this).attr('id')).addClass("show_it");
-                                	$('.toggle-info-'+$(this).attr('id')).show();
+                              //set the position of the tool tip
+                              $('.toggle-info-'+$(this).attr('id')).css("max-height", toolTipHeight-offsetHeight);
+                              $('.toggle-info-'+$(this).attr('id')).addClass("show_it");
+                            	$('.toggle-info-'+$(this).attr('id')).show();
 
-                                  //set info-container possition folow the mouseclik/mouseover
-                                  //$('.layer-toggle-info-container').css({'max-height':'100%' ,'top': top, 'left': left });
-                                  //show tool tips
-                                  $('.layer-toggle-info-container').fadeIn();
-                        }
+                              //set info-container possition folow the mouseclik/mouseover
+                              //$('.layer-toggle-info-container').css({'max-height':'100%' ,'top': top, 'left': left });
+                              //show tool tips
+                              $('.layer-toggle-info-container').fadeIn();
+                    }
 
-                        console.log("documentHeight: "+documentHeight + " documentWidth: "+documentWidth + " toolTipWidth:" + toolTipWidth +" left:"+ $(this).offset().left+" top:"+$(this).offset().top +" toolTipHeight: "+toolTipHeight +" offsetHeight:"+ offsetHeight +" elementHeight:" +elementHeight);
-                    }//end if
+                    console.log("documentHeight: "+documentHeight + " documentWidth: "+documentWidth + " toolTipWidth:" + toolTipWidth +" left:"+ $(this).offset().left+" top:"+$(this).offset().top +" toolTipHeight: "+toolTipHeight +" offsetHeight:"+ offsetHeight +" elementHeight:" +elementHeight);
+                }//end if
 
-                });
+            });
 
                 /*$(".layer-toggle-info-container").on( "mouseout", function(e) {
                       $(".layer-toggle-info-container").hide();
                 });*/
 				}); //	jeo.mapReady
-
 
 
         //Hide and show on click the collapse and expend icon
