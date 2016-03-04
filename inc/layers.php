@@ -541,9 +541,7 @@
 
           wp_reset_postdata();
           return $layer;
-
-         }
-
+         } 
 
 } //class
 // Init Child class
