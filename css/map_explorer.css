@@ -270,7 +270,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
   text-align: center;
 }
 .interactive-map .interactive-map-layers span:hover{
-  border: 2px solid #6393D2;
+  /*border: 2px solid #6393D2;*/
   color: #6393D2;
 }
 
