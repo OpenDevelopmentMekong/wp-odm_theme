@@ -105,9 +105,9 @@ tr:nth-child(2n+1) {
 [class^="icon-"], [class*=" icon-"]{ color: #97d320;}
 
 /*L kasten links*/
-.mainNavOdc,.headerODM{background:#06323D;}
+.mainNavOdc,.headerODM,.contentNavigation{background:#06323D;}
 /*nav oben*/
-.white #cNavNew.current-site-mekong,.contentNavigation{background:#12414E;}
+.white #cNavNew.current-site-mekong{background:#12414E;}
 /*header text*/
 .white #headerText span a{color:#97d320;text-decoration: none;}
   /*level 1 hover*/
@@ -188,4 +188,108 @@ td.entry_title a{
     display: inline-block;
     background: url("../img/no-child-kh.png") no-repeat 0 2px!important;
     padding-left: 20px;
+}
+
+/*map explorer category colors*/
+.cat-infrascructure .category-color{background: #0EB20B;}
+.cat-infrascructure .layer-item:hover .icon-info-path,
+  .active-layer.layer-infrascructure .icon-info-path, .active-layer.layer-infrascructure .icon-download path{
+    fill:#0EB20B;
+  }
+.cat-infrascructure .layer-item:hover h2,
+  .map-active-layers .active-layer.layer-infrascructure .layer-item h2,
+  .cat-item.cat-infrascructure .layer-item h2:hover,
+  .cat-item.cat-infrascructure .layer-item h2.active{
+    color:#0EB20B;
+  }
+.map-active-layers .layer-infrascructure .layer-status.active,
+ .categories .cat-infrascructure .layer-status.active,
+ .map-active-layers .active-layer.layer-infrascructure h6{
+  background: #0EB20B;
+}
+
+.cat-map-environment-and-natural-resources .category-color{background: #FFD825;}
+.cat-map-environment-and-natural-resources .layer-item:hover .icon-info-path,
+  .active-layer.layer-map-environment-and-natural-resources .icon-info-path, .active-layer.layer-map-environment-and-natural-resources .icon-download path{
+    fill:#FFD825;
+  }
+.cat-map-environment-and-natural-resources .layer-item:hover h2,
+  .map-active-layers .active-layer.layer-map-environment-and-natural-resources .layer-item h2,
+  .cat-item.cat-map-environment-and-natural-resources .layer-item h2:hover,
+  .cat-item.cat-map-environment-and-natural-resources .layer-item h2.active{
+    color:#FFD825;
+  }
+.map-active-layers .layer-map-environment-and-natural-resources .layer-status.active,
+ .categories .cat-map-environment-and-natural-resources .layer-status.active,
+ .map-active-layers .active-layer.layer-map-environment-and-natural-resources h6{
+  background: #FFD825;
+}
+
+
+.cat-hydrology .category-color{background: #FF8600;}
+.cat-hydrology .layer-item:hover .icon-info-path,
+  .active-layer.layer-hydrology .icon-info-path, .active-layer.layer-hydrology .icon-download path{
+    fill:#FF8600;
+  }
+.cat-hydrology .layer-item:hover h2,
+  .map-active-layers .active-layer.layer-hydrology .layer-item h2,
+  .cat-item.cat-hydrology .layer-item h2:hover,
+  .cat-item.cat-hydrology .layer-item h2.active{
+  color:#FF8600;
+}
+.map-active-layers .layer-hydrology .layer-status.active,
+ .categories .cat-hydrology .layer-status.active,
+ .map-active-layers .active-layer.layer-hydrology h6{
+  background: #FF8600;
+}
+
+.cat-demographic .category-color{background: #FF003E;}
+.cat-demographic .layer-item:hover .icon-info-path,
+  .active-layer.layer-demographic .icon-info-path, .active-layer.layer-demographic .icon-download path{
+    fill:#FF003E;
+  }
+.cat-demographic .layer-item:hover h2,
+  .map-active-layers .active-layer.layer-demographic .layer-item h2,
+  .cat-item.cat-demographic .layer-item h2:hover,
+  .cat-item.cat-demographic .layer-item h2.active{
+  color:#FF003E;
+}
+.map-active-layers .layer-demographic .layer-status.active,
+ .categories .cat-demographic .layer-status.active,
+ .map-active-layers .active-layer.layer-demographic h6{
+  background: #FF003E;
+}
+
+.cat-energy .category-color{background: #2E0CCC;}
+.cat-energy .layer-item:hover .icon-info-path,
+  .active-layer.layer-energy .icon-info-path, .active-layer.layer-energy .icon-download path{
+    fill:#2E0CCC;
+  }
+.cat-energy .layer-item:hover h2,
+  .map-active-layers .active-layer.layer-energy .layer-item h2,
+  .cat-item.cat-energy .layer-item h2:hover,
+  .cat-item.cat-energy .layer-item h2.active{
+  color:#2E0CCC;
+}
+.map-active-layers .layer-energy .layer-status.active,
+ .categories .cat-energy .layer-status.active,
+ .map-active-layers .active-layer.layer-energy h6{
+  background: #2E0CCC;
+}
+
+.cat-agriculture .category-color{background: #00C7A4;}
+.cat-agriculture .layer-item:hover .icon-info-path,
+  .active-layer.layer-agriculture .icon-info-path, .active-layer.layer-agriculture .icon-download path{
+    fill:#00C7A4;
+  }
+.cat-agriculture .layer-item:hover h2,
+  .map-active-layers .active-layer.layer-agriculture .layer-item h2,
+  .cat-item.cat-agriculture .layer-item h2:hover,
+  .cat-item.cat-agriculture .layer-item h2.active{
+  color:#00C7A4;
+}
+.map-active-layers .layer-agriculture .layer-status.active,
+ .categories .cat-agriculture .layer-status.active,
+ .map-active-layers .active-layer.layer-agriculture h6{
+  background: #00C7A4;
 }

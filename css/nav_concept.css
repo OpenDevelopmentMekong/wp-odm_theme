@@ -143,7 +143,7 @@
   max-width: 100%;
   /*padding-left: 0!important;*/
 }
-.contentNavigation{background: #373c6a;}
+.contentNavigation{background: #292d56;}
 /*header text*/
 
 .white #headerText span a {
@@ -396,6 +396,10 @@ li.top-topic {
   float: right;
   clear: right;
 }
+  .right_organization .search {
+      float: right;
+      clear: both;
+  }
 .content_wrapper{
   margin-left: 110px;
   overflow: hidden;
@@ -536,6 +540,8 @@ header#od-head .icon-od-logo {
 .social {
   text-align: right;
 }
+
+#social-nav{padding-right: 50px;}
 
 #live-search{
   /* width: 200px; */

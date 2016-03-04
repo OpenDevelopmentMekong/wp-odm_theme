@@ -5,6 +5,10 @@
 		overflow-y: auto;
 		display: block;
 	}
+  #od-head .right_organization {
+      width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 980px) {
@@ -69,7 +73,7 @@
 
 @media only screen and (max-width: 768px) {
     #od-head .right_organization {
-        width: 45%;
+        width: 100%;
     }
     #od-head h1{
         font-size: 27px;
@@ -82,6 +86,8 @@
         float: right;
         margin: 10px 0px 0px 20px;
     }
+
+    #social-nav{padding-right: 20px;}
 }
 
 @media only screen and (max-width: 400px) {
@@ -89,9 +95,6 @@
         padding: 10px 0px 0px;
     }
 
-    #od-head .right_organization {
-        width: 45%;
-    }
     #od-head h1{
         font-size: 25px;
         font-family: "Droid Serif";
