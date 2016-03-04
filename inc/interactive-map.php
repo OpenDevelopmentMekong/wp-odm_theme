@@ -220,6 +220,7 @@
         $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
         $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
         $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
+        $(".page-template-page-map-explorer .layer-toggle-info").css("display", "none");
         $(window).resize(function() {
           $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
           $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
