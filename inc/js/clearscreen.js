@@ -33,7 +33,7 @@
 			});
 		},
 		toggle: function() {
-			if($('.map-clearscreen').hasClass('hide-all-boxes-on-map')){
+			/*if($('.map-clearscreen').hasClass('hide-all-boxes-on-map')){
 					$('.category-map-layers').hide("fade");
 					$('.map-legend-container').hide("fade");
 					$('.layer-toggle-info-container').hide("fade");
@@ -45,12 +45,12 @@
 					if ($(".layer-toggle-info-container .show_it").length){
 						  $('.layer-toggle-info-container').show("fade");
 					}
-			  
+
 
 			}
 	 		$('.map-clearscreen').toggleClass('show-all-boxes-on-map');
 			$('.map-clearscreen').toggleClass('hide-all-boxes-on-map');
-		}
+		}*/
 	});
 
 })(jQuery);

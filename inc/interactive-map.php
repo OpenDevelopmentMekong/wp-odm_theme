@@ -54,8 +54,6 @@
  		// print_r($map);
 		ob_start();
 		?>
-                <a href="" class="map-aaa">AAA<i class="fa fa-map-o"></i></a>
-                <a href="" class="map-bbb">BBB<i class="fa fa-sun-o"></i></a>
 		<div class="interactive-map">
 			<div class="map-container">
 				    <div id="map_interactive_map_0" class="map"></div>
@@ -212,8 +210,8 @@
 
         // Page is scrollable
         var resize_height_map_container = window.innerHeight - $("#od-head").height()+75 + "px"; //map, layer cat, and legend
-        var resize_height_map_category = window.innerHeight - $("#od-head").height()+ "px";
-        var resize_height_map_layer = window.innerHeight - $("#od-head").height() + "px";
+        var resize_height_map_category = window.innerHeight - $("#od-head").height() + "px";
+        var resize_height_map_layer = window.innerHeight - $("#od-head").height() - 41+ "px";
         var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -30 + "px";
 
         $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
