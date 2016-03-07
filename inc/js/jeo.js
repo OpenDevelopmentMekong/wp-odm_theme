@@ -76,7 +76,7 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 
   // use mapbox map for more map resources
   map = L.mapbox.map(map_id, null, options);
-
+ 
   if(conf.mainMap)
    jeo.map = map;
 
