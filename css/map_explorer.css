@@ -17,6 +17,16 @@ body.page-template-page-map-explorer{overflow: hidden;}
   width: auto !important;
   z-index: 9999999;
 }
+.page-template-page-map-explorer .interactive-map .fullscreen-map .category-map-layers{
+  z-index: 9999999;
+  position: fixed;
+  right: 10px;
+}
+.page-template-page-map-explorer .interactive-map .fullscreen-map .map-legend-container{
+  z-index: 9999999;
+  position: fixed;
+  left: 0;
+}
 .page-template-page-map-explorer .interactive-map .map-container .leaflet-left{
     left: 0;
 }
