@@ -93,23 +93,25 @@ td{
 
 /******* Image Caption *******/
 .mekong-color{
-    color: #999;
+    color: #373c6a;
+    font-style: italic;
 }
+
 a, a:visited{
- color: #999; /*6393D2, 2774da;*/
+ color: #373c6a; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover{
- color: #999; /*6393D2, 2774da;*/
+ color: #373c6a; /*6393D2, 2774da;*/
  text-decoration:underline
 }
 a strong:hover {
- color: #999;
+ color: #373c6a;
  text-decoration:underline
 }
 a.button,
 .button {
- background: #6393d2;
+ background: #373c6a;
  color: #fff;
  padding: 10px 15px;
  text-transform: uppercase;
