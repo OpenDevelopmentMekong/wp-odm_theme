@@ -1,42 +1,4 @@
-<script>
-    (function($){
-        var three_per_row_highest;
-        $(window).load(function(){
-            /* $(".scroll-sticky-posts").mCustomScrollbar({
-                 axis:"y",
-                 theme:"dark",
-                 autoHideScrollbar: 1
-            });
-            var highestBox = 0;
-            $(".three_per_row").each(function(){
-                if($(this).height() > highestBox)
-                   highestBox = $(this).height();
-            });
-            three_per_row_highest = highestBox;
-            $(".three_per_row").height(highestBox);
-
-            // Set of the two colum of each posts items in News Container equal height
-            for(var i = 1; i <= $(".two_per_row").length; i+=2) {
-                var next = i+1;
-                var highestCol = Math.max($(".two_per_row"+i).height(),$(".two_per_row"+next).height());
-                $(".two_per_row"+i).height(highestCol);
-                $(".two_per_row"+next).height(highestCol);
-            }   */
-        });
-    })(jQuery);
-</script>
-
 <?php
-// some parts in code were commented because the news container won't filter by country news any more
-/* $options_news_tags = get_option('opendev_options');
-if ($options_news_tags['news_tags']) {
-    $filter_by_tags = preg_replace('/,$/', '', $options_news_tags['news_tags']);
-    $filter_by_tags = explode(",", $filter_by_tags);
-}else{
-    $filter_by_tags  = array('Regional','Cambodia','Laos','Myanmar','Thailand','Vietnam');
-} */
-//foreach ($filter_by_tags as $tag_name){
-
     $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
     $tag_name = trim($tag_name);
       if ($site_name == "Cambodia"){
@@ -55,7 +17,7 @@ if ($options_news_tags['news_tags']) {
             'posts_per_page' => 6,
             'post__in' => get_option('sticky_posts'),
             //'tag' => $tag_name,
-            'post_type' => 'post', 
+            'post_type' => 'post',
             'post_status' => 'publish',
               'caller_get_posts' => 0,
             'ignore_sticky_posts' => 1
