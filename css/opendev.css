@@ -97,6 +97,10 @@ td{
     font-style: italic;
 }
 
+.content a{
+  font-style: italic;
+  font-weight: bold;
+}
 a, a:visited{
  color: #373c6a; /*6393D2, 2774da;*/
  text-decoration:none
