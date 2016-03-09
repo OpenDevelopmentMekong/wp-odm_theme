@@ -116,7 +116,7 @@ tr:nth-child(2n+1) {
 /*New Nav Concept*/
 
 /*logo*/
-[class^="icon-"], [class*=" icon-"]{ color: #D61E2A;}
+[class^="icon-"], [class*=" icon-"]{ color: #3b2226;}
 
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#3b2226;}
