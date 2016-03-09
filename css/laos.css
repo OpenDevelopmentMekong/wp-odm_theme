@@ -7,8 +7,8 @@
 .menu-laos .icon_menu{
   display: none!important;
 }
-a, a:visited, #sidebar .widget li a{
- color: #D61E2A; /*6393D2, 2774da;*/
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
+ color: #3b2226; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{

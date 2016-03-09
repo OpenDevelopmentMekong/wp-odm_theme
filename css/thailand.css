@@ -7,8 +7,8 @@
 .menu-thailand .icon_menu{
   display: none!important;
 }
-a, a:visited, #sidebar .widget li a{
- color: #F7904D; /*6393D2, 2774da;*/
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
+ color: #64161d; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
