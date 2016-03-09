@@ -113,7 +113,7 @@ tr:nth-child(2n+1) {
 }
 
 /*logo*/
-[class^="icon-"], [class*=" icon-"]{ color: #C6C366;}
+[class^="icon-"], [class*=" icon-"]{ color: #3D9C00;}
 
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#3D9C00;}
