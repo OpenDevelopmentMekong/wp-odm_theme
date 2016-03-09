@@ -4,7 +4,7 @@
 #cambodia-bgcolor, .cambodia-bgcolor{
     background: #97D320 !important
 }
-a, a:visited, #sidebar .widget li a{
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
  color: #06323D; /* #7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
 }

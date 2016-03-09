@@ -7,7 +7,7 @@
 .menu-vietnam .icon_menu{
   display: none!important;
 }
-a, a:visited, #sidebar .widget li a{
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
  color: #3D9C00; /*6393D2, 2774da;*/
  text-decoration:none
 }

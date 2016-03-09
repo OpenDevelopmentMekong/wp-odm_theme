@@ -96,6 +96,9 @@ td{
     color: #373c6a;
     font-style: italic;
 }
+.map-sidebar a{
+  color: #373c6a;
+}
 
 .content a{
   font-style: italic;
