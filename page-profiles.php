@@ -148,32 +148,10 @@ require_once('page-profiles-config.php');
     <?php else: ?>
       <div class="container">
         <div class="row">
-    			<div class="nine columns">
+    			<div class="ten columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>
-          <div class="three columns">
-
-            <div class="sidebar_box">
-              <div class="sidebar_header">
-                <span class="big">
-                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
-              </div>
-              <div class="sidebar_box_content">
-                <input type="text" id="search_all" placeholder="Search all profiles">
-              </div>
-            </div>
-
-            <div class="sidebar_box">
-              <div class="sidebar_header">
-                <span class="big">
-                  <?php _e( 'DOWNLOAD', 'search' );?></span>
-              </div>
-              <div class="sidebar_box_content download_buttons">
-                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
-                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
-                <?php endforeach; ?>
-              </div>
-            </div>
+          <div class="two columns">
 
           </div>
         </div>
@@ -183,9 +161,9 @@ require_once('page-profiles-config.php');
     			</div>
     		</header>
         <div class="row no-margin-buttom">
-          <div class="twelve columns">
+          <div class="eight columns table-column-container">
 
-			<div class="data-toolbar-fixed-header"></div>
+			<div class=""></div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -275,6 +253,31 @@ require_once('page-profiles-config.php');
       				</tbody>
       			</table>
           </div>
+          <div class="three columns">
+
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
+              </div>
+              <div class="sidebar_box_content">
+                <input type="text" id="search_all" placeholder="Search all profiles">
+              </div>
+            </div>
+
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'DOWNLOAD', 'search' );?></span>
+              </div>
+              <div class="sidebar_box_content download_buttons">
+                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
+                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
+                <?php endforeach; ?>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <div class="row">
@@ -326,6 +329,7 @@ jQuery(document).ready(function($) {
   if (!singleProfile){
 	var get_datatable = $('#profiles').offset().top;
 	get_datatable = get_datatable -30;
+  var get_sidebar = get_datatable +300;
 	$(".content_wrapper").scroll(function(){
 			if ($(".content_wrapper").scrollTop()   >= get_datatable) {
 				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
@@ -335,6 +339,16 @@ jQuery(document).ready(function($) {
 		   else {
 				$('.dataTables_scrollHead').css('position','static');
 		   }
+
+       if ($(".content_wrapper").scrollTop()   >= get_sidebar) {
+         $('.table-column-container').removeClass("eight");
+         $('.table-column-container').addClass("twelve");
+ 		   }
+
+       else {
+         $('.table-column-container').removeClass("twelve");
+         $('.table-column-container').addClass("eight");
+       }
      });
     oTable = $("#profiles").dataTable({
       scrollX: true,
