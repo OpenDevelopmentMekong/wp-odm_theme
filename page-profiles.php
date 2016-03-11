@@ -49,6 +49,11 @@ require_once('page-profiles-config.php');
     <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
       <div class="container">
         <div class="row">
+          <div class="ten columns">
+            <div id="profiles_map" class="profiles_map"></div>
+          </div>
+        </div>
+        <div class="row">
           <div class="eight columns">
             <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
             <div class="profile-metadata">
@@ -66,9 +71,6 @@ require_once('page-profiles-config.php');
                 </tbody>
               </table>
             </div>
-          </div>
-          <div class="four columns">
-            <div id="profiles_map" class="profiles_map"></div>
           </div>
         </div>
         <div class="row">
