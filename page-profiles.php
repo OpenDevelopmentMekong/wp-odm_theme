@@ -183,7 +183,7 @@ require_once('page-profiles-config.php');
     			</div>
     		</header>
         <div class="row no-margin-buttom">
-          <div class="twelve columns">
+          <div class="eight columns">
 
 			<div class="data-toolbar-fixed-header"></div>
             <table id="profiles" class="data-table">
