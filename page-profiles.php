@@ -185,7 +185,7 @@ require_once('page-profiles-config.php');
         <div class="row no-margin-buttom">
           <div class="eight columns">
 
-			<div class="data-toolbar-fixed-header"></div>
+			<div class=""></div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -328,9 +328,9 @@ jQuery(document).ready(function($) {
 	get_datatable = get_datatable -30;
 	$(".content_wrapper").scroll(function(){
 			if ($(".content_wrapper").scrollTop()   >= get_datatable) {
-				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
-				$('.dataTables_scrollHead').css('z-index',9999);
-				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
+				// $('.dataTables_scrollHead').css('position','fixed').css('top','0');
+				// $('.dataTables_scrollHead').css('z-index',9999);
+				// $('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
 		   }
 		   else {
 				$('.dataTables_scrollHead').css('position','static');
