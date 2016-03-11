@@ -151,6 +151,9 @@ require_once('page-profiles-config.php');
     			<div class="ten columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>
+          <div class="two columns">
+
+          </div>
         </div>
         <header class="single-post-header">
     			<div class="twelve columns">
