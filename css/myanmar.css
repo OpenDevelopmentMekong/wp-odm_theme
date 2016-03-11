@@ -113,6 +113,9 @@ tr:nth-child(2n+1) {
 }
 
 /*logo*/
+.icon-od-logo{
+  color: #F8BF42!important;
+}
 [class^="icon-"], [class*=" icon-"]{ color: #59396C;}
 
 /*L kasten links*/
