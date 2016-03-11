@@ -148,33 +148,8 @@ require_once('page-profiles-config.php');
     <?php else: ?>
       <div class="container">
         <div class="row">
-    			<div class="nine columns">
+    			<div class="ten columns">
             <div id="profiles_map" class="profiles_map"></div>
-          </div>
-          <div class="three columns">
-
-            <div class="sidebar_box">
-              <div class="sidebar_header">
-                <span class="big">
-                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
-              </div>
-              <div class="sidebar_box_content">
-                <input type="text" id="search_all" placeholder="Search all profiles">
-              </div>
-            </div>
-
-            <div class="sidebar_box">
-              <div class="sidebar_header">
-                <span class="big">
-                  <?php _e( 'DOWNLOAD', 'search' );?></span>
-              </div>
-              <div class="sidebar_box_content download_buttons">
-                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
-                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
-                <?php endforeach; ?>
-              </div>
-            </div>
-
           </div>
         </div>
         <header class="single-post-header">
@@ -274,6 +249,31 @@ require_once('page-profiles-config.php');
         				<?php endforeach; ?>
       				</tbody>
       			</table>
+          </div>
+          <div class="three columns">
+
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
+              </div>
+              <div class="sidebar_box_content">
+                <input type="text" id="search_all" placeholder="Search all profiles">
+              </div>
+            </div>
+
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'DOWNLOAD', 'search' );?></span>
+              </div>
+              <div class="sidebar_box_content download_buttons">
+                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
+                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
+                <?php endforeach; ?>
+              </div>
+            </div>
+
           </div>
         </div>
 
