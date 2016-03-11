@@ -102,6 +102,9 @@ tr:nth-child(2n+1) {
 }
 /*## Nav Concept ##*/
 /*logo*/
+.icon-od-logo{
+  color: #97d320!important;
+}
 [class^="icon-"], [class*=" icon-"]{ color: #12414E;}
 
 /*L kasten links*/
