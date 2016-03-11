@@ -46,11 +46,6 @@ require_once('page-profiles-config.php');
   ?>
 
   <section id="content" class="single-post">
-		<header class="single-post-header">
-			<div class="twelve columns">
-        <h1 class="align-left"><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
-			</div>
-		</header>
     <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
       <div class="container">
         <div class="row">
@@ -180,9 +175,14 @@ require_once('page-profiles-config.php');
 
           </div>
         </div>
+        <header class="single-post-header">
+    			<div class="twelve columns">
+            <h1 class="align-left"><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
+    			</div>
+    		</header>
         <div class="row no-margin-buttom">
           <div class="twelve columns">
-			
+
 			<div class="data-toolbar-fixed-header"></div>
             <table id="profiles" class="data-table">
               <thead>
@@ -237,7 +237,7 @@ require_once('page-profiles-config.php');
 										<td>
                       <?php echo $profile['intended_p'];?>
                     </td>
-										
+
 										<td>
                       <?php echo $profile['province'];?>
                     </td>
@@ -274,7 +274,7 @@ require_once('page-profiles-config.php');
       			</table>
           </div>
         </div>
-		
+
         <div class="row">
           <div class="twelve columns">
             <div class="disclaimer">
@@ -311,29 +311,29 @@ var filterEntriesMap = function(mapIds){
     });
   }
 	layers[1].getSubLayer(0).setSQL(sql);
-} 
+}
 jQuery(document).ready(function($) {
-  console.log("profile pages init");	
+  console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
    for (var i = 0; i < settings.length; i++) {
      settings[i].oInstance.fnFilter(sInput, iColumn, bRegex, bSmart);
    }
   };
-  
-  if (!singleProfile){  	
+
+  if (!singleProfile){
 	var get_datatable = $('#profiles').offset().top;
-	get_datatable = get_datatable -30;	 
-	$(".content_wrapper").scroll(function(){ 
-			if ($(".content_wrapper").scrollTop()   >= get_datatable) { 
+	get_datatable = get_datatable -30;
+	$(".content_wrapper").scroll(function(){
+			if ($(".content_wrapper").scrollTop()   >= get_datatable) {
 				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
 				$('.dataTables_scrollHead').css('z-index',9999);
 				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
 		   }
-		   else {			     
+		   else {
 				$('.dataTables_scrollHead').css('position','static');
-		   }  
-     }); 
+		   }
+     });
     oTable = $("#profiles").dataTable({
       scrollX: true,
       responsive: false,
@@ -341,7 +341,7 @@ jQuery(document).ready(function($) {
       processing: true,
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       order: [[ 0, 'asc' ]],
-      displayLength: 25, 
+      displayLength: 25,
       columnDefs: [
         {
           "targets": [ 17 ],
@@ -349,12 +349,12 @@ jQuery(document).ready(function($) {
         }
       ]
     });
-	
+
    //Enable header scroll bar
 	$('.dataTables_scrollHead').scroll(function(e){
-        $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft); 
-	});   
-    
+        $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
+	});
+
   }//if single page
   $("#search_all").keyup(function () {
     oTable.fnFilterAll(this.value);
@@ -382,8 +382,8 @@ window.onload = function() {
       filterEntriesMap([singleProfileMapId]);
     }
 	});
-	
-	
+
+
 }
 
 </script>
