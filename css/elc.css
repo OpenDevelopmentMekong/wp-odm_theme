@@ -15,3 +15,7 @@
 .disclaimer p{
   margin-bottom: 6px;
 }
+
+.page-template-page-profiles .single-post .row{
+  margin-top: 0;
+}
