@@ -74,7 +74,7 @@ require_once('page-profiles-config.php');
           </div>
         </div>
         <div class="row">
-          <div class="twelve columns">
+          <div class="eight columns">
             <?php if (count($ammendements) > 0): ?>
               <div class="profile-metadata">
                 <h2>Amendments</h2>
