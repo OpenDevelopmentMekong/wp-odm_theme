@@ -173,7 +173,7 @@ function nav_concept_scripts()
   wp_register_style('dataTables-responsive-css', get_stylesheet_directory_uri().'/lib/dataTables/css/responsive.dataTables.css');
   wp_register_style('dataTables-fixedHeader-css', get_stylesheet_directory_uri().'/lib/dataTables/css/fixedHeader.dataTables.min.css');
   wp_register_style('elc', get_stylesheet_directory_uri().'/css/elc.css');
-  
+
 
   wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
   wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
@@ -223,6 +223,9 @@ function opendev_styles()
 
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
 
+wp_register_style('responsive',  $css_base.'responsive.css');
+wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
+wp_enqueue_style('overrides');
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
 // create two taxonomies, genres and writers for the post type "book"
