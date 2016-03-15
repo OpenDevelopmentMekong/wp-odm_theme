@@ -3,9 +3,9 @@
 }
 table.dataTable thead th, table.dataTable tfoot th{
   font-weight: normal!important;
-  font-size: 13px;
+  font-size: 13px!important;
   font-style: italic;
-  padding: 10px;
+  padding: 10px!important;
   text-align: left;
   vertical-align: top;
 }
