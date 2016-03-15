@@ -179,6 +179,9 @@ function nav_concept_scripts()
  // wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0');
   wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
 
+  wp_register_style('elc', get_stylesheet_directory_uri().'/css/elc.css');
+  wp_enqueue_style('elc');
+
 	wp_enqueue_style('dataTables-css');
 }
 
@@ -201,7 +204,6 @@ function opendev_styles()
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
   wp_register_style('table-pages',  $css_base.'table-pages.css');
-  wp_register_style('elc',  $css_base.'elc.css');
   wp_register_style('forest-cover',  $css_base.'forest-cover.css');
   wp_register_style('responsive',  $css_base.'responsive.css');
 
@@ -210,7 +212,6 @@ function opendev_styles()
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('table-pages');
   wp_enqueue_style('map-explorer');
-  wp_enqueue_style('elc');
   wp_enqueue_style('forest-cover');
   wp_enqueue_style('responsive');
 
