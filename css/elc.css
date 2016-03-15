@@ -9,6 +9,9 @@ table.dataTable thead th, table.dataTable tfoot th{
   text-align: left;
   vertical-align: top;
 }
+.dataTables_scrollBody th {
+    display: none;
+}
 /*temporary hiding references*/
 #profiles td ul{
   display: none;
