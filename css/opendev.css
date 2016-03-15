@@ -2669,3 +2669,6 @@ div.cartodb-legend.custom ul li.graph{
     text-align:center;
     font-size: 15px;
 }
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #292d56!important;
+}

@@ -118,6 +118,9 @@ tr:nth-child(2n+1) {
 }
 [class^="icon-"], [class*=" icon-"]{ color: #3D9C00;}
 
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #3D9C00!important;
+}
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#3D9C00;}
 /*nav oben*/
