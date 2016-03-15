@@ -1,6 +1,14 @@
 #profiles td{
   line-height: 16px;
 }
+table.dataTable thead th, table.dataTable tfoot th{
+  font-weight: normal!important;
+  font-size: 13px;
+  font-style: italic;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
 /*temporary hiding references*/
 #profiles td ul{
   display: none;
