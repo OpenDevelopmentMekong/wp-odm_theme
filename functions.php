@@ -220,12 +220,17 @@ function opendev_styles()
       wp_enqueue_style('opendev-'.$options['style']);
   }
 }
-
+// wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
 
-wp_register_style('responsive',  $css_base.'responsive.css');
-wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
-wp_enqueue_style('overrides');
+
+function important_overrides() {
+	wp_register_style( 'overrides', get_stylesheet_directory_uri().'/css/overrides.css' );
+	wp_enqueue_style( 'overrides' );
+}
+add_action( 'wp_enqueue_scripts', 'important_overrides',101);
+
+
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
 // create two taxonomies, genres and writers for the post type "book"
