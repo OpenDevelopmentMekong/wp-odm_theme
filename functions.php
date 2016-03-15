@@ -104,42 +104,6 @@ function opendev_setup_theme()
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
-function opendev_styles()
-{
-  $options = get_option('opendev_options');
-
-  $css_base = get_stylesheet_directory_uri().'/css/';
-
-  wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
-  wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
-  wp_register_style('webfontawesome-opendev', get_stylesheet_directory_uri().'/font/font-awesome.css');
-  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
-  wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
-  wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
-  wp_register_style('opendev-thailand',  $css_base.'thailand.css');
-  wp_register_style('opendev-laos',  $css_base.'laos.css');
-  wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
-  wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-  wp_register_style('nav-concept',  $css_base.'nav_concept.css');
-  wp_register_style('map-explorer',  $css_base.'map_explorer.css');
-  wp_register_style('table-pages',  $css_base.'table-pages.css');
-  wp_register_style('elc',  $css_base.'elc.css');
-  wp_register_style('forest-cover',  $css_base.'forest-cover.css');
-  wp_register_style('responsive',  $css_base.'responsive.css');
-
-  wp_enqueue_style('mCustomScrollbar');
-  wp_enqueue_style('opendev-base');
-  wp_enqueue_style('nav-concept');
-  wp_enqueue_style('table-pages');
-  wp_enqueue_style('map-explorer');
-  wp_enqueue_style('elc');
-  wp_enqueue_style('forest-cover');
-  wp_enqueue_style('responsive');
-
-  if ($options['style']) {
-      wp_enqueue_style('opendev-'.$options['style']);
-  }
-}
 add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 function opendev_jeo_scripts()
 {
@@ -216,6 +180,43 @@ function nav_concept_scripts()
   wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
 
 	wp_enqueue_style('dataTables-css');
+}
+
+function opendev_styles()
+{
+  $options = get_option('opendev_options');
+
+  $css_base = get_stylesheet_directory_uri().'/css/';
+
+  wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+  wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
+  wp_register_style('webfontawesome-opendev', get_stylesheet_directory_uri().'/font/font-awesome.css');
+  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
+  wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
+  wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
+  wp_register_style('opendev-thailand',  $css_base.'thailand.css');
+  wp_register_style('opendev-laos',  $css_base.'laos.css');
+  wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
+  wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
+  wp_register_style('nav-concept',  $css_base.'nav_concept.css');
+  wp_register_style('map-explorer',  $css_base.'map_explorer.css');
+  wp_register_style('table-pages',  $css_base.'table-pages.css');
+  wp_register_style('elc',  $css_base.'elc.css');
+  wp_register_style('forest-cover',  $css_base.'forest-cover.css');
+  wp_register_style('responsive',  $css_base.'responsive.css');
+
+  wp_enqueue_style('mCustomScrollbar');
+  wp_enqueue_style('opendev-base');
+  wp_enqueue_style('nav-concept');
+  wp_enqueue_style('table-pages');
+  wp_enqueue_style('map-explorer');
+  wp_enqueue_style('elc');
+  wp_enqueue_style('forest-cover');
+  wp_enqueue_style('responsive');
+
+  if ($options['style']) {
+      wp_enqueue_style('opendev-'.$options['style']);
+  }
 }
 
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
