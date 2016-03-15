@@ -9,15 +9,26 @@ table.dataTable thead th, table.dataTable tfoot th{
   text-align: left;
   vertical-align: top;
 }
+.dataTables_info, .dataTables_length > label,.paginate_button,.paginate_button.current{
+  font-size: 13px;
+  font-weight: normal;
+}
+
 .dataTables_scrollBody th {
     display: none;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 0;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  }
+
+  .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    visibility: hidden;
+
 }
+
 .top {
     display: block;
     height: auto;
