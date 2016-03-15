@@ -23,11 +23,23 @@ table.dataTable thead th, table.dataTable tfoot th{
   .dataTables_wrapper .dataTables_paginate .paginate_button.current {
       background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   }
-
+  .dataTables_wrapper .dataTables_paginate .paginate_button.next{
+    margin-left: 10px;
+  }
   .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
     visibility: hidden;
-
 }
+.dataTables_length {
+    margin-top: 8px;
+}
+.dataTables_info {
+  margin-top: 2px;
+}
+.dataTables_paginate{
+    margin: 5px;
+    margin-top: 7px;
+}
+
 
 .top {
     display: block;
