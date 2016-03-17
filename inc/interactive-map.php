@@ -8,10 +8,11 @@
  		add_shortcode('odmap', array($this, 'shortcode'));
  	}
  	function shortcode() {
- 		$layer_query = new WP_Query(array(
+    $query_arg = array(
  			'post_type' => 'map-layer',
  			'posts_per_page' -1
- 		));
+ 		);
+ 		$layer_query = new WP_Query($query_arg); 
     $layers = array();
  		$categories = get_terms('layer-category');
  		$parsed_cats = array();
@@ -75,9 +76,9 @@
                                                          )
                                        ); //'offset'=> 1,
             $base_layer_posts = get_posts( $args_base_layer );
-            if($base_layer_posts){
+          /*  if($base_layer_posts){
                 $base_layers_array = array();
-              /*  echo '<div class="baselayers">';
+                echo '<div class="baselayers">';
                 foreach ( $base_layer_posts as $baselayer ) :
                     setup_postdata( $baselayer ); ?>
                     <div class="b_layer" data-layer="<?php echo $baselayer->ID; ?>"><?php echo $baselayer->post_title; ?></div>
@@ -87,9 +88,9 @@
                         else if(get_post_meta($baselayer->ID, '_tilelayer_tile_url', true))
                             $base_layers_array[$baselayer->ID] = array("layer_url" => get_post_meta($baselayer->ID, '_tilelayer_tile_url', true));
                 endforeach;
-                echo '</div>'; //baselayers */
+                echo '</div>'; //baselayers
                 wp_reset_postdata();
-            }
+            }*/
             //print_r(json_encode($base_layers_array));
           ?>
       <div class="baselayer"><ul class="base-layers" /></div>
