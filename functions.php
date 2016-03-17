@@ -150,7 +150,7 @@ function opendev_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
-  if (is_page('map-explorer') || is_page('maps')){
+  if (is_page('map-explorer') || is_page('maps')|| is_home()){
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
       wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri() . '/inc/js/baselayer.js', array('jeo'), '1.0.0');
   }
