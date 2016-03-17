@@ -2,8 +2,7 @@
   $wpDomain=$_SERVER["HTTP_HOST"];
   $domain='opendevelopmentmekong.net';
   $preprod = false;
-
-
+/*
   if ($wpDomain == 'cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
   else if ($wpDomain == 'laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
   else if ($wpDomain == 'myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
@@ -17,6 +16,13 @@
   else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';$preprod=true;}
   else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';$preprod=true;}
   else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';$preprod=true;}
+  else {$country='mekong';$country_short='';} */
+
+  if (COUNTRY_NAME == 'cambodia'){$country='cambodia';$country_short='kh';$preprod=true;}
+  else if (COUNTRY_NAME == 'laos'){$country='laos';$country_short='la';$preprod=true;}
+  else if (COUNTRY_NAME == 'myanmar'){$country='myanmar';$country_short='mm';$preprod=true;}
+  else if (COUNTRY_NAME == 'thailand'){$country='thailand';$country_short='th';$preprod=true;}
+  else if (COUNTRY_NAME == 'vietnam'){$country='vietnam';$country_short='vn';$preprod=true;}
   else {$country='mekong';$country_short='';}
 
   setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
@@ -75,7 +81,7 @@
 				</div>
 			</div>
 			<div class="language float-right">
-					<?php qtranxf_generateLanguageSelectCode($type,$id);?>
+					<?php if(function_exists(qtranxf_generateLanguageSelectCode)) qtranxf_generateLanguageSelectCode($type,$id);?>
 				</div>
 			<div class="right_organization">
 				<div class="search">
@@ -123,7 +129,9 @@
       <ul id="cNavNew" class="level1 clearfix current-site-mekong menu-<?php echo $country;?>">
 
         <!-- build top topics nav -->
-        <?php buildStyledTopTopicNav(qtranxf_getLanguage());?>
+        <?php if(function_exists(qtranxf_getLanguage)) buildStyledTopTopicNav(qtranxf_getLanguage());
+              else buildStyledTopTopicNav('en');
+        ?>
 
         <!-- <li class="one-line"><a href="/laws" target="_self"><?//php _e("Laws and agreements")?><span class="cNavState"></span></a>
 
@@ -237,9 +245,39 @@
       </div>
 
       <div class="mainNav-inner">
-        <ul id="mainNavElement" class="level1 clearfix">
-          <?php if ($preprod==true): ?>
-	          <li class="first jtop <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://pp.<?php echo $domain;?>" target="_self" id="uid-2"><?php _e("Mekong", "opendev");?></a></li>
+          <ul id="mainNavElement" class="level1 clearfix">
+          <?php
+          $get_all_sites = wp_get_sites();
+          $site_index[1] = "first";
+          $site_index[2] = "second";
+          $site_index[3] = "third";
+          $site_index[4] = "fourth";
+          $site_index[5] = "fift";
+          $site_index[6] = "last";
+          //H.E I have no idea what is used for (Christ did them)
+          $site_uid[1] = "uid-2";
+          $site_uid[2] = "uid-3";
+          $site_uid[3] = "uid-4";
+          $site_uid[4] = "uid-42";
+          $site_uid[5] = "uid-5";
+          $site_uid[6] = "uid-5142";
+
+          foreach ($get_all_sites as $site) {
+               $blog_id = $site["blog_id"];
+               $domain = get_site_url($blog_id);
+               $site_details = get_blog_details($blog_id, 1);
+               $country_name = str_replace('Open Development ', '', $site_details->blogname);
+               $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+            ?>
+              <li class="<?php echo $site_index[$blog_id]?> <?php if (strtolower($country_name)=='mekong') echo 'jtop'; ?> <?php if ($country==strtolower($country_name)) echo 'act'; ?>">
+                <a class="toCkan" data-country="<?php echo strtolower($country_name)?>" href="<?php echo $domain;?>" target="_self" id="<?php echo $site_uid[$blog_id]?> "><?php _e($country_name, "opendev");?>
+                </a>
+              </li>
+          <?php } //end foreach ?>
+        </ul>
+        <!--<ul id="mainNavElement" class="level1 clearfix">
+          <?php /*if ($preprod==true): ?>
+	          <li class="first <?php if ($country=='mekong') echo 'act'; ?>"><a class="toCkan" data-country="mekong" href="https://pp.<?php echo $domain;?>" target="_self" id="uid-2"><?php _e("Mekong", "opendev");?></a></li>
 	          <li class="second <?php if ($country=='cambodia') echo 'act'; ?>"><a class="toCkan" data-country="cambodia" href="https://pp-cambodia.<?php echo $domain;?>" id="uid-3"><?php _e("Cambodia", "opendev");?></a></li>
 	          <li class="third <?php if ($country=='laos') echo 'act'; ?>"><a class="toCkan" data-country="laos" href="https://pp-laos.<?php echo $domain;?>" target="_self" id="uid-4"><?php _e("Laos", "opendev");?></a></li>
 	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://pp-myanmar.<?php echo $domain;?>" target="_self" id="uid-42"><?php _e("Myanmar", "opendev");?></a></li>
@@ -252,8 +290,8 @@
 	          <li class="fourth <?php if ($country=='myanmar') echo 'act'; ?>"><a class="toCkan" data-country="myanmar" href="https://myanmar.<?php echo $domain;?>" target="_self" id="uid-42"><?php _e("Myanmar", "opendev");?></a></li>
 	          <li class="fift <?php if ($country=='thailand') echo 'act'; ?>"><a class="toCkan" data-country="thailand" href="https://thailand.<?php echo $domain;?>" target="_self" id="uid-5"><?php _e("Thailand", "opendev");?></a></li>
 	          <li class="last <?php if ($country=='vietnam') echo 'act'; ?>"><a class="toCkan" data-country="vietnam" href="https://vietnam.<?php echo $domain;?>" target="_self" id="uid-5142"><?php _e("Vietnam", "opendev");?></a></li>
-          <?php endif; ?>
-        </ul>
+          <?php endif; */ ?>
+        </ul> -->
       </div>
 
     </div>
