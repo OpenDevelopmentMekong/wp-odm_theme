@@ -8,6 +8,11 @@
  		add_shortcode('odmap', array($this, 'shortcode'));
  	}
  	function shortcode() {
+    $query_arg = array(
+ 			'post_type' => 'map-layer',
+ 			'posts_per_page' -1
+ 		);
+ 		$layer_query = new WP_Query($query_arg);
     $layer_query_args = array(
       'post_type' => 'map-layer',
       'posts_per_page'=>-1
@@ -22,8 +27,7 @@
  				$layer = array();
  				$layer['filtering'] = 'switch';
  				$layer['hidden'] = 1;
-
-        echo "</br>";
+ 
         foreach($categories as $key=>$val) {
            	$cat = $categories[$key];
             if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
@@ -79,9 +83,9 @@
                                                          )
                                        ); //'offset'=> 1,
             $base_layer_posts = get_posts( $args_base_layer );
-            if($base_layer_posts){
+          /*  if($base_layer_posts){
                 $base_layers_array = array();
-              /*  echo '<div class="baselayers">';
+                echo '<div class="baselayers">';
                 foreach ( $base_layer_posts as $baselayer ) :
                     setup_postdata( $baselayer ); ?>
                     <div class="b_layer" data-layer="<?php echo $baselayer->ID; ?>"><?php echo $baselayer->post_title; ?></div>
@@ -91,9 +95,9 @@
                         else if(get_post_meta($baselayer->ID, '_tilelayer_tile_url', true))
                             $base_layers_array[$baselayer->ID] = array("layer_url" => get_post_meta($baselayer->ID, '_tilelayer_tile_url', true));
                 endforeach;
-                echo '</div>'; //baselayers */
+                echo '</div>'; //baselayers
                 wp_reset_postdata();
-            }
+            }*/
             //print_r(json_encode($base_layers_array));
           ?>
       <div class="baselayer"><ul class="base-layers" /></div>
