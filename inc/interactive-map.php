@@ -12,7 +12,12 @@
  			'post_type' => 'map-layer',
  			'posts_per_page' -1
  		);
- 		$layer_query = new WP_Query($query_arg); 
+ 		$layer_query = new WP_Query($query_arg);
+    $layer_query_args = array(
+      'post_type' => 'map-layer',
+      'posts_per_page'=>-1
+    );
+    $layer_query = new WP_Query($layer_query_args);
     $layers = array();
  		$categories = get_terms('layer-category');
  		$parsed_cats = array();
@@ -22,6 +27,7 @@
  				$layer = array();
  				$layer['filtering'] = 'switch';
  				$layer['hidden'] = 1;
+ 
         foreach($categories as $key=>$val) {
            	$cat = $categories[$key];
             if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
@@ -30,7 +36,8 @@
              		$parsed_cats[$cat->term_id][] = get_the_ID();
              		$parsed_cats[$cat->term_id]['order'] = $key;
              	}
-           }//foreach
+        }//foreach
+
            if (function_exists(extended_jeo_get_layer)){
                 $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
             }else {

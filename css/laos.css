@@ -1,5 +1,5 @@
 .laos-color{
-    color: #D61E2A!important
+    color: #D61E2A
 }
 #laos-bgcolor, .laos-bgcolor{
     background: #D61E2A !important
@@ -7,8 +7,8 @@
 .menu-laos .icon_menu{
   display: none!important;
 }
-a, a:visited, #sidebar .widget li a{
- color: #D61E2A; /*6393D2, 2774da;*/
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
+ color: #3b2226; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
@@ -120,8 +120,14 @@ tr:nth-child(2n+1) {
 /*New Nav Concept*/
 
 /*logo*/
-[class^="icon-"], [class*=" icon-"]{ color: #D61E2A;}
+.icon-od-logo{
+  color: #D61E2A!important;
+}
+[class^="icon-"], [class*=" icon-"]{ color: #3b2226;}
 
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #3b2226!important;
+}
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#3b2226;}
 /*nav oben*/

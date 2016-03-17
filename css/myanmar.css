@@ -1,5 +1,5 @@
 .myanmar-color{
-    color: #F8BF42!important
+    color: #F8BF42;
 }
 #myanmar-bgcolor, .myanmar-bgcolor{
     background: #F8BF42 !important
@@ -7,8 +7,8 @@
 .menu-myanmar .icon_menu{
   display: none!important;
 }
-a, a:visited, #sidebar .widget li a{
- color: #F8BF42; /*6393D2, 2774da;*/
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
+ color: #59396C; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
@@ -117,8 +117,14 @@ tr:nth-child(2n+1) {
 }
 
 /*logo*/
-[class^="icon-"], [class*=" icon-"]{ color: #F8BF42;}
+.icon-od-logo{
+  color: #F8BF42!important;
+}
+[class^="icon-"], [class*=" icon-"]{ color: #59396C;}
 
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #59396C!important;
+}
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#59396C;}
 /*nav oben*/

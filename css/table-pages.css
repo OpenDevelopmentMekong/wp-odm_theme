@@ -1,7 +1,11 @@
 #profiles_map{
-  width: 100%;
+  width: 105%;
   height: 400px;
 }
+
+  #profiles_map .cartodb-legend {
+    margin: 10px;
+  }
 
 .hidden {
   display:none;

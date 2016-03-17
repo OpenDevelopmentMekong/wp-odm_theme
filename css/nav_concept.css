@@ -292,6 +292,9 @@ li.top-topic {
   background-repeat: repeat;
   margin-top: 0;
 }
+.icon-od-logo{
+  color: #6393d2!important;
+}
 
 .clearfix:after {
   content: ".";

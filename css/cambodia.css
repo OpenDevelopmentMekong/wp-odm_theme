@@ -1,11 +1,11 @@
 #cambodia-color, .cambodia-color{
-    color: #97D320 !important;  /* #66cc00*/
+    color: #97D320;  /* #66cc00*/
 }
 #cambodia-bgcolor, .cambodia-bgcolor{
     background: #97D320 !important
 }
-a, a:visited, #sidebar .widget li a{
- color: #97D320; /* #7BCC2E; #6393D2, #2774da;*/
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
+ color: #06323D; /* #7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
@@ -106,7 +106,14 @@ tr:nth-child(2n+1) {
 }
 /*## Nav Concept ##*/
 /*logo*/
-[class^="icon-"], [class*=" icon-"]{ color: #97d320;}
+.icon-od-logo{
+  color: #97d320!important;
+}
+[class^="icon-"], [class*=" icon-"]{ color: #12414E;}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #12414E!important;
+}
 
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#06323D;}

@@ -1,5 +1,5 @@
 .thailand-color{
-    color: #F7904D!important
+    color: #F7904D;
 }
 #thailand-bgcolor, .thailand-bgcolor{
     background: #F7904D !important
@@ -7,8 +7,8 @@
 .menu-thailand .icon_menu{
   display: none!important;
 }
-a, a:visited, #sidebar .widget li a{
- color: #F7904D; /*6393D2, 2774da;*/
+a, a:visited, #sidebar .widget li a,.map-sidebar a{
+ color: #64161d; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
@@ -118,8 +118,14 @@ tr:nth-child(2n+1) {
 }
 
 /*logo*/
-[class^="icon-"], [class*=" icon-"]{ color: #f7904d;}
+.icon-od-logo{
+  color: #f7904d!important;
+}
+[class^="icon-"], [class*=" icon-"]{ color: #64161d;}
 
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #64161d!important;
+}
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#64161d;}
 /*nav oben*/
