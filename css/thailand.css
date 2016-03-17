@@ -88,9 +88,13 @@ tr:nth-child(2n+1) {
 }
 .interactive-map .interactive-map-layers > ul >li > a.active {
     border-bottom: 1px solid #F7904D;
+    color: #F7904D;
 }
 .interactive-map .interactive-map-layers  ul li a:hover {
   color: #F7904D;
+}
+.interactive-map .interactive-map-layers .layer-item:hover .list-circle-o{
+  border: 2px solid #F7904D;
 }
 .color-line{
   border: #F7904D solid 1px;
@@ -199,4 +203,7 @@ tr:nth-child(2n+1) {
     display: inline-block;
     background: url("../img/no-child-th.png") no-repeat 0 2px!important;
     padding-left: 20px;
+}
+.div-button{
+  background: #F7904D none repeat scroll 0% 0%;
 }

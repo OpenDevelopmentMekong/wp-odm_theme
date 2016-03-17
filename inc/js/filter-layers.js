@@ -28,7 +28,7 @@
 
    this._layers.status = [];
    _.each(this._map.conf.layers, function(layer) {
-
+    // console.log(layer);
     var detect_lang_site = document.documentElement.lang;
     if(detect_lang_site == "en-US")
         self._layers.status.push({
@@ -114,6 +114,7 @@
    if(this._layers.switchLayers && this._layers.switchLayers.length) {
       var switchable = this._layers.switchLayers;
       var list = '';
+
       var legend = '';
       _.each(switchable, function(layer) {
        var attrs = 'class="active"';
@@ -123,40 +124,42 @@
        }else{
         self._enableLayer(layer.ID);
        }
-       console.log(layer);
+       //console.log(layer);
+       //if layer in baselayer category
+       if (layer.map_category != "base-layer"){
+           var status = self._getStatus(layer.ID).on ? " active" : "";
+           list += '<li class="layer-item" data-layer="' + layer.ID + '" ' + attrs + '>';
+           list += '<span class="list-circle-active"></span>';
+           list += '<span class="list-circle-o"></span>';
+           list += '<span class="layer-item-name">'+layer.title+'</span>';
 
-       var status = self._getStatus(layer.ID).on ? " active" : "";
-       list += '<li class="layer-item" data-layer="' + layer.ID + '" ' + attrs + '>';
-       list += '<span class="list-circle-active"></span>';
-       list += '<span class="list-circle-o"></span>';
-       list += '<span class="layer-item-name">'+layer.title+'</span>';
+           if (layer.download)
+           list += '<a class="download-url" href="'+layer.download+'"  target="_blank"><i class="fa fa-arrow-down"></i></a>';
 
-       if (layer.download)
-       list += '<a class="download-url" href="'+layer.download+'"  target="_blank"><i class="fa fa-arrow-down"></i></a>';
+           // Get information of layer
+           if(layer.download !="" || layer.excerpt!="")
+           list += '<a class="toggle-info" alt="Info" href="#"><i id="' + layer.ID + '" class="fa fa-info-circle"></i></a>';
+           //list += '<i class="fa fa-table"></i>';
+           if (layer.profilepage)
+           list += '<a class="profilepage_link" target="_blank" href="'+layer.profilepage+'"><i class="fa fa-table"></i></a>';
 
-       // Get information of layer
-       if(layer.download !="" || layer.excerpt!="")
-       list += '<a class="toggle-info" alt="Info" href="#"><i id="' + layer.ID + '" class="fa fa-info-circle"></i></a>';
-       //list += '<i class="fa fa-table"></i>';
-       if (layer.profilepage)
-       list += '<a class="profilepage_link" target="_blank" href="'+layer.profilepage+'"><i class="fa fa-table"></i></a>';
-
-      // list += '<div class="toggles">'
-       //if (layer.legend)
-        //list += '<a class="toggle-legend" href="#">Show legend</a>';
-       //list += '</div>'
-       if (layer.legend)
-        list += '<div class="legend">'+layer.legend+'</div>'
-       //list += '<div class="layer-excerpt">'+ layer.excerpt +'</div>';
-       //list += '<div class="layer-content">'+ layer.content +'</div>';
-       //list += '<div class="clearfix"></div>'
-       list += '</li>';
+          // list += '<div class="toggles">'
+           //if (layer.legend)
+            //list += '<a class="toggle-legend" href="#">Show legend</a>';
+           //list += '</div>'
+           if (layer.legend)
+            list += '<div class="legend">'+layer.legend+'</div>';
+           //list += '<div class="layer-excerpt">'+ layer.excerpt +'</div>';
+           //list += '<div class="layer-content">'+ layer.content +'</div>';
+           //list += '<div class="clearfix"></div>'
+           list += '</li>';
+        }//end else if layer is base-layer category
       });
       this._switchWidget = '<ul class="switch-layers">' + list + '</ul>';
       this._$.append(this._switchWidget);
 
       this._$.on('click', '.switch-layers li', function() {
-       self._switchLayer($(this).data('layer'));
+       self._switchLayer($(this).data('layer')); 
       });
 
 

@@ -88,9 +88,13 @@ tr:nth-child(2n+1) {
 }
 .interactive-map .interactive-map-layers > ul >li > a.active {
     border-bottom: 1px solid #D61E2A;
+    color: #D61E2A;
 }
 .interactive-map .interactive-map-layers  ul li a:hover {
   color: #D61E2A;
+}
+.interactive-map .interactive-map-layers .layer-item:hover .list-circle-o{
+  border: 2px solid #D61E2A;
 }
 .color-line{
   border: #D61E2A solid 1px;
@@ -202,4 +206,7 @@ td.entry_title a{
     display: inline-block;
     background: url("../img/no-child-lo.png") no-repeat 0 2px!important;
     padding-left: 20px;
+}
+.div-button{
+  background: #D61E2A none repeat scroll 0% 0%;
 }

@@ -43,6 +43,7 @@ table {
     border-left: 1px solid #AAA;
     border-right: 1px solid #AAA;
     border-bottom: 1px solid #AAA;
+    color: #111;
 }
 
 tr{
@@ -52,7 +53,7 @@ tr:nth-child(2n) {
     background-color: #FFF;
 }
 tr:nth-child(2n+1) {
-    background-color: #9fd8fa;
+    background-color: #6393D2;
 }
 td{
     padding: 8px;
