@@ -8,13 +8,11 @@
  		add_shortcode('odmap', array($this, 'shortcode'));
  	}
  	function shortcode() {
-
-
     $layer_query_args = array(
       'post_type' => 'map-layer',
       'posts_per_page'=>-1
     );
-    $layer_query = new WP_Query($layer_query_args); 
+    $layer_query = new WP_Query($layer_query_args);
     $layers = array();
  		$categories = get_terms('layer-category');
  		$parsed_cats = array();
