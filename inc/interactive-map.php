@@ -8,10 +8,13 @@
  		add_shortcode('odmap', array($this, 'shortcode'));
  	}
  	function shortcode() {
- 		$layer_query = new WP_Query(array(
- 			'post_type' => 'map-layer',
- 			'posts_per_page' -1
- 		));
+
+
+    $layer_query_args = array(
+      'post_type' => 'map-layer',
+      'posts_per_page'=>-1
+    );
+    $layer_query = new WP_Query($layer_query_args); 
     $layers = array();
  		$categories = get_terms('layer-category');
  		$parsed_cats = array();
@@ -21,6 +24,8 @@
  				$layer = array();
  				$layer['filtering'] = 'switch';
  				$layer['hidden'] = 1;
+
+        echo "</br>";
         foreach($categories as $key=>$val) {
            	$cat = $categories[$key];
             if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
@@ -29,7 +34,8 @@
              		$parsed_cats[$cat->term_id][] = get_the_ID();
              		$parsed_cats[$cat->term_id]['order'] = $key;
              	}
-           }//foreach
+        }//foreach
+
            if (function_exists(extended_jeo_get_layer)){
                 $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
             }else {
@@ -270,7 +276,7 @@
                   if (target.is( "span" ) ) {
     						      map.filterLayers._switchLayer($(this).data('layer'));
 
-    						      if(map.filterLayers._getStatus($(this).data('layer')).on) { 
+    						      if(map.filterLayers._getStatus($(this).data('layer')).on) {
           							$(this).addClass('active');
                         var legend_li = '<li class="hide_show_container '+$(this).data('layer')+'">'+ $(this).find(".legend").html()+'</li>';
                         $('.map-legend-ul').prepend(legend_li);
