@@ -1,4 +1,5 @@
 var jeo = {};
+var globalmap;
 var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 (function($) {
 
@@ -76,7 +77,8 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 
   // use mapbox map for more map resources
   map = L.mapbox.map(map_id, null, options);
- 
+  globalmap = map;
+
   if(conf.mainMap)
    jeo.map = map;
 
@@ -145,6 +147,12 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   if(map.conf.filteringLayers)
    map.addControl(new jeo.filterLayers());
 
+
+     /*
+      * Baselayers H.E
+      */
+  /*if(map.conf.filteringLayers)
+     map.addControl(new jeo.baselayer());
   /*
    * CALLBACKS
    */
@@ -382,7 +390,7 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   }
 
   if(map.coreLayers) {
-  console.log(map.coreLayers._layers);
+  //console.log(map.coreLayers._layers);
    for(var key in map.coreLayers._layers) {
     map.coreLayers.removeLayer(key);
    }
@@ -392,16 +400,14 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   }
   $.each(parsedLayers, function(i, layer) {
 
-       if(layer._legend) {
+       /*if(layer._legend) {
         map.legendControl.addLegend(layer._legend);
-       }
+      }*/
        layer.addTo(map.coreLayers);
        if(layer._tilejson) {
         map.addControl(L.mapbox.gridControl(layer));
        }
-
   });  // $.each
-
   return map.coreLayers;
  }
 
@@ -419,30 +425,40 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   newConf.filteringLayers.switchLayers = [];
   newConf.filteringLayers.swapLayers = [];
 
+  newConf.baseLayers = {};
+  newConf.baseLayers.switchLayers = [];
+  newConf.baseLayers.swapLayers = [];
+
   $.each(conf.layers, function(i, layer) {
    newConf.layers.push(_.clone(layer));
    if(layer.filtering == 'switch') {
      var detect_lang_site = document.documentElement.lang;
-     if(detect_lang_site == "en-US")
+     if(detect_lang_site == "en-US"){
         var switchLayer = {
          ID: layer.ID,
          title: layer.title,
+         tile_url: layer.tile_url,
+         mapbox_id: layer.mapbox_id,
          content: layer.post_content,
          excerpt: layer.excerpt,
+         map_category: layer.map_category,
          download: layer.download_url,
          profilepage: layer.profilepage_url,
          legend: layer.legend
         };
-    else{
-      var switchLayer = {
-       ID: layer.ID,
-       title: layer.title,
-       content: layer.post_content,
-       excerpt: layer.excerpt,
-       download: layer.download_url_localization,
-       profilepage: layer.profilepage_url_localization,
-       legend: layer.legend_localization
-      };
+     }else{
+        var switchLayer = {
+         ID: layer.ID,
+         title: layer.title,
+         tile_url: layer.tile_url,
+         mapbox_id: layer.mapbox_id,
+         content: layer.post_content,
+         excerpt: layer.excerpt,
+         map_category: layer.map_category,
+         download: layer.download_url_localization,
+         profilepage: layer.profilepage_url_localization,
+         legend: layer.legend_localization
+        };
     }
 
     if(layer.hidden){
@@ -451,20 +467,24 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
     newConf.filteringLayers.switchLayers.push(switchLayer);
    }
    if(layer.filtering == 'swap') {
-      if(detect_lang_site == "en-US")
+      if(detect_lang_site == "en-US"){
           var swapLayer = {
            ID: layer.ID,
            title: layer.title,
+           tile_url: layer.tile_url,
+           mapbox_id: layer.mapbox_id,
            content: layer.post_content,
            excerpt: layer.excerpt,
            download: layer.download_url,
            profilepage: layer.profilepage_url,
            legend: layer.legend
           };
-      else{
+      }else{
         var swapLayer = {
          ID: layer.ID,
          title: layer.title,
+         tile_url: layer.tile_url,
+         mapbox_id: layer.mapbox_id,
          content: layer.post_content,
          excerpt: layer.excerpt,
          download: layer.download_url_localization,
@@ -472,10 +492,14 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
          legend: layer.legend_localization
         };
       }
+
     if(layer.first_swap)
      swapLayer.first = true;
     newConf.filteringLayers.swapLayers.push(swapLayer);
    }
+
+
+
   });
 
   newConf.center = [parseFloat(conf.center.lat), parseFloat(conf.center.lon)];
@@ -551,7 +575,7 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 
  jeo.runCallbacks = function(name, args) {
   if(!jeo.callbacks[name]) {
-   console.log('A JEO callback tried to run, but wasn\'t initialized');
+  // console.log('A JEO callback tried to run, but wasn\'t initialized');
    return false;
   }
   if(!jeo.callbacks[name].length)

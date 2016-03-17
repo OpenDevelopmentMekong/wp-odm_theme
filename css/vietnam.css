@@ -87,9 +87,13 @@ tr:nth-child(2n+1) {
 }
 .interactive-map .interactive-map-layers > ul >li > a.active {
     border-bottom: 1px solid #C6C366;
+    color: #C6C366;
 }
 .interactive-map .interactive-map-layers  ul li a:hover {
   color: #C6C366;
+}
+.interactive-map .interactive-map-layers .layer-item:hover .list-circle-o{
+  border: 2px solid #C6C366;
 }
 .color-line{
   border: #C6C366 solid 1px;
@@ -189,4 +193,7 @@ tr:nth-child(2n+1) {
     display: inline-block;
     background: url("../img/no-child-vn.png") no-repeat 0 2px!important;
     padding-left: 20px;
+}
+.div-button{
+  background: #C6C366 none repeat scroll 0% 0%;
 }

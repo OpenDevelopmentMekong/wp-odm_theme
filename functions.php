@@ -188,6 +188,7 @@ function opendev_jeo_scripts()
   }
   if (is_page('map-explorer') || is_page('maps')){
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+      wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri() . '/inc/js/baselayer.js', array('jeo'), '1.0.0');
   }
   wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
  //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
@@ -196,9 +197,11 @@ add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
 
 function opendev_jeo_admin_scripts() {
-    if ( file_exists( STYLESHEETPATH . '/inc/js/filter-layers.js')){
+    if ( file_exists( STYLESHEETPATH . '/inc/js/filter-layers.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
-		}
+
+    if ( file_exists( STYLESHEETPATH . '/inc/js/baselayer.js'))
+        wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri() . '/inc/js/baselayer.js', array('jeo'), '1.0.0');
 }
 add_action( 'admin_enqueue_scripts', 'opendev_jeo_admin_scripts' );
 

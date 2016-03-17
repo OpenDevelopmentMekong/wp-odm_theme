@@ -496,11 +496,15 @@
 
           //$content = apply_filters('the_content', $post->post_content);
           $content = qtrans_use($lang, $post->post_content,false);//get content by langauge
+          $excerpt = qtrans_use($lang, $post->excerpt,false);//get content by langauge
+
+          $in_category = get_the_terms( $post->ID, 'layer-category' );
           $layer = array(
            'ID' => $post->ID,
            'title' => get_the_title(),
            'post_content' => $content, //content(999)
-           'excerpt' => content(40),
+           'excerpt' => $excerpt,
+           'map_category' => $in_category[0]->slug,
            'download_url' => get_post_meta($post->ID, '_layer_download_link', true),
            'download_url_localization' => get_post_meta($post->ID, '_layer_download_link_localization', true),
            'profilepage_url' => get_post_meta($post->ID, '_layer_profilepage_link', true),
@@ -541,7 +545,7 @@
 
           wp_reset_postdata();
           return $layer;
-         } 
+         }
 
 } //class
 // Init Child class

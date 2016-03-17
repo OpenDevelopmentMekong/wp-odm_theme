@@ -87,6 +87,10 @@ tr:nth-child(2n+1) {
 }
 .interactive-map .interactive-map-layers > ul >li > a.active {
     border-bottom: 1px solid #97D320;
+    color: #97D320;
+}
+.interactive-map .interactive-map-layers .layer-item:hover .list-circle-o{
+  border: 2px solid #97D320;
 }
 .color-line{
   border: #97D320 solid 1px;
@@ -292,4 +296,7 @@ td.entry_title a{
  .categories .cat-agriculture .layer-status.active,
  .map-active-layers .active-layer.layer-agriculture h6{
   background: #00C7A4;
+}
+.div-button{
+  background: #97D320 none repeat scroll 0% 0%;
 }
