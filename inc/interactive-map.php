@@ -27,7 +27,7 @@
  				$layer = array();
  				$layer['filtering'] = 'switch';
  				$layer['hidden'] = 1;
- 
+
         foreach($categories as $key=>$val) {
            	$cat = $categories[$key];
             if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
@@ -128,11 +128,14 @@
        <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
         <?php $lang = 'en';
         $i = 0;
-        if (function_exists("qtranxf_getLanguage")) $lang = qtranxf_getLanguage();
+        //if (function_exists("qtranxf_getLanguage")) $lang = qtranxf_getLanguage();
         foreach($map['layers'] as $individual_layer){ $i++;
             $get_post_by_id = get_post($individual_layer['ID']);
             //$get_post_content_by_id = apply_filters('the_content', $get_post_by_id->post_content);
-            $get_post_content_by_id = qtrans_use($lang, $get_post_by_id->post_content,false);
+            if (function_exists( qtrans_use))
+              $get_post_content_by_id = qtrans_use($lang, $get_post_by_id->post_content,false);
+            else
+              $get_post_content_by_id = $get_post_by_id->post_conten;
 
             //echo "<pre>".$individual_layer['ID']."=> ".$get_post_content_by_id ."</pre>";
               if($individual_layer['download_url']!="" ){
