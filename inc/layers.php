@@ -495,9 +495,13 @@
           $type = $this->get_layer_type();
 
           //$content = apply_filters('the_content', $post->post_content);
-          $content = qtrans_use($lang, $post->post_content,false);//get content by langauge
-          $excerpt = qtrans_use($lang, $post->excerpt,false);//get content by langauge
-
+          if (function_exists( qtrans_use)){
+            $content = qtrans_use($lang, $post->post_content,false);//get content by langauge
+            $excerpt = qtrans_use($lang, $post->excerpt,false);//get content by langauge
+          }else {
+              $content =  $post->post_content;//get content by langauge
+              $excerpt =  $post->excerpt;//get content by langauge
+          }
           $in_category = get_the_terms( $post->ID, 'layer-category' );
           $layer = array(
            'ID' => $post->ID,
