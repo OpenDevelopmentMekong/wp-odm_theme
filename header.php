@@ -174,9 +174,9 @@
 
         </li>
 
-        <li class="one-line">
-          <a href="/map-explorer" target="_self"><?php _e("Maps")?><span class="cNavState"></span></a>
-        </li>
+        <!--<li class="one-line">
+          <a href="/map-explorer" target="_self"><?php //_e("Maps")?><span class="cNavState"></span></a>
+        </li>-->
 
         <?php wp_nav_menu( array(
           'menu' => 'country-specific-menu',
