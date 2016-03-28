@@ -1,6 +1,6 @@
 html, body {
  background: #fff;
- font-family: "Khmer OS", "Open Sans","Helvetica","Arial",sans-serif;
+ font-family: "Open Sans","Helvetica","Arial",sans-serif;
 }
 h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}
 h2 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
@@ -2207,8 +2207,7 @@ a.button:hover{
  box-sizing: border-box;
 }
 
-#sidebar .widgets .widget .widget-title,
-.widget .widget-title {
+#sidebar .widgets .widget .widget-title, .widget .widget-title {
  font-family: 'Open Sans';
  font-weight: 800;
  margin: -11px -10px 10px;

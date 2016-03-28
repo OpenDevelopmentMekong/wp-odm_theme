@@ -189,8 +189,13 @@ function nav_concept_scripts()
 
 }
 
-function opendev_styles()
-{
+function opendev_styles(){
+  if (COUNTRY_NAME == 'cambodia'){
+    if (function_exists("qtranxf_getLanguage"))
+      if ( (qtranxf_getLanguage() == "kh") || (qtranxf_getLanguage() == "km") ){
+         wp_register_style('webfont-khmer-fonts', 'https://fonts.googleapis.com/css?family=Hanuman|Moul|Suwannaphum');
+      }
+  }
   $options = get_option('opendev_options');
 
   $css_base = get_stylesheet_directory_uri().'/css/';
@@ -198,7 +203,7 @@ function opendev_styles()
   wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
   wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
   wp_register_style('webfontawesome-opendev', get_stylesheet_directory_uri().'/font/font-awesome.css');
-  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
+  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-khmer-fonts', 'webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
   wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
   wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
   wp_register_style('opendev-thailand',  $css_base.'thailand.css');
@@ -222,6 +227,7 @@ function opendev_styles()
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);
   }
+
 }
 // wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
 add_action('wp_enqueue_scripts', 'nav_concept_scripts', 100);
