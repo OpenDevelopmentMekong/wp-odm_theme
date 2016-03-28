@@ -203,7 +203,7 @@ function opendev_styles(){
   wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
   wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
   wp_register_style('webfontawesome-opendev', get_stylesheet_directory_uri().'/font/font-awesome.css');
-  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-khmer-fonts', 'webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
+  wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
   wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
   wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
   wp_register_style('opendev-thailand',  $css_base.'thailand.css');
