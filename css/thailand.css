@@ -8,15 +8,15 @@
   display: none!important;
 }
 a, a:visited, #sidebar .widget li a,.map-sidebar a{
- color: #64161d; /*6393D2, 2774da;*/
+ color: #E57E3B; /*64161d, 6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
-	color: #64161d;
+	color:  #E57E3B; /*64161d */
 	text-decoration:underline
 }
 a strong:hover{
-	color: #64161d;
+	color: #E57E3B; /*64161d */
 	text-decoration:underline
 }
 

@@ -1,5 +1,5 @@
 .myanmar-color{
-    color: #F8BF42;
+    color: #B74996; /*#F8BF42;*/
 }
 #myanmar-bgcolor, .myanmar-bgcolor{
     background: #F8BF42 !important
@@ -8,15 +8,15 @@
   display: none!important;
 }
 a, a:visited, #sidebar .widget li a,.map-sidebar a{
- color: #59396C; /*6393D2, 2774da;*/
+ color: #B74996; /*59396C, 6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover, #sidebar .widget li a:hover{
-	color: #59396C ; /*eec800;*/
+	color: #B74996 ; /*59396C eec800;*/
 	text-decoration:underline
 }
 a strong:hover {
-	color: #59396C;
+	color: #B74996; /*59396C;*/
 	text-decoration:underline
 }
 

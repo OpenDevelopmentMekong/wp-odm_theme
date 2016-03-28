@@ -94,19 +94,19 @@ td{
 
 /******* Image Caption *******/
 .mekong-color{
-    color: #373c6a;
+    color: #3B78C7; /*373c6a;*/
     font-style: italic;
 }
 .map-sidebar a{
-  color: #373c6a;
+  color: #3B78C7; /*373c6a;*/
 }
-
+/*
 .content a{
   font-style: italic;
   font-weight: bold;
-}
+} */
 a, a:visited{
- color: #373c6a; /*6393D2, 2774da;*/
+ color: #3B78C7; /*6393D2, 2774da;*/
  text-decoration:none
 }
 a:hover{
