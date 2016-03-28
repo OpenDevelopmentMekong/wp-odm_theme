@@ -1,3 +1,15 @@
+body{
+  font: 14px/24px 'Suwannaphum', "Open Sans";
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+}
+#cNavNew li a{
+  font: 14px/24px 'Suwannaphum', "Open Sans";
+}
+.mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form {
+  font-family: "Suwannaphum", "Open Sans" !important;
+}
 #cambodia-color, .cambodia-color{
     color: #97D320;  /* #66cc00*/
 }
@@ -40,6 +52,13 @@ tr:nth-child(2n+1) {
 	background-color: #97d320;
 }
 
+#od-head h1 {
+  font-family: "Droid Serif";
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: -4px;
+  float: left;
+}
 #od-head h1 a,
 #od-head h1 span {
 	text-decoration: none;
@@ -157,7 +176,9 @@ tr:nth-child(2n+1) {
 .sidebar_header{
   background: #97D320 !important;
 }
-
+.sidebar_header h2, h2.sidebar_header, .widget_headline{
+  font-family: "Suwannaphum", "Open Sans";
+}
 .sidebar_box_content ul li a{
   color: #97D320;
 }
@@ -181,9 +202,9 @@ td.entry_title a{
 }
 
 /* Cambodia collapse & expend */
-#sidebar .widgets .widget .widget-title,
-.widget .widget-title {
+#sidebar .widgets .widget .widget-title, .widget .widget-title {
  background: #97D320 none repeat scroll 0% 0%;
+font-family: "Suwannaphum", "Open Sans"
 }
 #sidebar .widgets .widget ul li span.plusimage-cambodia{
     display: inline-block;

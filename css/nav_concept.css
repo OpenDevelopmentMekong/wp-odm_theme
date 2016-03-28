@@ -371,7 +371,7 @@ li.top-topic {
   padding-right: 10px;
   display: block;
   font-size: 16px;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
 }
 .mainNav-inner ul.level1>li.act>a {
@@ -381,7 +381,7 @@ li.top-topic {
   border-right: 1px solid #dddddd;
 }
 #mainNav-inner .level1 li a {
-  font-family: sans-serif!important;
+  font-family: "Open Sans", sans-serif!important;
 }
 
 /*end boilerplate*/
@@ -473,7 +473,7 @@ li.top-topic {
   padding: 0 10px;
   text-decoration: none;
   display: inline-block;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   position: relative;
   height: 29px;
