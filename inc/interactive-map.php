@@ -283,35 +283,44 @@
 
     						      if(map.filterLayers._getStatus($(this).data('layer')).on) {
           							$(this).addClass('active');
-                        var legend_li = '<li class="hide_show_container '+$(this).data('layer')+'">'+ $(this).find(".legend").html()+'</li>';
-                        $('.map-legend-ul').prepend(legend_li);
+                        var get_legend = $(this).find(".legend").html();
+                        //if( typeof get_legend != "undefined"){
+                            var legend_li = '<li class="hide_show_container '+$(this).data('layer')+'">'+ $(this).find(".legend").html()+'</li>';
+                            $('.map-legend-ul').prepend(legend_li);
 
-                        // Add class title to the legend title
-                        var legend_h5 =$( ".map-legend-ul ."+$(this).data('layer')+" h5" );
-                        legend_h5.addClass("title");
+                            // Add class title to the legend title
+                            var legend_h5 = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
+                            if (legend_h5.length == 0){
+                              var h5_title = '<h5>'+ $(this).children('.layer-item-name').text()+'</h5>';
+                              $( ".map-legend-ul ."+$(this).data('layer')+" .cartodb-legend" ).prepend(h5_title);
 
-                        // Add class dropdown to the individual legend box
-                        legend_h5.next().addClass( "dropdown" );
+                            }
+                            var legend_h5_title = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
+                            legend_h5_title.addClass("title");
 
-                        //dropdown legen auto show
-                        $( ".map-legend-ul ."+$(this).data('layer')+" .dropdown").show();
+                            // Add class dropdown to the individual legend box
+                            legend_h5_title.siblings().addClass( "dropdown" );
 
-                        // Add hide_show_icon into h5 element
-                        var hide_show_icon = "<i class='fa fa-caret-down hide_show_icon'></i>";
-                        legend_h5.prepend(hide_show_icon);
+                            //dropdown legen auto show
+                            $( ".map-legend-ul ."+$(this).data('layer')+" .dropdown").show();
 
-                        if ($(".map-legend-ul li").length){
-                           $('.map-legend-container').slideDown('slow');
-                        }
-                        //console.log("MMMMM "+ legen_li + $(this).data('layer') );
-          						} else {
-            							$(this).removeClass('active');
-                          var legend_li_disactive_class = "."+$(this).data('layer');
-              						$('.map-legend-ul '+legend_li_disactive_class).remove().fadeOut('slow');
-                          if ( !$(".map-legend-ul li").length){
-                             $('.map-legend-container').hide('slow');
-                          }
-          						}
+                            // Add hide_show_icon into h5 element
+                            var hide_show_icon = "<i class='fa fa-caret-down hide_show_icon'></i>";
+                            legend_h5_title.prepend(hide_show_icon);
+
+                            if ($(".map-legend-ul li").length){
+                               $('.map-legend-container').slideDown('slow');
+                            }
+                            //console.log("MMMMM "+ legen_li + $(this).data('layer') );
+              						} else {
+                							$(this).removeClass('active');
+                              var legend_li_disactive_class = "."+$(this).data('layer');
+                  						$('.map-legend-ul '+legend_li_disactive_class).remove().fadeOut('slow');
+                              if ( !$(".map-legend-ul li").length){
+                                 $('.map-legend-container').hide('slow');
+                              }
+              						}
+                    //}//if has legend
                   }
     					}); //$layers.find('.cat-layers li')
 
@@ -393,7 +402,7 @@
             var target =  $( e.target );
             var parent_of_target =  $( e.target ).parent();
             var drop = parent_of_target.siblings('.dropdown');
-
+            //console.log(drop);
       			target.toggleClass('fa-caret-down');
       			target.toggleClass('fa-caret-up');
 
