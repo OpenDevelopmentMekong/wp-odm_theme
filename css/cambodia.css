@@ -18,8 +18,11 @@ h1, h2, h3, h4, h5, h6 {
     background: #97D320 !important
 }
 a, a:visited, #sidebar .widget li a,.map-sidebar a{
- color: #06323D; /* #7BCC2E; #6393D2, #2774da;*/
+  /*color: #06323D;  /*#7BCC2E; #6393D2, #2774da;*/
  text-decoration:none
+ text-decoration: none;
+  text-shadow: 0px 0px #97D320;
+  color: #7CB500;
 }
 a:hover, #sidebar .widget li a:hover{
 	color: #12414E;
