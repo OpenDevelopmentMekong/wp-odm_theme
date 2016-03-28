@@ -7,7 +7,8 @@ h1, h2, h3, h4, h5, h6 {
 #cNavNew li a{
   font: 14px/24px 'Suwannaphum', "Open Sans";
 }
-.mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form {
+.mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
+.fa_slider_opendev .fa_slide_content div.description p {
   font-family: "Suwannaphum", "Open Sans" !important;
 }
 #cambodia-color, .cambodia-color{
