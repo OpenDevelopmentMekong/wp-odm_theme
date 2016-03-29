@@ -271,7 +271,7 @@
           </td>
          </tr>
          <tr class="subopt viz_type_viz">
-          <th><label for="cartodb_viz_url"><?php _e('CartoDB URL', 'jeo'); ?></label></th>
+          <th><label for="cartodb_viz_url"><?php _e('CartoDB URL (English)', 'jeo'); ?></label></th>
           <td>
            <input id="cartodb_viz_url" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url" value="<?php echo $vizurl; ?>" />
            <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
