@@ -1,6 +1,7 @@
 var jeo = {};
 var globalmap;
 var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
+detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
  jeo = function(conf, callback) {
@@ -181,8 +182,12 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   $.each(layers, function(i, layer) {
 
    if(layer.type == 'cartodb' && layer.cartodb_type == 'viz') {
-
-       var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true });
+       //alert(layer.wms_layer_name_localization);
+       if(detect_lang_site == "en-US"){
+         var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true });
+       }else{
+         var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url_localization, {legends: false, https: true });
+       }
 
     if(layer.legend) {
      pLayer._legend = layer.legend;
@@ -241,7 +246,6 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
        var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
             //geoserver_URL = spited_wms_tile_url[0]+"/"; for sample test 2
             geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
-            detect_lang_site = $('html').attr('lang');
             //alert(layer.wms_layer_name_localization);
             if(detect_lang_site == "en-US"){
                  layer_name = layer.wms_layer_name;
@@ -432,7 +436,6 @@ var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
   $.each(conf.layers, function(i, layer) {
    newConf.layers.push(_.clone(layer));
    if(layer.filtering == 'switch') {
-     var detect_lang_site = document.documentElement.lang;
      if(detect_lang_site == "en-US"){
         var switchLayer = {
          ID: layer.ID,

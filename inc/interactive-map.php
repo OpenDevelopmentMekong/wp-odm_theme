@@ -284,7 +284,8 @@
     						      if(map.filterLayers._getStatus($(this).data('layer')).on) {
           							$(this).addClass('active');
                         var get_legend = $(this).find(".legend").html();
-                        //if( typeof get_legend != "undefined"){
+                        console.log(get_legend);
+                        if( typeof get_legend != "undefined"){
                             var legend_li = '<li class="hide_show_container '+$(this).data('layer')+'">'+ $(this).find(".legend").html()+'</li>';
                             $('.map-legend-ul').prepend(legend_li);
 
@@ -312,15 +313,15 @@
                                $('.map-legend-container').slideDown('slow');
                             }
                             //console.log("MMMMM "+ legen_li + $(this).data('layer') );
-              						} else {
-                							$(this).removeClass('active');
-                              var legend_li_disactive_class = "."+$(this).data('layer');
-                  						$('.map-legend-ul '+legend_li_disactive_class).remove().fadeOut('slow');
-                              if ( !$(".map-legend-ul li").length){
-                                 $('.map-legend-container').hide('slow');
-                              }
-              						}
-                    //}//if has legend
+                          }//if has legend
+            						} else {
+              							$(this).removeClass('active');
+                            var legend_li_disactive_class = "."+$(this).data('layer');
+                						$('.map-legend-ul '+legend_li_disactive_class).remove().fadeOut('slow');
+                            if ( !$(".map-legend-ul li").length){
+                               $('.map-legend-container').hide('slow');
+                            }
+            						}
                   }
     					}); //$layers.find('.cat-layers li')
 
