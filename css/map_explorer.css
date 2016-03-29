@@ -49,8 +49,8 @@ body.page-template-page-map-explorer{overflow: hidden;}
   margin: 0;
 }
 .page-template-page-map-explorer .category-map-layers{
-  /*top: 12px;*/
-  bottom: 15px;
+  top: 12px;
+    /*bottom: 15px;*/
   position: absolute;
   z-index: 100;
   background: white;
