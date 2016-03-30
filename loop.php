@@ -49,7 +49,46 @@
 										<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 										<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
 											<div class="meta">
-												<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+													<div class="date">
+														 <span class="lsf">&#xE12b;</span>
+															 <?php
+															 if (function_exists(qtrans_getLanguage)){
+															 		if (qtrans_getLanguage() =="kh"){
+																		echo convert_date_to_kh_date(get_the_time('j.M.Y'));
+																	}else {
+																		echo get_the_time('j F Y');
+																  }
+															 }else {
+																echo get_the_time('j F Y');
+															 } ?>
+													</div>
+													&nbsp;
+													<div class="news-source">
+														<?php
+															if (taxonomy_exists('news_source'))
+															$terms_news_source = get_the_terms( $post->ID, 'news_source' );
+
+																				 if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
+																						 if ($terms_news_source){
+																			$news_sources = "";
+																								 echo '<span class="icon-news"></span> ';
+																			foreach ($terms_news_source as $term) {
+																			$term_link = get_term_link( $term, 'news_source' );
+																			if( is_wp_error( $term_link ) )
+																				continue;
+																			//We successfully got a link. Print it out.
+																			 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+																		}
+																		echo substr($news_sources, 0, -1);
+																}
+															}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+																						 echo '<span class="icon-news"></span> ';
+																						 $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+																						 echo get_the_title($news_source_id);
+																				 }
+															?>
+													</div>
+												<!--<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>-->
 											</div>
 										<?php } ?>
 									</header>

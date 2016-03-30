@@ -642,15 +642,17 @@ a.button:hover{
  }
  #breadcrumbs{
     list-style:none;
-    margin:10px 0 0;
-    overflow:hidden;
+    margin: 20px 0px 20px;
+    overflow: hidden;
     color: #444;
+    border-bottom: 1px solid #eee;
 }
 
 #breadcrumbs li{
     display:inline-block;
     vertical-align:middle;
     margin-right:10px;
+    margin-bottom: 10px;
 }
 
 #od-head #breadcrumbs a, #breadcrumbs a.bread-link, #breadcrumbs li{
@@ -1591,14 +1593,19 @@ a.button:hover{
 
 .tabbed-posts-list {
  margin: 0;
- padding: 0;
+ padding: 0 10px;
+
 }
 
 .tabbed-posts-list li {
- padding: 20px;
- border-bottom: 1px solid #ddd;
+  line-height: 24px;
+  margin-bottom: 20px;
 }
-
+.tabbed-posts-list li article {
+ border: 1px solid #ccc;
+ box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+ padding: 20px;
+}
 .tabbed-posts-list li article h3 a {
  text-decoration: none;
 }

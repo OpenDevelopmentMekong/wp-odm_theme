@@ -51,7 +51,7 @@ foreach($post_types as $pt) {
 		<section class="tabbed-posts-section">
 			<?php if(count($tax_post_types) > 1) : ?>
 				<nav id="tabbed-post-type-nav">
-					<ul>
+					<ul class="opendev-posts-list">
 						<?php
 						$current_pt = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
 						foreach($tax_post_types as $pt) :
