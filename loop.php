@@ -35,11 +35,11 @@
 			<?php else : ?>
 				<div class="eight columns">
 					<?php get_template_part('section', 'query-actions'); ?>
-                    <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
-							<?php $search_results =& new WP_Query("s=$s & showposts=-1");
-                                  $NumResults = $search_results->post_count; ?>
-                            <div id="advanced_search_results"><h2>Site Results (<?php echo $NumResults; ?>)</h2> </div>
-                    <?php endif; ?>
+	              <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
+												<?php $search_results =& new WP_Query("s=$s & showposts=-1");
+	                            $NumResults = $search_results->post_count; ?>
+	                      <div id="advanced_search_results"><h2>Site Results (<?php echo $NumResults; ?>)</h2> </div>
+	              <?php endif; ?>
 
 					<ul class="opendev-posts-list">
 						<?php while(have_posts()) : the_post(); ?>
@@ -79,21 +79,24 @@
 						}
 						?>
 					</section>
-					<script type="text/javascript">
-						jQuery(document).ready(function($) {
-							if(!$('.wpckan_dataset_list ul li').length)
-								$('#wpckan_search_results').hide();
-						})
-					</script>
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						if(!$('.wpckan_dataset_list ul li').length)
+							$('#wpckan_search_results').hide();
+					})
+				</script>
 				<?php else : ?>
-					<div class="three columns offset-by-one">
+					<div class="three columns offset-by-one move-up">
 						<aside id="sidebar">
 							<ul class="widgets">
 								<li class="widget share-widget">
 									<div class="share clearfix">
 										<ul>
-											<li>
+											<!--<li>
 												<div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="box_count" data-show-faces="false" data-send="false"></div>
+											</li>-->
+											<li>
+												<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
 											</li>
 											<li>
 												<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a>
@@ -103,6 +106,9 @@
 											</li>
 										</ul>
 									</div>
+								</li>
+								<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+									<?php list_category_by_post_type(); ?>
 								</li>
 								<?php if ( get_post_type() == 'mekong-storm-flood'){
                                           dynamic_sidebar('mekong-storm-flood');

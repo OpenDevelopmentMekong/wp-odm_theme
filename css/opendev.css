@@ -2,12 +2,13 @@ html, body {
  background: #fff;
  font-family: "Open Sans","Helvetica","Arial",sans-serif;
 }
-h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}
-h2 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
-h3 { font-size: 26px; line-height: 28px; margin-bottom: 15px; }
-h4 { font-size: 21px; line-height: 25px; margin-bottom: 15px; }
-h5 { font-size: 18px; line-height: 20px; margin-bottom: 5px; }
-h6 { font-size: 15px; line-height: 16px; }
+/*h1 {  font-size: 34px;  line-height: 36px;  margin-bottom: 2px;}*/
+h1 { font-size: 30px; line-height: 32px; margin-bottom: 5px; }
+h2 { font-size: 26px; line-height: 28px; margin-bottom: 15px; }
+h3 { font-size: 20px; line-height: 25px; margin-bottom: 15px; }
+h4 { font-size: 18px; line-height: 20px; margin-bottom: 5px; }
+h5 { font-size: 16px; line-height: 16px; }
+h6 { font-size: 14px; line-height: 16px; }
 h5 a {
     text-decoration: none;
 }
@@ -641,7 +642,7 @@ a.button:hover{
  }
  #breadcrumbs{
     list-style:none;
-    margin:10px 0;
+    margin:10px 0 0;
     overflow:hidden;
     color: #444;
 }
@@ -732,7 +733,7 @@ a.button:hover{
 .section-title {
  padding: 5px 0 15px;
  border-bottom: 1px solid #ddd;
- margin: 0 0 40px;
+ margin: 0;
 }
 
 .section-title h2,
@@ -770,7 +771,8 @@ a.button:hover{
 
 .query-actions {
  text-align: right;
- margin-bottom: 20px;
+ margin-bottom: -10px;
+ margin-top: -1.5em;
 }
 
 .query-actions .query-actions-title {
@@ -794,16 +796,15 @@ a.button:hover{
  color: #999;
 }
 
-.archive .query-actions {
- margin-top: 25px;
+.move-up{
+  margin-top: -5.2em;
 }
-
 .single-post-header h1,
 .page-header h1,
 .archive-title {
- font-family: "Droid Serif";
  padding-bottom: 20px;
- padding-left: 20px;
+ /*font-family: "Droid Serif";
+  padding-left: 20px;*/
 }
 
 .single-post-header h2{
@@ -1298,6 +1299,7 @@ a.button:hover{
  overflow: hidden;
  margin-bottom: 5px;
  text-overflow: ellipsis;
+ text-shadow: none;
 }
 
 .sticky-posts .sticky-item article p.date,
@@ -1653,7 +1655,13 @@ a.button:hover{
 /*
  * Post list
  */
-
+.opendev-posts-list li{
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+.opendev-posts-list li .clearfix{
+      height: auto;
+}
 .opendev-posts-list li article {
  border: 1px solid #ccc;
  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
@@ -1663,7 +1671,7 @@ a.button:hover{
  text-decoration: none;
 }
 .opendev-posts-list li article .meta {
- margin: 0 0 20px;
+ margin: 0 0 5px;
 }
 .opendev-posts-list li article .meta p {
  margin: 0 0 5px;
@@ -1883,7 +1891,7 @@ a.button:hover{
  width: 120px;
 }
 /* Taxonomy Navigation */
-.opendev_taxonomy_widget_ul li.topic_nav_item ul{
+.opendev_taxonomy_widget_ul li.topic_nav_item ul, .opendev_taxonomy_widget_ul li.cat_item ul{
     display: none;
 }
 .sidebar_header h2, h2.sidebar_header{
@@ -1927,7 +1935,9 @@ a.button:hover{
 .widget_opendev_taxonomy_widget ul:first-child{
     max-height: 650px;
     overflow-y: auto;
-
+}
+ul.opendev_taxonomy_widget_ul span:hover{
+  cursor: pointer;
 }
 /*
  * Related datasets box

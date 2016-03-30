@@ -28,7 +28,7 @@ foreach($post_types as $pt) {
 	</div>
 	<?php
 	// Children
-	$children = get_terms($term->taxonomy, array('child_of' => $term->term_id));
+	/*$children = get_terms($term->taxonomy, array('child_of' => $term->term_id));
 	if($children && !empty($children)) :
 		?>
 		<nav id="main-title-nav">
@@ -43,7 +43,7 @@ foreach($post_types as $pt) {
 			</div>
 		</nav>
 		<?php
-	endif;
+	endif;*/
 	?>
 </div>
 <div class="container category-container">

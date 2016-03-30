@@ -8,7 +8,7 @@ get_header();
 
 <div class="section-title">
 	<div class="container">
-		<div class="twelve columns">
+		<div class="eight columns">
 			<h1 class="archive-title"><?php
 					if( is_tag() || is_category() || is_tax() ) :
 						printf( __( '%s', 'jeo' ), single_term_title() );
@@ -24,7 +24,7 @@ get_header();
 						_e( 'Archives', 'jeo' );
 					endif;
 				?></h1>
-				<?php get_template_part('section', 'query-actions'); ?>
+				<?php //get_template_part('section', 'query-actions'); ?>
 		</div>
 	</div>
 </div>
