@@ -53,6 +53,7 @@ require_once STYLESHEETPATH.'/inc/category-walker.php';
 
 $country_name = str_replace('Open Development ', '', get_bloginfo('name'));
 define('COUNTRY_NAME', strtolower($country_name));
+define('SITE_NAME', $country_name);
 
 function opendev_setup_theme()
 {
@@ -1204,6 +1205,93 @@ function get_post_or_page_id_by_title($title_str, $post_type="topic") {
     }
  /****end Breadcrumb**/
 
+/** SHOW CATEGORY BY Post type **/
+function list_category_by_post_type ($post_type='post', $args=''){
+    if ($args == "")
+        $args = array(
+        'orderby' => 'term_id',
+        'parent' => 0
+        );
+    $categories = get_categories( $args );
+    echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
+    echo "<ul class='opendev_taxonomy_widget_ul'>";
+    foreach($categories as $category){
+			$jackpot = true;
+      $children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
+      echo "<li class='cat_item'>";
+          print_category_by_post_type($category, $post_type);
+          if ( !empty($children) ) {
+            echo '<ul>';
+              walk_child_category_by_post_type( $children );
+            echo '</ul>';
+          }
+
+      echo "</li>";
+    }
+    echo "</ul>"; ?>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+      $('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
+        if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
+          $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
+          $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+        }
+        //if parent is showed, child need to expend
+        /*$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
+        $('span.<?php echo $current_page_slug; ?>').toggleClass('minusimage-<?php echo $site_name;?>');
+        $('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');
+
+        //if child is showed, parent expended
+        $('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").show();
+        $('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
+        $('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>'); */
+      });
+      $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
+        if($(event.target).parent("li").find('ul').length){
+          $(event.target).parent("li").find('ul:first').slideToggle();
+          $(event.target).toggleClass("plusimage-<?php echo $site_name;?>");
+          $(event.target).toggleClass('minusimage-<?php echo $site_name;?>');
+        }
+      });
+    });
+     </script>
+     <?php
+} // end function
+
+function print_category_by_post_type( $category, $post_type ="post") {
+  echo "<span class='nochildimage-".COUNTRY_NAME."'>";
+          echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
+              if (get_the_category() == $category->name){ // if page of the topic exists
+                  echo "<strong class='".COUNTRY_NAME."-color'>";
+                      echo $category->name;
+                  echo "</strong>";
+              }else{
+                    echo $category->name;
+              }
+          echo "</a>";
+    echo "</span>";
+
+}
+function walk_child_category_by_post_type( $children ) {
+  foreach($children as $child){
+    // Get immediate children of current category
+    $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+    echo "<li>";
+    // Display current category
+      print_category_by_post_type($child, $current_page_slug);
+    // if current category has children
+    if ( !empty($cat_children) ) {
+      // add a sublevel
+      echo "<ul>";
+      // display the children
+        walk_child_category_by_post_type( $cat_children );
+      echo "</ul>";
+    }
+    echo "</li>";
+  }
+}
+
+/** END CATEGORY */
  //to set get_the_excerpt() limit words
  function excerpt($num, $read_more="") {
    $limit = $num+1;

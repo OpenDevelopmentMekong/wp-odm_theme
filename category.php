@@ -23,12 +23,11 @@ foreach($post_types as $pt) {
 			endif;
 			?>
 			<h1 class="archive-title"><?php single_cat_title(); ?></h1>
-			<?php get_template_part('section', 'query-actions'); ?>
 		</div>
 	</div>
 	<?php
 	// Children
-	$children = get_terms($term->taxonomy, array('child_of' => $term->term_id));
+	/*$children = get_terms($term->taxonomy, array('child_of' => $term->term_id));
 	if($children && !empty($children)) :
 		?>
 		<nav id="main-title-nav">
@@ -43,11 +42,12 @@ foreach($post_types as $pt) {
 			</div>
 		</nav>
 		<?php
-	endif;
+	endif;*/
 	?>
 </div>
 <div class="container category-container">
-	<div class="eight columns">
+	<div class="nine columns">
+	<?php get_template_part('section', 'query-actions'); ?>
 		<section class="tabbed-posts-section">
 			<?php if(count($tax_post_types) > 1) : ?>
 				<nav id="tabbed-post-type-nav">
@@ -66,7 +66,7 @@ foreach($post_types as $pt) {
 				</nav>
 			<?php endif; ?>
 			<?php if(have_posts()) : ?>
-				<ul class="tabbed-posts-list">
+				<ul class="tabbed-posts-list"><ul class="opendev-posts-list">
 					<?php while(have_posts()) : the_post(); ?>
 						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<article id="post-<?php the_ID(); ?>">
@@ -96,23 +96,29 @@ foreach($post_types as $pt) {
 			<?php endif; ?>
 		</section>
 	</div>
-	<div class="three columns offset-by-one">
+	<div class="three columns move-up">
 		<aside id="sidebar">
 			<ul class="widgets">
 				<li class="widget share-widget">
 					<div class="share clearfix">
 						<ul>
-							<li>
+							<!--<li>
 								<div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="box_count" data-show-faces="false" data-send="false"></div>
+							</li> -->
+							<li>
+								<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
 							</li>
 							<li>
-								<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a>
+								<div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
 							</li>
 							<li>
-								<div class="g-plusone" data-size="tall" data-href="<?php the_permalink(); ?>"></div>
+								<div class="g-plusone" data-width="50" data-annotation="none" data-size="tall" data-href="<?php the_permalink(); ?>" data-count="false"></div>
 							</li>
 						</ul>
 					</div>
+				</li>
+				<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+					<?php list_category_by_post_type($_GET['post_type']); ?>
 				</li>
 				<?php dynamic_sidebar('general'); ?>
 			</ul>

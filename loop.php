@@ -33,13 +33,13 @@
 					</section>
 				</div>
 			<?php else : ?>
-				<div class="eight columns">
+				<div class="nine columns">
 					<?php get_template_part('section', 'query-actions'); ?>
-                    <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
-							<?php $search_results =& new WP_Query("s=$s & showposts=-1");
-                                  $NumResults = $search_results->post_count; ?>
-                            <div id="advanced_search_results"><h2>Site Results (<?php echo $NumResults; ?>)</h2> </div>
-                    <?php endif; ?>
+	              <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
+												<?php $search_results =& new WP_Query("s=$s & showposts=-1");
+	                            $NumResults = $search_results->post_count; ?>
+	                      <div id="advanced_search_results"><h2>Site Results (<?php echo $NumResults; ?>)</h2> </div>
+	              <?php endif; ?>
 
 					<ul class="opendev-posts-list">
 						<?php while(have_posts()) : the_post(); ?>
@@ -49,7 +49,46 @@
 										<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 										<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
 											<div class="meta">
-												<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+													<div class="date">
+														 <span class="lsf">&#xE12b;</span>
+															 <?php
+															 if (function_exists(qtrans_getLanguage)){
+															 		if (qtrans_getLanguage() =="kh"){
+																		echo convert_date_to_kh_date(get_the_time('j.M.Y'));
+																	}else {
+																		echo get_the_time('j F Y');
+																  }
+															 }else {
+																echo get_the_time('j F Y');
+															 } ?>
+													</div>
+													&nbsp;
+													<div class="news-source">
+														<?php
+															if (taxonomy_exists('news_source'))
+															$terms_news_source = get_the_terms( $post->ID, 'news_source' );
+
+																				 if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
+																						 if ($terms_news_source){
+																			$news_sources = "";
+																								 echo '<span class="icon-news"></span> ';
+																			foreach ($terms_news_source as $term) {
+																			$term_link = get_term_link( $term, 'news_source' );
+																			if( is_wp_error( $term_link ) )
+																				continue;
+																			//We successfully got a link. Print it out.
+																			 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+																		}
+																		echo substr($news_sources, 0, -1);
+																}
+															}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+																						 echo '<span class="icon-news"></span> ';
+																						 $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+																						 echo get_the_title($news_source_id);
+																				 }
+															?>
+													</div>
+												<!--<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>-->
 											</div>
 										<?php } ?>
 									</header>
@@ -79,30 +118,37 @@
 						}
 						?>
 					</section>
-					<script type="text/javascript">
-						jQuery(document).ready(function($) {
-							if(!$('.wpckan_dataset_list ul li').length)
-								$('#wpckan_search_results').hide();
-						})
-					</script>
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						if(!$('.wpckan_dataset_list ul li').length)
+							$('#wpckan_search_results').hide();
+					})
+				</script>
 				<?php else : ?>
-					<div class="three columns offset-by-one">
+					<!--<div class="three columns offset-by-one move-up">-->
+					<div class="three columns move-up">
 						<aside id="sidebar">
 							<ul class="widgets">
 								<li class="widget share-widget">
 									<div class="share clearfix">
 										<ul>
-											<li>
+											<!--<li>
 												<div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="box_count" data-show-faces="false" data-send="false"></div>
+											</li>-->
+											<li>
+												<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
 											</li>
 											<li>
-												<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a>
+												<div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
 											</li>
 											<li>
-												<div class="g-plusone" data-size="tall" data-href="<?php the_permalink(); ?>"></div>
+												<div class="g-plusone" data-width="50" data-annotation="none" data-size="tall" data-href="<?php the_permalink(); ?>" data-count="false"></div>
 											</li>
 										</ul>
 									</div>
+								</li>
+								<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+									<?php list_category_by_post_type(); ?>
 								</li>
 								<?php if ( get_post_type() == 'mekong-storm-flood'){
                                           dynamic_sidebar('mekong-storm-flood');
