@@ -1832,7 +1832,7 @@ a.button:hover{
  * page
  */
 .container{
-    width: 97%;
+    /*width: 97%;*/
     clear: both;
 }
 #content.single-post {

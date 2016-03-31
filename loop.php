@@ -33,7 +33,7 @@
 					</section>
 				</div>
 			<?php else : ?>
-				<div class="nine columns">
+				<div class="eight columns">
 					<?php get_template_part('section', 'query-actions'); ?>
 	              <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
 												<?php $search_results =& new WP_Query("s=$s & showposts=-1");
