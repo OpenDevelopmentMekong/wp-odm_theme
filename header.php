@@ -219,7 +219,7 @@
         } ?>
 		<?php if (!is_front_page()) {
     ?>
-		<nav id="main-breadcrumb"><br />
+		<nav id="main-breadcrumb">
             <div class="container">
                 <div class="twelve columns">
 	               <?php the_breadcrumb();
