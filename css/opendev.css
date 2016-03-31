@@ -1120,6 +1120,11 @@ a.button:hover{
  top: auto;
  bottom: -10px;
 }
+.view-more{
+  text-align: right;
+  padding: 10px 0 0;
+  margin-bottom: -3em;
+}
 
 #featured-content.page-section .section-featured-content {
  clear: both;

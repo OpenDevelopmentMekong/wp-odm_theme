@@ -26,8 +26,8 @@
  <section id="news" class="page-section row" <?php // if($is_mapgroup) : echo "style='padding-top:60px'"; endif; ?>>
   <div class="container">
    <div class="twelve columns">
-   <?php $site_name = str_replace('Open Development ', '', get_bloginfo('name'));?> 
-   <h2><?php _e("News <em> from ", "opendev"); _e($site_name, "opendev") ?></em></h2> 
+   <?php $site_name = str_replace('Open Development ', '', get_bloginfo('name'));?>
+   <h2><?php _e("News <em> from ", "opendev"); _e($site_name, "opendev") ?></em></h2>
 
    <!-- <section class="tabbed-posts-section">
             <script>
@@ -83,6 +83,15 @@
      jeo_map();
     ?>
     </div>
+    <?php
+        $page_news_archive = get_page_by_path( 'news-archive' );
+        $page_news = get_page_by_path( 'news' );
+          if($page_news_archive) { ?>
+            <div class="view-more"><a href="<?php echo get_page_link($page_news_archive->ID) ?>"><?php _e("View more... »", "opendev"); ?></a></div>
+    <?php }else if ($page_news){?>
+        <div class="view-more"><a href="<?php echo get_page_link($page_news->ID) ?>"><?php _e("View more... »", "opendev"); ?></a></div>
+    <?php
+          }?>
    </div>
   </div>
  </section>
