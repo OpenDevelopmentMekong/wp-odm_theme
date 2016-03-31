@@ -38,7 +38,7 @@ Template Name: News archive page
 <?php	if(have_posts()) : ?>
 				<div class="section-title">
 					<div class="container">
-						<div class="nine columns">
+						<div class="eight columns">
 									<h1><?php the_title() ?></h1>
 						</div>
 					</div>
