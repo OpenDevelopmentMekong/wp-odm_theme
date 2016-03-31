@@ -82,10 +82,11 @@
      <?php
      jeo_map();
     ?>
-    </div>    
+    </div>
     <?php
-        $page_news = get_page_by_path( 'news-archive' );
-        if($page_news) : ?>
+        $page_news_archive = get_page_by_path( 'news-archive' );
+        $page_news = get_page_by_path( 'news' );
+        if($page_news_archive || $page_news) : ?>
             <div class="view-more"><a href="<?php echo get_page_link($page_news->ID) ?>"><?php _e("View more... »", "opendev"); ?></a></div>
     <?php endif;?>
    </div>
