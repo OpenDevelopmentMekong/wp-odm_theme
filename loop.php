@@ -33,7 +33,7 @@
 					</section>
 				</div>
 			<?php else : ?>
-				<div class="eight columns">
+				<div class="nine columns">
 					<?php get_template_part('section', 'query-actions'); ?>
 	              <?php if(is_search() || get_query_var('opendev_advanced_nav')) : ?>
 												<?php $search_results =& new WP_Query("s=$s & showposts=-1");
@@ -125,7 +125,8 @@
 					})
 				</script>
 				<?php else : ?>
-					<div class="three columns offset-by-one move-up">
+					<!--<div class="three columns offset-by-one move-up">-->
+					<div class="three columns move-up">
 						<aside id="sidebar">
 							<ul class="widgets">
 								<li class="widget share-widget">
@@ -138,10 +139,10 @@
 												<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
 											</li>
 											<li>
-												<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a>
+												<div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
 											</li>
 											<li>
-												<div class="g-plusone" data-size="tall" data-href="<?php the_permalink(); ?>"></div>
+												<div class="g-plusone" data-width="50" data-annotation="none" data-size="tall" data-href="<?php the_permalink(); ?>" data-count="false"></div>
 											</li>
 										</ul>
 									</div>

@@ -773,7 +773,7 @@ a.button:hover{
 
 .query-actions {
  text-align: right;
- margin-bottom: -10px;
+ margin-bottom: 0;
  margin-top: -1.5em;
 }
 
@@ -799,7 +799,7 @@ a.button:hover{
 }
 
 .move-up{
-  margin-top: -5.2em;
+  margin-top: -5em;
 }
 .single-post-header h1,
 .page-header h1,
@@ -1589,11 +1589,12 @@ a.button:hover{
 .tabbed-posts-section {
  border: 1px solid #ddd;
  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+ margin-top: 7px;
 }
 
 .tabbed-posts-list {
  margin: 0;
- padding: 0 10px;
+ padding: 4px 10px;
 
 }
 
@@ -1662,10 +1663,14 @@ a.button:hover{
 /*
  * Post list
  */
-.opendev-posts-list li{
-  line-height: 24px;
-  margin-bottom: 20px;
-}
+ .opendev-posts-list {
+   margin-left: 0;
+   margin-top: -1em;
+ }
+ .opendev-posts-list li{
+   line-height: 24px;
+   margin-bottom: 20px;
+ }
 .opendev-posts-list li .clearfix{
       height: auto;
 }
@@ -1848,9 +1853,9 @@ a.button:hover{
 #content #references li, #content #reference-list li{
  list-style-type: none;
 }
-
+/*
 .container .eight.columns{ width: 700px;}
-.container .nine.columns { width: 835px;}
+.container .nine.columns { width: 835px;} */
 
 .clear, #clear{
  clear:both;
@@ -2216,7 +2221,7 @@ ul.opendev_taxonomy_widget_ul span:hover{
  box-shadow: 0 0 0;
  padding: 0;
  border: 0;
- margin-bottom: 3.5em;
+ margin-bottom: 3em;
 }
 
 .widget.widget_search input {
@@ -2276,9 +2281,9 @@ ul.opendev_taxonomy_widget_ul span:hover{
 .widget ol li {
  padding-left: 10px;
 }
-#sidebar .widgets .widget.share-widget, .widget.share-widget{
+/*#sidebar .widgets .widget.share-widget, .widget.share-widget{
     padding-left: 3em
-}
+}*/
 .widget .opendev-summary ol {
  margin-left: -40px !important;
  margin-right: -10px !important;
