@@ -22,13 +22,27 @@ class OpenDev_Category_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		// outputs the content of the widget
-		echo $args['before_widget'];
-
 		global $post;
+    $current_cat = get_queried_object();
+    if($current_cat->slug)
+      $current_cat_page = $current_cat->slug;
+    else $current_cat_page = $current_cat->post_name;
 
 		$taxonomies = $instance['taxonomies'];
 		foreach($taxonomies as $taxonomy) {
+			$args_term = array(
+			'orderby' => 'term_id',
+			'taxonomy' => $taxonomy,
+			'parent' => 0
+			);
+	    $categories = get_categories( $args_term );
+			if (isset($_GET['post_type']))
+				$post_type = $_GET['post_type'];
+			else
+				$post_type =  get_post_type( get_the_ID() );
+
 			$tax = get_taxonomy($taxonomy);
+
 			$post_terms = wp_get_object_terms( $post->ID, $taxonomy, array( 'fields' => 'ids' ) );
 			if ( !empty( $post_terms ) && !is_wp_error( $post_terms ) ) {
 				$tax_class = '';
@@ -36,16 +50,48 @@ class OpenDev_Category_Widget extends WP_Widget {
 					$tax_class .= ' nonhierarchical';
 				else
 					$tax_class .= ' hierarchical';
-				echo '<div class="od-tax-widget-tax-item tax-' . $taxonomy . $tax_class .'">';
-				echo $args['before_title'] . $tax->labels->name . $args['after_title'];
-				echo '<ul class="od-tax-widget-term-list">';
-				$term_ids = implode( ',' , $post_terms );
-				echo wp_list_categories( 'title_li=&echo=0&taxonomy=' . $taxonomy . '&include=' . $term_ids );
-				echo '</ul>';
-				echo '</div>';
+				echo $args['before_widget'];
+					echo '<div class="od-tax-widget-tax-item tax-' . $taxonomy . $tax_class .'">';
+								echo $args['before_title'] . $tax->labels->name . $args['after_title'];
+								$term_ids = implode( ',' , $post_terms );
+								//echo wp_list_categories( 'title_li=&echo=0&taxonomy=' . $taxonomy . '&include=' . $term_ids );
+								list_category_by_post_type($post_type, $args_term, 0, 0);
+					echo '</div>';
+				echo $args['after_widget'];
 			}
 		}
-		echo $args['after_widget'];
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+			$('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
+				if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
+					$('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
+					$('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+				}
+				//if parent is showed, child need to expend
+				if ($('span.<?php echo $current_cat_page; ?>').length){
+					$('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
+					$('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+					$('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+
+					//if child is showed, parent expended
+					$('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
+					$('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+					$('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+				}
+			});
+			$('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
+			//	event.preventDefault();
+				var target =  $( event.target );
+					if(target.parent("li").find('ul').length){
+					  target.parent("li").find('ul:first').slideToggle();
+						target.toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
+						target.toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+						}
+				});
+			});
+		 </script>
+	<?php
 	}
 
 	/**
