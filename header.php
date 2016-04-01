@@ -31,10 +31,13 @@
     $ckanDomain='192.168.33.10:8081';
   }
   else {
-    $ckanDomain='data.opendevelopmentmekong.net';
+    $full_domain = $_SERVER['SERVER_NAME'];
+    $just_domain = preg_replace("/^(.*\.)?([^.]*\..*)$/", "$2", $_SERVER['HTTP_HOST']);
+    $ckanDomain = 'data.'.$just_domain;
+    /*$ckanDomain='data.opendevelopmentmekong.net';
     if ($preprod == true){
       $ckanDomain='pp-data.opendevelopmentmekong.net';
-    }
+    }*/
   }
 ?>
 <?php ?>
