@@ -1930,6 +1930,9 @@ a.button:hover{
   font-size: 14px;
   line-height: 20px;
 }
+.widgets .widget ul ul{
+  font-size: 98%;
+}
 #sidebar .widgets .widget ul li span.plusimage-mekong{
     display: inline-block;
     background: url("../img/expand-mekong.png") no-repeat 0 2px!important;

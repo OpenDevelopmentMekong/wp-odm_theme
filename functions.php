@@ -1213,22 +1213,25 @@ function list_category_by_post_type ($post_type='post', $args=''){
         'parent' => 0
         );
     $categories = get_categories( $args );
+    $current_cat = get_queried_object();
+    $current_cat_page = $current_cat->slug;
     echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
     echo "<ul class='opendev_taxonomy_widget_ul'>";
     foreach($categories as $category){
 			$jackpot = true;
       $children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
       echo "<li class='cat_item'>";
-          print_category_by_post_type($category, $post_type);
+          print_category_by_post_type($category, $post_type, $current_cat_page);
           if ( !empty($children) ) {
             echo '<ul>';
-              walk_child_category_by_post_type( $children );
+              walk_child_category_by_post_type( $children, $post_type, $current_cat_page );
             echo '</ul>';
           }
-
       echo "</li>";
     }
-    echo "</ul>"; ?>
+    echo "</ul>";
+    ?>
+
     <script type="text/javascript">
       jQuery(document).ready(function($) {
       $('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
@@ -1237,20 +1240,20 @@ function list_category_by_post_type ($post_type='post', $args=''){
           $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
         }
         //if parent is showed, child need to expend
-        /*$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
-        $('span.<?php echo $current_page_slug; ?>').toggleClass('minusimage-<?php echo $site_name;?>');
-        $('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');
+        $('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
+        $('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+        $('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
 
         //if child is showed, parent expended
-        $('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").show();
-        $('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
-        $('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>'); */
+        $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
+        $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+        $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
       });
       $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
         if($(event.target).parent("li").find('ul').length){
           $(event.target).parent("li").find('ul:first').slideToggle();
-          $(event.target).toggleClass("plusimage-<?php echo $site_name;?>");
-          $(event.target).toggleClass('minusimage-<?php echo $site_name;?>');
+          $(event.target).toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
+          $(event.target).toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
         }
       });
     });
@@ -1258,10 +1261,15 @@ function list_category_by_post_type ($post_type='post', $args=''){
      <?php
 } // end function
 
-function print_category_by_post_type( $category, $post_type ="post") {
-  echo "<span class='nochildimage-".COUNTRY_NAME."'>";
+function print_category_by_post_type( $category, $post_type ="post", $current_cat='') { 
+ if ($current_cat == $category->slug){
+     $current_page = " ".$current_cat;
+  }else {
+     $current_page = "";
+  }
+  echo "<span class='nochildimage-".COUNTRY_NAME.$current_page."'>";
           echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
-              if (get_the_category() == $category->name){ // if page of the topic exists
+              if ($current_cat == $category->slug){ // if page of the topic exists
                   echo "<strong class='".COUNTRY_NAME."-color'>";
                       echo $category->name;
                   echo "</strong>";
@@ -1272,19 +1280,19 @@ function print_category_by_post_type( $category, $post_type ="post") {
     echo "</span>";
 
 }
-function walk_child_category_by_post_type( $children ) {
+function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
   foreach($children as $child){
     // Get immediate children of current category
     $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
     echo "<li>";
     // Display current category
-      print_category_by_post_type($child, $current_page_slug);
+      print_category_by_post_type($child, $post_type, $current_cat);
     // if current category has children
     if ( !empty($cat_children) ) {
       // add a sublevel
       echo "<ul>";
       // display the children
-        walk_child_category_by_post_type( $cat_children );
+        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat );
       echo "</ul>";
     }
     echo "</li>";
