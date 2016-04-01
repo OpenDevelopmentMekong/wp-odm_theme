@@ -1207,6 +1207,7 @@ function get_post_or_page_id_by_title($title_str, $post_type="topic") {
 
 /** SHOW CATEGORY BY Post type **/
 function list_category_by_post_type ($post_type='post', $args=''){
+    global $post;
     if ($args == "")
         $args = array(
         'orderby' => 'term_id',
@@ -1214,7 +1215,10 @@ function list_category_by_post_type ($post_type='post', $args=''){
         );
     $categories = get_categories( $args );
     $current_cat = get_queried_object();
-    $current_cat_page = $current_cat->slug;
+    if($current_cat->slug)
+      $current_cat_page = $current_cat->slug;
+    else $current_cat_page = $current_cat->post_name;
+
     echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
     echo "<ul class='opendev_taxonomy_widget_ul'>";
     foreach($categories as $category){
@@ -1240,14 +1244,16 @@ function list_category_by_post_type ($post_type='post', $args=''){
           $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
         }
         //if parent is showed, child need to expend
-        $('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
-        $('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-        $('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+        if ($('span.<?php echo $current_cat_page; ?>').length){
+          $('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
+          $('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+          $('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
 
-        //if child is showed, parent expended
-        $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
-        $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-        $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+          //if child is showed, parent expended
+          $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
+          $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+          $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+        }
       });
       $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
         if($(event.target).parent("li").find('ul').length){
@@ -1261,7 +1267,7 @@ function list_category_by_post_type ($post_type='post', $args=''){
      <?php
 } // end function
 
-function print_category_by_post_type( $category, $post_type ="post", $current_cat='') { 
+function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
  if ($current_cat == $category->slug){
      $current_page = " ".$current_cat;
   }else {
@@ -1300,6 +1306,71 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 }
 
 /** END CATEGORY */
+
+/**** Post Meta ******/
+function show_date_and_source_of_the_post(){ ?>
+  <div class="date">
+     <span class="lsf">&#xE12b;</span>
+       <?php
+       if (function_exists(qtrans_getLanguage)){
+          if (qtrans_getLanguage() =="kh"){
+            echo convert_date_to_kh_date(get_the_time('j.M.Y'));
+          }else {
+            echo get_the_time('j F Y');
+          }
+       }else {
+        echo get_the_time('j F Y');
+       } ?>
+  </div>
+  &nbsp;
+  <?php
+  if (taxonomy_exists('news_source')){
+      echo '<div class="news-source">';
+      $terms_news_source = get_the_terms( $post->ID, 'news_source' );
+          if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
+             if ($terms_news_source){
+                $news_sources = "";
+                 echo '<span class="icon-news"></span> ';
+                  foreach ($terms_news_source as $term) {
+                  $term_link = get_term_link( $term, 'news_source' );
+                  if( is_wp_error( $term_link ) )
+                    continue;
+                  //We successfully got a link. Print it out.
+                   $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>, ';
+                }
+                echo substr($news_sources, 0, -2);
+            }
+      }else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+                     echo '<span class="icon-news"></span> ';
+                     $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+                     echo get_the_title($news_source_id);
+      }
+     echo '</div><!--news-source-->';
+  }// if news_source exists
+  if (taxonomy_exists('public_announcement_source')){
+      echo '<div class="news-source">';
+      $terms_public_announcement_source = get_the_terms( $post->ID, 'public_announcement_source' );
+          if ( $terms_public_announcement_source && ! is_wp_error( $terms_public_announcement_source ) ) {
+             if ($terms_public_announcement_source){
+                $public_announcement_sources = "";
+                 echo '<span class="icon-news"></span> ';
+                  foreach ($terms_public_announcement_source as $term) {
+                  $term_link = get_term_link( $term, 'public_announcement_source' );
+                  if( is_wp_error( $term_link ) )
+                    continue;
+                  //We successfully got a link. Print it out.
+                   $public_announcement_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>, ';
+                }
+                echo substr($public_announcement_sources, 0, -2);
+            }
+      }else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+                     echo '<span class="icon-news"></span> ';
+                     $public_announcement_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+                     echo get_the_title($public_announcement_source_id);
+      }
+     echo '</div><!--news-source-->';
+  }// if public_announcement_source exists
+}
  //to set get_the_excerpt() limit words
  function excerpt($num, $read_more="") {
    $limit = $num+1;
