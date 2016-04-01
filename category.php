@@ -4,10 +4,12 @@ $term = $wp_query->queried_object;
 $post_types = get_post_types(array('public' => true));
 $tax_post_types = array();
 foreach($post_types as $pt) {
-	$pt_tax = get_object_taxonomies($pt);
-	if(in_array($term->taxonomy, $pt_tax)) {
-		$tax_post_types[] = $pt;
-	}
+  if (in_array($pt, array('post', 'topic', 'announcement'))){
+		$pt_tax = get_object_taxonomies($pt);
+		if(in_array($term->taxonomy, $pt_tax)) {
+			$tax_post_types[] = $pt;
+		}
+  }
 }
 ?>
 
@@ -72,10 +74,51 @@ foreach($post_types as $pt) {
 							<article id="post-<?php the_ID(); ?>">
 								<header class="post-header">
 									<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
-									<?php if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
+									<?php //if(get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') { ?>
+									<?php if(!in_array(get_post_type(), array('map', 'map-layer', 'page', 'topic'))) { ?>
 										<div class="meta">
-											<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>
+											<!--<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>-->
 											<!-- <p><span class="icon-user"></span> <?php _e('by', 'jeo'); ?> <?php //the_author(); ?></p> -->
+											<div class="date">
+												 <span class="lsf">&#xE12b;</span>
+													 <?php
+													 if (function_exists(qtrans_getLanguage)){
+															if (qtrans_getLanguage() =="kh"){
+																echo convert_date_to_kh_date(get_the_time('j.M.Y'));
+															}else {
+																echo get_the_time('j F Y');
+															}
+													 }else {
+														echo get_the_time('j F Y');
+													 } ?>
+											</div>
+											&nbsp;
+											<div class="news-source">
+												<?php
+													if (taxonomy_exists('news_source'))
+													$terms_news_source = get_the_terms( $post->ID, 'news_source' );
+
+																		 if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
+																				 if ($terms_news_source){
+																	$news_sources = "";
+																						 echo '<span class="icon-news"></span> ';
+																	foreach ($terms_news_source as $term) {
+																	$term_link = get_term_link( $term, 'news_source' );
+																	if( is_wp_error( $term_link ) )
+																		continue;
+																	//We successfully got a link. Print it out.
+																	 $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>,';
+																}
+																echo substr($news_sources, 0, -1);
+														}
+													}else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
+																				 echo '<span class="icon-news"></span> ';
+																				 $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
+																				 echo get_the_title($news_source_id);
+																		 }
+													?>
+											</div><!--news-source-->
+
 										</div>
 									<?php } ?>
 								</header>
@@ -117,7 +160,7 @@ foreach($post_types as $pt) {
 						</ul>
 					</div>
 				</li>
-				<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+				<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">				
 					<?php list_category_by_post_type($_GET['post_type']); ?>
 				</li>
 				<?php dynamic_sidebar('general'); ?>
