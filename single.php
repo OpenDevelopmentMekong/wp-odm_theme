@@ -107,9 +107,9 @@ if (function_exists(qtranxf_getLanguage)){
             									</ul>
             								</div>
             							</li>
-                          <li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+                          <!--<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
           									<?php list_category_by_post_type(); ?>
-          								</li>
+          								</li>-->
             							<?php dynamic_sidebar('post'); ?>
             						</ul>
             					</aside>

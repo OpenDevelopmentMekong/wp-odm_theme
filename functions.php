@@ -1206,7 +1206,7 @@ function get_post_or_page_id_by_title($title_str, $post_type="topic") {
  /****end Breadcrumb**/
 
 /** SHOW CATEGORY BY Post type **/
-function list_category_by_post_type ($post_type='post', $args=''){
+function list_category_by_post_type ($post_type='post', $args ='', $title = 1, $js_script = 1){
     global $post;
     if ($args == "")
         $args = array(
@@ -1218,8 +1218,9 @@ function list_category_by_post_type ($post_type='post', $args=''){
     if($current_cat->slug)
       $current_cat_page = $current_cat->slug;
     else $current_cat_page = $current_cat->post_name;
-
+    if ($title==1)
     echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
+
     echo "<ul class='opendev_taxonomy_widget_ul'>";
     foreach($categories as $category){
 			$jackpot = true;
@@ -1234,37 +1235,40 @@ function list_category_by_post_type ($post_type='post', $args=''){
       echo "</li>";
     }
     echo "</ul>";
+    if($js_script ==1){
     ?>
+        <script type="text/javascript">
+          jQuery(document).ready(function($) {
+          $('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
+            if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
+              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
+              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+            }
+            //if parent is showed, child need to expend
+            if ($('span.<?php echo $current_cat_page; ?>').length){
+              $('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
+              $('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+              $('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
 
-    <script type="text/javascript">
-      jQuery(document).ready(function($) {
-      $('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
-        if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
-          $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
-          $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
-        }
-        //if parent is showed, child need to expend
-        if ($('span.<?php echo $current_cat_page; ?>').length){
-          $('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
-          $('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-          $('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
-
-          //if child is showed, parent expended
-          $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
-          $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-          $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
-        }
-      });
-      $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
-        if($(event.target).parent("li").find('ul').length){
-          $(event.target).parent("li").find('ul:first').slideToggle();
-          $(event.target).toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
-          $(event.target).toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-        }
-      });
-    });
-     </script>
+              //if child is showed, parent expended
+              $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
+              $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+              $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+            }
+          });
+          $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
+            //event.preventDefault();
+            var target =  $( event.target );
+              if(target.parent("li").find('ul').length){
+                target.parent("li").find('ul:first').slideToggle();
+                target.toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
+                target.toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+                }
+            });
+          });
+         </script>
      <?php
+   }//if js_script
 } // end function
 
 function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
