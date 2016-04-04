@@ -140,6 +140,9 @@ tr:nth-child(2n+1) {
   #cNavNew li:hover .level2,#cNavNew li:hover .level2 a {background:#f7904d; color:white;}
   /*level 2 hover*/
   #cNavNew li .level2 li:hover>a{background:white;color:black;}
+  #cNavNew li .level2 li{
+    background: #f7904d;
+  }
   /*level 3 hover*/
   #cNavNew li:hover .level3 a {
       background: #64161d;
