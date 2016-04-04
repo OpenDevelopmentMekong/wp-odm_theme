@@ -20,7 +20,7 @@
   margin-left: 0;
   overflow: hidden;
   display: table-cell;
-  height: 29px
+  /* height: 29px; */
 }
 #cNavNew li.cur>ul {
   display: block
@@ -33,7 +33,7 @@
   display: inline-block;
   font-family: TheSansPlain;
   position: relative;
-  height: 29px;
+  /* height: 29px; */
   line-height: 29px
 }
 #cNavNew li a .cNavState {
@@ -56,13 +56,21 @@
   background: transparent!important;
   position: static!important;
 }
-#cNavNew li .level2 li, #cNavNew li .level2 a {
-  height: 29px;
+#cNavNew li .level2 li{
+  line-height: 28px;
+}
+#cNavNew li .level2 a {
+ /* height: 29px;
+ line-height: 29px;*/
+ line-height: 20px;
+ padding-top: 4px;
+ padding-bottom: 4px;
 }
 #cNavNew li .level2 li {
   /*background: url("/fileadmin/images/cNav_spacer.png") no-repeat;*/
   background-position: top right;
   margin: 0;
+  line-height: 27px;
 }
 #cNavNew li .level2 li.menu-item{
   padding: 0;
@@ -88,7 +96,7 @@
   top: 29px;
 }
 #cNavNew li .level3 li, #cNavNew li .level3 a {
-  height: 29px;
+  /* height: 29px; */
 }
 #cNavNew li .level3 li.cur>a, #cNavNew li .level3 li.act>a, #cNavNew li .level3 li:hover>a {
   color: #0773B6;
@@ -105,9 +113,6 @@
 #cNavNew.level1 li.act .level2 li:hover .level3, #cNavNew.level1 li .level2 li.act .level3 {
   display: block;
 }
-/* REVIEW:  */
-#cNavNew .icon_menu:hover .level2{margin-top:-12px;}
-#cNavNew .icon_menu:hover .menu_economy{margin-top: -13px;}
 
 /*#cNavNew li:hover .icon_menu .level2*/
 .white #mainNav-inner .level1>li>a {
@@ -165,18 +170,13 @@
 
 /*.white #cNavNew.level1 img{width:45px!important;}*/
 
-.white #cNavNew.level1 li.icon_menu {
-  height: 45px;
-  padding-top: 3px;
-}
-
 /*level 1 hover*/
 
 .white #cNavNew.level1>li:hover {
   background: #6393D2;
   position: static!important;
-  height: 60px;
-  line-height: 60px;
+  height: 55px;
+  line-height: 55px;
   overflow:visible!important;
   padding: 0!important;
 }
@@ -211,7 +211,7 @@ li.top-topic {
  position: relative;
  font-weight: bold;
  text-transform: uppercase;
- /* height: 29px; */
+ /* /* height: 29px; */ */
   line-height: 29px;
   border-bottom: 1px solid white;
 }
@@ -219,7 +219,7 @@ li.top-topic {
   clear: both;
 }
 #cNavNew li:hover .level2 {
-  width: 220px;
+  max-width: 290px;
   left: 548px;
   top: 60px;
   padding-left: 0;
@@ -415,7 +415,7 @@ li.top-topic {
 
 .contentNavigation {
   width: 100%;
-  height: 60px;
+  height: 55px;
   color:#704C98;
   /*z-index: 100;*/
   /*margin-left: -30px;*/
@@ -439,7 +439,7 @@ li.top-topic {
   margin-left: 0;
   overflow: hidden;
   display: table-cell;
-  height: 29px;
+  /* height: 29px; */
 }
 
   /*#cNavNew li:first-of-type{padding-left: 40px;}*/
@@ -464,8 +464,8 @@ li.top-topic {
   display: inline-block;
   font-family: TheSansPlain;
   position: relative;
-  height: 29px;
-  line-height: 29px;
+  /* height: 29px; */
+  line-/* height: 29px; */
 }
 #cNavNew li a {
   font-size: 12px;
@@ -476,22 +476,21 @@ li.top-topic {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   position: relative;
-  height: 29px;
-  line-height: 29px;
+  /* height: 29px; */
+  line-/* height: 29px; */
 }
 
 .white #cNavNew.level1 li.icon_menu {
-  height: 60px;
-  padding-top: 3px;
+  height: 55px;
 }
 .white #cNavNew.level1 li.icon_menu ul{
-  margin-top:-12px;
+  margin-top:-15px;
 }
 .white #cNavNew.level1 li.icon_menu ul.menu_economy{
-  margin-top:-13px;
+  /*margin-top:-13px;*/
 }
 #cNavNew .level2 li.by_country:hover{
-  height: 174px;
+  height: 117px;
 }
 #cNavNew .level2 li.by_type:hover{height: 100%;}
 #cNavNew .level2>li.by_country:hover .level3{
@@ -509,20 +508,23 @@ li.top-topic {
   background: #6393D2;
 }
 li.menu_environment img{
-  width: 45px;
+  width: 42px;
   height: auto;
-  margin-top: 5px;
+  max-height: 50px;
+  margin-top: 8px;
 }
 
 li.menu_economy img{
-  width: 45px;
-  margin-top: -1px;
+  width: 41px;
+  margin-top: 3px;
+  max-height: 50px;
 }
 
 li.menu_people img{
-  height: 34px;
+  height: 39px;
   padding-top: 8px;
 }
+
 /*header*/
 
 header#od-head .icon-od-logo {
@@ -530,10 +532,6 @@ header#od-head .icon-od-logo {
 }
 
 .mainNav-logo a:hover,.mainNav-logo a:active, .mainNav-logo a:visited, .mainNav-logo a{text-decoration: none;}
-
-/*.category-container{
-  margin-top:150px;
-} */
 
 #site-intro {
   margin-top: 165px;
@@ -621,7 +619,7 @@ footer#colophon{
 
   .404{margin-bottom: 200px;}
 
-  .multiline-menu-item, .multiline-menu-item a{height: 60px!important;}
+  /*.multiline-menu-item, .multiline-menu-item a{height: 50px!important;} */
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
