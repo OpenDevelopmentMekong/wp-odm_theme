@@ -25,17 +25,6 @@
 #cNavNew li.cur>ul {
   display: block
 }
-#cNavNew li a {
-  font-size: 12px;
-  color: #555;
-  padding: 0 10px;
-  text-decoration: none;
-  display: inline-block;
-  font-family: TheSansPlain;
-  position: relative;
-  /* height: 29px; */
-  line-height: 29px
-}
 #cNavNew li a .cNavState {
   width: 4px;
   height: 4px;
@@ -433,17 +422,17 @@ li.top-topic {
   background: white;
 
 }
+  /*
 #cNavNew li {
   list-style: none;
   float: left;
   margin-left: 0;
   overflow: hidden;
   display: table-cell;
-  /* height: 29px; */
 }
 
-  /*#cNavNew li:first-of-type{padding-left: 40px;}*/
-#cNavNew .one-line, #cNavNew .menu-item {
+#cNavNew li:first-of-type{padding-left: 40px;}*/
+/*#cNavNew .one-line, #cNavNew .menu-item {
   padding-top: 15px;
   padding-bottom: 20px;
   text-transform: uppercase;
@@ -455,39 +444,28 @@ li.top-topic {
   line-height: 60px;
   height: 60px;
   text-transform: uppercase;
-}
+}*/
 #cNavNew li a {
-  font-size: 12px;
-  color: #555;
-  padding: 0 10px;
-  text-decoration: none;
-  display: inline-block;
-  font-family: TheSansPlain;
-  position: relative;
-  /* height: 29px; */
-  line-/* height: 29px; */
-}
-#cNavNew li a {
-  font-size: 12px;
+  font-size: 14px;
   color: #555;
   padding: 0 10px;
   text-decoration: none;
   display: inline-block;
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
+  line-height: 55px;
   position: relative;
   /* height: 29px; */
-  line-/* height: 29px; */
 }
 
-.white #cNavNew.level1 li.icon_menu {
+/*.white #cNavNew.level1 li.icon_menu {
   height: 55px;
 }
+
+.white #cNavNew.level1 li.icon_menu ul.menu_economy{
+}*/
 .white #cNavNew.level1 li.icon_menu ul{
   margin-top:-15px;
-}
-.white #cNavNew.level1 li.icon_menu ul.menu_economy{
-  /*margin-top:-13px;*/
 }
 #cNavNew .level2 li.by_country:hover{
   height: 117px;
