@@ -70,7 +70,7 @@
   /*background: url("/fileadmin/images/cNav_spacer.png") no-repeat;*/
   background-position: top right;
   margin: 0;
-  line-height: 28px;
+  line-height: 27px;
 }
 #cNavNew li .level2 li.menu-item{
   padding: 0;
@@ -619,7 +619,7 @@ footer#colophon{
 
   .404{margin-bottom: 200px;}
 
-  .multiline-menu-item, .multiline-menu-item a{height: 50px!important;}
+  /*.multiline-menu-item, .multiline-menu-item a{height: 50px!important;} */
 /*mozilla hack for misplaced logo*/
 @-moz-document url-prefix() {
   .mainNav-logo {
