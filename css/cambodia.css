@@ -4,9 +4,6 @@ body{
 h1, h2, h3, h4, h5, h6 {
     font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
 }
-#cNavNew li a{
-  font: 14px/24px 'Suwannaphum', "Open Sans";
-}
 .mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
 .fa_slider_opendev .fa_slide_content div.description p {
   font-family: "Suwannaphum", "Open Sans" !important;
@@ -141,6 +138,10 @@ tr:nth-child(2n+1) {
 /*L kasten links*/
 .mainNavOdc,.headerODM,.contentNavigation{background:#06323D;}
 /*nav oben*/
+
+#cNavNew li a{
+  font-family: 'Suwannaphum', "Open Sans";
+}
 .white #cNavNew.current-site-mekong{background:#12414E;}
 /*header text*/
 .white #headerText span a{color:#97d320;text-decoration: none;}
