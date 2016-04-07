@@ -147,7 +147,7 @@ require_once('page-profiles-config.php');
       </div>
     <?php else: ?>
       <div class="container">
-        <div class="row" style="display:none">
+        <div class="row">
     			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>
@@ -350,7 +350,7 @@ jQuery(document).ready(function($) {
        scrollX: true,
        responsive: false,
        //dom: '<"top"<"info"i><"pagination"p><"length"l>>rt', //show pagination on top
-       "sDom": 'T<"H"l>t<"F"ip>', //show pagination on bottom: 
+       "sDom": 'T<"H"l>t<"F"ip>', //show pagination on bottom:
     //'l' - Length changing, 'f' - Filtering input, 't' - The table!, 'i' - Information, 'p' - Pagination, 'r' - pRocessing
 
        processing: true,
