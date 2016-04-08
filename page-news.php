@@ -7,24 +7,26 @@ Template Name: News archive page
 	get_header();
 ?>
 <?php
+		global $wpdb, $wp_query;
     $filter_by_lang = strtolower(get_localization_language_by_language_code(qtrans_getLanguage()));
 		$paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 		if (SITE_NAME == "Cambodia"){
-				$number_latest_post = 25;
-				$args_news = array(
+			 $number_latest_post = 25;
+				 $args_news = array(
 					'post_type' => 'post',
-					'paged' => $paged,
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'language',
-							'field'    => 'slug',
-							'terms'    => 'khmer',
-						),
+					//'language' => 'khmer',
+					 'tax_query' => array(
+								array(
+									'taxonomy' => 'language',
+									'field'    => 'slug',
+									'terms'    => 'khmer'
+								)
 					),
+					'paged' => $paged,
 				);
 
-				query_posts($args_news);
+						query_posts($args_news);
 		}else {
 				$number_latest_post = 25;
 				$args_news = array(
