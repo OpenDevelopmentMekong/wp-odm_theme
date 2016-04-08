@@ -148,22 +148,43 @@ require_once('page-profiles-config.php');
     <?php else: ?>
       <div class="container">
         <div class="row">
-    			<div class="ten columns">
+    			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>
-          <div class="two columns">
+          <div class="three columns">
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
+              </div>
+              <div class="sidebar_box_content">
+                <input type="text" id="search_all" placeholder="Search all profiles">
+              </div>
+            </div>
 
-          </div>
+            <div class="sidebar_box">
+              <div class="sidebar_header">
+                <span class="big">
+                  <?php _e( 'DOWNLOAD', 'search' );?></span>
+              </div>
+              <div class="sidebar_box_content download_buttons">
+                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
+                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          </div><!--three-->
         </div>
+
         <header class="single-post-header">
     			<div class="twelve columns">
             <h1 class="align-left"><a href="<?php get_page_link(); ?>"><?php the_title(); ?></a></h1>
     			</div>
     		</header>
         <div class="row no-margin-buttom">
-          <div class="eight columns table-column-container">
+          <div class="twelve columns table-column-container">
 
-			<div class=""></div>
+      			<div id="filter_by"><div class="label">Classifications</div> </div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -243,7 +264,7 @@ require_once('page-profiles-config.php');
                       <?php echo $profile['adjustment'];?>
                     </td>
 										<td>
-                      <?php echo $profile['data_class'];?>
+                      <?php echo ucwords($profile['data_class']);?>
                     </td>
                     <td>
                       <?php echo $profile['map_id'];?>
@@ -253,31 +274,7 @@ require_once('page-profiles-config.php');
       				</tbody>
       			</table>
           </div>
-          <div class="three columns">
 
-            <div class="sidebar_box">
-              <div class="sidebar_header">
-                <span class="big">
-                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
-              </div>
-              <div class="sidebar_box_content">
-                <input type="text" id="search_all" placeholder="Search all profiles">
-              </div>
-            </div>
-
-            <div class="sidebar_box">
-              <div class="sidebar_header">
-                <span class="big">
-                  <?php _e( 'DOWNLOAD', 'search' );?></span>
-              </div>
-              <div class="sidebar_box_content download_buttons">
-                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
-                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
-                <?php endforeach; ?>
-              </div>
-            </div>
-
-          </div>
         </div>
 
         <div class="row">
@@ -318,7 +315,7 @@ var filterEntriesMap = function(mapIds){
 	layers[1].getSubLayer(0).setSQL(sql);
 }
 jQuery(document).ready(function($) {
-  console.log("profile pages init");
+  //console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
    for (var i = 0; i < settings.length; i++) {
@@ -340,32 +337,69 @@ jQuery(document).ready(function($) {
 				$('.dataTables_scrollHead').css('position','static');
 		   }
 
-       if ($(".content_wrapper").scrollTop()   >= get_sidebar) {
+       /*if ($(".content_wrapper").scrollTop()   >= get_sidebar) {
          $('.table-column-container').removeClass("eight");
          $('.table-column-container').addClass("twelve");
  		   }
-
        else {
          $('.table-column-container').removeClass("twelve");
          $('.table-column-container').addClass("eight");
-       }
+       }*/
      });
-    oTable = $("#profiles").dataTable({
-      scrollX: true,
-      responsive: false,
-      dom: '<"top"<"info"i><"pagination"p><"length"l>>rt',
-      processing: true,
-      lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-      order: [[ 0, 'asc' ]],
-      displayLength: 25,
-      columnDefs: [
-        {
-          "targets": [ 17 ],
-          "visible": false
-        }
-      ]
-    });
+     oTable = $("#profiles").dataTable({
+       scrollX: true,
+       responsive: false,
+       //dom: '<"top"<"info"i><"pagination"p><"length"l>>rt', //show pagination on top
+       "sDom": 'T<"H"l>t<"F"ip>', //show pagination on bottom:
+    //'l' - Length changing, 'f' - Filtering input, 't' - The table!, 'i' - Information, 'p' - Pagination, 'r' - pRocessing
 
+       processing: true,
+       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+       //order: [[ 0, 'asc' ]],
+       displayLength: 25,
+       columnDefs: [ //Hide collumns
+         {
+           "targets": [ 17 ],
+           "visible": false
+         }
+       ],
+       "aaSortingFixed": [[ 16, 'asc' ]],
+       //"aaSorting": [[ 0, 'asc' ]],
+       "drawCallback": function ( settings ) {  //Group colums
+             var api = this.api();
+             var rows = api.rows( {page:'current'} ).nodes();
+             var last=null;
+             api.column(16, {page:'current'} ).data().each( function ( group, i ) {
+                 if ( last !== group ) {
+                     $(rows).eq( i ).before(
+                         '<tr class="group" id="cambodia-bgcolor"><td colspan="17">'+group+'</td></tr>'
+                     );
+                     last = group;
+                 }
+             } );
+         }
+     });
+    $('#profiles').dataTable().columnFilter({
+			aoColumns: [
+				      { sSelector: "#filter_by", type:"select" , values: [ 'Gecko', 'Trident', 'KHTML', 'Misc', 'Presto', 'Webkit', 'Tasman']  },
+				]
+		});
+    var columnIndex = 15; //15 is index of Adjustment Classifications
+    jQuery("#filter_by")
+      //.html(fnCreateSelect(oTable.fnGetColumnData(columnIndex)))
+      .append(fnCreateSelect(oTable.fnGetColumnData(columnIndex), "<?php _e("All"); ?>"))
+      .find("select")
+      .change(function() { oTable.fnFilter(jQuery(this).val(), columnIndex); });
+
+
+
+  //Filter by
+  /*var columnIndex = 16; // group data by dataclassification
+  jQuery("#filter_by")
+    .html(fnCreateSelect(oTable.fnGetColumnData(columnIndex)))
+    .find("select")
+    .change(function() { oTable.fnFilter(jQuery(this).val(), columnIndex); });
+*/
    //Enable header scroll bar
 	$('.dataTables_scrollHead').scroll(function(e){
         $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
@@ -391,7 +425,7 @@ window.onload = function() {
 		https: true
 	}).done(function(vis, layers) {
     singleProfile = $('#profiles').length <= 0;
-    console.log("cartodb viz created. singleProfile: " + singleProfile);
+    //console.log("cartodb viz created. singleProfile: " + singleProfile);
 		mapViz = vis;
     if (singleProfile){
       singleProfileMapId  = $("#profile-map-id").text();
