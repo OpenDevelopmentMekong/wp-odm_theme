@@ -14,6 +14,7 @@ Template Name: News archive page
 				$number_latest_post = 25;
 				$args_news = array(
 					'post_type' => 'post',
+					'paged' => $paged,
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'language',
@@ -25,14 +26,15 @@ Template Name: News archive page
 
 				query_posts($args_news);
 		}else {
-				/*$number_latest_post = 25;
-				query_posts(array(
+				$number_latest_post = 25;
+				$args_news = array(
 					'posts_per_page' => $number_latest_post,
 					'post__not_in' => get_option('sticky_posts'),
 					'paged' => $paged,
 					'post_type' => 'post',
 					'post_status' => 'publish'
-				));*/
+				);
+				query_posts($args_news);
 		}
 ?>
 <?php	if(have_posts()) : ?>
@@ -48,5 +50,4 @@ Template Name: News archive page
 			endif;
 			wp_reset_query();
 ?>
-
 <?php get_footer(); ?>

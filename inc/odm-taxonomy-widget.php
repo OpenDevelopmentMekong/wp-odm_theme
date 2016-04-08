@@ -42,48 +42,48 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category( $category, $current_page_slug ="") { 
+	public function print_category( $category, $current_page_slug ="") {
 			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
-			$post_type =  get_post_type( get_the_ID() );			
-			$get_post_id = get_post_or_page_id_by_title($category->name);  			
+			$post_type =  get_post_type( get_the_ID() );
+			$get_post_id = get_post_or_page_id_by_title($category->name);
 			if ($get_post_id){ // if page of the topic exists
-				$topic_page = get_post($get_post_id); 
+				$topic_page = get_post($get_post_id);
 				$topic_slug = $topic_page->post_name;
-				if ($topic_slug == $current_page_slug){ 
+				if ($topic_slug == $current_page_slug){
 					 $current_page = " ".$current_page_slug;
-				}else { 
+				}else {
 					 $current_page = "";
 				}
 			}
-			
+
 			echo "<span class='nochildimage-".$site_name.$current_page."'>";
-			
-			if ($get_post_id){ // if page of the topic exists                      
-				$hyperlink_color =  " class='".COUNTRY_NAME."-color'";     
+
+			if ($get_post_id){ // if page of the topic exists
+				$hyperlink_color =  " class='".COUNTRY_NAME."-color'";
 				echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
 			}else{
-                $hyperlink_color = ""; 
-            } 
-			
+                $hyperlink_color = "";
+            }
+
 			$in_category = in_category( $category->term_id );
 			if ($in_category){
 				 echo "<strong class='".COUNTRY_NAME."-color'>";
 				 $hyperlink_color =  " class='".COUNTRY_NAME."-color'";
 			}else {
 				$hyperlink_color = "";
-			}  
+			}
 				echo $category->name;
-			
+
 			if ($in_category){
 				 echo "</strong>";
-			} 
-			
+			}
+
 			if ($get_post_id)
 				echo "</a>";
-			
+
 			echo "</span>";
 
-	}       
+	}
 	/**
 	 * Walks through a list of categories and prints all children descendant
 	 * in a hierarchy.
@@ -91,8 +91,8 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $children an array of categories to display
 	 */
 	public function walk_child_category( $children ) {
-		$current_page = get_post(); 
-		$current_page_slug = $current_page->post_name; 
+		$current_page = get_post();
+		$current_page_slug = $current_page->post_name;
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
@@ -100,7 +100,7 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 			// Display current category
 			$this -> print_category($child, $current_page_slug);
 			// if current category has children
-			if ( !empty($cat_children) ) { 
+			if ( !empty($cat_children) ) {
 				// add a sublevel
 				echo "<ul>";
 				// display the children
@@ -119,33 +119,33 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Saved values from database.
 	 */
-	public function widget( $args, $instance ) { 
+	public function widget( $args, $instance ) {
 	$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
-	$current_page = get_post(); 
+	$current_page = get_post();
 	$current_page_slug = $current_page->post_name;
-	?>  
+	?>
 	<script type="text/javascript">
-    jQuery(document).ready(function($) {   
+    jQuery(document).ready(function($) {
 		$('.opendev_taxonomy_widget_ul > li.topic_nav_item').each(function(){
-			if($('.opendev_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){  
+			if($('.opendev_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){
 				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
-				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");	 
-			} 
+				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");
+			}
 			//if parent is showed, child need to expend
 			$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
 			$('span.<?php echo $current_page_slug; ?>').toggleClass('minusimage-<?php echo $site_name;?>');
-			$('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');	
-			
+			$('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');
+
 			//if child is showed, parent expended
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").show();
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
-			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');			
+			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');
 		});
 		$('.opendev_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
-			if($(event.target).parent("li").find('ul').length){ 
-				$(event.target).parent("li").find('ul:first').slideToggle();	
-				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");	
-				$(event.target).toggleClass('minusimage-<?php echo $site_name;?>');		 
+			if($(event.target).parent("li").find('ul').length){
+				$(event.target).parent("li").find('ul:first').slideToggle();
+				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");
+				$(event.target).toggleClass('minusimage-<?php echo $site_name;?>');
 			}
 		});
     });

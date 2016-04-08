@@ -2417,7 +2417,11 @@ ul.opendev_taxonomy_widget_ul span:hover{
 /*
  * Advanced Navigation
  */
-
+.navigation .current{
+  padding: 0 5px;
+  border: 1px solid #ddd;;
+  background: #eee;
+}
 .advanced-nav-filters {
   margin-top: 20px;
   padding-bottom: 20px;
