@@ -148,7 +148,7 @@ table.dataTable thead th, table.dataTable tfoot th{
   font-weight: normal!important;
 }
 table.dataTable thead tr{
-  background: url("../lib/dataTables/images/ui-bg_glass.png") repeat-x scroll 50% 50% !important;
+  background: url("../lib/dataTables/images/ui-bg_glass.png") repeat-x scroll 50% 41% !important;
 }
 table.data-table tr{
   background: none;
@@ -263,4 +263,7 @@ td.entry_title a{
   display: inline;
   margin: 0;
   padding: 2px;
+}
+#filter_by select:hover{
+  cursor: pointer;
 }
