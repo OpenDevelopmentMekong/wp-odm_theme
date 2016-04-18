@@ -134,6 +134,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   /*
    * Clearscreen
    */
+  if(typeof(jeo.clearscreen) != 'undefined')
   map.addControl(new jeo.clearscreen());
 
   /*
