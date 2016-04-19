@@ -42,7 +42,6 @@ require_once('page-profiles-config.php');
     }else{
       $profiles = get_datastore_resource($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"]);
     }
-
   ?>
 
   <section id="content" class="single-post">
@@ -62,7 +61,7 @@ require_once('page-profiles-config.php');
                 <tbody>
                   <?php foreach ($ELC_METADATA as $key => $value): ?>
                   <tr>
-                    <td class="row-key"><?php _e( $ELC_METADATA[$key], $value ); ?></td>
+                    <td class="row-key"><?php _e( $ELC_METADATA[$key], "opendev" ); ?></td>
                     <td><?php if (isset($profile[$key])){
                         echo $profile[$key];
                     } ?></td>
@@ -83,7 +82,7 @@ require_once('page-profiles-config.php');
                     <thead>
                       <tr>
                         <?php foreach ($ELC_TRACKING as $key => $value): ?>
-                          <td class="row-key"><?php _e( $ELC_TRACKING[$key], $value ); ?></td>
+                          <td class="row-key"><?php _e( $ELC_TRACKING[$key], 'opendev'); ?></td>
                         <?php endforeach; ?>
                       </tr>
                     </thead>
@@ -155,17 +154,17 @@ require_once('page-profiles-config.php');
             <div class="sidebar_box">
               <div class="sidebar_header">
                 <span class="big">
-                  <?php _e( 'SEARCH', 'search' );?></span> <?php _e( 'in', 'in' );?> <?php _e( 'Profiles', 'profiles' ); ?>
+                  <?php _e( 'SEARCH', 'opendev' );?></span> <?php _e( 'in', 'opendev' );?> <?php _e( 'Profiles', 'opendev' ); ?>
               </div>
               <div class="sidebar_box_content">
-                <input type="text" id="search_all" placeholder="Search all profiles">
+                <input type="text" id="search_all" placeholder="<?php _e( 'Search', 'opendev'); ?>">
               </div>
             </div>
 
             <div class="sidebar_box">
               <div class="sidebar_header">
                 <span class="big">
-                  <?php _e( 'DOWNLOAD', 'search' );?></span>
+                  <?php _e( 'DOWNLOAD', 'opendev' );?></span>
               </div>
               <div class="sidebar_box_content download_buttons">
                 <?php foreach ($dataset["resources"] as $key => $resource) : ?>
@@ -184,28 +183,29 @@ require_once('page-profiles-config.php');
         <div class="row no-margin-buttom">
           <div class="twelve columns table-column-container">
 
-      			<div id="filter_by"><div class="label">Classifications</div> </div>
+            <div class="Fixed_ClonedHeader"><table class="dataTable ClonedHeader"></table></div>
+      			<div id="filter_by"><div class="label"><?php _e("Filter by Classifications", "opendev"); ?></div> </div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
-                  <th><?php _e( 'Developer', 'developer' );?></th>
-									<th><?php _e( 'Developer country', 'dev_nation' );?></th>
-									<th><?php _e( 'Contract date', 'contract_0' );?></th>
-									<th><?php _e( 'Contract term (year)', 'contract_d' );?></th>
-									<th><?php _e( 'Granted land area (hectare)', 'original_s' );?></th>
-									<th><?php _e( 'Source of land size', 'size_refer' );?></th>
-									<th><?php _e( 'Intended investment ', 'intended_p' );?></th>
-									<th><?php _e( 'Intended crop or project', 'inv_intent' );?></th>
-									<th><?php _e( 'Province/Capital city', 'province' );?></th>
-									<th><?php _e( 'Contract authority', 'contractin' );?></th>
-									<th><?php _e( 'Previous land use', 'land_conv' );?></th>
-									<th><?php _e( 'Sub-decree reclassifying land use', 'sub_decree' );?></th>
-									<th><?php _e( 'Legal documents', 'legal_docu' );?></th>
-									<th><?php _e( 'Developer land use plan', 'land_utili' );?></th>
-									<th><?php _e( 'EIA status', 'eia_status' );?></th>
-									<th><?php _e( 'Adjustment classification ', 'adjustment' );?></th>
-									<th><?php _e( 'Data classification', 'data_class' );?></th>
-                  <th><?php _e( 'Map id', 'map_id' );?></th>
+                  <th><div class='th-value'><?php _e( 'Developer', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Developer country', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Contract date', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Contract term (year)', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Granted land area (hectare)', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Source of land size', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Intended investment ', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Intended crop or project', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Province/Capital city', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Contract authority', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Previous land use', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Sub-decree reclassifying land use', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Legal documents', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Developer land use plan', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'EIA status', 'opendev' );?></th>
+									<th><div class='th-value'><?php _e( 'Adjustment classification ', 'opendev' );?></div></th>
+									<th><div class='th-value'><?php _e( 'Data classification', 'opendev' );?></div></th>
+                  <th><div class='th-value'><?php _e( 'Map id', 'opendev' );?></div></th>
                 </tr>
               </thead>
               <tbody>
@@ -218,56 +218,59 @@ require_once('page-profiles-config.php');
                       <a href="?map_id=<?php echo $profile['map_id'];?>"><?php echo $profile['developer'];?></a>
                     </td>
                     <td>
-                      <?php echo $profile['dev_nation'];?>
+                      <div class="td-value"><?php echo $profile['dev_nation'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['contract_0'];?>
+                      <div class="td-value"><?php echo $profile['contract_0'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['contract_d'];?>
+                      <div class="td-value"><?php echo $profile['contract_d'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['original_s'];?>
+                      <div class="td-value"><?php echo $profile['original_s'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['size_refer'];?>
+                      <div class="td-value"><?php echo $profile['size_refer'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['inv_intent'];?>
+                      <div class="td-value"><?php echo $profile['inv_intent'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['intended_p'];?>
-                    </td>
-
-										<td>
-                      <?php echo $profile['province'];?>
+                      <div class="td-value"><?php echo $profile['intended_p'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['contractin'];?>
+                      <div class="td-value"><?php echo $profile['province'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['land_conv'];?>
+                      <div class="td-value"><?php echo $profile['contractin'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['sub_decree'];?>
+                      <div class="td-value"><?php echo $profile['land_conv'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['legal_docu'];?>
+                      <div class="td-value"><?php echo $profile['sub_decree'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['land_utili'];?>
+                      <div class="td-value"><?php echo $profile['legal_docu'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['eia_status'];?>
+                      <div class="td-value"><?php echo $profile['land_utili'];?></div>
                     </td>
 										<td>
-                      <?php echo $profile['adjustment'];?>
+                      <div class="td-value"><?php echo $profile['eia_status'];?></div>
                     </td>
 										<td>
-                      <?php echo ucwords($profile['data_class']);?>
+                      <div class="td-value"><?php echo $profile['adjustment'];?></div>
+                    </td>
+										<td><div class="td-value">
+                      <?php if($lang == "en")
+                                echo ucwords($profile['data_class']);
+                            else
+                                echo $profile['data_class'];
+                      ?></div>
                     </td>
                     <td>
-                      <?php echo $profile['map_id'];?>
+                      <div class="td-value"><?php echo $profile['map_id'];?></div>
                     </td>
                   </tr>
         				<?php endforeach; ?>
@@ -324,11 +327,12 @@ jQuery(document).ready(function($) {
   };
 
   if (!singleProfile){
-	var get_datatable = $('#profiles').offset().top;
-	get_datatable = get_datatable -30;
-  var get_sidebar = get_datatable +300;
+	var get_datatable = $('#profiles').position().top;
+	    get_datatable = get_datatable +230;
+  //var get_sidebar = get_datatable +300;
 	$(".content_wrapper").scroll(function(){
 			if ($(".content_wrapper").scrollTop()   >= get_datatable) {
+        //console.log($(".content_wrapper").scrollTop()  + " > = " + get_datatable);
 				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
 				$('.dataTables_scrollHead').css('z-index',9999);
 				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
@@ -352,11 +356,10 @@ jQuery(document).ready(function($) {
        //dom: '<"top"<"info"i><"pagination"p><"length"l>>rt', //show pagination on top
        "sDom": 'T<"H"l>t<"F"ip>', //show pagination on bottom:
     //'l' - Length changing, 'f' - Filtering input, 't' - The table!, 'i' - Information, 'p' - Pagination, 'r' - pRocessing
-
        processing: true,
        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
        //order: [[ 0, 'asc' ]],
-       displayLength: 25,
+       displayLength: -1, //0
        columnDefs: [ //Hide collumns
          {
            "targets": [ 17 ],
@@ -365,6 +368,27 @@ jQuery(document).ready(function($) {
        ],
        "aaSortingFixed": [[ 16, 'asc' ]],
        //"aaSorting": [[ 0, 'asc' ]],
+       <?php if($lang == "kh" || $lang == "km"){ ?>
+       "oLanguage": {
+           "sLengthMenu": 'បង្ហាញទិន្នន័យចំនួន <select>'+
+               '<option value="10">10</option>'+
+               '<option value="25">20</option>'+
+               '<option value="50">50</option>'+
+               '<option value="-1">ទាំងអស់</option>'+
+             '</select> ក្នុងមួយទំព័រ',
+           "sZeroRecords": "ព័ត៌មានពុំអាចរកបាន",
+           "sInfo": "បង្ហាញពីទី _START_ ដល់ _END_ នៃទិន្នន័យចំនួន _TOTAL_",
+           "sInfoEmpty": "បង្ហាញពីទី 0 ដល់ 0 នៃទិន្នន័យចំនួន 0",
+           "sInfoFiltered": "(ទាញចេញពីទិន្នន័យសរុបចំនួន _MAX_)",
+           "sSearch":"ស្វែងរក",
+           "oPaginate": {
+             "sFirst": "ទំព័រដំបូង",
+             "sLast": "ចុងក្រោយ",
+             "sPrevious": "មុន",
+             "sNext": "បន្ទាប់",
+           }
+       },
+       <?php } ?>
        "drawCallback": function ( settings ) {  //Group colums
              var api = this.api();
              var rows = api.rows( {page:'current'} ).nodes();
@@ -379,33 +403,49 @@ jQuery(document).ready(function($) {
              } );
          }
      });
-    $('#profiles').dataTable().columnFilter({
-			aoColumns: [
-				      { sSelector: "#filter_by", type:"select" , values: [ 'Gecko', 'Trident', 'KHTML', 'Misc', 'Presto', 'Webkit', 'Tasman']  },
-				]
-		});
     var columnIndex = 15; //15 is index of Adjustment Classifications
     jQuery("#filter_by")
       //.html(fnCreateSelect(oTable.fnGetColumnData(columnIndex)))
-      .append(fnCreateSelect(oTable.fnGetColumnData(columnIndex), "<?php _e("All"); ?>"))
+      .append(fnCreateSelect(oTable.fnGetColumnData(columnIndex), "<?php _e("All", "opendev"); ?>"))
       .find("select")
       .change(function() { oTable.fnFilter(jQuery(this).val(), columnIndex); });
 
-
-
-  //Filter by
-  /*var columnIndex = 16; // group data by dataclassification
-  jQuery("#filter_by")
-    .html(fnCreateSelect(oTable.fnGetColumnData(columnIndex)))
-    .find("select")
-    .change(function() { oTable.fnFilter(jQuery(this).val(), columnIndex); });
-*/
    //Enable header scroll bar
 	$('.dataTables_scrollHead').scroll(function(e){
         $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
 	});
 
   }//if single page
+
+//Set width of table header and body equally
+var widths = [];
+var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
+var $headerCell = $('.dataTables_scrollHead thead tr th');
+var $max_width;
+$tableBodyCell.each(
+  function(){
+    widths.push($(this).width());
+});
+$tableBodyCell.each(
+      function(i, val){
+        console.log($(this).width() +" == "+ $headerCell.eq(i).width());
+        if ( $(this).width() >= $headerCell.eq(i).width() ){
+             $max_width =   widths[i];
+             $headerCell.eq(i).children('.th-value').css('width', $max_width);
+            // $('.dataTables_scrollBody #profiles tbody tr').each(function(){
+               if(!$(this).hasClass('group'))
+                $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+            // });
+        }else if ( $(this).width() < $headerCell.eq(i).width() ){
+             $max_width =   $headerCell.eq(i).width();
+             //$('.dataTables_scrollBody #profiles tbody tr').each(function(){
+               //if(!$(this).hasClass('group'))
+                 $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+             //});
+             $headerCell.eq(i).children('.th-value').css('width', $max_width);
+        }
+    });
+
   $("#search_all").keyup(function () {
     oTable.fnFilterAll(this.value);
     var filtered = oTable._('tr', {"filter":"applied"});

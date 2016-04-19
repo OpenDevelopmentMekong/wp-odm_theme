@@ -6,6 +6,11 @@
 #profiles_map .cartodb-legend {
   margin: 10px;
 }
+/*#profiles {
+  width: 100% !important;
+  display: block;
+  overflow: auto;
+}*/
 #profiles td{
   line-height: 16px;
 }
@@ -116,14 +121,15 @@
 .data-table{
   border: none;
   font-size: 13px;
+  border: 0;
 }
 .dataTables_length {
     margin-top: 12px;
     float: right !important
 }
 .dataTables_length select{
+  width: auto;
   margin: 0px !important;
-  width: 40px;
   display: inline;
 }
 
@@ -140,10 +146,17 @@
 .dataTables_scrollBody th {
     display: none;
 }
+table.dataTable thead th{
+  border-right: 1px solid #ddd;
+}
+table.dataTable thead th:last-child{
+  border-right: 0;
+}
 table.dataTable thead th, table.dataTable tfoot th{
   /*background: #ddd;*/
   border-bottom: 1px solid #aaa !important;
   color: #000;
+  padding: 8px 10px !important;
   font-size: 13px!important;
   font-weight: normal!important;
 }
