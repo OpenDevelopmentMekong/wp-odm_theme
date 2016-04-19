@@ -176,7 +176,7 @@ function dataTable_scripts()
   if( !is_page( array( 'map-explorer', 'maps', 'home' )) and !is_home()){
     wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/jquery.dataTables.min.css');
     wp_register_style('dataTables-responsive-css', get_stylesheet_directory_uri().'/lib/dataTables/css/responsive.dataTables.css');
-    wp_register_style('dataTables-fixedHeader-css', get_stylesheet_directory_uri().'/lib/dataTables/css/fixedHeader.dataTables.min.css');
+    /*wp_register_style('dataTables-fixedHeader-css', get_stylesheet_directory_uri().'/lib/dataTables/css/fixedHeader.dataTables.min.css');*/
   //  wp_register_style('elc', get_stylesheet_directory_uri().'/css/elc.css');
 
 
@@ -186,6 +186,7 @@ function dataTable_scripts()
     wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
     wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
    // wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0');
+
     wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
     wp_enqueue_style('dataTables-css');
 
