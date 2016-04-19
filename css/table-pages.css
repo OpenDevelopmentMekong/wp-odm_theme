@@ -143,11 +143,15 @@
 .dataTables_scrollHead{
     border-top: 1px solid #aaa !important;
 }
+.dataTables_scrollBody {
+    overflow-x: scroll !important;
+}
 .dataTables_scrollBody th {
     display: none;
 }
 table.dataTable thead th{
   border-right: 1px solid #ddd;
+  text-align: center;
 }
 table.dataTable thead th:last-child{
   border-right: 0;
