@@ -280,7 +280,7 @@ td.entry_title a{
   width: auto;
   position: relative;
   z-index: 888;
-  bottom: -12px;
+  bottom: -1px;
   margin-bottom: -2em;
 }
 #filter_by .label {
@@ -291,7 +291,6 @@ td.entry_title a{
   margin: 0;
   padding: 0 2px;
 }
-
 
 .fixed_top_bar{
   display: none;
@@ -311,6 +310,6 @@ td.entry_title a{
   display: inline-block;;
   float: right;
 }
-.fixed_top_bar .dataTables_filter input{ 
+.fixed_top_bar .dataTables_filter input{
     margin-left: 5px;
 }
