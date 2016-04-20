@@ -181,9 +181,8 @@ require_once('page-profiles-config.php');
     			</div>
     		</header>
         <div class="row no-margin-buttom">
+          <div class="fixed_top_bar"></div>
           <div class="twelve columns table-column-container">
-
-            <div class="Fixed_ClonedHeader"><table class="dataTable ClonedHeader"></table></div>
       			<div id="filter_by"><div class="label"><?php _e("Filter by Classifications", "opendev"); ?></div> </div>
             <table id="profiles" class="data-table">
               <thead>
@@ -327,35 +326,35 @@ jQuery(document).ready(function($) {
   };
 
   if (!singleProfile){
-	var get_datatable = $('#profiles').position().top;
-	    get_datatable = get_datatable +230;
-  //var get_sidebar = get_datatable +300;
-	$(".content_wrapper").scroll(function(){
-			if ($(".content_wrapper").scrollTop()   >= get_datatable) {
-        //console.log($(".content_wrapper").scrollTop()  + " > = " + get_datatable);
-				$('.dataTables_scrollHead').css('position','fixed').css('top','0');
-				$('.dataTables_scrollHead').css('z-index',9999);
-				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
-		   }
-		   else {
-				$('.dataTables_scrollHead').css('position','static');
-		   }
+    /***** Fixed Header */
+  	var get_datatable = $('#profiles').position().top;
+  	    get_datatable = get_datatable +230;
 
-       /*if ($(".content_wrapper").scrollTop()   >= get_sidebar) {
-         $('.table-column-container').removeClass("eight");
-         $('.table-column-container').addClass("twelve");
- 		   }
-       else {
-         $('.table-column-container').removeClass("twelve");
-         $('.table-column-container').addClass("eight");
-       }*/
-     });
+  	$(".content_wrapper").scroll(function(){
+  			if ($(".content_wrapper").scrollTop()   >= get_datatable) {
+          //console.log($(".content_wrapper").scrollTop()  + " > = " + get_datatable);
+  				$('.dataTables_scrollHead').css('position','fixed').css('top','50px');
+  				$('.dataTables_scrollHead').css('z-index',9999);
+  				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
+  				$('.fixed_top_bar').width($('.dataTables_scrollBody').width());
+  				$('.dataTables_scrollBody').css('top','120px');
+          $('.fixed_top_bar').show();
+  		   }
+  		   else {
+  				$('.dataTables_scrollHead').css('position','static');
+          $('.fixed_top_bar').hide();
+  				$('.dataTables_scrollBody').css('top','0');
+  		   }
+       });
+     /***** end Fixed Header */
+
+
      oTable = $("#profiles").dataTable({
        scrollX: true,
        responsive: false,
        //dom: '<"top"<"info"i><"pagination"p><"length"l>>rt', //show pagination on top
-       "sDom": 'T<"H"l>t<"F"ip>', //show pagination on bottom:
-    //'l' - Length changing, 'f' - Filtering input, 't' - The table!, 'i' - Information, 'p' - Pagination, 'r' - pRocessing
+       "sDom": 'T<"H"lf>t<"F"ip>', //show pagination on bottom:
+       //'l' - Length changing, 'f' - Filtering input, 't' - The table!, 'i' - Information, 'p' - Pagination, 'r' - pRocessing
        processing: true,
        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
        //order: [[ 0, 'asc' ]],
@@ -403,48 +402,86 @@ jQuery(document).ready(function($) {
              } );
          }
      });
+
     var columnIndex = 15; //15 is index of Adjustment Classifications
-    jQuery("#filter_by")
-      //.html(fnCreateSelect(oTable.fnGetColumnData(columnIndex)))
-      .append(fnCreateSelect(oTable.fnGetColumnData(columnIndex), "<?php _e("All", "opendev"); ?>"))
-      .find("select")
-      .change(function() { oTable.fnFilter(jQuery(this).val(), columnIndex); });
+    var column_oTable = oTable.api().columns( columnIndex );
+    var select = $('<select><option value=""><?php _e("All", "opendev"); ?></option></select>')
+        .appendTo($("#filter_by") )
+        .on( 'change', function () {
+            // Escape the expression so we can perform a regex match
+            var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+            );
 
-   //Enable header scroll bar
-	$('.dataTables_scrollHead').scroll(function(e){
-        $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
-	});
+            column_oTable
+                .search( val ? '^'+val+'$' : '', true, false )
+                .draw();
+        } );
+        column_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
+                    var val = d.replace('<div class="td-value">', '');
+                        val = val.replace('</div>', '');
+                        select.append( '<option value="'+val+'">'+val+'</option>' )
+                } );
 
-  }//if single page
-
-//Set width of table header and body equally
-var widths = [];
-var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
-var $headerCell = $('.dataTables_scrollHead thead tr th');
-var $max_width;
-$tableBodyCell.each(
-  function(){
-    widths.push($(this).width());
-});
-$tableBodyCell.each(
-      function(i, val){
-        console.log($(this).width() +" == "+ $headerCell.eq(i).width());
-        if ( $(this).width() >= $headerCell.eq(i).width() ){
-             $max_width =   widths[i];
-             $headerCell.eq(i).children('.th-value').css('width', $max_width);
-            // $('.dataTables_scrollBody #profiles tbody tr').each(function(){
-               if(!$(this).hasClass('group'))
-                $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-            // });
-        }else if ( $(this).width() < $headerCell.eq(i).width() ){
-             $max_width =   $headerCell.eq(i).width();
-             //$('.dataTables_scrollBody #profiles tbody tr').each(function(){
-               //if(!$(this).hasClass('group'))
-                 $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-             //});
-             $headerCell.eq(i).children('.th-value').css('width', $max_width);
-        }
+    //Set width of table header and body equally
+    var widths = [];
+    var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
+    var $headerCell = $('.dataTables_scrollHead thead tr th');
+    var $max_width;
+    $tableBodyCell.each(
+      function(){
+        widths.push($(this).width());
     });
+    $tableBodyCell.each(
+          function(i, val){
+            //console.log($(this).width() +" == "+ $headerCell.eq(i).width());
+            if ( $(this).width() >= $headerCell.eq(i).width() ){
+                 $max_width =   widths[i];
+                 $headerCell.eq(i).children('.th-value').css('width', $max_width);
+                // $('.dataTables_scrollBody #profiles tbody tr').each(function(){
+                   if(!$(this).hasClass('group'))
+                    $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                // });
+            }else if ( $(this).width() < $headerCell.eq(i).width() ){
+                 $max_width =   $headerCell.eq(i).width();
+                 //$('.dataTables_scrollBody #profiles tbody tr').each(function(){
+                   //if(!$(this).hasClass('group'))
+                     $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                 //});
+                 $headerCell.eq(i).children('.th-value').css('width', $max_width);
+            }
+        });
+
+     // Enable the filter_by and Show entry bar on scroll up as fixed items
+     ////**** Can't place it above the oTable
+     var $filter_data = $("#filter_by").clone(true); // Filter Data type
+     var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
+     var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
+
+     $(".fixed_top_bar").prepend($filter_data);
+     $(".fixed_top_bar").append($fg_show_entry_bar);
+     $(".fixed_top_bar").append($fg_search_filter_bar);
+     $('.fixed_top_bar #filter_by select').val($('.table-column-container #filter_by select').val());
+     $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
+     $('.fixed_top_bar #filter_by select').on( 'change', function () {
+        $('.table-column-container #filter_by select').val($(this).val());
+     });
+     $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
+        $('.table-column-container .dataTables_length select').val($(this).val());
+     });
+     $('.table-column-container #filter_by  select').on( 'change', function () {
+        $('.fixed_top_bar #filter_by select').val($(this).val());
+     });
+     $('.table-column-container .dataTables_length select').on( 'change', function () {
+        $('.fixed_top_bar .dataTables_length select').val($(this).val());
+     });
+     // End Enable the filter_by and Show entry bar
+
+     //Enable header scroll bar
+     $('.dataTables_scrollHead').scroll(function(e){
+            $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
+     });
+  }//if single page
 
   $("#search_all").keyup(function () {
     oTable.fnFilterAll(this.value);
@@ -455,7 +492,6 @@ $tableBodyCell.each(
 });
 
 window.onload = function() {
-
   cartodb.createVis('profiles_map', cartodbConfig.elc.vizUrl, {
 		search: false,
 		shareable: true,
@@ -472,7 +508,6 @@ window.onload = function() {
       filterEntriesMap([singleProfileMapId]);
     }
 	});
-
 
 }
 
