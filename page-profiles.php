@@ -147,6 +147,44 @@ require_once('page-profiles-config.php');
     <?php else: ?>
       <div class="container">
         <div class="row">
+          <div class="twelve columns">
+              <?php
+                $count_company = array_count_values(array_map(function($value){return $value['developer'];}, $profiles));
+                $count_project =  array_count_values(array_map(function($value){return $value['map_id'];}, $profiles));
+                $count_data_complete =  array_count_values(array_map(function($value){return $value['data_class'];}, $profiles));
+                //print_r($count_data_complete);
+                $data_complete​ = __('Government data complete', 'opendev');
+                $data_partial​ = __('Government data partial', 'opendev');
+                $data_secondary = __('Secondary source data', 'opendev');
+                $data_other​ = __('Other data', 'opendev');
+              ?>
+              <div class="total_listed">
+                <ul>
+                  <li><strong><?php _e("Total Projects Listed", "opendev"); ?><?php _e(":", "opendev"); ?></strong></li>
+                  <li class="total_elc_count"><strong><?php echo convert_to_kh_number(count($count_project)); ?></strong></li>
+                  <li><strong><?php _e("Total Companies Listed", "opendev"); ?><?php _e(":", "opendev"); ?></strong></li>
+                  <li class="total_elc_count"><strong><?php echo convert_to_kh_number(count($count_company)); ?></strong></li>
+                </ul>
+                <ul>
+                  <li><?php _e("Government data complete", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_complete​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_complete​]);?></strong>
+                  </li>
+                  <li><?php _e("Government data partial", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_partial​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_partial​]);?></strong>
+                  </li>
+                  <li><?php _e("Secondary source data", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_secondary]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_secondary]);?></strong>
+                  </li>
+                  <li><?php _e("Other data", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_other​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_other​]);?></strong>
+                  </li>
+                </ul>
+            </div>
+          </div>
     			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>

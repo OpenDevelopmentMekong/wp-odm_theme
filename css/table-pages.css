@@ -291,7 +291,6 @@ td.entry_title a{
   margin: 0;
   padding: 0 2px;
 }
-
 .fixed_top_bar{
   display: none;
   height: 50px;
@@ -315,4 +314,23 @@ td.entry_title a{
 }
 .fixed_top_bar .dataTables_filter input{
     margin-left: 5px;
+}
+.total_listed {
+  margin-bottom: 1em;
+  font-size: 13px;
+  background: #eee;
+  border: 1px solid #ddd;
+  padding: 5px 0;
+}
+.total_listed ul{
+  margin: 0
+}
+.total_listed li{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.total_listed li:nth-child(odd){
+  margin-left: 1em
 }
