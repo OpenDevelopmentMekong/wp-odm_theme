@@ -304,6 +304,9 @@ td.entry_title a{
 .fixed_top_bar div{
   display: inline;
 }
+.fixed_top_bar #filter_by{
+  top: 11px;
+}
 .fixed_top_bar .dataTables_filter{
   margin-top: 12px;
   margin-right: 10px;
