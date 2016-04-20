@@ -117,7 +117,6 @@
   color: #fff;
   padding: 10px 10px;
 }
-
 .data-table{
   border: none;
   font-size: 13px;
@@ -132,7 +131,18 @@
   margin: 0px !important;
   display: inline;
 }
-
+.dataTables_filter{
+    margin-top: 12px;
+    margin-right: 10px;
+    display: none;
+}
+.dataTables_filter label{
+  font-weight: normal;
+  font-size: 12px;
+}
+.dataTables_filter input[type="search" i]{
+    padding: 4px;
+}
 .dataTables_info {
   margin-top: 2px;
 }
@@ -149,6 +159,7 @@
 .dataTables_scrollBody th {
     display: none;
 }
+
 table.dataTable thead th{
   border-right: 1px solid #ddd;
   text-align: center;
@@ -267,10 +278,9 @@ td.entry_title a{
 }
 #filter_by{
   width: auto;
-  float: left;
   position: relative;
   z-index: 888;
-  bottom: -8px;
+  bottom: -12px;
   margin-bottom: -2em;
 }
 #filter_by .label {
@@ -279,5 +289,28 @@ td.entry_title a{
 #filter_by select {
   display: inline;
   margin: 0;
-  padding: 2px;
+  padding: 0 2px;
+}
+
+
+.fixed_top_bar{
+  display: none;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  z-index: 9999;
+  margin-left: 20px;
+}
+.fixed_top_bar div{
+  display: inline;
+}
+.fixed_top_bar .dataTables_filter{
+  margin-top: 12px;
+  margin-right: 10px;
+  display: inline-block;;
+  float: right;
+}
+.fixed_top_bar .dataTables_filter input{ 
+    margin-left: 5px;
 }
