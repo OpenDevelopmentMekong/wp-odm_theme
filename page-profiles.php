@@ -31,6 +31,7 @@ require_once('page-profiles-config.php');
       $filter_map_id = htmlspecialchars($_GET["map_id"]);
     }
     $dataset = get_dataset_by_id($CKAN_DOMAIN,$ELC_DATASET_ID);
+  //  print_r($dataset);
     $profile = null;
     $ref_docs_profile = array();
     $ref_docs_tracking = array();
@@ -147,6 +148,44 @@ require_once('page-profiles-config.php');
     <?php else: ?>
       <div class="container">
         <div class="row">
+          <div class="twelve columns">
+              <?php
+                $count_company = array_count_values(array_map(function($value){return $value['developer'];}, $profiles));
+                $count_project =  array_count_values(array_map(function($value){return $value['map_id'];}, $profiles));
+                $count_data_complete =  array_count_values(array_map(function($value){return $value['data_class'];}, $profiles));
+                //print_r($count_data_complete);
+                $data_complete​ = __('Government data complete', 'opendev');
+                $data_partial​ = __('Government data partial', 'opendev');
+                $data_secondary = __('Secondary source data', 'opendev');
+                $data_other​ = __('Other data', 'opendev');
+              ?>
+              <div class="total_listed">
+                <ul>
+                  <li><strong><?php _e("Total Projects Listed", "opendev"); ?><?php _e(":", "opendev"); ?></strong></li>
+                  <li class="total_elc_count"><strong><?php echo convert_to_kh_number(count($count_project)); ?></strong></li>
+                  <li><strong><?php _e("Total Companies Listed", "opendev"); ?><?php _e(":", "opendev"); ?></strong></li>
+                  <li class="total_elc_count"><strong><?php echo convert_to_kh_number(count($count_company)); ?></strong></li>
+                </ul>
+                <ul>
+                  <li><?php _e("Government data complete", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_complete​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_complete​]);?></strong>
+                  </li>
+                  <li><?php _e("Government data partial", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_partial​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_partial​]);?></strong>
+                  </li>
+                  <li><?php _e("Secondary source data", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_secondary]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_secondary]);?></strong>
+                  </li>
+                  <li><?php _e("Other data", "opendev"); ?><?php _e(":", "opendev"); ?></li>
+                  <li class="total_elc_count"><strong>
+                      <?php echo $count_data_complete[$data_other​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_other​]);?></strong>
+                  </li>
+                </ul>
+            </div>
+          </div>
     			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>
@@ -183,7 +222,12 @@ require_once('page-profiles-config.php');
         <div class="row no-margin-buttom">
           <div class="fixed_top_bar"></div>
           <div class="twelve columns table-column-container">
-      			<div id="filter_by"><div class="label"><?php _e("Filter by Classifications", "opendev"); ?></div> </div>
+      			<div id="filter_by_adjustment" class="filter_by_column_index_15">
+                <!--<div class="label"><?php _e("Filter by", "opendev"); ?></div>-->
+            </div>
+            <div id="filter_by_dataclass" class="filter_by_column_index_16">
+                <!--<div class="label"><?php _e("Filter by", "opendev"); ?></div>-->
+            </div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -202,8 +246,8 @@ require_once('page-profiles-config.php');
 									<th><div class='th-value'><?php _e( 'Legal documents', 'opendev' );?></div></th>
 									<th><div class='th-value'><?php _e( 'Developer land use plan', 'opendev' );?></div></th>
 									<th><div class='th-value'><?php _e( 'EIA status', 'opendev' );?></th>
-									<th><div class='th-value'><?php _e( 'Adjustment classification ', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Data classification', 'opendev' );?></div></th>
+									<th><div class='th-value select-filter'><?php _e( 'Adjustment classification ', 'opendev' );?></div></th>
+									<th><div class='th-value select-filter'><?php _e( 'Data classification', 'opendev' );?></div></th>
                   <th><div class='th-value'><?php _e( 'Map id', 'opendev' );?></div></th>
                 </tr>
               </thead>
@@ -263,9 +307,9 @@ require_once('page-profiles-config.php');
                     </td>
 										<td><div class="td-value">
                       <?php if($lang == "en")
-                                echo ucwords($profile['data_class']);
+                                echo ucwords(trim($profile['data_class']));
                             else
-                                echo $profile['data_class'];
+                                echo trim($profile['data_class']);
                       ?></div>
                     </td>
                     <td>
@@ -365,7 +409,7 @@ jQuery(document).ready(function($) {
            "visible": false
          }
        ],
-       "aaSortingFixed": [[ 16, 'asc' ]],
+       "aaSortingFixed": [[ 16, 'asc' ]], //sort data in Data Classifications first before grouping
        //"aaSorting": [[ 0, 'asc' ]],
        <?php if($lang == "kh" || $lang == "km"){ ?>
        "oLanguage": {
@@ -402,26 +446,94 @@ jQuery(document).ready(function($) {
              } );
          }
      });
+     /*
+       oTable.api().columns().every( function (index) {
 
+             if(index == 15){
+                   var column_header = $("#profiles").find("th:eq( "+index+" )" ).text();
+                   var column = this;
+
+                   <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
+                            var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+                            label_filter.appendTo( $('.filter_by_column_index_'+index));
+                            var select = $('<select><option value="">'+column_header+' <?php _e("all ", "opendev"); ?></option></select>');
+                   <?php
+                        }else {?>
+                            var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+                            label_filter.appendTo( $('.filter_by_column_index_'+index));
+                            var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
+                   <?php } ?>
+                       select.appendTo( $('.filter_by_column_index_'+index))
+                       .on( 'change', function () {
+                           var val = $.fn.dataTable.util.escapeRegex(
+                               $(this).val()
+                           );
+                           column
+                               .search( val ? '^'+val+'$' : '', true, false )
+                               .draw();
+                       } );
+                   column.data().unique().sort().each( function ( d, j ) {
+                     var val = d.replace('<div class="td-value">', '');
+                         val = val.replace('</div>', '');
+                         select.append( '<option value="'+val+'">'+val+'</option>' )
+                   } );
+
+           }
+       } );*/
+
+    // Filter by Adjustmemt
     var columnIndex = 15; //15 is index of Adjustment Classifications
-    var column_oTable = oTable.api().columns( columnIndex );
-    var select = $('<select><option value=""><?php _e("All", "opendev"); ?></option></select>')
-        .appendTo($("#filter_by") )
+    var column_adjustment_oTable = oTable.api().columns( columnIndex );
+    var column_header = $("#profiles").find("th:eq( "+columnIndex+" )" ).text();
+     <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
+              var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+              label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
+              var select = $('<select><option value="">'+column_header+' <?php _e("all ", "opendev"); ?></option></select>');
+     <?php
+          }else {?>
+              var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+              label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
+              var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
+              console.log(label_filter);
+     <?php } ?>
+        select.appendTo( $('.filter_by_column_index_'+columnIndex) )
         .on( 'change', function () {
             // Escape the expression so we can perform a regex match
             var val = $.fn.dataTable.util.escapeRegex(
                 $(this).val()
             );
 
-            column_oTable
+            column_adjustment_oTable
                 .search( val ? '^'+val+'$' : '', true, false )
                 .draw();
         } );
-        column_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
-                    var val = d.replace('<div class="td-value">', '');
-                        val = val.replace('</div>', '');
-                        select.append( '<option value="'+val+'">'+val+'</option>' )
-                } );
+        column_adjustment_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
+            var val = d.replace('<div class="td-value">', '');
+                val = val.replace('</div>', '');
+                select.append( '<option value="'+val+'">'+val+'</option>' )
+        } );
+     /*
+     /// By Data Classifications
+     var columnIndex_dataclass = 16; //16 is index of Data Classifications
+     var column_dataclass_oTable = oTable.api().columns(columnIndex_dataclass);
+     var select = $('<select><option value=""><?php _e("All data Classifications", "opendev"); ?></option></select>')
+         .appendTo($("#filter_by_dataclass") )
+         .on( 'change', function () {
+             // Escape the expression so we can perform a regex match
+             var val = $.fn.dataTable.util.escapeRegex(
+                 $(this).val()
+             );
+             column_dataclass_oTable
+                 .search( val ? '^'+val+'$' : '', true, false )
+                 .draw();
+         } );
+         column_dataclass_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
+             var val = d.replace('<div class="td-value">', '');
+                 val = val.replace('</div>', '');
+                 select.append( '<option value="'+val.trim()+'">'+val.trim()+'</option>' )
+         } );
+    */
+
 
     //Set width of table header and body equally
     var widths = [];
@@ -452,30 +564,30 @@ jQuery(document).ready(function($) {
             }
         });
 
-     // Enable the filter_by and Show entry bar on scroll up as fixed items
+     // Enable the filter_by_adjustment and Show entry bar on scroll up as fixed items
      ////**** Can't place it above the oTable
-     var $filter_data = $("#filter_by").clone(true); // Filter Data type
+     var $filter_data = $("#filter_by_adjustment").clone(true); // Filter Data type
      var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
      var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
 
      $(".fixed_top_bar").prepend($filter_data);
      $(".fixed_top_bar").append($fg_show_entry_bar);
      $(".fixed_top_bar").append($fg_search_filter_bar);
-     $('.fixed_top_bar #filter_by select').val($('.table-column-container #filter_by select').val());
+     $('.fixed_top_bar #filter_by_adjustment select').val($('.table-column-container #filter_by_adjustment select').val());
      $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
-     $('.fixed_top_bar #filter_by select').on( 'change', function () {
-        $('.table-column-container #filter_by select').val($(this).val());
+     $('.fixed_top_bar #filter_by_adjustment select').on( 'change', function () {
+        $('.table-column-container #filter_by_adjustment select').val($(this).val());
      });
      $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
         $('.table-column-container .dataTables_length select').val($(this).val());
      });
-     $('.table-column-container #filter_by  select').on( 'change', function () {
-        $('.fixed_top_bar #filter_by select').val($(this).val());
+     $('.table-column-container #filter_by_adjustment  select').on( 'change', function () {
+        $('.fixed_top_bar #filter_by_adjustment select').val($(this).val());
      });
      $('.table-column-container .dataTables_length select').on( 'change', function () {
         $('.fixed_top_bar .dataTables_length select').val($(this).val());
      });
-     // End Enable the filter_by and Show entry bar
+     // End Enable the filter_by_adjustment and Show entry bar
 
      //Enable header scroll bar
      $('.dataTables_scrollHead').scroll(function(e){
