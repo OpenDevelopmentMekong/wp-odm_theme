@@ -45,6 +45,9 @@ require_once STYLESHEETPATH.'/inc/od-related-recent-news-widget.php';
 // Mekong region storms and floods
 require_once STYLESHEETPATH.'/inc/mekong-region-storms-and-floods.php';
 
+//OpenDev_profiles_posttype_registration
+require_once STYLESHEETPATH.'/inc/profiles_posttype_registration.php';
+
 // Advanced nav
 require_once STYLESHEETPATH.'/inc/advanced-navigation.php';
 
@@ -59,7 +62,19 @@ if (function_exists("qtranxf_getLanguage"))
   define('CURRENT_LANGUAGE', qtranxf_getLanguage());
 else
   define('CURRENT_LANGUAGE', 'en');
+$wpDomain=$_SERVER["HTTP_HOST"];
+if ($wpDomain == '192.168.33.10'){
+  $ckanDomain='192.168.33.10:8081';
+}
+else {
+  $full_domain = $_SERVER['SERVER_NAME'];
+  $just_domain = preg_replace("/^(.*\.)?([^.]*\..*)$/", "$2", $_SERVER['HTTP_HOST']);
+  $ckanDomain = 'https://data.'.$just_domain;
+    if (preg_match('/odm.web/',$wpDomain)) //odm.web is H.E local address
+        $ckanDomain = 'https://data.opendevelopmentmekong.net';
 
+}
+define('CKAN_DOMAIN', $ckanDomain);
 function opendev_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
@@ -252,7 +267,6 @@ function important_overrides() {
 	wp_enqueue_style( 'overrides' );
 }
 add_action( 'wp_enqueue_scripts', 'important_overrides',101);
-
 
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
@@ -496,7 +510,6 @@ function opendev_ms_nav()
         ?>
      <li class="site-item">
      <?php
-     $options = get_option('opendev_options');
         if (isset($options['site_in_development']) && ($options['site_in_development'] == 'true')) {
             ?>
       <a href="#"<?php if ($current == $site['blog_id']) {
@@ -691,6 +704,16 @@ function get_localization_language_by_language_code($lang_code ="en"){
         $language['vi'] = "Vietnamese";
         return $language[$lang_code];
     }
+function get_the_localization_language_by_website($site=""){
+    $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+    $language['ODM'] = "";
+    $language['Cambodia'] = "Khmer";
+    $language['Laos'] = "Lao";
+    $language['Myanmar'] = "Burmese";
+    $language['Thailand'] = "Thai";
+    $language['Vietnam'] = "Vietnamese";
+    return $language[$site_name];
+}
 function opendev_wpckan_post_types()
 {
     return array('post', 'page', 'topic', 'layer');
@@ -1563,6 +1586,7 @@ function get_law_datasets($ckan_domain,$filter_key,$filter_value){
 
 function get_dataset_by_id($ckan_domain,$id){
   $ckanapi_url = $ckan_domain . "/api/3/action/package_show?id=" . $id;
+  //echo $ckanapi_url;
   $json = @file_get_contents($ckanapi_url);
   if ($json === FALSE) return [];
   $datasets = json_decode($json, true) ?: [];
@@ -1686,6 +1710,8 @@ class country_specific_sub_menus extends Walker_Nav_Menu {
     $output .= "$indent</ul>\n";
   }
 }
+
+
 /****** Add function convert date, H-E/**/
 //echo convert_date_to_kh_date("18.05.2014");
 function convert_date_to_kh_date($date_string, $splitted_by = "."){ //$date_string = Day.Month.Year

@@ -5,7 +5,7 @@ Template Name: Profile page
 ?>
 
 <?php
-require_once('page-profiles-config.php');
+//require_once('page-profiles-config.php');
 ?>
 
 <?php get_header(); ?>
@@ -25,24 +25,77 @@ require_once('page-profiles-config.php');
       $lang = "km";
     }
     // End of hack
-
+    $ammendements = null;
+    $profile = null;
+    $profiles = null;
     $filter_map_id = NULL;
     if (isset($_GET["map_id"])){
       $filter_map_id = htmlspecialchars($_GET["map_id"]);
     }
-    $dataset = get_dataset_by_id($CKAN_DOMAIN,$ELC_DATASET_ID);
-  //  print_r($dataset);
-    $profile = null;
+
+    //Get Dataset URL of each profile page in Profiles post type
+    if ( (CURRENT_LANGUAGE != "en") ){
+      $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
+      $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
+    }else {
+  	   $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
+       $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
+    }
+    if($ckan_dataset != ""){
+      $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
+      $ckan_dataset_exploded_by_resource = explode("/resource/", $ckan_dataset_exploded_by_dataset[1]);
+      $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
+      $ckan_dataset_csv_id = $ckan_dataset_exploded_by_resource[1];
+
+      $dataset = get_dataset_by_id(CKAN_DOMAIN,$ckan_dataset_id);
+      if (!IsNullOrEmptyString($filter_map_id)){
+        $profile = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_csv_id,"map_id",$filter_map_id)[0];
+      }else{
+        $profiles = get_datastore_resource(CKAN_DOMAIN,$ckan_dataset_csv_id);
+      }
+    }
+
+    //for tracking
+    if($ckan_dataset_tracking != ""){
+      $ckan_dataset_tracking_exploded_by_dataset = explode("/dataset/", $ckan_dataset_tracking);
+      $ckan_dataset_tracking_exploded_by_resource = explode("/resource/", $ckan_dataset_tracking_exploded_by_dataset[1]);
+      $ckan_dataset_tracking_id = $ckan_dataset_tracking_exploded_by_resource[0];
+      $ckan_dataset_tracking_csv_id = $ckan_dataset_tracking_exploded_by_resource[1];
+      if (!IsNullOrEmptyString($filter_map_id)){
+        $ammendements = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_tracking_csv_id,"map_id",$filter_map_id);
+      }
+    }
+    //For Attributes
+    if ( (CURRENT_LANGUAGE != "en") ){
+      $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
+      $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
+    }else {
+      $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
+      $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+    }
+    //echo $ckan_attribute;
+    if ($ckan_attribute!=""){
+      $temp_ckan_attribute = explode("\r\n", $ckan_attribute);
+      $array_attribute = array();
+      foreach ($temp_ckan_attribute as $value) {
+         $array_value = explode('=>', trim($value));
+         $array_attribute[trim($array_value[0])] = trim($array_value[1]);
+      }
+      $DATASET_ATTRIBUTE = $array_attribute;
+    }//END IF $ckan_attribute
+
+    if ($ckan_attribute_tracking!=""){
+      $temp_ckan_attribute_tracking = explode("\r\n", $ckan_attribute_tracking);
+      $array_attribute = array();
+      foreach ($temp_ckan_attribute_tracking as $value) {
+         $array_value_tracking = explode('=>', trim($value));
+         $array_attribute_tracking[trim($array_value_tracking[0])] = trim($array_value_tracking[1]);
+      }
+      $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
+    }//END IF $ckan_attribute_tracking
+
     $ref_docs_profile = array();
     $ref_docs_tracking = array();
-    $ammendements = null;
-    $profiles = null;
-    if (!IsNullOrEmptyString($filter_map_id)){
-      $profile = get_datastore_resources_filter($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"],"map_id",$filter_map_id)[0];
-      $ammendements = get_datastore_resources_filter($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["tracking"],"map_id",$filter_map_id);
-    }else{
-      $profiles = get_datastore_resource($CKAN_DOMAIN,$ELC_RESOURCE_IDS[$lang]["metadata"]);
-    }
   ?>
 
   <section id="content" class="single-post">
@@ -60,12 +113,16 @@ require_once('page-profiles-config.php');
               <h2><?php echo $profile["developer"]; ?></h2>
               <table id="profile" class="data-table">
                 <tbody>
-                  <?php foreach ($ELC_METADATA as $key => $value): ?>
+                  <?php
+
+                  foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                   <tr>
-                    <td class="row-key"><?php _e( $ELC_METADATA[$key], "opendev" ); ?></td>
-                    <td><?php if (isset($profile[$key])){
-                        echo $profile[$key];
-                    } ?></td>
+                  <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></td>
+                    <td><?php //echo $key;
+                  //  if (isset($profile[$key])){
+                        echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", $profile[$key]);
+                  //  } ?>
+                    </td>
                   </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -77,30 +134,47 @@ require_once('page-profiles-config.php');
           <div class="eight columns">
             <?php if (count($ammendements) > 0): ?>
               <div class="profile-metadata">
-                <h2>Amendments</h2>
+                <h2><?php _e("Amendments", "opendev"); ?></h2>
                 <table id="tracking" class="data-table">
                   <tbody>
                     <thead>
-                      <tr>
-                        <?php foreach ($ELC_TRACKING as $key => $value): ?>
-                          <td class="row-key"><?php _e( $ELC_TRACKING[$key], 'opendev'); ?></td>
-                        <?php endforeach; ?>
-                      </tr>
+                      <!--<tr>
+                        <?php /* foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
+                          <td class="row-key"><?php _e( $DATASET_ATTRIBUTE_TRACKING[$key], 'opendev'); ?></td>
+                        <?php endforeach; */ ?>
+                      </tr>-->
                     </thead>
-                    <?php foreach ($ammendements as $key => $ammendement):
+                    <?php
+                    $concession_or_developer = '';
+                    foreach ($ammendements as $key => $ammendement):
                       if (!IsNullOrEmptyString($ammendement["reference"])){
                         array_push($ref_docs_tracking,$ammendement["reference"]);
                       }
                       ?>
                       <tr>
-                        <?php foreach ($ELC_TRACKING as $key => $value): ?>
-                          <td>
-                            <?php
-                              if (isset($ammendement[$key])){
-                                  echo $ammendement[$key];
-                                }
-                            ?>
-                          </td>
+                        <?php foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
+                          <?php if ($key == 'concession_or_developer'){
+                                  if ($ammendement[$key] == $concession_or_developer)
+                                      echo "<td></td>";
+                                  else  {
+                                      echo "<td><strong>".__($ammendement[$key], 'opendev')."</strong></td>";
+                                      $concession_or_developer = $ammendement[$key];
+                                  }
+                                }else{?>
+                                  <td>
+                                    <?php
+                                    if ($key == 'amendment_date'){
+                                        if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                          echo convert_date_to_kh_date(date("d/m/Y", strtotime($ammendement[$key])), "/");
+                                        else echo $ammendement[$key];
+                                    }else {
+                                      if (isset($ammendement[$key])){
+                                          echo $ammendement[$key];
+                                        }
+                                    }
+                                    ?>
+                                  </td>
+                        <?php } ?>
                         <?php endforeach; ?>
                       </tr>
                     <?php endforeach; ?>
@@ -113,23 +187,29 @@ require_once('page-profiles-config.php');
               $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
               if ($ref_docs): ?>
               <div class="profile-metadata">
-                <h2>Reference documents</h2>
+                <h2><?php _e("Reference documents", "opendev"); ?></h2>
                 <table id="reference" class="data-table">
                   <tbody>
                     <?php
                       foreach ($ref_docs as $key => $ref_doc):
-                        $ref_doc_metadata = get_datasets_filter($CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
+                        $ref_doc_metadata = get_datasets_filter(CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
                         if (count($ref_doc_metadata) > 0):
                           foreach ($ref_doc_metadata as $key => $metadata):
                       ?>
                       <tr>
                         <td class="row-key">
-                          <a target="_blank" href="<?php echo $CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a></br>
-                          <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
-                            <?php echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
-                          <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
-                            <?php echo "(" . $metadata["odm_publication_date"]  . ")" ?>
-                          <?php endif; ?>
+                          <a target="_blank" href="<?php echo CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a></br>
+                          <div class="ref_date">
+                            <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
+                              <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                          echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_promulgation_date"])), "/");
+                                      else echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
+                            <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
+                              <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                          echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_publication_date"])), "/");
+                                      else echo "(" . $metadata["odm_publication_date"] . ")" ?>
+                            <?php endif; ?>
+                          </div>
                         </td>
                         <td><?php echo getMultilingualValueOrFallback($metadata['notes_translated'],$lang); ?></td>
                       </tr>

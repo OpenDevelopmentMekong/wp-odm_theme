@@ -12,7 +12,10 @@
   overflow: auto;
 }*/
 #profiles td{
-  line-height: 16px;
+  line-height: 22px;
+}
+#tracking td:nth-child(2){
+  width: 25%
 }
 .hidden {
   display:none;
@@ -21,7 +24,10 @@
 .row-key{
   font-weight: bold;
 }
-
+.row-key .ref_date{
+  font-weight: normal;
+  font-size: 12px;
+}
 .sidebar_header{
   line-height: 20px;
   background: #292d56;
@@ -188,8 +194,8 @@ table.data-table td{
   background: none;
   border:0;
   border-left: 1px solid #efefef;
-  padding: 12px 5px;
-  margin-bottom: 4px;
+  /*padding: 12px 5px;
+  margin-bottom: 4px;*/
 }
 table.data-table td:first-child{
   border-left:0;
