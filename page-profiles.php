@@ -14,11 +14,7 @@ Template Name: Profile page
 
   <?php
 
-    $lang = 'en';
-    if (function_exists("qtranxf_getLanguage")){
-      $lang = qtranxf_getLanguage();
-    }
-
+    $lang = CURRENT_LANGUAGE;
     // NOTE: This is a hack to harmonize language code between WP and CKAN.
     // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
     if ($lang == "kh"){
@@ -37,9 +33,11 @@ Template Name: Profile page
     if ( (CURRENT_LANGUAGE != "en") ){
       $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
       $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
+      $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));
     }else {
   	   $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
        $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
+       $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true));
     }
     if($ckan_dataset != ""){
       $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
@@ -102,12 +100,12 @@ Template Name: Profile page
     <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
       <div class="container">
         <div class="row">
-          <div class="ten columns">
+          <div class="twelve columns">
             <div id="profiles_map" class="profiles_map"></div>
           </div>
         </div>
         <div class="row">
-          <div class="eight columns">
+          <div class="twelve columns">
             <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
             <div class="profile-metadata">
               <h2><?php echo $profile["developer"]; ?></h2>
@@ -118,10 +116,11 @@ Template Name: Profile page
                   foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                   <tr>
                   <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></td>
-                    <td><?php //echo $key;
-                  //  if (isset($profile[$key])){
+                    <td><?php
                         echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", $profile[$key]);
-                  //  } ?>
+                        if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
+                          data_classification_definition( $profile[$key]);
+                    ?>
                     </td>
                   </tr>
                   <?php endforeach; ?>
@@ -449,7 +448,7 @@ jQuery(document).ready(function($) {
    }
   };
 
-  if (!singleProfile){
+  <?php if ($filter_map_id == ""){  ?>
     /***** Fixed Header */
   	var get_datatable = $('#profiles').position().top;
   	    get_datatable = get_datatable +230;
@@ -461,7 +460,7 @@ jQuery(document).ready(function($) {
   				$('.dataTables_scrollHead').css('z-index',9999);
   				$('.dataTables_scrollHead').width($('.dataTables_scrollBody').width());
   				$('.fixed_top_bar').width($('.dataTables_scrollBody').width());
-  				$('.dataTables_scrollBody').css('top','120px');
+  				$('.dataTables_scrollBody').css('top','60px');
           $('.fixed_top_bar').show();
   		   }
   		   else {
@@ -526,94 +525,40 @@ jQuery(document).ready(function($) {
              } );
          }
      });
-     /*
-       oTable.api().columns().every( function (index) {
-
-             if(index == 15){
-                   var column_header = $("#profiles").find("th:eq( "+index+" )" ).text();
-                   var column = this;
-
-                   <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
-                            var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-                            label_filter.appendTo( $('.filter_by_column_index_'+index));
-                            var select = $('<select><option value="">'+column_header+' <?php _e("all ", "opendev"); ?></option></select>');
-                   <?php
-                        }else {?>
-                            var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-                            label_filter.appendTo( $('.filter_by_column_index_'+index));
-                            var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
-                   <?php } ?>
-                       select.appendTo( $('.filter_by_column_index_'+index))
-                       .on( 'change', function () {
-                           var val = $.fn.dataTable.util.escapeRegex(
-                               $(this).val()
-                           );
-                           column
-                               .search( val ? '^'+val+'$' : '', true, false )
-                               .draw();
-                       } );
-                   column.data().unique().sort().each( function ( d, j ) {
-                     var val = d.replace('<div class="td-value">', '');
-                         val = val.replace('</div>', '');
-                         select.append( '<option value="'+val+'">'+val+'</option>' )
-                   } );
-
-           }
-       } );*/
 
     // Filter by Adjustmemt
-    var columnIndex = 15; //15 is index of Adjustment Classifications
-    var column_adjustment_oTable = oTable.api().columns( columnIndex );
-    var column_header = $("#profiles").find("th:eq( "+columnIndex+" )" ).text();
-     <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
-              var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-              label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
-              var select = $('<select><option value="">'+column_header+' <?php _e("all ", "opendev"); ?></option></select>');
-     <?php
-          }else {?>
-              var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-              label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
-              var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
-              console.log(label_filter);
-     <?php } ?>
-        select.appendTo( $('.filter_by_column_index_'+columnIndex) )
-        .on( 'change', function () {
-            // Escape the expression so we can perform a regex match
-            var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-            );
+    <?php if ($filtered_by_column_index !="") { ?>
+        var columnIndex = <?php echo $filtered_by_column_index ?>; //15 is index of Adjustment Classifications
+        var column_adjustment_oTable = oTable.api().columns( columnIndex );
+        var column_header = $("#profiles").find("th:eq( "+columnIndex+" )" ).text();
+         <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
+                  var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+                  label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
+                  var select = $('<select><option value="">'+column_header+'<?php _e("all", "opendev"); ?></option></select>');
+         <?php
+              }else {?>
+                  var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+                  label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
+                  var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
+                  console.log(label_filter);
+         <?php } ?>
+            select.appendTo( $('.filter_by_column_index_'+columnIndex) )
+            .on( 'change', function () {
+                // Escape the expression so we can perform a regex match
+                var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                );
 
-            column_adjustment_oTable
-                .search( val ? '^'+val+'$' : '', true, false )
-                .draw();
-        } );
-        column_adjustment_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
-            var val = d.replace('<div class="td-value">', '');
-                val = val.replace('</div>', '');
-                select.append( '<option value="'+val+'">'+val+'</option>' )
-        } );
-     /*
-     /// By Data Classifications
-     var columnIndex_dataclass = 16; //16 is index of Data Classifications
-     var column_dataclass_oTable = oTable.api().columns(columnIndex_dataclass);
-     var select = $('<select><option value=""><?php _e("All data Classifications", "opendev"); ?></option></select>')
-         .appendTo($("#filter_by_dataclass") )
-         .on( 'change', function () {
-             // Escape the expression so we can perform a regex match
-             var val = $.fn.dataTable.util.escapeRegex(
-                 $(this).val()
-             );
-             column_dataclass_oTable
-                 .search( val ? '^'+val+'$' : '', true, false )
-                 .draw();
-         } );
-         column_dataclass_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
-             var val = d.replace('<div class="td-value">', '');
-                 val = val.replace('</div>', '');
-                 select.append( '<option value="'+val.trim()+'">'+val.trim()+'</option>' )
-         } );
-    */
-
+                column_adjustment_oTable
+                    .search( val ? '^'+val+'$' : '', true, false )
+                    .draw();
+            } );
+            column_adjustment_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
+                var val = d.replace('<div class="td-value">', '');
+                    val = val.replace('</div>', '');
+                    select.append( '<option value="'+val+'">'+val+'</option>' )
+            } );
+    <?php } ?> //If filter columnIndex exists
 
     //Set width of table header and body equally
     var widths = [];
@@ -626,20 +571,14 @@ jQuery(document).ready(function($) {
     });
     $tableBodyCell.each(
           function(i, val){
-            //console.log($(this).width() +" == "+ $headerCell.eq(i).width());
             if ( $(this).width() >= $headerCell.eq(i).width() ){
                  $max_width =   widths[i];
                  $headerCell.eq(i).children('.th-value').css('width', $max_width);
-                // $('.dataTables_scrollBody #profiles tbody tr').each(function(){
                    if(!$(this).hasClass('group'))
                     $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-                // });
             }else if ( $(this).width() < $headerCell.eq(i).width() ){
                  $max_width =   $headerCell.eq(i).width();
-                 //$('.dataTables_scrollBody #profiles tbody tr').each(function(){
-                   //if(!$(this).hasClass('group'))
                      $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-                 //});
                  $headerCell.eq(i).children('.th-value').css('width', $max_width);
             }
         });
@@ -673,7 +612,8 @@ jQuery(document).ready(function($) {
      $('.dataTables_scrollHead').scroll(function(e){
             $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
      });
-  }//if single page
+<?php } //if single page
+?>
 
   $("#search_all").keyup(function () {
     oTable.fnFilterAll(this.value);

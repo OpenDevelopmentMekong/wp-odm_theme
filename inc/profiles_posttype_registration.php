@@ -76,20 +76,18 @@ class OpenDev_profiles_posttype_registration {
 		$csv_resource_url_localization = get_post_meta($post->ID, '_csv_resource_url_localization', true);
 		$tracking_csv_resource_url = get_post_meta($post->ID, '_tracking_csv_resource_url', true);
 		$tracking_csv_resource_url_localization = get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true);
-
+	  $filtered_by_column_index = get_post_meta($post->ID, '_filtered_by_column_index', true);
+	  $filtered_by_column_index_localization = get_post_meta($post->ID, '_filtered_by_column_index_localization', true); 
 		?>
 		<div id="multiple-site">
-		 <p>
 			<input type="radio" id="en" class="en" name="language_site" value="en" checked />
 			<label for="en"><?php _e('ENGLISH', 'jeo'); ?></label> &nbsp;
 			<input type="radio" id="localization" class="localization" name="language_site" value="localization" />
 			<label for="localization"><?php _e(get_the_localization_language_by_website(), 'opendev'); ?></label>
-		 </p>
 		</div>
-
 		<div id="resource_settings_box">
-		  <div class="resource_settings resource-en">​
-			 	<table class="form-table  resource_settings_box">
+		  <div class="resource_settings resource-en">
+				<table class="form-table  resource_settings_box">
 					<tbody>
 					 <tr>
 		 				<th><label for="_csv_resource_url"><?php _e('CSV Resource URL (English)', 'opendev'); ?></label></th>
@@ -105,9 +103,15 @@ class OpenDev_profiles_posttype_registration {
 						 <p class="description"><?php _e('CSV Resource of tracking dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset', 'opendev'); ?></p>
 						</td>
 					 </tr>
+					 <tr>
+					  <th><label for="_filtered_by_column_index"><?php _e('Create Select Filter by Column Index (English)', 'opendev'); ?></label></th>
+					  <td>
+					   <input id="_filtered_by_column_index" type="text" placeholder="15" size="40" name="_filtered_by_column_index" value="<?php echo $filtered_by_column_index; ?>" />
+					   <p class="description"><?php _e('Eg. The column index of Data Adjustment of ELC: 15', 'opendev'); ?></p>
+					  </td>
+					 </tr>
 					</tbody>
 		 		</table>
-
 				<?php $this->attributes_settings_box("English", $post); ?>
 			</div>
 <?php if(get_the_localization_language_by_website()){ ?>
@@ -128,9 +132,15 @@ class OpenDev_profiles_posttype_registration {
 		 				  <p class="description"><?php _e('CSV Resource of tracking dataset on CKAN. Eg. https://data.opendevelopmentmekong.net/dataset/economic-land-concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset', 'opendev'); ?></p>
 		 				</td>
 		 			 </tr>
-		 			</tbody>
+					 <tr>
+					  <th><label for="_filtered_by_column_index_localization"><?php _e('Create Select Filter by Column Index ('.get_the_localization_language_by_website().')', 'opendev'); ?></label></th>
+					  <td>
+					   <input id="_filtered_by_column_index_localization" type="text" placeholder="15" size="40" name="_filtered_by_column_index_localization" value="<?php echo $filtered_by_column_index_localization; ?>" />
+					   <p class="description"><?php _e('Eg. The column index of Data Adjustment of ELC: 15', 'opendev'); ?></p>
+					  </td>
+					 </tr>
+					</tbody>
 		 		</table>
-
 				<?php $this->attributes_settings_box(get_the_localization_language_by_website(), $post); ?>
 		 </div>
  <?php } ?>
@@ -161,7 +171,7 @@ class OpenDev_profiles_posttype_registration {
 			 ?>
 			 <?php if($lang!="English"){ ?>
 							 <h4><?php _e('The attributes of Resource Dataset that would like to display ('.$lang.')', 'opendev'); ?></h4>
-							 <textarea name="_attributes_csv_resource_localization" style="width:100%;height: 200px;"><?php echo "ddddd". $attributes_localization; ?></textarea>
+							 <textarea name="_attributes_csv_resource_localization" style="width:100%;height: 200px;"><?php echo $attributes_localization; ?></textarea>
 
 							 <h4><?php _e('The attributes of Tracking Resource that would like to display ('.$lang.')', 'opendev'); ?></h4>
 							 <textarea name="_attributes_csv_resource_tracking_localization" style="width:100%;height: 200px;"><?php echo $attributes_tracking_localization; ?></textarea>
@@ -206,6 +216,12 @@ class OpenDev_profiles_posttype_registration {
 
 						 if(isset($_POST['_tracking_csv_resource_url_localization']))
 							update_post_meta($post_id, '_tracking_csv_resource_url_localization', $_POST['_tracking_csv_resource_url_localization']);
+
+						 if(isset($_POST['_filtered_by_column_index']))
+							update_post_meta($post_id, '_filtered_by_column_index', $_POST['_filtered_by_column_index']);
+
+						 if(isset($_POST['_filtered_by_column_index_localization']))
+							update_post_meta($post_id, '_filtered_by_column_index_localization', $_POST['_filtered_by_column_index_localization']);
 
 						 /*
 							* Attributes Settting

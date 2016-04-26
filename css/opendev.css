@@ -2646,42 +2646,37 @@ div.cartodb-legend.custom ul li.graph{
     bottom: -20px;
     top: auto;
   }
+
+/* using for data-classification */
+.tooltip_definition {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip_definition .tooltip-info {
+    visibility: hidden;
+    max-width: 400px;
+    width: 350px;
+    background-color: #F4F4F4;
+    color: #333;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px 15px 0 15px;
+    border: 1px solid #ccc;
+    box-shadow:0px 0px 5px #888;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.tooltip_definition:hover{
+  cursor: pointer;
+}
+.tooltip_definition:hover .tooltip-info {
+    visibility: visible;
+}
  /*end tooltips*/
 /*menu*/
-/* ul#menu-header-menu{
-   padding: 0px;
-  }
-  ul#menu-header-menu li{
-   float: left;
-   list-style: none;
-   position: relative;
-  }
-  ul#menu-header-menu li a{
-   padding:10px 20px;
-   display: block;
-  }
-  ul#menu-header-menu ul{
-   width: 200px;
-   display: none;
-   position: absolute;
-   border: 1px solid #c9c9c9;
-   border-top: 0px;
-  }
-
-  ul#menu-header-menu ul li{
-   width: auto;
-  }
-  ul#menu-header-menu ul ul{
-   margin-top: -1px !important;
-   position: absolute;
-   top: 0px;
-   left: 100%;
-   border-top: 1px solid #c9c9c9;
-  }
-
-  ul#menu-header-menu li:hover > ul{
-   display: block;
-  } */
 
   #od-head #main-nav ul.menu > li > ul li:last-child a{
   border-bottom: 0px;
