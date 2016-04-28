@@ -14,44 +14,99 @@ Template Name: Profile page
 
   <?php
 
-    $lang = CURRENT_LANGUAGE;
-    // NOTE: This is a hack to harmonize language code between WP and CKAN.
-    // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
-    if ($lang == "kh"){
-      $lang = "km";
-    }
-    // End of hack
-    $ammendements = null;
-    $profile = null;
-    $profiles = null;
-    $filter_map_id = NULL;
-    if (isset($_GET["map_id"])){
-      $filter_map_id = htmlspecialchars($_GET["map_id"]);
-    }
+  $lang = CURRENT_LANGUAGE;
+  // NOTE: This is a hack to harmonize language code between WP and CKAN.
+  // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
+  if ($lang == "kh"){
+    $lang = "km";
+  }
+  // End of hack
+  $ammendements = null;
+  $profile = null;
+  $profiles = null;
+  $filter_map_id = NULL;
+  if (isset($_GET["map_id"])){
+    $filter_map_id = htmlspecialchars($_GET["map_id"]);
+  }
 
-    //Get Dataset URL of each profile page in Profiles post type
-    if ( (CURRENT_LANGUAGE != "en") ){
-      $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
-      $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
-      $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));
-    }else {
-  	   $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
-       $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
-       $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true));
-    }
-    if($ckan_dataset != ""){
-      $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
-      $ckan_dataset_exploded_by_resource = explode("/resource/", $ckan_dataset_exploded_by_dataset[1]);
-      $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
-      $ckan_dataset_csv_id = $ckan_dataset_exploded_by_resource[1];
+  //Get Dataset URL of each profile page in Profiles post type
+  if ( (CURRENT_LANGUAGE != "en") ){
+    $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url_localization', true));
+    $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
+    $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
+    $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true)) -1;  // index start from zero
+    $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true))-1;
+    $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
+  }else {
+     $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url', true));
+     $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
+     $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
+     $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true)) -1; // index start from zero
+     $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index', true)) -1;
+     $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name', true));
+  }
+  if($map_visualization_url){
+     $cartodb_url = $map_visualization_url;
+     $cartodb_json = file_get_contents($cartodb_url);
+     $cartodb_json_data = json_decode($cartodb_json, true);
+     $cartodb_layer_option = $cartodb_json_data['layers'][1]['options'];
+     $cartodb_layer_name = $cartodb_layer_option['layer_definition']['layers']['options']['layer_name'];
+  }
+  if($ckan_dataset != ""){
+    $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
+    $ckan_dataset_exploded_by_resource = explode("/resource/", $ckan_dataset_exploded_by_dataset[1]);
+    $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
+    $ckan_dataset_csv_id = $ckan_dataset_exploded_by_resource[1];
 
-      $dataset = get_dataset_by_id(CKAN_DOMAIN,$ckan_dataset_id);
-      if (!IsNullOrEmptyString($filter_map_id)){
-        $profile = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_csv_id,"map_id",$filter_map_id)[0];
-      }else{
-        $profiles = get_datastore_resource(CKAN_DOMAIN,$ckan_dataset_csv_id);
-      }
+    $dataset = get_dataset_by_id(CKAN_DOMAIN,$ckan_dataset_id);
+    if (!IsNullOrEmptyString($filter_map_id)){
+      $profile = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_csv_id,"map_id",$filter_map_id)[0];
+    }else{
+      $profiles = get_datastore_resource(CKAN_DOMAIN,$ckan_dataset_csv_id);
     }
+  }
+
+  //for tracking
+  if($ckan_dataset_tracking != ""){
+    $ckan_dataset_tracking_exploded_by_dataset = explode("/dataset/", $ckan_dataset_tracking);
+    $ckan_dataset_tracking_exploded_by_resource = explode("/resource/", $ckan_dataset_tracking_exploded_by_dataset[1]);
+    $ckan_dataset_tracking_id = $ckan_dataset_tracking_exploded_by_resource[0];
+    $ckan_dataset_tracking_csv_id = $ckan_dataset_tracking_exploded_by_resource[1];
+    if (!IsNullOrEmptyString($filter_map_id)){
+      $ammendements = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_tracking_csv_id,"map_id",$filter_map_id);
+    }
+  }
+  //For Attributes
+  if ( (CURRENT_LANGUAGE != "en") ){
+    $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
+    $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
+  }else {
+    $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
+    $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+  }
+  //echo $ckan_attribute;
+  if ($ckan_attribute!=""){
+    $temp_ckan_attribute = explode("\r\n", $ckan_attribute);
+    $array_attribute = array();
+    foreach ($temp_ckan_attribute as $value) {
+       $array_value = explode('=>', trim($value));
+       $array_attribute[trim($array_value[0])] = trim($array_value[1]);
+    }
+    $DATASET_ATTRIBUTE = $array_attribute;
+  }//END IF $ckan_attribute
+
+  if ($ckan_attribute_tracking!=""){
+    $temp_ckan_attribute_tracking = explode("\r\n", $ckan_attribute_tracking);
+    $array_attribute = array();
+    foreach ($temp_ckan_attribute_tracking as $value) {
+       $array_value_tracking = explode('=>', trim($value));
+       $array_attribute_tracking[trim($array_value_tracking[0])] = trim($array_value_tracking[1]);
+    }
+    $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
+  }//END IF $ckan_attribute_tracking
+
+  $ref_docs_profile = array();
+  $ref_docs_tracking = array();
 
     //for tracking
     if($ckan_dataset_tracking != ""){
@@ -97,134 +152,9 @@ Template Name: Profile page
   ?>
 
   <section id="content" class="single-post">
-    <?php if (!IsNullOrEmptyString($filter_map_id)): ?>
-      <div class="container">
-        <div class="row">
-          <div class="twelve columns">
-            <div id="profiles_map" class="profiles_map"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="twelve columns">
-            <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
-            <div class="profile-metadata">
-              <h2><?php echo $profile["developer"]; ?></h2>
-              <table id="profile" class="data-table">
-                <tbody>
-                  <?php
-
-                  foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                  <tr>
-                  <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></td>
-                    <td><?php
-                        echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", $profile[$key]);
-                        if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
-                          data_classification_definition( $profile[$key]);
-                    ?>
-                    </td>
-                  </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="eight columns">
-            <?php if (count($ammendements) > 0): ?>
-              <div class="profile-metadata">
-                <h2><?php _e("Amendments", "opendev"); ?></h2>
-                <table id="tracking" class="data-table">
-                  <tbody>
-                    <thead>
-                      <!--<tr>
-                        <?php /* foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                          <td class="row-key"><?php _e( $DATASET_ATTRIBUTE_TRACKING[$key], 'opendev'); ?></td>
-                        <?php endforeach; */ ?>
-                      </tr>-->
-                    </thead>
-                    <?php
-                    $concession_or_developer = '';
-                    foreach ($ammendements as $key => $ammendement):
-                      if (!IsNullOrEmptyString($ammendement["reference"])){
-                        array_push($ref_docs_tracking,$ammendement["reference"]);
-                      }
-                      ?>
-                      <tr>
-                        <?php foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                          <?php if ($key == 'concession_or_developer'){
-                                  if ($ammendement[$key] == $concession_or_developer)
-                                      echo "<td></td>";
-                                  else  {
-                                      echo "<td><strong>".__($ammendement[$key], 'opendev')."</strong></td>";
-                                      $concession_or_developer = $ammendement[$key];
-                                  }
-                                }else{?>
-                                  <td>
-                                    <?php
-                                    if ($key == 'amendment_date'){
-                                        if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
-                                          echo convert_date_to_kh_date(date("d/m/Y", strtotime($ammendement[$key])), "/");
-                                        else echo $ammendement[$key];
-                                    }else {
-                                      if (isset($ammendement[$key])){
-                                          echo $ammendement[$key];
-                                        }
-                                    }
-                                    ?>
-                                  </td>
-                        <?php } ?>
-                        <?php endforeach; ?>
-                      </tr>
-                    <?php endforeach; ?>
-                  </tbody>
-                </table>
-              </div>
-            <?php endif; ?>
-            <?php
-              $ref_docs_profile = explode(";", $profile["reference"]);
-              $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
-              if ($ref_docs): ?>
-              <div class="profile-metadata">
-                <h2><?php _e("Reference documents", "opendev"); ?></h2>
-                <table id="reference" class="data-table">
-                  <tbody>
-                    <?php
-                      foreach ($ref_docs as $key => $ref_doc):
-                        $ref_doc_metadata = get_datasets_filter(CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
-                        if (count($ref_doc_metadata) > 0):
-                          foreach ($ref_doc_metadata as $key => $metadata):
-                      ?>
-                      <tr>
-                        <td class="row-key">
-                          <a target="_blank" href="<?php echo CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a></br>
-                          <div class="ref_date">
-                            <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
-                              <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
-                                          echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_promulgation_date"])), "/");
-                                      else echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
-                            <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
-                              <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
-                                          echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_publication_date"])), "/");
-                                      else echo "(" . $metadata["odm_publication_date"] . ")" ?>
-                            <?php endif; ?>
-                          </div>
-                        </td>
-                        <td><?php echo getMultilingualValueOrFallback($metadata['notes_translated'],$lang); ?></td>
-                      </tr>
-                      <?php
-                         endforeach;
-                        endif;
-                     endforeach;
-                    ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          <?php endif; ?>
-        </div>
-      </div>
-    <?php else: ?>
+    <?php if (!IsNullOrEmptyString($filter_map_id)):  //view single conccesion
+              include("page-profiles-single-page.php");
+          else: ?>
       <div class="container">
         <div class="row">
           <div class="twelve columns">
@@ -301,33 +231,14 @@ Template Name: Profile page
         <div class="row no-margin-buttom">
           <div class="fixed_top_bar"></div>
           <div class="twelve columns table-column-container">
-      			<div id="filter_by_adjustment" class="filter_by_column_index_15">
-                <!--<div class="label"><?php _e("Filter by", "opendev"); ?></div>-->
-            </div>
-            <div id="filter_by_dataclass" class="filter_by_column_index_16">
-                <!--<div class="label"><?php _e("Filter by", "opendev"); ?></div>-->
+            <div id="filter_by_classification" class="filter_by_column_index_<?php echo $filtered_by_column_index ?>">
             </div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
-                  <th><div class='th-value'><?php _e( 'Developer', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Developer country', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Contract date', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Contract term (year)', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Granted land area (hectare)', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Source of land size', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Intended investment ', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Intended crop or project', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Province/Capital city', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Contract authority', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Previous land use', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Sub-decree reclassifying land use', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Legal documents', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'Developer land use plan', 'opendev' );?></div></th>
-									<th><div class='th-value'><?php _e( 'EIA status', 'opendev' );?></th>
-									<th><div class='th-value select-filter'><?php _e( 'Adjustment classification ', 'opendev' );?></div></th>
-									<th><div class='th-value select-filter'><?php _e( 'Data classification', 'opendev' );?></div></th>
-                  <th><div class='th-value'><?php _e( 'Map id', 'opendev' );?></div></th>
+                  <?php foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
+                          <th><div class='th-value'><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></div></th>
+                  <?php endforeach; ?>
                 </tr>
               </thead>
               <tbody>
@@ -336,64 +247,30 @@ Template Name: Profile page
                     continue;
                   }?>
                   <tr>
-                    <td class="entry_title">
-                      <a href="?map_id=<?php echo $profile['map_id'];?>"><?php echo $profile['developer'];?></a>
-                    </td>
-                    <td>
-                      <div class="td-value"><?php echo $profile['dev_nation'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['contract_0'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['contract_d'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['original_s'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['size_refer'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['inv_intent'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['intended_p'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['province'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['contractin'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['land_conv'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['sub_decree'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['legal_docu'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['land_utili'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['eia_status'];?></div>
-                    </td>
-										<td>
-                      <div class="td-value"><?php echo $profile['adjustment'];?></div>
-                    </td>
-										<td><div class="td-value">
-                      <?php if($lang == "en")
-                                echo ucwords(trim($profile['data_class']));
-                            else
-                                echo trim($profile['data_class']);
-                      ?></div>
-                    </td>
-                    <td>
-                      <div class="td-value"><?php echo $profile['map_id'];?></div>
-                    </td>
+                  <?php
+                    foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
+                      <?php
+                          if (in_array($key, array("developer", "name") )) { ?>
+                            <td class="entry_title td-value">
+                                <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a>
+                            </td>
+                          <?php
+                        }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
+        										<td><div class="td-value"><?php
+                              if($lang == "en") echo ucwords(trim($profile[$key]));
+                              else echo trim($profile[$key]);
+                              ?> <?php data_classification_definition( $profile[$key]);  ?></div>
+                            </td>
+                          <?php
+                          }else {  ?>
+                          <td><div class="td-value"><?php
+                            echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
+                            ?></div>
+                          </td>
+                          <?php
+                          }
+                          ?>
+                    <?php endforeach; ?>
                   </tr>
         				<?php endforeach; ?>
       				</tbody>
@@ -414,6 +291,7 @@ Template Name: Profile page
 	</section>
 <?php endif; ?>
 
+
 <?php get_footer(); ?>
 
 <script type="text/javascript">
@@ -422,13 +300,16 @@ var singleProfile = false;
 var singleProfileMapId;
 var mapViz;
 var oTable;
-var mapIdColNumber = 17;
-var cartodbSql = new cartodb.SQL({ user: cartodbConfig.user });
+var mapIdColNumber = 0;
+var cartodb_user = "<?php echo $cartodb_layer_option['user_name']; ?>";
+var cartodb_layer_table = "<?php  echo $cartodb_layer_name; ?>";
+var cartodbSql = new cartodb.SQL({ user: cartodb_user });
+
 
 var filterEntriesMap = function(mapIds){
   var layers = mapViz.getLayers();
 	var mapIdsString = "('" + mapIds.join('\',\'') + "')";
-	var sql = "SELECT * FROM " + cartodbConfig.elc.table + " WHERE map_id in " + mapIdsString;
+	var sql = "SELECT * FROM " + cartodb_layer_table + " WHERE map_id in " + mapIdsString;
 	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
 		mapViz.getNativeMap().fitBounds(bounds);
 	});
@@ -471,7 +352,7 @@ jQuery(document).ready(function($) {
        });
      /***** end Fixed Header */
 
-
+     var group_column = <?php echo $group_data_by_column_index ; ?>;
      oTable = $("#profiles").dataTable({
        scrollX: true,
        responsive: false,
@@ -481,17 +362,16 @@ jQuery(document).ready(function($) {
        processing: true,
        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
        //order: [[ 0, 'asc' ]],
-       displayLength: -1, //0
-       columnDefs: [ //Hide collumns
+       displayLength: -1 //0
+       /*columnDefs: [ //Hide collumns
          {
            "targets": [ 17 ],
            "visible": false
          }
-       ],
-       "aaSortingFixed": [[ 16, 'asc' ]], //sort data in Data Classifications first before grouping
+       ],*/
        //"aaSorting": [[ 0, 'asc' ]],
        <?php if($lang == "kh" || $lang == "km"){ ?>
-       "oLanguage": {
+       , "oLanguage": {
            "sLengthMenu": 'បង្ហាញទិន្នន័យចំនួន <select>'+
                '<option value="10">10</option>'+
                '<option value="25">20</option>'+
@@ -507,140 +387,146 @@ jQuery(document).ready(function($) {
              "sFirst": "ទំព័រដំបូង",
              "sLast": "ចុងក្រោយ",
              "sPrevious": "មុន",
-             "sNext": "បន្ទាប់",
+             "sNext": "បន្ទាប់"
            }
-       },
+       }
        <?php } ?>
-       "drawCallback": function ( settings ) {  //Group colums
-             var api = this.api();
-             var rows = api.rows( {page:'current'} ).nodes();
-             var last=null;
-             api.column(16, {page:'current'} ).data().each( function ( group, i ) {
-                 if ( last !== group ) {
-                     $(rows).eq( i ).before(
-                         '<tr class="group" id="cambodia-bgcolor"><td colspan="17">'+group+'</td></tr>'
-                     );
-                     last = group;
-                 }
+       <?php if($group_data_by_column_index !="") { ?>
+         , "aaSortingFixed": [[<?php echo $group_data_by_column_index; ?>, 'asc' ]] //sort data in Data Classifications first before grouping
+         , "drawCallback": function ( settings ) {  //Group colums
+               var api = this.api();
+               var rows = api.rows( {page:'current'} ).nodes();
+               var last=null;
+               api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
+                   if ( last !== group ) {
+                       $(rows).eq( i ).before(
+                           '<tr class="group" id="cambodia-bgcolor"><td colspan="17">'+group+'</td></tr>'
+                       );
+                       last = group;
+                   }
+               } );
+           }
+      <?php } ?>
+     });
+
+     // Filter by Adjustmemt
+     <?php if ($filtered_by_column_index !="") { ?>
+         var columnIndex = <?php echo $filtered_by_column_index ?>; //15 is index of Adjustment Classifications
+
+         var column_filter_oTable = oTable.api().columns( columnIndex );
+         var column_header = $("#profiles").find("th:eq( "+columnIndex+" )" ).text();
+          <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
+                   var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+                   label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
+                   var select = $('<select><option value="">'+column_header+'<?php _e("all", "opendev"); ?></option></select>');
+          <?php
+               }else {?>
+                   var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
+                   label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
+                   var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
+          <?php } ?>
+             select.appendTo( $('.filter_by_column_index_'+columnIndex) )
+             .on( 'change', function () {
+                 // Escape the expression so we can perform a regex match
+                 var val = $.fn.dataTable.util.escapeRegex(
+                     $(this).val()
+                 );
+                 column_filter_oTable
+                     .search( val ? '^'+val : '', true, false )  //beginning with the str
+                     .draw();
+                      //.search( val ? '^'+val+'$' : '', true, false )   // match to the str only
              } );
-         }
+             column_filter_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
+               console.log(d);
+                 var value = d.split(' &nbsp; <div class="tooltip');
+                     value = value[0];
+                 var val = value.replace('<div class="td-value">', '');
+                     val = val.trim();
+                     select.append( '<option value="'+val+'">'+val+'</option>' )
+             } );
+     <?php } ?> //If filter columnIndex exists
+
+     //Set width of table header and body equally
+     var widths = [];
+     var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
+     var $headerCell = $('.dataTables_scrollHead thead tr th');
+     var $max_width;
+     $tableBodyCell.each(
+       function(){
+         widths.push($(this).width());
      });
-
-    // Filter by Adjustmemt
-    <?php if ($filtered_by_column_index !="") { ?>
-        var columnIndex = <?php echo $filtered_by_column_index ?>; //15 is index of Adjustment Classifications
-        var column_adjustment_oTable = oTable.api().columns( columnIndex );
-        var column_header = $("#profiles").find("th:eq( "+columnIndex+" )" ).text();
-         <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
-                  var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-                  label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
-                  var select = $('<select><option value="">'+column_header+'<?php _e("all", "opendev"); ?></option></select>');
-         <?php
-              }else {?>
-                  var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-                  label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
-                  var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
-                  console.log(label_filter);
-         <?php } ?>
-            select.appendTo( $('.filter_by_column_index_'+columnIndex) )
-            .on( 'change', function () {
-                // Escape the expression so we can perform a regex match
-                var val = $.fn.dataTable.util.escapeRegex(
-                    $(this).val()
-                );
-
-                column_adjustment_oTable
-                    .search( val ? '^'+val+'$' : '', true, false )
-                    .draw();
-            } );
-            column_adjustment_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
-                var val = d.replace('<div class="td-value">', '');
-                    val = val.replace('</div>', '');
-                    select.append( '<option value="'+val+'">'+val+'</option>' )
-            } );
-    <?php } ?> //If filter columnIndex exists
-
-    //Set width of table header and body equally
-    var widths = [];
-    var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
-    var $headerCell = $('.dataTables_scrollHead thead tr th');
-    var $max_width;
-    $tableBodyCell.each(
-      function(){
-        widths.push($(this).width());
-    });
-    $tableBodyCell.each(
-          function(i, val){
-            if ( $(this).width() >= $headerCell.eq(i).width() ){
-                 $max_width =   widths[i];
-                 $headerCell.eq(i).children('.th-value').css('width', $max_width);
-                   if(!$(this).hasClass('group'))
-                    $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-            }else if ( $(this).width() < $headerCell.eq(i).width() ){
-                 $max_width =   $headerCell.eq(i).width();
+     $tableBodyCell.each(
+           function(i, val){
+             //console.log("TD: "+$(this).width() +" =? "+ $headerCell.eq(i).width());
+             if ( $(this).width() >= $headerCell.eq(i).width() ){
+                  $max_width =   widths[i];
+                  $headerCell.eq(i).children('.th-value').css('width', $max_width);
+                    if(!$(this).hasClass('group'))
                      $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-                 $headerCell.eq(i).children('.th-value').css('width', $max_width);
-            }
-        });
+             }else if ( $(this).width() < $headerCell.eq(i).width() ){
+                  $max_width =   $headerCell.eq(i).width();
+                  $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                  $headerCell.eq(i).children('.th-value').css('width', $max_width);
+             }
+         });
 
-     // Enable the filter_by_adjustment and Show entry bar on scroll up as fixed items
-     ////**** Can't place it above the oTable
-     var $filter_data = $("#filter_by_adjustment").clone(true); // Filter Data type
-     var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
-     var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
+      // Enable the filter_by_classification and Show entry bar on scroll up as fixed items
+      ////**** Can't place it above the oTable
+      var $filter_data = $("#filter_by_classification").clone(true); // Filter Data type
+      var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
+      var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
 
-     $(".fixed_top_bar").prepend($filter_data);
-     $(".fixed_top_bar").append($fg_show_entry_bar);
-     $(".fixed_top_bar").append($fg_search_filter_bar);
-     $('.fixed_top_bar #filter_by_adjustment select').val($('.table-column-container #filter_by_adjustment select').val());
-     $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
-     $('.fixed_top_bar #filter_by_adjustment select').on( 'change', function () {
-        $('.table-column-container #filter_by_adjustment select').val($(this).val());
-     });
-     $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
-        $('.table-column-container .dataTables_length select').val($(this).val());
-     });
-     $('.table-column-container #filter_by_adjustment  select').on( 'change', function () {
-        $('.fixed_top_bar #filter_by_adjustment select').val($(this).val());
-     });
-     $('.table-column-container .dataTables_length select').on( 'change', function () {
-        $('.fixed_top_bar .dataTables_length select').val($(this).val());
-     });
-     // End Enable the filter_by_adjustment and Show entry bar
+      $(".fixed_top_bar").prepend($filter_data);
+      $(".fixed_top_bar").append($fg_show_entry_bar);
+      $(".fixed_top_bar").append($fg_search_filter_bar);
+      $('.fixed_top_bar #filter_by_classification select').val($('.table-column-container #filter_by_classification select').val());
+      $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
+      $('.fixed_top_bar #filter_by_classification select').on( 'change', function () {
+         $('.table-column-container #filter_by_classification select').val($(this).val());
+      });
+      $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
+         $('.table-column-container .dataTables_length select').val($(this).val());
+      });
+      $('.table-column-container #filter_by_classification  select').on( 'change', function () {
+         $('.fixed_top_bar #filter_by_classification select').val($(this).val());
+      });
+      $('.table-column-container .dataTables_length select').on( 'change', function () {
+         $('.fixed_top_bar .dataTables_length select').val($(this).val());
+      });
+      // End Enable the filter_by_classification and Show entry bar
 
-     //Enable header scroll bar
-     $('.dataTables_scrollHead').scroll(function(e){
-            $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
-     });
-<?php } //if single page
-?>
+      //Enable header scroll bar
+      $('.dataTables_scrollHead').scroll(function(e){
+             $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
+      });
+ <?php } //if single page
+ ?>
 
-  $("#search_all").keyup(function () {
-    oTable.fnFilterAll(this.value);
-    var filtered = oTable._('tr', {"filter":"applied"});
-    filterEntriesMap(_.pluck(filtered,mapIdColNumber));
-  });
+   $("#search_all").keyup(function () {
+     oTable.fnFilterAll(this.value);
+     var filtered = oTable._('tr', {"filter":"applied"});
+     filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+   });
 
-});
+ });
 
-window.onload = function() {
-  cartodb.createVis('profiles_map', cartodbConfig.elc.vizUrl, {
-		search: false,
-		shareable: true,
-    zoom: 7,
-    center_lat: 12.54384,
-    center_long: 105.60059,
-		https: true
-	}).done(function(vis, layers) {
-    singleProfile = $('#profiles').length <= 0;
-    //console.log("cartodb viz created. singleProfile: " + singleProfile);
-		mapViz = vis;
-    if (singleProfile){
-      singleProfileMapId  = $("#profile-map-id").text();
-      filterEntriesMap([singleProfileMapId]);
-    }
-	});
+ window.onload = function() {
+   cartodb.createVis('profiles_map', '<?php echo $map_visualization_url; ?>', {
+ 		search: false,
+ 		shareable: true,
+     zoom: 7,
+     center_lat: 12.54384,
+     center_long: 105.60059,
+ 		https: true
+ 	}).done(function(vis, layers) {
+     singleProfile = $('#profiles').length <= 0;
+     //console.log("cartodb viz created. singleProfile: " + singleProfile);
+ 		mapViz = vis;
+     if (singleProfile){
+       singleProfileMapId  = $("#profile-map-id").text();
+       filterEntriesMap([singleProfileMapId]);
+     }
+ 	});
 
-}
-
-</script>
+ }
+ </script>
