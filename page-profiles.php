@@ -34,15 +34,15 @@ Template Name: Profile page
     $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url_localization', true));
     $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
     $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
-    $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true)) -1;  // index start from zero
-    $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true))-1;
+    $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
+    $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
     $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
   }else {
      $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url', true));
      $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
      $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
-     $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true)) -1; // index start from zero
-     $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index', true)) -1;
+     $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
+     $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index', true));
      $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name', true));
   }
   if($map_visualization_url){
@@ -236,6 +236,7 @@ Template Name: Profile page
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
+                  <th><div class='th-value'><?php _e( "Map ID", "opendev" ); ?></div></th>
                   <?php foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                           <th><div class='th-value'><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></div></th>
                   <?php endforeach; ?>
@@ -247,6 +248,7 @@ Template Name: Profile page
                     continue;
                   }?>
                   <tr>
+                    <td class="td-value"><?php echo $profile["map_id"];?></td>
                   <?php
                     foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                       <?php
@@ -436,13 +438,14 @@ jQuery(document).ready(function($) {
                      .draw();
                       //.search( val ? '^'+val+'$' : '', true, false )   // match to the str only
              } );
+             var i = 1;
              column_filter_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
-               console.log(d);
-                 var value = d.split(' &nbsp; <div class="tooltip');
-                     value = value[0];
-                 var val = value.replace('<div class="td-value">', '');
-                     val = val.trim();
-                     select.append( '<option value="'+val+'">'+val+'</option>' )
+               //console.log(d);
+                 var value = d.split('<');
+                 var first_value = value[1].split('>');
+                 var only_value = first_value[1].split('<');
+                 val = first_value[1].trim(); 
+                select.append( '<option value="'+val+'">'+val+'</option>' )
              } );
      <?php } ?> //If filter columnIndex exists
 
