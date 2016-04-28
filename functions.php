@@ -1712,6 +1712,7 @@ class country_specific_sub_menus extends Walker_Nav_Menu {
 }
 /// Data Classification definition using in Profile pages
 function data_classification_definition ($info){
+  $info = trim($info);
   if ($info == "កាត់បន្ថយ")
       $info = "Downsized";
   else if ($info == "កាត់បន្ថយបន្ទាប់ពីដកហូត")
