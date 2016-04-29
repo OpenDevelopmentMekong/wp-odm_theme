@@ -253,8 +253,8 @@ Template Name: Profile page
                     foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                       <?php
                           if (in_array($key, array("developer", "name") )) { ?>
-                            <td class="entry_title td-value">
-                                <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a>
+                            <td class="entry_title"><div class="td-value">
+                                <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a></div>
                             </td>
                           <?php
                         }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
@@ -365,12 +365,12 @@ jQuery(document).ready(function($) {
        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
        //order: [[ 0, 'asc' ]],
        displayLength: -1 //0
-       /*columnDefs: [ //Hide collumns
+       , columnDefs: [ //Hide collumns
          {
-           "targets": [ 17 ],
+           "targets": [ 0 ],//map_id
            "visible": false
          }
-       ],*/
+       ]
        //"aaSorting": [[ 0, 'asc' ]],
        <?php if($lang == "kh" || $lang == "km"){ ?>
        , "oLanguage": {
@@ -402,11 +402,12 @@ jQuery(document).ready(function($) {
                api.column(<?php echo $group_data_by_column_index; ?>, {page:'current'} ).data().each( function ( group, i ) {
                    if ( last !== group ) {
                        $(rows).eq( i ).before(
-                           '<tr class="group" id="cambodia-bgcolor"><td colspan="17">'+group+'</td></tr>'
+                           '<tr class="group" id="cambodia-bgcolor"><td colspan="<?php echo  count($DATASET_ATTRIBUTE)?>">'+group+'</td></tr>'
                        );
                        last = group;
                    }
                } );
+               align_width_td_and_th();
            }
       <?php } ?>
      });
@@ -416,7 +417,8 @@ jQuery(document).ready(function($) {
          var columnIndex = <?php echo $filtered_by_column_index ?>; //15 is index of Adjustment Classifications
 
          var column_filter_oTable = oTable.api().columns( columnIndex );
-         var column_header = $("#profiles").find("th:eq( "+columnIndex+" )" ).text();
+         var column_headercolumnIndex = columnIndex -1; //due to map_id column is hidden, column_headercolumnIndex must decrease
+         var column_header = $("#profiles").find("th:eq( "+column_headercolumnIndex+" )" ).text();
           <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
                    var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
                    label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
@@ -437,6 +439,7 @@ jQuery(document).ready(function($) {
                      .search( val ? '^'+val : '', true, false )  //beginning with the str
                      .draw();
                       //.search( val ? '^'+val+'$' : '', true, false )   // match to the str only
+
              } );
              var i = 1;
              column_filter_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
@@ -444,64 +447,67 @@ jQuery(document).ready(function($) {
                  var value = d.split('<');
                  var first_value = value[1].split('>');
                  var only_value = first_value[1].split('<');
-                 val = first_value[1].trim(); 
+                 val = first_value[1].trim();
                 select.append( '<option value="'+val+'">'+val+'</option>' )
              } );
      <?php } ?> //If filter columnIndex exists
 
      //Set width of table header and body equally
-     var widths = [];
-     var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
-     var $headerCell = $('.dataTables_scrollHead thead tr th');
-     var $max_width;
-     $tableBodyCell.each(
-       function(){
-         widths.push($(this).width());
-     });
-     $tableBodyCell.each(
-           function(i, val){
-             //console.log("TD: "+$(this).width() +" =? "+ $headerCell.eq(i).width());
-             if ( $(this).width() >= $headerCell.eq(i).width() ){
-                  $max_width =   widths[i];
-                  $headerCell.eq(i).children('.th-value').css('width', $max_width);
-                    if(!$(this).hasClass('group'))
-                     $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-             }else if ( $(this).width() < $headerCell.eq(i).width() ){
-                  $max_width =   $headerCell.eq(i).width();
-                  $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
-                  $headerCell.eq(i).children('.th-value').css('width', $max_width);
-             }
+     function align_width_td_and_th(){
+         var widths = [];
+         var $tableBodyCell = $('.dataTables_scrollBody #profiles tbody tr:nth-child(2) td');
+         var $headerCell = $('.dataTables_scrollHead thead tr th');
+         var $max_width;
+         $tableBodyCell.each(
+           function(){
+             widths.push($(this).width());
          });
+         $tableBodyCell.each(
+               function(i, val){
+                 //console.log("TD: "+$(this).width() +" =? "+ $headerCell.eq(i).width());
+                 if ( $(this).width() >= $headerCell.eq(i).width() ){
+                      $max_width =   widths[i];
+                        $headerCell.eq(i).children('.th-value').css('width', $max_width);
+                        if(!$(this).hasClass('group'))
+                         $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                 }else if ( $(this).width() < $headerCell.eq(i).width() ){
+                      $max_width =   $headerCell.eq(i).width();
+                      $tableBodyCell.eq(i).children('.td-value').css('width', $max_width);
+                      $headerCell.eq(i).children('.th-value').css('width', $max_width);
+                 }
+             });
 
-      // Enable the filter_by_classification and Show entry bar on scroll up as fixed items
-      ////**** Can't place it above the oTable
-      var $filter_data = $("#filter_by_classification").clone(true); // Filter Data type
-      var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
-      var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
+        } //function align_width_td_and_th
+         // Enable the filter_by_classification and Show entry bar on scroll up as fixed items
+          ////**** Can't place it above the oTable
+          var $filter_data = $("#filter_by_classification").clone(true); // Filter Data type
+          var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
+          var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
 
-      $(".fixed_top_bar").prepend($filter_data);
-      $(".fixed_top_bar").append($fg_show_entry_bar);
-      $(".fixed_top_bar").append($fg_search_filter_bar);
-      $('.fixed_top_bar #filter_by_classification select').val($('.table-column-container #filter_by_classification select').val());
-      $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
-      $('.fixed_top_bar #filter_by_classification select').on( 'change', function () {
-         $('.table-column-container #filter_by_classification select').val($(this).val());
-      });
-      $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
-         $('.table-column-container .dataTables_length select').val($(this).val());
-      });
-      $('.table-column-container #filter_by_classification  select').on( 'change', function () {
-         $('.fixed_top_bar #filter_by_classification select').val($(this).val());
-      });
-      $('.table-column-container .dataTables_length select').on( 'change', function () {
-         $('.fixed_top_bar .dataTables_length select').val($(this).val());
-      });
-      // End Enable the filter_by_classification and Show entry bar
+          $(".fixed_top_bar").prepend($filter_data);
+          $(".fixed_top_bar").append($fg_show_entry_bar);
+          $(".fixed_top_bar").append($fg_search_filter_bar);
+          $('.fixed_top_bar #filter_by_classification select').val($('.table-column-container #filter_by_classification select').val());
+          $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
+          $('.fixed_top_bar #filter_by_classification select').on( 'change', function () {
+             $('.table-column-container #filter_by_classification select').val($(this).val());
+          });
+          $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
+             $('.table-column-container .dataTables_length select').val($(this).val());
+          });
+          $('.table-column-container #filter_by_classification  select').on( 'change', function () {
+             $('.fixed_top_bar #filter_by_classification select').val($(this).val());
+          });
+          $('.table-column-container .dataTables_length select').on( 'change', function () {
+             $('.fixed_top_bar .dataTables_length select').val($(this).val());
+          });
+          // End Enable the filter_by_classification and Show entry bar
 
-      //Enable header scroll bar
-      $('.dataTables_scrollHead').scroll(function(e){
-             $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
-      });
+          //Enable header scroll bar
+
+          $('.dataTables_scrollHead').scroll(function(e){
+                 $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
+          });
  <?php } //if single page
  ?>
 

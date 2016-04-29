@@ -2651,7 +2651,6 @@ div.cartodb-legend.custom ul li.graph{
 .tooltip_definition {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
 }
 
 .tooltip_definition .tooltip-info {
@@ -2667,13 +2666,15 @@ div.cartodb-legend.custom ul li.graph{
     box-shadow:0px 0px 5px #888;
     /* Position the tooltip */
     position: absolute;
+    text-transform: capitalize;
     z-index: 1;
 }
 .tooltip_definition:hover{
   cursor: pointer;
 }
-.tooltip_definition:hover .tooltip-info {
+.tooltip_definition:hover > .tooltip-info {
     visibility: visible;
+      cursor: pointer;
 }
  /*end tooltips*/
 /*menu*/

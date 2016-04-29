@@ -284,7 +284,7 @@ td.entry_title a{
   margin-top: 0;
 }
 #filter_by_classification, #filter_by_dataclass{
-  width: auto;
+  width: 80%;
   position: relative;
   z-index: 888;
   bottom: -1px;
