@@ -63,7 +63,6 @@ if ( (CURRENT_LANGUAGE != "en") ){
       $profiles = get_datastore_resource(CKAN_DOMAIN,$ckan_dataset_csv_id);
     }
   }
-
   //for tracking
   if($ckan_dataset_tracking != ""){
     $ckan_dataset_tracking_exploded_by_dataset = explode("/dataset/", $ckan_dataset_tracking);
@@ -172,6 +171,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
                   <?php
                   $explode_total_number_by_attribute_name = explode("\r\n", $total_number_by_attribute_name);
                   foreach ($explode_total_number_by_attribute_name as $key => $total_attribute_name) {
+                    if($total_attribute_name != "map_id" ){
                       //check if total number require to list by Specific value
                       $total_attributename = trim($total_attribute_name);
                       if (strpos($total_attribute_name, '[') !== FALSE){ //if march
@@ -208,6 +208,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
                                  </li>
                              <?php }
                           }//end if $specifit_value
+                        }//if not map_id
                       }//foreach $explode_total_number_by_attribute_name
                   ?>
                   </ul>
@@ -261,10 +262,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($profiles as $profile): ?>
-                  <?php if (IsNullOrEmptyString($profile['data_class'])){
-                    continue;
-                  }?>
+                <?php foreach ($profiles as $profile):  ?> 
                   <tr>
                     <td class="td-value"><?php echo $profile["map_id"];?></td>
                   <?php
@@ -275,7 +273,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
                                 <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a></div>
                             </td>
                           <?php
-                        }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
+                          }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
         										<td><div class="td-value"><?php
                               if($lang == "en") echo ucwords(trim($profile[$key]));
                               else echo trim($profile[$key]);
@@ -321,25 +319,30 @@ var singleProfileMapId;
 var mapViz;
 var oTable;
 var mapIdColNumber = 0;
-var cartodb_user = "<?php echo $cartodb_layer_option['user_name']; ?>";
-var cartodb_layer_table = "<?php  echo $cartodb_layer_name; ?>";
-var cartodbSql = new cartodb.SQL({ user: cartodb_user });
+
+<?php if($map_visualization_url !=""){ ?>
+    var cartodb_user = "<?php echo $cartodb_layer_option['user_name']; ?>";
+    var cartodb_layer_table = "<?php  echo $cartodb_layer_name; ?>";
+    var cartodbSql = new cartodb.SQL({ user: cartodb_user });
 
 
-var filterEntriesMap = function(mapIds){
-  var layers = mapViz.getLayers();
-	var mapIdsString = "('" + mapIds.join('\',\'') + "')";
-	var sql = "SELECT * FROM " + cartodb_layer_table + " WHERE map_id in " + mapIdsString;
-	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
-		mapViz.getNativeMap().fitBounds(bounds);
-	});
-  if (mapIds.length==1){
-    mapViz.map.set({
-      maxZoom: 10
-    });
-  }
-	layers[1].getSubLayer(0).setSQL(sql);
-}
+    var filterEntriesMap = function(mapIds){
+      var layers = mapViz.getLayers();
+    	var mapIdsString = "('" + mapIds.join('\',\'') + "')";
+    	var sql = "SELECT * FROM " + cartodb_layer_table + " WHERE map_id in " + mapIdsString;
+    	var bounds = cartodbSql.getBounds(sql).done(function(bounds) {
+    		mapViz.getNativeMap().fitBounds(bounds);
+    	});
+      if (mapIds.length==1){
+        mapViz.map.set({
+          maxZoom: 10
+        });
+      }
+    	layers[1].getSubLayer(0).setSQL(sql);
+    }
+
+<?php } ?>
+
 jQuery(document).ready(function($) {
   //console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
@@ -532,28 +535,31 @@ jQuery(document).ready(function($) {
    $("#search_all").keyup(function () {
      oTable.fnFilterAll(this.value);
      var filtered = oTable._('tr', {"filter":"applied"});
+     <?php if($map_visualization_url !=""){ ?>
      filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+     <?php } ?>
    });
 
  });
+<?php if($map_visualization_url !=""){ ?>
+     window.onload = function() {
+       cartodb.createVis('profiles_map', '<?php echo $map_visualization_url; ?>', {
+     		search: false,
+     		shareable: true,
+         zoom: 7,
+         center_lat: 12.54384,
+         center_long: 105.60059,
+     		https: true
+     	}).done(function(vis, layers) {
+         singleProfile = $('#profiles').length <= 0;
+         //console.log("cartodb viz created. singleProfile: " + singleProfile);
+     		mapViz = vis;
+         if (singleProfile){
+           singleProfileMapId  = $("#profile-map-id").text();
+           filterEntriesMap([singleProfileMapId]);
+         }
+     	});
 
- window.onload = function() {
-   cartodb.createVis('profiles_map', '<?php echo $map_visualization_url; ?>', {
- 		search: false,
- 		shareable: true,
-     zoom: 7,
-     center_lat: 12.54384,
-     center_long: 105.60059,
- 		https: true
- 	}).done(function(vis, layers) {
-     singleProfile = $('#profiles').length <= 0;
-     //console.log("cartodb viz created. singleProfile: " + singleProfile);
- 		mapViz = vis;
-     if (singleProfile){
-       singleProfileMapId  = $("#profile-map-id").text();
-       filterEntriesMap([singleProfileMapId]);
-     }
- 	});
-
- }
+    }//window
+<?php } ?>
  </script>

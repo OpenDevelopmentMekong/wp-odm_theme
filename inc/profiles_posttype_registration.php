@@ -216,7 +216,7 @@ class OpenDev_profiles_posttype_registration {
 	         <tr>
 	          <th><label for="_total_number_by_attribute_name"><?php _e('Show Total Numbers of Columns, separated by breaking to new line (English)', 'opendev'); ?></label></th>
 	          <td>
-						<textarea name="_total_number_by_attribute_name" style="width:100%;height: 80px;"placeholder="column_1 \n column_2"><?php echo $total_number_by_attribute_name; ?></textarea>
+						<textarea name="_total_number_by_attribute_name" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name; ?></textarea>
 
 	          <!--<input id="_total_number_by_attribute_name" type="text" placeholder="column_1, column_2" size="40" name="_total_number_by_attribute_name" value="<?php echo $total_number_by_attribute_name; ?>" />-->
 	        	<p class="description"><?php _e('List the attribut names to show their total number on page (separated by breaking to new line). Eg. For ELC: <br/>map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'opendev'); ?></p>
@@ -246,7 +246,7 @@ class OpenDev_profiles_posttype_registration {
 	         <tr>
 	          <th><label for="_total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by breaking to new line ('.get_the_localization_language_by_website().')', 'opendev'); ?></label></th>
 	          <td>
-						<textarea name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1 \n column_2"><?php echo $total_number_by_attribute_name_localization; ?></textarea>
+						<textarea name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name_localization; ?></textarea>
 	          <!--<input id="_total_number_by_attribute_name_localization" type="text" placeholder="column_1, column_2" size="40" name="_total_number_by_attribute_name_localization" value="<?php echo $total_number_by_attribute_name_localization; ?>" />-->
 	          <p class="description"><?php _e('List the attribut names to show their total number on page (separated by breaking in new line). Eg. For ELC: map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'opendev'); ?></p>
 	          </td>
