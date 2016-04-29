@@ -177,18 +177,18 @@ class OpenDev_profiles_posttype_registration {
 			$attributes_tracking_localization = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
 			 ?>
 			 <?php if($lang!="English"){ ?>
-							 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by breaking to new line ('.$lang.')', 'opendev'); ?></h4>
+							 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by line breaks ('.$lang.')', 'opendev'); ?></h4>
 							 <textarea name="_attributes_csv_resource_localization" style="width:100%;height: 200px;"placeholder="developer  =>  Developer"><?php echo $attributes_localization; ?></textarea>
 
-							 <h4><?php _e('The attributes of Tracking Resource that would like to display, separated by breaking to new line ('.$lang.')', 'opendev'); ?></h4>
+							 <h4><?php _e('The attributes of Tracking Resource that would like to display, separated by line breaks ('.$lang.')', 'opendev'); ?></h4>
 							 <textarea name="_attributes_csv_resource_tracking_localization" style="width:100%;height: 100px;" placeholder="concession_or_developer => Amendment object"> <?php echo $attributes_tracking_localization; ?></textarea>
 			 <?php
 						 }else {
 							 ?>
-							 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by breaking to new line ('.$lang.')', 'opendev'); ?></h4>
+							 <h4><?php _e('The attributes of Resource Dataset that would like to display, separated by line breaks ('.$lang.')', 'opendev'); ?></h4>
 							 <textarea name="_attributes_csv_resource" style="width:100%;height: 200px;" placeholder="developer  =>  Developer"><?php echo $attributes; ?></textarea>
 
-							 <h4><?php _e('The attributes of Tracking Resource that would like to display, separated by breaking to new line ('.$lang.')', 'opendev'); ?></h4>
+							 <h4><?php _e('The attributes of Tracking Resource that would like to display, separated by line breaks ('.$lang.')', 'opendev'); ?></h4>
 							 <textarea name="_attributes_csv_resource_tracking" style="width:100%;height: 100px;" placeholder="concession_or_developer => Amendment object"><?php echo $attributes_tracking; ?></textarea>
 							 <?php
 						 }
@@ -214,12 +214,12 @@ class OpenDev_profiles_posttype_registration {
 	      <table class="form-table  profiles_page_settings_box">
 	        <tbody>
 	         <tr>
-	          <th><label for="_total_number_by_attribute_name"><?php _e('Show Total Numbers of Columns, separated by breaking to new line (English)', 'opendev'); ?></label></th>
+	          <th><label for="_total_number_by_attribute_name"><?php _e('Show Total Numbers of Columns, separated by line breaks (English)', 'opendev'); ?></label></th>
 	          <td>
 						<textarea name="_total_number_by_attribute_name" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name; ?></textarea>
 
 	          <!--<input id="_total_number_by_attribute_name" type="text" placeholder="column_1, column_2" size="40" name="_total_number_by_attribute_name" value="<?php echo $total_number_by_attribute_name; ?>" />-->
-	        	<p class="description"><?php _e('List the attribut names to show their total number on page (separated by breaking to new line). Eg. For ELC: <br/>map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'opendev'); ?></p>
+	        	<p class="description"><?php _e('List the attribute names to show their total number on page (separated by line breaks). Eg. For ELC: <br/>map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'opendev'); ?></p>
 	          </td>
 	         </tr>
 	         <tr>
@@ -244,11 +244,11 @@ class OpenDev_profiles_posttype_registration {
 	      <table class="form-table form-table-localization profiles_page_settings_box">
 	        <tbody>
 	         <tr>
-	          <th><label for="_total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by breaking to new line ('.get_the_localization_language_by_website().')', 'opendev'); ?></label></th>
+	          <th><label for="_total_number_by_attribute_name_localization"><?php _e('Show Total Numbers of Columns, separated by line breaks ('.get_the_localization_language_by_website().')', 'opendev'); ?></label></th>
 	          <td>
 						<textarea name="_total_number_by_attribute_name_localization" style="width:100%;height: 80px;"placeholder="column_1"><?php echo $total_number_by_attribute_name_localization; ?></textarea>
 	          <!--<input id="_total_number_by_attribute_name_localization" type="text" placeholder="column_1, column_2" size="40" name="_total_number_by_attribute_name_localization" value="<?php echo $total_number_by_attribute_name_localization; ?>" />-->
-	          <p class="description"><?php _e('List the attribut names to show their total number on page (separated by breaking in new line). Eg. For ELC: map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'opendev'); ?></p>
+	          <p class="description"><?php _e('List the attribut4 names to show their total number on page (separated by line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class["Government data complete", "Government data partial"]', 'opendev'); ?></p>
 	          </td>
 	         </tr>
 	         <tr>
