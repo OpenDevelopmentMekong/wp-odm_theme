@@ -1879,7 +1879,7 @@ function convert_to_kh_number($number) {
     return $conbine_num;
 }//if CURRENT_LANGUAGE
 else {
-     return $month;
+     return $number;
   }
 }
 ?>
