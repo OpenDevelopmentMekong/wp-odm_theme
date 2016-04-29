@@ -51,7 +51,7 @@
                   ?>
                   <tr>
                     <?php foreach ($DATASET_ATTRIBUTE_TRACKING as $key => $value): ?>
-                      <<?php if ($key == 'concession_or_developer'){
+                      <?php if ($key == 'concession_or_developer'){
                               if ($ammendement[$key] == $concession_or_developer)
                                   echo "<td></td>";
                               else  {
