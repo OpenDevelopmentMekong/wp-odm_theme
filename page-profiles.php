@@ -13,13 +13,11 @@ Template Name: Profile page
 <?php if(have_posts()) : the_post(); ?>
 
   <?php
-
   $lang = CURRENT_LANGUAGE;
   // NOTE: This is a hack to harmonize language code between WP and CKAN.
   // Current country code for CAmbodia is set to KH on WP, after that is moved to KM, this needs to be replaced.
-  if ($lang == "kh"){
-    $lang = "km";
-  }
+  if ($lang == "kh") $lang = "km";
+
   // End of hack
   $ammendements = null;
   $profile = null;
@@ -30,13 +28,13 @@ Template Name: Profile page
   }
 
   //Get Dataset URL of each profile page in Profiles post type
-  if ( (CURRENT_LANGUAGE != "en") ){
-    $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url_localization', true));
-    $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
-    $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
-    $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
-    $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
-    $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
+if ( (CURRENT_LANGUAGE != "en") ){
+        $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url_localization', true));
+        $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
+        $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
+        $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
+        $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
+        $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
   }else {
      $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url', true));
      $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
@@ -156,44 +154,64 @@ Template Name: Profile page
               include("page-profiles-single-page.php");
           else: ?>
       <div class="container">
-        <div class="row">
+        <!--<div class="row ">-->
           <div class="twelve columns">
-              <?php
-                $count_company = array_count_values(array_map(function($value){return $value['developer'];}, $profiles));
-                $count_project =  array_count_values(array_map(function($value){return $value['map_id'];}, $profiles));
-                $count_data_complete =  array_count_values(array_map(function($value){return $value['data_class'];}, $profiles));
-                //print_r($count_data_complete);
-                $data_complete​ = __('Government data complete', 'opendev');
-                $data_partial​ = __('Government data partial', 'opendev');
-                $data_secondary = __('Secondary source data', 'opendev');
-                $data_other​ = __('Other data', 'opendev');
-              ?>
               <div class="total_listed">
                 <ul>
-                  <li><strong><?php _e("Total Projects Listed", "opendev"); ?><?php _e(":", "opendev"); ?></strong></li>
-                  <li class="total_elc_count"><strong><?php echo convert_to_kh_number(count($count_project)); ?></strong></li>
-                  <li><strong><?php _e("Total Companies Listed", "opendev"); ?><?php _e(":", "opendev"); ?></strong></li>
-                  <li class="total_elc_count"><strong><?php echo convert_to_kh_number(count($count_company)); ?></strong></li>
-                </ul>
-                <ul>
-                  <li><?php _e("Government data complete", "opendev"); ?><?php _e(":", "opendev"); ?></li>
-                  <li class="total_elc_count"><strong>
-                      <?php echo $count_data_complete[$data_complete​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_complete​]);?></strong>
+                  <?php // Display Total list
+                  $count_project =  array_count_values(array_map(function($value){return $value['map_id'];}, $profiles)); ?>
+                  <!-- List total of dataset by map_id as default-->
+                  <li><strong><?php if($lang == "kh" || $lang == "km")
+                             echo __("Total", "opendev").get_the_title(). __("Listed", "opendev"). __(":", "opendev");
+                          else
+                             echo __("Total", "opendev")." ".get_the_title()." ". __("Listed", "opendev")." ". __(":", "opendev");  ?>
+                      </strong>
+                      <strong><?php echo $count_project==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_project));?></strong>
                   </li>
-                  <li><?php _e("Government data partial", "opendev"); ?><?php _e(":", "opendev"); ?></li>
-                  <li class="total_elc_count"><strong>
-                      <?php echo $count_data_complete[$data_partial​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_partial​]);?></strong>
-                  </li>
-                  <li><?php _e("Secondary source data", "opendev"); ?><?php _e(":", "opendev"); ?></li>
-                  <li class="total_elc_count"><strong>
-                      <?php echo $count_data_complete[$data_secondary]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_secondary]);?></strong>
-                  </li>
-                  <li><?php _e("Other data", "opendev"); ?><?php _e(":", "opendev"); ?></li>
-                  <li class="total_elc_count"><strong>
-                      <?php echo $count_data_complete[$data_other​]==""? convert_to_kh_number("0"):convert_to_kh_number($count_data_complete[$data_other​]);?></strong>
-                  </li>
-                </ul>
-            </div>
+
+                  <?php
+                  $explode_total_number_by_attribute_name = explode("\r\n", $total_number_by_attribute_name);
+                  foreach ($explode_total_number_by_attribute_name as $key => $total_attribute_name) {
+                      //check if total number require to list by Specific value
+                      $total_attributename = trim($total_attribute_name);
+                      if (strpos($total_attribute_name, '[') !== FALSE){ //if march
+                          $split_field_name_and_value = explode("[", $total_attributename);
+                          $total_attributename = trim($split_field_name_and_value[0]); //eg. data_class
+                          $total_by_specifit_value = str_replace("]", "", $split_field_name_and_value[1]);
+                          $specifit_value = explode(',', $total_by_specifit_value);// explode to get: Government data complete
+                      } //end strpos
+                      $GLOBALS['total_attribute_name'] = $total_attributename;
+                      $map_value = array_map(function($value){ return $value[$GLOBALS['total_attribute_name']];}, $profiles);
+                      $count_number_by_attr =  array_count_values($map_value);
+                      ?>
+
+                      <?php //count number by value: eg. Government data complete
+                          if(isset($specifit_value) && count($specifit_value) > 0){
+                              foreach ($specifit_value as $field_value) {
+                                  $field_value = trim(str_replace('"', "",$field_value)); ?>
+                                      <li><?php _e($field_value, "opendev"); ?>
+                                                  <?php _e(":", "opendev"); ?>
+                                          <strong><?php echo $count_number_by_attr[$field_value]==""? convert_to_kh_number("0"):convert_to_kh_number($count_number_by_attr[$field_value]);?></strong>
+
+                                      </li>
+                                  <?php
+                              }//end foreach
+                          }else { //count number by field name/attribute name: eg. map_id/developer
+                             if ($total_attributename !="map_id") { ?>
+                                 <li>
+                                 <?php if($lang == "kh" || $lang == "km")
+                                          echo __("Total", "opendev").$DATASET_ATTRIBUTE[$total_attributename].__("Listed", "opendev").__(":", "opendev");
+                                       else
+                                          echo __("Total", "opendev")." ".$DATASET_ATTRIBUTE[$total_attributename]." ". __("Listed", "opendev")." ".__(":", "opendev"); ?>
+
+                                      <strong><?php echo $total_attributename==""? convert_to_kh_number("0"):convert_to_kh_number(count($count_number_by_attr));?></strong>
+                                 </li>
+                             <?php }
+                          }//end if $specifit_value
+                      }//foreach $explode_total_number_by_attribute_name
+                  ?>
+                  </ul>
+              </div>
           </div>
     			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
@@ -221,7 +239,7 @@ Template Name: Profile page
               </div>
             </div>
           </div><!--three-->
-        </div>
+        <!--</div>-->
 
         <header class="single-post-header">
     			<div class="twelve columns">

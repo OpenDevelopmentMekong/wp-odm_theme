@@ -339,6 +339,6 @@ td.entry_title a{
   margin: 0;
 }
 
-.total_listed li:nth-child(odd){
-  margin-left: 1em
+.total_listed li{
+  margin-right: 1em
 }
