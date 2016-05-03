@@ -45,6 +45,9 @@ require_once STYLESHEETPATH.'/inc/od-related-recent-news-widget.php';
 // Mekong region storms and floods
 require_once STYLESHEETPATH.'/inc/mekong-region-storms-and-floods.php';
 
+//OpenDev_profiles_posttype_registration
+require_once STYLESHEETPATH.'/inc/profiles_posttype_registration.php';
+
 // Advanced nav
 require_once STYLESHEETPATH.'/inc/advanced-navigation.php';
 
@@ -59,7 +62,19 @@ if (function_exists("qtranxf_getLanguage"))
   define('CURRENT_LANGUAGE', qtranxf_getLanguage());
 else
   define('CURRENT_LANGUAGE', 'en');
+$wpDomain=$_SERVER["HTTP_HOST"];
+if ($wpDomain == '192.168.33.10'){
+  $ckanDomain='192.168.33.10:8081';
+}
+else {
+  $full_domain = $_SERVER['SERVER_NAME'];
+  $just_domain = preg_replace("/^(.*\.)?([^.]*\..*)$/", "$2", $_SERVER['HTTP_HOST']);
+  $ckanDomain = 'https://data.'.$just_domain;
+    if (preg_match('/odm.web/',$wpDomain)) //odm.web is H.E local address
+        $ckanDomain = 'https://data.opendevelopmentmekong.net';
 
+}
+define('CKAN_DOMAIN', $ckanDomain);
 function opendev_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
@@ -192,7 +207,7 @@ function dataTable_scripts()
     wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
    // wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0');
 
-    wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
+  //  wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
     wp_enqueue_style('dataTables-css');
 
     //wp_enqueue_style('elc');
@@ -252,7 +267,6 @@ function important_overrides() {
 	wp_enqueue_style( 'overrides' );
 }
 add_action( 'wp_enqueue_scripts', 'important_overrides',101);
-
 
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
@@ -496,7 +510,6 @@ function opendev_ms_nav()
         ?>
      <li class="site-item">
      <?php
-     $options = get_option('opendev_options');
         if (isset($options['site_in_development']) && ($options['site_in_development'] == 'true')) {
             ?>
       <a href="#"<?php if ($current == $site['blog_id']) {
@@ -691,6 +704,16 @@ function get_localization_language_by_language_code($lang_code ="en"){
         $language['vi'] = "Vietnamese";
         return $language[$lang_code];
     }
+function get_the_localization_language_by_website($site=""){
+    $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+    $language['ODM'] = "";
+    $language['Cambodia'] = "Khmer";
+    $language['Laos'] = "Lao";
+    $language['Myanmar'] = "Burmese";
+    $language['Thailand'] = "Thai";
+    $language['Vietnam'] = "Vietnamese";
+    return $language[$site_name];
+}
 function opendev_wpckan_post_types()
 {
     return array('post', 'page', 'topic', 'layer');
@@ -1563,6 +1586,7 @@ function get_law_datasets($ckan_domain,$filter_key,$filter_value){
 
 function get_dataset_by_id($ckan_domain,$id){
   $ckanapi_url = $ckan_domain . "/api/3/action/package_show?id=" . $id;
+  //echo $ckanapi_url;
   $json = @file_get_contents($ckanapi_url);
   if ($json === FALSE) return [];
   $datasets = json_decode($json, true) ?: [];
@@ -1686,6 +1710,73 @@ class country_specific_sub_menus extends Walker_Nav_Menu {
     $output .= "$indent</ul>\n";
   }
 }
+/// Data Classification definition using in Profile pages
+function data_classification_definition ($info){
+  $info = trim($info);
+  if ($info == "កាត់បន្ថយ")
+      $info = "Downsized";
+  else if ($info == "កាត់បន្ថយបន្ទាប់ពីដកហូត")
+      $info = "Downsized after revocation";
+  else if ($info == "គ្មានភស្តុតាងនៃការផ្លាស់ប្តូរ")
+      $info = "No evidence of adjustment";
+  else if ($info == "ដកហូត")
+      $info = "Revoked";
+  else if ($info == "ទិន្នន័យរដ្ឋាភិបាលពេញលេញ")
+      $info = "Government data complete";
+  else if ($info == "ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ")
+      $info = "Government data partial";
+  else if ($info == "ទិន្នន័យដទៃទៀត")
+      $info = "Secondary source data";
+  else if ($info == "ទិន្នន័យបន្ទាប់បន្សំ")
+      $info = "Other data";
+
+  $info = strtolower(str_replace(" ", "_", $info));
+    echo '&nbsp; <div class="tooltip tooltip_definition ">';
+        if ($info != "" && $info!=__("Not found", "opendev"))
+          echo '<i class="fa fa-question-circle info-data-classification" title=""></i>';
+        if ($info == "no_evidence_of_adjustment"){
+          echo '<div class="tooltip-info tooltip-no_evidence_of_adjustment">';
+            echo '<p>'.__("ODC is not aware of any adjustments to the concession since it was first granted.", "opendev");
+            echo '</p>';
+          echo '</div>';
+        }else if ($info == "downsized"){
+          echo '<div class="tooltip-info tooltip-downsized">';
+            echo '<p>'.__("The concession has been subjected to additional reductions in size and has not been cancelled previously. Publicly available information on land area cut from ELCs does not include maps or spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC projects that are visualized on the interactive map represent the original contract size.", "opendev");
+            echo '</p>';
+          echo '</div>';
+        }else if ($info == "revoked"){
+          echo '<div class="tooltip-info tooltip-revoked">';//<!--data_revoked_layer-->
+            echo '<p>'.__("The concession has been cancelled with or without a history of reductions in size.", "opendev");
+            echo '</p>';
+          echo '</div>';
+        }else if ($info == "downsized_after_revocation"){
+          echo '<div class="tooltip-info tooltip-downsized_after_revocation">';//<!--data_downsized_after_revocation_layer-->
+            echo '<p>'.__("The concession has been subjected to reduction(s) in size although it had been cancelled previously. Publicly available information on land area cut from ELCs does not include maps or spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC projects that are visualized on the interactive map represent the original contract size.", "opendev");
+            echo '</p>';
+          echo '</div>';
+        }else if ($info == "government_data_complete"){
+          echo '<div class="tooltip-info tooltip-government_data_complete">';//<!--Complete Data-->
+            echo '<p>'.__("Information obtained from official Government sources, with official legal documentation, in the four identification fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>  d. Purpose (crop, ore, etc.)", "opendev").'</p>';
+          echo '</div>';
+        }else if ($info == "government_data_partial"){
+          echo '<div class="tooltip-info tooltip-government_data_partial">';//<!--Partial Data-->
+            echo '<p>'.__("Information obtained from official Government sources, with legal documentation, but missing one or more of the following identification fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>d. Purpose (crop, ore, etc.)", "opendev").'</p>';
+          echo '</div> ';
+        }else if ($info == "other_data"){
+          echo '<div class="tooltip-info tooltip-other_data">';//<!--Other-->
+            echo '<p>'.__("Information obtained from any other source in public domain (including documentation from photographs, etc.)", "opendev").'</p>';
+          echo '</div>';
+        }else if ($info == "secondary_source_data"){
+          echo '<div class="tooltip-info tooltip-secondary_source_data">';//<!--Secondary Data-->
+            echo '<p>'.__("Information obtained from the concessionaire (company/entity) or from government source(s) without legal documentation.", "opendev").'</p>';
+          echo '</div>';
+        }else if ($info == "canceled_data"){
+          echo '<div class="tooltip-info tooltip-canceled_data">';//<!--Canceled Concessions:-->
+            echo '<p>'.__("These concessions have been cancelled by the Royal Government of Cambodia.", "opendev"). '</p>';
+          echo '</div>';
+        }
+    echo '</div>';
+}
 /****** Add function convert date, H-E/**/
 //echo convert_date_to_kh_date("18.05.2014");
 function convert_date_to_kh_date($date_string, $splitted_by = "."){ //$date_string = Day.Month.Year
@@ -1788,7 +1879,7 @@ function convert_to_kh_number($number) {
     return $conbine_num;
 }//if CURRENT_LANGUAGE
 else {
-     return $month;
+     return $number;
   }
 }
 ?>
