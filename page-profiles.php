@@ -48,7 +48,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
      $cartodb_json = file_get_contents($cartodb_url);
      $cartodb_json_data = json_decode($cartodb_json, true);
      $cartodb_layer_option = $cartodb_json_data['layers'][1]['options'];
-     $cartodb_layer_name = $cartodb_layer_option['layer_definition']['layers']['options']['layer_name'];
+     $cartodb_layer_name = $cartodb_layer_option['layer_definition']['layers'][0]['options']['layer_name'];
   }
   if($ckan_dataset != ""){
     $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
@@ -262,7 +262,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($profiles as $profile):  ?> 
+                <?php foreach ($profiles as $profile):  ?>
                   <tr>
                     <td class="td-value"><?php echo $profile["map_id"];?></td>
                   <?php
