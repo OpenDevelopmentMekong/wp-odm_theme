@@ -242,7 +242,7 @@ class OpenDev_profiles_posttype_registration {
 					 <tr>
 					  <th><label for="_related_profile_pages"><?php _e('Related Profile Pages (English)', 'opendev'); ?></label></th>
 					  <td>
-								<textarea name="_related_profile_pages" style="width:100%;height: 50px;"placeholder="Lable of Link|URL"><?php echo $related_profile_pages; ?></textarea>
+								<textarea name="_related_profile_pages" style="width:100%;height: 50px;"placeholder="Label of Link|URL"><?php echo $related_profile_pages; ?></textarea>
 					      <p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg.
 Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'opendev'); ?></p>
 					  </td>
