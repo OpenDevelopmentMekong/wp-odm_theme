@@ -461,6 +461,10 @@ jQuery(document).ready(function($) {
                      .draw();
                       //.search( val ? '^'+val+'$' : '', true, false )   // match to the str only
 
+                      var filtered = oTable._('tr', {"filter":"applied"});
+                      <?php if($map_visualization_url !=""){ ?>
+                      filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+                      <?php } ?>
              } );
              var i = 1;
              column_filter_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
