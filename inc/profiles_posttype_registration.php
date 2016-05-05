@@ -202,6 +202,9 @@ class OpenDev_profiles_posttype_registration {
 	  $group_data_by_column_index_localization = get_post_meta($post->ID, '_group_data_by_column_index_localization', true);
 	  $total_number_by_attribute_name = get_post_meta($post->ID, '_total_number_by_attribute_name', true);
 	  $total_number_by_attribute_name_localization = get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true);
+
+		$related_profile_pages = get_post_meta($post->ID, '_related_profile_pages', true);
+		$related_profile_pages_localization = get_post_meta($post->ID, '_related_profile_pages_localization', true);
 	  ?>
 	  <div id="multiple-site">
 	    <input type="radio" id="en" class="en" name="p_language_site" value="en" checked />
@@ -236,6 +239,14 @@ class OpenDev_profiles_posttype_registration {
 	              <p class="description"><?php _e('Eg. To group data classification of ELC, based on the attributes sample provided, the index of data classification is: 5', 'opendev'); ?></p>
 	          </td>
 	         </tr>
+					 <tr>
+					  <th><label for="_related_profile_pages"><?php _e('Related Profile Pages (English)', 'opendev'); ?></label></th>
+					  <td>
+								<textarea name="_related_profile_pages" style="width:100%;height: 50px;"placeholder="Label of Link|URL"><?php echo $related_profile_pages; ?></textarea>
+					      <p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg.
+Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'opendev'); ?></p>
+					  </td>
+					 </tr>
 	        </tbody>
 	      </table>
 	    </div>
@@ -265,6 +276,14 @@ class OpenDev_profiles_posttype_registration {
 	            <p class="description"><?php _e('Eg. To group data classification of ELC, based on the attributes sample provided, the index of data classification is: 5', 'opendev'); ?></p>
 	          </td>
 	         </tr>
+					 <tr>
+					  <th><label for="_related_profile_pages_localization"><?php _e('Related Profile Pages ('.get_the_localization_language_by_website().')', 'opendev'); ?></label></th>
+					  <td>
+							<textarea name="_related_profile_pages_localization" style="width:100%;height: 50px;"placeholder="Lable of Link|URL"><?php echo $related_profile_pages_localization; ?></textarea>
+							<p class="description"><?php _e('Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg.
+Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/', 'opendev'); ?></p>
+					  </td>
+					 </tr>
 	        </tbody>
 	      </table>
 	   </div>
@@ -342,6 +361,11 @@ class OpenDev_profiles_posttype_registration {
 						 if(isset($_POST['_attributes_csv_resource_tracking_localization']))
 							update_post_meta($post_id, '_attributes_csv_resource_tracking_localization', $_POST['_attributes_csv_resource_tracking_localization']);
 
+						 if(isset($_POST['_related_profile_pages']))
+								 update_post_meta($post_id, '_related_profile_pages', $_POST['_related_profile_pages']);
+
+						 if(isset($_POST['_related_profile_pages_localization']))
+							 update_post_meta($post_id, '_related_profile_pages_localization', $_POST['_related_profile_pages_localization']);
 					}// if post type: 'profiles'
 
 	}//end function
