@@ -35,36 +35,39 @@ if ( (CURRENT_LANGUAGE != "en") ){
         $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
         $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
         $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
-  }else {
+        $related_profile_pages = str_replace("?type=dataset", "", get_post_meta($post->ID, '_related_profile_pages_localization', true));
+}else {
      $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url', true));
      $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
      $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
      $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
      $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index', true));
      $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name', true));
-  }
-  if($map_visualization_url){
-     $cartodb_url = $map_visualization_url;
-     $cartodb_json = file_get_contents($cartodb_url);
-     $cartodb_json_data = json_decode($cartodb_json, true);
-     $cartodb_layer_option = $cartodb_json_data['layers'][1]['options'];
-     $cartodb_layer_name = $cartodb_layer_option['layer_definition']['layers'][0]['options']['layer_name'];
-  }
-  if($ckan_dataset != ""){
-    $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
-    $ckan_dataset_exploded_by_resource = explode("/resource/", $ckan_dataset_exploded_by_dataset[1]);
-    $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
-    $ckan_dataset_csv_id = $ckan_dataset_exploded_by_resource[1];
+     $related_profile_pages = str_replace("?type=dataset", "", get_post_meta($post->ID, '_related_profile_pages', true));
+}
 
-    $dataset = get_dataset_by_id(CKAN_DOMAIN,$ckan_dataset_id);
-    if (!IsNullOrEmptyString($filter_map_id)){
-      $profile = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_csv_id,"map_id",$filter_map_id)[0];
-    }else{
-      $profiles = get_datastore_resource(CKAN_DOMAIN,$ckan_dataset_csv_id);
-    }
+if($map_visualization_url){
+   $cartodb_url = $map_visualization_url;
+   $cartodb_json = file_get_contents($cartodb_url);
+   $cartodb_json_data = json_decode($cartodb_json, true);
+   $cartodb_layer_option = $cartodb_json_data['layers'][1]['options'];
+   $cartodb_layer_name = $cartodb_layer_option['layer_definition']['layers'][0]['options']['layer_name'];
+}
+if($ckan_dataset != ""){
+  $ckan_dataset_exploded_by_dataset = explode("/dataset/", $ckan_dataset);
+  $ckan_dataset_exploded_by_resource = explode("/resource/", $ckan_dataset_exploded_by_dataset[1]);
+  $ckan_dataset_id = $ckan_dataset_exploded_by_resource[0];
+  $ckan_dataset_csv_id = $ckan_dataset_exploded_by_resource[1];
+
+  $dataset = get_dataset_by_id(CKAN_DOMAIN,$ckan_dataset_id);
+  if (!IsNullOrEmptyString($filter_map_id)){
+    $profile = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_csv_id,"map_id",$filter_map_id)[0];
+  }else{
+    $profiles = get_datastore_resource(CKAN_DOMAIN,$ckan_dataset_csv_id);
   }
+}
   //for tracking
-  if($ckan_dataset_tracking != ""){
+if($ckan_dataset_tracking != ""){
     $ckan_dataset_tracking_exploded_by_dataset = explode("/dataset/", $ckan_dataset_tracking);
     $ckan_dataset_tracking_exploded_by_resource = explode("/resource/", $ckan_dataset_tracking_exploded_by_dataset[1]);
     $ckan_dataset_tracking_id = $ckan_dataset_tracking_exploded_by_resource[0];
@@ -72,35 +75,35 @@ if ( (CURRENT_LANGUAGE != "en") ){
     if (!IsNullOrEmptyString($filter_map_id)){
       $ammendements = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_tracking_csv_id,"map_id",$filter_map_id);
     }
-  }
+}
   //For Attributes
-  if ( (CURRENT_LANGUAGE != "en") ){
-    $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
-    $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
-  }else {
-    $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
-    $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+if ( (CURRENT_LANGUAGE != "en") ){
+  $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
+  $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
+}else {
+  $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
+  $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+}
+//echo $ckan_attribute;
+if ($ckan_attribute!=""){
+  $temp_ckan_attribute = explode("\r\n", $ckan_attribute);
+  $array_attribute = array();
+  foreach ($temp_ckan_attribute as $value) {
+     $array_value = explode('=>', trim($value));
+     $array_attribute[trim($array_value[0])] = trim($array_value[1]);
   }
-  //echo $ckan_attribute;
-  if ($ckan_attribute!=""){
-    $temp_ckan_attribute = explode("\r\n", $ckan_attribute);
-    $array_attribute = array();
-    foreach ($temp_ckan_attribute as $value) {
-       $array_value = explode('=>', trim($value));
-       $array_attribute[trim($array_value[0])] = trim($array_value[1]);
-    }
-    $DATASET_ATTRIBUTE = $array_attribute;
-  }//END IF $ckan_attribute
+  $DATASET_ATTRIBUTE = $array_attribute;
+}//END IF $ckan_attribute
 
-  if ($ckan_attribute_tracking!=""){
-    $temp_ckan_attribute_tracking = explode("\r\n", $ckan_attribute_tracking);
-    $array_attribute = array();
-    foreach ($temp_ckan_attribute_tracking as $value) {
-       $array_value_tracking = explode('=>', trim($value));
-       $array_attribute_tracking[trim($array_value_tracking[0])] = trim($array_value_tracking[1]);
-    }
-    $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
-  }//END IF $ckan_attribute_tracking
+if ($ckan_attribute_tracking!=""){
+  $temp_ckan_attribute_tracking = explode("\r\n", $ckan_attribute_tracking);
+  $array_attribute = array();
+  foreach ($temp_ckan_attribute_tracking as $value) {
+     $array_value_tracking = explode('=>', trim($value));
+     $array_attribute_tracking[trim($array_value_tracking[0])] = trim($array_value_tracking[1]);
+  }
+  $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
+}//END IF $ckan_attribute_tracking
 
   $ref_docs_profile = array();
   $ref_docs_tracking = array();
@@ -144,8 +147,8 @@ if ( (CURRENT_LANGUAGE != "en") ){
       $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
     }//END IF $ckan_attribute_tracking
 
-    $ref_docs_profile = array();
-    $ref_docs_tracking = array();
+$ref_docs_profile = array();
+$ref_docs_tracking = array();
   ?>
 
   <section id="content" class="single-post">
@@ -153,7 +156,6 @@ if ( (CURRENT_LANGUAGE != "en") ){
               include("page-profiles-single-page.php");
           else: ?>
       <div class="container">
-        <!--<div class="row ">-->
           <div class="twelve columns">
               <div class="total_listed">
                 <ul>
@@ -221,17 +223,17 @@ if ( (CURRENT_LANGUAGE != "en") ){
             <div class="sidebar_box">
               <div class="sidebar_header">
                 <span class="big">
-                  <?php _e( 'SEARCH', 'opendev' );?></span> <?php _e( 'in', 'opendev' );?> <?php _e( 'Profiles', 'opendev' ); ?>
+                  <?php _e( 'Search', 'opendev' );?></span>
               </div>
               <div class="sidebar_box_content">
-                <input type="text" id="search_all" placeholder="<?php _e( 'Search', 'opendev'); ?>">
+                <input type="text" id="search_all" placeholder="<?php _e( 'Search data in profile page', 'opendev'); ?>">
               </div>
             </div>
 
             <div class="sidebar_box">
               <div class="sidebar_header">
                 <span class="big">
-                  <?php _e( 'DOWNLOAD', 'opendev' );?></span>
+                  <?php _e( 'Download', 'opendev' );?></span>
               </div>
               <div class="sidebar_box_content download_buttons">
                 <?php foreach ($dataset["resources"] as $key => $resource) : ?>
@@ -239,8 +241,24 @@ if ( (CURRENT_LANGUAGE != "en") ){
                 <?php endforeach; ?>
               </div>
             </div>
+            <?php if ($related_profile_pages !=""){
+                $temp_related_profile_pages = explode("\r\n", $related_profile_pages);
+            ?>
+            <div class="sidebar_box">
+                <div class="sidebar_header">
+                  <span class="big">
+                    <?php _e( 'Related profile pages', 'opendev' );?></span>
+                </div>
+                <div class="sidebar_box_content download_buttons"><ul>
+                  <?php foreach ($temp_related_profile_pages as $profile_pages_url) :
+                        $split_title_and_url = explode("|", $profile_pages_url); ?>
+                        <li><a href="<?php echo $split_title_and_url[1]; ?>"><?php echo $split_title_and_url[0]; ?></a></li>
+                  <?php endforeach; ?>
+                  </ul>
+                </div>
+              </div>
+            <?php } ?>
           </div><!--three-->
-        <!--</div>-->
 
         <header class="single-post-header">
     			<div class="twelve columns">
@@ -250,8 +268,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
         <div class="row no-margin-buttom">
           <div class="fixed_top_bar"></div>
           <div class="twelve columns table-column-container">
-            <div id="filter_by_classification" class="filter_by_column_index_<?php echo $filtered_by_column_index ?>">
-            </div>
+            <div id="filter_by_classification" class="filter_by_column_index_<?php echo $filtered_by_column_index ?>"></div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -268,7 +285,7 @@ if ( (CURRENT_LANGUAGE != "en") ){
                   <?php
                     foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                       <?php
-                          if (in_array($key, array("developer", "name") )) { ?>
+                          if (in_array($key, array("developer", "name", "block") )) { ?>
                             <td class="entry_title"><div class="td-value">
                                 <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a></div>
                             </td>
@@ -294,7 +311,6 @@ if ( (CURRENT_LANGUAGE != "en") ){
       				</tbody>
       			</table>
           </div>
-
         </div>
 
         <div class="row">
@@ -308,7 +324,6 @@ if ( (CURRENT_LANGUAGE != "en") ){
     <?php endif; ?>
 	</section>
 <?php endif; ?>
-
 
 <?php get_footer(); ?>
 

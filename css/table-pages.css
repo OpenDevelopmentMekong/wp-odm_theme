@@ -1,3 +1,6 @@
+.single-post-header{
+  clear: both;
+}
 #profiles_map{
   width: 101%;
   height: 400px;
