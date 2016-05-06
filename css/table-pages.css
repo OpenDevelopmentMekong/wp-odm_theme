@@ -288,6 +288,8 @@ td.entry_title a{
 }
 #filter_by_classification{
   width: 70%;
+  position: relative;
+  z-index: 8000;
   margin-bottom: -2em;
 }
 #filter_by_classification .filter_by{
