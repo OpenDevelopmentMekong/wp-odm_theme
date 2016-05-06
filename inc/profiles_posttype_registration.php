@@ -228,8 +228,8 @@ class OpenDev_profiles_posttype_registration {
 	         <tr>
 	          <th><label for="_filtered_by_column_index"><?php _e('Create Select Filter by Column Index (English)', 'opendev'); ?></label></th>
 	          <td>
-	           <input id="_filtered_by_column_index" type="text" placeholder="2" size="40" name="_filtered_by_column_index" value="<?php echo $filtered_by_column_index; ?>" />
-	           <p class="description"><?php _e('Eg. The column index of Data Adjustment of ELC: 2', 'opendev'); ?></p>
+	           <input id="_filtered_by_column_index" type="text" placeholder="2, 5" size="40" name="_filtered_by_column_index" value="<?php echo $filtered_by_column_index; ?>" />
+	           <p class="description"><?php _e('Filter selectors will create automatically by adding the column index and separated by comma. Maximum Filter selectors can create is three. Eg. Create filter selectors of Data Adjustment and Intended crop or project of ELC which have index 2 and 5', 'opendev'); ?></p>
 	          </td>
 	         </tr>
 	         <tr>
@@ -265,8 +265,8 @@ Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/ec
 	         <tr>
 	          <th><label for="_filtered_by_column_index_localization"><?php _e('Create Select Filter by Column Index ('.get_the_localization_language_by_website().')', 'opendev'); ?></label></th>
 	          <td>
-	           <input id="_filtered_by_column_index_localization" type="text" placeholder="2" size="40" name="_filtered_by_column_index_localization" value="<?php echo $filtered_by_column_index_localization; ?>" />
-	           <p class="description"><?php _e('Eg. The column index of Data Adjustment of ELC: 2', 'opendev'); ?></p>
+	           <input id="_filtered_by_column_index_localization" type="text" placeholder="2, 5" size="40" name="_filtered_by_column_index_localization" value="<?php echo $filtered_by_column_index_localization; ?>" />
+	           <p class="description"><?php _e('Filter selectors will create automatically by adding the column index and separated by comma. Maximum Filter selectors can create is three. Eg. Create filter selectors of Data Adjustment and Intended crop or project of ELC which have index 2 and 5', 'opendev'); ?></p>
 	          </td>
 	         </tr>
 	         <tr>
