@@ -268,7 +268,8 @@ $ref_docs_tracking = array();
         <div class="row no-margin-buttom">
           <div class="fixed_top_bar"></div>
           <div class="twelve columns table-column-container">
-            <div id="filter_by_classification" class="filter_by_column_index_<?php echo $filtered_by_column_index ?>"></div>
+            <div id="filter_by_classification"> <?php _e("Filter by", "opendev");?>
+            </div>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
@@ -449,48 +450,18 @@ jQuery(document).ready(function($) {
      });
 
      // Filter by Adjustmemt
-     <?php if ($filtered_by_column_index !="") { ?>
-         var columnIndex = <?php echo $filtered_by_column_index ?>; //15 is index of Adjustment Classifications
-
-         var column_filter_oTable = oTable.api().columns( columnIndex );
-         var column_headercolumnIndex = columnIndex -1; //due to map_id column is hidden, column_headercolumnIndex must decrease
-         var column_header = $("#profiles").find("th:eq( "+column_headercolumnIndex+" )" ).text();
-          <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
-                   var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-                   label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
-                   var select = $('<select><option value="">'+column_header+'<?php _e("all", "opendev"); ?></option></select>');
-          <?php
-               }else {?>
-                   var label_filter = $('<div class="label"><?php _e("Filter by", "opendev");?> </div>');
-                   label_filter.appendTo( $('.filter_by_column_index_'+columnIndex));
-                   var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
-          <?php } ?>
-             select.appendTo( $('.filter_by_column_index_'+columnIndex) )
-             .on( 'change', function () {
-                 // Escape the expression so we can perform a regex match
-                 var val = $.fn.dataTable.util.escapeRegex(
-                     $(this).val()
-                 );
-                 column_filter_oTable
-                     .search( val ? '^'+val : '', true, false )  //beginning with the str
-                     .draw();
-                      //.search( val ? '^'+val+'$' : '', true, false )   // match to the str only
-
-                      var filtered = oTable._('tr', {"filter":"applied"});
-                      <?php if($map_visualization_url !=""){ ?>
-                      filterEntriesMap(_.pluck(filtered,mapIdColNumber));
-                      <?php } ?>
-             } );
-             var i = 1;
-             column_filter_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
-               //console.log(d);
-                 var value = d.split('<');
-                 var first_value = value[1].split('>');
-                 var only_value = first_value[1].split('<');
-                 val = first_value[1].trim();
-                select.append( '<option value="'+val+'">'+val+'</option>' )
-             } );
-     <?php } ?> //If filter columnIndex exists
+     <?php if ($filtered_by_column_index !="") {
+              $num_filtered_column_index = explode(",", $filtered_by_column_index);
+              $number_selector = 1;
+              foreach ($num_filtered_column_index as $column_index) {
+                $column_index = trim($column_index);
+                if ($number_selector <= 3){
+    ?>
+                  create_filter_by_column_index(<?php echo $column_index; ?>);
+    <?php       }
+                $number_selector++;
+              }//foreach
+          } ?> //If filter columnIndex exists
 
      //Set width of table header and body equally
      function align_width_td_and_th(){
@@ -516,39 +487,86 @@ jQuery(document).ready(function($) {
                       $headerCell.eq(i).children('.th-value').css('width', $max_width);
                  }
              });
+     } //function align_width_td_and_th
 
-        } //function align_width_td_and_th
-         // Enable the filter_by_classification and Show entry bar on scroll up as fixed items
-          ////**** Can't place it above the oTable
-          var $filter_data = $("#filter_by_classification").clone(true); // Filter Data type
-          var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
-          var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
+     function create_filter_by_column_index(col_index){
+       var columnIndex = col_index; //15 is index of Adjustment Classifications
+       var column_filter_oTable = oTable.api().columns( columnIndex );
+       var column_headercolumnIndex = columnIndex -1; //due to map_id column is hidden, column_headercolumnIndex must decrease
+       var column_header = $("#profiles").find("th:eq( "+column_headercolumnIndex+" )" ).text();
+        <?php if (CURRENT_LANGUAGE =="kh" || CURRENT_LANGUAGE == "km") { ?>
+                 var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
+                 div_filter.appendTo( $('#filter_by_classification'));
+                 var select = $('<select><option value="">'+column_header+'<?php _e("all", "opendev"); ?></option></select>');
+        <?php
+             }else {?>
+                 var div_filter = $('<div class="filter_by filter_by_column_index_'+columnIndex+'"></div>');
+                 div_filter.appendTo( $('#filter_by_classification'));
+                 var select = $('<select><option value=""><?php _e("All ", "opendev"); ?>'+column_header+'</option></select>');
+        <?php } ?>
+           select.appendTo( $('.filter_by_column_index_'+columnIndex) )
+           .on( 'change', function () {
+               // Escape the expression so we can perform a regex match
+               var val = $.fn.dataTable.util.escapeRegex(
+                   $(this).val()
+               );
+               column_filter_oTable
+                   .search( val ? '^'+val : '', true, false )  //beginning with the str
+                   .draw();
+                    //.search( val ? '^'+val+'$' : '', true, false )   // match to the str only
 
-          $(".fixed_top_bar").prepend($filter_data);
-          $(".fixed_top_bar").append($fg_show_entry_bar);
-          $(".fixed_top_bar").append($fg_search_filter_bar);
-          $('.fixed_top_bar #filter_by_classification select').val($('.table-column-container #filter_by_classification select').val());
-          $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
-          $('.fixed_top_bar #filter_by_classification select').on( 'change', function () {
-             $('.table-column-container #filter_by_classification select').val($(this).val());
-          });
-          $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
-             $('.table-column-container .dataTables_length select').val($(this).val());
-          });
-          $('.table-column-container #filter_by_classification  select').on( 'change', function () {
-             $('.fixed_top_bar #filter_by_classification select').val($(this).val());
-          });
-          $('.table-column-container .dataTables_length select').on( 'change', function () {
-             $('.fixed_top_bar .dataTables_length select').val($(this).val());
-          });
-          // End Enable the filter_by_classification and Show entry bar
+                    var filtered = oTable._('tr', {"filter":"applied"});
+                    <?php if($map_visualization_url !=""){ ?>
+                    filterEntriesMap(_.pluck(filtered,mapIdColNumber));
+                    <?php } ?>
+           } );
+           var i = 1;
+           column_filter_oTable.data().eq( 0 ).unique().sort().each( function ( d, j ) {
+               d = d.replace(/[<]br[^>]*[>]/gi,"");  // removes all <br>
+               var value = d.split('<');
+               var first_value = value[1].split('>');
+               var only_value = first_value[1].split('<');
+               val = first_value[1].trim();
+              select.append( '<option value="'+val+'">'+val+'</option>' )
+           } );
+     } //create_filter_by_column_index
 
-          //Enable header scroll bar
+       // Enable the filter_by_classification and Show entry bar on scroll up as fixed items
+        ////**** Can't place it above the oTable
+        var $filter_data = $("#filter_by_classification").clone(true); // Filter Data type
+        var $fg_search_filter_bar = $(".dataTables_filter").clone(true);  // search entry
+        var $fg_show_entry_bar = $(".dataTables_length").clone(true);  // show entry
 
-          $('.dataTables_scrollHead').scroll(function(e){
-                 $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
-          });
- <?php } //if single page
+        $(".fixed_top_bar").prepend($filter_data);
+        $(".fixed_top_bar").append($fg_show_entry_bar);
+        $(".fixed_top_bar").append($fg_search_filter_bar);
+
+        $('.fixed_top_bar .dataTables_length select').val($('.table-column-container .dataTables_length select').val());
+        $('.fixed_top_bar .dataTables_length select').on( 'change', function () {
+           $('.table-column-container .dataTables_length select').val($(this).val());
+        });
+        $('.table-column-container .dataTables_length select').on( 'change', function () {
+           $('.fixed_top_bar .dataTables_length select').val($(this).val());
+        });
+
+        $('.table-column-container #filter_by_classification select').each(function(index){
+            $(this).change(function() {
+                $('.fixed_top_bar #filter_by_classification select').eq(index).val($(this).val());
+            });
+        })
+        $('.fixed_top_bar #filter_by_classification select').each(function(index){
+              $(this).change(function() {
+                $('.table-column-container #filter_by_classification select').eq(index).val($(this).val());
+              });
+        })
+        // End Enable the filter_by_classification and Show entry bar
+
+        //Enable header scroll bar
+
+        $('.dataTables_scrollHead').scroll(function(e){
+               $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
+        });
+<?php } //if single page
  ?>
 
    $("#search_all").keyup(function () {

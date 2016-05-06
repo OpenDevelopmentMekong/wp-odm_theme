@@ -286,13 +286,13 @@ td.entry_title a{
 .page-template-page-profiles .single-post .row{
   margin-top: 0;
 }
-#filter_by_classification, #filter_by_dataclass{
-  width: 80%;
-  position: relative;
-  z-index: 888;
-  bottom: -1px;
+#filter_by_classification{
+  width: 70%;
   margin-bottom: -2em;
-  /*display: inline-block;*/
+}
+#filter_by_classification .filter_by{
+  display: inline-block;
+  margin-right: 1em;
 }
 #filter_by_classification .label {
   display: inline;
@@ -300,7 +300,7 @@ td.entry_title a{
 #filter_by_classification select {
   display: inline;
   margin: 0;
-  padding: 0 2px;
+  padding: 2px 2px;
 }
 .fixed_top_bar{
   display: none;
@@ -316,6 +316,8 @@ td.entry_title a{
 }
 .fixed_top_bar #filter_by_classification{
   top: 11px;
+  display: inline-block;
+  padding-top: .6em;
 }
 .fixed_top_bar .dataTables_filter{
   margin-top: 12px;
