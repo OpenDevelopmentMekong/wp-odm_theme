@@ -268,8 +268,9 @@ $ref_docs_tracking = array();
         <div class="row no-margin-buttom">
           <div class="fixed_top_bar"></div>
           <div class="twelve columns table-column-container">
-            <div id="filter_by_classification"> <?php _e("Filter by", "opendev");?>
-            </div>
+            <?php if ($filtered_by_column_index !="") { ?>
+              <div id="filter_by_classification"> <?php _e("Filter by", "opendev");?></div>
+            <?php } ?>
             <table id="profiles" class="data-table">
               <thead>
                 <tr>
