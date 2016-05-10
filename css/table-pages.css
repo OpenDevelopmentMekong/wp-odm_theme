@@ -9,11 +9,10 @@
 #profiles_map .cartodb-legend {
   margin: 10px;
 }
-/*#profiles {
-  width: 100% !important;
-  display: block;
-  overflow: auto;
-}*/
+#profiles {
+  width: 92.5% !important;
+  float: left;
+}
 #profiles td{
   line-height: 22px;
 }
@@ -198,6 +197,7 @@ table.data-table td{
   background: none;
   border:0;
   border-left: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
   /*padding: 12px 5px;
   margin-bottom: 4px;*/
 }
@@ -275,6 +275,13 @@ td.entry_title a{
 #profiles tbody{
   width:100%;
 }
+#profiles td .td-value ul{
+  display: inline-block;
+  margin-bottom: 0
+}
+#profiles td .td-value ul li{
+  min-width: 200px;
+}
 .disclaimer {
   font-size: 12px;
   margin-top: 20px;
@@ -319,7 +326,7 @@ td.entry_title a{
 .fixed_top_bar #filter_by_classification{
   top: 11px;
   display: inline-block;
-  padding-top: .6em;
+  /*padding-top: .6em;*/
 }
 .fixed_top_bar .dataTables_filter{
   margin-top: 12px;
