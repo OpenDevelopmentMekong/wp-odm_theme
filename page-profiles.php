@@ -374,12 +374,13 @@ var mapIdColNumber = 0;
 <?php } ?>
 
 jQuery(document).ready(function($) {
-  //// Add title to breadcrumbs list
-    var addto_breadcrumbs = $('.profile-metadata h2').text();
+  //// Update the breadcrumbs list
+  if ($('.profile-metadata').hasClass('h2_name')) {
+    var addto_breadcrumbs = $('.profile-metadata h2.h2_name').text();
     var add_li = $('<li class="separator_by"> / </li><li class="item_map_id"><strong class="bread-current">'+addto_breadcrumbs+'</strong></li>');
     add_li.appendTo( $('#breadcrumbs'));
     $('.item-current a').text($('.item-current a strong').text());
-
+ }
   //console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;

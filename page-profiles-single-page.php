@@ -8,7 +8,13 @@
       <div class="twelve columns">
         <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
         <div class="profile-metadata">
-          <h2><?php echo $profile["developer"]; ?></h2>
+          <?php  if ($profile["developer"]!="")
+                    echo '<h2 class="h2_name">'.$profile["developer"].'</h2>';
+                 else if ($profile["name"]!="")
+                    echo '<h2 class="h2_name">'.$profile["name"].'</h2>';
+                 else if ($profile["block"]!="")
+                    echo '<h2 class="h2_name">'.$profile["block"].'</h2>';
+         ?>
           <table id="profile" class="data-table">
             <tbody>
               <?php
