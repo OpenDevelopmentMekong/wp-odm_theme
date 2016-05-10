@@ -319,7 +319,7 @@ td.entry_title a{
 .fixed_top_bar #filter_by_classification{
   top: 11px;
   display: inline-block;
-  padding-top: .6em;
+  /*padding-top: .6em;*/
 }
 .fixed_top_bar .dataTables_filter{
   margin-top: 12px;

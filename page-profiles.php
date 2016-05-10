@@ -211,8 +211,8 @@ $ref_docs_tracking = array();
                                      </li>
                                  <?php }
                               }//end if $specifit_value
-                            }//if not map_id
-                          }//foreach $explode_total_number_by_attribute_name
+                        }//if not map_id
+                      }//foreach $explode_total_number_by_attribute_name
                   }//if exist
                   ?>
                   </ul>
@@ -238,7 +238,12 @@ $ref_docs_tracking = array();
                   <?php _e( 'Download', 'opendev' );?></span>
               </div>
               <div class="sidebar_box_content download_buttons">
-                <?php foreach ($dataset["resources"] as $key => $resource) : ?>
+                <?php
+                $file_format = array_count_values(array_map(function($value){return $value['format'];}, $dataset["resources"]));
+                print_r($file_format['CSV']);
+                //  $count_file_formate =  array_count_values(array_map(function($value){return $value['SHP'];}, $dataset["resources"]));
+                  foreach ($dataset["resources"] as $key => $resource) :
+                  ?>
                   <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
                 <?php endforeach; ?>
               </div>
