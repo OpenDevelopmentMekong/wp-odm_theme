@@ -440,6 +440,14 @@ jQuery(document).ready(function($) {
     $('.show_list_format').hide(); //hide the button
 
   });
+  
+  //// Update the breadcrumbs list
+  if ($('.profile-metadata').hasClass('h2_name')) {
+    var addto_breadcrumbs = $('.profile-metadata h2.h2_name').text();
+    var add_li = $('<li class="separator_by"> / </li><li class="item_map_id"><strong class="bread-current">'+addto_breadcrumbs+'</strong></li>');
+    add_li.appendTo( $('#breadcrumbs'));
+    $('.item-current a').text($('.item-current a strong').text());
+ }
   //console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
@@ -681,3 +689,78 @@ jQuery(document).ready(function($) {
     }//window
 <?php } ?>
  </script>
+
+
+ <?php
+function list_reference_documents($ref_docs, $only_title_url =0){
+  if($only_title_url ==1){ ?>
+    <ul>
+      <?php
+      foreach ($ref_docs as $key => $ref_doc):
+          $split_old_address_and_filename = explode("?pdf=references/", $ref_doc);
+          if(count($split_old_address_and_filename)>1)
+           $ref_doc_name = $split_old_address_and_filename[1];
+          else
+           $ref_doc_name = $ref_doc;
+
+          $ref_doc_metadata = get_datasets_filter(CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc_name);
+          if (count($ref_doc_metadata) > 0):
+            foreach ($ref_doc_metadata as $key => $metadata): ?>
+                    <li><a target="_blank" href="<?php echo CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a>
+                      <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
+                        <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                    echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_promulgation_date"])), "/");
+                                else echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
+                      <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
+                        <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                    echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_publication_date"])), "/");
+                                else echo "(" . $metadata["odm_publication_date"] . ")" ?>
+                      <?php endif; ?>
+                    </li>
+            <?php
+            endforeach;
+          endif;
+        endforeach;  ?>
+    </ul>
+  <?php
+  }else {?>
+    <table id="reference" class="data-table">
+      <tbody>
+       <?php
+       foreach ($ref_docs as $key => $ref_doc):
+         $split_old_address_and_filename = explode("?pdf=references/", $ref_doc);
+         if(count($split_old_address_and_filename)>1)
+          $ref_doc_name = $split_old_address_and_filename[1];
+         else
+          $ref_doc_name = $ref_doc;
+
+         $ref_doc_metadata = get_datasets_filter(CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc_name);
+         if (count($ref_doc_metadata) > 0):
+           foreach ($ref_doc_metadata as $key => $metadata): ?>
+               <tr>
+                 <td class="row-key">
+                   <a target="_blank" href="<?php echo CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a></br>
+                   <div class="ref_date">
+                     <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
+                       <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                   echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_promulgation_date"])), "/");
+                               else echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
+                     <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
+                       <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
+                                   echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_publication_date"])), "/");
+                               else echo "(" . $metadata["odm_publication_date"] . ")" ?>
+                     <?php endif; ?>
+                   </div>
+                 </td>
+                 <td><?php echo getMultilingualValueOrFallback($metadata['notes_translated'],$lang); ?></td>
+               </tr>
+           <?php
+           endforeach;
+         endif;
+       endforeach;  ?>
+      </tbody>
+      </table>
+<?php
+  }//else //if list title only
+} //end function
+ ?>
