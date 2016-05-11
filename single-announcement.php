@@ -13,30 +13,30 @@ if (function_exists(qtranxf_getLanguage)){
 	<article id="content" class="single-post">
 			<div class="container">
 				<div class="eight columns">
-		            <header class="single-post-header" class="clearfix">
+		        <header class="single-post-header" class="clearfix">
     					<h1><?php the_title(); ?></h1>
-    					<div class="date">
-    							<span class="lsf">&#xE12b;</span> <?php the_date(); ?>
-    					</div>
+              <!--show date-->
+              <?php show_date_and_source_of_the_post(); ?>
+
     					<?php if (has_category()){ ?>
         					<div class="categories">
         						<span class="lsf">&#9776;</span> <?php echo __( 'Filed under:', 'jeo' ); ?>
                                 <?php the_category();  ?>
         					</div>
-                        <?php } ?>
-		            </header>
+              <?php } ?>
+		        </header>
 
 					<?php get_template_part('section', 'related-datasets'); ?>
-            		<section class="content section-content">
+            <section class="content section-content">
     					<?php
     					if(jeo_has_marker_location()) {
-    						?>
+    					?>
     						<section id="featured-media" class="row">
     							<div style="height:350px;">
     								<?php jeo_map(); ?>
     							</div>
     						</section>
-    						<?php
+    					<?php
     					}
     					?>
     					<div class="announcements-singlepage">
@@ -62,10 +62,9 @@ if (function_exists(qtranxf_getLanguage)){
                                     echo '<a target="_blank" href="'.$large_img.'" rel="" >'.$get_img.'</a>';
                                 echo '</div>'; //<!-- announcements-singlepage-img -->
                                 }
-                                ?>
+                      ?>
     				    	<div class="announcements-singlepage-content">
-                            <?php
-                            if (function_exists(qtranxf_getLanguage)){
+                            <?php if (function_exists(qtranxf_getLanguage)){
                                 if ((qtranxf_getLanguage() == "en") && (has_term('english-translated','language'))){ ?>
                                     <p class="translated-by-odc"><strong><?php _e("Summary translated by ODC Team"); ?></strong></p>
                                 <?php } ?>
@@ -83,12 +82,12 @@ if (function_exists(qtranxf_getLanguage)){
                                 echo "<span>";
                                 _e("Download: ");
                                 //Get English PDF
-                                if(get('upload_document')!=""){                                     
+                                if(get('upload_document')!=""){
                                     $file_name_en = substr(strrchr(get('upload_document'), '/'), 1);
-                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name_en.'">';      
+                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name_en.'">';
                                         echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                         _e ('English PDF');
-                                    echo '</a>'; 
+                                    echo '</a>';
                                 } else{
                                     echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                     _e("English PDF not available");
@@ -97,10 +96,10 @@ if (function_exists(qtranxf_getLanguage)){
                                 //Get Khmer PDF
                                 if(get('upload_document'.$local_lang)!=""){
                                     $file_name = substr(strrchr(get('upload_document'.$local_lang), '/'), 1);
-                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name.'">';      
+                                    echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name.'">';
                                         echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
                                         _e ('Khmer PDF');
-                                    echo '</a>'; 
+                                    echo '</a>';
                                 } else{
                                     echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
                                     _e("Khmer PDF not available");
@@ -154,26 +153,35 @@ if (function_exists(qtranxf_getLanguage)){
                         </div><!-- announcements-singlepage-content -->
 
 
-            		</section>
+            </section>
 				</div> <!-- eight -->
 				<div class="three columns offset-by-one">
             					<aside id="sidebar">
             						<ul class="widgets">
-            							<li class="widget share-widget">
+                          <!--social media sidebar-->
+                          <li class="widget share-widget">
             								<div class="share clearfix">
             									<ul>
-            										<li>
+            										<!--<li>
             											<div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="box_count" data-show-faces="false" data-send="false"></div>
+            										</li>-->
+            										<li>
+            											<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
             										</li>
             										<li>
-            											<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a>
+            											<div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
             										</li>
             										<li>
-            											<div class="g-plusone" data-size="tall" data-href="<?php the_permalink(); ?>"></div>
+            											<div class="g-plusone" data-width="50" data-annotation="none" data-size="tall" data-href="<?php the_permalink(); ?>" data-count="false"></div>
             										</li>
             									</ul>
             								</div>
             							</li>
+                          <!-- category sidebar-->
+                          <li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+            								<?php list_category_by_post_type(get_post_type()); ?>
+            							</li>
+
             							<?php dynamic_sidebar('post'); ?>
             						</ul>
             					</aside>
