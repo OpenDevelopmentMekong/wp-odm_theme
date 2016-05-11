@@ -23,40 +23,22 @@ if( $flexible_posts->have_posts() ):
  <div class="announcements-list">
   <ul class="dpe-flexible-posts">
   <?php while( $flexible_posts->have_posts() ) : $flexible_posts->the_post(); global $post; ?>
-   <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <a href="<?php echo the_permalink(); ?>">
-     <h4><?php the_title(); ?></h4>
+     <h3><?php the_title(); ?></h3>
     </a>
     <div class="poat-date-source">
-        <div class="date">
-    		<span class="lsf">&#xE12b;</span> <?php the_date(); ?>
-    	</div>
-    	<div class="source">
-        <?php
-        if (function_exists(qtranxf_getLanguage)){
-            if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
-            //Get all languages that is available
-            $languages = qtranxf_getSortedLanguages();
-            $local_lang =  "_".$languages[1];
-        }else $lang ="";
-        if (get('author')=="" && get('author'.$lang)==""){
-            echo "";
-        }else{
-            //_e('Source: ');
-            echo '&nbsp; <span class="icon-news"></span> ';
-            echo trim(get('author'.$lang));
-        }
-        ?>
-        </div>
-     </div>
-     <div class="post-widget-image">
+      <!--show date and source-->
+      <?php show_date_and_source_of_the_post(); ?>
+
+    <div class="post-widget-image">
       <?php
-       if( $thumbnail == true ) {
+        if( $thumbnail == true ) {
             // If the post has a feature image, show it
             if( has_post_thumbnail() ) {
-             echo '<a target="_blank" href="'.get_permalink().'" rel="" >';
-             the_post_thumbnail( $thumbsize );
-             echo "</a>";
+              echo '<a target="_blank" href="'.get_permalink().'" rel="" >';
+              the_post_thumbnail( $thumbsize );
+              echo "</a>";
             // Else if the post has a mime type that starts with "image/" then show the image directly.
             } elseif( 'image/' == substr( $post->post_mime_type, 0, 6 ) ) {
                 echo '<a target="_blank" href="'.get_permalink().'" rel="" >'.wp_get_attachment_image( $post->ID, $thumbsize ).'</a>';
@@ -67,7 +49,7 @@ if( $flexible_posts->have_posts() ):
                 echo "";
             }else{
                 if(get('cover'.$lang)!=""){
-                    $get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$lang,1,1,0).'">';
+                    $get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$lang,1,1,0).'"/>';
                     $large_img = get_image('cover'.$lang,1,1,0,null,$img_attr);
                 }else{
                     if(get('cover')!=""){
@@ -78,11 +60,11 @@ if( $flexible_posts->have_posts() ):
                         $get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$local_lang,1,1,0).'">';                                        $large_img = get_image('cover'.$local_lang,1,1,0,null,$img_attr);
                     }
                 }
-                echo '<a target="_blank" href="'.get_permalink().'" rel="" >'.$get_img.'</a>';
+              echo '<a target="_blank" href="'.get_permalink().'" rel="" >'.$get_img.'</a>';
             }
-       }
+      }
       ?>
-     </div>
+    </div>
      <?php the_excerpt(); ?>
    </li>
   <?php endwhile; ?>

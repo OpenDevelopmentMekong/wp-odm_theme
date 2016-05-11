@@ -1326,7 +1326,7 @@ function show_date_and_source_of_the_post(){ ?>
      <span class="lsf">&#xE12b;</span>
        <?php
        if (function_exists(qtrans_getLanguage)){
-          if (qtrans_getLanguage() =="kh"){
+          if (qtrans_getLanguage() =="kh" || qtrans_getLanguage() =="km"){
             echo convert_date_to_kh_date(get_the_time('j.M.Y'));
           }else {
             echo get_the_time('j F Y');
