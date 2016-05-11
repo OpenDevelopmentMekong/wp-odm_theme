@@ -8,11 +8,19 @@
       <div class="twelve columns">
         <div id="profile-map-id" class="hidden"><?php echo $filter_map_id; ?></div>
         <div class="profile-metadata">
-          <h2><?php echo $profile["developer"]; ?></h2>
+          <?php  if ($profile["developer"]!="")
+                    echo '<h2 class="h2_name">'.$profile["developer"].'</h2>';
+                 else if ($profile["name"]!="")
+                    echo '<h2 class="h2_name">'.$profile["name"].'</h2>';
+                 else if ($profile["block"]!="")
+                    echo '<h2 class="h2_name">'.$profile["block"].'</h2>';
+         ?>
           <table id="profile" class="data-table">
             <tbody>
               <?php
-              foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
+              foreach ($DATASET_ATTRIBUTE as $key => $value):
+                if($key !="reference"){
+              ?>
               <tr>
               <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></td>
                 <td><?php
@@ -22,7 +30,8 @@
                 ?>
                 </td>
               </tr>
-              <?php endforeach; ?>
+              <?php }
+              endforeach; ?>
             </tbody>
           </table>
         </div>
@@ -80,44 +89,14 @@
             </table>
           </div>
         <?php endif; ?>
+
         <?php
           $ref_docs_profile = explode(";", $profile["reference"]);
           $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
           if ($ref_docs): ?>
           <div class="profile-metadata">
             <h2><?php _e("Reference documents", "opendev"); ?></h2>
-            <table id="reference" class="data-table">
-              <tbody>
-                <?php
-                  foreach ($ref_docs as $key => $ref_doc):
-                    $ref_doc_metadata = get_datasets_filter(CKAN_DOMAIN,"extras_odm_reference_document",$ref_doc);
-                    if (count($ref_doc_metadata) > 0):
-                      foreach ($ref_doc_metadata as $key => $metadata):
-                  ?>
-                  <tr>
-                    <td class="row-key">
-                      <a target="_blank" href="<?php echo CKAN_DOMAIN . "/dataset/" . $metadata["name"] ?>"><?php echo getMultilingualValueOrFallback($metadata['title_translated'],$lang) ?></a></br>
-                      <div class="ref_date">
-                        <?php if ($metadata["type"]=="laws_record" && !(IsNullOrEmptyString($metadata["odm_promulgation_date"]))): ?>
-                          <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
-                                      echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_promulgation_date"])), "/");
-                                  else echo "(" . $metadata["odm_promulgation_date"] . ")" ?>
-                        <?php elseif ($metadata["type"]=="library_records" && !(IsNullOrEmptyString($metadata["odm_publication_date"]))):  ?>
-                          <?php   if(CURRENT_LANGUAGE == "kh" || CURRENT_LANGUAGE == "km")
-                                      echo convert_date_to_kh_date(date("d/m/Y", strtotime($metadata["odm_publication_date"])), "/");
-                                  else echo "(" . $metadata["odm_publication_date"] . ")" ?>
-                        <?php endif; ?>
-                      </div>
-                    </td>
-                    <td><?php echo getMultilingualValueOrFallback($metadata['notes_translated'],$lang); ?></td>
-                  </tr>
-                  <?php
-                     endforeach;
-                    endif;
-                 endforeach;
-                ?>
-              </tbody>
-            </table>
+                <?php list_reference_documents($ref_docs)?>
           </div>
         </div>
       <?php endif; ?>

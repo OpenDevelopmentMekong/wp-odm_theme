@@ -991,17 +991,17 @@ function the_breadcrumb()
         echo '</a></li>';
 		echo the_separated_breadcrumb($separator, "", "home");
 
-        if (is_single()) {
+    if (is_single()) {
             //Single post of post type "Topic"
             $post_type_of_topic = get_post_type(get_the_ID());
             if ($post_type_of_topic  == 'topic') {
-				$get_topic_title = get_the_title();
+				        $get_topic_title = get_the_title();
                 $cats = get_the_category(get_the_ID());
                 if ($cats) {
                     // if post is in this category
                     foreach ($cats as $cat) {
                         if (in_category($cat->term_id)) {
-							$page_title = trim(strtolower($get_topic_title));
+							              $page_title = trim(strtolower($get_topic_title));
                             $cat_name = trim(strtolower($cat->name));
 							// Which Category and Post have the same name
                             if ($cat_name == $page_title) {
@@ -1013,39 +1013,39 @@ function the_breadcrumb()
                 } else {
 				//if topic page is not categorized or the topic name is different from the category
                     echo '<li class="item-current item-'.$post->ID.'"><strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong></li>';
-                }
+                } 
             } else {
                 // Single post (Only display the first category)
                 /* echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id ) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>'; */
                 //echo '<li class="separator separator-' . $category[0]->term_id . '"> ' . $separator . ' </li>';
                 echo '<li class="item-current item-'.$post->ID.'">';
-				echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
-				echo '<strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong>';
-				echo '</a>';
-				echo '</li>';
+				            echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
+				                echo '<strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong>';
+				            echo '</a>';
+                echo '</li>';
             }
         } elseif (is_category()) {
             // Category page
-			$parent_cat = get_category_parents($category->term_id, true, '||' );
-			$parent_cat = substr($parent_cat, 0, -2);
-			$parent_cats = explode('||', $parent_cat);
-			foreach ($parent_cats as $cat) {
-				echo '<li class="item-current item-cat-'.$category->term_id.' item-cat-'.$category->category_nicename.'">';
-				if ($cat === end($parent_cats))
-					echo '<strong class="bread-current bread-cat-'.$category->term_id.' bread-cat-'.$category->category_nicename.'">';
+        			$parent_cat = get_category_parents($category->term_id, true, '||' );
+        			$parent_cat = substr($parent_cat, 0, -2);
+        			$parent_cats = explode('||', $parent_cat);
+        			foreach ($parent_cats as $cat) {
+        				echo '<li class="item-current item-cat-'.$category->term_id.' item-cat-'.$category->category_nicename.'">';
+        				if ($cat === end($parent_cats))
+        					echo '<strong class="bread-current bread-cat-'.$category->term_id.' bread-cat-'.$category->category_nicename.'">';
 
-				echo $cat;
+        				echo $cat;
 
-				if ($cat === end($parent_cats))
-					echo '</strong>';
-				echo '</li>';
+        				if ($cat === end($parent_cats))
+        					echo '</strong>';
+        				echo '</li>';
 
-				//add separated
-				if ($cat != end($parent_cats)){
-					echo the_separated_breadcrumb($separator, $category->term_id, "category");
+        				//add separated
+        				if ($cat != end($parent_cats)){
+        					echo the_separated_breadcrumb($separator, $category->term_id, "category");
 
-				}
-			}
+        				}
+        			}
         } elseif (is_page()) {
             // Standard page
             if ($post->post_parent) {
@@ -1061,44 +1061,17 @@ function the_breadcrumb()
 
                 // Display parent pages
                 echo $parents;
-				echo the_separated_breadcrumb($separator, $ancestor, "page");
-				// Current page
-					echo '<li class="item-current item-'.$post->ID.'">';
-
-					if (!isset($_GET["map_id"]) and $_GET["map_id"]!="")
-					echo '<strong title="'.get_the_title().'">';
-					echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
-						echo get_the_title();
-					echo '</a>';
-					if (!isset($_GET["map_id"]) && $_GET["map_id"]!="")
-					echo '</strong>';
-					echo '</li>';
-
-
-				if (isset($_GET["map_id"])){
-					$filter_map_id = htmlspecialchars($_GET["map_id"]);
-					$ELC_RESOURCE_IDS = array(
-						"en" => array(
-						  "metadata" => "3b817bce-9823-493b-8429-e5233ba3bd87",
-						  "tracking" => "8cc0c651-8131-404e-bbce-7fe6af728f89"
-						),
-						"km" => array(
-						  "metadata" => "a9abd771-40e9-4393-829d-2c1bc588a9a8",
-						  "tracking" => "7f02292b-e228-4152-86a6-cd5fce929262"
-						)
-					  );
-
-					$profile = get_datastore_resources_filter("https://data.opendevelopmentmekong.net",$ELC_RESOURCE_IDS[qtranxf_getLanguage()]["metadata"],"map_id",$filter_map_id)[0];
-
-					echo the_separated_breadcrumb($separator, $ancestor, "page");
-					echo '<li class="item-current item-'.$post->ID.'">';
-					echo '<strong title="'.get_the_title().'">';
-					echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_site_url().$_SERVER['REQUEST_URI'].'" title="'.get_the_title().'">';
-					echo $profile["developer"];
-					echo "</a>";
-					echo '</strong>';
-					echo '</li>';
-				}
+        				echo the_separated_breadcrumb($separator, $ancestor, "page");
+        				// Current page
+        					echo '<li class="item-current item-'.$post->ID.'">';
+          					if (!isset($_GET["map_id"]) and $_GET["map_id"]!="")
+          					echo '<strong title="'.get_the_title().'">';
+          					echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
+          						echo get_the_title();
+          					echo '</a>';
+          					if (!isset($_GET["map_id"]) && $_GET["map_id"]!="")
+          					echo '</strong>';
+        					echo '</li>';
             } else {
 
                 // Just display current page if not parents
