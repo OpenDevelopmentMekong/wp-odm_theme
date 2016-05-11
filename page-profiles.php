@@ -157,9 +157,10 @@ $ref_docs_tracking = array();
           else: ?>
       <div class="container">
           <div class="twelve columns">
+              <?php if($profiles){ ?>
               <div class="total_listed">
                 <ul>
-                  <?php // Display Total list
+                  <?php  // Display Total list
                   $count_project =  array_count_values(array_map(function($value){return $value['map_id'];}, $profiles)); ?>
                   <!-- List total of dataset by map_id as default-->
                   <li><strong><?php if($lang == "kh" || $lang == "km")
@@ -217,6 +218,7 @@ $ref_docs_tracking = array();
                   ?>
                   </ul>
               </div>
+              <?php } ?>
           </div>
     			<div class="nine columns">
             <div id="profiles_map" class="profiles_map"></div>
@@ -239,13 +241,65 @@ $ref_docs_tracking = array();
               </div>
               <div class="sidebar_box_content download_buttons">
                 <?php
-                $file_format = array_count_values(array_map(function($value){return $value['format'];}, $dataset["resources"]));
-                print_r($file_format['CSV']);
-                //  $count_file_formate =  array_count_values(array_map(function($value){return $value['SHP'];}, $dataset["resources"]));
-                  foreach ($dataset["resources"] as $key => $resource) :
-                  ?>
-                  <span><a href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
-                <?php endforeach; ?>
+                if($dataset["resources"]){
+                    $file_format = array_count_values(array_map(function($value){return $value['format'];}, $dataset["resources"]));
+                    foreach($file_format as $format => $file_extention){
+                      if($file_format[$format] > 1 &&  $format != 'CSV'){ ?>
+                        <div class="format_button" id="format_<?php echo $format; ?>"><a class="format" href="#"><?php echo $format; ?></a>
+                            <div class="show_list_format format_<?php echo $format?>">
+                                <ul class="list_format">
+                                <?php
+                                foreach ($dataset["resources"] as $key => $resource) :
+                                  if ( $resource['format'] == $format){ ?>
+                                        <li><a href="<?php echo $resource['url']; ?>"><?php echo $resource['name']; ?></a></li>
+                                <?php
+                                   }
+                                endforeach; //$dataset["resources"] ?>
+                                </ul>
+                            </div>
+                      </div><!-- format_button -->
+                      <?php
+                      }elseif ( ($file_format[$format] > 1) &&  ($format == 'CSV') ){
+                        foreach ($dataset["resources"] as $key => $resource) :
+                          if ($resource['format'] == $format)
+                            $file_version[] = $resource['odm_language'][0];
+                        endforeach; //$dataset["resources"]
+                        $count_file_version = array_count_values($file_version);
+                        if($count_file_version[CURRENT_LANGUAGE] > 1 )  {
+                        ?>
+                          <div class="format_button" id="format_<?php echo $format; ?>"><a class="format" href="#"><?php echo $format; ?></a>
+                              <div class="show_list_format format_<?php echo $format?>">
+                                  <ul class="list_format">
+                                  <?php
+                                  foreach ($dataset["resources"] as $key => $resource) :
+                                    if ( ($resource['format'] == $format) && ($resource['odm_language'][0] == CURRENT_LANGUAGE)){ ?>
+                                          <li><a href="<?php echo $resource['url']; ?>"><?php echo $resource['name']; ?></a></li>
+                                  <?php
+                                     }
+                                  endforeach; //$dataset["resources"] ?>
+                                  </ul>
+                              </div>
+                          </div><!-- format_button --> <?php
+                        }//if count file version
+                        else {
+                          foreach ($dataset["resources"] as $key => $resource) :
+                              if ( ($resource['format'] == $format) && ($resource['odm_language'][0] == CURRENT_LANGUAGE)){
+                          ?>
+                            <span><a target="_blank" href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
+                          <?php
+                              }
+                          endforeach;
+                        }
+                      }else {
+                        foreach ($dataset["resources"] as $key => $resource) :
+                            if ( $resource['format'] == $format){ ?>
+                          <span><a target="_blank" href="<?php echo $resource['url']; ?>"><?php echo $resource['format']; ?></a></span>
+                        <?php
+                            }
+                        endforeach;
+                      }//end else
+                    }//foreach
+                } ?>
               </div>
             </div>
             <?php if ($related_profile_pages !=""){
@@ -282,47 +336,48 @@ $ref_docs_tracking = array();
               <thead>
                 <tr>
                   <th><div class='th-value'><?php _e( "Map ID", "opendev" ); ?></div></th>
-                  <?php foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                          <th><div class='th-value'><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></div></th>
-                  <?php endforeach; ?>
+                  <?php if($DATASET_ATTRIBUTE){
+                          foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
+                            <th><div class='th-value'><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></div></th>
+                    <?php endforeach;
+                        }
+                    ?>
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($profiles as $profile):  ?>
-                  <tr>
-                    <td class="td-value"><?php echo $profile["map_id"];?></td>
-                  <?php
-                    foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
-                      <?php
-                          if (in_array($key, array("developer", "name", "block") )) { ?>
-                            <td class="entry_title"><div class="td-value">
-                                <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a></div>
+                <?php
+                if($profiles){
+                  foreach ($profiles as $profile):  ?>
+                    <tr>
+                      <td class="td-value"><?php echo $profile["map_id"];?></td>
+                    <?php
+                      foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
+                        <?php
+                            if (in_array($key, array("developer", "name", "block") )) { ?>
+                              <td class="entry_title"><div class="td-value">
+                                  <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a></div>
+                              </td>
+                            <?php
+                            }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
+          										<td><div class="td-value"><?php
+                                if($lang == "en") echo ucwords(trim($profile[$key]));
+                                else echo trim($profile[$key]);
+                                ?> <?php data_classification_definition( $profile[$key]);  ?></div>
+                              </td>
+                            <?php
+                            }else {  ?>
+                            <td><div class="td-value"><?php
+                              echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
+                              ?></div>
                             </td>
-                          <?php
-                          }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
-        										<td><div class="td-value"><?php
-                              if($lang == "en") echo ucwords(trim($profile[$key]));
-                              else echo trim($profile[$key]);
-                              ?> <?php data_classification_definition( $profile[$key]);  ?></div>
-                            </td>
-                          <?php
-                        }else if($key == "reference"){?>
-                          <td><div class="td-value"><?php
-                              $ref_docs_profile = explode(";", $profile["reference"]);
-                              $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
-                              list_reference_documents($ref_docs, 1);?></div>
-                          </td><?php
-                        }else {  ?>
-                          <td><div class="td-value"><?php
-                            echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
-                            ?></div>
-                          </td>
-                          <?php
-                          }
-                          ?>
-                    <?php endforeach; ?>
-                  </tr>
-        				<?php endforeach; ?>
+                            <?php
+                            }
+                            ?>
+                      <?php endforeach; ?>
+                    </tr>
+        				<?php endforeach;
+                }
+                ?>
       				</tbody>
       			</table>
           </div>
@@ -374,6 +429,18 @@ var mapIdColNumber = 0;
 <?php } ?>
 
 jQuery(document).ready(function($) {
+  //click file format show the list item for downloading
+  $('.format_button').click(function(e){
+      e.stopPropagation();
+      $('.show_list_format').hide();
+      $(this).children('.show_list_format').show();
+  });
+  //hide show download item if click anywhere
+  $(document).click(function(){
+    $('.show_list_format').hide(); //hide the button
+
+  });
+  
   //// Update the breadcrumbs list
   if ($('.profile-metadata').hasClass('h2_name')) {
     var addto_breadcrumbs = $('.profile-metadata h2.h2_name').text();

@@ -58,8 +58,14 @@ $country_name = str_replace('Open Development ', '', get_bloginfo('name'));
 define('COUNTRY_NAME', strtolower($country_name));
 define('SITE_NAME', $country_name);
 
-if (function_exists("qtranxf_getLanguage"))
-  define('CURRENT_LANGUAGE', qtranxf_getLanguage());
+if (function_exists("qtranxf_getLanguage")){
+  if(qtranxf_getLanguage() == "kh")
+    $local_lang = "km";
+  else
+    $local_lang = qtranxf_getLanguage();
+
+  define('CURRENT_LANGUAGE', $local_lang);
+}
 else
   define('CURRENT_LANGUAGE', 'en');
 $wpDomain=$_SERVER["HTTP_HOST"];
