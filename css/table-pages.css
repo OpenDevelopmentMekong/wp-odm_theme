@@ -9,11 +9,10 @@
 #profiles_map .cartodb-legend {
   margin: 10px;
 }
-/*#profiles {
-  width: 100% !important;
-  display: block;
-  overflow: auto;
-}*/
+#profiles {
+  width: 92% !important;
+  float: left;
+}
 #profiles td{
   line-height: 22px;
 }
@@ -198,6 +197,7 @@ table.data-table td{
   background: none;
   border:0;
   border-left: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
   /*padding: 12px 5px;
   margin-bottom: 4px;*/
 }
@@ -253,16 +253,45 @@ td.entry_title a{
   position: relative;
   top:2px;
 }
-
-.download_buttons span a{
+.download_buttons div.format_button{
+  display: inline-block;
+   position: relative;
+}
+.download_buttons span a, .download_buttons div.format_button a.format{
   color: white;
   text-decoration: none;
-  padding: 4px 6px;
+  padding: 3px 6px;
+  border: 1px solid rgb(75,75,75);
   background: rgb(75,75,75);
   border-radius: 6px;
   font-size:10px;
   float: left;
   margin: 0px 4px 4px 0px;
+}
+.download_buttons span a:hover, .download_buttons div.format_button a.format:hover{
+  background: #f4f4f4;
+  color: #333;
+  border: 1px solid rgb(75,75,75);
+  padding: 3px 6px;
+}
+.show_list_format{
+  display: none;
+  padding: 2px 15px;
+  width: 150px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2002;
+  position: absolute;
+  margin-top: 2.5em;
+  -moz-column-gap: 8px;
+}
+.download_buttons div.format_button:last-child > .show_list_format,
+.download_buttons div.format_button:nth-last-child(2) > .show_list_format{
+  right: 0px;
 }
 .dataTables_wrapper .dataTables_scroll {
     display: block;
@@ -274,6 +303,13 @@ td.entry_title a{
 }
 #profiles tbody{
   width:100%;
+}
+#profiles td .td-value ul{
+  display: inline-block;
+  margin-bottom: 0
+}
+#profiles td .td-value ul li{
+  min-width: 200px;
 }
 .disclaimer {
   font-size: 12px;
@@ -319,7 +355,7 @@ td.entry_title a{
 .fixed_top_bar #filter_by_classification{
   top: 11px;
   display: inline-block;
-  padding-top: .6em;
+  /*padding-top: .6em;*/
 }
 .fixed_top_bar .dataTables_filter{
   margin-top: 12px;

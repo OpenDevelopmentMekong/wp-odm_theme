@@ -28,7 +28,7 @@ class OpenDev_Announcement {
 			'all_items'          => __( 'All announcements', 'opendev' ),
 			'search_items'       => __( 'Search announcements', 'opendev' ),
 			'parent_item_colon'  => __( 'Parent announcements:', 'opendev' ),
-			'not_found'          => __( 'No announcements found.', 'opendev' ),         
+			'not_found'          => __( 'No announcements found.', 'opendev' ),
 			'not_found_in_trash' => __( 'No announcements found in trash.', 'opendev' )
 		);
 
@@ -43,7 +43,7 @@ class OpenDev_Announcement {
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			'menu_position'      => 4,  
+			'menu_position'      => 4,
 			'taxonomies'         => array('category', 'post_tag'),
 			'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' )
 		);
