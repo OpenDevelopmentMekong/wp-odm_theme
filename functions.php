@@ -211,12 +211,7 @@ function dataTable_scripts()
     wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
     wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
     wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
-   // wp_enqueue_script('data-tables-fixedHeader', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fixedHeader.min.js', array('data-tables-js'), '3.0.0');
-
-  //  wp_enqueue_script('cartodb-config', get_stylesheet_directory_uri().'/inc/js/cartodb-config.js', null, '1.0.0');
     wp_enqueue_style('dataTables-css');
-
-    //wp_enqueue_style('elc');
   }
 }
 
@@ -247,7 +242,10 @@ function opendev_styles(){
   wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
+
+  if( !is_page( array( 'map-explorer', 'maps', 'home' )) and !is_home())
   wp_register_style('table-pages',  $css_base.'table-pages.css');
+
   wp_register_style('forest-cover',  $css_base.'forest-cover.css');
   wp_register_style('responsive',  $css_base.'responsive.css');
 
@@ -255,7 +253,9 @@ function opendev_styles(){
   wp_enqueue_style('opendev-base');
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('table-pages');
-  wp_enqueue_style('map-explorer');
+
+  if (is_page('map-explorer') || is_page('maps')|| is_home())
+    wp_enqueue_style('map-explorer');
   wp_enqueue_style('forest-cover');
   wp_enqueue_style('responsive');
 
@@ -1013,7 +1013,7 @@ function the_breadcrumb()
                 } else {
 				//if topic page is not categorized or the topic name is different from the category
                     echo '<li class="item-current item-'.$post->ID.'"><strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong></li>';
-                } 
+                }
             } else {
                 // Single post (Only display the first category)
                 /* echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id ) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>'; */
@@ -1596,6 +1596,85 @@ function get_datastore_resource($ckan_domain,$resource_id){
   return $profiles["result"]["records"];
 }
 
+function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $atlernative_links = 0, $showing_fields =""){
+  $lang = CURRENT_LANGUAGE;
+
+  $attribute_metadata = array(
+                        //  "title_translated" => "Title",
+                          "notes_translated" => "Description",
+                          "odm_source" => "Source(s)",
+                          "odm_date_created" => "Date of data",
+                          "odm_completeness" => "Completeness",
+                          "odm_metadata_reference_information" => "Metadata Reference Information",
+                          "odm_process" => "Process(es)",
+                          "odm_attributes" => "Attributes",
+                          "odm_logical_consistency" => "Logical Consistency",
+                          "license_id" => "License"
+                      );
+
+  // get ckan record by id
+  $get_info_from_ckan = get_dataset_by_id($ckan_domain,$ckan_dataset_id);
+  //print_r($get_info_from_ckan);
+  ?>
+  <div class="box-shadow layer-toggle-info-container layer-right-screen">
+    <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
+    <div class="layer-toggle-info toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
+        <table border="0" class="toggle-talbe">
+          <tr><td colspan="2"><h5><?php echo $get_info_from_ckan['title_translated'][$lang] ?></h5></td></tr>
+          <?php
+          if($showing_fields == ""){
+              foreach ($get_info_from_ckan as $key => $info) {
+                if($key == 'license_id'){  ?>
+                  <tr>
+                      <td><?php echo $attribute_metadata['license_id']; ?></td>
+                      <td><?php echo $info == "unspecified"? ucwords($get_info_from_ckan['license_id'] ) : $get_info_from_ckan['license_id']; ?></td>
+                  </tr>
+              <?php }else{
+                  if(array_key_exists($key, $attribute_metadata)){
+              ?>    <tr>
+                        <td><?php echo $attribute_metadata[$key]; ?></td><td><?php echo is_array($info) ? $info[$lang]: $info; ?></td>
+                    </tr>
+          <?php   }
+                }
+              } //end foreach
+          }else { //if so fields are defined
+            foreach ($showing_fields as $key => $info) {
+              if($key == 'license_id'){  ?>
+                <tr>
+                    <td><?php echo $showing_fields['license_id']; ?></td>
+                    <td><?php echo $info == "unspecified"? ucwords($get_info_from_ckan['license_id'] ) : $get_info_from_ckan['license_id']; ?></td>
+                </tr>
+            <?php }else{
+            ?>    <tr>
+                      <td><?php echo $showing_fields[$key]; ?></td><td><?php echo is_array($get_info_from_ckan[$key]) ? $get_info_from_ckan[$key][$lang]: $get_info_from_ckan[$key]; ?></td>
+                  </tr>
+        <?php
+              }
+            } //end foreach
+          }
+          ?>
+        </table>
+      <?php if ($atlernative_links == 1) { ?>
+        <div class="atlernative_links">
+        <?php if ($lang != 'en'){ ?>
+                <div class="div-button"><a href="<?php echo $individual_layer['download_url_localization']; ?>" target="_blank"><i class="fa fa-arrow-down"></i> <?php _e("Download data", "opendev"); ?></a></div>
+
+                <?php if ($individual_layer['profilepage_url_localization']){ ?>
+                  <div class="div-button"><a href="<?php echo $individual_layer['profilepage_url_localization']; ?>" target="_blank"><i class="fa fa-table"></i> <?php _e("View dataset table", "opendev"); ?></a></div>
+                <?php } ?>
+        <?php }else {  ?>
+                <div class="div-button"><a href="<?php echo $individual_layer['download_url']; ?>" target="_blank"><i class="fa fa-arrow-down"></i> <?php _e("Download data", "opendev"); ?></a></div>
+
+                <?php if ($individual_layer['profilepage_url']){ ?>
+                  <div class="div-button"><a href="<?php echo $individual_layer['profilepage_url']; ?>" target="_blank"><i class="fa fa-table"></i> <?php _e("View dataset table", "opendev"); ?></a></div>
+                <?php } ?>
+        <?php } ?>
+        </div><!-- atlernative_links -->
+      <?php } //if $atlernative_links ?>
+    </div><!--layer-toggle-info-->
+  </div><!--box-shadow layer-toggle-info-container-->
+<?php
+}//end function
 function buildStyledTopTopicListForLaws($lang)
 {
     $navigation_vocab = @file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
