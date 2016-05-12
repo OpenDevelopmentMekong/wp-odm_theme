@@ -243,8 +243,9 @@ function opendev_styles(){
   wp_register_style('nav-concept',  $css_base.'nav_concept.css');
   wp_register_style('map-explorer',  $css_base.'map_explorer.css');
 
-  if( !is_page( array( 'map-explorer', 'maps', 'home' )) and !is_home())
-  wp_register_style('table-pages',  $css_base.'table-pages.css');
+  if( !is_page( array( 'map-explorer', 'maps', 'home' )) and !is_home()){
+    wp_register_style('table-pages',  $css_base.'table-pages.css');
+  }
 
   wp_register_style('forest-cover',  $css_base.'forest-cover.css');
   wp_register_style('responsive',  $css_base.'responsive.css');
@@ -254,8 +255,10 @@ function opendev_styles(){
   wp_enqueue_style('nav-concept');
   wp_enqueue_style('table-pages');
 
-  if (is_page('map-explorer') || is_page('maps')|| is_home())
+  if (is_page('map-explorer') || is_page('maps')|| is_home()){
     wp_enqueue_style('map-explorer');
+  }
+
   wp_enqueue_style('forest-cover');
   wp_enqueue_style('responsive');
 
@@ -1602,7 +1605,7 @@ function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $indi
   $attribute_metadata = array(
                         //  "title_translated" => "Title",
                           "notes_translated" => "Description",
-                          "odm_source" => "Source(s)", 
+                          "odm_source" => "Source(s)",
                           "odm_completeness" => "Completeness",
                           "odm_metadata_reference_information" => "Metadata Reference Information",
                           "odm_process" => "Process(es)",
