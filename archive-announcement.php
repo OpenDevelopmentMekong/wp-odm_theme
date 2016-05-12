@@ -4,6 +4,15 @@ if(is_category()) {
 	die();
 }
 get_header();
+
+if (function_exists(qtranxf_getLanguage)){
+    if (qtranxf_getLanguage() <> "en") $lang = "_". CURRENT_LANGUAGE; else $lang = "";
+    //Get all languages that is available
+    $languages = qtranxf_getSortedLanguages();
+    $local_language = $languages[1];
+    $local_lang =  "_".$languages[1];
+}	else $lang ="";
+
 ?>
 
 <div class="section-title">
@@ -28,10 +37,6 @@ get_header();
 		</div>
 	</div>
 </div>
-
-<?php //get_template_part('loop'); ?>
-
-<?php  ?>
 
 <?php /*loop for Achive-Announcement*/
 	if(have_posts()) : ?>
@@ -76,7 +81,8 @@ get_header();
 													$large_img = get_image('cover',1,1,0,null,$img_attr);
 												}
 												else {
-													$get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$local_lang,1,1,0).'">';                                        $large_img = get_image('cover'.$local_lang,1,1,0,null,$img_attr);
+													$get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$local_lang,1,1,0).'">';
+													$large_img = get_image('cover'.$local_lang,1,1,0,null,$img_attr);
 												}
 											}
 											echo '<a target="_blank" href="'.$large_img.'" rel="" >'.$get_img.'</a>';
@@ -96,8 +102,8 @@ get_header();
 										if(get('upload_document')!=""){
 											$file_name_en = substr(strrchr(get('upload_document'), '/'), 1);
 											echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name_en.'">';
-											echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
-											_e ('English PDF');
+												echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
+												_e ('English PDF');
 											echo '</a>';
 										}
 										else{
@@ -109,8 +115,8 @@ get_header();
 										if(get('upload_document'.$local_lang)!=""){
 											$file_name = substr(strrchr(get('upload_document'.$local_lang), '/'), 1);
 											echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name.'">';
-											echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
-											_e ('Khmer PDF');
+												echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
+												_e ('Khmer PDF');
 											echo '</a>';
 										}
 										else{

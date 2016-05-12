@@ -78,7 +78,8 @@ if (function_exists(qtranxf_getLanguage)){
                             //Get Download files
                             if (get('upload_document')=="" && get('upload_document'.$local_lang)==""){
                                 echo "";
-                            }else{
+                            }
+                            else{
                                 echo "<span>";
                                 _e("Download: ");
                                 //Get English PDF
@@ -88,7 +89,8 @@ if (function_exists(qtranxf_getLanguage)){
                                         echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                         _e ('English PDF');
                                     echo '</a>';
-                                } else{
+                                }
+                                else{
                                     echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/united-states.png" /> ';
                                     _e("English PDF not available");
                                 }
@@ -100,23 +102,25 @@ if (function_exists(qtranxf_getLanguage)){
                                         echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
                                         _e ('Khmer PDF');
                                     echo '</a>';
-                                } else{
+                                }
+                                else{
                                     echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
                                     _e("Khmer PDF not available");
-                                    }
+                                }
                                 echo "</span>";
-                                 }
-                                ?>
+                            }
+                            ?>
 
                                 <div class="announcement-source">
             					<?php
             					    if (get('author')=="" && get('author'.$lang)==""){
                                         echo "";
-                                    }else{
+                          }
+                          else{
             					        echo '<br />';
                                         _e('Source: '); //'<span class="icon-news"></span> ';
                                         echo trim(get('author'.$lang));
-                                    }
+                          }
                 					if (taxonomy_exists('public_announcement_source')){
                 					    $terms_public_announcement_source = get_the_terms($post->ID,'public_announcement_source');
                 					    if ($terms_public_announcement_source){
@@ -177,12 +181,14 @@ if (function_exists(qtranxf_getLanguage)){
             									</ul>
             								</div>
             							</li>
+
                           <!-- category sidebar-->
+                          <!--
                           <li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
             								<?php list_category_by_post_type(get_post_type()); ?>
             							</li>
-
-            							<?php dynamic_sidebar('post'); ?>
+                          <?php// dynamic_sidebar('post'); ?>
+                          -->
             						</ul>
             					</aside>
 				</div>    <!-- three -->
