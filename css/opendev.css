@@ -2678,6 +2678,21 @@ div.cartodb-legend.custom ul li.graph{
       cursor: pointer;
 }
  /*end tooltips*/
+
+ /*********toggle metadata of dataset ***/
+.profiles_page .layer-toggle-info-container {
+  display: inline-block;
+}
+.profiles_page .toggle-info .toggle-talbe tr:first-child{
+  display: none;
+}
+.toggle-info-container .toggle-info{
+   display: none;
+   height: 100%;
+   max-height: 500px;
+   width: 500px;
+ }
+ /**** end toggle metadata ***/
 /*menu*/
 
   #od-head #main-nav ul.menu > li > ul li:last-child a{

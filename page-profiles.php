@@ -26,26 +26,31 @@ Template Name: Profile page
   if (isset($_GET["map_id"])){
     $filter_map_id = htmlspecialchars($_GET["map_id"]);
   }
+  if (isset($_GET["metadata"])){
+    $metadata_dataset = htmlspecialchars($_GET["metadata"]);
+  }
 
   //Get Dataset URL of each profile page in Profiles post type
-if ( (CURRENT_LANGUAGE != "en") ){
-        $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url_localization', true));
-        $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
-        $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
-        $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
-        $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
-        $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
-        $related_profile_pages = str_replace("?type=dataset", "", get_post_meta($post->ID, '_related_profile_pages_localization', true));
-}else {
-     $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url', true));
-     $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
-     $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
-     $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
-     $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index', true));
-     $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name', true));
-     $related_profile_pages = str_replace("?type=dataset", "", get_post_meta($post->ID, '_related_profile_pages', true));
-}
 
+if($map_visualization_url !==""){
+  if ( (CURRENT_LANGUAGE != "en") ){
+          $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url_localization', true));
+          $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url_localization', true));
+          $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url_localization', true));
+          $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index_localization', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
+          $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index_localization', true));
+          $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name_localization', true));
+          $related_profile_pages = str_replace("?type=dataset", "", get_post_meta($post->ID, '_related_profile_pages_localization', true));
+  }else {
+       $map_visualization_url = str_replace("?type=dataset", "", get_post_meta($post->ID, '_map_visualization_url', true));
+       $ckan_dataset = str_replace("?type=dataset", "", get_post_meta($post->ID, '_csv_resource_url', true));
+       $ckan_dataset_tracking = str_replace("?type=dataset", "", get_post_meta($post->ID, '_tracking_csv_resource_url', true));
+       $filtered_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_filtered_by_column_index', true));  // index start from zero, so "-1" is needed, however, due to adding "map_id" to first column of table, so -1 don't need it
+       $group_data_by_column_index = str_replace("?type=dataset", "", get_post_meta($post->ID, '_group_data_by_column_index', true));
+       $total_number_by_attribute_name = str_replace("?type=dataset", "", get_post_meta($post->ID, '_total_number_by_attribute_name', true));
+       $related_profile_pages = str_replace("?type=dataset", "", get_post_meta($post->ID, '_related_profile_pages', true));
+  }
+}
 if($map_visualization_url){
    $cartodb_url = $map_visualization_url;
    $cartodb_json = file_get_contents($cartodb_url);
@@ -77,12 +82,14 @@ if($ckan_dataset_tracking != ""){
     }
 }
   //For Attributes
-if ( (CURRENT_LANGUAGE != "en") ){
-  $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
-  $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
-}else {
-  $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
-  $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+if( ($ckan_dataset != "") || ($ckan_dataset_tracking != "")){
+  if ( (CURRENT_LANGUAGE != "en") ){
+    $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
+    $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
+  }else {
+    $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
+    $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
+  }
 }
 //echo $ckan_attribute;
 if ($ckan_attribute!=""){
@@ -105,55 +112,15 @@ if ($ckan_attribute_tracking!=""){
   $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
 }//END IF $ckan_attribute_tracking
 
-  $ref_docs_profile = array();
-  $ref_docs_tracking = array();
-
-    //for tracking
-    if($ckan_dataset_tracking != ""){
-      $ckan_dataset_tracking_exploded_by_dataset = explode("/dataset/", $ckan_dataset_tracking);
-      $ckan_dataset_tracking_exploded_by_resource = explode("/resource/", $ckan_dataset_tracking_exploded_by_dataset[1]);
-      $ckan_dataset_tracking_id = $ckan_dataset_tracking_exploded_by_resource[0];
-      $ckan_dataset_tracking_csv_id = $ckan_dataset_tracking_exploded_by_resource[1];
-      if (!IsNullOrEmptyString($filter_map_id)){
-        $ammendements = get_datastore_resources_filter(CKAN_DOMAIN,$ckan_dataset_tracking_csv_id,"map_id",$filter_map_id);
-      }
-    }
-    //For Attributes
-    if ( (CURRENT_LANGUAGE != "en") ){
-      $ckan_attribute = get_post_meta($post->ID, '_attributes_csv_resource_localization', true);
-      $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking_localization', true);
-    }else {
-      $ckan_attribute = trim(get_post_meta($post->ID, '_attributes_csv_resource', true));
-      $ckan_attribute_tracking = get_post_meta($post->ID, '_attributes_csv_resource_tracking', true);
-    }
-    //echo $ckan_attribute;
-    if ($ckan_attribute!=""){
-      $temp_ckan_attribute = explode("\r\n", $ckan_attribute);
-      $array_attribute = array();
-      foreach ($temp_ckan_attribute as $value) {
-         $array_value = explode('=>', trim($value));
-         $array_attribute[trim($array_value[0])] = trim($array_value[1]);
-      }
-      $DATASET_ATTRIBUTE = $array_attribute;
-    }//END IF $ckan_attribute
-
-    if ($ckan_attribute_tracking!=""){
-      $temp_ckan_attribute_tracking = explode("\r\n", $ckan_attribute_tracking);
-      $array_attribute = array();
-      foreach ($temp_ckan_attribute_tracking as $value) {
-         $array_value_tracking = explode('=>', trim($value));
-         $array_attribute_tracking[trim($array_value_tracking[0])] = trim($array_value_tracking[1]);
-      }
-      $DATASET_ATTRIBUTE_TRACKING = $array_attribute_tracking;
-    }//END IF $ckan_attribute_tracking
-
 $ref_docs_profile = array();
 $ref_docs_tracking = array();
-  ?>
+?>
 
   <section id="content" class="single-post">
     <?php if (!IsNullOrEmptyString($filter_map_id)):  //view single conccesion
               include("page-profiles-single-page.php");
+          elseif(!IsNullOrEmptyString($metadata_dataset)):
+              include("page-profiles-metadata-page.php");
           else: ?>
       <div class="container">
           <div class="twelve columns">
@@ -257,7 +224,7 @@ $ref_docs_tracking = array();
                                 endforeach; //$dataset["resources"] ?>
                                 </ul>
                             </div>
-                      </div><!-- format_button -->
+                        </div><!-- format_button -->
                       <?php
                       }elseif ( ($file_format[$format] > 1) &&  ($format == 'CSV') ){
                         foreach ($dataset["resources"] as $key => $resource) :
@@ -299,7 +266,12 @@ $ref_docs_tracking = array();
                         endforeach;
                       }//end else
                     }//foreach
-                } ?>
+                    ?>
+                    <p>
+                      <a target="_blank" href="?metadata=<?php echo $ckan_dataset_id; ?>"><?php _e("View metadata of dataset", "opendev")</a>
+                   </p>
+                <?php
+                } //dataset source available ?>
               </div>
             </div>
             <?php if ($related_profile_pages !=""){
@@ -366,10 +338,10 @@ $ref_docs_tracking = array();
                               </td>
                             <?php
                             }else {  ?>
-                            <td><div class="td-value"><?php
-                              echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
-                              ?></div>
-                            </td>
+                              <td><div class="td-value"><?php
+                                echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
+                                ?></div>
+                              </td>
                             <?php
                             }
                             ?>
@@ -398,7 +370,6 @@ $ref_docs_tracking = array();
 <?php get_footer(); ?>
 
 <script type="text/javascript">
-
 var singleProfile = false;
 var singleProfileMapId;
 var mapViz;
@@ -440,14 +411,14 @@ jQuery(document).ready(function($) {
     $('.show_list_format').hide(); //hide the button
 
   });
-  
+
   //// Update the breadcrumbs list
-  if ($('.profile-metadata').hasClass('h2_name')) {
+  if ($('.profile-metadata h2').hasClass('h2_name')) {
     var addto_breadcrumbs = $('.profile-metadata h2.h2_name').text();
     var add_li = $('<li class="separator_by"> / </li><li class="item_map_id"><strong class="bread-current">'+addto_breadcrumbs+'</strong></li>');
     add_li.appendTo( $('#breadcrumbs'));
     $('.item-current a').text($('.item-current a strong').text());
- }
+
   //console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
@@ -456,7 +427,7 @@ jQuery(document).ready(function($) {
    }
   };
 
-  <?php if ($filter_map_id == ""){  ?>
+<?php if ($filter_map_id == "" && $metadata_dataset == ""){  ?>
     /***** Fixed Header */
   	var get_datatable = $('#profiles').position().top;
   	    get_datatable = get_datatable +230;
@@ -655,8 +626,6 @@ jQuery(document).ready(function($) {
         $('.dataTables_scrollHead').scroll(function(e){
                $('.dataTables_scrollBody').scrollLeft(e.target.scrollLeft);
         });
-<?php } //if single page
- ?>
 
    $("#search_all").keyup(function () {
      oTable.fnFilterAll(this.value);
@@ -665,8 +634,9 @@ jQuery(document).ready(function($) {
      filterEntriesMap(_.pluck(filtered,mapIdColNumber));
      <?php } ?>
    });
-
- });
+<?php } //if single page
+?>
+ }); //jQuery
 <?php if($map_visualization_url !=""){ ?>
      window.onload = function() {
        cartodb.createVis('profiles_map', '<?php echo $map_visualization_url; ?>', {
