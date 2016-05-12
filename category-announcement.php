@@ -1,5 +1,8 @@
 <?php
 get_header();
+
+
+
 $term = $wp_query->queried_object;
 $post_types = get_post_types(array('public' => true));
 $tax_post_types = array();
@@ -104,7 +107,8 @@ foreach($post_types as $pt) {
                             $large_img = get_image('cover',1,1,0,null,$img_attr);
                           }
                           else {
-                            $get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$local_lang,1,1,0).'">';                                        $large_img = get_image('cover'.$local_lang,1,1,0,null,$img_attr);
+                            $get_img = '<img class="attachment-thumbnail" src="'.get_image('cover'.$local_lang,1,1,0).'">';
+                            $large_img = get_image('cover'.$local_lang,1,1,0,null,$img_attr);
                           }
                         }
                         echo '<a target="_blank" href="'.$large_img.'" rel="" >'.$get_img.'</a>';
@@ -112,7 +116,7 @@ foreach($post_types as $pt) {
                       }
                     ?>
 
-                    <?php
+                  <?php
                     //Get Download files
                     if (get('upload_document')=="" && get('upload_document'.$local_lang)==""){
                       echo "";
@@ -137,8 +141,8 @@ foreach($post_types as $pt) {
                       if(get('upload_document'.$local_lang)!=""){
                         $file_name = substr(strrchr(get('upload_document'.$local_lang), '/'), 1);
                         echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$file_name.'">';
-                        echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
-                        _e ('Khmer PDF');
+                          echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/cambodia.png" /> ';
+                          _e ('Khmer PDF');
                         echo '</a>';
                       }
                       else{
@@ -148,11 +152,13 @@ foreach($post_types as $pt) {
                       echo "</span>";
                     }
                   ?>
-
                   <div class="post-excerpt">
 										<?php the_excerpt(); ?>
 									</div>
 								</section>
+                <aside class="actions clearfix">
+									<a href="<?php the_permalink(); ?>"><?php _e('Read more', 'jeo'); ?></a>
+								</aside>
 							</article>
 						</li>
 					<?php endwhile; ?>
