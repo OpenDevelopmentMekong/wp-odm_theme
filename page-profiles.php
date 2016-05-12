@@ -267,9 +267,9 @@ $ref_docs_tracking = array();
                       }//end else
                     }//foreach
                     ?>
-                    <p>
-                      <a target="_blank" href="?metadata=<?php echo $ckan_dataset_id; ?>"><?php _e("View metadata of dataset", "opendev")</a>
-                   </p>
+                    <div>
+                      <a target="_blank" href="?metadata=<?php echo $ckan_dataset_id; ?>">» <?php _e("View metadata of dataset", "opendev")?></a>
+                   </div>
                 <?php
                 } //dataset source available ?>
               </div>
@@ -418,7 +418,7 @@ jQuery(document).ready(function($) {
     var add_li = $('<li class="separator_by"> / </li><li class="item_map_id"><strong class="bread-current">'+addto_breadcrumbs+'</strong></li>');
     add_li.appendTo( $('#breadcrumbs'));
     $('.item-current a').text($('.item-current a strong').text());
-
+  }
   //console.log("profile pages init");
   $.fn.dataTableExt.oApi.fnFilterAll = function (oSettings, sInput, iColumn, bRegex, bSmart) {
    var settings = $.fn.dataTableSettings;
