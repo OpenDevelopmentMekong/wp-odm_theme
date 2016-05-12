@@ -1596,7 +1596,7 @@ function get_datastore_resource($ckan_domain,$resource_id){
   return $profiles["result"]["records"];
 }
 
-function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $atlernative_links = 0, $showing_fields =""){
+function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $individual_layer='', $atlernative_links = 0, $showing_fields =""){
   $lang = CURRENT_LANGUAGE;
 
   $attribute_metadata = array(
@@ -1614,15 +1614,13 @@ function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $atle
 
   // get ckan record by id
   $get_info_from_ckan = get_dataset_by_id($ckan_domain,$ckan_dataset_id);
-  //print_r($get_info_from_ckan);
   ?>
-  <div class="box-shadow layer-toggle-info-container layer-right-screen">
-    <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
     <div class="layer-toggle-info toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
         <table border="0" class="toggle-talbe">
           <tr><td colspan="2"><h5><?php echo $get_info_from_ckan['title_translated'][$lang] ?></h5></td></tr>
           <?php
           if($showing_fields == ""){
+            if($get_info_from_ckan){
               foreach ($get_info_from_ckan as $key => $info) {
                 if($key == 'license_id'){  ?>
                   <tr>
@@ -1637,6 +1635,7 @@ function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $atle
           <?php   }
                 }
               } //end foreach
+            }//if get resource
           }else { //if so fields are defined
             foreach ($showing_fields as $key => $info) {
               if($key == 'license_id'){  ?>
@@ -1645,10 +1644,12 @@ function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $atle
                     <td><?php echo $info == "unspecified"? ucwords($get_info_from_ckan['license_id'] ) : $get_info_from_ckan['license_id']; ?></td>
                 </tr>
             <?php }else{
-            ?>    <tr>
-                      <td><?php echo $showing_fields[$key]; ?></td><td><?php echo is_array($get_info_from_ckan[$key]) ? $get_info_from_ckan[$key][$lang]: $get_info_from_ckan[$key]; ?></td>
-                  </tr>
-        <?php
+                  if($get_info_from_ckan){
+              ?>    <tr>
+                        <td><?php echo $showing_fields[$key]; ?></td>
+                        <td><?php echo is_array($get_info_from_ckan[$key]) ? $get_info_from_ckan[$key][$lang]: $get_info_from_ckan[$key]; ?></td>
+                    </tr>
+        <?php     }
               }
             } //end foreach
           }
@@ -1672,7 +1673,6 @@ function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $atle
         </div><!-- atlernative_links -->
       <?php } //if $atlernative_links ?>
     </div><!--layer-toggle-info-->
-  </div><!--box-shadow layer-toggle-info-container-->
 <?php
 }//end function
 function buildStyledTopTopicListForLaws($lang)
