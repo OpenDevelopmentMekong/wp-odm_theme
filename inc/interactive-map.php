@@ -155,49 +155,8 @@
                                           "odm_completeness" => "Completeness",
                                           "license_id" => "License"
                                       );
-
-                    ?>
-                    <?php if($get_info_from_ckan) { //print_r($get_info_from_ckan); ?>
-                    <?php //echo "I: ".$i ." CKAN OF DATASET ". $individual_layer['ID'] ."<br/>"; ?>
-                      <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
-                            <table border="0" class="toggle-talbe">
-                                <tr><td colspan="2"><h5><?php echo $get_info_from_ckan['title_translated'][$lang] ?></h5></td></tr>
-                                <tr>
-                                    <td><?php echo $showing_fields['notes_translated']; ?></td><td><?php echo $get_info_from_ckan['notes_translated'][$lang]; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $showing_fields['odm_source']; ?></td><td><?php echo $get_info_from_ckan['odm_source']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $showing_fields['odm_date_created']; ?></td><td><?php echo $get_info_from_ckan['odm_date_created']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $showing_fields['odm_completeness']; ?></td><td><?php echo $get_info_from_ckan['odm_completeness'][$lang]; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $showing_fields['license_id']; ?></td>
-                                    <td><?php echo $get_info_from_ckan['license_id'] == "unspecified"? ucwords($get_info_from_ckan['license_id'] ) : $get_info_from_ckan['license_id']; ?></td>
-                                </tr>
-                            </table>
-                            <div class="atlernative_links">
-                            <?php if ($lang != 'en'){ ?>
-                                    <div class="div-button"><a href="<?php echo $individual_layer['download_url_localization']; ?>" target="_blank"><i class="fa fa-arrow-down"></i> <?php _e("Download data", "opendev"); ?></a></div>
-
-                                    <?php if ($individual_layer['profilepage_url_localization']){ ?>
-                                      <div class="div-button"><a href="<?php echo $individual_layer['profilepage_url_localization']; ?>" target="_blank"><i class="fa fa-table"></i> <?php _e("View dataset table", "opendev"); ?></a></div>
-                                    <?php } ?>
-                            <?php }else {  ?>
-                                    <div class="div-button"><a href="<?php echo $individual_layer['download_url']; ?>" target="_blank"><i class="fa fa-arrow-down"></i> <?php _e("Download data", "opendev"); ?></a></div>
-
-                                    <?php if ($individual_layer['profilepage_url']){ ?>
-                                      <div class="div-button"><a href="<?php echo $individual_layer['profilepage_url']; ?>" target="_blank"><i class="fa fa-table"></i> <?php _e("View dataset table", "opendev"); ?></a></div>
-                                    <?php } ?>
-                            <?php } ?>
-                            </div><!-- atlernative_links -->
-                          </div><!--layer-toggle-info-->
-                    <?php }//if download_url available
-              } else if($get_post_content_by_id){
-                //echo "I: ".$i." ID: ".$individual_layer['ID']." HAS CONTENT " . $get_post_content_by_id ."<br/>"; ?>
+                    get_metadata_info_of_dataset_by_id(CKAN_DOMAIN, $ckan_dataset_id, $individual_layer, 1,  $showing_fields);
+              } else if($get_post_content_by_id){ ?>
                         <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
                             <div class="layer-toggle-info-content">
                                 <h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
