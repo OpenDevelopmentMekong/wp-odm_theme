@@ -66,8 +66,12 @@ if( $flexible_posts->have_posts() ):
       ?>
     </div>
      <?php
-     if($post->post_excerpt) the_excerpt();
-     else echo excerpt(20, __('Keep reading', 'opendev'));
+        if($post->post_excerpt){
+          the_excerpt();
+        }
+        else{
+          echo excerpt(20, __('Keep reading', 'opendev'));
+        }
      ?>
    </li>
   <?php endwhile; ?>
