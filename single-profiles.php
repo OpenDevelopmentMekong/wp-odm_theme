@@ -1,13 +1,3 @@
-<?php
-/*
-Template Name: Profile page
-*/
-?>
-
-<?php
-//require_once('page-profiles-config.php');
-?>
-
 <?php get_header(); ?>
 
 <?php if(have_posts()) : the_post(); ?>
