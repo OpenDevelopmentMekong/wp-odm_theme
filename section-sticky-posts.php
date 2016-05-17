@@ -144,8 +144,12 @@
               </header>
               <section class="post-content">
                 <?php
-                   if($post->post_excerpt) the_excerpt();
-                   else echo excerpt(20, __('Keep reading', 'opendev'));
+                   if($post->post_excerpt){
+                     the_excerpt();
+                   }
+                   else{
+                     echo excerpt(20, __('Keep reading', 'opendev'));
+                   }
                 ?>
               </section>
          </div>
