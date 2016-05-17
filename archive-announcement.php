@@ -176,17 +176,15 @@ if (function_exists(qtranxf_getLanguage)){
 									</ul>
 								</div>
 							</li>
-							<!--
 							<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
 								<?php list_category_by_post_type(get_post_type()); ?>
 							</li>
-							-->
 							<?php if ( get_post_type() == 'mekong-storm-flood'){
-												dynamic_sidebar('mekong-storm-flood');
-									  }else{
+																				dynamic_sidebar('mekong-storm-flood');
+																		} else{
 												dynamic_sidebar('general');
-									 	}
-							?>
+																		 }
+															?>
 						</ul>
 					</aside>
 				</div>
