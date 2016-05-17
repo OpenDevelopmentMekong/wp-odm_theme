@@ -1,7 +1,13 @@
 <?php
 get_header();
 
-
+if (function_exists(qtranxf_getLanguage)){
+    if (qtranxf_getLanguage() <> "en") $lang = "_". CURRENT_LANGUAGE; else $lang = "";
+    //Get all languages that is available
+    $languages = qtranxf_getSortedLanguages();
+    $local_language = $languages[1];
+    $local_lang =  "_".$languages[1];
+}	else $lang ="";
 
 $term = $wp_query->queried_object;
 $post_types = get_post_types(array('public' => true));
@@ -192,9 +198,11 @@ foreach($post_types as $pt) {
 						</ul>
 					</div>
 				</li>
+        <!--
 				<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
 					<?php list_category_by_post_type($_GET['post_type']); ?>
 				</li>
+        -->
 				<?php dynamic_sidebar('general'); ?>
 			</ul>
 		</aside>
