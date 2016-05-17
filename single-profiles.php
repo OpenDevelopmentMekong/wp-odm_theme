@@ -327,6 +327,13 @@ $ref_docs_tracking = array();
                                 ?> <?php data_classification_definition( $profile[$key]);  ?></div>
                               </td>
                             <?php
+                            }else if($key == "reference"){?>
+                              <td><div class="td-value"><?php
+                                  $ref_docs_profile = explode(";", $profile["reference"]);
+                                  $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
+                                  list_reference_documents($ref_docs, 1);?></div>
+                              </td>
+                            <?php
                             }else {  ?>
                               <td><div class="td-value"><?php
                                 echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
