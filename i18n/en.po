@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: opendev-wptheme\n"
-"POT-Creation-Date: 2016-05-16 15:30+0200\n"
-"PO-Revision-Date: 2016-05-16 15:33+0200\n"
+"POT-Creation-Date: 2016-05-17 16:09+0200\n"
+"PO-Revision-Date: 2016-05-17 16:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -62,32 +62,32 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: ../archive-announcement.php:100 ../category-announcement.php:126
+#: ../archive-announcement.php:100 ../category-announcement.php:132
 #: ../single-announcement.php:84
 msgid "Download: "
 msgstr ""
 
-#: ../archive-announcement.php:106 ../category-announcement.php:132
+#: ../archive-announcement.php:106 ../category-announcement.php:138
 #: ../single-announcement.php:90
 msgid "English PDF"
 msgstr ""
 
-#: ../archive-announcement.php:111 ../category-announcement.php:137
+#: ../archive-announcement.php:111 ../category-announcement.php:143
 #: ../single-announcement.php:95
 msgid "English PDF not available"
 msgstr ""
 
-#: ../archive-announcement.php:119 ../category-announcement.php:145
+#: ../archive-announcement.php:119 ../category-announcement.php:151
 #: ../single-announcement.php:103
 msgid "Khmer PDF"
 msgstr ""
 
-#: ../archive-announcement.php:124 ../category-announcement.php:150
+#: ../archive-announcement.php:124 ../category-announcement.php:156
 #: ../single-announcement.php:108
 msgid "Khmer PDF not available"
 msgstr ""
 
-#: ../archive-announcement.php:135 ../category-announcement.php:160
+#: ../archive-announcement.php:135 ../category-announcement.php:166
 #: ../functions.php:163 ../loop-latest.php:19 ../loop.php:62
 msgid "Read more"
 msgstr ""
@@ -100,16 +100,17 @@ msgstr ""
 msgid "View all data results"
 msgstr ""
 
-#: ../category-announcement.php:66 ../category.php:63 ../functions.php:551
-#: ../inc/live-search/live-search.php:22
+#: ../category-announcement.php:72 ../category.php:63 ../functions.php:551
+#: ../i18n/extra-strings.php:15 ../inc/live-search/live-search.php:22
+#: extra-strings.php:15
 msgid "News"
 msgstr ""
 
-#: ../category-announcement.php:85 ../category.php:81
+#: ../category-announcement.php:91 ../category.php:81
 msgid "by"
 msgstr ""
 
-#: ../category-announcement.php:170 ../category.php:100
+#: ../category-announcement.php:176 ../category.php:100
 msgid "No results found."
 msgstr ""
 
@@ -121,11 +122,16 @@ msgstr ""
 msgid "View all maps"
 msgstr ""
 
-#: ../flexible-posts-widget/opendev-announcements.php:71
+#: ../flexible-posts-widget/opendev-announcements.php:73
+#: ../section-sticky-posts.php:151
+msgid "Keep reading"
+msgstr ""
+
+#: ../flexible-posts-widget/opendev-announcements.php:78
 msgid "See all"
 msgstr ""
 
-#: ../flexible-posts-widget/opendev-announcements.php:77
+#: ../flexible-posts-widget/opendev-announcements.php:84
 #: ../flexible-posts-widget/opendev-site-updates.php:36
 msgid "No post found"
 msgstr ""
@@ -264,15 +270,16 @@ msgstr ""
 msgid "Topics"
 msgstr ""
 
-#: ../functions.php:561
+#: ../functions.php:561 ../i18n/extra-strings.php:17 extra-strings.php:17
 msgid "Maps"
 msgstr ""
 
-#: ../functions.php:570 ../header.php:144
+#: ../functions.php:570 ../header.php:144 ../i18n/extra-strings.php:18
+#: extra-strings.php:18
 msgid "Data"
 msgstr ""
 
-#: ../functions.php:583
+#: ../functions.php:583 ../i18n/extra-strings.php:10 extra-strings.php:10
 msgid "Latest news"
 msgstr ""
 
@@ -280,7 +287,7 @@ msgstr ""
 msgid "Latest topics"
 msgstr ""
 
-#: ../functions.php:633
+#: ../functions.php:633 ../i18n/extra-strings.php:11 extra-strings.php:11
 msgid "Latest maps"
 msgstr ""
 
@@ -301,7 +308,7 @@ msgid "View dataset table"
 msgstr ""
 
 #: ../functions.php:1804 ../page-profiles-single-page.php:27
-#: ../page-profiles.php:338
+#: ../single-profiles.php:339
 msgid "Not found"
 msgstr ""
 
@@ -384,23 +391,23 @@ msgstr ""
 msgid "Records by country"
 msgstr ""
 
-#: ../header.php:150
+#: ../header.php:150 ../i18n/extra-strings.php:3 extra-strings.php:3
 msgid "Cambodia"
 msgstr ""
 
-#: ../header.php:151
+#: ../header.php:151 ../i18n/extra-strings.php:4 extra-strings.php:4
 msgid "Laos"
 msgstr ""
 
-#: ../header.php:152
+#: ../header.php:152 ../i18n/extra-strings.php:5 extra-strings.php:5
 msgid "Myanmar"
 msgstr ""
 
-#: ../header.php:153
+#: ../header.php:153 ../i18n/extra-strings.php:6 extra-strings.php:6
 msgid "Thailand"
 msgstr ""
 
-#: ../header.php:154
+#: ../header.php:154 ../i18n/extra-strings.php:7 extra-strings.php:7
 msgid "Vietnam"
 msgstr ""
 
@@ -408,16 +415,172 @@ msgstr ""
 msgid "Records by language"
 msgstr ""
 
-#: ../header.php:161
+#: ../header.php:161 ../i18n/extra-strings.php:9 extra-strings.php:9
 msgid "English"
 msgstr ""
 
-#: ../header.php:162
+#: ../header.php:162 ../i18n/extra-strings.php:8 extra-strings.php:8
 msgid "Khmer"
 msgstr ""
 
 #: ../header.php:163
 msgid "Vietnamese"
+msgstr ""
+
+#: ../i18n/extra-strings.php:2 extra-strings.php:2
+msgid "Mekong"
+msgstr ""
+
+#: ../i18n/extra-strings.php:12 extra-strings.php:12
+msgid "Latest issues"
+msgstr ""
+
+#: ../i18n/extra-strings.php:13 extra-strings.php:13
+msgid "Latest data"
+msgstr ""
+
+#: ../i18n/extra-strings.php:14 extra-strings.php:14
+msgid "Briefings"
+msgstr ""
+
+#: ../i18n/extra-strings.php:16 extra-strings.php:16
+msgid "Issues"
+msgstr ""
+
+#: ../i18n/extra-strings.php:19 extra-strings.php:19
+msgid "Share a map"
+msgstr ""
+
+#: ../i18n/extra-strings.php:20 extra-strings.php:20
+msgid "Search for posts, maps and briefings..."
+msgstr ""
+
+#: ../i18n/extra-strings.php:21 extra-strings.php:21
+msgid "Search Datasets for Mekong"
+msgstr ""
+
+#: ../i18n/extra-strings.php:22 extra-strings.php:22
+msgid "Search Datasets for Cambodia"
+msgstr ""
+
+#: ../i18n/extra-strings.php:23 extra-strings.php:23
+msgid "Search Datasets for Laos"
+msgstr ""
+
+#: ../i18n/extra-strings.php:24 extra-strings.php:24
+msgid "Search Datasets for Myanmar"
+msgstr ""
+
+#: ../i18n/extra-strings.php:25 extra-strings.php:25
+msgid "Search Datasets for Thailand"
+msgstr ""
+
+#: ../i18n/extra-strings.php:26 extra-strings.php:26
+msgid "Search Datasets for Vietnam"
+msgstr ""
+
+#: ../i18n/extra-strings.php:27 extra-strings.php:27
+msgid "More information"
+msgstr ""
+
+#: ../i18n/extra-strings.php:28 extra-strings.php:28
+msgid "Announcements and Press releases"
+msgstr ""
+
+#: ../i18n/extra-strings.php:30 extra-strings.php:30
+msgid "Agriculture and fishing"
+msgstr ""
+
+#: ../i18n/extra-strings.php:31 extra-strings.php:31
+msgid "Disasters and emergency response"
+msgstr ""
+
+#: ../i18n/extra-strings.php:32 extra-strings.php:32
+msgid "Environment and natural resources"
+msgstr ""
+
+#: ../i18n/extra-strings.php:33 extra-strings.php:33
+msgid "Extractive industries"
+msgstr ""
+
+#: ../i18n/extra-strings.php:34 extra-strings.php:34
+msgid "Land"
+msgstr ""
+
+#: ../i18n/extra-strings.php:35 extra-strings.php:35
+msgid "Economy and commerce"
+msgstr ""
+
+#: ../i18n/extra-strings.php:36 extra-strings.php:36
+msgid "Energy"
+msgstr ""
+
+#: ../i18n/extra-strings.php:37 extra-strings.php:37
+msgid "Infrastructure"
+msgstr ""
+
+#: ../i18n/extra-strings.php:38 extra-strings.php:38
+msgid "Industry"
+msgstr ""
+
+#: ../i18n/extra-strings.php:39 extra-strings.php:39
+msgid "Labor"
+msgstr ""
+
+#: ../i18n/extra-strings.php:40 extra-strings.php:40
+msgid "Science and technology"
+msgstr ""
+
+#: ../i18n/extra-strings.php:41 extra-strings.php:41
+msgid "Aid and development"
+msgstr ""
+
+#: ../i18n/extra-strings.php:42 extra-strings.php:42
+msgid "Government"
+msgstr ""
+
+#: ../i18n/extra-strings.php:43 extra-strings.php:43
+msgid "Law and judiciary"
+msgstr ""
+
+#: ../i18n/extra-strings.php:44 extra-strings.php:44
+msgid "Population and censuses"
+msgstr ""
+
+#: ../i18n/extra-strings.php:45 extra-strings.php:45
+msgid "Social development"
+msgstr ""
+
+#: ../i18n/extra-strings.php:46 extra-strings.php:46
+msgid "Urban administration and development"
+msgstr ""
+
+#: ../i18n/extra-strings.php:48 extra-strings.php:48
+msgid ""
+"This work and any original materials produced and published by Open "
+"Development {country} herein are licensed under a CC BY-SA 3.0. News article "
+"summaries are extracted from their sources, as guided by fair-use principles "
+"and are copyrighted by their respective sources. Materials on the Open "
+"Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database "
+"are compiled from publicly available documentation and provided without fee "
+"for general informational purposes only. This is neither a commercial "
+"research service nor a domain managed by any governmental or inter-"
+"governmental agency; it is managed as a private non-profit open data/open "
+"knowledge media group. Information is publicly posted only after a careful "
+"vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee "
+"accuracy, completeness or reliability from third party sources in every "
+"instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either "
+"expressed or implied, in fact or in law, with respect to the accuracy, "
+"completeness or appropriateness of the data, materials or documents "
+"contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their "
+"activities and to share the results of that research with our team, contact "
+"us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take "
+"full responsibility for reliance on any site information provided and to "
+"hold harmless and waive any and all liability against individuals or "
+"entities associated with its development, form and content for any loss, "
+"harm or damage suffered as a result of its use."
 msgstr ""
 
 #: ../inc/advanced-navigation.php:126
@@ -1715,7 +1878,7 @@ msgid "Promulgation date"
 msgstr ""
 
 #: ../page-laws.php:66 ../page-pdf-view.php:23 ../page-pdf-view.php:26
-#: ../page-profiles.php:203 ../section-query-actions.php:25
+#: ../section-query-actions.php:25 ../single-profiles.php:197
 msgid "Download"
 msgstr ""
 
@@ -1823,53 +1986,6 @@ msgstr ""
 msgid "Reference documents"
 msgstr ""
 
-#: ../page-profiles.php:130 ../page-profiles.php:132 ../page-profiles.php:170
-#: ../page-profiles.php:172
-msgid "Total"
-msgstr ""
-
-#: ../page-profiles.php:130 ../page-profiles.php:132 ../page-profiles.php:170
-#: ../page-profiles.php:172
-msgid "Listed"
-msgstr ""
-
-#: ../page-profiles.php:130 ../page-profiles.php:132 ../page-profiles.php:160
-#: ../page-profiles.php:170 ../page-profiles.php:172
-msgid ":"
-msgstr ""
-
-#: ../page-profiles.php:193
-msgid "Search"
-msgstr ""
-
-#: ../page-profiles.php:196
-msgid "Search data in profile page"
-msgstr ""
-
-#: ../page-profiles.php:267
-msgid "View metadata of dataset"
-msgstr ""
-
-#: ../page-profiles.php:279
-msgid "Related profile pages"
-msgstr ""
-
-#: ../page-profiles.php:301
-msgid "Filter by"
-msgstr ""
-
-#: ../page-profiles.php:306
-msgid "Map ID"
-msgstr ""
-
-#: ../page-profiles.php:556
-msgid "all"
-msgstr ""
-
-#: ../page-profiles.php:561
-msgid "All "
-msgstr ""
-
 #: ../search.php:6
 msgid "Search results"
 msgstr ""
@@ -1922,10 +2038,6 @@ msgstr ""
 msgid "Hide resources details"
 msgstr ""
 
-#: ../section-sticky-posts.php:148
-msgid "Keep reading"
-msgstr ""
-
 #: ../single-announcement.php:69 ../single-announcement.php:72
 #: ../single.php:41 ../single.php:44
 msgid "Summary translated by ODC Team"
@@ -1941,4 +2053,52 @@ msgstr ""
 
 #: ../single-map.php:32
 msgid "Latest articles on"
+msgstr ""
+
+#: ../single-profiles.php:124 ../single-profiles.php:126
+#: ../single-profiles.php:164 ../single-profiles.php:166
+msgid "Total"
+msgstr ""
+
+#: ../single-profiles.php:124 ../single-profiles.php:126
+#: ../single-profiles.php:164 ../single-profiles.php:166
+msgid "Listed"
+msgstr ""
+
+#: ../single-profiles.php:124 ../single-profiles.php:126
+#: ../single-profiles.php:154 ../single-profiles.php:164
+#: ../single-profiles.php:166
+msgid ":"
+msgstr ""
+
+#: ../single-profiles.php:187
+msgid "Search"
+msgstr ""
+
+#: ../single-profiles.php:190
+msgid "Search data in profile page"
+msgstr ""
+
+#: ../single-profiles.php:261
+msgid "View metadata of dataset"
+msgstr ""
+
+#: ../single-profiles.php:273
+msgid "Related profile pages"
+msgstr ""
+
+#: ../single-profiles.php:295
+msgid "Filter by"
+msgstr ""
+
+#: ../single-profiles.php:300
+msgid "Map ID"
+msgstr ""
+
+#: ../single-profiles.php:557
+msgid "all"
+msgstr ""
+
+#: ../single-profiles.php:562
+msgid "All "
 msgstr ""
