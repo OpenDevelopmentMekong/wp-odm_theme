@@ -7,7 +7,24 @@
 }
 
 #profiles_map .cartodb-legend {
-  margin: 10px;
+  margin: 5px 10px;
+  padding: 10px 5px;
+}
+#profiles_map .cartodb-legend .legend-title{
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+#profiles_map .cartodb-legend ul{
+  margin-left: 0;
+}
+#profiles_map .cartodb-legend ul li{
+  list-style-type: none;
+  line-height: 13px;
+  display: inline-table;
+  margin: 2px 0;
+}
+#profiles_map .cartodb-legend ul li div.bullet{
+  margin-top: 3px;
 }
 #profiles {
   width: 92% !important;
