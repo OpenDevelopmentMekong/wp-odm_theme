@@ -2,7 +2,7 @@
 
 <?php if(have_posts()) : the_post(); ?>
 <?php
-if (function_exists(qtranxf_getLanguage)){
+if (function_exists('qtranxf_getLanguage')){
     if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
     //Get all languages that is available
     $languages = qtranxf_getSortedLanguages();
