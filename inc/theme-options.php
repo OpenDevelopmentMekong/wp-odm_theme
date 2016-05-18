@@ -96,6 +96,14 @@ class OpenDev_Options
   );
 
         add_settings_field(
+    'opendev_notice_message',
+    __('Notice Message appear above the slider', 'opendev'),
+    array($this, 'notice_message_field'),
+    'opendev_options',
+    'opendev_style_section'
+  );
+
+        add_settings_field(
    'opendev_frontpage_slider_id',
    __('Frontpage slider id', 'opendev'),
    array($this, 'frontpage_slider_id_field'),
@@ -190,6 +198,14 @@ class OpenDev_Options
       <?php
 
     }
+
+    function notice_message_field() {
+      $notice_message = $this->options['notice_message'];
+      ?>
+      <textarea id="opendev_notice_message" name="opendev_options[notice_message]" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
+      <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'opendev'); ?></i>
+      <?php
+   }
 
     public function frontpage_slider_id_field()
     {
