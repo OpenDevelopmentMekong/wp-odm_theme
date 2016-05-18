@@ -1,14 +1,20 @@
 <?php get_header(); ?>
 
-<?php if(have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post(); ?>
 <?php
-if (function_exists('qtranxf_getLanguage')){
-    if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
+if (function_exists('qtranxf_getLanguage')) {
+    if (qtranxf_getLanguage() != 'en') {
+        $lang = '_'.qtranxf_getLanguage();
+    } else {
+        $lang = '';
+    }
     //Get all languages that is available
     $languages = qtranxf_getSortedLanguages();
     $local_language = $languages[1];
-    $local_lang =  "_".$languages[1];
-}else $lang ="";
+    $local_lang = '_'.$languages[1];
+} else {
+    $lang = '';
+}
 ?>
 	<article id="content" class="single-post">
 			<div class="container">
@@ -18,73 +24,104 @@ if (function_exists('qtranxf_getLanguage')){
     					 <?php show_date_and_source_of_the_post(); ?>
 
     					<div class="categories">
-    						  <span class="lsf">&#9776;</span> <?php echo __( 'Filed under:', 'jeo' ); ?> <?php the_category(); ?>
+    						  <span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
     					</div>
 		            </header>
 
 					<?php get_template_part('section', 'related-datasets'); ?>
             		<section class="content section-content">
     					<?php
-    					if(jeo_has_marker_location()) {
-    						?>
+                        if (jeo_has_marker_location()) {
+                            ?>
     						<section id="featured-media" class="row">
     							<div style="height:350px;">
-    								<?php jeo_map(); ?>
+    								<?php jeo_map();
+                            ?>
     							</div>
     						</section>
     						<?php
-    					}
-    					?>
+
+                        }
+                        ?>
     					<?php
-              if (function_exists(qtranxf_getLanguage)){
-                  if ((qtranxf_getLanguage() == "en") && (has_term('english-translated','language'))){ ?>
-                      <p class="translated-by-odc"><strong><?php _e("Summary translated by ODC Team"); ?></strong></p>
-                  <?php } ?>
-                  <?php if ((qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated','language'))){ ?>
-                      <p class="translated-by-odc"><strong><?php _e("Summary translated by ODC Team"); ?></strong></p>
-                  <?php } ?>
-              <?php } ?>
+              if (function_exists('qtranxf_getLanguage')) {
+                  if ((qtranxf_getLanguage() == 'en') && (has_term('english-translated', 'language'))) {
+                      ?>
+                      <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');
+                      ?></strong></p>
+                  <?php
+                  }
+                  ?>
+                  <?php if ((qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated', 'language'))) {
+    ?>
+                      <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');
+    ?></strong></p>
+                  <?php
+}
+                  ?>
+              <?php
+              } ?>
     					<?php the_content(); ?>
 
               <!-- News Source: author and link -->
               <?php
-              if (function_exists(qtranxf_getLanguage)){
-                  if (qtranxf_getLanguage() <> "en") $lang = "_". qtranxf_getLanguage(); else $lang = "";
+              if (function_exists('qtranxf_getLanguage')) {
+                  if (qtranxf_getLanguage() != 'en') {
+                      $lang = '_'.qtranxf_getLanguage();
+                  } else {
+                      $lang = '';
+                  }
               }
               //Get author
-              if (get('author')=="" && get('author'.$lang)==""){
-                  echo "";
-              }else{
-                  $news_source_info = '<span class="lsf">&#xE041;</span> ';
-                  if (get('author'.$lang)!= "") $news_source_info .= get('author'.$lang)."<br />" ; else $news_source_info .= get('author')."<br />"; ?>
-        <?php }
-              //Get url
-              if (get('article_link')=="" && get('article_link'.$lang)==""){
-                  echo "";
-              }else{
-                  if (get('article_link'.$lang)!= "") $source = get('article_link'.$lang); else $source = get('article_link');
-
-              if($source !=""){
-      					if(substr($source, 0, 7)!= "http://") {
-                              $news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
-                          }else{
-                              $news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
-                          }
-          		   }
+              if (function_exists('get')) {
+                  if (get('author') == '' && get('author'.$lang) == '') {
+                      echo '';
+                  } else {
+                      $news_source_info = '<span class="lsf">&#xE041;</span> ';
+                      if (get('author'.$lang) != '') {
+                          $news_source_info .= get('author'.$lang).'<br />';
+                      } else {
+                          $news_source_info .= get('author').'<br />';
+                      }
+                  }
               }
-              if ($news_source_info!="") echo "<p>".$news_source_info."</p>";
+             ?>
+        <?php
+              if (function_exists('get')) {
+                  //Get url
+                if (get('article_link') == '' && get('article_link'.$lang) == '') {
+                    echo '';
+                } else {
+                    if (get('article_link'.$lang) != '') {
+                        $source = get('article_link'.$lang);
+                    } else {
+                        $source = get('article_link');
+                    }
+                }
+
+                  if ($source != '') {
+                      if (substr($source, 0, 7) != 'http://') {
+                          $news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+                      } else {
+                          $news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+                      }
+                  }
+              }
+              if (isset($news_source_info) && $news_source_info != '') {
+                  echo '<p>'.$news_source_info.'</p>';
+              }
               ?>
     					<div class="post-tags">
-    						  <span class="lsf">&#xE128;</span> <?php echo __( 'Tags:', 'opendev' ); ?> <?php the_tags('',''); ?>
+    						  <span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
     					</div>
     					<?php
-    					wp_link_pages( array(
-    						'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jeo' ) . '</span>',
-    						'after'       => '</div>',
-    						'link_before' => '<span>',
-    						'link_after'  => '</span>',
-    					) );
-    					?>
+                        wp_link_pages(array(
+                            'before' => '<div class="page-links"><span class="page-links-title">'.__('Pages:', 'jeo').'</span>',
+                            'after' => '</div>',
+                            'link_before' => '<span>',
+                            'link_after' => '</span>',
+                        ));
+                        ?>
 
     					<?php //comments_template(); ?>
             		</section>
@@ -96,7 +133,7 @@ if (function_exists('qtranxf_getLanguage')){
             								<div class="share clearfix">
             									<ul>
                                 <li>
-                  								<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
+                  								<div class="fb-share-button" data-href="<?php echo get_permalink($post->ID)?>" data-send="false" data-layout="button" data-show-faces="false"></div>
                   							</li>
                   							<li>
                   								<div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>

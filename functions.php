@@ -1330,7 +1330,7 @@ function show_date_and_source_of_the_post(){ ?>
   <div class="date">
      <span class="lsf">&#xE12b;</span>
        <?php
-       if (function_exists(qtrans_getLanguage)){
+       if (function_exists('qtrans_getLanguage')){
           if (qtrans_getLanguage() =="kh" || qtrans_getLanguage() =="km"){
             echo convert_date_to_kh_date(get_the_time('j.M.Y'));
           }else {
@@ -1342,7 +1342,7 @@ function show_date_and_source_of_the_post(){ ?>
   </div>
   &nbsp;
   <?php
-  if (taxonomy_exists('news_source')){
+  if (taxonomy_exists('news_source') && isset($post)){
       echo '<div class="news-source">';
       $terms_news_source = get_the_terms( $post->ID, 'news_source' );
           if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
