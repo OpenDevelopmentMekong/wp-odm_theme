@@ -33,12 +33,6 @@ require_once STYLESHEETPATH.'/inc/category-widget.php';
 // Category widget
 require_once STYLESHEETPATH.'/inc/odm-taxonomy-widget.php';
 
-// Related resources
-require_once STYLESHEETPATH.'/inc/related-resources-widget.php';
-
-// Query resources
-require_once STYLESHEETPATH.'/inc/query-resources-widget.php';
-
 // Related recent news
 require_once STYLESHEETPATH.'/inc/od-related-recent-news-widget.php';
 
