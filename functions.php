@@ -1936,6 +1936,7 @@ function convert_to_kh_number($number) {
     		else if ($num=="7"){	$kh_num =  "៧";	}
     		else if ($num=="8"){	$kh_num =  "៨";	}
     		else if ($num=="9"){	$kh_num =  "៩";	}
+    		else { $kh_num =  $num;	}
 
     	$conbine_num .= $kh_num;
     	}

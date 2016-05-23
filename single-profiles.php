@@ -334,9 +334,30 @@ $ref_docs_tracking = array();
                                   list_reference_documents($ref_docs, 1);?></div>
                               </td>
                             <?php
-                            }else {  ?>
+                          }else if($key == "issuedate"){?>
+                            <td><div class="td-value"><?php
+                                $issuedate = str_replace("T00:00:00", "", $profile[$key]);
+                              echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($issuedate));
+                              ?></div>
+                            </td>
+                          <?php
+                            }else {
+                                if(CURRENT_LANGUAGE =="km"){
+                                  if (is_numeric($profile[$key])) {
+                                    $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile[$key], 2, '.', ',')));
+                                  }else {
+                                    $profile_value = $profile[$key];
+                                  }
+                                }else {
+                                  if (is_numeric($profile[$key])) {
+                                    $profile_value = str_replace(".00", "", number_format($profile[$key], 2, '.', ','));
+                                  }else {
+                                    $profile_value = $profile[$key];
+                                  }
+                                }
+                            ?>
                               <td><div class="td-value"><?php
-                                echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile[$key]));
+                                echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile_value));
                                 ?></div>
                               </td>
                             <?php
