@@ -24,7 +24,23 @@
               <tr>
               <td class="row-key"><?php _e( $DATASET_ATTRIBUTE[$key], "opendev" ); ?></td>
                 <td><?php
-                    echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", $profile[$key]);
+                    $profile_val = str_replace("T00:00:00", "", $profile[$key]);
+                    if(CURRENT_LANGUAGE =="km"){
+                      if (is_numeric($profile_val)) {
+                        $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile_val, 2, '.', ',')));
+                      }else {
+                        $profile_value = $profile_val;
+                      }
+                    }else {
+                      if (is_numeric($profile_val)) {
+                        $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
+                      }else {
+                        $profile_value = $profile_val;
+                      }
+                    }
+
+                    echo $profile_value == ""? __("Not found", "opendev"): str_replace(";", "<br/>", $profile_value);
+                    
                     if(in_array($key, array("data_class", "adjustment_classification", "adjustment")))
                       data_classification_definition( $profile[$key]);
                 ?>
