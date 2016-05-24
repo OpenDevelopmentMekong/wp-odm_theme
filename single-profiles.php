@@ -342,19 +342,22 @@ $ref_docs_tracking = array();
                             </td>
                           <?php
                             }else {
+                                $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                                 if(CURRENT_LANGUAGE =="km"){
-                                  if (is_numeric($profile[$key])) {
-                                    $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile[$key], 2, '.', ',')));
+                                  if (is_numeric($profile_val)) {
+                                    $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile_val, 2, '.', ',')));
                                   }else {
-                                    $profile_value = $profile[$key];
+                                    $profile_value = $profile_val;
                                   }
                                 }else {
-                                  if (is_numeric($profile[$key])) {
-                                    $profile_value = str_replace(".00", "", number_format($profile[$key], 2, '.', ','));
+                                  if (is_numeric($profile_val)) {
+                                    $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
                                   }else {
-                                    $profile_value = $profile[$key];
+                                    $profile_value = $profile_val;
                                   }
                                 }
+
+                                $profile_value = str_replace(";", "<br/>", trim($profile_value));
                             ?>
                               <td><div class="td-value"><?php
                                 echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile_value));
