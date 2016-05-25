@@ -2719,3 +2719,10 @@ div.cartodb-legend.custom ul li.graph{
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
   background: #292d56!important;
 }
+.dataTables_wrapper table.tablepress thead th{
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+.dataTables_wrapper table.tablepress tbody td{
+  font-size: 14px !important;
+}
