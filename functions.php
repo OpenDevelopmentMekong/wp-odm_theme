@@ -48,6 +48,9 @@ require_once STYLESHEETPATH.'/inc/advanced-navigation.php';
 // Advanced nav
 require_once STYLESHEETPATH.'/inc/category-walker.php';
 
+// Datastore API functions
+require_once STYLESHEETPATH.'/inc/datastore_api.php';
+
 $country_name = str_replace('Open Development ', '', get_bloginfo('name'));
 define('COUNTRY_NAME', strtolower($country_name));
 define('SITE_NAME', $country_name);
@@ -1575,22 +1578,6 @@ function get_datasets_filter($ckan_domain,$key,$value){
   if ($json === FALSE) return [];
   $datasets = json_decode($json, true) ?: [];
   return $datasets["result"]["results"];
-}
-
-function get_datastore_resources_filter($ckan_domain,$resource_id,$key,$value){
-  $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000&filters={\"" . $key . "\":\"" . $value . "\"}";
-  $json = @file_get_contents($datastore_url);
-  if ($json === FALSE) return [];
-  $profiles = json_decode($json, true) ?: [];
-  return $profiles["result"]["records"];
-}
-
-function get_datastore_resource($ckan_domain,$resource_id){
-  $datastore_url = $ckan_domain . "/api/3/action/datastore_search?resource_id=" . $resource_id . "&limit=1000";
-  $json = @file_get_contents($datastore_url);
-  if ($json === FALSE) return [];
-  $profiles = json_decode($json, true) ?: [];
-  return $profiles["result"]["records"];
 }
 
 function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $individual_layer='', $atlernative_links = 0, $showing_fields =""){
