@@ -295,7 +295,7 @@ body.page-template-page-map-explorer{overflow: hidden;}
   display: none
 }
 .map-legend-container{
-  width: 250px;
+  width: 265px;
   max-height: 350px;
   position: absolute;
   bottom: 0;
@@ -318,13 +318,14 @@ body.page-template-page-map-explorer{overflow: hidden;}
     background: #eee;
 }
 .map-legend-ul{
-    margin-right: 0;
-    margin-bottom: 0;
-    padding: 0 5px 0 15px;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 0 0 0 15px;
+  width: 230px;
 }
 .map-legend-ul li{
     margin-bottom: 0;
-    padding: 5px 0
+    padding: 5px 0;
 }
 .color-line{
   border: #6393D2 solid 1px;
