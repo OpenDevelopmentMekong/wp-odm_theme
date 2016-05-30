@@ -99,7 +99,7 @@ if (function_exists('qtranxf_getLanguage')) {
                     }
                 }
 
-                  if ($source != '') {
+                  if (isset($source) && $source != '') {
                       if (substr($source, 0, 7) != 'http://') {
                           $news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
                       } else {
