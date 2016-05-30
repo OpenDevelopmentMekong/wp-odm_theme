@@ -341,7 +341,18 @@ $ref_docs_tracking = array();
                               ?></div>
                             </td>
                           <?php
+                        }else if(in_array($key, array("cdc_num", "sub-decree", "year"))) {
+                            if(CURRENT_LANGUAGE =="km"){
+                                $profile_value = convert_to_kh_number($profile[$key]);
                             }else {
+                                $profile_value = $profile[$key];
+                            }  ?>
+                            <td><div class="td-value"><?php
+                              echo $profile_value == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile_value));
+                              ?></div>
+                            </td>
+                        <?php
+                        }else {
                                 $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                                 if(CURRENT_LANGUAGE =="km"){
                                   if (is_numeric($profile_val)) {
