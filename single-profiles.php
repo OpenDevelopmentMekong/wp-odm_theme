@@ -358,13 +358,13 @@ $ref_docs_tracking = array();
                                 if (is_numeric($profile_val)) {
                                     $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile_val, 2, '.', ',')));
                                 }else{
-                                    $profile_val = str_replace("__"," ", $profile_val);
+                                    $profile_value = str_replace("__"," ", $profile_val);
                                 }
                             }else{
                                 if (is_numeric($profile_val)) {
                                     $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
                                 }else{
-                                    $profile_val = str_replace("__",", ",$profile_val);
+                                    $profile_value = str_replace("__",", ",$profile_val);
                                 }
                             }
 
