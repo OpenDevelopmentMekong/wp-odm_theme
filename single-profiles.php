@@ -315,49 +315,60 @@ $ref_docs_tracking = array();
                     <?php
                       foreach ($DATASET_ATTRIBUTE as $key => $value): ?>
                         <?php
-                            if (in_array($key, array("developer", "name", "block") )) { ?>
+                        if (in_array($key, array("developer", "name", "block") )) { ?>
                               <td class="entry_title"><div class="td-value">
                                   <a href="?map_id=<?php echo $profile["map_id"];?>"><?php echo $profile[$key];?></a></div>
                               </td>
                             <?php
-                            }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
+                        }else if (in_array($key, array("data_class", "adjustment_classification", "adjustment") ) ){ ?>
           										<td><div class="td-value"><?php
                                 if($lang == "en") echo ucwords(trim($profile[$key]));
                                 else echo trim($profile[$key]);
                                 ?> <?php data_classification_definition( $profile[$key]);  ?></div>
                               </td>
                             <?php
-                            }else if($key == "reference"){?>
+                        }else if($key == "reference"){?>
                               <td><div class="td-value"><?php
                                   $ref_docs_profile = explode(";", $profile["reference"]);
                                   $ref_docs = array_merge($ref_docs_profile,$ref_docs_tracking);
                                   list_reference_documents($ref_docs, 1);?></div>
                               </td>
                             <?php
-                          }else if($key == "issuedate"){?>
+                        }else if($key == "issuedate"){?>
                             <td><div class="td-value"><?php
                                 $issuedate = str_replace("T00:00:00", "", $profile[$key]);
                               echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($issuedate));
                               ?></div>
                             </td>
                           <?php
+                        }else if(in_array($key, array("cdc_num", "sub-decree", "year"))) {
+                            if(CURRENT_LANGUAGE =="km"){
+                                $profile_value = convert_to_kh_number($profile[$key]);
                             }else {
-                                $profile_val = str_replace("T00:00:00", "", $profile[$key]);
-                                if(CURRENT_LANGUAGE =="km"){
-                                  if (is_numeric($profile_val)) {
+                                $profile_value = $profile[$key];
+                            }  ?>
+                            <td><div class="td-value"><?php
+                              echo $profile_value == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile_value));
+                              ?></div>
+                            </td>
+                        <?php
+                        }else{
+                            $profile_val = str_replace("T00:00:00", "", $profile[$key]);
+                            if(CURRENT_LANGUAGE =="km"){
+                                if (is_numeric($profile_val)) {
                                     $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile_val, 2, '.', ',')));
-                                  }else {
-                                    $profile_value = $profile_val;
-                                  }
-                                }else {
-                                  if (is_numeric($profile_val)) {
-                                    $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
-                                  }else {
-                                    $profile_value = $profile_val;
-                                  }
+                                }else{
+                                    $profile_value = str_replace("__"," ", $profile_val);
                                 }
+                            }else{
+                                if (is_numeric($profile_val)) {
+                                    $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
+                                }else{
+                                    $profile_value = str_replace("__",", ",$profile_val);
+                                }
+                            }
 
-                                $profile_value = str_replace(";", "<br/>", trim($profile_value));
+                            $profile_value = str_replace(";", "<br/>", trim($profile_value));
                             ?>
                               <td><div class="td-value"><?php
                                 echo $profile[$key] == ""? __("Not found", "opendev"): str_replace(";", "<br/>", trim($profile_value));
