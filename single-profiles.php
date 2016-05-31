@@ -355,18 +355,16 @@ $ref_docs_tracking = array();
                         }else{
                             $profile_val = str_replace("T00:00:00", "", $profile[$key]);
                             if(CURRENT_LANGUAGE =="km"){
-                                $profile_val = str_replace("__"," ",$profile[$key]);
                                 if (is_numeric($profile_val)) {
                                     $profile_value = convert_to_kh_number(str_replace(".00", "", number_format($profile_val, 2, '.', ',')));
                                 }else{
-                                    $profile_value = $profile_val;
+                                    $profile_val = str_replace("__"," ", $profile_val);
                                 }
                             }else{
-                                $profile_val = str_replace("__",", ",$profile[$key]);
                                 if (is_numeric($profile_val)) {
                                     $profile_value = str_replace(".00", "", number_format($profile_val, 2, '.', ','));
                                 }else{
-                                    $profile_value = $profile_val;
+                                    $profile_val = str_replace("__",", ",$profile_val);
                                 }
                             }
 
