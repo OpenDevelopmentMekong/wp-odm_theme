@@ -1,5 +1,7 @@
 var jeo = {};
 var globalmap;
+var overlayers = [];
+var overlayers_cartodb = [];
 var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
 detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
@@ -104,7 +106,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    map.postID = conf.postID;
 
   // layers
-  //jeo.loadLayers(map, jeo.parseLayers(map, conf.layers));
+  var default_maplayer = conf.layers[0];
+  jeo.loadLayers(map, jeo.parse_layer(map, default_maplayer));
 
   // set bounds
   if(conf.fitBounds instanceof L.LatLngBounds)
@@ -146,8 +149,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   /*
    * Filter layers
    */
-  if(map.conf.filteringLayers)
-   map.addControl(new jeo.filterLayers());
+  //if(map.conf.filteringLayers)
+   //map.addControl(new jeo.filterLayers());
 
 
      /*
@@ -172,249 +175,271 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   return map;
  }
 
+  jeo.create_layer_by_maptype = function (map, layer){
+    if(layer.type == 'cartodb' && layer.cartodb_type == 'viz') {
+        //alert(layer.wms_layer_name_localization);
+        if(detect_lang_site == "en-US"){
+          var cartodb_layers = null;
+          var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true })
+                              .on('done', function(lay) {
+                              })
+                              .on('error', function(err) {
+                                alert("some error occurred: " + err);
+                              });
+        }else{
+          var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url_localization, {legends: false, https: true });
+        }
+
+       if(layer.legend) {
+        pLayer._legend = layer.legend;
+       }
+
+    } else if(layer.type == 'mapbox') {
+       var pLayer = L.mapbox.tileLayer(layer.mapbox_id);
+
+       if(layer.legend) {
+        pLayer._legend = layer.legend;
+       }
+       //parsedLayers.push(L.mapbox.gridLayer(layer.mapbox_id));
+    } else if(layer.type == 'tilelayer') {
+         var options = {};
+         if(layer.tms)
+          options.tms = true;
+
+         var pLayer = L.tileLayer(layer.tile_url, options);
+         if(layer.legend) {
+          pLayer._legend = layer.legend;
+         }
+
+         if(typeof(layer.ID) == 'undefined'){
+           layer.ID = 0;
+         }
+
+        if(layer.utfgrid_url && layer.utfgrid_template) {
+              parsedLayers.push(L.mapbox.gridLayer({
+               "name": layer.title,
+               "tilejson": "2.0.0",
+               "scheme": "xyz",
+               "template": layer.utfgrid_template,
+               "grids": [layer.utfgrid_url.replace('{s}', 'a')]
+              }));
+
+         }
+
+    //end else if(layer.type == 'tilelayer') //H.E
+    }else if(layer.type == 'wmslayer') {
+         if(layer.wms_transparent)
+          var transparent = true;
+
+         if(layer.wms_format)
+             var wms_format = layer.wms_format;
+         else
+             var wms_format = 'image/png';
+
+         var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
+             //geoserver_URL = spited_wms_tile_url[0]+"/"; for sample test 2
+             geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
+             //alert(layer.wms_layer_name_localization);
+             if(detect_lang_site == "en-US"){
+                  layer_name = layer.wms_layer_name;
+             }else{
+                  layer_name = layer.wms_layer_name_localization;
+             }
+
+
+         var options = {
+             layers: layer_name,
+             version: '1.1.0',
+             transparent: transparent,
+             //pointerCursor: true,
+             format: wms_format,
+             crs: L.CRS.EPSG4326,
+             tiled:true
+             };
+         //geoserver_URL = "https://geoserver.opendevelopmentmekong.net/geoserver/wms";
+         var pLayer = L.tileLayer.betterWms(geoserver_URL, options);
+         //var pLayer = L.tileLayer.wms(geoserver_URL, options);
+
+             /* var defaultParameters = {
+                 service: 'WFS',
+                 version: '1.0.0',
+                 request: 'GetFeature',
+                // bbox: this._map.getBounds().toBBoxString(),
+                 typeName : 'Testing:Test_mining',
+                 outputFormat : 'text/javascript',
+                 typeName : layer_name,
+                 format_options : 'callback:getJson',
+                 SrsName : 'EPSG:4326'
+             };
+             var parameters = L.Util.extend(defaultParameters);
+             var URL = geoserver_URL + L.Util.getParamString(parameters); */
+             //console.log(URL);
+
+             /*var WFSLayer = null;
+             var ajax = $.ajax({
+                 url : URL,
+                 dataType : 'jsonp',
+                 jsonpCallback : 'getJson',
+                 success : function (response) {
+                     WFSLayer = L.geoJson(response, {
+                         style: function (feature) {
+                             return {
+                                 stroke: false,
+                                 fillColor: 'FFFFFF',
+                                 fillOpacity: 0
+                             };
+                         },
+                         pointToLayer: function(feature, latlng) {
+                             return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
+                         },
+                         onEachFeature: function (feature, layer) {
+                             popupOptions = {maxWidth: 400, maxHeight:200};
+                             var content = "";
+                             var count_properties = 0;
+                             var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
+                             for (var name in feature.properties) {
+                                 if ( $.inArray(name, exclude) == -1 ) {
+                                     var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
+                                     var field_value = feature.properties[name] ;
+                                     //if (field_value == "") field_value = "Not found";  //How about Khmer?
+                                     if (name != "map_id"){
+                                         if (count_properties == 1)
+                                              content = content + "<h5>"  + field_value + " </h5>";
+                                         else{
+                                             // Set the regex string
+                                              var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
+                                             // Replace plain text links by hyperlinks
+                                             if (regexp.test(field_value)){
+                                                 var field_url_value = field_value.split(";");
+                                                 console.log(field_url_value.length);
+                                                 var url_doc = "";
+                                                 for(var url =0; url < field_url_value.length; url++ ){
+                                                      url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
+                                                 }
+                                                 field_value = url_doc;
+                                             }
+
+                                             content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
+                                         }
+
+                                     }
+                                     count_properties= count_properties + 1;
+                                 }//if exclude
+                             }; //for
+                             layer.bindPopup(content ,popupOptions);
+                             layer.on({
+                                 mouseover: function highlightFeature(e) {
+                                     var layer = e.target;
+
+                                     if (feature.geometry.type != "Point"){
+                                         layer.setStyle({
+                                             //fillColor: "yellow",
+                                             stroke: true,
+                                             color: "orange",
+                                             weight: 2,
+                                             opacity: 0.7,
+                                             fillOpacity: 0.2
+                                         });
+                                     }else {
+                                         layer.setStyle({
+                                             stroke: true,
+                                             color: "orange",
+                                             radius: 5,
+                                             weight: 4,
+                                             opacity: 0.7,
+                                             fillOpacity: 0.2
+                                         });
+                                     }
+
+                                     if (!L.Browser.ie && !L.Browser.opera) {
+                                         layer.bringToFront();
+                                     }
+                                 },
+                                 mouseout: function resetHighlight(e) {
+                                         WFSLayer.resetStyle(e.target);
+                                         //info.update();
+                                 }
+                             });
+                         }
+                     }).addTo(map);
+                     //map.fitBounds(WFSLayer.getBounds());
+                     }
+                 });*/ //var ajax = $.ajax
+
+         if(layer.legend) {
+              pLayer._legend = layer.legend;
+         } else {
+              pLayer._legend = '<img src="'+geoserver_URL+'?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=30&HEIGHT=25&LAYER='+layer_name+'&legend_options=fontName:Times%20New%20Roman;fontAntiAliasing:true" alt = "Legend"></img>';
+         }
+    }//else
+    // End H.E
+   return pLayer;
+  }//end function
+
+  jeo.toggle_layers = function(map, layer ) {
+     if(map.hasLayer(overlayers["layer_"+ layer.ID]) ) {
+          map.removeLayer(overlayers["layer_"+ layer.ID]);
+            $("#post-"+ layer.ID).removeClass('loading');
+            $("#post-"+ layer.ID).toggleClass('active');
+     } else if( layer.ID in overlayers_cartodb ) {
+         overlayers_cartodb[layer.ID].toggle();
+         overlayers_cartodb[layer.ID].bringToFront();
+           $("#post-"+ layer.ID).removeClass('loading');
+           $("#post-"+ layer.ID).toggleClass('active');
+     }else {
+         overlayers["layer_"+ layer.ID] = jeo.parse_layer(map, layer);
+         if (layer.type == "cartodb" ){
+           overlayers["layer_"+ layer.ID].addTo(map).on('done', function(lay) {
+                 overlayers_cartodb[layer.ID]= lay;
+                 setTimeout(function() {
+                     $("#post-"+ layer.ID).removeClass('loading');
+                     $("#post-"+ layer.ID).addClass('active');
+                 }, 1000);
+           });
+         }else{
+            overlayers["layer_"+ layer.ID].addTo(map);
+            overlayers["layer_"+ layer.ID].bringToFront();
+            $("#post-"+ layer.ID).removeClass('loading');
+            $("#post-"+ layer.ID).addClass('active');
+         }
+
+
+
+     }//else
+
+
+
+   }//end function
+
  /*
   * Utils
   */
+  //Single layer
+ jeo.parse_layer = function(map, layer ) { //layers changed to layer by H.E
+    var parse_layer = jeo.create_layer_by_maptype(map, layer);
+   return parse_layer;
+ };//end function
 
- jeo.parseLayers = function(map, layers) {
+//this function was used for group.js
+/* jeo.parseLayers = function(map, layers) {
 
   var parsedLayers = [];
 
   $.each(layers, function(i, layer) {
-
-   if(layer.type == 'cartodb' && layer.cartodb_type == 'viz') {
-       //alert(layer.wms_layer_name_localization);
-       if(detect_lang_site == "en-US"){
-         var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true });
-       }else{
-         var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url_localization, {legends: false, https: true });
-       }
-
-    if(layer.legend) {
-     pLayer._legend = layer.legend;
-    }
-
-    parsedLayers.push(pLayer);
-
-   } else if(layer.type == 'mapbox') {
-
-    var pLayer = L.mapbox.tileLayer(layer.mapbox_id);
-
-    if(layer.legend) {
-     pLayer._legend = layer.legend;
-    }
-
-    parsedLayers.push(pLayer);
-    parsedLayers.push(L.mapbox.gridLayer(layer.mapbox_id));
-
-   } else if(layer.type == 'tilelayer') {
-
-        var options = {};
-
-        if(layer.tms)
-         options.tms = true;
-
-        var pLayer = L.tileLayer(layer.tile_url, options);
-        if(layer.legend) {
-         pLayer._legend = layer.legend;
-        }
-
-        parsedLayers.push(pLayer);
-
-       if(layer.utfgrid_url && layer.utfgrid_template) {
-
-             parsedLayers.push(L.mapbox.gridLayer({
-              "name": layer.title,
-              "tilejson": "2.0.0",
-              "scheme": "xyz",
-              "template": layer.utfgrid_template,
-              "grids": [layer.utfgrid_url.replace('{s}', 'a')]
-             }));
-
-        }
-
-   } //end else if(layer.type == 'tilelayer')
-   //H.E
-   else if(layer.type == 'wmslayer') {
-        if(layer.wms_transparent)
-         var transparent = true;
-
-        if(layer.wms_format)
-            var wms_format = layer.wms_format;
-        else
-            var wms_format = 'image/png';
-
-       var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
-            //geoserver_URL = spited_wms_tile_url[0]+"/"; for sample test 2
-            geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
-            //alert(layer.wms_layer_name_localization);
-            if(detect_lang_site == "en-US"){
-                 layer_name = layer.wms_layer_name;
-            }else{
-                 layer_name = layer.wms_layer_name_localization;
-            }
-
-
-        var options = {
-            layers: layer_name,
-            version: '1.1.0',
-            transparent: transparent,
-            //pointerCursor: true,
-            format: wms_format,
-            crs: L.CRS.EPSG4326,
-            tiled:true
-            };
-        //geoserver_URL = "https://geoserver.opendevelopmentmekong.net/geoserver/wms";
-        var pLayer = L.tileLayer.betterWms(geoserver_URL, options);
-        //var pLayer = L.tileLayer.wms(geoserver_URL, options);
-
-            /* var defaultParameters = {
-                service: 'WFS',
-                version: '1.0.0',
-                request: 'GetFeature',
-               // bbox: this._map.getBounds().toBBoxString(),
-                typeName : 'Testing:Test_mining',
-                outputFormat : 'text/javascript',
-                typeName : layer_name,
-                format_options : 'callback:getJson',
-                SrsName : 'EPSG:4326'
-            };
-            var parameters = L.Util.extend(defaultParameters);
-            var URL = geoserver_URL + L.Util.getParamString(parameters); */
-            //console.log(URL);
-
-            /*var WFSLayer = null;
-            var ajax = $.ajax({
-                url : URL,
-                dataType : 'jsonp',
-                jsonpCallback : 'getJson',
-                success : function (response) {
-                    WFSLayer = L.geoJson(response, {
-                        style: function (feature) {
-                            return {
-                                stroke: false,
-                                fillColor: 'FFFFFF',
-                                fillOpacity: 0
-                            };
-                        },
-                        pointToLayer: function(feature, latlng) {
-                            return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
-                        },
-                        onEachFeature: function (feature, layer) {
-                            popupOptions = {maxWidth: 400, maxHeight:200};
-                            var content = "";
-                            var count_properties = 0;
-                            var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
-                            for (var name in feature.properties) {
-                                if ( $.inArray(name, exclude) == -1 ) {
-                                    var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
-                                    var field_value = feature.properties[name] ;
-                                    //if (field_value == "") field_value = "Not found";  //How about Khmer?
-                                    if (name != "map_id"){
-                                        if (count_properties == 1)
-                                             content = content + "<h5>"  + field_value + " </h5>";
-                                        else{
-                                            // Set the regex string
-                                             var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
-                                            // Replace plain text links by hyperlinks
-                                            if (regexp.test(field_value)){
-                                                var field_url_value = field_value.split(";");
-                                                console.log(field_url_value.length);
-                                                var url_doc = "";
-                                                for(var url =0; url < field_url_value.length; url++ ){
-                                                     url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
-                                                }
-                                                field_value = url_doc;
-                                            }
-
-                                            content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
-                                        }
-
-                                    }
-                                    count_properties= count_properties + 1;
-                                }//if exclude
-                            }; //for
-                            layer.bindPopup(content ,popupOptions);
-                            layer.on({
-                                mouseover: function highlightFeature(e) {
-                                    var layer = e.target;
-
-                                    if (feature.geometry.type != "Point"){
-                                        layer.setStyle({
-                                            //fillColor: "yellow",
-                                            stroke: true,
-                                            color: "orange",
-                                            weight: 2,
-                                            opacity: 0.7,
-                                            fillOpacity: 0.2
-                                        });
-                                    }else {
-                                        layer.setStyle({
-                                            stroke: true,
-                                            color: "orange",
-                                            radius: 5,
-                                            weight: 4,
-                                            opacity: 0.7,
-                                            fillOpacity: 0.2
-                                        });
-                                    }
-
-                                    if (!L.Browser.ie && !L.Browser.opera) {
-                                        layer.bringToFront();
-                                    }
-                                },
-                                mouseout: function resetHighlight(e) {
-                                        WFSLayer.resetStyle(e.target);
-                                        //info.update();
-                                }
-                            });
-                        }
-                    }).addTo(map);
-                    //map.fitBounds(WFSLayer.getBounds());
-                    }
-                });*/ //var ajax = $.ajax({
-
-        if(layer.legend) {
-             pLayer._legend = layer.legend;
-        } else {
-             pLayer._legend = '<img src="'+geoserver_URL+'?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=30&HEIGHT=25&LAYER='+layer_name+'&legend_options=fontName:Times%20New%20Roman;fontAntiAliasing:true" alt = "Legend"></img>';
-        }
-        parsedLayers.push(pLayer);
-
-   }//else
-   // End H.E
+    parsedLayers.push(jeo.create_layer_by_maptype(map, layer));
   });
 
   return parsedLayers;
- };
+};*/
 
  jeo.loadLayers = function(map, parsedLayers) {
-
-  for(var key in map.legendControl._legends) {
-   map.legendControl.removeLegend(key);
-  }
-
-  if(map.coreLayers) {
-  //console.log(map.coreLayers._layers);
-   for(var key in map.coreLayers._layers) {
-    map.coreLayers.removeLayer(key);
-   }
-  } else {
-   map.coreLayers = new L.layerGroup();
-   map.addLayer(map.coreLayers);
-  }
-  $.each(parsedLayers, function(i, layer) {
-
-       /*if(layer._legend) {
-        map.legendControl.addLegend(layer._legend);
-      }*/
-       layer.addTo(map.coreLayers);
-       if(layer._tilejson) {
-        map.addControl(L.mapbox.gridControl(layer));
-       }
-  });  // $.each
-  return map.coreLayers;
- }
+    if(map.hasLayer(parsedLayers)) {
+      map.removeLayer(parsedLayers);
+    } else {
+      map.addLayer(parsedLayers);
+      //parsedLayers.addTo(map);
+    }
+ }// end function
 
  jeo.parseConf = function(conf) {
 
@@ -435,8 +460,10 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   newConf.baseLayers.swapLayers = [];
 
   $.each(conf.layers, function(i, layer) {
-   newConf.layers.push(_.clone(layer));
-   if(layer.filtering == 'switch') {
+    if (i == 0){
+      newConf.layers.push(_.clone(layer));
+    }
+    /*if(layer.filtering == 'switch') {
      if(detect_lang_site == "en-US"){
         var switchLayer = {
          ID: layer.ID,
@@ -501,7 +528,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
      swapLayer.first = true;
     newConf.filteringLayers.swapLayers.push(swapLayer);
    }
-
+   */
 
 
   });
