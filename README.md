@@ -5,14 +5,11 @@ Wordpress theme based on [JEO](http://github.com/oeco/jeo). This theme adds cust
 
 ### Dependencies
 
-- **dataTables**: Under lib/dataTables for rendering tables on page-laws.php and page-profiles
-- **leaflet**: For rendering maps
-- **chosen**: jquery plugin for beautifying form UI components
-- **moment**: js library for operation with dates
+See composer.json file for Dependencies. In order to install them, run ```composer install``` after having installed http://getcomposer.org/
 
 ### odm-taxonomy
 
-Integrates https://github.com/OpenDevelopmentMekong/odm-taxonomy as submodule. It is used for the automatic generation of the  navigation menu.
+Integrates https://github.com/OpenDevelopmentMekong/odm-taxonomy as submodule.
 
 # Testing
 

@@ -1,2084 +1,1429 @@
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: ODM opendev-wptheme\n"
-"POT-Creation-Date: 2016-05-17 16:09+0200\n"
-"PO-Revision-Date: 2016-05-17 14:09+0000\n"
+"POT-Creation-Date: 2016-06-06 17:17+0200\n"
+"PO-Revision-Date: 2016-06-06 17:17+0200\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>\n"
-"Language-Team: Lao (http://www.transifex.com/open-development-mekong/odm-opendev-wptheme/language/lo/)\n"
+"Language-Team: Lao (http://www.transifex.com/open-development-mekong/odm-"
+"opendev-wptheme/language/lo/)\n"
+"Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.4\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: i18n\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPathExcluded-0: components\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: ../Cambodia/page-forest-cover.php:19 ../single-announcement.php:23
-#: ../single-topic.php:13 ../single.php:21
+#: Cambodia/page-forest-cover.php:19 single-announcement.php:23
+#: single-topic.php:13 single.php:27
 msgid "Filed under:"
 msgstr ""
 
-#: ../Cambodia/page-forest-cover.php:59 ../page.php:24
-#: ../single-announcement.php:149 ../single-topic.php:37 ../single.php:82
+#: Cambodia/page-forest-cover.php:59 page.php:24 single-announcement.php:149
+#: single-topic.php:37 single.php:119
 msgid "Pages:"
 msgstr ""
 
-#: ../archive-announcement.php:23 ../archive.php:14
+#: archive-announcement.php:23 archive.php:14
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: ../archive-announcement.php:25 ../archive.php:16
+#: archive-announcement.php:25 archive.php:16
 #, php-format
 msgid "Daily Archives: %s"
 msgstr ""
 
-#: ../archive-announcement.php:27 ../archive.php:18
+#: archive-announcement.php:27 archive.php:18
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr ""
 
-#: ../archive-announcement.php:27 ../archive.php:18
+#: archive-announcement.php:27 archive.php:18
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: ../archive-announcement.php:29 ../archive.php:20
+#: archive-announcement.php:29 archive.php:20
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr ""
 
-#: ../archive-announcement.php:29 ../archive.php:20
+#: archive-announcement.php:29 archive.php:20
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: ../archive-announcement.php:33 ../archive.php:24
+#: archive-announcement.php:33 archive.php:24
 msgid "Archives"
 msgstr ""
 
-#: ../archive-announcement.php:100 ../category-announcement.php:132
-#: ../single-announcement.php:84
+#: archive-announcement.php:100 category-announcement.php:132
+#: single-announcement.php:84
 msgid "Download: "
 msgstr ""
 
-#: ../archive-announcement.php:106 ../category-announcement.php:138
-#: ../single-announcement.php:90
+#: archive-announcement.php:106 category-announcement.php:138
+#: single-announcement.php:90
 msgid "English PDF"
 msgstr ""
 
-#: ../archive-announcement.php:111 ../category-announcement.php:143
-#: ../single-announcement.php:95
+#: archive-announcement.php:111 category-announcement.php:143
+#: single-announcement.php:95
 msgid "English PDF not available"
 msgstr ""
 
-#: ../archive-announcement.php:119 ../category-announcement.php:151
-#: ../single-announcement.php:103
+#: archive-announcement.php:119 category-announcement.php:151
+#: single-announcement.php:103
 msgid "Khmer PDF"
 msgstr ""
 
-#: ../archive-announcement.php:124 ../category-announcement.php:156
-#: ../single-announcement.php:108
+#: archive-announcement.php:124 category-announcement.php:156
+#: single-announcement.php:108
 msgid "Khmer PDF not available"
 msgstr ""
 
-#: ../archive-announcement.php:135 ../category-announcement.php:166
-#: ../functions.php:163 ../loop-latest.php:19 ../loop.php:62
+#: archive-announcement.php:135 category-announcement.php:166
+#: functions.php:136 loop-latest.php:19 loop.php:62
 msgid "Read more"
 msgstr ""
 
-#: ../archive-announcement.php:144 ../loop.php:71
+#: archive-announcement.php:144 loop.php:71
 msgid "Data results"
 msgstr ""
 
-#: ../archive-announcement.php:150 ../loop.php:77
+#: archive-announcement.php:150 loop.php:77
 msgid "View all data results"
 msgstr ""
 
-#: ../category-announcement.php:72 ../category.php:63 ../functions.php:551
-#: ../i18n/extra-strings.php:15 ../inc/live-search/live-search.php:22
-#: extra-strings.php:15
+#: category-announcement.php:72 category.php:63 functions.php:479
+#: i18n/extra-strings.php:15 inc/live-search/live-search.php:22
 msgid "News"
 msgstr ""
 
-#: ../category-announcement.php:91 ../category.php:81
+#: category-announcement.php:91 category.php:81
 msgid "by"
 msgstr ""
 
-#: ../category-announcement.php:176 ../category.php:100
+#: category-announcement.php:176 category.php:100
 msgid "No results found."
 msgstr ""
 
-#: ../content-map-group.php:27 ../inc/related-resources-widget.php:56
+#: content-map-group.php:27
 msgid "More..."
 msgstr ""
 
-#: ../content-map-group.php:37
+#: content-map-group.php:37
 msgid "View all maps"
 msgstr ""
 
-#: ../flexible-posts-widget/opendev-announcements.php:73
-#: ../section-sticky-posts.php:151
-msgid "Keep reading"
-msgstr ""
-
-#: ../flexible-posts-widget/opendev-announcements.php:78
-msgid "See all"
-msgstr ""
-
-#: ../flexible-posts-widget/opendev-announcements.php:84
-#: ../flexible-posts-widget/opendev-site-updates.php:36
-msgid "No post found"
-msgstr ""
-
-#: ../footer.php:18
+#: footer.php:18
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external"
+"\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" rel=\"external"
+"\">JEO Beta</a> theme"
 msgstr ""
 
-#: ../functions.php:90
+#: functions.php:66
 msgid "Topic sidebar"
 msgstr ""
 
-#: ../functions.php:96
-msgid "Mekong Storms and Floods sidebar"
-msgstr ""
-
-#: ../functions.php:102
+#: functions.php:72
 msgid "Frontpage footer left"
 msgstr ""
 
-#: ../functions.php:108
+#: functions.php:78
 msgid "Frontpage footer right"
 msgstr ""
 
-#: ../functions.php:114
+#: functions.php:84
 msgid "Upcoming footer left"
 msgstr ""
 
-#: ../functions.php:120
+#: functions.php:90
 msgid "Upcoming footer middle"
 msgstr ""
 
-#: ../functions.php:126
+#: functions.php:96
 msgid "Upcoming footer right"
 msgstr ""
 
-#: ../functions.php:148
+#: functions.php:121
 msgid "stories"
 msgstr ""
 
-#: ../functions.php:150
+#: functions.php:123
 msgid "Copy the embed code"
 msgstr ""
 
-#: ../functions.php:151 ../loop-latest.php:21
+#: functions.php:124 loop-latest.php:21
 msgid "Share"
 msgstr ""
 
-#: ../functions.php:152
+#: functions.php:125
 msgid "Print"
 msgstr ""
 
-#: ../functions.php:165
+#: functions.php:138
 msgid "Open slideshow"
 msgstr ""
 
-#: ../functions.php:166
+#: functions.php:139
 msgid "Watch video gallery"
 msgstr ""
 
-#: ../functions.php:167
+#: functions.php:140
 msgid "Watch video"
 msgstr ""
 
-#: ../functions.php:168
+#: functions.php:141
 msgid "View image gallery"
 msgstr ""
 
-#: ../functions.php:169
+#: functions.php:142
 msgid "View fullscreen image"
 msgstr ""
 
-#: ../functions.php:170
+#: functions.php:143
 msgid "View infographic"
 msgstr ""
 
-#: ../functions.php:171
+#: functions.php:144
 msgid "View infographics"
 msgstr ""
 
-#: ../functions.php:287
+#: functions.php:215
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr ""
 
-#: ../functions.php:288
+#: functions.php:216
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr ""
 
-#: ../functions.php:289
+#: functions.php:217
 msgid "Search News Source"
 msgstr ""
 
-#: ../functions.php:290
+#: functions.php:218
 msgid "All News Sources"
 msgstr ""
 
-#: ../functions.php:291
+#: functions.php:219
 msgid "Parent News Source"
 msgstr ""
 
-#: ../functions.php:292
+#: functions.php:220
 msgid "Parent News Source:"
 msgstr ""
 
-#: ../functions.php:293
+#: functions.php:221
 msgid "Edit News Source"
 msgstr ""
 
-#: ../functions.php:294
+#: functions.php:222
 msgid "Update News Source"
 msgstr ""
 
-#: ../functions.php:295
+#: functions.php:223
 msgid "Add New News Source"
 msgstr ""
 
-#: ../functions.php:296
+#: functions.php:224
 msgid "New News Source Name"
 msgstr ""
 
-#: ../functions.php:297
+#: functions.php:225
 msgid "News Source"
 msgstr ""
 
-#: ../functions.php:530 ../inc/theme-options.php:288
+#: functions.php:458
 msgid "Site coming soon."
 msgstr ""
 
-#: ../functions.php:556
+#: functions.php:484
 msgid "Topics"
 msgstr ""
 
-#: ../functions.php:561 ../i18n/extra-strings.php:17 extra-strings.php:17
+#: functions.php:489 i18n/extra-strings.php:17
 msgid "Maps"
 msgstr ""
 
-#: ../functions.php:570 ../header.php:144 ../i18n/extra-strings.php:18
-#: extra-strings.php:18
+#: functions.php:498 i18n/extra-strings.php:18
 msgid "Data"
 msgstr ""
 
-#: ../functions.php:583 ../i18n/extra-strings.php:10 extra-strings.php:10
+#: functions.php:511 i18n/extra-strings.php:10
 msgid "Latest news"
 msgstr ""
 
-#: ../functions.php:608
+#: functions.php:536
 msgid "Latest topics"
 msgstr ""
 
-#: ../functions.php:633 ../i18n/extra-strings.php:11 extra-strings.php:11
+#: functions.php:561 i18n/extra-strings.php:11
 msgid "Latest maps"
 msgstr ""
 
-#: ../functions.php:1134 ../header.php:63
+#: functions.php:949 header.php:21
 msgid "Page"
 msgstr ""
 
-#: ../functions.php:1236 ../inc/advanced-navigation.php:137
+#: functions.php:1051 inc/advanced-navigation.php:132
 msgid "Categories"
 msgstr ""
 
-#: ../functions.php:1672 ../functions.php:1678
-msgid "Download data"
-msgstr ""
-
-#: ../functions.php:1675 ../functions.php:1681
-msgid "View dataset table"
-msgstr ""
-
-#: ../functions.php:1804 ../page-profiles-single-page.php:27
-#: ../single-profiles.php:339
-msgid "Not found"
-msgstr ""
-
-#: ../functions.php:1808
-msgid ""
-"ODC is not aware of any adjustments to the concession since it was first "
-"granted."
-msgstr ""
-
-#: ../functions.php:1813
-msgid ""
-"The concession has been subjected to additional reductions in size and has "
-"not been cancelled previously. Publicly available information on land area "
-"cut from ELCs does not include maps or spatial data of excisions. Thus, ODC "
-"cannot present land area cut in shapes. As a result, ELC projects that are "
-"visualized on the interactive map represent the original contract size."
-msgstr ""
-
-#: ../functions.php:1818
-msgid ""
-"The concession has been cancelled with or without a history of reductions in"
-" size."
-msgstr ""
-
-#: ../functions.php:1823
-msgid ""
-"The concession has been subjected to reduction(s) in size although it had "
-"been cancelled previously. Publicly available information on land area cut "
-"from ELCs does not include maps or spatial data of excisions. Thus, ODC "
-"cannot present land area cut in shapes. As a result, ELC projects that are "
-"visualized on the interactive map represent the original contract size."
-msgstr ""
-
-#: ../functions.php:1828
-msgid ""
-"Information obtained from official Government sources, with official legal "
-"documentation, in the four identification fields: <br>a. Company name; "
-"<br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>  d. "
-"Purpose (crop, ore, etc.)"
-msgstr ""
-
-#: ../functions.php:1832
-msgid ""
-"Information obtained from official Government sources, with legal "
-"documentation, but missing one or more of the following identification "
-"fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or "
-"analog map; and <br>d. Purpose (crop, ore, etc.)"
-msgstr ""
-
-#: ../functions.php:1836
-msgid ""
-"Information obtained from any other source in public domain (including "
-"documentation from photographs, etc.)"
-msgstr ""
-
-#: ../functions.php:1840
-msgid ""
-"Information obtained from the concessionaire (company/entity) or from "
-"government source(s) without legal documentation."
-msgstr ""
-
-#: ../functions.php:1844
-msgid ""
-"These concessions have been cancelled by the Royal Government of Cambodia."
-msgstr ""
-
-#: ../header.php:92
+#: header.php:52
 msgid "Search site... &#128269;"
 msgstr ""
 
-#: ../header.php:139
-msgid "Publications Library"
-msgstr ""
-
-#: ../header.php:146
-msgid "All records"
-msgstr ""
-
-#: ../header.php:148
-msgid "Records by country"
-msgstr ""
-
-#: ../header.php:150 ../i18n/extra-strings.php:3 extra-strings.php:3
-msgid "Cambodia"
-msgstr ""
-
-#: ../header.php:151 ../i18n/extra-strings.php:4 extra-strings.php:4
-msgid "Laos"
-msgstr ""
-
-#: ../header.php:152 ../i18n/extra-strings.php:5 extra-strings.php:5
-msgid "Myanmar"
-msgstr ""
-
-#: ../header.php:153 ../i18n/extra-strings.php:6 extra-strings.php:6
-msgid "Thailand"
-msgstr ""
-
-#: ../header.php:154 ../i18n/extra-strings.php:7 extra-strings.php:7
-msgid "Vietnam"
-msgstr ""
-
-#: ../header.php:159
-msgid "Records by language"
-msgstr ""
-
-#: ../header.php:161 ../i18n/extra-strings.php:9 extra-strings.php:9
-msgid "English"
-msgstr ""
-
-#: ../header.php:162 ../i18n/extra-strings.php:8 extra-strings.php:8
-msgid "Khmer"
-msgstr ""
-
-#: ../header.php:163
-msgid "Vietnamese"
-msgstr ""
-
-#: ../i18n/extra-strings.php:2 extra-strings.php:2
+#: i18n/extra-strings.php:2
 msgid "Mekong"
 msgstr ""
 
-#: ../i18n/extra-strings.php:12 extra-strings.php:12
+#: i18n/extra-strings.php:3
+msgid "Cambodia"
+msgstr ""
+
+#: i18n/extra-strings.php:4
+msgid "Laos"
+msgstr ""
+
+#: i18n/extra-strings.php:5
+msgid "Myanmar"
+msgstr ""
+
+#: i18n/extra-strings.php:6
+msgid "Thailand"
+msgstr ""
+
+#: i18n/extra-strings.php:7
+msgid "Vietnam"
+msgstr ""
+
+#: i18n/extra-strings.php:8
+msgid "Khmer"
+msgstr ""
+
+#: i18n/extra-strings.php:9
+msgid "English"
+msgstr ""
+
+#: i18n/extra-strings.php:12
 msgid "Latest issues"
 msgstr ""
 
-#: ../i18n/extra-strings.php:13 extra-strings.php:13
+#: i18n/extra-strings.php:13
 msgid "Latest data"
 msgstr ""
 
-#: ../i18n/extra-strings.php:14 extra-strings.php:14
+#: i18n/extra-strings.php:14
 msgid "Briefings"
 msgstr ""
 
-#: ../i18n/extra-strings.php:16 extra-strings.php:16
+#: i18n/extra-strings.php:16
 msgid "Issues"
 msgstr ""
 
-#: ../i18n/extra-strings.php:19 extra-strings.php:19
+#: i18n/extra-strings.php:19
 msgid "Share a map"
 msgstr ""
 
-#: ../i18n/extra-strings.php:20 extra-strings.php:20
+#: i18n/extra-strings.php:20
 msgid "Search for posts, maps and briefings..."
 msgstr ""
 
-#: ../i18n/extra-strings.php:21 extra-strings.php:21
+#: i18n/extra-strings.php:21
 msgid "Search Datasets for Mekong"
 msgstr ""
 
-#: ../i18n/extra-strings.php:22 extra-strings.php:22
+#: i18n/extra-strings.php:22
 msgid "Search Datasets for Cambodia"
 msgstr ""
 
-#: ../i18n/extra-strings.php:23 extra-strings.php:23
+#: i18n/extra-strings.php:23
 msgid "Search Datasets for Laos"
 msgstr ""
 
-#: ../i18n/extra-strings.php:24 extra-strings.php:24
+#: i18n/extra-strings.php:24
 msgid "Search Datasets for Myanmar"
 msgstr ""
 
-#: ../i18n/extra-strings.php:25 extra-strings.php:25
+#: i18n/extra-strings.php:25
 msgid "Search Datasets for Thailand"
 msgstr ""
 
-#: ../i18n/extra-strings.php:26 extra-strings.php:26
+#: i18n/extra-strings.php:26
 msgid "Search Datasets for Vietnam"
 msgstr ""
 
-#: ../i18n/extra-strings.php:27 extra-strings.php:27
+#: i18n/extra-strings.php:27
 msgid "More information"
 msgstr ""
 
-#: ../i18n/extra-strings.php:28 extra-strings.php:28
+#: i18n/extra-strings.php:28
 msgid "Announcements and Press releases"
 msgstr ""
 
-#: ../i18n/extra-strings.php:30 extra-strings.php:30
+#: i18n/extra-strings.php:30
 msgid "Agriculture and fishing"
 msgstr ""
 
-#: ../i18n/extra-strings.php:31 extra-strings.php:31
+#: i18n/extra-strings.php:31
 msgid "Disasters and emergency response"
 msgstr ""
 
-#: ../i18n/extra-strings.php:32 extra-strings.php:32
+#: i18n/extra-strings.php:32
 msgid "Environment and natural resources"
 msgstr ""
 
-#: ../i18n/extra-strings.php:33 extra-strings.php:33
+#: i18n/extra-strings.php:33
 msgid "Extractive industries"
 msgstr ""
 
-#: ../i18n/extra-strings.php:34 extra-strings.php:34
+#: i18n/extra-strings.php:34
 msgid "Land"
 msgstr ""
 
-#: ../i18n/extra-strings.php:35 extra-strings.php:35
+#: i18n/extra-strings.php:35
 msgid "Economy and commerce"
 msgstr ""
 
-#: ../i18n/extra-strings.php:36 extra-strings.php:36
+#: i18n/extra-strings.php:36
 msgid "Energy"
 msgstr ""
 
-#: ../i18n/extra-strings.php:37 extra-strings.php:37
+#: i18n/extra-strings.php:37
 msgid "Infrastructure"
 msgstr ""
 
-#: ../i18n/extra-strings.php:38 extra-strings.php:38
+#: i18n/extra-strings.php:38
 msgid "Industry"
 msgstr ""
 
-#: ../i18n/extra-strings.php:39 extra-strings.php:39
+#: i18n/extra-strings.php:39
 msgid "Labor"
 msgstr ""
 
-#: ../i18n/extra-strings.php:40 extra-strings.php:40
+#: i18n/extra-strings.php:40
 msgid "Science and technology"
 msgstr ""
 
-#: ../i18n/extra-strings.php:41 extra-strings.php:41
+#: i18n/extra-strings.php:41
 msgid "Aid and development"
 msgstr ""
 
-#: ../i18n/extra-strings.php:42 extra-strings.php:42
+#: i18n/extra-strings.php:42
 msgid "Government"
 msgstr ""
 
-#: ../i18n/extra-strings.php:43 extra-strings.php:43
+#: i18n/extra-strings.php:43
 msgid "Law and judiciary"
 msgstr ""
 
-#: ../i18n/extra-strings.php:44 extra-strings.php:44
+#: i18n/extra-strings.php:44
 msgid "Population and censuses"
 msgstr ""
 
-#: ../i18n/extra-strings.php:45 extra-strings.php:45
+#: i18n/extra-strings.php:45
 msgid "Social development"
 msgstr ""
 
-#: ../i18n/extra-strings.php:46 extra-strings.php:46
+#: i18n/extra-strings.php:46
 msgid "Urban administration and development"
 msgstr ""
 
-#: ../i18n/extra-strings.php:48 extra-strings.php:48
+#: i18n/extra-strings.php:48
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open "
+"Development {country} herein are licensed under a CC BY-SA 3.0. News article "
+"summaries are extracted from their sources, as guided by fair-use principles "
+"and are copyrighted by their respective sources. Materials on the Open "
+"Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database "
+"are compiled from publicly available documentation and provided without fee "
+"for general informational purposes only. This is neither a commercial "
+"research service nor a domain managed by any governmental or inter-"
+"governmental agency; it is managed as a private non-profit open data/open "
+"knowledge media group. Information is publicly posted only after a careful "
+"vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee "
+"accuracy, completeness or reliability from third party sources in every "
+"instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either "
+"expressed or implied, in fact or in law, with respect to the accuracy, "
+"completeness or appropriateness of the data, materials or documents "
+"contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their "
+"activities and to share the results of that research with our team, contact "
+"us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take "
+"full responsibility for reliance on any site information provided and to "
+"hold harmless and waive any and all liability against individuals or "
+"entities associated with its development, form and content for any loss, "
+"harm or damage suffered as a result of its use."
 msgstr ""
 
-#: ../inc/advanced-navigation.php:126
+#: inc/advanced-navigation.php:121
 msgid "Text search"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:127
+#: inc/advanced-navigation.php:122
 msgid "Type your search here"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:138
+#: inc/advanced-navigation.php:133
 msgid "Select categories"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:164
+#: inc/advanced-navigation.php:159
 msgid "Content type"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:165
+#: inc/advanced-navigation.php:160
 msgid "Select content types"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:175
+#: inc/advanced-navigation.php:170
 msgid "Date range"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:178
+#: inc/advanced-navigation.php:173
 msgid "From"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:182
+#: inc/advanced-navigation.php:177
 msgid "To"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:189
+#: inc/advanced-navigation.php:184
 msgid "Filter"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:200 ../inc/advanced-navigation.php:211
+#: inc/advanced-navigation.php:195 inc/advanced-navigation.php:206
 msgid "Cancel filters"
 msgstr ""
 
-#: ../inc/advanced-navigation.php:208
+#: inc/advanced-navigation.php:203
 msgid "More filters"
 msgstr ""
 
-#: ../inc/announcements.php:19
+#: inc/announcements.php:19
 msgctxt "post type general name"
 msgid "Announcements"
 msgstr ""
 
-#: ../inc/announcements.php:20
+#: inc/announcements.php:20
 msgctxt "post type singular name"
 msgid "Announcement"
 msgstr ""
 
-#: ../inc/announcements.php:21
+#: inc/announcements.php:21
 msgctxt "admin menu"
 msgid "Announcements"
 msgstr ""
 
-#: ../inc/announcements.php:22
+#: inc/announcements.php:22
 msgctxt "add new on admin bar"
 msgid "Announcement"
 msgstr ""
 
-#: ../inc/announcements.php:23
+#: inc/announcements.php:23
 msgctxt "announcement"
 msgid "Add new"
 msgstr ""
 
-#: ../inc/announcements.php:24
+#: inc/announcements.php:24
 msgid "Add new announcement"
 msgstr ""
 
-#: ../inc/announcements.php:25
+#: inc/announcements.php:25
 msgid "New announcement"
 msgstr ""
 
-#: ../inc/announcements.php:26
+#: inc/announcements.php:26
 msgid "Edit announcement"
 msgstr ""
 
-#: ../inc/announcements.php:27
+#: inc/announcements.php:27
 msgid "View announcement"
 msgstr ""
 
-#: ../inc/announcements.php:28
+#: inc/announcements.php:28
 msgid "All announcements"
 msgstr ""
 
-#: ../inc/announcements.php:29
+#: inc/announcements.php:29
 msgid "Search announcements"
 msgstr ""
 
-#: ../inc/announcements.php:30
+#: inc/announcements.php:30
 msgid "Parent announcements:"
 msgstr ""
 
-#: ../inc/announcements.php:31
+#: inc/announcements.php:31
 msgid "No announcements found."
 msgstr ""
 
-#: ../inc/announcements.php:32
+#: inc/announcements.php:32
 msgid "No announcements found in trash."
 msgstr ""
 
-#: ../inc/category-widget.php:12
-msgid "OD Post Taxonomy"
+#: inc/ckan-api.php:121 inc/ckan-api.php:138
+msgid "Download data"
 msgstr ""
 
-#: ../inc/category-widget.php:13
-msgid "Display post taxonomies hierarchically."
+#: inc/ckan-api.php:127 inc/ckan-api.php:144
+msgid "View dataset table"
 msgstr ""
 
-#: ../inc/category-widget.php:108
-msgid "Taxonomies to display:"
-msgstr ""
-
-#: ../inc/interactive-map.php:55
+#: inc/interactive-map.php:55
 msgid "Interactive Map"
 msgstr ""
 
-#: ../inc/interactive-map.php:105
+#: inc/interactive-map.php:105
 msgid "Map Layers"
 msgstr ""
 
-#: ../inc/interactive-map.php:118
+#: inc/interactive-map.php:118
 msgid "LEGEND"
 msgstr ""
 
-#: ../inc/layer-category.php:18 ../inc/layer-category.php:33
+#: inc/layer-category.php:18 inc/layer-category.php:33
 msgid "Layer categories"
 msgstr ""
 
-#: ../inc/layer-category.php:23
+#: inc/layer-category.php:23
 msgctxt "taxonomy general name"
 msgid "Layer categories"
 msgstr ""
 
-#: ../inc/layer-category.php:24
+#: inc/layer-category.php:24
 msgctxt "taxonomy singular name"
 msgid "Layer category"
 msgstr ""
 
-#: ../inc/layer-category.php:25
+#: inc/layer-category.php:25
 msgid "Search Layer categories"
 msgstr ""
 
-#: ../inc/layer-category.php:26
+#: inc/layer-category.php:26
 msgid "All Layer categories"
 msgstr ""
 
-#: ../inc/layer-category.php:27
+#: inc/layer-category.php:27
 msgid "Parent Layer category"
 msgstr ""
 
-#: ../inc/layer-category.php:28
+#: inc/layer-category.php:28
 msgid "Parent Layer category:"
 msgstr ""
 
-#: ../inc/layer-category.php:29
+#: inc/layer-category.php:29
 msgid "Edit Layer category"
 msgstr ""
 
-#: ../inc/layer-category.php:30
+#: inc/layer-category.php:30
 msgid "Update Layer category"
 msgstr ""
 
-#: ../inc/layer-category.php:31
+#: inc/layer-category.php:31
 msgid "Add New Layer category"
 msgstr ""
 
-#: ../inc/layer-category.php:32
+#: inc/layer-category.php:32
 msgid "New Layer category Name"
 msgstr ""
 
-#: ../inc/layers.php:29
+#: inc/layers.php:29
 msgid "Layer settings"
 msgstr ""
 
-#: ../inc/layers.php:38
+#: inc/layers.php:38
 msgid "Layer legend"
 msgstr ""
 
-#: ../inc/layers.php:47
+#: inc/layers.php:47
 msgid "Layers"
 msgstr ""
 
-#: ../inc/layers.php:61
+#: inc/layers.php:61
 msgid "Enter your HTML code to use as legend on the layer (English)"
 msgstr ""
 
-#: ../inc/layers.php:64
+#: inc/layers.php:64
 msgid "Enter your HTML code to use as legend on the layer ("
 msgstr ""
 
-#: ../inc/layers.php:79
+#: inc/layers.php:79
 msgid "Download Page URL"
 msgstr ""
 
-#: ../inc/layers.php:82
+#: inc/layers.php:82
 msgid "Download URL (English)"
 msgstr ""
 
-#: ../inc/layers.php:85 ../inc/layers.php:93
+#: inc/layers.php:85 inc/layers.php:93
 msgid "A link to a dataset's page on CKAN"
 msgstr ""
 
-#: ../inc/layers.php:90
+#: inc/layers.php:90
 msgid "Download URL ("
 msgstr ""
 
-#: ../inc/layers.php:101
+#: inc/layers.php:101
 msgid "Profile Page URL"
 msgstr ""
 
-#: ../inc/layers.php:104
+#: inc/layers.php:104
 msgid "Profile Page URL (English)"
 msgstr ""
 
-#: ../inc/layers.php:107 ../inc/layers.php:115
+#: inc/layers.php:107 inc/layers.php:115
 msgid "A link to profile page on Wordpress"
 msgstr ""
 
-#: ../inc/layers.php:112
+#: inc/layers.php:112
 msgid "Profile Page URL ("
 msgstr ""
 
-#: ../inc/layers.php:123
+#: inc/layers.php:123
 msgid "Layer type"
 msgstr ""
 
-#: ../inc/layers.php:126
+#: inc/layers.php:126
 msgid "Tile layer"
 msgstr ""
 
-#: ../inc/layers.php:128
+#: inc/layers.php:128
 msgid "WMS layer"
 msgstr ""
 
-#: ../inc/layers.php:131
+#: inc/layers.php:131
 msgid "MapBox"
 msgstr ""
 
-#: ../inc/layers.php:134
+#: inc/layers.php:134
 msgid "CartoDB"
 msgstr ""
 
-#: ../inc/layers.php:148
+#: inc/layers.php:148
 msgid "URL"
 msgstr ""
 
-#: ../inc/layers.php:150
+#: inc/layers.php:150
 msgid "http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr ""
 
-#: ../inc/layers.php:151
+#: inc/layers.php:151
 msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr ""
 
-#: ../inc/layers.php:155
+#: inc/layers.php:155
 msgid "UTFGrid URL (optional)"
 msgstr ""
 
-#: ../inc/layers.php:157
+#: inc/layers.php:157
 msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: ../inc/layers.php:158
+#: inc/layers.php:158
 msgid ""
 "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: ../inc/layers.php:162
+#: inc/layers.php:162
 msgid "UTFGrid Template (optional)"
 msgstr ""
 
-#: ../inc/layers.php:165 ../inc/layers.php:321
+#: inc/layers.php:165 inc/layers.php:321
 msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
 msgstr ""
 
-#: ../inc/layers.php:169
+#: inc/layers.php:169
 msgid "TMS"
 msgstr ""
 
-#: ../inc/layers.php:171
+#: inc/layers.php:171
 msgid "Enable TMS"
 msgstr ""
 
-#: ../inc/layers.php:172
+#: inc/layers.php:172
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
 msgstr ""
 
-#: ../inc/layers.php:188
+#: inc/layers.php:188
 msgid "WMS Service URL"
 msgstr ""
 
-#: ../inc/layers.php:190
+#: inc/layers.php:190
 msgid "http://{geoserver adress & port}/geoserver/wms"
 msgstr ""
 
-#: ../inc/layers.php:191
+#: inc/layers.php:191
 msgid "Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 msgstr ""
 
-#: ../inc/layers.php:195
+#: inc/layers.php:195
 msgid "Workspaces:Layer Name (English)"
 msgstr ""
 
-#: ../inc/layers.php:197 ../inc/layers.php:205
+#: inc/layers.php:197 inc/layers.php:205
 msgid "Workspaces and Layer name\""
 msgstr ""
 
-#: ../inc/layers.php:198
+#: inc/layers.php:198
 msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
-#: ../inc/layers.php:203
+#: inc/layers.php:203
 msgid "Workspaces:Layer Name ("
 msgstr ""
 
-#: ../inc/layers.php:206
+#: inc/layers.php:206
 msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
-#: ../inc/layers.php:213
+#: inc/layers.php:213
 msgid "WMS format (optional)"
 msgstr ""
 
-#: ../inc/layers.php:215
+#: inc/layers.php:215
 msgid "image/png"
 msgstr ""
 
-#: ../inc/layers.php:216
+#: inc/layers.php:216
 msgid "E.g.: image/png or image/jpeg"
 msgstr ""
 
-#: ../inc/layers.php:220 ../inc/layers.php:223
+#: inc/layers.php:220 inc/layers.php:223
 msgid "Transparent"
 msgstr ""
 
-#: ../inc/layers.php:224
+#: inc/layers.php:224
 msgid "Enable it to make transparent the layer of WMS."
 msgstr ""
 
-#: ../inc/layers.php:237
+#: inc/layers.php:237
 msgid "MapBox ID"
 msgstr ""
 
-#: ../inc/layers.php:240
+#: inc/layers.php:240
 msgid "MapBox map ID. E.g.: examples.map-20v6611k"
 msgstr ""
 
-#: ../inc/layers.php:265
+#: inc/layers.php:265
 msgid "Visualization type"
 msgstr ""
 
-#: ../inc/layers.php:268
+#: inc/layers.php:268
 msgid "Visualization"
 msgstr ""
 
-#: ../inc/layers.php:270
+#: inc/layers.php:270
 msgid "Advanced (build from your tables)"
 msgstr ""
 
-#: ../inc/layers.php:270
+#: inc/layers.php:270
 msgid "coming soon"
 msgstr ""
 
-#: ../inc/layers.php:274
+#: inc/layers.php:274
 msgid "CartoDB URL (English)"
 msgstr ""
 
-#: ../inc/layers.php:277 ../inc/layers.php:285
+#: inc/layers.php:277 inc/layers.php:285
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: "
-"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
-"11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
+"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
-#: ../inc/layers.php:282
+#: inc/layers.php:282
 msgid "CartoDB URL ("
 msgstr ""
 
-#: ../inc/layers.php:290
+#: inc/layers.php:290
 msgid "Username"
 msgstr ""
 
-#: ../inc/layers.php:293
+#: inc/layers.php:293
 msgid "Your CartoDB username."
 msgstr ""
 
-#: ../inc/layers.php:297
+#: inc/layers.php:297
 msgid "Table"
 msgstr ""
 
-#: ../inc/layers.php:300
+#: inc/layers.php:300
 msgid "The CartoDB table you'd like to visualize."
 msgstr ""
 
-#: ../inc/layers.php:304
+#: inc/layers.php:304
 msgid "Where (optional)"
 msgstr ""
 
-#: ../inc/layers.php:307
+#: inc/layers.php:307
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
 msgstr ""
 
-#: ../inc/layers.php:311
+#: inc/layers.php:311
 msgid "CartoCSS"
 msgstr ""
 
-#: ../inc/layers.php:314
+#: inc/layers.php:314
 #, php-format
 msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr ""
 
-#: ../inc/layers.php:318
+#: inc/layers.php:318
 msgid "Template"
 msgstr ""
 
-#: ../inc/live-search/live-search.php:20
+#: inc/live-search/live-search.php:20
 msgid "Go to the advanced search"
 msgstr ""
 
-#: ../inc/live-search/live-search.php:21
+#: inc/live-search/live-search.php:21
 msgid "Showing all results"
 msgstr ""
 
-#: ../inc/live-search/live-search.php:23
+#: inc/live-search/live-search.php:23
 msgid "Topic"
 msgstr ""
 
-#: ../inc/live-search/live-search.php:24
+#: inc/live-search/live-search.php:24
 msgid "Map"
 msgstr ""
 
-#: ../inc/mekong-region-storms-and-floods.php:19
-msgctxt "post type general name"
-msgid "Mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:20
-msgctxt "post type singular name"
-msgid "Mekong region storm and flood"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:21
-msgctxt "admin menu"
-msgid "Mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:22
-msgctxt "add new on admin bar"
-msgid "Mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:23
-msgctxt "mekong region storm and flood"
-msgid "Add new"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:24
-msgid "Add new mekong region storm and flood"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:25
-msgid "New mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:26
-msgid "Edit mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:27
-msgid "View mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:28
-msgid "All mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:29
-msgid "Search mekong region storms and floods"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:30
-msgid "Parent mekong region storms and floods:"
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:31
-msgid "No mekong region storms and floods found."
-msgstr ""
-
-#: ../inc/mekong-region-storms-and-floods.php:32
-msgid "No mekong region storms and floods found in trash."
-msgstr ""
-
-#: ../inc/od-related-recent-news-widget.php:10
-msgid "OD Related Recent News Widget"
-msgstr ""
-
-#: ../inc/od-related-recent-news-widget.php:11
-msgid "Display OD the related recent news for the topics"
-msgstr ""
-
-#: ../inc/od-related-recent-news-widget.php:117
-msgid "Related News"
-msgstr ""
-
-#: ../inc/od-related-recent-news-widget.php:138
-#: ../inc/odm-taxonomy-widget.php:222 ../inc/query-resources-widget.php:89
-#: ../inc/related-resources-widget.php:97
-msgid "Title:"
-msgstr ""
-
-#: ../inc/od-related-recent-news-widget.php:142
-msgid "Option:"
-msgstr ""
-
-#: ../inc/od-related-recent-news-widget.php:159
-msgid "Category slugs:"
-msgstr ""
-
-#: ../inc/odm-taxonomy-widget.php:10
-msgid "OD Content Taxonomy Widget"
-msgstr ""
-
-#: ../inc/odm-taxonomy-widget.php:11
-msgid "Display OD taxonomy for content"
-msgstr ""
-
-#: ../inc/odm-taxonomy-widget.php:217
-msgid "Topic areas"
-msgstr ""
-
-#: ../inc/odm-taxonomy-widget.php:226
-msgid "Include Category by IDs (separated by commas):"
-msgstr ""
-
-#: ../inc/odm-taxonomy-widget.php:230
-msgid "Exclude Category by IDs (separated by commas):"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:18
-msgctxt "post type general name"
-msgid "Profiles Page"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:19
-msgctxt "post type singular name"
-msgid "Profile Page"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:20
-msgctxt "admin menu"
-msgid "Profile Pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:21
-msgctxt "add new on admin bar"
-msgid "Profile Pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:22
-msgctxt "profile page"
-msgid "Add new"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:23
-msgid "Add new profile page"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:24
-msgid "New profile pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:25
-msgid "Edit profile pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:26
-msgid "View profile pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:27
-msgid "All profile pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:28
-msgid "Search profile pages"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:29
-msgid "Parent profile pages:"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:30
-msgid "No profile page found."
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:31
-msgid "No profile page found in trash."
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:57
-msgid "CKAN​ Dataset Resource"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:65
-msgid "Setting of Profiles Page"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:87
-#: ../inc/profiles_posttype_registration.php:211
-msgid "ENGLISH"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:96
-msgid "CartoDB JSON URL (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:99
-#: ../inc/profiles_posttype_registration.php:128
-msgid ""
-"CartoDB visualization URL. E.g.: http://user.cartodb.com/api/v2/viz/621d23a0"
-"-5eaa-11e4-ab03-0e853d047bba/viz.json"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:103
-msgid "CSV Resource URL (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:106
-#: ../inc/profiles_posttype_registration.php:135
-msgid ""
-"CSV Resource of dataset on CKAN. Eg. "
-"https://data.opendevelopmentmekong.net/dataset/economic-land-"
-"concessions/resource/3b817bce-9823-493b-8429-e5233ba3bd87?type=dataset"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:110
-msgid "CSV Tracking URL (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:113
-#: ../inc/profiles_posttype_registration.php:142
-msgid ""
-"CSV Resource of tracking dataset on CKAN. Eg. "
-"https://data.opendevelopmentmekong.net/dataset/economic-land-"
-"concessions/resource/8cc0c651-8131-404e-bbce-7fe6af728f89?type=dataset"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:125
-msgid "CartoDB JSON URL ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:132
-msgid "CSV Resource URL ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:139
-msgid "CSV Tracking URL ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:180
-#: ../inc/profiles_posttype_registration.php:188
-msgid ""
-"The attributes of Resource Dataset that would like to display, separated by "
-"line breaks ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:183
-#: ../inc/profiles_posttype_registration.php:191
-msgid ""
-"The attributes of Tracking Resource that would like to display, separated by"
-" line breaks ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:220
-msgid "Show Total Numbers of Columns, separated by line breaks (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:225
-msgid ""
-"List the attribute names to show their total number on page (separated by "
-"line breaks). Eg. For ELC: "
-"<br/>map_id<br/>developer<br/>data_class[\"Government data complete\", "
-"\"Government data partial\"]"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:229
-msgid "Create Select Filter by Column Index (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:232
-#: ../inc/profiles_posttype_registration.php:269
-msgid ""
-"Filter selectors will create automatically by adding the column index and "
-"separated by comma. Maximum Filter selectors can create is three. Eg. Create"
-" filter selectors of Data Adjustment and Intended crop or project of ELC "
-"which have index 2 and 5"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:236
-msgid "Group Data in Column (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:239
-#: ../inc/profiles_posttype_registration.php:276
-msgid ""
-"Eg. To group data classification of ELC, based on the attributes sample "
-"provided, the index of data classification is: 5"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:243
-msgid "Related Profile Pages (English)"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:246
-#: ../inc/profiles_posttype_registration.php:283
-msgid ""
-"Please add the links of profile pages that related (separated by new breaking line). Format: Title of Link|URL. <br/>eg.\n"
-"Economic Land Concessions|https://cambodia.opendevelopmentmekong.net/profiles/economic-land-concessions/"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:258
-msgid "Show Total Numbers of Columns, separated by line breaks ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:262
-msgid ""
-"List the attribut4 names to show their total number on page (separated by "
-"line breaks). Eg. For ELC: map_id<br/>developer<br/>data_class[\"Government "
-"data complete\", \"Government data partial\"]"
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:266
-msgid "Create Select Filter by Column Index ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:273
-msgid "Group Data in Column ("
-msgstr ""
-
-#: ../inc/profiles_posttype_registration.php:280
-msgid "Related Profile Pages ("
-msgstr ""
-
-#: ../inc/query-resources-widget.php:12
-msgid "OD Query Resources"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:13
-msgid "Query resources and displays them in a post or page."
-msgstr ""
-
-#: ../inc/query-resources-widget.php:63 ../inc/related-resources-widget.php:74
-msgid "Related Resources"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:91
-msgid "Query:"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:93 ../inc/related-resources-widget.php:99
-msgid "CKAN Organization:"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:95 ../inc/query-resources-widget.php:102
-#: ../inc/related-resources-widget.php:101
-#: ../inc/related-resources-widget.php:108
-msgid "All"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:100
-#: ../inc/related-resources-widget.php:106
-msgid "CKAN Group:"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:107
-#: ../inc/related-resources-widget.php:113
-msgid "Limit:"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:109
-msgid "More dataset: Link label"
-msgstr ""
-
-#: ../inc/query-resources-widget.php:112
-msgid "More dataset: Link (URL)"
-msgstr ""
-
-#: ../inc/related-resources-widget.php:12
-msgid "OD Related Resources"
-msgstr ""
-
-#: ../inc/related-resources-widget.php:13
-msgid "Display post related resources."
-msgstr ""
-
-#: ../inc/site-updates.php:19
+#: inc/site-updates.php:19
 msgctxt "post type general name"
 msgid "Site updates"
 msgstr ""
 
-#: ../inc/site-updates.php:20
+#: inc/site-updates.php:20
 msgctxt "post type singular name"
 msgid "Site update"
 msgstr ""
 
-#: ../inc/site-updates.php:21
+#: inc/site-updates.php:21
 msgctxt "admin menu"
 msgid "Site updates"
 msgstr ""
 
-#: ../inc/site-updates.php:22
+#: inc/site-updates.php:22
 msgctxt "add new on admin bar"
 msgid "Site update"
 msgstr ""
 
-#: ../inc/site-updates.php:23
+#: inc/site-updates.php:23
 msgctxt "site update"
 msgid "Add new"
 msgstr ""
 
-#: ../inc/site-updates.php:24
+#: inc/site-updates.php:24
 msgid "Add new site update"
 msgstr ""
 
-#: ../inc/site-updates.php:25
+#: inc/site-updates.php:25
 msgid "New site update"
 msgstr ""
 
-#: ../inc/site-updates.php:26
+#: inc/site-updates.php:26
 msgid "Edit site update"
 msgstr ""
 
-#: ../inc/site-updates.php:27
+#: inc/site-updates.php:27
 msgid "View site update"
 msgstr ""
 
-#: ../inc/site-updates.php:28
+#: inc/site-updates.php:28
 msgid "All site updates"
 msgstr ""
 
-#: ../inc/site-updates.php:29
+#: inc/site-updates.php:29
 msgid "Search site updates"
 msgstr ""
 
-#: ../inc/site-updates.php:30
+#: inc/site-updates.php:30
 msgid "Parent site updates:"
 msgstr ""
 
-#: ../inc/site-updates.php:31
+#: inc/site-updates.php:31
 msgid "No site updates found."
 msgstr ""
 
-#: ../inc/site-updates.php:32
+#: inc/site-updates.php:32
 msgid "No site updates found in trash."
 msgstr ""
 
-#: ../inc/summary.php:76
+#: inc/summary.php:76
 msgid "On this page"
 msgstr ""
 
-#: ../inc/theme-options.php:38
+#: inc/theme-options.php:36
 msgid "Open Development Style"
 msgstr ""
 
-#: ../inc/theme-options.php:38
+#: inc/theme-options.php:36
 msgid "Open Development"
 msgstr ""
 
-#: ../inc/theme-options.php:49
+#: inc/theme-options.php:47
 msgid "Open Development Theme Options"
 msgstr ""
 
-#: ../inc/theme-options.php:67
+#: inc/theme-options.php:67
 msgid "Style"
 msgstr ""
 
-#: ../inc/theme-options.php:73
+#: inc/theme-options.php:73
 msgid "News: Filtered By Tags"
 msgstr ""
 
-#: ../inc/theme-options.php:79
+#: inc/theme-options.php:79
 msgid "Links"
 msgstr ""
 
-#: ../inc/theme-options.php:86
-msgid "Introduction texts"
-msgstr ""
-
-#: ../inc/theme-options.php:93
+#: inc/theme-options.php:86
 msgid "Interactive map"
 msgstr ""
 
-#: ../inc/theme-options.php:100
-msgid "Site in development"
-msgstr ""
-
-#: ../inc/theme-options.php:108
-msgid "Message for site constructing"
-msgstr ""
-
-#: ../inc/theme-options.php:116
-msgid "Tooltip Message 1"
-msgstr ""
-
-#: ../inc/theme-options.php:123
-msgid "Tooltip Message 2"
-msgstr ""
-
-#: ../inc/theme-options.php:130
-msgid "Tooltip Message 3"
-msgstr ""
-
-#: ../inc/theme-options.php:138
-msgid "Notice Message appear above the slider"
-msgstr ""
-
-#: ../inc/theme-options.php:146
-msgid "Message for pages constructing"
-msgstr ""
-
-#: ../inc/theme-options.php:154
+#: inc/theme-options.php:92
 msgid "Choose a style"
 msgstr ""
 
-#: ../inc/theme-options.php:162
-msgid "Enable dropdown box of the country menu"
+#: inc/theme-options.php:100
+msgid "Notice Message appear above the slider"
 msgstr ""
 
-#: ../inc/theme-options.php:170
-msgid "Show site intro texts"
-msgstr ""
-
-#: ../inc/theme-options.php:178
+#: inc/theme-options.php:108
 msgid "Frontpage slider id"
 msgstr ""
 
-#: ../inc/theme-options.php:186
+#: inc/theme-options.php:116
 msgid "Upload a custom logo"
 msgstr ""
 
-#: ../inc/theme-options.php:194
+#: inc/theme-options.php:124
 msgid "Filter News By Tags"
 msgstr ""
 
-#: ../inc/theme-options.php:202
+#: inc/theme-options.php:132
 msgid "Facebook url"
 msgstr ""
 
-#: ../inc/theme-options.php:210
+#: inc/theme-options.php:140
 msgid "Twitter url"
 msgstr ""
 
-#: ../inc/theme-options.php:218
+#: inc/theme-options.php:148
 msgid "Legal disclaimer"
 msgstr ""
 
-#: ../inc/theme-options.php:226
+#: inc/theme-options.php:156
 msgid "Contact page"
 msgstr ""
 
-#: ../inc/theme-options.php:234
+#: inc/theme-options.php:164
 msgid "Data page"
 msgstr ""
 
-#: ../inc/theme-options.php:242
-msgid "Introduction text #1"
-msgstr ""
-
-#: ../inc/theme-options.php:250
-msgid "Introduction text #2"
-msgstr ""
-
-#: ../inc/theme-options.php:258
-msgid "Introduction text #3"
-msgstr ""
-
-#: ../inc/theme-options.php:266
+#: inc/theme-options.php:172
 msgid "Base map settings"
 msgstr ""
 
-#: ../inc/theme-options.php:280
-msgid "Active"
-msgstr ""
-
-#: ../inc/theme-options.php:281
-msgid ""
-"(Activate to disable the link of the web site on the country menu, and "
-"present a message below.)"
-msgstr ""
-
-#: ../inc/theme-options.php:294
-msgid "Page coming soon."
-msgstr ""
-
-#: ../inc/theme-options.php:295
-msgid ""
-"(Enter the massage to inform about the page under construction. </br>To be "
-"active: please add the class 'tooltip' into the topical menu items' "
-"hyperlink. eg &lt;a class='tooltip' href='url'&gt;Infrastructure&lt;/a&gt;. "
-"</br> Note: all the topical menu items which have the class 'tooltip' will "
-"not be clickable and message above will appear on hover. )"
-msgstr ""
-
-#: ../inc/theme-options.php:302
+#: inc/theme-options.php:205
 msgid "Notification messages"
 msgstr ""
 
-#: ../inc/theme-options.php:303
+#: inc/theme-options.php:206
 msgid ""
 "(The notification will be appeared at the top above the featue images "
 "slider. )"
 msgstr ""
 
-#: ../inc/theme-options.php:320
-msgid "Menu Name"
-msgstr ""
-
-#: ../inc/theme-options.php:322
-msgid "Informed message"
-msgstr ""
-
-#: ../inc/theme-options.php:343 ../inc/theme-options.php:353
-msgid "Enable"
-msgstr ""
-
-#: ../inc/theme-options.php:344
-msgid ""
-"(Select if you'd like to enable drop box menu once hover on country names.)"
-msgstr ""
-
-#: ../inc/theme-options.php:361
+#: inc/theme-options.php:214 inc/theme-options.php:215
 msgid "281321"
 msgstr ""
 
-#: ../inc/theme-options.php:362
+#: inc/theme-options.php:218
 msgid "(This id can be found on the Featured Area plugin slider's settings.)"
 msgstr ""
 
-#: ../inc/theme-options.php:370
+#: inc/theme-options.php:229
 msgid "Logo url"
 msgstr ""
 
-#: ../inc/theme-options.php:371
+#: inc/theme-options.php:232
 msgid "Upload"
 msgstr ""
 
-#: ../inc/theme-options.php:383
+#: inc/theme-options.php:252
 msgid "Add tags"
 msgstr ""
 
-#: ../inc/theme-options.php:383
+#: inc/theme-options.php:253
 msgid "Add tags."
 msgstr ""
 
-#: ../inc/theme-options.php:384
+#: inc/theme-options.php:256
 msgid "Separate tags with commas. Only 5 tags are allowed. "
 msgstr ""
 
-#: ../inc/theme-options.php:407 ../inc/theme-options.php:416
-#: ../inc/theme-options.php:483
+#: inc/theme-options.php:288 inc/theme-options.php:298
+#: inc/theme-options.php:356
 msgid "None"
 msgstr ""
 
-#: ../inc/theme-options.php:445
-msgid "Icon"
-msgstr ""
-
-#: ../inc/theme-options.php:446 ../page-laws.php:62
-msgid "Title"
-msgstr ""
-
-#: ../inc/theme-options.php:447
-msgid "Content"
-msgstr ""
-
-#: ../inc/theme-options.php:474
+#: inc/theme-options.php:336
 msgid "Select base layer"
 msgstr ""
 
-#: ../inc/theme-options.php:481
+#: inc/theme-options.php:350
 msgid "(USA Only)"
 msgstr ""
 
-#: ../inc/theme-options.php:482
+#: inc/theme-options.php:353
 msgid "Custom"
 msgstr ""
 
-#: ../inc/theme-options.php:485
+#: inc/theme-options.php:359
 msgid "Enter layer URL"
 msgstr ""
 
-#: ../inc/theme-options.php:488 ../inc/theme-options.php:599
+#: inc/theme-options.php:364 inc/theme-options.php:558
 msgid "Update preview"
 msgstr ""
 
-#: ../inc/theme-options.php:490
+#: inc/theme-options.php:367
 msgid "Preview map"
 msgstr ""
 
-#: ../inc/theme-options.php:495
+#: inc/theme-options.php:373
 msgid "Map settings"
 msgstr ""
 
-#: ../inc/theme-options.php:497
+#: inc/theme-options.php:376
 msgid "Currently viewing"
 msgstr ""
 
-#: ../inc/theme-options.php:500 ../inc/theme-options.php:530
+#: inc/theme-options.php:380 inc/theme-options.php:418
 msgid "Center"
 msgstr ""
 
-#: ../inc/theme-options.php:504 ../inc/theme-options.php:534
+#: inc/theme-options.php:385 inc/theme-options.php:429
 msgid "Zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:508 ../inc/theme-options.php:561
+#: inc/theme-options.php:390 inc/theme-options.php:481
 msgid "East"
 msgstr ""
 
-#: ../inc/theme-options.php:512 ../inc/theme-options.php:565
+#: inc/theme-options.php:395 inc/theme-options.php:489
 msgid "North"
 msgstr ""
 
-#: ../inc/theme-options.php:516 ../inc/theme-options.php:569
+#: inc/theme-options.php:400 inc/theme-options.php:497
 msgid "South"
 msgstr ""
 
-#: ../inc/theme-options.php:520 ../inc/theme-options.php:573
+#: inc/theme-options.php:405 inc/theme-options.php:505
 msgid "West"
 msgstr ""
 
-#: ../inc/theme-options.php:526
+#: inc/theme-options.php:412
 msgid "Map center & zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:527
+#: inc/theme-options.php:414
 msgid "Set current as map center & zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:538
+#: inc/theme-options.php:437
 msgid "Min zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:541 ../inc/theme-options.php:548
+#: inc/theme-options.php:444 inc/theme-options.php:456
 msgid "Current"
 msgstr ""
 
-#: ../inc/theme-options.php:545
+#: inc/theme-options.php:449
 msgid "Max zoom"
 msgstr ""
 
-#: ../inc/theme-options.php:557
+#: inc/theme-options.php:475
 msgid "Pan limits"
 msgstr ""
 
-#: ../inc/theme-options.php:558
+#: inc/theme-options.php:477
 msgid "Set current as map panning limits"
 msgstr ""
 
-#: ../inc/theme-options.php:583
+#: inc/theme-options.php:531
 msgid "Enable geocoding service"
 msgstr ""
 
-#: ../inc/theme-options.php:586
+#: inc/theme-options.php:538
 msgid "Enable geocode search service"
 msgstr ""
 
-#: ../inc/theme-options.php:590
+#: inc/theme-options.php:543
 msgid "Map handlers"
 msgstr ""
 
-#: ../inc/theme-options.php:593
+#: inc/theme-options.php:550
 msgid "Disable mousewheel zooming"
 msgstr ""
 
-#: ../inc/theme-options.php:600
+#: inc/theme-options.php:560
 msgid "Preview mode"
 msgstr ""
 
-#: ../inc/theme-options.php:601
+#: inc/theme-options.php:562
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
 
-#: ../inc/topics.php:19
+#: inc/topics.php:19
 msgctxt "post type general name"
 msgid "Topics"
 msgstr ""
 
-#: ../inc/topics.php:20
+#: inc/topics.php:20
 msgctxt "post type singular name"
 msgid "Topic"
 msgstr ""
 
-#: ../inc/topics.php:21
+#: inc/topics.php:21
 msgctxt "admin menu"
 msgid "Topics"
 msgstr ""
 
-#: ../inc/topics.php:22
+#: inc/topics.php:22
 msgctxt "add new on admin bar"
 msgid "Topic"
 msgstr ""
 
-#: ../inc/topics.php:23
+#: inc/topics.php:23
 msgctxt "topic"
 msgid "Add new"
 msgstr ""
 
-#: ../inc/topics.php:24
+#: inc/topics.php:24
 msgid "Add new topic"
 msgstr ""
 
-#: ../inc/topics.php:25
+#: inc/topics.php:25
 msgid "New topic"
 msgstr ""
 
-#: ../inc/topics.php:26
+#: inc/topics.php:26
 msgid "Edit topic"
 msgstr ""
 
-#: ../inc/topics.php:27
+#: inc/topics.php:27
 msgid "View topic"
 msgstr ""
 
-#: ../inc/topics.php:28
+#: inc/topics.php:28
 msgid "All topics"
 msgstr ""
 
-#: ../inc/topics.php:29
+#: inc/topics.php:29
 msgid "Search topics"
 msgstr ""
 
-#: ../inc/topics.php:30
+#: inc/topics.php:30
 msgid "Parent topics:"
 msgstr ""
 
-#: ../inc/topics.php:31
+#: inc/topics.php:31
 msgid "No topics found."
 msgstr ""
 
-#: ../inc/topics.php:32
+#: inc/topics.php:32
 msgid "No topics found in trash."
 msgstr ""
 
-#: ../index.php:30
+#: index.php:30
 msgid "News <em> from "
 msgstr ""
 
-#: ../index.php:90 ../index.php:92
+#: index.php:90 index.php:92
 msgid "View more... »"
 msgstr ""
 
-#: ../loop-latest.php:10
+#: loop-latest.php:10
 msgctxt "reduced date format"
 msgid "m/d/Y"
 msgstr ""
 
-#: ../page-data.php:14
+#: page-data.php:14
 msgid "Access the complete database"
 msgstr ""
 
-#: ../page-data.php:25
+#: page-data.php:25
 msgid "Type your search and hit enter"
 msgstr ""
 
-#: ../page-data.php:37
+#: page-data.php:37
 msgid "Previous page"
 msgstr ""
 
-#: ../page-data.php:39
+#: page-data.php:39
 msgid "Next page"
 msgstr ""
 
-#: ../page-laws.php:63
-msgid "Document type"
-msgstr ""
-
-#: ../page-laws.php:64
-msgid "Document number"
-msgstr ""
-
-#: ../page-laws.php:65
-msgid "Promulgation date"
-msgstr ""
-
-#: ../page-laws.php:66 ../page-pdf-view.php:23 ../page-pdf-view.php:26
-#: ../section-query-actions.php:25 ../single-profiles.php:197
+#: page-pdf-view.php:23 page-pdf-view.php:26 section-query-actions.php:25
 msgid "Download"
 msgstr ""
 
-#: ../page-laws.php:127 ../page-laws.php:129
-msgid "SEARCH"
-msgstr ""
-
-#: ../page-laws.php:127
-msgid "Laws in"
-msgstr ""
-
-#: ../page-laws.php:129
-msgid "in Laws"
-msgstr ""
-
-#: ../page-laws.php:133
-msgid "Search all Laws"
-msgstr ""
-
-#: ../page-laws.php:135
-msgid "Clear filter"
-msgstr ""
-
-#: ../page-laws.php:142
-msgid "LAW COMPENDIUM"
-msgstr ""
-
-#: ../page-laws.php:151
-msgid "TYPE OF LAWS"
-msgstr ""
-
-#: ../page-laws.php:155
-msgid "Anukret/Sub-Decree"
-msgstr ""
-
-#: ../page-laws.php:156
-msgid "Chbab/Law/Kram"
-msgstr ""
-
-#: ../page-laws.php:157
-msgid "Constitution of Cambodia"
-msgstr ""
-
-#: ../page-laws.php:158
-msgid "International Treaties/Agreements"
-msgstr ""
-
-#: ../page-laws.php:159
-msgid "Kech Sonya/Contract/Agreement"
-msgstr ""
-
-#: ../page-laws.php:160
-msgid "Kolkar Nenom/Guidelines"
-msgstr ""
-
-#: ../page-laws.php:161
-msgid "Kolnyobay/Policy"
-msgstr ""
-
-#: ../page-laws.php:162
-msgid "Likhet/Letter"
-msgstr ""
-
-#: ../page-laws.php:163
-msgid "Prakas/Joint-Prakas/Proclamation"
-msgstr ""
-
-#: ../page-laws.php:164
-msgid "Preah Reach Kram/Royal Kram"
-msgstr ""
-
-#: ../page-laws.php:165
-msgid "Sarachor/Circular"
-msgstr ""
-
-#: ../page-laws.php:166
-msgid "Sechkdei Chhun Damneoung/Notice/Announcement"
-msgstr ""
-
-#: ../page-laws.php:167
-msgid "Sechkdei Nenum/Instruction"
-msgstr ""
-
-#: ../page-laws.php:168
-msgid "Sechkdei Preang Chbab/Draft Laws & Regulations"
-msgstr ""
-
-#: ../page-laws.php:169
-msgid "Sechkdei Samrech/Decision"
-msgstr ""
-
-#: ../page-laws.php:170
-msgid "Others"
-msgstr ""
-
-#: ../page-profiles-metadata-page.php:4
-msgid "Metadata:"
-msgstr ""
-
-#: ../page-profiles-single-page.php:44
-msgid "Amendments"
-msgstr ""
-
-#: ../page-profiles-single-page.php:98
-msgid "Reference documents"
-msgstr ""
-
-#: ../search.php:6
+#: search.php:6
 msgid "Search results"
 msgstr ""
 
-#: ../section-content-summary.php:9
+#: section-content-summary.php:9
 msgid "Issue briefs"
 msgstr ""
 
-#: ../section-content-summary.php:35
+#: section-content-summary.php:35
 msgid "Access the topics archive"
 msgstr ""
 
-#: ../section-content-summary.php:46
+#: section-content-summary.php:46
 msgid "Site updates"
 msgstr ""
 
-#: ../section-content-summary.php:67
+#: section-content-summary.php:67
 msgid "Events and opportunities"
 msgstr ""
 
-#: ../section-query-actions.php:13
+#: section-query-actions.php:13
 msgid "Content API"
 msgstr ""
 
-#: ../section-query-actions.php:16
+#: section-query-actions.php:16
 msgid "RSS Feed"
 msgstr ""
 
-#: ../section-query-actions.php:21
+#: section-query-actions.php:21
 msgid "Get GeoJSON"
 msgstr ""
 
-#: ../section-related-datasets.php:18
+#: section-related-datasets.php:18
 msgid "Other"
 msgstr ""
 
-#: ../section-related-datasets.php:31
+#: section-related-datasets.php:31
 msgid "Related resources"
 msgstr ""
 
-#: ../section-related-datasets.php:71
+#: section-related-datasets.php:71
 msgid "Read more..."
 msgstr ""
 
-#: ../section-related-datasets.php:81 ../section-related-datasets.php:95
+#: section-related-datasets.php:81 section-related-datasets.php:95
 msgid "Show resources details"
 msgstr ""
 
-#: ../section-related-datasets.php:93
+#: section-related-datasets.php:93
 msgid "Hide resources details"
 msgstr ""
 
-#: ../single-announcement.php:69 ../single-announcement.php:72
-#: ../single.php:41 ../single.php:44
+#: section-sticky-posts.php:151 widgets/opendev-announcements.php:73
+msgid "Keep reading"
+msgstr ""
+
+#: single-announcement.php:69 single-announcement.php:72 single.php:50
+#: single.php:57
 msgid "Summary translated by ODC Team"
 msgstr ""
 
-#: ../single-announcement.php:121
+#: single-announcement.php:121
 msgid "Source: "
 msgstr ""
 
-#: ../single-announcement.php:144 ../single.php:78
+#: single-announcement.php:144 single.php:115
 msgid "Tags:"
 msgstr ""
 
-#: ../single-map.php:32
+#: single-map.php:32
 msgid "Latest articles on"
 msgstr ""
 
-#: ../single-profiles.php:124 ../single-profiles.php:126
-#: ../single-profiles.php:164 ../single-profiles.php:166
-msgid "Total"
+#: widgets/category-widget.php:12
+msgid "OD Post Taxonomy"
 msgstr ""
 
-#: ../single-profiles.php:124 ../single-profiles.php:126
-#: ../single-profiles.php:164 ../single-profiles.php:166
-msgid "Listed"
+#: widgets/category-widget.php:13
+msgid "Display post taxonomies hierarchically."
 msgstr ""
 
-#: ../single-profiles.php:124 ../single-profiles.php:126
-#: ../single-profiles.php:154 ../single-profiles.php:164
-#: ../single-profiles.php:166
-msgid ":"
+#: widgets/category-widget.php:108
+msgid "Taxonomies to display:"
 msgstr ""
 
-#: ../single-profiles.php:187
-msgid "Search"
+#: widgets/od-related-recent-news-widget.php:10
+msgid "OD Related Recent News Widget"
 msgstr ""
 
-#: ../single-profiles.php:190
-msgid "Search data in profile page"
+#: widgets/od-related-recent-news-widget.php:11
+msgid "Display OD the related recent news for the topics"
 msgstr ""
 
-#: ../single-profiles.php:261
-msgid "View metadata of dataset"
+#: widgets/od-related-recent-news-widget.php:117
+msgid "Related News"
 msgstr ""
 
-#: ../single-profiles.php:273
-msgid "Related profile pages"
+#: widgets/od-related-recent-news-widget.php:138
+#: widgets/odm-taxonomy-widget.php:222
+msgid "Title:"
 msgstr ""
 
-#: ../single-profiles.php:295
-msgid "Filter by"
+#: widgets/od-related-recent-news-widget.php:142
+msgid "Option:"
 msgstr ""
 
-#: ../single-profiles.php:300
-msgid "Map ID"
+#: widgets/od-related-recent-news-widget.php:159
+msgid "Category slugs:"
 msgstr ""
 
-#: ../single-profiles.php:557
-msgid "all"
+#: widgets/odm-taxonomy-widget.php:10
+msgid "OD Content Taxonomy Widget"
 msgstr ""
 
-#: ../single-profiles.php:562
-msgid "All "
+#: widgets/odm-taxonomy-widget.php:11
+msgid "Display OD taxonomy for content"
+msgstr ""
+
+#: widgets/odm-taxonomy-widget.php:217
+msgid "Topic areas"
+msgstr ""
+
+#: widgets/odm-taxonomy-widget.php:226
+msgid "Include Category by IDs (separated by commas):"
+msgstr ""
+
+#: widgets/odm-taxonomy-widget.php:230
+msgid "Exclude Category by IDs (separated by commas):"
+msgstr ""
+
+#: widgets/opendev-announcements.php:78
+msgid "See all"
+msgstr ""
+
+#: widgets/opendev-announcements.php:84 widgets/opendev-site-updates.php:36
+msgid "No post found"
 msgstr ""

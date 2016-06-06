@@ -1,0 +1,20 @@
+{
+    "name": "odm/wp-odm_theme",
+    "description": "Wordpress theme based on [JEO](http://github.com/oeco/jeo). This theme adds custom UI elements and logic.",
+    "require": {
+        "fortawesome/font-awesome": "^4.6",
+        "datatables/datatables": "^1.10",
+        "drmonty/leaflet": "^0.7.7",
+        "drmonty/chosen": "^1.5",
+        "moment/moment": "^2.13"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },"license": "GPLv3",
+    "authors": [
+        {
+            "name": "Alex Corbi",
+            "email": "a.corbi@gmail.com"
+        }
+    ]
+}

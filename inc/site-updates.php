@@ -2,7 +2,7 @@
 
 /*
  * Open Development
- * site update
+ * Site updates content type
  */
 
 class OpenDev_SiteUpdates {

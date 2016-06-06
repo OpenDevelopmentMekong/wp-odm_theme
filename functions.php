@@ -1,5 +1,8 @@
 <?php
 
+// Require dependencies isntalled via composer
+require STYLESHEETPATH.'/vendor/autoload.php';
+
 // Query multisite
 require_once STYLESHEETPATH.'/inc/query-multisite.php';
 
@@ -28,19 +31,13 @@ require_once STYLESHEETPATH.'/inc/live-search/live-search.php';
 require_once STYLESHEETPATH.'/inc/interactive-map.php';
 
 // Category widget
-require_once STYLESHEETPATH.'/inc/category-widget.php';
+require_once STYLESHEETPATH.'/widgets/category-widget.php';
 
 // Category widget
-require_once STYLESHEETPATH.'/inc/odm-taxonomy-widget.php';
+require_once STYLESHEETPATH.'/widgets/odm-taxonomy-widget.php';
 
 // Related recent news
-require_once STYLESHEETPATH.'/inc/od-related-recent-news-widget.php';
-
-// Mekong region storms and floods
-require_once STYLESHEETPATH.'/inc/mekong-region-storms-and-floods.php';
-
-//OpenDev_profiles_posttype_registration
-require_once STYLESHEETPATH.'/inc/profiles_posttype_registration.php';
+require_once STYLESHEETPATH.'/widgets/od-related-recent-news-widget.php';
 
 // Advanced nav
 require_once STYLESHEETPATH.'/inc/advanced-navigation.php';
@@ -49,35 +46,17 @@ require_once STYLESHEETPATH.'/inc/advanced-navigation.php';
 require_once STYLESHEETPATH.'/inc/category-walker.php';
 
 // Datastore API functions
-require_once STYLESHEETPATH.'/inc/datastore_api.php';
+require_once STYLESHEETPATH.'/inc/datastore-api.php';
 
-$country_name = str_replace('Open Development ', '', get_bloginfo('name'));
-define('COUNTRY_NAME', strtolower($country_name));
-define('SITE_NAME', $country_name);
+// CKAN API functions
+require_once STYLESHEETPATH.'/inc/ckan-api.php';
 
-if (function_exists("qtranxf_getLanguage")){
-  if(qtranxf_getLanguage() == "kh")
-    $local_lang = "km";
-  else
-    $local_lang = qtranxf_getLanguage();
+// Localization
+require_once STYLESHEETPATH.'/inc/localization.php';
 
-  define('CURRENT_LANGUAGE', $local_lang);
-}
-else
-  define('CURRENT_LANGUAGE', 'en');
-$wpDomain=$_SERVER["HTTP_HOST"];
-if ($wpDomain == '192.168.33.10'){
-  $ckanDomain='192.168.33.10:8081';
-}
-else {
-  $full_domain = $_SERVER['SERVER_NAME'];
-  $just_domain = preg_replace("/^(.*\.)?([^.]*\..*)$/", "$2", $_SERVER['HTTP_HOST']);
-  $ckanDomain = 'https://data.'.$just_domain;
-    if (preg_match('/odm.web/',$wpDomain)) //odm.web is H.E local address
-        $ckanDomain = 'https://data.opendevelopmentmekong.net';
+// WPCKAN related functions
+require_once STYLESHEETPATH.'/inc/wpckan.php';
 
-}
-define('CKAN_DOMAIN', $ckanDomain);
 function opendev_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
@@ -86,12 +65,6 @@ function opendev_setup_theme()
     register_sidebar(array(
   'name' => __('Topic sidebar', 'jeo'),
   'id' => 'topic',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
-    register_sidebar(array(
-  'name' => __('Mekong Storms and Floods sidebar', 'opendev'),
-  'id' => 'mekong-storm-flood',
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>',
  ));
@@ -125,6 +98,9 @@ function opendev_setup_theme()
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>',
  ));
+
+ include(STYLESHEETPATH . '/inc/layers.php');
+
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
@@ -143,7 +119,7 @@ function opendev_jeo_scripts()
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => $jeo_markers->query(),
     'stories_label' => __('stories', 'opendev'),
-    'home' => (is_home() && !is_paged() && !$_REQUEST['opendev_filter_']),
+    'home' => (is_home() && !is_paged() && (isset($_REQUEST['opendev_filter_']) && !$_REQUEST['opendev_filter_'])),
     'copy_embed_label' => __('Copy the embed code', 'opendev'),
     'share_label' => __('Share', 'opendev'),
     'print_label' => __('Print', 'opendev'),
@@ -193,43 +169,10 @@ function opendev_jeo_admin_scripts() {
 }
 add_action( 'admin_enqueue_scripts', 'opendev_jeo_admin_scripts' );
 
-function dataTable_scripts()
-{
-
-  if( !is_page( array( 'map-explorer', 'maps', 'home' )) and !is_home()){
-    wp_register_style('dataTables-css', get_stylesheet_directory_uri().'/lib/dataTables/css/jquery.dataTables.min.css');
-    wp_register_style('dataTables-responsive-css', get_stylesheet_directory_uri().'/lib/dataTables/css/responsive.dataTables.css');
-    /*wp_register_style('dataTables-fixedHeader-css', get_stylesheet_directory_uri().'/lib/dataTables/css/fixedHeader.dataTables.min.css');*/
-  //  wp_register_style('elc', get_stylesheet_directory_uri().'/css/elc.css');
-
-
-    wp_enqueue_script('cookie-handler', get_stylesheet_directory_uri().'/js/cookie.js', array('jquery'), '0.1.2');
-    wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
-    wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
-    wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
-    wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
-    wp_enqueue_style('dataTables-css');
-  }
-}
-
 function opendev_styles(){
   $options = get_option('opendev_options');
 
   $css_base = get_stylesheet_directory_uri().'/css/';
-
-  wp_register_style('webfont-droid-serif', 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
-  wp_register_style('webfont-opendev', get_stylesheet_directory_uri().'/font/style.css');
-  wp_register_style('webfontawesome-opendev', get_stylesheet_directory_uri().'/font/font-awesome.css');
-  if (function_exists("qtranxf_getLanguage")){
-    if ( (qtranxf_getLanguage() == "kh") || (qtranxf_getLanguage() == "km") ){
-       wp_register_style('webfont-khmer-fonts', 'https://fonts.googleapis.com/css?family=Hanuman|Moul|Suwannaphum');
-       wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-khmer-fonts', 'webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
-    }else {
-      wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
-    }
-  }else {
-    wp_register_style('opendev-base',  $css_base.'opendev.css', array('webfont-droid-serif', 'webfont-opendev', 'webfontawesome-opendev'));
-  }
 
   wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
   wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
@@ -237,35 +180,23 @@ function opendev_styles(){
   wp_register_style('opendev-laos',  $css_base.'laos.css');
   wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
   wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-  wp_register_style('nav-concept',  $css_base.'nav_concept.css');
-  wp_register_style('map-explorer',  $css_base.'map_explorer.css');
-
-  if( !is_page( array( 'map-explorer', 'maps', 'home' )) and !is_home()){
-    wp_register_style('table-pages',  $css_base.'table-pages.css');
-  }
-
+  wp_register_style('map-explorer',  $css_base.'map-explorer.css');
   wp_register_style('forest-cover',  $css_base.'forest-cover.css');
-  wp_register_style('responsive',  $css_base.'responsive.css');
 
   wp_enqueue_style('mCustomScrollbar');
   wp_enqueue_style('opendev-base');
-  wp_enqueue_style('nav-concept');
-  wp_enqueue_style('table-pages');
 
   if (is_page('map-explorer') || is_page('maps')|| is_home()){
     wp_enqueue_style('map-explorer');
   }
 
   wp_enqueue_style('forest-cover');
-  wp_enqueue_style('responsive');
 
   if ($options['style']) {
       wp_enqueue_style('opendev-'.$options['style']);
   }
 
 }
-// wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
-add_action('wp_enqueue_scripts', 'dataTable_scripts', 100);
 
 
 function important_overrides() {
@@ -700,125 +631,12 @@ function opendev_ms_nav()
      }
  }
 }
-function get_localization_language_by_language_code($lang_code ="en"){
-        $language['en'] = "English";
-        $language['kh'] = "Khmer";
-        $language['km'] = "Khmer";
-        $language['lo'] = "Lao";
-        $language['my'] = "Burmese";
-        $language['th'] = "Thai";
-        $language['vi'] = "Vietnamese";
-        return $language[$lang_code];
-    }
-function get_the_localization_language_by_website($site=""){
-    $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
-    $language['ODM'] = "";
-    $language['Cambodia'] = "Khmer";
-    $language['Laos'] = "Lao";
-    $language['Myanmar'] = "Burmese";
-    $language['Thailand'] = "Thai";
-    $language['Vietnam'] = "Vietnamese";
-    return $language[$site_name];
-}
-function opendev_wpckan_post_types()
-{
-    return array('post', 'page', 'topic', 'layer');
-}
-add_filter('wpckan_post_types', 'opendev_wpckan_post_types');
 
 if (!function_exists('IsNullOrEmptyString')) {
     function IsNullOrEmptyString($question)
     {
         return !isset($question) || @trim($question) === '';
     }
-}
-
-function opendev_get_related_datasets($atts = false)
-{
-    if (!$atts) {
-        $atts = array();
-    }
-
-    if (!isset($atts['post_id'])) {
-        $atts['post_id'] = get_the_ID();
-    }
-
-    $related_datasets_json = get_post_meta($atts['post_id'], 'wpckan_related_datasets', true);
-    $related_datasets = array();
-    if (!IsNullOrEmptyString($related_datasets_json)) {
-        $related_datasets = json_decode($related_datasets_json, true);
-    }
-
-    $dataset_array = array();
-
-    foreach ($related_datasets as $dataset) {
-        $dataset_atts = array('id' => $dataset['dataset_id']);
-        try {
-            array_push($dataset_array, wpckan_api_get_dataset($dataset_atts));
-        } catch (Exception $e) {
-            wpckan_log($e->getMessage());
-        }
-        if (array_key_exists('limit', $atts) && (count($dataset_array) >= (int) ($atts['limit']))) {
-            break;
-        }
-    }
-
-    return $dataset_array;
-}
-
-function opendev_wpckan_api_query_datasets($atts)
-{
-    if (is_null(wpckan_get_ckan_settings())) {
-        wpckan_api_settings_error('wpckan_api_query_datasets');
-    }
-
-    if (!isset($atts['query'])) {
-        wpckan_api_call_error('wpckan_api_query_datasets', null);
-    }
-
-    try {
-        $settings = wpckan_get_ckan_settings();
-        $ckanClient = CkanClient::factory($settings);
-        $commandName = 'PackageSearch';
-        $arguments = array('q' => $atts['query']);
-
-        if (isset($atts['limit'])) {
-            $arguments['rows'] = (int) $atts['limit'];
-
-            if (isset($atts['page'])) {
-                $page = (int) $atts['page'];
-                if ($page > 0) {
-                    $arguments['start'] = (int) $atts['limit'] * ($page - 1);
-                }
-            }
-        }
-
-        $filter = null;
-        if (isset($atts['organization'])) {
-            $filter = $filter.'+owner_org:'.$atts['organization'];
-        }
-        if (isset($atts['organization']) && isset($atts['group'])) {
-            $filter = $filter.' ';
-        }
-        if (isset($atts['group'])) {
-            $filter = $filter.'+groups:'.$atts['group'];
-        }
-        if (!is_null($filter)) {
-            $arguments['fq'] = $filter;
-        }
-        $command = $ckanClient->getCommand($commandName, $arguments);
-        $response = $command->execute();
-
-        wpckan_log('wpckan_api_query_datasets commandName: '.$commandName.' arguments: '.print_r($arguments, true).' settings: '.print_r($settings, true));
-
-        if ($response['success'] == false) {
-            wpckan_api_call_error('wpckan_api_query_datasets', null);
-        }
-    } catch (Exception $e) {
-        wpckan_api_call_error('wpckan_api_query_datasets', $e->getMessage());
-    }
-
-    return $response;
 }
 
 // Disable mousewheel zoom by default
@@ -1486,451 +1304,4 @@ function teslina_tinymce_config($init)
 }
 add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 
-function setTransitionCookies($user_data, $limit = 4096, $cookie_name = 'odm_transition_data')
-{
-  // retrieve old cookie
-  // base64 encode and put into json
-  // $user_data = base64_encode(json_encode($user_data));
-  $user_data = json_encode($user_data);
-  // $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
-  //$domain = '192.168.33.10';
-  setcookie($cookie_name, $user_data, (time() + 3600), '/');
-}
-
-function buildTopTopicNav($lang)
-{
-    $navigation_vocab = @file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
-    if ($navigation_vocab){
-      $json_a = json_decode($navigation_vocab, true);
-
-      // get Top Topic Names
-      foreach ($json_a as $key => $value) {
-          echo '<ul>'.$value['titles'][$lang].'</ul>';
-          // get entries
-          foreach ($json_a[$key]['children'] as $child) {
-              // make wp url from title
-            $url = sanitize_title($child['name']);
-              echo '<li><a href="topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
-          }
-      }
-    }
-
-}
-
-function get_law_datasets($ckan_domain,$filter_key,$filter_value){
-  $ckanapi_url = $ckan_domain . "/api/3/action/package_search?q=*:*&fq=type:laws_record&rows=1000";
-  $json = @file_get_contents($ckanapi_url);
-  if ($json === FALSE) return [];
-  $result = json_decode($json, true) ?: [];
-  $datasets = $result["result"]["results"];
-  if (isset($filter_key) && isset($filter_value)){
-    foreach ($datasets as $key => $dataset){
-      if ( !isset($dataset[$filter_key])){
-        unset($datasets[$key]);
-      }else{
-        if (is_array($dataset[$filter_key])){
-          if (!in_array($filter_value,$dataset[$filter_key])){
-            unset($datasets[$key]);
-          }
-        }else if ($dataset[$filter_key] != $filter_value){
-          unset($datasets[$key]);
-        }
-      }
-    }
-  }
-  return $datasets;
-}
-
-// function get_law_datasets($filter_odm_taxonomy,$filter_odm_document_type){
-//   $shortcode = '[wpckan_query_datasets query="*:*" limit=1000 type="laws_record" include_fields_extra="taxonomy,odm_document_type,title_translated,odm_document_number,odm_promulgation_date" format="json"]';
-//   $laws_json = null;
-//
-//   try{
-//     $laws_json = do_shortcode($shortcode);
-//   } catch (Exception $e){
-//     return [];
-//   }
-//
-//   $laws = json_decode($laws_json,true);
-//   foreach ($laws["wpckan_dataset_list"] as $key => $law_record){
-//     if (!empty($filter_odm_document_type) && $law_record['wpckan_dataset_extras']['wpckan_dataset_extras-odm_document_type'] != $filter_odm_document_type){
-//       unset($laws["wpckan_dataset_list"][$key]);
-//     }
-//     if (!empty($filter_odm_taxonomy) && !in_array($filter_odm_taxonomy,$law_record['wpckan_dataset_extras']['wpckan_dataset_extras-taxonomy'])){
-//       unset($laws["wpckan_dataset_list"][$key]);
-//     }
-//   }
-//   return $laws["wpckan_dataset_list"];
-// }
-
-function get_dataset_by_id($ckan_domain,$id){
-  $ckanapi_url = $ckan_domain . "/api/3/action/package_show?id=" . $id;
-  //echo $ckanapi_url;
-  $json = @file_get_contents($ckanapi_url);
-  if ($json === FALSE) return [];
-  $datasets = json_decode($json, true) ?: [];
-  return $datasets["result"];
-}
-
-function get_datasets_filter($ckan_domain,$key,$value){
-  $ckanapi_url = $ckan_domain . "/api/3/action/package_search?fq=" . $key . ":" . $value;
-  $json = @file_get_contents($ckanapi_url);
-  if ($json === FALSE) return [];
-  $datasets = json_decode($json, true) ?: [];
-  return $datasets["result"]["results"];
-}
-
-function get_metadata_info_of_dataset_by_id($ckan_domain,$ckan_dataset_id, $individual_layer='', $atlernative_links = 0, $showing_fields =""){
-  $lang = CURRENT_LANGUAGE;
-
-  $attribute_metadata = array(
-                        //  "title_translated" => "Title",
-                          "notes_translated" => "Description",
-                          "odm_source" => "Source(s)",
-                          "odm_completeness" => "Completeness",
-                          "odm_metadata_reference_information" => "Metadata Reference Information",
-                          "odm_process" => "Process(es)",
-                          "odm_attributes" => "Attributes",
-                          "odm_logical_consistency" => "Logical Consistency",
-                          "odm_copyright" => "Copyright",
-                          "version" => "Version",
-                          "odm_date_created" => "Date created",
-                          "odm_date_uploaded" => "Date uploaded",
-                          "odm_temporal_range" => "Temporal range",
-                          "odm_accuracy-en" => "Accuracy",
-                          "odm_logical_consistency" => "Logical Consistency",
-                          "odm_contact" => "Contact",
-                          "odm_access_and_use_constraints" => "Access and use constraints",
-                          "license_id" => "License"
-                      );
-
-  // get ckan record by id
-  $get_info_from_ckan = get_dataset_by_id($ckan_domain,$ckan_dataset_id);
-  ?>
-    <div class="layer-toggle-info toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
-        <table border="0" class="toggle-talbe">
-          <tr><td colspan="2"><h5><?php echo $get_info_from_ckan['title_translated'][$lang] ?></h5></td></tr>
-          <?php
-          if($showing_fields == ""){
-            if($get_info_from_ckan){
-              foreach ($get_info_from_ckan as $key => $info) {
-                if($key == 'license_id'){  ?>
-                  <tr>
-                      <td><?php echo $attribute_metadata['license_id']; ?></td>
-                      <td><?php echo $info == "unspecified"? ucwords($get_info_from_ckan['license_id'] ) : $get_info_from_ckan['license_id']; ?></td>
-                  </tr>
-              <?php }else{
-                  if(array_key_exists($key, $attribute_metadata)){
-              ?>    <tr>
-                        <td><?php echo $attribute_metadata[$key]; ?></td><td><?php echo is_array($info) ? $info[$lang]: $info; ?></td>
-                    </tr>
-          <?php   }
-                }
-              } //end foreach
-            }//if get resource
-          }else { //if so fields are defined
-            foreach ($showing_fields as $key => $info) {
-              if($key == 'license_id'){  ?>
-                <tr>
-                    <td><?php echo $showing_fields['license_id']; ?></td>
-                    <td><?php echo $info == "unspecified"? ucwords($get_info_from_ckan['license_id'] ) : $get_info_from_ckan['license_id']; ?></td>
-                </tr>
-            <?php }else{
-                  if($get_info_from_ckan){
-              ?>    <tr>
-                        <td><?php echo $showing_fields[$key]; ?></td>
-                        <td><?php echo is_array($get_info_from_ckan[$key]) ? $get_info_from_ckan[$key][$lang]: $get_info_from_ckan[$key]; ?></td>
-                    </tr>
-        <?php     }
-              }
-            } //end foreach
-          }
-          ?>
-        </table>
-      <?php if ($atlernative_links == 1) { ?>
-        <div class="atlernative_links">
-        <?php if ($lang != 'en'){ ?>
-                <div class="div-button"><a href="<?php echo $individual_layer['download_url_localization']; ?>" target="_blank"><i class="fa fa-arrow-down"></i> <?php _e("Download data", "opendev"); ?></a></div>
-
-                <?php if ($individual_layer['profilepage_url_localization']){ ?>
-                  <div class="div-button"><a href="<?php echo $individual_layer['profilepage_url_localization']; ?>" target="_blank"><i class="fa fa-table"></i> <?php _e("View dataset table", "opendev"); ?></a></div>
-                <?php } ?>
-        <?php }else {  ?>
-                <div class="div-button"><a href="<?php echo $individual_layer['download_url']; ?>" target="_blank"><i class="fa fa-arrow-down"></i> <?php _e("Download data", "opendev"); ?></a></div>
-
-                <?php if ($individual_layer['profilepage_url']){ ?>
-                  <div class="div-button"><a href="<?php echo $individual_layer['profilepage_url']; ?>" target="_blank"><i class="fa fa-table"></i> <?php _e("View dataset table", "opendev"); ?></a></div>
-                <?php } ?>
-        <?php } ?>
-        </div><!-- atlernative_links -->
-      <?php } //if $atlernative_links ?>
-    </div><!--layer-toggle-info-->
-<?php
-}//end function
-function buildStyledTopTopicListForLaws($lang)
-{
-    $navigation_vocab = @file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
-    if ($navigation_vocab === FALSE) echo '<ul></ul>';
-    $json_a = json_decode($navigation_vocab, true);
-
-    echo '<ul>';
-    // get Top Topic Names
-    foreach ($json_a as $key => $value) {
-      foreach ($json_a[$key]['children'] as $child) {
-         echo '<li><a href="/laws/?odm_taxonomy='.$child['titles']['en'].'">'. $child['titles'][$lang] .'</a></li>';
-      }
-    }
-    echo '</ul>';
-}
-
-function buildStyledTopTopicNav($lang)
-{	if ($lang == "kh")
-		$lang = "km";
-
-	/*"class":"tooltip" or "multiline-menu-item"  class that can use in json*/
-    $navigation_vocab = @file_get_contents(get_stylesheet_directory().'/odm-taxonomy/top_topics/top_topics_multilingual.json');
-    if ($navigation_vocab === FALSE || is_null($navigation_vocab)){
-      return;
-    }
-    $json_a = json_decode($navigation_vocab, true);
-
-    // get Top Topic Names
-    foreach ($json_a as $key => $value) {
-        switch ($key) {
-          case 0:
-              $icon = 'icon_tree.png';
-              $menu = 'menu_environment';
-              break;
-          case 1:
-              $icon = 'icon_industry.png';
-              $menu = 'menu_economy';
-              break;
-          case 2:
-              $icon = 'icon_mensch.png';
-              $menu = 'menu_people';
-              break;
-      }
-        echo '<li class="first icon_menu '.$menu.'">';
-        echo '<a href="#" target="_self">';
-        $icon_url = get_stylesheet_directory_uri().'/img/'.$icon;
-        echo '<img src="'.$icon_url.'" alt="Top Topic Icon for '.$menu.'">';
-        echo '<span class="cNavState"></span></a>';
-
-        echo '<ul class="level2 '.$menu.'">';
-        echo '<li class="top-topic">'.$value['titles'][$lang].'</li>';
-      // counter
-       // get entries -->
-       foreach ($json_a[$key]['children'] as $child) {
-           $url = sanitize_title($child['name']);
-           echo '<li class="'.COUNTRY_NAME.'-bgcolor '. $child['class'] .'"><a href="/topics/'.$url.'">'.$child['titles'][$lang].'</a></li>';
-       }
-
-        ?>
-        <span class="border"></span>
-      </ul><?php
-
-    }
-}
-
-function getMultilingualValueOrFallback($field,$lang){
-
-  if (!isset($field[$lang]) || IsNullOrEmptyString($field[$lang])){
-    return $field['en'];
-  }
-
-  return $field[$lang];
-
-}
-
-// include backend layer interface for adding wms layer into map explorer of child theme
-add_action( 'after_setup_theme', function() {
-    include(STYLESHEETPATH . '/inc/layers.php');
-}, 42 );
-
-
-//custom submenus for country specific menu
-class country_specific_sub_menus extends Walker_Nav_Menu {
-  function start_lvl(&$output, $depth) {
-    $level=$depth+2;
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"level$level \">\n";
-  }
-  function end_lvl(&$output, $depth) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "$indent</ul>\n";
-  }
-}
-/// Data Classification definition using in Profile pages
-function data_classification_definition ($info){
-  $info = trim($info);
-  if ($info == "កាត់បន្ថយ")
-      $info = "Downsized";
-  else if ($info == "កាត់បន្ថយបន្ទាប់ពីដកហូត")
-      $info = "Downsized after revocation";
-  else if ($info == "គ្មានភស្តុតាងនៃការផ្លាស់ប្តូរ")
-      $info = "No evidence of adjustment";
-  else if ($info == "ដកហូត")
-      $info = "Revoked";
-  else if ($info == "ទិន្នន័យរដ្ឋាភិបាលពេញលេញ")
-      $info = "Government data complete";
-  else if ($info == "ទិន្នន័យរដ្ឋាភិបាលមិនពេញលេញ")
-      $info = "Government data partial";
-  else if ($info == "ទិន្នន័យដទៃទៀត")
-      $info = "Secondary source data";
-  else if ($info == "ទិន្នន័យបន្ទាប់បន្សំ")
-      $info = "Other data";
-
-  $info = strtolower(str_replace(" ", "_", $info));
-    echo '&nbsp; <div class="tooltip tooltip_definition ">';
-        if ($info != "" && $info!=__("Not found", "opendev"))
-          echo '<i class="fa fa-question-circle info-data-classification" title=""></i>';
-        if ($info == "no_evidence_of_adjustment"){
-          echo '<div class="tooltip-info tooltip-no_evidence_of_adjustment">';
-            echo '<p>'.__("ODC is not aware of any adjustments to the concession since it was first granted.", "opendev");
-            echo '</p>';
-          echo '</div>';
-        }else if ($info == "downsized"){
-          echo '<div class="tooltip-info tooltip-downsized">';
-            echo '<p>'.__("The concession has been subjected to additional reductions in size and has not been cancelled previously. Publicly available information on land area cut from ELCs does not include maps or spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC projects that are visualized on the interactive map represent the original contract size.", "opendev");
-            echo '</p>';
-          echo '</div>';
-        }else if ($info == "revoked"){
-          echo '<div class="tooltip-info tooltip-revoked">';//<!--data_revoked_layer-->
-            echo '<p>'.__("The concession has been cancelled with or without a history of reductions in size.", "opendev");
-            echo '</p>';
-          echo '</div>';
-        }else if ($info == "downsized_after_revocation"){
-          echo '<div class="tooltip-info tooltip-downsized_after_revocation">';//<!--data_downsized_after_revocation_layer-->
-            echo '<p>'.__("The concession has been subjected to reduction(s) in size although it had been cancelled previously. Publicly available information on land area cut from ELCs does not include maps or spatial data of excisions. Thus, ODC cannot present land area cut in shapes. As a result, ELC projects that are visualized on the interactive map represent the original contract size.", "opendev");
-            echo '</p>';
-          echo '</div>';
-        }else if ($info == "government_data_complete"){
-          echo '<div class="tooltip-info tooltip-government_data_complete">';//<!--Complete Data-->
-            echo '<p>'.__("Information obtained from official Government sources, with official legal documentation, in the four identification fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>  d. Purpose (crop, ore, etc.)", "opendev").'</p>';
-          echo '</div>';
-        }else if ($info == "government_data_partial"){
-          echo '<div class="tooltip-info tooltip-government_data_partial">';//<!--Partial Data-->
-            echo '<p>'.__("Information obtained from official Government sources, with legal documentation, but missing one or more of the following identification fields: <br>a. Company name; <br>b. Location; <br>c. GPS coordinates and/or analog map; and <br>d. Purpose (crop, ore, etc.)", "opendev").'</p>';
-          echo '</div> ';
-        }else if ($info == "other_data"){
-          echo '<div class="tooltip-info tooltip-other_data">';//<!--Other-->
-            echo '<p>'.__("Information obtained from any other source in public domain (including documentation from photographs, etc.)", "opendev").'</p>';
-          echo '</div>';
-        }else if ($info == "secondary_source_data"){
-          echo '<div class="tooltip-info tooltip-secondary_source_data">';//<!--Secondary Data-->
-            echo '<p>'.__("Information obtained from the concessionaire (company/entity) or from government source(s) without legal documentation.", "opendev").'</p>';
-          echo '</div>';
-        }else if ($info == "canceled_data"){
-          echo '<div class="tooltip-info tooltip-canceled_data">';//<!--Canceled Concessions:-->
-            echo '<p>'.__("These concessions have been cancelled by the Royal Government of Cambodia.", "opendev"). '</p>';
-          echo '</div>';
-        }
-    echo '</div>';
-}
-/****** Add function convert date, H-E/**/
-//echo convert_date_to_kh_date("18.05.2014");
-function convert_date_to_kh_date($date_string, $splitted_by = "."){ //$date_string = Day.Month.Year
-  if ( (CURRENT_LANGUAGE == "kh") || (CURRENT_LANGUAGE == "km") ){
-		$splitted_date = explode($splitted_by,$date_string); // split the date by "."
-		$joined_date = "";
-		if (count($splitted_date ) > 1){
-			if (strlen($date_string) == 7){ //month and year //Month.Year  02.2014
-				$month_year = $splitted_date; //get Month.Year  02.2014
-					if ($month_year[0] != "00")
-						$joined_date .= " ខែ".convert_to_kh_month($month_year[0]);
-					if ($month_year[1] != "0000")
-						$joined_date .= " ឆ្នាំ".convert_to_kh_number($month_year[1]);
-			}else {
-				$day_month_year = $splitted_date; //get Day.Month.Year  20.02.2014
-					if ($day_month_year[0] != "00")
-						$joined_date .= "ថ្ងៃទី ". convert_to_kh_number($day_month_year[0]);
-					if ($day_month_year[1] != "00")
-						$joined_date .= " ខែ".convert_to_kh_month($day_month_year[1]);
-					if ($day_month_year[2] != "0000")
-						$joined_date .= " ឆ្នាំ".convert_to_kh_number($day_month_year[2]);
-			}
-
-	   }else{
-			if (strlen($date_string) == 4){ //only year
-				$joined_date = " ឆ្នាំ".convert_to_kh_number($date_string);
-			}
-	   }
-	   return $joined_date;
-  }//if CURRENT_LANGUAGE
-  else {
-      $return_date = date('d F Y', strtotime($date_string));
-      return  $my_date;
-  }
-}
-function convert_to_kh_month($month="") {
-  if ( (CURRENT_LANGUAGE == "kh") || (CURRENT_LANGUAGE == "km") ){
-    	if ($month=="Jan"){	$kh_month =  "មករា";	}
-    	else if ($month=="Feb"){	$kh_month = "កុម្ភៈ";	}
-    	else if ($month=="Mar"){	$kh_month =  "មីនា";	}
-    	else if ($month=="Apr"){	$kh_month =  "មេសា";	}
-    	else if ($month=="May"){	$kh_month =  "ឧសភា";	}
-    	else if ($month=="Jun"){	$kh_month =  "មិថុនា";	}
-    	else if ($month=="Jul"){	$kh_month =  "កក្កដា"; }
-    	else if ($month=="Aug"){	$kh_month =  "សីហា";	}
-    	else if ($month=="Sep"){	$kh_month =  "កញ្ញា";	}
-    	else if ($month=="Oct"){	$kh_month =  "តុលា";	}
-    	else if ($month=="Nov"){	$kh_month =  "វិច្ឆិកា";	}
-    	else if ($month=="Dec"){	$kh_month =  "ធ្នូ"; }
-
-    	else if ($month=="01"){	$kh_month =  "មករា";	}
-    	else if ($month=="02"){	$kh_month =  "កុម្ភៈ";	}
-    	else if ($month=="03"){	$kh_month =  "មីនា";	}
-    	else if ($month=="04"){	$kh_month =  "មេសា";	}
-    	else if ($month=="05"){	$kh_month =  "ឧសភា";	}
-    	else if ($month=="06"){	$kh_month =  "មិថុនា";	}
-    	else if ($month=="07"){	$kh_month =  "កក្កដា"; }
-    	else if ($month=="08"){	$kh_month =  "សីហា";	}
-    	else if ($month=="09"){	$kh_month =  "កញ្ញា";	}
-    	else if ($month=="10"){	$kh_month =  "តុលា";	}
-    	else if ($month=="11"){	$kh_month =  "វិច្ឆិកា";	}
-    	else if ($month=="12"){	$kh_month =  "ធ្នូ"; }
-
-    	else if ($month=="០១"){	$kh_month =  "មករា";	}
-    	else if ($month=="០២"){	$kh_month =  "កុម្ភៈ";	}
-    	else if ($month=="០៣"){	$kh_month =  "មីនា";	}
-    	else if ($month=="០៤"){	$kh_month =  "មេសា";	}
-    	else if ($month=="០៥"){	$kh_month =  "ឧសភា";	}
-    	else if ($month=="០៦"){	$kh_month =  "មិថុនា";	}
-    	else if ($month=="០៧"){	$kh_month =  "កក្កដា"; }
-    	else if ($month=="០៨"){	$kh_month =  "សីហា";	}
-    	else if ($month=="០៩"){	$kh_month =  "កញ្ញា";	}
-    	else if ($month=="១០"){	$kh_month =  "តុលា";	}
-    	else if ($month=="១១"){	$kh_month =  "វិច្ឆិកា";	}
-    	else if ($month=="១២"){	$kh_month =  "ធ្នូ"; }
-    return $kh_month;
-  }//if CURRENT_LANGUAGE
-  else {
-       return $month;
-    }
-}
-function convert_to_kh_number($number) {
-  if ( (CURRENT_LANGUAGE == "kh") || (CURRENT_LANGUAGE == "km") ){
-    	$conbine_num = "";
-    	$split_num = str_split($number);
-    	foreach( $split_num as $num){
-    		if ($num=="0"){	$kh_num =  "០";	}
-    		else if ($num=="1"){	$kh_num = "១";	}
-    		else if ($num=="2"){	$kh_num =  "២";	}
-    		else if ($num=="3"){	$kh_num =  "៣";	}
-    		else if ($num=="4"){	$kh_num =  "៤";	}
-    		else if ($num=="5"){	$kh_num =  "៥";	}
-    		else if ($num=="6"){	$kh_num =  "៦";	}
-    		else if ($num=="7"){	$kh_num =  "៧";	}
-    		else if ($num=="8"){	$kh_num =  "៨";	}
-    		else if ($num=="9"){	$kh_num =  "៩";	}
-    		else { $kh_num =  $num;	}
-
-    	$conbine_num .= $kh_num;
-    	}
-    return $conbine_num;
-}//if CURRENT_LANGUAGE
-else {
-     return $number;
-  }
-}
 ?>

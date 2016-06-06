@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(dirname(__FILE__)) . '/inc/datastore_api.php';
+require_once dirname(dirname(__FILE__)) . '/inc/datastore-api.php';
 
 class DatastoreApiTest extends PHPUnit_Framework_TestCase
 {

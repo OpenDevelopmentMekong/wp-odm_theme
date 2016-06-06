@@ -1,45 +1,3 @@
-<?php
-  $wpDomain=$_SERVER["HTTP_HOST"];
-  $domain='opendevelopmentmekong.net';
-  $preprod = false;
-/*
-  if ($wpDomain == 'cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';}
-  else if ($wpDomain == 'laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';}
-  else if ($wpDomain == 'myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';}
-  else if ($wpDomain == 'thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';}
-  else if ($wpDomain == 'vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';}
-  else {$country='mekong';$country_short='';}
-
-
-  if ($wpDomain == 'pp-cambodia.opendevelopmentmekong.net'){$country='cambodia';$country_short='kh';$preprod=true;}
-  else if ($wpDomain == 'pp-laos.opendevelopmentmekong.net'){$country='laos';$country_short='la';$preprod=true;}
-  else if ($wpDomain == 'pp-myanmar.opendevelopmentmekong.net'){$country='myanmar';$country_short='mm';$preprod=true;}
-  else if ($wpDomain == 'pp-thailand.opendevelopmentmekong.net'){$country='thailand';$country_short='th';$preprod=true;}
-  else if ($wpDomain == 'pp-vietnam.opendevelopmentmekong.net'){$country='vietnam';$country_short='vn';$preprod=true;}
-  else {$country='mekong';$country_short='';} */
-
-  if (COUNTRY_NAME == 'cambodia'){$country='cambodia';$country_short='kh';$preprod=true;}
-  else if (COUNTRY_NAME == 'laos'){$country='laos';$country_short='la';$preprod=true;}
-  else if (COUNTRY_NAME == 'myanmar'){$country='myanmar';$country_short='mm';$preprod=true;}
-  else if (COUNTRY_NAME == 'thailand'){$country='thailand';$country_short='th';$preprod=true;}
-  else if (COUNTRY_NAME == 'vietnam'){$country='vietnam';$country_short='vn';$preprod=true;}
-  else {$country='mekong';$country_short='';}
-
-  setcookie("odm_transition_country", $country, time()+3600, "/", ".opendevelopmentmekong.net");
-
-  if ($wpDomain == '192.168.33.10'){
-    $ckanDomain='192.168.33.10:8081';
-  }
-  else {
-    $full_domain = $_SERVER['SERVER_NAME'];
-    $just_domain = preg_replace("/^(.*\.)?([^.]*\..*)$/", "$2", $_SERVER['HTTP_HOST']);
-    $ckanDomain = 'data.'.$just_domain;
-    /*$ckanDomain='data.opendevelopmentmekong.net';
-    if ($preprod == true){
-      $ckanDomain='pp-data.opendevelopmentmekong.net';
-    }*/
-  }
-?>
 <?php ?>
 <!DOCTYPE html>
 <html data-country="<?php echo $country; ?>" <?php language_attributes(); ?>>
@@ -84,9 +42,9 @@
 				</div>
 			</div>
 			<div class="language float-right">
-					<?php if(function_exists('qtranxf_generateLanguageSelectCode')){
-            qtranxf_generateLanguageSelectCode('image');
-          } ?>
+					<?php if (function_exists('qtranxf_generateLanguageSelectCode')) {
+    qtranxf_generateLanguageSelectCode('image');
+} ?>
 				</div>
 			<div class="right_organization">
 				<div class="search">
@@ -99,95 +57,37 @@
 				<div class="social">
 					<nav id="social-nav">
 					  <?php
-						$fb = opendev_get_facebook_url();
-						if ($fb) :
-					  ?>
+                        $fb = opendev_get_facebook_url();
+                        if ($fb) :
+                      ?>
 						<a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
 					  <?php
-						endif;
-					  ?>
+                        endif;
+                      ?>
 					  <?php
-						$tw = opendev_get_twitter_url();
-						if ($tw) :
-					  ?>
+                        $tw = opendev_get_twitter_url();
+                        if ($tw) :
+                      ?>
 						<a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
 					  <?php
-						endif;
-					  ?>
+                        endif;
+                      ?>
 					  <?php
-						$contact_id = opendev_get_contact_page_id();
-						if ($contact_id) :
-					  ?>
+                        $contact_id = opendev_get_contact_page_id();
+                        if ($contact_id) :
+                      ?>
 						<a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"></a>
 					  <?php
-						else:
-					  ?>
+                        else:
+                      ?>
 					  <?php
-						endif;
-					  ?>
+                        endif;
+                      ?>
 					</nav>
 				</div>
 			</div>
 		</div>
-		<!-- NEW NAV -->
-	<div class="contentNavigation">
-      <ul id="cNavNew" class="level1 clearfix current-site-mekong menu-<?php echo $country;?>">
 
-        <!-- build top topics nav -->
-        <?php if(function_exists('qtranxf_getLanguage')) buildStyledTopTopicNav(qtranxf_getLanguage());
-              else buildStyledTopTopicNav('en');
-        ?>
-
-        <li class="one-line"><a class="library" href="http://<?php echo $ckanDomain; ?>/library_record<?php if ($country !='mekong') echo '?extras_odm_spatial_range=' . $country_short; ?>" target="_self"><?php _e("Publications Library"); ?><span class="cNavState"></span></a>
-
-        </li>
-
-        <li class="one-line">
-          <a class="datahub" href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong' ) echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>" target="_self"><?php _e("Data")?><span class="cNavState"></span></a>
-          <ul class="level2">
-            <li class="first"><a href="http://<?php echo $ckanDomain; ?><?php if ($country !='mekong') echo '/dataset?extras_odm_spatial_range=' . $country_short; ?>"target="_self"><?php _e("All records")?><span class="cNavState"></span></a></li>
-
-            <li class="by_country"><a href="#" target="_self"><?php _e("Records by country")?><span class="cNavState"></span></a>
-              <ul class="level3">
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=kh" target="_self"><?php _e("Cambodia")?><span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=la" target="_self"><?php _e("Laos")?><span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=mm" target="_self"><?php _e("Myanmar")?><span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=th" target="_self"><?php _e("Thailand")?><span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_spatial_range=vn" target="_self"><?php _e("Vietnam")?><span class="cNavState"></span></a></li>
-                <span class="border"></span>
-              </ul>
-            </li>
-
-            <li class="last by_country"><a href="#" target="_self"><?php _e("Records by language")?><span class="cNavState"></span></a>
-              <ul class="level3">
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=en" target="_self"><?php _e("English")?><span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=km" target="_self"><?php _e("Khmer")?><span class="cNavState"></span></a></li>
-                <li class="first"><a href="http://<?php echo $ckanDomain; ?>/dataset?extras_odm_language=vi" target="_self"><?php _e("Vietnamese")?><span class="cNavState"></span></a></li>
-                <span class="border"></span>
-              </ul>
-
-            </li>
-
-            <span class="border"></span>
-          </ul>
-
-        </li>
-
-        <?php wp_nav_menu( array(
-          'menu' => 'country-specific-menu',
-          'container'       => false,
-          'items_wrap'      => '%3$s',
-          'fallback_cb'     => false,
-          'walker'          => new country_specific_sub_menus(),
-
-       )); ?>
-    </ul>
-
-		<!-- end nav new -->
-		<!-- #################### -->
-
-
-	</div>
 		<nav id="ms-nav">
 			<div class="container">
 				<div class="twelve columns">
@@ -195,6 +95,7 @@
 				</div>
 			</div>
 		</nav>
+
 		<?php
         $options_msg = get_option('opendev_options');
         if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != '') {
@@ -226,55 +127,8 @@
 
 } ?>
 	</header>
-    <?php //Add Contact form button
+    <?php
         if (!wp_is_mobile() && function_exists('button_user_feedback_form')) {
             button_user_feedback_form();
         }
     ?>
-		<div id="mainNav" class="mainNavOdc">
-      <div class="mainNav-logo">
-        <a href="/" target="_self">
-          <span class="icon-od-logo"></span>
-
-        </a>
-      </div>
-
-      <div class="mainNav-inner">
-          <ul id="mainNavElement" class="level1 clearfix">
-          <?php
-          if ( function_exists( 'wp_get_sites' )){
-            $get_all_sites = wp_get_sites();
-            $site_index[1] = "first";
-            $site_index[2] = "second";
-            $site_index[3] = "third";
-            $site_index[4] = "fourth";
-            $site_index[5] = "fift";
-            $site_index[6] = "last";
-            //H.E I have no idea what is used for (Christ did them)
-            $site_uid[1] = "uid-2";
-            $site_uid[2] = "uid-3";
-            $site_uid[3] = "uid-4";
-            $site_uid[4] = "uid-42";
-            $site_uid[5] = "uid-5";
-            $site_uid[6] = "uid-5142";
-
-            foreach ($get_all_sites as $site) {
-                 $blog_id = $site["blog_id"];
-                 $domain = get_site_url($blog_id);
-                 $site_details = get_blog_details($blog_id, 1);
-                 $country_name = str_replace('Open Development ', '', $site_details->blogname);
-                 $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
-              ?>
-
-                <li class="<?php echo $site_index[$blog_id]?> <?php if (strtolower($country_name)=='mekong') echo 'jtop'; ?> <?php if ($country==strtolower($country_name)) echo 'act'; ?>">
-                  <a class="toCkan" data-country="<?php echo strtolower($country_name)?>" href="<?php echo $domain;?>" target="_self" id="<?php echo $site_uid[$blog_id]?> "><?php _e($country_name, "opendev");?>
-                  </a>
-                </li>
-            <?php } //end foreach
-          } ?>
-
-        </ul>
-
-      </div>
-
-    </div>
