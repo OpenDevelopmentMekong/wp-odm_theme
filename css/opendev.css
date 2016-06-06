@@ -708,6 +708,7 @@ a.button:hover{
 }
 .poat-date-source{
     padding:5px 0 10px;
+    word-wrap: break-word;
 }
 .post-header .date, .single-post-header .date, .date  {
  font-size: 14px;
@@ -1068,6 +1069,7 @@ a.button:hover{
  .fa_slider_opendev.default .fa_slide_content div.description p a,
  .fa_slider_opendev.default .fa_slide_content div.description p a:visited {
      color: #888;
+     word-wrap: break-word;
  }
 
 /*
@@ -1844,6 +1846,7 @@ a.button:hover{
 #content.single-post {
  font-size: 16px;
  line-height: 150%;
+ word-wrap: break-word;
 }
 #content ul{
     margin-left: 1.5em;
