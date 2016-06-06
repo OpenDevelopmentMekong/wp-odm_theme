@@ -526,16 +526,16 @@
           $layer = array(
            'ID' => $post->ID,
            'title' => get_the_title(),
-           'post_content' => $content, //content(999)
-           'excerpt' => $excerpt,
+           //'post_content' => $content, //content(999)
+           //'excerpt' => $excerpt,
            'map_category' => $in_category[0]->slug,
-           'download_url' => get_post_meta($post->ID, '_layer_download_link', true),
-           'download_url_localization' => get_post_meta($post->ID, '_layer_download_link_localization', true),
-           'profilepage_url' => get_post_meta($post->ID, '_layer_profilepage_link', true),
-           'profilepage_url_localization' => get_post_meta($post->ID, '_layer_profilepage_link_localization', true),
-           'type' => $type,
-           'legend' => get_post_meta($post->ID, '_layer_legend', true),
-           'legend_localization' => get_post_meta($post->ID, '_layer_legend_localization', true)
+           //'download_url' => get_post_meta($post->ID, '_layer_download_link', true),
+           //'download_url_localization' => get_post_meta($post->ID, '_layer_download_link_localization', true),
+           //'profilepage_url' => get_post_meta($post->ID, '_layer_profilepage_link', true),
+           //'profilepage_url_localization' => get_post_meta($post->ID, '_layer_profilepage_link_localization', true),
+           'type' => $type//,
+           //'legend' => get_post_meta($post->ID, '_layer_legend', true),
+           //'legend_localization' => get_post_meta($post->ID, '_layer_legend_localization', true)
           );
 
           if($type == 'tilelayer') {

@@ -1922,7 +1922,13 @@ a.button:hover{
   font-size: 14px;
   line-height: 20px;
 }
-
+.sidebar_header{
+  background: #3B78C7
+}
+.map_headline{
+  padding: 5px 15px;
+  margin-bottom: 2px;
+}
 .widget_headline{
   font-family: 'Open Sans';
   font-weight: 800;

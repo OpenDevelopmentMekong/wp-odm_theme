@@ -224,10 +224,12 @@ body.page-template-page-map-explorer{overflow: hidden;}
  content:none !important;
 }
 .layer-item .layer-item-name{
-  max-width: 65%;
+  max-width: 64%;
   display: inline-table;
 }
-
+.interactive-map .interactive-map-layers .layer-item {
+  position: relative;
+}
 .interactive-map .interactive-map-layers .layer-item .list-circle-o{
   border-radius: 2rem;
   display: inline-block;
@@ -243,9 +245,24 @@ body.page-template-page-map-explorer{overflow: hidden;}
 .interactive-map .interactive-map-layers .layer-item:hover .list-circle-o{
   border: 2px solid #6393D2;
 }
+.interactive-map .interactive-map-layers .layer-item .list-loading{
+  display: none;
+  position: relative;
+  width: 16px;
+  margin-right: -17px;
+  margin-bottom: -4px;
+  margin-left: -2px;
+}
+
+.interactive-map .interactive-map-layers .loading .list-loading{
+  display: inline-block;
+}
+
+.interactive-map .interactive-map-layers .active .list-loading,
 .interactive-map .interactive-map-layers .active .list-circle-o{
   display: none;
 }
+
 .interactive-map .interactive-map-layers .active:hover .list-circle-o{
     border: none;
 }
@@ -445,6 +462,13 @@ div.cartodb-legend-stack{
 }
 
 /* Base Layers */
-.baselayer-map-url{
-  display: none;
+.baselayer-container{
+    position: absolute;
+    display: block;
+    right: 10px;
+    top: 0;
+    z-index: 888;
+}
+.baselayer-container div{
+  display: inline-block;
 }
