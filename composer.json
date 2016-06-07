@@ -3,8 +3,6 @@
     "description": "Wordpress theme based on [JEO](http://github.com/oeco/jeo). This theme adds custom UI elements and logic.",
     "require": {
         "fortawesome/font-awesome": "^4.6",
-        "datatables/datatables": "^1.10",
-        "drmonty/leaflet": "^0.7.7",
         "drmonty/chosen": "^1.5",
         "moment/moment": "^2.13"
     },

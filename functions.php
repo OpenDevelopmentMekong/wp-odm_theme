@@ -1,10 +1,9 @@
 <?php
 
-$country_codes = array("cambodia" => "kh", "laos" => "lo", "myanmar" => "my", "vietnam" => "vn", "thailand" => "th", "1" => "mekong");
-
-define('THEME_DIR', get_stylesheet_directory());
-$country = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
+$country_codes = array('cambodia' => 'kh', 'laos' => 'lo', 'myanmar' => 'my', 'vietnam' => 'vn', 'thailand' => 'th', '1' => 'mekong');
+$country = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
 define('COUNTRY_NAME', strtolower($country_codes[$country || 'mekong' ]));
+define('THEME_DIR', get_stylesheet_directory());
 
 // Require dependencies isntalled via composer
 require THEME_DIR.'/vendor/autoload.php';
@@ -51,17 +50,10 @@ require_once THEME_DIR.'/inc/advanced-navigation.php';
 // Advanced nav
 require_once THEME_DIR.'/inc/category-walker.php';
 
-// Datastore API functions
-require_once THEME_DIR.'/inc/datastore-api.php';
-
-// CKAN API functions
-require_once THEME_DIR.'/inc/ckan-api.php';
-
 // Localization
 require_once THEME_DIR.'/inc/localization.php';
 
-// WPCKAN related functions
-require_once THEME_DIR.'/inc/wpckan.php';
+define('CURRENT_LANGUAGE', get_current_language());
 
 function opendev_setup_theme()
 {
@@ -105,23 +97,22 @@ function opendev_setup_theme()
   'after_title' => '</h2>',
  ));
 
- include(THEME_DIR . '/inc/layers.php');
-
+    include THEME_DIR.'/inc/layers.php';
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
 add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 function opendev_jeo_scripts()
 {
-  wp_dequeue_script('jeo-site');
-  wp_enqueue_script('jquery-isotope');
-  wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
-  $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
-  // custom marker system
-  global $jeo_markers;
-  wp_deregister_script('jeo.markers');
-  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-  wp_localize_script('jeo.markers', 'opendev_markers', array(
+    wp_dequeue_script('jeo-site');
+    wp_enqueue_script('jquery-isotope');
+    wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
+    $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+
+    global $jeo_markers;
+    wp_deregister_script('jeo.markers');
+    wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
+    wp_localize_script('jeo.markers', 'opendev_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => $jeo_markers->query(),
     'stories_label' => __('stories', 'opendev'),
@@ -153,63 +144,68 @@ function opendev_jeo_scripts()
    'default_icon' => jeo_formatted_default_marker(),
   ));
 
-  if (is_home()) {
-      wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
-  }
-  if (is_page('map-explorer') || is_page('maps')|| is_home()){
-      wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
-      wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri() . '/inc/js/baselayer.js', array('jeo'), '1.0.0');
-  }
-  wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
- //wp_enqueue_script('opendev-interactive-map', get_stylesheet_directory_uri() . '/inc/interactive-map.js', array('jeo'));
+    if (is_home()) {
+        wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
+    }
+    if (is_page('map-explorer') || is_page('maps') || is_home()) {
+        wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+        wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
+    }
+    wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
+    wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
+    wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
+    wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
+    wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
+function opendev_jeo_admin_scripts()
+{
+    if (file_exists(THEME_DIR.'/inc/js/filter-layers.js')) {
+        wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+    }
 
-function opendev_jeo_admin_scripts() {
-    if ( file_exists( THEME_DIR . '/inc/js/filter-layers.js'))
-			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
-
-    if ( file_exists( THEME_DIR . '/inc/js/baselayer.js'))
-        wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri() . '/inc/js/baselayer.js', array('jeo'), '1.0.0');
+    if (file_exists(THEME_DIR.'/inc/js/baselayer.js')) {
+        wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
+    }
 }
-add_action( 'admin_enqueue_scripts', 'opendev_jeo_admin_scripts' );
+add_action('admin_enqueue_scripts', 'opendev_jeo_admin_scripts');
 
-function opendev_styles(){
-  $options = get_option('opendev_options');
+function opendev_styles()
+{
+    $options = get_option('opendev_options');
 
-  $css_base = get_stylesheet_directory_uri().'/css/';
+    $css_base = get_stylesheet_directory_uri().'/css/';
 
-  wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
-  wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
-  wp_register_style('opendev-thailand',  $css_base.'thailand.css');
-  wp_register_style('opendev-laos',  $css_base.'laos.css');
-  wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
-  wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-  wp_register_style('map-explorer',  $css_base.'map-explorer.css');
-  wp_register_style('forest-cover',  $css_base.'forest-cover.css');
+    wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
+    wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
+    wp_register_style('opendev-thailand',  $css_base.'thailand.css');
+    wp_register_style('opendev-laos',  $css_base.'laos.css');
+    wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
+    wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
+    wp_register_style('map-explorer',  $css_base.'map-explorer.css');
+    wp_register_style('forest-cover',  $css_base.'forest-cover.css');
 
-  wp_enqueue_style('mCustomScrollbar');
-  wp_enqueue_style('opendev-base');
+    wp_enqueue_style('mCustomScrollbar');
+    wp_enqueue_style('opendev-base');
 
-  if (is_page('map-explorer') || is_page('maps')|| is_home()){
-    wp_enqueue_style('map-explorer');
-  }
+    if (is_page('map-explorer') || is_page('maps') || is_home()) {
+        wp_enqueue_style('map-explorer');
+    }
 
-  wp_enqueue_style('forest-cover');
+    wp_enqueue_style('forest-cover');
 
-  if ($options['style']) {
-      wp_enqueue_style('opendev-'.$options['style']);
-  }
-
+    if ($options['style']) {
+        wp_enqueue_style('opendev-'.$options['style']);
+    }
 }
 
-
-function important_overrides() {
-	wp_register_style( 'overrides', get_stylesheet_directory_uri().'/css/overrides.css' );
-	wp_enqueue_style( 'overrides' );
+function important_overrides()
+{
+    wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
+    wp_enqueue_style('overrides');
 }
-add_action( 'wp_enqueue_scripts', 'important_overrides',101);
+add_action('wp_enqueue_scripts', 'important_overrides', 101);
 
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
@@ -281,28 +277,31 @@ function opendev_get_thumbnail($post_id = false)
 
 function opendev_logo()
 {
-  $name = "Mekong";
-  if (is_multisite()) {
-    $sites = wp_get_sites();
-    if (!empty($sites)) {
-      $current = get_current_blog_id();
-      $name = str_replace('Open Development ', '', get_bloginfo('name'));
+    $name = 'Mekong';
+    if (is_multisite()) {
+        $sites = wp_get_sites();
+        if (!empty($sites)) {
+            $current = get_current_blog_id();
+            $name = str_replace('Open Development ', '', get_bloginfo('name'));
+        }
     }
-  }
-  $logo = opendev_get_logo();
-  if ($logo) {
-      $name = $logo;
-  }?>
+    $logo = opendev_get_logo();
+    if ($logo) {
+        $name = $logo;
+    }
+    ?>
   <h1>
-   <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
+   <a href="<?php echo home_url('/');
+    ?>" title="<?php bloginfo('name');
+    ?>">
     <span class="icon-od-logo"></span>
     Op<sup>e</sup>nDevelopment
    </a>
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-  echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
-  echo '</div>';
+    echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
+    echo '</div>';
 }
 
 function opendev_social_apis()
@@ -405,7 +404,9 @@ function opendev_ms_nav()
                         $menu_id = $menu_item->ID;
                         if (strtolower(trim($title)) == strtolower(trim($tooltip['menu_name']))) {
                             ?>
-                              $('#menu-header-menu li.menu-item-<?php echo $menu_id;?> a').attr( "title", "<?php echo trim($tooltip['message']);?>");
+                              $('#menu-header-menu li.menu-item-<?php echo $menu_id;
+                            ?> a').attr( "title", "<?php echo trim($tooltip['message']);
+                            ?>");
                             <?php   break;
                         }
                     } //foreach
@@ -414,7 +415,8 @@ function opendev_ms_nav()
             elseif (isset($tooltip['menu_name']) && $tooltip['menu_name'] == 'Tooltip') {
                 if (isset($tooltip['message']) && $tooltip['message']) {
                     ?>
-                  $('#menu-header-menu li.tooltip a').attr( "title", "<?php echo trim($tooltip['message']);?>");
+                  $('#menu-header-menu li.tooltip a').attr( "title", "<?php echo trim($tooltip['message']);
+                    ?>");
         <?php
 
                 }
@@ -426,7 +428,8 @@ function opendev_ms_nav()
             if (isset($options_msg['message_page_construction']) && $options_msg['message_page_construction'] != '') {
                 ?>
                  $('#intro-texts p a.tooltip').removeAttr('href');
-                 $('#intro-texts p a.tooltip').attr( "title", "<?php echo trim($options_msg['message_page_construction']);?>");
+                 $('#intro-texts p a.tooltip').attr( "title", "<?php echo trim($options_msg['message_page_construction']);
+                ?>");
           <?php
 
             }
@@ -753,14 +756,15 @@ add_filter('mce_buttons_2', 'my_mce_buttons_2');
 
 /****Breadcrumbs****/
 //Get parent of category
-function get_all_parent_category($current_cat_id, $post_type, $separator = '', $current_page_name = ''){
+function get_all_parent_category($current_cat_id, $post_type, $separator = '', $current_page_name = '')
+{
     $parent_cat = get_category_parents($current_cat_id, false);
     $parent_cats = explode('/', substr($parent_cat, 0, -1));
     foreach ($parent_cats as $p_cat) {
         $page_title = $p_cat;
-		$page_id_exist = get_post_or_page_id_by_title($page_title);
-		$page = get_post($page_id_exist);
-		$page_slug = $post->post_name;
+        $page_id_exist = get_post_or_page_id_by_title($page_title);
+        $page = get_post($page_id_exist);
+        $page_slug = $post->post_name;
 
         echo '<li class="item-topic item-topic-'.$page_id_exist.' item-topic-'.$page_slug.'">';
         if ($page_id_exist) {
@@ -768,29 +772,30 @@ function get_all_parent_category($current_cat_id, $post_type, $separator = '', $
             if ($page_name_title == $current_page_name) {
                 echo '<strong class="bread-current bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page
             }
-                echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'" title="'.$page_title.'">';
+            echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'" title="'.$page_title.'">';
         }
         echo $page_title;
 
         if ($page_id_exist) {
-			//Strong if current page
+            //Strong if current page
              if ($page_name_title == $current_page_name) {
-                echo '</strong>';
-            }
+                 echo '</strong>';
+             }
             echo '</a>';
         }
         echo '</li>';
-		echo the_separated_breadcrumb($separator, $topic_page_exist->ID, $post_type);
+        echo the_separated_breadcrumb($separator, $topic_page_exist->ID, $post_type);
     }
 }
 
 // Creating Breadcrumbs for the site
-function the_separated_breadcrumb($separator="", $id, $category){
-	if ($separator !="")
-		return '<li class="separator_by separator-'.$category.' separator-'.$id.'"> '.$separator.' </li>';
-	else
-		return '<li class="separator separator-'.$category.' separator-'.$id.'"></li>';
-
+function the_separated_breadcrumb($separator = '', $id, $category)
+{
+    if ($separator != '') {
+        return '<li class="separator_by separator-'.$category.' separator-'.$id.'"> '.$separator.' </li>';
+    } else {
+        return '<li class="separator separator-'.$category.' separator-'.$id.'"></li>';
+    }
 }
 function the_breadcrumb()
 {
@@ -803,7 +808,7 @@ function the_breadcrumb()
     // Get the query & post information
     global $post,$wp_query;
     //$category = get_the_category();
-	$category = get_category(get_query_var('cat'), false) ;
+    $category = get_category(get_query_var('cat'), false);
     // Build the breadcrums
     echo '<ul id="'.$id.'" class="breadcrumb '.$class.'">';
     // Do not display on the homepage
@@ -811,23 +816,23 @@ function the_breadcrumb()
         // Home page
         echo '<li class="item-home"><a class="bread-link bread-home" href="'.get_home_url().'" title="'.$home_title.'">';
         //_e('Home', 'opendev');
-		echo '<i class="fa fa-home"></i>';
+        echo '<i class="fa fa-home"></i>';
         echo '</a></li>';
-		echo the_separated_breadcrumb($separator, "", "home");
+        echo the_separated_breadcrumb($separator, '', 'home');
 
-    if (is_single()) {
+        if (is_single()) {
             //Single post of post type "Topic"
             $post_type_of_topic = get_post_type(get_the_ID());
             if ($post_type_of_topic  == 'topic') {
-				        $get_topic_title = get_the_title();
+                $get_topic_title = get_the_title();
                 $cats = get_the_category(get_the_ID());
                 if ($cats) {
                     // if post is in this category
                     foreach ($cats as $cat) {
                         if (in_category($cat->term_id)) {
-							              $page_title = trim(strtolower($get_topic_title));
+                            $page_title = trim(strtolower($get_topic_title));
                             $cat_name = trim(strtolower($cat->name));
-							// Which Category and Post have the same name
+                            // Which Category and Post have the same name
                             if ($cat_name == $page_title) {
                                 $cat_id = $cat->term_id;
                                 get_all_parent_category($cat_id, $post_type_of_topic, $separator, $page_title);
@@ -835,7 +840,7 @@ function the_breadcrumb()
                         }
                     }//end foreach
                 } else {
-				//if topic page is not categorized or the topic name is different from the category
+                    //if topic page is not categorized or the topic name is different from the category
                     echo '<li class="item-current item-'.$post->ID.'"><strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong></li>';
                 }
             } else {
@@ -843,33 +848,34 @@ function the_breadcrumb()
                 /* echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id ) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>'; */
                 //echo '<li class="separator separator-' . $category[0]->term_id . '"> ' . $separator . ' </li>';
                 echo '<li class="item-current item-'.$post->ID.'">';
-				            echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
-				                echo '<strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong>';
-				            echo '</a>';
+                echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
+                echo '<strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong>';
+                echo '</a>';
                 echo '</li>';
             }
         } elseif (is_category()) {
             // Category page
-        			$parent_cat = get_category_parents($category->term_id, true, '||' );
-        			$parent_cat = substr($parent_cat, 0, -2);
-        			$parent_cats = explode('||', $parent_cat);
-        			foreach ($parent_cats as $cat) {
-        				echo '<li class="item-current item-cat-'.$category->term_id.' item-cat-'.$category->category_nicename.'">';
-        				if ($cat === end($parent_cats))
-        					echo '<strong class="bread-current bread-cat-'.$category->term_id.' bread-cat-'.$category->category_nicename.'">';
+                    $parent_cat = get_category_parents($category->term_id, true, '||');
+            $parent_cat = substr($parent_cat, 0, -2);
+            $parent_cats = explode('||', $parent_cat);
+            foreach ($parent_cats as $cat) {
+                echo '<li class="item-current item-cat-'.$category->term_id.' item-cat-'.$category->category_nicename.'">';
+                if ($cat === end($parent_cats)) {
+                    echo '<strong class="bread-current bread-cat-'.$category->term_id.' bread-cat-'.$category->category_nicename.'">';
+                }
 
-        				echo $cat;
+                echo $cat;
 
-        				if ($cat === end($parent_cats))
-        					echo '</strong>';
-        				echo '</li>';
+                if ($cat === end($parent_cats)) {
+                    echo '</strong>';
+                }
+                echo '</li>';
 
-        				//add separated
-        				if ($cat != end($parent_cats)){
-        					echo the_separated_breadcrumb($separator, $category->term_id, "category");
-
-        				}
-        			}
+                        //add separated
+                        if ($cat != end($parent_cats)) {
+                            echo the_separated_breadcrumb($separator, $category->term_id, 'category');
+                        }
+            }
         } elseif (is_page()) {
             // Standard page
             if ($post->post_parent) {
@@ -885,17 +891,19 @@ function the_breadcrumb()
 
                 // Display parent pages
                 echo $parents;
-        				echo the_separated_breadcrumb($separator, $ancestor, "page");
-        				// Current page
-        					echo '<li class="item-current item-'.$post->ID.'">';
-          					if (!isset($_GET["map_id"]) and $_GET["map_id"]!="")
-          					echo '<strong title="'.get_the_title().'">';
-          					echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
-          						echo get_the_title();
-          					echo '</a>';
-          					if (!isset($_GET["map_id"]) && $_GET["map_id"]!="")
-          					echo '</strong>';
-        					echo '</li>';
+                echo the_separated_breadcrumb($separator, $ancestor, 'page');
+                        // Current page
+                            echo '<li class="item-current item-'.$post->ID.'">';
+                if (!isset($_GET['map_id']) and $_GET['map_id'] != '') {
+                    echo '<strong title="'.get_the_title().'">';
+                }
+                echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
+                echo get_the_title();
+                echo '</a>';
+                if (!isset($_GET['map_id']) && $_GET['map_id'] != '') {
+                    echo '</strong>';
+                }
+                echo '</li>';
             } else {
 
                 // Just display current page if not parents
@@ -912,28 +920,28 @@ function the_breadcrumb()
 
             // Display the tag name
             echo '<li class="item-current item-tag-'.$terms[0]->term_id.' item-tag-'.$terms[0]->slug.'">';
-			echo '<strong class="bread-current bread-tag-'.$terms[0]->term_id.'bread-tag-'.$terms[0]->slug.'">';
-			echo '<a href="'.get_tag_link( $terms[0]->term_id ).'">';
-				echo $terms[0]->name;
-			echo '</a>';
-			echo '</strong></li>';
+            echo '<strong class="bread-current bread-tag-'.$terms[0]->term_id.'bread-tag-'.$terms[0]->slug.'">';
+            echo '<a href="'.get_tag_link($terms[0]->term_id).'">';
+            echo $terms[0]->name;
+            echo '</a>';
+            echo '</strong></li>';
         } elseif (is_day()) {
             //**** Day archive
             // Year link
             echo '<li class="item-year item-year-'.get_the_time('Y').'"><a class="bread-year bread-year-'.get_the_time('Y').'" href="'.get_year_link(get_the_time('Y')).'" title="'.get_the_time('Y').'">'.get_the_time('Y').' </a></li>';
-			echo the_separated_breadcrumb($separator, get_the_time('Y'), "archive");
+            echo the_separated_breadcrumb($separator, get_the_time('Y'), 'archive');
 
             // Month link
             echo '<li class="item-month item-month-'.get_the_time('m').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_month_link(get_the_time('Y'), get_the_time('m')).'" title="'.get_the_time('M').'">'.get_the_time('M').' </a></li>';
-			echo the_separated_breadcrumb($separator, get_the_time('m'), "archive");
+            echo the_separated_breadcrumb($separator, get_the_time('m'), 'archive');
 
             // Day display
-            echo '<li class="item-current item-'.get_the_time('j').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_day_link(get_the_time('Y'), get_the_time('m'),get_the_time('j')).'" title="'.get_the_time('M').'"><strong class="bread-current bread-'.get_the_time('j').'"> '.get_the_time('jS').'</strong></a> Archives</li>';
+            echo '<li class="item-current item-'.get_the_time('j').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('j')).'" title="'.get_the_time('M').'"><strong class="bread-current bread-'.get_the_time('j').'"> '.get_the_time('jS').'</strong></a> Archives</li>';
         } elseif (is_month()) {
             // Month Archive
             // Year link
             echo '<li class="item-year item-year-'.get_the_time('Y').'"><a class="bread-year bread-year-'.get_the_time('Y').'" href="'.get_year_link(get_the_time('Y')).'" title="'.get_the_time('Y').'">'.get_the_time('Y').' </a></li>';
-			echo the_separated_breadcrumb($separator, get_the_time('Y'), "archive");
+            echo the_separated_breadcrumb($separator, get_the_time('Y'), 'archive');
 
             // Month displaydisplay
             echo '<li class="item-month item-month-'.get_the_time('m').'"><a class="bread-month bread-month-'.get_the_time('m').'" href="'.get_month_link(get_the_time('Y'), get_the_time('m')).'" title="'.get_the_time('M').'"><strong class="bread-month bread-month-'.get_the_time('m').'" title="'.get_the_time('M').'">'.get_the_time('M').'</strong></a> Archives</li>';
@@ -977,118 +985,138 @@ function the_breadcrumb()
     }
     echo '</ul>';
 }
-function get_post_or_page_id_by_title($title_str, $post_type="topic") {
-        global $wpdb;
-         $get_post = $wpdb->get_results( $wpdb->prepare(
-        	"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
+function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
+{
+    global $wpdb;
+    $get_post = $wpdb->get_results($wpdb->prepare(
+            "SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
              AND post_status = %s
 			 AND post_title like %s
         	",
-        	$post_type,
-        	"publish",
-			"%". trim($title_str)."%"
+            $post_type,
+            'publish',
+            '%'.trim($title_str).'%'
             )
         );
-        foreach ( $get_post as $page_topic ) {
-            $lang_tag = "[:".qtranxf_getLanguage()."]";
-            $lang_tag_finder = "/".$lang_tag ."/";
+    foreach ($get_post as $page_topic) {
+        $lang_tag = '[:'.qtranxf_getLanguage().']';
+        $lang_tag_finder = '/'.$lang_tag.'/';
 
-            if(qtranxf_getLanguage()!="en"){
-                // if Kh
+        if (qtranxf_getLanguage() != 'en') {
+            // if Kh
                 if (strpos($page_topic->post_title, '[:kh]') !== false) {
                     $page_title = explode($lang_tag, $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:]", "", $page_title[1])) ;
-                }else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
-                        $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title);
-                        $page_title = trim(str_replace("<!--:".qtranxf_getLanguage()."-->", "" , $page_title[1]));
-                        $pagetitle = trim(str_replace("<!--:-->", "" , $page_title));
-                }else if (strpos($page_topic->post_title, '<!--:-->')){
-                    $page_title = explode("<!--:-->", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
+                    $pagetitle = trim(str_replace('[:]', '', $page_title[1]));
+                } elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
+                    $page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
+                    $page_title = trim(str_replace('<!--:'.qtranxf_getLanguage().'-->', '', $page_title[1]));
+                    $pagetitle = trim(str_replace('<!--:-->', '', $page_title));
+                } elseif (strpos($page_topic->post_title, '<!--:-->')) {
+                    $page_title = explode('<!--:-->', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
                 }
-           }else {
-                //if (preg_match("/[:kh]/" ,$page_topic->post_title)){
+        } else {
+            //if (preg_match("/[:kh]/" ,$page_topic->post_title)){
                 if (strpos($page_topic->post_title, '[:kh]') !== false) {
-                    $page_title = explode("[:kh]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
-                }elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
-                    $page_title = explode("[:vi]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
-                }else if (strpos($page_topic->post_title, '[:]')){
-                    $page_title = explode("[:]", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("[:en]", "" , $page_title[0]));
-                } else if (strpos($page_topic->post_title, '<!--:--><!--:kh-->')){
-                    $page_title = explode("<!--:--><!--:kh-->", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
-                }else if (strpos($page_topic->post_title, '<!--:--><!--:vi-->')){
-                    $page_title = explode("<!--:--><!--:vi-->", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
-                }else if (strpos($page_topic->post_title, '<!--:-->')){
-                    $page_title = explode("<!--:-->", $page_topic->post_title);
-                    $pagetitle = trim(str_replace("<!--:en-->", "" , $page_title[0]));
-                }else {
-					$page_title = $page_topic->post_title;
+                    $page_title = explode('[:kh]', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
+                } elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
+                    $page_title = explode('[:vi]', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
+                } elseif (strpos($page_topic->post_title, '[:]')) {
+                    $page_title = explode('[:]', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
+                } elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->')) {
+                    $page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
+                } elseif (strpos($page_topic->post_title, '<!--:--><!--:vi-->')) {
+                    $page_title = explode('<!--:--><!--:vi-->', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
+                } elseif (strpos($page_topic->post_title, '<!--:-->')) {
+                    $page_title = explode('<!--:-->', $page_topic->post_title);
+                    $pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
+                } else {
+                    $page_title = $page_topic->post_title;
                     $pagetitle = trim($page_title);
-				}
-            }
+                }
+        }
             //echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-            if (trim(strtolower($title_str)) == strtolower($pagetitle)){
+            if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
                 $page_id = $page_topic->ID;
             }
-        }
-        return $page_id ;
     }
+
+    return $page_id;
+}
  /****end Breadcrumb**/
 
 /** SHOW CATEGORY BY Post type **/
-function list_category_by_post_type ($post_type='post', $args ='', $title = 1, $js_script = 1){
+function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1)
+{
     global $post;
-    if ($args == "")
+    if ($args == '') {
         $args = array(
         'orderby' => 'term_id',
-        'parent' => 0
+        'parent' => 0,
         );
-    $categories = get_categories( $args );
+    }
+    $categories = get_categories($args);
     $current_cat = get_queried_object();
-    if($current_cat->slug)
-      $current_cat_page = $current_cat->slug;
-    else $current_cat_page = $current_cat->post_name;
-    if ($title==1)
-    echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
+    if ($current_cat->slug) {
+        $current_cat_page = $current_cat->slug;
+    } else {
+        $current_cat_page = $current_cat->post_name;
+    }
+    if ($title == 1) {
+        echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
+    }
 
     echo "<ul class='opendev_taxonomy_widget_ul'>";
-    foreach($categories as $category){
-			$jackpot = true;
-      $children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
-      echo "<li class='cat_item'>";
-          print_category_by_post_type($category, $post_type, $current_cat_page);
-          if ( !empty($children) ) {
+    foreach ($categories as $category) {
+        $jackpot = true;
+        $children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
+        echo "<li class='cat_item'>";
+        print_category_by_post_type($category, $post_type, $current_cat_page);
+        if (!empty($children)) {
             echo '<ul>';
-              walk_child_category_by_post_type( $children, $post_type, $current_cat_page );
+            walk_child_category_by_post_type($children, $post_type, $current_cat_page);
             echo '</ul>';
-          }
-      echo "</li>";
+        }
+        echo '</li>';
     }
-    echo "</ul>";
-    if($js_script ==1){
-    ?>
+    echo '</ul>';
+    if ($js_script == 1) {
+        ?>
         <script type="text/javascript">
           jQuery(document).ready(function($) {
           $('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
             if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
-              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
-              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;
+        ?>");
+              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;
+        ?>");
             }
             //if parent is showed, child need to expend
-            if ($('span.<?php echo $current_cat_page; ?>').length){
-              $('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
-              $('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-              $('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+            if ($('span.<?php echo $current_cat_page;
+        ?>').length){
+              $('span.<?php echo $current_cat_page;
+        ?>').siblings("ul").show();
+              $('span.<?php echo $current_cat_page;
+        ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;
+        ?>');
+              $('span.<?php echo $current_cat_page;
+        ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;
+        ?>');
 
               //if child is showed, parent expended
-              $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").show();
-              $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-              $('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+              $('span.<?php echo $current_cat_page;
+        ?>').parents("li").parents("ul").show();
+              $('span.<?php echo $current_cat_page;
+        ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;
+        ?>');
+              $('span.<?php echo $current_cat_page;
+        ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;
+        ?>');
             }
           });
           $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
@@ -1096,155 +1124,169 @@ function list_category_by_post_type ($post_type='post', $args ='', $title = 1, $
             var target =  $( event.target );
               if(target.parent("li").find('ul').length){
                 target.parent("li").find('ul:first').slideToggle();
-                target.toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
-                target.toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+                target.toggleClass("plusimage-<?php echo COUNTRY_NAME;
+        ?>");
+                target.toggleClass('minusimage-<?php echo COUNTRY_NAME;
+        ?>');
                 }
             });
           });
          </script>
      <?php
-   }//if js_script
+
+    }//if js_script
 } // end function
 
-function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
- if ($current_cat == $category->slug){
-     $current_page = " ".$current_cat;
-  }else {
-     $current_page = "";
-  }
-  echo "<span class='nochildimage-".COUNTRY_NAME.$current_page."'>";
-          echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
-              if ($current_cat == $category->slug){ // if page of the topic exists
+function print_category_by_post_type($category, $post_type = 'post', $current_cat = '')
+{
+    if ($current_cat == $category->slug) {
+        $current_page = ' '.$current_cat;
+    } else {
+        $current_page = '';
+    }
+    echo "<span class='nochildimage-".COUNTRY_NAME.$current_page."'>";
+    echo '<a href="'.get_category_link($category->cat_ID).'?post_type='.$post_type.'">';
+    if ($current_cat == $category->slug) { // if page of the topic exists
                   echo "<strong class='".COUNTRY_NAME."-color'>";
-                      echo $category->name;
-                  echo "</strong>";
-              }else{
-                    echo $category->name;
-              }
-          echo "</a>";
-    echo "</span>";
-
+        echo $category->name;
+        echo '</strong>';
+    } else {
+        echo $category->name;
+    }
+    echo '</a>';
+    echo '</span>';
 }
-function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
-  foreach($children as $child){
-    // Get immediate children of current category
-    $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
-    echo "<li>";
+function walk_child_category_by_post_type($children, $post_type, $current_cat = '')
+{
+    foreach ($children as $child) {
+        // Get immediate children of current category
+    $cat_children = get_categories(array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id'));
+        echo '<li>';
     // Display current category
       print_category_by_post_type($child, $post_type, $current_cat);
     // if current category has children
-    if ( !empty($cat_children) ) {
-      // add a sublevel
-      echo "<ul>";
+    if (!empty($cat_children)) {
+        // add a sublevel
+      echo '<ul>';
       // display the children
-        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat );
-      echo "</ul>";
+        walk_child_category_by_post_type($cat_children, $post_type, $current_cat);
+        echo '</ul>';
     }
-    echo "</li>";
-  }
+        echo '</li>';
+    }
 }
 
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function show_date_and_source_of_the_post(){ ?>
+function show_date_and_source_of_the_post()
+{
+    ?>
   <div class="date">
      <span class="lsf">&#xE12b;</span>
        <?php
-       if (function_exists('qtrans_getLanguage')){
-          if (qtrans_getLanguage() =="kh" || qtrans_getLanguage() =="km"){
-            echo convert_date_to_kh_date(get_the_time('j.M.Y'));
-          }else {
-            echo get_the_time('j F Y');
-          }
-       }else {
-        echo get_the_time('j F Y');
-       } ?>
+       if (function_exists('qtrans_getLanguage')) {
+           if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
+               echo convert_date_to_kh_date(get_the_time('j.M.Y'));
+           } else {
+               echo get_the_time('j F Y');
+           }
+       } else {
+           echo get_the_time('j F Y');
+       }
+    ?>
   </div>
   &nbsp;
   <?php
-  if (taxonomy_exists('news_source') && isset($post)){
+  if (taxonomy_exists('news_source') && isset($post)) {
       echo '<div class="news-source">';
-      $terms_news_source = get_the_terms( $post->ID, 'news_source' );
-          if ( $terms_news_source && ! is_wp_error( $terms_news_source ) ) {
-             if ($terms_news_source){
-                $news_sources = "";
-                 echo '<span class="icon-news"></span> ';
-                  foreach ($terms_news_source as $term) {
-                  $term_link = get_term_link( $term, 'news_source' );
-                  if( is_wp_error( $term_link ) )
-                    continue;
+      $terms_news_source = get_the_terms($post->ID, 'news_source');
+      if ($terms_news_source && !is_wp_error($terms_news_source)) {
+          if ($terms_news_source) {
+              $news_sources = '';
+              echo '<span class="icon-news"></span> ';
+              foreach ($terms_news_source as $term) {
+                  $term_link = get_term_link($term, 'news_source');
+                  if (is_wp_error($term_link)) {
+                      continue;
+                  }
                   //We successfully got a link. Print it out.
-                   $news_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>, ';
-                }
-                echo substr($news_sources, 0, -2);
-            }
-      }else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
-                     echo '<span class="icon-news"></span> ';
-                     $news_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
-                     echo get_the_title($news_source_id);
+                   $news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+              }
+              echo substr($news_sources, 0, -2);
+          }
+      } elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+          echo '<span class="icon-news"></span> ';
+          $news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+          echo get_the_title($news_source_id);
       }
-     echo '</div><!--news-source-->';
+      echo '</div><!--news-source-->';
   }// if news_source exists
-  if (taxonomy_exists('public_announcement_source')){
+  if (taxonomy_exists('public_announcement_source')) {
       echo '<div class="news-source">';
-      $terms_public_announcement_source = get_the_terms( $post->ID, 'public_announcement_source' );
-          if ( $terms_public_announcement_source && ! is_wp_error( $terms_public_announcement_source ) ) {
-             if ($terms_public_announcement_source){
-                $public_announcement_sources = "";
-                 echo '<span class="icon-news"></span> ';
-                  foreach ($terms_public_announcement_source as $term) {
-                  $term_link = get_term_link( $term, 'public_announcement_source' );
-                  if( is_wp_error( $term_link ) )
-                    continue;
+      $terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
+      if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
+          if ($terms_public_announcement_source) {
+              $public_announcement_sources = '';
+              echo '<span class="icon-news"></span> ';
+              foreach ($terms_public_announcement_source as $term) {
+                  $term_link = get_term_link($term, 'public_announcement_source');
+                  if (is_wp_error($term_link)) {
+                      continue;
+                  }
                   //We successfully got a link. Print it out.
-                   $public_announcement_sources .= '<a href="' . $term_link . '"><srong>' . $term->name . '</srong></a>, ';
-                }
-                echo substr($public_announcement_sources, 0, -2);
-            }
-      }else if (get_post_meta($post->ID, "rssmi_source_feed", true)){
-                     echo '<span class="icon-news"></span> ';
-                     $public_announcement_source_id = get_post_meta($post->ID, "rssmi_source_feed", true);
-                     echo get_the_title($public_announcement_source_id);
+                   $public_announcement_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+              }
+              echo substr($public_announcement_sources, 0, -2);
+          }
+      } elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+          echo '<span class="icon-news"></span> ';
+          $public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+          echo get_the_title($public_announcement_source_id);
       }
-     echo '</div><!--news-source-->';
+      echo '</div><!--news-source-->';
   }// if public_announcement_source exists
 }
  //to set get_the_excerpt() limit words
- function excerpt($num, $read_more="") {
-   $limit = $num+1;
-   $excerpt = explode(' ', get_the_excerpt(), $limit);
-   array_pop($excerpt);
-   $excerpt_string = implode(" ", $excerpt);
-   $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
-   array_pop($excerpt_hidden_space);
-   $$excerpt_string = implode("?", $excerpt_hidden_space) ;
-   $excerpt_words = $excerpt_string. " ...";
-   if ($read_more !=""){
-    $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')))."-color";
-    $excerpt_words .=  " (<a href='" .get_permalink($post->ID) ." ' class='".$color_name."'>". __($read_more,"opendev")."</a>)";
-   }
-         return $excerpt_words;
+ function excerpt($num, $read_more = '')
+ {
+     $limit = $num + 1;
+     $excerpt = explode(' ', get_the_excerpt(), $limit);
+     array_pop($excerpt);
+     $excerpt_string = implode(' ', $excerpt);
+     $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
+     array_pop($excerpt_hidden_space);
+     $$excerpt_string = implode('?', $excerpt_hidden_space);
+     $excerpt_words = $excerpt_string.' ...';
+     if ($read_more != '') {
+         $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
+         $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'opendev').'</a>)';
+     }
+
+     return $excerpt_words;
  }
 
- function get_pages_templates_for_othersites($pages_templates) {
+ function get_pages_templates_for_othersites($pages_templates)
+ {
      $templates = get_page_templates();
- 	foreach ( $templates as $template_name => $template_filename ) {
- 	    $template_files = explode ("/", $template_filename);
- 		if(count($template_files) > 1){
- 			if (strtolower($template_files[0]) != COUNTRY_NAME){
- 				$template_need_to_hide[] = $template_filename;
- 				unset( $pages_templates[$template_filename] );
- 			}
- 		}
- 	}
- 	return $pages_templates;
- }
+     foreach ($templates as $template_name => $template_filename) {
+         $template_files = explode('/', $template_filename);
+         if (count($template_files) > 1) {
+             if (strtolower($template_files[0]) != COUNTRY_NAME) {
+                 $template_need_to_hide[] = $template_filename;
+                 unset($pages_templates[$template_filename]);
+             }
+         }
+     }
 
- function hide_other_country_page_template ($pages_templates) {
      return $pages_templates;
  }
- add_filter( 'theme_page_templates', 'hide_other_country_page_template' );
+
+ function hide_other_country_page_template($pages_templates)
+ {
+     return $pages_templates;
+ }
+ add_filter('theme_page_templates', 'hide_other_country_page_template');
 
 /**
  * Allow embed iframe.
@@ -1253,6 +1295,7 @@ function add_iframe($initArray)
 {
     $initArray['extended_valid_elements'] = 'iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width|allowtransparency|allowfullscreen|webkitallowfullscreen|mozallowfullscreen|oallowfullscreen|msallowfullscreen]';
     $initArray['extended_valid_elements_div'] = 'div[id|style]';
+
     return $initArray;
 }
 // this function alters the way the WordPress editor filters your code
