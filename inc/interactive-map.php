@@ -3,65 +3,69 @@
  * Open Development
  * Interactive Map
  */
- class OpenDev_InteractiveMap {
- 	function __construct() {
- 		add_shortcode('odmap', array($this, 'shortcode'));
- 	}
- 	function shortcode() {
-    $query_arg = array(
- 			'post_type' => 'map-layer',
- 			'posts_per_page' -1
- 		);
- 		$layer_query = new WP_Query($query_arg);
-    $layer_query_args = array(
+ class OpenDev_InteractiveMap
+ {
+     public function __construct()
+     {
+         add_shortcode('odmap', array($this, 'shortcode'));
+     }
+     public function shortcode()
+     {
+         $query_arg = array(
+            'post_type' => 'map-layer',
+            'posts_per_page' - 1,
+        );
+         $layer_query = new WP_Query($query_arg);
+         $layer_query_args = array(
       'post_type' => 'map-layer',
-      'posts_per_page'=>-1
+      'posts_per_page' => -1,
     );
-    $layer_query = new WP_Query($layer_query_args);
-    $layers = array();
- 		$categories = get_terms('layer-category');
- 		$parsed_cats = array();
- 		if($layer_query->have_posts()) {
- 			while($layer_query->have_posts()) {
-        $layer_query->the_post();
- 				$layer = array();
- 				$layer['filtering'] = 'switch';
- 				$layer['hidden'] = 1;
+         $layer_query = new WP_Query($layer_query_args);
+         $layers = array();
+         $categories = get_terms('layer-category');
+         $parsed_cats = array();
+         if ($layer_query->have_posts()) {
+             while ($layer_query->have_posts()) {
+                 $layer_query->the_post();
+                 $layer = array();
+                 $layer['filtering'] = 'switch';
+                 $layer['hidden'] = 1;
 
-        foreach($categories as $key=>$val) {
-           	$cat = $categories[$key];
-            if(is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
-             		if(!isset($parsed_cats[$cat->term_id]))
-             			$parsed_cats[$cat->term_id] = array();
-             		$parsed_cats[$cat->term_id][] = get_the_ID();
-             		$parsed_cats[$cat->term_id]['order'] = $key;
-             	}
-        }//foreach
+                 foreach ($categories as $key => $val) {
+                     $cat = $categories[$key];
+                     if (is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
+                         if (!isset($parsed_cats[$cat->term_id])) {
+                             $parsed_cats[$cat->term_id] = array();
+                         }
+                         $parsed_cats[$cat->term_id][] = get_the_ID();
+                         $parsed_cats[$cat->term_id]['order'] = $key;
+                     }
+                 }//foreach
 
-           if (function_exists(extended_jeo_get_layer)){
-                $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
-            }else {
-                $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
-            }
-				$layers[] = $layer;
-				wp_reset_postdata();
-			}
-    }//$layer_query
- 		$map = opendev_get_interactive_map_data();
- 		$map['dataReady'] = true;
- 		$map['postID'] = 'interactive_map';
- 		$map['layers'] = $layers;
- 		$map['count'] = 0;
- 		$map['title'] = __('Interactive Map', 'opendev');
- 		if($map['base_layer']) {
- 			array_unshift($map['layers'], array(
- 				'type' => 'tilelayer',
- 				'tile_url' => $map['base_layer']['url']
- 			));
- 		}
- 		// print_r($map);
-		ob_start();
-		?>
+           if (function_exists(extended_jeo_get_layer)) {
+               $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
+           } else {
+               $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
+           }
+                 $layers[] = $layer;
+                 wp_reset_postdata();
+             }
+         }//$layer_query
+        $map = opendev_get_interactive_map_data();
+         $map['dataReady'] = true;
+         $map['postID'] = 'interactive_map';
+         $map['layers'] = $layers;
+         $map['count'] = 0;
+         $map['title'] = __('Interactive Map', 'opendev');
+         if ($map['base_layer']) {
+             array_unshift($map['layers'], array(
+                'type' => 'tilelayer',
+                'tile_url' => $map['base_layer']['url'],
+            ));
+         }
+        // print_r($map);
+        ob_start();
+         ?>
 		<div class="interactive-map">
 			<div class="map-container">
 				    <div id="map_interactive_map_0" class="map"></div>
@@ -69,20 +73,20 @@
 
       <?php
             $cat_baselayers = 'base-layer';
-            $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
-            $cat_baselayers_id =  $term_baselayers->term_id;
-            $args_base_layer = array( 'posts_per_page' => 5,
+         $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
+         $cat_baselayers_id = $term_baselayers->term_id;
+         $args_base_layer = array('posts_per_page' => 5,
                                        'post_type' => 'map-layer',
-                                    	 'post_status' => 'publish',
+                                         'post_status' => 'publish',
                                        'tax_query' => array(
                                                            array(
                                                              'taxonomy' => 'layer-category',
                                                              'field' => 'slug',
-                                                             'terms' => $cat_baselayers
-                                                           )
-                                                         )
+                                                             'terms' => $cat_baselayers,
+                                                           ),
+                                                         ),
                                        ); //'offset'=> 1,
-            $base_layer_posts = get_posts( $args_base_layer );
+            $base_layer_posts = get_posts($args_base_layer);
           /*  if($base_layer_posts){
                 $base_layers_array = array();
                 echo '<div class="baselayers">';
@@ -102,20 +106,22 @@
           ?>
       <div class="baselayer"><ul class="base-layers" /></div>
       <div class="category-map-layers box-shadow hide_show_container">
-            <h2 class="sidebar_header widget_headline"><?php _e("Map Layers", "opendev"); ?>
+            <h2 class="sidebar_header widget_headline"><?php _e('Map Layers', 'opendev');
+         ?>
              <i class='fa fa-caret-down hide_show_icon'></i>
             </h2>
       			<div class="interactive-map-layers dropdown">
       				<ul class="categories">
       					<?php // get all layers form different categories, but not base-layer category
-                  wp_list_categories(array('taxonomy' => 'layer-category', 'title_li' => '', 'depth'=> 2, 'exclude'=> $cat_baselayers_id)); //43002 ?>
+                  wp_list_categories(array('taxonomy' => 'layer-category', 'title_li' => '', 'depth' => 2, 'exclude' => $cat_baselayers_id)); //43002 ?>
       				</ul>
       			</div>
      </div><!--category-map-layers-->
    </div><!-- interactive-map" -->
 
      <div class="box-shadow map-legend-container hide_show_container">
-       <h2 class="widget_headline"><?php _e("LEGEND", "opendev"); ?> <i class='fa fa-caret-down hide_show_icon'></i></h2>
+       <h2 class="widget_headline"><?php _e('LEGEND', 'opendev');
+         ?> <i class='fa fa-caret-down hide_show_icon'></i></h2>
        <div class="map-legend dropdown">
           <hr class="color-line" />
          <ul class="map-legend-ul">
@@ -127,46 +133,54 @@
      <div class="box-shadow layer-toggle-info-container layer-right-screen">
        <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
         <?php $lang = 'en';
-        $i = 0;
+         $i = 0;
         //if (function_exists("qtranxf_getLanguage")) $lang = qtranxf_getLanguage();
-        foreach($map['layers'] as $individual_layer){ $i++;
+        foreach ($map['layers'] as $individual_layer) {
+            ++$i;
             $get_post_by_id = get_post($individual_layer['ID']);
             //$get_post_content_by_id = apply_filters('the_content', $get_post_by_id->post_content);
-            if (function_exists( qtrans_use))
-              $get_post_content_by_id = qtrans_use($lang, $get_post_by_id->post_content,false);
-            else
-              $get_post_content_by_id = $get_post_by_id->post_conten;
+            if (function_exists(qtrans_use)) {
+                $get_post_content_by_id = qtrans_use($lang, $get_post_by_id->post_content, false);
+            } else {
+                $get_post_content_by_id = $get_post_by_id->post_conten;
+            }
 
             //echo "<pre>".$individual_layer['ID']."=> ".$get_post_content_by_id ."</pre>";
-              if($individual_layer['download_url']!="" ){
-                    $split_download_url = explode("?type=", $individual_layer['download_url']);
-                    $split_url_bw_ckanlink_dataset_id = explode("/dataset/", $split_download_url[0]);
-                    $ckan_domain = $split_url_bw_ckanlink_dataset_id[0];
-                    $ckan_dataset_id =   $split_url_bw_ckanlink_dataset_id[1];
+              if ($individual_layer['download_url'] != '') {
+                  $split_download_url = explode('?type=', $individual_layer['download_url']);
+                  $split_url_bw_ckanlink_dataset_id = explode('/dataset/', $split_download_url[0]);
+                  $ckan_domain = $split_url_bw_ckanlink_dataset_id[0];
+                  $ckan_dataset_id = $split_url_bw_ckanlink_dataset_id[1];
 
                     // get ckan record by id
-                    $get_info_from_ckan = get_dataset_by_id($ckan_domain,$ckan_dataset_id);
+                    $get_info_from_ckan = get_dataset_by_id($ckan_domain, $ckan_dataset_id);
                     //print_r(  $get_info_from_ckan );
                     $showing_fields = array(
-                                          "title_translated" => "Title",
-                                          "notes_translated" => "Description",
-                                          "odm_source" => "Source(s)",
-                                          "odm_date_created" => "Date of data",
-                                          "odm_completeness" => "Completeness",
-                                          "license_id" => "License"
+                                          'title_translated' => 'Title',
+                                          'notes_translated' => 'Description',
+                                          'odm_source' => 'Source(s)',
+                                          'odm_date_created' => 'Date of data',
+                                          'odm_completeness' => 'Completeness',
+                                          'license_id' => 'License',
                                       );
-                    get_metadata_info_of_dataset_by_id(CKAN_DOMAIN, $ckan_dataset_id, $individual_layer, 1,  $showing_fields);
-              } else if($get_post_content_by_id){ ?>
-                        <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
+                  get_metadata_info_of_dataset_by_id(get_ckan_domain(), $ckan_dataset_id, $individual_layer, 1,  $showing_fields);
+              } elseif ($get_post_content_by_id) {
+                  ?>
+                        <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID'];
+                  ?>">
                             <div class="layer-toggle-info-content">
-                                <h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
+                                <h4><?php echo get_the_title($individual_layer['ID']);
+                  ?></h4>
                                 <?php echo $get_post_content_by_id ?>
                                 <?php //echo $individual_layer['excerpt']; ?>
                             </div>
                         </div>
-              <?php } ?>
+              <?php 
+              }
+            ?>
           <?php
-      }// foreach
+
+        }// foreach
         ?>
      </div><!--llayer-toggle-info-containero-->
 
@@ -205,8 +219,10 @@
         });
 
 
-				var term_rel = <?php echo json_encode($parsed_cats); ?>;
-				jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
+				var term_rel = <?php echo json_encode($parsed_cats);
+         ?>;
+				jeo(jeo.parseConf(<?php echo json_encode($map);
+         ?>));
 				jeo.mapReady(function(map) {
 					var $layers = $('.interactive-map .interactive-map-layers');
 					if(map.postID == 'interactive_map') {
@@ -382,8 +398,9 @@
 			})(jQuery);
 		</script>
 		<?php
-		$html = ob_get_clean();
-		return $html;
-	}
-}
+        $html = ob_get_clean();
+
+         return $html;
+     }
+ }
 new OpenDev_InteractiveMap();

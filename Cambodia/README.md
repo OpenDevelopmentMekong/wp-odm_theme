@@ -2,7 +2,7 @@
 
 ## Cambodia
 
-This folder contains code specifically written for cambodia.opendevelopmentmekong.notes_translated
+This folder contains code specifically written for cambodia.opendevelopmentmekong
 
 ### Forest cover analysis
 

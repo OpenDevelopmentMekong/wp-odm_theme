@@ -1069,7 +1069,7 @@ a.button:hover{
  .fa_slider_opendev.default .fa_slide_content div.description p a,
  .fa_slider_opendev.default .fa_slide_content div.description p a:visited {
      color: #888;
-     
+
      word-wrap: break-word;
  }
 
@@ -1840,9 +1840,8 @@ a.button:hover{
 /*
  * page
  */
-.container{
-    /*width: 97%;*/
-    clear: both;
+#content{
+ background: white;
 }
 #content.single-post {
  font-size: 16px;

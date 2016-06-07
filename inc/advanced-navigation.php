@@ -104,13 +104,8 @@ class opendev_AdvancedNav {
 	}
 
 	function enqueue_scripts() {
-
-		wp_enqueue_script('chosen', get_stylesheet_directory_uri() . '/lib/chosen.jquery.min.js', array('jquery'));
-		wp_enqueue_script('moment-js', get_stylesheet_directory_uri() . '/lib/moment.min.js');
-		wp_enqueue_style('chosen', get_stylesheet_directory_uri() . '/css/chosen.css');
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_style('jquery-ui-smoothness', 'https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css');
-
 	}
 
 	function form() {

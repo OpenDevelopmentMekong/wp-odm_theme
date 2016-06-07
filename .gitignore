@@ -8,3 +8,6 @@ font/opendev.woff
 **.bak
 **.bak**
 **.mo
+
+/vendor/
+/components/

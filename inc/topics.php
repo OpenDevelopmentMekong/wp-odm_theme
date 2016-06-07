@@ -2,7 +2,7 @@
 
 /*
  * Open Development
- * Topic
+ * Topic content type
  */
 
 class OpenDev_Topic {
