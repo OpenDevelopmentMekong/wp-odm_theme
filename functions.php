@@ -210,6 +210,7 @@ add_action('wp_enqueue_scripts', 'important_overrides', 101);
 
 // hook into the init action and call create_book_taxonomies when it fires
 add_action('init', 'create_news_source_taxonomies', 0);
+
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
 {
