@@ -1,21 +1,7 @@
 <?php get_header(); ?>
 
 <?php if (have_posts()) : the_post(); ?>
-<?php
-if (function_exists('qtranxf_getLanguage')) {
-    if (qtranxf_getLanguage() != 'en') {
-        $lang = '_'.qtranxf_getLanguage();
-    } else {
-        $lang = '';
-    }
-    //Get all languages that is available
-    $languages = qtranxf_getSortedLanguages();
-    $local_language = $languages[1];
-    $local_lang = '_'.$languages[1];
-} else {
-    $lang = '';
-}
-?>
+
 	<article id="content" class="single-post">
 			<div class="container">
 				<div class="eight columns">
@@ -50,6 +36,7 @@ if (function_exists('qtranxf_getLanguage')) {
                       <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');
                       ?></strong></p>
                   <?php
+
                   }
                   ?>
                   <?php if ((qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated', 'language'))) {
@@ -57,29 +44,24 @@ if (function_exists('qtranxf_getLanguage')) {
                       <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');
     ?></strong></p>
                   <?php
+
 }
                   ?>
               <?php
+
               } ?>
     					<?php the_content(); ?>
 
               <!-- News Source: author and link -->
               <?php
-              if (function_exists('qtranxf_getLanguage')) {
-                  if (qtranxf_getLanguage() != 'en') {
-                      $lang = '_'.qtranxf_getLanguage();
-                  } else {
-                      $lang = '';
-                  }
-              }
               //Get author
               if (function_exists('get')) {
-                  if (get('author') == '' && get('author'.$lang) == '') {
+                  if (get('author') == '' && get('author'.get_current_language()) == '') {
                       echo '';
                   } else {
                       $news_source_info = '<span class="lsf">&#xE041;</span> ';
-                      if (get('author'.$lang) != '') {
-                          $news_source_info .= get('author'.$lang).'<br />';
+                      if (get('author'.get_current_language()) != '') {
+                          $news_source_info .= get('author'.get_current_language()).'<br />';
                       } else {
                           $news_source_info .= get('author').'<br />';
                       }
@@ -89,11 +71,11 @@ if (function_exists('qtranxf_getLanguage')) {
         <?php
               if (function_exists('get')) {
                   //Get url
-                if (get('article_link') == '' && get('article_link'.$lang) == '') {
+                if (get('article_link') == '' && get('article_link'.get_current_language()) == '') {
                     echo '';
                 } else {
-                    if (get('article_link'.$lang) != '') {
-                        $source = get('article_link'.$lang);
+                    if (get('article_link'.get_current_language()) != '') {
+                        $source = get('article_link'.get_current_language());
                     } else {
                         $source = get('article_link');
                     }
