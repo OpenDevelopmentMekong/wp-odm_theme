@@ -1,61 +1,67 @@
 <?php
 
+$country_codes = array("cambodia" => "kh", "laos" => "lo", "myanmar" => "my", "vietnam" => "vn", "thailand" => "th", "1" => "mekong");
+
+define('THEME_DIR', get_stylesheet_directory());
+$country = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
+define('COUNTRY_NAME', strtolower($country_codes[$country || 'mekong' ]));
+
 // Require dependencies isntalled via composer
-require STYLESHEETPATH.'/vendor/autoload.php';
+require THEME_DIR.'/vendor/autoload.php';
 
 // Query multisite
-require_once STYLESHEETPATH.'/inc/query-multisite.php';
+require_once THEME_DIR.'/inc/query-multisite.php';
 
 // Theme options
-require_once STYLESHEETPATH.'/inc/theme-options.php';
+require_once THEME_DIR.'/inc/theme-options.php';
 
 // Topics
-require_once STYLESHEETPATH.'/inc/topics.php';
+require_once THEME_DIR.'/inc/topics.php';
 
 // Announcements
-require_once STYLESHEETPATH.'/inc/announcements.php';
+require_once THEME_DIR.'/inc/announcements.php';
 
 // Site updates
-require_once STYLESHEETPATH.'/inc/site-updates.php';
+require_once THEME_DIR.'/inc/site-updates.php';
 
 // Map category
-require_once STYLESHEETPATH.'/inc/layer-category.php';
+require_once THEME_DIR.'/inc/layer-category.php';
 
 // summary
-require_once STYLESHEETPATH.'/inc/summary.php';
+require_once THEME_DIR.'/inc/summary.php';
 
 // Live search
-require_once STYLESHEETPATH.'/inc/live-search/live-search.php';
+require_once THEME_DIR.'/inc/live-search/live-search.php';
 
 // Interactive map
-require_once STYLESHEETPATH.'/inc/interactive-map.php';
+require_once THEME_DIR.'/inc/interactive-map.php';
 
 // Category widget
-require_once STYLESHEETPATH.'/widgets/category-widget.php';
+require_once THEME_DIR.'/widgets/category-widget.php';
 
 // Category widget
-require_once STYLESHEETPATH.'/widgets/odm-taxonomy-widget.php';
+require_once THEME_DIR.'/widgets/odm-taxonomy-widget.php';
 
 // Related recent news
-require_once STYLESHEETPATH.'/widgets/od-related-recent-news-widget.php';
+require_once THEME_DIR.'/widgets/od-related-recent-news-widget.php';
 
 // Advanced nav
-require_once STYLESHEETPATH.'/inc/advanced-navigation.php';
+require_once THEME_DIR.'/inc/advanced-navigation.php';
 
 // Advanced nav
-require_once STYLESHEETPATH.'/inc/category-walker.php';
+require_once THEME_DIR.'/inc/category-walker.php';
 
 // Datastore API functions
-require_once STYLESHEETPATH.'/inc/datastore-api.php';
+require_once THEME_DIR.'/inc/datastore-api.php';
 
 // CKAN API functions
-require_once STYLESHEETPATH.'/inc/ckan-api.php';
+require_once THEME_DIR.'/inc/ckan-api.php';
 
 // Localization
-require_once STYLESHEETPATH.'/inc/localization.php';
+require_once THEME_DIR.'/inc/localization.php';
 
 // WPCKAN related functions
-require_once STYLESHEETPATH.'/inc/wpckan.php';
+require_once THEME_DIR.'/inc/wpckan.php';
 
 function opendev_setup_theme()
 {
@@ -99,7 +105,7 @@ function opendev_setup_theme()
   'after_title' => '</h2>',
  ));
 
- include(STYLESHEETPATH . '/inc/layers.php');
+ include(THEME_DIR . '/inc/layers.php');
 
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
@@ -161,10 +167,10 @@ add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
 
 function opendev_jeo_admin_scripts() {
-    if ( file_exists( STYLESHEETPATH . '/inc/js/filter-layers.js'))
+    if ( file_exists( THEME_DIR . '/inc/js/filter-layers.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
 
-    if ( file_exists( STYLESHEETPATH . '/inc/js/baselayer.js'))
+    if ( file_exists( THEME_DIR . '/inc/js/baselayer.js'))
         wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri() . '/inc/js/baselayer.js', array('jeo'), '1.0.0');
 }
 add_action( 'admin_enqueue_scripts', 'opendev_jeo_admin_scripts' );

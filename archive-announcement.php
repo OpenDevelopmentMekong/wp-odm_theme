@@ -1,6 +1,6 @@
 <?php
 if(is_category()) {
-	include_once(STYLESHEETPATH . '/category-announcement.php');
+	include_once(get_stylesheet_directory() . '/category-announcement.php');
 	die();
 }
 get_header();

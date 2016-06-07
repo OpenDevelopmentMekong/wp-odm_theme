@@ -23,5 +23,5 @@ function get_the_localization_language_by_website($site = '')
     $language['Thailand'] = 'Thai';
     $language['Vietnam'] = 'Vietnamese';
 
-    return $language[$site_name];
+    return isset($language[$site_name]) ? $language[$site_name] : '';
 }
