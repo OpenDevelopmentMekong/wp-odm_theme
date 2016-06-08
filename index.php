@@ -1,11 +1,14 @@
 <?php get_header(); ?>
 
+<article>
+
 <?php
+
   if (is_front_page()):
     $options = get_option('opendev_options');
     if ($options['frontpage_slider_id']) : ?>
 
-     <section id="featured-content" class="page-section row">
+     <section id="featured-content" class="page-section">
       <div class="container">
        <div class="twelve columns">
         <div class="section-featured-content">
@@ -21,19 +24,51 @@
 
  <?php endif;?>
 
- <section id="announcements-and-updates" class="page-section row">
+ <section id="homepage-area-1" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="eight columns">
-        <?php dynamic_sidebar('frontpage-footer-left'); ?>
+      <div class="twelve columns">
+        <?php dynamic_sidebar('homepage-area-1'); ?>
       </div>
-      <div class="four columns">
-        <?php dynamic_sidebar('frontpage-footer-right'); ?>
+    </div>
+   </div>
+ </section>
+
+ <section id="homepage-area-2" class="page-section">
+   <div class="container">
+     <div class="row">
+      <div class="twelve columns">
+        <?php dynamic_sidebar('homepage-area-2'); ?>
+      </div>
+    </div>
+   </div>
+ </section>
+
+ <section id="homepage-area-3" class="page-section">
+   <div class="container">
+     <div class="row">
+      <div class="twelve columns">
+        <?php dynamic_sidebar('homepage-area-3'); ?>
+      </div>
+    </div>
+   </div>
+ </section>
+
+ <section id="homepage-area-4-5" class="page-section">
+   <div class="container">
+     <div class="row">
+      <div class="six columns">
+        <?php dynamic_sidebar('homepage-area-4'); ?>
+      </div>
+      <div class="six columns">
+        <?php dynamic_sidebar('homepage-area-5'); ?>
       </div>
     </div>
    </div>
  </section>
 
 <?php endif; ?>
+
+</article>
 
 <?php get_footer(); ?>

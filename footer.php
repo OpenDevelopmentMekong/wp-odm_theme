@@ -1,12 +1,13 @@
-<div id="clear"><br/></div>
 
 <footer id="colophon">
 	<div class="container">
+
+		<!-- Legal disclaimer -->
     <div class="row">
       <div class="twelve columns">
         <?php
-    		  $disclaimer = opendev_get_legal_disclaimer();
-    		  if($disclaimer) : ?>
+              $disclaimer = opendev_get_legal_disclaimer();
+              if ($disclaimer) : ?>
       			<div class="twelve columns row">
       				<?php echo wpautop($disclaimer); ?>
       			</div>
@@ -14,6 +15,7 @@
       </div>
     </div>
 
+		<!-- Footer menu -->
 		<div class="row">
       <div class="seven columns">
   			<nav id="footer-nav">
