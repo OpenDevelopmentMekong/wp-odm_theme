@@ -97,7 +97,7 @@
     <div class="container">
       <div class="row">
         <div class="nine columns">
-          <?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
+          <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
         </div>
         <div class="three columns">
           <div class="search">
