@@ -8,3 +8,5 @@ font/opendev.woff
 **.bak
 **.bak**
 **.mo
+dist
+node_modules
