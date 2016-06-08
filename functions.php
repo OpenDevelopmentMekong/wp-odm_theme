@@ -1,111 +1,87 @@
 <?php
 
+/*
+ * Defining constants to be used across the whole theme
+ */
 $country_codes = array('cambodia' => 'kh', 'laos' => 'lo', 'myanmar' => 'my', 'vietnam' => 'vn', 'thailand' => 'th', '1' => 'mekong');
 $country = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
 define('COUNTRY_NAME', strtolower($country_codes[$country || 'mekong' ]));
 define('THEME_DIR', get_stylesheet_directory());
 
-// Require dependencies isntalled via composer
+/*
+ * Requiring PHP files with extra functionality and content
+ */
+// Require autoload-enabled dependencies isntalled via composer
 require THEME_DIR.'/vendor/autoload.php';
-
-// Query multisite
 require_once THEME_DIR.'/inc/query-multisite.php';
-
-// Theme options
 require_once THEME_DIR.'/inc/theme-options.php';
-
-// Topics
 require_once THEME_DIR.'/inc/topics.php';
-
-// Announcements
 require_once THEME_DIR.'/inc/announcements.php';
-
-// Site updates
 require_once THEME_DIR.'/inc/site-updates.php';
-
-// Map category
 require_once THEME_DIR.'/inc/layer-category.php';
-
-// summary
 require_once THEME_DIR.'/inc/summary.php';
-
-// Live search
 require_once THEME_DIR.'/inc/live-search/live-search.php';
-
-// Interactive map
 require_once THEME_DIR.'/inc/interactive-map.php';
-
-// Category widget
 require_once THEME_DIR.'/widgets/category-widget.php';
-
-// Category widget
 require_once THEME_DIR.'/widgets/odm-taxonomy-widget.php';
-
-// Related recent news
 require_once THEME_DIR.'/widgets/od-related-recent-news-widget.php';
-
-// Advanced nav
 require_once THEME_DIR.'/inc/advanced-navigation.php';
-
-// Advanced nav
 require_once THEME_DIR.'/inc/category-walker.php';
-
-// Localization
 require_once THEME_DIR.'/inc/localization.php';
 
-define('CURRENT_LANGUAGE', get_current_language());
-
+/*
+ * Loads the theme's translated strings. for 'opendev' and 'jeo' domains
+ * Registers widget sidebars
+ */
 function opendev_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
     load_theme_textdomain('opendev', $gsd[0].'/wp-content/languages');
     load_theme_textdomain('jeo', $gsd[0].'/wp-content/languages');
     register_sidebar(array(
-  'name' => __('Topic sidebar', 'jeo'),
-  'id' => 'topic',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+    'name' => __('Topic sidebar', 'jeo'),
+    'id' => 'topic',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
     register_sidebar(array(
-  'name' => __('Frontpage footer left', 'jeo'),
-  'id' => 'frontpage-footer-left',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+    'name' => __('Homepage area 1', 'jeo'),
+    'id' => 'homepage-area-1',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
     register_sidebar(array(
-  'name' => __('Frontpage footer right', 'jeo'),
-  'id' => 'frontpage-footer-right',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+    'name' => __('Homepage area 2', 'jeo'),
+    'id' => 'homepage-area-2',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
     register_sidebar(array(
-  'name' => __('Upcoming footer left', 'jeo'),
-  'id' => 'upcoming-footer-left',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+    'name' => __('Homepage area 3', 'jeo'),
+    'id' => 'homepage-area-3',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
     register_sidebar(array(
-  'name' => __('Upcoming footer middle', 'jeo'),
-  'id' => 'upcoming-footer-middle',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+    'name' => __('Homepage area 4', 'jeo'),
+    'id' => 'homepage-area-4',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
     register_sidebar(array(
-  'name' => __('Upcoming footer right', 'jeo'),
-  'id' => 'upcoming-footer-right',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
- ));
+    'name' => __('Homepage area 5', 'jeo'),
+    'id' => 'homepage-area-5',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
 
     include THEME_DIR.'/inc/layers.php';
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
-add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 function opendev_jeo_scripts()
 {
     wp_dequeue_script('jeo-site');
-    wp_enqueue_script('jquery-isotope');
     wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
     $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
 
@@ -156,6 +132,9 @@ function opendev_jeo_scripts()
     wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
     wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
     wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
+    wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
+    wp_enqueue_script('chosen', get_stylesheet_directory_uri().'/vendor/drmonty/chosen/js/chosen.jquery.min.js', array('jquery'));
+    wp_enqueue_script('moment-js', get_stylesheet_directory_uri().'/vendor/moment/moment/min/moment.min.js');
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
@@ -176,30 +155,30 @@ function opendev_styles()
     $options = get_option('opendev_options');
 
     $css_base = get_stylesheet_directory_uri().'/css/';
+    wp_enqueue_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
+    wp_enqueue_style('opendev-base',  $css_base.'opendev.css');
+    wp_enqueue_style('forest-cover',  $css_base.'forest-cover.css');
 
-    wp_register_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
-    wp_register_style('opendev-base',  $css_base.'opendev.css');
     wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
     wp_register_style('opendev-thailand',  $css_base.'thailand.css');
     wp_register_style('opendev-laos',  $css_base.'laos.css');
     wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
     wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
     wp_register_style('map-explorer',  $css_base.'map-explorer.css');
-    wp_register_style('forest-cover',  $css_base.'forest-cover.css');
 
-    wp_enqueue_style('mCustomScrollbar');
-    wp_enqueue_style('opendev-base');
+    $vendor_base = get_stylesheet_directory_uri().'/vendor/';
+    wp_enqueue_style('opendev-webfontawesome', $vendor_base.'/fortawesome/font-awesome/css/font-awesome.min.css');
+    wp_enqueue_style('opendev-chosen', $vendor_base.'/drmonty/chosen/css/chosen.min.css');
 
     if (is_page('map-explorer') || is_page('maps') || is_home()) {
         wp_enqueue_style('map-explorer');
     }
 
-    wp_enqueue_style('forest-cover');
-
     if ($options['style']) {
         wp_enqueue_style('opendev-'.$options['style']);
     }
 }
+add_action('wp_enqueue_scripts', 'opendev_styles', 15);
 
 function important_overrides()
 {
@@ -207,9 +186,6 @@ function important_overrides()
     wp_enqueue_style('overrides');
 }
 add_action('wp_enqueue_scripts', 'important_overrides', 101);
-
-// hook into the init action and call create_book_taxonomies when it fires
-add_action('init', 'create_news_source_taxonomies', 0);
 
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
@@ -240,7 +216,8 @@ function create_news_source_taxonomies()
 
     register_taxonomy('news_source', array('post'), $args);
 }
-// custom marker data
+add_action('init', 'create_news_source_taxonomies', 0);
+
 function opendev_marker_data($data, $post)
 {
     global $post;
@@ -341,11 +318,9 @@ function opendev_social_apis()
 }
 add_action('wp_footer', 'opendev_social_apis');
 
-if (!function_exists('IsNullOrEmptyString')) {
-    function IsNullOrEmptyString($question)
-    {
-        return !isset($question) || @trim($question) === '';
-    }
+function IsNullOrEmptyString($question)
+{
+    return !isset($question) || @trim($question) === '';
 }
 
 // Disable mousewheel zoom by default
@@ -685,6 +660,7 @@ function the_breadcrumb()
     }
     echo '</ul>';
 }
+
 function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 {
     global $wpdb;

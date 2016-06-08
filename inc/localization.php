@@ -212,3 +212,5 @@ function get_current_language()
 
     return $current_lang;
 }
+
+define('CURRENT_LANGUAGE', get_current_language());
