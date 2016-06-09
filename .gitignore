@@ -11,3 +11,5 @@ font/opendev.woff
 
 /vendor/
 /components/
+/dist/
+/node_modules/
