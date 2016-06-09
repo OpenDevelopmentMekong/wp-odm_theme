@@ -17,7 +17,8 @@ This project uses Gulp (http://gulpjs.com/) for compressing/minfying CSS/JS file
 
 See bower.json file for dependencies. In order to install them:
 
-- run ```bower install``` (bower.io gets installed in the previous step)
+- install bower globally <code>sudo npm install bower -g</code>
+- run ```bower install``` to install dependencies
 
 ### odm-taxonomy
 
