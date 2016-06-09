@@ -1,5 +1,5 @@
 <ul class="list-posts">
-	<?php while(have_posts()) : the_post(); ?>
+	<?php while (have_posts()) : the_post(); ?>
 		<li id="post-<?php the_ID(); ?>" <?php post_class('post-item four columns'); ?>>
 			<article>
 				<header class="post-header">
@@ -17,7 +17,7 @@
 				<footer class="post-actions">
 					<div class="buttons">
 						<a class="button" href="<?php the_permalink(); ?>"><?php _e('Read more', 'opendev'); ?></a>
-						<?php if(jeo_has_marker_location()) : ?>
+						<?php if (jeo_has_marker_location()) : ?>
 							<a class="button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>"><?php _e('Share', 'opendev'); ?></a>
 						<?php endif; ?>
 					</div>
@@ -27,5 +27,7 @@
 	<?php endwhile; ?>
 </ul>
 <div class="twelve columns">
-	<?php if(function_exists('wp_paginate')) wp_paginate(); ?>
+	<?php if (function_exists('wp_paginate')) {
+    wp_paginate();
+} ?>
 </div>

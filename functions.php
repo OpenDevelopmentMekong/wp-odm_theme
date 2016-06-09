@@ -154,41 +154,24 @@ function opendev_styles()
     $options = get_option('opendev_options');
 
     $css_base = get_stylesheet_directory_uri().'/css/';
-    wp_enqueue_style('opendev-base',  $css_base.'opendev.css');
     wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
     wp_register_style('opendev-thailand',  $css_base.'thailand.css');
     wp_register_style('opendev-laos',  $css_base.'laos.css');
     wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
     wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-    wp_register_style('map-explorer',  $css_base.'map-explorer.css');
 
     $cambodia_base = get_stylesheet_directory_uri().'/Cambodia/';
     wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
 
-    $lib_base = get_stylesheet_directory_uri().'/lib/css/';
-    wp_enqueue_style('mCustomScrollbar',  $lib_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
-
-    $bower_base = get_stylesheet_directory_uri().'/bower_components/';
-    wp_enqueue_style('opendev-webfontawesome', $bower_base.'/fontawesome/css/font-awesome.min.css');
-    wp_enqueue_style('opendev-chosen', $bower_base.'/chosen/chosen.css');
-
-    if (is_page('map-explorer') || is_page('maps') || is_home()) {
-        wp_enqueue_style('map-explorer');
-    }
+    $dist_base = get_stylesheet_directory_uri().'/dist/css/';
+    wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
+    wp_enqueue_style('odm-style',  $dist_base.'odm.css');
 
     if ($options['style']) {
         wp_enqueue_style('opendev-'.$options['style']);
     }
 }
 add_action('wp_enqueue_scripts', 'opendev_styles', 15);
-
-function important_overrides()
-{
-    $css_base = get_stylesheet_directory_uri().'/css/';
-    wp_register_style('overrides', $css_base.'overrides.css');
-    wp_enqueue_style('overrides');
-}
-add_action('wp_enqueue_scripts', 'important_overrides', 101);
 
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
@@ -238,8 +221,7 @@ function opendev_marker_data($data, $post)
         $data['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
     }
 
- // thumbnail
- $data['thumbnail'] = opendev_get_thumbnail();
+    $data['thumbnail'] = opendev_get_thumbnail();
 
     return $data;
 }
@@ -282,7 +264,7 @@ function opendev_logo()
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
+    echo '<h2 class="side-title">'.$name.'</h2>';
     echo '</div>';
 }
 

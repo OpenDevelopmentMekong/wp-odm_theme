@@ -28,11 +28,20 @@ gulp.task('build-less', function(){
 
 gulp.task('build-styles', function(){
 	return gulp.src([
-
+    'css/map-explorer.css',
+    'css/map-sidebar.css',
+    'css/opendev.css',
+    'css/mapnav.css',
+    'css/overrides.css',
+    'bower_components/fontawesome/css/font-awesome.min.css',
+    'bower_components/chosen/chosen.css',
+    'lib/css/jquery.mCustomScrollbar.min.css',
+    'lib/css/responsive.dataTables.css',
+    'lib/css/sticky.css'
 	])
 	.pipe(cleanCSS())
-	.pipe(concat('style.min.css'))
-	.pipe(gulp.dest(DEST_PATH));
+	.pipe(concat('odm.min.css'))
+	.pipe(gulp.dest(CSS_DIST_PATH));
 });
 
 gulp.task('build-scripts', function(){

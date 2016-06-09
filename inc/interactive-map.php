@@ -175,7 +175,7 @@
                                 <?php //echo $individual_layer['excerpt']; ?>
                             </div>
                         </div>
-              <?php 
+              <?php
               }
             ?>
           <?php
