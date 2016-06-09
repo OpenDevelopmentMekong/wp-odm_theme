@@ -5,6 +5,8 @@ var gulp = require('gulp'),
 	cleanCSS = require('gulp-clean-css'),
 	runSequence = require('run-sequence');
 
+var gulpUtil = require('gulp-util');
+
 var LESS_PATH = 'less/';
 var JS_PATH = 'js/';
 var CSS_PATH = 'css/';
@@ -15,7 +17,8 @@ var JS_DIST_PATH = DEST_PATH + 'js/';
 gulp.task('default', function() {
   runSequence(
   	'build-less',
-  	'build-styles'
+  	'build-styles',
+    'build-scripts'
   );
 });
 
@@ -40,17 +43,17 @@ gulp.task('build-styles', function(){
     'lib/css/sticky.css'
 	])
 	.pipe(cleanCSS())
-	.pipe(concat('odm.min.css'))
+	.pipe(concat('extra.min.css'))
 	.pipe(gulp.dest(CSS_DIST_PATH));
 });
 
 gulp.task('build-scripts', function(){
 	return gulp.src([
-
+    'inc/js/*.js', 'lib/js/*.js', '/bower_components/moment/min/moment.min.js', '/bower_components/chosen/chosen.jquery.js', '/bower_components/datatables/media/js/jquery.dataTables.min.js'
 	])
 	.pipe(uglify())
-	.pipe(concat('script.min.js', {newLine: ';'}))
-	.pipe(gulp.dest(DEST_PATH));
+	.pipe(concat('scripts.min.js', {newLine: ';'}))
+	.pipe(gulp.dest(JS_DIST_PATH));
 });
 
 gulp.task('watch', function(){
