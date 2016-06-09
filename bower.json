@@ -1,0 +1,29 @@
+{
+  "name": "wp-odm_theme",
+  "version": "0.9.0",
+  "homepage": "https://github.com/OpenDevelopmentMekong/wp-odm_theme",
+  "authors": [
+    "Alex Corbi <a.corbi@gmail.com>"
+  ],
+  "description": "Version 2.0 of the Wordpress theme for ODM, based on jeo",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "odm"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet": "~0.7.7",
+    "datatables": "~1.10.12",
+    "chosen": "~1.5.1",
+    "moment": "~2.13.0",
+    "fontawesome": "~4.6.3"
+  }
+}

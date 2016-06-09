@@ -5,12 +5,6 @@ Wordpress theme based on [JEO](http://github.com/oeco/jeo). This theme adds cust
 
 ### Dependencies
 
-#### Composer Dependencies
-
-See composer.json file for Dependencies. In order to install them:
-
-- run ```composer install``` after having installed http://getcomposer.org/
-
 #### NPM Dependencies
 
 This project uses Gulp (http://gulpjs.com/) for compressing/minfying CSS/JS files. In order to be able to do so, you need to:
@@ -18,6 +12,12 @@ This project uses Gulp (http://gulpjs.com/) for compressing/minfying CSS/JS file
 - Install node.js https://nodejs.org/en/download/ which comes with NPM
 - It is recommended to update npm <code>sudo npm install npm -g</code>
 - Install dependencies with <code>npm install</code>
+
+#### Bower Dependencies
+
+See bower.json file for dependencies. In order to install them:
+
+- run ```bower install``` (bower.io gets installed in the previous step)
 
 ### odm-taxonomy
 
