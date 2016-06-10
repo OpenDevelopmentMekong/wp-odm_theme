@@ -13,8 +13,8 @@ jQuery(document).ready(function($){
 				$("#"+id).val(attachment.url);
 			} else {
 				return _orig_send_attachment.apply( this, [props, attachment] );
-			};
-		}
+			}
+		};
 
 		wp.media.editor.open(button);
 		return false;

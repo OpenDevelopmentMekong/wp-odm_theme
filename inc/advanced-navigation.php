@@ -5,7 +5,6 @@
  * Advanced navigation
  */
 
-
 class opendev_AdvancedNav {
 
 	var $prefix = 'opendev_filter_';

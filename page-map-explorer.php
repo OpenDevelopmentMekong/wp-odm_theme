@@ -5,7 +5,7 @@ Template Name: Map explorer
 ?>
 <?php get_header(); ?>
 
-<?php if(have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post(); ?>
 
    <section id="map">
     <?php echo do_shortcode('[odmap]'); ?>

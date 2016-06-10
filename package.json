@@ -1,0 +1,34 @@
+{
+  "name": "wp-odm_theme",
+  "version": "1.0.0",
+  "description": "Open Development Mekong Wordpress Themes",
+  "main": "index.php",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenDevelopmentMekong/wp-odm_theme.git"
+  },
+  "keywords": [
+    "opendata"
+  ],
+  "author": "ODM Development Team",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/OpenDevelopmentMekong/wp-odm_theme/issues"
+  },
+  "homepage": "https://github.com/OpenDevelopmentMekong/wp-odm_theme#readme",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.1.0",
+    "gulp-uglify": "^1.5.3",
+    "run-sequence": "^1.2.1"
+  }
+}

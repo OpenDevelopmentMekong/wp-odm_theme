@@ -2,6 +2,7 @@
 
 /*
  * Defining constants to be used across the whole theme
+ * TODO: Replace with a function soted somewhere on /inc
  */
 $country_codes = array('cambodia' => 'kh', 'laos' => 'lo', 'myanmar' => 'my', 'vietnam' => 'vn', 'thailand' => 'th', '1' => 'mekong');
 $country = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
@@ -11,8 +12,6 @@ define('THEME_DIR', get_stylesheet_directory());
 /*
  * Requiring PHP files with extra functionality and content
  */
-// Require autoload-enabled dependencies isntalled via composer
-require THEME_DIR.'/vendor/autoload.php';
 require_once THEME_DIR.'/inc/query-multisite.php';
 require_once THEME_DIR.'/inc/theme-options.php';
 require_once THEME_DIR.'/inc/topics.php';
@@ -22,9 +21,9 @@ require_once THEME_DIR.'/inc/layer-category.php';
 require_once THEME_DIR.'/inc/summary.php';
 require_once THEME_DIR.'/inc/live-search/live-search.php';
 require_once THEME_DIR.'/inc/interactive-map.php';
-require_once THEME_DIR.'/widgets/category-widget.php';
-require_once THEME_DIR.'/widgets/odm-taxonomy-widget.php';
-require_once THEME_DIR.'/widgets/od-related-recent-news-widget.php';
+require_once THEME_DIR.'/inc/widgets/category-widget.php';
+require_once THEME_DIR.'/inc/widgets/odm-taxonomy-widget.php';
+require_once THEME_DIR.'/inc/widgets/od-related-recent-news-widget.php';
 require_once THEME_DIR.'/inc/advanced-navigation.php';
 require_once THEME_DIR.'/inc/category-walker.php';
 require_once THEME_DIR.'/inc/localization.php';
@@ -87,7 +86,7 @@ function opendev_jeo_scripts()
 
     global $jeo_markers;
     wp_deregister_script('jeo.markers');
-    wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
+    wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/lib/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
     wp_localize_script('jeo.markers', 'opendev_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => $jeo_markers->query(),
@@ -121,20 +120,20 @@ function opendev_jeo_scripts()
   ));
 
     if (is_home()) {
-        wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
+        wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/lib/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
     }
     if (is_page('map-explorer') || is_page('maps') || is_home()) {
         wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
         wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
     }
-    wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
-    wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/lib/dataTables/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
-    wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
-    wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
-    wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
-    wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/dataTables/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
-    wp_enqueue_script('chosen', get_stylesheet_directory_uri().'/vendor/drmonty/chosen/js/chosen.jquery.min.js', array('jquery'));
-    wp_enqueue_script('moment-js', get_stylesheet_directory_uri().'/vendor/moment/moment/min/moment.min.js');
+    wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/lib/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
+
+    wp_enqueue_script('data-tables-responsive', get_stylesheet_directory_uri().'/lib/js/dataTables.responsive.js', array('data-tables-js'), '1.10.10');
+    wp_enqueue_script('data-tables-columnFilter', get_stylesheet_directory_uri().'/lib/js/dataTables.columnFilter.js', array('data-tables-js'), '1.5.6');
+    wp_enqueue_script('data-tables-fnGetColumnData', get_stylesheet_directory_uri().'/lib/js/dataTables.fnGetColumnData.js', array('data-tables-js'), '1.0.0');
+    wp_enqueue_script('data-tables-js', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js', array('jquery'), '1.10.10');
+    wp_enqueue_script('chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js', array('jquery'));
+    wp_enqueue_script('moment-js', get_stylesheet_directory_uri().'/bower_components/moment/min/moment.min.js');
 }
 add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
@@ -155,37 +154,24 @@ function opendev_styles()
     $options = get_option('opendev_options');
 
     $css_base = get_stylesheet_directory_uri().'/css/';
-    wp_enqueue_style('mCustomScrollbar',  $css_base.'jquery.mCustomScrollbar.min.css?ver=3.1.12');
-    wp_enqueue_style('opendev-base',  $css_base.'opendev.css');
-    wp_enqueue_style('forest-cover',  $css_base.'forest-cover.css');
-
     wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
     wp_register_style('opendev-thailand',  $css_base.'thailand.css');
     wp_register_style('opendev-laos',  $css_base.'laos.css');
     wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
     wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
-    wp_register_style('map-explorer',  $css_base.'map-explorer.css');
 
-    $vendor_base = get_stylesheet_directory_uri().'/vendor/';
-    wp_enqueue_style('opendev-webfontawesome', $vendor_base.'/fortawesome/font-awesome/css/font-awesome.min.css');
-    wp_enqueue_style('opendev-chosen', $vendor_base.'/drmonty/chosen/css/chosen.min.css');
+    $cambodia_base = get_stylesheet_directory_uri().'/Cambodia/';
+    wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
 
-    if (is_page('map-explorer') || is_page('maps') || is_home()) {
-        wp_enqueue_style('map-explorer');
-    }
+    $dist_base = get_stylesheet_directory_uri().'/dist/css/';
+    wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
+    wp_enqueue_style('odm-style',  $dist_base.'odm.css');
 
     if ($options['style']) {
         wp_enqueue_style('opendev-'.$options['style']);
     }
 }
 add_action('wp_enqueue_scripts', 'opendev_styles', 15);
-
-function important_overrides()
-{
-    wp_register_style('overrides', get_stylesheet_directory_uri().'/css/overrides.css');
-    wp_enqueue_style('overrides');
-}
-add_action('wp_enqueue_scripts', 'important_overrides', 101);
 
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
@@ -235,8 +221,7 @@ function opendev_marker_data($data, $post)
         $data['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
     }
 
- // thumbnail
- $data['thumbnail'] = opendev_get_thumbnail();
+    $data['thumbnail'] = opendev_get_thumbnail();
 
     return $data;
 }
@@ -279,7 +264,7 @@ function opendev_logo()
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.$name.'<span class="icon-arrow-down5"></span></h2>';
+    echo '<h2 class="side-title">'.$name.'</h2>';
     echo '</div>';
 }
 

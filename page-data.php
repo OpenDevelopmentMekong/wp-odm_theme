@@ -5,7 +5,7 @@ Template Name: Data archive
 ?>
 <?php get_header(); ?>
 
-<?php if(have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post(); ?>
 	<section id="content" class="single-post data-page">
 		<header class="single-post-header">
 			<div class="container">
@@ -26,17 +26,17 @@ Template Name: Data archive
 					</form>
 					<div class="row">
 						<?php
-						$search = isset($_GET['ckan_s']) ? $_GET['ckan_s'] : '';
-						$limit = 8;
-						$page = isset($_GET['ckan_page']) ? $_GET['ckan_page'] : 1;
-						echo do_shortcode('[wpckan_query_datasets query="' . $search . '" limit="' . $limit . '" page="' . $page . '"]');
-						?>
+                        $search = isset($_GET['ckan_s']) ? $_GET['ckan_s'] : '';
+                        $limit = 8;
+                        $page = isset($_GET['ckan_page']) ? $_GET['ckan_page'] : 1;
+                        echo do_shortcode('[wpckan_query_datasets query="'.$search.'" limit="'.$limit.'" page="'.$page.'"]');
+                        ?>
 					</div>
 					<nav id="wpckan_nav">
-						<?php if($page > 1) : ?>
-							<a class="prev-page button" href="<?php echo add_query_arg(array('ckan_page' => $page-1)); ?>"><?php _e('Previous page', 'opendev'); ?></a>
+						<?php if ($page > 1) : ?>
+							<a class="prev-page button" href="<?php echo add_query_arg(array('ckan_page' => $page - 1)); ?>"><?php _e('Previous page', 'opendev'); ?></a>
 						<?php endif; ?>
-						<a class="next-page button" href="<?php echo add_query_arg(array('ckan_page' => $page+1)); ?>"><?php _e('Next page', 'opendev'); ?></a>
+						<a class="next-page button" href="<?php echo add_query_arg(array('ckan_page' => $page + 1)); ?>"><?php _e('Next page', 'opendev'); ?></a>
 					</nav>
 					<script type="text/javascript">
 						jQuery(document).ready(function($) {

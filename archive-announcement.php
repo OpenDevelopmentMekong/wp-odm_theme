@@ -52,7 +52,7 @@ if (function_exists(qtranxf_getLanguage)) {
 				<?php get_template_part('section', 'query-actions'); ?>
 							<?php if (is_search() || get_query_var('opendev_advanced_nav')) : ?>
 											<?php $search_results = &new WP_Query("s=$s & showposts=-1");
-                                                        $NumResults = $search_results->post_count; ?>
+                            $NumResults = $search_results->post_count; ?>
 											<div id="advanced_search_results"><h2>Site Results (<?php echo $NumResults; ?>)</h2> </div>
 							<?php endif; ?>
 
@@ -68,7 +68,7 @@ if (function_exists(qtranxf_getLanguage)) {
 												<?php show_date_and_source_of_the_post();
     ?>
 										</div>
-									<?php 
+									<?php
 } ?>
 								</header>
 								<section class="post-content">

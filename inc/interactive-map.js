@@ -14,7 +14,7 @@ var interactiveMap;
 
 			return group.build(conf);
 
-		}
+		};
 
 		if($.isReady) {
 			_init();
@@ -81,7 +81,7 @@ var interactiveMap;
 
 			jeo.runCallbacks('interactiveMapReady', [group]);
 
-		}
+		};
 
 		group.updateUI = function() {
 
@@ -91,7 +91,7 @@ var interactiveMap;
 			group.$.nav.find('li a').removeClass('active');
 			$navEl.addClass('active');
 
-		}
+		};
 
 		group.update = function(mapID) {
 
@@ -155,11 +155,11 @@ var interactiveMap;
 			// callbacks
 			jeo.runCallbacks('interactiveMapChanged', [group, prevMap]);
 
-		}
+		};
 
 		groups[group.id] = group;
 		return group;
-	}
+	};
 
 	jeo.createCallback('interactiveMapReady');
 	jeo.createCallback('interactiveMapChanged');

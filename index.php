@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<article>
-
 <?php
 
   if (is_front_page()):
@@ -68,7 +66,5 @@
  </section>
 
 <?php endif; ?>
-
-</article>
 
 <?php get_footer(); ?>

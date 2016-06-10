@@ -100,18 +100,6 @@ Template Name: Upcoming site
   </div>
  </section>
 
- <!-- <section id="map">
-  <div class="section-title">
-   <div class="container">
-    <div class="twelve columns">
-     <h1>Maps</h1>
-     <?php //echo do_shortcode('[odmap]'); ?>
-     <?php //get_template_part('content', 'interactive-map'); ?>
-    </div>
-   </div>
-  </div>
- </section>  -->
-
  <section id="announcements-and-updates" class="page-section row no-margin-top" >
    <div class="container">
      <div class="row">
@@ -128,8 +116,5 @@ Template Name: Upcoming site
    </div>
  </section>
 <?php endif; ?>
-
-<?php //get_template_part('section', 'content-summary'); ?>
-<?php // get_template_part('content', 'interactive-map'); ?>
 
 <?php get_footer(); ?>
