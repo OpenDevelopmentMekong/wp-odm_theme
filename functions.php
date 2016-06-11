@@ -80,7 +80,7 @@ add_action('after_setup_theme', 'opendev_setup_theme');
 
 function opendev_dependency_scripts()
 {
-  wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/lib/leaflet/leaflet.js');
+  wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
   wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
   wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
 }
@@ -156,6 +156,10 @@ function opendev_styles()
 
     $cambodia_base = get_stylesheet_directory_uri().'/Cambodia/';
     wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
+
+    $bower_base = get_stylesheet_directory_uri().'/bower_components/';
+    wp_enqueue_style('fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
+    wp_enqueue_style('chosen-style',  $bower_base.'chosen/chosen.css');
 
     $dist_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
@@ -717,9 +721,9 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
     }
     $categories = get_categories($args);
     $current_cat = get_queried_object();
-    if ($current_cat->slug) {
+    if (isset($current_cat->slug) && $current_cat->slug) {
         $current_cat_page = $current_cat->slug;
-    } else {
+    } elseif (isset($current_cat->post_name)) {
         $current_cat_page = $current_cat->post_name;
     }
     if ($title == 1) {
@@ -731,7 +735,9 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
         $jackpot = true;
         $children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
         echo "<li class='cat_item'>";
-        print_category_by_post_type($category, $post_type, $current_cat_page);
+        if( isset($current_cat_page)){
+          print_category_by_post_type($category, $post_type, $current_cat_page);
+        }
         if (!empty($children)) {
             echo '<ul>';
             walk_child_category_by_post_type($children, $post_type, $current_cat_page);
@@ -746,32 +752,19 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
           jQuery(document).ready(function($) {
           $('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
             if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
-              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;
-        ?>");
-              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;
-        ?>");
+              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
+              $('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
             }
             //if parent is showed, child need to expend
-            if ($('span.<?php echo $current_cat_page;
-        ?>').length){
-              $('span.<?php echo $current_cat_page;
-        ?>').siblings("ul").show();
-              $('span.<?php echo $current_cat_page;
-        ?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;
-        ?>');
-              $('span.<?php echo $current_cat_page;
-        ?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;
-        ?>');
+            if ($('span.<?php echo $current_cat_page;?>').length){
+              $('span.<?php echo $current_cat_page;?>').siblings("ul").show();
+              $('span.<?php echo $current_cat_page;?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+              $('span.<?php echo $current_cat_page;?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
 
               //if child is showed, parent expended
-              $('span.<?php echo $current_cat_page;
-        ?>').parents("li").parents("ul").show();
-              $('span.<?php echo $current_cat_page;
-        ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;
-        ?>');
-              $('span.<?php echo $current_cat_page;
-        ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;
-        ?>');
+              $('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").show();
+              $('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+              $('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
             }
           });
           $('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
@@ -779,10 +772,8 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
             var target =  $( event.target );
               if(target.parent("li").find('ul').length){
                 target.parent("li").find('ul:first').slideToggle();
-                target.toggleClass("plusimage-<?php echo COUNTRY_NAME;
-        ?>");
-                target.toggleClass('minusimage-<?php echo COUNTRY_NAME;
-        ?>');
+                target.toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
+                target.toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
                 }
             });
           });

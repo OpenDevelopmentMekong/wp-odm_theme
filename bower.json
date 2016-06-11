@@ -22,6 +22,7 @@
   "dependencies": {
     "datatables": "~1.10.12",
     "chosen": "~1.5.1",
-    "fontawesome": "~4.6.3"
+    "fontawesome": "~4.6.3",
+    "leaflet": "^0.7.7"
   }
 }
