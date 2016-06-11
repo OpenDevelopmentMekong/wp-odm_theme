@@ -158,8 +158,8 @@ function opendev_styles()
     wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
 
     $bower_base = get_stylesheet_directory_uri().'/bower_components/';
-    wp_enqueue_style('fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
-    wp_enqueue_style('chosen-style',  $bower_base.'chosen/chosen.css');
+    wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
+    wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
 
     $dist_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
