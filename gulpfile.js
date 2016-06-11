@@ -5,8 +5,6 @@ var gulp = require('gulp'),
 	cleanCSS = require('gulp-clean-css'),
 	runSequence = require('run-sequence');
 
-var gulpUtil = require('gulp-util');
-
 var LESS_PATH = 'less/';
 var JS_PATH = 'js/';
 var CSS_PATH = 'css/';
@@ -36,8 +34,6 @@ gulp.task('build-styles', function(){
     'css/opendev.css',
     'css/mapnav.css',
     'css/overrides.css',
-    'bower_components/fontawesome/css/font-awesome.min.css',
-    'bower_components/chosen/chosen.css',
     'lib/css/jquery.mCustomScrollbar.min.css',
     'lib/css/responsive.dataTables.css',
     'lib/css/sticky.css'
@@ -49,7 +45,7 @@ gulp.task('build-styles', function(){
 
 gulp.task('build-scripts', function(){
 	return gulp.src([
-    'inc/js/*.js', 'lib/js/*.js', '/bower_components/moment/min/moment.min.js', '/bower_components/chosen/chosen.jquery.js', '/bower_components/datatables/media/js/jquery.dataTables.min.js'
+    'inc/js/*.js', 'lib/js/*.js'
 	])
 	.pipe(uglify())
 	.pipe(concat('scripts.min.js', {newLine: ';'}))
