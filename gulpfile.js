@@ -15,7 +15,8 @@ var JS_DIST_PATH = DEST_PATH + 'js/';
 gulp.task('default', function() {
   runSequence(
   	'build-less',
-  	'build-styles'
+  	'build-styles',
+    'build-scripts'
   );
 });
 
@@ -44,11 +45,11 @@ gulp.task('build-styles', function(){
 
 gulp.task('build-scripts', function(){
 	return gulp.src([
-
+    'inc/js/*.js', 'lib/js/*.js'
 	])
 	.pipe(uglify())
-	.pipe(concat('script.min.js', {newLine: ';'}))
-	.pipe(gulp.dest(DEST_PATH));
+	.pipe(concat('scripts.min.js', {newLine: ';'}))
+	.pipe(gulp.dest(JS_DIST_PATH));
 });
 
 gulp.task('watch', function(){
