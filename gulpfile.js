@@ -15,7 +15,8 @@ var JS_DIST_PATH = DEST_PATH + 'js/';
 gulp.task('default', function() {
   runSequence(
   	'build-less',
-  	'build-styles'
+  	'build-styles',
+    'build-scripts'
   );
 });
 
@@ -33,24 +34,22 @@ gulp.task('build-styles', function(){
     'css/opendev.css',
     'css/mapnav.css',
     'css/overrides.css',
-    'bower_components/fontawesome/css/font-awesome.min.css',
-    'bower_components/chosen/chosen.css',
     'lib/css/jquery.mCustomScrollbar.min.css',
     'lib/css/responsive.dataTables.css',
     'lib/css/sticky.css'
 	])
 	.pipe(cleanCSS())
-	.pipe(concat('odm.min.css'))
+	.pipe(concat('extra.min.css'))
 	.pipe(gulp.dest(CSS_DIST_PATH));
 });
 
 gulp.task('build-scripts', function(){
 	return gulp.src([
-
+    'inc/js/*.js', 'lib/js/*.js'
 	])
 	.pipe(uglify())
-	.pipe(concat('script.min.js', {newLine: ';'}))
-	.pipe(gulp.dest(DEST_PATH));
+	.pipe(concat('scripts.min.js', {newLine: ';'}))
+	.pipe(gulp.dest(JS_DIST_PATH));
 });
 
 gulp.task('watch', function(){
