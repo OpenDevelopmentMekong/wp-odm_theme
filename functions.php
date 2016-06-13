@@ -1,32 +1,29 @@
 <?php
 
 /*
- * Defining constants to be used across the whole theme
- * TODO: Replace with a function soted somewhere on /inc
+ * Importing utility classes
  */
-$country_codes = array('cambodia' => 'kh', 'laos' => 'lo', 'myanmar' => 'my', 'vietnam' => 'vn', 'thailand' => 'th', '1' => 'mekong');
-$country = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
-define('COUNTRY_NAME', strtolower($country_codes[$country || 'mekong' ]));
-define('THEME_DIR', get_stylesheet_directory());
+require_once get_stylesheet_directory().'/inc/country-manager.php';
+require_once get_stylesheet_directory().'/inc/query-multisite.php';
+require_once get_stylesheet_directory().'/inc/theme-options.php';
+require_once get_stylesheet_directory().'/inc/topics.php';
+require_once get_stylesheet_directory().'/inc/announcements.php';
+require_once get_stylesheet_directory().'/inc/site-updates.php';
+require_once get_stylesheet_directory().'/inc/layer-category.php';
+require_once get_stylesheet_directory().'/inc/summary.php';
+require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
+require_once get_stylesheet_directory().'/inc/interactive-map.php';
+require_once get_stylesheet_directory().'/inc/widgets/category-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/od-related-recent-news-widget.php';
+require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
+require_once get_stylesheet_directory().'/inc/category-walker.php';
+require_once get_stylesheet_directory().'/inc/localization.php';
 
 /*
- * Requiring PHP files with extra functionality and content
+ * Defining constants to be used across the whole theme
  */
-require_once THEME_DIR.'/inc/query-multisite.php';
-require_once THEME_DIR.'/inc/theme-options.php';
-require_once THEME_DIR.'/inc/topics.php';
-require_once THEME_DIR.'/inc/announcements.php';
-require_once THEME_DIR.'/inc/site-updates.php';
-require_once THEME_DIR.'/inc/layer-category.php';
-require_once THEME_DIR.'/inc/summary.php';
-require_once THEME_DIR.'/inc/live-search/live-search.php';
-require_once THEME_DIR.'/inc/interactive-map.php';
-require_once THEME_DIR.'/inc/widgets/category-widget.php';
-require_once THEME_DIR.'/inc/widgets/odm-taxonomy-widget.php';
-require_once THEME_DIR.'/inc/widgets/od-related-recent-news-widget.php';
-require_once THEME_DIR.'/inc/advanced-navigation.php';
-require_once THEME_DIR.'/inc/category-walker.php';
-require_once THEME_DIR.'/inc/localization.php';
+define('COUNTRY_NAME', opendev_country_manager()->get_current_country());
 
 /*
  * Loads the theme's translated strings. for 'opendev' and 'jeo' domains
@@ -74,7 +71,7 @@ function opendev_setup_theme()
     'after_title' => '</h2>',
   ));
 
-    include THEME_DIR.'/inc/layers.php';
+    include get_stylesheet_directory().'/inc/layers.php';
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
@@ -133,11 +130,11 @@ add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 101);
 
 // function opendev_jeo_admin_scripts()
 // {
-//     if (file_exists(THEME_DIR.'/inc/js/filter-layers.js')) {
+//     if (file_exists(get_stylesheet_directory().'/inc/js/filter-layers.js')) {
 //         wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
 //     }
 //
-//     if (file_exists(THEME_DIR.'/inc/js/baselayer.js')) {
+//     if (file_exists(get_stylesheet_directory().'/inc/js/baselayer.js')) {
 //         wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
 //     }
 // }

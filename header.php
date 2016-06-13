@@ -39,7 +39,7 @@
     <div class="container">
       <div class="row">
         <div class="six columns">
-          country selector here
+          <?php opendev_country_manager()->echo_country_selectors(); ?>
         </div>
         <div class="six columns">
           <div class="language float-right">
