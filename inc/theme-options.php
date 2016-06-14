@@ -518,7 +518,7 @@ if (is_admin()) {
 function opendev_get_logo()
 {
     $options = get_option('opendev_options');
-    if ($options['logo']) {
+    if (isset($options['logo'])) {
         return '<img src="'.$options['logo'].'" alt="'.get_bloginfo('name').'" />';
     } else {
         return false;
@@ -528,7 +528,7 @@ function opendev_get_logo()
 function opendev_get_facebook_url()
 {
     $options = get_option('opendev_options');
-    if ($options['facebook_url']) {
+    if (isset($options['facebook_url'])) {
         return $options['facebook_url'];
     } else {
         return false;
@@ -538,7 +538,7 @@ function opendev_get_facebook_url()
 function opendev_get_twitter_url()
 {
     $options = get_option('opendev_options');
-    if ($options['twitter_url']) {
+    if (isset($options['twitter_url'])) {
         return $options['twitter_url'];
     } else {
         return false;
@@ -548,7 +548,7 @@ function opendev_get_twitter_url()
 function opendev_get_legal_disclaimer()
 {
     $options = get_option('opendev_options');
-    if ($options['legal_disclaimer']) {
+    if (isset($options['legal_disclaimer'])) {
         return $options['legal_disclaimer'];
     } else {
         return false;
@@ -558,7 +558,7 @@ function opendev_get_legal_disclaimer()
 function opendev_get_contact_page_id()
 {
     $options = get_option('opendev_options');
-    if ($options['contact_page']) {
+    if (isset($options['contact_page'])) {
         return $options['contact_page'];
     } else {
         return false;
@@ -568,7 +568,7 @@ function opendev_get_contact_page_id()
 function opendev_get_data_page_id()
 {
     $options = get_option('opendev_options');
-    if ($options['data_page']) {
+    if (isset($options['data_page'])) {
         return $options['data_page'];
     } else {
         return false;
@@ -578,7 +578,7 @@ function opendev_get_data_page_id()
 function opendev_get_interactive_map_data()
 {
     $options = get_option('opendev_options');
-    if ($options['map_data']) {
+    if (isset($options['map_data'])) {
         return $options['map_data'];
     } else {
         return false;

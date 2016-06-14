@@ -17,7 +17,7 @@ class OpenDev_Country_Manager {
   ];
 
 	function __construct() {
-		add_action( 'init', array($this,'init_country_sites'));
+		add_action( 'init', array($this,'init_country_manager'));
 	}
 
   function get_current_country(){
@@ -28,7 +28,7 @@ class OpenDev_Country_Manager {
     endif;
   }
 
-  function init_country_sites(){
+  function init_country_manager(){
 
     if ( function_exists( 'wp_get_sites' )):
       $get_all_sites = wp_get_sites();
@@ -49,7 +49,7 @@ class OpenDev_Country_Manager {
     <ul class="country-selector">
       <?php
         foreach ($this->countries as $country): ?>
-          <li><a href="<?php echo $country['url']; ?>"><?php echo __($country['name']);?></li>
+          <li><a href="<?php echo $country['url']; ?>"><?php echo __($country['name']);?></a></li>
       <?php
         endforeach;
       ?>

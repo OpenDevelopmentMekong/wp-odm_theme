@@ -6,12 +6,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .kh select, .km select{
     font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
-} 
+}
 .mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
 .fa_slider_opendev .fa_slide_content div.description p {
   font-family: "Suwannaphum", "Open Sans" !important;
 }
-#cambodia-color, .cambodia-color{
+#cambodia-bright, .cambodia-bright{
     color: #97D320;  /* #66cc00*/
 }
 #cambodia-bgcolor, .cambodia-bgcolor{
@@ -46,7 +46,7 @@ tr:nth-child(2n+1) {
 }
 
 #od-head #ms-nav {
-	background: #12414E;
+	background: #12414e;
 }
 
 #od-head #main-nav .menu ul > li:hover a,
@@ -179,7 +179,7 @@ tr:nth-child(2n+1) {
   /*active*/
   .mainNav-inner ul.level1>li.act>a{color:white;background:#97d320;}
 
-  footer#colophon{
+  #od-footer{
     background:#12414E;
   }
 

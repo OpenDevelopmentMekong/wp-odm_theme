@@ -1,9 +1,20 @@
 <?php
 
 /*
- * Importing utility classes
+ * Managers
  */
 require_once get_stylesheet_directory().'/inc/country-manager.php';
+require_once get_stylesheet_directory().'/inc/language-manager.php';
+
+/*
+ * Defining constants to be used across the whole theme
+ */
+define('COUNTRY_NAME', opendev_country_manager()->get_current_country());
+define('CURRENT_LANGUAGE', opendev_language_manager()->get_current_language());
+
+/*
+ * Importing utility classes
+ */
 require_once get_stylesheet_directory().'/inc/query-multisite.php';
 require_once get_stylesheet_directory().'/inc/theme-options.php';
 require_once get_stylesheet_directory().'/inc/topics.php';
@@ -19,11 +30,6 @@ require_once get_stylesheet_directory().'/inc/widgets/od-related-recent-news-wid
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/localization.php';
-
-/*
- * Defining constants to be used across the whole theme
- */
-define('COUNTRY_NAME', opendev_country_manager()->get_current_country());
 
 /*
  * Loads the theme's translated strings. for 'opendev' and 'jeo' domains
@@ -236,30 +242,16 @@ function opendev_get_thumbnail($post_id = false)
 
 function opendev_logo()
 {
-    $name = 'Mekong';
-    if (is_multisite()) {
-        $sites = wp_get_sites();
-        if (!empty($sites)) {
-            $current = get_current_blog_id();
-            $name = str_replace('Open Development ', '', get_bloginfo('name'));
-        }
-    }
-    $logo = opendev_get_logo();
-    if ($logo) {
-        $name = $logo;
-    }
-    ?>
+  ?>
   <h1>
-   <a href="<?php echo home_url('/');
-    ?>" title="<?php bloginfo('name');
-    ?>">
+   <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
     <span class="icon-od-logo"></span>
     Op<sup>e</sup>nDevelopment
    </a>
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.$name.'</h2>';
+    echo '<h2 class="side-title">'.opendev_country_manager()->get_current_country().'</h2>';
     echo '</div>';
 }
 
@@ -722,6 +714,8 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
         $current_cat_page = $current_cat->slug;
     } elseif (isset($current_cat->post_name)) {
         $current_cat_page = $current_cat->post_name;
+    }else{
+      return;
     }
     if ($title == 1) {
         echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
@@ -777,8 +771,8 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
          </script>
      <?php
 
-    }//if js_script
-} // end function
+    }
+}
 
 function print_category_by_post_type($category, $post_type = 'post', $current_cat = '')
 {

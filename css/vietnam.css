@@ -1,4 +1,4 @@
-.vietnam-color{
+.vietnam-bright{
     color: #C6C366;
 }
 #vietnam-bgcolor, .vietnam-bgcolor{
@@ -159,7 +159,7 @@ tr:nth-child(2n+1) {
   .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
   .mainNav-inner ul.level1>li.act>a{background: #C6C366;}
   #cNavNew li .level2 li:hover>a{background:#3D9C00;color:white;}
-  footer#colophon{
+  #od-footer{
     background:#4AB208;
   }
 

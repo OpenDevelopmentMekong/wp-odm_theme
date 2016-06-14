@@ -42,12 +42,7 @@
           <?php opendev_country_manager()->echo_country_selectors(); ?>
         </div>
         <div class="six columns">
-          <div class="language float-right">
-            <?php
-              if (function_exists('qtranxf_generateLanguageSelectCode')) {
-                  qtranxf_generateLanguageSelectCode('image');
-              } ?>
-          </div>
+          <?php opendev_language_manager()->echo_language_selectors(); ?>
         </div>
       </div>
     </div>
