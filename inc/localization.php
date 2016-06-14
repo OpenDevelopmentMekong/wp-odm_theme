@@ -196,21 +196,3 @@ function convert_to_kh_number($number)
         return $number;
     }
 }
-
-function get_current_language()
-{
-    $current_lang = 'en';
-
-    if (function_exists('qtranxf_getLanguage')) {
-        if (qtranxf_getLanguage() == 'kh') {
-            $local_lang = 'km';
-        } else {
-            $local_lang = qtranxf_getLanguage();
-        }
-        $current_lang = $local_lang;
-    }
-
-    return $current_lang;
-}
-
-define('CURRENT_LANGUAGE', get_current_language());

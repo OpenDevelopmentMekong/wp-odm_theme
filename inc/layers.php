@@ -195,7 +195,7 @@
           <th><label for="wmslayer_layer_name"><?php _e('Workspaces:Layer Name (English)', 'opendev'); ?></label></th>
           <td>
            <input id="wmslayer_layer_name" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name" value="<?php echo $layername; ?>" />
-           <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
+           <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Energy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
           </td>
          </tr>
          <?php if($this->get_localization_language()){ ?>
@@ -203,7 +203,7 @@
                   <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.$this->get_localization_language().')', 'opendev'); ?></label></th>
                   <td>
                    <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
-                   <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
+                   <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Energy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
                   </td>
                  </tr>
          <?php

@@ -791,7 +791,7 @@ msgstr "Không gian làm việc và tên lớp\""
 
 #: inc/layers.php:198
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
+"Eg. in Geoserver, Energy:Transmission_lines, <strong>Energy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 "VD. trong Geoserver, Năng lượng:Đường dây_truyền tải, <strong>Năng lượng</"
@@ -804,7 +804,7 @@ msgstr "Không gian làm việc: Tên lớp ("
 
 #: inc/layers.php:206
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
+"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Energy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 "VD. trong Geoserver, Năng lượng:Đường dây_truyền tải_kh, <strong>Năng lượng</"

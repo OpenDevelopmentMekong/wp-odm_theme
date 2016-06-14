@@ -162,7 +162,7 @@ tr:nth-child(2n+1) {
   .mainNav-inner ul.level1>li.act>a,.mainNav-inner .level1 li:hover a{color: white;}
   .mainNav-inner ul.level1>li.act>a{background: #f7904d;}
   #cNavNew li .level2 li:hover>a{background:#64161d;color:white;}
-  footer#colophon{
+  #od-footer{
     background:#772028;
   }
 
