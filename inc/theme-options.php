@@ -163,8 +163,8 @@ class OpenDev_Options
     {
       ?>
       <select id="opendev_style" name="opendev_options[style]">
-        <?php foreach ($country_themes as $theme => $path): ?>
-          <option <?php if ($this->options['style'] == $path): echo 'selected'; endif;?> value="<?php echo $path;?>"><?php _e($theme);?></option>
+        <?php foreach (opendev_country_manager()->get_country_themes() as $label => $theme): ?>
+          <option <?php if (isset($this->options['style']) && $this->options['style'] == $theme): echo 'selected'; endif;?> value="<?php echo $theme;?>"><?php _e($label);?></option>
         <?php endforeach ?>
       </select>
       <?php

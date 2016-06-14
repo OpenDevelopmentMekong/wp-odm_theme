@@ -21,11 +21,23 @@ class OpenDev_Country_Manager {
 	}
 
   function get_current_country(){
+    $options = get_option('opendev_options');
     $current_country = 'mekong';
-    if ( function_exists( 'wp_get_sites' )):
-      $options = get_site_option('opendev_options');
+    if ( isset($options['style'])):
       $current_country = $options['style'];
     endif;
+    return $current_country;
+  }
+
+  function get_country_themes(){
+    return [
+      'Mekong' => 'mekong',
+      'Cambodia' => 'cambodia',
+      'Thailand' => 'thailand',
+      'Laos' => 'laos',
+      'Myanmar' => 'myanmar',
+      'Vietnam' => 'vietnam'
+    ];
   }
 
   function init_country_manager(){

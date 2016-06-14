@@ -2,7 +2,7 @@
 </article>
 
 <footer id="od-footer">
-  <a href="#" class="back-to-top"><i class="fa fa-home"></i></a>
+  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 	<div class="container">
 		<!-- Legal disclaimer -->
     <div class="row">
