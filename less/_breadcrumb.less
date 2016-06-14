@@ -1,0 +1,51 @@
+#main-breadcrumb{
+    background: #fff;
+}
+
+#breadcrumbs{
+    list-style:none;
+    margin: 20px 0px 20px;
+    overflow: hidden;
+    color: #444;
+    border-bottom: 1px solid #eee;
+
+    li {
+        display:inline-block;
+        vertical-align:middle;
+        margin-right:10px;
+        margin-bottom: 10px;
+    }
+
+    .separator{
+        background: url(../img/breadcrumb-separator.png) center  no-repeat;
+        width: 14px;
+        height: 11px;
+        font-size:18px;
+        font-weight:100;
+        color:#ccc;
+        margin-top: 3px;
+    }
+
+    .separator_by{
+        font-size:18px;
+    }
+
+    .fa-home {
+        font-size: 24px;
+        width: 24px;
+        position: relative;
+        top: -3px;
+    }
+
+    .separator-topic:last-child{
+        display: none;
+    }
+}
+
+#od-head #breadcrumbs a, #breadcrumbs a.bread-link, #breadcrumbs li{
+     color: #333;
+}
+
+.bread-current{
+     font-weight: bold;
+}

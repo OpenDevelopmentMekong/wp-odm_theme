@@ -1,2 +1,37 @@
 // Specific overriding rules for the country
 // to be converted to dist/css/thailand.css
+
+@import "_country-mixin.less";
+
+/* Color */
+@thailand-color: #F7904D;
+@thailand-bgcolor: #64161d;
+
+.thailand-color{
+    color: @thailand-color;
+}
+
+#thailand-bgcolor, .thailand-bgcolor{
+    background: @thailand-bgcolor !important;
+}
+.menu-thailand .icon_menu{
+  display: none!important;
+}
+
+.country-mixin(@thailand-color, @thailand-bgcolor);
+
+#sidebar .widgets .widget ul li span.plusimage-thailand{
+    display: inline-block;
+    background: url("../img/expand-th.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-thailand{
+    display: inline-block;
+    background: url("../img/collapse-th.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-thailand{
+    display: inline-block;
+    background: url("../img/no-child-th.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}

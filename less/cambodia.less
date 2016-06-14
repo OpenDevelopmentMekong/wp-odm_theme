@@ -1,2 +1,52 @@
 // Specific overriding rules for the country
 // to be converted to dist/css/cambodia.css
+
+@import "_country-mixin.less";
+
+@cambodia-color: #97D320;
+@cambodia-bgcolor: #12414E;
+
+body{
+  font: 14px/24px 'Suwannaphum', "Open Sans";
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+}
+.kh select, .km select{
+    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+} 
+
+.mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
+.fa_slider_opendev .fa_slide_content div.description p {
+  font-family: "Suwannaphum", "Open Sans" !important;
+}
+
+#cambodia-color, .cambodia-color{
+    color: @cambodia-color;  /* #66cc00*/
+}
+#cambodia-bgcolor, .cambodia-bgcolor{
+    background: @cambodia-color !important
+}
+
+.country-mixin(@cambodia-color, @cambodia-bgcolor);
+
+/* Cambodia collapse & expend */
+#sidebar .widgets .widget .widget-title, .widget .widget-title {
+ background: #97D320 none repeat scroll 0% 0%;
+font-family: "Suwannaphum", "Open Sans"
+}
+#sidebar .widgets .widget ul li span.plusimage-cambodia{
+    display: inline-block;
+    background: url("../img/expand-kh.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-cambodia{
+    display: inline-block;
+    background: url("../img/collapse-kh.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-cambodia{
+    display: inline-block;
+    background: url("../img/no-child-kh.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}

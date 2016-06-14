@@ -1,0 +1,112 @@
+.map-nav {
+	position: absolute;
+	top: -46px;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	background: #f6f6f6;
+	padding: 5px 5px 0 0;
+
+	li {
+		float: left;
+		
+		a {
+			font-family: 'OpenSansRegular', 'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;
+			border: 1px solid transparent;
+			border-bottom: none;
+			display: block;
+			color: #96979C;
+			padding: 0 15px;
+			height: 40px;
+			line-height: 38px;
+			margin-left: 5px;
+			position: relative;
+			font-size: 11px;
+			text-transform: uppercase;
+
+			&:active {
+				box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+				-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+				-moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			&:hover {
+				color: #404040;
+			}
+
+			&.active {
+				background-color: #77A832;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+				background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+				background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
+				background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
+				background-image: -o-linear-gradient(top, #8ec63d, #77a832);
+				background-image: linear-gradient(to bottom, #8ec63d, #77a832);
+				color: white;
+				border-color: #77A832;
+				z-index: 9999999;
+				
+				&:after {
+					content: '';
+					width: 0;
+					height: 0;
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-top: 10px solid #77A832;
+					position: absolute;
+					bottom: -10px;
+					left: 15px;
+					z-index: 1000;
+				}	
+			}
+		}
+
+		&.more-tab ul {
+			background: #f6f6f6;
+			margin: 0;
+			padding: 0;
+			display: none;
+			position: absolute;
+			top: 45px;
+			right: 0;
+			z-index: 9999999;
+			border-bottom: 1px solid #ccc;
+
+			li {
+				margin: 0;
+				padding: 0;
+				display: block;
+				float: none;
+
+				a {
+					margin: 0;
+					
+					&.active:after {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&.more-tab > a:before {
+			content: '';
+			float: right;
+			width: 5px;
+			height: 4px;
+			margin-top: 15px;
+			margin-left: 10px;
+			background: url(../img/down-arrow.png);
+			opacity: .3;
+		}
+
+		&.more-tab:hover > a {
+			color: #404040;
+			background: transparent;
+			border-color: transparent;
+		}
+
+		&.more-tab:hover ul {
+			display: block;
+		}
+	}
+}

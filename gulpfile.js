@@ -21,7 +21,14 @@ gulp.task('default', function() {
 });
 
 gulp.task('build-less', function(){
-	return gulp.src(LESS_PATH + 'odm.less')
+	return gulp.src([
+		LESS_PATH + 'odm.less',
+		LESS_PATH + 'cambodia.less',
+		LESS_PATH + 'thailand.less',
+		LESS_PATH + 'laos.less',
+		LESS_PATH + 'myanmar.less',
+		LESS_PATH + 'vietnam.less'
+	])
 	.pipe(less())
 	.pipe(cleanCSS())
 	.pipe(gulp.dest(CSS_DIST_PATH));
@@ -29,11 +36,6 @@ gulp.task('build-less', function(){
 
 gulp.task('build-styles', function(){
 	return gulp.src([
-    'css/map-explorer.css',
-    'css/map-sidebar.css',
-    'css/opendev.css',
-    'css/mapnav.css',
-    'css/overrides.css',
     'lib/css/jquery.mCustomScrollbar.min.css',
     'lib/css/responsive.dataTables.css',
     'lib/css/sticky.css'
