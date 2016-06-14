@@ -13,13 +13,19 @@ define('COUNTRY_NAME', opendev_country_manager()->get_current_country());
 define('CURRENT_LANGUAGE', opendev_language_manager()->get_current_language());
 
 /*
+ * Post types
+ */
+
+require_once get_stylesheet_directory().'/inc/post-types/topics.php';
+require_once get_stylesheet_directory().'/inc/post-types/announcements.php';
+require_once get_stylesheet_directory().'/inc/post-types/site-updates.php';
+require_once get_stylesheet_directory().'/inc/post-types/stories.php';
+
+/*
  * Importing utility classes
  */
 require_once get_stylesheet_directory().'/inc/query-multisite.php';
 require_once get_stylesheet_directory().'/inc/theme-options.php';
-require_once get_stylesheet_directory().'/inc/topics.php';
-require_once get_stylesheet_directory().'/inc/announcements.php';
-require_once get_stylesheet_directory().'/inc/site-updates.php';
 require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
 require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
