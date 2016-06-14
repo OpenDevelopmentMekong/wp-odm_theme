@@ -44,7 +44,7 @@ class OpenDev_Topic {
 			'taxonomies'         => array('category', 'post_tag'),
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			'menu_position'      => 4,
+			//'menu_position'      => 4,
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
 		);
 

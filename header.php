@@ -116,25 +116,27 @@
   </nav>
 
   <!-- Disclaimer -->
-  <nav id="od-disclaimer">
-    <div class="container">
-      <div class="row">
-        <?php
-          $options_msg = get_option('opendev_options');
-          if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
-            <div id="notification-message">
-              <div class="container">
-                <div class="twelve columns">
-                  <div class="notification-message-box">
-                    <?php echo $options_msg['notice_message']; ?>
+  <?php if (isset($options_msg['notice_message'])): ?>
+    <nav id="od-disclaimer">
+      <div class="container">
+        <div class="row">
+          <?php
+            $options_msg = get_option('opendev_options');
+            if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
+              <div id="notification-message">
+                <div class="container">
+                  <div class="twelve columns">
+                    <div class="notification-message-box">
+                      <?php echo $options_msg['notice_message']; ?>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-      <?php endif; ?>
+        <?php endif; ?>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  <?php endif; ?>
 
   <!-- Breadcrumb -->
   <nav id="od-breadcrumb">
