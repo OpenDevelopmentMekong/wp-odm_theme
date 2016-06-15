@@ -1,0 +1,161 @@
+.country-mixin(@primary, @bg-color){
+	/*logo*/
+	.icon-od-logo{
+	  color: @primary!important;
+	}
+
+	[class^="icon-"], [class*=" icon-"]{ color: @bg-color;}
+
+	a,
+	a:visited,
+	#sidebar .widget li a,
+	#sidebar .widget li a:hover,
+	.map-sidebar a,
+	a:hover,
+	a strong:hover {
+		color: @primary;
+	}
+
+	a,
+	a:visited,
+	#sidebar .widget li a,
+	.map-sidebar a,
+	#od-head h1 a,
+	#od-head h1 span
+	 {
+		text-decoration: none;
+	}
+
+	a:hover,
+	#sidebar .widget li a:hover,
+	a strong:hover {
+		text-decoration:underline;
+	}
+
+	button,
+	a.button,
+	.button {
+		background: @bg-color;
+	}
+
+	#od-head {
+		background: @bg-color;
+		color: #f0f0f0;
+
+		#main-nav {
+
+			.menu ul > li:hover a,
+			ul.menu > li:hover,
+			ul.menu  > li  > ul.sub-menu > li:hover ,
+			ul.menu  > li  > ul.sub-menu > li > ul.sub-menu > li a:hover {
+				background: @bg-color;
+			}
+
+			ul li.current_page_item a {
+				color: @primary;
+				font-weight: bold;
+			}
+		}
+
+		h1 a,
+		h1 span,
+		a:hover {
+			color: @primary;
+		}
+
+		.notification-message-box a {
+			color: #333;
+		}
+	}
+
+	.mapgroup-container .mapgroup .map-nav-container .map-nav li {
+
+		a.active {
+			background: @primary;
+			border-color: @primary;
+
+			&:after {
+				border-bottom: 10px solid @primary;
+			}
+		}
+
+	}
+
+	#news.page-section .section-map .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active:after {
+		border-top: 10px solid @primary;
+	}
+
+	.interactive-map .interactive-map-layers {
+		ul li {
+			border-bottom: 1px solid @primary;
+
+			a:hover {
+				color: @primary;
+			}
+
+			> ul >li > a.active {
+				border-bottom: 1px solid @primary;
+    			color: @primary;
+			}
+
+			.layer-item:hover .list-circle-o {
+				border: 2px solid @primary;
+			}
+		}
+	}
+
+	.color-line{
+	  border: @primary solid 1px;
+	  margin: 0 0 5px;
+	  width: 99%;
+	  height: 0;
+	}
+
+	.notification-message-box{
+	    border: 2px solid @primary;
+	    color: @bg-color;
+	}
+
+	.widget .opendev-summary ol li a:hover {
+		color: @primary;
+		text-decoration:underline
+	}
+
+	.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+		background: @bg-color!important;
+	}
+
+	/* Table data pages*/
+	.sidebar_header{
+	  background: @primary !important;
+	}
+
+	.sidebar_box_content ul li a{
+	  color: @primary !important;
+	}
+
+	.top a{
+	  color: @primary !important;
+	}
+
+	.top a:active{
+	  color: @primary !important;
+	}
+
+	td.entry_title a{
+	  color: @primary !important;
+	}
+	/* collapse & expend */
+	#sidebar .widgets .widget .widget-title,
+	.widget .widget-title {
+	 background: @primary none repeat scroll 0% 0%;
+	}
+
+	.div-button{
+	  background: @primary none repeat scroll 0% 0%;
+	}
+
+  #od-footer{
+    background: @primary;
+  }
+}

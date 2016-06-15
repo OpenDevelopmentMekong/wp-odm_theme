@@ -1,2 +1,40 @@
 // Specific overriding rules for the country
 // to be converted to dist/css/myanmar.css
+
+@import "_country-mixin.less";
+
+/* Color */
+@myanmar-bright: #F8BF42;
+@myanmar-bgcolor: #59396C;
+
+.myanmar-color{
+    color: @myanmar-bgcolor;
+}
+#myanmar-bgcolor, .myanmar-bgcolor{
+    background: @myanmar-bright !important;
+}
+.menu-myanmar .icon_menu{
+  display: none!important;
+}
+
+.country-mixin(@myanmar-bright, @myanmar-bgcolor);
+
+.current-site-myanmar{
+	background: @myanmar-bright;
+}
+
+#sidebar .widgets .widget ul li span.plusimage-myanmar{
+    display: inline-block;
+    background: url("../img/expand-my.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.minusimage-myanmar{
+    display: inline-block;
+    background: url("../img/collapse-my.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+#sidebar .widgets .widget ul li span.nochildimage-myanmar{
+    display: inline-block;
+    background: url("../img/no-child-my.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}

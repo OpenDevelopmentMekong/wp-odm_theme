@@ -1,6 +1,0 @@
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
-  background-image: none!important;
-}
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
-	color:white!important;
-}
