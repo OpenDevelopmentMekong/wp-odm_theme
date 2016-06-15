@@ -1,2 +1,38 @@
 // Specific overriding rules for the country
 // to be converted to dist/css/vietnam.css
+
+@import "_country-mixin.less";
+
+/* Color */
+@vietnam-bright: #C6C366;
+@vietnam-bgcolor: #3D9C00;
+
+.vietnam-color{
+    color: @vietnam-bright;
+}
+#vietnam-bgcolor, .vietnam-bgcolor{
+    background: @vietnam-bgcolor !important;
+}
+.menu-vietnam .icon_menu{
+  display: none!important;
+}
+
+.country-mixin(@vietnam-bright, @vietnam-bgcolor);
+
+#sidebar .widgets .widget ul li span.plusimage-vietnam{
+    display: inline-block;
+    background: url("../img/expand-vn.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+
+#sidebar .widgets .widget ul li span.minusimage-vietnam{
+    display: inline-block;
+    background: url("../img/collapse-vn.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}
+
+#sidebar .widgets .widget ul li span.nochildimage-vietnam{
+    display: inline-block;
+    background: url("../img/no-child-vn.png") no-repeat 0 2px!important;
+    padding-left: 20px;
+}

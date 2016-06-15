@@ -156,7 +156,7 @@ function opendev_styles()
 {
     $options = get_option('opendev_options');
 
-    $css_base = get_stylesheet_directory_uri().'/css/';
+    $css_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
     wp_register_style('opendev-thailand',  $css_base.'thailand.css');
     wp_register_style('opendev-laos',  $css_base.'laos.css');
