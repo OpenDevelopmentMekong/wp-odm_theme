@@ -784,7 +784,7 @@ msgstr ""
 
 #: inc/layers.php:198
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
+"Eg. in Geoserver, Energy:Transmission_lines, <strong>Energy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
@@ -794,7 +794,7 @@ msgstr ""
 
 #: inc/layers.php:206
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
+"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Energy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 

@@ -22,15 +22,6 @@ class OpenDev_Options
         }
     }
 
-    public $themes = array(
-  'Default' => '',
-  'cambodia' => 'cambodia',
-  'thailand' => 'thailand',
-  'laos' => 'laos',
-  'myanmar' => 'myanmar',
-  'vietnam' => 'vietnam',
- );
-
     public function admin_menu()
     {
         add_theme_page(__('Open Development Style', 'opendev'), __('Open Development', 'opendev'), 'edit_theme_options', 'opendev_options', array($this, 'admin_page'));
@@ -41,20 +32,18 @@ class OpenDev_Options
         $this->options = get_option('opendev_options');
 
         ?>
-  <div class="wrap">
-   <?php screen_icon();
-        ?>
-   <h2><?php _e('Open Development Theme Options', 'opendev');
-        ?></h2>
-   <form method="post" action="options.php">
-   <?php
-    settings_fields('opendev_options_group');
-        do_settings_sections('opendev_options');
-        submit_button();
-        ?>
-   </form>
-  </div>
-  <?php
+        <div class="wrap">
+          <?php screen_icon(); ?>
+          <h2><?php _e('Open Development Theme Options', 'opendev');?></h2>
+          <form method="post" action="options.php">
+            <?php
+            settings_fields('opendev_options_group');
+              do_settings_sections('opendev_options');
+              submit_button();
+              ?>
+         </form>
+        </div>
+        <?php
 
     }
 
@@ -63,185 +52,141 @@ class OpenDev_Options
         mapbox_metabox_init();
 
         add_settings_section(
-   'opendev_style_section',
-   __('Style', 'opendev'),
-   '',
-   'opendev_options'
-  );
+         'opendev_style_section',
+         __('Style', 'opendev'),
+         '',
+         'opendev_options'
+        );
         add_settings_section(
-   'opendev_news_section',
-   __('News: Filtered By Tags', 'opendev'),
-   '',
-   'opendev_options'
-  );
+         'opendev_news_section',
+         __('News: Filtered By Tags', 'opendev'),
+         '',
+         'opendev_options'
+        );
         add_settings_section(
-   'opendev_links_section',
-   __('Links', 'opendev'),
-   '',
-   'opendev_options'
-  );
+         'opendev_links_section',
+         __('Links', 'opendev'),
+         '',
+         'opendev_options'
+        );
 
         add_settings_section(
-   'opendev_interactive_map_section',
-   __('Interactive map', 'opendev'),
-   '',
-   'opendev_options'
-  );
+         'opendev_interactive_map_section',
+         __('Interactive map', 'opendev'),
+         '',
+         'opendev_options'
+        );
         add_settings_field(
-   'opendev_style',
-   __('Choose a style', 'opendev'),
-   array($this, 'style_field'),
-   'opendev_options',
-   'opendev_style_section'
-  );
+         'opendev_style',
+         __('Choose a style', 'opendev'),
+         array($this, 'style_field'),
+         'opendev_options',
+         'opendev_style_section'
+        );
 
         add_settings_field(
-    'opendev_notice_message',
-    __('Notice Message appear above the slider', 'opendev'),
-    array($this, 'notice_message_field'),
-    'opendev_options',
-    'opendev_style_section'
-  );
+          'opendev_notice_message',
+          __('Notice Message appear above the slider', 'opendev'),
+          array($this, 'notice_message_field'),
+          'opendev_options',
+          'opendev_style_section'
+        );
 
         add_settings_field(
-   'opendev_frontpage_slider_id',
-   __('Frontpage slider id', 'opendev'),
-   array($this, 'frontpage_slider_id_field'),
-   'opendev_options',
-   'opendev_style_section'
-  );
+         'opendev_frontpage_slider_id',
+         __('Frontpage slider id', 'opendev'),
+         array($this, 'frontpage_slider_id_field'),
+         'opendev_options',
+         'opendev_style_section'
+        );
 
         add_settings_field(
-   'opendev_logo',
-   __('Upload a custom logo', 'opendev'),
-   array($this, 'logo_field'),
-   'opendev_options',
-   'opendev_style_section'
-  );
+         'opendev_news_tags',
+         __('Filter News By Tags', 'opendev'),
+         array($this, 'news_tags_field'),
+         'opendev_options',
+         'opendev_news_section'
+        );
 
         add_settings_field(
-   'opendev_news_tags',
-   __('Filter News By Tags', 'opendev'),
-   array($this, 'news_tags_field'),
-   'opendev_options',
-   'opendev_news_section'
-  );
+         'opendev_facebook',
+         __('Facebook url', 'opendev'),
+         array($this, 'facebook_field'),
+         'opendev_options',
+         'opendev_links_section'
+        );
 
         add_settings_field(
-   'opendev_facebook',
-   __('Facebook url', 'opendev'),
-   array($this, 'facebook_field'),
-   'opendev_options',
-   'opendev_links_section'
-  );
+         'opendev_twitter',
+         __('Twitter url', 'opendev'),
+         array($this, 'twitter_field'),
+         'opendev_options',
+         'opendev_links_section'
+        );
 
         add_settings_field(
-   'opendev_twitter',
-   __('Twitter url', 'opendev'),
-   array($this, 'twitter_field'),
-   'opendev_options',
-   'opendev_links_section'
-  );
+         'opendev_legal_disclaimer',
+         __('Legal disclaimer', 'opendev'),
+         array($this, 'legal_disclaimer_field'),
+         'opendev_options',
+         'opendev_links_section'
+        );
 
         add_settings_field(
-   'opendev_legal_disclaimer',
-   __('Legal disclaimer', 'opendev'),
-   array($this, 'legal_disclaimer_field'),
-   'opendev_options',
-   'opendev_links_section'
-  );
+         'opendev_contact',
+         __('Contact page', 'opendev'),
+         array($this, 'contact_page_field'),
+         'opendev_options',
+         'opendev_links_section'
+        );
 
         add_settings_field(
-   'opendev_contact',
-   __('Contact page', 'opendev'),
-   array($this, 'contact_page_field'),
-   'opendev_options',
-   'opendev_links_section'
-  );
+         'opendev_data_page',
+         __('Data page', 'opendev'),
+         array($this, 'data_page_field'),
+         'opendev_options',
+         'opendev_links_section'
+        );
 
         add_settings_field(
-   'opendev_data_page',
-   __('Data page', 'opendev'),
-   array($this, 'data_page_field'),
-   'opendev_options',
-   'opendev_links_section'
-  );
-
-        add_settings_field(
-   'opendev_interactive_map',
-   __('Base map settings', 'opendev'),
-   array($this, 'interactive_map_field'),
-   'opendev_options',
-   'opendev_interactive_map_section'
-  );
+         'opendev_interactive_map',
+         __('Base map settings', 'opendev'),
+         array($this, 'interactive_map_field'),
+         'opendev_options',
+         'opendev_interactive_map_section'
+        );
 
         register_setting('opendev_options_group', 'opendev_options');
     }
 
     public function style_field()
     {
-        ?>
+      ?>
       <select id="opendev_style" name="opendev_options[style]">
-       <?php foreach ($this->themes as $theme => $path) {
-    ?>
-        <option <?php if ($this->options['style'] == $path) {
-    echo 'selected';
-}
-    ?> value="<?php echo $path;
-    ?>"><?php _e($theme);
-    ?></option>
-       <?php
-
-}
-        ?>
+        <?php foreach (opendev_country_manager()->get_country_themes() as $label => $theme): ?>
+          <option <?php if (isset($this->options['style']) && $this->options['style'] == $theme): echo 'selected'; endif;?> value="<?php echo $theme;?>"><?php _e($label);?></option>
+        <?php endforeach ?>
       </select>
       <?php
-
     }
 
     function notice_message_field() {
       $notice_message = $this->options['notice_message'];
       ?>
-      <textarea id="opendev_notice_message" name="opendev_options[notice_message]" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
+      <textarea id="opendev_notice_message" name="opendev_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
       <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'opendev'); ?></i>
       <?php
    }
 
     public function frontpage_slider_id_field()
     {
-        $frontpage_slider_id = $this->options['frontpage_slider_id'];
-        ?>
-  <input id="opendev_frontpage_slider_id" name="opendev_options[frontpage_slider_id]" type="text" placeholder="<?php _e('281321');
-        ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');
-        ?>'" value="<?php echo $frontpage_slider_id;
-        ?>" size="70" /><br/>
-  <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'opendev');
-        ?></i>
-  <?php
-
-    }
-
-    public function logo_field()
-    {
-        $logo = $this->options['logo'];
-        ?>
-  <div class="uploader">
-   <input id="opendev_logo" name="opendev_options[logo]" type="text" placeholder="<?php _e('Logo url', 'opendev');
-        ?>" value="<?php echo $logo;
-        ?>" size="80" />
-   <a  id="opendev_logo_button" class="button" /><?php _e('Upload');
-        ?></a>
-  </div>
-  <?php if ($logo) {
-    ?>
-   <div class="logo-preview">
-    <img src="<?php echo $logo;
-    ?>" style="max-width:300px;height:auto;" />
-   </div>
-   <?php
-
-}
-        ?>
+        $frontpage_slider_id = $this->options['frontpage_slider_id'];?>
+        <input id="opendev_frontpage_slider_id" name="opendev_options[frontpage_slider_id]" type="text" placeholder="<?php _e('281321');
+              ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');
+              ?>'" value="<?php echo $frontpage_slider_id;
+              ?>" size="70" /><br/>
+        <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'opendev');
+              ?></i>
   <?php
 
     }
@@ -271,39 +216,37 @@ class OpenDev_Options
 
     public function twitter_field()
     {
-        $twitter = $this->options['twitter_url'];
-        ?>
-  <input id="opendev_twitter_url" name="opendev_options[twitter_url]" type="text" value="<?php echo $twitter;
-        ?>" size="70" />
-  <?php
+        $twitter = $this->options['twitter_url']; ?>
+        <input id="opendev_twitter_url" name="opendev_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
 
+  <?php
     }
 
     public function contact_page_field()
     {
-        $contact_page = $this->options['contact_page'];
+        $contact_page = isset($this->options['contact_page']) ? $this->options['contact_page'] : __('None') ;
         wp_dropdown_pages(array(
-   'name' => 'opendev_options[contact_page]',
-   'selected' => $contact_page,
-   'show_option_none' => __('None'),
-  ));
+         'name' => 'opendev_options[contact_page]',
+         'show_option_none' => __('None'),
+         'selected' => $contact_page
+        ));
     }
 
     public function data_page_field()
     {
-        $data_page = $this->options['data_page'];
+        $data_page = isset($this->options['data_page']) ? $this->options['data_page'] : __('None') ;
         wp_dropdown_pages(array(
-   'name' => 'opendev_options[data_page]',
-   'selected' => $data_page,
-   'show_option_none' => __('None'),
-  ));
+         'name' => 'opendev_options[data_page]',
+         'show_option_none' => __('None'),
+         'selected' => $data_page
+        ));
     }
 
     public function legal_disclaimer_field()
     {
         $disclaimer = $this->options['legal_disclaimer'];
         ?>
-  <textarea id="opendev_legal_disclaimer" name="opendev_options[legal_disclaimer]" rows="10" cols="70"><?php echo $disclaimer;
+  <textarea id="opendev_legal_disclaimer" name="opendev_options[legal_disclaimer]" rows="5" cols="70"><?php echo $disclaimer;
         ?></textarea>
   <?php
 
@@ -575,7 +518,7 @@ if (is_admin()) {
 function opendev_get_logo()
 {
     $options = get_option('opendev_options');
-    if ($options['logo']) {
+    if (isset($options['logo'])) {
         return '<img src="'.$options['logo'].'" alt="'.get_bloginfo('name').'" />';
     } else {
         return false;
@@ -585,7 +528,7 @@ function opendev_get_logo()
 function opendev_get_facebook_url()
 {
     $options = get_option('opendev_options');
-    if ($options['facebook_url']) {
+    if (isset($options['facebook_url'])) {
         return $options['facebook_url'];
     } else {
         return false;
@@ -595,7 +538,7 @@ function opendev_get_facebook_url()
 function opendev_get_twitter_url()
 {
     $options = get_option('opendev_options');
-    if ($options['twitter_url']) {
+    if (isset($options['twitter_url'])) {
         return $options['twitter_url'];
     } else {
         return false;
@@ -605,7 +548,7 @@ function opendev_get_twitter_url()
 function opendev_get_legal_disclaimer()
 {
     $options = get_option('opendev_options');
-    if ($options['legal_disclaimer']) {
+    if (isset($options['legal_disclaimer'])) {
         return $options['legal_disclaimer'];
     } else {
         return false;
@@ -615,7 +558,7 @@ function opendev_get_legal_disclaimer()
 function opendev_get_contact_page_id()
 {
     $options = get_option('opendev_options');
-    if ($options['contact_page']) {
+    if (isset($options['contact_page'])) {
         return $options['contact_page'];
     } else {
         return false;
@@ -625,7 +568,7 @@ function opendev_get_contact_page_id()
 function opendev_get_data_page_id()
 {
     $options = get_option('opendev_options');
-    if ($options['data_page']) {
+    if (isset($options['data_page'])) {
         return $options['data_page'];
     } else {
         return false;
@@ -635,7 +578,7 @@ function opendev_get_data_page_id()
 function opendev_get_interactive_map_data()
 {
     $options = get_option('opendev_options');
-    if ($options['map_data']) {
+    if (isset($options['map_data'])) {
         return $options['map_data'];
     } else {
         return false;

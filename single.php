@@ -39,7 +39,7 @@
 
                   }
                   ?>
-                  <?php if ((qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated', 'language'))) {
+                  <?php if (isset($local_language) && (qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated', 'language'))) {
     ?>
                       <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');
     ?></strong></p>
@@ -56,12 +56,12 @@
               <?php
               //Get author
               if (function_exists('get')) {
-                  if (get('author') == '' && get('author'.get_current_language()) == '') {
+                  if (get('author') == '' && get('author'.opendev_language_manager()->get_current_language()) == '') {
                       echo '';
                   } else {
                       $news_source_info = '<span class="lsf">&#xE041;</span> ';
-                      if (get('author'.get_current_language()) != '') {
-                          $news_source_info .= get('author'.get_current_language()).'<br />';
+                      if (get('author'.opendev_language_manager()->get_current_language()) != '') {
+                          $news_source_info .= get('author'.opendev_language_manager()->get_current_language()).'<br />';
                       } else {
                           $news_source_info .= get('author').'<br />';
                       }
@@ -71,11 +71,11 @@
         <?php
               if (function_exists('get')) {
                   //Get url
-                if (get('article_link') == '' && get('article_link'.get_current_language()) == '') {
+                if (get('article_link') == '' && get('article_link'.opendev_language_manager()->get_current_language()) == '') {
                     echo '';
                 } else {
-                    if (get('article_link'.get_current_language()) != '') {
-                        $source = get('article_link'.get_current_language());
+                    if (get('article_link'.opendev_language_manager()->get_current_language()) != '') {
+                        $source = get('article_link'.opendev_language_manager()->get_current_language());
                     } else {
                         $source = get('article_link');
                     }
