@@ -3,7 +3,6 @@
 <?php if(have_posts()) : the_post(); ?>
 
 	<article id="content" class="single-post">
-		<?php get_template_part('section', 'related-datasets'); ?>
 
 			<div class="container">
 				<div class="eight columns">

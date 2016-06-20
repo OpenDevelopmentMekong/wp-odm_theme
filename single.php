@@ -12,6 +12,11 @@
             <div class="categories">
               <span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
             </div>
+
+            <div class="post-tags">
+                <span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
+            </div>
+            
           </header>
           <section class="content section-content">
               <?php
@@ -78,9 +83,6 @@
                     echo '<p>'.$news_source_info.'</p>';
                   endif;
                   ?>
-              <div class="post-tags">
-                  <span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
-              </div>
               <?php
                 wp_link_pages(array(
                         'before' => '<div class="page-links"><span class="page-links-title">'.__('Pages:', 'jeo').'</span>',
