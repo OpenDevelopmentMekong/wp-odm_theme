@@ -22,6 +22,12 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="twelve columns">
+					<?php dynamic_sidebar('wpckan-dataset-detail-bottom'); ?>
+				</div>
+			</div>
+
 		</div>
 	</section>
 <?php endif; ?>

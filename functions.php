@@ -82,6 +82,12 @@ function opendev_setup_theme()
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
+    register_sidebar(array(
+    'name' => __('WPCKAN Dataset detail bottom', 'jeo'),
+    'id' => 'wpckan-dataset-detail-bottom',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
 
     include get_stylesheet_directory().'/inc/layers.php';
 }
