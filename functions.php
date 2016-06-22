@@ -36,6 +36,7 @@ require_once get_stylesheet_directory().'/inc/widgets/od-related-recent-news-wid
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/localization.php';
+require_once get_stylesheet_directory().'/inc/max-mega-menu-options.php';
 
 /*
  * Loads the theme's translated strings. for 'opendev' and 'jeo' domains
@@ -85,6 +86,18 @@ function opendev_setup_theme()
     register_sidebar(array(
     'name' => __('WPCKAN Dataset detail bottom', 'jeo'),
     'id' => 'wpckan-dataset-detail-bottom',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
+    register_sidebar(array(
+    'name' => __('Data main', 'jeo'),
+    'id' => 'data-main',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
+    register_sidebar(array(
+    'name' => __('Data sidebar', 'jeo'),
+    'id' => 'data-sidebar',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
