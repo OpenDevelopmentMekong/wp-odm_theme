@@ -7,17 +7,13 @@
     if ($options['frontpage_slider_id']) : ?>
 
      <section id="featured-content" class="page-section">
-      <div class="container">
-       <div class="twelve columns">
-        <div class="section-featured-content">
+        <div>
           <?php
             if (function_exists('fa_display_slider')):
                 fa_display_slider($options['frontpage_slider_id']);
             endif;
           ?>
         </div>
-       </div>
-      </div>
      </section>
 
  <?php endif;?>
