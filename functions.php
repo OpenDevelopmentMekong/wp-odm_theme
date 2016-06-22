@@ -36,6 +36,7 @@ require_once get_stylesheet_directory().'/inc/widgets/od-related-recent-news-wid
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/localization.php';
+require_once get_stylesheet_directory().'/inc/max-mega-menu-options.php';
 
 /*
  * Loads the theme's translated strings. for 'opendev' and 'jeo' domains

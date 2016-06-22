@@ -8,6 +8,7 @@ font/opendev.woff
 **.bak
 **.bak**
 **.mo
+sftp-config.json
 
 /vendor/
 /components/
