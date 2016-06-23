@@ -184,7 +184,7 @@ if (function_exists(qtranxf_getLanguage)) {
 								</div>
 							</li>
 							<!--
-							<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+							<li id="odm_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
 								<?php list_category_by_post_type(get_post_type()); ?>
 							</li>
 							-->

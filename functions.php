@@ -30,9 +30,10 @@ require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
 require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
-require_once get_stylesheet_directory().'/inc/widgets/category-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
-require_once get_stylesheet_directory().'/inc/widgets/od-related-recent-news-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-related-recent-news-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/localization.php';
@@ -58,30 +59,40 @@ function opendev_setup_theme()
     'id' => 'homepage-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
+    'before_widget' => '',
+	  'after_widget'  => ''
   ));
     register_sidebar(array(
     'name' => __('Homepage area 2', 'jeo'),
     'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
+    'before_widget' => '',
+	  'after_widget'  => ''
   ));
     register_sidebar(array(
     'name' => __('Homepage area 3', 'jeo'),
     'id' => 'homepage-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
+    'before_widget' => '',
+	  'after_widget'  => ''
   ));
     register_sidebar(array(
     'name' => __('Homepage area 4', 'jeo'),
     'id' => 'homepage-area-4',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
+    'before_widget' => '',
+	  'after_widget'  => ''
   ));
     register_sidebar(array(
     'name' => __('Homepage area 5', 'jeo'),
     'id' => 'homepage-area-5',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
+    'before_widget' => '',
+	  'after_widget'  => ''
   ));
     register_sidebar(array(
     'name' => __('WPCKAN Dataset detail bottom', 'jeo'),
@@ -257,12 +268,12 @@ function opendev_get_thumbnail($post_id = false)
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
-    $thumb_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumb');
+    $thumb_src = get_the_post_thumbnail( $post_id, 'post-thumbnail');
     if ($thumb_src) {
-        return $thumb_src[0];
-    } else {
-        return get_post_meta($post->ID, 'picture', true);
+      return $thumb_src;
     }
+
+    return null;
 }
 
 function opendev_logo()
