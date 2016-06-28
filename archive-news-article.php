@@ -21,6 +21,14 @@ get_header();
 		</div>
 	</section>
 
+	<section class="container">
+		<div class="row">
+			<div class="twelve columns">
+				<?php opendev_get_template('pagination',array(),true); ?>
+			</div>
+		</div>
+	</section>
+
 </div>
 
 
