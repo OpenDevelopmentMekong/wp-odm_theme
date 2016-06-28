@@ -28,7 +28,7 @@ function get_the_localization_language_by_website($site = '')
 
 function getMultilingualValueOrFallback($field, $lang)
 {
-    if (!isset($field[$lang]) || IsNullOrEmptyString($field[$lang])) {
+    if (!isset($field[$lang]) || empty($field[$lang])) {
         return $field['en'];
     }
 

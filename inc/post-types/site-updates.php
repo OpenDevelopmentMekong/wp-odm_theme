@@ -39,7 +39,7 @@ class OpenDev_SiteUpdates {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'site-update' ),
+			'rewrite'            => array( 'slug' => 'site-updates' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,

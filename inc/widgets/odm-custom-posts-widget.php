@@ -22,9 +22,11 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		$selected_custom_post_id = isset($instance['odm_custom_post_types_option']) ? $instance['odm_custom_post_types_option'] : null;
+		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
+		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
+
 		$query = array(
-				'posts_per_page'   => 4,
+				'posts_per_page'   => $limit,
 				'order'            => 'DESC',
 				'post_type'        => $selected_custom_post_id,
 				'post_status'      => 'publish'
@@ -35,17 +37,13 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		<div class="container">
 			<div class="row">
-					<?php foreach($posts as $post): ?>
-						<div class="three columns custom-post-item">
-							<a href="<?php echo($post->guid); ?>"><?php echo($post->post_title); ?></a>
-							<p><?php echo($post->post_date); ?></p>
-							<?php
-								$thumb_src = opendev_get_thumbnail($post->ID);
-								if (isset($thumb_src)):
-									echo $thumb_src;
-								endif; ?>
-						</div>
-					<?php endforeach; ?>
+				<?php
+					if (!empty($instance['title'])):
+						 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
+					endif; ?>
+				<?php foreach($posts as $post):
+					opendev_get_template('custom-post-grid-single',array($post),true);
+				endforeach; ?>
 			</div>
 		</div>
 
@@ -60,7 +58,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$selected_custom_post_id = isset($instance['odm_custom_post_types_option']) ? $instance['odm_custom_post_types_option'] : null;
+		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 
 		$args = array(
 		   'public'   => true,
@@ -69,15 +67,28 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		$output = 'objects';
 		$operator = 'and';
+		$post_types = get_post_types( $args, $output, $operator );
 
-		$post_types = get_post_types( $args, $output, $operator ); ?>
-		<label for="<?php echo $this->get_field_id( 'odm_custom_post_types_option' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>
+		$title = !empty($instance['title']) ? __($instance['title'], 'opendev') : __('Custom posts', 'opendev'); ?>
+		<p>
+			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
 
-	  <select class='widefat odm_custom_post_types_option' id="<?php echo $this->get_field_id('odm_custom_post_types_option'); ?>" name="<?php echo $this->get_field_name('odm_custom_post_types_option'); ?>" type="text">
-			<?php foreach ( $post_types  as $post_type ): ?>
-				<option <?php if ($selected_custom_post_id == $post_type->name) { echo " selected"; } ?> value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name ?></option>
-			<?php endforeach; ?>
-		</select>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>
+			<select class='widefat post_type' id="<?php echo $this->get_field_id('post_type'); ?>" name="<?php echo $this->get_field_name('post_type'); ?>" type="text">
+				<?php foreach ( $post_types  as $post_type ): ?>
+					<option <?php if ($selected_custom_post_id == $post_type->name) { echo " selected"; } ?> value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name ?></option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+
+		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
+		</p>
 
 		<?php
 	}
@@ -89,9 +100,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-		// processes widget options to be saved
+
+
 		$instance = array();
-		$instance['odm_custom_post_types_option'] = ( ! empty( $new_instance['odm_custom_post_types_option'] ) ) ? $new_instance['odm_custom_post_types_option'] : '';
+		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
+		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 
 		return $instance;
 	}
