@@ -5,7 +5,7 @@ if (is_category()) {
 }
 get_header();
 
-if (function_exists(qtranxf_getLanguage)) {
+if (function_exists('qtranxf_getLanguage')) {
     if (qtranxf_getLanguage() != 'en') {
         $lang = '_'.CURRENT_LANGUAGE;
     } else {

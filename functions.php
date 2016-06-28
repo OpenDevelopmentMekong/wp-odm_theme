@@ -652,7 +652,7 @@ function the_breadcrumb()
             // 404 page
             echo '<li>'.'Error 404'.'</li>';
         } elseif (is_post_type_archive()) {
-            $post_type = get_post_type();
+            $post_type = get_query_var('post_type');
             if ($post_type) {
                 $post_type_data = get_post_type_object($post_type);
                 $post_type_slug = $post_type_data->rewrite['slug'];
