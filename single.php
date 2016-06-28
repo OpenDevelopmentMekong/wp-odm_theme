@@ -7,7 +7,7 @@
         <div class="eight columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
-            <?php show_date_and_source_of_the_post(); ?>
+            <?php show_date_and_source_of_the_post(get_post()); ?>
 
             <div class="categories">
               <span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
@@ -16,7 +16,7 @@
             <div class="post-tags">
                 <span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
             </div>
-            
+
           </header>
           <section class="content section-content">
               <?php

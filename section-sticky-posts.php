@@ -140,7 +140,7 @@
                    <?php endif; ?>
                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
                    <!--show date and source-->
-                   <?php show_date_and_source_of_the_post(); ?>
+                   <?php show_date_and_source_of_the_post(get_post()); ?>
               </header>
               <section class="post-content">
                 <?php

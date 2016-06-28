@@ -1,14 +1,14 @@
 <?php
-class OpenDev_Taxonomy_Widget extends WP_Widget {
+class Odm_Taxonomy_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
 		parent::__construct(
-			'opendev_taxonomy_widget', // Base ID
-			__( 'OD Content Taxonomy Widget', 'opendev' ), // Name
-			array( 'description' => __( 'Display OD taxonomy for content', 'opendev' ), ) // Args
+			'odm_taxonomy_widget', // Base ID
+			__( 'ODM Content Taxonomy Widget', 'opendev' ), // Name
+			array( 'description' => __( 'Display ODM taxonomy for content', 'opendev' ), ) // Args
 		);
 	}
 
@@ -255,4 +255,4 @@ class OpenDev_Taxonomy_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("OpenDev_Taxonomy_Widget");'));
+add_action( 'widgets_init', create_function('', 'register_widget("Odm_Taxonomy_Widget");'));
