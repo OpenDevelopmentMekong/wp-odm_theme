@@ -37,10 +37,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		<div class="container">
 			<div class="row">
-				<?php
-					if (!empty($instance['title'])):
-						 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
-					endif; ?>
+				<div class="twelve columns">
+					<?php
+						if (!empty($instance['title'])):
+							 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
+						endif; ?>
+				</div>
 				<?php foreach($posts as $post):
 					opendev_get_template('custom-post-grid-single',array($post),true);
 				endforeach; ?>

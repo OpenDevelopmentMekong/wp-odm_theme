@@ -4,30 +4,24 @@
 
   <article id="content" class="single-post">
       <div class="container">
-        <div class="eight columns">
+        <div class="twelve columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
-            <?php show_date_and_source_of_the_post(get_post()); ?>
-
-            <div class="categories">
-              <span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
-            </div>
-
-            <div class="post-tags">
-                <span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
-            </div>
-
+            <?php show_post_meta(get_post()); ?>
           </header>
-          <section class="content section-content">
-              <?php
-                if (jeo_has_marker_location()):
-                    ?>
-                <section id="featured-media" class="row">
-                  <div style="height:350px;">
-                    <?php jeo_map(); ?>
-                  </div>
-                </section>
-              <?php endif; ?>
+          <?php
+            if (jeo_has_marker_location()): ?>
+            <section id="featured-media" class="row">
+              <div style="height:350px;">
+                <?php jeo_map(); ?>
+              </div>
+            </section>
+          <?php endif; ?>
+        </div>
+        <div class="row">
+          <div class="eight columns">
+            <section class="content section-content">
+
               <?php
                   if (function_exists('qtranxf_getLanguage')):
                     if ((qtranxf_getLanguage() == 'en') && (has_term('english-translated', 'language'))):
@@ -91,8 +85,10 @@
                         'link_after' => '</span>',
                 ));
                 ?>
-          </section>
+            </section>
+          </div>
         </div>
+
         <div class="three columns offset-by-one">
           <aside id="sidebar">
             <ul class="widgets">

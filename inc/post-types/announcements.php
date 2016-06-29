@@ -38,14 +38,15 @@ class OpenDev_Announcement {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'menu_icon' 				 => '',
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'announcements' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			//'menu_position'      => 4,
+			'menu_position'      => 5,
 			'taxonomies'         => array('category', 'post_tag'),
-			'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' )
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
 		);
 
 		register_post_type( 'announcement', $args );

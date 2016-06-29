@@ -1,12 +1,15 @@
-<?php
-if(is_category()) {
-	include_once(get_stylesheet_directory() . '/category.php');
-	die();
-}
-get_header();
-?>
+<?php get_header();?>
 
 <div class="section-title main-title">
+
+	<section class="container">
+		<header class="row">
+			<div class="twelve columns">
+				<h2><?php _e('Topics','opendev') ?></h2>
+				<?php get_template_part('section', 'query-actions'); ?>
+			</div>
+		</header>
+	</section>
 
 	<section class="container">
 

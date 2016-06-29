@@ -183,74 +183,93 @@ function walk_child_category_by_post_type($children, $post_type, $current_cat = 
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function show_date_and_source_of_the_post($post)
+function show_post_meta($post)
 {
 	?>
-
-	<div class="date">
-		 <span class="lsf">&#xE12b;</span>
-			 <?php
-			 if (function_exists('qtrans_getLanguage')) {
-					 if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
-							 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
-					 } else {
-							 echo get_the_time('j F Y',$post->ID);
-					 }
-			 } else {
-					 echo get_the_time('j F Y',$post->ID);
-			 }
-		?>
-	</div>
-	&nbsp;
-	<?php
-	if (taxonomy_exists('news_source') && isset($post)) {
-			echo '<div class="news-source">';
+	<ul class="post-meta">
+		<li class="date">
+			 <span class="lsf">&#xE12b;</span>
+				 <?php
+				 if (function_exists('qtrans_getLanguage')) {
+						 if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
+								 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
+						 } else {
+								 echo get_the_time('j F Y',$post->ID);
+						 }
+				 } else {
+						 echo get_the_time('j F Y',$post->ID);
+				 }
+			?>
+		</li>
+		<?php
+		if (taxonomy_exists('news_source') && isset($post)) {
 			$terms_news_source = get_the_terms($post->ID, 'news_source');
 			if ($terms_news_source && !is_wp_error($terms_news_source)) {
-					if ($terms_news_source) {
-							$news_sources = '';
+				if ($terms_news_source) {
+					$news_sources = '';
+
+					foreach ($terms_news_source as $term) {
+						$term_link = get_term_link($term, 'news_source');
+						if (is_wp_error($term_link)) {
+							continue;
+						}
+						//We successfully got a link. Print it out.
+						$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+						if (isset($news_sources)):
+							echo '<li class="news-source">';
 							echo '<span class="icon-news"></span> ';
-							foreach ($terms_news_source as $term) {
-									$term_link = get_term_link($term, 'news_source');
-									if (is_wp_error($term_link)) {
-											continue;
-									}
-									//We successfully got a link. Print it out.
-									 $news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
-							}
 							echo substr($news_sources, 0, -2);
+							echo '</li>';
+						endif;
 					}
+
+				}
 			} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-					echo '<span class="icon-news"></span> ';
-					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-					echo get_the_title($news_source_id);
+				echo '<li class="feed">';
+				echo '<span class="icon-news"></span> ';
+				$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+				echo get_the_title($news_source_id);
+				echo '</li>';
 			}
-			echo '</div><!--news-source-->';
-	}// if news_source exists
-	if (taxonomy_exists('public_announcement_source')) {
-			echo '<div class="news-source">';
-			$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
-			if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
-					if ($terms_public_announcement_source) {
-							$public_announcement_sources = '';
-							echo '<span class="icon-news"></span> ';
-							foreach ($terms_public_announcement_source as $term) {
-									$term_link = get_term_link($term, 'public_announcement_source');
-									if (is_wp_error($term_link)) {
-											continue;
-									}
-									//We successfully got a link. Print it out.
-									 $public_announcement_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
-							}
-							echo substr($public_announcement_sources, 0, -2);
-					}
-			} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-					echo '<span class="icon-news"></span> ';
-					$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-					echo get_the_title($public_announcement_source_id);
-			}
-			echo '</div><!--news-source-->';
-	}// if public_announcement_source exists
+
+		}// if news_source exists
+		if (taxonomy_exists('public_announcement_source')) {
+				echo '<li class="news-source">';
+				$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
+				if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
+						if ($terms_public_announcement_source) {
+								$public_announcement_sources = '';
+								echo '<span class="icon-news"></span> ';
+								foreach ($terms_public_announcement_source as $term) {
+										$term_link = get_term_link($term, 'public_announcement_source');
+										if (is_wp_error($term_link)) {
+												continue;
+										}
+										//We successfully got a link. Print it out.
+										 $public_announcement_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+								}
+								echo substr($public_announcement_sources, 0, -2);
+						}
+				} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+						echo '<span class="icon-news"></span> ';
+						$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+						echo get_the_title($public_announcement_source_id);
+				}
+				echo '</li><!--news-source-->';
+		}// if public_announcement_source exists ?>
+		<li class="categories">
+			<span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
+		</li>
+		<?php
+			$tags = the_tags('', '');
+			if (!empty($tags)): ?>
+				<li class="post-tags">
+						<span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
+				</li>
+		  <?php	endif; ?>
+	</ul>
+	<?php
+
 }
  //to set get_the_excerpt() limit words
  function excerpt($num, $read_more = '')
