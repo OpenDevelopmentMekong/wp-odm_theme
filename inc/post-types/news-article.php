@@ -38,14 +38,15 @@ class OpenDev_News_Article {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'menu_icon' 				 => '',
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'news' ),
 			'capability_type'    => 'post',
 			'taxonomies'         => array('category', 'post_tag'),
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			//'menu_position'      => 4,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+			'menu_position'      => 5,
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
 		);
 
 		register_post_type( 'news-article', $args );

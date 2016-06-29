@@ -105,6 +105,31 @@ function opendev_setup_theme()
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 
+function add_menu_icons_styles(){
+?>
+
+<style>
+#adminmenu .menu-icon-announcement div.wp-menu-image:before {
+  content: "\f488";
+}
+#adminmenu .menu-icon-site-update div.wp-menu-image:before {
+  content: "\f348";
+}
+#adminmenu .menu-icon-news-article div.wp-menu-image:before {
+  content: "\f119";
+}
+#adminmenu .menu-icon-story div.wp-menu-image:before {
+  content: "\f125";
+}
+#adminmenu .menu-icon-topic div.wp-menu-image:before {
+  content: "\f163";
+}
+</style>
+
+<?php
+}
+add_action( 'admin_head', 'add_menu_icons_styles' );
+
 function opendev_dependency_scripts()
 {
   wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
