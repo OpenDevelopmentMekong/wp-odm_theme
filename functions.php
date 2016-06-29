@@ -102,7 +102,7 @@ function opendev_setup_theme()
     'after_title' => '</h2>',
   ));
 
-    include get_stylesheet_directory().'/inc/layers.php';
+  include get_stylesheet_directory().'/inc/layers.php';
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 

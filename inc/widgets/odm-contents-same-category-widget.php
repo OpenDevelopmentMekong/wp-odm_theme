@@ -10,7 +10,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		parent::__construct(
 			'odm_contents_same_category_widget',
 			__('ODM Contents same category', 'opendev'),
-			array('description' => __('Display other post types tagged with the same categories as the one where the widget is integrated.', 'opendev'))
+			array('description' => __('Display other content from other post types tagged with the same categories as the one where the widget is integrated.', 'opendev'))
 		);
 	}
 
@@ -21,33 +21,70 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-
-		$selected_custom_post_ids = isset($instance['post_type']) ? $instance['post_type'] : null;
-		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		global $post;
-		$categories = wp_get_post_categories($post->ID);
 
-		$query = array(
-				'posts_per_page'   => $limit,
-				'order'            => 'DESC',
-				'post_type'        => $selected_custom_post_ids,
-				'post_status'      => 'publish',
-				'category'				 => $categories
-			);
-		$posts = get_posts( $query );
+		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
+		$categories = wp_get_post_categories($post->ID);
+		$related_posts = array();
+
+		if (!empty($categories)):
+			foreach ($this->available_post_types() as $post_type):
+				if (isset($instance[$post_type->name]) && $instance[$post_type->name]):
+
+					$taxonomy_terms = get_terms( 'category', array(
+					    'hide_empty' => 0,
+					    'fields' => 'ids'
+						)
+					);
+
+					print_r($taxonomy_terms);
+
+					$query = array(
+			      'post_type' => $post_type->name,
+			      'tax_query' => array(
+			         array(
+			            'taxonomy' => 'category',
+			            'field' => 'id',
+			            'terms' => array(1)
+			         )
+						 )
+			   );
+
+				 $slider_posts = new WP_Query($query);
+
+				 if($slider_posts->have_posts()) : ?>
+
+					<div class='slider'>
+					   <?php while($slider_posts->have_posts()) : $slider_posts->the_post() ?>
+					      <div class='slide'>
+					         <h1><?php the_title() ?></h1>
+					      </div>
+					   <?php endwhile ?>
+					</div>
+
+				<?php endif;
+
+
+
+				endif;
+			endforeach;
+		endif;
 
 		echo $args['before_widget']; ?>
 
 		<?php
 			if (!empty($instance['title'])):
 				 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
-			endif; ?>
+			endif;
+
+				//print_r($related_posts);
+				?>
 
 		<ul>
 
-			<?php foreach($posts as $post):?>
+			<?php foreach($related_posts as $post):?>
 				<li>
-					<a href="<?php echo get_permalink($post->ID);?>"><?php echo get_permalink($post->title);?></a>
+					<a href="<?php echo get_permalink($post->ID);?>"><?php echo $post->post_title . " " . $post->post_type;?></a>
 				</li>
 			<?php endforeach; ?>
 
@@ -64,16 +101,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
-
-		$args = array(
-		   'public'   => true,
-		   '_builtin' => false
-		);
-
-		$output = 'objects';
-		$operator = 'and';
-		$post_types = get_post_types( $args, $output, $operator );
+	  $post_types = $this->available_post_types();
 
 		$title = !empty($instance['title']) ? __($instance['title'], 'opendev') : __('Custom posts', 'opendev'); ?>
 		<p>
@@ -84,13 +112,15 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>
 			<?php foreach ( $post_types  as $post_type ): ?>
-				<input <?php if (in_array($post_type->name,$selected_custom_post_id)) { echo " selected"; } ?> name="<?php echo $this->get_field_name('post_type'); ?>" value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name ?></input>
+				<p>
+					<input type="checkbox" <?php if (isset($instance[$post_type->name]) && $instance[$post_type->name]) { echo " checked"; } ?> name="<?php echo $this->get_field_name($post_type->name)?>" value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name ?></input>
+				</p>
 			<?php endforeach; ?>
 		</p>
 
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list (-1 to show all):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
 		</p>
 
@@ -105,14 +135,30 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-
 		$instance = array();
 		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
-		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 
+		$post_types = $this->available_post_types();
+		foreach ($post_types as $post_type):
+			$instance[$post_type->name] = (!empty($new_instance[$post_type->name])) ? true : false;
+		endforeach;
 		return $instance;
 	}
+
+	private function available_post_types(){
+		$args = array(
+		   'public'   => true,
+		   '_builtin' => false
+		);
+
+		$output = 'objects';
+		$operator = 'and';
+		$post_types = get_post_types( $args, $output, $operator );
+
+		return $post_types;
+	}
+
 }
 
 add_action( 'widgets_init', create_function('', 'register_widget("Odm_Contents_Same_Category_Widget");'));
