@@ -17,7 +17,7 @@ class OpenDev_Story {
 
 		$labels = array(
 			'name'               => _x( 'Stories', 'post type general name', 'opendev' ),
-			'singular_name'      => _x( 'Storie', 'post type singular name', 'opendev' ),
+			'singular_name'      => _x( 'Story', 'post type singular name', 'opendev' ),
 			'menu_name'          => _x( 'Stories', 'admin menu', 'opendev' ),
 			'name_admin_bar'     => _x( 'Story', 'add new on admin bar', 'opendev' ),
 			'add_new'            => _x( 'Add new', 'story', 'opendev' ),

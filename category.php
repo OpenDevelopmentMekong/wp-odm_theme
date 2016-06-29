@@ -13,6 +13,7 @@ foreach($post_types as $pt) {
 }
 ?>
 
+
 <div class="section-title main-title">
 	<div class="container">
 		<div class="twelve columns">
@@ -79,7 +80,7 @@ foreach($post_types as $pt) {
 										<div class="meta">
 											<!--<p><span class="icon-calendar"></span> <?php echo get_the_date(); ?></p>-->
 											<!-- <p><span class="icon-user"></span> <?php _e('by', 'jeo'); ?> <?php //the_author(); ?></p> -->
-											 <?php show_date_and_source_of_the_post(); ?>
+											 <?php show_date_and_source_of_the_post(get_post()); ?>
 
 										</div>
 									<?php } ?>
@@ -122,7 +123,7 @@ foreach($post_types as $pt) {
 						</ul>
 					</div>
 				</li>
-				<li id="opendev_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+				<li id="odm_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
 					<?php list_category_by_post_type($_GET['post_type']); ?>
 				</li>
 				<?php dynamic_sidebar('general'); ?>

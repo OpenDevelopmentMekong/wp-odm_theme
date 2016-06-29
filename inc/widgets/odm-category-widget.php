@@ -1,6 +1,6 @@
 <?php
 
-class OpenDev_Category_Widget extends WP_Widget {
+class Odm_Category_Widget extends WP_Widget {
 
 	/**
 	 * Sets up the widgets name etc
@@ -8,8 +8,8 @@ class OpenDev_Category_Widget extends WP_Widget {
 	public function __construct() {
 		// widget actual processes
 		parent::__construct(
-			'opendev_category_widget',
-			__('OD Post Taxonomy', 'opendev'),
+			'odm_category_widget',
+			__('ODM Post Taxonomy', 'opendev'),
 			array('description' => __('Display post taxonomies hierarchically.', 'opendev'))
 		);
 	}
@@ -132,4 +132,4 @@ class OpenDev_Category_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("OpenDev_Category_Widget");'));
+add_action( 'widgets_init', create_function('', 'register_widget("Odm_Category_Widget");'));

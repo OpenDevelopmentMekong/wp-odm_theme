@@ -1342,7 +1342,7 @@ msgstr ""
 msgid "Hide resources details"
 msgstr ""
 
-#: section-sticky-posts.php:151 widgets/opendev-announcements.php:73
+#: section-sticky-posts.php:151 widgets/odm-announcements-widget.php:73
 msgid "Keep reading"
 msgstr ""
 
@@ -1363,40 +1363,40 @@ msgstr ""
 msgid "Latest articles on"
 msgstr ""
 
-#: widgets/category-widget.php:12
+#: widgets/odm-category-widget.php:12
 msgid "OD Post Taxonomy"
 msgstr ""
 
-#: widgets/category-widget.php:13
+#: widgets/odm-category-widget.php:13
 msgid "Display post taxonomies hierarchically."
 msgstr ""
 
-#: widgets/category-widget.php:108
+#: widgets/odm-category-widget.php:108
 msgid "Taxonomies to display:"
 msgstr ""
 
-#: widgets/od-related-recent-news-widget.php:10
+#: widgets/odm-related-recent-news-widget.php:10
 msgid "OD Related Recent News Widget"
 msgstr ""
 
-#: widgets/od-related-recent-news-widget.php:11
+#: widgets/odm-related-recent-news-widget.php:11
 msgid "Display OD the related recent news for the topics"
 msgstr ""
 
-#: widgets/od-related-recent-news-widget.php:117
+#: widgets/odm-related-recent-news-widget.php:117
 msgid "Related News"
 msgstr ""
 
-#: widgets/od-related-recent-news-widget.php:138
+#: widgets/odm-related-recent-news-widget.php:138
 #: widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr ""
 
-#: widgets/od-related-recent-news-widget.php:142
+#: widgets/odm-related-recent-news-widget.php:142
 msgid "Option:"
 msgstr ""
 
-#: widgets/od-related-recent-news-widget.php:159
+#: widgets/odm-related-recent-news-widget.php:159
 msgid "Category slugs:"
 msgstr ""
 
@@ -1420,10 +1420,10 @@ msgstr ""
 msgid "Exclude Category by IDs (separated by commas):"
 msgstr ""
 
-#: widgets/opendev-announcements.php:78
+#: widgets/odm-announcements-widget.php:78
 msgid "See all"
 msgstr ""
 
-#: widgets/opendev-announcements.php:84 widgets/opendev-site-updates.php:36
+#: widgets/odm-announcements-widget.php:84 widgets/odm-site-updates-widget.php:36
 msgid "No post found"
 msgstr ""

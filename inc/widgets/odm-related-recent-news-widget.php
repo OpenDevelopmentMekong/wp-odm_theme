@@ -1,14 +1,14 @@
 <?php
-class OpenDev_Related_Recent_News_Widget extends WP_Widget {
+class Odm_Related_Recent_News_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
 		parent::__construct(
-			'opendev_related_recent_news_widget', // Base ID
-			__( 'OD Related Recent News Widget', 'opendev' ), // Name
-			array( 'description' => __( 'Display OD the related recent news for the topics', 'opendev' ), ) // Args
+			'odm_related_recent_news_widget', // Base ID
+			__( 'ODM Related Recent News Widget', 'opendev' ), // Name
+			array( 'description' => __( 'Display ODM the related recent news for the topics', 'opendev' ), ) // Args
 		);
 	}
 
@@ -19,10 +19,10 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
 	 */
 
 	public function get_related_news( $category = "") {
-		if( qtranxf_getLanguage() == "kh") 
+		if( qtranxf_getLanguage() == "kh")
 			$language = "khmer";
 		else $language = "";
-		
+
         $args=array(
               'post_type' => 'post',
               'post_status' => 'publish',
@@ -75,10 +75,10 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
                      }else {
                             $english_pagetitle = get_the_title();
                      }
-					
-					//$category_id = get_cat_ID($english_pagetitle); 
+
+					//$category_id = get_cat_ID($english_pagetitle);
             		//$category_slug = strtolower(preg_replace('/\s+/', '-', $english_pagetitle));
-					$category_filter = get_term_by('name', $english_pagetitle, 'category'); 
+					$category_filter = get_term_by('name', $english_pagetitle, 'category');
 					$category_id = $category_filter->term_id;
 					$category_slug = $category_filter->slug;
                 }else if ($news_option == 'Show By specific category slug'){
@@ -186,5 +186,4 @@ class OpenDev_Related_Recent_News_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("OpenDev_Related_Recent_News_Widget");'));
-
+add_action( 'widgets_init', create_function('', 'register_widget("Odm_Related_Recent_News_Widget");'));
