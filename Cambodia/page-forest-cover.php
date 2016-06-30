@@ -19,7 +19,7 @@ Template Name: Forest Cover and Forest Cover Analysis
     						  <span class="lsf">&#9776;</span> <?php echo __( 'Filed under:', 'jeo' ); ?> <?php the_category(); ?>
     					</div>
             		</header>
-            		
+
             		<section class="content">
     					<div class="post-content">
     						<?php if (is_page('forest-cover'))
@@ -28,14 +28,14 @@ Template Name: Forest Cover and Forest Cover Analysis
                                 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri()?>/css/forest-cover.css"/>
                                 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/js/swfobject.js"> </script>
                                 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/js/youtube_playlist.js"></script>
-                                    
-                                <?php  include qtrans_getLanguage().'-page-forestcover-2014.php'; // kh/kh-page-forestcover.php or en/en-page-forestcover.php ?> 
+
+                                <?php  include qtrans_getLanguage().'-page-forestcover-2014.php'; // kh/kh-page-forestcover.php or en/en-page-forestcover.php ?>
 
                             <?php
                             }
                            	else if (is_page('forest-cover-analysis-1973-2013'))
          					{
-                            ?>	
+                            ?>
                             	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri()?>/css/forest-cover.css"/>
                             	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 								<?php  include qtrans_getLanguage().'-page-forestcover-analysis-2013.php'; // kh/kh-page-forestcover.php or en/en-page-forestcover.php ?>
@@ -44,7 +44,7 @@ Template Name: Forest Cover and Forest Cover Analysis
 							}
                             else if (is_page('forest-cover-analysis-1973-2014'))
                             {
-                            ?>  
+                            ?>
                                 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri()?>/css/forest-cover.css"/>
                                 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                                 <?php  include qtrans_getLanguage().'-page-forestcover-analysis-2014.php'; // kh/kh-page-forestcover.php or en/en-page-forestcover.php ?>
@@ -52,7 +52,7 @@ Template Name: Forest Cover and Forest Cover Analysis
                             <?php
                             }
                             ?>
-                            
+
                         </div>
     					<?php
     					wp_link_pages( array(
@@ -68,19 +68,7 @@ Template Name: Forest Cover and Forest Cover Analysis
     					<aside id="sidebar">
     						<ul class="widgets">
     							<li class="widget share-widget">
-    								<div class="share clearfix">
-    									<ul>
-    										<li>
-    											<div class="fb-share-button" data-href="<?php echo get_permalink( $post->ID )?>" data-send="false" data-layout="button" data-show-faces="false"></div>
-    										</li>
-    										<li>
-    											<div class="twitter-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-lang="en" data-count="vertical">Tweet</a></div>
-    										</li>
-    										<li>
-    											<div class="g-plusone" data-width="50" data-annotation="none" data-size="tall" data-href="<?php the_permalink(); ?>" data-count="false"></div>
-    										</li> 
-    									</ul>
-    								</div>
+    								<?php opendev_get_template('social-share',array(),true); ?>
     							</li>
     							<li class="widget">
     								<?php opendev_summary(); ?>
