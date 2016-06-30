@@ -27,47 +27,27 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$categories = wp_get_post_categories($post->ID);
 		$related_posts = array();
 
+		$supported_post_types = array();
+		$post_types = $this->available_post_types();
+		foreach ($post_types as $post_type):
+			if (isset($instance[$post_type->name]) && $instance[$post_type->name]):
+				array_push($supported_post_types,$post_type->name);
+			endif;
+		endforeach;
+
 		if (!empty($categories)):
-			foreach ($this->available_post_types() as $post_type):
-				if (isset($instance[$post_type->name]) && $instance[$post_type->name]):
 
-					$taxonomy_terms = get_terms( 'category', array(
-					    'hide_empty' => 0,
-					    'fields' => 'ids'
-						)
-					);
+			//TODO: OPtimize this query to filter out categories directly
+			// and ensuring $limit is precise.
+			
+			$query = array(
+					'posts_per_page'   => $limit,
+					'order'            => 'DESC',
+					'post_type'        => $supported_post_types,
+					'post_status'      => 'publish'
+				);
+			$related_posts = get_posts( $query );
 
-					print_r($taxonomy_terms);
-
-					$query = array(
-			      'post_type' => $post_type->name,
-			      'tax_query' => array(
-			         array(
-			            'taxonomy' => 'category',
-			            'field' => 'id',
-			            'terms' => array(1)
-			         )
-						 )
-			   );
-
-				 $slider_posts = new WP_Query($query);
-
-				 if($slider_posts->have_posts()) : ?>
-
-					<div class='slider'>
-					   <?php while($slider_posts->have_posts()) : $slider_posts->the_post() ?>
-					      <div class='slide'>
-					         <h1><?php the_title() ?></h1>
-					      </div>
-					   <?php endwhile ?>
-					</div>
-
-				<?php endif;
-
-
-
-				endif;
-			endforeach;
 		endif;
 
 		echo $args['before_widget']; ?>
@@ -75,18 +55,23 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		<?php
 			if (!empty($instance['title'])):
 				 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
-			endif;
-
-				//print_r($related_posts);
-				?>
+			endif; ?>
 
 		<ul>
 
-			<?php foreach($related_posts as $post):?>
-				<li>
-					<a href="<?php echo get_permalink($post->ID);?>"><?php echo $post->post_title . " " . $post->post_type;?></a>
-				</li>
-			<?php endforeach; ?>
+			<?php
+
+				foreach($related_posts as $related_post):
+					$related_categories = wp_get_post_categories($related_post->ID);
+					if (array_intersect($categories,$related_categories)): ?>
+
+						<li>
+							<a href="<?php echo get_permalink($related_post->ID);?>"><?php echo $related_post->post_title;?></a>
+						</li>
+
+			<?php
+					endif;
+				endforeach; ?>
 
 		</ul>
 
