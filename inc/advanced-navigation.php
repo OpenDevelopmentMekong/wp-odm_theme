@@ -136,8 +136,10 @@ class opendev_AdvancedNav {
 				</div>
 			<?php endif; ?>
 			<?php
-			$oldest = array_shift(get_posts(array('posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date')));
-			$newest = array_shift(get_posts(array('posts_per_page' => 1, 'order' => 'DESC', 'orderby' => 'date')));
+			$oldest = get_posts(array('posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
+			$oldest = array_shift($oldest);
+			$newest = get_posts(array('posts_per_page' => 1, 'order' => 'DESC', 'orderby' => 'date'));
+			$newest = array_shift($newest);
 
 			$before = $oldest->post_date;
 			$after = $newest->post_date;

@@ -59,28 +59,7 @@
         </div>
         <div class="three columns">
           <div class="social">
-            <nav id="social-nav">
-              <?php
-                  $fb = opendev_get_facebook_url();
-                  if ($fb) : ?>
-                    <a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
-                <?php
-                  endif; ?>
-              <?php
-                  $tw = opendev_get_twitter_url();
-                  if ($tw) : ?>
-                    <a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
-              <?php
-                  endif; ?>
-              <?php
-                  $contact_id = opendev_get_contact_page_id();
-                  if ($contact_id) : ?>
-                    <a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"></a>
-              <?php
-                else: ?>
-              <?php
-                endif; ?>
-            </nav>
+            <?php opendev_get_template('social-nav',array(),true); ?>
           </div>
         </div>
       </div>
@@ -91,22 +70,21 @@
   <nav id="od-menu">
       <div class="container">
         <div class="row">
-          <?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('header_menu') ) : ?>
-            <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>  
-          <?php else: ?>
-              <div class="nine columns">
-                <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
+
+          <div class="nine columns">
+            <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
+          </div>
+
+          <div class="three columns">
+            <div class="search">
+              <div id="live-search">
+                  <input type="text" placeholder="<?php _e('Search site... &#128269;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search site... &#128269;', 'opendev');?>'" />
+                  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
+                <div class="results-container"></div>
               </div>
-              <div class="three columns">
-                <div class="search">
-                  <div id="live-search">
-                      <input type="text" placeholder="<?php _e('Search site... &#128269;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search site... &#128269;', 'opendev');?>'" />
-                      <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-                    <div class="results-container"></div>
-                  </div>
-                </div>
-              </div>
-          <?php endif; ?>
+            </div>
+          </div>
+          
         </div>
       </div>
   </nav>
