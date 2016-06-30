@@ -45,7 +45,7 @@ class OpenDev_Announcement {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 5,
-			'taxonomies'         => array('category', 'post_tag'),
+			'taxonomies'         => array( 'category', 'post_tag'),
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
 		);
 

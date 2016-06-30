@@ -60,7 +60,7 @@
                 <?php opendev_summary(); ?>
               </li>
               <?php dynamic_sidebar('topic'); ?>
-              <?php if (get_group('related_link') != '' && get_group('related_link') != null): ?>
+              <?php if (function_exists('get_group') && get_group('related_link') != '' && get_group('related_link') != null): ?>
                 <li class="widget widget_opendev_related_link_widget" style="clear:left">
                   <div>
                   <h2 class="widget-title">Related Links</h2>

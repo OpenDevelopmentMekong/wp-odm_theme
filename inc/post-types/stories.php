@@ -42,7 +42,7 @@ class OpenDev_Story {
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'stories' ),
 			'capability_type'    => 'post',
-			'taxonomies'         => array('category', 'post_tag'),
+			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 5,

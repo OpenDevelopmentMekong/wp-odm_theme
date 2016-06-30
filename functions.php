@@ -34,6 +34,7 @@ require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-related-recent-news-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/utils/localization.php';
@@ -101,7 +102,7 @@ function opendev_setup_theme()
     'after_title' => '</h2>',
   ));
 
-    include get_stylesheet_directory().'/inc/layers.php';
+  include get_stylesheet_directory().'/inc/layers.php';
 }
 add_action('after_setup_theme', 'opendev_setup_theme');
 

@@ -88,7 +88,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list (-1 to show all):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
 		</p>
 

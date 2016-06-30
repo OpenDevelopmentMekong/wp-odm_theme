@@ -42,7 +42,7 @@ class OpenDev_Topic {
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'topics' ),
 			'capability_type'    => 'post',
-			'taxonomies'         => array('category', 'post_tag'),
+			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 5,
