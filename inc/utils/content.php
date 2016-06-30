@@ -290,4 +290,17 @@ function show_post_meta($post)
 		 return $excerpt_words;
  }
 
+function available_post_types(){
+	 $args = array(
+			'public'   => true,
+			'_builtin' => false
+	 );
+
+	 $output = 'objects';
+	 $operator = 'and';
+	 $post_types = get_post_types( $args, $output, $operator );
+
+	 return $post_types;
+ }
+
  ?>

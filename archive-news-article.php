@@ -4,8 +4,10 @@
 
 	<section class="container">
 		<header class="row">
-			<div class="twelve columns">
+			<div class="six columns">
 				<h2><?php _e('News','opendev') ?></h2>
+			</div>
+			<div class="six columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</header>
@@ -19,8 +21,7 @@
 				<?php if (jeo_has_marker_location()): ?>
 					<section id="featured-media" class="row">
 						<div style="height:350px;">
-							<?php jeo_map();
-                      ?>
+							<?php jeo_map(); ?>
 						</div>
 					</section>
 				<?php endif; ?>
