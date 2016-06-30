@@ -5,7 +5,7 @@
  * Site updates content type
  */
 
-class OpenDev_SiteUpdates {
+class OpenDev_Site_Updates {
 
 	function __construct() {
 
@@ -38,13 +38,14 @@ class OpenDev_SiteUpdates {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'menu_icon' 				 => '',
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'site-updates' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			//'menu_position'      => 4,
-			'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' )
+			'menu_position'      => 5,
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
 		);
 
 		register_post_type( 'site-update', $args );
@@ -53,4 +54,4 @@ class OpenDev_SiteUpdates {
 
 }
 
-$GLOBALS['opendev_siteupdates'] = new OpenDev_SiteUpdates();
+$GLOBALS['opendev_site_updates'] = new OpenDev_Site_Updates();

@@ -17,7 +17,7 @@
 									<?php if (get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page') {
   ?>
 										<div class="meta">
-												<?php show_date_and_source_of_the_post(get_post());
+												<?php show_post_meta(get_post());
   ?>
 										</div>
 									<?php
