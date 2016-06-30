@@ -4,8 +4,10 @@
 
 	<section class="container">
 		<header class="row">
-			<div class="twelve columns">
+			<div class="six columns">
 				<h2><?php _e('Stories','opendev') ?></h2>
+			</div>
+			<div class="six columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</header>
