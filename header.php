@@ -71,28 +71,19 @@
       <div class="container">
         <div class="row">
 
-          <div class="nine columns">
+          <div class="twelve columns">
             <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
           </div>
 
-          <div class="three columns">
-            <div class="search">
-              <div id="live-search">
-                  <input type="text" placeholder="<?php _e('Search site... &#128269;', 'opendev');?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Search site... &#128269;', 'opendev');?>'" />
-                  <img src="<?php bloginfo('stylesheet_directory');?>/img/loading.gif" alt="loading" id="loading" />
-                <div class="results-container"></div>
-              </div>
-            </div>
-          </div>
-          
         </div>
       </div>
   </nav>
 
   <!-- Submenu -->
-  <nav id="od-submenu">
+  <nav id="od-search-results">
     <div class="container">
       <div class="row">
+        <div class="results-container"></div>
       </div>
     </div>
   </nav>

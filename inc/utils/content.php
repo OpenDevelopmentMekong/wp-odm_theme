@@ -290,4 +290,61 @@ function show_post_meta($post)
 		 return $excerpt_words;
  }
 
+function available_custom_post_types(){
+	 $args = array(
+			'public'   => true,
+			'_builtin' => false
+	 );
+
+	 $output = 'objects';
+	 $operator = 'and';
+	 $post_types = get_post_types( $args, $output, $operator );
+
+	 return $post_types;
+ }
+
+ function content_types_breakdown($search_term,$posts_per_page){
+
+	 $response = array();
+
+	 if(isset($search_term) && $search_term):
+
+		 $supported_post_types = array('topic','news-article', 'profiles', 'story');
+
+		 foreach ( $supported_post_types as $post_type):
+
+			 $post_type_obj = get_post_type_object($post_type);
+			 $post_type_label = $post_type_obj->label;
+
+			 $response[$post_type] = array(
+				 'title' => $post_type_label,
+				 'posts' => array()
+			 );
+
+			 $args = array('s' => $search_term,
+										 'posts_per_page' => $posts_per_page,
+										 'post_type' => $post_type,
+										 'post_status' => 'publish');
+			 $posts = get_posts($args);
+
+			 foreach ($posts as $post):
+				 array_push($response[$post_type]['posts'],array(
+					 'ID' => $post->ID,
+					 'title' => $post->post_title,
+					 'excerpt' => isset($post->post_excerpt) ? $post->post_excerpt : substr($post->post_content,20),
+					 'post_type' => $post_type,
+					 'url' => get_permalink($post->ID),
+					 'thumbnail' => get_the_post_thumbnail(
+													 $post->ID,
+													 array(50,50)
+												 )
+				 ));
+			 endforeach;
+		 endforeach;
+	 endif;
+
+	 return $response;
+
+ }
+
  ?>
