@@ -6,7 +6,7 @@
 		<?php
 		if (is_search() || get_query_var('opendev_advanced_nav')) :
 			$search_term = isset($s) ? $s : $_REQUEST['s'];
-			$search_results = content_types_breakdown($search_term,5);?>
+			$search_results = content_types_breakdown_for_query($search_term,5);?>
 
 			<!-- Content API -->
 			<div class="twelve columns">
@@ -21,7 +21,7 @@
 						<?php
 							foreach( $post_type['posts'] as $raw_post):
 								$post = get_post($raw_post['ID']);
-								opendev_get_template('custom-post-list-single',array($post),true);
+								opendev_get_template('post-list-full-width-single',array($post),true);
 							endforeach;
 					endforeach; ?>
 			</div>

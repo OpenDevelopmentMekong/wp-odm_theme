@@ -28,7 +28,7 @@ class OpenDev_LiveSearch {
 
 	function query() {
 
-		$response = content_types_breakdown($_REQUEST['s'],5);
+		$response = content_types_breakdown_for_query($_REQUEST['s'],5);
 
 		header('Content-Type: application/json;charset=UTF-8');
 		echo json_encode($response);

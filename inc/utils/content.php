@@ -303,7 +303,7 @@ function available_custom_post_types(){
 	 return $post_types;
  }
 
- function content_types_breakdown($search_term,$posts_per_page){
+ function content_types_breakdown_for_query($search_term,$posts_per_page){
 
 	 $response = array();
 

@@ -61,6 +61,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 			<?php
 
+				//TODO: After optimizing query above, this check would not be necessary
+
 				foreach($related_posts as $related_post):
 					$related_categories = wp_get_post_categories($related_post->ID);
 					if (array_intersect($categories,$related_categories)): ?>

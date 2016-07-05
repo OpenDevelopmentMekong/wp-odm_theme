@@ -28,14 +28,14 @@
 
       if (postType.posts.length >0){
         _.each(postType.posts, function(item, i) {
-    			var type = $('<p class="type">' + livesearch.labels[item.postType] + '</p>');
+    		//	var type = $('<p class="type">' + postType.title + '</p>');
     			var title = $('<h2>' + item.title + '</h2>');
     			var thumbnail = $(item.thumbnail);
     			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
-    			var link = $('<a " href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
+    			var link = $('<a href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
 
     			var item = $('<div>')
-    				.append(type)
+    				//.append(type)
     				.append(title.html(link))
     				.append(thumbnail)
     				.append(desc);
