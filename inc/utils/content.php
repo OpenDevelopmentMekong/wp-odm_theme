@@ -18,7 +18,6 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 				$lang_tag_finder = '/'.$lang_tag.'/';
 
 				if (qtranxf_getLanguage() != 'en') {
-						// if Kh
 								if (strpos($page_topic->post_title, '[:kh]') !== false) {
 										$page_title = explode($lang_tag, $page_topic->post_title);
 										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
@@ -186,88 +185,91 @@ function walk_child_category_by_post_type($children, $post_type, $current_cat = 
 function show_post_meta($post)
 {
 	?>
-	<ul class="post-meta">
-		<li class="date">
-			 <span class="lsf">&#xE12b;</span>
-				 <?php
-				 if (function_exists('qtrans_getLanguage')) {
-						 if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
-								 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
-						 } else {
-								 echo get_the_time('j F Y',$post->ID);
-						 }
-				 } else {
-						 echo get_the_time('j F Y',$post->ID);
-				 }
-			?>
-		</li>
-		<?php
-		if (taxonomy_exists('news_source') && isset($post)) {
-			$terms_news_source = get_the_terms($post->ID, 'news_source');
-			if ($terms_news_source && !is_wp_error($terms_news_source)) {
-				if ($terms_news_source) {
-					$news_sources = '';
+	<div class="post-meta">
+		<ul>
+			<li class="date">
+				 <span class="lsf">&#xE12b;</span>
+					 <?php
+					 if (function_exists('qtrans_getLanguage')) {
+							 if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
+									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
+							 } else {
+									 echo get_the_time('j F Y',$post->ID);
+							 }
+					 } else {
+							 echo get_the_time('j F Y',$post->ID);
+					 }
+				?>
+			</li>
+			<?php
+			if (taxonomy_exists('news_source') && isset($post)) {
+				$terms_news_source = get_the_terms($post->ID, 'news_source');
+				if ($terms_news_source && !is_wp_error($terms_news_source)) {
+					if ($terms_news_source) {
+						$news_sources = '';
 
-					foreach ($terms_news_source as $term) {
-						$term_link = get_term_link($term, 'news_source');
-						if (is_wp_error($term_link)) {
-							continue;
-						}
-						//We successfully got a link. Print it out.
-						$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
-						if (isset($news_sources)):
-							echo '<li class="news-source">';
-							echo '<span class="icon-news"></span> ';
-							echo substr($news_sources, 0, -2);
-							echo '</li>';
-						endif;
-					}
-
-				}
-			} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-				echo '<li class="feed">';
-				echo '<span class="icon-news"></span> ';
-				$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-				echo get_the_title($news_source_id);
-				echo '</li>';
-			}
-
-		}// if news_source exists
-		if (taxonomy_exists('public_announcement_source')) {
-				echo '<li class="news-source">';
-				$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
-				if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
-						if ($terms_public_announcement_source) {
-								$public_announcement_sources = '';
+						foreach ($terms_news_source as $term) {
+							$term_link = get_term_link($term, 'news_source');
+							if (is_wp_error($term_link)) {
+								continue;
+							}
+							//We successfully got a link. Print it out.
+							$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+							if (isset($news_sources)):
+								echo '<li class="news-source">';
 								echo '<span class="icon-news"></span> ';
-								foreach ($terms_public_announcement_source as $term) {
-										$term_link = get_term_link($term, 'public_announcement_source');
-										if (is_wp_error($term_link)) {
-												continue;
-										}
-										//We successfully got a link. Print it out.
-										 $public_announcement_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
-								}
-								echo substr($public_announcement_sources, 0, -2);
+								echo substr($news_sources, 0, -2);
+								echo '</li>';
+							endif;
 						}
+
+					}
 				} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-						echo '<span class="icon-news"></span> ';
-						$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-						echo get_the_title($public_announcement_source_id);
+					echo '<li class="feed">';
+					echo '<span class="icon-news"></span> ';
+					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+					echo get_the_title($news_source_id);
+					echo '</li>';
 				}
-				echo '</li><!--news-source-->';
-		}// if public_announcement_source exists ?>
-		<li class="categories">
-			<span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
-		</li>
-		<?php
-			$tags = the_tags('', '');
-			if (!empty($tags)): ?>
-				<li class="post-tags">
-						<span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
-				</li>
-		  <?php	endif; ?>
-	</ul>
+
+			}// if news_source exists
+			if (taxonomy_exists('public_announcement_source')) {
+					echo '<li class="news-source">';
+					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
+					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
+							if ($terms_public_announcement_source) {
+									$public_announcement_sources = '';
+									echo '<span class="icon-news"></span> ';
+									foreach ($terms_public_announcement_source as $term) {
+											$term_link = get_term_link($term, 'public_announcement_source');
+											if (is_wp_error($term_link)) {
+													continue;
+											}
+											//We successfully got a link. Print it out.
+											 $public_announcement_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+									}
+									echo substr($public_announcement_sources, 0, -2);
+							}
+					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+							echo '<span class="icon-news"></span> ';
+							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+							echo get_the_title($public_announcement_source_id);
+					}
+					echo '</li><!--news-source-->';
+			}// if public_announcement_source exists ?>
+			<li class="categories">
+				<span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
+			</li>
+			<?php
+				$tags = the_tags('', '');
+				if (!empty($tags)): ?>
+					<li class="post-tags">
+							<span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
+					</li>
+			  <?php	endif; ?>
+		</ul>
+	</div>
+
 	<?php
 
 }
@@ -290,6 +292,19 @@ function show_post_meta($post)
 		 return $excerpt_words;
  }
 
+
+function available_post_types(){
+	 $args = array(
+			'public'   => true
+	 );
+
+	 $output = 'objects';
+	 $operator = 'and';
+	 $post_types = get_post_types( $args, $output, $operator );
+
+	 return $post_types;
+}
+
 function available_custom_post_types(){
 	 $args = array(
 			'public'   => true,
@@ -303,10 +318,14 @@ function available_custom_post_types(){
 	 return $post_types;
  }
 
+ function available_post_types_search(){
+ 	 return array('topic','annoucement','profile','site-update','news-article','story');
+  }
+
  function content_types_breakdown_for_query($search_term,$posts_per_page){
 
 	 $response = array();
-
+	 wp_reset_query();
 	 if(isset($search_term) && $search_term):
 
 		 $supported_post_types = array('topic','news-article', 'profiles', 'story');
@@ -331,17 +350,16 @@ function available_custom_post_types(){
 				 array_push($response[$post_type]['posts'],array(
 					 'ID' => $post->ID,
 					 'title' => $post->post_title,
-					 'excerpt' => isset($post->post_excerpt) ? $post->post_excerpt : substr($post->post_content,20),
+					 'excerpt' => (isset($post->post_excerpt) && !empty($post->post_excerpt)) ? $post->post_excerpt : substr($post->post_content,0,60),
 					 'post_type' => $post_type,
 					 'url' => get_permalink($post->ID),
-					 'thumbnail' => get_the_post_thumbnail(
-													 $post->ID,
-													 array(50,50)
-												 )
+					 'thumbnail' => opendev_get_thumbnail($post->ID,true)
 				 ));
 			 endforeach;
 		 endforeach;
 	 endif;
+
+	 wp_reset_postdata();
 
 	 return $response;
 

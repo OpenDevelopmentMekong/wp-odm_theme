@@ -1,4 +1,7 @@
 /* Layout Related Styles */
+body{
+  display: inline-table;
+}
 
 .clear, #clear{
  clear:both;
@@ -8,6 +11,9 @@
 }
 .float-left {
     float: left
+}
+.full-width{
+    width:100%;
 }
 
 #colophon {
@@ -23,8 +29,88 @@
     margin-top: 0;
 }
 
+.post-grid-item{
+	position: relative;
+	height: @grid-height;
+	text-align: left;
+	background: @primary-color;
+	margin-bottom: @big-padd;
+
+	img {
+		position: absolute;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    left: 0;
+		opacity: 0.2;
+	}
+
+	a {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		z-index: 10;
+		color: @white;
+	}
+
+	p {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		z-index: 10;
+		color: @white;
+	}
+
+}
+
+.post-list-item{
+	margin-bottom: @med-padd;
+
+	img {
+		width: 100px;
+    height: 100px;
+    margin: 0px 10px 10px 0px;
+    border: 1px #000 solid;
+	}
+
+	a {
+		//TBD
+	}
+
+  .post-list-item-title {
+	}
+
+	.post-list-item-content {
+    display: inline-flex;
+	}
+
+
+}
+
+.post-list-item-small{
+	margin-bottom: @small-padd;
+
+	img {
+		width: 50px;
+    height: 50px;
+    margin: 0px 4px 4px 0px;
+	}
+
+	a {
+		//TBD
+	}
+
+  .post-list-item-title {
+	}
+
+	.post-list-item-content {
+    display: inline-flex;
+	}
+
+
+}
+
 .post-meta{
-  margin: 0px 0px !important;
 
   ul{
     list-style-type: none;
@@ -32,7 +118,7 @@
 
   li{
     padding-right: @small-padd;
-    float: left;
     list-style-type: none;
+    display: inline-block;
   }
 }

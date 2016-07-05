@@ -60,21 +60,15 @@ class opendev_AdvancedNav {
 			}
 
 			if(isset($_GET[$this->prefix . 's'])) {
-
 				$query->set('s', $_GET[$this->prefix . 's']);
-
 			}
 
 			if(isset($_GET[$this->prefix . 'post_type'])) {
-
 				$query->set('post_type', $_GET[$this->prefix . 'post_type']);
-
 			}
 
 			if(isset($_GET[$this->prefix . 'category'])) {
-
 				$query->set('category__in', $_GET[$this->prefix . 'category']);
-
 			}
 
 			if(isset($_GET[$this->prefix . 'date_start'])) {
