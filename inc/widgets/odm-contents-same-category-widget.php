@@ -28,7 +28,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$related_posts = array();
 
 		$supported_post_types = array();
-		$post_types = $this->available_post_types();
+		$post_types = available_custom_post_types();
 		foreach ($post_types as $post_type):
 			if (isset($instance[$post_type->name]) && $instance[$post_type->name]):
 				array_push($supported_post_types,$post_type->name);
@@ -39,7 +39,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 			//TODO: OPtimize this query to filter out categories directly
 			// and ensuring $limit is precise.
-			
+
 			$query = array(
 					'posts_per_page'   => $limit,
 					'order'            => 'DESC',
@@ -60,6 +60,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		<ul>
 
 			<?php
+
+				//TODO: After optimizing query above, this check would not be necessary
 
 				foreach($related_posts as $related_post):
 					$related_categories = wp_get_post_categories($related_post->ID);
@@ -86,7 +88,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-	  $post_types = $this->available_post_types();
+	  $post_types = available_custom_post_types();
 
 		$title = !empty($instance['title']) ? __($instance['title'], 'opendev') : __('Custom posts', 'opendev'); ?>
 		<p>
@@ -124,25 +126,14 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
 
-		$post_types = $this->available_post_types();
+		$post_types = available_custom_post_types();
 		foreach ($post_types as $post_type):
 			$instance[$post_type->name] = (!empty($new_instance[$post_type->name])) ? true : false;
 		endforeach;
 		return $instance;
 	}
 
-	private function available_post_types(){
-		$args = array(
-		   'public'   => true,
-		   '_builtin' => false
-		);
 
-		$output = 'objects';
-		$operator = 'and';
-		$post_types = get_post_types( $args, $output, $operator );
-
-		return $post_types;
-	}
 
 }
 

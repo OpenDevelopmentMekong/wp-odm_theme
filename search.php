@@ -10,6 +10,6 @@
 		</div>
 	</div>
 </div>
-<?php get_template_part('loop'); ?>
+<?php get_template_part('advanced-search'); ?>
 
 <?php get_footer(); ?>

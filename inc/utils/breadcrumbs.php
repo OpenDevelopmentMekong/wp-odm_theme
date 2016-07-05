@@ -66,10 +66,12 @@ function the_breadcrumb()
         echo the_separated_breadcrumb($separator, '', 'home');
 
         if (is_single()) {
-            //Single post of post type "Topic"
-            $post_type_of_topic = get_post_type(get_the_ID());
 
-            if ($post_type_of_topic  == 'topic') {
+            $post_type_name = get_post_type(get_the_ID());
+            $post_type = get_post_type_object($post_type_name);
+            echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type->labels->name.'">'.$post_type->labels->name.'</a></li>';
+            echo the_separated_breadcrumb($separator, '', 'post-type');
+            if ($post_type_name  == 'topic') {
                 $get_topic_title = get_the_title();
                 $cats = get_the_category(get_the_ID());
                 if ($cats) {
@@ -81,7 +83,7 @@ function the_breadcrumb()
                       // Which Category and Post have the same name
                       if ($cat_name == $page_title) {
                         $cat_id = $cat->term_id;
-                        get_all_parent_category($cat_id, $post_type_of_topic, $separator, $page_title);
+                        get_all_parent_category($cat_id, $post_type_name, $separator, $page_title);
                       }
                     }
                   }
@@ -193,6 +195,18 @@ function the_breadcrumb()
             // Display author name
             echo '<li class="item-current item-current-'.$userdata->user_nicename.'"><strong class="bread-current bread-current-'.$userdata->user_nicename.'" title="'.$userdata->display_name.'">'.'Author: '.$userdata->display_name.'</strong></li>';
         } elseif (get_query_var('paged')) {
+            $post_type = get_query_var('post_type');
+            if ($post_type && (null !== get_post_type_object($post_type))) {
+              $post_type_data = get_post_type_object($post_type);
+              $post_type_slug = $post_type_data->rewrite['slug'];
+              echo '<li class="item-current item-current-'.$post_type_slug.'"> ';
+              echo '<div class="bread-current bread-current-'.$post_type_slug.'">';
+              echo post_type_archive_title();
+              echo '</div>';
+              echo '</li>';
+              echo the_separated_breadcrumb($separator, '', 'post-type');
+            }
+
             // Paginated archives
             echo '<li class="item-current item-current-'.get_query_var('paged').'"><strong class="bread-current bread-current-'.get_query_var('paged').'" title="Page '.get_query_var('paged').'">'.__('Page').' '.get_query_var('paged').'</strong></li>';
         } elseif (is_search()) {

@@ -27,34 +27,8 @@ class OpenDev_LiveSearch {
 	}
 
 	function query() {
-		if(isset($_REQUEST['s']) && $_REQUEST['s']) {
-			$query = new WP_Query(array(
-				's' => $_REQUEST['s'],
-				'post_type' => array('post', 'topic', 'map'),
-				'posts_per_page' => 9,
-				'post_status' => 'publish'
-			));
-			$response = array(
-				'posts' => array(),
-				'found_posts' => $query->found_posts
-			);
-			if($query->have_posts()) {
-				while($query->have_posts()) {
-					$query->the_post();
-					$response['posts'][] = array(
-						'title' => get_the_title(),
-						'excerpt' => excerpt(20),
-						'post_type' => get_post_type($post->ID),
-						'url' => get_permalink(),
-						'thumbnail' => get_the_post_thumbnail( $page->ID, array(50,50), array('class'	=> "attachment-$size border align-left",
-                   		'alt'	=> trim( strip_tags( $attachment->post_excerpt ) )
-																							))
-					);
-					wp_reset_postdata();
-				}
-				wp_reset_query();
-			}
-		}
+
+		$response = content_types_breakdown_for_query($_REQUEST['s'],5);
 
 		header('Content-Type: application/json;charset=UTF-8');
 		echo json_encode($response);

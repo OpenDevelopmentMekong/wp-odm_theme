@@ -1,6 +1,5 @@
 (function($) {
-     
-        
+
 	var query = _.debounce(function(s, cb) {
 
 		$.ajax({
@@ -10,61 +9,80 @@
 				s: s
 			},
 			dataType: 'json',
-			success: function(data) { 
+			success: function(data) {
 				cb(data);
-               $("a.close_result" ).click(function(e) { 
-        		    $('.results-container').hide();
-                });
+        $('#close-results').click(function(e) {
+		    	$('.results-container').hide();
+        });
 			}
 		});
 
 	}, 200);
 
-	var display = function(container, data, s) {  
-		var results = $('<ul class="results clearfix" />');
-            results.append("<a href='#' class='close_result'>X</a>");
-		_.each(data.posts, function(item, i) {
-		
-			var type = $('<p class="type">' + livesearch.labels[item.post_type] + '</p>');
-			var title = $('<h2>' + item.title + '</h2>');
-			var thumbnail = $(item.thumbnail);
-			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
+	var display = function(resultsContainer,data, s) {
+		var results = $('<div class="results">');
 
-			var link = $('<a id="cambodia-color" href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
+    _.each(data, function(postType, i){
 
-			var item = $('<li />')
-				.append(type)
-				.append(title.html(link))
-				.append(thumbnail)
-				.append(desc);
+      var column = $('<div class="three columns"><h1>' + postType.title + '</h1></div>');
 
-			item.addClass('item-' + (i+1));
+      if (postType.posts.length >0){
 
-			results.append(item);
+        _.each(postType.posts, function(item, i) {
+    			//var type = $('<p class="type">' + postType.title + '</p>');
+    			var title = $('<p><a class="post-list-item-title">' + item.title + '</a></p>');
+    			var thumbnail = $(item.thumbnail);
+					var content = $('<div class="post-list-item-content"></div>');
+    			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
+    			var link = $('<a href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
 
-		});
+					content.append(thumbnail);
+					content.append(desc);
 
-		var more = $('<li class="more" />');
+    			var item = $('<div class="post-list-item-small">')
+    				//.append(type)
+    				.append(title.html(link))
+    				.append(content);
 
-		var link = $('<a id="cambodia-bgcolor" href="' + livesearch.siteurl + '?s=' + s + '" />');
+    			item.addClass('item-' + (i+1));
+    			column.append(item);
+
+    		});
+      }else{
+        var noItem = $('<p>No item found</p>');
+        column.append(noItem);
+      }
+
+      results.append(column);
+
+    });
+
+    // Results
+		resultsContainer.find('.results').remove();
+    $('#od-search-results').show();
+		resultsContainer.show();
+		resultsContainer.append(results);
+
+
+    // More results
+    var more = $('<div class="more" />');
+    var close = $('<a class="button" id="close-results" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i> Close</a>');
+		var link = $('<a class="button" id="more-results" href="' + livesearch.siteurl + '?s=' + s + '" />');
 		link.text(livesearch.labels.more);
 		more.append(link);
+		more.append(close);
+    resultsContainer.append(more);
 
-		results.append(more);
 
-		results.addClass('results-' + data.posts.length);
-
-		container.find('.results').remove();
-		container.find('.results-container').show();
-		container.find('.results-container').append(results);
 		$('#loading').hide();
 
 	};
 
-	$(document).ready(function() {         
-		
-		var $livesearch = $('#live-search');
-        
+	$(document).ready(function() {
+
+		var $livesearch = $('.mega-search');
+    var $resultsContainer = $('.results-container');
+
 		if($livesearch.length) {
 
 			$livesearch.find('input[type=text]').on('keyup', function() {
@@ -73,23 +91,23 @@
 
 				var s = $(this).val();
 				if(s) {
-					$('#loading').show();
+					//$('#loading').show();
 					query(s, function(data) {
 						if(self.val())
-							display($livesearch, data, s);
+							display($resultsContainer, data, s);
 						else
 							$livesearch.find('.results').remove();
 					});
 				} else {
 					$('#loading').hide();
-					$livesearch.find('.results').remove();    
-		            $('.results-container').hide();
+					$livesearch.find('.results').remove();
+		      $resultsContainer.hide();
 				}
 
 			});
 
-		} //if($livesearch.length
-		
+		}
+
 	});
 
 })(jQuery);

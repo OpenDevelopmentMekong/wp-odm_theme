@@ -40,7 +40,7 @@ class OpenDev_News_Article {
 			'show_in_menu'       => true,
 			'menu_icon' 				 => '',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'news' ),
+			'rewrite'            => array( 'slug' => 'news-article' ),
 			'capability_type'    => 'post',
 			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,

@@ -28,34 +28,14 @@
    </div>
  </section>
 
- <section id="homepage-area-2" class="page-section">
+ <section id="homepage-area-2-3" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="twelve columns">
+      <div class="six columns">
         <?php dynamic_sidebar('homepage-area-2'); ?>
       </div>
-    </div>
-   </div>
- </section>
-
- <section id="homepage-area-3" class="page-section">
-   <div class="container">
-     <div class="row">
-      <div class="twelve columns">
+      <div class="six columns">
         <?php dynamic_sidebar('homepage-area-3'); ?>
-      </div>
-    </div>
-   </div>
- </section>
-
- <section id="homepage-area-4-5" class="page-section">
-   <div class="container">
-     <div class="row">
-      <div class="six columns">
-        <?php dynamic_sidebar('homepage-area-4'); ?>
-      </div>
-      <div class="six columns">
-        <?php dynamic_sidebar('homepage-area-5'); ?>
       </div>
     </div>
    </div>

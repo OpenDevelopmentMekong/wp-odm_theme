@@ -69,7 +69,7 @@ function opendev_setup_theme()
   ));
     register_sidebar(array(
     'name' => __('Homepage area 2', 'jeo'),
-    'id' => 'homepage-area-4',
+    'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
     'before_widget' => '',
@@ -77,7 +77,7 @@ function opendev_setup_theme()
   ));
     register_sidebar(array(
     'name' => __('Homepage area 3', 'jeo'),
-    'id' => 'homepage-area-5',
+    'id' => 'homepage-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
     'before_widget' => '',
@@ -126,7 +126,7 @@ function add_menu_icons_styles(){
   content: "\f163";
 }
 #adminmenu .menu-icon-profiles div.wp-menu-image:before {
-  content: "\f318";
+  content: "\f325";
 }
 #adminmenu .menu-icon-tabular div.wp-menu-image:before {
   content: "\f509";
@@ -165,23 +165,23 @@ function opendev_jeo_scripts()
     'embed_base_url' => home_url('/embed/'),
     'share_base_url' => home_url('/share/'),
     'marker_active' => array(
-    'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
-    'iconSize' => array(26, 30),
-    'iconAnchor' => array(13, 30),
-    'popupAnchor' => array(0, -40),
-    'markerId' => 'none',
-  ),
-   'site_url' => home_url('/'),
-   'read_more_label' => __('Read more', 'opendev'),
-   'lightbox_label' => array(
-   'slideshow' => __('Open slideshow', 'opendev'),
-   'videos' => __('Watch video gallery', 'opendev'),
-   'video' => __('Watch video', 'opendev'),
-   'images' => __('View image gallery', 'opendev'),
-   'image' => __('View fullscreen image', 'opendev'),
-   'infographic' => __('View infographic', 'opendev'),
-   'infographics' => __('View infographics', 'opendev'),
-  ),
+      'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
+      'iconSize' => array(26, 30),
+      'iconAnchor' => array(13, 30),
+      'popupAnchor' => array(0, -40),
+      'markerId' => 'none',
+    ),
+     'site_url' => home_url('/'),
+     'read_more_label' => __('Read more', 'opendev'),
+     'lightbox_label' => array(
+     'slideshow' => __('Open slideshow', 'opendev'),
+     'videos' => __('Watch video gallery', 'opendev'),
+     'video' => __('Watch video', 'opendev'),
+     'images' => __('View image gallery', 'opendev'),
+     'image' => __('View fullscreen image', 'opendev'),
+     'infographic' => __('View infographic', 'opendev'),
+     'infographics' => __('View infographics', 'opendev'),
+    ),
    'enable_clustering' => jeo_use_clustering() ? true : false,
    'default_icon' => jeo_formatted_default_marker(),
   ));
@@ -266,10 +266,7 @@ function opendev_marker_data($data, $post)
     global $post;
 
     $permalink = $data['url'];
-
-    if (function_exists('qtranxf_getLanguage')) {
-        $permalink = add_query_arg(array('lang' => qtranxf_getLanguage()), $permalink);
-    }
+    $permalink = add_query_arg(array('lang' => opendev_language_manager()->get_current_language()), $permalink);
 
     $data['permalink'] = $permalink;
     $data['url'] = $permalink;
@@ -283,8 +280,6 @@ function opendev_marker_data($data, $post)
     return $data;
 }
 add_filter('jeo_marker_data', 'opendev_marker_data', 10, 2);
-
-
 
 function opendev_social_apis()
 {
@@ -345,7 +340,7 @@ add_action('admin_footer', 'opendev_custom_admin_css');
 function opendev_search_pre_get_posts($query)
 {
     if (!is_admin() && ($query->is_search || get_query_var('opendev_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
-        $query->set('post_type', get_post_types(array('public' => true)));
+      $query->set('post_type', get_post_types());
     }
 }
 add_action('pre_get_posts', 'opendev_search_pre_get_posts');
@@ -375,35 +370,35 @@ function opendev_posts_clauses_where($where)
 
     $where = '';
 
- // MAP
- if (get_post_type($map_id) == 'map') {
-     $where = " AND ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$map_id}' ) ";
+     // MAP
+     if (get_post_type($map_id) == 'map') {
+         $where = " AND ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$map_id}' ) ";
 
- // MAPGROUP
- } elseif (get_post_type($map_id) == 'map-group') {
-     $groupdata = get_post_meta($map_id, 'mapgroup_data', true);
+     // MAPGROUP
+     } elseif (get_post_type($map_id) == 'map-group') {
+       $groupdata = get_post_meta($map_id, 'mapgroup_data', true);
 
-     if (isset($groupdata['maps']) && is_array($groupdata['maps'])) {
-         $where = ' AND ( ';
+       if (isset($groupdata['maps']) && is_array($groupdata['maps'])) {
+           $where = ' AND ( ';
 
-         $size = count($groupdata['maps']);
-         $i = 1;
+           $size = count($groupdata['maps']);
+           $i = 1;
 
-         foreach ($groupdata['maps'] as $m) {
-             $c_map_id = $m['id'];
+           foreach ($groupdata['maps'] as $m) {
+               $c_map_id = $m['id'];
 
-             $where .= " ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$c_map_id}' ) ";
+               $where .= " ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$c_map_id}' ) ";
 
-             if ($i < $size) {
-                 $where .= ' OR ';
-             }
+               if ($i < $size) {
+                   $where .= ' OR ';
+               }
 
-             ++$i;
-         }
+               ++$i;
+           }
 
-         $where .= ' ) ';
-     }
- }
+           $where .= ' ) ';
+       }
+   }
 
     return $where;
 }
@@ -427,12 +422,11 @@ function my_mce_buttons_2($buttons)
 }
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
 
-
- function hide_other_country_page_template($pages_templates)
- {
-     return $pages_templates;
- }
- add_filter('theme_page_templates', 'hide_other_country_page_template');
+function hide_other_country_page_template($pages_templates)
+{
+   return $pages_templates;
+}
+add_filter('theme_page_templates', 'hide_other_country_page_template');
 
 /**
  * Allow embed iframe.
