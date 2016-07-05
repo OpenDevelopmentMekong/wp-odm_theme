@@ -125,6 +125,12 @@ function add_menu_icons_styles(){
 #adminmenu .menu-icon-topic div.wp-menu-image:before {
   content: "\f163";
 }
+#adminmenu .menu-icon-profiles div.wp-menu-image:before {
+  content: "\f318";
+}
+#adminmenu .menu-icon-tabular div.wp-menu-image:before {
+  content: "\f509";
+}
 </style>
 
 <?php
