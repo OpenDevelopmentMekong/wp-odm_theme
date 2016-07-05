@@ -69,7 +69,7 @@ function opendev_setup_theme()
   ));
     register_sidebar(array(
     'name' => __('Homepage area 2', 'jeo'),
-    'id' => 'homepage-area-4',
+    'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
     'before_widget' => '',
@@ -77,7 +77,7 @@ function opendev_setup_theme()
   ));
     register_sidebar(array(
     'name' => __('Homepage area 3', 'jeo'),
-    'id' => 'homepage-area-5',
+    'id' => 'homepage-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
     'before_widget' => '',
@@ -266,10 +266,7 @@ function opendev_marker_data($data, $post)
     global $post;
 
     $permalink = $data['url'];
-
-    if (function_exists('qtranxf_getLanguage')) {
-        $permalink = add_query_arg(array('lang' => qtranxf_getLanguage()), $permalink);
-    }
+    $permalink = add_query_arg(array('lang' => opendev_language_manager()->get_current_language()), $permalink);
 
     $data['permalink'] = $permalink;
     $data['url'] = $permalink;

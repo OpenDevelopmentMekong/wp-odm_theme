@@ -40,7 +40,7 @@ class OpenDev_Announcement {
 			'show_in_menu'       => true,
 			'menu_icon' 				 => '',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'announcements' ),
+			'rewrite'            => array( 'slug' => 'announcement' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,

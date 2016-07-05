@@ -14,16 +14,16 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 						)
 				);
 		foreach ($get_post as $page_topic) {
-				$lang_tag = '[:'.qtranxf_getLanguage().']';
+				$lang_tag = '[:'.opendev_language_manager()->get_current_language().']';
 				$lang_tag_finder = '/'.$lang_tag.'/';
 
-				if (qtranxf_getLanguage() != 'en') {
+				if (opendev_language_manager()->get_current_language() != 'en') {
 								if (strpos($page_topic->post_title, '[:kh]') !== false) {
 										$page_title = explode($lang_tag, $page_topic->post_title);
 										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
 								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
 										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$page_title = trim(str_replace('<!--:'.qtranxf_getLanguage().'-->', '', $page_title[1]));
+										$page_title = trim(str_replace('<!--:'.opendev_language_manager()->get_current_language().'-->', '', $page_title[1]));
 										$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
 								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
 										$page_title = explode('<!--:-->', $page_topic->post_title);

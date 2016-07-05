@@ -40,7 +40,7 @@ class OpenDev_Topic {
 			'show_in_menu'       => true,
 			'menu_icon' 				 => '',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'topics' ),
+			'rewrite'            => array( 'slug' => 'topic' ),
 			'capability_type'    => 'post',
 			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,

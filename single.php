@@ -24,13 +24,13 @@
 
               <?php
                   if (function_exists('qtranxf_getLanguage')):
-                    if ((qtranxf_getLanguage() == 'en') && (has_term('english-translated', 'language'))):
+                    if ((opendev_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))):
                   ?>
                   <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
                 <?php
                   endif;
                     ?>
-                  <?php if (isset($local_language) && (qtranxf_getLanguage() == $local_language) && (has_term('khmer-translated', 'language'))):?>
+                  <?php if (isset($local_language) && (opendev_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
                       <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
                   <?php
                     endif; ?>
@@ -87,18 +87,20 @@
                 ?>
             </section>
           </div>
+
+          <div class="three columns offset-by-one">
+            <aside id="sidebar">
+              <ul class="widgets">
+                <li class="widget share-widget">
+                  <?php opendev_get_template('social-share',array(),true); ?>
+                </li>
+                <?php dynamic_sidebar('post'); ?>
+              </ul>
+            </aside>
+          </div>
+
         </div>
 
-        <div class="three columns offset-by-one">
-          <aside id="sidebar">
-            <ul class="widgets">
-              <li class="widget share-widget">
-                <?php opendev_get_template('social-share',array(),true); ?>
-              </li>
-              <?php dynamic_sidebar('post'); ?>
-            </ul>
-          </aside>
-        </div>
       </div>
 
   </article>

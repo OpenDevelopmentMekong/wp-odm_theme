@@ -160,7 +160,7 @@ class opendev_AdvancedNav {
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="four columns">
+			<div class="three columns offset-by-one">
 				<div class="date-input adv-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'opendev'); ?></label></p>
 					<div class="date-range-inputs">
