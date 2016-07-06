@@ -5,11 +5,6 @@
 	padding: @small-padd;
 }
 
-#od-menu{
-	background: @bg-gray;
-	padding: @small-padd;
-}
-
 #od-selector .row, #od-head .row, #od-menu .row, #od-breadcrumb .row {
 	margin: 0px;
 }
@@ -29,16 +24,14 @@
  float: left;
 }
 
-#od-selector{
- padding: @small-padd;
-}
-
 #od-selector {
- background: #fff;
- margin: 0;
- border-top: 1px solid #ddd;
- border-bottom: 1px solid #c9c9c9;
- box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
+	padding: @xsmall-padd;
+	background: #fff;
+	margin: 0;
+	box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
+	a {
+		text-decoration: none;
+	}
 }
 
 #od-selector ul,
@@ -66,35 +59,33 @@
  */
 
 #od-head {
-	padding: 10px 0 0;
-	background: #292d56;
+	padding: @xsmall-padd;
+	background: @mekong-dark;
 	min-height: 55px;
-
 	 h1 {
-		 font-family: 'Droid Serif';
-		 font-size: 48px;
-		 line-height: 48px;
-		 font-family: 700;
-		 letter-spacing: -4px;
-		 float: left;
-		 margin: 0 24px 0px 0px;
+		font-family: 'Droid Serif';
+		font-size: 48px;
+		line-height: 48px;
+		font-weight: 700;
+		letter-spacing: -4px;
+		float: left;
+		margin: 0 24px 0px 0px;
+		sup {
+		 font-size: 55%;
+		 position: relative;
+		 vertical-align: baseline;
+		 top: -10px;
+		}
 
-		 sup {
-			 font-size: 55%;
-			 position: relative;
-			 vertical-align: baseline;
-			 top: -10px;
-		 }
+		a {
+		 text-decoration: none;
+		 color: @mekong-bright;
+		}
 
-		 a {
-			 text-decoration: none;
-			 color: #6393d2;
-		 }
-
-		 &.with-logo, &.with-logo a {
-			 text-indent: -9999px;
-			 line-height: 0;
-		 }
+		&.with-logo, &.with-logo a {
+		 text-indent: -9999px;
+		 line-height: 0;
+		}
 	 }
 
 	 h2 {
@@ -126,6 +117,10 @@
 /*
  * Main menu
  */
+
+#od-menu{
+	background: @light-gray;
+}
 #od-menu ul {
 	margin: 0px;
 }
