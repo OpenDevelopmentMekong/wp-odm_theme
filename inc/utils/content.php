@@ -188,7 +188,7 @@ function show_post_meta($post)
 	<div class="post-meta">
 		<ul>
 			<li class="date">
-				 <span class="lsf">&#xE12b;</span>
+				<i class="fa fa-clock-o"></i>
 					 <?php
 					 if (function_exists('qtrans_getLanguage')) {
 							 if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
@@ -258,15 +258,17 @@ function show_post_meta($post)
 					echo '</li><!--news-source-->';
 			}// if public_announcement_source exists ?>
 			<li class="categories">
-				<span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
+				<i class="fa fa-folder"></i>
+				<?php the_category(); ?>
 			</li>
 			<?php
-				$tags = the_tags('', '');
-				if (!empty($tags)): ?>
+				//$tags = the_tags('', '');
+				//if (!empty($tags)): ?>
 					<li class="post-tags">
-							<span class="lsf">&#xE128;</span> <?php echo __('Tags:', 'opendev'); ?> <?php the_tags('', ''); ?>
+						<i class="fa fa-tags"></i>
+						<?php the_tags('', ''); ?>
 					</li>
-			  <?php	endif; ?>
+			  <?php	//endif; ?>
 		</ul>
 	</div>
 
