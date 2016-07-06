@@ -106,7 +106,7 @@ class opendev_AdvancedNav {
 		$s = isset($_GET[$this->prefix . 's']) ? $_GET[$this->prefix . 's'] : '';
 		$s = !$s && isset($_GET['s']) ? $_GET['s'] : $s;
 		?>
-		<form class="advanced-nav-filters <?php if($_GET[$this->prefix]) echo 'active'; ?>">
+		<form class="advanced-nav-filters <?php if(isset($_GET[$this->prefix])) echo 'active'; ?>">
 			<input type="hidden" name="opendev_advanced_nav" value="1" />
 			<input type="hidden" name="<?php echo $this->prefix; ?>" value="1" />
 			<div class="two columns alpha">
@@ -160,17 +160,15 @@ class opendev_AdvancedNav {
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="three columns offset-by-one">
+			<div class="three columns">
 				<div class="date-input adv-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'opendev'); ?></label></p>
 					<div class="date-range-inputs">
 						<div class="date-from-container">
-							<label class="sublabel" for="<?php echo $this->prefix; ?>date_start"><?php _e('From', 'opendev'); ?></label>
-							<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? $_GET[$this->prefix . 'date_start'] : ''; ?>" />
+							<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" placeholder="<?php _e('From', 'opendev'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? $_GET[$this->prefix . 'date_start'] : ''; ?>" />
 						</div>
 						<div class="date-to-container">
-							<label class="sublabel" for="<?php echo $this->prefix; ?>date_end"><?php _e('To', 'opendev'); ?></label>
-							<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? $_GET[$this->prefix . 'date_end'] : ''; ?>" />
+							<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end"  placeholder="<?php _e('To', 'opendev'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? $_GET[$this->prefix . 'date_end'] : ''; ?>" />
 						</div>
 					</div>
 				</div>

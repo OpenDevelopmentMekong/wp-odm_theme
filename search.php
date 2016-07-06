@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="twelve columns">
 			<!--<h1><?php _e('Search results', 'jeo'); ?></h1-->
-			<div class="more-filters-content">
+			<div class="panel more-filters-content row">
 				<?php opendev_adv_nav_filters(); ?>
 			</div>
 		</div>
