@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
-				<ul class="opendev-posts-list">
+				<ul class="odm-posts-list">
 					<?php while (have_posts()) : the_post(); ?>
 						<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
 							<article id="post-<?php the_ID(); ?>">
@@ -33,9 +33,9 @@
 				<aside id="sidebar">
 					<ul class="widgets">
 						<li class="widget share-widget">
-							<?php opendev_get_template('social-share',array(),true); ?>
+							<?php odm_get_template('social-share',array(),true); ?>
 						</li>
-						<li id="odm_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+						<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
 							<?php list_category_by_post_type(); ?>
 						</li>
 					</ul>

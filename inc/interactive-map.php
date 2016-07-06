@@ -3,7 +3,7 @@
  * Open Development
  * Interactive Map
  */
- class OpenDev_InteractiveMap
+ class Odm_InteractiveMap
  {
      public function __construct()
      {
@@ -51,7 +51,7 @@
                  wp_reset_postdata();
              }
          }//$layer_query
-        $map = opendev_get_interactive_map_data();
+        $map = odm_get_interactive_map_data();
          $map['dataReady'] = true;
          $map['postID'] = 'interactive_map';
          $map['layers'] = $layers;
@@ -134,7 +134,7 @@
        <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
         <?php $lang = 'en';
          $i = 0;
-        //$lang = opendev_language_manager()->get_current_language();
+        //$lang = odm_language_manager()->get_current_language();
         foreach ($map['layers'] as $individual_layer) {
             ++$i;
             $get_post_by_id = get_post($individual_layer['ID']);
@@ -403,4 +403,4 @@
          return $html;
      }
  }
-new OpenDev_InteractiveMap();
+new Odm_InteractiveMap();

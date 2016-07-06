@@ -5,7 +5,7 @@
  * announcement
  */
 
-class OpenDev_Announcement {
+class Odm_Announcement {
 
 	function __construct() {
 
@@ -55,4 +55,4 @@ class OpenDev_Announcement {
 
 }
 
-$GLOBALS['opendev_announcement'] = new OpenDev_Announcement();
+$GLOBALS['odm_announcement'] = new Odm_Announcement();

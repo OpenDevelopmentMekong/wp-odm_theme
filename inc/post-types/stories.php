@@ -5,7 +5,7 @@
  * Stories content type
  */
 
-class OpenDev_Story {
+class Odm_Story {
 
 	function __construct() {
 
@@ -55,4 +55,4 @@ class OpenDev_Story {
 
 }
 
-$GLOBALS['opendev_story'] = new OpenDev_Story();
+$GLOBALS['odm_story'] = new Odm_Story();

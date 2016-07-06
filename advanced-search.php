@@ -12,7 +12,7 @@
 
 				<!-- TODO: Ensure that the query contains only valid results in order for pagination
 			  					 to match. -->
-				<ul class="opendev-posts-list">
+				<ul class="odm-posts-list">
 
 					<?php foreach (available_post_types() as $post_type): ?>
 						<?php if (in_array($post_type->name,available_post_types_search())): ?>
@@ -28,7 +28,7 @@
 											$counter++;
 										?>
 										<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-											<?php opendev_get_template('post-list-full-width-single',array(get_post()),true); ?>
+											<?php odm_get_template('post-list-full-width-single',array(get_post()),true); ?>
 										</li>
 									<?php	endif; ?>
 								<?php endwhile; ?>
@@ -48,7 +48,7 @@
 				<h2><?php _e('Data results'); ?></h2>
 				<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]'); ?>
 				<?php
-            $data_page_id = opendev_get_data_page_id();
+            $data_page_id = odm_get_data_page_id();
             if ($data_page_id) : ?>
 							<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'opendev');?></a>
 			<?php endif ?>

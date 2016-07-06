@@ -5,7 +5,7 @@
  * Language Manager
  */
 
-class OpenDev_Language_Manager {
+class Odm_Language_Manager {
 
   var $current_language = 'en';
 
@@ -38,10 +38,10 @@ class OpenDev_Language_Manager {
 
 }
 
-$GLOBALS['opendev_language_manager'] = new OpenDev_Language_Manager();
+$GLOBALS['odm_language_manager'] = new Odm_Language_Manager();
 
-function opendev_language_manager() {
-	return $GLOBALS['opendev_language_manager'];
+function odm_language_manager() {
+	return $GLOBALS['odm_language_manager'];
 }
 
 ?>

@@ -14,16 +14,16 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 						)
 				);
 		foreach ($get_post as $page_topic) {
-				$lang_tag = '[:'.opendev_language_manager()->get_current_language().']';
+				$lang_tag = '[:'.odm_language_manager()->get_current_language().']';
 				$lang_tag_finder = '/'.$lang_tag.'/';
 
-				if (opendev_language_manager()->get_current_language() != 'en') {
+				if (odm_language_manager()->get_current_language() != 'en') {
 								if (strpos($page_topic->post_title, '[:kh]') !== false) {
 										$page_title = explode($lang_tag, $page_topic->post_title);
 										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
 								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
 										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$page_title = trim(str_replace('<!--:'.opendev_language_manager()->get_current_language().'-->', '', $page_title[1]));
+										$page_title = trim(str_replace('<!--:'.odm_language_manager()->get_current_language().'-->', '', $page_title[1]));
 										$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
 								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
 										$page_title = explode('<!--:-->', $page_topic->post_title);
@@ -87,7 +87,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 				echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
 		}
 
-		echo "<ul class='opendev_taxonomy_widget_ul'>";
+		echo "<ul class='odm_taxonomy_widget_ul'>";
 		foreach ($categories as $category) {
 				$jackpot = true;
 				$children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
@@ -107,10 +107,10 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 				?>
 				<script type="text/javascript">
 					jQuery(document).ready(function($) {
-					$('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
-						if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
-							$('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
-							$('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+					$('.odm_taxonomy_widget_ul > li.cat_item').each(function(){
+						if($('.odm_taxonomy_widget_ul > li.cat_item:has(ul)')){
+							$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
+							$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
 						}
 						//if parent is showed, child need to expend
 						if ($('span.<?php echo $current_cat_page;?>').length){
@@ -124,7 +124,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 							$('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
 						}
 					});
-					$('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
+					$('.odm_taxonomy_widget_ul > li.cat_item span').click(function(event) {
 						//event.preventDefault();
 						var target =  $( event.target );
 							if(target.parent("li").find('ul').length){
@@ -355,7 +355,7 @@ function available_custom_post_types(){
 					 'excerpt' => (isset($post->post_excerpt) && !empty($post->post_excerpt)) ? $post->post_excerpt : substr($post->post_content,0,60),
 					 'post_type' => $post_type,
 					 'url' => get_permalink($post->ID),
-					 'thumbnail' => opendev_get_thumbnail($post->ID,true)
+					 'thumbnail' => odm_get_thumbnail($post->ID,true)
 				 ));
 			 endforeach;
 		 endforeach;

@@ -5,9 +5,9 @@
  * Advanced navigation
  */
 
-class opendev_AdvancedNav {
+class odm_AdvancedNav {
 
-	var $prefix = 'opendev_filter_';
+	var $prefix = 'odm_filter_';
 	var $slug = 'explore';
 
 	function __construct() {
@@ -22,25 +22,25 @@ class opendev_AdvancedNav {
 	}
 
 	function query_vars($vars) {
-		$vars[] = 'opendev_advanced_nav';
+		$vars[] = 'odm_advanced_nav';
 		return $vars;
 	}
 
 	function body_class($class) {
-		if(get_query_var('opendev_advanced_nav'))
+		if(get_query_var('odm_advanced_nav'))
 			$class[] = 'advanced-nav';
 		return $class;
 	}
 
 	function generate_rewrite_rules($wp_rewrite) {
 		$widgets_rule = array(
-			$this->slug . '$' => 'index.php?opendev_advanced_nav=1'
+			$this->slug . '$' => 'index.php?odm_advanced_nav=1'
 		);
 		$wp_rewrite->rules = $widgets_rule + $wp_rewrite->rules;
 	}
 
 	function template_redirect() {
-		if(get_query_var('opendev_advanced_nav')) {
+		if(get_query_var('odm_advanced_nav')) {
 			add_filter('template_include', array($this, 'template'));
 		}
 	}
@@ -53,7 +53,7 @@ class opendev_AdvancedNav {
 
 		if($query->is_main_query()) {
 
-			if($query->get('opendev_advanced_nav')) {
+			if($query->get('odm_advanced_nav')) {
 				$query->is_home = false;
 				$query->set('posts_per_page', 30);
 				$query->set('ignore_sticky_posts', true);
@@ -107,7 +107,7 @@ class opendev_AdvancedNav {
 		$s = !$s && isset($_GET['s']) ? $_GET['s'] : $s;
 		?>
 		<form class="advanced-nav-filters <?php if(isset($_GET[$this->prefix])) echo 'active'; ?>">
-			<input type="hidden" name="opendev_advanced_nav" value="1" />
+			<input type="hidden" name="odm_advanced_nav" value="1" />
 			<input type="hidden" name="<?php echo $this->prefix; ?>" value="1" />
 			<div class="two columns alpha">
 				<div class="search-input adv-nav-input">
@@ -124,7 +124,7 @@ class opendev_AdvancedNav {
 					<div class="category-input adv-nav-input">
 						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'opendev'); ?></label></p>
 						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'opendev'); ?>">
-							<?php wp_list_categories(array('title_li' => '', 'walker' => new OpenDev_Walker_CategoryDropdown_Multiple(), 'selected' => $active_cats)); ?>
+							<?php wp_list_categories(array('title_li' => '', 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'selected' => $active_cats)); ?>
 						</select>
 					</div>
 				</div>
@@ -238,10 +238,10 @@ class opendev_AdvancedNav {
 
 }
 
-$GLOBALS['opendev_adv_nav'] = new opendev_AdvancedNav();
+$GLOBALS['odm_adv_nav'] = new odm_AdvancedNav();
 
-function opendev_adv_nav_filters() {
-	return $GLOBALS['opendev_adv_nav']->form();
+function odm_adv_nav_filters() {
+	return $GLOBALS['odm_adv_nav']->form();
 }
 
 ?>

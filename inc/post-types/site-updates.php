@@ -5,7 +5,7 @@
  * Site updates content type
  */
 
-class OpenDev_Site_Updates {
+class Odm_Site_Updates {
 
 	function __construct() {
 
@@ -55,4 +55,4 @@ class OpenDev_Site_Updates {
 
 }
 
-$GLOBALS['opendev_site_updates'] = new OpenDev_Site_Updates();
+$GLOBALS['odm_site_updates'] = new Odm_Site_Updates();

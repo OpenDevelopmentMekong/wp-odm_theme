@@ -5,7 +5,7 @@
  * News article content type
  */
 
-class OpenDev_News_Article {
+class Odm_News_Article {
 
 	function __construct() {
 
@@ -55,4 +55,4 @@ class OpenDev_News_Article {
 
 }
 
-$GLOBALS['opendev_news-article'] = new OpenDev_News_Article();
+$GLOBALS['odm_news-article'] = new Odm_News_Article();

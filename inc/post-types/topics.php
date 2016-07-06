@@ -5,7 +5,7 @@
  * Topic content type
  */
 
-class OpenDev_Topic {
+class Odm_Topic {
 
 	function __construct() {
 
@@ -55,4 +55,4 @@ class OpenDev_Topic {
 
 }
 
-$GLOBALS['opendev_topic'] = new OpenDev_Topic();
+$GLOBALS['odm_topic'] = new Odm_Topic();

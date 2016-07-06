@@ -5,7 +5,7 @@
  * Theme options
  */
 
-class OpenDev_Options
+class Odm_Options
 {
     public function __construct()
     {
@@ -16,20 +16,20 @@ class OpenDev_Options
 
     public function enqueue_scripts()
     {
-        if (get_current_screen()->id == 'appearance_page_opendev_options') {
+        if (get_current_screen()->id == 'appearance_page_odm_options') {
             wp_enqueue_media();
-            wp_enqueue_script('opendev-theme-options', get_stylesheet_directory_uri().'/inc/theme-options.js');
+            wp_enqueue_script('odm-theme-options', get_stylesheet_directory_uri().'/inc/theme-options.js');
         }
     }
 
     public function admin_menu()
     {
-        add_theme_page(__('Open Development Style', 'opendev'), __('Open Development', 'opendev'), 'edit_theme_options', 'opendev_options', array($this, 'admin_page'));
+        add_theme_page(__('Open Development Style', 'opendev'), __('Open Development', 'opendev'), 'edit_theme_options', 'odm_options', array($this, 'admin_page'));
     }
 
     public function admin_page()
     {
-        $this->options = get_option('opendev_options');
+        $this->options = get_option('odm_options');
 
         ?>
         <div class="wrap">
@@ -37,8 +37,8 @@ class OpenDev_Options
           <h2><?php _e('Open Development Theme Options', 'opendev');?></h2>
           <form method="post" action="options.php">
             <?php
-            settings_fields('opendev_options_group');
-              do_settings_sections('opendev_options');
+            settings_fields('odm_options_group');
+              do_settings_sections('odm_options');
               submit_button();
               ?>
          </form>
@@ -52,118 +52,118 @@ class OpenDev_Options
         mapbox_metabox_init();
 
         add_settings_section(
-         'opendev_style_section',
+         'odm_style_section',
          __('Style', 'opendev'),
          '',
-         'opendev_options'
+         'odm_options'
         );
         add_settings_section(
-         'opendev_news_section',
+         'odm_news_section',
          __('News: Filtered By Tags', 'opendev'),
          '',
-         'opendev_options'
+         'odm_options'
         );
         add_settings_section(
-         'opendev_links_section',
+         'odm_links_section',
          __('Links', 'opendev'),
          '',
-         'opendev_options'
+         'odm_options'
         );
 
         add_settings_section(
-         'opendev_interactive_map_section',
+         'odm_interactive_map_section',
          __('Interactive map', 'opendev'),
          '',
-         'opendev_options'
+         'odm_options'
         );
         add_settings_field(
-         'opendev_style',
+         'odm_style',
          __('Choose a style', 'opendev'),
          array($this, 'style_field'),
-         'opendev_options',
-         'opendev_style_section'
+         'odm_options',
+         'odm_style_section'
         );
 
         add_settings_field(
-          'opendev_notice_message',
+          'odm_notice_message',
           __('Notice Message appear above the slider', 'opendev'),
           array($this, 'notice_message_field'),
-          'opendev_options',
-          'opendev_style_section'
+          'odm_options',
+          'odm_style_section'
         );
 
         add_settings_field(
-         'opendev_frontpage_slider_id',
+         'odm_frontpage_slider_id',
          __('Frontpage slider id', 'opendev'),
          array($this, 'frontpage_slider_id_field'),
-         'opendev_options',
-         'opendev_style_section'
+         'odm_options',
+         'odm_style_section'
         );
 
         add_settings_field(
-         'opendev_news_tags',
+         'odm_news_tags',
          __('Filter News By Tags', 'opendev'),
          array($this, 'news_tags_field'),
-         'opendev_options',
-         'opendev_news_section'
+         'odm_options',
+         'odm_news_section'
         );
 
         add_settings_field(
-         'opendev_facebook',
+         'odm_facebook',
          __('Facebook url', 'opendev'),
          array($this, 'facebook_field'),
-         'opendev_options',
-         'opendev_links_section'
+         'odm_options',
+         'odm_links_section'
         );
 
         add_settings_field(
-         'opendev_twitter',
+         'odm_twitter',
          __('Twitter url', 'opendev'),
          array($this, 'twitter_field'),
-         'opendev_options',
-         'opendev_links_section'
+         'odm_options',
+         'odm_links_section'
         );
 
         add_settings_field(
-         'opendev_legal_disclaimer',
+         'odm_legal_disclaimer',
          __('Legal disclaimer', 'opendev'),
          array($this, 'legal_disclaimer_field'),
-         'opendev_options',
-         'opendev_links_section'
+         'odm_options',
+         'odm_links_section'
         );
 
         add_settings_field(
-         'opendev_contact',
+         'odm_contact',
          __('Contact page', 'opendev'),
          array($this, 'contact_page_field'),
-         'opendev_options',
-         'opendev_links_section'
+         'odm_options',
+         'odm_links_section'
         );
 
         add_settings_field(
-         'opendev_data_page',
+         'odm_data_page',
          __('Data page', 'opendev'),
          array($this, 'data_page_field'),
-         'opendev_options',
-         'opendev_links_section'
+         'odm_options',
+         'odm_links_section'
         );
 
         add_settings_field(
-         'opendev_interactive_map',
+         'odm_interactive_map',
          __('Base map settings', 'opendev'),
          array($this, 'interactive_map_field'),
-         'opendev_options',
-         'opendev_interactive_map_section'
+         'odm_options',
+         'odm_interactive_map_section'
         );
 
-        register_setting('opendev_options_group', 'opendev_options');
+        register_setting('odm_options_group', 'odm_options');
     }
 
     public function style_field()
     {
       ?>
-      <select id="opendev_style" name="opendev_options[style]">
-        <?php foreach (opendev_country_manager()->get_country_themes() as $label => $theme): ?>
+      <select id="odm_style" name="odm_options[style]">
+        <?php foreach (odm_country_manager()->get_country_themes() as $label => $theme): ?>
           <option <?php if (isset($this->options['style']) && $this->options['style'] == $theme): echo 'selected'; endif;?> value="<?php echo $theme;?>"><?php _e($label);?></option>
         <?php endforeach ?>
       </select>
@@ -173,7 +173,7 @@ class OpenDev_Options
     function notice_message_field() {
       $notice_message = $this->options['notice_message'];
       ?>
-      <textarea id="opendev_notice_message" name="opendev_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
+      <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
       <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'opendev'); ?></i>
       <?php
    }
@@ -181,7 +181,7 @@ class OpenDev_Options
     public function frontpage_slider_id_field()
     {
         $frontpage_slider_id = $this->options['frontpage_slider_id'];?>
-        <input id="opendev_frontpage_slider_id" name="opendev_options[frontpage_slider_id]" type="text" placeholder="<?php _e('281321');
+        <input id="odm_frontpage_slider_id" name="odm_options[frontpage_slider_id]" type="text" placeholder="<?php _e('281321');
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');
               ?>'" value="<?php echo $frontpage_slider_id;
               ?>" size="70" /><br/>
@@ -194,7 +194,7 @@ class OpenDev_Options
     {
         $news_tags = $this->options['news_tags'];
         ?>
-      <input id="opendev_news_tags" name="opendev_options[news_tags]" type="text" placeholder="<?php _e('Add tags');
+      <input id="odm_news_tags" name="odm_options[news_tags]" type="text" placeholder="<?php _e('Add tags');
         ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Add tags.');
         ?>'" value="<?php echo $news_tags;
         ?>" size="70" /> <br />
@@ -208,7 +208,7 @@ class OpenDev_Options
     {
         $facebook = $this->options['facebook_url'];
         ?>
-  <input id="opendev_facebook_url" name="opendev_options[facebook_url]" type="text" value="<?php echo $facebook;
+  <input id="odm_facebook_url" name="odm_options[facebook_url]" type="text" value="<?php echo $facebook;
         ?>" size="70" />
   <?php
 
@@ -217,7 +217,7 @@ class OpenDev_Options
     public function twitter_field()
     {
         $twitter = $this->options['twitter_url']; ?>
-        <input id="opendev_twitter_url" name="opendev_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
+        <input id="odm_twitter_url" name="odm_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
 
   <?php
     }
@@ -226,7 +226,7 @@ class OpenDev_Options
     {
         $contact_page = isset($this->options['contact_page']) ? $this->options['contact_page'] : __('None') ;
         wp_dropdown_pages(array(
-         'name' => 'opendev_options[contact_page]',
+         'name' => 'odm_options[contact_page]',
          'show_option_none' => __('None'),
          'selected' => $contact_page
         ));
@@ -236,7 +236,7 @@ class OpenDev_Options
     {
         $data_page = isset($this->options['data_page']) ? $this->options['data_page'] : __('None') ;
         wp_dropdown_pages(array(
-         'name' => 'opendev_options[data_page]',
+         'name' => 'odm_options[data_page]',
          'show_option_none' => __('None'),
          'selected' => $data_page
         ));
@@ -246,7 +246,7 @@ class OpenDev_Options
     {
         $disclaimer = $this->options['legal_disclaimer'];
         ?>
-  <textarea id="opendev_legal_disclaimer" name="opendev_options[legal_disclaimer]" rows="5" cols="70"><?php echo $disclaimer;
+  <textarea id="odm_legal_disclaimer" name="odm_options[legal_disclaimer]" rows="5" cols="70"><?php echo $disclaimer;
         ?></textarea>
   <?php
 
@@ -278,7 +278,7 @@ class OpenDev_Options
     <div>
      <?php _e('Select base layer', 'jeo');
         ?>
-     <select name="opendev_options[map_data][base_layer][type]" id="baselayer_drop_down">
+     <select name="odm_options[map_data][base_layer][type]" id="baselayer_drop_down">
       <option value="openstreetmap" <?php echo $select_base_layer == 'openstreetmap' ? ' selected="selected"' : '';
         ?> >OpenStreetMap</option>
       <option value="mapquest_osm" <?php echo $select_base_layer == 'mapquest_osm' ? ' selected="selected"' : '';
@@ -299,7 +299,7 @@ class OpenDev_Options
         ?> ><?php _e('None', 'jeo');
         ?></option>
      </select>
-     <input type="text" name="opendev_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'jeo');
+     <input type="text" name="odm_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'jeo');
         ?>" value="<?php echo $base_layer_url;
         ?>" />
     </div>
@@ -383,7 +383,7 @@ class OpenDev_Options
         <input type="text" size="2" id="min-zoom-input" value="<?php if (isset($map_data['min_zoom'])) {
     echo $map_data['min_zoom'];
 }
-        ?>" name="opendev_options[map_data][min_zoom]" />
+        ?>" name="odm_options[map_data][min_zoom]" />
         <a class="button set-min-zoom" href="#"><?php _e('Current', 'jeo');
         ?></a>
        </td>
@@ -395,21 +395,21 @@ class OpenDev_Options
         <input type="text" size="2" id="max-zoom-input" value="<?php if (isset($map_data['center'])) {
     echo $map_data['max_zoom'];
 }
-        ?>" name="opendev_options[map_data][max_zoom]" />
+        ?>" name="odm_options[map_data][max_zoom]" />
         <a class="button set-max-zoom" href="#"><?php _e('Current', 'jeo');
         ?></a>
        </td>
       </tr>
      </table>
-     <input type="hidden" class="center-lat" name="opendev_options[map_data][center][lat]" value="<?php if (isset($map_data['center'])) {
+     <input type="hidden" class="center-lat" name="odm_options[map_data][center][lat]" value="<?php if (isset($map_data['center'])) {
     echo $map_data['center']['lat'];
 }
         ?>" />
-     <input type="hidden" class="center-lon" name="opendev_options[map_data][center][lon]" value="<?php if (isset($map_data['center'])) {
+     <input type="hidden" class="center-lon" name="odm_options[map_data][center][lon]" value="<?php if (isset($map_data['center'])) {
     echo $map_data['center']['lon'];
 }
         ?>" />
-     <input type="hidden" class="zoom" name="opendev_options[map_data][zoom]" value="<?php if (isset($map_data['zoom'])) {
+     <input type="hidden" class="zoom" name="odm_options[map_data][zoom]" value="<?php if (isset($map_data['zoom'])) {
     echo $map_data['zoom'];
 }
         ?>" />
@@ -453,19 +453,19 @@ class OpenDev_Options
         ?></span></td>
       </tr>
      </table>
-     <input type="hidden" class="east" name="opendev_options[map_data][pan_limits][east]" value="<?php if (isset($map_data['pan_limits'])) {
+     <input type="hidden" class="east" name="odm_options[map_data][pan_limits][east]" value="<?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['east'];
 }
         ?>" />
-     <input type="hidden" class="north" name="opendev_options[map_data][pan_limits][north]" value="<?php if (isset($map_data['pan_limits'])) {
+     <input type="hidden" class="north" name="odm_options[map_data][pan_limits][north]" value="<?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['north'];
 }
         ?>" />
-     <input type="hidden" class="south" name="opendev_options[map_data][pan_limits][south]" value="<?php if (isset($map_data['pan_limits'])) {
+     <input type="hidden" class="south" name="odm_options[map_data][pan_limits][south]" value="<?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['south'];
 }
         ?>" />
-     <input type="hidden" class="west" name="opendev_options[map_data][pan_limits][west]" value="<?php if (isset($map_data['pan_limits'])) {
+     <input type="hidden" class="west" name="odm_options[map_data][pan_limits][west]" value="<?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['west'];
 }
         ?>" />
@@ -474,7 +474,7 @@ class OpenDev_Options
      <h4><?php _e('Enable geocoding service', 'jeo');
         ?></h4>
      <p>
-      <input class="enable-geocode" id="enable_geocode" type="checkbox" name="opendev_options[map_data][geocode]" <?php if (isset($map_data['geocode']) && $map_data['geocode']) {
+      <input class="enable-geocode" id="enable_geocode" type="checkbox" name="odm_options[map_data][geocode]" <?php if (isset($map_data['geocode']) && $map_data['geocode']) {
     echo 'checked';
 }
         ?> />
@@ -486,7 +486,7 @@ class OpenDev_Options
      <h4><?php _e('Map handlers', 'jeo');
         ?></h4>
      <p>
-      <input class="disable-mousewheel" id="disable_mousewheel" type="checkbox" name="opendev_options[map_data][disable_mousewheel]" <?php if (isset($map_data['disable_mousewheel']) && $map_data['disable_mousewheel']) {
+      <input class="disable-mousewheel" id="disable_mousewheel" type="checkbox" name="odm_options[map_data][disable_mousewheel]" <?php if (isset($map_data['disable_mousewheel']) && $map_data['disable_mousewheel']) {
     echo 'checked';
 }
         ?> />
@@ -512,12 +512,12 @@ class OpenDev_Options
 }
 
 if (is_admin()) {
-    $GLOBALS['opendev_options'] = new OpenDev_Options();
+    $GLOBALS['odm_options'] = new Odm_Options();
 }
 
-function opendev_get_logo()
+function odm_get_logo()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['logo'])) {
         return '<img src="'.$options['logo'].'" alt="'.get_bloginfo('name').'" />';
     } else {
@@ -525,9 +525,9 @@ function opendev_get_logo()
     }
 }
 
-function opendev_get_facebook_url()
+function odm_get_facebook_url()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['facebook_url'])) {
         return $options['facebook_url'];
     } else {
@@ -535,9 +535,9 @@ function opendev_get_facebook_url()
     }
 }
 
-function opendev_get_twitter_url()
+function odm_get_twitter_url()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['twitter_url'])) {
         return $options['twitter_url'];
     } else {
@@ -545,9 +545,9 @@ function opendev_get_twitter_url()
     }
 }
 
-function opendev_get_legal_disclaimer()
+function odm_get_legal_disclaimer()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['legal_disclaimer'])) {
         return $options['legal_disclaimer'];
     } else {
@@ -555,9 +555,9 @@ function opendev_get_legal_disclaimer()
     }
 }
 
-function opendev_get_contact_page_id()
+function odm_get_contact_page_id()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['contact_page'])) {
         return $options['contact_page'];
     } else {
@@ -565,9 +565,9 @@ function opendev_get_contact_page_id()
     }
 }
 
-function opendev_get_data_page_id()
+function odm_get_data_page_id()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['data_page'])) {
         return $options['data_page'];
     } else {
@@ -575,9 +575,9 @@ function opendev_get_data_page_id()
     }
 }
 
-function opendev_get_interactive_map_data()
+function odm_get_interactive_map_data()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if (isset($options['map_data'])) {
         return $options['map_data'];
     } else {

@@ -1,5 +1,5 @@
 <?php
-class OpenDev_Walker_CategoryDropdown_Multiple extends Walker_CategoryDropdown {
+class Odm_Walker_CategoryDropdown_Multiple extends Walker_CategoryDropdown {
 
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		$pad = str_repeat('&nbsp;', $depth * 3);

@@ -1,6 +1,6 @@
 <?php
 
-class OpenDev_LiveSearch {
+class Odm_LiveSearch {
 
 	var $ajax_action = 'live_search';
 
@@ -11,8 +11,8 @@ class OpenDev_LiveSearch {
 	}
 
 	function enqueue_scripts() {
-		wp_enqueue_script('opendev-live-search', get_stylesheet_directory_uri() . '/inc/live-search/live-search.js', array('jquery', 'underscore'));
-		wp_localize_script('opendev-live-search', 'livesearch', array(
+		wp_enqueue_script('odm-live-search', get_stylesheet_directory_uri() . '/inc/live-search/live-search.js', array('jquery', 'underscore'));
+		wp_localize_script('odm-live-search', 'livesearch', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
 			'siteurl' => get_site_url(),
 			'action' => $this->ajax_action,
@@ -43,4 +43,4 @@ class OpenDev_LiveSearch {
 
 }
 
-$GLOBALS['opendev_livesearch'] = new OpenDev_LiveSearch();
+$GLOBALS['odm_livesearch'] = new Odm_LiveSearch();

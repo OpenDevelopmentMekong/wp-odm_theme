@@ -5,7 +5,7 @@
  * Country Manager
  */
 
-class OpenDev_Country_Manager {
+class Odm_Country_Manager {
 
   var $countries = [
     'mekong' => array('name' => 'Mekong', 'theme' => 'mekong', 'code' => 'mekong', 'lang' => null, 'url' => null),
@@ -21,7 +21,7 @@ class OpenDev_Country_Manager {
 	}
 
   function get_current_country(){
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     $current_country = 'mekong';
     if ( isset($options['style'])):
       $current_country = $options['style'];
@@ -46,14 +46,14 @@ class OpenDev_Country_Manager {
       $get_all_sites = wp_get_sites();
       foreach ($get_all_sites as $site):
         switch_to_blog($site["blog_id"]);
-        $options = get_site_option('opendev_options');
+        $options = get_site_option('odm_options');
         $country = $options['style'];
         $this->countries[$country]['url'] = $site['domain'];
       endforeach;
       restore_current_blog();
     endif;
 
-    $options = get_site_option('opendev_options');
+    $options = get_site_option('odm_options');
   }
 
   function echo_country_selectors(){
@@ -71,10 +71,10 @@ class OpenDev_Country_Manager {
 
 }
 
-$GLOBALS['opendev_country_manager'] = new OpenDev_Country_Manager();
+$GLOBALS['odm_country_manager'] = new Odm_Country_Manager();
 
-function opendev_country_manager() {
-	return $GLOBALS['opendev_country_manager'];
+function odm_country_manager() {
+	return $GLOBALS['odm_country_manager'];
 }
 
 ?>

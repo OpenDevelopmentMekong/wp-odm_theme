@@ -1,5 +1,5 @@
 <?php
-$datasets = wpckan_opendev_get_related_datasets();
+$datasets = wpckan_odm_get_related_datasets();
 $groupby = 'groups';
 if(!empty($datasets)) {
 	$grouped = array();

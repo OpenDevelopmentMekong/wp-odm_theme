@@ -63,10 +63,10 @@ class Odm_Category_Widget extends WP_Widget {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-			$('.opendev_taxonomy_widget_ul > li.cat_item').each(function(){
-				if($('.opendev_taxonomy_widget_ul > li.cat_item:has(ul)')){
-					$('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
-					$('.opendev_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+			$('.odm_taxonomy_widget_ul > li.cat_item').each(function(){
+				if($('.odm_taxonomy_widget_ul > li.cat_item:has(ul)')){
+					$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
+					$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
 				}
 				//if parent is showed, child need to expend
 				if ($('span.<?php echo $current_cat_page; ?>').length){
@@ -80,7 +80,7 @@ class Odm_Category_Widget extends WP_Widget {
 					$('span.<?php echo $current_cat_page; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
 				}
 			});
-			$('.opendev_taxonomy_widget_ul > li.cat_item span').click(function(event) {
+			$('.odm_taxonomy_widget_ul > li.cat_item span').click(function(event) {
 			//	event.preventDefault();
 				var target =  $( event.target );
 					if(target.parent("li").find('ul').length){

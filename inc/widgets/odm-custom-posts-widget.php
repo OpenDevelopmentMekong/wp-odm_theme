@@ -46,7 +46,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				</div>
 				<?php foreach($posts as $post):
 					$template = ($layout_type == 'grid') ? 'post-grid-single' : 'post-list-single';
-					opendev_get_template($template,array($post),true);
+					odm_get_template($template,array($post),true);
 				endforeach; ?>
 			</div>
 		</div>

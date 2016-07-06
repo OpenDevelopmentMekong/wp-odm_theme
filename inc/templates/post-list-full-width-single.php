@@ -5,7 +5,7 @@
 	<?php show_post_meta($post); ?>
 	<div class="post-list-item-content">
 		<?php
-			$thumb_src = opendev_get_thumbnail($post->ID, true);
+			$thumb_src = odm_get_thumbnail($post->ID, true);
 			if (isset($thumb_src)):
 				echo $thumb_src;
 			endif; ?>

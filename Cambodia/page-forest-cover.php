@@ -68,14 +68,14 @@ Template Name: Forest Cover and Forest Cover Analysis
     					<aside id="sidebar">
     						<ul class="widgets">
     							<li class="widget share-widget">
-    								<?php opendev_get_template('social-share',array(),true); ?>
+    								<?php odm_get_template('social-share',array(),true); ?>
     							</li>
     							<li class="widget">
-    								<?php opendev_summary(); ?>
+    								<?php odm_summary(); ?>
     							</li>
     							<?php dynamic_sidebar('topic'); ?>
     							<?php if (get_group('related_link') != "" && get_group('related_link') != NULL) { ?>
-                            	<li class="widget widget_opendev_related_link_widget" style="clear:left">
+                            	<li class="widget widget_odm_related_link_widget" style="clear:left">
                                     <div>
                                     <h2 class="widget-title">Related Links</h2>
     							<?php
