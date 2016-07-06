@@ -257,7 +257,7 @@ function create_news_source_taxonomies()
         'rewrite'           => array( 'slug' => 'news_source' ) */
     );
 
-    register_taxonomy('news_source', array('post'), $args);
+    register_taxonomy('news_source', array('news-article'), $args);
 }
 add_action('init', 'create_news_source_taxonomies', 0);
 

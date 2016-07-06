@@ -367,4 +367,8 @@ function available_custom_post_types(){
 
  }
 
+ function is_page_dataset_detail_template(){
+	 return (strpos(get_page_template(), 'page-dataset-detail') !== false);
+ }
+
  ?>

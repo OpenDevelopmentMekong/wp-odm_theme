@@ -22,7 +22,7 @@
 	var display = function(resultsContainer,data, s) {
 		var results = $('<div class="results">');
 
-    _.each(data, function(postType, i){
+    _.each(data.wp, function(postType, i){
 
       var column = $('<div class="three columns"><h1>' + postType.title + '</h1></div>');
 

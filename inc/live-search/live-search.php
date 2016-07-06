@@ -28,7 +28,11 @@ class OpenDev_LiveSearch {
 
 	function query() {
 
-		$response = content_types_breakdown_for_query($_REQUEST['s'],5);
+		$response = array(
+			"wp" => content_types_breakdown_for_query($_REQUEST['s'],5),
+			"wpckan" => do_shortcode('[wpckan_query_datasets query="'.$_REQUEST['s'].'" limit="10" include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]')
+		); 
+
 
 		header('Content-Type: application/json;charset=UTF-8');
 		echo json_encode($response);
