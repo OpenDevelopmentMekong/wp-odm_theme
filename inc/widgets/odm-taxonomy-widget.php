@@ -7,8 +7,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'odm_taxonomy_widget', // Base ID
-			__( 'ODM Content Taxonomy Widget', 'opendev' ), // Name
-			array( 'description' => __( 'Display ODM taxonomy for content', 'opendev' ), ) // Args
+			__( 'ODM Content Taxonomy Widget', 'odm' ), // Name
+			array( 'description' => __( 'Display ODM taxonomy for content', 'odm' ), ) // Args
 		);
 	}
 
@@ -153,7 +153,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<?php
 		echo $args['before_widget'];
 		if ( ! empty( $instance['od_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'opendev' ) ). $args['after_title'];
+			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'odm' ) ). $args['after_title'];
 		}
 		if ( ! empty( $instance['od_include'] ) ) {
 			$cat_included_id_arr = explode(",", $instance['od_include']);
@@ -214,7 +214,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'opendev' ) : __( 'Topic areas', 'opendev' );
+		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'odm' ) : __( 'Topic areas', 'odm' );
 		$od_include = $instance['od_include'];
 		$od_exclude = $instance['od_exclude'];
 		?>

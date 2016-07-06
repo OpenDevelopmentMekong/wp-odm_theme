@@ -24,7 +24,7 @@ class Odm_Options
 
     public function admin_menu()
     {
-        add_theme_page(__('Open Development Style', 'opendev'), __('Open Development', 'opendev'), 'edit_theme_options', 'odm_options', array($this, 'admin_page'));
+        add_theme_page(__('Open Development Style', 'odm'), __('Open Development', 'odm'), 'edit_theme_options', 'odm_options', array($this, 'admin_page'));
     }
 
     public function admin_page()
@@ -34,7 +34,7 @@ class Odm_Options
         ?>
         <div class="wrap">
           <?php screen_icon(); ?>
-          <h2><?php _e('Open Development Theme Options', 'opendev');?></h2>
+          <h2><?php _e('Open Development Theme Options', 'odm');?></h2>
           <form method="post" action="options.php">
             <?php
             settings_fields('odm_options_group');
@@ -53,32 +53,32 @@ class Odm_Options
 
         add_settings_section(
          'odm_style_section',
-         __('Style', 'opendev'),
+         __('Style', 'odm'),
          '',
          'odm_options'
         );
         add_settings_section(
          'odm_news_section',
-         __('News: Filtered By Tags', 'opendev'),
+         __('News: Filtered By Tags', 'odm'),
          '',
          'odm_options'
         );
         add_settings_section(
          'odm_links_section',
-         __('Links', 'opendev'),
+         __('Links', 'odm'),
          '',
          'odm_options'
         );
 
         add_settings_section(
          'odm_interactive_map_section',
-         __('Interactive map', 'opendev'),
+         __('Interactive map', 'odm'),
          '',
          'odm_options'
         );
         add_settings_field(
          'odm_style',
-         __('Choose a style', 'opendev'),
+         __('Choose a style', 'odm'),
          array($this, 'style_field'),
          'odm_options',
          'odm_style_section'
@@ -86,7 +86,7 @@ class Odm_Options
 
         add_settings_field(
           'odm_notice_message',
-          __('Notice Message appear above the slider', 'opendev'),
+          __('Notice Message appear above the slider', 'odm'),
           array($this, 'notice_message_field'),
           'odm_options',
           'odm_style_section'
@@ -94,7 +94,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_frontpage_slider_id',
-         __('Frontpage slider id', 'opendev'),
+         __('Frontpage slider id', 'odm'),
          array($this, 'frontpage_slider_id_field'),
          'odm_options',
          'odm_style_section'
@@ -102,7 +102,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_news_tags',
-         __('Filter News By Tags', 'opendev'),
+         __('Filter News By Tags', 'odm'),
          array($this, 'news_tags_field'),
          'odm_options',
          'odm_news_section'
@@ -110,7 +110,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_facebook',
-         __('Facebook url', 'opendev'),
+         __('Facebook url', 'odm'),
          array($this, 'facebook_field'),
          'odm_options',
          'odm_links_section'
@@ -118,7 +118,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_twitter',
-         __('Twitter url', 'opendev'),
+         __('Twitter url', 'odm'),
          array($this, 'twitter_field'),
          'odm_options',
          'odm_links_section'
@@ -126,7 +126,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_legal_disclaimer',
-         __('Legal disclaimer', 'opendev'),
+         __('Legal disclaimer', 'odm'),
          array($this, 'legal_disclaimer_field'),
          'odm_options',
          'odm_links_section'
@@ -134,7 +134,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_contact',
-         __('Contact page', 'opendev'),
+         __('Contact page', 'odm'),
          array($this, 'contact_page_field'),
          'odm_options',
          'odm_links_section'
@@ -142,7 +142,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_data_page',
-         __('Data page', 'opendev'),
+         __('Data page', 'odm'),
          array($this, 'data_page_field'),
          'odm_options',
          'odm_links_section'
@@ -150,7 +150,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_interactive_map',
-         __('Base map settings', 'opendev'),
+         __('Base map settings', 'odm'),
          array($this, 'interactive_map_field'),
          'odm_options',
          'odm_interactive_map_section'
@@ -173,8 +173,8 @@ class Odm_Options
     function notice_message_field() {
       $notice_message = $this->options['notice_message'];
       ?>
-      <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','opendev'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','opendev');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
-      <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'opendev'); ?></i>
+      <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','odm'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','odm');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
+      <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'odm'); ?></i>
       <?php
    }
 
@@ -185,7 +185,7 @@ class Odm_Options
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');
               ?>'" value="<?php echo $frontpage_slider_id;
               ?>" size="70" /><br/>
-        <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'opendev');
+        <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'odm');
               ?></i>
   <?php
 

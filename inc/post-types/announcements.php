@@ -16,20 +16,20 @@ class Odm_Announcement {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Announcements', 'post type general name', 'opendev' ),
-			'singular_name'      => _x( 'Announcement', 'post type singular name', 'opendev' ),
-			'menu_name'          => _x( 'Announcements', 'admin menu', 'opendev' ),
-			'name_admin_bar'     => _x( 'Announcement', 'add new on admin bar', 'opendev' ),
-			'add_new'            => _x( 'Add new', 'announcement', 'opendev' ),
-			'add_new_item'       => __( 'Add new announcement', 'opendev' ),
-			'new_item'           => __( 'New announcement', 'opendev' ),
-			'edit_item'          => __( 'Edit announcement', 'opendev' ),
-			'view_item'          => __( 'View announcement', 'opendev' ),
-			'all_items'          => __( 'All announcements', 'opendev' ),
-			'search_items'       => __( 'Search announcements', 'opendev' ),
-			'parent_item_colon'  => __( 'Parent announcements:', 'opendev' ),
-			'not_found'          => __( 'No announcements found.', 'opendev' ),
-			'not_found_in_trash' => __( 'No announcements found in trash.', 'opendev' )
+			'name'               => _x( 'Announcements', 'post type general name', 'odm' ),
+			'singular_name'      => _x( 'Announcement', 'post type singular name', 'odm' ),
+			'menu_name'          => _x( 'Announcements', 'admin menu', 'odm' ),
+			'name_admin_bar'     => _x( 'Announcement', 'add new on admin bar', 'odm' ),
+			'add_new'            => _x( 'Add new', 'announcement', 'odm' ),
+			'add_new_item'       => __( 'Add new announcement', 'odm' ),
+			'new_item'           => __( 'New announcement', 'odm' ),
+			'edit_item'          => __( 'Edit announcement', 'odm' ),
+			'view_item'          => __( 'View announcement', 'odm' ),
+			'all_items'          => __( 'All announcements', 'odm' ),
+			'search_items'       => __( 'Search announcements', 'odm' ),
+			'parent_item_colon'  => __( 'Parent announcements:', 'odm' ),
+			'not_found'          => __( 'No announcements found.', 'odm' ),
+			'not_found_in_trash' => __( 'No announcements found in trash.', 'odm' )
 		);
 
 		$args = array(

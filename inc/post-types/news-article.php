@@ -16,20 +16,20 @@ class Odm_News_Article {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'News', 'post type general name', 'opendev' ),
-			'singular_name'      => _x( 'News article', 'post type singular name', 'opendev' ),
-			'menu_name'          => _x( 'News', 'admin menu', 'opendev' ),
-			'name_admin_bar'     => _x( 'News article', 'add new on admin bar', 'opendev' ),
-			'add_new'            => _x( 'Add new', 'news article', 'opendev' ),
-			'add_new_item'       => __( 'Add new news article', 'opendev' ),
-			'new_item'           => __( 'New news article', 'opendev' ),
-			'edit_item'          => __( 'Edit news article', 'opendev' ),
-			'view_item'          => __( 'View news article', 'opendev' ),
-			'all_items'          => __( 'All news articles', 'opendev' ),
-			'search_items'       => __( 'Search news articles', 'opendev' ),
-			'parent_item_colon'  => __( 'Parent news articles:', 'opendev' ),
-			'not_found'          => __( 'No stories found.', 'opendev' ),
-			'not_found_in_trash' => __( 'No stories found in trash.', 'opendev' )
+			'name'               => _x( 'News', 'post type general name', 'odm' ),
+			'singular_name'      => _x( 'News article', 'post type singular name', 'odm' ),
+			'menu_name'          => _x( 'News', 'admin menu', 'odm' ),
+			'name_admin_bar'     => _x( 'News article', 'add new on admin bar', 'odm' ),
+			'add_new'            => _x( 'Add new', 'news article', 'odm' ),
+			'add_new_item'       => __( 'Add new news article', 'odm' ),
+			'new_item'           => __( 'New news article', 'odm' ),
+			'edit_item'          => __( 'Edit news article', 'odm' ),
+			'view_item'          => __( 'View news article', 'odm' ),
+			'all_items'          => __( 'All news articles', 'odm' ),
+			'search_items'       => __( 'Search news articles', 'odm' ),
+			'parent_item_colon'  => __( 'Parent news articles:', 'odm' ),
+			'not_found'          => __( 'No stories found.', 'odm' ),
+			'not_found_in_trash' => __( 'No stories found in trash.', 'odm' )
 		);
 
 		$args = array(

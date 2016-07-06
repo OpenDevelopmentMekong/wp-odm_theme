@@ -84,7 +84,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 			return;
 		}
 		if ($title == 1) {
-				echo '<h2 class="widget-title">'.__('Categories', 'opendev').'</h2>';
+				echo '<h2 class="widget-title">'.__('Categories', 'odm').'</h2>';
 		}
 
 		echo "<ul class='odm_taxonomy_widget_ul'>";
@@ -191,7 +191,7 @@ function show_post_meta($post)
 				<i class="fa fa-clock-o"></i>
 					 <?php
 					 if (function_exists('qtrans_getLanguage')) {
-							 if (qtrans_getLanguage() == 'kh' || qtrans_getLanguage() == 'km') {
+							 if (CURRENT_LANGUAGE == 'km') {
 									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
 							 } else {
 									 echo get_the_time('j F Y',$post->ID);
@@ -288,7 +288,7 @@ function show_post_meta($post)
 		 $excerpt_words = $excerpt_string.' ...';
 		 if ($read_more != '') {
 				 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
-				 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'opendev').'</a>)';
+				 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
 		 }
 
 		 return $excerpt_words;

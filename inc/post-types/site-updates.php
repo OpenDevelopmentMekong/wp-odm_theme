@@ -16,20 +16,20 @@ class Odm_Site_Updates {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Site updates', 'post type general name', 'opendev' ),
-			'singular_name'      => _x( 'Site update', 'post type singular name', 'opendev' ),
-			'menu_name'          => _x( 'Site updates', 'admin menu', 'opendev' ),
-			'name_admin_bar'     => _x( 'Site update', 'add new on admin bar', 'opendev' ),
-			'add_new'            => _x( 'Add new', 'site update', 'opendev' ),
-			'add_new_item'       => __( 'Add new site update', 'opendev' ),
-			'new_item'           => __( 'New site update', 'opendev' ),
-			'edit_item'          => __( 'Edit site update', 'opendev' ),
-			'view_item'          => __( 'View site update', 'opendev' ),
-			'all_items'          => __( 'All site updates', 'opendev' ),
-			'search_items'       => __( 'Search site updates', 'opendev' ),
-			'parent_item_colon'  => __( 'Parent site updates:', 'opendev' ),
-			'not_found'          => __( 'No site updates found.', 'opendev' ),
-			'not_found_in_trash' => __( 'No site updates found in trash.', 'opendev' )
+			'name'               => _x( 'Site updates', 'post type general name', 'odm' ),
+			'singular_name'      => _x( 'Site update', 'post type singular name', 'odm' ),
+			'menu_name'          => _x( 'Site updates', 'admin menu', 'odm' ),
+			'name_admin_bar'     => _x( 'Site update', 'add new on admin bar', 'odm' ),
+			'add_new'            => _x( 'Add new', 'site update', 'odm' ),
+			'add_new_item'       => __( 'Add new site update', 'odm' ),
+			'new_item'           => __( 'New site update', 'odm' ),
+			'edit_item'          => __( 'Edit site update', 'odm' ),
+			'view_item'          => __( 'View site update', 'odm' ),
+			'all_items'          => __( 'All site updates', 'odm' ),
+			'search_items'       => __( 'Search site updates', 'odm' ),
+			'parent_item_colon'  => __( 'Parent site updates:', 'odm' ),
+			'not_found'          => __( 'No site updates found.', 'odm' ),
+			'not_found_in_trash' => __( 'No site updates found in trash.', 'odm' )
 		);
 
 		$args = array(

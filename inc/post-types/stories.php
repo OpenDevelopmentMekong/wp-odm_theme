@@ -16,20 +16,20 @@ class Odm_Story {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Stories', 'post type general name', 'opendev' ),
-			'singular_name'      => _x( 'Story', 'post type singular name', 'opendev' ),
-			'menu_name'          => _x( 'Stories', 'admin menu', 'opendev' ),
-			'name_admin_bar'     => _x( 'Story', 'add new on admin bar', 'opendev' ),
-			'add_new'            => _x( 'Add new', 'story', 'opendev' ),
-			'add_new_item'       => __( 'Add new story', 'opendev' ),
-			'new_item'           => __( 'New story', 'opendev' ),
-			'edit_item'          => __( 'Edit story', 'opendev' ),
-			'view_item'          => __( 'View story', 'opendev' ),
-			'all_items'          => __( 'All stories', 'opendev' ),
-			'search_items'       => __( 'Search stories', 'opendev' ),
-			'parent_item_colon'  => __( 'Parent stories:', 'opendev' ),
-			'not_found'          => __( 'No stories found.', 'opendev' ),
-			'not_found_in_trash' => __( 'No stories found in trash.', 'opendev' )
+			'name'               => _x( 'Stories', 'post type general name', 'odm' ),
+			'singular_name'      => _x( 'Story', 'post type singular name', 'odm' ),
+			'menu_name'          => _x( 'Stories', 'admin menu', 'odm' ),
+			'name_admin_bar'     => _x( 'Story', 'add new on admin bar', 'odm' ),
+			'add_new'            => _x( 'Add new', 'story', 'odm' ),
+			'add_new_item'       => __( 'Add new story', 'odm' ),
+			'new_item'           => __( 'New story', 'odm' ),
+			'edit_item'          => __( 'Edit story', 'odm' ),
+			'view_item'          => __( 'View story', 'odm' ),
+			'all_items'          => __( 'All stories', 'odm' ),
+			'search_items'       => __( 'Search stories', 'odm' ),
+			'parent_item_colon'  => __( 'Parent stories:', 'odm' ),
+			'not_found'          => __( 'No stories found.', 'odm' ),
+			'not_found_in_trash' => __( 'No stories found in trash.', 'odm' )
 		);
 
 		$args = array(

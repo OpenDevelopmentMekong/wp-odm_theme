@@ -45,13 +45,13 @@ require_once get_stylesheet_directory().'/inc/utils/breadcrumbs.php';
 require_once get_stylesheet_directory().'/inc/utils/layout.php';
 
 /*
- * Loads the theme's translated strings. for 'opendev' and 'jeo' domains
+ * Loads the theme's translated strings. for 'odm' and 'jeo' domains
  * Registers widget sidebars
  */
 function odm_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
-    load_theme_textdomain('opendev', $gsd[0].'/wp-content/languages');
+    load_theme_textdomain('odm', $gsd[0].'/wp-content/languages');
     load_theme_textdomain('jeo', $gsd[0].'/wp-content/languages');
     register_sidebar(array(
     'name' => __('Topic sidebar', 'jeo'),
@@ -157,11 +157,11 @@ function odm_jeo_scripts()
     wp_localize_script('jeo.markers', 'odm_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => $jeo_markers->query(),
-    'stories_label' => __('stories', 'opendev'),
+    'stories_label' => __('stories', 'odm'),
     'home' => (is_home() && !is_paged() && (isset($_REQUEST['odm_filter_']) && !$_REQUEST['odm_filter_'])),
-    'copy_embed_label' => __('Copy the embed code', 'opendev'),
-    'share_label' => __('Share', 'opendev'),
-    'print_label' => __('Print', 'opendev'),
+    'copy_embed_label' => __('Copy the embed code', 'odm'),
+    'share_label' => __('Share', 'odm'),
+    'print_label' => __('Print', 'odm'),
     'embed_base_url' => home_url('/embed/'),
     'share_base_url' => home_url('/share/'),
     'marker_active' => array(
@@ -172,15 +172,15 @@ function odm_jeo_scripts()
       'markerId' => 'none',
     ),
      'site_url' => home_url('/'),
-     'read_more_label' => __('Read more', 'opendev'),
+     'read_more_label' => __('Read more', 'odm'),
      'lightbox_label' => array(
-     'slideshow' => __('Open slideshow', 'opendev'),
-     'videos' => __('Watch video gallery', 'opendev'),
-     'video' => __('Watch video', 'opendev'),
-     'images' => __('View image gallery', 'opendev'),
-     'image' => __('View fullscreen image', 'opendev'),
-     'infographic' => __('View infographic', 'opendev'),
-     'infographics' => __('View infographics', 'opendev'),
+     'slideshow' => __('Open slideshow', 'odm'),
+     'videos' => __('Watch video gallery', 'odm'),
+     'video' => __('Watch video', 'odm'),
+     'images' => __('View image gallery', 'odm'),
+     'image' => __('View fullscreen image', 'odm'),
+     'infographic' => __('View infographic', 'odm'),
+     'infographics' => __('View infographics', 'odm'),
     ),
    'enable_clustering' => jeo_use_clustering() ? true : false,
    'default_icon' => jeo_formatted_default_marker(),

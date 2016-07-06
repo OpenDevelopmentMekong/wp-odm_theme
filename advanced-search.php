@@ -50,7 +50,7 @@
 				<?php
             $data_page_id = odm_get_data_page_id();
             if ($data_page_id) : ?>
-							<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'opendev');?></a>
+							<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'odm');?></a>
 			<?php endif ?>
 			</section>
 

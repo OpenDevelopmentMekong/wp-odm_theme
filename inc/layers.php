@@ -185,34 +185,34 @@
         ?>
         <tbody>
          <tr>
-          <th><label for="wmslayer_tile_url"><?php _e('WMS Service URL', 'opendev'); ?></label></th>
+          <th><label for="wmslayer_tile_url"><?php _e('WMS Service URL', 'odm'); ?></label></th>
           <td>
            <input id="wmslayer_tile_url" type="text" placeholder="<?php _e('http://{geoserver adress & port}/geoserver/wms', 'jeo'); ?>" size="65" name="_wmslayer_tile_url" value="<?php echo $wmstileurl; ?>" />
-           <p class="description"><?php _e('Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms', 'opendev'); ?></p>
+           <p class="description"><?php _e('Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms', 'odm'); ?></p>
           </td>
          </tr>
          <tr>
-          <th><label for="wmslayer_layer_name"><?php _e('Workspaces:Layer Name (English)', 'opendev'); ?></label></th>
+          <th><label for="wmslayer_layer_name"><?php _e('Workspaces:Layer Name (English)', 'odm'); ?></label></th>
           <td>
            <input id="wmslayer_layer_name" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name" value="<?php echo $layername; ?>" />
-           <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Energy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
+           <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Energy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'odm'); ?></p>
           </td>
          </tr>
          <?php if($this->get_localization_language()){ ?>
                 <tr>
-                  <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.$this->get_localization_language().')', 'opendev'); ?></label></th>
+                  <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.$this->get_localization_language().')', 'odm'); ?></label></th>
                   <td>
                    <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
-                   <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Energy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
+                   <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Energy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'odm'); ?></p>
                   </td>
                  </tr>
          <?php
               }
          ?>
          <tr>
-          <th><label for="wmslayer_wms_format"><?php _e('WMS format (optional)', 'opendev'); ?></label></th>
+          <th><label for="wmslayer_wms_format"><?php _e('WMS format (optional)', 'odm'); ?></label></th>
           <td>
-            <input id="wmslayer_wms_format" type="text" placeholder="<?php _e('image/png', 'opendev'); ?>" size="40" name="_wmslayer_wms_format" value="<?php echo $wms_format; ?>" />
+            <input id="wmslayer_wms_format" type="text" placeholder="<?php _e('image/png', 'odm'); ?>" size="40" name="_wmslayer_wms_format" value="<?php echo $wms_format; ?>" />
            <p class="description"><?php _e('E.g.: image/png or image/jpeg'); ?></p>
           </td>
          </tr>

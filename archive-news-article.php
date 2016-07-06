@@ -5,7 +5,7 @@
 	<section class="container">
 		<header class="row">
 			<div class="twelve columns">
-				<h2><?php _e('News','opendev') ?></h2>
+				<h2><?php _e('News','odm') ?></h2>
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</header>

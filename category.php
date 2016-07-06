@@ -61,7 +61,7 @@ foreach($post_types as $pt) {
 							$pt = get_post_type_object($pt);
 							$title = $pt->labels->name;
 							if($pt->name == 'post')
-								$title = __('News', 'opendev');
+								$title = __('News', 'odm');
 							?>
 							<li <?php if($current_pt == $pt->name) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
 						<?php endforeach; ?>
@@ -98,7 +98,7 @@ foreach($post_types as $pt) {
 					<?php posts_nav_link(); ?>
 				</div>
 			<?php else : ?>
-				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'opendev'); ?></h3>
+				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
 			<?php endif; ?>
 		</section>
 	</div>

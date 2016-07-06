@@ -17,12 +17,12 @@ class Odm_LiveSearch {
 			'siteurl' => get_site_url(),
 			'action' => $this->ajax_action,
 			'labels' => array(
-				'more' => __('Go to the advanced search', 'opendev'),
-				'close' => __('Close', 'opendev'),
-				'no_more' => __('Showing all results', 'opendev'),
-				'post' => __('News', 'opendev'),
-				'topic' => __('Topic', 'opendev'),
-				'map' => __('Map', 'opendev')
+				'more' => __('Go to the advanced search', 'odm'),
+				'close' => __('Close', 'odm'),
+				'no_more' => __('Showing all results', 'odm'),
+				'post' => __('News', 'odm'),
+				'topic' => __('Topic', 'odm'),
+				'map' => __('Map', 'odm')
 			)
 		));
 	}

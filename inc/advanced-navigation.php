@@ -111,8 +111,8 @@ class odm_AdvancedNav {
 			<input type="hidden" name="<?php echo $this->prefix; ?>" value="1" />
 			<div class="two columns alpha">
 				<div class="search-input adv-nav-input">
-					<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'opendev'); ?></label></p>
-					<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'opendev'); ?>" value="<?php echo $s; ?>" />
+					<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'odm'); ?></label></p>
+					<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $s; ?>" />
 				</div>
 			</div>
 			<?php
@@ -122,8 +122,8 @@ class odm_AdvancedNav {
 				?>
 				<div class="two columns">
 					<div class="category-input adv-nav-input">
-						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'opendev'); ?></label></p>
-						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'opendev'); ?>">
+						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'odm'); ?></label></p>
+						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
 							<?php wp_list_categories(array('title_li' => '', 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'selected' => $active_cats)); ?>
 						</select>
 					</div>
@@ -151,8 +151,8 @@ class odm_AdvancedNav {
 				?>
 				<div class="two columns">
 					<div class="post-type-input adv-nav-input">
-						<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'opendev'); ?></label></p>
-						<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select content types', 'opendev'); ?>">
+						<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'odm'); ?></label></p>
+						<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select content types', 'odm'); ?>">
 							<?php foreach($post_types as $post_type) : ?>
 								<option value="<?php echo $post_type->name; ?>" <?php if(in_array($post_type->name, $active_types)) echo 'selected'; ?>><?php echo $post_type->labels->name; ?></option>
 							<?php endforeach; ?>
@@ -162,19 +162,19 @@ class odm_AdvancedNav {
 			<?php endif; ?>
 			<div class="three columns">
 				<div class="date-input adv-nav-input">
-					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'opendev'); ?></label></p>
+					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'odm'); ?></label></p>
 					<div class="date-range-inputs">
 						<div class="date-from-container">
-							<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" placeholder="<?php _e('From', 'opendev'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? $_GET[$this->prefix . 'date_start'] : ''; ?>" />
+							<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" placeholder="<?php _e('From', 'odm'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? $_GET[$this->prefix . 'date_start'] : ''; ?>" />
 						</div>
 						<div class="date-to-container">
-							<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end"  placeholder="<?php _e('To', 'opendev'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? $_GET[$this->prefix . 'date_end'] : ''; ?>" />
+							<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end"  placeholder="<?php _e('To', 'odm'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? $_GET[$this->prefix . 'date_end'] : ''; ?>" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="two columns omega">
-				<input type="submit" class="button" value="<?php _e('Filter', 'opendev'); ?>" />
+				<input type="submit" class="button" value="<?php _e('Filter', 'odm'); ?>" />
 			</div>
 		</form>
 		<script type="text/javascript">
@@ -185,7 +185,7 @@ class odm_AdvancedNav {
 					var advNav = $('.advanced-nav-filters');
 
 					if(advNav.hasClass('active')) {
-						$('.toggle-more-filters a').text('<?php _e('Cancel filters', 'opendev'); ?>');
+						$('.toggle-more-filters a').text('<?php _e('Cancel filters', 'odm'); ?>');
 					}
 
 					$('.toggle-more-filters a').click(function() {
@@ -193,10 +193,10 @@ class odm_AdvancedNav {
 						if(advNav.hasClass('active')) {
 							$(advNav).removeClass('active');
 							window.location = '<?php echo remove_query_arg(array($this->prefix, $this->prefix . 's', $this->prefix . 'category', $this->prefix . 'date_start', $this->prefix . 'date_end')); ?>';
-							$(this).text('<?php _e('More filters', 'opendev'); ?>');
+							$(this).text('<?php _e('More filters', 'odm'); ?>');
 						} else {
 							$(advNav).addClass('active');
-							$(this).text('<?php _e('Cancel filters', 'opendev'); ?>');
+							$(this).text('<?php _e('Cancel filters', 'odm'); ?>');
 						}
 
 						return false;

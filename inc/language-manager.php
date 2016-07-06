@@ -16,14 +16,10 @@ class Odm_Language_Manager {
   function init_language_manager(){
 
     if (function_exists('qtranxf_getLanguage')) {
-        if (qtranxf_getLanguage() == 'kh') {
-            $local_lang = 'km';
-        } else {
-            $local_lang = qtranxf_getLanguage();
-        }
-        $this->current_language = $local_lang;
+      $local_lang = qtranxf_getLanguage();
+      $this->current_language = $local_lang;
     }
-    
+
   }
 
   function get_current_language(){

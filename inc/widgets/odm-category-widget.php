@@ -9,8 +9,8 @@ class Odm_Category_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'odm_category_widget',
-			__('ODM Post Taxonomy', 'opendev'),
-			array('description' => __('Display post taxonomies hierarchically.', 'opendev'))
+			__('ODM Post Taxonomy', 'odm'),
+			array('description' => __('Display post taxonomies hierarchically.', 'odm'))
 		);
 	}
 
