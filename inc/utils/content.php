@@ -330,7 +330,7 @@ function available_custom_post_types(){
 	 wp_reset_query();
 	 if(isset($search_term) && $search_term):
 
-		 $supported_post_types = array('topic','news-article', 'profiles', 'story');
+		 $supported_post_types = array('topic','news-article', 'story');
 
 		 foreach ( $supported_post_types as $post_type):
 
@@ -365,6 +365,10 @@ function available_custom_post_types(){
 
 	 return $response;
 
+ }
+
+ function is_page_dataset_detail_template(){
+	 return (strpos(get_page_template(), 'page-dataset-detail') !== false);
  }
 
  ?>
