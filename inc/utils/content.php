@@ -262,13 +262,13 @@ function show_post_meta($post)
 				<?php the_category(); ?>
 			</li>
 			<?php
-				//$tags = the_tags('', '');
-				//if (!empty($tags)): ?>
+				$tags = the_tags('', '');
+				if (!empty($tags)): ?>
 					<li class="post-tags">
 						<i class="fa fa-tags"></i>
 						<?php the_tags('', ''); ?>
 					</li>
-			  <?php	//endif; ?>
+			  <?php	endif; ?>
 		</ul>
 	</div>
 
