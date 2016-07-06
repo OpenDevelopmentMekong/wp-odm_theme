@@ -19,7 +19,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 	 */
 
 	public function get_related_news( $category = "") {
-		if( odm_language_manager()->get_current_language() == "kh")
+		if( odm_language_manager()->get_current_language() == "km")
 			$language = "khmer";
 		else $language = "";
 
