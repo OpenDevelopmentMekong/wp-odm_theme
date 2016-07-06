@@ -330,7 +330,7 @@ function available_custom_post_types(){
 	 wp_reset_query();
 	 if(isset($search_term) && $search_term):
 
-		 $supported_post_types = array('topic','news-article', 'profiles', 'story');
+		 $supported_post_types = array('topic','news-article', 'story');
 
 		 foreach ( $supported_post_types as $post_type):
 
