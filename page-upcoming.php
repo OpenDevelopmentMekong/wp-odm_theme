@@ -7,70 +7,6 @@ Template Name: Upcoming site
 
 <?php if(have_posts()) : the_post(); ?>
 
- <?php
-  $options = get_option('opendev_options');
-  if($options['site_intro']) :
-   $intro_texts = opendev_get_intro_texts();
-   if(!empty($intro_texts)) :
-   ?>
-   <section id="site-intro">
-    <div class="container">
-     <div id="intro-texts" class="row">
-      <?php if($intro_texts[1]) : ?>
-       <div class="four columns">
-        <div class="text-item">
-         <div class="icon">
-          <?php if($intro_texts[1]['icon']) : ?>
-           <p class="icon-<?php echo $intro_texts[1]['icon']; ?>"></p>
-          <?php endif; ?>
-         </div>
-         <div class="content">
-          <h3><?php echo $intro_texts[1]['title']; ?></h3>
-          <p><?php echo $intro_texts[1]['content']; ?></p>
-         </div>
-        </div>
-       </div>
-      <?php endif; ?>
-      <?php if($intro_texts[2]) : ?>
-       <div class="four columns">
-        <div class="text-item">
-         <div class="icon">
-          <?php if($intro_texts[2]['icon']) : ?>
-           <p class="icon-<?php echo $intro_texts[2]['icon']; ?>"></p>
-          <?php endif; ?>
-         </div>
-         <div class="content">
-          <h3><?php echo $intro_texts[2]['title']; ?></h3>
-          <p><?php echo $intro_texts[2]['content']; ?></p>
-         </div>
-        </div>
-       </div>
-      <?php endif; ?>
-      <?php if($intro_texts[3]) : ?>
-       <div class="four columns">
-        <div class="text-item">
-         <div class="icon">
-          <?php if($intro_texts[3]['icon']) : ?>
-           <p class="icon-<?php echo $intro_texts[3]['icon']; ?>"></p>
-          <?php endif; ?>
-         </div>
-         <div class="content">
-          <h3><?php echo $intro_texts[3]['title']; ?></h3>
-          <p><?php echo $intro_texts[3]['content']; ?></p>
-         </div>
-        </div>
-       </div>
-      <?php endif; ?>
-     </div>
-    </div>
-   </section>
-  <?php endif; ?>
- <?php else: ?>
-  <!--blank row-->
-  <section class="page-section row">
-  </section>
- <?php endif; ?>
-
  <?php if($options['frontpage_slider_id']) : ?>
    <section id="featured-content" class="page-section row">
     <div class="container">
@@ -78,7 +14,7 @@ Template Name: Upcoming site
       <div class="section-featured-content">
         <?php
           if( function_exists('fa_display_slider') ){
-              fa_display_slider( $options['frontpage_slider_id'] );
+            fa_display_slider( $options['frontpage_slider_id'] );
           }
         ?>
       </div>
@@ -91,26 +27,33 @@ Template Name: Upcoming site
   <div class="section-title no-margin-buttom">
    <div class="container">
     <div class="twelve columns">
-        <header class="single-post-header">
-					<h1><?php the_title(); ?></h1>
-		</header>
-     <?php the_content(); ?>
+      <header class="single-post-header">
+				<h1><?php the_title(); ?></h1>
+	    </header>
+      <?php the_content(); ?>
     </div>
    </div>
   </div>
  </section>
 
- <section id="announcements-and-updates" class="page-section row no-margin-top" >
+ <section id="homepage-area-1" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="four columns">
-        <?php dynamic_sidebar('upcoming-footer-left'); ?>
+      <div class="twelve columns">
+        <?php dynamic_sidebar('homepage-area-1'); ?>
       </div>
-      <div class="four columns">
-        <?php dynamic_sidebar('upcoming-footer-middle'); ?>
+    </div>
+   </div>
+ </section>
+
+ <section id="homepage-area-2-3" class="page-section">
+   <div class="container">
+     <div class="row">
+      <div class="six columns">
+        <?php dynamic_sidebar('homepage-area-2'); ?>
       </div>
-      <div class="four columns">
-        <?php dynamic_sidebar('upcoming-footer-right'); ?>
+      <div class="six columns">
+        <?php dynamic_sidebar('homepage-area-3'); ?>
       </div>
     </div>
    </div>

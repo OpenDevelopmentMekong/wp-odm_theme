@@ -1,6 +1,6 @@
 <?php
 
-function opendev_get_thumbnail($post_id = false)
+function opendev_get_thumbnail($post_id = false, $fallback = false)
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
@@ -8,6 +8,10 @@ function opendev_get_thumbnail($post_id = false)
     if ($thumb_src) {
       return $thumb_src;
     }
+
+    if ($fallback):
+      return '<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="' . get_stylesheet_directory_uri() .'/img/thumbnail.png"></img>';
+    endif;
 
     return null;
 }

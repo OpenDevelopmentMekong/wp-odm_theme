@@ -60,21 +60,15 @@ class opendev_AdvancedNav {
 			}
 
 			if(isset($_GET[$this->prefix . 's'])) {
-
 				$query->set('s', $_GET[$this->prefix . 's']);
-
 			}
 
 			if(isset($_GET[$this->prefix . 'post_type'])) {
-
 				$query->set('post_type', $_GET[$this->prefix . 'post_type']);
-
 			}
 
 			if(isset($_GET[$this->prefix . 'category'])) {
-
 				$query->set('category__in', $_GET[$this->prefix . 'category']);
-
 			}
 
 			if(isset($_GET[$this->prefix . 'date_start'])) {
@@ -136,8 +130,10 @@ class opendev_AdvancedNav {
 				</div>
 			<?php endif; ?>
 			<?php
-			$oldest = array_shift(get_posts(array('posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date')));
-			$newest = array_shift(get_posts(array('posts_per_page' => 1, 'order' => 'DESC', 'orderby' => 'date')));
+			$oldest = get_posts(array('posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
+			$oldest = array_shift($oldest);
+			$newest = get_posts(array('posts_per_page' => 1, 'order' => 'DESC', 'orderby' => 'date'));
+			$newest = array_shift($newest);
 
 			$before = $oldest->post_date;
 			$after = $newest->post_date;
@@ -164,7 +160,7 @@ class opendev_AdvancedNav {
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="four columns">
+			<div class="three columns offset-by-one">
 				<div class="date-input adv-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'opendev'); ?></label></p>
 					<div class="date-range-inputs">

@@ -134,7 +134,7 @@
        <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
         <?php $lang = 'en';
          $i = 0;
-        //if (function_exists("qtranxf_getLanguage")) $lang = qtranxf_getLanguage();
+        //$lang = opendev_language_manager()->get_current_language();
         foreach ($map['layers'] as $individual_layer) {
             ++$i;
             $get_post_by_id = get_post($individual_layer['ID']);

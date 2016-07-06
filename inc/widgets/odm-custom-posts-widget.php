@@ -24,6 +24,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
+		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid';
 
 		$query = array(
 				'posts_per_page'   => $limit,
@@ -44,7 +45,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 						endif; ?>
 				</div>
 				<?php foreach($posts as $post):
-					opendev_get_template('custom-post-grid-single',array($post),true);
+					$template = ($layout_type == 'grid') ? 'post-grid-single' : 'post-list-single';
+					opendev_get_template($template,array($post),true);
 				endforeach; ?>
 			</div>
 		</div>
@@ -60,7 +62,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
+		$layout_types = array('grid','list');
+
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
+		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : $layout_types[0];
 
 		$args = array(
 		   'public'   => true,
@@ -86,9 +91,18 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</select>
 		</p>
 
+		<p>
+			<label for="<?php echo $this->get_field_id( 'layout_type' ); ?>"><?php _e( 'Select layout:' ); ?></label>
+			<select class='widefat' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
+				<?php foreach ( $layout_types  as $type ): ?>
+					<option <?php if ($layout_type == $type) { echo " selected"; } ?> value="<?php echo $type ?>"><?php echo $type ?></option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list (-1 to show all):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
 		</p>
 
@@ -103,11 +117,11 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-
 		$instance = array();
 		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
+		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid';
 
 		return $instance;
 	}
