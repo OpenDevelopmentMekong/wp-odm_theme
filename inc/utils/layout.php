@@ -27,7 +27,7 @@ function opendev_logo()
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.opendev_country_manager()->get_current_country().'</h2>';
+    echo '<h2 class="side-title">'.ucfirst(opendev_country_manager()->get_current_country()).'</h2>';
     echo '</div>';
 }
 
