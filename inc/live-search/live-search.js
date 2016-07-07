@@ -1,5 +1,18 @@
 (function($) {
 
+	var spinner;
+
+	var initSpinner = function(target){
+		var opts = {
+			top: '50%' ,
+      left: '50%',
+			scale: 0.1,
+      position: 'absolute'
+		};
+		spinner = new Spinner(opts).spin();
+		target.append(spinner.el);
+	};
+
 	var query = _.debounce(function(s, cb) {
 
 		$.ajax({
@@ -22,7 +35,8 @@
 	var display = function(resultsContainer,data, s) {
 		var results = $('<div class="results">');
 
-    _.each(data, function(postType, i){
+		// wp based results
+    _.each(data.wp, function(postType, i){
 
       var column = $('<div class="three columns"><h1>' + postType.title + '</h1></div>');
 
@@ -57,6 +71,10 @@
 
     });
 
+		var dataColumn = $('<div class="three columns"><h1>Data</h1></div>');
+		dataColumn.append(data.wpckan);
+		results.append(dataColumn);
+
     // Results
 		resultsContainer.find('.results').remove();
     $('#od-search-results').show();
@@ -65,8 +83,10 @@
 
 
     // More results
+		resultsContainer.find('.more').remove();
     var more = $('<div class="more" />');
-    var close = $('<a class="button" id="close-results" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i> Close</a>');
+    var close = $('<a class="button" id="close-results" href="#"></a>');
+		close.text(livesearch.labels.close);
 		var link = $('<a class="button" id="more-results" href="' + livesearch.siteurl + '?s=' + s + '" />');
 		link.text(livesearch.labels.more);
 		more.append(link);
@@ -74,7 +94,7 @@
     resultsContainer.append(more);
 
 
-		$('#loading').hide();
+		spinner.stop();
 
 	};
 
@@ -91,7 +111,7 @@
 
 				var s = $(this).val();
 				if(s) {
-					//$('#loading').show();
+					initSpinner($livesearch);
 					query(s, function(data) {
 						if(self.val())
 							display($resultsContainer, data, s);
@@ -99,7 +119,7 @@
 							$livesearch.find('.results').remove();
 					});
 				} else {
-					$('#loading').hide();
+					spinner.stop();
 					$livesearch.find('.results').remove();
 		      $resultsContainer.hide();
 				}

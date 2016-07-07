@@ -14,7 +14,7 @@
 					<?php the_content(); ?>
 					<?php
 						if (isset($_GET['id'])):
-							echo do_shortcode('[wpckan_dataset_detail id="' . $_GET['id'] . '"]');            
+							echo do_shortcode('[wpckan_dataset_detail id="' . $_GET['id'] . '"]');
 						else:
 							echo "<p>" . _e('Please provide an id as parameter', 'wpckan') . "</p>";
 						endif;

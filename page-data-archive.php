@@ -26,11 +26,10 @@ Template Name: Data archive
 					</form>
 					<div class="row">
 						<?php
-                        $search = isset($_GET['ckan_s']) ? $_GET['ckan_s'] : '';
-                        $limit = 8;
-                        $page = isset($_GET['ckan_page']) ? $_GET['ckan_page'] : 1;
-                        echo do_shortcode('[wpckan_query_datasets query="'.$search.'" limit="'.$limit.'" page="'.$page.'"]');
-                        ?>
+              $search = isset($_GET['ckan_s']) ? $_GET['ckan_s'] : '';
+              $limit = 8;
+              $page = isset($_GET['ckan_page']) ? $_GET['ckan_page'] : 1;
+              echo do_shortcode('[wpckan_query_datasets query="'.$search.'" limit="'.$limit.'" page="'.$page.'"]'); ?>
 					</div>
 					<nav id="wpckan_nav">
 						<?php if ($page > 1) : ?>

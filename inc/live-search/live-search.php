@@ -18,6 +18,7 @@ class OpenDev_LiveSearch {
 			'action' => $this->ajax_action,
 			'labels' => array(
 				'more' => __('Go to the advanced search', 'opendev'),
+				'close' => __('Close', 'opendev'),
 				'no_more' => __('Showing all results', 'opendev'),
 				'post' => __('News', 'opendev'),
 				'topic' => __('Topic', 'opendev'),
@@ -28,7 +29,11 @@ class OpenDev_LiveSearch {
 
 	function query() {
 
-		$response = content_types_breakdown_for_query($_REQUEST['s'],5);
+		$response = array(
+			"wp" => content_types_breakdown_for_query($_REQUEST['s'],5),
+			"wpckan" => do_shortcode('[wpckan_query_datasets query="'.$_REQUEST['s'].'" limit="5" include_fields_dataset="title" include_fields_resources="format"]')
+		);
+
 
 		header('Content-Type: application/json;charset=UTF-8');
 		echo json_encode($response);
