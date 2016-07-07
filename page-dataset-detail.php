@@ -10,7 +10,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<?php the_content(); ?>
 					<?php
 						if (isset($_GET['id'])):
@@ -23,7 +23,7 @@
 			</div>
 
 			<div class="row">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<?php dynamic_sidebar('wpckan-dataset-detail-bottom'); ?>
 				</div>
 			</div>

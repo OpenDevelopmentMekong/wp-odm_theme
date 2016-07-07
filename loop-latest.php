@@ -1,6 +1,6 @@
 <ul class="list-posts">
 	<?php while (have_posts()) : the_post(); ?>
-		<li id="post-<?php the_ID(); ?>" <?php post_class('post-item four columns'); ?>>
+		<li id="post-<?php the_ID(); ?>" <?php post_class('post-item six columns'); ?>>
 			<article>
 				<header class="post-header">
 					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -26,7 +26,7 @@
 		</li>
 	<?php endwhile; ?>
 </ul>
-<div class="twelve columns">
+<div class="sixteen columns">
 	<?php if (function_exists('wp_paginate')) {
     wp_paginate();
 } ?>

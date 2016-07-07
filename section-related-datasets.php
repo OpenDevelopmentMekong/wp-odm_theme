@@ -26,7 +26,7 @@ if(!empty($datasets)) {
 <?php if(isset($grouped) && !empty($grouped)) : ?>
 	<section id="related-datasets" class="row" style="display:none;">
 		<div class="container">
-			<div class="box-section twelve columns">
+			<div class="box-section sixteen columns">
 				<div class="box-title">
 					<h2><?php _e('Related resources', 'odm'); ?></h2>
 				</div>

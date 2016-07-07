@@ -5,13 +5,13 @@
 	<section id="content" class="single-post">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<h1><?php the_title(); ?></h1>
 				</div>
 			</div>
 		</header>
 		<div class="container">
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<?php the_content(); ?>
 				<?php
 				wp_link_pages( array(

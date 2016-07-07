@@ -9,17 +9,17 @@ Template Name: Data
 	<section id="content" class="single-post data-page">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<h1><span class="icon-archive"></span> <?php the_title(); ?></h1>
 				</div>
 			</div>
 		</header>
 		<div class="container">
-			<div class="eight columns">
+			<div class="ten columns">
 				<?php the_content(); ?>
 				<?php dynamic_sidebar('data-main'); ?>
 			</div>
-			<div class="three columns offset-by-one">
+			<div class="five columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('data-sidebar'); ?>

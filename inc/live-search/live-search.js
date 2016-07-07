@@ -38,7 +38,7 @@
 		// wp based results
     _.each(data.wp, function(postType, i){
 
-      var column = $('<div class="three columns"><h1>' + postType.title + '</h1></div>');
+      var column = $('<div class="five columns"><h1>' + postType.title + '</h1></div>');
 
       if (postType.posts.length >0){
 
@@ -71,7 +71,7 @@
 
     });
 
-		var dataColumn = $('<div class="three columns"><h1>Data</h1></div>');
+		var dataColumn = $('<div class="five columns"><h1>Data</h1></div>');
 		dataColumn.append(data.wpckan);
 		results.append(dataColumn);
 

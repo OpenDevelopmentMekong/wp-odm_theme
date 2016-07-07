@@ -16,7 +16,7 @@ foreach($post_types as $pt) {
 
 <div class="section-title main-title">
 	<div class="container">
-		<div class="twelve columns">
+		<div class="sixteen columns">
 			<?php
 			if($term->parent) :
 				$parent = get_term($term->parent, $term->taxonomy);
@@ -35,7 +35,7 @@ foreach($post_types as $pt) {
 		?>
 		<nav id="main-title-nav">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<ul class="term-children clearfix">
 						<?php foreach($children as $child) : ?>
 							<li><a href="<?php echo get_term_link($child); ?>"><?php echo $child->name; ?></a></li>
@@ -49,7 +49,7 @@ foreach($post_types as $pt) {
 	?>
 </div>
 <div class="container category-container">
-	<div class="eight columns">
+	<div class="ten columns">
 	<?php get_template_part('section', 'query-actions'); ?>
 		<section class="tabbed-posts-section">
 			<?php if(count($tax_post_types) > 1) : ?>
@@ -102,7 +102,7 @@ foreach($post_types as $pt) {
 			<?php endif; ?>
 		</section>
 	</div>
-	<div class="three columns move-up">
+	<div class="five columns move-up">
 		<aside id="sidebar">
 			<ul class="widgets">
 				<li class="widget share-widget">

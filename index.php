@@ -21,7 +21,7 @@
  <section id="homepage-area-1" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="twelve columns">
+      <div class="sixteen columns">
         <?php dynamic_sidebar('homepage-area-1'); ?>
       </div>
     </div>
@@ -31,10 +31,10 @@
  <section id="homepage-area-2-3" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="six columns">
+      <div class="eight columns">
         <?php dynamic_sidebar('homepage-area-2'); ?>
       </div>
-      <div class="six columns">
+      <div class="eight columns">
         <?php dynamic_sidebar('homepage-area-3'); ?>
       </div>
     </div>

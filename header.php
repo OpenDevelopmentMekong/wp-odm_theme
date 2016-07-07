@@ -38,10 +38,10 @@
   <nav id="od-selector">
     <div class="container">
       <div class="row">
-        <div class="six columns">
+        <div class="eight columns">
           <?php odm_country_manager()->echo_country_selectors(); ?>
         </div>
-        <div class="six columns">
+        <div class="eight columns">
           <?php odm_language_manager()->echo_language_selectors(); ?>
         </div>
       </div>
@@ -52,12 +52,12 @@
   <header id="od-head">
     <div class="container">
       <div class="row">
-        <div class="nine columns organization left_organization">
+        <div class="eleven columns organization left_organization">
           <div class="site-meta">
             <?php odm_logo(); ?>
           </div>
         </div>
-        <div class="three columns">
+        <div class="five columns">
           <div class="social">
             <?php odm_get_template('social-nav',array(),true); ?>
           </div>
@@ -71,7 +71,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="twelve columns">
+          <div class="sixteen columns">
             <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
           </div>
 
@@ -98,7 +98,7 @@
             if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
               <div id="notification-message">
                 <div class="container">
-                  <div class="twelve columns">
+                  <div class="sixteen columns">
                     <div class="notification-message-box">
                       <?php echo $options_msg['notice_message']; ?>
                     </div>
@@ -115,7 +115,7 @@
   <nav id="od-breadcrumb">
     <div class="container">
       <div class="row">
-        <div class="twelve columns">
+        <div class="sixteen columns">
         <?php
           if (!is_front_page()) : ?>
             <div id="main-breadcrumb">
