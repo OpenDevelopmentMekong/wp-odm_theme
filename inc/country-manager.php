@@ -17,7 +17,7 @@ class Odm_Country_Manager {
   ];
 
 	function __construct() {
-		//add_action( 'init', array($this,'init_country_manager'));
+		add_action( 'after_setup_theme', array($this,'init_country_manager'));
 	}
 
   function get_current_country(){
@@ -40,21 +40,21 @@ class Odm_Country_Manager {
     ];
   }
 
-  // function init_country_manager(){
-  //
-  //   if ( function_exists( 'wp_get_sites' )):
-  //     $get_all_sites = wp_get_sites();
-  //     foreach ($get_all_sites as $site):
-  //       switch_to_blog($site["blog_id"]);
-  //       $options = get_site_option('odm_options');
-  //       $country = $options['style'];
-  //       $this->countries[$country]['url'] = $site['domain'];
-  //     endforeach;
-  //     restore_current_blog();
-  //   endif;
-  //
-  //   $options = get_site_option('odm_options');
-  // }
+  function init_country_manager(){
+
+    if ( function_exists( 'wp_get_sites' )):
+      $get_all_sites = wp_get_sites();
+      foreach ($get_all_sites as $site):
+        switch_to_blog($site["blog_id"]);
+        $options = get_site_option('odm_options');
+        $country = $options['style'];
+        $this->countries[$country]['url'] = $site['domain'];
+        restore_current_blog();
+      endforeach;
+    endif;
+
+    $options = get_site_option('odm_options');
+  }
 
   function echo_country_selectors(){
   ?>
