@@ -30,8 +30,6 @@ p {
   position: relative;
 }
 
-.excerpt { font-weight: light; }
-
 a {
 	text-decoration: none;
 }
@@ -74,4 +72,18 @@ blockquote {
 	padding:15px 15px 0;
 	border: 1px solid #DDD;
 	background: #f4f4f4;
+}
+
+.text-ellipsis(@lines-to-show; @font-size : @base-font-size; @line-height: 1.5) {
+	display: block; /* Fallback for non-webkit */
+	display: -webkit-box;
+	max-width: 100%;
+	height: @font-size*@line-height*@lines-to-show; /* Fallback for non-webkit */
+	margin: 0 auto;
+	font-size: @font-size;
+	line-height: @line-height;
+	-webkit-line-clamp: @lines-to-show;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
