@@ -15,9 +15,14 @@ Template Name: Data
 			</div>
 		</header>
 		<div class="container">
-			<div class="ten columns">
-				<?php the_content(); ?>
-				<?php dynamic_sidebar('data-main'); ?>
+			<div class="four columns">
+				<?php dynamic_sidebar('data-main-left'); ?>
+			</div>
+			<div class="four columns">
+				<?php dynamic_sidebar('data-main-middle'); ?>
+			</div>
+			<div class="three columns">
+				<?php dynamic_sidebar('data-main-right'); ?>
 			</div>
 			<div class="four columns offset-by-two">
 				<aside id="sidebar">

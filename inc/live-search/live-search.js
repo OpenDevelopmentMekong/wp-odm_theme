@@ -38,7 +38,7 @@
 		// wp based results
     _.each(data.wp, function(postType, i){
 
-      var column = $('<div class="five columns"><h1>' + postType.title + '</h1></div>');
+      var column = $('<div class="four columns"><h1>' + postType.title + '</h1></div>');
 
       if (postType.posts.length >0){
 
@@ -53,7 +53,7 @@
 					content.append(thumbnail);
 					content.append(desc);
 
-    			var item = $('<div class="post-list-item-small">')
+    			var item = $('<div class="post-list-item">')
     				//.append(type)
     				.append(title.html(link))
     				.append(content);
@@ -71,7 +71,7 @@
 
     });
 
-		var dataColumn = $('<div class="five columns"><h1>Data</h1></div>');
+		var dataColumn = $('<div class="four columns"><h1>Data</h1></div>');
 		dataColumn.append(data.wpckan);
 		results.append(dataColumn);
 
