@@ -46,8 +46,7 @@ class Odm_Country_Manager {
       $get_all_sites = wp_get_sites();
       foreach ($get_all_sites as $site):
         switch_to_blog($site["blog_id"]);
-        $options = get_site_option('odm_options');
-        $country = $options['style'];
+        $country = odm_get_style();
         $this->countries[$country]['url'] = $site['domain'];
         restore_current_blog();
       endforeach;

@@ -525,6 +525,16 @@ function odm_get_logo()
     }
 }
 
+function odm_get_style()
+{
+    $options = get_option('odm_options');
+    if (isset($options['style'])) {
+        return $options['style'];
+    } else {
+        return false;
+    }
+}
+
 function odm_get_facebook_url()
 {
     $options = get_option('odm_options');
