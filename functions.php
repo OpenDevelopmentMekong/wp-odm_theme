@@ -60,7 +60,7 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Homepage area 1', 'jeo'),
+    'name' => __('Homepage area top', 'jeo'),
     'id' => 'homepage-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -68,7 +68,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area 2', 'jeo'),
+    'name' => __('Homepage area bottom right', 'jeo'),
     'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -76,7 +76,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area 3', 'jeo'),
+    'name' => __('Homepage area bottom right', 'jeo'),
     'id' => 'homepage-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -90,8 +90,20 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Data main', 'jeo'),
-    'id' => 'data-main',
+    'name' => __('Data main left', 'jeo'),
+    'id' => 'data-main-left',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
+    register_sidebar(array(
+    'name' => __('Data main middle', 'jeo'),
+    'id' => 'data-main-middle',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
+    register_sidebar(array(
+    'name' => __('Data main right', 'jeo'),
+    'id' => 'data-main-right',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
