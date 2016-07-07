@@ -10,7 +10,7 @@ class Odm_Language_Manager {
   var $current_language = 'en';
 
 	function __construct() {
-    add_action( 'init', array($this,'init_language_manager'));
+    add_action( 'after_setup_theme', array($this,'init_language_manager'));
 	}
 
   function init_language_manager(){

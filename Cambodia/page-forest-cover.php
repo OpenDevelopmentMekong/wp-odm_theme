@@ -12,7 +12,7 @@ Template Name: Forest Cover and Forest Cover Analysis
 		<?php get_template_part('section', 'related-datasets'); ?>
 
 			<div class="container">
-				<div class="twelve columns">
+				<div class="ten columns">
 				    <header class="single-post-header" class="clearfix">
     					<h1><?php the_title(); ?></h1>
     					<div class="categories">
@@ -64,7 +64,7 @@ Template Name: Forest Cover and Forest Cover Analysis
     					?>
         				</div>
     	       	   </section>
-    				<div class="five columns offset-by-two">
+    				<div class="four columns offset-by-two">
     					<aside id="sidebar">
     						<ul class="widgets">
     							<li class="widget share-widget">
