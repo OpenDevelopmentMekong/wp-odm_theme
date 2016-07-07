@@ -11,7 +11,7 @@
 function odm_get_template($slug, array $params = array(), $output = true) {
     if(!$output) ob_start();
     if (!$template_file = locate_template("inc/templates/{$slug}.php", false, false)) {
-      trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
+      trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $slug), E_USER_ERROR);
     }
     extract($params, EXTR_SKIP);
     require($template_file);
