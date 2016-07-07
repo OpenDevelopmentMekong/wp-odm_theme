@@ -68,7 +68,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area bottom right', 'jeo'),
+    'name' => __('Homepage area bottom left', 'jeo'),
     'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
