@@ -28,7 +28,7 @@
 											$counter++;
 										?>
 										<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-											<?php odm_get_template('post-list-full-width-single',array(get_post()),true); ?>
+											<?php odm_get_template('post-list-single-1-cols',array(get_post()),true); ?>
 										</li>
 									<?php	endif; ?>
 								<?php endwhile; ?>

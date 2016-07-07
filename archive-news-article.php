@@ -30,7 +30,7 @@
 
 		<div class="row">
 			<?php while (have_posts()) : the_post();
-				odm_get_template('post-grid-single',array(get_post()),true);
+				odm_get_template('post-grid-single-4-cols',array(get_post()),true);
 			endwhile; ?>
 		</div>
 	</section>
