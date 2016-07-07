@@ -9,8 +9,8 @@ require_once get_stylesheet_directory().'/inc/language-manager.php';
 /*
  * Defining constants to be used across the whole theme
  */
-define('COUNTRY_NAME', opendev_country_manager()->get_current_country());
-define('CURRENT_LANGUAGE', opendev_language_manager()->get_current_language());
+define('COUNTRY_NAME', odm_country_manager()->get_current_country());
+define('CURRENT_LANGUAGE', odm_language_manager()->get_current_language());
 
 /*
  * Post types
@@ -45,13 +45,13 @@ require_once get_stylesheet_directory().'/inc/utils/breadcrumbs.php';
 require_once get_stylesheet_directory().'/inc/utils/layout.php';
 
 /*
- * Loads the theme's translated strings. for 'opendev' and 'jeo' domains
+ * Loads the theme's translated strings. for 'odm' and 'jeo' domains
  * Registers widget sidebars
  */
-function opendev_setup_theme()
+function odm_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
-    load_theme_textdomain('opendev', $gsd[0].'/wp-content/languages');
+    load_theme_textdomain('odm', $gsd[0].'/wp-content/languages');
     load_theme_textdomain('jeo', $gsd[0].'/wp-content/languages');
     register_sidebar(array(
     'name' => __('Topic sidebar', 'jeo'),
@@ -104,7 +104,7 @@ function opendev_setup_theme()
 
   include get_stylesheet_directory().'/inc/layers.php';
 }
-add_action('after_setup_theme', 'opendev_setup_theme');
+add_action('after_setup_theme', 'odm_setup_theme');
 
 function add_menu_icons_styles(){
 ?>
@@ -137,15 +137,15 @@ function add_menu_icons_styles(){
 }
 add_action( 'admin_head', 'add_menu_icons_styles' );
 
-function opendev_dependency_scripts()
+function odm_dependency_scripts()
 {
   wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
   wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
   wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
 }
-add_action('wp_enqueue_scripts', 'opendev_dependency_scripts', 100);
+add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
-function opendev_jeo_scripts()
+function odm_jeo_scripts()
 {
     wp_dequeue_script('jeo-site');
     wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
@@ -154,14 +154,14 @@ function opendev_jeo_scripts()
     global $jeo_markers;
     wp_deregister_script('jeo.markers');
     wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/lib/js/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-    wp_localize_script('jeo.markers', 'opendev_markers', array(
+    wp_localize_script('jeo.markers', 'odm_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => $jeo_markers->query(),
-    'stories_label' => __('stories', 'opendev'),
-    'home' => (is_home() && !is_paged() && (isset($_REQUEST['opendev_filter_']) && !$_REQUEST['opendev_filter_'])),
-    'copy_embed_label' => __('Copy the embed code', 'opendev'),
-    'share_label' => __('Share', 'opendev'),
-    'print_label' => __('Print', 'opendev'),
+    'stories_label' => __('stories', 'odm'),
+    'home' => (is_home() && !is_paged() && (isset($_REQUEST['odm_filter_']) && !$_REQUEST['odm_filter_'])),
+    'copy_embed_label' => __('Copy the embed code', 'odm'),
+    'share_label' => __('Share', 'odm'),
+    'print_label' => __('Print', 'odm'),
     'embed_base_url' => home_url('/embed/'),
     'share_base_url' => home_url('/share/'),
     'marker_active' => array(
@@ -172,15 +172,15 @@ function opendev_jeo_scripts()
       'markerId' => 'none',
     ),
      'site_url' => home_url('/'),
-     'read_more_label' => __('Read more', 'opendev'),
+     'read_more_label' => __('Read more', 'odm'),
      'lightbox_label' => array(
-     'slideshow' => __('Open slideshow', 'opendev'),
-     'videos' => __('Watch video gallery', 'opendev'),
-     'video' => __('Watch video', 'opendev'),
-     'images' => __('View image gallery', 'opendev'),
-     'image' => __('View fullscreen image', 'opendev'),
-     'infographic' => __('View infographic', 'opendev'),
-     'infographics' => __('View infographics', 'opendev'),
+     'slideshow' => __('Open slideshow', 'odm'),
+     'videos' => __('Watch video gallery', 'odm'),
+     'video' => __('Watch video', 'odm'),
+     'images' => __('View image gallery', 'odm'),
+     'image' => __('View fullscreen image', 'odm'),
+     'infographic' => __('View infographic', 'odm'),
+     'infographics' => __('View infographics', 'odm'),
     ),
    'enable_clustering' => jeo_use_clustering() ? true : false,
    'default_icon' => jeo_formatted_default_marker(),
@@ -188,9 +188,9 @@ function opendev_jeo_scripts()
 
   wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 }
-add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 101);
+add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 101);
 
-// function opendev_jeo_admin_scripts()
+// function odm_jeo_admin_scripts()
 // {
 //     if (file_exists(get_stylesheet_directory().'/inc/js/filter-layers.js')) {
 //         wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
@@ -200,18 +200,18 @@ add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 101);
 //         wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
 //     }
 // }
-// add_action('admin_enqueue_scripts', 'opendev_jeo_admin_scripts');
+// add_action('admin_enqueue_scripts', 'odm_jeo_admin_scripts');
 
-function opendev_styles()
+function odm_styles()
 {
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
 
     $css_base = get_stylesheet_directory_uri().'/dist/css/';
-    wp_register_style('opendev-cambodia',  $css_base.'cambodia.css');
-    wp_register_style('opendev-thailand',  $css_base.'thailand.css');
-    wp_register_style('opendev-laos',  $css_base.'laos.css');
-    wp_register_style('opendev-myanmar',  $css_base.'myanmar.css');
-    wp_register_style('opendev-vietnam',  $css_base.'vietnam.css');
+    wp_register_style('odm-cambodia',  $css_base.'cambodia.css');
+    wp_register_style('odm-thailand',  $css_base.'thailand.css');
+    wp_register_style('odm-laos',  $css_base.'laos.css');
+    wp_register_style('odm-myanmar',  $css_base.'myanmar.css');
+    wp_register_style('odm-vietnam',  $css_base.'vietnam.css');
 
     $cambodia_base = get_stylesheet_directory_uri().'/Cambodia/';
     wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
@@ -225,10 +225,10 @@ function opendev_styles()
     wp_enqueue_style('odm-style',  $dist_base.'odm.css');
 
     if ($options['style']) {
-        wp_enqueue_style('opendev-'.$options['style']);
+        wp_enqueue_style('odm-'.$options['style']);
     }
 }
-add_action('wp_enqueue_scripts', 'opendev_styles', 15);
+add_action('wp_enqueue_scripts', 'odm_styles', 15);
 
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
@@ -261,12 +261,12 @@ function create_news_source_taxonomies()
 }
 add_action('init', 'create_news_source_taxonomies', 0);
 
-function opendev_marker_data($data, $post)
+function odm_marker_data($data, $post)
 {
     global $post;
 
     $permalink = $data['url'];
-    $permalink = add_query_arg(array('lang' => opendev_language_manager()->get_current_language()), $permalink);
+    $permalink = add_query_arg(array('lang' => odm_language_manager()->get_current_language()), $permalink);
 
     $data['permalink'] = $permalink;
     $data['url'] = $permalink;
@@ -275,13 +275,13 @@ function opendev_marker_data($data, $post)
         $data['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
     }
 
-    $data['thumbnail'] = opendev_get_thumbnail();
+    $data['thumbnail'] = odm_get_thumbnail();
 
     return $data;
 }
-add_filter('jeo_marker_data', 'opendev_marker_data', 10, 2);
+add_filter('jeo_marker_data', 'odm_marker_data', 10, 2);
 
-function opendev_social_apis()
+function odm_social_apis()
 {
 
  // Facebook
@@ -314,19 +314,19 @@ function opendev_social_apis()
  <?php
 
 }
-add_action('wp_footer', 'opendev_social_apis');
+add_action('wp_footer', 'odm_social_apis');
 
 // Disable mousewheel zoom by default
-function opendev_map_data($data)
+function odm_map_data($data)
 {
     $data['disable_mousewheel'] = true;
 
     return $data;
 }
-add_filter('jeo_map_data', 'opendev_map_data');
-add_filter('jeo_mapgroup_data', 'opendev_map_data');
+add_filter('jeo_map_data', 'odm_map_data');
+add_filter('jeo_mapgroup_data', 'odm_map_data');
 
-function opendev_custom_admin_css()
+function odm_custom_admin_css()
 {
     ?>
  <style>
@@ -335,26 +335,26 @@ function opendev_custom_admin_css()
  <?php
 
 }
-add_action('admin_footer', 'opendev_custom_admin_css');
+add_action('admin_footer', 'odm_custom_admin_css');
 
-function opendev_search_pre_get_posts($query)
+function odm_search_pre_get_posts($query)
 {
-    if (!is_admin() && ($query->is_search || get_query_var('opendev_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
+    if (!is_admin() && ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
       $query->set('post_type', get_post_types());
     }
 }
-add_action('pre_get_posts', 'opendev_search_pre_get_posts');
+add_action('pre_get_posts', 'odm_search_pre_get_posts');
 
-function opendev_category_pre_get_posts($query)
+function odm_category_pre_get_posts($query)
 {
     if ($query->is_category) {
         $post_type = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
         $query->set('post_type', array($post_type));
     }
 }
-add_action('pre_get_posts', 'opendev_category_pre_get_posts', 20, 1);
+add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
 
-function opendev_posts_clauses_join($join)
+function odm_posts_clauses_join($join)
 {
     global $wpdb;
 
@@ -362,9 +362,9 @@ function opendev_posts_clauses_join($join)
 
     return $join;
 }
-//add_filter('jeo_posts_clauses_join', 'opendev_posts_clauses_join');
+//add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
 
-function opendev_posts_clauses_where($where)
+function odm_posts_clauses_where($where)
 {
     $map_id = jeo_get_map_id();
 
@@ -402,15 +402,15 @@ function opendev_posts_clauses_where($where)
 
     return $where;
 }
-//add_filter('jeo_posts_clauses_where', 'opendev_posts_clauses_where');
+//add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
 
-function opendev_ignore_sticky($query)
+function odm_ignore_sticky($query)
 {
     if ($query->is_main_query()) {
         $query->set('ignore_sticky_posts', true);
     }
 }
-add_action('pre_get_posts', 'opendev_ignore_sticky');
+add_action('pre_get_posts', 'odm_ignore_sticky');
 
 function my_mce_buttons_2($buttons)
 {

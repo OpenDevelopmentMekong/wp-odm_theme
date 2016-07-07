@@ -1,6 +1,6 @@
 <?php
 
-function opendev_get_thumbnail($post_id = false, $fallback = false)
+function odm_get_thumbnail($post_id = false, $fallback = false)
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
@@ -16,7 +16,7 @@ function opendev_get_thumbnail($post_id = false, $fallback = false)
     return null;
 }
 
-function opendev_logo()
+function odm_logo()
 {
   ?>
   <h1>
@@ -27,7 +27,7 @@ function opendev_logo()
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.ucfirst(opendev_country_manager()->get_current_country()).'</h2>';
+    echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
     echo '</div>';
 }
 

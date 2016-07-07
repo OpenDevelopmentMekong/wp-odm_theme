@@ -5,7 +5,7 @@
  * Language Manager
  */
 
-class OpenDev_Language_Manager {
+class Odm_Language_Manager {
 
   var $current_language = 'en';
 
@@ -16,14 +16,10 @@ class OpenDev_Language_Manager {
   function init_language_manager(){
 
     if (function_exists('qtranxf_getLanguage')) {
-        if (qtranxf_getLanguage() == 'kh') {
-            $local_lang = 'km';
-        } else {
-            $local_lang = qtranxf_getLanguage();
-        }
-        $this->current_language = $local_lang;
+      $local_lang = qtranxf_getLanguage();
+      $this->current_language = $local_lang;
     }
-    
+
   }
 
   function get_current_language(){
@@ -38,10 +34,10 @@ class OpenDev_Language_Manager {
 
 }
 
-$GLOBALS['opendev_language_manager'] = new OpenDev_Language_Manager();
+$GLOBALS['odm_language_manager'] = new Odm_Language_Manager();
 
-function opendev_language_manager() {
-	return $GLOBALS['opendev_language_manager'];
+function odm_language_manager() {
+	return $GLOBALS['odm_language_manager'];
 }
 
 ?>

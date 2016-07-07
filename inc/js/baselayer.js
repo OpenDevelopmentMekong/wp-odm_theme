@@ -58,7 +58,7 @@
 	    if(this._filtering_baselayers.length) {
 	       var list_baselayer = '';
 	       var legend = '';
-				 // Add Default Baselayer set in "Base map settings" of the opendev option, url: https://[country.]opendevelopmentmekong.net/wp-admin/themes.php?page=opendev_options
+				 // Add Default Baselayer set in "Base map settings" of the opendev option, url: https://[country.]opendevelopmentmekong.net/wp-admin/themes.php?page=odm_options
 				 list_baselayer += '<li class="baselayer-item">';
 				 list_baselayer += '<span class="baselayer-item-name" data-layer="0">Default Map</span>';
 				 list_baselayer += '</li>';

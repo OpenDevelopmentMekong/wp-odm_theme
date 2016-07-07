@@ -10,7 +10,7 @@
 	$rss = add_query_arg(array('feed' => 'rss'));
 	$rss = str_replace("news-archive/", "", $rss);
 	?>
-	<span class="query-actions-title"><?php _e('Content API', 'opendev'); ?></span>
+	<span class="query-actions-title"><?php _e('Content API', 'odm'); ?></span>
 	<a class="rss" target="_blank" href="<?php echo $rss; ?>">
 		<span class="icon-rss"></span>
 		<?php _e('RSS Feed', 'infoamazonia'); ?>

@@ -9,8 +9,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'odm_custom_posts_widget',
-			__('ODM Custom Posts', 'opendev'),
-			array('description' => __('Display entries of the spefied custom post type', 'opendev'))
+			__('ODM Custom Posts', 'odm'),
+			array('description' => __('Display entries of the spefied custom post type', 'odm'))
 		);
 	}
 
@@ -41,12 +41,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<div class="twelve columns">
 					<?php
 						if (!empty($instance['title'])):
-							 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
+							 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
 						endif; ?>
 				</div>
 				<?php foreach($posts as $post):
 					$template = ($layout_type == 'grid') ? 'post-grid-single' : 'post-list-single';
-					opendev_get_template($template,array($post),true);
+					odm_get_template($template,array($post),true);
 				endforeach; ?>
 			</div>
 		</div>
@@ -76,7 +76,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$operator = 'and';
 		$post_types = get_post_types( $args, $output, $operator );
 
-		$title = !empty($instance['title']) ? __($instance['title'], 'opendev') : __('Custom posts', 'opendev'); ?>
+		$title = !empty($instance['title']) ? __($instance['title'], 'odm') : __('Custom posts', 'odm'); ?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">

@@ -5,7 +5,7 @@
 		<div class="twelve columns">
 			<!--<h1><?php _e('Search results', 'jeo'); ?></h1-->
 			<div class="panel more-filters-content row">
-				<?php opendev_adv_nav_filters(); ?>
+				<?php odm_adv_nav_filters(); ?>
 			</div>
 		</div>
 	</div>

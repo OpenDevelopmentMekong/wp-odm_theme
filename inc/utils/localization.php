@@ -3,7 +3,6 @@
 function get_localization_language_by_language_code($lang_code = 'en')
 {
     $language['en'] = 'English';
-    $language['kh'] = 'Khmer';
     $language['km'] = 'Khmer';
     $language['lo'] = 'Lao';
     $language['my'] = 'Burmese';
@@ -38,7 +37,7 @@ function getMultilingualValueOrFallback($field, $lang)
 /****** Add function convert date, H-E/**/
 function convert_date_to_kh_date($date_string, $splitted_by = '.')
 {
-    if ((CURRENT_LANGUAGE == 'kh') || (CURRENT_LANGUAGE == 'km')) {
+    if (CURRENT_LANGUAGE == 'km') {
         $splitted_date = explode($splitted_by, $date_string);
         $joined_date = '';
         if (count($splitted_date) > 1) {
@@ -77,7 +76,7 @@ function convert_date_to_kh_date($date_string, $splitted_by = '.')
 }
 function convert_to_kh_month($month = '')
 {
-    if ((CURRENT_LANGUAGE == 'kh') || (CURRENT_LANGUAGE == 'km')) {
+    if (CURRENT_LANGUAGE == 'km') {
         if ($month == 'Jan') {
             $kh_month = 'មករា';
         } elseif ($month == 'Feb') {
@@ -160,7 +159,7 @@ function convert_to_kh_month($month = '')
 
 function convert_to_kh_number($number)
 {
-    if ((CURRENT_LANGUAGE == 'kh') || (CURRENT_LANGUAGE == 'km')) {
+    if (CURRENT_LANGUAGE == 'km') {
         $conbine_num = '';
         $split_num = str_split($number);
         foreach ($split_num as $num) {

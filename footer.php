@@ -8,7 +8,7 @@
     <div class="row">
       <div class="twelve columns">
         <?php
-              $disclaimer = opendev_get_legal_disclaimer();
+              $disclaimer = odm_get_legal_disclaimer();
               if ($disclaimer) : ?>
       			<div class="twelve columns row">
       				<?php echo wpautop($disclaimer); ?>

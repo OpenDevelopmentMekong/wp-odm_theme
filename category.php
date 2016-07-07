@@ -61,7 +61,7 @@ foreach($post_types as $pt) {
 							$pt = get_post_type_object($pt);
 							$title = $pt->labels->name;
 							if($pt->name == 'post')
-								$title = __('News', 'opendev');
+								$title = __('News', 'odm');
 							?>
 							<li <?php if($current_pt == $pt->name) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
 						<?php endforeach; ?>
@@ -69,7 +69,7 @@ foreach($post_types as $pt) {
 				</nav>
 			<?php endif; ?>
 			<?php if(have_posts()) : ?>
-				<ul class="tabbed-posts-list"><ul class="opendev-posts-list">
+				<ul class="tabbed-posts-list"><ul class="odm-posts-list">
 					<?php while(have_posts()) : the_post(); ?>
 						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<article id="post-<?php the_ID(); ?>">
@@ -98,7 +98,7 @@ foreach($post_types as $pt) {
 					<?php posts_nav_link(); ?>
 				</div>
 			<?php else : ?>
-				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'opendev'); ?></h3>
+				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
 			<?php endif; ?>
 		</section>
 	</div>
@@ -106,10 +106,10 @@ foreach($post_types as $pt) {
 		<aside id="sidebar">
 			<ul class="widgets">
 				<li class="widget share-widget">
-					<?php opendev_get_template('social-share',array(),true); ?>
+					<?php odm_get_template('social-share',array(),true); ?>
 				</li>
         <?php if (isset($_GET['post_type'])): ?>
-  				<li id="odm_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+  				<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
   					<?php list_category_by_post_type($_GET['post_type']); ?>
   				</li>
         <?php endif; ?>

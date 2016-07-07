@@ -5,7 +5,7 @@
  * Topic content type
  */
 
-class OpenDev_Topic {
+class Odm_Topic {
 
 	function __construct() {
 
@@ -16,20 +16,20 @@ class OpenDev_Topic {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Topics', 'post type general name', 'opendev' ),
-			'singular_name'      => _x( 'Topic', 'post type singular name', 'opendev' ),
-			'menu_name'          => _x( 'Topics', 'admin menu', 'opendev' ),
-			'name_admin_bar'     => _x( 'Topic', 'add new on admin bar', 'opendev' ),
-			'add_new'            => _x( 'Add new', 'topic', 'opendev' ),
-			'add_new_item'       => __( 'Add new topic', 'opendev' ),
-			'new_item'           => __( 'New topic', 'opendev' ),
-			'edit_item'          => __( 'Edit topic', 'opendev' ),
-			'view_item'          => __( 'View topic', 'opendev' ),
-			'all_items'          => __( 'All topics', 'opendev' ),
-			'search_items'       => __( 'Search topics', 'opendev' ),
-			'parent_item_colon'  => __( 'Parent topics:', 'opendev' ),
-			'not_found'          => __( 'No topics found.', 'opendev' ),
-			'not_found_in_trash' => __( 'No topics found in trash.', 'opendev' )
+			'name'               => _x( 'Topics', 'post type general name', 'odm' ),
+			'singular_name'      => _x( 'Topic', 'post type singular name', 'odm' ),
+			'menu_name'          => _x( 'Topics', 'admin menu', 'odm' ),
+			'name_admin_bar'     => _x( 'Topic', 'add new on admin bar', 'odm' ),
+			'add_new'            => _x( 'Add new', 'topic', 'odm' ),
+			'add_new_item'       => __( 'Add new topic', 'odm' ),
+			'new_item'           => __( 'New topic', 'odm' ),
+			'edit_item'          => __( 'Edit topic', 'odm' ),
+			'view_item'          => __( 'View topic', 'odm' ),
+			'all_items'          => __( 'All topics', 'odm' ),
+			'search_items'       => __( 'Search topics', 'odm' ),
+			'parent_item_colon'  => __( 'Parent topics:', 'odm' ),
+			'not_found'          => __( 'No topics found.', 'odm' ),
+			'not_found_in_trash' => __( 'No topics found in trash.', 'odm' )
 		);
 
 		$args = array(
@@ -55,4 +55,4 @@ class OpenDev_Topic {
 
 }
 
-$GLOBALS['opendev_topic'] = new OpenDev_Topic();
+$GLOBALS['odm_topic'] = new Odm_Topic();

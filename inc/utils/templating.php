@@ -8,7 +8,7 @@
  * @param bool $output Whether to output component or return as string.
  * @return string
  */
-function opendev_get_template($slug, array $params = array(), $output = true) {
+function odm_get_template($slug, array $params = array(), $output = true) {
     if(!$output) ob_start();
     if (!$template_file = locate_template("inc/templates/{$slug}.php", false, false)) {
       trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);

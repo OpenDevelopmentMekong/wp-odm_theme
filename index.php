@@ -3,7 +3,7 @@
 <?php
 
   if (is_front_page()):
-    $options = get_option('opendev_options');
+    $options = get_option('odm_options');
     if ($options['frontpage_slider_id']) : ?>
 
      <section id="featured-content" class="page-section">
