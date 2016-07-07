@@ -127,6 +127,7 @@ body{
 	.post-excerpt {
 		.text-ellipsis(4);
 	}
+	
 	.readmore a {
 		color: @mekong-bright;
 		float:right;
@@ -144,16 +145,22 @@ body{
 	}
 
 	a {
-		//TBD
+		text-decoration: none;
 	}
 
-  .post-list-item-title {
+	.post-list-item-title {
+	  	font-family: @title-font;
+	  	font-size: @font-size-h4;
+	  	margin-bottom: 10px;
 	}
 
 	.post-list-item-content {
-    display: inline-flex;
+		display: inline-flex;
 	}
 
+	.post-excerpt {
+		.text-ellipsis(3);
+	}
 
 }
 
@@ -180,4 +187,8 @@ body{
   padding: @small-padd;
   background: @light-gray;
   border: 1px solid @gray;
+}
+
+.clearfix {
+	clear:both;
 }
