@@ -4,7 +4,7 @@
 
 	<section class="container">
 		<header class="row">
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<h2><?php _e('Topics','odm') ?></h2>
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
@@ -23,7 +23,7 @@
 
   <section class="container">
 		<div class="row">
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<?php odm_get_template('pagination',array(),true); ?>
 			</div>
 		</div>

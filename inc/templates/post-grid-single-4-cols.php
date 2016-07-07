@@ -1,6 +1,8 @@
-<?php $post = $params[0]; ?>
+<?php
+	$post = $params["post"];
+	?>
 
-<div id="post-<?php echo $post->ID; ?>" class="three columns post-grid-item">
+<div class="four columns post-grid-item">
 	<div class="grid-content-wrapper">
 		<a class="post-grid-item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 		<div class="meta">
@@ -10,6 +12,6 @@
 			$thumb_src = odm_get_thumbnail($post->ID);
 			if (isset($thumb_src)):
 				echo $thumb_src;
-			endif; ?>	
+			endif; ?>
 	</div>
 </div>

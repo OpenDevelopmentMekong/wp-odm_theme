@@ -3,7 +3,7 @@
 	<section class="posts-section row">
 		<div class="container">
 
-			<div class="six columns">
+			<div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 
 				<?php
@@ -44,7 +44,7 @@
 
 			</div>
 
-			<section id="wpckan_search_results" class="six columns">
+			<section id="wpckan_search_results" class="eight columns">
 				<h2><?php _e('Data results'); ?></h2>
 				<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]'); ?>
 				<?php
@@ -61,7 +61,7 @@
 				})
 			</script>
 
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<div class="navigation">
 					<?php
             global $wp_query;

@@ -8,7 +8,7 @@ get_header();
 
 <div class="section-title">
 	<div class="container">
-		<div class="eight columns">
+		<div class="ten columns">
 			<h1 class="archive-title"><?php
 					if( is_tag() || is_category() || is_tax() ) :
 						printf( __( '%s', 'jeo' ), single_term_title() );

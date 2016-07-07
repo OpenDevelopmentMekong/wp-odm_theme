@@ -9,17 +9,17 @@ Template Name: Data archive
 	<section id="content" class="single-post data-page">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<h1><span class="icon-archive"></span> <?php the_title(); ?></h1>
 					<p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odm'); ?></a></p>
 				</div>
 			</div>
 		</header>
 		<div class="container">
-			<div class="eight columns">
+			<div class="ten columns">
 				<?php the_content(); ?>
 			</div>
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<div id="wpckan_archive">
 					<form id="wpckan_search_form" method="GET">
 						<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'odm'); ?>" value="<?php echo $_GET['ckan_s']; ?>" />
@@ -51,7 +51,7 @@ Template Name: Data archive
 					</script>
 				</div>
 			</div>
-			<div class="three columns offset-by-one">
+			<div class="five columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('general'); ?>

@@ -5,7 +5,7 @@
   <article id="content" class="single-post">
 
       <div class="container">
-        <div class="eight columns">
+        <div class="ten columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
             <div class="categories">
@@ -15,7 +15,7 @@
           <?php if (jeo_has_marker_location()): ?>
             <section id="featured-media" class="row">
               <div class="container">
-                <div class="twelve columns">
+                <div class="sixteen columns">
                   <div style="height:400px;">
                     <?php jeo_map(); ?>
                   </div>
@@ -38,7 +38,7 @@
             <?php comments_template(); ?>
           </section>
         </div>
-        <div class="three columns offset-by-one">
+        <div class="five columns offset-by-one">
           <aside id="sidebar">
             <ul class="widgets">
               <li class="widget share-widget">

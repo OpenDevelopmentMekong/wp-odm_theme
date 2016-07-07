@@ -15,9 +15,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		);
 
 		$this->templates = array(
-			"grid" => "post-grid-single",
-			"list" => "post-list-single",
-			"list-full-width" => "post-list-full-width-single"
+			"grid-4-cols" => "post-grid-single-4-cols",
+			"list-4-cols" => "post-list-single-4-cols",
+			"list-1-cols" => "post-list-single-1-cols"
 		);
 	}
 
@@ -31,7 +31,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
-		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid';
+		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 
 		$query = array(
 				'posts_per_page'   => $limit,
@@ -44,23 +44,24 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		echo $args['before_widget']; ?>
 
 		<div class="container">
-			<div class="row">
-					<?php
-						if (!empty($instance['title'])):
-							 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
-						endif; ?>
-				<?php foreach($posts as $post):
+			<?php
+				if (!empty($instance['title'])):
+					 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
+				endif; ?>
+
+			<?php
+
+				foreach($posts as $post):
 					$template = $this->templates[$layout_type];
-					odm_get_template($template,array($post),true);
+					odm_get_template($template,array(
+						"post" => $post
+					),true);
 				endforeach; ?>
-		<?php if (in_array($layout_type,array('grid','list'))): ?>
-			</div>
+
+			<?php echo $args['after_widget']; ?>
 		</div>
-		<?php endif; ?>
 
-
-		<?php echo $args['after_widget'];
-
+	<?php
 	}
 
 	/**
@@ -70,10 +71,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$layout_types = array('grid','list', 'list-full-width');
-
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
-		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : $layout_types[0];
+		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 
 		$args = array(
 		   'public'   => true,
@@ -102,8 +101,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'layout_type' ); ?>"><?php _e( 'Select layout:' ); ?></label>
 			<select class='widefat' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
-				<?php foreach ( $layout_types  as $type ): ?>
-					<option <?php if ($layout_type == $type) { echo " selected"; } ?> value="<?php echo $type ?>"><?php echo $type ?></option>
+				<?php foreach ( $this->templates  as $key => $value ): ?>
+					<option <?php if ($layout_type == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $key ?></option>
 				<?php endforeach; ?>
 			</select>
 		</p>
@@ -129,7 +128,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
-		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid';
+		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
 
 		return $instance;
 	}

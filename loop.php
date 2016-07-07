@@ -1,7 +1,7 @@
 <?php if (have_posts()) : ?>
 	<section class="posts-section row">
 		<div class="container">
-			<div class="eight columns">
+			<div class="ten columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 				<ul class="odm-posts-list">
 					<?php while (have_posts()) : the_post(); ?>
@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 
-			<div class="three columns offset-by-one move-up">
+			<div class="five columns offset-by-one move-up">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<li class="widget share-widget">
@@ -43,7 +43,7 @@
 			</div>
 
 
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<div class="navigation">
 					<?php
             global $wp_query;

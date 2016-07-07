@@ -4,7 +4,7 @@
 
   <article id="content" class="single-post">
       <div class="container">
-        <div class="twelve columns">
+        <div class="sixteen columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
             <?php show_post_meta(get_post()); ?>
@@ -19,7 +19,7 @@
           <?php endif; ?>
         </div>
         <div class="row">
-          <div class="eight columns">
+          <div class="ten columns">
             <section class="content section-content">
 
               <?php
@@ -88,7 +88,7 @@
             </section>
           </div>
 
-          <div class="three columns offset-by-one">
+          <div class="five columns offset-by-one">
             <aside id="sidebar">
               <ul class="widgets">
                 <li class="widget share-widget">

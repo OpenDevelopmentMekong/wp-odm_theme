@@ -10,7 +10,7 @@ Template Name: Upcoming site
  <?php if($options['frontpage_slider_id']) : ?>
    <section id="featured-content" class="page-section row">
     <div class="container">
-     <div class="twelve columns">
+     <div class="sixteen columns">
       <div class="section-featured-content">
         <?php
           if( function_exists('fa_display_slider') ){
@@ -26,7 +26,7 @@ Template Name: Upcoming site
  <section id="page-content" style="margin-top:0">
   <div class="section-title no-margin-buttom">
    <div class="container">
-    <div class="twelve columns">
+    <div class="sixteen columns">
       <header class="single-post-header">
 				<h1><?php the_title(); ?></h1>
 	    </header>
@@ -39,7 +39,7 @@ Template Name: Upcoming site
  <section id="homepage-area-1" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="twelve columns">
+      <div class="sixteen columns">
         <?php dynamic_sidebar('homepage-area-1'); ?>
       </div>
     </div>
@@ -49,10 +49,10 @@ Template Name: Upcoming site
  <section id="homepage-area-2-3" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="six columns">
+      <div class="eight columns">
         <?php dynamic_sidebar('homepage-area-2'); ?>
       </div>
-      <div class="six columns">
+      <div class="eight columns">
         <?php dynamic_sidebar('homepage-area-3'); ?>
       </div>
     </div>
