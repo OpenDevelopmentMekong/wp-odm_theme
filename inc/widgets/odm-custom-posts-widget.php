@@ -43,10 +43,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		echo $args['before_widget']; ?>
 
-		<?php if (in_array($layout_type,array('grid','list'))): ?>
 		<div class="container">
 			<div class="row">
-		<?php endif; ?>
 					<?php
 						if (!empty($instance['title'])):
 							 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
