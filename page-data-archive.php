@@ -51,7 +51,7 @@ Template Name: Data archive
 					</script>
 				</div>
 			</div>
-			<div class="five columns offset-by-one">
+			<div class="five columns offset-by-two">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('general'); ?>

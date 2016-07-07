@@ -38,7 +38,7 @@
             <?php comments_template(); ?>
           </section>
         </div>
-        <div class="five columns offset-by-one">
+        <div class="five columns offset-by-two">
           <aside id="sidebar">
             <ul class="widgets">
               <li class="widget share-widget">

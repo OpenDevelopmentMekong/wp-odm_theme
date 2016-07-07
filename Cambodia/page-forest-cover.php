@@ -64,7 +64,7 @@ Template Name: Forest Cover and Forest Cover Analysis
     					?>
         				</div>
     	       	   </section>
-    				<div class="five columns offset-by-one">
+    				<div class="five columns offset-by-two">
     					<aside id="sidebar">
     						<ul class="widgets">
     							<li class="widget share-widget">
