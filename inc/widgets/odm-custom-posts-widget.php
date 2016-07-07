@@ -2,6 +2,7 @@
 
 class Odm_Custom_Posts_Widget extends WP_Widget {
 
+	private $templates;
 	/**
 	 * Sets up the widgets name etc
 	 */
@@ -11,6 +12,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			'odm_custom_posts_widget',
 			__('ODM Custom Posts', 'odm'),
 			array('description' => __('Display entries of the spefied custom post type', 'odm'))
+		);
+
+		$this->templates = array(
+			"grid" => "post-grid-single",
+			"list" => "post-list-single",
+			"list-full-width" => "post-list-full-width-single"
 		);
 	}
 
@@ -36,20 +43,23 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		echo $args['before_widget']; ?>
 
+		<?php if (in_array($layout_type,array('grid','list'))): ?>
 		<div class="container">
 			<div class="row">
-				<div class="twelve columns">
+		<?php endif; ?>
 					<?php
 						if (!empty($instance['title'])):
 							 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
 						endif; ?>
-				</div>
 				<?php foreach($posts as $post):
-					$template = ($layout_type == 'grid') ? 'post-grid-single' : 'post-list-single';
+					$template = $this->templates[$layout_type];
 					odm_get_template($template,array($post),true);
 				endforeach; ?>
+		<?php if (in_array($layout_type,array('grid','list'))): ?>
 			</div>
 		</div>
+		<?php endif; ?>
+
 
 		<?php echo $args['after_widget'];
 
@@ -62,7 +72,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$layout_types = array('grid','list');
+		$layout_types = array('grid','list', 'list-full-width');
 
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : $layout_types[0];
