@@ -44,25 +44,22 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		echo $args['before_widget']; ?>
 
 		<div class="container">
-			<div class="row">
-				<?php
-					if (!empty($instance['title'])):
-						 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
-					endif; ?>
+			<?php
+				if (!empty($instance['title'])):
+					 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
+				endif; ?>
 
-				<?php
+			<?php
 
-					foreach($posts as $post):
-						$template = $this->templates[$layout_type];
-						odm_get_template($template,array(
-							"post" => $post
-						),true);
-					endforeach; ?>
+				foreach($posts as $post):
+					$template = $this->templates[$layout_type];
+					odm_get_template($template,array(
+						"post" => $post
+					),true);
+				endforeach; ?>
 
-				<?php echo $args['after_widget']; ?>
-			</div>
+			<?php echo $args['after_widget']; ?>
 		</div>
-
 
 	<?php
 	}
