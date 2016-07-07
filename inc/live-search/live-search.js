@@ -71,7 +71,7 @@
 
     });
 
-		var dataColumn = $('<div class="five columns"><h1>Data</h1></div>');
+		var dataColumn = $('<div class="four columns"><h1>Data</h1></div>');
 		dataColumn.append(data.wpckan);
 		results.append(dataColumn);
 
