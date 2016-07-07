@@ -19,7 +19,7 @@ Template Name: Data
 				<?php the_content(); ?>
 				<?php dynamic_sidebar('data-main'); ?>
 			</div>
-			<div class="five columns offset-by-two">
+			<div class="four columns offset-by-two">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('data-sidebar'); ?>
