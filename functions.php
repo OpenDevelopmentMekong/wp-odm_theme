@@ -39,7 +39,6 @@ require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/utils/localization.php';
 require_once get_stylesheet_directory().'/inc/utils/max-mega-menu-options.php';
-require_once get_stylesheet_directory().'/inc/utils/templating.php';
 require_once get_stylesheet_directory().'/inc/utils/content.php';
 require_once get_stylesheet_directory().'/inc/utils/breadcrumbs.php';
 require_once get_stylesheet_directory().'/inc/utils/layout.php';
