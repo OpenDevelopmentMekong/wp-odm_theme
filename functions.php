@@ -107,6 +107,12 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
+    'name' => __('Data main bottom', 'jeo'),
+    'id' => 'data-main-bottom',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
+    register_sidebar(array(
     'name' => __('Data sidebar', 'jeo'),
     'id' => 'data-sidebar',
     'before_title' => '<h2 class="widget-title">',

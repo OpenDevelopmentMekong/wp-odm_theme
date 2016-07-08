@@ -15,22 +15,28 @@ Template Name: Data
 			</div>
 		</header>
 		<div class="container">
-			<div class="four columns">
-				<?php dynamic_sidebar('data-main-left'); ?>
+			<div class="eleven columns">
+				<div class="six columns">
+					<?php dynamic_sidebar('data-main-left'); ?>
+				</div>
+				<div class="six columns">
+					<?php dynamic_sidebar('data-main-middle'); ?>
+				</div>
+				<div class="four columns">
+					<?php dynamic_sidebar('data-main-right'); ?>
+				</div>
+				<div class="sixteen columns">
+					<?php dynamic_sidebar('data-main-bottom'); ?>
+				</div>
 			</div>
-			<div class="four columns">
-				<?php dynamic_sidebar('data-main-middle'); ?>
-			</div>
-			<div class="three columns">
-				<?php dynamic_sidebar('data-main-right'); ?>
-			</div>
-			<div class="four columns offset-by-two">
+			<div class="four columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('data-sidebar'); ?>
 					</ul>
 				</aside>
 			</div>
+
 		</div>
 	</section>
 <?php endif; ?>
