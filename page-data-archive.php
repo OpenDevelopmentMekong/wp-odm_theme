@@ -16,7 +16,7 @@ Template Name: Data archive
 			</div>
 		</header>
 		<div class="container">
-			<div class="ten columns">
+			<div class="eleven columns">
 				<?php the_content(); ?>
 			</div>
 			<div class="sixteen columns">
@@ -51,7 +51,7 @@ Template Name: Data archive
 					</script>
 				</div>
 			</div>
-			<div class="four columns offset-by-two">
+			<div class="four columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('general'); ?>

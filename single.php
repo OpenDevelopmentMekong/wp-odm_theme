@@ -19,7 +19,7 @@
           <?php endif; ?>
         </div>
         <div class="row">
-          <div class="ten columns">
+          <div class="eleven columns">
             <section class="content section-content">
 
               <?php
@@ -88,7 +88,7 @@
             </section>
           </div>
 
-          <div class="four columns offset-by-two">
+          <div class="four columns offset-by-one">
             <aside id="sidebar">
               <ul class="widgets">
                 <li class="widget share-widget">

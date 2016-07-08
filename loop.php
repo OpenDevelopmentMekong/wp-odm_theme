@@ -1,7 +1,7 @@
 <?php if (have_posts()) : ?>
 	<section class="posts-section row">
 		<div class="container">
-			<div class="ten columns">
+			<div class="eleven columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 				<ul class="odm-posts-list">
 					<?php while (have_posts()) : the_post(); ?>
@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 
-			<div class="four columns offset-by-two move-up">
+			<div class="four columns offset-by-one move-up">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<li class="widget share-widget">

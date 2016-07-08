@@ -49,7 +49,7 @@ foreach($post_types as $pt) {
 	?>
 </div>
 <div class="container category-container">
-	<div class="ten columns">
+	<div class="eleven columns">
 	<?php get_template_part('section', 'query-actions'); ?>
 		<section class="tabbed-posts-section">
 			<?php if(count($tax_post_types) > 1) : ?>
@@ -102,7 +102,7 @@ foreach($post_types as $pt) {
 			<?php endif; ?>
 		</section>
 	</div>
-	<div class="five columns move-up">
+	<div class="four columns offset-by-one move-up">
 		<aside id="sidebar">
 			<ul class="widgets">
 				<li class="widget share-widget">

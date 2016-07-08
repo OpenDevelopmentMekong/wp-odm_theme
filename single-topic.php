@@ -5,7 +5,7 @@
   <article id="content" class="single-post">
 
       <div class="container">
-        <div class="ten columns">
+        <div class="eleven columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
             <div class="categories">
@@ -38,7 +38,7 @@
             <?php comments_template(); ?>
           </section>
         </div>
-        <div class="four columns offset-by-two">
+        <div class="four columns offset-by-one">
           <aside id="sidebar">
             <ul class="widgets">
               <li class="widget share-widget">
