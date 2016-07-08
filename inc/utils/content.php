@@ -182,7 +182,7 @@ function walk_child_category_by_post_type($children, $post_type, $current_cat = 
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function show_post_meta($post)
+function echo_post_meta($post)
 {
 	?>
 	<div class="post-meta">

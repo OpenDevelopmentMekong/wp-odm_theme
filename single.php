@@ -7,7 +7,7 @@
         <div class="sixteen columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
-            <?php show_post_meta(get_post()); ?>
+            <?php echo_post_meta(get_post()); ?>
           </header>
           <?php
             if (jeo_has_marker_location()): ?>

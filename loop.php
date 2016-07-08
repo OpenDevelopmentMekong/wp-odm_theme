@@ -11,7 +11,7 @@
 									<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 									<?php if (get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page'): ?>
 										<div class="meta">
-												<?php show_post_meta(get_post());?>
+												<?php echo_post_meta(get_post());?>
 										</div>
 									<?php endif; ?>
 								</header>
