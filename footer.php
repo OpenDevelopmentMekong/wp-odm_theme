@@ -8,12 +8,11 @@
     <div class="row">
       <div class="sixteen columns">
         <?php
-              $disclaimer = odm_get_legal_disclaimer();
-              if ($disclaimer) : ?>
-      			<div class="sixteen columns row">
-      				<?php echo wpautop($disclaimer); ?>
-      			</div>
-    		<?php endif; ?>
+          $disclaimer = odm_get_legal_disclaimer();
+          if ($disclaimer) :
+  				      echo wpautop($disclaimer);
+		      endif;
+        ?>
       </div>
     </div>
 
@@ -24,10 +23,11 @@
   				<?php wp_nav_menu(array('theme_location' => 'footer_menu')); ?>
   			</nav>
   		</div>
-  		<div class="seven columns">
-  			<div class="credits">
-  				<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external">WordPress</a> using the <a href="%s" target="_blank" rel="external">JEO Beta</a> theme', 'jeo'), 'http://wordpress.org', 'https://github.com/oeco/jeo'); ?></p>
-  			</div>
+      <div class="four columns">
+  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external">WordPress</a> using the <a href="%s" target="_blank" rel="external">JEO Beta</a> theme', 'jeo'), 'http://wordpress.org', 'https://github.com/oeco/jeo'); ?></p>
+  		</div>
+      <div class="three columns">
+  			<a href="http://ewmi.org/ODI" target="_blank"><img src="<?php echo get_stylesheet_directory_uri()?>/img/odi_logo.png"></img></a>
   		</div>
     </div>
 
