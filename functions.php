@@ -83,8 +83,8 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('WPCKAN Dataset detail bottom', 'jeo'),
-    'id' => 'wpckan-dataset-detail-bottom',
+    'name' => __('WPCKAN Dataset detail sidebar', 'jeo'),
+    'id' => 'wpckan-dataset-detail-sidebar',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));

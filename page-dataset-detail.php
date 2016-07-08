@@ -10,7 +10,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="sixteen columns">
+				<div class="eleven columns">
 					<?php the_content(); ?>
 					<?php
 						if (isset($_GET['id'])):
@@ -20,11 +20,8 @@
 						endif;
 					?>
 				</div>
-			</div>
-
-			<div class="row">
-				<div class="sixteen columns">
-					<?php dynamic_sidebar('wpckan-dataset-detail-bottom'); ?>
+        <div class="four columns offset-by-one">
+					<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
 				</div>
 			</div>
 
