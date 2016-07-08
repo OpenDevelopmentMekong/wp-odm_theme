@@ -119,7 +119,7 @@
         <?php
           if (!is_front_page()) : ?>
             <div id="main-breadcrumb">
-              <?php the_breadcrumb(); ?>
+              <?php echo_the_breadcrumb(); ?>
             </div>
         <?php
           endif; ?>

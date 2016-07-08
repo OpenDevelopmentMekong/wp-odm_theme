@@ -43,7 +43,7 @@ function the_separated_breadcrumb($separator = '', $id, $category)
         return '<li class="separator separator-'.$category.' separator-'.$id.'"></li>';
     }
 }
-function the_breadcrumb()
+function echo_the_breadcrumb()
 {
     // Settings
     $separator = '/'; //'&gt;';
