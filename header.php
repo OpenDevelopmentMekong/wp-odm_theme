@@ -52,12 +52,12 @@
   <header id="od-head">
     <div class="container">
       <div class="row">
-        <div class="eleven columns organization left_organization">
+        <div class="thirteen columns">
           <div class="site-meta">
             <?php odm_logo(); ?>
           </div>
         </div>
-        <div class="five columns">
+        <div class="three columns">
           <div class="social">
             <?php odm_get_template('social-nav',array(),true); ?>
           </div>
