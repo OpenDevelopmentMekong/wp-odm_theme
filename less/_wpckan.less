@@ -1,44 +1,159 @@
-.wpckan_dataset_organization:before {
-  font-family: "FontAwesome";
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: inherit;
-  content: "\f0f7";
-  margin-right: 10px;
-}
+.wpckan_dataset_detail{
 
-.wpckan_dataset_tags:before {
-  font-family: "FontAwesome";
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: inherit;
-  content: "\f02c";
-  margin-right: 4px;
-}
+  h2 {
+    color: @mekong-bright;
+    font-weight: bold;
+    margin-top: @med-padd;
+  }
 
-.wpckan_dataset_license:before {
-  font-family: "FontAwesome";
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: inherit;
-  content: "\f13e";
-  margin-right: 4px;
-}
-
-.wpckan_dataset_tags{
-
-  margin-left: 0px !important;
-
-  li {
-    list-style-type: none !important;
+  .wpckan_dataset_organization:before, .wpckan_dataset_tags:before, .wpckan_dataset_license:before, .wpckan_dataset_resource_format:before {
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style: normal;
     display: inline-block;
-    font-size: 18px;
-    font-weight: lighter;
-    line-height: 34px;
-    margin-bottom: 8px;
+    text-decoration: inherit;
+  }
+
+  .wpckan_dataset_organization{
+    margin: 0px;
+  }
+
+  .wpckan_dataset_organization:before {
+    content: "\f0f7";
+    margin-right: 10px;
+  }
+
+  .wpckan_dataset_tags:before {
+    content: "\f02c";
+    margin-right: 4px;
+  }
+
+  .wpckan_dataset_license:before {
+    content: "\f13e";
+    margin-right: 4px;
+  }
+
+  .wpckan_dataset_license{
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .wpckan_dataset_tags{
+
+    margin: 0px !important;
+
+    li {
+      list-style-type: none !important;
+      display: inline-block;
+      font-size: 18px;
+      font-weight: lighter;
+      line-height: 34px;
+      margin-bottom: 8px;
+    }
+
+  }
+
+  table {
+    border: none;
+  }
+
+  .wpckan_dataset_metadata_fields {
+
+    width: 100%;
+
+    tr {
+      background: @white;
+      border: none;
+    }
+
+    td{
+      border: none;
+    }
+
+    td:first-child p{
+      font-weight: bold;
+      min-width: 80px;
+    }
+
+  }
+
+  .wpckan_dataset_resources {
+
+    margin: 0px !important;
+    width: 100%;
+
+    tr{
+      background: @white;
+      border: none;
+      border-bottom: 1px @light-gray solid;
+    }
+
+    td{
+      border: none;
+      vertical-align: middle;
+    }
+
+    .wpckan_dataset_resource_format{
+      text-align: center;
+    }
+
+    .wpckan_dataset_resource_format:before{
+      content: "\f15b";
+      margin-right: 4px;
+      font-size: 52px;
+    }
+
+    td[format], p[format] {
+      color: @format-default;
+    }
+
+    td[format="XLSX"], p[format="XLSX"], td[format="xlsx"], p[format="xlsx"] {
+      color: @format-xlsx;
+    }
+
+    td[format="CSV"], p[format="CSV"], td[format="csv"], p[format="csv"]  {
+      color: @format-csv;
+    }
+
+    td[format="PDF"], p[format="PDF"], td[format="pdf"], p[format="pdf"] {
+      color: @format-pdf;
+    }
+
+    td[format="XML"], p[format="XML"], td[format="xml"], p[format="xml"] {
+      color: @format-xml;
+    }
+
+    td[format="KML"], p[format="KML"], td[format="kml"], p[format="kml"] {
+      color: @format-kml;
+    }
+
+    td[format="HTML"], p[format="HTML"], td[format="html"], p[format="html"] {
+      color: @format-html;
+    }
+
+    td[format="TIFF"], p[format="TIFF"], td[format="tiff"], p[format="tiff"] {
+      color: @format-tiff;
+    }
+
+    td[format="JSON"], p[format="JSON"], td[format="json"], p[format="json"] {
+      color: @format-json;
+    }
+
+    td[format="GEOJSON"], p[format="GEOJSON"], td[format="geojson"], p[format="geojson"] {
+      color: @format-geojson;
+    }
+
+    .wpckan_dataset_resource_format p{
+      color: #000;
+      position: relative;
+      top: -34px;
+      font-size: 10px;
+    }
+
+    .wpckan_dataset_resource_url{
+      text-align: right;
+    }
+
   }
 
 }
