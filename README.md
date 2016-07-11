@@ -46,7 +46,7 @@ Everytime code is pushed to the repository, travis will run the tests available 
 
 For the automatic deployment, the scripts on **_ci/** are responsible of downloading the odm-automation repository, decrypting the **odm_tech_rsa.enc** private key file ( encrypted using Travis-ci encryption mechanism) and triggering deployment in either DEV or PROD environment.
 
-# On Window
+# On Windows
 ## NPM Dependencies 
 - Install node.js https://nodejs.org/en/download/ which Windows Installer (Note: NPM comes with, but the version is not uptodate)
 - It is recommended to update npm <code>npm install npm -g</code>
