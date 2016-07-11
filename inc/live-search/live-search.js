@@ -84,14 +84,18 @@
 
     // More results
 		resultsContainer.find('.more').remove();
-    var more = $('<div class="more" />');
-    var close = $('<a class="button" id="close-results" href="#"></a>');
+    var buttons = $('<div class="more" />');
+    var close = $('<a class="button close" id="close-results" href="#"></a>');
+    var closeIcon = $('<i class="fa fa-times"></i>');
 		close.text(livesearch.labels.close);
-		var link = $('<a class="button" id="more-results" href="' + livesearch.siteurl + '?s=' + s + '" />');
-		link.text(livesearch.labels.more);
-		more.append(link);
-		more.append(close);
-    resultsContainer.append(more);
+    close.prepend(closeIcon);
+		var more = $('<a class="button" id="more-results" href="' + livesearch.siteurl + '?s=' + s + '" />');
+    var moreIcon = $('<i class="fa fa-plus"></i>');
+		more.text(livesearch.labels.more);
+    more.prepend(moreIcon);
+		buttons.append(more);
+		buttons.append(close);
+    resultsContainer.append(buttons);
 
 
 		spinner.stop();
