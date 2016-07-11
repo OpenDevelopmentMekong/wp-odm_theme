@@ -71,7 +71,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="sixteen columns hideOnMobile">
+          <div class="sixteen columns">
             <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
           </div>
 

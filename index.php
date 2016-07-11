@@ -6,7 +6,7 @@
     $options = get_option('odm_options');
     if ($options['frontpage_slider_id']) : ?>
 
-     <section id="featured-content" class="page-section">
+     <section id="featured-content" class="page-section hideOnMobile">
         <div>
           <?php
             if (function_exists('fa_display_slider')):
