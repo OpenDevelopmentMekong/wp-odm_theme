@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
 	_orig_send_attachment = wp.media.editor.send.attachment;
 
 
-	$('#opendev_logo_button').click(function(e) {
+	$('#odm_logo_button').click(function(e) {
 		var send_attachment_bkp = wp.media.editor.send.attachment;
 		var button = $(this);
 		var id = button.attr('id').replace('_button', '');

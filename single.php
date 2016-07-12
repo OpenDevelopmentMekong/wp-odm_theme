@@ -4,10 +4,10 @@
 
   <article id="content" class="single-post">
       <div class="container">
-        <div class="twelve columns">
+        <div class="sixteen columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
-            <?php show_post_meta(get_post()); ?>
+            <?php echo_post_meta(get_post()); ?>
           </header>
           <?php
             if (jeo_has_marker_location()): ?>
@@ -19,18 +19,18 @@
           <?php endif; ?>
         </div>
         <div class="row">
-          <div class="eight columns">
+          <div class="eleven columns">
             <section class="content section-content">
 
               <?php
                   if (function_exists('qtranxf_getLanguage')):
-                    if ((opendev_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))):
+                    if ((odm_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))):
                   ?>
                   <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
                 <?php
                   endif;
                     ?>
-                  <?php if (isset($local_language) && (opendev_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
+                  <?php if (isset($local_language) && (odm_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
                       <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
                   <?php
                     endif; ?>
@@ -40,12 +40,12 @@
 
               <?php
                   if (function_exists('get')) :
-                      if (get('author') == '' && get('author'.opendev_language_manager()->get_current_language()) == ''):
+                      if (get('author') == '' && get('author'.odm_language_manager()->get_current_language()) == ''):
                         echo '';
                       else:
                         $news_source_info = '<span class="lsf">&#xE041;</span> ';
-                        if (get('author'.opendev_language_manager()->get_current_language()) != ''):
-                            $news_source_info .= get('author'.opendev_language_manager()->get_current_language()).'<br />';
+                        if (get('author'.odm_language_manager()->get_current_language()) != ''):
+                            $news_source_info .= get('author'.odm_language_manager()->get_current_language()).'<br />';
                         else:
                             $news_source_info .= get('author').'<br />';
                         endif;
@@ -54,11 +54,11 @@
                ?>
               <?php
                   if (function_exists('get')):
-                    if (get('article_link') == '' && get('article_link'.opendev_language_manager()->get_current_language()) == ''):
+                    if (get('article_link') == '' && get('article_link'.odm_language_manager()->get_current_language()) == ''):
                         echo '';
                     else:
-                      if (get('article_link'.opendev_language_manager()->get_current_language()) != ''):
-                        $source = get('article_link'.opendev_language_manager()->get_current_language());
+                      if (get('article_link'.odm_language_manager()->get_current_language()) != ''):
+                        $source = get('article_link'.odm_language_manager()->get_current_language());
                       else:
                         $source = get('article_link');
                       endif;
@@ -88,11 +88,11 @@
             </section>
           </div>
 
-          <div class="three columns offset-by-one">
+          <div class="four columns offset-by-one">
             <aside id="sidebar">
               <ul class="widgets">
                 <li class="widget share-widget">
-                  <?php opendev_get_template('social-share',array(),true); ?>
+                  <?php odm_get_template('social-share',array(),true); ?>
                 </li>
                 <?php dynamic_sidebar('post'); ?>
               </ul>

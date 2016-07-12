@@ -1,9 +1,9 @@
 <?php if (have_posts()) : ?>
 	<section class="posts-section row">
 		<div class="container">
-			<div class="eight columns">
+			<div class="eleven columns">
 				<?php get_template_part('section', 'query-actions'); ?>
-				<ul class="opendev-posts-list">
+				<ul class="odm-posts-list">
 					<?php while (have_posts()) : the_post(); ?>
 						<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
 							<article id="post-<?php the_ID(); ?>">
@@ -11,7 +11,7 @@
 									<h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 									<?php if (get_post_type() != 'map' && get_post_type() != 'map-layer' && get_post_type() != 'page'): ?>
 										<div class="meta">
-												<?php show_post_meta(get_post());?>
+												<?php echo_post_meta(get_post());?>
 										</div>
 									<?php endif; ?>
 								</header>
@@ -29,13 +29,13 @@
 				</ul>
 			</div>
 
-			<div class="three columns offset-by-one move-up">
+			<div class="four columns offset-by-one move-up">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<li class="widget share-widget">
-							<?php opendev_get_template('social-share',array(),true); ?>
+							<?php odm_get_template('social-share',array(),true); ?>
 						</li>
-						<li id="odm_taxonomy_widget" class="widget widget_opendev_taxonomy_widget">
+						<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
 							<?php list_category_by_post_type(); ?>
 						</li>
 					</ul>
@@ -43,7 +43,7 @@
 			</div>
 
 
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<div class="navigation">
 					<?php
             global $wp_query;

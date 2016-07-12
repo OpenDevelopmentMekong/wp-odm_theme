@@ -38,11 +38,11 @@
   <nav id="od-selector">
     <div class="container">
       <div class="row">
-        <div class="six columns">
-          <?php opendev_country_manager()->echo_country_selectors(); ?>
+        <div class="eight columns">
+          <?php odm_country_manager()->echo_country_selectors(); ?>
         </div>
-        <div class="six columns">
-          <?php opendev_language_manager()->echo_language_selectors(); ?>
+        <div class="eight columns">
+          <?php odm_language_manager()->echo_language_selectors(); ?>
         </div>
       </div>
     </div>
@@ -52,14 +52,14 @@
   <header id="od-head">
     <div class="container">
       <div class="row">
-        <div class="nine columns organization left_organization">
+        <div class="thirteen columns">
           <div class="site-meta">
-            <?php opendev_logo(); ?>
+            <?php odm_logo(); ?>
           </div>
         </div>
         <div class="three columns">
           <div class="social">
-            <?php opendev_get_template('social-nav',array(),true); ?>
+            <?php odm_get_template('social-nav',array(),true); ?>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="twelve columns">
+          <div class="sixteen columns">
             <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
           </div>
 
@@ -94,11 +94,11 @@
       <div class="container">
         <div class="row">
           <?php
-            $options_msg = get_option('opendev_options');
+            $options_msg = get_option('odm_options');
             if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
               <div id="notification-message">
                 <div class="container">
-                  <div class="twelve columns">
+                  <div class="sixteen columns">
                     <div class="notification-message-box">
                       <?php echo $options_msg['notice_message']; ?>
                     </div>
@@ -115,11 +115,11 @@
   <nav id="od-breadcrumb">
     <div class="container">
       <div class="row">
-        <div class="twelve columns">
+        <div class="sixteen columns">
         <?php
           if (!is_front_page()) : ?>
             <div id="main-breadcrumb">
-              <?php the_breadcrumb(); ?>
+              <?php echo_the_breadcrumb(); ?>
             </div>
         <?php
           endif; ?>

@@ -5,7 +5,7 @@
  * Map categories
  */
 
-class OpenDev_Map_Category {
+class Odm_Map_Category {
 
 	function __construct() {
 
@@ -45,4 +45,4 @@ class OpenDev_Map_Category {
 
 }
 
-$GLOBALS['opendev_map_category'] = new OpenDev_Map_Category();
+$GLOBALS['odm_map_category'] = new Odm_Map_Category();

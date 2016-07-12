@@ -9,23 +9,34 @@ Template Name: Data
 	<section id="content" class="single-post data-page">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<h1><span class="icon-archive"></span> <?php the_title(); ?></h1>
 				</div>
 			</div>
 		</header>
 		<div class="container">
-			<div class="eight columns">
-				<?php the_content(); ?>
-				<?php dynamic_sidebar('data-main'); ?>
+			<div class="eleven columns">
+				<div class="six columns">
+					<?php dynamic_sidebar('data-main-left'); ?>
+				</div>
+				<div class="six columns">
+					<?php dynamic_sidebar('data-main-middle'); ?>
+				</div>
+				<div class="four columns">
+					<?php dynamic_sidebar('data-main-right'); ?>
+				</div>
+				<div class="sixteen columns">
+					<?php dynamic_sidebar('data-main-bottom'); ?>
+				</div>
 			</div>
-			<div class="three columns offset-by-one">
+			<div class="four columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('data-sidebar'); ?>
 					</ul>
 				</aside>
 			</div>
+
 		</div>
 	</section>
 <?php endif; ?>

@@ -5,7 +5,7 @@
   <article id="content" class="single-post">
 
       <div class="container">
-        <div class="eight columns">
+        <div class="eleven columns">
           <header class="single-post-header" class="clearfix">
             <h1><?php the_title(); ?></h1>
             <div class="categories">
@@ -15,7 +15,7 @@
           <?php if (jeo_has_marker_location()): ?>
             <section id="featured-media" class="row">
               <div class="container">
-                <div class="twelve columns">
+                <div class="sixteen columns">
                   <div style="height:400px;">
                     <?php jeo_map(); ?>
                   </div>
@@ -38,18 +38,18 @@
             <?php comments_template(); ?>
           </section>
         </div>
-        <div class="three columns offset-by-one">
+        <div class="four columns offset-by-one">
           <aside id="sidebar">
             <ul class="widgets">
               <li class="widget share-widget">
-                <?php opendev_get_template('social-share',array(),true); ?>
+                <?php odm_get_template('social-share',array(),true); ?>
               </li>
               <li class="widget">
-                <?php opendev_summary(); ?>
+                <?php odm_summary(); ?>
               </li>
               <?php dynamic_sidebar('topic'); ?>
               <?php if (function_exists('get_group') && get_group('related_link') != '' && get_group('related_link') != null): ?>
-                <li class="widget widget_opendev_related_link_widget" style="clear:left">
+                <li class="widget widget_odm_related_link_widget" style="clear:left">
                   <div>
                   <h2 class="widget-title">Related Links</h2>
                     <?php

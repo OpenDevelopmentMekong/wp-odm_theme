@@ -1,7 +1,7 @@
-<?php 
+<?php
 /*
  * Template Name: PDF Viewer
- * 
+ *
  */
 ?>
 <?php get_header(); ?>
@@ -10,14 +10,14 @@
 	<section id="content" class="single-post">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<h1><?php the_title(); ?></h1>
 				</div>
 			</div>
 		</header>
 		<div class="container">
-			<div class="twelve columns">
-				<?php if (isset($_GET['pdf']) and $_GET['pdf']<> ""){ 
+			<div class="sixteen columns">
+				<?php if (isset($_GET['pdf']) and $_GET['pdf']<> ""){
                     $site_id = get_current_blog_id();
                 ?>
                		 <div class="download_pdf"><a target="_blank" href="<?php echo site_url()."/wp-content/blogs.dir/".$site_id."/".trim($_GET['pdf']); ?>"><?php _e("Download"); ?></a></div>

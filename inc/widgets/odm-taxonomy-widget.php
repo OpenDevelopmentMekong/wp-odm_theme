@@ -7,8 +7,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'odm_taxonomy_widget', // Base ID
-			__( 'ODM Content Taxonomy Widget', 'opendev' ), // Name
-			array( 'description' => __( 'Display ODM taxonomy for content', 'opendev' ), ) // Args
+			__( 'ODM Content Taxonomy Widget', 'odm' ), // Name
+			array( 'description' => __( 'Display ODM taxonomy for content', 'odm' ), ) // Args
 		);
 	}
 
@@ -126,10 +126,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	?>
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
-		$('.opendev_taxonomy_widget_ul > li.topic_nav_item').each(function(){
-			if($('.opendev_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){
-				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
-				$('.opendev_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");
+		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
+			if($('.odm_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){
+				$('.odm_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
+				$('.odm_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");
 			}
 			//if parent is showed, child need to expend
 			$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
@@ -141,7 +141,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
 			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');
 		});
-		$('.opendev_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
+		$('.odm_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
 			if($(event.target).parent("li").find('ul').length){
 				$(event.target).parent("li").find('ul:first').slideToggle();
 				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");
@@ -153,7 +153,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<?php
 		echo $args['before_widget'];
 		if ( ! empty( $instance['od_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'opendev' ) ). $args['after_title'];
+			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'odm' ) ). $args['after_title'];
 		}
 		if ( ! empty( $instance['od_include'] ) ) {
 			$cat_included_id_arr = explode(",", $instance['od_include']);
@@ -172,7 +172,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$categories = get_categories( $args );
 
-		echo "<ul class='opendev_taxonomy_widget_ul'>";
+		echo "<ul class='odm_taxonomy_widget_ul'>";
 		foreach($categories as $category){
 			$jackpot = false;
 			$children = array();
@@ -214,7 +214,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'opendev' ) : __( 'Topic areas', 'opendev' );
+		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'odm' ) : __( 'Topic areas', 'odm' );
 		$od_include = $instance['od_include'];
 		$od_exclude = $instance['od_exclude'];
 		?>

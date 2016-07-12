@@ -1,5 +1,5 @@
 <?php
-$datasets = wpckan_opendev_get_related_datasets();
+$datasets = wpckan_odm_get_related_datasets();
 $groupby = 'groups';
 if(!empty($datasets)) {
 	$grouped = array();
@@ -15,7 +15,7 @@ if(!empty($datasets)) {
 		} else {
 			if(!$grouped['_other'])
 				$grouped['_other'] = array(
-					'display_name' => __('Other', 'opendev'),
+					'display_name' => __('Other', 'odm'),
 					'datasets' => array()
 				);
 			$grouped['_other']['datasets'][] = $dataset;
@@ -26,9 +26,9 @@ if(!empty($datasets)) {
 <?php if(isset($grouped) && !empty($grouped)) : ?>
 	<section id="related-datasets" class="row" style="display:none;">
 		<div class="container">
-			<div class="box-section twelve columns">
+			<div class="box-section sixteen columns">
 				<div class="box-title">
-					<h2><?php _e('Related resources', 'opendev'); ?></h2>
+					<h2><?php _e('Related resources', 'odm'); ?></h2>
 				</div>
 				<div class="box-items">
 					<?php
@@ -68,7 +68,7 @@ if(!empty($datasets)) {
 													</li>
 												<?php endforeach; ?>
 											</ul>
-											<p class="read-more"><a href="<?php echo $dataset['']; ?>"><?php _e('Read more...', 'opendev'); ?></a></p>
+											<p class="read-more"><a href="<?php echo $dataset['']; ?>"><?php _e('Read more...', 'odm'); ?></a></p>
 										</li>
 									<?php endforeach; ?>
 								</ul>
@@ -78,7 +78,7 @@ if(!empty($datasets)) {
 					endforeach;
 					?>
 				</div>
-				<a class="toggle-resources"><?php _e('Show resources details', 'opendev'); ?></a>
+				<a class="toggle-resources"><?php _e('Show resources details', 'odm'); ?></a>
 				<script type="text/javascript">
 					jQuery(document).ready(function($) {
 
