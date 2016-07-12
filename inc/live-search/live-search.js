@@ -46,7 +46,7 @@
     			//var type = $('<p class="type">' + postType.title + '</p>');
     			var title = $('<p><a class="post-list-item-title">' + item.title + '</a></p>');
     			var thumbnail = $(item.thumbnail);
-					var content = $('<div class="post-list-item-content"></div>');
+				var content = $('<div class="post-list-item-content"></div>');
     			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
     			var link = $('<a href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
 
@@ -55,7 +55,7 @@
 
     			var item = $('<div class="post-list-item">')
     				//.append(type)
-    				.append(title.html(link))
+    				.append(title.html(link.addClass('post-list-item-title')))
     				.append(content);
 
     			item.addClass('item-' + (i+1));
