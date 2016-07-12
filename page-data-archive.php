@@ -9,20 +9,20 @@ Template Name: Data archive
 	<section id="content" class="single-post data-page">
 		<header class="single-post-header">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="sixteen columns">
 					<h1><span class="icon-archive"></span> <?php the_title(); ?></h1>
-					<p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'opendev'); ?></a></p>
+					<p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odm'); ?></a></p>
 				</div>
 			</div>
 		</header>
 		<div class="container">
-			<div class="eight columns">
+			<div class="eleven columns">
 				<?php the_content(); ?>
 			</div>
-			<div class="twelve columns">
+			<div class="sixteen columns">
 				<div id="wpckan_archive">
 					<form id="wpckan_search_form" method="GET">
-						<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'opendev'); ?>" value="<?php echo $_GET['ckan_s']; ?>" />
+						<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'odm'); ?>" value="<?php echo $_GET['ckan_s']; ?>" />
 					</form>
 					<div class="row">
 						<?php
@@ -33,9 +33,9 @@ Template Name: Data archive
 					</div>
 					<nav id="wpckan_nav">
 						<?php if ($page > 1) : ?>
-							<a class="prev-page button" href="<?php echo add_query_arg(array('ckan_page' => $page - 1)); ?>"><?php _e('Previous page', 'opendev'); ?></a>
+							<a class="prev-page button" href="<?php echo add_query_arg(array('ckan_page' => $page - 1)); ?>"><?php _e('Previous page', 'odm'); ?></a>
 						<?php endif; ?>
-						<a class="next-page button" href="<?php echo add_query_arg(array('ckan_page' => $page + 1)); ?>"><?php _e('Next page', 'opendev'); ?></a>
+						<a class="next-page button" href="<?php echo add_query_arg(array('ckan_page' => $page + 1)); ?>"><?php _e('Next page', 'odm'); ?></a>
 					</nav>
 					<script type="text/javascript">
 						jQuery(document).ready(function($) {
@@ -51,7 +51,7 @@ Template Name: Data archive
 					</script>
 				</div>
 			</div>
-			<div class="three columns offset-by-one">
+			<div class="four columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<?php dynamic_sidebar('general'); ?>

@@ -1,6 +1,6 @@
 <?php
 
-function opendev_get_thumbnail($post_id = false, $fallback = false)
+function odm_get_thumbnail($post_id = false, $fallback = false)
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
@@ -16,7 +16,7 @@ function opendev_get_thumbnail($post_id = false, $fallback = false)
     return null;
 }
 
-function opendev_logo()
+function odm_logo()
 {
   ?>
   <h1>
@@ -27,8 +27,27 @@ function opendev_logo()
   </h1>
   <?php
   echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.ucfirst(opendev_country_manager()->get_current_country()).'</h2>';
+    echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
     echo '</div>';
 }
+
+/**
+ * Load a component into a template while supplying data.
+ *
+ * @param string $slug The slug name for the generic template.
+ * @param array $params An associated array of data that will be extracted into the templates scope
+ * @param bool $output Whether to output component or return as string.
+ * @return string
+ */
+function odm_get_template($slug, array $params = array(), $output = true) {
+    if(!$output) ob_start();
+    if (!$template_file = locate_template("inc/templates/{$slug}.php", false, false)) {
+      trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $slug), E_USER_ERROR);
+    }
+    extract($params, EXTR_SKIP);
+    require($template_file);
+    if(!$output) return ob_get_clean();
+}
+
 
  ?>

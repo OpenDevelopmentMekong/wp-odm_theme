@@ -3,7 +3,7 @@
  * Open Development
  * Interactive Map
  */
- class OpenDev_InteractiveMap
+ class Odm_InteractiveMap
  {
      public function __construct()
      {
@@ -51,12 +51,12 @@
                  wp_reset_postdata();
              }
          }//$layer_query
-        $map = opendev_get_interactive_map_data();
+        $map = odm_get_interactive_map_data();
          $map['dataReady'] = true;
          $map['postID'] = 'interactive_map';
          $map['layers'] = $layers;
          $map['count'] = 0;
-         $map['title'] = __('Interactive Map', 'opendev');
+         $map['title'] = __('Interactive Map', 'odm');
          if ($map['base_layer']) {
              array_unshift($map['layers'], array(
                 'type' => 'tilelayer',
@@ -106,7 +106,7 @@
           ?>
       <div class="baselayer"><ul class="base-layers" /></div>
       <div class="category-map-layers box-shadow hide_show_container">
-            <h2 class="sidebar_header widget_headline"><?php _e('Map Layers', 'opendev');
+            <h2 class="sidebar_header widget_headline"><?php _e('Map Layers', 'odm');
          ?>
              <i class='fa fa-caret-down hide_show_icon'></i>
             </h2>
@@ -120,7 +120,7 @@
    </div><!-- interactive-map" -->
 
      <div class="box-shadow map-legend-container hide_show_container">
-       <h2 class="widget_headline"><?php _e('LEGEND', 'opendev');
+       <h2 class="widget_headline"><?php _e('LEGEND', 'odm');
          ?> <i class='fa fa-caret-down hide_show_icon'></i></h2>
        <div class="map-legend dropdown">
           <hr class="color-line" />
@@ -134,7 +134,7 @@
        <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
         <?php $lang = 'en';
          $i = 0;
-        //$lang = opendev_language_manager()->get_current_language();
+        //$lang = odm_language_manager()->get_current_language();
         foreach ($map['layers'] as $individual_layer) {
             ++$i;
             $get_post_by_id = get_post($individual_layer['ID']);
@@ -403,4 +403,4 @@
          return $html;
      }
  }
-new OpenDev_InteractiveMap();
+new Odm_InteractiveMap();

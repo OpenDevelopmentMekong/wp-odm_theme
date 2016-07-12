@@ -9,8 +9,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'odm_contents_same_category_widget',
-			__('ODM Contents same category', 'opendev'),
-			array('description' => __('Display other content from other post types tagged with the same categories as the one where the widget is integrated.', 'opendev'))
+			__('ODM Contents same category', 'odm'),
+			array('description' => __('Display other content from other post types tagged with the same categories as the one where the widget is integrated.', 'odm'))
 		);
 	}
 
@@ -54,7 +54,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 		<?php
 			if (!empty($instance['title'])):
-				 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'opendev')).$args['after_title'];
+				 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
 			endif; ?>
 
 		<ul>
@@ -90,7 +90,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 	  $post_types = available_custom_post_types();
 
-		$title = !empty($instance['title']) ? __($instance['title'], 'opendev') : __('Custom posts', 'opendev'); ?>
+		$title = !empty($instance['title']) ? __($instance['title'], 'odm') : __('Custom posts', 'odm'); ?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">

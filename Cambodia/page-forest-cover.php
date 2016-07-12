@@ -12,7 +12,7 @@ Template Name: Forest Cover and Forest Cover Analysis
 		<?php get_template_part('section', 'related-datasets'); ?>
 
 			<div class="container">
-				<div class="eight columns">
+				<div class="eleven columns">
 				    <header class="single-post-header" class="clearfix">
     					<h1><?php the_title(); ?></h1>
     					<div class="categories">
@@ -64,18 +64,18 @@ Template Name: Forest Cover and Forest Cover Analysis
     					?>
         				</div>
     	       	   </section>
-    				<div class="three columns offset-by-one">
+    				<div class="four columns offset-by-one">
     					<aside id="sidebar">
     						<ul class="widgets">
     							<li class="widget share-widget">
-    								<?php opendev_get_template('social-share',array(),true); ?>
+    								<?php odm_get_template('social-share',array(),true); ?>
     							</li>
     							<li class="widget">
-    								<?php opendev_summary(); ?>
+    								<?php odm_summary(); ?>
     							</li>
     							<?php dynamic_sidebar('topic'); ?>
     							<?php if (get_group('related_link') != "" && get_group('related_link') != NULL) { ?>
-                            	<li class="widget widget_opendev_related_link_widget" style="clear:left">
+                            	<li class="widget widget_odm_related_link_widget" style="clear:left">
                                     <div>
                                     <h2 class="widget-title">Related Links</h2>
     							<?php

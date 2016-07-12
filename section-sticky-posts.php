@@ -140,7 +140,7 @@
                    <?php endif; ?>
                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
                    <!--show date and source-->
-                   <?php show_post_meta(get_post()); ?>
+                   <?php echo_post_meta(get_post()); ?>
               </header>
               <section class="post-content">
                 <?php
@@ -148,7 +148,7 @@
                      the_excerpt();
                    }
                    else{
-                     echo excerpt(20, __('Keep reading', 'opendev'));
+                     echo excerpt(20, __('Keep reading', 'odm'));
                    }
                 ?>
               </section>
@@ -156,7 +156,7 @@
          <footer class="post-actions">
               <!-- <a class="button" href="<?php the_permalink(); ?>">
               <img src="<?php // echo get_stylesheet_directory_uri()?>/img/info-icon.png"/>
-              <?php // _e('Read more', 'opendev'); ?></a>-->
+              <?php // _e('Read more', 'odm'); ?></a>-->
          </footer>
         </article>
 <?php

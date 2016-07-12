@@ -7,8 +7,8 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'odm_related_recent_news_widget', // Base ID
-			__( 'ODM Related Recent News Widget', 'opendev' ), // Name
-			array( 'description' => __( 'Display ODM the related recent news for the topics', 'opendev' ), ) // Args
+			__( 'ODM Related Recent News Widget', 'odm' ), // Name
+			array( 'description' => __( 'Display ODM the related recent news for the topics', 'odm' ), ) // Args
 		);
 	}
 
@@ -19,7 +19,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 	 */
 
 	public function get_related_news( $category = "") {
-		if( opendev_language_manager()->get_current_language() == "kh")
+		if( odm_language_manager()->get_current_language() == "km")
 			$language = "khmer";
 		else $language = "";
 
@@ -63,7 +63,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
     		if ( ! empty( $instance['od_related_news_option'] ) ) {
     			$news_option = $instance['od_related_news_option'];
     			if ($news_option == 'Related To The Topics'){
-                     if (opendev_language_manager()->get_current_language()!="en"){
+                     if (odm_language_manager()->get_current_language()!="en"){
                             $page_id = get_the_ID();
                             $post_type = get_post_type( $page_id );
                             $page_results = $wpdb->get_results($wpdb->prepare(
@@ -94,7 +94,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
     	   echo $args['before_widget'];
 
            if ( ! empty( $instance['od_related_news_title'] ) ) {
-    			echo $args['before_title'] . apply_filters( 'widget_title', __($instance['od_related_news_title'], 'opendev') ). $args['after_title'];
+    			echo $args['before_title'] . apply_filters( 'widget_title', __($instance['od_related_news_title'], 'odm') ). $args['after_title'];
     		}
 
     		echo "<div>";
@@ -114,7 +114,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_related_news_title'] ) ? $instance['od_related_news_title'] : __( 'Related News', 'opendev' );
+		$title = ! empty( $instance['od_related_news_title'] ) ? $instance['od_related_news_title'] : __( 'Related News', 'odm' );
 		$by_cat_slug = ! empty( $instance['od_related_news_by_cat_slug'] ) ? $instance['od_related_news_by_cat_slug'] : '';
         $news_option = $instance['od_related_news_option'];
 		?>

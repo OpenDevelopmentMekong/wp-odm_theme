@@ -1,22 +1,20 @@
-<nav id="social-nav">
+<nav>
 	<?php
-			$fb = opendev_get_facebook_url();
+			$fb = odm_get_facebook_url();
 			if ($fb) : ?>
-				<a class="icon-facebook" href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"></a>
+				<a href="<?php echo $fb; ?>" target="_blank" rel="external" title="Facebook"><i class="fa fa-facebook-official"></i></a>
 		<?php
 			endif; ?>
 	<?php
-			$tw = opendev_get_twitter_url();
+			$tw = odm_get_twitter_url();
 			if ($tw) : ?>
-				<a class="icon-twitter" href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"></a>
+				<a href="<?php echo $tw; ?>" target="_blank" rel="external" title="Twitter"><i class="fa fa-twitter-square"></i></a>
 	<?php
 			endif; ?>
 	<?php
-			$contact_id = opendev_get_contact_page_id();
+			$contact_id = odm_get_contact_page_id();
 			if ($contact_id) : ?>
-				<a class="icon-envelop" href="<?php echo get_permalink($contact_id); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/envelop.svg"></a>
+				<a href="<?php echo get_permalink($contact_id); ?>"><i class="fa fa-envelope"></i></a>
 	<?php
-		else: ?>
-	<?php
-		endif; ?>
+			endif; ?>
 </nav>
