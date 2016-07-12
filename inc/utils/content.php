@@ -276,10 +276,10 @@ function echo_post_meta($post)
 
 }
  //to set get_the_excerpt() limit words
- function excerpt($num, $read_more = '')
+ function odm_excerpt($post, $num = 40, $read_more = '')
  {
 		 $limit = $num + 1;
-		 $excerpt = explode(' ', get_the_excerpt(), $limit);
+		 $excerpt = explode(' ', $post->post_content, $limit);
 		 array_pop($excerpt);
 		 $excerpt_string = implode(' ', $excerpt);
 		 $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
