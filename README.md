@@ -61,7 +61,7 @@ Add this part to the Enviroment Variable if you npm command unknown.
 - In the theme directory run ```bower install``` to install dependencies
 
 #### Automation
-- Install Gulp follow this guidline: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
+- Install Gulp: <code>npm install --global gulp-cli</code>  or follow this guidline: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
 - CD to In the theme directory
 - Run ```gulp```  to generate dist folder that contains both js and css for the sites.
 - Using Gulp (http://gulpjs.com/), a series of automation tasks can be run in order to: 
