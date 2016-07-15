@@ -3,12 +3,13 @@
 body {
 	font-family: @primary-font;
 	color: @primary-color;
+	font-size: @base-font-size;
 	font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: @title-font;
-	font-weight: lighter;
+	font-weight: bolder;
 }
 
 h1 { font-size: @font-size-h1; }
@@ -26,22 +27,23 @@ p {
 
 a {
 	text-decoration: none;
+	font-family: @primary-font;
+	color: @primary-color;
+	font-size: @base-font-size;
+	font-weight: normal;
 }
 
 a,
 a:vistited,
 a:hover,
 a strong:hover {
-	color: @mekong-bright;
+	text-decoration: none;
+	color: @mekong-dark;
+	font-weight: bold;
 }
 
 a, a:vistited {
 	text-decoration: none;
-}
-
-a:hover,
-a strong:hover {
-	text-decoration: underline;
 }
 
 .excerpt { font-weight: light; }
