@@ -140,45 +140,132 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		}
 }
 
-function print_category_by_post_type($category, $post_type = 'post', $current_cat = '')
-{
-		if ($current_cat == $category->slug) {
-				$current_page = ' '.$current_cat;
-		} else {
-				$current_page = '';
-		}
+function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
+	if ($current_cat == $category->slug){
+		$current_page = " ".$current_cat;
+	}else {
+		$current_page = "";
+	}
+	if($category->cat_ID){
+		$cat_ID = $category->cat_ID;
+		$get_category_link = get_category_link( $category->cat_ID );
+	}else if($category->term_id){
+		$cat_ID = $category->term_id;
+		$get_category_link = get_term_link( $category);
+	}
+	if($post_type == "map-layer"){
+		$cat_name = '<a href="' . $get_category_link. '?post_type='.$post_type.'">';
+		$cat_name .= $category->name;
+		$cat_name .= "</a>";
+		$count_layer_items = 0;
+		$args_get_post = array(
+		    'post_type' => $post_type,
+		    'tax_query' => array(
+		                        array(
+		                          'taxonomy' => $category->taxonomy,
+		                          'field' => 'id',
+		                          'terms' => $cat_ID, // Where term_id of Term 1 is "1".
+		                          'include_children' => false
+		                        )
+		                      )
+			);
+		$query_get_post = new WP_Query( $args_get_post );
+		if($query_get_post->have_posts() ){
+			$cat_layer_ul = "<ul class='cat-layers switch-layers'>";
+			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
+				if(posts_for_both_and_current_languages(get_the_ID(), CURRENT_LANGUAGE)){
+					$count_layer_items++;
+					$layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
+				}
+			endwhile;
+
+			wp_reset_postdata();
+			$cat_layer_close_ul = "</ul>";
+			$print_items = "";
+			if ($count_layer_items > 0){
+				$print_items .= $cat_name;
+				$print_items .= $cat_layer_ul;
+				$print_items .= $layer_items;
+				$print_items .= $cat_layer_close_ul;
+
+			}
+			return $print_items;
+		} //$query_get_post->have_posts
+	}else {
 		echo "<span class='nochildimage-".COUNTRY_NAME.$current_page."'>";
-		echo '<a href="'.get_category_link($category->cat_ID).'?post_type='.$post_type.'">';
-		if ($current_cat == $category->slug) { // if page of the topic exists
-									echo "<strong class='".COUNTRY_NAME."-color'>";
-				echo $category->name;
-				echo '</strong>';
-		} else {
-				echo $category->name;
-		}
-		echo '</a>';
-		echo '</span>';
-}
-function walk_child_category_by_post_type($children, $post_type, $current_cat = '')
-{
-		foreach ($children as $child) {
-				// Get immediate children of current category
-		$cat_children = get_categories(array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id'));
-				echo '<li>';
-		// Display current category
-			print_category_by_post_type($child, $post_type, $current_cat);
-		// if current category has children
-		if (!empty($cat_children)) {
-				// add a sublevel
-			echo '<ul>';
-			// display the children
-				walk_child_category_by_post_type($cat_children, $post_type, $current_cat);
-				echo '</ul>';
-		}
-				echo '</li>';
-		}
+			echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
+			    if ($current_cat == $category->slug){ // if page of the topic exists
+			        echo "<strong class='".COUNTRY_NAME."-color'>";
+			            echo $category->name;
+			        echo "</strong>";
+			    }else{
+			          echo $category->name;
+			    }
+			echo "</a>";
+		echo "</span>";
+	}
 }
 
+function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
+    if($post_type == "map-layer"){
+		$cat_item_and_posts = "";
+		$count_items_of_subcat = 0;
+		foreach($children as $child){
+			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
+			$get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
+			if ($get_cat_and_posts != ""){
+			    $count_items_of_subcat++;
+			    $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
+			        // Display current category
+			        $cat_item_and_posts .= $get_cat_and_posts;
+			        // if current category has children
+			        if ( !empty($cat_children) ) {
+			          // add a sublevel
+			          // display the children
+			            walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
+			        }
+			    $cat_item_and_posts .= "</li>";
+			}
+		}//foreach
+		$print_sub_cat_and_posts = "";
+		if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
+			$print_sub_cat_and_posts .= '<ul class="children fffff">';
+			$print_sub_cat_and_posts .= $cat_item_and_posts;
+			$print_sub_cat_and_posts .= '</ul>';
+		}
+		return $print_sub_cat_and_posts;
+    }else { //widget
+		foreach($children as $child){
+			// Get immediate children of current category
+			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+			echo "<li>";
+				// Display current category
+				print_category_by_post_type($child, $post_type, $current_cat, $widget);
+				// if current category has children
+				if ( !empty($cat_children) ) {
+					// add a sublevel
+					echo "<ul>";
+					// display the children
+					  walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
+					echo "</ul>";
+				}
+			echo "</li>";
+		}//end foreach
+    }
+}
+
+function posts_for_both_and_current_languages($postID, $current_lang = "en", $taxonomy ="language"){
+    $site_language = strtolower(get_localization_language_by_language_code($current_lang));
+    $terms = get_the_terms($postID, $taxonomy);
+    if ( empty($terms) && !is_wp_error( $terms )) {
+        return true;
+    }else if (has_term( $site_language, $taxonomy, $postID )){
+        return true;
+    }else if ( !taxonomy_exists($taxonomy)){
+        return true;
+    }
+    return false;
+}
 /** END CATEGORY */
 
 /**** Post Meta ******/
