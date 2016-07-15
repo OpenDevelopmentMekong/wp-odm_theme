@@ -50,7 +50,7 @@ class Odm_Country_Manager {
       <?php
         foreach ($this->countries as $country):
           $url = $this->is_pp() ? $country['url_pp'] : $country['url']; ?>
-          <li><a href="<?php echo $url ?>"><?php echo __($country['name']);?></a></li>
+          <li><a href="<?php echo $url . $_SERVER['REQUEST_URI'] ?>"><?php echo __($country['name']);?></a></li>
       <?php
         endforeach;
       ?>

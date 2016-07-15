@@ -24,6 +24,11 @@
 }
 
 #od-selector {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: @selector-height;
+  z-index: 999;
 	padding: @xsmall-padd;
 	background: #fff;
 	margin: 0;
@@ -58,9 +63,11 @@
  */
 
 #od-head {
+  margin-top: @selector-height;
 	padding: @xsmall-padd;
 	background: @mekong-dark;
-	min-height: 55px;
+	min-height: 72px;
+
 	 h1 {
 		font-family: 'Droid Serif';
 		font-size: 48px;
@@ -68,7 +75,7 @@
 		font-weight: 700;
 		letter-spacing: -4px;
 		float: left;
-		margin: 0 24px 0px 0px;
+		margin: 10px 24px 0px 0px;
 		sup {
 		 font-size: 55%;
 		 position: relative;
@@ -94,7 +101,7 @@
 			 font-size: 30px;
 			 line-height: 48px;
 			 float: left;
-			 margin: 8px 0 0 0;
+			 margin: 16px 0 0 0;
 			 color: #fff;
 		 }
 
@@ -119,6 +126,7 @@
 .social{
 	padding: @small-padd;
 	text-align: right;
+  margin-top: 18px;
 
   a{
     margin-left: 6px;

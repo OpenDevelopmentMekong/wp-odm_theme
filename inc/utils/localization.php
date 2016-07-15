@@ -25,11 +25,11 @@ function get_the_localization_language_by_website($site = '')
     return isset($language[$site_name]) ? $language[$site_name] : '';
 }
 
-function getMultilingualValueOrFallback($field, $lang)
+function getMultilingualValueOrFallback($field, $lang, $fallback)
 {
-    if (!isset($field[$lang]) || empty($field[$lang])) {
-        return $field['en'];
-    }
+    if (!isset($field[$lang]) || empty($field[$lang])):
+      return $fallback;
+    endif;
 
     return $field[$lang];
 }
