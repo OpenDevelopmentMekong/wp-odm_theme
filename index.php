@@ -6,15 +6,19 @@
     $options = get_option('odm_options');
     if ($options['frontpage_slider_id']) : ?>
 
-     <section id="featured-content" class="page-section hideOnMobile">
-        <div>
+    <section id="featured-content" class="page-section hideOnMobile">
+      <div class="container">
+        <div class="row">
+          <div class="sixteen columns">
           <?php
             if (function_exists('fa_display_slider')):
                 fa_display_slider($options['frontpage_slider_id']);
             endif;
           ?>
+          </div>
         </div>
-     </section>
+      </div>
+    </section>
 
  <?php endif;?>
 
