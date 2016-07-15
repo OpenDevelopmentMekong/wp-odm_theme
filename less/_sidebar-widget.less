@@ -189,8 +189,8 @@
 			}
 
 			div ul.odm_taxonomy_widget_ul li ul li {
-			    list-style: none !important;
-			    list-style-type: none !important;
+		    list-style: none !important;
+		    list-style-type: none !important;
 			}
 
 			.odm-summary ol {
@@ -198,28 +198,13 @@
 				margin-right: -10px !important;
 				padding-left: 30px !important;
 				list-style-position: inside;
-				li {
-					font-weight: 400;
-					font-size: 14px;
-					line-height: 150%;
-					margin-bottom: 10px;
-					padding-bottom: 10px;
-					border-bottom: 1px solid #eee;
-					color: #999;
-					&:last-child {
-						border-bottom: 0;
-						padding-bottom: 0;
-						margin-bottom: 0;
-					}
+
+      li {
+					font-size: @font-size-h4;
 
 					a {
 						text-decoration: none;
 						color: #333;
-
-						&:hover {
-							color: #4683d2; /*6393D2, 2774da;*/
-							text-decoration:underline
-						}
 					}
 				}
 			}
@@ -242,8 +227,8 @@
 }
 
 .widget_odm_taxonomy_widget ul:first-child{
-    max-height: 650px;
-    overflow-y: auto;
+    //max-height: 650px;
+    //overflow-y: auto;
 }
 
 .widget_odm_related_resources_widget, .widget_odm_query_resources_widget {
