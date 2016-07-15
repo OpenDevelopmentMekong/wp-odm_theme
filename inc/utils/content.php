@@ -202,37 +202,37 @@ function echo_post_meta($post)
 				?>
 			</li>
 			<?php
-			if (taxonomy_exists('news_source') && isset($post)) {
-				$terms_news_source = get_the_terms($post->ID, 'news_source');
-				if ($terms_news_source && !is_wp_error($terms_news_source)) {
-					if ($terms_news_source) {
-						$news_sources = '';
-
-						foreach ($terms_news_source as $term) {
-							$term_link = get_term_link($term, 'news_source');
-							if (is_wp_error($term_link)) {
-								continue;
-							}
-							//We successfully got a link. Print it out.
-							$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
-							if (isset($news_sources)):
-								echo '<li class="news-source">';
-								echo '<i class="fa fa-chain"></i>';
-								echo substr($news_sources, 0, -2);
-								echo '</li>';
-							endif;
-						}
-
-					}
-				} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-					echo '<li class="feed">';
-					echo '<span class="icon-news"></span> ';
-					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-					echo get_the_title($news_source_id);
-					echo '</li>';
-				}
-
-			}// if news_source exists
+			// if (taxonomy_exists('news_source') && isset($post)) {
+			// 	$terms_news_source = get_the_terms($post->ID, 'news_source');
+			// 	if ($terms_news_source && !is_wp_error($terms_news_source)) {
+			// 		if ($terms_news_source) {
+			// 			$news_sources = '';
+			//
+			// 			foreach ($terms_news_source as $term) {
+			// 				$term_link = get_term_link($term, 'news_source');
+			// 				if (is_wp_error($term_link)) {
+			// 					continue;
+			// 				}
+			// 				//We successfully got a link. Print it out.
+			// 				$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+			// 				if (isset($news_sources)):
+			// 					echo '<li class="news-source">';
+			// 					echo '<i class="fa fa-chain"></i>';
+			// 					echo substr($news_sources, 0, -2);
+			// 					echo '</li>';
+			// 				endif;
+			// 			}
+			//
+			// 		}
+			// 	} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+			// 		echo '<li class="feed">';
+			// 		echo '<span class="icon-news"></span> ';
+			// 		$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+			// 		echo get_the_title($news_source_id);
+			// 		echo '</li>';
+			// 	}
+			//
+			// }// if news_source exists
 			if (taxonomy_exists('public_announcement_source')) {
 					echo '<li class="news-source">';
 					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
