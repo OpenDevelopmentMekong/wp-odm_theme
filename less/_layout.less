@@ -133,10 +133,15 @@ body{
     font-family: @title-font;
     font-size: @font-size-h4;
     text-decoration: none;
+    text-transform: none !important;
 	}
 
 	.post-list-item-content {
-		display: inline-flex;
+    overflow: hidden;
+
+    img{
+      float:left;
+    }
 	}
 
 	.post-excerpt, .excerpt {
