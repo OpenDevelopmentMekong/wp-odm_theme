@@ -43,22 +43,34 @@ body{
 	.grid-content-wrapper {
 		padding: 10px;
 
+		color: @white;
+
 		.post-grid-item-title {
 			font-size: @font-size-h4;
 			margin-bottom: 15px;
 			display: inline-block;
 		}
 
+		.post-meta > ul > li {
+			display: block;
+		}
+
 		.post-meta {
+
+			.date {
+				color: @white;
+			}
 			li {
 				margin-bottom: 10px;
 				padding-right: 0px;
 			}
-			.date {
-				color: @white;
+
+			.categories {
+				display: none;
 			}
-			.fa {
+			.post-categories li a {
 				color: @white;
+				background: transparent;
 			}
 		}
 
@@ -85,7 +97,6 @@ body{
 			top: 0px;
 			left: 0px;
 			z-index: 10;
-			color: @white;
 		}
 
 	}
