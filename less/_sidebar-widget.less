@@ -116,13 +116,8 @@
 	.widgets {
 		.widget {
 			margin-bottom: 30px;
-			border: 1px solid #ddd;
+			border: none;
 			padding: 10px;
-			-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-			-khtml-box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-			-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-			-o-box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-			box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
 			width: 100%;
 
 			&.share-widget, &.widget_search {
@@ -133,23 +128,21 @@
 			}
 
 			.widget-title {
-				font-family: 'Open Sans';
-				font-weight: 800;
+				font-family: @primary-font;
+				font-weight: bold;
 				margin: -11px -10px 10px;
 				padding: 10px;
-				border-top: 1px solid #ddd;
-				border-bottom: 1px solid #ddd;
+				border-bottom: 1px solid @light-gray;
 				color: #fff;
-				text-transform: uppercase;
-				font-size: 14px;
-				background: #4683D2 none repeat scroll 0% 0%;
+				font-size: @font-size-h3;
+				color: @mekong-bright;
 			}
 
 			li a {
 				text-decoration: none;
 
 				&:hover {
-					text-decoration:underline;
+					text-decoration:none;
 				}
 
 				&:last-child {
@@ -171,6 +164,7 @@
 				}
 
 				li {
+          border: none;
 					span.plusimage-mekong,
 					span.minusimage-mekong,
 					span.nochildimage-mekong {
@@ -264,95 +258,95 @@ ul.odm_taxonomy_widget_ul span:hover{
 /*
  * Related datasets box
  */
-#related-datasets {
-	.box-items {
-		table-layout: fixed;
-	}
-
-	.group-item h3 {
-		text-transform: uppercase;
-		font-size: 18px;
-		color: #999;
-		line-height: 18px;
-		margin: 0 0 20px;
-	}
-
-	.dataset-list {
-		margin: 0;
-		padding: 0;
-	}
-
-	.dataset-item {
-		margin: 0 -20px 20px;
-		padding: 0 20px 20px;
-		border-bottom: 1px solid #ddd;
-		&:last-child {
-			border-bottom: 0;
-			margin-bottom: 0;
-		}
-		h4 {
-			font-size: 18px;
-			a {
-				text-decoration: none;
-			}
-		}
-
-		p {
-			margin: 0 0 10px;
-			&.read-more {
-				margin: 0;
-			}
-		}
-	}
-
-	.dataset-resources {
-		margin: 0 0 10px;
-		padding: 0;
-		width: 100%;
-		border-top: 1px solid #eee;
-		border-left: 1px solid #eee;
-		border-right: 1px solid #eee;
-
-		.resource-item {
-			margin: 0;
-			padding: 10px;
-			border-bottom: 1px solid #eee;
-
-			a {
-				text-decoration: none;
-			}
-
-			.format {
-				background: #eee;
-				padding: 3px 7px;
-				font-size: 12px;
-				margin-left: 10px;
-			}
-		}
-
-	}
-
-	.toggle-resources {
-		display: block;
-		text-align: center;
-		text-transform: uppercase;
-		text-decoration: none;
-		color: #444;
-		border-top: 1px solid #ddd;
-		padding: 10px 0;
-	}
-
-	&.collapsed {
-		.dataset-item {
-			h4,p {
-				width: 100%;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-			}
-		}
-	}
-}
+// #related-datasets {
+// 	.box-items {
+// 		table-layout: fixed;
+// 	}
+//
+// 	.group-item h3 {
+// 		text-transform: uppercase;
+// 		font-size: 18px;
+// 		color: #999;
+// 		line-height: 18px;
+// 		margin: 0 0 20px;
+// 	}
+//
+// 	.dataset-list {
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+//
+// 	.dataset-item {
+// 		margin: 0 -20px 20px;
+// 		padding: 0 20px 20px;
+// 		border-bottom: 1px solid #ddd;
+// 		&:last-child {
+// 			border-bottom: 0;
+// 			margin-bottom: 0;
+// 		}
+// 		h4 {
+// 			font-size: 18px;
+// 			a {
+// 				text-decoration: none;
+// 			}
+// 		}
+//
+// 		p {
+// 			margin: 0 0 10px;
+// 			&.read-more {
+// 				margin: 0;
+// 			}
+// 		}
+// 	}
+//
+// 	.dataset-resources {
+// 		margin: 0 0 10px;
+// 		padding: 0;
+// 		width: 100%;
+// 		border-top: 1px solid #eee;
+// 		border-left: 1px solid #eee;
+// 		border-right: 1px solid #eee;
+//
+// 		.resource-item {
+// 			margin: 0;
+// 			padding: 10px;
+// 			border-bottom: 1px solid #eee;
+//
+// 			a {
+// 				text-decoration: none;
+// 			}
+//
+// 			.format {
+// 				background: #eee;
+// 				padding: 3px 7px;
+// 				font-size: 12px;
+// 				margin-left: 10px;
+// 			}
+// 		}
+//
+// 	}
+//
+// 	.toggle-resources {
+// 		display: block;
+// 		text-align: center;
+// 		text-transform: uppercase;
+// 		text-decoration: none;
+// 		color: #444;
+// 		border-top: 1px solid #ddd;
+// 		padding: 10px 0;
+// 	}
+//
+// 	&.collapsed {
+// 		.dataset-item {
+// 			h4,p {
+// 				width: 100%;
+// 				white-space: nowrap;
+// 				overflow: hidden;
+// 				text-overflow: ellipsis;
+// 			}
+// 		}
+// 	}
+// }
 
 /* Sidebar Related News  */
 .widget_odm_related_recent_news_widget{
