@@ -19,12 +19,12 @@ function odm_get_thumbnail($post_id = false, $fallback = false)
 function odm_logo()
 {
   ?>
-  <h1>
+
    <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
     <span class="icon-od-logo"></span>
-    Op<sup>e</sup>nDevelopment
+    <h1>Op<sup>e</sup>nDevelopment</h1>
    </a>
-  </h1>
+
   <?php
   echo '<div class="ms-dropdown-title">';
     echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
