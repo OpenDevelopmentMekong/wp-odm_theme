@@ -10,6 +10,6 @@
 			if (isset($thumb_src)):
 				echo $thumb_src;
 			endif; ?>
-			<p class="post-excerpt"><?php echo odm_excerpt($post); ?></p>
+			<div class="post-excerpt"><?php echo odm_excerpt($post); ?></div>
 	</div>
 </div>

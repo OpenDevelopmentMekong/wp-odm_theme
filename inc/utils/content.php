@@ -214,7 +214,7 @@ function echo_post_meta($post)
 								continue;
 							}
 							//We successfully got a link. Print it out.
-							$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+							$news_sources .= '<a href="'.$term_link.'"><strong>'.$term->name.'</strong></a>, ';
 							if (isset($news_sources)):
 								echo '<li class="news-source">';
 								echo '<i class="fa fa-chain"></i>';
@@ -246,7 +246,7 @@ function echo_post_meta($post)
 													continue;
 											}
 											//We successfully got a link. Print it out.
-											 $public_announcement_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
+											 $public_announcement_sources .= '<a href="'.$term_link.'"><strong>'.$term->name.'</strong></a>, ';
 									}
 									echo substr($public_announcement_sources, 0, -2);
 							}
