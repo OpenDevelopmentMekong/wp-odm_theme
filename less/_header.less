@@ -30,12 +30,20 @@
   height: @selector-height;
   z-index: 999;
 	padding: @xsmall-padd;
-	background: #fff;
+	background: @mekong-dark;
+	border-bottom: 1px solid @mekong-bright;
 	margin: 0;
 	box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
+
 	a {
+		color: @white;
 		text-decoration: none;
 	}
+
+	a:hover {
+		color: @mekong-bright;
+	}
+
 }
 
 #od-selector ul,
