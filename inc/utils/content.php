@@ -217,7 +217,7 @@ function echo_post_meta($post)
 							$news_sources .= '<a href="'.$term_link.'"><srong>'.$term->name.'</srong></a>, ';
 							if (isset($news_sources)):
 								echo '<li class="news-source">';
-								echo '<span class="icon-news"></span> ';
+								echo '<i class="fa fa-chain"></i>';
 								echo substr($news_sources, 0, -2);
 								echo '</li>';
 							endif;
@@ -259,16 +259,9 @@ function echo_post_meta($post)
 			}// if public_announcement_source exists ?>
 			<li class="categories">
 				<i class="fa fa-folder"></i>
-				<?php the_category(); ?>
+				<?php the_category(''); ?>
 			</li>
-			<?php
-				$tags = get_tags();
-				if (!empty($tags)): ?>
-					<li class="post-tags">
-						<i class="fa fa-tags"></i>
-						<?php the_tags('', ', '); ?>
-					</li>
-			  <?php	endif; ?>
+			<?php the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ', ', '</li>'); ?>
 		</ul>
 	</div>
 
