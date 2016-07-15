@@ -36,7 +36,7 @@ body{
 	position: relative;
 	height: @grid-height;
 	text-align: left;
-	background: @primary-color;
+	background: @black;
 	margin-bottom: @big-padd;
 	font-family: @title-font;
 	font-weight: lighter;
@@ -51,6 +51,8 @@ body{
 			font-size: @font-size-h3;
 			display: inline-block;
       color: @white;
+      z-index: 2;
+      padding: @xsmall-padd;
 		}
 
 		.post-meta > ul > li {
@@ -58,14 +60,19 @@ body{
 		}
 
 		.post-meta {
-
+      z-index: 2;
       margin: 0px;
       position: absolute;
       bottom: 0px;
+      padding: @xsmall-padd;
 
 			.date {
 				color: @white;
 			}
+
+      ul{
+        margin-bottom: 0px;
+      }
 
 			li {
 				margin-bottom: 10px;
@@ -83,11 +90,11 @@ body{
 
 		img {
 			position: absolute;
-		    z-index: 1;
-		    height: 100%;
-		    top: 0;
-		    left: 0;
-			opacity: 0.2;
+	    z-index: 1;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+			opacity: 0.3;
 		}
 
 		a {
