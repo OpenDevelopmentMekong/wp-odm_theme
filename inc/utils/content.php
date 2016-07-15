@@ -149,8 +149,8 @@ function print_category_by_post_type($category, $post_type = 'post', $current_ca
 		}
 		echo "<span class='nochildimage-".COUNTRY_NAME.$current_page."'>";
 		echo '<a href="'.get_category_link($category->cat_ID).'?post_type='.$post_type.'">';
-		if ($current_cat == $category->slug) { // if page of the topic exists
-									echo "<strong class='".COUNTRY_NAME."-color'>";
+		if ($current_cat == $category->slug) {
+				echo "<strong class='".COUNTRY_NAME."-color'>";
 				echo $category->name;
 				echo '</strong>';
 		} else {
@@ -214,10 +214,10 @@ function echo_post_meta($post)
 								continue;
 							}
 							//We successfully got a link. Print it out.
-							$news_sources .= '<a href="'.$term_link.'"><strong>'.$term->name.'</strong></a>, ';
+							$news_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
 							if (isset($news_sources)):
 								echo '<li class="news-source">';
-								echo '<i class="fa fa-chain"></i>';
+								echo '<i class="fa fa-chain"></i> ';
 								echo substr($news_sources, 0, -2);
 								echo '</li>';
 							endif;
@@ -246,7 +246,7 @@ function echo_post_meta($post)
 													continue;
 											}
 											//We successfully got a link. Print it out.
-											 $public_announcement_sources .= '<a href="'.$term_link.'"><strong>'.$term->name.'</strong></a>, ';
+											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
 									}
 									echo substr($public_announcement_sources, 0, -2);
 							}
@@ -255,8 +255,7 @@ function echo_post_meta($post)
 							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
 							echo get_the_title($public_announcement_source_id);
 					}
-					echo '</li><!--news-source-->';
-			}// if public_announcement_source exists ?>
+			} ?>
 			<li class="categories">
 				<i class="fa fa-folder"></i>
 				<?php the_category(''); ?>

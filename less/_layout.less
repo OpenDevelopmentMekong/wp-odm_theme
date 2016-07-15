@@ -47,9 +47,10 @@ body{
 		color: @white;
 
 		.post-grid-item-title {
-			font-size: @font-size-h4;
-			margin-bottom: 15px;
+      font-family: @title-font;
+			font-size: @font-size-h3;
 			display: inline-block;
+      color: @white;
 		}
 
 		.post-meta > ul > li {
@@ -58,9 +59,14 @@ body{
 
 		.post-meta {
 
+      margin: 0px;
+      position: absolute;
+      bottom: 0px;
+
 			.date {
 				color: @white;
 			}
+
 			li {
 				margin-bottom: 10px;
 				padding-right: 0px;
