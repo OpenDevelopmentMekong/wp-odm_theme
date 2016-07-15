@@ -217,7 +217,7 @@ function echo_post_meta($post)
 							$news_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
 							if (isset($news_sources)):
 								echo '<li class="news-source">';
-								echo '<i class="fa fa-chain"></i>';
+								echo '<i class="fa fa-chain"></i> ';
 								echo substr($news_sources, 0, -2);
 								echo '</li>';
 							endif;
@@ -255,8 +255,7 @@ function echo_post_meta($post)
 							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
 							echo get_the_title($public_announcement_source_id);
 					}
-					echo '</li><!--news-source-->';
-			}// if public_announcement_source exists ?>
+			} ?>
 			<li class="categories">
 				<i class="fa fa-folder"></i>
 				<?php the_category(''); ?>
