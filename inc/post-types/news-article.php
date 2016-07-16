@@ -40,7 +40,7 @@ class Odm_News_Article {
 			'show_in_menu'       => true,
 			'menu_icon' 				 => '',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'news-article' ),
+			'rewrite'            => array( 'slug' => 'news' ),
 			'capability_type'    => 'post',
 			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,

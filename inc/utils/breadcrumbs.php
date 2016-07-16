@@ -220,6 +220,7 @@ function echo_the_breadcrumb()
             if ($post_type) {
               $post_type_data = get_post_type_object($post_type);
               $post_type_slug = $post_type_data->rewrite['slug'];
+              $post_type_label = $post_type_data->labels->name;
             }
             echo '<li class="item-current item-current-'.$post_type_slug.'"> ';
             echo '<div class="bread-current bread-current-'.$post_type_slug.'">';
