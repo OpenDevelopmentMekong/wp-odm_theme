@@ -2,42 +2,35 @@
  * Share widget
  */
 
-.share-box{
-    display: inline-block;
-    text-align: right;
-    div {
-    	margin-right: 8px;
-    	float:left;
-    }
-}
+ .share {
+
+   ul {
+     text-align: righ;
+
+     li {
+       float: left;
+       padding: 0 !important;
+       margin: 0 !important;
+       border: 0 !important;
+       list-style-type: none !important;
+     }
+
+     li > * {
+       margin-right: 10px;
+     }
+
+     li > .fb {
+       width: 90px;
+     }
+
+     li > .twitter {
+       width: 120px;
+     }
+
+   }
+ }
 
 .widget {
-	.share {
-		ul {
-			width: 100%;
-			display: block;
-			margin: 0 0 20px;
-			li {
-				float: left;
-				padding: 0 !important;
-				margin: 0 !important;
-				border: 0 !important;
-			}
-
-			li > * {
-				margin-right: 10px;
-			}
-
-			li > .fb {
-				width: 90px;
-			}
-
-			li > .twitter {
-				width: 120px;
-			}
-
-		}
-	}
 
 	&.widget_search {
 		input {
@@ -120,11 +113,15 @@
 			padding: 10px;
 			width: 100%;
 
-			&.share-widget, &.widget_search {
+			&.widget_search {
 				box-shadow: 0 0 0;
 				padding: 0;
 				border: 0;
 				margin-bottom: 3em;
+
+        li{
+          list-style-type: none;
+        }
 			}
 
 			.widget-title {

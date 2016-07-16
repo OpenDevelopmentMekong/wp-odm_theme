@@ -4,14 +4,23 @@
 
   <article id="content" class="single-post">
 
-      <div class="container">
-        <div class="eleven columns">
-          <header class="single-post-header" class="clearfix">
+      <section class="container">
+        <header class="row">
+          <div class="twelve columns">
             <h1><?php the_title(); ?></h1>
-            <div class="categories">
-                <span class="lsf">&#9776;</span> <?php echo __('Filed under:', 'jeo'); ?> <?php the_category(); ?>
+            <?php echo_post_meta(get_post()); ?>
+          </div>
+          <div class="four columns">
+            <div class="widget share-widget">
+              <?php odm_get_template('social-share',array(),true); ?>
             </div>
-          </header>
+          </div>
+        </header>
+      </section>
+
+      <section class="container">
+    		<div class="row">
+    			<div class="eleven columns">
           <?php if (jeo_has_marker_location()): ?>
             <section id="featured-media" class="row">
               <div class="container">
@@ -41,9 +50,6 @@
         <div class="four columns offset-by-one">
           <aside id="sidebar">
             <ul class="widgets">
-              <li class="widget share-widget">
-                <?php odm_get_template('social-share',array(),true); ?>
-              </li>
               <li class="widget">
                 <?php odm_summary(); ?>
               </li>
@@ -77,6 +83,8 @@
           </aside>
         </div>
       </div>
+    </section>
+
   </article>
 
 <?php endif; ?>
