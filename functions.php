@@ -162,66 +162,82 @@ function odm_dependency_scripts()
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
-function odm_jeo_scripts()
+function opendev_jeo_scripts()
 {
-    wp_dequeue_script('jeo-site');
-    wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
-    $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+  wp_dequeue_script('jeo-site');
+  wp_enqueue_script('jquery-isotope');
+  wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
+  $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
+  // custom marker system
+  global $jeo_markers;
+  wp_deregister_script('jeo.markers');
+  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/jeo-scripts/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
 
-    // if ( file_exists( get_stylesheet_directory() . '/inc/markers.js')){
-         wp_deregister_script('jeo.markers');
-    //     wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/inc/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-    // }
-    global $jeo_markers;
-    wp_localize_script('jeo.markers', 'odm_markers', array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'query' => $jeo_markers->query(),
-        'stories_label' => __('stories', 'odm'),
-        'home' => (is_home() && !is_paged() && (isset($_REQUEST['odm_filter_']) && !$_REQUEST['odm_filter_'])),
-        'copy_embed_label' => __('Copy the embed code', 'odm'),
-        'share_label' => __('Share', 'odm'),
-        'print_label' => __('Print', 'odm'),
-        'embed_base_url' => home_url('/embed/'),
-        'share_base_url' => home_url('/share/'),
-        'marker_active' => array(
-            'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
-            'iconSize' => array(26, 30),
-            'iconAnchor' => array(13, 30),
-            'popupAnchor' => array(0, -40),
-            'markerId' => 'none',
-        ),
-        'site_url' => home_url('/'),
-        'read_more_label' => __('Read more', 'odm'),
-        'lightbox_label' => array(
-            'slideshow' => __('Open slideshow', 'odm'),
-            'videos' => __('Watch video gallery', 'odm'),
-            'video' => __('Watch video', 'odm'),
-            'images' => __('View image gallery', 'odm'),
-            'image' => __('View fullscreen image', 'odm'),
-            'infographic' => __('View infographic', 'odm'),
-            'infographics' => __('View infographics', 'odm'),
-        ),
-        'enable_clustering' => jeo_use_clustering() ? true : false,
-        'default_icon' => jeo_formatted_default_marker(),
-    ));
+  wp_localize_script('jeo.markers', 'opendev_markers', array(
+    'ajaxurl' => admin_url('admin-ajax.php'),
+    'query' => $jeo_markers->query(),
+    'stories_label' => __('stories', 'odm'),
+    'home' => (is_home() && !is_paged() && !$_REQUEST['opendev_filter_']),
+    'copy_embed_label' => __('Copy the embed code', 'odm'),
+    'share_label' => __('Share', 'odm'),
+    'print_label' => __('Print', 'odm'),
+    'embed_base_url' => home_url('/embed/'),
+    'share_base_url' => home_url('/share/'),
+    'marker_active' => array(
+    'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
+    'iconSize' => array(26, 30),
+    'iconAnchor' => array(13, 30),
+    'popupAnchor' => array(0, -40),
+    'markerId' => 'none',
+  ),
+   'site_url' => home_url('/'),
+   'read_more_label' => __('Read more', 'odm'),
+   'lightbox_label' => array(
+   'slideshow' => __('Open slideshow', 'odm'),
+   'videos' => __('Watch video gallery', 'odm'),
+   'video' => __('Watch video', 'odm'),
+   'images' => __('View image gallery', 'odm'),
+   'image' => __('View fullscreen image', 'odm'),
+   'infographic' => __('View infographic', 'odm'),
+   'infographics' => __('View infographics', 'odm'),
+  ),
+   'enable_clustering' => jeo_use_clustering() ? true : false,
+   'default_icon' => jeo_formatted_default_marker(),
+  ));
 
-    // if ( file_exists( get_stylesheet_directory() . '/inc/js/jeo.js')){
-           //wp_deregister_script('jeo');
-    //       wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/js/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
-    // }
+  if (is_home()) {
+      wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
+  }
+  if (is_page('map-explorer') || is_page('maps') || is_singular('map') || is_home()){
+      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
+         wp_deregister_script('jeo');
+         wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
+      }
+      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/leaflet.js')){
+         wp_deregister_script('leaflet');
+      	 wp_register_script('leaflet', get_stylesheet_directory_uri() . '/lib/leaflet/leaflet.js', array(), '0.7.7');
+      }
+      // if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.css')){
+      //    wp_deregister_style('leaflet');
+      //    wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/lib/leaflet/leaflet.css');
+      // }
+      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')){
+         wp_deregister_script('jeo.fullscreen');
+         wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
+      }
 
-    // if ( file_exists( get_stylesheet_directory() . '/inc/js/fullscreen.js')){
-          //wp_deregister_script('jeo.fullscreen');
-    //       wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/js/fullscreen.js',array('jeo'), '0.2.0');
-    // }
-    // if ( file_exists( get_stylesheet_directory() . '/inc/js/mapping.js')){
-    //       wp_enqueue_script('mapping', get_stylesheet_directory_uri() . '/inc/js/mapping.js', array('jeo'), '1.0.0');
-    // }
+      wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
 
-    wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js', array('jeo','jeo.geocode','mapbox-js', 'underscore', 'jquery'));
+      wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
 
+      wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo'), '1.0.0');
+
+  }
+  wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
+
+  wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 }
-add_action('wp_print_scripts', 'odm_jeo_scripts', 101);
+add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
 
 //add_action( 'wp_print_scripts', 'deregister_script_and_style' ); //wp_print_scripts
 // function odm_jeo_admin_scripts()
@@ -368,8 +384,12 @@ function odm_custom_admin_css()
  </style>
  <?php
 
+ // dequeue parent script and enqueue from child theme
+ wp_dequeue_script('mapbox-metabox');
+ wp_enqueue_script('child-mapbox-metabox', get_stylesheet_directory_uri() . '/inc/js/mapbox.js', array('jquery', 'jeo', 'jquery-ui-sortable'), '0.5.1');
+
 }
-add_action('admin_footer', 'odm_custom_admin_css');
+add_action('admin_footer', 'odm_custom_admin_css', 100);
 
 function odm_search_pre_get_posts($query)
 {
