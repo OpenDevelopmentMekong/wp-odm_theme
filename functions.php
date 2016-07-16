@@ -158,6 +158,7 @@ function odm_dependency_scripts()
 {
   wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
   wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
+  wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
@@ -220,7 +221,7 @@ function odm_jeo_scripts()
     wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 
 }
-add_action('wp_print_scripts', 'odm_jeo_scripts', 100);
+add_action('wp_print_scripts', 'odm_jeo_scripts', 101);
 
 //add_action( 'wp_print_scripts', 'deregister_script_and_style' ); //wp_print_scripts
 // function odm_jeo_admin_scripts()
