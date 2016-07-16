@@ -21,7 +21,9 @@
 
 			<div class="four columns offset-by-one">
 				<aside id="sidebar">
-					<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
+					<ul class="widgets">
+						<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
+					</ul>
 				</aside>
 			</div>
 		</div>
