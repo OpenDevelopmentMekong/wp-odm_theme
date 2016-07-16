@@ -8,7 +8,7 @@
 <?php if(have_posts()) : the_post(); ?>
 	<section id="content" class="single-post">
 
-		<div class="container">
+		<section class="container">
 			<div class="row">
 				<div class="eleven columns">
 					<?php the_content(); ?>
@@ -20,11 +20,12 @@
 						endif;
 					?>
 				</div>
-        <div class="four columns offset-by-one">
-					<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
-				</div>
 			</div>
-
+			<div class="four columns offset-by-one">
+				<aside id="sidebar">
+					<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
+				</aside>
+			</div>
 		</div>
 	</section>
 <?php endif; ?>
