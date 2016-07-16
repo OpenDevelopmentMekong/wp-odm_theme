@@ -167,6 +167,7 @@ function odm_jeo_scripts()
   wp_dequeue_script('jeo-site');
   wp_enqueue_script('jquery-isotope');
   wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
+  wp_register_script('jquery-ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js');
   $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
   // custom marker system
   global $jeo_markers;
@@ -230,7 +231,7 @@ function odm_jeo_scripts()
 
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
 
-      wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo'), '1.0.0');
+      wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
 
   }
 
