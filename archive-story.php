@@ -4,8 +4,10 @@
 
 	<section class="container">
 		<header class="row">
-			<div class="sixteen columns">
+			<div class="eight columns">
 				<h2><?php _e('Stories','odm') ?></h2>
+			</div>
+      <div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</header>

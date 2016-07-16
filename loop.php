@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 
-			<div class="four columns offset-by-one move-up">
+			<div class="four columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<li class="widget share-widget">
