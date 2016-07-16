@@ -160,7 +160,7 @@ function display_layer_information($layers){
 				  $ckan_dataset_id = $ckan_dataset_id_exploded_by_dataset[1];
 				  $ckan_domain = $ckan_dataset_id_exploded_by_dataset[0];
 				  // get ckan record by id
-				  $get_info_from_ckan = wpckan_get_dataset_by_id($ckan_domain,$ckan_dataset_id);
+				  $get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
