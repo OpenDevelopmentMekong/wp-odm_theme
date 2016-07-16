@@ -171,7 +171,7 @@ function odm_jeo_scripts()
   // custom marker system
   global $jeo_markers;
   wp_deregister_script('jeo.markers');
-  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/jeo-scripts/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
+  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/inc/jeo-scripts/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
 
   wp_localize_script('jeo.markers', 'opendev_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
