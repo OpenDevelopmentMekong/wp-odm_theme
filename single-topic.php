@@ -6,7 +6,7 @@
 
       <section class="container">
         <header class="row">
-          <div class="twelve columns">
+          <div class="twelve columns post-title">
             <h1><?php the_title(); ?></h1>
             <?php echo_post_meta(get_post()); ?>
           </div>
