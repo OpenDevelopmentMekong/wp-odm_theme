@@ -391,7 +391,7 @@ function odm_custom_admin_css()
 
  // dequeue parent script and enqueue from child theme
  wp_dequeue_script('mapbox-metabox');
- wp_enqueue_script('child-mapbox-metabox', get_stylesheet_directory_uri() . '/inc/js/mapbox.js', array('jquery', 'jeo', 'jquery-ui-sortable'), '0.5.1');
+ wp_enqueue_script('child-mapbox-metabox', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapbox.js', array('jquery', 'jeo', 'jquery-ui-sortable'), '0.5.1');
 
 }
 add_action('admin_footer', 'odm_custom_admin_css', 100);
