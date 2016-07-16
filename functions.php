@@ -162,7 +162,7 @@ function odm_dependency_scripts()
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
-function opendev_jeo_scripts()
+function odm_jeo_scripts()
 {
   wp_dequeue_script('jeo-site');
   wp_enqueue_script('jquery-isotope');
@@ -236,7 +236,13 @@ function opendev_jeo_scripts()
 
   wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 }
-add_action('wp_enqueue_scripts', 'opendev_jeo_scripts', 100);
+add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
+
+function odm_jeo_admin_scripts() {
+    if ( file_exists( get_stylesheet_directory_uri . '/inc/jeo-scripts/clearscreen.js'))
+			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+}
+add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
 
 //add_action( 'wp_print_scripts', 'deregister_script_and_style' ); //wp_print_scripts
 // function odm_jeo_admin_scripts()
