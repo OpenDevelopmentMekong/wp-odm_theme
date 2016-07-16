@@ -143,7 +143,7 @@ function display_layer_information($layers){
 	   <?php
 	   foreach($layers as $individual_layer){
 		  $get_post_by_id = get_post($individual_layer["ID"]);
-		  if ( (odm_language_manager()->get_odm_language_manager()->get_current_language()() != "en") ){
+		  if ( (odm_language_manager()->get_odm_language() != "en") ){
 			 $get_download_url = str_replace("?type=dataset", "", get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true));
 		  }else {
 			 $get_download_url = str_replace("?type=dataset", "", get_post_meta($get_post_by_id->ID, '_layer_download_link', true));
@@ -151,9 +151,9 @@ function display_layer_information($layers){
 
 		  // get post content if has
 		  if (function_exists( qtrans_use)){
-			$get_post_content_by_id = qtrans_use(odm_language_manager()->get_odm_language_manager()->get_current_language()(), $get_post_by_id->post_content,false);
+			$get_post_content_by_id = qtrans_use(odm_language_manager()->get_odm_language(), $get_post_by_id->post_content,false);
 		  }else{
-			$get_post_content_by_id = $get_post_by_id->post_conten;
+			$get_post_content_by_id = $get_post_by_id->post_content;
 		  }
 			if($get_download_url!="" ){
 				  $ckan_dataset_id_exploded_by_dataset = explode("/dataset/", $get_download_url);
@@ -237,7 +237,7 @@ function get_legend_of_map_by($post_ID = false){
 		$map_layers = get_post_meta($post_ID, '_jeo_map_layers', true);
 		foreach ($map_layers as $key => $lay) {
 		   $post_ID =  $lay['ID'];
-		   if ( (odm_language_manager()->get_odm_language_manager()->get_current_language()() != "en") ){
+		   if ( (odm_language_manager()->get_odm_language() != "en") ){
 			   $layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
 		   }else {
 			   $layer_legend = get_post_meta($post_ID , '_layer_legend', true);

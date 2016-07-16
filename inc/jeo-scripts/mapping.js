@@ -110,7 +110,7 @@
 
 				  // Add class title to the legend title
 				  var legend_h5 = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
-				  if (legend_h5.length == 0){
+				  if (legend_h5.length === 0){
 					var h5_title = '<h5>'+ $(this).children('.layer-item-name').text()+ '</h5>';
 					$( ".map-legend-ul ."+$(this).data('layer')+" .legend").first().prepend(h5_title);
 				  }
