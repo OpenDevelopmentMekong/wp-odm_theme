@@ -9,7 +9,7 @@
 		//$( ".news-marker input[type=checkbox]" ).on( "click", function(){
 		//$('.news-marker .news-marker-toggle').click(function(){
 		$('.news-marker label').on( "click", '.news-marker-toggle', function(e){
-			$('img.leaflet-marker-icon').toggle();
+			$('.leaflet-marker-icon').toggle();
 		});
 		//Hide and show on click the collapse and expend icon
 		$(document).on('click',".hide_show_container h2 > .hide_show_icon, .hide_show_container h5 > .hide_show_icon", function (e) {
@@ -31,7 +31,7 @@
 				drop.hide();
 				parent_of_target.removeClass("title_active");
 			}
-		});//End onclick
+		}); //end onclick
 
 		//Drag Drop to change zIndex of layers
 		$( ".map-legend-ul" ).sortable({
@@ -140,7 +140,6 @@
 		//Click on info icon
 		$layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
 			var target =  $( e.target );
-			console.log("dddddddddddddddd");
 			//Get the tool tip container width adn height
 			var toolTipWidth = $(".layer-toggle-info-container").width();
 			var toolTipHeight = $(".layer-toggle-info-container").height();
