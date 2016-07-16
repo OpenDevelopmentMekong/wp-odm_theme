@@ -423,7 +423,7 @@
             $excerpt =  $post->excerpt;//get content by langauge
         }
         $in_category = get_the_terms( $post->ID, 'layer-category' );
-        if ( (CURRENT_LANGUAGE != "en") ){
+        if ( (odm_language_manager()->get_current_language() != "en") ){
             $layer_legend = get_post_meta( $post->ID , '_layer_legend_localization', true);
         }else {
             $layer_legend = get_post_meta( $post->ID , '_layer_legend', true);

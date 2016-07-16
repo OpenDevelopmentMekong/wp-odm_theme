@@ -1,13 +1,17 @@
 <?php
+
 /*
  * Open Development
  * Map categories
  */
 
 class OpenDev_Map_Category {
+
 	function __construct() {
+
 		add_action('init', array($this, 'register_taxonomy'));
 		add_action('admin_menu', array($this, 'admin_menu'));
+
 	}
 
 	function admin_menu() {
@@ -46,11 +50,13 @@ class OpenDev_Map_Category {
 										'Base Layers', // the term
 										'layer-category', // the taxonomy
 										array(
-											'slug' => 'base-layers',
-											'description' => 'Category for base layers')
+												'slug' => 'base-layers',
+                        'description' => 'Category for base layers')
 										);
 		}
+
 	}
+
 }
 
 $GLOBALS['opendev_map_category'] = new OpenDev_Map_Category();

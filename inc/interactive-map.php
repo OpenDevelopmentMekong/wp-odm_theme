@@ -141,7 +141,7 @@ class OpenDev_InteractiveMap {
             ?>
         </div><!-- interactive-map" -->
 
-        <?php 
+        <?php
         display_legend_container();
         display_layer_information($layers);
         ?>

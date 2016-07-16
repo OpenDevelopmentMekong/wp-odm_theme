@@ -10,7 +10,7 @@ require_once get_stylesheet_directory().'/inc/language-manager.php';
  * Defining constants to be used across the whole theme
  */
 define('COUNTRY_NAME', odm_country_manager()->get_current_country());
-define('CURRENT_LANGUAGE', odm_language_manager()->get_current_language());
+define('odm_language_manager()->get_current_language()', odm_language_manager()->get_odm_language_manager()->get_current_language()());
 
 /*
  * Post types
@@ -321,7 +321,7 @@ function odm_marker_data($data, $post)
     global $post;
 
     $permalink = $data['url'];
-    $permalink = add_query_arg(array('lang' => odm_language_manager()->get_current_language()), $permalink);
+    $permalink = add_query_arg(array('lang' => odm_language_manager()->get_odm_language_manager()->get_current_language()()), $permalink);
 
     $data['permalink'] = $permalink;
     $data['url'] = $permalink;
