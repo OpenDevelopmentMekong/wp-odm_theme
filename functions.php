@@ -210,19 +210,19 @@ function odm_jeo_scripts()
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
   if (is_page('map-explorer') || is_page('maps') || is_singular('map') || is_home()){
-      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
+      if ( file_exists( STYLESHEETPATH . '/inc/js/jeo.js')) {
          wp_deregister_script('jeo');
-         wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('cartodb','mapbox-js', 'underscore', 'jquery'), '0.5.0');
+         wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
       }
-      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/leaflet.js')){
+      if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.js')){
          wp_deregister_script('leaflet');
       	 wp_register_script('leaflet', get_stylesheet_directory_uri() . '/inc/jeo-scripts/leaflet.js', array(), '0.7.7');
       }
-      // if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.css')){
-      //    wp_deregister_style('leaflet');
-      //    wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/lib/leaflet/leaflet.css');
-      // }
-      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')){
+      if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.css')){
+         wp_deregister_style('leaflet');
+         wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/lib/jeo-scripts/leaflet.css');
+      }
+      if ( file_exists( STYLESHEETPATH . '/inc/js/fullscreen.js')){
          wp_deregister_script('jeo.fullscreen');
          wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
       }
