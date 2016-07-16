@@ -47,7 +47,7 @@ gulp.task('build-styles', function(){
 
 gulp.task('build-scripts', function(){
 	return gulp.src([
-    'lib/js/*.js' //'inc/js/*.js', 
+    'lib/js/*.js', 'inc/js/*.js', 'inc/extras/*.js'
 	])
 	.pipe(uglify())
 	.pipe(concat('scripts.min.js', {newLine: ';'}))
