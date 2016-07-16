@@ -9,14 +9,6 @@
         <div class="twelve columns post-title">
           <h1><?php the_title(); ?></h1>
           <?php echo_post_meta(get_post()); ?>
-          <?php
-            if (jeo_has_marker_location()): ?>
-            <section id="featured-media" class="row">
-              <div style="height:350px;">
-                <?php jeo_map(); ?>
-              </div>
-            </section>
-          <?php endif; ?>
         </div>
         <div class="four columns">
           <div class="widget share-widget">
@@ -30,7 +22,14 @@
       <div class="row">
         <div class="eleven columns">
           <section class="content section-content">
-
+            <?php
+              if (jeo_has_marker_location()): ?>
+              <section id="featured-media" class="row">
+                <div style="height:350px;">
+                  <?php jeo_map(); ?>
+                </div>
+              </section>
+            <?php endif; ?>
             <?php
                 if (function_exists('qtranxf_getLanguage')):
                   if ((odm_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))): ?>
@@ -41,7 +40,6 @@
                 <?php endif; ?>
             <?php endif; ?>
             <?php the_content(); ?>
-
             <?php
                 if (function_exists('get')) :
                     if (get('author') == '' && get('author'.odm_language_manager()->get_current_language()) == ''):
