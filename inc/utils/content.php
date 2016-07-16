@@ -173,7 +173,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 		if($query_get_post->have_posts() ){
 			$cat_layer_ul = "<ul class='cat-layers switch-layers'>";
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
-				if(posts_for_both_and_odm_language_manager()->get_current_language()s(get_the_ID(), odm_language_manager()->get_current_language())){
+				if(posts_for_both_and_s(get_the_ID(), odm_language_manager()->get_current_language())){
 					$count_layer_items++;
 					$layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
 				}
@@ -254,7 +254,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
     }
 }
 
-function posts_for_both_and_odm_language_manager()->get_current_language()s($postID, $current_lang = "en", $taxonomy ="language"){
+function posts_for_both_and_s($postID, $current_lang = "en", $taxonomy ="language"){
     $site_language = strtolower(get_localization_language_by_language_code($current_lang));
     $terms = get_the_terms($postID, $taxonomy);
     if ( empty($terms) && !is_wp_error( $terms )) {
