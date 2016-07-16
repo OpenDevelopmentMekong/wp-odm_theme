@@ -206,7 +206,7 @@ function odm_jeo_scripts()
     ));
 
     // if ( file_exists( get_stylesheet_directory() . '/inc/js/jeo.js')){
-           //wp_deregister_script('jeo');
+           wp_deregister_script('jeo');
     //       wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/js/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
     // }
 
