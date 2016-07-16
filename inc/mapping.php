@@ -125,13 +125,13 @@ function query_get_layer_posts($term_id, $num=-1, $include_children=false){
 
 function display_legend_container(){
 	echo '<div class="box-shadow map-legend-container hide_show_container">';
-		echo '<h2 class="widget_headline">'.__("LEGEND", "opendev");
-			echo '<i class="fa fa-caret-down hide_show_icon"></i>';
-		echo '</h2>';
-	 echo '<div class="map-legend dropdown">';
-		echo '<hr class="color-line" />';
-	    echo '<ul class="map-legend-ul"></ul>';
-	 echo '</div>';
+	echo '<h2 class="widget_headline">'.__("LEGEND", "opendev");
+	echo '<i class="fa fa-caret-down hide_show_icon"></i>';
+	echo '</h2>';
+	echo '<div class="map-legend dropdown">';
+	echo '<hr class="color-line" />';
+	echo '<ul class="map-legend-ul"></ul>';
+	echo '</div>';
 	echo '</div>'; //map-legend-container
 }
 
