@@ -167,10 +167,10 @@ function odm_jeo_scripts()
     wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
     $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
 
-    if ( file_exists( get_stylesheet_directory() . '/inc/markers.js')){
-        wp_deregister_script('jeo.markers');
-        wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/inc/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-    }
+    // if ( file_exists( get_stylesheet_directory() . '/inc/markers.js')){
+         wp_deregister_script('jeo.markers');
+    //     wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/inc/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
+    // }
     global $jeo_markers;
     wp_localize_script('jeo.markers', 'odm_markers', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
@@ -204,18 +204,18 @@ function odm_jeo_scripts()
         'default_icon' => jeo_formatted_default_marker(),
     ));
 
-    if ( file_exists( get_stylesheet_directory() . '/inc/js/jeo.js')){
-          wp_deregister_script('jeo');
-          //wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/js/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
-    }
+    // if ( file_exists( get_stylesheet_directory() . '/inc/js/jeo.js')){
+           wp_deregister_script('jeo');
+    //       wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/js/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
+    // }
 
-    if ( file_exists( get_stylesheet_directory() . '/inc/js/fullscreen.js')){
+    // if ( file_exists( get_stylesheet_directory() . '/inc/js/fullscreen.js')){
           wp_deregister_script('jeo.fullscreen');
-          //wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/js/fullscreen.js',array('jeo'), '0.2.0');
-    }
-    if ( file_exists( get_stylesheet_directory() . '/inc/js/mapping.js')){
-          //wp_enqueue_script('mapping', get_stylesheet_directory_uri() . '/inc/js/mapping.js', array('jeo'), '1.0.0');
-    }
+    //       wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/js/fullscreen.js',array('jeo'), '0.2.0');
+    // }
+    // if ( file_exists( get_stylesheet_directory() . '/inc/js/mapping.js')){
+    //       wp_enqueue_script('mapping', get_stylesheet_directory_uri() . '/inc/js/mapping.js', array('jeo'), '1.0.0');
+    // }
 
     wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 
