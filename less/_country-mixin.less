@@ -8,8 +8,6 @@
 
 	a,
 	a:visited,
-	#sidebar .widget li a,
-	#sidebar .widget li a:hover,
 	.map-sidebar a,
 	a:hover,
 	a strong:hover {
@@ -18,16 +16,14 @@
 
 	a,
 	a:visited,
-	#sidebar .widget li a,
 	.map-sidebar a,
 	 {
 		text-decoration: none;
 	}
 
 	a:hover,
-	#sidebar .widget li a:hover,
 	a strong:hover {
-		color: @primary;
+		color: @bg-color;
 	}
 
 	button,
@@ -74,7 +70,7 @@
 		}
 	}
 
-	#od-menu, #mega-menu-wrap-header_menu{
+	#od-menu{
 		background: @bg-color;
 	}
 
@@ -154,9 +150,16 @@
 	  color: @primary !important;
 	}
 	/* collapse & expend */
-	#sidebar .widgets .widget .widget-title,
-	.widget .widget-title {
-	 color: @primary none repeat scroll 0% 0%;
+	#sidebar{
+
+		.widgets .widget .widget-title,
+		.widget .widget-title {
+		 	color: @primary;
+		}
+
+		.widgets .widget li a:hover{
+			color: @bg-color;
+		}
 	}
 
 	.div-button{
@@ -173,4 +176,5 @@
       color: @primary;
     }
   }
+
 }

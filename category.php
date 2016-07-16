@@ -4,7 +4,7 @@ $term = $wp_query->queried_object;
 $post_types = get_post_types(array('public' => true));
 $tax_post_types = array();
 foreach($post_types as $pt) {
-  if (in_array($pt, array('post', 'topic', 'announcement'))){
+  if (in_array($pt, array('news-article', 'topic', 'profile', 'announcement', 'site-update'))){
 		$pt_tax = get_object_taxonomies($pt);
 		if(in_array($term->taxonomy, $pt_tax)) {
 			$tax_post_types[] = $pt;
@@ -102,7 +102,7 @@ foreach($post_types as $pt) {
 			<?php endif; ?>
 		</section>
 	</div>
-	<div class="four columns offset-by-one move-up">
+	<div class="four columns offset-by-one">
 		<aside id="sidebar">
 			<ul class="widgets">
 				<li class="widget share-widget">
