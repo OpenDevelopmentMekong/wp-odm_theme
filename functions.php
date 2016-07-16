@@ -215,7 +215,7 @@ function opendev_jeo_scripts()
       }
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/leaflet.js')){
          wp_deregister_script('leaflet');
-      	 wp_register_script('leaflet', get_stylesheet_directory_uri() . '/lib/leaflet/leaflet.js', array(), '0.7.7');
+      	 wp_register_script('leaflet', get_stylesheet_directory_uri() . '/inc/jeo-scripts/leaflet.js', array(), '0.7.7');
       }
       // if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.css')){
       //    wp_deregister_style('leaflet');
@@ -233,7 +233,6 @@ function opendev_jeo_scripts()
       wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo'), '1.0.0');
 
   }
-  wp_enqueue_script('opendev-mCustomScrollbar', get_stylesheet_directory_uri().'/js/jquery.mCustomScrollbar.concat.min.js', array('jquery'), '3.1.12');
 
   wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 }
