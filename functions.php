@@ -212,7 +212,7 @@ function odm_jeo_scripts()
   if (is_page('map-explorer') || is_page('maps') || is_singular('map') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
-         wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
+         wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('cartodb','mapbox-js', 'underscore', 'jquery'), '0.5.0');
       }
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/leaflet.js')){
          wp_deregister_script('leaflet');
