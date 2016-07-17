@@ -34,7 +34,7 @@
 		display_legend_container();
 
 		//show layer information
-        display_layer_information($layers);
+    display_layer_information($layers);
 	}
 
 	$base_layers = get_post_meta_of_all_baselayer();
@@ -61,13 +61,18 @@ query_posts(array(
 ));
 if(have_posts()) :
 ?>
-	<div class="section-title">
-		<div class="container">
-			<div class="twelve columns">
-				<h2><?php _e('Latest articles on', 'jeo'); ?> <?php the_title(); ?></H2>
-			</div>
+
+<section class="container">
+	<header class="row">
+		<div class="eight columns">
+			<h2><?php _e('Latest articles on', 'jeo'); ?> <?php the_title(); ?></H2>
 		</div>
-	</div>
+		<div class="eight columns">
+			<?php get_template_part('section', 'query-actions'); ?>
+		</div>
+	</header>
+</section>
+
 	<?php get_template_part('loop'); ?>
 <?php
 endif;
