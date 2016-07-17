@@ -269,85 +269,92 @@ function posts_for_both_and_s($postID, $current_lang = "en", $taxonomy ="languag
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($post)
+function echo_post_meta($post, $show_elements = array('date','sources','categories','tags'))
 {
 	?>
 	<div class="post-meta">
 		<ul>
-			<li class="date">
-				<i class="fa fa-clock-o"></i>
-					 <?php
-					 if (function_exists('qtrans_getLanguage')) {
-							 if (odm_language_manager()->get_current_language() == 'km') {
-									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
-							 } else {
-									 echo get_the_time('j F Y',$post->ID);
-							 }
-					 } else {
-							 echo get_the_time('j F Y',$post->ID);
-					 }
-				?>
-			</li>
-			<?php
-			if (taxonomy_exists('news_source') && isset($post)) {
-				$terms_news_source = get_the_terms($post->ID, 'news_source');
-				if ($terms_news_source && !is_wp_error($terms_news_source)) {
-					if ($terms_news_source) {
-						$news_sources = '';
+      <?php if (in_array('date',$show_elements)): ?>
+        <li class="date">
+  				<i class="fa fa-clock-o"></i>
+  					 <?php
+  					 if (function_exists('qtrans_getLanguage')) {
+  							 if (odm_language_manager()->get_current_language() == 'km') {
+  									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
+  							 } else {
+  									 echo get_the_time('j F Y',$post->ID);
+  							 }
+  					 } else {
+  							 echo get_the_time('j F Y',$post->ID);
+  					 }
+  				?>
+  			</li>
+      <?php endif; ?>
+      <?php if (in_array('sources',$show_elements)):
+        if (taxonomy_exists('news_source') && isset($post)) {
+  				$terms_news_source = get_the_terms($post->ID, 'news_source');
+  				if ($terms_news_source && !is_wp_error($terms_news_source)) {
+  					if ($terms_news_source) {
+  						$news_sources = '';
 
-						foreach ($terms_news_source as $term) {
-							$term_link = get_term_link($term, 'news_source');
-							if (is_wp_error($term_link)) {
-								continue;
-							}
-							//We successfully got a link. Print it out.
-							$news_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
-							if (isset($news_sources)):
-								echo '<li class="news-source">';
-								echo '<i class="fa fa-chain"></i> ';
-								echo substr($news_sources, 0, -2);
-								echo '</li>';
-							endif;
-						}
+  						foreach ($terms_news_source as $term) {
+  							$term_link = get_term_link($term, 'news_source');
+  							if (is_wp_error($term_link)) {
+  								continue;
+  							}
+  							//We successfully got a link. Print it out.
+  							$news_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
+  							if (isset($news_sources)):
+  								echo '<li class="news-source">';
+  								echo '<i class="fa fa-chain"></i> ';
+  								echo substr($news_sources, 0, -2);
+  								echo '</li>';
+  							endif;
+  						}
 
-					}
-				} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-					echo '<li class="feed">';
-					echo '<span class="icon-news"></span> ';
-					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-					echo get_the_title($news_source_id);
-					echo '</li>';
-				}
+  					}
+  				} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+  					echo '<li class="feed">';
+  					echo '<span class="icon-news"></span> ';
+  					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+  					echo get_the_title($news_source_id);
+  					echo '</li>';
+  				}
 
-			}// if news_source exists
-			if (taxonomy_exists('public_announcement_source')) {
-					echo '<li class="news-source">';
-					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
-					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
-							if ($terms_public_announcement_source) {
-									$public_announcement_sources = '';
-									echo '<span class="icon-news"></span> ';
-									foreach ($terms_public_announcement_source as $term) {
-											$term_link = get_term_link($term, 'public_announcement_source');
-											if (is_wp_error($term_link)) {
-													continue;
-											}
-											//We successfully got a link. Print it out.
-											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
-									}
-									echo substr($public_announcement_sources, 0, -2);
-							}
-					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-							echo '<span class="icon-news"></span> ';
-							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-							echo get_the_title($public_announcement_source_id);
-					}
-			} ?>
-			<li class="categories">
-				<i class="fa fa-folder"></i>
-				<?php the_category(''); ?>
-			</li>
-			<?php the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ', ', '</li>'); ?>
+  			}// if news_source exists
+  			if (taxonomy_exists('public_announcement_source')) {
+  					echo '<li class="news-source">';
+  					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
+  					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
+  							if ($terms_public_announcement_source) {
+  									$public_announcement_sources = '';
+  									echo '<span class="icon-news"></span> ';
+  									foreach ($terms_public_announcement_source as $term) {
+  											$term_link = get_term_link($term, 'public_announcement_source');
+  											if (is_wp_error($term_link)) {
+  													continue;
+  											}
+  											//We successfully got a link. Print it out.
+  											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
+  									}
+  									echo substr($public_announcement_sources, 0, -2);
+  							}
+  					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
+  							echo '<span class="icon-news"></span> ';
+  							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
+  							echo get_the_title($public_announcement_source_id);
+  					}
+  			}
+      endif; ?>
+      <?php if (in_array('categories',$show_elements)): ?>
+        <li class="categories">
+  				<i class="fa fa-folder"></i>
+  				<?php the_category(''); ?>
+  			</li>
+      <?php endif; ?>
+      <?php if (in_array('tags',$show_elements)):
+        the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ', ', '</li>');
+      endif; ?>
 		</ul>
 	</div>
 
