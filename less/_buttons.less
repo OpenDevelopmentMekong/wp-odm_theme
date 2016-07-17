@@ -1,7 +1,8 @@
-a.button{
+button,
+a.button,
+.button{
   color: @white;
-  background: @mekong-bright;
-  text-transform: capitalize;
+  background: @mekong-dark;
   height: @button-height;
   border: 1px @light-gray solid;
   padding: 10px 10px;
@@ -10,6 +11,7 @@ a.button{
 
 a.button:hover{
   color: @black;
+  background: @mekong-bright;
 }
 
 a.button i{
@@ -19,13 +21,17 @@ a.button i{
 }
 
 a.download{
-  background: @green;
+  background: @green !important;
 }
 
 a.rss{
-  background: @green;
+  background: @green !important;
+}
+
+a.geojson{
+  background: @green !important;
 }
 
 a.close{
-  background: @red;
+  background: @red !important;
 }
