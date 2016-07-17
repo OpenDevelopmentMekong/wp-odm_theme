@@ -32,6 +32,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
+		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
 
 		$query = array(
 				'posts_per_page'   => $limit,
@@ -54,7 +55,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				foreach($posts as $post):
 					$template = $this->templates[$layout_type];
 					odm_get_template($template,array(
-						"post" => $post
+						"post" => $post,
+						"show_meta" => $show_meta
 					),true);
 				endforeach; ?>
 
@@ -73,6 +75,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
+		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
 
 		$args = array(
 		   'public'   => true,
@@ -106,6 +109,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<?php endforeach; ?>
 			</select>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'show_meta' ); ?>"><?php _e( 'Show post meta:' ); ?></label>
+			<input type="checkbox" name="<?php echo $this->get_field_name('show_meta'); ?>" id="<?php echo $this->get_field_id('show_meta'); ?>" <?php if ($show_meta)  echo 'checked="true"'; ?>/>
+		</p>
 
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
 		<p>
@@ -129,6 +136,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
+		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : false;
 
 		return $instance;
 	}
