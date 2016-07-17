@@ -37,49 +37,51 @@ foreach($post_types as $pt) {
 	</section>
 
   <section class="container">
-    <div class="eleven columns">
-  		<section class="tabbed-posts-section container">
-  			<?php if(count($tax_post_types) > 1) : ?>
-  				<nav id="tabbed-post-type-nav">
-  					<ul>
-  						<?php
-  						$current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'post';
-  						foreach($tax_post_types as $pt) :
-  							$pt = get_post_type_object($pt);
-  							$title = $pt->labels->name;?>
-  							<li <?php if($current_pt == $pt->name) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
-  						<?php endforeach; ?>
-  					</ul>
-  				</nav>
-  			<?php endif; ?>
-  			<?php if(have_posts()) : ?>
-  					<?php while(have_posts()) : the_post();
-              odm_get_template('post-list-single-1-cols',array(
-      					"post" => get_post(),
-                "show_meta" => true
-      			),true);
-  					endwhile; ?>
-  			<?php else : ?>
-  				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
-  			<?php endif; ?>
-  		</section>
-  	</div>
+    <div class="row">
+      <div class="eleven columns">
+    		<section class="tabbed-posts-section container">
+    			<?php if(count($tax_post_types) > 1) : ?>
+    				<nav id="tabbed-post-type-nav">
+    					<ul>
+    						<?php
+    						$current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'post';
+    						foreach($tax_post_types as $pt) :
+    							$pt = get_post_type_object($pt);
+    							$title = $pt->labels->name;?>
+    							<li <?php if($current_pt == $pt->name) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
+    						<?php endforeach; ?>
+    					</ul>
+    				</nav>
+    			<?php endif; ?>
+    			<?php if(have_posts()) : ?>
+    					<?php while(have_posts()) : the_post();
+                odm_get_template('post-list-single-1-cols',array(
+        					"post" => get_post(),
+                  "show_meta" => true
+        			),true);
+    					endwhile; ?>
+    			<?php else : ?>
+    				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
+    			<?php endif; ?>
+    		</section>
+    	</div>
 
-  	<div class="four columns offset-by-one">
-  		<aside id="sidebar">
-  			<ul class="widgets">
-  				<li class="widget share-widget">
-  					<?php odm_get_template('social-share',array(),true); ?>
-  				</li>
-          <?php if (isset($_GET['queried_post_type'])): ?>
-    				<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
-    					<?php list_category_by_post_type($_GET['queried_post_type']); ?>
+    	<div class="four columns offset-by-one">
+    		<aside id="sidebar">
+    			<ul class="widgets">
+    				<li class="widget share-widget">
+    					<?php odm_get_template('social-share',array(),true); ?>
     				</li>
-          <?php endif; ?>
-  				<?php dynamic_sidebar('general'); ?>
-  			</ul>
-  		</aside>
-  	</div>
+            <?php if (isset($_GET['queried_post_type'])): ?>
+      				<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
+      					<?php list_category_by_post_type($_GET['queried_post_type']); ?>
+      				</li>
+            <?php endif; ?>
+    				<?php dynamic_sidebar('general'); ?>
+    			</ul>
+    		</aside>
+    	</div>
+    </div>
   </section>
 
 </div>
