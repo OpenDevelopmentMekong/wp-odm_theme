@@ -131,18 +131,6 @@ body{
     margin: 0px 8px 8px 0px;
 	}
 
-  .post-meta {
-		ul {
-			margin-left: 0px;
-			li {
-				margin-right: 5px;
-				color: @primary-color;
-				font-size: @base-font-size;
-				margin-bottom: 5px;
-			}
-		}
-	}
-
   .post-list-item-title {
     font-family: @title-font;
     font-size: @font-size-h4;
@@ -156,6 +144,29 @@ body{
     img{
       float:left;
     }
+
+    .post-meta {
+      text-align: right;
+
+  		ul {
+  			margin-left: 0px;
+
+  			li {
+  				margin-right: 5px;
+  				color: @primary-color;
+  				font-size: @base-font-size;
+  				margin-bottom: 5px;
+  			}
+
+  		}
+
+      li, i, a{
+        font-size: @font-size-h6 !important;
+        font-weight: lighter;
+      }
+
+  	}
+
 	}
 
 	.post-excerpt, .excerpt {
