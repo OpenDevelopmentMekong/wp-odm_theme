@@ -21,8 +21,7 @@
 				<?php if (jeo_has_marker_location()): ?>
 					<section id="featured-media" class="row">
 						<div style="height:350px;">
-							<?php jeo_map();
-                      ?>
+							<?php jeo_map(); ?>
 						</div>
 					</section>
 				<?php endif; ?>
