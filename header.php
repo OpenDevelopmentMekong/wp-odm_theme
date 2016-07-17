@@ -65,13 +65,10 @@
   <!-- Menu and search -->
   <nav id="od-menu">
       <div class="container">
-
-          <div class="sixteen columns">
-            <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
-          </div>
-
+        <div class="sixteen columns">
+          <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
+        </div>
       </div>
-
   </nav>
 
   <!-- Submenu -->
@@ -112,7 +109,7 @@
       <div class="row">
         <div class="sixteen columns">
         <?php
-          if (!is_front_page()) : ?>
+          if (!is_front_page() && !is_page('map-explorer')) : ?>
             <div id="main-breadcrumb">
               <?php echo_the_breadcrumb(); ?>
             </div>
