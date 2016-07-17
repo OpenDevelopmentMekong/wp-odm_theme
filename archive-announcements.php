@@ -18,7 +18,8 @@
 		<div class="row">
 			<?php while (have_posts()) : the_post();
 				odm_get_template('post-list-single-4-cols',array(
-					"post" => get_post()
+					"post" => get_post(),
+					"show_meta" => true
 			),true);
 			endwhile; ?>
 		</div>
