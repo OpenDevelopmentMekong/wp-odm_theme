@@ -73,7 +73,18 @@ if(have_posts()) :
 	</header>
 </section>
 
-	<?php get_template_part('loop'); ?>
+<section class="container">
+
+	<div class="row">
+		<?php while (have_posts()) : the_post();
+			odm_get_template('post-grid-single-4-cols',array(
+				"post" => get_post(),
+				"show_meta" => true
+		),true);
+		endwhile; ?>
+	</div>
+</section>
+
 <?php
 endif;
 wp_reset_query();
