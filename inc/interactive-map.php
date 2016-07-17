@@ -3,404 +3,187 @@
  * Open Development
  * Interactive Map
  */
- class Odm_InteractiveMap
- {
-     public function __construct()
-     {
-         add_shortcode('odmap', array($this, 'shortcode'));
-     }
-     public function shortcode()
-     {
-         $query_arg = array(
-            'post_type' => 'map-layer',
-            'posts_per_page' - 1,
-        );
-         $layer_query = new WP_Query($query_arg);
-         $layer_query_args = array(
-      'post_type' => 'map-layer',
-      'posts_per_page' => -1,
-    );
-         $layer_query = new WP_Query($layer_query_args);
-         $layers = array();
-         $categories = get_terms('layer-category');
-         $parsed_cats = array();
-         if ($layer_query->have_posts()) {
-             while ($layer_query->have_posts()) {
-                 $layer_query->the_post();
-                 $layer = array();
-                 $layer['filtering'] = 'switch';
-                 $layer['hidden'] = 1;
 
-                 foreach ($categories as $key => $val) {
-                     $cat = $categories[$key];
-                     if (is_object_in_term(get_the_ID(), 'layer-category', $cat->term_id)) {
-                         if (!isset($parsed_cats[$cat->term_id])) {
-                             $parsed_cats[$cat->term_id] = array();
-                         }
-                         $parsed_cats[$cat->term_id][] = get_the_ID();
-                         $parsed_cats[$cat->term_id]['order'] = $key;
-                     }
-                 }//foreach
-
-           if (function_exists(extended_jeo_get_layer)) {
-               $layer = array_merge($layer, extended_jeo_get_layer(get_the_ID())); //added by H.E
-           } else {
-               $layer = array_merge($layer, jeo_get_layer(get_the_ID()));
-           }
-                 $layers[] = $layer;
-                 wp_reset_postdata();
-             }
-         }//$layer_query
-        $map = odm_get_interactive_map_data();
-         $map['dataReady'] = true;
-         $map['postID'] = 'interactive_map';
-         $map['layers'] = $layers;
-         $map['count'] = 0;
-         $map['title'] = __('Interactive Map', 'odm');
-         if ($map['base_layer']) {
-             array_unshift($map['layers'], array(
-                'type' => 'tilelayer',
-                'tile_url' => $map['base_layer']['url'],
-            ));
-         }
-        // print_r($map);
+require_once get_stylesheet_directory().'/inc/mapping.php';
+class OpenDev_InteractiveMap {
+    function __construct() {
+        add_shortcode('odmap', array($this, 'shortcode'));
+    }
+    function get_maplayers_key_by_post_id($array, $search_val) {
+        foreach ($array as $key => $val){
+            if (in_array($search_val, $val)){
+                return $key;
+            }
+            return false;
+        }
+    }
+    function shortcode() {
+        $layers = array();
+        $base_layers = array();
+        $layers_legend = array();
+        $map = opendev_get_interactive_map_data();
+        $map['postID'] = 'interactive_map';
+        $map['count'] = 0;
+        $map['title'] = __('Interactive Map', 'opendev');
+        $cat_baselayers = 'base-layers';
+        $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
+        $cat_baselayers_id =  $term_baselayers->term_id;
+        $categories = get_terms('layer-category');
         ob_start();
-         ?>
-		<div class="interactive-map">
-			<div class="map-container">
-				    <div id="map_interactive_map_0" class="map"></div>
-			</div>
-
-      <?php
-            $cat_baselayers = 'base-layer';
-         $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
-         $cat_baselayers_id = $term_baselayers->term_id;
-         $args_base_layer = array('posts_per_page' => 5,
-                                       'post_type' => 'map-layer',
-                                         'post_status' => 'publish',
-                                       'tax_query' => array(
-                                                           array(
-                                                             'taxonomy' => 'layer-category',
-                                                             'field' => 'slug',
-                                                             'terms' => $cat_baselayers,
-                                                           ),
-                                                         ),
-                                       ); //'offset'=> 1,
-            $base_layer_posts = get_posts($args_base_layer);
-          /*  if($base_layer_posts){
-                $base_layers_array = array();
-                echo '<div class="baselayers">';
-                foreach ( $base_layer_posts as $baselayer ) :
-                    setup_postdata( $baselayer ); ?>
-                    <div class="b_layer" data-layer="<?php echo $baselayer->ID; ?>"><?php echo $baselayer->post_title; ?></div>
-                    <?php
-                        if (get_post_meta($baselayer->ID, '_mapbox_id', true))
-                            $base_layers_array[$baselayer->ID] =  array("layer_url" => get_post_meta($baselayer->ID, '_mapbox_id', true));
-                        else if(get_post_meta($baselayer->ID, '_tilelayer_tile_url', true))
-                            $base_layers_array[$baselayer->ID] = array("layer_url" => get_post_meta($baselayer->ID, '_tilelayer_tile_url', true));
-                endforeach;
-                echo '</div>'; //baselayers
-                wp_reset_postdata();
-            }*/
-            //print_r(json_encode($base_layers_array));
-          ?>
-      <div class="baselayer"><ul class="base-layers" /></div>
-      <div class="category-map-layers box-shadow hide_show_container">
-            <h2 class="sidebar_header widget_headline"><?php _e('Map Layers', 'odm');
-         ?>
-             <i class='fa fa-caret-down hide_show_icon'></i>
-            </h2>
-      			<div class="interactive-map-layers dropdown">
-      				<ul class="categories">
-      					<?php // get all layers form different categories, but not base-layer category
-                  wp_list_categories(array('taxonomy' => 'layer-category', 'title_li' => '', 'depth' => 2, 'exclude' => $cat_baselayers_id)); //43002 ?>
-      				</ul>
-      			</div>
-     </div><!--category-map-layers-->
-   </div><!-- interactive-map" -->
-
-     <div class="box-shadow map-legend-container hide_show_container">
-       <h2 class="widget_headline"><?php _e('LEGEND', 'odm');
-         ?> <i class='fa fa-caret-down hide_show_icon'></i></h2>
-       <div class="map-legend dropdown">
-          <hr class="color-line" />
-         <ul class="map-legend-ul">
-         </ul>
-       </div>
-     </div><!--map-legend-container-->
-
-     <?php //  print_r($map['layers']);   ?>
-     <div class="box-shadow layer-toggle-info-container layer-right-screen">
-       <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
-        <?php $lang = 'en';
-         $i = 0;
-        //$lang = odm_language_manager()->get_current_language();
-        foreach ($map['layers'] as $individual_layer) {
-            ++$i;
-            $get_post_by_id = get_post($individual_layer['ID']);
-            //$get_post_content_by_id = apply_filters('the_content', $get_post_by_id->post_content);
-            if (function_exists(qtrans_use)) {
-                $get_post_content_by_id = qtrans_use($lang, $get_post_by_id->post_content, false);
-            } else {
-                $get_post_content_by_id = $get_post_by_id->post_conten;
-            }
-
-            //echo "<pre>".$individual_layer['ID']."=> ".$get_post_content_by_id ."</pre>";
-              if ($individual_layer['download_url'] != '') {
-                  $split_download_url = explode('?type=', $individual_layer['download_url']);
-                  $split_url_bw_ckanlink_dataset_id = explode('/dataset/', $split_download_url[0]);
-                  $ckan_domain = $split_url_bw_ckanlink_dataset_id[0];
-                  $ckan_dataset_id = $split_url_bw_ckanlink_dataset_id[1];
-
-                    // get ckan record by id
-                    $get_info_from_ckan = get_dataset_by_id($ckan_domain, $ckan_dataset_id);
-                    //print_r(  $get_info_from_ckan );
-                    $showing_fields = array(
-                                          'title_translated' => 'Title',
-                                          'notes_translated' => 'Description',
-                                          'odm_source' => 'Source(s)',
-                                          'odm_date_created' => 'Date of data',
-                                          'odm_completeness' => 'Completeness',
-                                          'license_id' => 'License',
-                                      );
-                  get_metadata_info_of_dataset_by_id(get_ckan_domain(), $ckan_dataset_id, $individual_layer, 1,  $showing_fields);
-              } elseif ($get_post_content_by_id) {
-                  ?>
-                        <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID'];
-                  ?>">
-                            <div class="layer-toggle-info-content">
-                                <h4><?php echo get_the_title($individual_layer['ID']);
-                  ?></h4>
-                                <?php echo $get_post_content_by_id ?>
-                                <?php //echo $individual_layer['excerpt']; ?>
-                            </div>
-                        </div>
-              <?php
-              }
-            ?>
-          <?php
-
-        }// foreach
         ?>
-     </div><!--llayer-toggle-info-containero-->
+        <div class="interactive-map">
+        	<div class="map-container">
+        		<div id="map_interactive_map_0" class="map"></div>
+        	</div>
+        	<?php
+        	//Get all posts in Layer of map-category to assing to layers array for loading layer on map
+        	$all_post_layers_arg =  array(
+                                      'post_type' => 'map-layer',
+                                      'posts_per_page' => -1,
+                                      'post_status' => 'publish',
+                                      'orderby'   => 'title',
+                                      'order'   => 'ASC',
+                                      'tax_query' => array(array(
+                                                            'taxonomy' => 'layer-category',
+                                                            'terms' => $cat_baselayers_id,
+                                                            'field' => 'id',
+                                                            'operator' => 'NOT IN'
+                                                      ))
+                                      );
+        	$all_post_layers = new WP_Query( $all_post_layers_arg );
 
-		<script type="text/javascript">
-			(function($) {
-        // Resize the map container and category box based on the browsers
-        /*   //Page is not schollable
-        var resize_height_map_container = window.innerHeight - $("#od-head").height() -10 + "px";
-        var resize_height_map_category = window.innerHeight - $("#od-head").height() -33 + "px";
-        var resize_height_map_layer = window.innerHeight - $("#od-head").height()  - 73 + "px";*/
+        	if($all_post_layers->have_posts() ){
+                while ( $all_post_layers->have_posts() ) : $all_post_layers->the_post();
+                    $post_ID = get_the_ID();
+                    $layers[$post_ID] = get_post_meta_of_layer($post_ID );
 
-        // Page is scrollable
-        var resize_height_map_container = window.innerHeight - $("#od-head").height()+75 + "px"; //map, layer cat, and legend
-        var resize_height_map_category = window.innerHeight - $("#od-head").height() + "px";
-        var resize_height_map_layer = window.innerHeight - $("#od-head").height() - 41+ "px";
-        var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -30 + "px";
-
-        $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
-        $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
-        $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
-        $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
-        $(".page-template-page-map-explorer .layer-toggle-info").css("display", "none");
-        $(window).resize(function() {
-          $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
-          $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
-          $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
-          $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
-        });
-        // End Resize
-
-        //close toggle-information box
-        $(".toggle-close-icon").click(function(){
-            $(this).parent().fadeOut();
-            $(this).siblings(".layer-toggle-info").fadeOut();
-            $(this).siblings(".layer-toggle-info").removeClass('show_it');
-        });
-
-
-				var term_rel = <?php echo json_encode($parsed_cats);
-         ?>;
-				jeo(jeo.parseConf(<?php echo json_encode($map);
-         ?>));
-				jeo.mapReady(function(map) {
-					var $layers = $('.interactive-map .interactive-map-layers');
-					if(map.postID == 'interactive_map') {
-						//map.$.find('.jeo-filter-layers').appendTo($layers);
-						for(var key in term_rel) {
-							var $item = $layers.find('.cat-item-' + key);
-							$item.find(' > a').after($('<ul class="cat-layers switch-layers" />'));
-							$.each(term_rel[key], function(i, layerId) {
-								var $layer = map.$.find('[data-layer="' + layerId + '"]');
-								$layer.appendTo($item.find('.cat-layers'));
-							});
-						}
-						$('.jeo-filter-layers').hide();
-					}
-					$layers.find('.categories ul').hide();
-					$layers.find('li.cat-item > a').on('click', function() {
-						if($(this).hasClass('active')) {
-							$(this).removeClass('active');
-							$(this).parent().find('ul').hide();
-						} else {
-							$(this).addClass('active');
-							$(this).parent().find('> ul').show();
-						}
-						return false;
-					});
-
-          var cancel = false;
-					$layers.find('.cat-layers li').on('click', function(e) {
-            var target =  $( e.target );
-                //if ( target.is( "li" ) || target.is( "span" ) ) {
-                  if (target.is( "span" ) ) {
-    						      map.filterLayers._switchLayer($(this).data('layer'));
-
-    						      if(map.filterLayers._getStatus($(this).data('layer')).on) {
-          							$(this).addClass('active');
-                        var get_legend = $(this).find(".legend").html();
-                        console.log(get_legend);
-                        if( typeof get_legend != "undefined"){
-                            var legend_li = '<li class="hide_show_container '+$(this).data('layer')+'">'+ $(this).find(".legend").html()+'</li>';
-                            $('.map-legend-ul').prepend(legend_li);
-
-                            // Add class title to the legend title
-                            var legend_h5 = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
-                            if (legend_h5.length == 0){
-                              var h5_title = '<h5>'+ $(this).children('.layer-item-name').text()+'</h5>';
-                              $( ".map-legend-ul ."+$(this).data('layer')+" .cartodb-legend" ).prepend(h5_title);
-
-                            }
-                            var legend_h5_title = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
-                            legend_h5_title.addClass("title");
-
-                            // Add class dropdown to the individual legend box
-                            legend_h5_title.siblings().addClass( "dropdown" );
-
-                            //dropdown legen auto show
-                            $( ".map-legend-ul ."+$(this).data('layer')+" .dropdown").show();
-
-                            // Add hide_show_icon into h5 element
-                            var hide_show_icon = "<i class='fa fa-caret-down hide_show_icon'></i>";
-                            legend_h5_title.prepend(hide_show_icon);
-
-                            if ($(".map-legend-ul li").length){
-                               $('.map-legend-container').slideDown('slow');
-                            }
-                            //console.log("MMMMM "+ legen_li + $(this).data('layer') );
-                          }//if has legend
-            						} else {
-              							$(this).removeClass('active');
-                            var legend_li_disactive_class = "."+$(this).data('layer');
-                						$('.map-legend-ul '+legend_li_disactive_class).remove().fadeOut('slow');
-                            if ( !$(".map-legend-ul li").length){
-                               $('.map-legend-container').hide('slow');
-                            }
-            						}
-                  }
-    					}); //$layers.find('.cat-layers li')
-
-              // if mouseover on info icon on cick/mouseover
-
-          //$layers.find('.cat-layers li i.fa-info-circle').mouseover( "cick", function(e) {
-          $layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
-                var target =  $( e.target );
-                //Get the tool tip container width adn height
-                var toolTipWidth = $(".layer-toggle-info-container").width();
-                var toolTipHeight = $(".layer-toggle-info-container").height();
-                $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
-                $('.layer-toggle-info-container').toggle();
-                $('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
-                if ( target.is( "i.fa-info-circle" )) {
-                  if ($('.toggle-info-'+$(this).attr('id')).length){
-                        //$('.layer-toggle-info').hide();
-                        //get the height position of the current object
-                              var elementHeight = $(this).height();
-                              var offsetWidth = 40;
-                              var offsetHeight = 30;
-                              var marginright = 10;
-                              var marginbttom = 10;
-
-                              //Get the HTML document width and height
-                              var documentWidth = $(document).width();
-                              var documentHeight = $(document).height();
-
-                              //Set top and bottom position of the tool tip
-                              var top = $(this).offset().top;
-                              if (top + toolTipHeight > documentHeight) {
-                                  // flip the tool tip position to the top of the object
-                                  // so it won't go out of the current Html document height
-                                  // and show up in the correct place
-                                  top = documentHeight - toolTipHeight - offsetHeight - (2 * elementHeight) - marginbttom;
-                              }
-
-                              //set  the left and right position of the tool tip
-                              var left = $(this).offset().left + (2*offsetWidth);
-
-                              if (left + toolTipWidth > documentWidth) {
-                                  // shift the tool tip position to the left of the object
-                                  // so it won't go out of width of current HTML document width
-                                  // and show up in the correct place
-                                  //left = documentWidth - toolTipWidth - (2 * offsetWidth);
-                                  left = $(this).offset().left - toolTipWidth - (offsetWidth) + marginright;
-                              }
-
-                              //set the position of the tool tip
-                              $('.toggle-info-'+$(this).attr('id')).css("max-height", toolTipHeight-offsetHeight);
-                              $('.toggle-info-'+$(this).attr('id')).addClass("show_it");
-                            	$('.toggle-info-'+$(this).attr('id')).show();
-
-                              //set info-container possition folow the mouseclik/mouseover
-                              //$('.layer-toggle-info-container').css({'max-height':'100%' ,'top': top, 'left': left });
-                              //show tool tips
-                              $('.layer-toggle-info-container').fadeIn();
+                    if(get_legend_of_map_by($post_ID)!=""){
+                        $layers_legend[$post_ID ] = get_legend_of_map_by($post_ID);
                     }
+                endwhile;
+                wp_reset_postdata();
+        	}//end if
 
-                    //console.log("documentHeight: "+documentHeight + " documentWidth: "+documentWidth + " toolTipWidth:" + toolTipWidth +" left:"+ $(this).offset().left+" top:"+$(this).offset().top +" toolTipHeight: "+toolTipHeight +" offsetHeight:"+ offsetHeight +" elementHeight:" +elementHeight);
-                }//end if
+        	//Show Baselayers Navigations
+        	display_baselayer_navigation(5, 'base-layers', false);
 
-            });
-                /*$(".layer-toggle-info-container").on( "mouseout", function(e) {
-                      $(".layer-toggle-info-container").hide();
-                });*/
-				}); //	jeo.mapReady
-        var baselayer_attr = [];
-        $(".baselayers").find('.b_layer').on('click', function() {
-            	var base_layer_id = $(this).data('layer');
-              var baselayer_value = <?php echo json_encode($base_layers_array) ?>;
-              var baselayer_url = baselayer_value[base_layer_id].layer_url;
-              var	mapBaselayer  = L.tileLayer(baselayer_url);
-        });
+        	//Get all baselayers' post meta for loading on map
+        	$base_layers = get_post_meta_of_all_baselayer();
 
-        //Hide and show on click the collapse and expend icon
-        $(document).on('click',".hide_show_container h2 > .hide_show_icon, .hide_show_container h5 > .hide_show_icon", function (e) {
-            e.stopPropagation();
-            var target =  $( e.target );
-            var parent_of_target =  $( e.target ).parent();
-            var drop = parent_of_target.siblings('.dropdown');
-            //console.log(drop);
-      			target.toggleClass('fa-caret-down');
-      			target.toggleClass('fa-caret-up');
+        	//List cetegory and layer by cat for menu items
+            $layer_taxonomy = 'layer-category';
+            $layer_term_args=array(
+              'parent' => 0,
+              'orderby'   => 'name',
+              'order'   => 'ASC',
+              'exclude' => $cat_baselayers_id //43002
+            );
+            $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
+            if ($terms_layer) {
+                echo '<div class="category-map-layers box-shadow hide_show_container">';
+                    echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "opendev");
+                        echo "<i class='fa fa-caret-down hide_show_icon'></i>";
+                    echo '</h2>';
+                    echo '<div class="interactive-map-layers dropdown">';
+                        echo '<ul class="categories">';
+                            foreach( $terms_layer as $term ) {
+                                $args_layer = array(
+                                    'post_type' => 'map-layer',
+                                    'orderby'   => 'name',
+                                    'order'   => 'asc',
+                                    'tax_query' => array(
+                                                       array(
+                                                         'taxonomy' => 'layer-category',
+                                                         'field' => 'id',
+                                                         'terms' => $term->term_id, // Where term_id of Term 1 is "1".
+                                                         'include_children' => false
+                                                       )
+                                                     )
+                                );
+                                $query_layer = new WP_Query( $args_layer );
+                                ?>
+                                <li class="cat-item cat-item-<?php the_ID(); ?>" id="post-<?php the_ID(); ?>">
+                                    <a href="#<?php //the_permalink(); ?>"><?php echo $term->name ?></a>
+                                    <?php
+                                    if($query_layer->have_posts() ){
+                                        echo "<ul class='cat-layers switch-layers'>";
+                                        while ( $query_layer->have_posts() ) : $query_layer->the_post();
+                                          display_layer_as_menu_item_on_mapNavigation(get_the_ID());
+                                        endwhile;
+                                        echo "</ul>";
+                                    } //$query_layer->have_posts
+                                    $children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name', ) );
+                                    if ( !empty($children_term) ) {
+                                        echo '<ul class="children">';
+                                        walk_child_category_by_post_type( $children_term, "map-layer", "", 0 );
+                                        echo '</ul>';
+                                    }
+                                    ?>
+                                </li>
+                                <?php // use reset postdata to restore orginal query
+                                wp_reset_postdata();
+                            }//foreach
+                        echo '</ul>'; //ul: class="categories"
+                    echo '</div>'; //interactive-map-layers dropdown
+                echo '</div>'; //category-map-layers  box-shadow
 
-            if (drop.is(":hidden")) {
-                parent_of_target.removeClass("title_active")
-                    .siblings('.dropdown').hide();
-                drop.show();
-                parent_of_target.addClass("title_active");
-                //parent_of_target.parent().addClass("ms_active");
-            } else {
-                drop.hide();
-                parent_of_target.removeClass("title_active");
-            }
-        }); //end onclick
+                $map['dataReady'] = true;
+                $map['baselayers'] = $base_layers;
+                $map['layers'] = $layers;
+                if($map['base_layer']) {
+                    array_unshift($map['layers'], array(
+                    	'type' => 'tilelayer',
+                    	'tile_url' => $map['base_layer']['url']
+                    ));
+                    $base_layers[0] = $map['layers'][0];
+                }
+            }//if terms_layer
+            ?>
+        </div><!-- interactive-map" -->
 
+        <?php
+        display_legend_container();
+        display_layer_information($layers);
+        ?>
 
-			})(jQuery);
-		</script>
-		<?php
+        <script type="text/javascript">
+            var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
+            var all_layers_value = <?php echo json_encode($layers) ?>;
+            var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
+            jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
+
+            (function($) {
+                // Resize the map container and category box based on the browsers
+                /*   //Page is not schollable
+                var resize_height_map_container = window.innerHeight - $("#od-head").height() -10 + "px";
+                var resize_height_map_category = window.innerHeight - $("#od-head").height() -33 + "px";
+                var resize_height_map_layer = window.innerHeight - $("#od-head").height()  - 73 + "px";*/
+
+                // Page is scrollable
+                var resize_height_map_container = window.innerHeight - $("#od-head").height() + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight - 150 + "px";
+                var resize_height_map_layer = window.innerHeight - 180+ "px";
+                var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -30 + "px";
+
+                $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
+                $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
+                $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
+                $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
+                $(".page-template-page-map-explorer .layer-toggle-info").css("display", "none");
+                $(window).resize(function() {
+                    $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
+                    $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
+                    $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
+                    $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
+                });
+                // End Resize
+            })(jQuery);
+
+        </script>
+        <?php
         $html = ob_get_clean();
-
-         return $html;
-     }
- }
-new Odm_InteractiveMap();
+        return $html;
+    }//end shortcode
+}//end class
+new OpenDev_InteractiveMap();
+?>
