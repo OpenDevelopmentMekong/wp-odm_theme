@@ -71,7 +71,6 @@ foreach($post_types as $pt) {
   				<li class="widget share-widget">
   					<?php odm_get_template('social-share',array(),true); ?>
   				</li>
-          <?php print("aaaa") ?>
           <?php if (isset($_GET['queried_post_type'])): ?>
     				<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
     					<?php list_category_by_post_type($_GET['queried_post_type']); ?>
