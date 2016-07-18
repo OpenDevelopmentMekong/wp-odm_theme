@@ -49,8 +49,10 @@ class Odm_Country_Manager {
     <ul class="country-selector">
       <?php
         foreach ($this->countries as $country):
-          $url = $this->is_pp() ? $country['url_pp'] : $country['url']; ?>
-          <li><a href="<?php echo $url . $_SERVER['REQUEST_URI'] ?>"><?php echo __($country['name']);?></a></li>
+          $url = $this->is_pp() ? $country['url_pp'] : $country['url'];
+          $path_without_lang = remove_language_code_from_url($_SERVER['REQUEST_URI']);
+          $destination = $url . $path_without_lang; ?>
+          <li><a href="<?php echo $destination; ?>"><?php echo __($country['name']);?></a></li>
       <?php
         endforeach;
       ?>
