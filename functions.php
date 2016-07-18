@@ -178,7 +178,7 @@ function odm_jeo_scripts()
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => $jeo_markers->query(),
     'stories_label' => __('stories', 'odm'),
-    'home' => (is_home() && !is_paged() && !$_REQUEST['opendev_filter_']),
+    'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
     'copy_embed_label' => __('Copy the embed code', 'odm'),
     'share_label' => __('Share', 'odm'),
     'print_label' => __('Print', 'odm'),
