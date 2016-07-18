@@ -51,13 +51,21 @@ class Odm_Country_Manager {
         foreach ($this->countries as $country):
           $url = $this->is_pp() ? $country['url_pp'] : $country['url'];
           $path_without_lang = remove_language_code_from_url($_SERVER['REQUEST_URI']);
-          $destination = $url . $path_without_lang; ?>
-          <li><a href="<?php echo $destination; ?>"><?php echo __($country['name']);?></a></li>
+          $destination = $url . $path_without_lang;
+          if (is_current_country($country)): ?>
+            <li><a><?php echo __($country['name']);?></a></li>
+          <?php else: ?>
+            <li><a href="<?php echo $destination; ?>"><?php echo __($country['name']);?></a></li>
+          <?php endif; ?>
       <?php
         endforeach;
       ?>
     </ul>
   <?php
+  }
+
+  function is_current_country($country){
+    return ($_SERVER['HTTP_HOST'] == $country->url || $_SERVER['HTTP_HOST'] == $country->url_pp);
   }
 
 }
