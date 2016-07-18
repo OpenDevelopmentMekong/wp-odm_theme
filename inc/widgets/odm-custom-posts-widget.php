@@ -34,6 +34,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
 
+		$post_type = get_post_type_object($selected_custom_post_id);
+		$post_type_slug = $post_type->rewrite['slug'];
+
 		$query = array(
 				'posts_per_page'   => $limit,
 				'order'            => 'DESC',
@@ -46,9 +49,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		<div class="container">
 			<?php
-				if (!empty($instance['title'])):
-					 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
-				endif; ?>
+				if (!empty($instance['title'])): ?>
+					<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title']; ?></a>
+			<?php endif; ?>
 
 			<?php
 
