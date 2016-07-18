@@ -52,7 +52,7 @@ class Odm_Country_Manager {
           $url = $this->is_pp() ? $country['url_pp'] : $country['url'];
           $path_without_lang = remove_language_code_from_url($_SERVER['REQUEST_URI']);
           $destination = $url . $path_without_lang;
-          if (is_current_country($country)): ?>
+          if ($this->is_current_country($country)): ?>
             <li><a><?php echo __($country['name']);?></a></li>
           <?php else: ?>
             <li><a href="<?php echo $destination; ?>"><?php echo __($country['name']);?></a></li>
