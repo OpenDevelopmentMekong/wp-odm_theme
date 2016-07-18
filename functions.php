@@ -240,7 +240,7 @@ function odm_jeo_scripts()
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
 function odm_jeo_admin_scripts() {
-    if ( file_exists( get_stylesheet_directory_uri . '/inc/jeo-scripts/clearscreen.js'))
+    if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
