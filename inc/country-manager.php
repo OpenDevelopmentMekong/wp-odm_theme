@@ -53,7 +53,7 @@ class Odm_Country_Manager {
           $path_without_lang = remove_language_code_from_url($_SERVER['REQUEST_URI']);
           $destination = $url . $path_without_lang;
           if ($this->is_current_country($country)): ?>
-            <li><a><?php echo __($country['name']);?></a></li>
+            <li class="active-country"><?php echo __($country['name']);?></li>
           <?php else: ?>
             <li><a href="<?php echo $destination; ?>"><?php echo __($country['name']);?></a></li>
           <?php endif; ?>
@@ -65,7 +65,7 @@ class Odm_Country_Manager {
   }
 
   function is_current_country($country){
-    return get_current_country() == $country->theme;
+    return $this->get_current_country() == $country['theme'];
   }
 
 }
