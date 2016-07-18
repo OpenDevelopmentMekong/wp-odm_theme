@@ -197,7 +197,7 @@ function convert_to_kh_number($number)
 }
 
 function remove_language_code_from_url($url){
-  $lang_code = substr($url,0,3);
+  $lang_code = substr($url,0,4);
   if ($lang_code == "/km/" || $lang_code == "/th/" || $lang_code == "/vi/" || $lang_code == "/my/" || $lang_code == "/la/"):
     $url = substr($url,3);
   endif;
