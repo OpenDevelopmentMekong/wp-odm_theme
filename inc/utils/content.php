@@ -365,7 +365,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
  function odm_excerpt($post, $num = 40, $read_more = '')
  {
 		 $limit = $num + 1;
-		 $excerpt = explode(' ', $post->post_content, $limit);
+		 $excerpt = explode(' ', strip_shortcodes($post->post_content), $limit);
 		 array_pop($excerpt);
 		 $excerpt_string = implode(' ', $excerpt);
 		 $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
@@ -438,7 +438,7 @@ function available_custom_post_types(){
 				 array_push($response[$post_type]['posts'],array(
 					 'ID' => $post->ID,
 					 'title' => $post->post_title,
-					 'excerpt' => (isset($post->post_excerpt) && !empty($post->post_excerpt)) ? $post->post_excerpt : substr($post->post_content,0,60),
+					 'excerpt' => odm_excerpt($post),
 					 'post_type' => $post_type,
 					 'url' => get_permalink($post->ID),
 					 'thumbnail' => odm_get_thumbnail($post->ID,true)

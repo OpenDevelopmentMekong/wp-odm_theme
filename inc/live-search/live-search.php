@@ -34,7 +34,6 @@ class Odm_LiveSearch {
 			"wpckan" => do_shortcode('[wpckan_query_datasets query="'.$_REQUEST['s'].'" limit="5" include_fields_dataset="title" include_fields_resources=""]')
 		);
 
-
 		header('Content-Type: application/json;charset=UTF-8');
 		echo json_encode($response);
 		exit;
