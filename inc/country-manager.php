@@ -65,7 +65,7 @@ class Odm_Country_Manager {
   }
 
   function is_current_country($country){
-    return (strpos($country->url,$_SERVER['HTTP_HOST'])> 0 || strpos($country->url_pp,$_SERVER['HTTP_HOST'])> 0);
+    return get_current_country() == $country->theme;
   }
 
 }
