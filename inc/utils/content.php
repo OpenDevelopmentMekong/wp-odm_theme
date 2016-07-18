@@ -280,12 +280,12 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   					 <?php
   					 if (function_exists('qtrans_getLanguage')) {
   							 if (odm_language_manager()->get_current_language() == 'km') {
-  									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
+  									 echo convert_date_to_kh_date(get_the_modified_date('j.M.Y'),$post->ID);
   							 } else {
-  									 echo get_the_time('j F Y',$post->ID);
+  									 echo get_the_modified_date('j F Y',$post->ID);
   							 }
   					 } else {
-  							 echo get_the_time('j F Y',$post->ID);
+  							 echo get_the_modified_date('j F Y',$post->ID);
   					 }
   				?>
   			</li>
@@ -348,7 +348,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
       endif; ?>
       <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
         <li class="categories">
-  				<i class="fa fa-folder"></i>
+  				<i class="fa fa-folder-o"></i>
   				<?php the_category(''); ?>
   			</li>
       <?php endif; ?>
