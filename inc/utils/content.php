@@ -184,7 +184,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     );
     $query_get_post = new WP_Query( $args_get_post );
     if($query_get_post->have_posts() ){
-			$layer_items = null;
+			$layer_items = '';
       $cat_layer_ul = "<ul class='cat-layers switch-layers'>";
       while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
           if(posts_for_both_and_current_languages(get_the_ID(), LANGUAGE_CODE)){
@@ -222,63 +222,50 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 
 function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
     if($post_type == "map-layer"){
-		$cat_item_and_posts = "";
-		$count_items_of_subcat = 0;
-		foreach($children as $child){
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			$get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
-			if ($get_cat_and_posts != ""){
-			    $count_items_of_subcat++;
-			    $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
-			        // Display current category
-			        $cat_item_and_posts .= $get_cat_and_posts;
-			        // if current category has children
-			        if ( !empty($cat_children) ) {
-			          // add a sublevel
-			          // display the children
-			            walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
-			        }
-			    $cat_item_and_posts .= "</li>";
-			}
-		}//foreach
-		$print_sub_cat_and_posts = "";
-		if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
-			$print_sub_cat_and_posts .= '<ul class="children fffff">';
-			$print_sub_cat_and_posts .= $cat_item_and_posts;
-			$print_sub_cat_and_posts .= '</ul>';
-		}
-		return $print_sub_cat_and_posts;
+       $cat_item_and_posts = "";
+       $count_items_of_subcat = 0;
+          foreach($children as $child){
+            $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+            $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
+            if ($get_cat_and_posts != ""){
+                $count_items_of_subcat++;
+                $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
+                    // Display current category
+                    $cat_item_and_posts .= $get_cat_and_posts;
+                    // if current category has children
+                    if ( !empty($cat_children) ) {
+                      // add a sublevel
+                      // display the children
+                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
+                    }
+                $cat_item_and_posts .= "</li>";
+            }
+          }//foreach
+      $print_sub_cat_and_posts = "";
+      if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
+          $print_sub_cat_and_posts .= '<ul class="children">';
+          $print_sub_cat_and_posts .= $cat_item_and_posts;
+          $print_sub_cat_and_posts .= '</ul>';
+      }
+      return $print_sub_cat_and_posts;
     }else { //widget
-		foreach($children as $child){
-			// Get immediate children of current category
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
-			echo "<li>";
-				// Display current category
-				print_category_by_post_type($child, $post_type, $current_cat, $widget);
-				// if current category has children
-				if ( !empty($cat_children) ) {
-					// add a sublevel
-					echo "<ul>";
-					// display the children
-					  walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
-					echo "</ul>";
-				}
-			echo "</li>";
-		}//end foreach
+        foreach($children as $child){
+          // Get immediate children of current category
+          $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+          echo "<li>";
+          // Display current category
+            print_category_by_post_type($child, $post_type, $current_cat, $widget);
+          // if current category has children
+          if ( !empty($cat_children) ) {
+            // add a sublevel
+            echo "<ul>";
+            // display the children
+              walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
+            echo "</ul>";
+          }
+          echo "</li>";
+        }
     }
-}
-
-function posts_for_both_and_s($postID, $current_lang = "en", $taxonomy ="language"){
-    $site_language = strtolower(get_localization_language_by_language_code($current_lang));
-    $terms = get_the_terms($postID, $taxonomy);
-    if ( empty($terms) && !is_wp_error( $terms )) {
-        return true;
-    }else if (has_term( $site_language, $taxonomy, $postID )){
-        return true;
-    }else if ( !taxonomy_exists($taxonomy)){
-        return true;
-    }
-    return false;
 }
 /** END CATEGORY */
 
