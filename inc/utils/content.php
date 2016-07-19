@@ -186,7 +186,6 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     if($query_get_post->have_posts() ){
 			$layer_items = '';
       $cat_layer_ul = "<ul class='cat-layers switch-layers'>";
-			echo odm_language_manager()->get_current_language(). odm_language_manager()->get_current_language() ;
       while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
           if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
             $count_layer_items++;
