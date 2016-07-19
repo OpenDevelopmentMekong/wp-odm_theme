@@ -62,44 +62,47 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 }
 //************//
 //display layer menus fixed on right bar
-function display_layer_as_menu_item_on_mapNavigation($post_ID){
+function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1){
 	$get_post = get_post($post_ID);
-	if (function_exists('qtrans_use')){
-		$title = qtrans_use(CURRENT_LANGUAGE, $get_post->post_title,false);//get TITLE by langauge
-		$content = qtrans_use(CURRENT_LANGUAGE, $get_post->post_content,false);//get CONTENT by langauge
+	if (function_exists( qtrans_use)){
+		$title = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_title,false);//get TITLE by langauge
+		$content = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_content,false);//get CONTENT by langauge
 	}else {
 		$title = $get_post->post_title;
 		$content = $get_post->post_content;
 	}
-	?>
-	<li class="layer-item" data-layer="<?php echo $post_ID; ?>" id="post-<?php echo $post_ID; ?>">
-		<img class="list-loading" src="<?php echo get_stylesheet_directory_uri() ?>/img/loading-map.gif">
-		<span class="list-circle-active"></span>
-		<span class="list-circle-o"></span>
-		<span class="layer-item-name"><?php echo $title; ?></span>
-		<?php
-		if ( (CURRENT_LANGUAGE != "en") ){
-			$layer_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
-			$layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
-			}else {
-			$layer_download_link = get_post_meta($post_ID, '_layer_download_link', true);
-			$layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
-		}
+	$layer_items = '<li class="layer-item" data-layer="'.$post_ID.'" id="post-'.$post_ID.'">
+	  <img class="list-loading" src="'. get_stylesheet_directory_uri(). '/img/loading-map.gif">
+	  <span class="list-circle-active"></span>
+	  <span class="list-circle-o"></span>
+	  <span class="layer-item-name">'.$title.'</span>';
 
-		if($layer_download_link!=""){ ?>
-			<a class="download-url" href="<?php echo $layer_download_link; ?>" target="_blank"><i class="fa fa-arrow-down"></i></a>
-			<a class="toggle-info" alt="Info" href="#"><i id="<?php echo $post_ID; ?>" class="fa fa-info-circle"></i></a>
-			<?php
-		}else if($content!= ""){ ?>
-			<a class="toggle-info" alt="Info" href="#"><i id="<?php echo $post_ID; ?>" class="fa fa-info-circle"></i></a>
-			<?php
-		}
-		if($layer_profilepage_link!=""){ ?>
-			<a class="profilepage_link" href="<?php echo $layer_profilepage_link; ?>" target="_blank"><i class="fa fa-table"></i></a>
-		<?php } ?>
-	</li>
-  <?php // use reset postdata to restore orginal query
-  wp_reset_postdata();
+	  if ( (odm_language_manager()->get_current_language() != "en") ){
+	  $layer_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
+	  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
+	  }else {
+	  $layer_download_link = get_post_meta($post_ID, '_layer_download_link', true);
+	  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
+	  }
+
+	  if($layer_download_link!=""){
+	   $layer_items .= '
+	      <a class="download-url" href="'.$layer_download_link.'" target="_blank"><i class="fa fa-arrow-down"></i></a>
+	      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
+	  }else if($content!= ""){
+	   $layer_items .= '
+	      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
+	  }
+	  if($layer_profilepage_link!=""){
+	   $layer_items .= '
+	      <a class="profilepage_link" href="'. $layer_profilepage_link.'" target="_blank"><i class="fa fa-table"></i></a>';
+	  }
+	$layer_items .= '</li>';
+	if($echo == 1){
+		echo $layer_items;
+	}else {
+		return $layer_items;
+	}
 
 }
 

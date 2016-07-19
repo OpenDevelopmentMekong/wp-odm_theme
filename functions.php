@@ -9,9 +9,7 @@ require_once get_stylesheet_directory().'/inc/language-manager.php';
 /*
  * Defining constants to be used across the whole theme
  */
-define('CURRENT_COUNTRY', odm_country_manager()->get_current_country());
-define('CURRENT_LANGUAGE', odm_language_manager()->get_current_language());
-
+define('COUNTRY_NAME', odm_country_manager()->get_current_country());
 /*
  * Post types
  */

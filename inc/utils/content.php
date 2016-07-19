@@ -14,16 +14,16 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 						)
 				);
 		foreach ($get_post as $page_topic) {
-				$lang_tag = '[:'.CURRENT_LANGUAGE.']';
+				$lang_tag = '[:'.odm_language_manager()->get_current_language().']';
 				$lang_tag_finder = '/'.$lang_tag.'/';
 
-				if (CURRENT_LANGUAGE != 'en') {
+				if (odm_language_manager()->get_current_language() != 'en') {
 								if (strpos($page_topic->post_title, '[:kh]') !== false) {
 										$page_title = explode($lang_tag, $page_topic->post_title);
 										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
 								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
 										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$page_title = trim(str_replace('<!--:'.CURRENT_LANGUAGE.'-->', '', $page_title[1]));
+										$page_title = trim(str_replace('<!--:'.odm_language_manager()->get_current_language().'-->', '', $page_title[1]));
 										$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
 								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
 										$page_title = explode('<!--:-->', $page_topic->post_title);
@@ -184,10 +184,10 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     );
     $query_get_post = new WP_Query( $args_get_post );
     if($query_get_post->have_posts() ){
-			$layer_items = null;
+			$layer_items = '';
       $cat_layer_ul = "<ul class='cat-layers switch-layers'>";
       while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
-          if(posts_for_both_and_current_languages(get_the_ID(), CURRENT_LANGUAGE)){
+          if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
             $count_layer_items++;
             $layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
           }
@@ -222,52 +222,51 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 
 function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
     if($post_type == "map-layer"){
-		$cat_item_and_posts = "";
-		$count_items_of_subcat = 0;
-		foreach($children as $child){
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			$get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
-			if ($get_cat_and_posts != ""){
-			    $count_items_of_subcat++;
-			    $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
-			        // Display current category
-			        $cat_item_and_posts .= $get_cat_and_posts;
-			        // if current category has children
-			        if ( !empty($cat_children) ) {
-			          // add a sublevel
-			          // display the children
-			            walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
-			        }
-			    $cat_item_and_posts .= "</li>";
-			}
-		}//foreach
-		$print_sub_cat_and_posts = "";
-		if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
-			$print_sub_cat_and_posts .= '<ul class="children fffff">';
-			$print_sub_cat_and_posts .= $cat_item_and_posts;
-			$print_sub_cat_and_posts .= '</ul>';
-		}
-		return $print_sub_cat_and_posts;
+       $cat_item_and_posts = "";
+       $count_items_of_subcat = 0;
+          foreach($children as $child){
+            $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+            $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
+            if ($get_cat_and_posts != ""){
+                $count_items_of_subcat++;
+                $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
+                    // Display current category
+                    $cat_item_and_posts .= $get_cat_and_posts;
+                    // if current category has children
+                    if ( !empty($cat_children) ) {
+                      // add a sublevel
+                      // display the children
+                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
+                    }
+                $cat_item_and_posts .= "</li>";
+            }
+          }//foreach
+      $print_sub_cat_and_posts = "";
+      if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
+          $print_sub_cat_and_posts .= '<ul class="children">';
+          $print_sub_cat_and_posts .= $cat_item_and_posts;
+          $print_sub_cat_and_posts .= '</ul>';
+      }
+      return $print_sub_cat_and_posts;
     }else { //widget
-		foreach($children as $child){
-			// Get immediate children of current category
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
-			echo "<li>";
-				// Display current category
-				print_category_by_post_type($child, $post_type, $current_cat, $widget);
-				// if current category has children
-				if ( !empty($cat_children) ) {
-					// add a sublevel
-					echo "<ul>";
-					// display the children
-					  walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
-					echo "</ul>";
-				}
-			echo "</li>";
-		}//end foreach
+        foreach($children as $child){
+          // Get immediate children of current category
+          $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+          echo "<li>";
+          // Display current category
+            print_category_by_post_type($child, $post_type, $current_cat, $widget);
+          // if current category has children
+          if ( !empty($cat_children) ) {
+            // add a sublevel
+            echo "<ul>";
+            // display the children
+              walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
+            echo "</ul>";
+          }
+          echo "</li>";
+        }
     }
 }
-
 /** END CATEGORY */
 
 /**** Post Meta ******/
@@ -281,7 +280,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   				<i class="fa fa-clock-o"></i>
   					 <?php
   					 if (function_exists('qtrans_getLanguage')) {
-  							 if (CURRENT_LANGUAGE == 'km') {
+  							 if (odm_language_manager()->get_current_language() == 'km') {
   									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
   							 } else {
   									 echo get_the_time('j F Y',$post->ID);
