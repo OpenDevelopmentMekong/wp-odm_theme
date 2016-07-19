@@ -415,15 +415,15 @@
         $type = $this->get_layer_type();
 
         //$content = apply_filters('the_content', $post->post_content);
-        if (function_exists( qtrans_use)){
-            $content = qtrans_use($lang, $post->post_content,false);//get content by langauge
-            $excerpt = qtrans_use($lang, $post->excerpt,false);//get content by langauge
+        if (function_exists('qtrans_use')){
+            $content = qtrans_use(CURRENT_LANGUAGE, $post->post_content,false);//get content by langauge
+            $excerpt = qtrans_use(CURRENT_LANGUAGE, $post->excerpt,false);//get content by langauge
         }else {
             $content =  $post->post_content;//get content by langauge
             $excerpt =  $post->excerpt;//get content by langauge
         }
         $in_category = get_the_terms( $post->ID, 'layer-category' );
-        if ( (odm_language_manager()->get_current_language() != "en") ){
+        if ( (CURRENT_LANGUAGE != "en") ){
             $layer_legend = get_post_meta( $post->ID , '_layer_legend_localization', true);
         }else {
             $layer_legend = get_post_meta( $post->ID , '_layer_legend', true);

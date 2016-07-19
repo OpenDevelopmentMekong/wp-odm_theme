@@ -27,7 +27,7 @@ function odm_logo()
 
   <?php
   echo '<div>';
-  echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
+  echo '<h2 class="side-title">'.ucfirst(CURRENT_COUNTRY).'</h2>';
   echo '</div>';
 }
 

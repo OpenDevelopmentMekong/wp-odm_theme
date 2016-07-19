@@ -14,16 +14,16 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 						)
 				);
 		foreach ($get_post as $page_topic) {
-				$lang_tag = '[:'.odm_language_manager()->get_current_language().']';
+				$lang_tag = '[:'.CURRENT_LANGUAGE.']';
 				$lang_tag_finder = '/'.$lang_tag.'/';
 
-				if (odm_language_manager()->get_current_language() != 'en') {
+				if (CURRENT_LANGUAGE != 'en') {
 								if (strpos($page_topic->post_title, '[:kh]') !== false) {
 										$page_title = explode($lang_tag, $page_topic->post_title);
 										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
 								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
 										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$page_title = trim(str_replace('<!--:'.odm_language_manager()->get_current_language().'-->', '', $page_title[1]));
+										$page_title = trim(str_replace('<!--:'.CURRENT_LANGUAGE.'-->', '', $page_title[1]));
 										$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
 								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
 										$page_title = explode('<!--:-->', $page_topic->post_title);
@@ -109,19 +109,19 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 					jQuery(document).ready(function($) {
 					$('.odm_taxonomy_widget_ul > li.cat_item').each(function(){
 						if($('.odm_taxonomy_widget_ul > li.cat_item:has(ul)')){
-							$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo COUNTRY_NAME;?>");
-							$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo COUNTRY_NAME;?>");
+							$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').removeClass("nochildimage-<?php echo CURRENT_COUNTRY;?>");
+							$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo CURRENT_COUNTRY;?>");
 						}
 						//if parent is showed, child need to expend
 						if ($('span.<?php echo $current_cat_page;?>').length){
 							$('span.<?php echo $current_cat_page;?>').siblings("ul").show();
-							$('span.<?php echo $current_cat_page;?>').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-							$('span.<?php echo $current_cat_page;?>').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+							$('span.<?php echo $current_cat_page;?>').toggleClass('minusimage-<?php echo CURRENT_COUNTRY;?>');
+							$('span.<?php echo $current_cat_page;?>').toggleClass('plusimage-<?php echo CURRENT_COUNTRY;?>');
 
 							//if child is showed, parent expended
 							$('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").show();
-							$('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
-							$('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo COUNTRY_NAME;?>');
+							$('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo CURRENT_COUNTRY;?>');
+							$('span.<?php echo $current_cat_page;?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo CURRENT_COUNTRY;?>');
 						}
 					});
 					$('.odm_taxonomy_widget_ul > li.cat_item span').click(function(event) {
@@ -129,8 +129,8 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 						var target =  $( event.target );
 							if(target.parent("li").find('ul').length){
 								target.parent("li").find('ul:first').slideToggle();
-								target.toggleClass("plusimage-<?php echo COUNTRY_NAME;?>");
-								target.toggleClass('minusimage-<?php echo COUNTRY_NAME;?>');
+								target.toggleClass("plusimage-<?php echo CURRENT_COUNTRY;?>");
+								target.toggleClass('minusimage-<?php echo CURRENT_COUNTRY;?>');
 								}
 						});
 					});
@@ -139,71 +139,85 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 
 		}
 }
+// Check if post specific to any langue or not
+function posts_for_both_and_current_languages($postID, $current_lang = "en", $taxonomy ="language"){
+    $site_language = strtolower(get_localization_language_by_language_code($current_lang));
+    $terms = get_the_terms($postID, $taxonomy);
+    if ( empty($terms) && !is_wp_error( $terms )) {
+        return true;
+    }else if (has_term( $site_language, $taxonomy, $postID )){
+        return true;
+    }else if ( !taxonomy_exists($taxonomy)){
+        return true;
+    }
+    return false;
+}
 
 function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
-	if ($current_cat == $category->slug){
-		$current_page = " ".$current_cat;
-	}else {
-		$current_page = "";
-	}
-	if($category->cat_ID){
-		$cat_ID = $category->cat_ID;
-		$get_category_link = get_category_link( $category->cat_ID );
-	}else if($category->term_id){
-		$cat_ID = $category->term_id;
-		$get_category_link = get_term_link( $category);
-	}
-	if($post_type == "map-layer"){
-		$cat_name = '<a href="' . $get_category_link. '?post_type='.$post_type.'">';
-		$cat_name .= $category->name;
-		$cat_name .= "</a>";
-		$count_layer_items = 0;
-		$args_get_post = array(
-		    'post_type' => $post_type,
-		    'tax_query' => array(
-		                        array(
-		                          'taxonomy' => $category->taxonomy,
-		                          'field' => 'id',
-		                          'terms' => $cat_ID, // Where term_id of Term 1 is "1".
-		                          'include_children' => false
-		                        )
-		                      )
-			);
-		$query_get_post = new WP_Query( $args_get_post );
-		if($query_get_post->have_posts() ){
-			$cat_layer_ul = "<ul class='cat-layers switch-layers'>";
-			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
-				if(posts_for_both_and_s(get_the_ID(), odm_language_manager()->get_current_language())){
-					$count_layer_items++;
-					$layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
-				}
-			endwhile;
+ if ($current_cat == $category->slug){
+     $current_page = " ".$current_cat;
+  }else {
+     $current_page = "";
+  }
+  if($category->cat_ID){
+    $cat_ID = $category->cat_ID;
+    $get_category_link = get_category_link( $category->cat_ID );
+  }else if($category->term_id){
+    $cat_ID = $category->term_id;
+    $get_category_link = get_term_link( $category);
+  }
+  if($post_type == "map-layer"){
+    $cat_name = '<a href="' . $get_category_link. '?post_type='.$post_type.'">';
+    $cat_name .= $category->name;
+    $cat_name .= "</a>";
+    $count_layer_items = 0;
+    $args_get_post = array(
+        'post_type' => $post_type,
+        'tax_query' => array(
+                            array(
+                              'taxonomy' => $category->taxonomy,
+                              'field' => 'id',
+                              'terms' => $cat_ID, // Where term_id of Term 1 is "1".
+                              'include_children' => false
+                            )
+                          )
+    );
+    $query_get_post = new WP_Query( $args_get_post );
+    if($query_get_post->have_posts() ){
+			$layer_items = null;
+      $cat_layer_ul = "<ul class='cat-layers switch-layers'>";
+      while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
+          if(posts_for_both_and_current_languages(get_the_ID(), CURRENT_LANGUAGE)){
+            $count_layer_items++;
+            $layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
+          }
+      endwhile;
 
-			wp_reset_postdata();
-			$cat_layer_close_ul = "</ul>";
-			$print_items = "";
-			if ($count_layer_items > 0){
-				$print_items .= $cat_name;
-				$print_items .= $cat_layer_ul;
-				$print_items .= $layer_items;
-				$print_items .= $cat_layer_close_ul;
+      wp_reset_postdata();
+      $cat_layer_close_ul = "</ul>";
+      $print_items = "";
+      if ($count_layer_items > 0){
+          $print_items .= $cat_name;
+          $print_items .= $cat_layer_ul;
+            $print_items .= $layer_items;
+          $print_items .= $cat_layer_close_ul;
 
-			}
-			return $print_items;
-		} //$query_get_post->have_posts
-	}else {
-		echo "<span class='nochildimage-".COUNTRY_NAME.$current_page."'>";
-			echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
-			    if ($current_cat == $category->slug){ // if page of the topic exists
-			        echo "<strong class='".COUNTRY_NAME."-color'>";
-			            echo $category->name;
-			        echo "</strong>";
-			    }else{
-			          echo $category->name;
-			    }
-			echo "</a>";
-		echo "</span>";
-	}
+      }
+      return $print_items;
+    } //$query_get_post->have_posts
+  }else {
+    echo "<span class='nochildimage-".CURRENT_COUNTRY.$current_page."'>";
+            echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
+                if ($current_cat == $category->slug){ // if page of the topic exists
+                    echo "<strong class='".CURRENT_COUNTRY."-color'>";
+                        echo $category->name;
+                    echo "</strong>";
+                }else{
+                      echo $category->name;
+                }
+            echo "</a>";
+      echo "</span>";
+  }
 }
 
 function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
@@ -254,18 +268,6 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
     }
 }
 
-function posts_for_both_and_s($postID, $current_lang = "en", $taxonomy ="language"){
-    $site_language = strtolower(get_localization_language_by_language_code($current_lang));
-    $terms = get_the_terms($postID, $taxonomy);
-    if ( empty($terms) && !is_wp_error( $terms )) {
-        return true;
-    }else if (has_term( $site_language, $taxonomy, $postID )){
-        return true;
-    }else if ( !taxonomy_exists($taxonomy)){
-        return true;
-    }
-    return false;
-}
 /** END CATEGORY */
 
 /**** Post Meta ******/
@@ -279,7 +281,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   				<i class="fa fa-clock-o"></i>
   					 <?php
   					 if (function_exists('qtrans_getLanguage')) {
-  							 if (odm_language_manager()->get_current_language() == 'km') {
+  							 if (CURRENT_LANGUAGE == 'km') {
   									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
   							 } else {
   									 echo get_the_time('j F Y',$post->ID);

@@ -32,22 +32,22 @@
             <?php endif; ?>
             <?php
                 if (function_exists('qtranxf_getLanguage')):
-                  if ((odm_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))): ?>
+                  if ((CURRENT_LANGUAGE == 'en') && (has_term('english-translated', 'language'))): ?>
                 <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
           <?php endif; ?>
-            <?php if (isset($local_language) && (odm_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
+            <?php if (isset($local_language) && (CURRENT_LANGUAGE == $local_language) && (has_term('khmer-translated', 'language'))):?>
                     <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
                 <?php endif; ?>
             <?php endif; ?>
             <?php the_content(); ?>
             <?php
                 if (function_exists('get')) :
-                    if (get('author') == '' && get('author'.odm_language_manager()->get_current_language()) == ''):
+                    if (get('author') == '' && get('author'.CURRENT_LANGUAGE) == ''):
                       echo '';
                     else:
                       $news_source_info = '<span class="lsf">&#xE041;</span> ';
-                      if (get('author'.odm_language_manager()->get_current_language()) != ''):
-                          $news_source_info .= get('author'.odm_language_manager()->get_current_language()).'<br />';
+                      if (get('author'.CURRENT_LANGUAGE) != ''):
+                          $news_source_info .= get('author'.CURRENT_LANGUAGE).'<br />';
                       else:
                           $news_source_info .= get('author').'<br />';
                       endif;
@@ -56,11 +56,11 @@
              ?>
             <?php
                 if (function_exists('get')):
-                  if (get('article_link') == '' && get('article_link'.odm_language_manager()->get_current_language()) == ''):
+                  if (get('article_link') == '' && get('article_link'.CURRENT_LANGUAGE) == ''):
                       echo '';
                   else:
-                    if (get('article_link'.odm_language_manager()->get_current_language()) != ''):
-                      $source = get('article_link'.odm_language_manager()->get_current_language());
+                    if (get('article_link'.CURRENT_LANGUAGE) != ''):
+                      $source = get('article_link'.CURRENT_LANGUAGE);
                     else:
                       $source = get('article_link');
                     endif;
