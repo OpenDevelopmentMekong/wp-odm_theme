@@ -86,43 +86,56 @@ class OpenDev_InteractiveMap {
                     echo '</h2>';
                     echo '<div class="interactive-map-layers dropdown">';
                         echo '<ul class="categories">';
-                            foreach( $terms_layer as $term ) {
-                                $args_layer = array(
-                                    'post_type' => 'map-layer',
-                                    'orderby'   => 'name',
-                                    'order'   => 'asc',
-                                    'tax_query' => array(
-                                                       array(
-                                                         'taxonomy' => 'layer-category',
-                                                         'field' => 'id',
-                                                         'terms' => $term->term_id, // Where term_id of Term 1 is "1".
-                                                         'include_children' => false
-                                                       )
-                                                     )
-                                );
-                                $query_layer = new WP_Query( $args_layer );
-                                ?>
-                                <li class="cat-item cat-item-<?php the_ID(); ?>" id="post-<?php the_ID(); ?>">
-                                    <a href="#<?php //the_permalink(); ?>"><?php echo $term->name ?></a>
-                                    <?php
-                                    if($query_layer->have_posts() ){
-                                        echo "<ul class='cat-layers switch-layers'>";
-                                        while ( $query_layer->have_posts() ) : $query_layer->the_post();
-                                          display_layer_as_menu_item_on_mapNavigation(get_the_ID());
-                                        endwhile;
-                                        echo "</ul>";
-                                    } //$query_layer->have_posts
-                                    $children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name', ) );
-                                    if ( !empty($children_term) ) {
-                                        echo '<ul class="children">';
-                                        walk_child_category_by_post_type( $children_term, "map-layer", "", 0 );
-                                        echo '</ul>';
-                                    }
-                                    ?>
-                                </li>
-                                <?php // use reset postdata to restore orginal query
-                                wp_reset_postdata();
-                            }//foreach
+                          foreach( $terms_layer as $term ) {
+                            $args_layer = array(
+                               'post_type' => 'map-layer',
+                               'orderby'   => 'name',
+                               'order'   => 'asc',
+                               'tax_query' => array(
+                                                   array(
+                                                     'taxonomy' => 'layer-category',
+                                                     'field' => 'id',
+                                                     'terms' => $term->term_id, // Where term_id of Term 1 is "1".
+                                                     'include_children' => false
+                                                   )
+                                                 )
+                            );
+                            $query_layer = new WP_Query( $args_layer );
+                            $layer_items = null;
+                            $count_items_of_main_cat = 0;
+                            $main_category_li = '<li class="cat-item cat-item-<?php the_ID(); ?>" id="post-'.get_the_ID().'"><a href="#">'.$term->name.'</a>';
+                            if($query_layer->have_posts() ){
+                                $cat_layer_ul= "<ul class='cat-layers switch-layers'>";
+                                    while ( $query_layer->have_posts() ) : $query_layer->the_post();
+                                        if(posts_for_both_and_current_languages(get_the_ID(), LANGUAGE_CODE)){
+                                            $count_items_of_main_cat++;
+                                            $layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
+                                         }
+                                    endwhile;
+                                    // use reset postdata to restore orginal query
+                                    wp_reset_postdata();
+
+                                $cat_layer_close_ul =  "</ul>";
+                            } //$query_layer->have_posts
+                            $children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name', ) );
+                            $sub_cats = null;
+                            if ( !empty($children_term) ) {
+                                $sub_cats = walk_child_category_by_post_type( $children_term, "map-layer", "", 0 );
+                                if ($sub_cats !=""){
+                                    $count_items_of_main_cat++;
+                                }
+                            }
+                            $main_category_close_li = '</li>';
+
+                            if($count_items_of_main_cat > 0){ //if layers and sub-cats exist
+                             echo  $main_category_li;
+                                 echo $cat_layer_ul;
+                                    echo $layer_items;
+                                 echo $cat_layer_close_ul ;
+                                 echo $sub_cats;
+                             echo $main_category_close_li;
+                            }
+                          }//foreach
                         echo '</ul>'; //ul: class="categories"
                     echo '</div>'; //interactive-map-layers dropdown
                 echo '</div>'; //category-map-layers  box-shadow

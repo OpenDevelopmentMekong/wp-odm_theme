@@ -415,9 +415,9 @@
         $type = $this->get_layer_type();
 
         //$content = apply_filters('the_content', $post->post_content);
-        if (function_exists( qtrans_use)){
-            $content = qtrans_use($lang, $post->post_content,false);//get content by langauge
-            $excerpt = qtrans_use($lang, $post->excerpt,false);//get content by langauge
+        if (function_exists('qtrans_use')){
+            $content = qtrans_use(LANGUAGE_CODE, $post->post_content,false);//get content by langauge
+            $excerpt = qtrans_use(LANGUAGE_CODE, $post->excerpt,false);//get content by langauge
         }else {
             $content =  $post->post_content;//get content by langauge
             $excerpt =  $post->excerpt;//get content by langauge
