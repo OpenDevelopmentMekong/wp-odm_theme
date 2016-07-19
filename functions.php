@@ -7,10 +7,6 @@ require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
 
 /*
- * Defining constants to be used across the whole theme
- */
-define('COUNTRY_NAME', odm_country_manager()->get_current_country());
-/*
  * Post types
  */
 require_once get_stylesheet_directory().'/inc/post-types/news-article.php';
