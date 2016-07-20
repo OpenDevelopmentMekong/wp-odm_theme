@@ -107,7 +107,7 @@ class OpenDev_InteractiveMap {
                                 $layer_items = "";
                                 $cat_layer_ul= "<ul class='cat-layers switch-layers'>";
                                     while ( $query_layer->have_posts() ) : $query_layer->the_post();
-                                        if(posts_for_both_and_current_languages(get_the_ID(), CURRENT_LANGUAGE)){
+                                        if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
                                             $count_items_of_main_cat++;
                                             $layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
                                          }
