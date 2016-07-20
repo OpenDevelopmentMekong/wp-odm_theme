@@ -16,7 +16,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		$this->templates = array(
 			"grid-4-cols" => "post-grid-single-4-cols",
+			"grid-2-cols" => "post-grid-single-2-cols",
+			"grid-1-cols" => "post-grid-single-1-cols",
 			"list-4-cols" => "post-list-single-4-cols",
+			"list-2-cols" => "post-list-single-2-cols",
 			"list-1-cols" => "post-list-single-1-cols"
 		);
 	}
