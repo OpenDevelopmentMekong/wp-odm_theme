@@ -15,14 +15,23 @@
 
 	<section class="container">
 
-		<div class="row">
-			<?php while (have_posts()) : the_post();
-				odm_get_template('post-grid-single-4-cols',array(
-					"post" => get_post(),
-					"show_meta" => true
-			),true);
-			endwhile; ?>
-		</div>
+    <div class="row">
+
+      <div class="eleven columns">
+        <?php while (have_posts()) : the_post();
+  				odm_get_template('post-list-single-4-cols',array(
+  					"post" => get_post(),
+  					"show_meta" => true
+  			),true);
+  			endwhile; ?>
+      </div>
+
+      <div class="four columns offset-by-one">
+        <?php dynamic_sidebar('archive-sidebar'); ?>
+      </div>
+
+    </div>
+    
 	</section>
 
 	<section class="container">
