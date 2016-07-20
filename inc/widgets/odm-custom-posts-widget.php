@@ -36,6 +36,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
+		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : true;
 
 		$post_type = get_post_type_object($selected_custom_post_id);
 		$post_type_slug = $post_type->rewrite['slug'];
@@ -62,7 +63,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 					$template = $this->templates[$layout_type];
 					odm_get_template($template,array(
 						"post" => $post,
-						"show_meta" => $show_meta
+						"show_meta" => $show_meta,
+						"show_excerpt" => $show_excerpt
 					),true);
 				endforeach; ?>
 
@@ -82,6 +84,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
+		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : true;
 
 		$args = array(
 		   'public'   => true,
@@ -116,6 +119,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</select>
 		</p>
 		<p>
+			<label for="<?php echo $this->get_field_id( 'show_excerpt' ); ?>"><?php _e( 'Show post excerpt:' ); ?></label>
+			<input type="checkbox" name="<?php echo $this->get_field_name('show_excerpt'); ?>" id="<?php echo $this->get_field_id('show_excerpt'); ?>" <?php if ($show_excerpt)  echo 'checked="true"'; ?>/>
+		</p>
+		<p>
 			<label for="<?php echo $this->get_field_id( 'show_meta' ); ?>"><?php _e( 'Show post meta:' ); ?></label>
 			<input type="checkbox" name="<?php echo $this->get_field_name('show_meta'); ?>" id="<?php echo $this->get_field_id('show_meta'); ?>" <?php if ($show_meta)  echo 'checked="true"'; ?>/>
 		</p>
@@ -143,6 +150,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
 		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : false;
+		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
 
 		return $instance;
 	}
