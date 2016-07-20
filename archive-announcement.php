@@ -5,7 +5,7 @@
 	<section class="container">
 		<header class="row">
 			<div class="eight columns">
-				<h1><?php _e('Site updates','odm') ?></h1>
+				<h1><?php _e('Announcements','odm') ?></h1>
 			</div>
       <div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
@@ -19,7 +19,7 @@
 
       <div class="eleven columns">
         <?php while (have_posts()) : the_post();
-  				odm_get_template('post-list-single-4-cols',array(
+  				odm_get_template('post-grid-single-4-cols',array(
   					"post" => get_post(),
   					"show_meta" => true
   			),true);
