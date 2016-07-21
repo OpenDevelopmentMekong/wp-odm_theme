@@ -1,17 +1,17 @@
 <?php if (have_posts()) : ?>
 
-	<section>
-		<div class="container">
+	<section class="container">
+		<div class="row">
 			<div class="sixteen columns">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</div>
 	</div>
 
-	<section>
-		<div class="container">
+	<section class="container">
+		<div class="row">
 
-			<div class="twelve columns">
+			<div class="ten columns">
 				<?php foreach (available_post_types() as $post_type): ?>
 					<?php if (in_array($post_type->name,available_post_types_search())): ?>
 						<?php
@@ -46,7 +46,7 @@
 				<?php endforeach; ?>
 			</div>
 
-			<div class="four columns">
+			<div class="six columns">
 				<section id="wpckan_search_results" class="eight columns">
 					<h2><?php _e('Data results'); ?></h2>
 					<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
