@@ -2,14 +2,6 @@
 
 	<section class="container">
 		<div class="row">
-			<div class="sixteen columns">
-				<?php get_template_part('section', 'query-actions'); ?>
-			</div>
-		</div>
-	</div>
-
-	<section class="container">
-		<div class="row">
 
 			<div class="ten columns">
 				<?php foreach (available_post_types() as $post_type): ?>
@@ -33,7 +25,9 @@
 									$counter++;
 								?>
 									<?php odm_get_template('post-list-single-2-cols',array(
-										"post" => get_post()
+										"post" => get_post(),
+										"show_meta" => true,
+										"show_excerpt" => true
 								),true); ?>
 							<?php	endif; ?>
 						<?php endwhile; ?>
