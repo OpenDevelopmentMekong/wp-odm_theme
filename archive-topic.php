@@ -5,7 +5,7 @@
 	<section class="container">
 		<header class="row">
 			<div class="eight columns">
-				<h1><?php _e('Profiles','odm') ?></h1>
+				<h1><?php _e('Topics','odm') ?></h1>
 			</div>
       <div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
@@ -19,7 +19,7 @@
 
       <div class="eleven columns">
 
-				<h1><?php _e('Environment and land','odm'); ?></h1>
+				<h2><?php _e('Environment and land','odm'); ?></h2>
 
         <?php
 
@@ -34,7 +34,7 @@
 						endif;
 					endwhile; ?>
 
-				<h1><?php _e('Economy','odm'); ?></h1>
+				<h2><?php _e('Economy','odm'); ?></h2>
 
 				<?php
 					while (have_posts()) : the_post();
@@ -46,7 +46,7 @@
 						endif;
 					endwhile; ?>
 
-				<h1><?php _e('People','odm'); ?></h1>
+				<h2><?php _e('People','odm'); ?></h2>
 
 				<?php
 					while (have_posts()) : the_post();
