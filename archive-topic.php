@@ -19,7 +19,7 @@
 
       <div class="eleven columns">
 
-				<h2><?php _e('Environment and land','odm'); ?></h2>
+				<h2 class="clearfix"><?php _e('Environment and land','odm'); ?></h2>
 
         <?php
 
@@ -36,7 +36,7 @@
 
 				<?php rewind_posts(); ?>
 
-				<h2><?php _e('Economy','odm'); ?></h2>
+				<h2 class="clearfix"><?php _e('Economy','odm'); ?></h2>
 
 				<?php
 					while (have_posts()) : the_post();
@@ -50,7 +50,7 @@
 
 				<?php rewind_posts(); ?>
 
-				<h2><?php _e('People','odm'); ?></h2>
+				<h2 class="clearfix"><?php _e('People','odm'); ?></h2>
 
 				<?php
 					while (have_posts()) : the_post();
