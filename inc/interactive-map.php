@@ -162,6 +162,7 @@ class OpenDev_InteractiveMap {
             var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
             var all_layers_value = <?php echo json_encode($layers) ?>;
             var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
+
             jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
 
             (function($) {
@@ -175,7 +176,7 @@ class OpenDev_InteractiveMap {
                 var resize_height_map_container = window.innerHeight - $("#od-head").height() + "px"; //map, layer cat, and legend
                 var resize_height_map_category = window.innerHeight - 150 + "px";
                 var resize_height_map_layer = window.innerHeight - 180+ "px";
-                var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -30 + "px";
+                var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -35 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
                 $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);

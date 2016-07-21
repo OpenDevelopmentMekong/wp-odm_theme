@@ -131,8 +131,8 @@ function display_legend_container(){
 	echo '<h2 class="widget_headline">'.__("LEGEND", "opendev");
 	echo '<i class="fa fa-caret-down hide_show_icon"></i>';
 	echo '</h2>';
-	echo '<div class="map-legend dropdown">';
 	echo '<hr class="color-line" />';
+	echo '<div class="map-legend dropdown">';
 	echo '<ul class="map-legend-ul"></ul>';
 	echo '</div>';
 	echo '</div>'; //map-legend-container
