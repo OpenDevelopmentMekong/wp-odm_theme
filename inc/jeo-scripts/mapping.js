@@ -146,13 +146,17 @@
 			$('.layer-toggle-info-container').hide();
 			$('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
 			$('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
+
+				console.log("1: "+$(this).attr('id'));
 			if ( target.is( "i.fa-info-circle" )) {
 				if ($(this).hasClass("active")){
 					$(this).removeClass("active");
 				}else{
 					$layers.find('.cat-layers li i.fa-info-circle').removeClass('active');
 					$(this).addClass("active");
+					console.log("2: "+'toggle-info-'+$(this).attr('id'));
 					if ($('.toggle-info-'+$(this).attr('id')).length){
+						console.log($(this).attr('id'));
 					//get the height position of the current object
 						  var elementHeight = $(this).height();
 						  var offsetWidth = 40;

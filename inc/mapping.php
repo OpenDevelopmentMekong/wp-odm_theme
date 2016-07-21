@@ -131,8 +131,8 @@ function display_legend_container(){
 	echo '<h2 class="widget_headline">'.__("LEGEND", "opendev");
 	echo '<i class="fa fa-caret-down hide_show_icon"></i>';
 	echo '</h2>';
-	echo '<div class="map-legend dropdown">';
 	echo '<hr class="color-line" />';
+	echo '<div class="map-legend dropdown">';
 	echo '<ul class="map-legend-ul"></ul>';
 	echo '</div>';
 	echo '</div>'; //map-legend-container
@@ -154,9 +154,9 @@ function display_layer_information($layers){
 
 		  // get post content if has
 		  if (function_exists('qtrans_use')){
-			$get_post_content_by_id = qtrans_use(odm_language_manager()->get_current_language(), $get_post_by_id->post_content,false);
+				$get_post_content_by_id = qtrans_use(odm_language_manager()->get_current_language(), $get_post_by_id->post_content,false);
 		  }else{
-			$get_post_content_by_id = $get_post_by_id->post_content;
+				$get_post_content_by_id = $get_post_by_id->post_content;
 		  }
 			if($get_download_url!="" ){
 				  $ckan_dataset_id_exploded_by_dataset = explode("/dataset/", $get_download_url);
@@ -173,7 +173,7 @@ function display_layer_information($layers){
 										"license_id" => "License"
 									);
 				  if($ckan_dataset_id!= ""):
-					  wpckan_get_metadata_info_of_dataset_by_id(CKAN_DOMAIN, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
+					  wpckan_get_metadata_info_of_dataset_by_id($ckan_domain, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
 				  endif;
 			} else if($get_post_content_by_id){ ?>
 				  <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
