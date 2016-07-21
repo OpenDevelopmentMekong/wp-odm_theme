@@ -458,4 +458,10 @@ function available_custom_post_types(){
 	 return (strpos(get_page_template(), 'page-dataset-detail') !== false);
  }
 
+ function get_categories_array($post){
+		return array_map(function($cat){
+			return $cat->name;
+		},get_the_category($post->ID));
+ }
+
  ?>
