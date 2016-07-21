@@ -53,7 +53,7 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Homepage area top', 'jeo'),
+    'name' => __('Homepage area top left', 'jeo'),
     'id' => 'homepage-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -61,8 +61,24 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area bottom left', 'jeo'),
+    'name' => __('Homepage area top right', 'jeo'),
     'id' => 'homepage-area-2',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+    'before_widget' => '',
+    'after_widget'  => ''
+  ));
+    register_sidebar(array(
+    'name' => __('Homepage area middle', 'jeo'),
+    'id' => 'homepage-area-3',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+    'before_widget' => '',
+    'after_widget'  => ''
+  ));
+    register_sidebar(array(
+    'name' => __('Homepage area bottom left', 'jeo'),
+    'id' => 'homepage-area-4',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
     'before_widget' => '',
@@ -70,7 +86,7 @@ function odm_setup_theme()
   ));
     register_sidebar(array(
     'name' => __('Homepage area bottom right', 'jeo'),
-    'id' => 'homepage-area-3',
+    'id' => 'homepage-area-5',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
     'before_widget' => '',

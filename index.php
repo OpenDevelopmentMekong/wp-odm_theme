@@ -22,24 +22,37 @@
 
  <?php endif;?>
 
- <section id="homepage-area-1" class="page-section">
+ <section id="homepage-area-1-2" class="page-section">
    <div class="container">
      <div class="row">
-      <div class="sixteen columns">
+      <div class="eight columns">
         <?php dynamic_sidebar('homepage-area-1'); ?>
+      </div>
+      <div class="eight columns">
+        <?php dynamic_sidebar('homepage-area-2'); ?>
       </div>
     </div>
    </div>
  </section>
 
- <section id="homepage-area-2-3" class="page-section">
+ <section id="homepage-area-2" class="page-section">
+   <div class="container">
+     <div class="row">
+      <div class="sixteen columns">
+        <?php dynamic_sidebar('homepage-area-2'); ?>
+      </div>
+    </div>
+   </div>
+ </section>
+
+ <section id="homepage-area-3-4" class="page-section">
    <div class="container">
      <div class="row">
       <div class="eight columns">
-        <?php dynamic_sidebar('homepage-area-2'); ?>
+        <?php dynamic_sidebar('homepage-area-3'); ?>
       </div>
       <div class="eight columns">
-        <?php dynamic_sidebar('homepage-area-3'); ?>
+        <?php dynamic_sidebar('homepage-area-4'); ?>
       </div>
     </div>
    </div>
