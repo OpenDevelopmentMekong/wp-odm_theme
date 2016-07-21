@@ -3,58 +3,60 @@
 	<section class="posts-section row">
 		<div class="container">
 
-			<div class="eight columns">
+			<div class="sixteen columns">
 				<?php get_template_part('section', 'query-actions'); ?>
+			</div>
 
-				<?php
-						$search_results = new WP_Query("s=$s & showposts=-1");
-            $NumResults = $search_results->post_count; ?>
+			<div class="sixteen columns">
+				<section id="wpckan_search_results" class="eight columns">
+					<h2><?php _e('Data results'); ?></h2>
+					<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]'); ?>
+					<?php
+	            $data_page_id = odm_get_data_page_id();
+	            if ($data_page_id) : ?>
+								<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'odm');?></a>
+				<?php endif ?>
+				</section>
+			</div>
 
-				<!-- TODO: Ensure that the query contains only valid results in order for pagination
-			  					 to match. -->
-				<ul class="odm-posts-list">
+			<?php foreach (available_post_types() as $post_type): ?>
+				<?php if (in_array($post_type->name,available_post_types_search())): ?>
+						<div class="sixteen columns">
+							<?php
+									$search_results = new WP_Query("s=$s & showposts=-1");
+			            $NumResults = $search_results->post_count; ?>
 
-					<?php foreach (available_post_types() as $post_type): ?>
-						<?php if (in_array($post_type->name,available_post_types_search())): ?>
+							<!-- TODO: Ensure that the query contains only valid results in order for pagination
+						  					 to match. -->
+							<ul class="odm-posts-list">
 
-								<h2><?php echo $post_type->labels->name ?></h2>
+							<h2><?php echo $post_type->labels->name ?></h2>
+
+							<?php
+								$counter = 0;
+								while (have_posts() and $counter < 10) : the_post(); ?>
 
 								<?php
-									$counter = 0;
-									while (have_posts() and $counter < 10) : the_post(); ?>
-
-									<?php
-										if (get_post_type() == $post_type->name):
-											$counter++;
-										?>
-										<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-											<?php odm_get_template('post-list-single-1-cols',array(
-												"post" => get_post()
-										),true); ?>
-										</li>
-									<?php	endif; ?>
-								<?php endwhile; ?>
+									if (get_post_type() == $post_type->name):
+										$counter++;
+									?>
+									<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
+										<?php odm_get_template('post-list-single-4-cols',array(
+											"post" => get_post()
+									),true); ?>
+									</li>
+								<?php	endif; ?>
+							<?php endwhile; ?>
 
 							<?php if ($counter == 0): ?>
 								<p>No results found</p>
 							<?php endif; ?>
 
-							<?php	endif; ?>
-					<?php endforeach; ?>
+							</ul>
+						</div>
 
-				</ul>
-
-			</div>
-
-			<section id="wpckan_search_results" class="eight columns">
-				<h2><?php _e('Data results'); ?></h2>
-				<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]'); ?>
-				<?php
-            $data_page_id = odm_get_data_page_id();
-            if ($data_page_id) : ?>
-							<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'odm');?></a>
-			<?php endif ?>
-			</section>
+					<?php	endif; ?>
+			<?php endforeach; ?>
 
 			<script type="text/javascript">
 				jQuery(document).ready(function($) {
