@@ -52,22 +52,27 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		echo $args['before_widget']; ?>
 
 		<div class="container">
-			<?php
-				if (!empty($instance['title'])): ?>
-					<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title']; ?></a>
-			<?php endif; ?>
+			<div class="eight columns">
+				<?php
+					if (!empty($instance['title'])): ?>
+						<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title']; ?></a>
+				<?php endif; ?>
+			</div>
+			<div class="eight columns align-right">
+				<a href="/<?php echo $post_type_slug?>"> More...</a>
+			</div>
+			<div class="sixteen columns">
+				<?php
 
-			<?php
-
-				foreach($posts as $post):
-					$template = $this->templates[$layout_type];
-					odm_get_template($template,array(
-						"post" => $post,
-						"show_meta" => $show_meta,
-						"show_excerpt" => $show_excerpt
-					),true);
-				endforeach; ?>
-
+					foreach($posts as $post):
+						$template = $this->templates[$layout_type];
+						odm_get_template($template,array(
+							"post" => $post,
+							"show_meta" => $show_meta,
+							"show_excerpt" => $show_excerpt
+						),true);
+					endforeach; ?>
+			</div>
 			<?php echo $args['after_widget']; ?>
 		</div>
 
