@@ -87,12 +87,12 @@ function megamenu_add_theme_odm_menu($themes) {
             );
         $themes["odmm_menu"] = array(
             'title' => 'ODMm Menu',
-            'container_background_from' => '#704C98',
-            'container_background_to' => '#704C98',
+            'container_background_from' => '#59396C',
+            'container_background_to' => '#59396C',
             'menu_item_background_hover_from' => '#EEEEEE',
             'menu_item_background_hover_to' => '#EEEEEE',
             'menu_item_link_color' => '#FFFFFF',
-            'menu_item_link_color_hover' => '#704C98',
+            'menu_item_link_color_hover' => '#59396C',
             'panel_background_from' => '#EEEEEE',
             'panel_background_to' => '#EEEEEE',
             'flyout_menu_background_from' => '#EEEEEE',
@@ -100,13 +100,13 @@ function megamenu_add_theme_odm_menu($themes) {
             'flyout_background_from' => '#EEEEEE',
             'flyout_background_to' => '#EEEEEE',
             'flyout_link_color' => '#F8BF42',
-            'flyout_link_color_hover' => '#704C98',
+            'flyout_link_color_hover' => '#59396C',
             'flyout_link_family' => 'inherit',
             'mobile_columns' => '1',
             'toggle_background_from' => '#EEEEEE',
             'toggle_background_to' => '#EEEEEE',
-            'mobile_background_from' => '#704C98',
-            'mobile_background_to' => '#704C98',
+            'mobile_background_from' => '#59396C',
+            'mobile_background_to' => '#59396C',
             'custom_css' => '/** Push menu onto new line **/
                 #{$wrap} {
                     clear: both;
