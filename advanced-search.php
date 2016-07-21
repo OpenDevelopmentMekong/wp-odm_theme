@@ -16,7 +16,7 @@
 
 								<!-- TODO: Ensure that the query contains only valid results in order for pagination
 							  					 to match. -->
-								<ul class="odm-posts-list">
+								<div class="odm-posts-list">
 
 								<h2><?php echo $post_type->labels->name ?></h2>
 
@@ -28,18 +28,16 @@
 										if (get_post_type() == $post_type->name):
 											$counter++;
 										?>
-										<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-											<?php odm_get_template('post-list-single-1-cols',array(
+											<?php odm_get_template('post-list-single-2-cols',array(
 												"post" => get_post()
 										),true); ?>
-										</li>
 									<?php	endif; ?>
 								<?php endwhile; ?>
 
 								<?php if ($counter == 0): ?>
 									<p>No results found</p>
 								<?php endif; ?>
-								</ul>
+								</div>
 						<?php	endif; ?>
 				<?php endforeach; ?>
 			</div>
