@@ -34,6 +34,8 @@
 						endif;
 					endwhile; ?>
 
+				<?php rewind_posts(); ?>
+
 				<h2><?php _e('Economy','odm'); ?></h2>
 
 				<?php
@@ -45,6 +47,8 @@
 		  					"show_meta" => true),true);
 						endif;
 					endwhile; ?>
+
+				<?php rewind_posts(); ?>
 
 				<h2><?php _e('People','odm'); ?></h2>
 
