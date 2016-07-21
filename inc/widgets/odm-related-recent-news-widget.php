@@ -19,7 +19,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 	 */
 
 	public function get_related_news( $category = "") {
-		if( CURRENT_LANGUAGE == "km")
+		if( odm_language_manager()->get_current_language() == "km")
 			$language = "khmer";
 		else $language = "";
 
@@ -63,7 +63,7 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
     		if ( ! empty( $instance['od_related_news_option'] ) ) {
     			$news_option = $instance['od_related_news_option'];
     			if ($news_option == 'Related To The Topics'){
-                     if (CURRENT_LANGUAGE!="en"){
+                     if (odm_language_manager()->get_current_language()!="en"){
                             $page_id = get_the_ID();
                             $post_type = get_post_type( $page_id );
                             $page_results = $wpdb->get_results($wpdb->prepare(

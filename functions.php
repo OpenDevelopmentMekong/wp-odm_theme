@@ -338,7 +338,7 @@ function odm_marker_data($data, $post)
     global $post;
 
     $permalink = $data['url'];
-    $permalink = add_query_arg(array('lang' => CURRENT_LANGUAGE), $permalink);
+    $permalink = add_query_arg(array('lang' => odm_language_manager()->get_current_language()), $permalink);
 
     $data['permalink'] = $permalink;
     $data['url'] = $permalink;

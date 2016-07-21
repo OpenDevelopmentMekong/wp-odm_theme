@@ -349,7 +349,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
       endif; ?>
       <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
         <li class="categories">
-  				<i class="fa fa-folder"></i>
+  				<i class="fa fa-folder-o"></i>
   				<?php the_category(''); ?>
   			</li>
       <?php endif; ?>
