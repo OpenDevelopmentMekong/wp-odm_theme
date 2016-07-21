@@ -107,14 +107,6 @@ class odm_AdvancedNav {
 		$s = !$s && isset($_GET['s']) ? $_GET['s'] : $s;
 		?>
 
-		<section class="container">
-			<div class="row">
-				<div class="sixteen columns">
-					<?php get_template_part('section', 'query-actions'); ?>
-				</div>
-			</div>
-		</div>
-		
 		<form class="advanced-nav-filters <?php if(isset($_GET[$this->prefix])) echo 'active'; ?>">
 			<input type="hidden" name="odm_advanced_nav" value="1" />
 			<input type="hidden" name="<?php echo $this->prefix; ?>" value="1" />
