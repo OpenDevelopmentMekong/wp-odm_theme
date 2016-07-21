@@ -49,7 +49,7 @@
 			<div class="four columns">
 				<section id="wpckan_search_results" class="eight columns">
 					<h2><?php _e('Data results'); ?></h2>
-					<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="format" blank_on_empty="true"]'); ?>
+					<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
 					<?php
 	            $data_page_id = odm_get_data_page_id();
 	            if ($data_page_id) : ?>
