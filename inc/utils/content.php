@@ -408,7 +408,7 @@ function available_custom_post_types(){
  }
 
  function available_post_types_search(){
- 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer');
+ 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer','nav_menu_item');
   }
 
  function content_types_breakdown_for_query($search_term,$posts_per_page){

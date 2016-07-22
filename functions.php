@@ -22,7 +22,7 @@ require_once get_stylesheet_directory().'/inc/query-multisite.php';
 require_once get_stylesheet_directory().'/inc/theme-options.php';
 require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
-require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
+//require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
