@@ -15,17 +15,17 @@
 			fragment = false,
 			listPost,
 			icon = L.Icon.extend({}),
-			activeIcon = new icon(odm_markers.marker_active),
+			activeIcon = new icon(opendev_markers.marker_active),
 			activeMarker;
 
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
 
-		$.getJSON(odm_markers.ajaxurl,
+		$.getJSON(opendev_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
-			query: odm_markers.query
+			query: opendev_markers.query
 		},
 		function(data) {
 			geojson = data;
@@ -39,7 +39,7 @@
 			var icons = {};
 
 			var parentLayer;
-			if(odm_markers.enable_clustering) {
+			if(opendev_markers.enable_clustering) {
 
 				parentLayer = new L.MarkerClusterGroup({
 					maxClusterRadius: 20,
@@ -95,7 +95,7 @@
 						jeo.runCallbacks('markerClicked', [e]);
 						console.log(e.target);
 						//markers.openMarker(e.target, false);
-						//window.location = e.target.feature.properties.permalink; 
+						//window.location = e.target.feature.properties.permalink;
 						window.open(e.target.feature.properties.permalink, '_blank');
 						return false;
 					});
@@ -123,7 +123,7 @@
 			var silent = false;
 
 			// if not home, navigate to post
-			if(!odm_markers.home)
+			if(!opendev_markers.home)
 				silent = false;
 
 			if(fragment) {
@@ -157,7 +157,7 @@
 
 				markers.openMarker(story, silent);
 
-			} else if(!odm_markers.home || $('html#embedded').length) {
+			} else if(!opendev_markers.home || $('html#embedded').length) {
 
 				markers.openMarker(story, silent);
 
@@ -308,8 +308,8 @@
 			// populate sidebar
 			if(map.$.sidebar && map.$.sidebar.length) {
 
-				var permalink_slug = marker.properties.permalink.replace(odm_markers.site_url, '');
-				marker.properties.permalink = odm_markers.site_url + '/' + permalink_slug;
+				var permalink_slug = marker.properties.permalink.replace(opendev_markers.site_url, '');
+				marker.properties.permalink = opendev_markers.site_url + '/' + permalink_slug;
 
 				if(!map.$.sidebar.story) {
 					map.$.sidebar.append('<div class="story" />');
@@ -361,9 +361,9 @@
 					map.$.sidebar.share = map.$.sidebar.find('.buttons');
 
 					var shareContent = '';
-					shareContent += '<a class="button read-button" href="' + storyData.url + '">' + odm_markers.read_more_label + '</a>';
-					shareContent += '<a class="button share-button" href="#">' + odm_markers.share_label + '</a>';
-					//shareContent += '<a class="button print-button" href="#" target="_blank">' + odm_markers.print_label + '</a>';
+					shareContent += '<a class="button read-button" href="' + storyData.url + '">' + opendev_markers.read_more_label + '</a>';
+					shareContent += '<a class="button share-button" href="#">' + opendev_markers.share_label + '</a>';
+					//shareContent += '<a class="button print-button" href="#" target="_blank">' + opendev_markers.print_label + '</a>';
 
 					map.$.sidebar.share.append(shareContent);
 
@@ -387,8 +387,8 @@
 					share_vars += '&map_id=' + map_id;
 				}
 
-				var embed_url = odm_markers.share_base_url + share_vars;
-				var print_url = odm_markers.embed_base_url + share_vars + '&print=1' + '#print';
+				var embed_url = opendev_markers.share_base_url + share_vars;
+				var print_url = opendev_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 				map.$.sidebar.share.find('.share-button').attr('href', embed_url);
 				map.$.sidebar.share.find('.print-button').attr('href', print_url);
@@ -408,8 +408,8 @@
 							share_vars += '&map_id=' + map_id;
 						}
 
-						embed_url = odm_markers.share_base_url + share_vars;
-						print_url = odm_markers.embed_base_url + share_vars + '&print=1' + '#print';
+						embed_url = opendev_markers.share_base_url + share_vars;
+						print_url = opendev_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 						map.$.sidebar.share.find('.share-button').attr('href', embed_url);
 						map.$.sidebar.share.find('.print-button').attr('href', print_url);
@@ -419,7 +419,7 @@
 				}
 
 				// add close button
-				if(!map.$.sidebar.find('.close-story').length && !$('html#embedded').length && odm_markers.home) {
+				if(!map.$.sidebar.find('.close-story').length && !$('html#embedded').length && opendev_markers.home) {
 
 					map.$.sidebar.append('<a class="close-story" href="#">x</a>');
 

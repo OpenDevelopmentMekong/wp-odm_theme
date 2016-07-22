@@ -106,10 +106,11 @@ class odm_AdvancedNav {
 		$s = isset($_GET[$this->prefix . 's']) ? $_GET[$this->prefix . 's'] : '';
 		$s = !$s && isset($_GET['s']) ? $_GET['s'] : $s;
 		?>
+
 		<form class="advanced-nav-filters <?php if(isset($_GET[$this->prefix])) echo 'active'; ?>">
 			<input type="hidden" name="odm_advanced_nav" value="1" />
 			<input type="hidden" name="<?php echo $this->prefix; ?>" value="1" />
-			<div class="four columns alpha">
+			<div class="three columns">
 				<div class="search-input adv-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'odm'); ?></label></p>
 					<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $s; ?>" />
@@ -120,7 +121,7 @@ class odm_AdvancedNav {
 			$active_cats = isset($_GET[$this->prefix . 'category']) ? $_GET[$this->prefix . 'category'] : array();
 			if($categories) :
 				?>
-				<div class="four columns">
+				<div class="three columns">
 					<div class="category-input adv-nav-input">
 						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'odm'); ?></label></p>
 						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
@@ -149,7 +150,7 @@ class odm_AdvancedNav {
 				unset($post_types['rssmi_feed_item']);
 				$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
 				?>
-				<div class="four columns">
+				<div class="three columns">
 					<div class="post-type-input adv-nav-input">
 						<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'odm'); ?></label></p>
 						<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select content types', 'odm'); ?>">
@@ -160,7 +161,7 @@ class odm_AdvancedNav {
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="five columns">
+			<div class="four columns">
 				<div class="date-input adv-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'odm'); ?></label></p>
 					<div class="date-range-inputs">
@@ -173,8 +174,8 @@ class odm_AdvancedNav {
 					</div>
 				</div>
 			</div>
-			<div class="four columns omega">
-				<input type="submit" class="button" value="<?php _e('Filter', 'odm'); ?>" />
+			<div class="three columns">
+				<input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
 			</div>
 		</form>
 		<script type="text/javascript">

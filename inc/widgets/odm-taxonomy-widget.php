@@ -59,7 +59,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo "<span class='nochildimage-".$site_name.$current_page."'>";
 
 			if ($get_post_id){ // if page of the topic exists
-				$hyperlink_color =  " class='".COUNTRY_NAME."-color'";
+				$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
 				echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
 			}else{
                 $hyperlink_color = "";
@@ -67,8 +67,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 			$in_category = in_category( $category->term_id );
 			if ($in_category){
-				 echo "<strong class='".COUNTRY_NAME."-color'>";
-				 $hyperlink_color =  " class='".COUNTRY_NAME."-color'";
+				 echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
+				 $hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
 			}else {
 				$hyperlink_color = "";
 			}

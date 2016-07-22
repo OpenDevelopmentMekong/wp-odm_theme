@@ -5,7 +5,7 @@
  * Map categories
  */
 
-class Odm_Map_Category {
+class OpenDev_Map_Category {
 
 	function __construct() {
 
@@ -41,8 +41,22 @@ class Odm_Map_Category {
 			'rewrite'           => array( 'slug' => 'layer-category' ),
 		);
 		register_taxonomy('layer-category', array( 'map-layer' ), $args );
+
+		//Check to see if the Base Layers is created..if not, create them
+		$baselayer_term = term_exists( 'Base Layers', 'layer-category' ); // array is returned if taxonomy is given
+		$baselayer_term_id = $baselayer_term['term_id']; // get numeric term id
+		if ($baselayer_term == 0 && $baselayer_term == null) {
+			 wp_insert_term(
+										'Base Layers', // the term
+										'layer-category', // the taxonomy
+										array(
+												'slug' => 'base-layers',
+                        'description' => 'Category for base layers')
+										);
+		}
+
 	}
 
 }
 
-$GLOBALS['odm_map_category'] = new Odm_Map_Category();
+$GLOBALS['opendev_map_category'] = new OpenDev_Map_Category();

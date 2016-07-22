@@ -25,11 +25,11 @@ function get_the_localization_language_by_website($site = '')
     return isset($language[$site_name]) ? $language[$site_name] : '';
 }
 
-function getMultilingualValueOrFallback($field, $lang)
+function getMultilingualValueOrFallback($field, $lang, $fallback)
 {
-    if (!isset($field[$lang]) || empty($field[$lang])) {
-        return $field['en'];
-    }
+    if (!isset($field[$lang]) || empty($field[$lang])):
+      return $fallback;
+    endif;
 
     return $field[$lang];
 }
@@ -37,7 +37,7 @@ function getMultilingualValueOrFallback($field, $lang)
 /****** Add function convert date, H-E/**/
 function convert_date_to_kh_date($date_string, $splitted_by = '.')
 {
-    if (CURRENT_LANGUAGE == 'km') {
+    if (odm_language_manager()->get_current_language() == 'km') {
         $splitted_date = explode($splitted_by, $date_string);
         $joined_date = '';
         if (count($splitted_date) > 1) {
@@ -76,7 +76,7 @@ function convert_date_to_kh_date($date_string, $splitted_by = '.')
 }
 function convert_to_kh_month($month = '')
 {
-    if (CURRENT_LANGUAGE == 'km') {
+    if (odm_language_manager()->get_current_language() == 'km') {
         if ($month == 'Jan') {
             $kh_month = 'មករា';
         } elseif ($month == 'Feb') {
@@ -159,7 +159,7 @@ function convert_to_kh_month($month = '')
 
 function convert_to_kh_number($number)
 {
-    if (CURRENT_LANGUAGE == 'km') {
+    if (odm_language_manager()->get_current_language() == 'km') {
         $conbine_num = '';
         $split_num = str_split($number);
         foreach ($split_num as $num) {
@@ -194,4 +194,12 @@ function convert_to_kh_number($number)
     } else {
         return $number;
     }
+}
+
+function remove_language_code_from_url($url){
+  $lang_code = substr($url,0,4);
+  if ($lang_code == "/km/" || $lang_code == "/th/" || $lang_code == "/vi/" || $lang_code == "/my/" || $lang_code == "/la/"):
+    $url = substr($url,3);
+  endif;
+  return $url;
 }

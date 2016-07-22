@@ -121,20 +121,19 @@
 
 /*********toggle metadata of dataset ***/
 .profiles_page {
+
 	.layer-toggle-info-container {
 		display: inline-block;
 	}
 
 	.toggle-info {
-		display: none;
-		height: 100%;
-		max-height: 500px;
-		width: 500px;
-
-		.toggle-talbe tr:first-child {
-			display: none;
-		}
+    margin-top: @med-padd;
+		width: 100%;
 	}
+
+  .toggle-table tr:first-child {
+    display: none;
+  }
 }
 
 #od-selector ul.menu > li > ul li{
@@ -142,9 +141,9 @@
 	  border-bottom: 0px;
 	}
 
-	a, 
+	a,
 	&:last-child > ul li a {
-		border-bottom: 1px solid #ddd;		
+		border-bottom: 1px solid #ddd;
 	}
 
 }

@@ -1,4 +1,5 @@
 /* Layout Related Styles */
+
 body{
   display: inline-table;
 }
@@ -7,7 +8,7 @@ body{
  clear:both;
 }
 .float-right {
-    float: right
+  float: right
 }
 .float-left {
     float: left
@@ -17,6 +18,9 @@ body{
 }
 .align-center{
   text-align: center;
+}
+.align-right{
+  text-align: right;
 }
 
 #colophon {
@@ -36,39 +40,71 @@ body{
 	position: relative;
 	height: @grid-height;
 	text-align: left;
-	background: @primary-color;
+	background: @black;
 	margin-bottom: @big-padd;
 	font-family: @title-font;
-	font-weight: lighter;
+
 	.grid-content-wrapper {
 		padding: 10px;
 
-		.post-grid-item-title {
-			font-size: @font-size-h4;
-			margin-bottom: 15px;
+		color: @white;
+
+    .item-post-type {
+      background: @white;
+      color: @black;
+      padding: @xsmall-padd @small-padd;
+    }
+
+		.item-title {
+      font-family: @title-font;
+			font-size: @font-size-h3;
 			display: inline-block;
+      color: @white;
+      z-index: 2;
+      padding: @xsmall-padd;
+		}
+
+		.post-meta > ul > li {
+			display: block;
 		}
 
 		.post-meta {
+      z-index: 2;
+      margin: 0px;
+      position: absolute;
+      bottom: 0px;
+      padding: @xsmall-padd;
+
+			.date {
+				color: @white;
+			}
+
+      ul{
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
+
 			li {
 				margin-bottom: 10px;
 				padding-right: 0px;
 			}
-			.date {
-				color: @white;
+
+			.categories {
+				display: none;
 			}
-			.fa {
+			.post-categories li a {
 				color: @white;
+				background: transparent;
 			}
 		}
 
 		img {
 			position: absolute;
-		    z-index: 1;
-		    height: 100%;
-		    top: 0;
-		    left: 0;
-			opacity: 0.2;
+	    z-index: 1;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+			opacity: 0.3;
 		}
 
 		a {
@@ -85,7 +121,6 @@ body{
 			top: 0px;
 			left: 0px;
 			z-index: 10;
-			color: @white;
 		}
 
 	}
@@ -95,39 +130,59 @@ body{
 .post-list-item{
 	margin-bottom: @small-padd;
 
+  p {
+    margin-bottom: @xsmall-padd;
+  }
+
 	img {
 		width: 50px;
     height: 50px;
-    margin: 0px 4px 4px 0px;
+    margin: 0px 8px 8px 0px;
 	}
 
-  .post-meta {
-		ul {
-			margin-left: 0px;
-			li {
-				margin-right: 5px;
-				color: @primary-color;
-				font-size: @base-font-size;
-				margin-bottom: 5px;
-			}
-		}
+  .item-post-type {
+    background: @black;
+    color: @white;
+  }
+
+  .item-title {
+    font-family: @title-font;
+    font-size: @font-size-h4;
+    text-decoration: none;
+    text-transform: none !important;
 	}
 
-	a {
-		text-decoration: none;
+	.item-content {
+    overflow: hidden;
+
+    img{
+      float:left;
+    }
+
+    .post-meta {
+      text-align: right;
+
+  		ul {
+  			margin-left: 0px;
+
+  			li {
+  				margin-right: 5px;
+  				color: @primary-color;
+  				font-size: @base-font-size;
+  				margin-bottom: 5px;
+  			}
+
+  		}
+
+      li, i, a{
+        font-size: @font-size-h6 !important;
+      }
+
+  	}
+
 	}
 
-  .post-list-item-title {
-		font-family: @title-font;
-		font-size: @font-size-h3;
-		margin-bottom: 10px;
-	}
-
-	.post-list-item-content {
-		display: inline-flex;
-	}
-
-	.post-excerpt {
+	.post-excerpt, .excerpt {
 		.text-ellipsis(3);
 	}
 
@@ -142,11 +197,14 @@ body{
 
   ul{
     list-style-type: none;
+    margin-left: 0px !important;
+    margin-bottom: 0px;
   }
 
   li{
     list-style-type: none;
     display: inline-block;
+    margin-bottom: 0px;
   }
   .categories li, .post-categories li {
   	margin-bottom: 0px !important;
@@ -159,8 +217,8 @@ body{
 
 .panel{
   padding: @small-padd;
-  background: @light-gray;
-  border: 1px solid @gray;
+  background: @almost-white;
+  border: 1px solid @light-gray;
 }
 
 .clearfix {

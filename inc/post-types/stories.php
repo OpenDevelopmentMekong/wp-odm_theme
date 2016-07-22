@@ -40,7 +40,7 @@ class Odm_Story {
 			'show_in_menu'       => true,
 			'menu_icon' 				 => '',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'story' ),
+			'rewrite'            => array( 'slug' => 'stories' ),
 			'capability_type'    => 'post',
 			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,

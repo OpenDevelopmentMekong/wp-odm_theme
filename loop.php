@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="eleven columns">
 				<?php get_template_part('section', 'query-actions'); ?>
-				<ul class="odm-posts-list">
+				<ul>
 					<?php while (have_posts()) : the_post(); ?>
 						<li id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
 							<article id="post-<?php the_ID(); ?>">
@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 
-			<div class="four columns offset-by-one move-up">
+			<div class="four columns offset-by-one">
 				<aside id="sidebar">
 					<ul class="widgets">
 						<li class="widget share-widget">

@@ -3,19 +3,35 @@
 body {
 	font-family: @primary-font;
 	color: @primary-color;
+	font-size: @base-font-size;
 	font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: @title-font;
-	font-weight: lighter;
+	font-weight: bolder;
 }
 
-h1 { font-size: @font-size-h1; }
-h2 { font-size: @font-size-h2; }
-h3 { font-size: @font-size-h3; }
-h4 { font-size: @font-size-h4; }
-h5 { font-size: @font-size-h5; }
+h1 {
+	font-size: @font-size-h1;
+	line-height: @title-line-height;
+}
+h2 {
+	font-size: @font-size-h2;
+	line-height: @title-line-height;
+}
+h3 {
+	font-size: @font-size-h3;
+	line-height: @subtitle-line-height;
+}
+h4 {
+	font-size: @font-size-h4;
+	line-height: @subtitle-line-height;
+}
+h5 {
+	font-size: @font-size-h5;
+	line-height: @subtitle-line-height;
+}
 
 p {
 	font-family: @primary-font;
@@ -24,24 +40,22 @@ p {
 	font-weight: normal;
 }
 
-a {
+a{
 	text-decoration: none;
+	font-family: @primary-font;
+	color: @mekong-bright;
+	font-size: @base-font-size;
+	font-weight: normal;
 }
 
-a,
-a:vistited,
-a:hover,
-a strong:hover {
+a:visited {
+	text-decoration: none;
 	color: @mekong-bright;
 }
 
-a, a:vistited {
-	text-decoration: none;
-}
-
 a:hover,
-a strong:hover {
-	text-decoration: underline;
+a strong:hover{
+	color: @mekong-dark;
 }
 
 .excerpt { font-weight: light; }

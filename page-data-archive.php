@@ -6,16 +6,17 @@ Template Name: Data archive
 <?php get_header(); ?>
 
 <?php if (have_posts()) : the_post(); ?>
-	<section id="content" class="single-post data-page">
-		<header class="single-post-header">
-			<div class="container">
-				<div class="sixteen columns">
-					<h1><span class="icon-archive"></span> <?php the_title(); ?></h1>
-					<p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odm'); ?></a></p>
-				</div>
-			</div>
-		</header>
-		<div class="container">
+
+    <section class="container section-title main-title">
+  		<header class="row">
+  			<div class="sixteen columns">
+  				<h1><?php the_title(); ?></h1>
+          <p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odm'); ?></a></p>
+  			</div>
+  		</header>
+  	</section>
+
+		<section class="container">
 			<div class="eleven columns">
 				<?php the_content(); ?>
 			</div>
@@ -58,8 +59,7 @@ Template Name: Data archive
 					</ul>
 				</aside>
 			</div>
-		</div>
-	</section>
+	  </section>
 <?php endif; ?>
 
 <?php get_footer(); ?>

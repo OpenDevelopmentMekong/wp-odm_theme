@@ -148,7 +148,7 @@
                      the_excerpt();
                    }
                    else{
-                     echo excerpt(20, __('Keep reading', 'odm'));
+                     echo odm_excerpt(20, __('Keep reading', 'odm'));
                    }
                 ?>
               </section>

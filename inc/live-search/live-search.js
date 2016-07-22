@@ -2,14 +2,24 @@
 
 	var spinner;
 
+  var stopSpinner = function(){
+    spinner.stop();
+    spinner = null;
+  };
+
 	var initSpinner = function(target){
 		var opts = {
-			top: '50%' ,
-      left: '50%',
-			scale: 0.1,
-      position: 'absolute'
+      lines: 13, // The number of lines to draw
+      length: 5, // The length of each line
+      width: 2, // The line thickness
+      radius:5, // The radius of the inner circle
+      top: "50%",
+      left: "50%",
+      position: "absolute"
 		};
-		spinner = new Spinner(opts).spin();
+    if (!spinner){
+      spinner = new Spinner(opts).spin();
+    }
 		target.append(spinner.el);
 	};
 
@@ -23,7 +33,12 @@
 			},
 			dataType: 'json',
 			success: function(data) {
-				cb(data);
+        cb(data);
+
+        if (spinner){
+          stopSpinner();
+        }
+
         $('#close-results').click(function(e) {
 		    	$('.results-container').hide();
         });
@@ -33,33 +48,30 @@
 	}, 200);
 
 	var display = function(resultsContainer,data, s) {
+
 		var results = $('<div class="results">');
 
 		// wp based results
     _.each(data.wp, function(postType, i){
 
-      var column = $('<div class="four columns"><h1>' + postType.title + '</h1></div>');
+      var column = $('<div class="four columns"><h2>' + postType.title + '</h2></div>');
 
       if (postType.posts.length >0){
 
         _.each(postType.posts, function(item, i) {
     			//var type = $('<p class="type">' + postType.title + '</p>');
-    			var title = $('<p><a class="post-list-item-title">' + item.title + '</a></p>');
+    			var title = $('<p><a class="item-title">' + item.title + '</a></p>');
     			var thumbnail = $(item.thumbnail);
-					var content = $('<div class="post-list-item-content"></div>');
-    			var desc = $('<p class="excerpt">' + item.excerpt + '</p>');
-    			var link = $('<a href="' + item.url + '" title="' + item.title + '">' + item.title + '</a>');
+				  var content = $('<div class="item-content"></div>');
+    			var desc = $('<div class="post-excerpt">' + item.excerpt + '</div>');
 
 					content.append(thumbnail);
 					content.append(desc);
 
-    			var item = $('<div class="post-list-item">')
-    				//.append(type)
-    				.append(title.html(link))
-    				.append(content);
-
-    			item.addClass('item-' + (i+1));
-    			column.append(item);
+    			var postItem = $('<div class="post-list-item">');
+          		postItem.append(title);
+          		postItem.append(content);
+    			column.append(postItem);
 
     		});
       }else{
@@ -78,9 +90,8 @@
     // Results
 		resultsContainer.find('.results').remove();
     $('#od-search-results').show();
-		resultsContainer.show();
+		resultsContainer.slideDown();
 		resultsContainer.append(results);
-
 
     // More results
 		resultsContainer.find('.more').remove();
@@ -97,8 +108,7 @@
 		buttons.append(close);
     resultsContainer.append(buttons);
 
-
-		spinner.stop();
+		stopSpinner();
 
 	};
 
@@ -115,7 +125,7 @@
 
 				var s = $(this).val();
 				if(s) {
-					initSpinner($livesearch);
+					initSpinner($('#mega-menu-wrap-header_menu'));
 					query(s, function(data) {
 						if(self.val())
 							display($resultsContainer, data, s);
@@ -123,7 +133,7 @@
 							$livesearch.find('.results').remove();
 					});
 				} else {
-					spinner.stop();
+					stopSpinner();
 					$livesearch.find('.results').remove();
 		      $resultsContainer.hide();
 				}

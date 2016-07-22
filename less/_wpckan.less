@@ -1,3 +1,17 @@
+.wpckan_dataset_list{
+
+  .wpckan_dataset_title{
+    margin-bottom: @small-padd;
+  }
+
+  .wpckan_dataset_title a{
+    font-family: @title-font;
+    font-size: @font-size-h4;
+    text-decoration: none;
+  }
+
+}
+
 .wpckan_dataset_detail{
 
   h2 {
@@ -46,7 +60,6 @@
       list-style-type: none !important;
       display: inline-block;
       font-size: 18px;
-      font-weight: lighter;
       line-height: 34px;
       margin-bottom: 8px;
     }
@@ -73,6 +86,10 @@
     td:first-child p{
       font-weight: bold;
       min-width: 80px;
+    }
+
+    td p{
+      margin-bottom: 0px;
     }
 
   }
@@ -152,6 +169,7 @@
 
     .wpckan_dataset_resource_url{
       text-align: right;
+      min-width: 140px;
     }
 
   }

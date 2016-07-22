@@ -83,12 +83,7 @@ td{
 
 	li {
 		display: inline-block;
-  		float: none !important;
-
-  		a:hover {
-  			background: #333;
-  			color: #eee;
-  		}
+		float: none !important;
 	}
 }
 
@@ -138,7 +133,7 @@ td{
 }
 
 .leaflet-div-icon {
-	background: url(../img/marker.png) no-repeat !important;
+	background: url(../../img/marker.png) no-repeat !important;
 	width: 25px !important;
 	height: 30px !important;
 	margin-top: -30px !important;
@@ -178,23 +173,8 @@ td{
 
 /* Headings */
 
-.search .section-title h1 {
+.search h1 {
 	margin: 10px 0;
-}
-
-.section-title, .single-post-header, .page-header {
-	background: transparent;
-	box-shadow: 0 0 0;
-	-webkit-box-shadow: 0 0 0;
-	-moz-box-shadow: 0 0 0;
-	-khtml-box-shadow: 0 0 0;
-	-o-box-shadow: 0 0 0;
-	margin: 0;
-	padding-top: 0;
-}
-
-.single-post-header ul li{
-	list-style-type: none;
 }
 
 .poat-date-source{
@@ -213,36 +193,6 @@ td{
 	font-size: @base-font-size;
 }
 
-.post-header, .single-post-header {
-	.icon-news {
-		font-size: @font-size-h3;
-	}
-	.new-sources {
-		color: @gray;
-		display:inline;
-		font-size: @base-font-size;
-	}
-}
-
-.single-post-header {
-
-  margin-left: 0;
-  ul {
-    margin-left: 0px !important;
-  }
-
-  ul li{
-    padding-right: @small-padd;
-    float: left;
-    list-style-type: none !important;
-  }
-
-	.lsf {
-		color: #666666;
-		margin-right: 5px;
-	}
-}
-
 .section-content {
 	.post-tags {
 		color: @gray;
@@ -253,7 +203,7 @@ td{
 
 .section-title {
 	padding: 5px 0 15px;
-	border-bottom: 1px solid #ddd;
+  box-shadow: none;
 	margin: 0;
 
 	h2, h3 {
@@ -262,7 +212,7 @@ td{
 		line-height: 18px;
 		text-transform: uppercase;
 
-		a {
+		a {cd
 			text-decoration: none;
 		}
 	}
@@ -288,7 +238,7 @@ td{
 .query-actions {
 	text-align: right;
 	margin-bottom: 0;
-	margin-top: -1.5em;
+  padding-top: 10px;
 
 	.query-actions-title {
 		font-weight: 600;
@@ -313,19 +263,11 @@ td{
 
 }
 
-.move-up{
-  margin-top: -5em;
-}
-
-.single-post-header h1,
 .page-header h1,
 .archive-title {
 	padding-bottom: 20px;
 }
 
-.single-post-header h2{
-	padding-left: 20px;
-}
 .archive-title {
 	float: left;
 }
@@ -417,7 +359,6 @@ td{
 		div.description {
 			p {
 				a, a:visited {
-					color: #888;
 					word-wrap: break-word;
 				}
 			}

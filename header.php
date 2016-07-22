@@ -1,6 +1,5 @@
-<?php ?>
 <!DOCTYPE html>
-<html data-country="<?php echo $country; ?>" <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?>>
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,21 +36,18 @@
   <!-- Country and language selector nav -->
   <nav id="od-selector">
     <div class="container">
-      <div class="row">
         <div class="eight columns">
           <?php odm_country_manager()->echo_country_selectors(); ?>
         </div>
         <div class="eight columns">
           <?php odm_language_manager()->echo_language_selectors(); ?>
         </div>
-      </div>
     </div>
   </nav>
 
   <!-- Logo and contact icons -->
   <header id="od-head">
     <div class="container">
-      <div class="row">
         <div class="thirteen columns">
           <div class="site-meta">
             <?php odm_logo(); ?>
@@ -62,19 +58,14 @@
             <?php odm_get_template('social-nav',array(),true); ?>
           </div>
         </div>
-      </div>
     </div>
   </header>
 
   <!-- Menu and search -->
   <nav id="od-menu">
       <div class="container">
-        <div class="row">
-
-          <div class="sixteen columns">
-            <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
-          </div>
-
+        <div class="sixteen columns">
+          <?php wp_nav_menu(array('theme_location' => 'header_menu')); ?>
         </div>
       </div>
   </nav>
@@ -82,7 +73,7 @@
   <!-- Submenu -->
   <nav id="od-search-results">
     <div class="container">
-      <div class="row">
+      <div class="sixteen columns">
         <div class="results-container"></div>
       </div>
     </div>
@@ -117,7 +108,7 @@
       <div class="row">
         <div class="sixteen columns">
         <?php
-          if (!is_front_page()) : ?>
+          if (!is_front_page() && !is_page('map-explorer')) : ?>
             <div id="main-breadcrumb">
               <?php echo_the_breadcrumb(); ?>
             </div>

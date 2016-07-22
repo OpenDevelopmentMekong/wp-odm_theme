@@ -40,7 +40,7 @@ class Odm_Site_Updates {
 			'show_in_menu'       => true,
 			'menu_icon' 				 => '',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'site-update' ),
+			'rewrite'            => array( 'slug' => 'updates' ),
 			'capability_type'    => 'post',
 			'taxonomies'         => array( 'category', 'post_tag'),
 			'has_archive'        => true,

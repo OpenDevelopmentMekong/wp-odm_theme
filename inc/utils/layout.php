@@ -19,16 +19,16 @@ function odm_get_thumbnail($post_id = false, $fallback = false)
 function odm_logo()
 {
   ?>
-  <h1>
-   <a href="<?php echo home_url('/');?>" title="<?php bloginfo('name');?>">
+
+  <div id="od-logo">
     <span class="icon-od-logo"></span>
-    Op<sup>e</sup>nDevelopment
-   </a>
-  </h1>
+    <h1>Op<sup>e</sup>nDevelopment</h1>
+  </div>
+
   <?php
-  echo '<div class="ms-dropdown-title">';
-    echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
-    echo '</div>';
+  echo '<div>';
+  echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
+  echo '</div>';
 }
 
 /**

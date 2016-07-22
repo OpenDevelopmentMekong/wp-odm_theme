@@ -1,9 +1,17 @@
 <?php get_header(); ?>
 
 <div class="section-title">
+
+	<section class="container">
+		<div class="row">
+			<div class="sixteen columns">
+				<?php get_template_part('section', 'query-actions'); ?>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="sixteen columns">
-			<!--<h1><?php _e('Search results', 'jeo'); ?></h1-->
 			<div class="panel more-filters-content row">
 				<?php odm_adv_nav_filters(); ?>
 			</div>
