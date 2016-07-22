@@ -415,7 +415,7 @@ add_action('admin_footer', 'odm_custom_admin_css', 100);
 
 function odm_return_all_topics( $query ) {
 
-  if ($query->is_archive && $query->post_type == 'topic') {
+  if ($query->is_archive && $query->get('post_type') == 'topic') {
       $query->query_vars['posts_per_page'] = 1000;
   }
 
