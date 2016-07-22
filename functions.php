@@ -134,6 +134,18 @@ function odm_setup_theme()
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
+    register_sidebar(array(
+    'name' => __('Story top', 'jeo'),
+    'id' => 'story-top',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ));
+  register_sidebar(array(
+  'name' => __('Story bottom', 'jeo'),
+  'id' => 'story-bottom',
+  'before_title' => '<h2 class="widget-title">',
+  'after_title' => '</h2>',
+  ));
 
   include get_stylesheet_directory().'/inc/layers.php';
 }
