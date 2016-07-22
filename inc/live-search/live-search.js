@@ -60,9 +60,9 @@
 
         _.each(postType.posts, function(item, i) {
     			//var type = $('<p class="type">' + postType.title + '</p>');
-    			var title = $('<p><a class="post-list-item-title">' + item.title + '</a></p>');
+    			var title = $('<p><a class="item-title">' + item.title + '</a></p>');
     			var thumbnail = $(item.thumbnail);
-				  var content = $('<div class="post-list-item-content"></div>');
+				  var content = $('<div class="item-content"></div>');
     			var desc = $('<div class="post-excerpt">' + item.excerpt + '</div>');
 
 					content.append(thumbnail);

@@ -3,53 +3,27 @@
 	<section class="container">
 		<div class="row">
 
-			<div class="ten columns">
-				<?php foreach (available_post_types() as $post_type): ?>
-					<?php if (in_array($post_type->name,available_post_types_search())): ?>
-						<?php
-								$search_results = new WP_Query("s=$s & showposts=-1");
-		            $NumResults = $search_results->post_count; ?>
-
-						<!-- TODO: Ensure that the query contains only valid results in order for pagination
-					  					 to match. -->
-						<div class="odm-posts-list">
-
-						<h2 class="clearfix"><?php echo $post_type->labels->name ?></h2>
-
-						<?php
-							$counter = 0;
-							while (have_posts() and $counter < 10) : the_post(); ?>
-
-							<?php
-								if (get_post_type() == $post_type->name):
-									$counter++;
-								?>
-									<?php odm_get_template('post-list-single-2-cols',array(
-										"post" => get_post(),
-										"show_meta" => true,
-										"show_excerpt" => true
-								),true); ?>
-							<?php	endif; ?>
-						<?php endwhile; ?>
-
-						<?php if ($counter == 0): ?>
-							<p>No results found</p>
-						<?php endif; ?>
-						</div>
-					<?php	endif; ?>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="six columns">
-				<section id="wpckan_search_results" class="eight columns">
-					<h2><?php _e('Data results'); ?></h2>
-					<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
+			<div class="sixteen columns">
 					<?php
-	            $data_page_id = odm_get_data_page_id();
-	            if ($data_page_id) : ?>
-								<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'odm');?></a>
-				<?php endif ?>
-				</section>
+						global $wp_query;
+						$args = array(
+							"s" => $s,
+							"posts_per_page" => -1,
+							"post_status" => "published"
+						);
+						$search_results = new WP_Query($args); ?>
+
+						<?php
+							while (have_posts()) : the_post(); ?>
+								<?php odm_get_template('post-list-single-2-cols',array(
+									"post" => get_post(),
+									"show_meta" => true,
+									"show_excerpt" => true,
+									"show_post_type" => true
+								),true);
+							endwhile;
+						?>
+
 			</div>
 
 			<script type="text/javascript">

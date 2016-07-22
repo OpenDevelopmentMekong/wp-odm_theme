@@ -49,7 +49,13 @@ body{
 
 		color: @white;
 
-		.post-grid-item-title {
+    .item-post-type {
+      background: @white;
+      color: @black;
+      padding: @xsmall-padd @small-padd;
+    }
+
+		.item-title {
       font-family: @title-font;
 			font-size: @font-size-h3;
 			display: inline-block;
@@ -134,14 +140,20 @@ body{
     margin: 0px 8px 8px 0px;
 	}
 
-  .post-list-item-title {
+  .item-post-type {
+    background: @black;
+    color: @white;
+    padding: @xsmall-padd @small-padd;
+  }
+
+  .item-title {
     font-family: @title-font;
     font-size: @font-size-h4;
     text-decoration: none;
     text-transform: none !important;
 	}
 
-	.post-list-item-content {
+	.item-content {
     overflow: hidden;
 
     img{
