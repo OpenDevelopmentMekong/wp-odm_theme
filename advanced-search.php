@@ -13,6 +13,14 @@
 						);
 						$search_results = new WP_Query($args); ?>
 
+						<?php if (jeo_has_marker_location()): ?>
+							<section id="featured-media" class="row">
+								<div style="height:350px;">
+									<?php jeo_map(); ?>
+								</div>
+							</section>
+						<?php endif; ?>
+
 						<?php
 							while (have_posts()) : the_post(); ?>
 								<?php odm_get_template('post-list-single-2-cols',array(
