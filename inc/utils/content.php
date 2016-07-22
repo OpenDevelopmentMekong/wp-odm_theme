@@ -362,11 +362,11 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 	<?php
 
 }
- //to set get_the_excerpt() limit words
+
  function odm_excerpt($post, $num = 40, $read_more = '')
  {
 		 $limit = $num + 1;
-		 $excerpt = explode(' ', strip_shortcodes($post->post_content), $limit);
+		 $excerpt = explode(' ', strip_shortcodes(get_the_excerpt($post->ID)), $limit);
 		 array_pop($excerpt);
 		 $excerpt_string = implode(' ', $excerpt);
 		 $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
@@ -408,7 +408,7 @@ function available_custom_post_types(){
  }
 
  function available_post_types_search(){
- 	 return array('topic','annoucement','profile','site-update','news-article','story');
+ 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer','nav_menu_item');
   }
 
  function content_types_breakdown_for_query($search_term,$posts_per_page){

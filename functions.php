@@ -22,7 +22,7 @@ require_once get_stylesheet_directory().'/inc/query-multisite.php';
 require_once get_stylesheet_directory().'/inc/theme-options.php';
 require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
-require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
+//require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
@@ -437,7 +437,7 @@ add_action( 'pre_get_posts', 'odm_return_all_topics' );
 function odm_search_pre_get_posts($query)
 {
     if (!is_admin() && ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
-      $query->set('post_type', get_post_types());
+      $query->set('post_type', available_post_types_search());
     }
 }
 add_action('pre_get_posts', 'odm_search_pre_get_posts');
