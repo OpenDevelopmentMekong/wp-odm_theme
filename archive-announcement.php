@@ -28,7 +28,7 @@
 
       <div class="four columns offset-by-one">
         <?php dynamic_sidebar('archive-sidebar'); ?>
-      </div>
+			</div>
 
     </div>
 
