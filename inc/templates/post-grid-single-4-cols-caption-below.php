@@ -3,8 +3,20 @@
 	$show_meta = $params["show_meta"];
 	?>
 
-<div class="four columns post-grid-item">
+<div class="four columns post-grid-item post-grid-item-caption-bolow">
 	<div class="grid-content-wrapper">
+		<?php if ($show_meta): ?>
+		<div class="meta">
+				<?php echo_post_meta($post,array('date','sources','categories')); ?>
+		</div>
+		<?php endif; ?>
+		<?php
+			$thumb_src = odm_get_thumbnail($post->ID);
+			if (isset($thumb_src)):
+				echo $thumb_src;
+			endif;
+		?>
+
 		<?php
 		if (isset($post->title_and_link) && $post->title_and_link != "") :
 			echo $post->title_and_link;
@@ -22,16 +34,5 @@
 			<?php
 		endif;
 		?>
-
-		<?php if ($show_meta): ?>
-		<div class="meta">
-				<?php echo_post_meta($post,array('date','sources','categories')); ?>
-		</div>
-		<?php endif; ?>
-		<?php
-			$thumb_src = odm_get_thumbnail($post->ID);
-			if (isset($thumb_src)):
-				echo $thumb_src;
-			endif; ?>
 	</div>
 </div>
