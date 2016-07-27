@@ -43,6 +43,7 @@ body{
 	background: @black;
 	margin-bottom: @big-padd;
 	font-family: @title-font;
+  overflow: hidden;
 
 	.grid-content-wrapper {
 		padding: 10px;
@@ -105,6 +106,19 @@ body{
 	    top: 0;
 	    left: 0;
 			opacity: 0.3;
+
+      //max-width: none;
+      //height: 400px;
+      -webkit-transition: opacity 1s, -webkit-transform 1s;
+      transition: opacity 1s, transform 1s;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+
+      &:hover {
+        opacity: 0.4;
+        -webkit-transform: scale3d(1.1,1.1,1);
+        transform: scale3d(1.2,1.2,1);
+      }
 		}
 
 		a {
