@@ -4,7 +4,7 @@
 @import "_country-mixin.less";
 
 @cambodia-bright: #97D320;
-@cambodia-bgcolor: #12414E;
+@cambodia-bgcolor: #06323D;
 
 body{
   font: 14px/24px 'Suwannaphum', "Open Sans";
@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 #cambodia-bgcolor, .cambodia-bgcolor{
     background: @cambodia-bright !important
+}
+
+#cambodia-bgdarkcolor, .cambodia-bgdarkcolor{
+    background: @cambodia-bgcolor !important
 }
 
 .country-mixin(@cambodia-bright, @cambodia-bgcolor);

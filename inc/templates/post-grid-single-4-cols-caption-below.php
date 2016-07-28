@@ -1,9 +1,9 @@
 <?php
 	$post = $params["post"];
-	$show_meta = $params["show_meta"];
+	$show_meta = $params["show_meta"]; 
 	?>
 
-<div class="four columns post-grid-item post-grid-item-caption-bolow">
+<div class="four columns post-grid-item post-grid-item-caption-bolow <?php echo odm_country_manager()->get_current_country(); ?>-bgdarkcolor">
 	<div class="grid-content-wrapper">
 		<?php if ($show_meta): ?>
 		<div class="meta">
