@@ -26,13 +26,13 @@
 			<?php
 		endif;
 		?>
-		<?php
+		<?php /*
 		if (isset($post->description) && $post->description != "") :?>
 			<div class="post-grid-item-list">
 					<?php echo $post->description;   ?>
 			</div>
 			<?php
-		endif;
+		endif;*/
 		?>
 	</div>
 </div>
