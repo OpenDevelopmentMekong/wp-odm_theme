@@ -350,7 +350,7 @@ function get_layer_information_in_array($post_ID){
 	}else {
 		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
 	}
-
+	/*
 	if(function_exists("wpckan_api_package_show")):
 		$dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$get_ckan_dataset_id[1]);
 		if (is_array($dataset['resources'])) {
@@ -363,7 +363,7 @@ function get_layer_information_in_array($post_ID){
 					}
 			}
 	endif;
-
+	*/
 
 	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
 	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
@@ -374,7 +374,7 @@ function get_layer_information_in_array($post_ID){
 								"post_title" => get_the_title(),
 								"download_link" => $download_link,
 								"title_and_link" => $title_and_link,
-								"thumbnail_link" => $thumbnail_url,
+								//"thumbnail_link" => $thumbnail_url,
 								//"description" => get_the_content(),
 								"category" => $layer_cat[0]->name,
 								"parent" => $layer_cat[0]->parent
