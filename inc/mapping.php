@@ -350,7 +350,7 @@ function get_layer_information_in_array($post_ID){
 	}else {
 		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
 	}
-	$title_and_link = "<a class='post-grid-item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
+	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
 
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
@@ -394,7 +394,7 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 
 			$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
-										"title_and_link" => "<div class='post-grid-item-title'>".$child_term->name."</div>",
+										"title_and_link" => "<div class='item-title'>".$child_term->name."</div>",
 										"description" => "<ul>" .$layers_list."</ul>",
 										"category" => $child_term->name,
 										"parent" => $child_term->parent

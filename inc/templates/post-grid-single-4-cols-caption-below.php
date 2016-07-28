@@ -1,6 +1,6 @@
 <?php
 	$post = $params["post"];
-	$show_meta = $params["show_meta"]; 
+	$show_meta = $params["show_meta"];
 	?>
 
 <div class="four columns post-grid-item post-grid-item-caption-bolow <?php echo odm_country_manager()->get_current_country(); ?>-bgdarkcolor">
@@ -22,7 +22,7 @@
 			echo $post->title_and_link;
 		else:
 			?>
-			<a class="post-grid-item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+			<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 			<?php
 		endif;
 		?>
