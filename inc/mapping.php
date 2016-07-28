@@ -126,6 +126,74 @@ function query_get_layer_posts($term_id, $num=-1, $include_children=false){
 	return $layers;
 }
 
+function get_all_layers_grouped_by_subcategory($layer_taxonomy='layer-category'){
+	//List cetegory and layer by cat for menu items
+		$layer_taxonomy = 'layer-category';
+		$layer_term_args=array(
+			'parent' => 0,
+			'orderby'   => 'name',
+			'order'   => 'ASC'
+		);
+
+		$terms_layer = get_terms($layer_taxonomy,$layer_term_args);
+		if ($terms_layer) {
+			foreach( $terms_layer as $term ) {
+				$query_layer = query_get_layer_posts($term->term_id);
+				if($query_layer->have_posts() ){
+					while ( $query_layer->have_posts() ) : $query_layer->the_post();
+							if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+									$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
+						}
+					endwhile;
+					wp_reset_postdata();
+				} //$query_layer->have_posts
+
+				//Get Layers of subcategory
+				$children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+				if ( !empty($children_term) ) {
+					foreach($children_term as $child){
+						$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
+						//check if the sub category has children
+						$has_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+						if ( !empty($has_children) ) {
+							foreach($has_children as $sub_child){
+								$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
+							}
+						}
+					}//foreach
+				}//if empty($children_term) )
+			}//foreach $terms_layer
+
+			//Sort Map Catalogue by name
+			$tmp_arr = array();
+			foreach ($layers_catalogue as $key => $row) {
+					$tmp_arr[$key] = $row->post_title;
+			}
+			array_multisort($tmp_arr, SORT_ASC, $layers_catalogue);
+			//Array index 0 is added during sorting, and it is no value
+			unset($layers_catalogue[0]);
+
+			return $layers_catalogue;
+		}//if terms_layer
+	return;
+}
+
+function get_pagination_of_layers_grouped_by_subcategory($list){
+	//Pagination
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$total_items= count($list);  //count number of records
+	$posts_per_page = get_option('posts_per_page');
+	$total_pages = ceil($total_items / $posts_per_page);
+	$pagination["start_post"] = ($paged-1) * $posts_per_page + 1; //start from 1
+	if ($total_items <= ($posts_per_page * $paged)):
+		$pagination["end_post"]  = $total_items;
+	else:
+		$pagination["end_post"]  = $posts_per_page * $paged;
+	endif;
+	$pagination["paging_arg"] = array('current'=> $paged, 'total_pages'=> $total_pages);
+	return $pagination;
+}
+
 function display_legend_container(){
 	echo '<div class="box-shadow map-legend-container hide_show_container">';
 	echo '<h2 class="widget_headline">'.__("LEGEND", "opendev");
@@ -273,4 +341,69 @@ function opendev_get_interactive_map_data()
         return false;
     }
 }
+
+
+function get_layer_information_in_array($post_ID){
+	//link to WP dataset page by dataset ID
+	if ( (odm_language_manager()->get_current_language() != "en") ){
+		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link_localization', true)));
+	}else {
+		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
+	}
+	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
+
+	//get category of post by post_id
+	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
+
+	$layer = (object) array("ID" => get_the_ID(),
+								"post_title" => get_the_title(),
+								"title_and_link" => $title_and_link,
+								//"description" => get_the_content(),
+								"category" => $layer_cat[0]->name,
+								"parent" => $layer_cat[0]->parent
+					);
+	return $layer;
+}
+
+function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category", $post_type = "map-layer") {
+	if($post_type == "map-layer"){
+		$args_get_post = array(
+		    'post_type' => $post_type,
+				//'orderby'   => 'name',
+				//'order'   => 'asc',
+		    'tax_query' => array(
+		                        array(
+		                          'taxonomy' => $layer_taxonomy,
+		                          'field' => 'id',
+		                          'terms' => $child_id, // Where term_id of Term 1 is "1".
+		                          'include_children' => false
+		                        )
+		                      )
+		);
+		$child_term = get_term( $child_id, $layer_taxonomy );
+		$query_get_post = new WP_Query( $args_get_post );
+		if($query_get_post->have_posts() ){
+			$layers_list = "";
+			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
+				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+					$get_layer_info = get_layer_information_in_array(get_the_ID());
+				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
+				}
+			endwhile;
+			wp_reset_postdata();
+
+			$layers_list_array = (object) array("ID" => $get_layer_info->ID,
+										"post_title" => $child_term->name,
+										"title_and_link" => "<div class='item-title'>".$child_term->name."</div>",
+										"description" => "<ul>" .$layers_list."</ul>",
+										"category" => $child_term->name,
+										"parent" => $child_term->parent
+							);
+
+			return $layers_list_array;
+		}//if have_posts
+	}
+}
+/** END CATEGORY */
+
 ?>

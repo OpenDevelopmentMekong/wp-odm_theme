@@ -18,12 +18,26 @@
     <div class="row">
 
       <div class="eleven columns">
-        <?php while (have_posts()) : the_post();
-  				odm_get_template('post-grid-single-4-cols',array(
-  					"post" => get_post(),
-  					"show_meta" => true
-  			),true);
-  			endwhile; ?>
+      <?php
+			//List cetegory and layer by cat for menu items
+					$map_catalogue = get_all_layers_grouped_by_subcategory();
+
+					//Pagination
+					$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
+					foreach ($map_catalogue as $key => $layer) {
+						if($key >= $pagination["start_post"] && $key <= $pagination["end_post"] ):
+							if($key == $pagination["start_post"]):
+								echo "<div class='grid-row'>";
+							elseif ($key % 4 == 1):
+									echo "<div class='grid-row'>";
+							endif;
+							odm_get_template('post-grid-single-4-cols-caption-below',array( "post" => $layer, "show_meta" => false), true);
+							if($key % 4 == 0 || $key == $pagination["end_post"]) :
+								echo "</div>";
+							endif;
+						endif;
+					}
+				?>
       </div>
 
       <div class="four columns offset-by-one">
@@ -37,7 +51,7 @@
 	<section class="container">
 		<div class="row">
 			<div class="sixteen columns">
-				<?php odm_get_template('pagination',array(),true); ?>
+				<?php odm_get_template('pagination', array("paging_arg" => $pagination["paging_arg"]), true); ?>
 			</div>
 		</div>
 	</section>
