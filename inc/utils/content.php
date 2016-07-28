@@ -362,11 +362,11 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 	<?php
 
 }
- //to set get_the_excerpt() limit words
+
  function odm_excerpt($post, $num = 40, $read_more = '')
  {
 		 $limit = $num + 1;
-		 $excerpt = explode(' ', strip_shortcodes($post->post_content), $limit);
+		 $excerpt = explode(' ', strip_shortcodes(get_the_excerpt($post->ID)), $limit);
 		 array_pop($excerpt);
 		 $excerpt_string = implode(' ', $excerpt);
 		 $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
@@ -408,7 +408,7 @@ function available_custom_post_types(){
  }
 
  function available_post_types_search(){
- 	 return array('topic','annoucement','profile','site-update','news-article','story');
+ 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer','nav_menu_item');
   }
 
  function content_types_breakdown_for_query($search_term,$posts_per_page){
@@ -462,6 +462,47 @@ function available_custom_post_types(){
 		return array_map(function($cat){
 			return $cat->name;
 		},get_the_category($post->ID));
+ }
+
+ function odm_echo_extras(){
+
+   if (function_exists('get')) :
+       if (get('author') == '' && get('author'.odm_language_manager()->get_current_language()) == ''):
+         echo '';
+       else:
+         $news_source_info = '<span class="lsf">&#xE041;</span> ';
+         if (get('author'.odm_language_manager()->get_current_language()) != ''):
+             $news_source_info .= get('author'.odm_language_manager()->get_current_language()).'<br />';
+         else:
+             $news_source_info .= get('author').'<br />';
+         endif;
+       endif;
+   endif;
+
+   if (function_exists('get')):
+     if (get('article_link') == '' && get('article_link'.odm_language_manager()->get_current_language()) == ''):
+         echo '';
+     else:
+       if (get('article_link'.odm_language_manager()->get_current_language()) != ''):
+         $source = get('article_link'.odm_language_manager()->get_current_language());
+       else:
+         $source = get('article_link');
+       endif;
+     endif;
+
+     if (isset($source) && $source != ''):
+         if (substr($source, 0, 7) != 'http://'):
+           $news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+         else:
+           $news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+         endif;
+     endif;
+   endif;
+
+   if (isset($news_source_info) && $news_source_info != ''):
+     echo '<p>'.$news_source_info.'</p>';
+   endif;
+   
  }
 
  ?>
