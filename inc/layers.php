@@ -235,6 +235,87 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="form-table type-setting cartodb">
+              <?php
+              // opt
+              $cartodb_type = $post ? get_post_meta($post->ID, '_cartodb_type', true) : 'viz';
+
+              // viz
+              $vizurl = $post ? get_post_meta($post->ID, '_cartodb_viz_url', true) : '';
+              $vizurl_localization = $post ? get_post_meta($post->ID, '_cartodb_viz_url_localization', true) : '';
+
+              // custom
+              $username = $post ? get_post_meta($post->ID, '_cartodb_username', true) : '';
+              $table = $post ? get_post_meta($post->ID, '_cartodb_table', true) : '';
+              $where = $post ? get_post_meta($post->ID, '_cartodb_where', true) : '';
+              $cartocss = $post ? get_post_meta($post->ID, '_cartodb_cartocss', true) : '';
+              $template = $post ? get_post_meta($post->ID, '_cartodb_template', true) : '';
+
+              ?>
+              <tbody>
+                <tr>
+                  <th><?php _e('Visualization type', 'jeo'); ?></th>
+                  <td>
+                    <input name="_cartodb_type" id="cartodb_viz_type_viz" type="radio" value="viz" <?php if($cartodb_type == 'viz' || !$cartodb_type) echo 'checked'; ?> />
+                    <label for="cartodb_viz_type_viz"><?php _e('Visualization', 'jeo'); ?></label>
+                    <input name="_cartodb_type" id="cartodb_viz_type_custom" type="radio" value="custom" disabled <?php if($cartodb_type == 'custom') echo 'checked'; ?> />
+                    <label for="cartodb_viz_type_custom"><?php _e('Advanced (build from your tables)', 'jeo'); ?> - <?php _e('coming soon', 'jeo'); ?></label>
+                  </td>
+                </tr>
+                <tr class="subopt viz_type_viz">
+                <th><label for="cartodb_viz_url"><?php _e('CartoDB URL (English)', 'jeo'); ?></label></th>
+                  <td>
+                    <input id="cartodb_viz_url" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url" value="<?php echo $vizurl; ?>" />
+                    <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
+                  </td>
+                </tr>
+                <?php if($this->get_localization_language()){ ?>
+                <tr class="subopt viz_type_viz">
+                  <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.$this->get_localization_language().')', 'jeo'); ?></label></th>
+                  <td>
+                    <input id="cartodb_viz_url_localization" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url_localization" value="<?php echo $vizurl_localization; ?>" />
+                    <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
+                  </td>
+                </tr>
+                <?php } ?>
+                <tr class="subopt viz_type_custom">
+                  <th><label for="cartodb_viz_username"><?php _e('Username', 'jeo'); ?></label></th>
+                  <td>
+                    <input id="cartodb_viz_username" type="text" placeholder="johndoe" name="_cartodb_username" value="<?php echo $username; ?>" />
+                    <p class="description"><?php _e('Your CartoDB username.'); ?></p>
+                  </td>
+                </tr>
+                <tr class="subopt viz_type_custom">
+                  <th><label for="cartodb_viz_table"><?php _e('Table', 'jeo'); ?></label></th>
+                  <td>
+                    <input id="cartodb_viz_table" type="text" placeholder="deforestation_2012" name="_cartodb_table" value="<?php echo $table; ?>" />
+                    <p class="description"><?php _e('The CartoDB table you\'d like to visualize.'); ?></p>
+                  </td>
+                </tr>
+                <tr class="subopt viz_type_custom">
+                  <th><label for="cartodb_viz_where"><?php _e('Where (optional)', 'jeo'); ?></label></th>
+                  <td>
+                    <textarea id="cartodb_viz_where" rows="3" cols="40" name="_cartodb_where"><?php echo $where; ?></textarea>
+                    <p class="description"><?php _e('Query data from your table.<br/>E.g.: region = "north"'); ?></p>
+                  </td>
+                </tr>
+                <tr class="subopt viz_type_custom">
+                  <th><label for="cartodb_viz_cartocss"><?php _e('CartoCSS', 'jeo'); ?></label></th>
+                  <td>
+                    <textarea id="cartodb_viz_cartocss" rows="10" cols="40" name="_cartodb_cartocss"><?php echo $cartocss; ?></textarea>
+                    <p class="description"><?php printf(__('Styles for your table. <a href="%s" target="_blank">Learn more</a>.'), 'https://www.mapbox.com/tilemill/docs/manual/carto/'); ?></p>
+                  </td>
+                </tr>
+                <tr class="subopt viz_type_custom">
+                  <th><label for="cartodb_viz_template"><?php _e('Template', 'jeo'); ?></label></th>
+                  <td>
+                    <textarea id="cartodb_viz_template" rows="10" cols="40" name="_cartodb_template"><?php echo $template; ?></textarea>
+                    <p class="description"><?php _e('UTFGrid template using mustache.<br/>E.g.: City: {{city}}'); ?></p>
+                  </td>
+                </tr>
+              </tbody>
+              </table>
+
         </div>
         <style type="text/css">
             .layer-type label, .form-table label {
