@@ -80,8 +80,10 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 
 		if (isset($current_cat->slug) && $current_cat->slug) {
 				$current_cat_page = $current_cat->slug;
+		} elseif (isset($current_cat->post_name)) {
+  			$current_cat_page = $current_cat->post_name;
 		} else {
-				$current_cat_page = $current_cat->post_name;
+				$current_cat_page = "post-type-category";
 		}
 
 		if ($title == 1) {
