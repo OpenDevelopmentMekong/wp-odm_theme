@@ -154,15 +154,24 @@
 	  color: @primary !important;
 	}
 	/* collapse & expend */
-	#sidebar{
 
-		.widgets .widget .widget-title,
-		.widget .widget-title {
-		 	color: @primary;
+	#sidebar, .widget {
+		.od-tax-widget-tax-item,
+		.widgets .widget,
+		.widget {
+			.widget-title {
+				color: @primary;
+			}
 		}
 
-		.widgets .widget li a:hover{
-			color: @bg-color;
+		.od-tax-widget-tax-item,
+		.widgets .widget {
+				li a {
+				color: @bg-color;
+				&:hover{
+					color: @primary;
+				}
+			}
 		}
 	}
 

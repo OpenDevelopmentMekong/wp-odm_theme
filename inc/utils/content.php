@@ -74,15 +74,16 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 				'parent' => 0,
 				);
 		}
+
 		$categories = get_categories($args);
 		$current_cat = get_queried_object();
+
 		if (isset($current_cat->slug) && $current_cat->slug) {
 				$current_cat_page = $current_cat->slug;
-		} elseif (isset($current_cat->post_name)) {
+		} else {
 				$current_cat_page = $current_cat->post_name;
-		}else{
-			return;
 		}
+
 		if ($title == 1) {
 				echo '<h2 class="widget-title">'.__('Categories', 'odm').'</h2>';
 		}
@@ -91,10 +92,9 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		foreach ($categories as $category) {
 				$jackpot = true;
 				$children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
+
 				echo "<li class='cat_item'>";
-				if( isset($current_cat_page)){
-					print_category_by_post_type($category, $post_type, $current_cat_page);
-				}
+				print_category_by_post_type($category, $post_type, $current_cat_page);
 				if (!empty($children)) {
 						echo '<ul>';
 						walk_child_category_by_post_type($children, $post_type, $current_cat_page);
@@ -502,7 +502,7 @@ function available_custom_post_types(){
    if (isset($news_source_info) && $news_source_info != ''):
      echo '<p>'.$news_source_info.'</p>';
    endif;
-   
+
  }
 
  ?>

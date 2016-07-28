@@ -77,7 +77,7 @@ foreach($post_types as $pt) {
       					<?php list_category_by_post_type($_GET['queried_post_type']); ?>
       				</li>
             <?php endif; ?>
-    				<?php dynamic_sidebar('general'); ?>
+    				<?php dynamic_sidebar('archive-sidebar'); ?>
     			</ul>
     		</aside>
     	</div>
