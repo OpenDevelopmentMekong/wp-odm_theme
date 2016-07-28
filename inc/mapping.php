@@ -350,14 +350,31 @@ function get_layer_information_in_array($post_ID){
 	}else {
 		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
 	}
-	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
 
+	if(function_exists("wpckan_api_package_show")):
+		$dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$get_ckan_dataset_id[1]);
+		if (is_array($dataset['resources'])) {
+				foreach ($dataset['resources'] as $resource) {
+						if($resource['format'] == "JPEG" || $resource['format'] == "JPG" || $resource['format'] == "PNG"):
+							if($resource['odm_language'][0] == odm_language_manager()->get_current_language()){
+								$thumbnail_url = $resource['url'];
+							}
+						endif;
+					}
+			}
+	endif;
+
+
+	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
+	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
 
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
+								"download_link" => $download_link,
 								"title_and_link" => $title_and_link,
+								"thumbnail_link" => $thumbnail_url,
 								//"description" => get_the_content(),
 								"category" => $layer_cat[0]->name,
 								"parent" => $layer_cat[0]->parent
@@ -387,15 +404,16 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
 					$get_layer_info = get_layer_information_in_array(get_the_ID());
-				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
+					$permalink = $get_layer_info->permalink;
+				  //$layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
 				}
 			endwhile;
 			wp_reset_postdata();
 
 			$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
-										"title_and_link" => "<div class='item-title'>".$child_term->name."</div>",
-										"description" => "<ul>" .$layers_list."</ul>",
+										"title_and_link" => "<a class='item-title' target='_blank' href='". $permalink."' 	title='".$child_term->name."'>".$child_term->name."</a>",
+										//"description" => "<ul>" .$layers_list."</ul>",
 										"category" => $child_term->name,
 										"parent" => $child_term->parent
 							);
