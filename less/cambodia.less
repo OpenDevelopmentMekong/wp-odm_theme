@@ -34,21 +34,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .country-mixin(@cambodia-bright, @cambodia-bgcolor);
 
-#sidebar .widgets .widget ul li span.plusimage-cambodia{
-    display: inline-block;
-    background: url("../../img/expand-kh.png") no-repeat 0 2px!important;
-    padding-left: 20px;
+#sidebar .widgets .widget, .widget .od-tax-widget-tax-item {
+  ul li {
+    span.plusimage-cambodia {
+      display: inline-block;
+      background: url("../../img/expand-kh.png") no-repeat 0 2px!important;
+      padding-left: 20px;
+    }
+    span.minusimage-cambodia {
+      display: inline-block;
+      background: url("../../img/collapse-kh.png") no-repeat 0 2px!important;
+      padding-left: 20px;
+    }
+    span.nochildimage-cambodia {
+      display: inline-block;
+      background: url("../../img/no-child-kh.png") no-repeat 0 2px!important;
+      padding-left: 20px;
+    }
+  }
 }
-#sidebar .widgets .widget ul li span.minusimage-cambodia{
-    display: inline-block;
-    background: url("../../img/collapse-kh.png") no-repeat 0 2px!important;
-    padding-left: 20px;
-}
-#sidebar .widgets .widget ul li span.nochildimage-cambodia{
-    display: inline-block;
-    background: url("../../img/no-child-kh.png") no-repeat 0 2px!important;
-    padding-left: 20px;
-}
+
+
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
     background-color: @cambodia-bright;
     border: 1px solid @cambodia-bright;

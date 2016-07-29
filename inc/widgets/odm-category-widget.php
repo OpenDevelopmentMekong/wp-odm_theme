@@ -24,9 +24,13 @@ class Odm_Category_Widget extends WP_Widget {
 		// outputs the content of the widget
 		global $post;
     $current_cat = get_queried_object();
-    if($current_cat->slug)
-      $current_cat_page = $current_cat->slug;
-    else $current_cat_page = $current_cat->post_name;
+		if (isset($current_cat->slug) && $current_cat->slug) {
+				$current_cat_page = $current_cat->slug;
+		} elseif (isset($current_cat->post_name)) {
+  			$current_cat_page = $current_cat->post_name;
+		} else {
+				$current_cat_page = "post-type-category";
+		}
 
 		$taxonomies = $instance['taxonomies'];
 		foreach($taxonomies as $taxonomy) {
