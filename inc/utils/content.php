@@ -65,13 +65,14 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
  /****end Breadcrumb**/
 
 /** SHOW CATEGORY BY Post type **/
-function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1, $exclude_cat ='')
+function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1, $exclude_cat ='map-catalogue')
 {
 		global $post;
 		if ($args == '') {
 				$args = array(
 				'orderby' => 'term_id',
 				'parent' => 0,
+				'exclude' => $exclude_cat
 				);
 		}
 
@@ -93,10 +94,11 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		echo "<ul class='odm_taxonomy_widget_ul'>";
 		foreach ($categories as $category) {
 				$jackpot = true;
-				$children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
+				$args['parent'] = $category->term_id;
+				$children = get_categories($args);
+
 
 				echo "<li class='cat_item'>";
-				
 				if( isset($current_cat_page)){
 					print_category_by_post_type($category, $post_type, $current_cat_page, $exclude_cat);
 				}
@@ -172,7 +174,8 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     $cat_ID = $category->term_id;
     $get_category_link = get_term_link( $category);
   }
-  if($post_type == "map-layer"){
+
+  if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
     $cat_name = '<a href="' . $get_category_link. '?post_type='.$post_type.'">';
     $cat_name .= $category->name;
     $cat_name .= "</a>";
@@ -233,7 +236,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 }
 
 function walk_child_category_by_post_type( $children, $post_type, $current_cat = "",  $exclude_cat ="") {
-    if($post_type == "map-layer"){
+    if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
        $cat_item_and_posts = "";
        $count_items_of_subcat = 0;
           foreach($children as $child){
