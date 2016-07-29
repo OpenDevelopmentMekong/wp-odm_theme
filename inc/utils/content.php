@@ -65,7 +65,7 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
  /****end Breadcrumb**/
 
 /** SHOW CATEGORY BY Post type **/
-function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1)
+function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1, $exclude_cat ='')
 {
 		global $post;
 		if ($args == '') {
@@ -93,11 +93,11 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 				$children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
 				echo "<li class='cat_item'>";
 				if( isset($current_cat_page)){
-					print_category_by_post_type($category, $post_type, $current_cat_page);
+					print_category_by_post_type($category, $post_type, $current_cat_page, $exclude_cat);
 				}
 				if (!empty($children)) {
 						echo '<ul>';
-						walk_child_category_by_post_type($children, $post_type, $current_cat_page);
+						walk_child_category_by_post_type($children, $post_type, $current_cat_page, $exclude_cat);
 						echo '</ul>';
 				}
 				echo '</li>';
@@ -153,7 +153,7 @@ function posts_for_both_and_current_languages($postID, $current_lang = "en", $ta
     return false;
 }
 
-function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
+function print_category_by_post_type( $category, $post_type ="post", $current_cat='', $exclude_cat ='') {
  if ($current_cat == $category->slug){
      $current_page = " ".$current_cat;
   }else {
@@ -179,7 +179,13 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
                               'field' => 'id',
                               'terms' => $cat_ID, // Where term_id of Term 1 is "1".
                               'include_children' => false
-                            )
+                            ),
+														array(
+															'taxonomy' => $category->taxonomy,
+															'field' => 'id',
+															'terms' => $exclude_cat,
+															'operator' => 'NOT IN'
+														 )
                           )
     );
     $query_get_post = new WP_Query( $args_get_post );
@@ -220,13 +226,13 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
   }
 }
 
-function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
+function walk_child_category_by_post_type( $children, $post_type, $current_cat = "",  $exclude_cat ="") {
     if($post_type == "map-layer"){
        $cat_item_and_posts = "";
        $count_items_of_subcat = 0;
           foreach($children as $child){
             $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
-            $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
+            $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat, $exclude_cat);
             if ($get_cat_and_posts != ""){
                 $count_items_of_subcat++;
                 $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
@@ -236,7 +242,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
                     if ( !empty($cat_children) ) {
                       // add a sublevel
                       // display the children
-                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
+                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat, $exclude_cat);
                     }
                 $cat_item_and_posts .= "</li>";
             }
@@ -254,13 +260,13 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
           $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
           echo "<li>";
           // Display current category
-            print_category_by_post_type($child, $post_type, $current_cat, $widget);
+            print_category_by_post_type($child, $post_type, $current_cat, $exclude_cat);
           // if current category has children
           if ( !empty($cat_children) ) {
             // add a sublevel
             echo "<ul>";
             // display the children
-              walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
+              walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $exclude_cat);
             echo "</ul>";
           }
           echo "</li>";
@@ -502,7 +508,7 @@ function available_custom_post_types(){
    if (isset($news_source_info) && $news_source_info != ''):
      echo '<p>'.$news_source_info.'</p>';
    endif;
-   
+
  }
 
  ?>

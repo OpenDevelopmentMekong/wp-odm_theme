@@ -28,6 +28,10 @@ class OpenDev_InteractiveMap {
         $cat_baselayers = 'base-layers';
         $term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
         $cat_baselayers_id =  $term_baselayers->term_id;
+        $cat_map_catalogue = 'map-catalogue';
+        $term_map_catalogue = get_term_by('slug', $cat_map_catalogue, 'layer-category');
+        $cat_map_catalogue_id =  $term_map_catalogue->term_id;
+
         $categories = get_terms('layer-category');
         ob_start();
         ?>
@@ -45,7 +49,7 @@ class OpenDev_InteractiveMap {
                                       'order'   => 'ASC',
                                       'tax_query' => array(array(
                                                             'taxonomy' => 'layer-category',
-                                                            'terms' => $cat_baselayers_id,
+                                                            'terms' => array($cat_baselayers_id, $cat_map_catalogue_id),
                                                             'field' => 'id',
                                                             'operator' => 'NOT IN'
                                                       ))
@@ -76,7 +80,7 @@ class OpenDev_InteractiveMap {
               'parent' => 0,
               'orderby'   => 'name',
               'order'   => 'ASC',
-              'exclude' => $cat_baselayers_id //43002
+              'exclude' => array($cat_baselayers_id, $cat_map_catalogue_id) //43002
             );
             $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
             if ($terms_layer) {
@@ -92,12 +96,20 @@ class OpenDev_InteractiveMap {
                                'orderby'   => 'name',
                                'order'   => 'asc',
                                'tax_query' => array(
+                                                  'relation' => 'AND',
                                                    array(
                                                      'taxonomy' => 'layer-category',
                                                      'field' => 'id',
-                                                     'terms' => $term->term_id, // Where term_id of Term 1 is "1".
-                                                     'include_children' => false
-                                                   )
+                                                     'terms' => $term->term_id,
+                                                     'include_children' => false,
+			                                               'operator' => 'IN'
+                                                   ),
+                                                   array(
+                                                     'taxonomy' => 'layer-category',
+                                                     'field' => 'id',
+                                                     'terms' => array($cat_baselayers_id, $cat_map_catalogue_id),
+                                                     'operator' => 'NOT IN'
+                                                    )
                                                  )
                             );
                             $query_layer = new WP_Query( $args_layer );
@@ -120,7 +132,8 @@ class OpenDev_InteractiveMap {
                             $children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
                             $sub_cats = "";
                             if ( !empty($children_term) ) {
-                                $sub_cats = walk_child_category_by_post_type( $children_term, "map-layer", "", 0 );
+                                $exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
+                                $sub_cats = walk_child_category_by_post_type( $children_term, "map-layer", "", $exclude_posts_in_cats );
                                 if ($sub_cats !=""){
                                     $count_items_of_main_cat++;
                                 }

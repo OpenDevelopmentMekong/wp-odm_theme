@@ -386,7 +386,7 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 	if($post_type == "map-layer"){
 		$args_get_post = array(
 		    'post_type' => $post_type,
-				//'orderby'   => 'name',
+				'orderby'   => 'name',
 				//'order'   => 'asc',
 		    'tax_query' => array(
 		                        array(
