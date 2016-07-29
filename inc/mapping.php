@@ -126,13 +126,14 @@ function query_get_layer_posts($term_id, $num=-1, $include_children=false){
 	return $layers;
 }
 
-function get_all_layers_grouped_by_subcategory($layer_taxonomy='layer-category'){
+function get_all_layers_grouped_by_subcategory( $term_id= 0, $exclude_cats ='', $layer_taxonomy='layer-category'){
 	//List cetegory and layer by cat for menu items
 		$layer_taxonomy = 'layer-category';
 		$layer_term_args=array(
-			'parent' => 0,
+			'parent' => $term_id,
 			'orderby'   => 'name',
-			'order'   => 'ASC'
+			'order'   => 'ASC',
+			'exclude' => $exclude_cats
 		);
 
 		$terms_layer = get_terms($layer_taxonomy,$layer_term_args);

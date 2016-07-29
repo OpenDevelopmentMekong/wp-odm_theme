@@ -19,16 +19,20 @@
 
       <div class="eleven columns">
       <?php
-			//get id of base-layer and map-catalogue category for excluding
-			$cat_baselayers = 'base-layers';
-			$term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
-			$cat_baselayers_id =  $term_baselayers->term_id;
-			$cat_map_catalogue = 'map-catalogue';
-			$term_map_catalogue = get_term_by('slug', $cat_map_catalogue, 'layer-category');
-			$cat_map_catalogue_id =  $term_map_catalogue->term_id;
-			$exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
-			//List cetegory and layer by cat for menu items
-					$map_catalogue = get_all_layers_grouped_by_subcategory(0, $exclude_posts_in_cats);
+		    $taxonomy = get_query_var( 'taxonomy' );
+		    $queried_object = get_queried_object();
+		    $term_id =  (int) $queried_object->term_id;
+
+				//get id of base-layer and map-catalogue category for excluding
+				$cat_baselayers = 'base-layers';
+				$term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
+				$cat_baselayers_id =  $term_baselayers->term_id;
+				$cat_map_catalogue = 'map-catalogue';
+				$term_map_catalogue = get_term_by('slug', $cat_map_catalogue, 'layer-category');
+				$cat_map_catalogue_id =  $term_map_catalogue->term_id;
+				$exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
+				//List cetegory and layer by cat for menu items
+				$map_catalogue = get_all_layers_grouped_by_subcategory($term_id);
 
 					//Pagination
 					$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
