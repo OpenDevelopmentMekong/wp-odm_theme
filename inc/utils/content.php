@@ -96,13 +96,11 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 				$children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
 
 				echo "<li class='cat_item'>";
-<<<<<<< HEAD
-				print_category_by_post_type($category, $post_type, $current_cat_page);
-=======
+				
 				if( isset($current_cat_page)){
 					print_category_by_post_type($category, $post_type, $current_cat_page, $exclude_cat);
 				}
->>>>>>> impl-36
+
 				if (!empty($children)) {
 						echo '<ul>';
 						walk_child_category_by_post_type($children, $post_type, $current_cat_page, $exclude_cat);
