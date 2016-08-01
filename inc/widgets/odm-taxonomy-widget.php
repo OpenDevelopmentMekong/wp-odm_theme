@@ -95,7 +95,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$current_page_slug = $current_page->post_name;
 		foreach($children as $child){
 			// Get immediate children of current category
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
+			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
 			echo "<li>";
 			// Display current category
 			$this -> print_category($child, $current_page_slug);
@@ -164,7 +164,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		}
 		echo "<div>";
 		$args = array(
-		  'orderby' => 'term_id',
+		  'orderby' => 'name',
 		  'exclude' => $cat_excluded_id_arr,
 		  'include' => $cat_included_id_arr,
 		  'parent' => 0
