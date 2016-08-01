@@ -70,6 +70,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		global $post;
 		if ($args == '') {
 				$args = array(
+				'post_type' => 'map-layer',
 				'orderby' => 'term_id',
 				'parent' => 0,
 				'exclude' => $exclude_cat
@@ -96,7 +97,6 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 				$jackpot = true;
 				$args['parent'] = $category->term_id;
 				$children = get_categories($args);
-
 
 				echo "<li class='cat_item'>";
 				if( isset($current_cat_page)){
@@ -174,7 +174,8 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     $cat_ID = $category->term_id;
     $get_category_link = get_term_link( $category);
   }
-	if(is_tax( 'layer-category' )):
+
+	if(is_tax( 'layer-category' ) ||  get_post_type()== "map-layer"):
 		$included_posttype = "";
 	else :
 		$included_posttype = '?post_type='.$post_type;
