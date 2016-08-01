@@ -37,7 +37,7 @@
 
 				//Pagination
 				$pagination = get_pagination_of_layers_grouped_by_subcategory($sorted_map_catalogue);
-				if (is_array($sorted_map_catalogue)):
+				if (is_array($sorted_map_catalogue)): 
 					foreach ($sorted_map_catalogue as $key => $layer) {
 						if($key >= $pagination["start_post"] && $key <= $pagination["end_post"] ):
 							if($key == $pagination["start_post"]):

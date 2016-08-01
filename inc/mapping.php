@@ -203,13 +203,13 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 	return;
 }
 
-function get_all_layers_by_term_id_grouped_by_subcategory( $term_id = 0, $exclude_cats ="", $layer_taxonomy="layer-category"){
+function get_all_layers_by_term_id_grouped_by_subcategory( $term_id = 0, $exclude_cats =""){
 	//Get layers of posts of term_id
 	$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
 	if($query_layer->have_posts() ){
 		while ( $query_layer->have_posts() ) : $query_layer->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-						$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
+					$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
 			}
 		endwhile;
 		wp_reset_postdata();
@@ -220,7 +220,7 @@ function get_all_layers_by_term_id_grouped_by_subcategory( $term_id = 0, $exclud
 		foreach($children_term as $child){
 			$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
 			//check if the sub category has children
-			$has_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+			$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') ); 
 			if ( !empty($has_children) ) {
 				foreach($has_children as $sub_child){
 					$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
@@ -475,8 +475,8 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 				}
 			endwhile;
 			wp_reset_postdata();
-
-			$layers_list_array = (object) array("ID" => $get_layer_info->ID,
+			if(!empty($get_layer_info)):
+				$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
 										"title_and_link" => "<a class='item-title' target='_blank' href='". $permalink."' 	title='".$child_term->name."'>".$child_term->name."</a>",
 										//"description" => "<ul>" .$layers_list."</ul>",
@@ -484,7 +484,8 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 										"parent" => $child_term->parent
 							);
 
-			return $layers_list_array;
+				return $layers_list_array;
+			endif;
 		}//if have_posts
 	}
 }
