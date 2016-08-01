@@ -32,11 +32,13 @@
 				$cat_map_catalogue_id =  $term_map_catalogue->term_id;
 				$exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
 				//List cetegory and layer by cat for menu items
-				$map_catalogue = get_all_layers_grouped_by_subcategory($term_id);
+				$map_catalogue = get_all_layers_by_term_id_grouped_by_subcategory($term_id, false, $exclude_posts_in_cats);
+				$sorted_map_catalogue = get_sort_posts_by_post_title($map_catalogue);
 
-					//Pagination
-					$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
-					foreach ($map_catalogue as $key => $layer) {
+				//Pagination
+				$pagination = get_pagination_of_layers_grouped_by_subcategory($sorted_map_catalogue);
+				if (is_array($sorted_map_catalogue)):
+					foreach ($sorted_map_catalogue as $key => $layer) {
 						if($key >= $pagination["start_post"] && $key <= $pagination["end_post"] ):
 							if($key == $pagination["start_post"]):
 								echo "<div class='grid-row'>";
@@ -49,15 +51,14 @@
 							endif;
 						endif;
 					}
+				endif;
 				?>
       </div>
 
       <div class="four columns offset-by-one">
         <?php dynamic_sidebar('archive-sidebar'); ?>
       </div>
-
-    </div>
-
+		</div>
 	</section>
 
 	<section class="container">
