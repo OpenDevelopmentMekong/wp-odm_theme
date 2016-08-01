@@ -34,8 +34,7 @@ class Odm_Category_Widget extends WP_Widget {
 
 		$taxonomies = $instance['taxonomies'];
 		foreach($taxonomies as $taxonomy) {
-			$args_term = array(
-			'orderby' => 'term_id',
+			$args_term = array( 
 			'taxonomy' => $taxonomy,
 			'parent' => 0
 			);

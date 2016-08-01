@@ -70,8 +70,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		global $post;
 		if ($args == '') {
 				$args = array(
-				'post_type' => 'map-layer',
-				'orderby' => 'term_id',
+				'post_type' => 'map-layer', 
 				'parent' => 0,
 				'exclude' => $exclude_cat
 				);
