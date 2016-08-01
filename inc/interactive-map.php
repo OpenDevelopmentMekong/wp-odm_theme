@@ -49,7 +49,7 @@ class OpenDev_InteractiveMap {
                                       'order'   => 'ASC',
                                       'tax_query' => array(array(
                                                             'taxonomy' => 'layer-category',
-                                                            'terms' => array($cat_baselayers_id, $cat_map_catalogue_id),
+                                                            'terms' => $exclude_posts_in_cats,
                                                             'field' => 'id',
                                                             'operator' => 'NOT IN'
                                                       ))
@@ -76,11 +76,12 @@ class OpenDev_InteractiveMap {
 
         	//List cetegory and layer by cat for menu items
             $layer_taxonomy = 'layer-category';
+            $exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
             $layer_term_args=array(
               'parent' => 0,
               'orderby'   => 'name',
               'order'   => 'ASC',
-              'exclude' => array($cat_baselayers_id, $cat_map_catalogue_id) //43002
+              'exclude' => $exclude_posts_in_cats
             );
             $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
             if ($terms_layer) {
@@ -107,7 +108,7 @@ class OpenDev_InteractiveMap {
                                                    array(
                                                      'taxonomy' => 'layer-category',
                                                      'field' => 'id',
-                                                     'terms' => array($cat_baselayers_id, $cat_map_catalogue_id),
+                                                     'terms' => $exclude_posts_in_cats,
                                                      'operator' => 'NOT IN'
                                                     )
                                                  )
@@ -132,7 +133,6 @@ class OpenDev_InteractiveMap {
                             $children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
                             $sub_cats = "";
                             if ( !empty($children_term) ) {
-                                $exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
                                 $sub_cats = walk_child_category_by_post_type( $children_term, "map-layer", "", $exclude_posts_in_cats );
                                 if ($sub_cats !=""){
                                     $count_items_of_main_cat++;
