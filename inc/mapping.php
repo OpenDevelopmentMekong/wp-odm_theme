@@ -177,6 +177,7 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 				if ( !empty($children_term) ) {
 					foreach($children_term as $child){
 						$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
+
 						//check if the sub category has children
 						$has_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
 						if ( !empty($has_children) ) {
@@ -220,7 +221,7 @@ function get_all_layers_by_term_id_grouped_by_subcategory( $term_id = 0, $exclud
 		foreach($children_term as $child){
 			$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
 			//check if the sub category has children
-			$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') ); 
+			$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
 			if ( !empty($has_children) ) {
 				foreach($has_children as $sub_child){
 					$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
@@ -469,9 +470,9 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 			$layers_list = "";
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-					$get_layer_info = get_layer_information_in_array(get_the_ID());
-					$permalink = $get_layer_info->permalink;
-				  //$layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
+					$get_layer_info = get_layer_information_in_array(get_the_ID()); 
+					$permalink = $get_layer_info->download_link;
+				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
 				}
 			endwhile;
 			wp_reset_postdata();
