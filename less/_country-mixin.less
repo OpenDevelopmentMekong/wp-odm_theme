@@ -9,21 +9,14 @@
 	a,
 	a:visited,
 	.map-sidebar a,
-	a:hover,
-	a strong:hover {
-		color: @primary;
-	}
-
-	a,
-	a:visited,
-	.map-sidebar a,
-	 {
+	{
+		color: @bg-color;
 		text-decoration: none;
 	}
 
 	a:hover,
 	a strong:hover {
-		color: @bg-color;
+		color: @primary;
 	}
 
 	button,
@@ -190,4 +183,10 @@
     }
   }
 
+	.post-list-item .item-title {
+		color: @primary;
+		&:hover {
+			color: @bg-color;
+		}
+	}
 }
