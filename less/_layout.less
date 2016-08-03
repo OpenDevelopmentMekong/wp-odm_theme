@@ -204,8 +204,13 @@ body{
     }
   }
 }
-.post-list-item{
+
+.post-list-item {
 	margin-bottom: @small-padd;
+
+  &:nth-child(odd) {
+    clear: left;
+  }
 
   p {
     margin-bottom: @xsmall-padd;
@@ -226,8 +231,10 @@ body{
     font-family: @title-font;
     font-size: @font-size-h4;
     text-decoration: none;
-    text-transform: none !important;
+    color: @mekong-bright;
 	}
+
+
 
 	.item-content {
     overflow: hidden;
@@ -237,7 +244,7 @@ body{
     }
 
     .post-meta {
-      text-align: right;
+      text-align: left;
 
   		ul {
   			margin-left: 0px;
@@ -268,6 +275,10 @@ body{
 		float:right;
 	}
 
+}
+
+.post-type-archive .post-list-item .item-title {
+  font-size: @font-size-h2;
 }
 
 .post-meta{
