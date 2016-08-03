@@ -19,7 +19,7 @@
 
       <div class="eleven columns">
         <?php while (have_posts()) : the_post();
-  				odm_get_template('post-grid-single-4-cols',array(
+  				odm_get_template('post-grid-single-1-cols',array(
   					"post" => get_post(),
   					"show_meta" => true
   			),true);
@@ -28,7 +28,7 @@
 
       <div class="four columns offset-by-one">
         <?php dynamic_sidebar('archive-sidebar'); ?>
-      </div>
+			</div>
 
     </div>
 
@@ -36,13 +36,12 @@
 
 	<section class="container">
 		<div class="row">
-			<div class="sixteen columns">
+			<div class="eleven columns">
 				<?php odm_get_template('pagination',array(),true); ?>
 			</div>
 		</div>
 	</section>
 
 </div>
-
 
 <?php get_footer(); ?>
