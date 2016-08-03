@@ -277,8 +277,16 @@ body{
 
 }
 
-.post-type-archive .post-list-item .item-title {
-  font-size: @font-size-h2;
+.post-type-archive .post-list-item {
+  border-bottom: 1px dotted @gray;
+
+  .item-title {
+    font-size: @font-size-h2;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .post-meta{
