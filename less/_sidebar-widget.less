@@ -47,14 +47,6 @@
 	.odm-summary ol li a {
 		text-decoration: none;
 		color: #333;
-<<<<<<< HEAD
-
-		&:hover {
-			color: #4683d2; /*6393D2, 2774da;*/
-			text-decoration: underline;
-		}
-=======
->>>>>>> 41382941e823d1d9f8a91403bdab8ade7eab422a
 	}
 
 	.od-tax-widget-tax-item {
@@ -102,7 +94,7 @@
       li {
         border: none;
         margin: 0;
-        padding: 5px 0;        
+        padding: 5px 0;
 
         span.plusimage-mekong,
         span.minusimage-mekong,
@@ -416,12 +408,16 @@ ul.odm_taxonomy_widget_ul span:hover{
 /*
  * Advanced Navigation
  */
-.navigation .current{
+.navigation .page-numbers{
 	padding: 0 5px;
 	border: 1px solid #ddd;;
 	background: #eee;
 }
-
+.navigation .current{
+	background: @mekong-bright;
+	border: 1px solid @mekong-dark;
+  color: @mekong-dark;
+}
 .advanced-nav-filters {
 	margin-top: 20px;
 	padding-bottom: 20px;

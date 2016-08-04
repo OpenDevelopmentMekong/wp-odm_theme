@@ -46,7 +46,7 @@
 
 	<section class="container">
 		<div class="row">
-			<div class="sixteen columns">
+			<div class="eleven columns">
 				<?php odm_get_template('pagination',array(),true); ?>
 			</div>
 		</div>
