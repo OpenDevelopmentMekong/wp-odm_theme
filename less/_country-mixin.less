@@ -9,15 +9,14 @@
 	a,
 	a:visited,
 	.map-sidebar a,
-	a:hover,
+ 	a:hover,
 	a strong:hover {
 		color: @primary;
 	}
 
 	a,
 	a:visited,
-	.map-sidebar a,
-	{
+	.map-sidebar a{ 
 		text-decoration: none;
 	}
 
@@ -32,7 +31,7 @@
 
 	a:hover,
 	a strong:hover {
-		color: @bg-color;
+		color: @primary;
 	}
 
 	button,
@@ -170,7 +169,7 @@
 			}
 		}
 		.widgets .widget li a:hover{
-			color: @primary; 
+			color: @primary;
 		}
 	}
 
@@ -189,4 +188,10 @@
     }
   }
 
+	.post-list-item .item-title {
+		color: @primary;
+		&:hover {
+			color: @bg-color;
+		}
+	}
 }

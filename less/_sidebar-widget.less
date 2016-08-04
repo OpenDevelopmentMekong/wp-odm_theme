@@ -28,6 +28,7 @@
      li > .twitter {
        width: 120px;
      }
+
    }
  }
 
@@ -46,7 +47,6 @@
 	.odm-summary ol li a {
 		text-decoration: none;
 		color: #333;
-
 		&:hover {
 			color: #4683d2; /*6393D2, 2774da;*/
 			text-decoration: underline;
@@ -410,24 +410,18 @@ ul.odm_taxonomy_widget_ul span:hover{
 }
 
 /*
- *Pagination
- */
-.navigation {
-  text-align: center;
-  a.page-numbers {
-    padding: 5px;
-  }
-}
-
-/*
  * Advanced Navigation
  */
-.navigation .current{
+.navigation .page-numbers{
 	padding: 0 5px;
-	border: 1px solid #ddd;
+	border: 1px solid #ddd;;
 	background: #eee;
 }
-
+.navigation .current{
+	background: @mekong-bright;
+	border: 1px solid @mekong-dark;
+  color: @mekong-dark;
+}
 .advanced-nav-filters {
 	margin-top: 20px;
 	padding-bottom: 20px;
