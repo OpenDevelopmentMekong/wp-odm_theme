@@ -106,7 +106,7 @@
             background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
         }
         span.minusimage-mekong {
-            background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important; 
+            background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
         }
         span.nochildimage-mekong {
             background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
@@ -240,10 +240,18 @@
 					span.plusimage-mekong,
 					span.minusimage-mekong,
 					span.nochildimage-mekong {
-					    display: inline-block;
-					    background: url("../../img/expand-mekong.png") no-repeat 0 2px!important;
+					    display: inline-block; 
 					    padding-left: 20px;
 					}
+          span.plusimage-mekong {
+              background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
+          }
+          span.minusimage-mekong {
+              background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
+          }
+          span.nochildimage-mekong {
+              background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
+          }
 
 					ul {
 						margin-left: 10px;
@@ -302,6 +310,7 @@
 
 ul.odm_taxonomy_widget_ul span:hover{
 	cursor: pointer;
+  color: @mekong-dark;
 }
 
 /*
