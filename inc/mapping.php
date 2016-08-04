@@ -298,7 +298,7 @@ function display_layer_information($layers){
 				  $ckan_dataset_id = $ckan_dataset_id_exploded_by_dataset[1];
 				  $ckan_domain = $ckan_dataset_id_exploded_by_dataset[0];
 				  // get ckan record by id
-				  $get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
+				  //$get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
@@ -470,7 +470,7 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 			$layers_list = "";
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-					$get_layer_info = get_layer_information_in_array(get_the_ID()); 
+					$get_layer_info = get_layer_information_in_array(get_the_ID());
 					$permalink = $get_layer_info->download_link;
 				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
 				}

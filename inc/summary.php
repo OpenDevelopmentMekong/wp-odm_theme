@@ -70,7 +70,7 @@ class Odm_Summary {
 		wp_register_script('imagesloaded', '//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js', array('jquery'));
 		// wp_register_script('hashchange', get_stylesheet_directory_uri() . '/js/jquery.hashchange.min.js', array('jquery'));
 		// wp_register_script('follow-scroll', get_stylesheet_directory_uri() . '/js/jquery.followScroll.js', array('jquery', 'imagesloaded'));
-		wp_enqueue_script('odm-summary', get_stylesheet_directory_uri() . '/js/summary.js', array('jquery'));
+		//wp_enqueue_script('odm-summary', get_stylesheet_directory_uri() . '/js/summary.js', array('jquery'));
 		?>
 		<div class="odm-summary">
 			<h2 class="widget-title"><?php _e('On this page', 'odm'); ?></h2>

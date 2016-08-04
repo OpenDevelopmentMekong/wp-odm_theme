@@ -254,11 +254,6 @@
 				margin: 0 5px 0 -1px;
 				position: relative;
 				top: 2px;
-
-				&:before {
-					content: url(../../img/cycle-list-active.png);
-					margin: 2px 0 0 0;
-				}
 			}
 
 			.fa{
@@ -336,21 +331,21 @@
 
 	.interactive-map-layers > ul >li {
 		border-bottom: 1px solid @mekong-bright;
+
+		> a {
+			text-transform: uppercase;
+		}
+
+		> a.active {
+			border-bottom: 1px solid @mekong-bright;
+			color: @mekong-bright;
+		}
+
+		> a:before, > a.active:before {
+			content: '';
+		}
 	}
 
-	.interactive-map-layers > ul >li > a {
-		text-transform: uppercase;
-	}
-
-	.interactive-map-layers > ul >li > a.active {
-		border-bottom: 1px solid @mekong-bright;
-		color: @mekong-bright;
-	}
-
-	.interactive-map-layers > ul > li > a:before,
-	.interactive-map-layers  > ul > li > a.active:before {
-		content: '';
-	}
 } /* interactive-map*/
 
 .map-legend-container {
