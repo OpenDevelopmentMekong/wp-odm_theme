@@ -3,7 +3,8 @@
 
 @import "_country-mixin.less";
 
-@cambodia-bright: #00a600;
+@cambodia-text-color: #00A600;
+@cambodia-bright: #97D320;
 @cambodia-bgcolor: #06323D;
 
 body{
@@ -22,38 +23,46 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #cambodia-color, .cambodia-color{
-    color: @cambodia-bright;  /* #66cc00*/
+    color: @cambodia-text-color;  /* #66cc00*/
 }
 #cambodia-bgcolor, .cambodia-bgcolor{
     background: @cambodia-bright !important
 }
-
 #cambodia-bgdarkcolor, .cambodia-bgdarkcolor{
     background: @cambodia-bgcolor !important
 }
 
-.country-mixin(@cambodia-bright, @cambodia-bgcolor);
+.country-mixin(@cambodia-text-color, @cambodia-bgcolor);
+
+#od-head {
+  h1 {
+    color: @cambodia-bright !important
+  }
+}
+
+.sidebar_header{
+  background: @cambodia-bright !important;
+}
 
 #sidebar .widgets .widget, .widget .od-tax-widget-tax-item {
   ul li {
     span.plusimage-cambodia {
       display: inline-block;
-      background: url("../../img/expand-kh.png") no-repeat 0 2px!important;
+      background: url("../../img/expand-kh.png") no-repeat 0 5px!important;
       padding-left: 20px;
     }
     span.minusimage-cambodia {
       display: inline-block;
-      background: url("../../img/collapse-kh.png") no-repeat 0 2px!important;
+      background: url("../../img/collapse-kh.png") no-repeat 0 5px!important;
       padding-left: 20px;
     }
     span.nochildimage-cambodia {
       display: inline-block;
-      background: url("../../img/no-child-kh.png") no-repeat 0 2px!important;
+      background: url("../../img/no-child-kh.png") no-repeat 0 5px!important;
       padding-left: 20px;
     }
   }
 }
-
 
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
     background-color: @cambodia-bright;

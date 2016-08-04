@@ -4,17 +4,17 @@
 @import "_country-mixin.less";
 
 /* Color */
+@vietnam-text-color: #A89B04;
 @vietnam-bright: #C6C366;
 @vietnam-bgcolor: #3D9C00;
 
-.vietnam-color{
-    color: @vietnam-bright;
+#vietnam-color, .vietnam-color{
+    color: @vietnam-text-color;  /* #66cc00*/
 }
 #vietnam-bgcolor, .vietnam-bgcolor{
-    background: @vietnam-bgcolor !important;
+    background: @vietnam-bright !important
 }
-
-#vietnam-bgdarkcolor, .vietnam-bgdarkcolor{
+#vietnam-bgdarkcolor, .cambodia-bgdarkcolor{
     background: @vietnam-bgcolor !important
 }
 
@@ -22,23 +22,33 @@
   display: none!important;
 }
 
-.country-mixin(@vietnam-bright, @vietnam-bgcolor);
+.country-mixin(@vietnam-text-color, @vietnam-bgcolor);
+
+#od-head {
+  h1 {
+    color: @vietnam-bright !important
+  }
+}
+
+.sidebar_header{
+  background: @vietnam-bright !important;
+}
 
 #sidebar .widgets .widget ul li span.plusimage-vietnam{
     display: inline-block;
-    background: url("../../img/expand-vn.png") no-repeat 0 2px!important;
+    background: url("../../img/expand-vn.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 
 #sidebar .widgets .widget ul li span.minusimage-vietnam{
     display: inline-block;
-    background: url("../../img/collapse-vn.png") no-repeat 0 2px!important;
+    background: url("../../img/collapse-vn.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 
 #sidebar .widgets .widget ul li span.nochildimage-vietnam{
     display: inline-block;
-    background: url("../../img/no-child-vn.png") no-repeat 0 2px!important;
+    background: url("../../img/no-child-vn.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 

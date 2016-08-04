@@ -8,16 +8,15 @@
 
 	a,
 	a:visited,
-	.map-sidebar a,
- 	a:hover,
-	a strong:hover {
+	.map-sidebar a  {
 		color: @primary;
+		text-decoration: none;
 	}
 
-	a,
-	a:visited,
-	.map-sidebar a{ 
-		text-decoration: none;
+ 	a:hover,
+	.map-sidebar a:hover,
+	a strong:hover {
+		color: @bg-color;
 	}
 
 	.navigation {
@@ -27,12 +26,7 @@
 				color: @primary;
 			}
 		}
-	}
-
-	a:hover,
-	a strong:hover {
-		color: @primary;
-	}
+	} 
 
 	button,
 	a.button,
@@ -104,20 +98,31 @@
 	}
 
 	.interactive-map .interactive-map-layers {
-		ul li {
-			border-bottom: 1px solid @primary;
 
-			a:hover {
+		> ul >li {
+			border-bottom: 1px solid @primary;
+			a:hover{
+				color: @primary;
+
+			}
+
+			> a.active {
+				border-bottom: 1px solid @primary;
+				color: @primary;
+			}
+		}
+
+		.layer-item {
+			&:hover .list-circle-o {
+				border: 2px solid @primary;
+			}
+
+			.toggle-info i.active{
 				color: @primary;
 			}
 
-			> ul >li > a.active {
-				border-bottom: 1px solid @primary;
-    			color: @primary;
-			}
-
-			.layer-item:hover .list-circle-o {
-				border: 2px solid @primary;
+			span:hover{
+				color: @primary;
 			}
 		}
 	}
@@ -165,11 +170,16 @@
 		.widgets .widget,
 		.widget {
 			.widget-title {
-				color: @primary;
+				color: @bg-color;
 			}
 		}
-		.widgets .widget li a:hover{
+
+		.widgets .widget li a{
 			color: @primary;
+
+			.widgets .widget li a:hover{
+				color: @bg-color;
+			}
 		}
 	}
 

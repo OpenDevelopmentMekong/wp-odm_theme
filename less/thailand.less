@@ -4,17 +4,16 @@
 @import "_country-mixin.less";
 
 /* Color */
+@thailand-text-color: #E25D13;
 @thailand-bright: #F7904D;
 @thailand-bgcolor: #64161d;
 
-.thailand-color{
-    color: @thailand-bright;
+#thailand-color, .thailand-color{
+    color: @thailand-text-color;  /* #66cc00*/
 }
-
 #thailand-bgcolor, .thailand-bgcolor{
-    background: @thailand-bgcolor !important;
+    background: @thailand-bright !important
 }
-
 #thailand-bgdarkcolor, .thailand-bgdarkcolor{
     background: @thailand-bgcolor !important
 }
@@ -23,21 +22,31 @@
   display: none!important;
 }
 
-.country-mixin(@thailand-bright, @thailand-bgcolor);
+.country-mixin(@thailand-text-color, @thailand-bgcolor);
+
+#od-head {
+  h1 {
+    color: @thailand-bright !important
+  }
+}
+
+.sidebar_header{
+  background: @thailand-bright !important;
+}
 
 #sidebar .widgets .widget ul li span.plusimage-thailand{
     display: inline-block;
-    background: url("../../img/expand-th.png") no-repeat 0 2px!important;
+    background: url("../../img/expand-th.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 #sidebar .widgets .widget ul li span.minusimage-thailand{
     display: inline-block;
-    background: url("../../img/collapse-th.png") no-repeat 0 2px!important;
+    background: url("../../img/collapse-th.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 #sidebar .widgets .widget ul li span.nochildimage-thailand{
     display: inline-block;
-    background: url("../../img/no-child-th.png") no-repeat 0 2px!important;
+    background: url("../../img/no-child-th.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
