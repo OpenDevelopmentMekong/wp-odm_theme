@@ -70,7 +70,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		global $post;
 		if ($args == '') {
 				$args = array(
-				'post_type' => 'map-layer', 
+				'post_type' => 'map-layer',
 				'parent' => 0,
 				'exclude' => $exclude_cat
 				);
@@ -357,6 +357,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   											//We successfully got a link. Print it out.
   											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
   									}
+										echo '<i class="fa fa-chain"></i> ';
   									echo substr($public_announcement_sources, 0, -2);
   							}
   					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
