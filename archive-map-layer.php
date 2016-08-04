@@ -57,8 +57,8 @@
 	</section>
 
 	<section class="container">
-		<div class="row">
-			<div class="sixteen columns">
+		<div class="row"> 
+			<div class="eleven columns">
 				<?php odm_get_template('pagination', array("paging_arg" => $pagination["paging_arg"]), true); ?>
 			</div>
 		</div>
