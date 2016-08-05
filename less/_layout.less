@@ -54,6 +54,7 @@ body{
       background: @white;
       color: @black;
       padding: @xsmall-padd @small-padd;
+
     }
 
 		.item-title {
@@ -213,13 +214,13 @@ body{
   }
 
   p {
-    margin-bottom: @xsmall-padd;
+    margin-bottom: @small-padd;
   }
 
 	img {
 		width: 50px;
-    height: 50px;
-    margin: 0px 8px 8px 0px;
+		height: 50px;
+		margin: 0px 8px 8px 0px;
 	}
 
   .item-post-type {
@@ -284,8 +285,23 @@ body{
     font-size: @font-size-h2;
   }
 
+  .item-content {
+    .post-meta{
+      margin-top: @small-padd !important;
+    }
+  }
+
   p {
     margin-bottom: 0px;
+  }
+
+  ul {
+    margin-top: @xsmall-padd;
+  }
+
+  .post-excerpt {
+    margin-top: @small-padd;
+    margin-bottom: @small-padd;
   }
 
   &:last-child {

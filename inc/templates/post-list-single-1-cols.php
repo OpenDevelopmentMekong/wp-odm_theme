@@ -3,6 +3,7 @@
 	$show_meta = $params["show_meta"];
 	$show_excerpt = $params["show_excerpt"];
 	$show_post_type = $params["show_post_type"];
+	$show_auther_and_url_source = $params["show_author_and_url_source"];
 	?>
 
 <div class="sixteen columns post-list-item">
@@ -24,18 +25,21 @@
 			<?php echo_post_meta($post,array('date', 'sources')); ?>
 		</div>
 		<?php endif; ?>
-			<?php if ($show_excerpt):
-				$thumb_src = odm_get_thumbnail($post->ID,false);
-				if (isset($thumb_src)):
-					echo $thumb_src;
-				endif; ?>
-				<div class="post-excerpt">
-					<?php echo odm_excerpt($post); ?>
-				</div>
-			<?php endif; ?>
-	</div>
 
-	<div class="author-and-url">
-		<?php odm_echo_extras(); ?>
+		<?php if ($show_excerpt):
+			$thumb_src = odm_get_thumbnail($post->ID,false);
+			if (isset($thumb_src)):
+				echo $thumb_src;
+			endif; ?>
+			<div class="post-excerpt">
+				<?php echo odm_excerpt($post); ?>
+			</div>
+			<?php endif; ?>
+
+		<?php if ($show_auther_and_url_source): ?>
+			<div class="author-and-url">
+				<?php odm_echo_extras(); ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>

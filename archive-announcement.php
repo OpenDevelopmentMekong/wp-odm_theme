@@ -21,7 +21,9 @@
         <?php while (have_posts()) : the_post();
   				odm_get_template('post-list-single-1-cols',array(
   					"post" => get_post(),
-  					"show_meta" => true
+  					"show_meta" => true,
+						"show_excerpt" => true,
+						"show_author_and_url_source" => true
   			),true);
   			endwhile; ?>
       </div>
