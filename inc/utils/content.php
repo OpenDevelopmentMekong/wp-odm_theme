@@ -13,65 +13,15 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 							'%'.trim($title_str).'%'
 							)
 				);
-		echo "<div style='display: none;'>";
-		echo odm_language_manager()->get_current_language();
-		echo "<pre>";
-		print_r($get_post);
-		echo "</pre>";
-		echo "</div>";
+
 		foreach ($get_post as $page_topic) {
 			$pagetitle = qtrans_use(odm_language_manager()->get_current_language(), $page_topic->post_title, false);//get content by langauge
-			echo "<div style='display: none;'> MMMMMM ";
-			echo $pagetitle ;
-			echo "</div>";
-			$lang_tag = '[:'.odm_language_manager()->get_current_language().']';
-			$lang_tag_finder = '/'.$lang_tag.'/';
-			/*
-			if (odm_language_manager()->get_current_language() != 'en') {
-							if (strpos($page_topic->post_title, '[:kh]') !== false) {
-									$page_title = explode($lang_tag, $page_topic->post_title);
-									$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
-							} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
-									$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-									$page_title = trim(str_replace('<!--:'.odm_language_manager()->get_current_language().'-->', '', $page_title[1]));
-									$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
-							} elseif (strpos($page_topic->post_title, '<!--:-->')) {
-									$page_title = explode('<!--:-->', $page_topic->post_title);
-									$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-							}
-			} else {
-					//if (preg_match("/[:kh]/" ,$page_topic->post_title)){
-							if (strpos($page_topic->post_title, '[:kh]') !== false) {
-									$page_title = explode('[:kh]', $page_topic->post_title);
-									$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-							} elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
-									$page_title = explode('[:vi]', $page_topic->post_title);
-									$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-							} elseif (strpos($page_topic->post_title, '[:]')) {
-									$page_title = explode('[:]', $page_topic->post_title);
-									$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-							} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->')) {
-									$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-									$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-							} elseif (strpos($page_topic->post_title, '<!--:--><!--:vi-->')) {
-									$page_title = explode('<!--:--><!--:vi-->', $page_topic->post_title);
-									$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-							} elseif (strpos($page_topic->post_title, '<!--:-->')) {
-									$page_title = explode('<!--:-->', $page_topic->post_title);
-									$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-							} else {
-									$page_title = $page_topic->post_title;
-									$pagetitle = trim($page_title);
-							}
-			}
-					//echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-			*/
+
 			if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
 					$page_id = $page_topic->ID;
+					return $page_id;
 			}
 		}
-
-		return $page_id;
 }
  /****end Breadcrumb**/
 
