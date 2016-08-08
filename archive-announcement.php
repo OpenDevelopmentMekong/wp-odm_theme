@@ -23,7 +23,8 @@
   					"post" => get_post(),
   					"show_meta" => true,
 						"show_excerpt" => true,
-						"show_author_and_url_source" => true
+						"show_author_and_url_source" => true,
+						"show_summary_translated_by_odc_team" => true
   			),true);
   			endwhile; ?>
       </div>

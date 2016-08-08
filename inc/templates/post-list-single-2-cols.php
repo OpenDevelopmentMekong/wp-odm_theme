@@ -29,7 +29,7 @@
 			<?php endif; ?>
 			<?php if ($show_meta): ?>
 			<div class="meta">
-					<?php echo_post_meta($post,array('date','sources','categories')); ?>
+					<?php echo_post_meta($post,array('date','sources')); ?>
 			</div>
 			<?php endif; ?>
 	</div>
