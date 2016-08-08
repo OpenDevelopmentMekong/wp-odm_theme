@@ -289,7 +289,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   								echo '<li class="news-source">';
   								echo '<i class="fa fa-chain"></i> ';
   								echo substr($news_sources, 0, -2);
-  								echo '</li>';
+  								echo '</li> ';
   							endif;
   						}
 
@@ -299,12 +299,12 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   					echo '<span class="icon-news"></span> ';
   					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
   					echo get_the_title($news_source_id);
-  					echo '</li>';
+  					echo '</li> ';
   				}
 
   			}// if news_source exists
   			if (taxonomy_exists('public_announcement_source')) {
-  					echo '<li class="news-source">';
+  					echo '<li class="source-cateogy">';
   					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
   					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
   							if ($terms_public_announcement_source) {
@@ -318,6 +318,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   											//We successfully got a link. Print it out.
   											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
   									}
+										echo '<i class="fa fa-chain"></i> ';
   									echo substr($public_announcement_sources, 0, -2);
   							}
   					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
