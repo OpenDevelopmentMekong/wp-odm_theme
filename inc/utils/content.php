@@ -6,61 +6,22 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 		$get_post = $wpdb->get_results($wpdb->prepare(
 						"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
 						 AND post_status = %s
-			 AND post_title like %s
-					",
-						$post_type,
-						'publish',
-						'%'.trim($title_str).'%'
-						)
+						 AND post_title like %s
+						",
+							$post_type,
+							'publish',
+							'%'.trim($title_str).'%'
+							)
 				);
+
 		foreach ($get_post as $page_topic) {
-				$lang_tag = '[:'.odm_language_manager()->get_current_language().']';
-				$lang_tag_finder = '/'.$lang_tag.'/';
+			$pagetitle = qtrans_use(odm_language_manager()->get_current_language(), $page_topic->post_title, false);//get content by langauge
 
-				if (odm_language_manager()->get_current_language() != 'en') {
-								if (strpos($page_topic->post_title, '[:kh]') !== false) {
-										$page_title = explode($lang_tag, $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
-								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
-										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$page_title = trim(str_replace('<!--:'.odm_language_manager()->get_current_language().'-->', '', $page_title[1]));
-										$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
-								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
-										$page_title = explode('<!--:-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								}
-				} else {
-						//if (preg_match("/[:kh]/" ,$page_topic->post_title)){
-								if (strpos($page_topic->post_title, '[:kh]') !== false) {
-										$page_title = explode('[:kh]', $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
-										$page_title = explode('[:vi]', $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '[:]')) {
-										$page_title = explode('[:]', $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->')) {
-										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '<!--:--><!--:vi-->')) {
-										$page_title = explode('<!--:--><!--:vi-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
-										$page_title = explode('<!--:-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								} else {
-										$page_title = $page_topic->post_title;
-										$pagetitle = trim($page_title);
-								}
-				}
-						//echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-						if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
-								$page_id = $page_topic->ID;
-						}
+			if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
+					$page_id = $page_topic->ID;
+					return $page_id;
+			}
 		}
-
-		return $page_id;
 }
  /****end Breadcrumb**/
 
@@ -70,7 +31,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		global $post;
 		if ($args == '') {
 				$args = array(
-				'post_type' => 'map-layer', 
+				'post_type' => 'map-layer',
 				'parent' => 0,
 				'exclude' => $exclude_cat
 				);
@@ -328,7 +289,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   								echo '<li class="news-source">';
   								echo '<i class="fa fa-chain"></i> ';
   								echo substr($news_sources, 0, -2);
-  								echo '</li>';
+  								echo '</li> ';
   							endif;
   						}
 
@@ -338,12 +299,12 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   					echo '<span class="icon-news"></span> ';
   					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
   					echo get_the_title($news_source_id);
-  					echo '</li>';
+  					echo '</li> ';
   				}
 
   			}// if news_source exists
   			if (taxonomy_exists('public_announcement_source')) {
-  					echo '<li class="news-source">';
+  					echo '<li class="source-cateogy">';
   					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
   					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
   							if ($terms_public_announcement_source) {
@@ -357,6 +318,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   											//We successfully got a link. Print it out.
   											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
   									}
+										echo '<i class="fa fa-chain"></i> ';
   									echo substr($public_announcement_sources, 0, -2);
   							}
   					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {

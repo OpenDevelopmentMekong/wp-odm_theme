@@ -51,6 +51,7 @@
 			color: #4683d2; /*6393D2, 2774da;*/
 			text-decoration: underline;
 		}
+		color: #333;
 	}
 
 	.od-tax-widget-tax-item {
@@ -104,8 +105,16 @@
         span.minusimage-mekong,
         span.nochildimage-mekong {
             display: inline-block;
-            background: url("../../img/expand-mekong.png") no-repeat 0 2px!important;
             padding-left: 20px;
+        }
+        span.plusimage-mekong {
+            background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
+        }
+        span.minusimage-mekong {
+            background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
+        }
+        span.nochildimage-mekong {
+            background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
         }
 
         ul {
@@ -199,14 +208,14 @@
 				border-bottom: 1px solid @light-gray;
 				color: #fff;
 				font-size: @font-size-h3;
-				color: @mekong-bright;
+				color: @mekong-dark;
 			}
 
 			li a {
         font-family: @title-font;
         font-size: @font-size-h4;
         text-decoration: none;
-        color: @mekong-bright;
+        color: @mekong-text-color;
 
 				&:hover {
 					text-decoration:none;
@@ -237,9 +246,17 @@
 					span.minusimage-mekong,
 					span.nochildimage-mekong {
 					    display: inline-block;
-					    background: url("../../img/expand-mekong.png") no-repeat 0 2px!important;
 					    padding-left: 20px;
 					}
+          span.plusimage-mekong {
+              background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
+          }
+          span.minusimage-mekong {
+              background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
+          }
+          span.nochildimage-mekong {
+              background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
+          }
 
 					ul {
 						margin-left: 10px;
@@ -298,6 +315,7 @@
 
 ul.odm_taxonomy_widget_ul span:hover{
 	cursor: pointer;
+  color: @mekong-dark;
 }
 
 /*
