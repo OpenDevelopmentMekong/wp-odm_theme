@@ -55,7 +55,20 @@ h1, h2, h3, h4, h5, h6, p, a, li, div, span {
   background: @cambodia-bright !important;
 }
 
-#sidebar .widgets .widget, .widget .od-tax-widget-tax-item {
+.widget .od-tax-widget-tax-item,
+#sidebar .widgets .widget {
+
+  .widget-title {
+    color: @cambodia-bgcolor;
+  }
+
+  li a {
+    color: @cambodia-text-color;
+    &:hover {
+      color: @cambodia-bgcolor;
+    }
+  }
+
   ul li {
     span.plusimage-cambodia {
       display: inline-block;

@@ -47,13 +47,20 @@
             <?php comments_template(); ?>
           </section>
         </div>
+
         <div class="four columns offset-by-one">
           <aside id="sidebar">
             <ul class="widgets">
+
+              <!-- Summary Sidebar -->
               <li class="widget">
                 <?php odm_summary(); ?>
               </li>
+
+              <!-- Topic Sidebar -->
               <?php dynamic_sidebar('topic'); ?>
+
+              <!-- Related Widgets -->
               <?php if (function_exists('get_group') && get_group('related_link') != '' && get_group('related_link') != null): ?>
                 <li class="widget widget_odm_related_link_widget" style="clear:left">
                   <div>
