@@ -3,16 +3,89 @@
 #od-head{
 	background: @mekong-dark;
 	padding: @small-padd;
+
+	#icon-od-logo {
+		display: inline-block;
+		margin-right: 10px;
+		float: left;
+
+		.svg-od-logo {
+			width: 40px;
+			height: 68px;
+			fill: @mekong-bright;
+		}
+
+	}
 }
 
-#od-menu{
-	background: @mekong-dark;
+
+#od-selector {
+	#icon-od-logo {
+		display: inline-block;
+		margin-right: 3px;
+		float: left;
+		.svg-od-logo {
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	.mekong-logo {
+		fill: @mekong-bright;
+	}
+
+	.cambodia-logo {
+		fill: @cambodia-bright;
+	}
+
+	.laos-logo {
+		fill: @laos-bright;
+	}
+
+	.myanmar-logo {
+		fill: @myanmar-bright;
+	}
+
+	.thailand-logo {
+		fill: @thailand-bright;
+	}
+
+	.vietnam-logo {
+		fill: @vietnam-bright;
+	}
 }
 
 #od-selector .row, #od-head .row, #od-menu .row, #od-breadcrumb .row {
 	margin: 0px;
 }
 
+#od-menu{
+	background: @mekong-dark;
+
+	#menu-header-menu {
+		padding: 0;
+		margin: 0;
+		li {
+			padding: 0;
+			margin: 0;
+		}
+
+		a {
+			text-decoration: none;
+			height: 40px;
+			padding: 0px 10px 0px 10px;
+			line-height: 40px;
+			font-weight: normal;
+			vertical-align: baseline;
+			text-align: left;
+			display: inline-block;
+
+			&:hover {
+				background: #EEEEEE;
+			}
+		}
+	}
+}
 /*
  * Country selector
  */
@@ -23,7 +96,7 @@
 
 #od-selector {
   position: fixed;
-  top: 0px;
+  top: 0;
   width: 100%;
   height: @selector-height;
   z-index: 999;
@@ -34,6 +107,7 @@
 	box-shadow: 0 1px 10px 0 rgba(0,0,0,0.1);
 
 	a {
+		font-size: small;
 		color: @white;
 		text-decoration: none;
 	}
@@ -48,13 +122,17 @@
 	}
 
 }
+.admin-bar #od-selector {
+	top: 32px;
+}
 
 #od-selector ul,
 #od-selector ul li {
  margin: 0;
  padding: 0;
  float: left;
- padding: 2px 8px;
+ font-size: small;
+ padding: 2px 12px 2px 0;
 }
 
 /*
@@ -79,7 +157,7 @@
 
 #od-head {
   margin-top: @selector-height;
-	padding: @xsmall-padd;
+	padding: @small-padd;
 	background: @mekong-dark;
 	min-height: 72px;
 
