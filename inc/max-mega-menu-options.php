@@ -63,8 +63,8 @@ function megamenu_add_theme_odm_menu($themes) {
           );
         $themes["odv_menu"] = array(
             'title' => 'ODV Menu',
-            'container_background_from' => '#44AC05',
-            'container_background_to' => '#44AC05',
+            'container_background_from' => '#4AB208',
+            'container_background_to' => '#4AB208',
             'menu_item_background_hover_from' => '#EEEEEE',
             'menu_item_background_hover_to' => '#EEEEEE',
             'menu_item_link_color' => '#FFFFFF',
