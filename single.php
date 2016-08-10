@@ -34,10 +34,10 @@
             <?php
               if (function_exists('qtranxf_getLanguage')):
                 if ((odm_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))): ?>
-                  <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
+                  <p class="translated-by-team"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
               <?php endif; ?>
               <?php if (isset($local_language) && (odm_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
-                  <p class="translated-by-odc"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
+                  <p class="translated-by-team"><strong><?php _e('Summary translated by ODC Team');?></strong></p>
               <?php endif; ?>
             <?php endif; ?>
             <?php the_content(); ?>

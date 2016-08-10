@@ -271,7 +271,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   				?>
   			</li>
       <?php endif; ?>
-      <?php if (in_array('sources',$show_elements)):
+      <?php if (in_array('sources', $show_elements)):
         if (taxonomy_exists('news_source') && isset($post)) {
   				$terms_news_source = get_the_terms($post->ID, 'news_source');
   				if ($terms_news_source && !is_wp_error($terms_news_source)) {

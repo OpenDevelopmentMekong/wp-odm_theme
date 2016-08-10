@@ -279,15 +279,24 @@ body{
 }
 
 .post-type-archive .post-list-item {
-  border-bottom: 1px dotted @gray;
+  border-bottom: 1px solid @light-gray;
+  margin-bottom: @med-padd;
 
   .item-title {
     font-size: @font-size-h2;
+    font-weight: normal;
+    text-transform: none;    
+    color: @mekong-bright;
   }
 
   .item-content {
-    .post-meta{
-      margin-top: @small-padd !important;
+    padding: 0 0 @med-padd;
+    .post-meta {
+      margin-top: 0;
+    }
+    .post-excerpt {
+      height: auto;
+      display: block;
     }
   }
 
@@ -303,7 +312,7 @@ body{
     margin-top: @small-padd;
     margin-bottom: @small-padd;
   }
-  
+
   &:last-child {
     border-bottom: none;
   }
