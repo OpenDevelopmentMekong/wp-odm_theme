@@ -8,7 +8,7 @@ Template Name: News archive page
 ?>
 <?php
         global $wpdb, $wp_query;
-        $filter_by_lang = strtolower(get_localization_language_by_language_code(qtrans_getLanguage()));
+        $filter_by_lang = strtolower(get_the_language_by_language_code(qtrans_getLanguage()));
         $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
         if (SITE_NAME == 'Cambodia') {

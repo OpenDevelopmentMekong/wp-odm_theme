@@ -235,8 +235,6 @@ body{
     color: @mekong-bright;
 	}
 
-
-
 	.item-content {
     overflow: hidden;
 
@@ -253,15 +251,10 @@ body{
   			li {
   				margin-right: 5px;
   				color: @primary-color;
-  				font-size: @base-font-size;
   				margin-bottom: 5px;
   			}
 
   		}
-
-      li, i, a{
-        font-size: @font-size-h6 !important;
-      }
 
   	}
 
@@ -285,12 +278,13 @@ body{
   .item-title {
     font-size: @font-size-h2;
     font-weight: normal;
-    text-transform: none;    
+    text-transform: none;
     color: @mekong-bright;
   }
 
   .item-content {
     padding: 0 0 @med-padd;
+
     .post-meta {
       margin-top: 0;
     }
@@ -330,6 +324,13 @@ body{
     list-style-type: none;
     display: inline-block;
     margin-bottom: 0px;
+  }
+
+  li, i, a{
+    font-size: @font-size-h6;
+  }
+  .post-tags {
+    margin-bottom: @xsmall-padd;
   }
   .categories li, .post-categories li {
   	margin-bottom: 0px !important;

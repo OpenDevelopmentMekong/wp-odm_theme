@@ -1,6 +1,6 @@
 <?php
 
-function get_localization_language_by_language_code($lang_code = 'en')
+function get_the_language_by_language_code($lang_code = 'en')
 {
     $language['en'] = 'English';
     $language['km'] = 'Khmer';
@@ -12,7 +12,7 @@ function get_localization_language_by_language_code($lang_code = 'en')
     return $language[$lang_code];
 }
 
-function get_the_localization_language_by_website($site = '')
+function get_the_language_by_website_name($site = '')
 {
     $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
     $language['ODM'] = '';
