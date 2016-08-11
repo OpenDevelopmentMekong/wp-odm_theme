@@ -5,26 +5,35 @@
 	$show_post_type = $params["show_post_type"];
 	$show_author_and_url_source = $params["show_author_and_url_source"];
 	$show_summary_translated_by_odc_team = $params["show_summary_translated_by_odc_team"];
+	$header_tag = $params["header_tag"];
 ?>
 
 <div class="sixteen columns post-list-item">
+	<?php if ($header_tag): ?>
+		<h3>
+			<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
+				<?php echo $post->post_title; ?>
+			</a>
+		</h3>
+	<?php else: ?>
+		<p>
+			<?php
+				if ($show_post_type):
+					$post_type_name = get_post_type($post->ID);
+					$post_type = get_post_type_object($post_type_name);
+					?>
 
-	<p>
-		<?php
-			if ($show_post_type):
-				$post_type_name = get_post_type($post->ID);
-				$post_type = get_post_type_object($post_type_name);
-		?>
+					<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>">
+						<?php echo $post_type->labels->name ?>
+					</a>
+				<?php
+				endif; ?>
 
-		<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>">
-			<?php echo $post_type->labels->name ?>
-		</a>
-		<?php endif; ?>
-
-		<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
-			<?php echo $post->post_title; ?>
-		</a>
-	</p>
+				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
+					<?php echo $post->post_title; ?>
+				</a>
+		</p>
+	<?php endif; ?>
 
 	<div class="item-content">
 
@@ -32,22 +41,8 @@
 				<?php echo_post_meta($post,array('date','sources')); ?>
 			<?php endif; ?>
 
-			<?php if ($show_summary_translated_by_odc_team): ?>
-				<?php if (function_exists('qtranxf_getLanguage')):
-
-					if ((odm_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))): ?>
-						<p class="translated-by-odc">
-							<strong><?php _e('Summary translated by ODC Team');?></strong>
-						</p>
-					<?php endif; ?>
-
-					<?php if (isset($local_language) && (odm_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
-						<p class="translated-by-odc">
-							<strong><?php _e('Summary translated by ODC Team');?></strong>
-						</p>
-					<?php endif; ?>
-
-				<?php endif; ?>
+			<?php if ($show_summary_translated_by_odc_team): ?>  
+				<?php echo_post_translated_by_od_team(get_the_ID());?>
 			<?php endif; ?>
 
 			<?php if ($show_excerpt):

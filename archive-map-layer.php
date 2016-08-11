@@ -57,20 +57,9 @@
 	</section>
 
 	<section class="container">
-<<<<<<< HEAD
 		<div class="row">
-<<<<<<< HEAD
-			<div class="sixteen columns">
-				<?php odm_get_template('pagination', array("paging_arg" => $pagination["paging_arg"]), true); ?>
-=======
-			<div class="eleven columns">
-				<?php odm_get_template('pagination',array(),true); ?>
->>>>>>> refs/remotes/origin/master
-=======
-		<div class="row"> 
 			<div class="eleven columns">
 				<?php odm_get_template('pagination', array("paging_arg" => $pagination["paging_arg"]), true); ?>
->>>>>>> upstream/master
 			</div>
 		</div>
 	</section>

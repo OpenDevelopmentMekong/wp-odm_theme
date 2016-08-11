@@ -109,7 +109,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 }
 // Check if post specific to any langue or not
 function posts_for_both_and_current_languages($postID, $current_lang = "en", $taxonomy ="language"){
-    $site_language = strtolower(get_localization_language_by_language_code($current_lang));
+    $site_language = strtolower(get_the_language_by_language_code($current_lang));
     $terms = get_the_terms($postID, $taxonomy);
     if ( empty($terms) && !is_wp_error( $terms )) {
         return true;
@@ -119,6 +119,22 @@ function posts_for_both_and_current_languages($postID, $current_lang = "en", $ta
         return true;
     }
     return false;
+}
+
+function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
+	    $site_language = strtolower(get_the_language_by_language_code($current_lang)); //english
+			$translated_term =  $site_language."-translated";
+			$org_name = ucfirst(get_bloginfo('name'));
+			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
+			if (odm_country_manager()->get_current_country() == "mekong"):
+				$team_name = substr($team_name, 0, -1). " ".ucfirst(odm_country_manager()->get_current_country());
+			endif;
+	    $terms = get_the_terms($postID, $taxonomy);
+	    if (!is_wp_error( $terms ) && !empty($terms)) {
+				if (has_term($translated_term, $taxonomy, $postID)) {
+					echo "<p class='translated-by-team'><strong>".__('Summary translated by '.$team_name.' Team')."</strong></p>";
+				}
+			}
 }
 
 function print_category_by_post_type( $category, $post_type ="post", $current_cat='', $exclude_cat ='') {
@@ -271,7 +287,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   				?>
   			</li>
       <?php endif; ?>
-      <?php if (in_array('sources',$show_elements)):
+      <?php if (in_array('sources', $show_elements)):
         if (taxonomy_exists('news_source') && isset($post)) {
   				$terms_news_source = get_the_terms($post->ID, 'news_source');
   				if ($terms_news_source && !is_wp_error($terms_news_source)) {
