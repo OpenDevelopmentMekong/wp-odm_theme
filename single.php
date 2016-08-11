@@ -20,8 +20,10 @@
                 </div>
               </section>
             <?php endif; ?>
-            <?php the_content(); ?>
-            <?php odm_echo_extras(); ?>
+						<section id="post-content" class="row">
+            	<?php the_content(); ?>
+	            <?php odm_echo_extras(); ?>
+						</section>
             <?php
               wp_link_pages(array(
                       'before' => '<div class="page-links"><span class="page-links-title">'.__('Pages:', 'jeo').'</span>',
