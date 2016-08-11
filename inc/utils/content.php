@@ -121,22 +121,6 @@ function posts_for_both_and_current_languages($postID, $current_lang = "en", $ta
     return false;
 }
 
-function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
-	    $site_language = strtolower(get_the_language_by_language_code($current_lang)); //english
-			$translated_term =  $site_language."-translated";
-			$org_name = ucfirst(get_bloginfo('name'));
-			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
-			if (odm_country_manager()->get_current_country() == "mekong"):
-				$team_name = substr($team_name, 0, -1). " ".ucfirst(odm_country_manager()->get_current_country());
-			endif;
-	    $terms = get_the_terms($postID, $taxonomy);
-	    if (!is_wp_error( $terms ) && !empty($terms)) {
-				if (has_term($translated_term, $taxonomy, $postID)) {
-					echo "<p class='translated-by-team'><strong>".__('Summary translated by '.$team_name.' Team')."</strong></p>";
-				}
-			}
-}
-
 function print_category_by_post_type( $category, $post_type ="post", $current_cat='', $exclude_cat ='') {
  if ($current_cat == $category->slug){
      $current_page = " ".$current_cat;
@@ -345,7 +329,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   			}
       endif; ?>
       <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
-        <li class="categories">
+        <li class="categories">&nbsp;
   				<i class="fa fa-folder-o"></i>
   				<?php the_category(''); ?>
   			</li>
@@ -360,7 +344,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 
 }
 
- function odm_excerpt($post, $num = 40, $read_more = '')
+function odm_excerpt($post, $num = 40, $read_more = '')
  {
 		 $limit = $num + 1;
 		 $excerpt = explode(' ', strip_shortcodes(get_the_excerpt($post->ID)), $limit);
@@ -378,6 +362,100 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 		 return $excerpt_words;
  }
 
+function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
+ 	    $site_language = strtolower(get_the_language_by_language_code($current_lang)); //english
+ 			$translated_term =  $site_language."-translated";
+ 			$org_name = ucfirst(get_bloginfo('name'));
+ 			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
+ 			if (odm_country_manager()->get_current_country() == "mekong"):
+ 				$team_name = substr($team_name, 0, -1). " ".ucfirst(odm_country_manager()->get_current_country());
+ 			endif;
+ 	    $terms = get_the_terms($postID, $taxonomy);
+ 	    if (!is_wp_error( $terms ) && !empty($terms)) {
+ 				if (has_term($translated_term, $taxonomy, $postID)) {
+ 					echo "<p class='translated-by-team'><strong>".__('Summary translated by '.$team_name.' Team')."</strong></p>";
+ 				}
+ 			}
+ }
+
+function echo_documents_cover ($postID = "") {
+	$postID = $postID ? $postID : get_the_ID();
+ //Get Cover image
+	$get_cover = get_post_meta($postID, 'cover', true);
+	$get_localized_cover = get_post_meta($postID, 'cover_'.odm_language_manager()->get_current_language(), true);
+
+	if ($get_cover != '' || $get_localized_cover != ''):
+
+		$img_attr = array("h" => 600, "w" => 800, "zc" => 1, "q" =>100);
+		$files_mf_dir = get_bloginfo('url')."/wp-content/blogs.dir/".get_current_blog_id()."/files_mf/";
+
+		if($get_localized_cover !=""){
+			$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_localized_cover.'">';
+			$large_img = $files_mf_dir.$get_cover;
+		}
+		else{
+			if($get_cover !=""){
+				$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_cover.'">';
+				$large_img = $files_mf_dir.$get_cover; // get_image('cover',1,1,0,null,$img_attr);
+			}
+			else {
+				$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_localized_cover.'">';
+				$large_img = $files_mf_dir.$get_cover;
+			}
+		}
+		if($get_img !=""):
+			echo '<div class="documents_cover">';
+				echo '<a target="_blank" href="'.$large_img.'" rel="" >'.$get_img.'</a>';
+			echo '</div>'; //<!-- documents_cover -->
+		endif;
+	endif;
+}
+
+function echo_downloaded_documents ($postID = "") {
+	$postID = $postID ? $postID : get_the_ID();
+	$country_name = odm_country_manager()->get_current_country();
+	if(function_exists('qtrans_getSortedLanguages')){
+		$enabled_languages_codes = qtrans_getSortedLanguages( true );
+		if(!empty($enabled_languages_codes[1])):
+			$local_lang = $enabled_languages_codes[1];
+		endif;
+	}
+
+	//Get Download files
+	$get_document = get_post_meta($postID, 'upload_document', true);
+	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
+	if ($get_document != '' || $get_localized_document != ''):
+			echo "<span>";
+			_e("Download: ");
+			//Get English PDF
+			if($get_document !=""){
+				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_document.'">';
+					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
+					_e ('English PDF');
+				echo '</a>';
+			}
+			else{
+				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
+				_e("English PDF not available");
+			}
+			echo "&nbsp; &nbsp;";
+
+			//Get Khmer PDF
+			if($get_localized_document !=""){
+				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_localized_document.'">';
+					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
+					echo __(ucfirst($country_name). " " ."PDF");
+				echo '</a>';
+			}
+			else{
+				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
+				echo __(ucfirst($country_name). " " . "PDF not available");
+			}
+			echo "</span>";
+		endif;
+		?>
+	<?php
+}
 
 function available_post_types(){
 	 $args = array(
@@ -461,39 +539,40 @@ function available_custom_post_types(){
 		},get_the_category($post->ID));
  }
 
- function odm_echo_extras(){
+ function odm_echo_extras($postID = "") {
+ 	 $postID = $postID ? $postID : get_the_ID();
+	 if (function_exists('get_post_meta')) :
+		 $get_author = get_post_meta($postID, 'author', true);
+		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
 
-   if (function_exists('get')) :
-       if (get('author') == '' && get('author'.odm_language_manager()->get_current_language()) == ''):
-         echo '';
-       else:
-         $news_source_info = '<span class="lsf">&#xE041;</span> ';
-         if (get('author'.odm_language_manager()->get_current_language()) != ''):
-             $news_source_info .= get('author'.odm_language_manager()->get_current_language()).'<br />';
-         else:
-             $news_source_info .= get('author').'<br />';
-         endif;
-       endif;
-   endif;
+	   if ($get_author != '' || $get_localized_author != ''):
+	     $news_source_info = '<span class="lsf">&#xE041;</span> ';
+	     if ($get_localized_author != ''):
+	         $news_source_info .= $get_localized_author.'<br />';
+	     else:
+	         $news_source_info .= $get_author.'<br />';
+	     endif;
+	   endif;
 
-   if (function_exists('get')):
-     if (get('article_link') == '' && get('article_link'.odm_language_manager()->get_current_language()) == ''):
-         echo '';
-     else:
-       if (get('article_link'.odm_language_manager()->get_current_language()) != ''):
-         $source = get('article_link'.odm_language_manager()->get_current_language());
-       else:
-         $source = get('article_link');
-       endif;
-     endif;
+		 $get_article_link = get_post_meta($postID, 'article_link', true);
+		 $get_localized_article_link = get_post_meta($postID, 'article_link_'.odm_language_manager()->get_current_language(), true);
 
-     if (isset($source) && $source != ''):
-         if (substr($source, 0, 7) != 'http://'):
-           $news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
-         else:
-           $news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
-         endif;
-     endif;
+		 if ($get_article_link != '' || $get_localized_article_link != ''):
+			 if ($get_localized_author != ''):
+					 $source = $get_localized_author.'<br />';
+			 else:
+					 $source = $get_author.'<br />';
+			 endif;
+		 endif;
+
+		 if (isset($source) && $source != '') {
+					if (false === strpos($source, '://')) {
+							$news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+					}  else {
+							$news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+					}
+		 }
+
    endif;
 
    if (isset($news_source_info) && $news_source_info != ''):

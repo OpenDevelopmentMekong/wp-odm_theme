@@ -21,7 +21,9 @@
               </section>
             <?php endif; ?>
 						<section id="post-content" class="row">
+							<?php echo_documents_cover(); ?>
             	<?php the_content(); ?>
+	            <?php echo_downloaded_documents(); ?>
 	            <?php odm_echo_extras(); ?>
 						</section>
             <?php
