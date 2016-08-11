@@ -1,25 +1,30 @@
 // Specific overriding rules for the country
 // to be converted to dist/css/cambodia.css
 
+@import url(https://fonts.googleapis.com/css?family=Suwannaphum);
 @import "_country-mixin.less";
 
 @cambodia-text-color: #00A600;
 @cambodia-bright: #97D320;
 @cambodia-bgcolor: #06323D;
-
 body{
-  font: 14px/24px 'Suwannaphum', "Open Sans";
+  font: 14px/24px "Open Sans","Helvetica","Arial",sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+
+.km{
+  font-family: 'Suwannaphum', "Open Sans","Helvetica","Arial",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, div, span {
+    font-family: inherit !important;
 }
 .kh select, .km select{
-    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+    font-family: inherit;
 }
 
 .mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
 .fa_slider_opendev .fa_slide_content div.description p {
-  font-family: "Suwannaphum", "Open Sans" !important;
+  font-family: inherit !important;
 }
 
 #cambodia-color, .cambodia-color{
@@ -36,9 +41,15 @@ h1, h2, h3, h4, h5, h6 {
 
 #od-head {
   h1 {
-    color: @cambodia-bright !important
+    color: @cambodia-bright !important;
+		font-family: 'Droid Serif'!important;
   }
+
+	#od-logo .svg-od-logo {
+		 fill: @cambodia-bright!important;
+	}
 }
+
 
 .sidebar_header{
   background: @cambodia-bright !important;
