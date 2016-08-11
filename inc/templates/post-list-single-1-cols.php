@@ -41,22 +41,8 @@
 				<?php echo_post_meta($post,array('date','sources')); ?>
 			<?php endif; ?>
 
-			<?php if ($show_summary_translated_by_odc_team): ?>
-				<?php if (function_exists('qtranxf_getLanguage')):
-
-					if ((odm_language_manager()->get_current_language() == 'en') && (has_term('english-translated', 'language'))): ?>
-						<p class="translated-by-team">
-							<strong><?php _e('Summary translated by ODC Team');?></strong>
-						</p>
-					<?php endif; ?>
-
-					<?php if (isset($local_language) && (odm_language_manager()->get_current_language() == $local_language) && (has_term('khmer-translated', 'language'))):?>
-						<p class="ttranslated-by-team>
-							<strong><?php _e('Summary translated by ODC Team');?></strong>
-						</p>
-					<?php endif; ?>
-
-				<?php endif; ?>
+			<?php if ($show_summary_translated_by_odc_team): ?>  
+				<?php echo_post_translated_by_od_team(get_the_ID());?>
 			<?php endif; ?>
 
 			<?php if ($show_excerpt):
