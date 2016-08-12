@@ -36,7 +36,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
-		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : true;
+		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
+		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
+		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
 
 		$post_type = get_post_type_object($selected_custom_post_id);
 		$post_type_slug = $post_type->rewrite['slug'];
@@ -62,14 +64,15 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<a href="/<?php echo $post_type_slug?>"> More...</a>
 			</div>
 			<div class="sixteen columns">
-				<?php
-
+				<?php 
 					foreach($posts as $post):
 						$template = $this->templates[$layout_type];
 						odm_get_template($template,array(
 							"post" => $post,
 							"show_meta" => $show_meta,
-							"show_excerpt" => $show_excerpt
+							"show_source_meta" => $show_source_meta,
+							"show_excerpt" => $show_excerpt,
+							"show_thumbnail" => $show_thumbnail
 						),true);
 					endforeach; ?>
 			</div>
@@ -89,7 +92,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
-		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : true;
+		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
+		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
+		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
+
 
 		$args = array(
 		   'public'   => true,
@@ -101,6 +107,20 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$post_types = get_post_types( $args, $output, $operator );
 
 		$title = !empty($instance['title']) ? __($instance['title'], 'odm') : __('Custom posts', 'odm'); ?>
+
+		 <script type="text/javascript">
+			 jQuery(function($) {
+				 $('.layout_type').change(function(){
+							var get_select_id = $(this).attr("id");
+									widget_id = get_select_id.replace("layout_type", "");
+								if( ($(this).val() == "list-1-cols") || ($(this).val() == "list-2-cols") ){
+									 $('.'+widget_id+'show_source_meta').show();
+								}else {
+										$('.'+widget_id+'show_source_meta').hide();
+								 }
+				 });
+			 });
+	  </script>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -117,7 +137,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'layout_type' ); ?>"><?php _e( 'Select layout:' ); ?></label>
-			<select class='widefat' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
+			<select class='widefat layout_type' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
 				<?php foreach ( $this->templates  as $key => $value ): ?>
 					<option <?php if ($layout_type == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $key ?></option>
 				<?php endforeach; ?>
@@ -128,8 +148,16 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<input type="checkbox" name="<?php echo $this->get_field_name('show_excerpt'); ?>" id="<?php echo $this->get_field_id('show_excerpt'); ?>" <?php if ($show_excerpt)  echo 'checked="true"'; ?>/>
 		</p>
 		<p>
+			<label for="<?php echo $this->get_field_id( 'show_thumbnail' ); ?>"><?php _e( 'Show post thumbnail:' ); ?></label>
+			<input type="checkbox" name="<?php echo $this->get_field_name('show_thumbnail'); ?>" id="<?php echo $this->get_field_id('show_thumbnail'); ?>" <?php if ($show_thumbnail)  echo 'checked="true"'; ?>/>
+		</p>
+		<p>
 			<label for="<?php echo $this->get_field_id( 'show_meta' ); ?>"><?php _e( 'Show post meta:' ); ?></label>
 			<input type="checkbox" name="<?php echo $this->get_field_name('show_meta'); ?>" id="<?php echo $this->get_field_id('show_meta'); ?>" <?php if ($show_meta)  echo 'checked="true"'; ?>/>
+		</p>
+		<p class="<?php echo $this->get_field_id('show_source_meta'); ?>" id="show_source_meta" style="<?php if ( !in_array($layout_type, array("list-1-cols", "list-2-cols"))): echo "display: none"; endif; ?>">
+			<label for="<?php echo $this->get_field_id( 'show_source_meta' ); ?>"><?php _e( 'Show Source meta:' ); ?></label>
+			<input type="checkbox" name="<?php echo $this->get_field_name('show_source_meta'); ?>" id="<?php echo $this->get_field_id('show_source_meta'); ?>" <?php if ($show_source_meta)  echo 'checked="true"'; ?>/>
 		</p>
 
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
@@ -155,7 +183,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
 		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : false;
+		$instance['show_source_meta'] = (!empty( $new_instance['show_source_meta'])) ? $new_instance['show_source_meta'] : false;
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
+		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
 
 		return $instance;
 	}

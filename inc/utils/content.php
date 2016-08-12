@@ -346,20 +346,26 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 
 function odm_excerpt($post, $num = 40, $read_more = '')
  {
-		 $limit = $num + 1;
-		 $excerpt = explode(' ', strip_shortcodes(get_the_excerpt($post->ID)), $limit);
-		 array_pop($excerpt);
-		 $excerpt_string = implode(' ', $excerpt);
-		 $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
-		 array_pop($excerpt_hidden_space);
-		 $$excerpt_string = implode('?', $excerpt_hidden_space);
-		 $excerpt_words = $excerpt_string.' ...';
-		 if ($read_more != '') {
-				 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
-				 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
-		 }
+		$limit = $num + 1;
+		if(get_the_excerpt($post->ID)):
+			$get_the_excerpt = get_the_excerpt($post->ID);
+		else:
+				$get_the_excerpt = $post->post_content;
+		endif;
 
-		 return $excerpt_words;
+		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
+		array_pop($excerpt);
+		$excerpt_string = implode(' ', $excerpt);
+		$excerpt_hidden_space = explode('?', $excerpt_string, $limit);
+		array_pop($excerpt_hidden_space);
+		$$excerpt_string = implode('?', $excerpt_hidden_space);
+		$excerpt_words = $excerpt_string.' ...';
+		if ($read_more != '') {
+			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
+			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+		}
+
+		return $excerpt_words;
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
@@ -403,6 +409,7 @@ function echo_documents_cover ($postID = "") {
 				$large_img = $files_mf_dir.$get_cover;
 			}
 		}
+
 		if($get_img !=""):
 			echo '<div class="documents_cover">';
 				echo '<a target="_blank" href="'.$large_img.'" rel="" >'.$get_img.'</a>';
@@ -425,7 +432,7 @@ function echo_downloaded_documents ($postID = "") {
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
 	if ($get_document != '' || $get_localized_document != ''):
-			echo "<span>";
+			echo "<div id='documents_download'><span>";
 			_e("Download: ");
 			//Get English PDF
 			if($get_document !=""){
@@ -451,7 +458,7 @@ function echo_downloaded_documents ($postID = "") {
 				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
 				echo __(ucfirst($country_name). " " . "PDF not available");
 			}
-			echo "</span>";
+			echo "</span></div>";
 		endif;
 		?>
 	<?php
@@ -540,11 +547,11 @@ function available_custom_post_types(){
  }
 
  function odm_echo_extras($postID = "") {
+	 echo $postID ." ";
  	 $postID = $postID ? $postID : get_the_ID();
 	 if (function_exists('get_post_meta')) :
 		 $get_author = get_post_meta($postID, 'author', true);
 		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
-
 	   if ($get_author != '' || $get_localized_author != ''):
 	     $news_source_info = '<span class="lsf">&#xE041;</span> ';
 	     if ($get_localized_author != ''):
@@ -559,9 +566,9 @@ function available_custom_post_types(){
 
 		 if ($get_article_link != '' || $get_localized_article_link != ''):
 			 if ($get_localized_author != ''):
-					 $source = $get_localized_author.'<br />';
+					 $source = $get_localized_article_link;
 			 else:
-					 $source = $get_author.'<br />';
+					 $source = $get_article_link;
 			 endif;
 		 endif;
 

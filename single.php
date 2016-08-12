@@ -21,10 +21,19 @@
               </section>
             <?php endif; ?>
 						<section id="post-content" class="row">
-							<?php echo_documents_cover(); ?>
-            	<?php the_content(); ?>
-	            <?php echo_downloaded_documents(); ?>
-	            <?php odm_echo_extras(); ?>
+							<?php
+								$thumb_src = odm_get_thumbnail(get_the_ID(),false);
+								if (isset($thumb_src)):
+									echo $thumb_src;
+								else:
+									echo_documents_cover();
+								endif;
+							?>
+							<div class="item-content">
+	            	<?php the_content(); ?>
+		            <?php echo_downloaded_documents(); ?>
+		            <?php odm_echo_extras(); ?>
+							</div>
 						</section>
             <?php
               wp_link_pages(array(
