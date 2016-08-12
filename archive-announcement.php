@@ -22,9 +22,11 @@
   				odm_get_template('post-list-single-1-cols',array(
   					"post" => get_post(),
   					"show_meta" => true,
-						"show_excerpt" => true,
-						"show_author_and_url_source" => true,
-						"show_summary_translated_by_odc_team" => true
+  					"show_source_meta" => true,
+						"show_thumbnail" => true,
+						"show_excerpt" => true, 
+						"show_summary_translated_by_odc_team" => true,
+						"header_tag" => true
   			),true);
   			endwhile; ?>
       </div>

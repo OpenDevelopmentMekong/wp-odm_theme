@@ -208,19 +208,36 @@ body{
 
 .post-list-item {
 	margin-bottom: @small-padd;
+  border-bottom: 1px solid @light-gray;
 
   &:nth-child(odd) {
     clear: left;
   }
+  &:last-child {
+    border-bottom: none;
+  }
 
   p {
     margin-bottom: @small-padd;
+
+    &:first-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .eight.post-list-item:nth-last-child(2) {
+    border-bottom: none;
   }
 
 	img {
-		width: 50px;
-		height: 50px;
-		margin: 0px 8px 8px 0px;
+		margin: 0px @small-padd @small-padd 0px;
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    margin-top:  @xsmall-padd;
+		border:1px solid @light-gray;
+		padding: @xsmall-padd;
 	}
 
   .item-post-type {
@@ -235,33 +252,54 @@ body{
     color: @mekong-bright;
 	}
 
+  .documents_cover {
+    display: table-cell;
+    vertical-align: top;
+    float: left;
+  }
+  img {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    float: left;
+    margin-top:  @xsmall-padd;
+    border:1px solid @light-gray;
+    padding: @xsmall-padd;
+  }
+
 	.item-content {
     overflow: hidden;
+    padding: 0 0 @small-padd;
+    display: table-cell;
 
-    img{
+    img {
       float:left;
     }
 
-    .post-meta {
-      text-align: left;
-
-  		ul {
-  			margin-left: 0px;
-
-  			li {
-  				margin-right: 5px;
-  				color: @primary-color;
-  				margin-bottom: 5px;
-  			}
-
-  		}
-
-  	}
-
 	}
+
+  .post-meta {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: @xsmall-padd;
+
+    ul {
+      margin-left: 0px;
+
+      li {
+        margin-right: 5px;
+        color: @primary-color;
+        margin-bottom: 5px;
+      }
+
+    }
+
+  }
 
 	.post-excerpt, .excerpt {
 		.text-ellipsis(3);
+    margin-bottom: @small-padd;
 	}
 
   .readmore a {
@@ -283,19 +321,11 @@ body{
   }
 
   .item-content {
-    padding: 0 0 @med-padd;
-
-    .post-meta {
-      margin-top: 0;
-    }
     .post-excerpt {
       height: auto;
-      display: block;
+      display: table-cell;
+      float: left;
     }
-  }
-
-  p {
-    margin-bottom: 0px;
   }
 
   ul {
@@ -312,8 +342,16 @@ body{
   }
 }
 
+#documents_download {
+  img {
+    margin: 0!important;
+    border: none !important;
+    padding: 0 !important;
+    margin-top : 0 !important;
+    float: none !important;
+  }
+}
 .post-meta{
-
   ul{
     list-style-type: none;
     margin-left: 0px !important;
