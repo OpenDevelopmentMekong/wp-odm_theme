@@ -1,6 +1,9 @@
 <?php
-	$post = $params["post"];
-	$show_meta = $params["show_meta"];
+	$post = isset($params["post"]) ? $params["post"] : null;
+	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : false;
+	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : false;
+	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
+	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	?>
 
 <div class="four columns post-grid-item post-grid-item-caption-bolow <?php echo odm_country_manager()->get_current_country(); ?>-bgdarkcolor">
