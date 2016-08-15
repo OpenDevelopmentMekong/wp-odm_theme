@@ -1,11 +1,12 @@
 <?php
-	$post = $params["post"];
-	$show_meta = $params["show_meta"];
-	$show_source_meta = $params["show_source_meta"];
-	$show_excerpt = $params["show_excerpt"];
-	$show_post_type = $params["show_post_type"];
-	$show_summary_translated_by_odc_team = $params["show_summary_translated_by_odc_team"];
-	$header_tag = $params["header_tag"];
+	$post = isset($params["post"]) ? $params["post"] : null;
+	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : false;
+	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : false;
+	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
+	$show_source_meta = isset($params["show_source_meta"]) ? $params["show_source_meta"] : false;
+	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
+	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
+	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
 ?>
 
 <div class="sixteen columns post-list-item">
@@ -61,8 +62,8 @@
 							<?php echo odm_excerpt($post); ?>
 						</div>
 						<?php if( echo_downloaded_documents()):
-										echo_downloaded_documents();
-									endif; ?>
+							echo_downloaded_documents();
+						endif; ?>
 					<?php endif; ?>
 
 					<?php if ($show_source_meta): ?>

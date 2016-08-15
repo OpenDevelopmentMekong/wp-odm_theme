@@ -258,17 +258,13 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
       <?php if (in_array('date',$show_elements)): ?>
         <li class="date">
   				<i class="fa fa-clock-o"></i>
-  					 <?php
-  					 if (function_exists('qtrans_getLanguage')) {
-  							 if (odm_language_manager()->get_current_language() == 'km') {
-  									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
-  							 } else {
-  									 echo get_the_time('j F Y',$post->ID);
-  							 }
-  					 } else {
-  							 echo get_the_time('j F Y',$post->ID);
-  					 }
-  				?>
+				  <?php
+					 if (odm_language_manager()->get_current_language() == 'km') {
+							 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
+					 } else {
+							 echo get_the_time('j F Y',$post->ID);
+					 }
+				  ?>
   			</li>
       <?php endif; ?>
       <?php if (in_array('sources', $show_elements)):
@@ -421,6 +417,7 @@ function echo_documents_cover ($postID = "") {
 function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
 	$country_name = odm_country_manager()->get_current_country();
+	$local_lang = 'en';
 	if(function_exists('qtrans_getSortedLanguages')){
 		$enabled_languages_codes = qtrans_getSortedLanguages( true );
 		if(!empty($enabled_languages_codes[1])):
