@@ -76,6 +76,7 @@ function convert_date_to_kh_date($date_string, $splitted_by = '.')
 }
 function convert_to_kh_month($month = '')
 {
+
     if (odm_language_manager()->get_current_language() == 'km') {
         if ($month == 'Jan') {
             $kh_month = 'មករា';
@@ -151,10 +152,12 @@ function convert_to_kh_month($month = '')
             $kh_month = 'ធ្នូ';
         }
 
-        return $kh_month;
-    } else {
-        return $month;
+        if (isset($kh_month)):
+          $month = $kh_month;
+        endif;
     }
+
+    return $month;
 }
 
 function convert_to_kh_number($number)
