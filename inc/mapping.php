@@ -156,12 +156,10 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 			'order'   => 'ASC',
 			'exclude' => $exclude_cats
 		);
-		$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
-
+		//$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
 		$terms_layer = get_terms($layer_taxonomy, $layer_term_args);
 		if ($terms_layer) {
 			foreach( $terms_layer as $term ) {
-				//$map_catalogue = get_all_layers_by_term_id($term->term_id, $exclude_cats);
 				$query_layer = query_get_layer_posts($term->term_id, false, $exclude_cats);
 				if($query_layer->have_posts() ){
 					while ( $query_layer->have_posts() ) : $query_layer->the_post();
@@ -195,9 +193,8 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 			foreach ($map_catalogue as $key => $row) {
 					$tmp_arr[$key] = $row->post_title;
 			}
-			array_multisort($tmp_arr, SORT_ASC, $map_catalogue);
-			//Array index 0 is added during sorting, and it is no value
-			unset($map_catalogue[0]);
+			array_multisort($tmp_arr, SORT_ASC, $map_catalogue); 
+			//unset($map_catalogue[0]);
 
 			return $map_catalogue;
 		}//if terms_layer
@@ -436,7 +433,6 @@ function get_layer_information_in_array($post_ID){
 	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
-
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
 								"download_link" => $download_link,
