@@ -93,7 +93,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts'; ?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo _e($title, 'odm');?>">
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title, 'odm');?>">
 		</p>
 
 		<p>
