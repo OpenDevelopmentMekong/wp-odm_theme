@@ -193,7 +193,7 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 			foreach ($map_catalogue as $key => $row) {
 					$tmp_arr[$key] = $row->post_title;
 			}
-			array_multisort($tmp_arr, SORT_ASC, $map_catalogue); 
+			array_multisort($tmp_arr, SORT_ASC, $map_catalogue);
 			//unset($map_catalogue[0]);
 
 			return $map_catalogue;
@@ -469,10 +469,17 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 					$get_layer_info = get_layer_information_in_array(get_the_ID());
 					$permalink = $get_layer_info->download_link;
 				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
+					//find all map layer post to get it ID. eg. layer name: All Natural protected area
+					if(substr( strtolower(get_the_title()), 0, 4 ) === "all"):
+						$layer_id = get_the_ID();
+						break;
+					endif;
 				}
 			endwhile;
 			wp_reset_postdata();
 			if(!empty($get_layer_info)):
+				$layers_list_id = $layer_id? $layer_id : $get_layer_info->ID; 
+
 				$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
 										"title_and_link" => "<a class='item-title' target='_blank' href='". $permalink."' 	title='".$child_term->name."'>".$child_term->name."</a>",
@@ -480,7 +487,6 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 										"category" => $child_term->name,
 										"parent" => $child_term->parent
 							);
-
 				return $layers_list_array;
 			endif;
 		}//if have_posts

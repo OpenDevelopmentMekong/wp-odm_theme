@@ -1,10 +1,10 @@
 <?php
 
-function odm_get_thumbnail($post_id = false, $fallback = false)
+function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'post-thumbnail')
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
-    $thumb_src = get_the_post_thumbnail( $post_id, 'post-thumbnail');
+    $thumb_src = get_the_post_thumbnail( $post_id, $size);
     if ($thumb_src) {
       return $thumb_src;
     }
