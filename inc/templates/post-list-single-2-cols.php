@@ -1,6 +1,7 @@
 <?php
 	$post = isset($params["post"]) ? $params["post"] : null;
-	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : false;
+	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
+	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_source_meta = isset($params["show_source_meta"]) ? $params["show_source_meta"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;

@@ -64,7 +64,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<a href="/<?php echo $post_type_slug?>"> More...</a>
 			</div>
 			<div class="sixteen columns">
-				<?php 
+				<?php
 					foreach($posts as $post):
 						$template = $this->templates[$layout_type];
 						odm_get_template($template,array(
@@ -182,10 +182,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
-		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : false;
+		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : true;
 		$instance['show_source_meta'] = (!empty( $new_instance['show_source_meta'])) ? $new_instance['show_source_meta'] : false;
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
-		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
+		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : true;
 
 		return $instance;
 	}
