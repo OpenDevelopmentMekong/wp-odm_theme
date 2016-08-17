@@ -52,6 +52,16 @@ function query_get_baselayer_posts($num=5, $cat='base-layers', $include_children
 
 //Query all baselayers' post meta into an array
 function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_children=false){
+	//get map configure from the opendev-setting
+	$map = opendev_get_interactive_map_data();
+	if($map['base_layer']) {
+			$default_map = array(
+				'ID' => 0,
+				'type' => 'tilelayer',
+				'tile_url' => $map['base_layer']['url']
+			);
+			$base_layers[0] = $default_map;
+	}
 	$base_layer_posts = query_get_baselayer_posts();
 	if($base_layer_posts){
 		foreach ( $base_layer_posts as $baselayer ) :
@@ -61,6 +71,7 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 	return $base_layers;
 }
 //************//
+
 //display layer menus fixed on right bar
 function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1){
 	$get_post = get_post($post_ID);
@@ -478,7 +489,7 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 			endwhile;
 			wp_reset_postdata();
 			if(!empty($get_layer_info)):
-				$layers_list_id = $layer_id? $layer_id : $get_layer_info->ID; 
+				$layers_list_id = $layer_id? $layer_id : $get_layer_info->ID;
 
 				$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
