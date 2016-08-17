@@ -159,7 +159,7 @@ class OpenDev_InteractiveMap {
                     array_unshift($map['layers'], array(
                     	'type' => 'tilelayer',
                     	'tile_url' => $map['base_layer']['url']
-                    )); 
+                    ));
                 }
             }//if terms_layer
             ?>

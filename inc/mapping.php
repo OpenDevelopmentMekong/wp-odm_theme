@@ -71,44 +71,74 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 	return $base_layers;
 }
 //************//
+function display_map_layer_sidebar_and_legend_box($layers){
+	if (!empty($layers)){
+		echo '<div class="category-map-layers box-shadow hide_show_container">';
+			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "opendev");
+				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
+			echo '</h2>';
+			echo '<div class="interactive-map-layers dropdown">';
+				echo "<ul class='cat-layers switch-layers'>";
+					foreach ($layers as $id => $layer) {
+						display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+					}
+				echo "</ul>";
+				echo '<div class="news-marker">';
+				echo '<label><input class="news-marker-toggle" type="checkbox" value="1"/>';
+				 	echo '<span class="label">'.__("Hide news icons", "opendev")."</span>";
+				echo '</label>';
+				echo '</div>';
+			echo '</div>'; //interactive-map-layers dropdown
+		echo '</div>'; //category-map-layers  box-shadow
+
+		//show legend box
+		display_legend_container();
+
+		//show layer information
+    display_layer_information($layers);
+	}
+}
 
 //display layer menus fixed on right bar
-function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1){
-	$get_post = get_post($post_ID);
-	if (function_exists( qtrans_use)){
-		$title = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_title,false);//get TITLE by langauge
-		$content = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_content,false);//get CONTENT by langauge
-	}else {
-		$title = $get_post->post_title;
-		$content = $get_post->post_content;
+function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option=""){
+	if($post_ID !== 0){
+		$get_post = get_post($post_ID);
+		if (function_exists( qtrans_use)){
+			$title = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_title,false);//get TITLE by langauge
+			$content = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_content,false);//get CONTENT by langauge
+		}else {
+			$title = $get_post->post_title;
+			$content = $get_post->post_content;
+		}
+		$layer_items = '<li class="layer-item '.$option.'" data-layer="'.$post_ID.'" id="post-'.$post_ID.'">
+		  <img class="list-loading" src="'. get_stylesheet_directory_uri(). '/img/loading-map.gif">
+		  <span class="list-circle-active"></span>
+		  <span class="list-circle-o"></span>
+		  <span class="layer-item-name">'.$title.'</span>';
+
+		  if ( (odm_language_manager()->get_current_language() != "en") ){
+		  $layer_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
+		  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
+		  }else {
+		  $layer_download_link = get_post_meta($post_ID, '_layer_download_link', true);
+		  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
+
+		  }
+
+		  if($layer_download_link!=""){
+		   $layer_items .= '
+		      <a class="download-url" href="'.$layer_download_link.'" target="_blank"><i class="fa fa-arrow-down"></i></a>
+		      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
+		  }else if($content!= ""){
+		   $layer_items .= '
+		      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
+		  }
+		  if($layer_profilepage_link!=""){
+		   $layer_items .= '
+		      <a class="profilepage_link" href="'. $layer_profilepage_link.'" target="_blank"><i class="fa fa-table"></i></a>';
+		  }
+		$layer_items .= '</li>';
 	}
-	$layer_items = '<li class="layer-item" data-layer="'.$post_ID.'" id="post-'.$post_ID.'">
-	  <img class="list-loading" src="'. get_stylesheet_directory_uri(). '/img/loading-map.gif">
-	  <span class="list-circle-active"></span>
-	  <span class="list-circle-o"></span>
-	  <span class="layer-item-name">'.$title.'</span>';
-
-	  if ( (odm_language_manager()->get_current_language() != "en") ){
-	  $layer_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
-	  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
-	  }else {
-	  $layer_download_link = get_post_meta($post_ID, '_layer_download_link', true);
-	  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
-	  }
-
-	  if($layer_download_link!=""){
-	   $layer_items .= '
-	      <a class="download-url" href="'.$layer_download_link.'" target="_blank"><i class="fa fa-arrow-down"></i></a>
-	      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
-	  }else if($content!= ""){
-	   $layer_items .= '
-	      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
-	  }
-	  if($layer_profilepage_link!=""){
-	   $layer_items .= '
-	      <a class="profilepage_link" href="'. $layer_profilepage_link.'" target="_blank"><i class="fa fa-table"></i></a>';
-	  }
-	$layer_items .= '</li>';
 	if($echo == 1){
 		echo $layer_items;
 	}else {
@@ -356,6 +386,17 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 	if ($map_ID == "" ){
 		$map_ID = get_the_ID();
 	}
+	//Add default map to layers list for first loading
+	$map = opendev_get_interactive_map_data();
+	if($map['base_layer']) {
+			$default_map = array(
+				'ID' => 0,
+				'type' => 'tilelayer',
+				'tile_url' => $map['base_layer']['url']
+			);
+			$layers[0] = $default_map;
+	}
+
 	$get_layers = $GLOBALS['jeo_layers']->get_map_layers($map_ID); //called from parent theme
 
 	if(!empty($get_layers)){
