@@ -1,6 +1,6 @@
 <?php
 
-function get_localization_language_by_language_code($lang_code = 'en')
+function get_the_language_by_language_code($lang_code = 'en')
 {
     $language['en'] = 'English';
     $language['km'] = 'Khmer';
@@ -12,7 +12,7 @@ function get_localization_language_by_language_code($lang_code = 'en')
     return $language[$lang_code];
 }
 
-function get_the_localization_language_by_website($site = '')
+function get_the_language_by_website_name($site = '')
 {
     $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
     $language['ODM'] = '';
@@ -76,6 +76,7 @@ function convert_date_to_kh_date($date_string, $splitted_by = '.')
 }
 function convert_to_kh_month($month = '')
 {
+
     if (odm_language_manager()->get_current_language() == 'km') {
         if ($month == 'Jan') {
             $kh_month = 'មករា';
@@ -151,10 +152,12 @@ function convert_to_kh_month($month = '')
             $kh_month = 'ធ្នូ';
         }
 
-        return $kh_month;
-    } else {
-        return $month;
+        if (isset($kh_month)):
+          $month = $kh_month;
+        endif;
     }
+
+    return $month;
 }
 
 function convert_to_kh_number($number)

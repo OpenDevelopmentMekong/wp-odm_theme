@@ -1,7 +1,9 @@
 <?php
-	$post = $params["post"];
-	$show_meta = $params["show_meta"];
-	$show_post_type = $params["show_post_type"];
+	$post = isset($params["post"]) ? $params["post"] : null;
+	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
+	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
+	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
+	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	?>
 
 <div class="four columns post-grid-item">
@@ -21,9 +23,11 @@
 		</div>
 		<?php endif; ?>
 		<?php
-			$thumb_src = odm_get_thumbnail($post->ID);
-			if (isset($thumb_src)):
-				echo $thumb_src;
+			if ($show_thumbnail):
+				$thumb_src = odm_get_thumbnail($post->ID);
+				if (isset($thumb_src)):
+					echo $thumb_src;
+				endif;
 			endif; ?>
 	</div>
 </div>

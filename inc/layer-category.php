@@ -55,6 +55,19 @@ class OpenDev_Map_Category {
 										);
 		}
 
+		//Check to see if the Base Layers is created..if not, create them
+		$catalogue_term = term_exists( 'Map catalogue', 'layer-category' ); // array is returned if taxonomy is given
+		$catalogue_term_id = $catalogue_term['term_id']; // get numeric term id
+		if ($catalogue_term == 0 && $catalogue_term == null) {
+			 wp_insert_term(
+										'Map catalogue', // the term
+										'layer-category', // the taxonomy
+										array(
+												'slug' => 'map-catalogue',
+                        'description' => 'Category layers for Map catalogue only')
+										);
+		}
+
 	}
 
 }

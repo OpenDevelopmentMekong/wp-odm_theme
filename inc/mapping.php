@@ -107,23 +107,155 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1){
 }
 
 //Query all baselayers' post meta into an array
-function query_get_layer_posts($term_id, $num=-1, $include_children=false){
+function query_get_layer_posts($term_id, $num=-1, $include_children =false,
+$exclude_cats =""){
+	$layer_taxonomy = "layer-category";
+	if($exclude_cats != ""){
+		$tax_query = array(
+	 										'relation' => 'AND',
+	 										 array(
+	 											 'taxonomy' => $layer_taxonomy,
+	 											 'field' => 'id',
+	 											 'terms' => $term->term_id,
+	 											 'include_children' => false,
+	 											 'operator' => 'IN'
+	 										 ),
+	 										 array(
+	 											 'taxonomy' => $layer_taxonomy,
+	 											 'field' => 'id',
+	 											 'terms' => $exclude_posts_in_cats,
+	 											 'operator' => 'NOT IN'
+	 											)
+	 									 );
+	}else {
+		$tax_query = array(
+										array(
+										  'taxonomy' => $layer_taxonomy,
+										  'field' => 'id',
+										  'terms' => $term_id, // Where term_id of Term 1 is "1".
+										  'include_children' => false
+											)
+						  		);
+	}
 	$args_layer = array(
 		'post_type' => 'map-layer',
 		'orderby'   => 'name',
 		'order'   => 'asc',
 		'posts_per_page' => $num,
-		'tax_query' => array(
-							array(
-							  'taxonomy' => 'layer-category',
-							  'field' => 'id',
-							  'terms' => $term_id, // Where term_id of Term 1 is "1".
-							  'include_children' => false
-							)
-						  )
+		'tax_query' => $tax_query
 	);
 	$layers = new WP_Query( $args_layer );
 	return $layers;
+}
+
+function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='', 			$layer_taxonomy='layer-category'){
+	//List cetegory and layer by cat for menu items
+		$layer_term_args= array(
+			'parent' => 0,
+			'orderby'   => 'name',
+			'order'   => 'ASC',
+			'exclude' => $exclude_cats
+		);
+		//$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
+		$terms_layer = get_terms($layer_taxonomy, $layer_term_args);
+		if ($terms_layer) {
+			foreach( $terms_layer as $term ) {
+				$query_layer = query_get_layer_posts($term->term_id, false, $exclude_cats);
+				if($query_layer->have_posts() ){
+					while ( $query_layer->have_posts() ) : $query_layer->the_post();
+							if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+									$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
+						}
+					endwhile;
+					wp_reset_postdata();
+				} //$query_layer->have_posts
+
+				//Get Layers of subcategory
+				$children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+				if ( !empty($children_term) ) {
+					foreach($children_term as $child){
+						$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
+
+						//check if the sub category has children
+						$has_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+						if ( !empty($has_children) ) {
+							foreach($has_children as $sub_child){
+								$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
+							}
+						}
+					}//foreach
+				}//if empty($children_term) )
+			}//foreach $terms_layer
+			//Sort Map Catalogue by name
+			$map_catalogue = $layers_catalogue;
+
+			$tmp_arr = array();
+			foreach ($map_catalogue as $key => $row) {
+					$tmp_arr[$key] = $row->post_title;
+			}
+			array_multisort($tmp_arr, SORT_ASC, $map_catalogue);
+			//unset($map_catalogue[0]);
+
+			return $map_catalogue;
+		}//if terms_layer
+	return;
+}
+
+function get_all_layers_by_term_id_grouped_by_subcategory( $term_id = 0, $exclude_cats =""){
+	//Get layers of posts of term_id
+	$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
+	if($query_layer->have_posts() ){
+		while ( $query_layer->have_posts() ) : $query_layer->the_post();
+				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+					$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
+			}
+		endwhile;
+		wp_reset_postdata();
+	}
+	//Get Layers/posts grouped by subcategory of term id
+	$children_term = get_terms("layer-category", array('parent' => $term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+	if(!empty($children_term)) {
+		foreach($children_term as $child){
+			$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
+			//check if the sub category has children
+			$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+			if ( !empty($has_children) ) {
+				foreach($has_children as $sub_child){
+					$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
+				}
+			}
+		}//foreach
+	}//if empty($children_term) )
+	return $layers_catalogue;
+}
+
+function get_sort_posts_by_post_title($array_layers){
+	//Sort Map Catalogue by name
+	$tmp_arr = array();
+	foreach ($array_layers as $key => $row) {
+			$tmp_arr[$key] = $row->post_title;
+	}
+	array_multisort($tmp_arr, SORT_ASC, $array_layers);
+	//Array index 0 is added during sorting, and it is no value
+	unset($array_layers[0]);
+
+	return $array_layers;
+}
+
+function get_pagination_of_layers_grouped_by_subcategory($list){
+	//Pagination
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$total_items= count($list);  //count number of records
+	$posts_per_page = get_option('posts_per_page');
+	$total_pages = ceil($total_items / $posts_per_page);
+	$pagination["start_post"] = ($paged-1) * $posts_per_page + 1; //start from 1
+	if ($total_items <= ($posts_per_page * $paged)):
+		$pagination["end_post"]  = $total_items;
+	else:
+		$pagination["end_post"]  = $posts_per_page * $paged;
+	endif;
+	$pagination["paging_arg"] = array('current'=> $paged, 'total_pages'=> $total_pages);
+	return $pagination;
 }
 
 function display_legend_container(){
@@ -163,7 +295,7 @@ function display_layer_information($layers){
 				  $ckan_dataset_id = $ckan_dataset_id_exploded_by_dataset[1];
 				  $ckan_domain = $ckan_dataset_id_exploded_by_dataset[0];
 				  // get ckan record by id
-				  $get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
+				  //$get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
@@ -273,4 +405,93 @@ function opendev_get_interactive_map_data()
         return false;
     }
 }
+
+
+function get_layer_information_in_array($post_ID){
+	//link to WP dataset page by dataset ID
+	if ( (odm_language_manager()->get_current_language() != "en") ){
+		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link_localization', true)));
+	}else {
+		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
+	}
+	/*
+	if(function_exists("wpckan_api_package_show")):
+		$dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$get_ckan_dataset_id[1]);
+		if (is_array($dataset['resources'])) {
+				foreach ($dataset['resources'] as $resource) {
+						if($resource['format'] == "JPEG" || $resource['format'] == "JPG" || $resource['format'] == "PNG"):
+							if($resource['odm_language'][0] == odm_language_manager()->get_current_language()){
+								$thumbnail_url = $resource['url'];
+							}
+						endif;
+					}
+			}
+	endif;
+	*/
+
+	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
+	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
+	//get category of post by post_id
+	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
+	$layer = (object) array("ID" => get_the_ID(),
+								"post_title" => get_the_title(),
+								"download_link" => $download_link,
+								"title_and_link" => $title_and_link,
+								//"thumbnail_link" => $thumbnail_url,
+								//"description" => get_the_content(),
+								"category" => $layer_cat[0]->name,
+								"parent" => $layer_cat[0]->parent
+					);
+	return $layer;
+}
+
+function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category", $post_type = "map-layer") {
+	if($post_type == "map-layer"){
+		$args_get_post = array(
+		    'post_type' => $post_type,
+				'orderby'   => 'name',
+				//'order'   => 'asc',
+		    'tax_query' => array(
+		                        array(
+		                          'taxonomy' => $layer_taxonomy,
+		                          'field' => 'id',
+		                          'terms' => $child_id, // Where term_id of Term 1 is "1".
+		                          'include_children' => false
+		                        )
+		                      )
+		);
+		$child_term = get_term( $child_id, $layer_taxonomy );
+		$query_get_post = new WP_Query( $args_get_post );
+		if($query_get_post->have_posts() ){
+			$layers_list = "";
+			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
+				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+					$get_layer_info = get_layer_information_in_array(get_the_ID());
+					$permalink = $get_layer_info->download_link;
+				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
+					//find all map layer post to get it ID. eg. layer name: All Natural protected area
+					if(substr( strtolower(get_the_title()), 0, 4 ) === "all"):
+						$layer_id = get_the_ID();
+						break;
+					endif;
+				}
+			endwhile;
+			wp_reset_postdata();
+			if(!empty($get_layer_info)):
+				$layers_list_id = $layer_id? $layer_id : $get_layer_info->ID; 
+
+				$layers_list_array = (object) array("ID" => $get_layer_info->ID,
+										"post_title" => $child_term->name,
+										"title_and_link" => "<a class='item-title' target='_blank' href='". $permalink."' 	title='".$child_term->name."'>".$child_term->name."</a>",
+										//"description" => "<ul>" .$layers_list."</ul>",
+										"category" => $child_term->name,
+										"parent" => $child_term->parent
+							);
+				return $layers_list_array;
+			endif;
+		}//if have_posts
+	}
+}
+/** END CATEGORY */
+
 ?>

@@ -1,29 +1,26 @@
 .country-mixin(@primary, @bg-color){
-	/*logo*/
-	.icon-od-logo{
-	  color: @primary!important;
-	}
-
 	[class^="icon-"], [class*=" icon-"]{ color: @bg-color;}
 
 	a,
 	a:visited,
-	.map-sidebar a,
-	a:hover,
-	a strong:hover {
+	.map-sidebar a  {
 		color: @primary;
-	}
-
-	a,
-	a:visited,
-	.map-sidebar a,
-	 {
 		text-decoration: none;
 	}
 
-	a:hover,
+ 	a:hover,
+	.map-sidebar a:hover,
 	a strong:hover {
 		color: @bg-color;
+	}
+
+	.navigation {
+		a.page-numbers{
+			color: @bg-color;
+			&:hover {
+				color: @primary;
+			}
+		}
 	}
 
 	button,
@@ -56,7 +53,7 @@
 		}
 
 		h1{
-			color: @primary;
+			color: @primary !important;
 		}
 
 		.notification-message-box a {
@@ -96,20 +93,31 @@
 	}
 
 	.interactive-map .interactive-map-layers {
-		ul li {
-			border-bottom: 1px solid @primary;
 
-			a:hover {
+		> ul >li {
+			border-bottom: 1px solid @primary;
+			a:hover{
+				color: @primary;
+
+			}
+
+			> a.active {
+				border-bottom: 1px solid @primary;
+				color: @primary;
+			}
+		}
+
+		.layer-item {
+			&:hover .list-circle-o {
+				border: 2px solid @primary;
+			}
+
+			.toggle-info i.active{
 				color: @primary;
 			}
 
-			> ul >li > a.active {
-				border-bottom: 1px solid @primary;
-    			color: @primary;
-			}
-
-			.layer-item:hover .list-circle-o {
-				border: 2px solid @primary;
+			span:hover{
+				color: @primary;
 			}
 		}
 	}
@@ -124,9 +132,6 @@
 	.notification-message-box{
     border: 2px solid @primary;
     color: @bg-color;
-	}
-
-	.widget .odm-summary ol li a:hover {
 	}
 
 	.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
@@ -154,17 +159,8 @@
 	  color: @primary !important;
 	}
 	/* collapse & expend */
-	#sidebar{
 
-		.widgets .widget .widget-title,
-		.widget .widget-title {
-		 	color: @primary;
-		}
 
-		.widgets .widget li a:hover{
-			color: @bg-color;
-		}
-	}
 
 	.div-button{
 	  background: @primary none repeat scroll 0% 0%;
@@ -181,4 +177,19 @@
     }
   }
 
+	.post-list-item .item-title {
+		color: @primary;
+		&:hover {
+			color: @bg-color;
+		}
+	}
+	.post-type-archive .post-list-item {
+	  .item-title, h3 .item-title {
+	    color: @primary;
+
+			&:hover {
+				color: @bg-color;
+			}
+	  } 
+	}
 }

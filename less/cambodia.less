@@ -1,50 +1,93 @@
 // Specific overriding rules for the country
 // to be converted to dist/css/cambodia.css
 
+@import url(https://fonts.googleapis.com/css?family=Suwannaphum);
 @import "_country-mixin.less";
 
+@cambodia-text-color: #00A600;
 @cambodia-bright: #97D320;
-@cambodia-bgcolor: #12414E;
-
+@cambodia-bgcolor: #06323D;
 body{
-  font: 14px/24px 'Suwannaphum', "Open Sans";
+  font: 14px/24px "Open Sans","Helvetica","Arial",sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+
+.km{
+  font-family: 'Suwannaphum', "Open Sans","Helvetica","Arial",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, div {
+    font-family: inherit !important;
 }
 .kh select, .km select{
-    font-family: "Suwannaphum", "Open Sans","Helvetica","Arial",sans-serif;
+    font-family: inherit;
 }
 
 .mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
 .fa_slider_opendev .fa_slide_content div.description p {
-  font-family: "Suwannaphum", "Open Sans" !important;
+  font-family: inherit !important;
 }
 
 #cambodia-color, .cambodia-color{
-    color: @cambodia-bright;  /* #66cc00*/
+    color: @cambodia-text-color;  /* #66cc00*/
 }
 #cambodia-bgcolor, .cambodia-bgcolor{
     background: @cambodia-bright !important
 }
+#cambodia-bgdarkcolor, .cambodia-bgdarkcolor{
+    background: @cambodia-bgcolor !important
+}
 
-.country-mixin(@cambodia-bright, @cambodia-bgcolor);
+.country-mixin(@cambodia-text-color, @cambodia-bgcolor);
 
-#sidebar .widgets .widget ul li span.plusimage-cambodia{
-    display: inline-block;
-    background: url("../../img/expand-kh.png") no-repeat 0 2px!important;
-    padding-left: 20px;
+#od-head {
+  h1 {
+    color: @cambodia-bright !important;
+		font-family: 'Droid Serif'!important;
+  }
+
+	#od-logo .svg-od-logo {
+		 fill: @cambodia-bright!important;
+	}
 }
-#sidebar .widgets .widget ul li span.minusimage-cambodia{
-    display: inline-block;
-    background: url("../../img/collapse-kh.png") no-repeat 0 2px!important;
-    padding-left: 20px;
+
+
+.sidebar_header{
+  background: @cambodia-bright !important;
 }
-#sidebar .widgets .widget ul li span.nochildimage-cambodia{
-    display: inline-block;
-    background: url("../../img/no-child-kh.png") no-repeat 0 2px!important;
-    padding-left: 20px;
+
+.widget .od-tax-widget-tax-item,
+#sidebar .widgets .widget {
+
+  .widget-title {
+    color: @cambodia-bgcolor;
+  }
+
+  li a {
+    color: @cambodia-text-color;
+    &:hover {
+      color: @cambodia-bgcolor;
+    }
+  }
+
+  ul li {
+    span.plusimage-cambodia {
+      display: inline-block;
+      background: url("../../img/expand-kh.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+    span.minusimage-cambodia {
+      display: inline-block;
+      background: url("../../img/collapse-kh.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+    span.nochildimage-cambodia {
+      display: inline-block;
+      background: url("../../img/no-child-kh.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+  }
 }
+
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
     background-color: @cambodia-bright;
     border: 1px solid @cambodia-bright;
@@ -53,6 +96,15 @@ h1, h2, h3, h4, h5, h6 {
       border-top: 1px solid @cambodia-bright;
       border-bottom: 1px solid @cambodia-bright;
     }
+}
+
+/*
+ * Advanced Navigation
+ */
+.navigation .current{
+	background: @cambodia-bright;
+	border: 1px solid @cambodia-bgcolor;
+  color: @cambodia-bgcolor;
 }
 
 .div-button {

@@ -2,37 +2,39 @@
  * Share widget
  */
 
- .share {
+.share {
 
-   padding-top: @med-padd;
+  padding-top: @med-padd;
 
-   ul {
-     text-align: righ;
+  ul {
+    text-align: righ;
 
-     li {
-       float: left;
-       padding: 0 !important;
-       margin: 0 !important;
-       border: 0 !important;
-       list-style-type: none !important;
-     }
+    li {
+      float: left;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: 0 !important;
+      list-style-type: none !important;
+    }
 
-     li > * {
-       margin-right: 10px;
-     }
+    li > * {
+      margin-right: 10px;
+    }
 
-     li > .fb {
-       width: 90px;
-     }
+    li > .fb {
+      width: 90px;
+    }
 
-     li > .twitter {
-       width: 120px;
-     }
-
-   }
- }
+    li > .twitter {
+      width: 120px;
+    }
+  }
+}
 
 .widget {
+
+  list-style: none !important;
+  list-style-type: none !important;
 
 	&.widget_search {
 		input {
@@ -44,20 +46,72 @@
 	.odm-summary ol li a {
 		text-decoration: none;
 		color: #333;
-
 		&:hover {
 			color: #4683d2; /*6393D2, 2774da;*/
-			text-decoration:underline
+			text-decoration: underline;
 		}
 	}
 
-	.od-tax-widget-tax-item {
-		margin: 0 0 20px;
-
-		&:last-child {
-			margin: 0;
-		}
-	}
+	// .od-tax-widget-tax-item {
+  //
+  //   .widget-title {
+  //     font-family: @primary-font;
+  //     font-weight: bold;
+  //     margin: -11px -10px 10px;
+  //     padding: 10px;
+  //     border-bottom: 1px solid @light-gray;
+  //     font-size: @font-size-h3;
+  //     color: @mekong-bright;
+  //   }
+  //
+  //   ol {
+  //     margin-left: 10px;
+  //     padding-left: 10px;
+  //     li {
+  //       padding-left: 10px;
+  //     }
+  //   }
+  //
+  //   ul {
+  //     ul {
+  //       font-size: 98%;
+  //     }
+  //
+  //     li {
+  //       border: none;
+  //       margin: 0;
+  //       padding: 5px 0;
+  //
+  //       span.plusimage-mekong,
+  //       span.minusimage-mekong,
+  //       span.nochildimage-mekong {
+  //           display: inline-block;
+  //           padding-left: 20px;
+  //       }
+  //       span.plusimage-mekong {
+  //           background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
+  //       }
+  //       span.minusimage-mekong {
+  //           background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
+  //       }
+  //       span.nochildimage-mekong {
+  //           background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
+  //       }
+  //
+  //       ul {
+  //         margin-left: 10px;
+  //         padding-left: 10px;
+  //       }
+  //
+  //     }
+  //   }
+  //
+	// 	margin: 0 0 20px;
+  //
+	// 	&:last-child {
+	// 		margin: 0;
+	// 	}
+	// }
 
 	.wpckan_dataset_list > ul > li {
 		margin: 0 0 10px !important;
@@ -83,7 +137,6 @@
 			}
 		}
 	}
-
 }
 
 /* Taxonomy Navigation */
@@ -96,133 +149,132 @@
 		}
 	}
 }
-
-.sidebar_header h2, h2.sidebar_header, .widget_headline{
-	font-family: 'Open Sans';
-	font-weight: 800;
-	font-style: normal;
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 14px;
-	line-height: 20px;
+ 
+.widget_headline{
+  font-family: inherit;
+  font-weight: 800;
+  font-style: normal;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-#sidebar {
-	.widgets {
-		.widget {
-			margin-bottom: 10px;
-			border: none;
-			padding: 10px;
-			width: 100%;
+#sidebar .widgets .widget,
+.widget .od-tax-widget-tax-item {
 
-			&.widget_search {
-				box-shadow: 0 0 0;
-				padding: 0;
-				border: 0;
-				margin-bottom: 3em;
+  margin-bottom: 10px;
+	border: none;
+	padding: 10px;
+	width: 100%;
 
-        li{
-          list-style-type: none;
-        }
-			}
+	.widget_search {
+	  box-shadow: 0 0 0;
+	  padding: 0;
+	  border: 0;
+	  margin-bottom: 3em;
 
-			.widget-title {
-				font-family: @primary-font;
-				font-weight: bold;
-				margin: -11px -10px 10px;
-				padding: 10px;
-				border-bottom: 1px solid @light-gray;
-				color: #fff;
-				font-size: @font-size-h3;
-				color: @mekong-bright;
-			}
-
-			li a {
-        font-family: @title-font;
-        font-size: @font-size-h4;
-        text-decoration: none;
-        color: @primary-color;
-
-				&:hover {
-					text-decoration:none;
-          color: @mekong-dark;
-				}
-
-				&:last-child {
-					border-bottom: 0;
-				}
-			}
-
-			ol {
-				margin-left: 10px;
-				padding-left: 10px;
-				li {
-					padding-left: 10px;
-				}
-			}
-
-			ul {
-				ul {
-					font-size: 98%;
-				}
-
-				li {
-          border: none;
-					span.plusimage-mekong,
-					span.minusimage-mekong,
-					span.nochildimage-mekong {
-					    display: inline-block;
-					    background: url("../../img/expand-mekong.png") no-repeat 0 2px!important;
-					    padding-left: 20px;
-					}
-
-					ul {
-						margin-left: 10px;
-						padding-left: 10px;
-
-						li {
-							list-style: disc !important;
-							list-style-type: disc !important;
-						}
-					}
-
-				}
-			}
-
-			div ul.odm_taxonomy_widget_ul li ul li {
-		    list-style: none !important;
-		    list-style-type: none !important;
-			}
-
-			.odm-summary ol {
-				margin-left: -40px !important;
-				margin-right: -10px !important;
-				padding-left: 30px !important;
-				list-style-position: inside;
-			}
-
-		}
-
-		li {
-			list-style: none !important;
-			list-style-type: none !important;
-			word-wrap: break-word;
-			&.widget_odm_related_recent_news_widget ul li {
-				clear: left;
-				float: left;
-				padding: 8px 0;
-				display: block;
-				width: 100%;
-			}
-		}
-
+    li {
+      list-style-type: none;
+    }
 	}
+
+	.widget-title {
+	  font-family: @primary-font;
+	  font-weight: bold;
+	  margin: -11px -10px 10px;
+	  padding: 10px;
+	  border-bottom: 1px solid @light-gray;
+	  font-size: @font-size-h3;
+	  color: @mekong-dark;
+	}
+
+	li a {
+    font-family: @title-font;
+    //font-size: @font-size-h4;
+    text-decoration: none;
+    color: @mekong-text-color;
+
+		&:hover {
+		  text-decoration:none;
+      color: @mekong-dark;
+		}
+
+		&:last-child {
+		  border-bottom: 0;
+	  }
+	}
+
+	ol {
+	  margin-left: 10px;
+	  padding-left: 10px;
+	  li {
+		  padding-left: 10px;
+	  }
+	}
+
+	ul {
+	  ul {
+		  font-size: 98%;
+	  }
+
+	  li {
+      border: none;
+
+  	  span.plusimage-mekong,
+		  span.minusimage-mekong,
+		  span.nochildimage-mekong {
+	      display: inline-block;
+	      padding-left: 20px;
+		  }
+      span.plusimage-mekong {
+        background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
+      }
+      span.minusimage-mekong {
+        background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
+      }
+      span.nochildimage-mekong {
+        background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
+      }
+
+		  ul {
+			  margin-left: 10px;
+			  padding-left: 10px;
+		  }
+	  }
+	}
+
+	div ul.odm_taxonomy_widget_ul li ul li {
+	  list-style: none !important;
+	  list-style-type: none !important;
+	}
+
+	.odm-summary ol {
+	  margin-left: -40px !important;
+	  margin-right: -10px !important;
+	  padding-left: 30px !important;
+	  list-style-position: inside;
+	}
+
+	li {
+		list-style: none !important;
+		list-style-type: none !important;
+		word-wrap: break-word;
+
+    &.widget_odm_related_recent_news_widget ul li {
+	  	clear: left;
+		  float: left;
+		  padding: 8px 0;
+		  display: block;
+		  width: 100%;
+	  }
+  }
 }
 
-.widget_odm_taxonomy_widget ul:first-child{
-    //max-height: 650px;
-    //overflow-y: auto;
-}
+// .widget_odm_taxonomy_widget ul:first-child{
+//     //max-height: 650px;
+//     //overflow-y: auto;
+// }
 
 .widget_odm_related_resources_widget, .widget_odm_query_resources_widget {
 	font-size: 90%;
@@ -233,6 +285,7 @@
 
 ul.odm_taxonomy_widget_ul span:hover{
 	cursor: pointer;
+  color: @mekong-dark;
 }
 
 /*
@@ -347,10 +400,16 @@ ul.odm_taxonomy_widget_ul span:hover{
 /*
  * Advanced Navigation
  */
-.navigation .current{
+.navigation .page-numbers{
 	padding: 0 5px;
 	border: 1px solid #ddd;;
 	background: #eee;
+}
+
+.navigation .current{
+	background: @mekong-bright;
+	border: 1px solid @mekong-dark;
+  color: @mekong-dark;
 }
 
 .advanced-nav-filters {

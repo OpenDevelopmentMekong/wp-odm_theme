@@ -1,10 +1,10 @@
 <?php
 
-function odm_get_thumbnail($post_id = false, $fallback = false)
+function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'post-thumbnail')
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
-    $thumb_src = get_the_post_thumbnail( $post_id, 'post-thumbnail');
+    $thumb_src = get_the_post_thumbnail( $post_id, $size);
     if ($thumb_src) {
       return $thumb_src;
     }
@@ -16,12 +16,24 @@ function odm_get_thumbnail($post_id = false, $fallback = false)
     return null;
 }
 
+function od_logo_icon($country_site ="")
+{
+	if($country_site == ""):
+		$country_site = odm_country_manager()->get_current_country();
+	endif;
+	include_once(get_stylesheet_directory() ."/img/od-logo.svg");
+  ?>
+    <span id="icon-od-logo">
+			<svg class="svg-od-logo <?php echo strtolower($country_site); ?>-logo"><use xlink:href="#icon-od-logo"></use></svg>
+		</span>
+  <?php
+}
+
 function odm_logo()
 {
   ?>
-
   <div id="od-logo">
-    <span class="icon-od-logo"></span>
+     <?php od_logo_icon(); ?>
     <h1>Op<sup>e</sup>nDevelopment</h1>
   </div>
 

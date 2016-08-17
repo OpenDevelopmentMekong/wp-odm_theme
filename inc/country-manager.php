@@ -53,9 +53,9 @@ class Odm_Country_Manager {
           $path_without_lang = remove_language_code_from_url($_SERVER['REQUEST_URI']);
           $destination = $url . $path_without_lang;
           if ($this->is_current_country($country)): ?>
-            <li class="active-country"><?php echo __($country['name']);?></li>
+            <li class="active-country"><?php od_logo_icon($country['name']); echo __($country['name']);?></li>
           <?php else: ?>
-            <li><a href="<?php echo $destination; ?>"><?php echo __($country['name']);?></a></li>
+            <li><a href="<?php echo $destination; ?>"><?php od_logo_icon($country['name']); ?><?php echo __($country['name']);?></a></li>
           <?php endif; ?>
       <?php
         endforeach;

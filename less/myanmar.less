@@ -4,38 +4,57 @@
 @import "_country-mixin.less";
 
 /* Color */
+@myanmar-text-color: #E29000;
 @myanmar-bright: #F8BF42;
 @myanmar-bgcolor: #59396C;
 
-.myanmar-color{
-    color: @myanmar-bgcolor;
+#myanmar-color, .myanmar-color{
+    color: @myanmar-text-color;  /* #66cc00*/
 }
 #myanmar-bgcolor, .myanmar-bgcolor{
-    background: @myanmar-bright !important;
+    background: @myanmar-bright !important
 }
+#myanmar-bgdarkcolor, .cambodia-bgdarkcolor{
+    background: @myanmar-bgcolor !important
+}
+
 .menu-myanmar .icon_menu{
   display: none!important;
 }
 
-.country-mixin(@myanmar-bright, @myanmar-bgcolor);
+.country-mixin(@myanmar-text-color, @myanmar-bgcolor);
 
 .current-site-myanmar{
 	background: @myanmar-bright;
 }
 
+#od-head {
+  h1 {
+    color: @myanmar-bright !important
+  }
+
+	#od-logo .svg-od-logo {
+		 fill: @myanmar-bright!important;
+	}
+}
+
+.sidebar_header{
+  background: @myanmar-bright !important;
+}
+
 #sidebar .widgets .widget ul li span.plusimage-myanmar{
     display: inline-block;
-    background: url("../../img/expand-my.png") no-repeat 0 2px!important;
+    background: url("../../img/expand-my.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 #sidebar .widgets .widget ul li span.minusimage-myanmar{
     display: inline-block;
-    background: url("../../img/collapse-my.png") no-repeat 0 2px!important;
+    background: url("../../img/collapse-my.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 #sidebar .widgets .widget ul li span.nochildimage-myanmar{
     display: inline-block;
-    background: url("../../img/no-child-my.png") no-repeat 0 2px!important;
+    background: url("../../img/no-child-my.png") no-repeat 0 5px!important;
     padding-left: 20px;
 }
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
@@ -46,6 +65,14 @@
       border-top: 1px solid @myanmar-bright;
       border-bottom: 1px solid @myanmar-bright;
     }
+}
+/*
+ * Advanced Navigation
+ */
+.navigation .current{
+	background: @myanmar-bright;
+	border: 1px solid @myanmar-bgcolor;
+  color: @myanmar-bgcolor;
 }
 
 .div-button {

@@ -6,83 +6,48 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 		$get_post = $wpdb->get_results($wpdb->prepare(
 						"SELECT ID, post_title FROM $wpdb->posts WHERE post_type = %s
 						 AND post_status = %s
-			 AND post_title like %s
-					",
-						$post_type,
-						'publish',
-						'%'.trim($title_str).'%'
-						)
+						 AND post_title like %s
+						",
+							$post_type,
+							'publish',
+							'%'.trim($title_str).'%'
+							)
 				);
+
 		foreach ($get_post as $page_topic) {
-				$lang_tag = '[:'.odm_language_manager()->get_current_language().']';
-				$lang_tag_finder = '/'.$lang_tag.'/';
+			$pagetitle = qtrans_use(odm_language_manager()->get_current_language(), $page_topic->post_title, false);//get content by langauge
 
-				if (odm_language_manager()->get_current_language() != 'en') {
-								if (strpos($page_topic->post_title, '[:kh]') !== false) {
-										$page_title = explode($lang_tag, $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:]', '', $page_title[1]));
-								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->') !== false) {
-										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$page_title = trim(str_replace('<!--:'.odm_language_manager()->get_current_language().'-->', '', $page_title[1]));
-										$pagetitle = trim(str_replace('<!--:-->', '', $page_title));
-								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
-										$page_title = explode('<!--:-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								}
-				} else {
-						//if (preg_match("/[:kh]/" ,$page_topic->post_title)){
-								if (strpos($page_topic->post_title, '[:kh]') !== false) {
-										$page_title = explode('[:kh]', $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '[:vi]') !== false) {
-										$page_title = explode('[:vi]', $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '[:]')) {
-										$page_title = explode('[:]', $page_topic->post_title);
-										$pagetitle = trim(str_replace('[:en]', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '<!--:--><!--:kh-->')) {
-										$page_title = explode('<!--:--><!--:kh-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '<!--:--><!--:vi-->')) {
-										$page_title = explode('<!--:--><!--:vi-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								} elseif (strpos($page_topic->post_title, '<!--:-->')) {
-										$page_title = explode('<!--:-->', $page_topic->post_title);
-										$pagetitle = trim(str_replace('<!--:en-->', '', $page_title[0]));
-								} else {
-										$page_title = $page_topic->post_title;
-										$pagetitle = trim($page_title);
-								}
-				}
-						//echo "<div style='display:none'>***".trim($title_str) ."== ".$pagetitle."</div>";
-						if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
-								$page_id = $page_topic->ID;
-						}
+			if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
+					$page_id = $page_topic->ID;
+					return $page_id;
+			}
 		}
-
-		return $page_id;
 }
  /****end Breadcrumb**/
 
 /** SHOW CATEGORY BY Post type **/
-function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1)
+function list_category_by_post_type($post_type = 'post', $args = '', $title = 1, $js_script = 1, $exclude_cat ='map-catalogue')
 {
 		global $post;
 		if ($args == '') {
 				$args = array(
-				'orderby' => 'term_id',
+				'post_type' => 'map-layer',
 				'parent' => 0,
+				'exclude' => $exclude_cat
 				);
 		}
+
 		$categories = get_categories($args);
 		$current_cat = get_queried_object();
+
 		if (isset($current_cat->slug) && $current_cat->slug) {
 				$current_cat_page = $current_cat->slug;
 		} elseif (isset($current_cat->post_name)) {
-				$current_cat_page = $current_cat->post_name;
-		}else{
-			return;
+  			$current_cat_page = $current_cat->post_name;
+		} else {
+				$current_cat_page = "post-type-category";
 		}
+
 		if ($title == 1) {
 				echo '<h2 class="widget-title">'.__('Categories', 'odm').'</h2>';
 		}
@@ -90,14 +55,17 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		echo "<ul class='odm_taxonomy_widget_ul'>";
 		foreach ($categories as $category) {
 				$jackpot = true;
-				$children = get_categories(array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id'));
+				$args['parent'] = $category->term_id;
+				$children = get_categories($args);
+
 				echo "<li class='cat_item'>";
 				if( isset($current_cat_page)){
-					print_category_by_post_type($category, $post_type, $current_cat_page);
+					print_category_by_post_type($category, $post_type, $current_cat_page, $exclude_cat);
 				}
+
 				if (!empty($children)) {
 						echo '<ul>';
-						walk_child_category_by_post_type($children, $post_type, $current_cat_page);
+						walk_child_category_by_post_type($children, $post_type, $current_cat_page, $exclude_cat);
 						echo '</ul>';
 				}
 				echo '</li>';
@@ -141,7 +109,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 }
 // Check if post specific to any langue or not
 function posts_for_both_and_current_languages($postID, $current_lang = "en", $taxonomy ="language"){
-    $site_language = strtolower(get_localization_language_by_language_code($current_lang));
+    $site_language = strtolower(get_the_language_by_language_code($current_lang));
     $terms = get_the_terms($postID, $taxonomy);
     if ( empty($terms) && !is_wp_error( $terms )) {
         return true;
@@ -153,7 +121,7 @@ function posts_for_both_and_current_languages($postID, $current_lang = "en", $ta
     return false;
 }
 
-function print_category_by_post_type( $category, $post_type ="post", $current_cat='') {
+function print_category_by_post_type( $category, $post_type ="post", $current_cat='', $exclude_cat ='') {
  if ($current_cat == $category->slug){
      $current_page = " ".$current_cat;
   }else {
@@ -166,8 +134,14 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     $cat_ID = $category->term_id;
     $get_category_link = get_term_link( $category);
   }
-  if($post_type == "map-layer"){
-    $cat_name = '<a href="' . $get_category_link. '?post_type='.$post_type.'">';
+
+	if(is_tax( 'layer-category' ) ||  get_post_type()== "map-layer"):
+		$included_posttype = "";
+	else :
+		$included_posttype = '?post_type='.$post_type;
+	endif;
+  if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
+    $cat_name = '<a href="' . $get_category_link. $included_posttype.'">';
     $cat_name .= $category->name;
     $cat_name .= "</a>";
     $count_layer_items = 0;
@@ -179,7 +153,13 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
                               'field' => 'id',
                               'terms' => $cat_ID, // Where term_id of Term 1 is "1".
                               'include_children' => false
-                            )
+                            ),
+														array(
+															'taxonomy' => $category->taxonomy,
+															'field' => 'id',
+															'terms' => $exclude_cat,
+															'operator' => 'NOT IN'
+														 )
                           )
     );
     $query_get_post = new WP_Query( $args_get_post );
@@ -207,7 +187,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     } //$query_get_post->have_posts
   }else {
     echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
-            echo '<a href="' . get_category_link( $category->cat_ID ) . '?post_type='.$post_type.'">';
+            echo '<a href="' . get_category_link( $category->cat_ID ) .$included_posttype.'">';
                 if ($current_cat == $category->slug){ // if page of the topic exists
                     echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
                         echo $category->name;
@@ -220,13 +200,13 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
   }
 }
 
-function walk_child_category_by_post_type( $children, $post_type, $current_cat = "") {
-    if($post_type == "map-layer"){
+function walk_child_category_by_post_type( $children, $post_type, $current_cat = "",  $exclude_cat ="") {
+    if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
        $cat_item_and_posts = "";
        $count_items_of_subcat = 0;
           foreach($children as $child){
             $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
-            $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat);
+            $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat, $exclude_cat);
             if ($get_cat_and_posts != ""){
                 $count_items_of_subcat++;
                 $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
@@ -236,7 +216,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
                     if ( !empty($cat_children) ) {
                       // add a sublevel
                       // display the children
-                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat);
+                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat, $exclude_cat);
                     }
                 $cat_item_and_posts .= "</li>";
             }
@@ -254,13 +234,13 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
           $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'term_id', ) );
           echo "<li>";
           // Display current category
-            print_category_by_post_type($child, $post_type, $current_cat, $widget);
+            print_category_by_post_type($child, $post_type, $current_cat, $exclude_cat);
           // if current category has children
           if ( !empty($cat_children) ) {
             // add a sublevel
             echo "<ul>";
             // display the children
-              walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $widget);
+              walk_child_category_by_post_type( $cat_children, $post_type, $current_cat,  $exclude_cat);
             echo "</ul>";
           }
           echo "</li>";
@@ -278,20 +258,16 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
       <?php if (in_array('date',$show_elements)): ?>
         <li class="date">
   				<i class="fa fa-clock-o"></i>
-  					 <?php
-  					 if (function_exists('qtrans_getLanguage')) {
-  							 if (odm_language_manager()->get_current_language() == 'km') {
-  									 echo convert_date_to_kh_date(get_the_time('j.M.Y'),$post->ID);
-  							 } else {
-  									 echo get_the_time('j F Y',$post->ID);
-  							 }
-  					 } else {
-  							 echo get_the_time('j F Y',$post->ID);
-  					 }
-  				?>
+				  <?php
+					 if (odm_language_manager()->get_current_language() == 'km') {
+							 echo convert_date_to_kh_date(get_the_time('j.M.Y',$post->ID));
+					 } else {
+							 echo get_the_time('j F Y',$post->ID);
+					 }
+				  ?>
   			</li>
       <?php endif; ?>
-      <?php if (in_array('sources',$show_elements)):
+      <?php if (in_array('sources', $show_elements)):
         if (taxonomy_exists('news_source') && isset($post)) {
   				$terms_news_source = get_the_terms($post->ID, 'news_source');
   				if ($terms_news_source && !is_wp_error($terms_news_source)) {
@@ -309,7 +285,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   								echo '<li class="news-source">';
   								echo '<i class="fa fa-chain"></i> ';
   								echo substr($news_sources, 0, -2);
-  								echo '</li>';
+  								echo '</li> ';
   							endif;
   						}
 
@@ -319,12 +295,12 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   					echo '<span class="icon-news"></span> ';
   					$news_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
   					echo get_the_title($news_source_id);
-  					echo '</li>';
+  					echo '</li> ';
   				}
 
   			}// if news_source exists
   			if (taxonomy_exists('public_announcement_source')) {
-  					echo '<li class="news-source">';
+  					echo '<li class="source-cateogy">';
   					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
   					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
   							if ($terms_public_announcement_source) {
@@ -338,6 +314,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   											//We successfully got a link. Print it out.
   											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
   									}
+										echo '<i class="fa fa-chain"></i> ';
   									echo substr($public_announcement_sources, 0, -2);
   							}
   					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
@@ -348,7 +325,7 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   			}
       endif; ?>
       <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
-        <li class="categories">
+        <li class="categories">&nbsp;
   				<i class="fa fa-folder-o"></i>
   				<?php the_category(''); ?>
   			</li>
@@ -363,24 +340,126 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 
 }
 
- function odm_excerpt($post, $num = 40, $read_more = '')
+function odm_excerpt($post, $num = 40, $read_more = '')
  {
-		 $limit = $num + 1;
-		 $excerpt = explode(' ', strip_shortcodes(get_the_excerpt($post->ID)), $limit);
-		 array_pop($excerpt);
-		 $excerpt_string = implode(' ', $excerpt);
-		 $excerpt_hidden_space = explode('?', $excerpt_string, $limit);
-		 array_pop($excerpt_hidden_space);
-		 $$excerpt_string = implode('?', $excerpt_hidden_space);
-		 $excerpt_words = $excerpt_string.' ...';
-		 if ($read_more != '') {
-				 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
-				 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
-		 }
+		$limit = $num + 1;
+		if(get_the_excerpt($post->ID)):
+			$get_the_excerpt = get_the_excerpt($post->ID);
+		else:
+				$get_the_excerpt = $post->post_content;
+		endif;
 
-		 return $excerpt_words;
+		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
+		array_pop($excerpt);
+		$excerpt_string = implode(' ', $excerpt);
+		$excerpt_hidden_space = explode('?', $excerpt_string, $limit);
+		array_pop($excerpt_hidden_space);
+		$$excerpt_string = implode('?', $excerpt_hidden_space);
+		$excerpt_words = $excerpt_string.' ...';
+		if ($read_more != '') {
+			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
+			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+		}
+
+		return $excerpt_words;
  }
 
+function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
+ 	    $site_language = strtolower(get_the_language_by_language_code($current_lang)); //english
+ 			$translated_term =  $site_language."-translated";
+ 			$org_name = ucfirst(get_bloginfo('name'));
+ 			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
+ 			if (odm_country_manager()->get_current_country() == "mekong"):
+ 				$team_name = substr($team_name, 0, -1). " ".ucfirst(odm_country_manager()->get_current_country());
+ 			endif;
+ 	    $terms = get_the_terms($postID, $taxonomy);
+ 	    if (!is_wp_error( $terms ) && !empty($terms)) {
+ 				if (has_term($translated_term, $taxonomy, $postID)) {
+ 					echo "<p class='translated-by-team'><strong>".__('Summary translated by '.$team_name.' Team')."</strong></p>";
+ 				}
+ 			}
+ }
+
+function echo_documents_cover ($postID = "") {
+	$postID = $postID ? $postID : get_the_ID();
+ //Get Cover image
+	$get_cover = get_post_meta($postID, 'cover', true);
+	$get_localized_cover = get_post_meta($postID, 'cover_'.odm_language_manager()->get_current_language(), true);
+
+	if ($get_cover != '' || $get_localized_cover != ''):
+
+		$img_attr = array("h" => 600, "w" => 800, "zc" => 1, "q" =>100);
+		$files_mf_dir = get_bloginfo('url')."/wp-content/blogs.dir/".get_current_blog_id()."/files_mf/";
+
+		if($get_localized_cover !=""){
+			$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_localized_cover.'">';
+			$large_img = $files_mf_dir.$get_cover;
+		}
+		else{
+			if($get_cover !=""){
+				$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_cover.'">';
+				$large_img = $files_mf_dir.$get_cover; // get_image('cover',1,1,0,null,$img_attr);
+			}
+			else {
+				$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_localized_cover.'">';
+				$large_img = $files_mf_dir.$get_cover;
+			}
+		}
+
+		if($get_img !=""):
+			echo '<div class="documents_cover">';
+				echo '<a target="_blank" href="'.$large_img.'" rel="" >'.$get_img.'</a>';
+			echo '</div>'; //<!-- documents_cover -->
+		endif;
+	endif;
+}
+
+function echo_downloaded_documents ($postID = "") {
+	$postID = $postID ? $postID : get_the_ID();
+	$country_name = odm_country_manager()->get_current_country();
+	$local_lang = 'en';
+	if(function_exists('qtrans_getSortedLanguages')){
+		$enabled_languages_codes = qtrans_getSortedLanguages( true );
+		if(!empty($enabled_languages_codes[1])):
+			$local_lang = $enabled_languages_codes[1];
+		endif;
+	}
+
+	//Get Download files
+	$get_document = get_post_meta($postID, 'upload_document', true);
+	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
+	if ($get_document != '' || $get_localized_document != ''):
+			echo "<div id='documents_download'><span>";
+			_e("Download: ");
+			//Get English PDF
+			if($get_document !=""){
+				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_document.'">';
+					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
+					_e ('English PDF');
+				echo '</a>';
+			}
+			else{
+				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
+				_e("English PDF not available");
+			}
+			echo "&nbsp; &nbsp;";
+
+			//Get Khmer PDF
+			if($get_localized_document !=""){
+				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_localized_document.'">';
+					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
+					echo __(ucfirst($country_name). " " ."PDF");
+				echo '</a>';
+			}
+			else{
+				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
+				echo __(ucfirst($country_name). " " . "PDF not available");
+			}
+			echo "</span></div>";
+		endif;
+		?>
+	<?php
+}
 
 function available_post_types(){
 	 $args = array(
@@ -464,45 +543,46 @@ function available_custom_post_types(){
 		},get_the_category($post->ID));
  }
 
- function odm_echo_extras(){
+ function odm_echo_extras($postID = "") {
+	 echo $postID ." ";
+ 	 $postID = $postID ? $postID : get_the_ID();
+	 if (function_exists('get_post_meta')) :
+		 $get_author = get_post_meta($postID, 'author', true);
+		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
+	   if ($get_author != '' || $get_localized_author != ''):
+	     $news_source_info = '<span class="lsf">&#xE041;</span> ';
+	     if ($get_localized_author != ''):
+	         $news_source_info .= $get_localized_author.'<br />';
+	     else:
+	         $news_source_info .= $get_author.'<br />';
+	     endif;
+	   endif;
 
-   if (function_exists('get')) :
-       if (get('author') == '' && get('author'.odm_language_manager()->get_current_language()) == ''):
-         echo '';
-       else:
-         $news_source_info = '<span class="lsf">&#xE041;</span> ';
-         if (get('author'.odm_language_manager()->get_current_language()) != ''):
-             $news_source_info .= get('author'.odm_language_manager()->get_current_language()).'<br />';
-         else:
-             $news_source_info .= get('author').'<br />';
-         endif;
-       endif;
-   endif;
+		 $get_article_link = get_post_meta($postID, 'article_link', true);
+		 $get_localized_article_link = get_post_meta($postID, 'article_link_'.odm_language_manager()->get_current_language(), true);
 
-   if (function_exists('get')):
-     if (get('article_link') == '' && get('article_link'.odm_language_manager()->get_current_language()) == ''):
-         echo '';
-     else:
-       if (get('article_link'.odm_language_manager()->get_current_language()) != ''):
-         $source = get('article_link'.odm_language_manager()->get_current_language());
-       else:
-         $source = get('article_link');
-       endif;
-     endif;
+		 if ($get_article_link != '' || $get_localized_article_link != ''):
+			 if ($get_localized_author != ''):
+					 $source = $get_localized_article_link;
+			 else:
+					 $source = $get_article_link;
+			 endif;
+		 endif;
 
-     if (isset($source) && $source != ''):
-         if (substr($source, 0, 7) != 'http://'):
-           $news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
-         else:
-           $news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
-         endif;
-     endif;
+		 if (isset($source) && $source != '') {
+					if (false === strpos($source, '://')) {
+							$news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+					}  else {
+							$news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+					}
+		 }
+
    endif;
 
    if (isset($news_source_info) && $news_source_info != ''):
      echo '<p>'.$news_source_info.'</p>';
    endif;
-   
+
  }
 
  ?>

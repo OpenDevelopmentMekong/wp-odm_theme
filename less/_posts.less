@@ -216,6 +216,30 @@
 	}
 }
 
+.single {
+	.documents_cover {
+		padding-right: @med-padd;
+		width: 150px;
+    display: table-cell;
+    vertical-align: top;
+    float: left;
+	}
+
+	#post-content img {
+		margin-top:  @xsmall-padd;
+		border:1px solid @light-gray;
+		padding: @xsmall-padd;
+		max-width: 140px;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+	}
+
+}
+.item-content {
+	display: table-cell;
+	vertical-align: top;
+} 
 /*
  * Page
  */
@@ -232,7 +256,7 @@
 
 	.post-title{
 		h1{
-			margin-bottom: 0px;
+			margin-bottom: @small-padd;
 		}
 	}
 
