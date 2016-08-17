@@ -6,11 +6,11 @@
 			$(this).siblings(".layer-toggle-info").fadeOut();
 			$(this).siblings(".layer-toggle-info").removeClass('show_it');
 		});
-		//$( ".news-marker input[type=checkbox]" ).on( "click", function(){
-		//$('.news-marker .news-marker-toggle').click(function(){
+
 		$('.news-marker label').on( "click", '.news-marker-toggle', function(e){
 			$('.leaflet-marker-icon').toggle();
 		});
+
 		//Hide and show on click the collapse and expend icon
 		$(document).on('click',".hide_show_container h2 > .hide_show_icon, .hide_show_container h5 > .hide_show_icon", function (e) {
 			e.stopPropagation();
@@ -82,60 +82,69 @@
 			}
 		});
 
+  //  $layers.find('.cat-layers li.fixed').trigger('click');
+	  $('.cat-layers li.fixed').each(function() {
+				var get_layer_id = $(this).data('layer');
+				enable_and_disable_layer_by_id(get_layer_id);
+		})
 		//Layer enable/disable
 		$layers.find('.cat-layers li').on('click', function(e) {
 		  var target =  $( e.target );
 		  if (target.is( "span" ) ) {
-			var get_layer_id = $(this).data('layer');
+				var get_layer_id = $(this).data('layer');
+				enable_and_disable_layer_by_id(get_layer_id);
+		  }//if (target.is( "span" ) )
+		}); //$layers.find('.cat-layers li')
 
-			if($(this).hasClass('active')){
+		function enable_and_disable_layer_by_id(get_layer_id){
+			var this_item = "#post-"+get_layer_id;
+			if($(this_item).hasClass('active')){
 				jeo.toggle_layers(map, all_layers_value[get_layer_id]);
 				$('.layer-toggle-info-container').hide();
-				$(this).find('i.fa-info-circle').removeClass("active");
+				$(this_item).find('i.fa-info-circle').removeClass("active");
 				$('.map-legend-ul .'+get_layer_id).remove().fadeOut('slow');
 				if ( !$(".map-legend-ul li").length){
-				   $('.map-legend-container').hide('slow');
+					 $('.map-legend-container').hide('slow');
 				}
-			}else if($(this).hasClass('loading')){
+			}else if($(this_item).hasClass('loading')){
 				console.log("still loading");
 				return false;
 			}else {
-			  $(this).addClass('loading');
-			  jeo.toggle_layers(map, all_layers_value[get_layer_id]);
-			  var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
-			  if( typeof get_legend != "undefined"){
-				  var legend_li = '<li class="legend-list hide_show_container '+$(this).data('layer')+'" id ='+$(this).data('layer')+'>'+ get_legend +'</li>';
+				$(this_item).addClass('loading');
+				jeo.toggle_layers(map, all_layers_value[get_layer_id]);
+				var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
+				if( typeof get_legend != "undefined"){
+					var legend_li = '<li class="legend-list hide_show_container '+$(this_item).data('layer')+'" id ='+$(this_item).data('layer')+'>'+ get_legend +'</li>';
 
-				  $('.map-legend-ul').prepend(legend_li);
+					$('.map-legend-ul').prepend(legend_li);
 
-				  // Add class title to the legend title
-				  var legend_h5 = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
-				  if (legend_h5.length === 0){
-					var h5_title = '<h5>'+ $(this).children('.layer-item-name').text()+ '</h5>';
-					$( ".map-legend-ul ."+$(this).data('layer')+" .legend").first().prepend(h5_title);
-				  }
-				  var legend_h5_title = $( ".map-legend-ul ."+$(this).data('layer')+" h5" );
-				  legend_h5_title.addClass("title");
+					// Add class title to the legend title
+					var legend_h5 = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
+					if (legend_h5.length === 0){
+					var h5_title = '<h5>'+ $(this_item).children('.layer-item-name').text()+ '</h5>';
+					$( ".map-legend-ul ."+$(this_item).data('layer')+" .legend").first().prepend(h5_title);
+					}
+					var legend_h5_title = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
+					legend_h5_title.addClass("title");
 
-				  // Add class dropdown to the individual legend box
-				  legend_h5_title.siblings().addClass( "dropdown" );
+					// Add class dropdown to the individual legend box
+					legend_h5_title.siblings().addClass( "dropdown" );
 
-				  //dropdown legen auto show
-				  $( ".map-legend-ul ."+$(this).data('layer')+" .dropdown").show();
+					//dropdown legen auto show
+					$( ".map-legend-ul ."+$(this_item).data('layer')+" .dropdown").show();
 
-				  // Add hide_show_icon into h5 element
-				  var hide_show_icon = "<i class='fa fa-times-circle' id='"+$(this).data('layer')+"' aria-hidden='true'></i>";
-					  hide_show_icon += "<i class='fa fa-caret-down hide_show_icon'></i>";
-				  legend_h5_title.prepend(hide_show_icon);
+					// Add hide_show_icon into h5 element
+					var hide_show_icon = "<i class='fa fa-times-circle' id='"+$(this_item).data('layer')+"' aria-hidden='true'></i>";
+						hide_show_icon += "<i class='fa fa-caret-down hide_show_icon'></i>";
+					legend_h5_title.prepend(hide_show_icon);
 
-				  if ($(".map-legend-ul li").length){
+					if ($(".map-legend-ul li").length){
 					 $('.map-legend-container').slideDown('slow');
-				  }
-			  }//typeof get_legend != "undefined"
+					}
+				}//typeof get_legend != "undefined"
 
 			} //if has class active
-		  }//if (target.is( "span" ) )
-		}); //$layers.find('.cat-layers li')
+		}
 
 		//Click on info icon
 		$layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
@@ -218,6 +227,12 @@
 			 }
 		  }
 		});
+
+		if ($('input.news-marker-toggle').is(':checked')) {
+				$('#map_embed').find('.leaflet-marker-icon').toggle();
+		}else{
+			$('.leaflet-marker-icon').show();
+		}
 
 	}); //	jeo.mapReady
 
