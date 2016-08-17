@@ -148,6 +148,7 @@ function odm_setup_theme()
   ));
 
   include get_stylesheet_directory().'/inc/layers.php';
+  include get_stylesheet_directory().'/inc/embed.php';
 }
 add_action('after_setup_theme', 'odm_setup_theme');
 
@@ -237,7 +238,7 @@ function odm_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
-  if (is_page('map-explorer') || is_page('maps') || is_singular('map') || is_home()){
+  if (is_page( array( 'map-explorer', 'maps', 'embed' )) || is_singular('map') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
          wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
