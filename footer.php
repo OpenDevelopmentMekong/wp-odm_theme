@@ -2,8 +2,16 @@
 </article>
 
 <footer id="od-footer">
-  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
-	<div class="container">
+  <!-- back-to-top -->
+  <div class="container">
+    <div class="row">
+      <div class="sixteen columns">
+        <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
 		<!-- Legal disclaimer -->
     <div class="row">
       <div class="sixteen columns">
@@ -20,9 +28,13 @@
 		<div class="row">
       <div class="nine columns">
   			<nav id="footer-nav">
-  				<?php wp_nav_menu(array('theme_location' => 'footer_menu')); ?>
+  				<?php
+          if (has_nav_menu('footer_menu'))
+            wp_nav_menu(array('theme_location' => 'footer_menu'));
+          ?>
   			</nav>
   		</div>
+
       <div class="four columns">
   			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external">WordPress</a> using the <a href="%s" target="_blank" rel="external">JEO Beta</a> theme', 'jeo'), 'http://wordpress.org', 'https://github.com/oeco/jeo'); ?></p>
   		</div>
