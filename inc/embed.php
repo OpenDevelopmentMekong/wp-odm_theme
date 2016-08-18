@@ -29,7 +29,6 @@
 
 	function template_redirect() {
 		if(get_query_var($this->query_var)) {
-			echo "CCCCCCCCCCCCCC";
 			// Set embed map
 			if(isset($_GET['map_id'])) {
 				jeo_set_map(get_post($_GET['map_id']));
@@ -105,17 +104,27 @@
 		if(isset($_GET['news-icons'])) {
 			$conf['news-icons'] = $_GET['news-icons'];
 		}
+
+		$get_map_setting = get_post_meta($conf['postID'], 'map_data', true);
 		if(isset($_GET['zoom'])) {
 			$conf['zoom'] = $_GET['zoom'];
+		}else{
+			$conf['zoom'] = $get_map_setting['zoom'];
 		}
 		if(isset($_GET['lat']) && isset($_GET['lon'])) {
 			$conf['center'] = array($_GET['lat'], $_GET['lon']);
 			$conf['forceCenter'] = true;
+		}else{
+			$conf['center'] = array( $get_map_setting['center']['lat'], $get_map_setting['center']['lon']);
+			$conf['forceCenter'] = false;
 		}
-		$conf['disable_mousewheel'] = false;
-
+		if(!isset($get_map_setting['disable_mousewheel'])){
+			unset($conf['disable_mousewheel']);
+			$conf['disable_mousewheel'] = false;
+		}
+			unset($conf['disable_mousewheel']);
+			$conf['disable_mousewheel'] = false;
 		$conf = apply_filters('jeo_map_embed_conf', $conf);
-
 		return apply_filters('jeo_map_embed_geojson_conf', json_encode($conf));
 	}
 }
