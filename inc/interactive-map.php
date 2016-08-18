@@ -21,7 +21,7 @@ class OpenDev_InteractiveMap {
         $layers = array();
         $base_layers = array();
         $layers_legend = array();
-        $map = opendev_get_interactive_map_data();
+        $map = odm_get_interactive_map_data();
         $map['postID'] = 'interactive_map';
         $map['count'] = 0;
         $map['title'] = __('Interactive Map', 'opendev');

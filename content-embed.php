@@ -31,6 +31,9 @@
 		$conf = jeo_get_map_embed_conf();
 	endif;
 
+	//print_r(	 odm_get_interactive_map_data() );
+			$get_map_setting = odm_get_interactive_map_data();
+			$get_map_setting['disable_mousewheel'];
 	$obj_conf = json_decode($conf, true);
 	?>
 
@@ -64,7 +67,6 @@
 	<script type="text/javascript">
 		(function($) {
 			jeo(<?php echo $conf; ?>, function(map) {
-
 				var track = function() {
 					var c = map.getCenter();
 					$('#latitude').val(c.lat);
@@ -81,14 +83,14 @@
 
 
 		$(document).ready(function(){
-			<?php if($obj_conf['news-icons'] == 'show') { ?>
+			<?php if($obj_conf['map_only'] == true) { ?>
 					$('input.news-marker-toggle').prop('checked', false);
 			<?php }else {?>
 					$('input.news-marker-toggle').prop('checked', true);
 			<?php } ?>
 		});
 	</script>
-	<?php if($obj_conf['news-icons'] == 'show') { ?>
+	<?php if($obj_conf['map_only']) { ?>
 		<style type="text/css">
 			#map_embed .leaflet-marker-icon{
 				display: block;

@@ -53,7 +53,7 @@ function query_get_baselayer_posts($num=5, $cat='base-layers', $include_children
 //Query all baselayers' post meta into an array
 function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_children=false){
 	//get map configure from the opendev-setting
-	$map = opendev_get_interactive_map_data();
+	$map = odm_get_interactive_map_data();
 	if($map['base_layer']) {
 			$default_map = array(
 				'ID' => 0,
@@ -386,17 +386,28 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 	if ($map_ID == "" ){
 		$map_ID = get_the_ID();
 	}
-	//Add default map to layers list for first loading
-	$map = opendev_get_interactive_map_data();
-	if($map['base_layer']) {
-			$default_map = array(
-				'ID' => 0,
-				'type' => 'tilelayer',
-				'tile_url' => $map['base_layer']['url']
-			);
-			$layers[0] = $default_map;
-	}
 
+	$get_basemap = get_post_meta($map_ID, 'map_data', true); 
+	if(!empty($get_basemap)){
+		if($get_basemap['base_layer']) {
+				$base_map = array(
+					'ID' => 0,
+					'type' => 'tilelayer',
+					'tile_url' => $get_basemap['base_layer']['url']
+				);
+				$layers[0] = $base_map;
+		}
+	} else { //get basemap from setting as default
+			$map = odm_get_interactive_map_data();
+			if($map['base_layer']) {
+					$base_map = array(
+						'ID' => 0,
+						'type' => 'tilelayer',
+						'tile_url' => $map['base_layer']['url']
+					);
+					$layers[0] = $base_map;
+			}
+	}
 	$get_layers = $GLOBALS['jeo_layers']->get_map_layers($map_ID); //called from parent theme
 
 	if(!empty($get_layers)){
@@ -447,17 +458,6 @@ function get_legend_of_map_by($post_ID = false){
 	}//else
 	return $legends;
 } //function
-
-function opendev_get_interactive_map_data()
-{
-    $options = get_option('opendev_options');
-    if ($options['map_data']) {
-        return $options['map_data'];
-    } else {
-        return false;
-    }
-}
-
 
 function get_layer_information_in_array($post_ID){
 	//link to WP dataset page by dataset ID
