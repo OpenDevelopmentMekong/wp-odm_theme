@@ -55,6 +55,15 @@ class Odm_Country_Manager {
     ];
   }
 
+  function get_country_name($country){
+
+    if (!array_key_exists($country,$this->countries)):
+      return null;
+    endif;
+
+    return $this->countries[$country]['name'];
+  }
+
   function echo_country_selectors(){
   ?>
     <ul class="country-selector">
