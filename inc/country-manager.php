@@ -44,6 +44,17 @@ class Odm_Country_Manager {
     ];
   }
 
+  function get_country_codes(){
+    return [
+      'mekong' => 'mekong',
+      'cambodia' => 'kh',
+      'thailand' => 'th',
+      'laos' => 'lo',
+      'myanmar' => 'mm',
+      'vietnam' => 'vn'
+    ];
+  }
+
   function echo_country_selectors(){
   ?>
     <ul class="country-selector">

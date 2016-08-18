@@ -13,8 +13,8 @@ Template Name: Data
   $param_query = !empty($_GET['query']) ? $_GET['query'] : null;
   $param_taxonomy = isset($_GET['taxonomy']) ? explode(",",$_GET['taxonomy']) : array();
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
-  $param_page = isset($_GET['page']) ? $_GET['page'] : null;
-  $param_country = odm_country_manager()->get_current_country();
+  $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $param_country = odm_country_manager()->get_current_country() == 'mekong' ? null : odm_country_manager()->get_current_country();
   $active_filters = !empty($_GET['type']) || !empty($param_taxonomy) || !empty($param_language) || !empty($param_query);
 ?>
 
@@ -30,17 +30,17 @@ Template Name: Data
     <div class="row">
       <form class="advanced-nav-filters panel sixteen columns">
 
-        <div class="four columns">
+        <div class="three columns">
           <div class="adv-nav-input">
             <p class="label"><label for="s"><?php _e('Text search', 'odm'); ?></label></p>
             <input type="text" id="query" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" />
           </div>
         </div>
 
-        <div class="four columns">
+        <div class="three columns">
           <div class="adv-nav-input">
             <p class="label"><label for="type"><?php _e('Type', 'odm'); ?></label></p>
-            <select id="type" name="type" multiple data-placeholder="<?php _e('Select dataset type', 'odm'); ?>">
+            <select id="type" name="type" data-placeholder="<?php _e('Select dataset type', 'odm'); ?>">
               <?php
                 foreach($types as $key => $value): ?>
                 <option value="<?php echo $key; ?>" <?php if ($key == $param_type) echo 'selected'; ?>><?php echo $value; ?></option>
@@ -53,13 +53,29 @@ Template Name: Data
         <?php
           $languages = odm_language_manager()->get_supported_languages();
         ?>
-        <div class="four columns">
+        <div class="three columns">
           <div class="adv-nav-input">
             <p class="label"><label for="language"><?php _e('Language', 'odm'); ?></label></p>
-            <select id="language" name="language" multiple data-placeholder="<?php _e('Select language', 'odm'); ?>">
+            <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
               <?php
                 foreach($languages as $key => $value): ?>
                 <option value="<?php echo $key; ?>" <?php if($key == $param_language) echo 'selected'; ?>><?php echo $value; ?></option>
+              <?php
+                endforeach; ?>
+            </select>
+          </div>
+        </div>
+
+        <?php
+          $countries = odm_country_manager()->get_country_codes();
+        ?>
+        <div class="three columns">
+          <div class="adv-nav-input">
+            <p class="label"><label for="country"><?php _e('Country', 'odm'); ?></label></p>
+            <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odm'); ?>">
+              <?php
+                foreach($countries as $key => $value): ?>
+                  <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo $key; ?></option>
               <?php
                 endforeach; ?>
             </select>
@@ -114,24 +130,33 @@ Template Name: Data
 
         <div class="sixteen columns">
           <h2><?php echo 'X Results found.' ?></h2>
-          <?php print $param_type; ?>
-          <?php print $param_query; ?>
-          <?php print_r($param_taxonomy); ?>
-          <?php print($param_language); ?>
-          <?php print($param_page); ?>
         </div>
 
         <?php
           $shortcode = '[wpckan_query_datasets type="'.$param_type.'" limit="10" include_fields_dataset="title,notes" include_fields_resources="" blank_on_empty="true"';
+          //query
           if (isset($param_query)):
             $shortcode .= ' query="'. $param_query. '"';
           endif;
-          if (!empty($param_language)):
-            $shortcode .= ' filter_fields=\'{"extras_odm_language":"'. $param_language. '"}\'';
+          //language and country
+          if (!empty($param_language) || !empty($param_country)):
+            $shortcode .= ' filter_fields=\'{';
+            $filter_field_strings = array();
+            if (!empty($param_language)):
+              array_push($filter_field_strings,'"extras_odm_language":"'. $param_language . '"');
+            endif;
+            if (!empty($param_country)):
+              array_push($filter_field_strings,'"extras_odm_spatial_range":"'. $countries[$param_country] . '"');
+            endif;
+            $shortcode .= implode(",",$filter_field_strings) . '}\'';
           endif;
-          if (!empty($param_page)):
-            $shortcode .= ' page='. $param_page;
+          //Pagination
+          $url_no_pagination = remove_querystring_var($_SERVER['REQUEST_URI'],"page");
+          if ($param_page > 1):
+            $shortcode .= ' prev_page_link="' . $url_no_pagination . '&page=' . ($param_page - 1) . '"';
           endif;
+            $shortcode .= ' next_page_link="' . $url_no_pagination . '&page=' . ($param_page + 1) . '"';
+          $shortcode .= ' page='. $param_page;
         ?>
         <div class="sixteen columns data-results">
           <?php echo do_shortcode($shortcode . ']'); ?>
