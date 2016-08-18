@@ -11,7 +11,7 @@ Template Name: Data
   // get following variables from URL for filtering
   $param_type = isset($_GET['type']) ? $_GET['type'] : 'dataset';
   $param_query = !empty($_GET['query']) ? $_GET['query'] : null;
-  $param_taxonomy = isset($_GET['taxonomy']) ? explode(",",$_GET['taxonomy']) : array();
+  $param_taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : null;
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
   $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
   $param_country = odm_country_manager()->get_current_country() == 'mekong' ? null : odm_country_manager()->get_current_country();
@@ -30,7 +30,7 @@ Template Name: Data
     <div class="row">
       <form class="advanced-nav-filters panel sixteen columns">
 
-        <div class="three columns">
+        <div class="two columns">
           <div class="adv-nav-input">
             <p class="label"><label for="s"><?php _e('Text search', 'odm'); ?></label></p>
             <input type="text" id="query" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" />
@@ -57,6 +57,7 @@ Template Name: Data
           <div class="adv-nav-input">
             <p class="label"><label for="language"><?php _e('Language', 'odm'); ?></label></p>
             <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
+              <option value="<?php _e('All','odm') ?>" selected><?php _e('All','odm') ?></option>
               <?php
                 foreach($languages as $key => $value): ?>
                 <option value="<?php echo $key; ?>" <?php if($key == $param_language) echo 'selected'; ?>><?php echo $value; ?></option>
@@ -74,6 +75,11 @@ Template Name: Data
             <p class="label"><label for="country"><?php _e('Country', 'odm'); ?></label></p>
             <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odm'); ?>">
               <?php
+                if (odm_country_manager()->get_current_country() == 'mekong'): ?>
+                  <option value="<?php _e('All','odm') ?>" selected><?php _e('All','odm') ?></option>
+              <?php
+                endif; ?>
+              <?php
                 foreach($countries as $key => $value): ?>
                   <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
               <?php
@@ -82,7 +88,24 @@ Template Name: Data
           </div>
         </div>
 
-        <div class="four columns">
+        <?php
+          $taxonomy_list = odm_taxonomy_manager()->get_taxonomy_list();
+        ?>
+        <div class="three columns">
+          <div class="adv-nav-input">
+            <p class="label"><label for="taxonomy"><?php _e('Taxonomy', 'odm'); ?></label></p>
+            <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
+              <option value="<?php _e('All','odm') ?>" selected><?php _e('All','odm') ?></option>
+              <?php
+                foreach($taxonomy_list as $value): ?>
+                <option value="<?php echo $value; ?>" <?php if($value == $param_taxonomy) echo 'selected'; ?>><?php echo $value; ?></option>
+              <?php
+                endforeach; ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="two columns">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
           <?php
             if ($active_filters):
@@ -105,38 +128,33 @@ Template Name: Data
         if (!$active_filters):  ?>
 
         <section class="container">
-      		<div class="sixteen columns data-results">
-
-            <h2><?php _e('Popular datasets','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
-
-          </div>
-
-          <div class="sixteen columns data-results">
-
-            <h2><?php _e('Popular library records','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
-
-          </div>
-
-          <div class="sixteen columns data-results">
-
-            <h2><?php _e('Popular laws','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
-
-          </div>
 
           <div class="sixteen columns">
-            <div class="panel">
-              <h2><?php _e('Statistics','odm') ?></h2>
-              <p>X datasets</p>
-              <p>Y library records</p>
-              <p>Z laws</p>
+            <div class="panel data-number-results-small">
+              <p>
+                <?php _e('Current statistics: ','odm'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="dataset" limit="1" suffix=" Datasets"]'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="library_record" limit="1" suffix=" Library records"]'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="laws_record" limit="1" suffix=" Laws"]'); ?>
+              </p>
             </div>
-
           </div>
 
+      		<div class="sixteen columns data-results">
+            <h2><?php _e('Popular datasets','odm') ?></h2>
+            <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
+
+          <div class="sixteen columns data-results">
+            <h2><?php _e('Popular library records','odm') ?></h2>
+            <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
+          </div>
+
+          <div class="sixteen columns data-results">
+            <h2><?php _e('Popular laws','odm') ?></h2>
+            <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
+          </div>
+
         </section>
 
       <?php
@@ -148,15 +166,18 @@ Template Name: Data
           if (isset($param_query)):
             $shortcode_params .= ' query="'. $param_query. '"';
           endif;
-          //language and country
+          //language, country and taxonomy
           if (!empty($param_language) || !empty($param_country)):
             $shortcode_params .= ' filter_fields=\'{';
             $filter_field_strings = array();
-            if (!empty($param_language)):
+            if (!empty($param_language) && $param_language != 'All'):
               array_push($filter_field_strings,'"extras_odm_language":"'. $param_language . '"');
             endif;
-            if (!empty($param_country)):
+            if (!empty($param_country) && $param_country != 'All'):
               array_push($filter_field_strings,'"extras_odm_spatial_range":"'. $countries[$param_country] . '"');
+            endif;
+            if (!empty($param_taxonomy) && $param_taxonomy != 'All'):
+              array_push($filter_field_strings,'"extras_taxonomy":"'. $param_taxonomy . '"');
             endif;
             $shortcode_params .= implode(",",$filter_field_strings) . '}\'';
           endif;

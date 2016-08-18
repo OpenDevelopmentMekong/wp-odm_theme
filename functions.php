@@ -5,6 +5,7 @@
  */
 require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
+require_once get_stylesheet_directory().'/inc/taxonomy-manager.php';
 
 /*
  * Post types
