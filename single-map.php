@@ -11,31 +11,9 @@
 	}
 	display_baselayer_navigation();
 	$layers = get_selected_layers_of_map_by_mapID($mapID);
-	if (!empty($layers)){
-		echo '<div class="category-map-layers box-shadow hide_show_container">';
-			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "opendev");
-				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
-			echo '</h2>';
-			echo '<div class="interactive-map-layers dropdown">';
-				echo "<ul class='cat-layers switch-layers'>";
-					foreach ($layers as $id => $layer) {
-						display_layer_as_menu_item_on_mapNavigation($layer['ID']);
-					}
-				echo "</ul>";
-				echo '<div class="news-marker">';
-				echo '<label><input class="news-marker-toggle" type="checkbox" value="1"/>';
-				 	echo '<span class="label">'.__("Hide news icons", "opendev")."</span>";
-				echo '</label>';
-				echo '</div>';
-			echo '</div>'; //interactive-map-layers dropdown
-		echo '</div>'; //category-map-layers  box-shadow
 
-		//show legend box
-		display_legend_container();
-
-		//show layer information
-    display_layer_information($layers);
-	}
+	 //Show Menu Layers and legendbox
+	display_map_layer_sidebar_and_legend_box($layers);
 
 	$base_layers = get_post_meta_of_all_baselayer();
 	$layers_legend = get_legend_of_map_by($mapID);

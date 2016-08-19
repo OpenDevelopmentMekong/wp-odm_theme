@@ -147,7 +147,8 @@ function odm_setup_theme()
   'after_title' => '</h2>',
   ));
 
-  include get_stylesheet_directory().'/inc/layers.php';
+  include_once get_stylesheet_directory().'/inc/layers.php';
+  include_once get_stylesheet_directory().'/inc/embed.php';
 }
 add_action('after_setup_theme', 'odm_setup_theme');
 
@@ -237,7 +238,7 @@ function odm_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
-  if (is_page('map-explorer') || is_page('maps') || is_singular('map') || is_home()){
+  if (is_page( array( 'map-explorer', 'maps', 'embed' )) || is_singular('map') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
          wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
@@ -260,7 +261,16 @@ function odm_jeo_scripts()
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
 
       wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
+  }
 
+  if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')) {
+    wp_deregister_script('jeo-share-widget');
+    wp_enqueue_script('jeo-share-widget', get_stylesheet_directory_uri() . '/inc/jeo-scripts/share-widget.js', array('jquery', 'underscore', 'chosen'), '1.5.6');
+
+    wp_localize_script('jeo-share-widget', 'extended_jeo_share_widget_settings', array(
+    	'baseurl' => extended_jeo_get_embed_url(),
+    	'default_label' => __('default', 'jeo')
+    ));
   }
 
   wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
@@ -412,12 +422,12 @@ add_filter('jeo_mapgroup_data', 'odm_map_data');
 
 function odm_custom_admin_css()
 {
-    ?>
+/*    ?>
  <style>
   .handlers.map-setting { display: none !important; }
  </style>
  <?php
-
+*/
  // dequeue parent script and enqueue from child theme
  wp_dequeue_script('mapbox-metabox');
  wp_enqueue_script('child-mapbox-metabox', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapbox.js', array('jquery', 'jeo', 'jquery-ui-sortable'), '0.5.1');
