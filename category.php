@@ -7,7 +7,7 @@ $post_types = get_post_types(array(
 ));
 $tax_post_types = array();
 foreach($post_types as $pt) {
-  if (in_array($pt, array('news-article', 'topic', 'profile', 'announcement', 'site-update'))){
+  if (in_array($pt, array('news-article', 'topic', 'profile', 'announcement', 'site-update', 'map-layer'))){
 		$pt_tax = get_object_taxonomies($pt);
 		if(in_array($term->taxonomy, $pt_tax)) {
 			$tax_post_types[] = $pt;
