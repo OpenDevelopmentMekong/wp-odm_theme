@@ -209,10 +209,11 @@ body{
 
 .post-list-item {
 	margin-bottom: @small-padd;
-  border-bottom: 1px solid @light-gray;
-
+  //border-bottom: 1px solid @light-gray;
+  display: inline-flex;
+  
   &:nth-child(odd) {
-    clear: left;
+    //clear: left;
   }
   &:last-child {
     border-bottom: none;
@@ -227,7 +228,7 @@ body{
   }
 
   .eight.post-list-item:nth-last-child(2) {
-    border-bottom: none;
+    //border-bottom: none;
   }
 
 	img {
@@ -310,7 +311,7 @@ body{
 }
 
 .post-type-archive .post-list-item {
-  border-bottom: 1px solid @light-gray;
+  //border-bottom: 1px solid @light-gray;
   margin-bottom: @med-padd;
 
   .item-title {
