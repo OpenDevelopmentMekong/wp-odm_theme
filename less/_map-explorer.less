@@ -95,12 +95,13 @@
 
 		.widget_headline, .map_headline {
     		padding: 8px 15px 8px;
-			margin: 0;
+				margin: 0;
 
-			.fa-caret-down {
+			.fa-caret-down, .fa-caret-up {
 				float: right;
 				text-align: right;
-    			margin-top: -3px;
+    		cursor: pointer;
+    		margin-top: -3px;
 			}
 		}
 	} /*category-map-layers*/
@@ -357,7 +358,7 @@
 	width: 250px;
 	max-height: 350px;
 	position: absolute;
-	bottom: 0;
+	bottom: 50px;
 	z-index: 99;
 	background: @white;
 	/*padding: 10px 5px 10px 15px;*/
@@ -692,15 +693,58 @@
 	    float: left;
 	}
 }
+html#map-embed {
+	margin: 0 !important;
+	.map-container{
+		bottom: 0;
+	}
+	.leaflet-marker-icon{
+		display: none
+	}
+	#embed-header{
+		background-color: @mekong-dark;
+		font-size: 100%;
+	}
+
+  header {
+    z-index: 6;
+
+		h1 {
+	    line-height: 30px;
+	    height: auto;
+
+			a{
+				color: @mekong-bright;
+			}
+			#icon-od-logo {
+				display: inline-block;
+				margin-right: 3px;
+	    	margin-top: 7px;
+				float: left;
+
+				.svg-od-logo {
+					width: 16px;
+					height: 16px;
+				}
+
+			}
+		}
+	}
+
+}
 #embeded-interactive-map {
-	height: 92%;
+	height: 100%;
 
 	.map-legend-container {
-		bottom: 30px;
+		bottom: 0;
 	}
 }
-#map_embed .leaflet-marker-icon{
-	display: none
+#embeded-interactive-map-has-odlogo {
+	height: 100%;
+
+	.map-legend-container {
+		bottom: 28px;
+	}
 }
 /*********************************/
 
