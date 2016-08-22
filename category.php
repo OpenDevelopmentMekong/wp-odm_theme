@@ -55,7 +55,7 @@ foreach($post_types as $pt) {
     			<?php endif; ?>
     			<?php if(have_posts()) : ?>
     					<?php while(have_posts()) : the_post();
-                odm_get_template('post-list-single-4-cols',array(
+                odm_get_template('post-list-single-2-cols',array(
                   "post" => get_post(),
                   "show_meta" => true,
                   "show_source_meta" => true,
