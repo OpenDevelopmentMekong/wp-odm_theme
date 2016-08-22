@@ -28,7 +28,8 @@ Template Name: Data
 
   <div class="container">
     <div class="row">
-      <form class="advanced-nav-filters panel sixteen columns">
+
+      <form class="advanced-nav-filters sixteen columns panel">
 
         <div class="two columns">
           <div class="adv-nav-input">
@@ -80,9 +81,12 @@ Template Name: Data
               <?php
                 endif; ?>
               <?php
-                foreach($countries as $key => $value): ?>
-                  <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
-              <?php
+                foreach($countries as $key => $value):
+                  if ($value != 'mekong'): ?>
+                    <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
+                <?php
+                  endif; ?>
+                  <?php
                 endforeach; ?>
             </select>
           </div>
@@ -118,6 +122,21 @@ Template Name: Data
 
       </form>
 
+      <?php
+        if (!$active_filters): ?>
+          <div class="sixteen columns">
+            <div class="data-number-results-small">
+              <p>
+                <p class="label"><label><?php _e('Current statistics: ','odm'); ?></label></p>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="dataset" limit="1" suffix=" Datasets"]'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="library_record" limit="1" suffix=" Library records"]'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="laws_record" limit="1" suffix=" Laws"]'); ?>
+              </p>
+            </div>
+          </div>
+          <?php
+        endif; ?>
+
     </div>
   </div>
 
@@ -129,29 +148,18 @@ Template Name: Data
 
         <section class="container">
 
-          <div class="sixteen columns">
-            <div class="panel data-number-results-small">
-              <p>
-                <?php _e('Current statistics: ','odm'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="dataset" limit="1" suffix=" Datasets"]'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="library_record" limit="1" suffix=" Library records"]'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="laws_record" limit="1" suffix=" Laws"]'); ?>
-              </p>
-            </div>
-          </div>
-
       		<div class="sixteen columns data-results">
-            <h2><?php _e('Popular datasets','odm') ?></h2>
+            <h2><?php _e('Most viewed datasets','odm') ?></h2>
             <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
-            <h2><?php _e('Popular library records','odm') ?></h2>
+            <h2><?php _e('Most viewed library records','odm') ?></h2>
             <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
-            <h2><?php _e('Popular laws','odm') ?></h2>
+            <h2><?php _e('Most viewed laws','odm') ?></h2>
             <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
 
@@ -197,6 +205,15 @@ Template Name: Data
         <div class="sixteen columns data-results">
           <?php echo do_shortcode('[wpckan_query_datasets' . $shortcode_params . ']'); ?>
         </div>
+
+        <?php
+          if ($param_type == 'laws_record' && url_path_exists("/tabular/laws/")): ?>
+            <div class="sixteen columns more-links">
+              <a href="/tabular/laws/"><?php _e('More on the law compendium','odm'); ?></a>
+            </div>
+        <?php
+          endif; ?>
+
       <?php
         endif;  ?>
 
