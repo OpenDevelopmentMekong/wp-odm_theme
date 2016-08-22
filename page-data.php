@@ -207,7 +207,7 @@ Template Name: Data
         </div>
 
         <?php
-          if ($param_type == 'laws_record'): ?>
+          if ($param_type == 'laws_record' && url_path_exists("/tabular/laws/")): ?>
             <div class="sixteen columns more-links">
               <a href="/tabular/laws/"><?php _e('More on the law compendium','odm'); ?></a>
             </div>
