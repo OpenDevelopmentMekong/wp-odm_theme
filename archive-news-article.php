@@ -27,7 +27,7 @@
 				<?php endif; ?>
 
   			<?php while (have_posts()) : the_post();
-  				odm_get_template('post-list-single-1-cols',array(
+  				odm_get_template('post-list-single-2-cols',array(
   					"post" => get_post(),
   					"show_meta" => true,
   					"show_source_meta" => true,
