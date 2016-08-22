@@ -54,7 +54,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 		<?php
 			if (!empty($instance['title'])):
-				 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
+				 echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
 			endif; ?>
 
 		<ul>
@@ -90,10 +90,10 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 	  $post_types = available_custom_post_types();
 
-		$title = !empty($instance['title']) ? __($instance['title'], 'odm') : __('Custom posts', 'odm'); ?>
+		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts'; ?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title, 'odm');?>">
 		</p>
 
 		<p>
@@ -123,7 +123,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+		$instance['title'] = (!empty($new_instance['title'])) ? $new_instance['title'] : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
 
 		$post_types = available_custom_post_types();

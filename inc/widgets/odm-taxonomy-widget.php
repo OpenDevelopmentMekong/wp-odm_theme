@@ -214,13 +214,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_title'] ) ? __( $instance['od_title'], 'odm' ) : __( 'Topic areas', 'odm' );
+		$title = ! empty( $instance['od_title'] ) ? $instance['od_title'] : 'Topic areas';
 		$od_include = $instance['od_include'];
 		$od_exclude = $instance['od_exclude'];
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'od_title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'od_title' ); ?>" name="<?php echo $this->get_field_name( 'od_title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<input class="widefat" id="<?php echo $this->get_field_id( 'od_title' ); ?>" name="<?php echo $this->get_field_name( 'od_title' ); ?>" type="text" value="<?php _e( $title , 'odm' ); ?>">
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'od_include' ); ?>"><?php _e( 'Include Category by IDs (separated by commas):' ); ?></label>
