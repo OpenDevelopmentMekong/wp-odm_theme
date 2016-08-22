@@ -38,7 +38,7 @@ foreach($post_types as $pt) {
 
   <section class="container">
     <div class="row">
-      <div class="eleven columns">
+      <div class="sixteen columns">
     		<section class="tabbed-posts-section container">
     			<?php if(count($tax_post_types) > 1) : ?>
     				<nav id="tabbed-post-type-nav">
@@ -66,21 +66,6 @@ foreach($post_types as $pt) {
     		</section>
     	</div>
 
-    	<div class="four columns offset-by-one">
-    		<aside id="sidebar">
-    			<ul class="widgets">
-    				<li class="widget share-widget">
-    					<?php odm_get_template('social-share',array(),true); ?>
-    				</li>
-            <?php if (isset($_GET['queried_post_type'])): ?>
-      				<li id="odm_taxonomy_widget" class="widget widget_odm_taxonomy_widget">
-      					<?php list_category_by_post_type($_GET['queried_post_type']); ?>
-      				</li>
-            <?php endif; ?>
-    				<?php dynamic_sidebar('archive-sidebar'); ?>
-    			</ul>
-    		</aside>
-    	</div>
     </div>
   </section>
 
