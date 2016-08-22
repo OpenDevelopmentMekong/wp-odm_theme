@@ -44,7 +44,7 @@ foreach($post_types as $pt) {
     				<nav id="tabbed-post-type-nav">
     					<ul>
     						<?php
-    						$current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'post';
+    						$current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
     						foreach($tax_post_types as $pt) :
     							$pt = get_post_type_object($pt);
     							$title = $pt->labels->name;?>
