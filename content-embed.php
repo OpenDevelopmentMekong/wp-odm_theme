@@ -36,13 +36,18 @@
 			$get_map_setting['disable_mousewheel'];
 	$obj_conf = json_decode($conf, true);
 	?>
+	<?php
+	$reffer_domain = parse_url($_SERVER['HTTP_REFERER']);
+	if($reffer_domain['host'] != $_SERVER["HTTP_HOST"]) {
+		$add_odlogo = "-has-odlogo";
+	?>
+		<header id="embed-header">
+			<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php od_logo_icon(); ?> <?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
+			<h2 id="embed-title" style="display:none;"><?php wp_title('', true, 'right'); ?></h2>
+		</header>
+ 	<?php } ?>
 
-	<header id="embed-header">
-		<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
-		<h2 id="embed-title" style="display:none;"><?php wp_title('', true, 'right'); ?></h2>
-	</header>
-
-	<div class="interactive-map" id="embeded-interactive-map">
+	<div class="interactive-map" id="embeded-interactive-map<?php echo $add_odlogo?>">
 		<div class="map-container"><div id="map_embed" class="map"></div></div>
 		<?php
 			$mapID = get_embedded_map_id();
