@@ -61,5 +61,28 @@ function odm_get_template($slug, array $params = array(), $output = true) {
     if(!$output) return ob_get_clean();
 }
 
+function should_open_row($layout_type,$index){
+  if ($layout_type == 'list-2-cols' && $index%2 == 1){
+    return true;
+  }else if ($layout_type == 'list-4-cols' && $index%4 == 1){
+    return true;
+  }else if ($layout_type == 'list-1-cols'){
+    return true;
+  }
+  return false;
+}
+
+function should_close_row($layout_type,$index){
+  if ($layout_type == 'list-2-cols' && $index >= 2 && $index%2 == 0){
+    return true;
+  }else if ($layout_type == 'list-4-cols' && $index >=4 && $index%4 == 0){
+    return true;
+  }else if ($layout_type == 'list-1-cols'){
+    return true;
+  }
+  return false;
+}
+
+
 
  ?>

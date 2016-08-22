@@ -457,7 +457,7 @@ add_action('pre_get_posts', 'odm_search_pre_get_posts');
 function odm_category_pre_get_posts($query)
 {
     if ($query->is_category) {
-        $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'post';
+        $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
         $query->set('post_type', array($post_type));
     }
 }

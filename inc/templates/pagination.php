@@ -1,6 +1,6 @@
 <div class="navigation">
 	<?php
-		$pagination = $params["paging_arg"];
+		$pagination = isset($params["paging_arg"]) ? $params["paging_arg"] : array();
 		global $wp_query, $page, $paged;
 
 		$big = 999999999; // need an unlikely integer
