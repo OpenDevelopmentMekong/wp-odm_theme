@@ -65,7 +65,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</div>
 			<div class="sixteen columns">
 				<?php
+					$index = 1;
 					foreach($posts as $post):
+						if ($this->should_open_row($layout_type,$index)): ?>
+							<div class="row">
+						<?php endif; ?>
+						<?php
 						$template = $this->templates[$layout_type];
 						odm_get_template($template,array(
 							"post" => $post,
@@ -74,12 +79,40 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 							"show_excerpt" => $show_excerpt,
 							"show_thumbnail" => $show_thumbnail
 						),true);
-					endforeach; ?>
+						if ($this->should_close_row($layout_type,$index)): ?>
+							</div>
+						<?php endif;
+						$index++;
+					endforeach;
+					?>
+
 			</div>
 			<?php echo $args['after_widget']; ?>
 		</div>
 
 	<?php
+	}
+
+	private function should_open_row($layout_type,$index){
+		if ($layout_type == 'list-2-cols' && $index%2 == 1){
+			return true;
+		}else if ($layout_type == 'list-4-cols' && $index%4 == 1){
+			return true;
+		}else if ($layout_type == 'list-1-cols'){
+			return true;
+		}
+		return false;
+	}
+
+	private function should_close_row($layout_type,$index){
+		if ($layout_type == 'list-2-cols' && $index >= 2 && $index%2 == 0){
+			return true;
+		}else if ($layout_type == 'list-4-cols' && $index >=4 && $index%4 == 0){
+			return true;
+		}else if ($layout_type == 'list-1-cols'){
+			return true;
+		}
+		return false;
 	}
 
 	/**
