@@ -141,17 +141,17 @@ Template Name: Data
           </div>
 
       		<div class="sixteen columns data-results">
-            <h2><?php _e('Popular datasets','odm') ?></h2>
+            <h2><?php _e('Most viewed datasets','odm') ?></h2>
             <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
-            <h2><?php _e('Popular library records','odm') ?></h2>
+            <h2><?php _e('Most viewed library records','odm') ?></h2>
             <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
-            <h2><?php _e('Popular laws','odm') ?></h2>
+            <h2><?php _e('Most viewed laws','odm') ?></h2>
             <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
           </div>
 
