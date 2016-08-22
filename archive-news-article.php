@@ -16,7 +16,7 @@
 	<section class="container">
 
 		<div class="row">
-			<div class="eleven columns">
+			<div class="sixteen columns">
 
 				<?php if (jeo_has_marker_location()): ?>
 					<section id="featured-media" class="row">
@@ -32,23 +32,19 @@
   					"show_meta" => true,
   					"show_source_meta" => true,
 						"show_thumbnail" => true,
-						"show_excerpt" => true, 
+						"show_excerpt" => true,
 						"show_summary_translated_by_odc_team" => true,
 						"header_tag" => true
   			),true);
   			endwhile; ?>
 			</div>
 
-      <div class="four columns offset-by-one">
-        <?php dynamic_sidebar('archive-sidebar'); ?>
-      </div>
-
 		</div>
 	</section>
 
 	<section class="container">
 		<div class="row">
-			<div class="eleven columns">
+			<div class="sixteen columns">
 				<?php odm_get_template('pagination',array(),true); ?>
 			</div>
 		</div>
