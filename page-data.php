@@ -28,7 +28,8 @@ Template Name: Data
 
   <div class="container">
     <div class="row">
-      <form class="advanced-nav-filters panel sixteen columns">
+
+      <form class="advanced-nav-filters sixteen columns panel">
 
         <div class="two columns">
           <div class="adv-nav-input">
@@ -80,9 +81,12 @@ Template Name: Data
               <?php
                 endif; ?>
               <?php
-                foreach($countries as $key => $value): ?>
-                  <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
-              <?php
+                foreach($countries as $key => $value):
+                  if ($value != 'mekong'): ?>
+                    <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
+                <?php
+                  endif; ?>
+                  <?php
                 endforeach; ?>
             </select>
           </div>
@@ -118,6 +122,21 @@ Template Name: Data
 
       </form>
 
+      <?php
+        if (!$active_filters): ?>
+          <div class="sixteen columns">
+            <div class="data-number-results-small">
+              <p>
+                <p class="label"><label><?php _e('Current statistics: ','odm'); ?></label></p>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="dataset" limit="1" suffix=" Datasets"]'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="library_record" limit="1" suffix=" Library records"]'); ?>
+                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="laws_record" limit="1" suffix=" Laws"]'); ?>
+              </p>
+            </div>
+          </div>
+          <?php
+        endif; ?>
+
     </div>
   </div>
 
@@ -128,17 +147,6 @@ Template Name: Data
         if (!$active_filters):  ?>
 
         <section class="container">
-
-          <div class="sixteen columns">
-            <div class="panel data-number-results-small">
-              <p>
-                <?php _e('Current statistics: ','odm'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="dataset" limit="1" suffix=" Datasets"]'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="library_record" limit="1" suffix=" Library records"]'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="laws_record" limit="1" suffix=" Laws"]'); ?>
-              </p>
-            </div>
-          </div>
 
       		<div class="sixteen columns data-results">
             <h2><?php _e('Most viewed datasets','odm') ?></h2>
