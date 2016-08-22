@@ -55,10 +55,15 @@ foreach($post_types as $pt) {
     			<?php endif; ?>
     			<?php if(have_posts()) : ?>
     					<?php while(have_posts()) : the_post();
-                odm_get_template('post-list-single-1-cols',array(
-        					"post" => get_post(),
-                  "show_meta" => true
-        			),true);
+                odm_get_template('post-list-single-4-cols',array(
+                  "post" => get_post(),
+                  "show_meta" => true,
+                  "show_source_meta" => true,
+                  "show_thumbnail" => true,
+                  "show_excerpt" => true,
+                  "show_summary_translated_by_odc_team" => true,
+                  "header_tag" => true
+              ),true);
     					endwhile; ?>
     			<?php else : ?>
     				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
