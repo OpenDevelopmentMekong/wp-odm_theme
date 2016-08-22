@@ -205,6 +205,15 @@ Template Name: Data
         <div class="sixteen columns data-results">
           <?php echo do_shortcode('[wpckan_query_datasets' . $shortcode_params . ']'); ?>
         </div>
+
+        <?php
+          if ($param_type == 'laws_record'): ?>
+            <div class="sixteen columns more-links">
+              <a href="/tabular/laws/"><?php _e('More on the law compendium','odm'); ?></a>
+            </div>
+        <?php
+          endif; ?>
+
       <?php
         endif;  ?>
 
