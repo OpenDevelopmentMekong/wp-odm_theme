@@ -17,7 +17,7 @@
 
     <div class="row">
 
-      <div class="eleven columns">
+      <div class="sixteen columns">
         <?php while (have_posts()) : the_post();
   				odm_get_template('post-grid-single-4-cols',array(
   					"post" => get_post(),
@@ -26,17 +26,13 @@
   			endwhile; ?>
       </div>
 
-      <div class="four columns offset-by-one">
-        <?php dynamic_sidebar('archive-sidebar'); ?>
-      </div>
-
     </div>
 
 	</section>
 
 	<section class="container">
 		<div class="row">
-			<div class="eleven columns">
+			<div class="sixteen columns">
 				<?php odm_get_template('pagination',array(),true); ?>
 			</div>
 		</div>

@@ -2,7 +2,15 @@
 </article>
 
 <footer id="od-footer">
-  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+  <!-- back-to-top -->
+  <div class="container">
+    <div class="row">
+      <div class="sixteen colunms">
+        <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+      </div>
+    </div>
+  </div>
+
 	<div class="container">
 		<!-- Legal disclaimer -->
     <div class="row">
@@ -20,7 +28,10 @@
 		<div class="row">
       <div class="nine columns">
   			<nav id="footer-nav">
-  				<?php wp_nav_menu(array('theme_location' => 'footer_menu')); ?>
+  				<?php
+          if (has_nav_menu('footer_menu'))
+            wp_nav_menu(array('theme_location' => 'footer_menu'));
+          ?>
   			</nav>
   		</div>
       <div class="four columns">

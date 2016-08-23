@@ -17,7 +17,7 @@
 
     <div class="row">
 
-      <div class="eleven columns">
+      <div class="sixteen columns">
 
 				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
 
@@ -68,10 +68,6 @@
 						endif;
 					endwhile; ?>
 
-      </div>
-
-      <div class="four columns offset-by-one">
-        <?php dynamic_sidebar('archive-sidebar'); ?>
       </div>
 
     </div>

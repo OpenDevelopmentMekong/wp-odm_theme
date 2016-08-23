@@ -10,7 +10,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
  jeo = function(conf, callback) {
-
   var _init = function() {
    if(conf.mainMap)
     $('body').addClass('loading-map');
@@ -58,7 +57,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    center: [0,0],
    attributionControl: false
   };
-
   if(conf.center && !isNaN(conf.center[0]))
    options.center = conf.center;
 
@@ -116,6 +114,9 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   if(conf.fitBounds instanceof L.LatLngBounds)
    map.fitBounds(conf.fitBounds);
 
+   if(conf.disable_mousewheel == false){
+     conf.disableHandlers = false;
+   }
   // Handlers
   if(conf.disableHandlers) {
    // mousewheel
@@ -479,7 +480,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
  }// end function
 
  jeo.parseConf = function(conf) {
-
   var newConf = $.extend({}, conf);
 
   newConf.server = conf.server;
@@ -588,7 +588,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
   if(conf.geocode)
    newConf.geocode = true;
-
   newConf.disableHandlers = {};
   if(conf.disable_mousewheel)
    newConf.disableHandlers.mousewheel = true;

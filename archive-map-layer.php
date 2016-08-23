@@ -17,7 +17,7 @@
 
     <div class="row">
 
-      <div class="eleven columns">
+      <div class="sixteen columns">
 	      <?php
 				//get id of base-layer and map-catalogue category for excluding
 				$cat_baselayers = 'base-layers';
@@ -31,7 +31,7 @@
 				$map_catalogue = get_all_layers_grouped_by_subcategory(0, $exclude_posts_in_cats);
 
 				//Pagination
-				$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue); 
+				$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
 				foreach ($map_catalogue as $key => $layer) {
 					$count_num = $key + 1;  //Count Item start from 1
 					if($count_num >= $pagination["start_post"] && $count_num <= $pagination["end_post"] ):
@@ -53,17 +53,13 @@
 			?>
       </div>
 
-      <div class="four columns offset-by-one">
-        <?php dynamic_sidebar('archive-sidebar'); ?>
-      </div>
-
     </div>
 
 	</section>
 
 	<section class="container">
 		<div class="row">
-			<div class="eleven columns">
+			<div class="sixteen columns">
 				<?php odm_get_template('pagination', array("paging_arg" => $pagination["paging_arg"]), true); ?>
 			</div>
 		</div>

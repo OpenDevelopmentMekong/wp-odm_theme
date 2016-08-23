@@ -65,7 +65,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</div>
 			<div class="sixteen columns">
 				<?php
+					$index = 1;
 					foreach($posts as $post):
+						if (should_open_row($layout_type,$index)): ?>
+							<div class="row">
+						<?php endif; ?>
+						<?php
 						$template = $this->templates[$layout_type];
 						odm_get_template($template,array(
 							"post" => $post,
@@ -74,13 +79,20 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 							"show_excerpt" => $show_excerpt,
 							"show_thumbnail" => $show_thumbnail
 						),true);
-					endforeach; ?>
+						if (should_close_row($layout_type,$index)): ?>
+							</div>
+						<?php endif;
+						$index++;
+					endforeach;
+					?>
+
 			</div>
 			<?php echo $args['after_widget']; ?>
 		</div>
 
 	<?php
 	}
+
 
 	/**
 	 * Outputs the options form on admin
