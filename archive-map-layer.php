@@ -40,7 +40,10 @@
 						elseif ($count_num % 4 == 1):
 								echo "<div class='grid-row'>";
 						endif;
-						odm_get_template('post-grid-single-4-cols-caption-below',array( "post" => $layer, "show_meta" => false), true);
+						odm_get_template('post-grid-single-4-cols',array(
+              "post" => $layer, 
+              "show_meta" => false)
+            , true);
 						if($count_num % 4 == 0 || $count_num == $pagination["end_post"]) :
 							echo "</div>";
 						endif;
