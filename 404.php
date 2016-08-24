@@ -8,7 +8,6 @@
       <div class="row">
         <div class="eight columns offset-by-four align-center">
           <h1><?php _e('Not found!','odm'); ?></h1>
-          <i class="fa fa-map-signs fa-6" aria-hidden="true"></i>
     	  </div>
       </div>
 
