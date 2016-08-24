@@ -158,13 +158,17 @@ function odm_setup_theme()
     'name' => __('Profile area bottom left', 'odm'),
     'id' => 'profile-area-2',
     'before_title' => '<h2 class="widget-title">',
-    'after_title' => '</h2>'
+    'after_title' => '</h2>',
+    'before_widget' => '',
+    'after_widget'  => ''
   ));
     register_sidebar(array(
     'name' => __('Profile area bottom right', 'odm'),
     'id' => 'profile-area-3',
     'before_title' => '<h2 class="widget-title">',
-    'after_title' => '</h2>'
+    'after_title' => '</h2>',
+    'before_widget' => '',
+    'after_widget'  => ''
   ));
 
   include_once get_stylesheet_directory().'/inc/layers.php';
