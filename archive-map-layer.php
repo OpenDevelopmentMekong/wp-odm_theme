@@ -33,22 +33,10 @@
 				//Pagination
 				$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
 				foreach ($map_catalogue as $key => $layer) {
-					$count_num = $key + 1;  //Count Item start from 1
-					if($count_num >= $pagination["start_post"] && $count_num <= $pagination["end_post"] ):
-						if($count_num == $pagination["start_post"]):
-							echo "<div class='grid-row'>";
-						elseif ($count_num % 4 == 1):
-								echo "<div class='grid-row'>";
-						endif;
-						odm_get_template('post-grid-single-4-cols-caption-below',array( "post" => $layer, "show_meta" => false), true);
-						if($count_num % 4 == 0 || $count_num == $pagination["end_post"]) :
-							echo "</div>";
-						endif;
-
-						if($count_num == $pagination["end_post"]):
-							 break;
-						endif;
-					endif;
+					odm_get_template('post-grid-single-4-cols',array(
+            "post" => $layer,
+            "show_meta" => false)
+          , true);
 				}
 			?>
       </div>

@@ -12,8 +12,10 @@
 <div class="four columns ">
 	<div class="post-list-item">
 		<?php if ($header_tag): ?>
+      <?php
+        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
 			<h3>
-				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>">
 					<?php echo $post->post_title; ?>
 				</a>
 			</h3>
