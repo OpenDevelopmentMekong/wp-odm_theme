@@ -3,3 +3,60 @@
     display: none;
   }
 }
+
+@media (max-device-width: 750px) {
+	#od-selector {
+		height: auto;
+		.eight.columns {
+			width: 50%;
+		}
+		#country-select-dropdown {
+			display:inline-block !important;
+			cursor: pointer;
+			color: #fff;
+		    position: absolute;
+		    top: 6px;
+		}
+		ul {
+			&.country-selector {
+				position: relative;
+				li {
+					float: none;
+					&:not(.active-country) {
+						display:none;
+					}
+				}
+
+				&.showall {
+					li {
+						display:block;
+						line-height: 2em;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-device-width: 650px) and (min-device-width: 550px) {
+	#od-head {
+		h1 {
+			font-size: 38px;
+		}
+	}
+}
+
+@media (max-device-width: 550px) {
+	#od-head {
+		h1 {
+			font-size: 26px;
+			letter-spacing: -3px;
+			sup {
+				top: -7px;
+			}
+		}
+		h2.side-title {
+			font-size: 18px;
+		}
+	}
+}
