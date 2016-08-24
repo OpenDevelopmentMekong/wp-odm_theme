@@ -142,7 +142,7 @@ class odm_AdvancedNav {
 			<?php
 			$post_types = get_post_types(array(
 				'public' => true,
-			  '_builtin' => true
+			  '_builtin' => false
 			), 'object');
 			if($post_types) :
 				unset($post_types['map']);
