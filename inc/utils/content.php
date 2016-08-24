@@ -327,11 +327,11 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
       <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
         <li class="categories">&nbsp;
   				<i class="fa fa-folder-o"></i>
-  				<?php the_category(''); ?>
+  				<?php the_category(' / '); ?>
   			</li>
       <?php endif; ?>
       <?php if (in_array('tags',$show_elements)):
-        the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ', ', '</li>');
+        the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
       endif; ?>
 		</ul>
 	</div>
