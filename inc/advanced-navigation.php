@@ -140,10 +140,12 @@ class odm_AdvancedNav {
 			$after = $newest->post_date;
 			?>
 			<?php
-			$post_types = get_post_types(array('public' => true), 'object');
+			$post_types = get_post_types(array(
+				'public' => true,
+			  '_builtin' => false
+			), 'object');
 			if($post_types) :
 				unset($post_types['map']);
-				unset($post_types['map-layer']);
 				unset($post_types['map-group']);
 				unset($post_types['attachment']);
 				unset($post_types['rssmi_feed']);
