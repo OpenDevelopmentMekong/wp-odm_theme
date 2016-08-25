@@ -124,13 +124,13 @@
            <p><?php _e('Layer options', 'jeo'); ?></p>
            <div class="filter-opts">
             <input type="radio" value="fixed" data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_fixed'}, checked: $data.filtering" />
-            <label data-bind="attr: {for: ID + '_filtering_opt_fixed'}"><?php _e('Fixed', 'jeo'); ?></label>
+            <label data-bind="attr: {for: ID + '_filtering_opt_fixed'}"><?php _e('Enable', 'jeo'); ?></label> &nbsp; &nbsp; &nbsp;
             <input  type="radio" value="switch" data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_switch'}, checked: $data.filtering" />
-            <label data-bind="attr: {for: ID + '_filtering_opt_switch'}"><?php _e('Switchable', 'jeo'); ?></label>
-            <input type="radio" value="swap"  data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_swap'}, checked: $data.filtering" />
-            <label data-bind="attr: {for: ID + '_filtering_opt_swap'}"><?php _e('Swapable', 'jeo'); ?></label>
+            <label data-bind="attr: {for: ID + '_filtering_opt_switch'}"><?php _e('Disable', 'jeo'); ?></label>
+            <!--<input type="radio" value="swap"  data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_swap'}, checked: $data.filtering" />
+            <label data-bind="attr: {for: ID + '_filtering_opt_swap'}"><?php _e('Swapable', 'jeo'); ?></label>-->
 
-            <div class="filtering-opts">
+            <div class="filtering-opts" style="display: none;">
              <!-- ko if: $data.filtering() == 'switch' -->
               <input type="checkbox" data-bind="attr: {id: ID + '_switch_hidden'}, checked: $data.hidden" />
               <label data-bind="attr: {for: ID + '_switch_hidden'}"><?php _e('Hidden', 'jeo'); ?></label>
