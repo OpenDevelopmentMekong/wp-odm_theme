@@ -118,7 +118,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$operator = 'and';
 		$post_types = get_post_types( $args, $output, $operator );
 
-		$title = !empty($instance['title']) ? __($instance['title'], 'odm') : __('Custom posts', 'odm'); ?>
+		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts'; ?>
 
 		 <script type="text/javascript">
 			 jQuery(function($) {
@@ -135,7 +135,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	  </script>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title,'odm');?>">
 		</p>
 
 		<p>
@@ -190,8 +190,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
+		$instance['title'] = (!empty($new_instance['title'])) ? $new_instance['title'] : '';
+		$instance['limit'] = (!empty($new_instance['limit'])) ? $new_instance['limit'] : -1;
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
 		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : true;
