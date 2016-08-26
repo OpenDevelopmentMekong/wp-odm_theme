@@ -26,7 +26,6 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		$categories = wp_get_post_categories($post->ID);
 		$related_posts = array();
-
 		$supported_post_types = array();
 		$post_types = available_custom_post_types();
 		foreach ($post_types as $post_type):
@@ -39,15 +38,24 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 			//TODO: OPtimize this query to filter out categories directly
 			// and ensuring $limit is precise.
-
+			$filter_by_lang = strtolower(get_the_language_by_language_code(odm_language_manager()->get_current_language()));
 			$query = array(
 					'posts_per_page'   => $limit,
 					'order'            => 'DESC',
 					'post_type'        => $supported_post_types,
-					'post_status'      => 'publish'
+					'category' 				 => $categories,
+					'post_status'      => 'publish'/*,
+					'tax_query'				 => array(
+																 array(
+																	 'taxonomy' => 'language',
+																	 'field' => 'slug',
+																	 'terms' => $filter_by_lang,
+																	 'operator' => 'IN'
+																 ),
+															 ),*/
 				);
-			$related_posts = get_posts( $query );
-
+			//$related_posts = get_posts( $query );
+			  $related_posts = query_posts($query);
 		endif;
 
 		echo $args['before_widget']; ?>
@@ -105,7 +113,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			<?php endforeach; ?>
 		</p>
 
-		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
+		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : 5 //-1 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list (-1 to show all):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
