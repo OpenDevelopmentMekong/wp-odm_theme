@@ -46,7 +46,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 					'category' 				 => $categories,
 					'post_status'      => 'publish'
 				);
-			//$related_posts = get_posts( $query );
+				
 			  $related_posts = query_posts($query);
 		endif;
 
