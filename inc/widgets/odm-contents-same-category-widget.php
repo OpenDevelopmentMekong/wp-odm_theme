@@ -44,15 +44,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 					'order'            => 'DESC',
 					'post_type'        => $supported_post_types,
 					'category' 				 => $categories,
-					'post_status'      => 'publish'/*,
-					'tax_query'				 => array(
-																 array(
-																	 'taxonomy' => 'language',
-																	 'field' => 'slug',
-																	 'terms' => $filter_by_lang,
-																	 'operator' => 'IN'
-																 ),
-															 ),*/
+					'post_status'      => 'publish'
 				);
 			//$related_posts = get_posts( $query );
 			  $related_posts = query_posts($query);
