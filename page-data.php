@@ -150,17 +150,17 @@ Template Name: Data
 
       		<div class="sixteen columns data-results">
             <h2><?php _e('Most viewed datasets','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
+            <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
             <h2><?php _e('Most viewed library records','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
+            <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
             <h2><?php _e('Most viewed laws','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
+            <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"]'); ?>
           </div>
 
         </section>
@@ -169,7 +169,7 @@ Template Name: Data
         else:  ?>
 
         <?php
-          $shortcode_params = ' type="'.$param_type.'" limit="16" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"';
+          $shortcode_params = ' type="'.$param_type.'" limit="16" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"';
           //query
           if (isset($param_query)):
             $shortcode_params .= ' query="'. $param_query. '"';
@@ -244,5 +244,20 @@ Template Name: Data
 		</div>
 </section>
 <?php endif; ?>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('.wpckan_dataset').mouseover(function() {
+      $(this).css("border","1px solid #ccc");
+      $(this).children('.wpckan_resources_list').show();
+      $(this).children('.wpckan_dataset_notes').show();
+    });
+    $('.wpckan_dataset').mouseout(function() {
+      $(this).css("border","none");
+      $(this).children('.wpckan_resources_list').hide();
+      $(this).children('.wpckan_dataset_notes').hide();
+    });
+  })
+</script>
 
 <?php get_footer(); ?>

@@ -387,7 +387,7 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 		$map_ID = get_the_ID();
 	}
 
-	$get_basemap = get_post_meta($map_ID, 'map_data', true); 
+	$get_basemap = get_post_meta($map_ID, 'map_data', true);
 	if(!empty($get_basemap)){
 		if($get_basemap['base_layer']) {
 				$base_map = array(
@@ -481,13 +481,13 @@ function get_layer_information_in_array($post_ID){
 	endif;
 	*/
 
-	$title_and_link = "<a class='item-title' target='_blank' href='".get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1]."'>". get_the_title() . "</a>";
 	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
 								"download_link" => $download_link,
+								"dataset_link" => get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1],
 								"title_and_link" => $title_and_link,
 								//"thumbnail_link" => $thumbnail_url,
 								//"description" => get_the_content(),

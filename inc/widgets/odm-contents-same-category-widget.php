@@ -26,7 +26,6 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		$categories = wp_get_post_categories($post->ID);
 		$related_posts = array();
-
 		$supported_post_types = array();
 		$post_types = available_custom_post_types();
 		foreach ($post_types as $post_type):
@@ -39,22 +38,23 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 			//TODO: OPtimize this query to filter out categories directly
 			// and ensuring $limit is precise.
-
+			$filter_by_lang = strtolower(get_the_language_by_language_code(odm_language_manager()->get_current_language()));
 			$query = array(
 					'posts_per_page'   => $limit,
 					'order'            => 'DESC',
 					'post_type'        => $supported_post_types,
+					'category' 				 => $categories,
 					'post_status'      => 'publish'
 				);
-			$related_posts = get_posts( $query );
-
+				
+			  $related_posts = query_posts($query);
 		endif;
 
 		echo $args['before_widget']; ?>
 
 		<?php
 			if (!empty($instance['title'])):
-				 echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title'];
+				 echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
 			endif; ?>
 
 		<ul>
@@ -90,10 +90,10 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 	  $post_types = available_custom_post_types();
 
-		$title = !empty($instance['title']) ? __($instance['title'], 'odm') : __('Custom posts', 'odm'); ?>
+		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts'; ?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title, 'odm');?>">
 		</p>
 
 		<p>
@@ -105,7 +105,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			<?php endforeach; ?>
 		</p>
 
-		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
+		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : 5 //-1 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list (-1 to show all):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
@@ -123,8 +123,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
-		$instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : -1;
+		$instance['title'] = (!empty($new_instance['title'])) ? $new_instance['title'] : '';
+		$instance['limit'] = (!empty($new_instance['limit'])) ? $new_instance['limit'] : -1;
 
 		$post_types = available_custom_post_types();
 		foreach ($post_types as $post_type):
