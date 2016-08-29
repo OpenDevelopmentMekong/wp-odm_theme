@@ -262,9 +262,9 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
   				<i class="fa fa-clock-o"></i>
 				  <?php
 					 if (odm_language_manager()->get_current_language() == 'km') {
-							 echo convert_date_to_kh_date(get_the_modified_time('j.M.Y',$post->ID));
+							 echo convert_date_to_kh_date(get_the_modified_time('j.M.Y'));
 					 } else {
-							 echo get_the_modified_time('j F Y',$post->ID);
+							 echo get_the_modified_time('j F Y');
 					 }
 				  ?>
   			</li>
