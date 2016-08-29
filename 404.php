@@ -18,10 +18,13 @@
       </div>
 
       <div class="row">
-        <div class="eight columns offset-by-four align-center">
+        <div class="four columns offset-by-six align-center">
           <p><a class="button" onClick="history.go(-1)"><?php _e('Back to the previous page','odm'); ?></a></p>
           <p><a class="button" href="/"><?php _e('Go to the current site\'s home','odm'); ?></a></p>
-          <p><a class="button" ><?php _e('Contact us','odm'); ?></a></p>
+          <?php
+              if (function_exists('button_user_feedback_form')): ?>
+                  <p><a class="button" id="user_feedback_form" ><?php _e('Contact us','odm'); ?></a></p>
+              <?php endif; ?>
     	  </div>
       </div>
 
