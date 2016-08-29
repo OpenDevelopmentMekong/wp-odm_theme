@@ -342,8 +342,11 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
 
 }
 
-function odm_excerpt($post, $num = 40, $read_more = '')
+function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
+	  global $post;
+		$post = $the_post;
+
 		$limit = $num + 1;
 		if(get_the_excerpt($post->ID)):
 			$get_the_excerpt = get_the_excerpt($post->ID);
