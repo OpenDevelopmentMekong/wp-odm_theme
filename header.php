@@ -120,9 +120,4 @@
     </div>
   </nav>
 
-  <?php
-      if (!wp_is_mobile() && function_exists('button_user_feedback_form')):
-          button_user_feedback_form();
-      endif; ?>
-
 <article>
