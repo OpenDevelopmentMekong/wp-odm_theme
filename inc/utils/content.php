@@ -250,8 +250,10 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($post, $show_elements = array('date','sources','categories','tags'))
+function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags'))
 {
+	global $post;
+	$post = $the_post;
 	?>
 	<div class="post-meta">
 		<ul>
