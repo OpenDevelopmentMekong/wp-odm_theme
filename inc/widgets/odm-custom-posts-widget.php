@@ -47,7 +47,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				'posts_per_page'   => $limit,
 				'order'            => 'DESC',
 				'post_type'        => $selected_custom_post_id,
-				'post_status'      => 'publish'
+				'post_status'      => 'publish',
+				'orderby' 				 => 'modified'
 			);
 		$posts = get_posts( $query );
 

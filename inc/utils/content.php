@@ -250,8 +250,10 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($post, $show_elements = array('date','sources','categories','tags'))
+function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags'))
 {
+	global $post;
+	$post = $the_post;
 	?>
 	<div class="post-meta">
 		<ul>
@@ -260,9 +262,9 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
   				<i class="fa fa-clock-o"></i>
 				  <?php
 					 if (odm_language_manager()->get_current_language() == 'km') {
-							 echo convert_date_to_kh_date(get_the_time('j.M.Y',$post->ID));
+							 echo convert_date_to_kh_date(get_the_modified_time('j.M.Y'));
 					 } else {
-							 echo get_the_time('j F Y',$post->ID);
+							 echo get_the_modified_time('j F Y');
 					 }
 				  ?>
   			</li>
@@ -340,8 +342,11 @@ function echo_post_meta($post, $show_elements = array('date','sources','categori
 
 }
 
-function odm_excerpt($post, $num = 40, $read_more = '')
+function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
+	  global $post;
+		$post = $the_post;
+
 		$limit = $num + 1;
 		if(get_the_excerpt($post->ID)):
 			$get_the_excerpt = get_the_excerpt($post->ID);
@@ -510,8 +515,9 @@ function available_custom_post_types(){
 
 			 $args = array('s' => $search_term,
 										 'posts_per_page' => $posts_per_page,
-										 'post_type' => $post_type,
-										 'post_status' => 'publish');
+										 'post_type'      => $post_type,
+										 'post_status'    => 'publish',
+									   'orderby' 		    => 'modified');
 			 $posts = get_posts($args);
 
 			 foreach ($posts as $post):
