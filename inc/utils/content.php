@@ -515,8 +515,9 @@ function available_custom_post_types(){
 
 			 $args = array('s' => $search_term,
 										 'posts_per_page' => $posts_per_page,
-										 'post_type' => $post_type,
-										 'post_status' => 'publish');
+										 'post_type'      => $post_type,
+										 'post_status'    => 'publish',
+									   'orderby' 		    => 'modified');
 			 $posts = get_posts($args);
 
 			 foreach ($posts as $post):
