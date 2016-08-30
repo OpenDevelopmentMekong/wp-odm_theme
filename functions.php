@@ -101,12 +101,6 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Archive page sidebar', 'jeo'),
-    'id' => 'archive-sidebar',
-    'before_title' => '<h2 class="widget-title">',
-    'after_title' => '</h2>',
-  ));
-    register_sidebar(array(
     'name' => __('Story top', 'jeo'),
     'id' => 'story-top',
     'before_title' => '<h2 class="widget-title">',
