@@ -103,13 +103,8 @@ function display_map_layer_sidebar_and_legend_box($layers){
 function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option=""){
 	if($post_ID !== 0){
 		$get_post = get_post($post_ID);
-		if (function_exists( qtrans_use)){
-			$title = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_title,false);//get TITLE by langauge
-			$content = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_content,false);//get CONTENT by langauge
-		}else {
-			$title = $get_post->post_title;
-			$content = $get_post->post_content;
-		}
+		$title = apply_filters('translate_text', $get_post->post_title, odm_language_manager()->get_current_language());
+		$content = apply_filters('translate_text', $get_post->post_content, odm_language_manager()->get_current_language());
 		$layer_items = '<li class="layer-item '.$option.'" data-layer="'.$post_ID.'" id="post-'.$post_ID.'">
 		  <img class="list-loading" src="'. get_stylesheet_directory_uri(). '/img/loading-map.gif">
 		  <span class="list-circle-active"></span>
@@ -326,11 +321,8 @@ function display_layer_information($layers){
 		  }
 
 		  // get post content if has
-		  if (function_exists('qtrans_use')){
-				$get_post_content_by_id = qtrans_use(odm_language_manager()->get_current_language(), $get_post_by_id->post_content,false);
-		  }else{
-				$get_post_content_by_id = $get_post_by_id->post_content;
-		  }
+			$get_post_content_by_id = apply_filters('translate_text', $get_post_by_id->post_content, odm_language_manager()->get_current_language());
+
 			if($get_download_url!="" ){
 				  $ckan_dataset_id_exploded_by_dataset = explode("/dataset/", $get_download_url);
 				  $ckan_dataset_id = $ckan_dataset_id_exploded_by_dataset[1];

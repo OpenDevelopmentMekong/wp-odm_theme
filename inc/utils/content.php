@@ -15,8 +15,7 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 				);
 
 		foreach ($get_post as $page_topic) {
-			$pagetitle = qtrans_use(odm_language_manager()->get_current_language(), $page_topic->post_title, false);//get content by langauge
-
+			$pagetitle = apply_filters('translate_text', $page_topic->post_title, odm_language_manager()->get_current_language());
 			if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
 					$page_id = $page_topic->ID;
 					return $page_id;
