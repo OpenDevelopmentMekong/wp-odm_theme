@@ -36,11 +36,11 @@
   <!-- Country and language selector nav -->
   <nav id="od-selector">
     <div class="container">
-        <div class="eight columns">
+        <div class="eleven columns">
           <?php odm_country_manager()->echo_country_selectors(); ?>
           <i class="fa fa-caret-down" style="display:none;" id="country-select-dropdown"></i>
         </div>
-        <div class="eight columns">
+        <div class="five columns">
           <?php odm_language_manager()->echo_language_selectors(); ?>
         </div>
     </div>
@@ -119,10 +119,5 @@
       </div>
     </div>
   </nav>
-
-  <?php
-      if (!wp_is_mobile() && function_exists('button_user_feedback_form')):
-          button_user_feedback_form();
-      endif; ?>
 
 <article>

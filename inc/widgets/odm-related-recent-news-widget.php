@@ -24,11 +24,12 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 		else $language = "";
 
         $args=array(
-              'post_type' => 'post',
-              'post_status' => 'publish',
-              'category_name' => $category,
-              'language'=> $language,
-              'numberposts' => 10
+              'post_type' 		   => 'post',
+              'post_status' 		 => 'publish',
+              'category_name' 	 => $category,
+              'language'				 => $language,
+              'numberposts' 		 => 10,
+							'orderby' 				 => 'modified'
               );
 
         $rel_news_query = get_posts( $args );
