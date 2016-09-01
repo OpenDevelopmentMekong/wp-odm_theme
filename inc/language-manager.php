@@ -18,6 +18,15 @@ class Odm_Language_Manager {
     "la" => "Lao"
   );
 
+  var $languages_by_theme = array(
+    "mekong" => "en",
+    "cambodia" => "km",
+    "vietnam" => "vi",
+    "thailand" => "th",
+    "myanmar" => "my",
+    "laos" => "la"
+  );
+
 	function __construct() {
     add_action( 'after_setup_theme', array($this,'init_language_manager'));
 	}
@@ -34,6 +43,11 @@ class Odm_Language_Manager {
   function get_the_language_by_language_code($lang_code = 'en')
   {
       return $supported_languages[$lang_code];
+  }
+
+  function get_the_language_by_site($site){
+    $theme = $site || odm_country_manager()->get_current_country();
+    return $this->$languages_by_theme[$theme];
   }
 
   function get_current_language(){
