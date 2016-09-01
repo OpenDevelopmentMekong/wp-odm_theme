@@ -123,14 +123,19 @@ Template Name: Data
       </form>
 
       <?php
-        if (!$active_filters): ?>
+        if (!$active_filters):
+          $shortcode = '[wpckan_number_of_query_datasets limit="1"';
+          if (isset($param_country)):
+            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country] . '"}\'';
+          endif;
+          ?>
           <div class="sixteen columns">
             <div class="data-number-results-small">
               <p>
                 <p class="label"><label><?php _e('Current statistics: ','odm'); ?></label></p>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="dataset" limit="1" suffix=" Datasets"]'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="library_record" limit="1" suffix=" Library records"]'); ?>
-                <?php echo do_shortcode('[wpckan_number_of_query_datasets type="laws_record" limit="1" suffix=" Laws"]'); ?>
+                <?php echo do_shortcode($shortcode . ' type="dataset" suffix=" Datasets"]'); ?>
+                <?php echo do_shortcode($shortcode . ' type="library_record" suffix=" Library records"]'); ?>
+                <?php echo do_shortcode($shortcode . ' type="laws_record" suffix=" Laws"]'); ?>
               </p>
             </div>
           </div>
@@ -144,23 +149,27 @@ Template Name: Data
     <div class="row">
 
       <?php
-        if (!$active_filters):  ?>
+        if (!$active_filters):
+          $shortcode = '[wpckan_query_datasets limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"';
+          if (isset($param_country)):
+            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country] . '"}\'';
+          endif;?>
 
         <section class="container">
 
       		<div class="sixteen columns data-results">
             <h2><?php _e('Most viewed datasets','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="dataset" limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"]'); ?>
+            <?php echo do_shortcode($shortcode . ' type="dataset"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
             <h2><?php _e('Most viewed library records','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="library_record" limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"]'); ?>
+            <?php echo do_shortcode($shortcode . ' type="library_record"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
             <h2><?php _e('Most viewed laws','odm') ?></h2>
-            <?php echo do_shortcode('[wpckan_query_datasets type="laws_record" limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"]'); ?>
+            <?php echo do_shortcode($shortcode . ' type="laws_record"]'); ?>
           </div>
 
         </section>
