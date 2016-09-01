@@ -22,6 +22,11 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			"list-2-cols" => "post-list-single-2-cols",
 			"list-1-cols" => "post-list-single-1-cols"
 		);
+
+		$this->order_options = array(
+			"date" => "Created date",
+			"modified" => "Modified date"
+		);
 	}
 
 	/**
@@ -39,6 +44,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
+		$order = isset($instance['order']) ? $instance['order'] : 'date';
 
 		$post_type = get_post_type_object($selected_custom_post_id);
 		$post_type_slug = $post_type->rewrite['slug'];
@@ -48,7 +54,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				'order'            => 'DESC',
 				'post_type'        => $selected_custom_post_id,
 				'post_status'      => 'publish',
-				'orderby' 				 => 'modified'
+				'orderby' 				 => $order
 			);
 		$posts = get_posts( $query );
 
@@ -78,7 +84,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 							"show_meta" => $show_meta,
 							"show_source_meta" => $show_source_meta,
 							"show_excerpt" => $show_excerpt,
-							"show_thumbnail" => $show_thumbnail
+							"show_thumbnail" => $show_thumbnail,
+							"order" => $order
 						),true);
 						if (should_close_row($layout_type,$index)): ?>
 							</div>
@@ -108,7 +115,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
-
+		$order = isset($instance['order']) ? $instance['order'] : 'date';
 
 		$args = array(
 		   'public'   => true,
@@ -138,7 +145,6 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title,'odm');?>">
 		</p>
-
 		<p>
 			<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>
 			<select class='widefat post_type' id="<?php echo $this->get_field_id('post_type'); ?>" name="<?php echo $this->get_field_name('post_type'); ?>" type="text">
@@ -147,7 +153,6 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<?php endforeach; ?>
 			</select>
 		</p>
-
 		<p>
 			<label for="<?php echo $this->get_field_id( 'layout_type' ); ?>"><?php _e( 'Select layout:' ); ?></label>
 			<select class='widefat layout_type' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
@@ -172,13 +177,19 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'show_source_meta' ); ?>"><?php _e( 'Show Source meta:' ); ?></label>
 			<input type="checkbox" name="<?php echo $this->get_field_name('show_source_meta'); ?>" id="<?php echo $this->get_field_id('show_source_meta'); ?>" <?php if ($show_source_meta)  echo 'checked="true"'; ?>/>
 		</p>
-
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Select max number of posts to list (-1 to show all):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('limit');?>" name="<?php echo $this->get_field_name('limit');?>" type="number" value="<?php echo $limit;?>">
 		</p>
-
+		<p>
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order by:' ); ?></label>
+			<select class='widefat' id="<?php echo $this->get_field_id('order'); ?>" name="<?php echo $this->get_field_name('order'); ?>" type="text">
+				<?php foreach ( $this->order_options  as $key => $value ): ?>
+					<option <?php if ($order == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $key ?></option>
+				<?php endforeach; ?>
+			</select>
+		</p>
 		<?php
 	}
 
@@ -199,6 +210,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['show_source_meta'] = (!empty( $new_instance['show_source_meta'])) ? $new_instance['show_source_meta'] : false;
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : true;
+		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
 
 		return $instance;
 	}
