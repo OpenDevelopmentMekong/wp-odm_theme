@@ -4,6 +4,7 @@
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
+	$order = isset($params["order"]) ? $params["order"] : 'created';
 	?>
 
 <div class="sixteen columns post-grid-item">
@@ -21,7 +22,7 @@
 		<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 		<?php if ($show_meta): ?>
 		<div class="meta">
-				<?php echo_post_meta($post,array('date','sources','categories')); ?>
+				<?php echo_post_meta($post,array('date','sources','categories'),$order); ?>
 		</div>
 		<?php endif; ?>
 		<?php

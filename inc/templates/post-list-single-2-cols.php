@@ -7,6 +7,7 @@
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
+	$order = isset($params["order"]) ? $params["order"] : 'created';
 ?>
 
 <div class="eight columns ">
@@ -40,7 +41,7 @@
 		<?php endif; ?>
 
 		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources')); ?>
+			<?php echo_post_meta($post,array('date','sources'),$order); ?>
 		<?php endif; ?>
 
 		<?php if ($show_summary_translated_by_odc_team): ?>
