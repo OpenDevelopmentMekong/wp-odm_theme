@@ -34,20 +34,14 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
 
         $rel_news_query = get_posts( $args );
         if( !empty($rel_news_query) ) {
-            $news = "<ul>";
-              foreach( $rel_news_query as  $rel_post ) :
-                $news .= "<li>";
-                 /* if(has_post_thumbnail()) :
-				    $news .= '<a href="'.get_permalink($rel_post->ID).'" title="'.$rel_post->post_title.'">';
-                         $news .= get_the_post_thumbnail($rel_post->ID, array(50,50), array('class' => 'align-left'));
-                    $news .="</a>";
-			     endif; */
-			     $related_post_title = qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage($rel_post->post_title);
-                 $news .= '<a href="'.get_permalink($rel_post->ID).'" rel="bookmark" title="Click to view '.$related_post_title.'">'.$related_post_title.'</a></li>';
-              endforeach;
-             $news .= '</ul>';
-            //wp_reset_query();
-             return $news;
+           $news = "<ul>";
+           foreach( $rel_news_query as  $rel_post ) :
+            $news .= "<li>";
+			 			$related_post_title = apply_filters('translate_text', $rel_post->post_title, odm_language_manager()->get_current_language());
+	          $news .= '<a href="'.get_permalink($rel_post->ID).'" rel="bookmark" title="Click to view '.$related_post_title.'">'.$related_post_title.'</a></li>';
+           endforeach;
+           $news .= '</ul>';
+           return $news;
         }
      }
 
@@ -64,31 +58,28 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
     		if ( ! empty( $instance['od_related_news_option'] ) ) {
     			$news_option = $instance['od_related_news_option'];
     			if ($news_option == 'Related To The Topics'){
-                     if (odm_language_manager()->get_current_language()!="en"){
-                            $page_id = get_the_ID();
-                            $post_type = get_post_type( $page_id );
-                            $page_results = $wpdb->get_results($wpdb->prepare(
-                                        "SELECT `post_title` FROM $wpdb->posts WHERE `post_type` = %s AND `ID` = %d",
-                                        $post_type,
-                                        $page_id),
-                                ARRAY_A );
-                            $english_pagetitle = qtrans_use('en', $page_results[0]['post_title'], false);
-                     }else {
-                            $english_pagetitle = get_the_title();
-                     }
-
-					//$category_id = get_cat_ID($english_pagetitle);
-            		//$category_slug = strtolower(preg_replace('/\s+/', '-', $english_pagetitle));
-					$category_filter = get_term_by('name', $english_pagetitle, 'category');
-					$category_id = $category_filter->term_id;
-					$category_slug = $category_filter->slug;
-                }else if ($news_option == 'Show By specific category slug'){
-                    if (!empty ($instance['od_related_news_by_cat_slug']))
-                        $category_slug = $instance['od_related_news_by_cat_slug'];
-                }else{
-                    $category_slug = "";
-                }
-                $news_exist =  $this->get_related_news( $category_slug );
+             if (odm_language_manager()->get_current_language()!="en"){
+              $page_id = get_the_ID();
+              $post_type = get_post_type( $page_id );
+              $page_results = $wpdb->get_results($wpdb->prepare(
+                          "SELECT `post_title` FROM $wpdb->posts WHERE `post_type` = %s AND `ID` = %d",
+                          $post_type,
+                          $page_id),
+                  ARRAY_A );
+							$english_pagetitle = apply_filters('translate_text', $page_results[0]['post_title'], odm_language_manager()->get_current_language());
+             }else {
+              $english_pagetitle = get_the_title();
+             }
+						$category_filter = get_term_by('name', $english_pagetitle, 'category');
+						$category_id = $category_filter->term_id;
+						$category_slug = $category_filter->slug;
+          }else if ($news_option == 'Show By specific category slug'){
+              if (!empty ($instance['od_related_news_by_cat_slug']))
+                  $category_slug = $instance['od_related_news_by_cat_slug'];
+          }else{
+              $category_slug = "";
+          }
+          $news_exist =  $this->get_related_news( $category_slug );
     		}
 
     	if ( $news_exist){

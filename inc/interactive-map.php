@@ -4,7 +4,7 @@
  * Interactive Map
  */
 
-require_once get_stylesheet_directory().'/inc/mapping.php';
+require_once get_stylesheet_directory().'/inc/utils/mapping.php';
 class OpenDev_InteractiveMap {
     function __construct() {
         add_shortcode('odmap', array($this, 'shortcode'));
