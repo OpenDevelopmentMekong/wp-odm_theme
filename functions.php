@@ -134,12 +134,6 @@ function odm_setup_theme()
     'before_widget' => '',
     'after_widget'  => ''
   ));
-  register_sidebar(array(
-    'name' => __('Land page - Land Portal wpsparql', 'jeo'),
-    'id' => 'topic-land',
-    'before_title' => '<h2 class="widget-title">',
-    'after_title' => '</h2>',
-  ));
 
   include_once get_stylesheet_directory().'/inc/layers.php';
   include_once get_stylesheet_directory().'/inc/embed.php';

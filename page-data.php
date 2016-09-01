@@ -82,8 +82,8 @@ Template Name: Data
                 endif; ?>
               <?php
                 foreach($countries as $key => $value):
-                  if ($value != 'mekong'): ?>
-                    <option value="<?php echo $value; ?>" <?php if($value == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
+                  if ($value["iso2"] != 'mekong'): ?>
+                    <option value="<?php echo $value["iso2"]; ?>" <?php if($value["iso2"] == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
                 <?php
                   endif; ?>
                   <?php

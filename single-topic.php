@@ -64,8 +64,20 @@
               <?php
               $categories = get_the_category();
               if ("land" ==  strtolower($categories[0]->name)): ?>
-                <hr>
-                <?php dynamic_sidebar('topic-land'); ?>
+                <li class="widget">
+                  <h2 class="widget-title"><?php _e("More on the Land Portal library","odm") ?></h2>
+                  <?php
+                  $current_country = odm_country_manager()->get_current_country();
+                  $country_codes = odm_country_manager()->get_country_codes()[$current_country];
+                  if ($current_country == "mekong"):
+                    $filter = '?iso3 = "KHM" || ?iso3 = "LAO" || ?iso3 = "MMR" || ?iso3 = "THA" || ?iso3 = "VNM"';
+                  else:
+                    $filter = '?iso3 = "' . strtoupper($country_codes["iso3"]) . '"';
+                  endif;
+                  $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a bibo:Document ; dc:spatial ?country ; dc:title ?llrLabel . ?country dc:identifier ?iso3 ; rdfschema:label ?countryLabel FILTER ( ' . $filter . ') } ORDER BY ?llr';
+                  echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "']");
+                  ?>
+                </li>
               <?php endif; ?>
 
               <!-- Related Widgets -->
