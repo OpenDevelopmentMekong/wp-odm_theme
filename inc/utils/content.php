@@ -108,7 +108,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 }
 // Check if post specific to any langue or not
 function posts_for_both_and_current_languages($postID, $current_lang = "en", $taxonomy ="language"){
-    $site_language = strtolower(get_the_language_by_language_code($current_lang));
+    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang));
     $terms = get_the_terms($postID, $taxonomy);
     if ( empty($terms) && !is_wp_error( $terms )) {
         return true;
@@ -380,7 +380,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
- 	    $site_language = strtolower(get_the_language_by_language_code($current_lang)); //english
+ 	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
  			$translated_term =  $site_language."-translated";
  			$org_name = ucfirst(get_bloginfo('name'));
  			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));

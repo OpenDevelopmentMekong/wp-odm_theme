@@ -31,6 +31,11 @@ class Odm_Language_Manager {
 
   }
 
+  function get_the_language_by_language_code($lang_code = 'en')
+  {
+      return $supported_languages[$lang_code];
+  }
+
   function get_current_language(){
     return $this->current_language;
   }
