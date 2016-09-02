@@ -48,7 +48,7 @@ class Odm_Language_Manager {
   function get_the_language_by_site($site = null){
     $theme = isset($site) ? $site : odm_country_manager()->get_current_country();
     $lang_code = $this->languages_by_theme[$theme];
-    return $supported_languages[$lang_code];
+    return $this->supported_languages[$lang_code];
   }
 
   function get_current_language(){
