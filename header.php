@@ -81,27 +81,26 @@
   </nav>
 
   <!-- Disclaimer -->
-  <?php if (isset($options_msg['notice_message'])): ?>
-    <nav id="od-disclaimer">
-      <div class="container">
-        <div class="row">
-          <?php
-            $options_msg = get_option('odm_options');
-            if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
-              <div id="notification-message">
-                <div class="container">
-                  <div class="sixteen columns">
-                    <div class="notification-message-box">
-                      <?php echo $options_msg['notice_message']; ?>
-                    </div>
+  <nav id="od-disclaimer">
+    <div class="container">
+      <div class="row">
+        <?php
+          $options_msg = get_option('odm_options');
+          if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
+            <div id="notification-message">
+              <div class="container">
+                <div class="sixteen columns">
+                  <div class="notification-message-box">
+                    <?php echo $options_msg['notice_message']; ?>
                   </div>
                 </div>
               </div>
-        <?php endif; ?>
-        </div>
+            </div>
+      <?php endif; ?>
       </div>
-    </nav>
-  <?php endif; ?>
+    </div>
+  </nav>
+
 
   <!-- Breadcrumb -->
   <nav id="od-breadcrumb">
