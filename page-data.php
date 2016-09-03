@@ -14,7 +14,7 @@ Template Name: Data
   $param_taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : null;
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
   $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-  $param_country = odm_country_manager()->get_current_country() == 'mekong' ? null : odm_country_manager()->get_current_country();
+  $param_country = odm_country_manager()->get_current_country() == 'mekong' && isset($_GET['country']) ? $_GET['country'] : odm_country_manager()->get_current_country();
   $active_filters = !empty($_GET['type']) || !empty($param_taxonomy) || !empty($param_language) || !empty($param_query);
 ?>
 
@@ -82,8 +82,8 @@ Template Name: Data
                 endif; ?>
               <?php
                 foreach($countries as $key => $value):
-                  if ($value["iso2"] != 'mekong'): ?>
-                    <option value="<?php echo $value["iso2"]; ?>" <?php if($value["iso2"] == $param_country) echo 'selected'; ?> <?php if (isset($param_country) && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
+                  if ($key != 'mekong'): ?>
+                    <option value="<?php echo $key; ?>" <?php if($key == $param_country) echo 'selected'; ?> <?php if (odm_country_manager()->get_current_country() != 'mekong' && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
                 <?php
                   endif; ?>
                   <?php
@@ -126,7 +126,7 @@ Template Name: Data
         if (!$active_filters):
           $shortcode = '[wpckan_number_of_query_datasets limit="1"';
           if (isset($param_country)):
-            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country] . '"}\'';
+            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"}\'';
           endif;
           ?>
           <div class="sixteen columns">
@@ -152,7 +152,7 @@ Template Name: Data
         if (!$active_filters):
           $shortcode = '[wpckan_query_datasets limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"';
           if (isset($param_country)):
-            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country] . '"}\'';
+            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"}\'';
           endif;?>
 
         <section class="container">
@@ -191,7 +191,7 @@ Template Name: Data
               array_push($filter_field_strings,'"extras_odm_language":"'. $param_language . '"');
             endif;
             if (!empty($param_country) && $param_country != 'All'):
-              array_push($filter_field_strings,'"extras_odm_spatial_range":"'. $countries[$param_country] . '"');
+              array_push($filter_field_strings,'"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"');
             endif;
             if (!empty($param_taxonomy) && $param_taxonomy != 'All'):
               array_push($filter_field_strings,'"extras_taxonomy":"'. $param_taxonomy . '"');
