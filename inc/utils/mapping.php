@@ -473,12 +473,10 @@ function get_layer_information_in_array($post_ID){
 	endif;
 	*/
 
-	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
-								"download_link" => $download_link,
 								"dataset_link" => get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1],
 								"title_and_link" => $title_and_link,
 								//"thumbnail_link" => $thumbnail_url,
@@ -511,7 +509,6 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
 					$get_layer_info = get_layer_information_in_array(get_the_ID());
-					$permalink = $get_layer_info->download_link;
 				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
 					//find all map layer post to get it ID. eg. layer name: All Natural protected area
 					if(substr( strtolower(get_the_title()), 0, 4 ) === "all"):
@@ -526,7 +523,8 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 
 				$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
-										"title_and_link" => "<a class='item-title' target='_blank' href='". $permalink."' 	title='".$child_term->name."'>".$child_term->name."</a>",
+										"title_and_link" => "<a class='item-title' target='_blank' href='". $get_layer_info->dataset_link."' 	title='".$child_term->name."'>".$child_term->name."</a>",
+										"dataset_link" => $get_layer_info->dataset_link,
 										//"description" => "<ul>" .$layers_list."</ul>",
 										"category" => $child_term->name,
 										"parent" => $child_term->parent
