@@ -36,9 +36,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 		if (!empty($categories)):
 
-			//TODO: OPtimize this query to filter out categories directly
-			// and ensuring $limit is precise.
-			$filter_by_lang = strtolower(get_the_language_by_language_code(odm_language_manager()->get_current_language()));
+			//TODO: OPtimize this query to filter out categories directly 
 			$query = array(
 					'posts_per_page'   => $limit,
 					'order'            => 'DESC',
@@ -46,7 +44,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 					'category' 				 => $categories,
 					'post_status'      => 'publish'
 				);
-				
+
 			  $related_posts = query_posts($query);
 		endif;
 
