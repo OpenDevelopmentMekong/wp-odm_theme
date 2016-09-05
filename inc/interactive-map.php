@@ -94,6 +94,7 @@ class OpenDev_InteractiveMap {
                           foreach( $terms_layer as $term ) {
                             $args_layer = array(
                                'post_type' => 'map-layer',
+                               'post_status' => 'publish',
                                'orderby'   => 'name',
                                'order'   => 'asc',
                                'tax_query' => array(
