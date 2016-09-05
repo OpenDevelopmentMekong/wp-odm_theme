@@ -2,12 +2,20 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+<?php global $post, $page, $paged; ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?php bloginfo('charset'); ?>" />
+<meta property="og:title" content="<?php the_title(); ?>" />
+<meta property="og:description" content="<?php echo strip_tags(odm_excerpt($post)); ?>" />
+<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
+<meta property="og:type" content="<?php echo get_post_type(); ?>" />
+<?php if(has_post_thumbnail( $post->ID )) { ?>
+<meta property="og:image:secure_url" content="<?php $img_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false); echo $img_src[0]; ?>" />
+<?php } ?>
+<meta property="og:url" content="<?php echo get_permalink()?>" />
 <title>
 
   <?php
-    global $page, $paged;
     wp_title('|', true, 'right');
 
     bloginfo('name');
