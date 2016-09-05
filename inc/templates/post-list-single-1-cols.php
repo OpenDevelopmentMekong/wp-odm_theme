@@ -51,7 +51,7 @@
 		<section class="content section-content">
 			<?php
 			if ($show_thumbnail):
-				$thumb_src = odm_get_thumbnail($post->ID,false);
+				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
 				if (isset($thumb_src)):
 					echo $thumb_src;
 				else:
