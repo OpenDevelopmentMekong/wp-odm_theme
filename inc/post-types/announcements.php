@@ -46,7 +46,7 @@ class Odm_Announcement {
 			'hierarchical'       => false,
 			'menu_position'      => 5,
 			'taxonomies'         => array( 'category', 'post_tag'),
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions')
 		);
 
 		register_post_type( 'announcement', $args );

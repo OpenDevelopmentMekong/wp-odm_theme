@@ -46,7 +46,7 @@ class Odm_Story {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 5,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt')
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions')
 		);
 
 		register_post_type( 'story', $args );
