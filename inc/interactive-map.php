@@ -32,7 +32,6 @@ class OpenDev_InteractiveMap {
         $term_map_catalogue = get_term_by('slug', $cat_map_catalogue, 'layer-category');
         $cat_map_catalogue_id =  $term_map_catalogue->term_id;
 
-        $categories = get_terms('layer-category');
         ob_start();
         ?>
         <div class="interactive-map">
@@ -84,6 +83,9 @@ class OpenDev_InteractiveMap {
               'exclude' => $exclude_posts_in_cats
             );
             $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
+            echo '<div style="display: none">' ;
+            print_r($terms_layer);
+            echo '</div>';
             if ($terms_layer) {
                 echo '<div class="category-map-layers box-shadow hide_show_container">';
                     echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "opendev");
