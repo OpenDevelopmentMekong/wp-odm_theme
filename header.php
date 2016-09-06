@@ -89,12 +89,12 @@
   </nav>
 
   <!-- Disclaimer -->
-  <nav id="od-disclaimer">
+	<?php
+	$options_msg = get_option('odm_options');
+	if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
+  <nav id="od-notification">
     <div class="container">
       <div class="row">
-        <?php
-          $options_msg = get_option('odm_options');
-          if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
             <div id="notification-message">
               <div class="container">
                 <div class="sixteen columns">
@@ -104,10 +104,10 @@
                 </div>
               </div>
             </div>
-      <?php endif; ?>
       </div>
     </div>
   </nav>
+	<?php endif; ?>
 
 
   <!-- Breadcrumb -->
