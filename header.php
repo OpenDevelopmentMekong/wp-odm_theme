@@ -88,7 +88,7 @@
     </div>
   </nav>
 
-  <!-- Disclaimer -->
+  <!-- notification-message -->
 	<?php
 	$options_msg = get_option('odm_options');
 	if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
