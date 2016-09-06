@@ -186,9 +186,9 @@ class OpenDev_InteractiveMap {
                 var resize_height_map_layer = window.innerHeight - $("#od-head").height()  - 73 + "px";*/
 
                 // Page is scrollable
-                var resize_height_map_container = window.innerHeight - 135 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight - 150 + "px";
-                var resize_height_map_layer = window.innerHeight - 190+ "px";
+                var resize_height_map_container = window.innerHeight - 160 + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight - 175 + "px";
+                var resize_height_map_layer = window.innerHeight - 215+ "px";
                 var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -35 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
