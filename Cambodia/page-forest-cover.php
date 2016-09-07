@@ -6,7 +6,7 @@ Template Name: Forest Cover and Forest Cover Analysis
 
 <?php get_header(); ?>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri()?>/Cambodia/forest-cover.css"/>
-	<?php if (is_page('forest-cover')) { ?>
+	<?php if (is_single('forest-cover')) { ?>
 						<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/Cambodia/swfobject.js"> </script>
 						<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/Cambodia/youtube_playlist.js"></script>
 
@@ -50,16 +50,7 @@ Template Name: Forest Cover and Forest Cover Analysis
 
         <div class="four columns offset-by-one">
           <aside id="sidebar">
-            <ul class="widgets">
-
-              <!-- Summary Sidebar -->
-              <li class="widget">
-              </li>
-
-              <!-- Topic Sidebar -->
-              <?php //dynamic_sidebar('topic'); ?>
-
-            </ul>
+            
           </aside>
         </div>
       </div>
