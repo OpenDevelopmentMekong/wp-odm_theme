@@ -121,7 +121,7 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 
 		  if($get_download_link!=""){
 				$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_link);
-				$layer_download_link = get_site_url()."/dataset/?id=".$ckan_dataset_id;
+				$layer_download_link = wpckan_get_link_to_dataset($ckan_dataset_id);
 		   	$layer_items .= '
 		      <a class="download-url" href="'.$layer_download_link.'" target="_blank"><i class="fa fa-arrow-down"></i></a>
 		      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
@@ -465,7 +465,7 @@ function get_layer_information_in_array($post_ID){
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
-								"dataset_link" => get_site_url()."/dataset/?id=".$ckan_dataset_id,
+								"dataset_link" => wpckan_get_link_to_dataset($ckan_dataset_id),
 								"title_and_link" => $title_and_link,
 								//"thumbnail_link" => $thumbnail_url,
 								//"description" => get_the_content(),
