@@ -134,6 +134,14 @@ function odm_setup_theme()
     'before_widget' => '',
     'after_widget'  => ''
   ));
+  register_sidebar(array(
+  'name' => __('Profile sub-page sidebar left', 'odm'),
+  'id' => 'profile-sub-page-sidebar',
+  'before_title' => '<h2 class="widget-title">',
+  'after_title' => '</h2>',
+  'before_widget' => '',
+  'after_widget'  => ''
+));
 
   include_once get_stylesheet_directory().'/inc/layers.php';
   include_once get_stylesheet_directory().'/inc/embed.php';
