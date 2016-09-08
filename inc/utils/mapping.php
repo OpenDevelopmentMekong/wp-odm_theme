@@ -112,16 +112,17 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 		  <span class="layer-item-name">'.$title.'</span>';
 
 		  if ( (odm_language_manager()->get_current_language() != "en") ){
-		  $layer_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
-		  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
+			  $get_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
+			  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
 		  }else {
-		  $layer_download_link = get_post_meta($post_ID, '_layer_download_link', true);
-		  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
-
+			  $get_download_link = get_post_meta($post_ID, '_layer_download_link', true);
+			  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
 		  }
 
-		  if($layer_download_link!=""){
-		   $layer_items .= '
+		  if($get_download_link!=""){
+				$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_link);
+				$layer_download_link = get_site_url()."/dataset/?id=".$ckan_dataset_id;
+		   	$layer_items .= '
 		      <a class="download-url" href="'.$layer_download_link.'" target="_blank"><i class="fa fa-arrow-down"></i></a>
 		      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
 		  }else if($content!= ""){
@@ -315,20 +316,15 @@ function display_layer_information($layers){
 	   foreach($layers as $individual_layer){
 		  $get_post_by_id = get_post($individual_layer["ID"]);
 		  if ( (odm_language_manager()->get_current_language() != "en") ){
-			 $get_download_url = str_replace("?type=dataset", "", get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true));
+				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
 		  }else {
-			 $get_download_url = str_replace("?type=dataset", "", get_post_meta($get_post_by_id->ID, '_layer_download_link', true));
+			 	$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link', true);
 		  }
 
 		  // get post content if has
 			$get_post_content_by_id = apply_filters('translate_text', $get_post_by_id->post_content, odm_language_manager()->get_current_language());
 
 			if($get_download_url!="" ){
-				  $ckan_dataset_id_exploded_by_dataset = explode("/dataset/", $get_download_url);
-				  $ckan_dataset_id = $ckan_dataset_id_exploded_by_dataset[1];
-				  $ckan_domain = $ckan_dataset_id_exploded_by_dataset[0];
-				  // get ckan record by id
-				  //$get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
@@ -337,6 +333,9 @@ function display_layer_information($layers){
 										"odm_completeness" => "Completeness",
 										"license_id" => "License"
 									);
+
+					$ckan_domain = wpckan_get_ckan_domain();
+					$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_url);
 				  if($ckan_dataset_id!= ""):
 					  wpckan_get_metadata_info_of_dataset_by_id($ckan_domain, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
 				  endif;
@@ -454,30 +453,19 @@ function get_legend_of_map_by($post_ID = false){
 function get_layer_information_in_array($post_ID){
 	//link to WP dataset page by dataset ID
 	if ( (odm_language_manager()->get_current_language() != "en") ){
-		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link_localization', true)));
+		$get_download_url = get_post_meta($post_ID, '_layer_download_link_localization', true);
 	}else {
-		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
+		$get_download_url = get_post_meta($post_ID, '_layer_download_link', true);
 	}
-	/*
-	if(function_exists("wpckan_api_package_show")):
-		$dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$get_ckan_dataset_id[1]);
-		if (is_array($dataset['resources'])) {
-				foreach ($dataset['resources'] as $resource) {
-						if($resource['format'] == "JPEG" || $resource['format'] == "JPG" || $resource['format'] == "PNG"):
-							if($resource['odm_language'][0] == odm_language_manager()->get_current_language()){
-								$thumbnail_url = $resource['url'];
-							}
-						endif;
-					}
-			}
-	endif;
-	*/
+	if($get_download_url){
+	 	$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_url);
+	}
 
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
-								"dataset_link" => get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1],
+								"dataset_link" => get_site_url()."/dataset/?id=".$ckan_dataset_id,
 								"title_and_link" => $title_and_link,
 								//"thumbnail_link" => $thumbnail_url,
 								//"description" => get_the_content(),
