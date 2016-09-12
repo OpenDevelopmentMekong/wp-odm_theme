@@ -113,7 +113,7 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Profile area sidebar left', 'odm'),
+    'name' => __('Profile area right sidebar', 'odm'),
     'id' => 'profile-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>'
@@ -135,7 +135,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
   register_sidebar(array(
-  'name' => __('Profile sub-page sidebar left', 'odm'),
+  'name' => __('Profile sub-page right sidebar', 'odm'),
   'id' => 'profile-sub-page-sidebar',
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>',
