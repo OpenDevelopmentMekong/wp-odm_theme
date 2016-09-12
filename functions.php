@@ -450,29 +450,32 @@ add_action('pre_get_posts', 'odm_search_pre_get_posts');
 
 function odm_category_pre_get_posts($query)
 {
-    if ($query->is_category) {
-        $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
-        $query->set('post_type', array($post_type));
-    }
+  if(get_post_type()){
+    $post_type = $query->query['post_type'][0];
+  }else {
+      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
+  }
+  if ($query->is_category && isset($post_type)) {
+      $query->set('post_type', array($post_type));
+  }
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
 
 function odm_posts_clauses_join($join)
 {
     global $wpdb;
-
-    $join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
-
+    if (get_post_type() == 'map' && get_post_type() == 'map-group'){
+      $join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
     return $join;
+    }
 }
-//add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
+add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
 
 function odm_posts_clauses_where($where)
 {
+  if (get_post_type() == 'map' && get_post_type() == 'map-group'){
     $map_id = jeo_get_map_id();
-
     $where = '';
-
      // MAP
      if (get_post_type($map_id) == 'map') {
          $where = " AND ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$map_id}' ) ";
@@ -498,14 +501,13 @@ function odm_posts_clauses_where($where)
 
                ++$i;
            }
-
            $where .= ' ) ';
        }
-   }
-
+     }
     return $where;
+  }
 }
-//add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
+  add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
 
 function odm_ignore_sticky($query)
 {
