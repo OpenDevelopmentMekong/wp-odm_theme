@@ -34,17 +34,20 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			endif;
 		endforeach;
 
-		if (!empty($categories)):
-
-			//TODO: OPtimize this query to filter out categories directly 
+		if (!empty($categories)): 
+			//TODO: OPtimize this query to filter out categories directly
 			$query = array(
-					'posts_per_page'   => $limit,
-					'order'            => 'DESC',
 					'post_type'        => $supported_post_types,
-					'category' 				 => $categories,
-					'post_status'      => 'publish'
+					'posts_per_page'   => $limit,
+    			'post_type' => $supported_post_types,
+					'tax_query' => array(
+									array(
+										'taxonomy' => 'category',
+										'field' => 'id',
+										'terms' => $categories
+									)
+							)
 				);
-
 			  $related_posts = query_posts($query);
 		endif;
 
