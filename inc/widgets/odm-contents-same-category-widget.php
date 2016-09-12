@@ -35,7 +35,6 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		endforeach;
 
 		if (!empty($categories)):
-			//TODO: OPtimize this query to filter out categories directly
 			$query = array(
 					'post_type'        => $supported_post_types,
 					'posts_per_page'   => $limit,
@@ -61,19 +60,14 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		<ul>
 
 			<?php
-
-				//TODO: After optimizing query above, this check would not be necessary
-
 				foreach($related_posts as $related_post):
-					$related_categories = wp_get_post_categories($related_post->ID);
-					if (array_intersect($categories,$related_categories)): ?>
+					$related_categories = wp_get_post_categories($related_post->ID);?>
 
 						<li>
 							<a href="<?php echo get_permalink($related_post->ID);?>"><?php echo $related_post->post_title;?></a>
 						</li>
 
-			<?php
-					endif;
+			<?php 
 				endforeach; ?>
 
 		</ul>
