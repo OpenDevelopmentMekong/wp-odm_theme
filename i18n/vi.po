@@ -4,50 +4,50 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2016-08-15 16:32+0200\n"
-"PO-Revision-Date: 2016-08-15 16:32+0200\n"
+"POT-Creation-Date: 2016-09-12 18:55+0200\n"
+"PO-Revision-Date: 2016-09-12 18:55+0200\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
-"Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/teams/27158/vi/)\n"
+"Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/"
+"teams/27158/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: i18n\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:10
 msgid "Not found!"
 msgstr "Không tìm thấy"
 
-#: 404.php:17
+#: 404.php:16
 msgid ""
-"The contents that you are looking for are not available, you have following "
-"options:"
-msgstr "Không có sẵn nội dung theo yêu cầu. Tham khảo các lựa chọn sau:"
+"If you received this error after selecting a new geographic location from "
+"the top menu, it means the new location doesn't have an information page on "
+"this topic that the old location had. To see what information does exist for "
+"this new location you've chosen simply click any of the navigation main menu "
+"items (News, Topics, Maps, Data, etc..) from the navigation menu above this "
+"message ."
+msgstr ""
 
-#: 404.php:18
+#: 404.php:22
 msgid "Back to the previous page"
 msgstr "Trở về trang trước"
 
-#: 404.php:19
+#: 404.php:23
+msgid "Go to the current site's home"
+msgstr ""
+
+#: 404.php:26
 msgid "Contact us"
 msgstr "Liên hệ"
-
-#: Cambodia/page-forest-cover.php:19
-msgid "Filed under:"
-msgstr "Biên mục:"
-
-#: Cambodia/page-forest-cover.php:59 page.php:19 single-topic.php:41
-#: single.php:40
-msgid "Pages:"
-msgstr "Trang:"
 
 #: advanced-search.php:31
 msgid "Data results"
@@ -62,8 +62,8 @@ msgid "Announcements"
 msgstr "Thông báo"
 
 #: archive-map-layer.php:8
-msgid "Maps catalogue"
-msgstr "Danh mục bản đồ"
+msgid "Maps catalog"
+msgstr ""
 
 #: archive-map.php:8 i18n/extra-strings.php:17
 msgid "Maps"
@@ -140,9 +140,14 @@ msgstr "Y"
 msgid "Archives"
 msgstr "Lưu trữ"
 
-#: category.php:64
+#: category.php:69
 msgid "No results found."
 msgstr "Không tìm thấy kết qủa. "
+
+#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8
+#: inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:211
+msgid "Page"
+msgstr "Trang"
 
 #: content-map-group.php:27
 msgid "More..."
@@ -152,175 +157,166 @@ msgstr "Xem thêm..."
 msgid "View all maps"
 msgstr "Hiển thị tất cả bản đồ"
 
-#: footer.php:27
+#: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external"
+"\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" rel=\"external"
+"\">JEO Beta</a> theme"
 msgstr ""
-"Website này được xây dựng trên nền tảng <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">WordPress</a> sử dụng<a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">JEO Beta</a> "
+"Website này được xây dựng trên nền tảng <a href=\"%s\" target=\"_blank\" rel="
+"\"external\">WordPress</a> sử dụng<a href=\"%s\" target=\"_blank\" rel="
+"\"external\">JEO Beta</a> "
 
-#: functions.php:50
+#: functions.php:52
 msgid "Topic sidebar"
 msgstr "Thanh chuyên đề "
 
-#: functions.php:56
+#: functions.php:58
 msgid "Homepage area top left"
 msgstr "Góc trên - trái trang chủ"
 
-#: functions.php:64
+#: functions.php:66
 msgid "Homepage area top right"
 msgstr "Góc trên - phải trang chủ"
 
-#: functions.php:72
+#: functions.php:74
 msgid "Homepage area middle"
 msgstr "Vùng trung tâm trang chủ"
 
-#: functions.php:80
+#: functions.php:82
 msgid "Homepage area bottom left"
 msgstr "Góc dưới - trái trang chủ"
 
-#: functions.php:88
+#: functions.php:90
 msgid "Homepage area bottom right"
 msgstr "Góc dưới - phải trang chủ"
 
-#: functions.php:96
+#: functions.php:98
 msgid "WPCKAN Dataset detail sidebar"
 msgstr "Thanh công cụ bên lề điều chỉnh dữ liệu WPCKAN"
 
-#: functions.php:102
-msgid "Data main left"
-msgstr "Dữ liệu hiện bên trái"
-
-#: functions.php:108
-msgid "Data main middle"
-msgstr "Dữ liệu hiện ở trung tâm"
-
-#: functions.php:114
-msgid "Data main right"
-msgstr "Dữ liệu hiện bên phải"
-
-#: functions.php:120
-msgid "Data main bottom"
-msgstr "Dữ liệu hiện ở dưới"
-
-#: functions.php:126
-msgid "Data sidebar"
-msgstr "Thanh công cụ dữ liệu"
-
-#: functions.php:132
-msgid "Archive page sidebar"
-msgstr "Thanh công cụ trang lưu trữ "
-
-#: functions.php:138
+#: functions.php:104
 msgid "Story top"
 msgstr "Tin bài hiển thị trên cùng"
 
-#: functions.php:144
+#: functions.php:110
 msgid "Story bottom"
 msgstr ""
 
-#: functions.php:208
+#: functions.php:116
+msgid "Profile area right sidebar"
+msgstr ""
+
+#: functions.php:122
+msgid "Profile area bottom left"
+msgstr ""
+
+#: functions.php:130
+msgid "Profile area bottom right"
+msgstr ""
+
+#: functions.php:138
+msgid "Profile sub-page right sidebar"
+msgstr ""
+
+#: functions.php:205
 msgid "stories"
 msgstr ""
 
-#: functions.php:210
+#: functions.php:207
 msgid "Copy the embed code"
 msgstr "Sao chép mã nhúng"
 
-#: functions.php:211 loop-latest.php:21
+#: functions.php:208 loop-latest.php:21
 msgid "Share"
 msgstr "Chia sẻ "
 
-#: functions.php:212
+#: functions.php:209
 msgid "Print"
 msgstr "In "
 
-#: functions.php:223 loop-latest.php:19
+#: functions.php:220 loop-latest.php:19
 msgid "Read more"
 msgstr "Đọc tiếp "
 
-#: functions.php:225
+#: functions.php:222
 msgid "Open slideshow"
 msgstr "Mở trình chiếu"
 
-#: functions.php:226
+#: functions.php:223
 msgid "Watch video gallery"
 msgstr "Xem thư viện video "
 
-#: functions.php:227
+#: functions.php:224
 msgid "Watch video"
 msgstr "Xem video "
 
-#: functions.php:228
+#: functions.php:225
 msgid "View image gallery"
 msgstr "Xem thư viện ảnh "
 
-#: functions.php:229
+#: functions.php:226
 msgid "View fullscreen image"
 msgstr "Xem ở chế độ toàn màn hình"
 
-#: functions.php:230
+#: functions.php:227
 msgid "View infographic"
 msgstr "Xem ảnh đồ họa"
 
-#: functions.php:231
+#: functions.php:228
 msgid "View infographics"
 msgstr "Xem đồ họa "
 
-#: functions.php:322
+#: functions.php:268
+msgid "default"
+msgstr ""
+
+#: functions.php:328
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "Nguồn tin "
 
-#: functions.php:323
+#: functions.php:329
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "Nguồn tin"
 
-#: functions.php:324
+#: functions.php:330
 msgid "Search News Source"
 msgstr "Tìm kiếm nguồn tin"
 
-#: functions.php:325
+#: functions.php:331
 msgid "All News Sources"
 msgstr "Tất cả nguồn tin "
 
-#: functions.php:326
+#: functions.php:332
 msgid "Parent News Source"
 msgstr "Nguồn tin gốc"
 
-#: functions.php:327
+#: functions.php:333
 msgid "Parent News Source:"
 msgstr "Nguồn tin gốc:"
 
-#: functions.php:328
+#: functions.php:334
 msgid "Edit News Source"
 msgstr "Sửa nguồn tin "
 
-#: functions.php:329
+#: functions.php:335
 msgid "Update News Source"
 msgstr "Cập nhật nguồn tin"
 
-#: functions.php:330
+#: functions.php:336
 msgid "Add New News Source"
 msgstr "Bổ sung nguồn tin"
 
-#: functions.php:331
+#: functions.php:337
 msgid "New News Source Name"
 msgstr "Tên nguồn tin mới "
 
-#: functions.php:332
+#: functions.php:338
 msgid "News Source"
 msgstr "Nguồn tin"
-
-#: header.php:21 inc/templates/pagination.php:8
-#: inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:211
-msgid "Page"
-msgstr "Trang"
 
 #: i18n/extra-strings.php:2
 msgid "Mekong"
@@ -492,42 +488,63 @@ msgstr "Quản lý và phát triển đô thị"
 
 #: i18n/extra-strings.php:48
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open "
+"Development {country} herein are licensed under a CC BY-SA 3.0. News article "
+"summaries are extracted from their sources, as guided by fair-use principles "
+"and are copyrighted by their respective sources. Materials on the Open "
+"Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database "
+"are compiled from publicly available documentation and provided without fee "
+"for general informational purposes only. This is neither a commercial "
+"research service nor a domain managed by any governmental or inter-"
+"governmental agency; it is managed as a private non-profit open data/open "
+"knowledge media group. Information is publicly posted only after a careful "
+"vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee "
+"accuracy, completeness or reliability from third party sources in every "
+"instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either "
+"expressed or implied, in fact or in law, with respect to the accuracy, "
+"completeness or appropriateness of the data, materials or documents "
+"contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their "
+"activities and to share the results of that research with our team, contact "
+"us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take "
+"full responsibility for reliance on any site information provided and to "
+"hold harmless and waive any and all liability against individuals or "
+"entities associated with its development, form and content for any loss, "
+"harm or damage suffered as a result of its use."
 msgstr ""
-"Trang web này cùng toàn bộ dữ liệu được xây dựng và công bố bởi nhóm Dữ liệu"
-" mở về phát triển {country}  đều áp dụng giấy phép bản quyền mở phiên bản "
-"3.0 Ghi công – Chia sẻ tương tự. Các nội dung tóm lược đều được trích dẫn từ"
-" tài liêu gốc, áp dụng nguyên tắc sử dụng công bằng và tôn trọng quyền tác "
-"giả. Tài nguyên và các dữ liệu trên trang web  {country} {ODM/C/V/Mm/T/L} "
-"được thu thập từ các tài liệu đã công bố và chia sẻ miễn phí với mục tiêu "
-"cung cấp thông tin rộng rãi cho công chúng. Trang web này không phải là dịch"
-" vụ mang tính thương mại và không do cơ quan nhà nước hay một cơ chế liên "
-"chính phủ nào vận hành mà vận hành bởi một nhóm phi lợi nhuận trong lĩnh vực"
-" dữ liệu mở và tri thức mở.  Thông tin công bố trên trang web đã được kiểm "
-"tra và xác minh. Mặc dù vậy, {ODM/C/V/Mm/T/L}  miễn trừ trách nhiệm đối với "
+"Trang web này cùng toàn bộ dữ liệu được xây dựng và công bố bởi nhóm Dữ liệu "
+"mở về phát triển {country}  đều áp dụng giấy phép bản quyền mở phiên bản 3.0 "
+"Ghi công – Chia sẻ tương tự. Các nội dung tóm lược đều được trích dẫn từ tài "
+"liêu gốc, áp dụng nguyên tắc sử dụng công bằng và tôn trọng quyền tác giả. "
+"Tài nguyên và các dữ liệu trên trang web  {country} {ODM/C/V/Mm/T/L} được "
+"thu thập từ các tài liệu đã công bố và chia sẻ miễn phí với mục tiêu cung "
+"cấp thông tin rộng rãi cho công chúng. Trang web này không phải là dịch vụ "
+"mang tính thương mại và không do cơ quan nhà nước hay một cơ chế liên chính "
+"phủ nào vận hành mà vận hành bởi một nhóm phi lợi nhuận trong lĩnh vực dữ "
+"liệu mở và tri thức mở.  Thông tin công bố trên trang web đã được kiểm tra "
+"và xác minh. Mặc dù vậy, {ODM/C/V/Mm/T/L}  miễn trừ trách nhiệm đối với "
 "thông tin do bên thứ ba cung cấp. {ODM/C/V/Mm/T/L} không đại diện hay chịu "
 "trách nhiệm, cả về khía cạnh thực tế và luật pháp, về tính chính xác, toàn "
 "vẹn và tương thích của dữ liệu và tài liệu được công bố hoặc tham chiếu. "
 "Chúng tôi khuyến khích người dùng khai thác sâu dữ liệu trên trang web để "
 "phục vụ nghiên cứu của bản thân, đồng thời chia sẻ lại kết quả nghiên cứu "
-"của quý vị nhằm giúp trang web ngày hoàn thiện dữ liệu. Với việc truy cập và"
-" khai thác dữ liệu trên trang web {ODM/C/V/Mm/T/L}, người dùng cam kết chịu "
+"của quý vị nhằm giúp trang web ngày hoàn thiện dữ liệu. Với việc truy cập và "
+"khai thác dữ liệu trên trang web {ODM/C/V/Mm/T/L}, người dùng cam kết chịu "
 "trách nhiệm cá nhân khi quyết định tin cậy các thông tin được cung cấp, "
-"không gây phiền hà hay đổ trách nhiệm cho các cá nhân, tổ chức tham gia phát"
-" triển và xây dựng nội dung trang web, ngay cả khi xảy ra bất cứ sự thiệt "
+"không gây phiền hà hay đổ trách nhiệm cho các cá nhân, tổ chức tham gia phát "
+"triển và xây dựng nội dung trang web, ngay cả khi xảy ra bất cứ sự thiệt "
 "hại, mất mát nào từ quá trình sử dụng dữ liệu "
 
-#: inc/advanced-navigation.php:115
+#: inc/advanced-navigation.php:115 page-data.php:36
 msgid "Text search"
 msgstr "Tìm văn bản"
 
-#: inc/advanced-navigation.php:116
+#: inc/advanced-navigation.php:116 page-data.php:37
 msgid "Type your search here"
 msgstr "Nhập từ khóa tìm kiếm"
 
-#: inc/advanced-navigation.php:126 inc/utils/content.php:52
+#: inc/advanced-navigation.php:126 inc/utils/content.php:51
 msgid "Categories"
 msgstr "Phân mục"
 
@@ -535,35 +552,35 @@ msgstr "Phân mục"
 msgid "Select categories"
 msgstr "Chọn phân mục"
 
-#: inc/advanced-navigation.php:155
+#: inc/advanced-navigation.php:157
 msgid "Content type"
 msgstr "Hình thức nội dung"
 
-#: inc/advanced-navigation.php:156
+#: inc/advanced-navigation.php:158
 msgid "Select content types"
 msgstr "Chọn hình thức nội dung"
 
-#: inc/advanced-navigation.php:166
+#: inc/advanced-navigation.php:168
 msgid "Date range"
 msgstr "Khoảng thời gian"
 
-#: inc/advanced-navigation.php:169
+#: inc/advanced-navigation.php:171
 msgid "From"
 msgstr "Từ"
 
-#: inc/advanced-navigation.php:172
+#: inc/advanced-navigation.php:174
 msgid "To"
 msgstr "đến"
 
-#: inc/advanced-navigation.php:178
+#: inc/advanced-navigation.php:180 page-data.php:113
 msgid "Search Filter"
 msgstr "Bộ lọc tìm kiếm"
 
-#: inc/advanced-navigation.php:189 inc/advanced-navigation.php:200
+#: inc/advanced-navigation.php:191 inc/advanced-navigation.php:202
 msgid "Cancel filters"
 msgstr "Hủy lọc"
 
-#: inc/advanced-navigation.php:197
+#: inc/advanced-navigation.php:199
 msgid "More filters"
 msgstr "Thêm tiêu chí lọc"
 
@@ -571,7 +588,7 @@ msgstr "Thêm tiêu chí lọc"
 msgid "Interactive Map"
 msgstr "Bản đồ tương tác"
 
-#: inc/interactive-map.php:89 single-map.php:16
+#: inc/interactive-map.php:89 inc/utils/mapping.php:77
 msgid "Map Layers"
 msgstr "Các lớp bản đồ"
 
@@ -766,9 +783,9 @@ msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
-"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải, <strong>Năng "
-"lượng</strong> là không gian làm việc và  <strong>Đường dây_truyền "
-"tải</strong> là tên lớp."
+"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải, <strong>Năng lượng</"
+"strong> là không gian làm việc và  <strong>Đường dây_truyền tải</strong> là "
+"tên lớp."
 
 #: inc/layers.php:200
 msgid "Workspaces:Layer Name ("
@@ -779,9 +796,9 @@ msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
-"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải_kh, <strong>Năng "
-"lượng</strong> là không gian làm việc và  <strong>Đường dây_truyền "
-"tải</strong> là tên lớp."
+"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải_kh, <strong>Năng lượng</"
+"strong> là không gian làm việc và  <strong>Đường dây_truyền tải</strong> là "
+"tên lớp."
 
 #: inc/layers.php:210
 msgid "WMS format (optional)"
@@ -833,13 +850,11 @@ msgstr "CartoDB URL (tiếng Anh)"
 
 #: inc/layers.php:269 inc/layers.php:277
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: "
-"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
-"11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
+"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
-"URL hiển thị CartoDB.<br/>VD.: "
-"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
-"11e4-ab03-0e853d047bba/viz.json"
+"URL hiển thị CartoDB.<br/>VD.: http://infoamazonia.cartodb.com/api/v2/"
+"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 
 #: inc/layers.php:274
 msgid "CartoDB URL ("
@@ -901,10 +916,6 @@ msgstr "Chuyên đề"
 #: inc/live-search/live-search.php:25
 msgid "Map"
 msgstr "Bản đồ"
-
-#: inc/mapping.php:263
-msgid "LEGEND"
-msgstr "CHÚ GIẢI"
 
 #: inc/post-types/announcements.php:19
 msgctxt "post type general name"
@@ -1425,23 +1436,23 @@ msgstr ""
 "(chế độ xem trước không áp dụng chức năng thu phóng hoặc thiết lập giới hạn "
 "di chuyển bản đồ)"
 
-#: inc/utils/content.php:378
+#: inc/utils/content.php:393
 msgid "Summary translated by "
 msgstr "Được lược dịch bởi"
 
-#: inc/utils/content.php:433
+#: inc/utils/content.php:448
 msgid "Download: "
 msgstr "Tải về:"
 
-#: inc/utils/content.php:438
+#: inc/utils/content.php:453
 msgid "English PDF"
 msgstr "Phiên bản tiếng Anh dạng PDF"
 
-#: inc/utils/content.php:443
+#: inc/utils/content.php:458
 msgid "English PDF not available"
 msgstr "Không có phiên bản tiếng Anh dạng PDF"
 
-#: inc/utils/content.php:451 inc/utils/content.php:456
+#: inc/utils/content.php:466 inc/utils/content.php:471
 msgid " "
 msgstr " "
 
@@ -1449,6 +1460,14 @@ msgstr " "
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr "Lỗi định vị  %s"
+
+#: inc/utils/mapping.php:88
+msgid "Hide news icons"
+msgstr "Ẩn biểu tượng tin tức"
+
+#: inc/utils/mapping.php:300
+msgid "LEGEND"
+msgstr "CHÚ GIẢI"
 
 #: inc/widgets/odm-category-widget.php:12
 msgid "ODM Post Taxonomy"
@@ -1470,28 +1489,22 @@ msgstr "Nội dung cùng phân mục trên ODM"
 msgid ""
 "Display other content from other post types tagged with the same categories "
 "as the one where the widget is integrated."
-msgstr ""
-"Hiển thị các nội dung khác cùng phân mục đã được tích hợp trong widget"
+msgstr "Hiển thị các nội dung khác cùng phân mục đã được tích hợp trong widget"
 
-#: inc/widgets/odm-contents-same-category-widget.php:93
-#: inc/widgets/odm-custom-posts-widget.php:109
-msgid "Custom posts"
-msgstr "Điều chỉnh"
-
-#: inc/widgets/odm-contents-same-category-widget.php:95
-#: inc/widgets/odm-custom-posts-widget.php:125
-#: inc/widgets/odm-related-recent-news-widget.php:138
+#: inc/widgets/odm-contents-same-category-widget.php:90
+#: inc/widgets/odm-custom-posts-widget.php:145
+#: inc/widgets/odm-related-recent-news-widget.php:130
 #: inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr "Tiêu đề"
 
-#: inc/widgets/odm-contents-same-category-widget.php:100
-#: inc/widgets/odm-custom-posts-widget.php:130
+#: inc/widgets/odm-contents-same-category-widget.php:95
+#: inc/widgets/odm-custom-posts-widget.php:149
 msgid "Select custom post type:"
 msgstr "Chọn hình thức điều chỉnh "
 
-#: inc/widgets/odm-contents-same-category-widget.php:110
-#: inc/widgets/odm-custom-posts-widget.php:165
+#: inc/widgets/odm-contents-same-category-widget.php:105
+#: inc/widgets/odm-custom-posts-widget.php:182
 msgid "Select max number of posts to list (-1 to show all):"
 msgstr "Chọn liệt kê tối đa số lượng bài đăng (-1 để hiển thị toàn bộ):"
 
@@ -1503,25 +1516,29 @@ msgstr "Các bài đăng thủ công trên ODM"
 msgid "Display entries of the spefied custom post type"
 msgstr "Hiển thị tin theo yêu cầu"
 
-#: inc/widgets/odm-custom-posts-widget.php:139
+#: inc/widgets/odm-custom-posts-widget.php:157
 msgid "Select layout:"
 msgstr "Chọn bố cục:"
 
-#: inc/widgets/odm-custom-posts-widget.php:147
+#: inc/widgets/odm-custom-posts-widget.php:165
 msgid "Show post excerpt:"
 msgstr "Hiển thị nội dung rút gọn:"
 
-#: inc/widgets/odm-custom-posts-widget.php:151
+#: inc/widgets/odm-custom-posts-widget.php:169
 msgid "Show post thumbnail:"
 msgstr "Hiển thị ảnh thu nhỏ:"
 
-#: inc/widgets/odm-custom-posts-widget.php:155
+#: inc/widgets/odm-custom-posts-widget.php:173
 msgid "Show post meta:"
 msgstr "Hiển thị thông tin mô tả:"
 
-#: inc/widgets/odm-custom-posts-widget.php:159
+#: inc/widgets/odm-custom-posts-widget.php:177
 msgid "Show Source meta:"
 msgstr "Hiển thị thông tin mô tả nguồn:"
+
+#: inc/widgets/odm-custom-posts-widget.php:186
+msgid "Order by:"
+msgstr ""
 
 #: inc/widgets/odm-related-recent-news-widget.php:10
 msgid "ODM Related Recent News Widget"
@@ -1531,15 +1548,15 @@ msgstr "Bảng điều khiển Tin bài liên quan đến ODM"
 msgid "Display ODM the related recent news for the topics"
 msgstr "Hiển thị các tin bài liên quan đến ODM theo chủ đề"
 
-#: inc/widgets/odm-related-recent-news-widget.php:117
+#: inc/widgets/odm-related-recent-news-widget.php:109
 msgid "Related News"
 msgstr "Tin tức liên quan"
 
-#: inc/widgets/odm-related-recent-news-widget.php:142
+#: inc/widgets/odm-related-recent-news-widget.php:134
 msgid "Option:"
 msgstr "Lựa chọn:"
 
-#: inc/widgets/odm-related-recent-news-widget.php:159
+#: inc/widgets/odm-related-recent-news-widget.php:151
 msgid "Category slugs:"
 msgstr "Tên định danh của phân mục:"
 
@@ -1550,10 +1567,6 @@ msgstr "Bảng điều khiển Cây thư mục nội dung của ODM"
 #: inc/widgets/odm-taxonomy-widget.php:11
 msgid "Display ODM taxonomy for content"
 msgstr "Hiển thị Cây thư mục nội dung của ODM"
-
-#: inc/widgets/odm-taxonomy-widget.php:217
-msgid "Topic areas"
-msgstr "Khu vực dành cho chuyên đề"
 
 #: inc/widgets/odm-taxonomy-widget.php:226
 msgid "Include Category by IDs (separated by commas):"
@@ -1592,6 +1605,66 @@ msgstr "Trang trước"
 msgid "Next page"
 msgstr "Trang tiếp"
 
+#: page-data.php:43
+msgid "Type"
+msgstr ""
+
+#: page-data.php:44
+msgid "Select dataset type"
+msgstr ""
+
+#: page-data.php:59
+msgid "Language"
+msgstr ""
+
+#: page-data.php:60
+msgid "Select language"
+msgstr ""
+
+#: page-data.php:61 page-data.php:80 page-data.php:102
+msgid "All"
+msgstr ""
+
+#: page-data.php:76
+msgid "Country"
+msgstr ""
+
+#: page-data.php:77
+msgid "Select country"
+msgstr ""
+
+#: page-data.php:100
+msgid "Taxonomy"
+msgstr ""
+
+#: page-data.php:101
+msgid "Select term"
+msgstr ""
+
+#: page-data.php:117
+msgid "Clear"
+msgstr ""
+
+#: page-data.php:135
+msgid "Current statistics: "
+msgstr ""
+
+#: page-data.php:161
+msgid "Most viewed datasets"
+msgstr ""
+
+#: page-data.php:166
+msgid "Most viewed library records"
+msgstr ""
+
+#: page-data.php:171
+msgid "Most viewed laws"
+msgstr ""
+
+#: page-data.php:221
+msgid "More on the law compendium"
+msgstr ""
+
 #: page-dataset-detail.php:17
 msgid "Please provide an id as parameter"
 msgstr "Cung cấp ID dạng tham số"
@@ -1599,6 +1672,10 @@ msgstr "Cung cấp ID dạng tham số"
 #: page-pdf-view.php:24 page-pdf-view.php:27 section-query-actions.php:25
 msgid "Download"
 msgstr "Tải về"
+
+#: page.php:19 single-topic.php:41 single.php:40
+msgid "Pages:"
+msgstr "Trang:"
 
 #: section-query-actions.php:13
 msgid "Content API"
@@ -1636,14 +1713,49 @@ msgstr "Ẩn chi tiết"
 msgid "Keep reading"
 msgstr "Đọc tiếp"
 
-#: single-map.php:27
-msgid "Hide news icons"
-msgstr "Ẩn biểu tượng tin tức"
-
-#: single-map.php:68
+#: single-map.php:46
 msgid "Latest articles on"
 msgstr "Các tin bài gần nhất về"
+
+#: single-topic.php:68
+msgid "More on the Land Portal library"
+msgstr ""
 
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
 msgstr "Danh mục bản đồ"
+
+#~ msgid ""
+#~ "The contents that you are looking for are not available, you have "
+#~ "following options:"
+#~ msgstr "Không có sẵn nội dung theo yêu cầu. Tham khảo các lựa chọn sau:"
+
+#~ msgid "Filed under:"
+#~ msgstr "Biên mục:"
+
+#~ msgid "Maps catalogue"
+#~ msgstr "Danh mục bản đồ"
+
+#~ msgid "Data main left"
+#~ msgstr "Dữ liệu hiện bên trái"
+
+#~ msgid "Data main middle"
+#~ msgstr "Dữ liệu hiện ở trung tâm"
+
+#~ msgid "Data main right"
+#~ msgstr "Dữ liệu hiện bên phải"
+
+#~ msgid "Data main bottom"
+#~ msgstr "Dữ liệu hiện ở dưới"
+
+#~ msgid "Data sidebar"
+#~ msgstr "Thanh công cụ dữ liệu"
+
+#~ msgid "Archive page sidebar"
+#~ msgstr "Thanh công cụ trang lưu trữ "
+
+#~ msgid "Custom posts"
+#~ msgstr "Điều chỉnh"
+
+#~ msgid "Topic areas"
+#~ msgstr "Khu vực dành cho chuyên đề"
