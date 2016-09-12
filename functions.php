@@ -455,7 +455,7 @@ function odm_category_pre_get_posts($query)
   }else {
       $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
   }
-  if ($query->is_category) {
+  if ($query->is_category && isset($post_type)) {
       $query->set('post_type', array($post_type));
   }
 }
