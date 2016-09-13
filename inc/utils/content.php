@@ -563,7 +563,6 @@ function available_custom_post_types(){
  }
 
  function odm_echo_extras($postID = "") {
-	 echo $postID ." ";
  	 $postID = $postID ? $postID : get_the_ID();
 	 if (function_exists('get_post_meta')) :
 		 $get_author = get_post_meta($postID, 'author', true);
