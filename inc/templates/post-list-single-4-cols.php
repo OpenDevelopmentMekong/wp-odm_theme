@@ -41,12 +41,8 @@
 		<?php endif; ?>
 
 		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources'),$order); ?>
+			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
 		<?php endif; ?>
-
-		<!-- <?php if ($show_summary_translated_by_odc_team): ?>
-			<?php echo_post_translated_by_od_team(get_the_ID());?>
-		<?php endif; ?> -->
 
 		<section class="content section-content">
 			<?php
