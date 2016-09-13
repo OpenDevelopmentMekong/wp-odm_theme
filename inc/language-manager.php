@@ -42,7 +42,7 @@ class Odm_Language_Manager {
 
   function get_the_language_by_language_code($lang_code = 'en')
   {
-      return $supported_languages[$lang_code];
+      return $this->supported_languages[$lang_code];
   }
 
   function get_the_language_by_site($site = null){
