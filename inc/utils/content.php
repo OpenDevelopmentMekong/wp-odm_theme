@@ -249,7 +249,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags'), $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags', 'show_summary_translated_by_odc_team'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
@@ -345,6 +345,9 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
       <?php if (in_array('tags',$show_elements)):
         the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
       endif; ?>
+			<?php if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
+				<?php echo_post_translated_by_od_team(get_the_ID());
+			endif; ?>
 		</ul>
 	</div>
 
@@ -390,7 +393,7 @@ function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonom
  	    $terms = get_the_terms($postID, $taxonomy);
  	    if (!is_wp_error( $terms ) && !empty($terms)) {
  				if (has_term($translated_term, $taxonomy, $postID)) {
- 					echo "<p class='translated-by-team'><strong>".__('Summary translated by '.$team_name.' Team')."</strong></p>";
+ 					echo "<li class='translated-by-team'> <i class='fa fa-pencil' aria-hidden='true'></i> &nbsp;" .__('Summary translated by '.$team_name.' Team')."</li>";
  				}
  			}
  }
@@ -560,7 +563,6 @@ function available_custom_post_types(){
  }
 
  function odm_echo_extras($postID = "") {
-	 echo $postID ." ";
  	 $postID = $postID ? $postID : get_the_ID();
 	 if (function_exists('get_post_meta')) :
 		 $get_author = get_post_meta($postID, 'author', true);

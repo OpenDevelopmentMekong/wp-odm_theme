@@ -5,11 +5,10 @@
   <article id="content" class="single-post">
 
     <section class="container">
-      <header class="row">
         <div class="eleven columns post-title">
+          <header class="row">
           <h1><?php the_title(); ?></h1>
           <?php echo_post_meta(get_post()); ?>
-					<?php echo_post_translated_by_od_team(get_the_ID());?>
 
 					<section class="content section-content">
             <?php
