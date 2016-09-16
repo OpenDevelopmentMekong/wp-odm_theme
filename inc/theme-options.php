@@ -57,12 +57,7 @@ class Odm_Options
          '',
          'odm_options'
         );
-        add_settings_section(
-         'odm_news_section',
-         __('News: Filtered By Tags', 'odm'),
-         '',
-         'odm_options'
-        );
+
         add_settings_section(
          'odm_links_section',
          __('Links', 'odm'),
@@ -98,14 +93,6 @@ class Odm_Options
          array($this, 'frontpage_slider_id_field'),
          'odm_options',
          'odm_style_section'
-        );
-
-        add_settings_field(
-         'odm_news_tags',
-         __('Filter News By Tags', 'odm'),
-         array($this, 'news_tags_field'),
-         'odm_options',
-         'odm_news_section'
         );
 
         add_settings_field(
