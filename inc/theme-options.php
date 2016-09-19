@@ -57,12 +57,7 @@ class Odm_Options
          '',
          'odm_options'
         );
-        add_settings_section(
-         'odm_news_section',
-         __('News: Filtered By Tags', 'odm'),
-         '',
-         'odm_options'
-        );
+
         add_settings_section(
          'odm_links_section',
          __('Links', 'odm'),
@@ -98,14 +93,6 @@ class Odm_Options
          array($this, 'frontpage_slider_id_field'),
          'odm_options',
          'odm_style_section'
-        );
-
-        add_settings_field(
-         'odm_news_tags',
-         __('Filter News By Tags', 'odm'),
-         array($this, 'news_tags_field'),
-         'odm_options',
-         'odm_news_section'
         );
 
         add_settings_field(
@@ -188,19 +175,6 @@ class Odm_Options
         <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'odm');
               ?></i>
   <?php
-
-    }
-    public function news_tags_field()
-    {
-        $news_tags = $this->options['news_tags'];
-        ?>
-      <input id="odm_news_tags" name="odm_options[news_tags]" type="text" placeholder="<?php _e('Add tags');
-        ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Add tags.');
-        ?>'" value="<?php echo $news_tags;
-        ?>" size="70" /> <br />
-      <i><?php _e('Separate tags with commas. Only 5 tags are allowed. ');
-        ?></i>
-      <?php
 
     }
 
