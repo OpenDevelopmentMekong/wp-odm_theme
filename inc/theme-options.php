@@ -177,19 +177,6 @@ class Odm_Options
   <?php
 
     }
-    public function news_tags_field()
-    {
-        $news_tags = $this->options['news_tags'];
-        ?>
-      <input id="odm_news_tags" name="odm_options[news_tags]" type="text" placeholder="<?php _e('Add tags');
-        ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Add tags.');
-        ?>'" value="<?php echo $news_tags;
-        ?>" size="70" /> <br />
-      <i><?php _e('Separate tags with commas. Only 5 tags are allowed. ');
-        ?></i>
-      <?php
-
-    }
 
     public function facebook_field()
     {
