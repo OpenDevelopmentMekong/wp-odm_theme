@@ -2,7 +2,13 @@
 
 body{
   display: inline-table;
-  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 .clear, #clear{
@@ -364,5 +370,5 @@ only screen and (max-width: 980px),
 }
 @media
 only screen and (max-width: 640px),
-(min-device-width: 320px) and (max-device-width: 640px)  { 
+(min-device-width: 320px) and (max-device-width: 640px)  {
 }
