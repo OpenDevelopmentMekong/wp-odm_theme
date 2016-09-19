@@ -13,7 +13,7 @@
         {
           var selected_id = $(this).attr("id");
           $(".selected_option_ha").attr("src","https://opendevelopmentcambodia.net/wp-content/uploads/sites/2/2016/01/option.png");
-          $("#"+selected_id).attr("src","https://copendevelopmentcambodia.netwp-content/uploads/sites/2/2016/01/selected.png");
+          $("#"+selected_id).attr("src","https://opendevelopmentcambodia.net/wp-content/uploads/sites/2/2016/01/selected.png");
           $(".graph_options").removeClass("selected_option_ha")
           $("#"+selected_id).addClass("selected_option_ha");
 
@@ -36,8 +36,8 @@
         if (this == event.target)
         {
           var selected_id = $(this).attr("id");
-          $(".selected_option_per").attr("src","https://copendevelopmentcambodia.netwp-content/uploads/sites/2/2016/01/option.png");
-          $("#"+selected_id).attr("src","https://caopendevelopmentcambodia.netp-content/uploads/sites/2/2016/01/selected.png");
+          $(".selected_option_per").attr("src","https://opendevelopmentcambodia.net/wp-content/uploads/sites/2/2016/01/option.png");
+          $("#"+selected_id).attr("src","https://opendevelopmentcambodia.net/wp-content/uploads/sites/2/2016/01/selected.png");
           $(".graph_options_per").removeClass("selected_option_per")
           $("#"+selected_id).addClass("selected_option_per");
 
