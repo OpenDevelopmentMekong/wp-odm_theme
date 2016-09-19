@@ -1,9 +1,9 @@
 <?php the_content(); ?>
 
 <script type="text/javascript">
-  jQuery(document).ready(function($)
-  {
+  $(document).ready(function(){
     // Hectares
+    console.log("ddddddddd");
     $(".selected_img_ha").show();
     $('.graph_options').each(function(column)
     {
@@ -58,7 +58,7 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        <!-- 19973 -------------------------------------------------------->
+        <!-- 19973 -->
         var data_1973 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',1076876.59,973569.84,103306.74],
@@ -86,7 +86,7 @@
             ['Kandal',129873.55,767.64,129105.91],
             ['Phnom Penh',13439.70,245.89,13193.81]
             ]);
-        <!-- 1989---------------------------------------------------------->
+        <!-- 1989 -->
         var data_1989 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',1068066.76,953829.72,114237.05],
@@ -114,7 +114,7 @@
             ['Kandal',76257.88,767.64,75490.24],
             ['Phnom Penh',7209.65,240.67,6968.98]
         ]);
-        <!-- 2000---------------------------------------------------------->
+        <!-- 2000 -->
         var data_2000 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',1022183.57,937074.74,85108.83],
@@ -143,7 +143,7 @@
             ['Phnom Penh',8614.78,238.06,8376.72]
 
         ]);
-        <!-- 2004---------------------------------------------------------->
+        <!-- 2004 -->
         var data_2004 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',1050485.82,913285.53,137200.29],
@@ -172,7 +172,7 @@
             ['Phnom Penh',11706.68,238,11469],
 
         ]);
-        <!-- 2009---------------------------------------------------------->
+        <!-- 2009 -->
         var data_2009 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',975085,818831.27,156254.14],
@@ -201,7 +201,7 @@
             ['Phnom Penh',2655,238,2417]
 
         ]);
-        <!-- 2014---------------------------------------------------------->
+        <!-- 2014 -->
         var data_2014 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',866795.83,623958.96,242836.87],
@@ -230,7 +230,7 @@
             ['Phnom Penh',3168.29,179.56,2988.73]
         ]);
         <!-- Persentage -------------------------------->
-        <!-- 1973---------------------------------------------------------->
+        <!-- 1973 -->
         var per_data_1973 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',5.93,5.36,0.57],
@@ -258,7 +258,7 @@
             ['Kandal',0.72,0.00,0.71],
             ['Phnom Penh',0.07,0.00,0.07]
         ]);
-        <!-- 1989---------------------------------------------------------->
+        <!-- 1989 -->
         var per_data_1989 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',5.88,5.25,0.63],
@@ -286,7 +286,7 @@
             ['Kandal',0.42,0.00,0.42],
             ['Phnom Penh',0.04,0.00,0.04]
         ]);
-        <!-- 2000---------------------------------------------------------->
+        <!-- 2000 -->
         var per_data_2000 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',5.63,5.16,0.47],
@@ -314,7 +314,7 @@
             ['Kandal',0.46,0.00,0.46],
             ['Phnom Penh',0.05,0.00,0.05],
         ]);
-        <!-- 2004---------------------------------------------------------->
+        <!-- 2004 -->
         var per_data_2004 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',5.78,5.03,0.76],
@@ -342,7 +342,7 @@
             ['Kandal',0.72,0.00,0.72],
             ['Phnom Penh',0.06,0.00,0.06],
         ]);
-        <!-- 2009---------------------------------------------------------->
+        <!-- 2009 -->
         var per_data_2009 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',5.37,4.51,0.86],
@@ -371,7 +371,7 @@
             ['Phnom Penh',0.01,0.00,0.01],
 
         ]);
-        <!-- 2014---------------------------------------------------------->
+        <!-- 2014 -->
         var per_data_2014 = google.visualization.arrayToDataTable([
             ['Province',    'Total Forest', 'Dense Forest', 'Mixed Forest'],
             ['Koh Kong',4.77,3.44,1.34],
@@ -401,14 +401,12 @@
 
         ]);
         var options = {
-          <!--title: 'Forest Cover Distribution by Province (ha)',-->
-          colors: ['#00bb11', '#007600', '#afdb6d'],
-          <!--vAxis:{title: 'Hectare'},-->
+          colors: ['#00bb11', '#007600', '#afdb6d'], 
           bar:{groupWidth: '80%'},
           fontSize:10,
           legend: {'position': 'top'},
-          width: 760,
-          height: 257,
+          width: 800,
+          height: 280,
           chartArea: {left:60,'width': '100%', 'height': '60%'},
           backgroundColor:{fill:'#e7e7e7',strokeWidth:0,stroke:'#ddd'},
         };
@@ -431,7 +429,7 @@
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_2014'));
         chart.draw(data_2014, options);
 
-        <!-- persentage % -------------------------------------------------------------------->
+        <!-- persentage % -->
         var chart = new google.visualization.ColumnChart(document.getElementById('per_chart_1973'));
         chart.draw(per_data_1973, options);
 

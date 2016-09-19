@@ -6,4 +6,4 @@ This folder contains code specifically written for cambodia.opendevelopmentmekon
 
 ### Forest cover analysis
 
-Both for English and Khmer. https://cambodia.opendevelopmentmekong.net/issues/forest-cover/
+Both for English and Khmer. https://opendevelopmentcambodia.net/issues/forest-cover/

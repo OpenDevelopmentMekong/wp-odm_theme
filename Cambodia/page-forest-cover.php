@@ -7,11 +7,10 @@ Template Name: Forest Cover and Forest Cover Analysis
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri()?>/Cambodia/forest-cover.css"/>
 	<?php if (is_single('forest-cover')) { ?>
 						<?php  include 'page-forestcover-2014.php'; ?>
-
-	<?php } else if (is_page('forest-cover-analysis-1973-2013')) { ?>
+	<?php } else if (is_single('forest-cover-analysis-1973-2013')) { ?>
 						<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 						<?php include qtrans_getLanguage().'-page-forestcover-analysis-2013.php'; ?>
-	<?php	} else if (is_page('forest-cover-analysis-1973-2014')) { ?>
+	<?php	} else if (is_single('forest-cover-analysis-1973-2014')) { ?> 
 						<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 						<?php include qtrans_getLanguage().'-page-forestcover-analysis-2014.php'; ?>
 						<?php
@@ -45,7 +44,7 @@ Template Name: Forest Cover and Forest Cover Analysis
         </div>
 
         <div class="four columns offset-by-one">
-          <aside id="sidebar"> 
+          <aside id="sidebar">
 		        <ul class="widgets">
 		        	<?php dynamic_sidebar('profile-area-1'); ?>
 		        </ul>

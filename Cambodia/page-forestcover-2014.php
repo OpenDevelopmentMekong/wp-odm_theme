@@ -1,4 +1,3 @@
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/Cambodia/swfobject.js"> </script> 
 <script type="text/javascript">
 $(document).ready(function(){
 	$(".ytplayer_title").click(function(event){
