@@ -10,7 +10,7 @@ Template Name: Forest Cover and Forest Cover Analysis
 	<?php } else if (is_single('forest-cover-analysis-1973-2013')) { ?>
 						<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 						<?php include qtrans_getLanguage().'-page-forestcover-analysis-2013.php'; ?>
-	<?php	} else if (is_single('forest-cover-analysis-1973-2014')) { ?> 
+	<?php	} else if (is_single('forest-cover-analysis-1973-2014')) { ?>
 						<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 						<?php include qtrans_getLanguage().'-page-forestcover-analysis-2014.php'; ?>
 						<?php
@@ -46,7 +46,7 @@ Template Name: Forest Cover and Forest Cover Analysis
         <div class="four columns offset-by-one">
           <aside id="sidebar">
 		        <ul class="widgets">
-		        	<?php dynamic_sidebar('profile-area-1'); ?>
+		        	<?php dynamic_sidebar('profile-sub-page-sidebar'); ?>
 		        </ul>
           </aside>
         </div>
