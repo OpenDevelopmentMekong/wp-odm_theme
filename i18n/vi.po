@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2016-08-15 16:32+0200\n"
-"PO-Revision-Date: 2016-08-15 16:32+0200\n"
+"POT-Creation-Date: 2016-09-22 19:37+0200\n"
+"PO-Revision-Date: 2016-09-22 19:37+0200\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/teams/27158/vi/)\n"
 "MIME-Version: 1.0\n"
@@ -26,28 +26,27 @@ msgstr ""
 msgid "Not found!"
 msgstr "Không tìm thấy"
 
-#: 404.php:17
+#: 404.php:16
 msgid ""
-"The contents that you are looking for are not available, you have following "
-"options:"
-msgstr "Không có sẵn nội dung theo yêu cầu. Tham khảo các lựa chọn sau:"
+"If you received this error after selecting a new geographic location from "
+"the top menu, it means the new location doesn't have an information page on "
+"this topic that the old location had. To see what information does exist for"
+" this new location you've chosen simply click any of the navigation main "
+"menu items (News, Topics, Maps, Data, etc..) from the navigation menu above "
+"this message ."
+msgstr ""
 
-#: 404.php:18
+#: 404.php:22
 msgid "Back to the previous page"
 msgstr "Trở về trang trước"
 
-#: 404.php:19
+#: 404.php:23
+msgid "Go to the current site's home"
+msgstr ""
+
+#: 404.php:26
 msgid "Contact us"
 msgstr "Liên hệ"
-
-#: Cambodia/page-forest-cover.php:19
-msgid "Filed under:"
-msgstr "Biên mục:"
-
-#: Cambodia/page-forest-cover.php:59 page.php:19 single-topic.php:41
-#: single.php:40
-msgid "Pages:"
-msgstr "Trang:"
 
 #: advanced-search.php:31
 msgid "Data results"
@@ -62,8 +61,8 @@ msgid "Announcements"
 msgstr "Thông báo"
 
 #: archive-map-layer.php:8
-msgid "Maps catalogue"
-msgstr "Danh mục bản đồ"
+msgid "Maps catalog"
+msgstr ""
 
 #: archive-map.php:8 i18n/extra-strings.php:17
 msgid "Maps"
@@ -98,11 +97,11 @@ msgstr "Chuyên đề"
 msgid "Environment and land"
 msgstr "Môi trường và đất đai"
 
-#: archive-topic.php:43
+#: archive-topic.php:45
 msgid "Economy"
 msgstr "Kinh tế"
 
-#: archive-topic.php:58
+#: archive-topic.php:60
 msgid "People"
 msgstr "Con người"
 
@@ -140,11 +139,16 @@ msgstr "Y"
 msgid "Archives"
 msgstr "Lưu trữ"
 
-#: category.php:64
+#: category.php:69
 msgid "No results found."
 msgstr "Không tìm thấy kết qủa. "
 
-#: content-map-group.php:27
+#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8
+#: inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:211
+msgid "Page"
+msgstr "Trang"
+
+#: content-map-group.php:27 inc/widgets/odm-custom-posts-widget.php:71
 msgid "More..."
 msgstr "Xem thêm..."
 
@@ -152,7 +156,7 @@ msgstr "Xem thêm..."
 msgid "View all maps"
 msgstr "Hiển thị tất cả bản đồ"
 
-#: footer.php:27
+#: footer.php:38
 #, php-format
 msgid ""
 "This website is built on <a href=\"%s\" target=\"_blank\" "
@@ -163,164 +167,155 @@ msgstr ""
 "rel=\"external\">WordPress</a> sử dụng<a href=\"%s\" target=\"_blank\" "
 "rel=\"external\">JEO Beta</a> "
 
-#: functions.php:50
+#: functions.php:52
 msgid "Topic sidebar"
 msgstr "Thanh chuyên đề "
 
-#: functions.php:56
+#: functions.php:58
 msgid "Homepage area top left"
 msgstr "Góc trên - trái trang chủ"
 
-#: functions.php:64
+#: functions.php:66
 msgid "Homepage area top right"
 msgstr "Góc trên - phải trang chủ"
 
-#: functions.php:72
+#: functions.php:74
 msgid "Homepage area middle"
 msgstr "Vùng trung tâm trang chủ"
 
-#: functions.php:80
+#: functions.php:82
 msgid "Homepage area bottom left"
 msgstr "Góc dưới - trái trang chủ"
 
-#: functions.php:88
+#: functions.php:90
 msgid "Homepage area bottom right"
 msgstr "Góc dưới - phải trang chủ"
 
-#: functions.php:96
+#: functions.php:98
 msgid "WPCKAN Dataset detail sidebar"
 msgstr "Thanh công cụ bên lề điều chỉnh dữ liệu WPCKAN"
 
-#: functions.php:102
-msgid "Data main left"
-msgstr "Dữ liệu hiện bên trái"
-
-#: functions.php:108
-msgid "Data main middle"
-msgstr "Dữ liệu hiện ở trung tâm"
-
-#: functions.php:114
-msgid "Data main right"
-msgstr "Dữ liệu hiện bên phải"
-
-#: functions.php:120
-msgid "Data main bottom"
-msgstr "Dữ liệu hiện ở dưới"
-
-#: functions.php:126
-msgid "Data sidebar"
-msgstr "Thanh công cụ dữ liệu"
-
-#: functions.php:132
-msgid "Archive page sidebar"
-msgstr "Thanh công cụ trang lưu trữ "
-
-#: functions.php:138
+#: functions.php:104
 msgid "Story top"
 msgstr "Tin bài hiển thị trên cùng"
 
-#: functions.php:144
+#: functions.php:110
 msgid "Story bottom"
 msgstr ""
 
-#: functions.php:208
+#: functions.php:116
+msgid "Profile area right sidebar"
+msgstr ""
+
+#: functions.php:122
+msgid "Profile area bottom left"
+msgstr ""
+
+#: functions.php:130
+msgid "Profile area bottom right"
+msgstr ""
+
+#: functions.php:138
+msgid "Profile sub-page right sidebar"
+msgstr ""
+
+#: functions.php:205
 msgid "stories"
 msgstr ""
 
-#: functions.php:210
+#: functions.php:207
 msgid "Copy the embed code"
 msgstr "Sao chép mã nhúng"
 
-#: functions.php:211 loop-latest.php:21
+#: functions.php:208 loop-latest.php:21
 msgid "Share"
 msgstr "Chia sẻ "
 
-#: functions.php:212
+#: functions.php:209
 msgid "Print"
 msgstr "In "
 
-#: functions.php:223 loop-latest.php:19
+#: functions.php:220 loop-latest.php:19
 msgid "Read more"
 msgstr "Đọc tiếp "
 
-#: functions.php:225
+#: functions.php:222
 msgid "Open slideshow"
 msgstr "Mở trình chiếu"
 
-#: functions.php:226
+#: functions.php:223
 msgid "Watch video gallery"
 msgstr "Xem thư viện video "
 
-#: functions.php:227
+#: functions.php:224
 msgid "Watch video"
 msgstr "Xem video "
 
-#: functions.php:228
+#: functions.php:225
 msgid "View image gallery"
 msgstr "Xem thư viện ảnh "
 
-#: functions.php:229
+#: functions.php:226
 msgid "View fullscreen image"
 msgstr "Xem ở chế độ toàn màn hình"
 
-#: functions.php:230
+#: functions.php:227
 msgid "View infographic"
 msgstr "Xem ảnh đồ họa"
 
-#: functions.php:231
+#: functions.php:228
 msgid "View infographics"
 msgstr "Xem đồ họa "
 
-#: functions.php:322
+#: functions.php:268
+msgid "default"
+msgstr ""
+
+#: functions.php:328
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "Nguồn tin "
 
-#: functions.php:323
+#: functions.php:329
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "Nguồn tin"
 
-#: functions.php:324
+#: functions.php:330
 msgid "Search News Source"
 msgstr "Tìm kiếm nguồn tin"
 
-#: functions.php:325
+#: functions.php:331
 msgid "All News Sources"
 msgstr "Tất cả nguồn tin "
 
-#: functions.php:326
+#: functions.php:332
 msgid "Parent News Source"
 msgstr "Nguồn tin gốc"
 
-#: functions.php:327
+#: functions.php:333
 msgid "Parent News Source:"
 msgstr "Nguồn tin gốc:"
 
-#: functions.php:328
+#: functions.php:334
 msgid "Edit News Source"
 msgstr "Sửa nguồn tin "
 
-#: functions.php:329
+#: functions.php:335
 msgid "Update News Source"
 msgstr "Cập nhật nguồn tin"
 
-#: functions.php:330
+#: functions.php:336
 msgid "Add New News Source"
 msgstr "Bổ sung nguồn tin"
 
-#: functions.php:331
+#: functions.php:337
 msgid "New News Source Name"
 msgstr "Tên nguồn tin mới "
 
-#: functions.php:332
+#: functions.php:338
 msgid "News Source"
 msgstr "Nguồn tin"
-
-#: header.php:21 inc/templates/pagination.php:8
-#: inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:211
-msgid "Page"
-msgstr "Trang"
 
 #: i18n/extra-strings.php:2
 msgid "Mekong"
@@ -519,15 +514,23 @@ msgstr ""
 " triển và xây dựng nội dung trang web, ngay cả khi xảy ra bất cứ sự thiệt "
 "hại, mất mát nào từ quá trình sử dụng dữ liệu "
 
-#: inc/advanced-navigation.php:115
+#: i18n/extra-strings.php:53
+msgid "Khmer PDF"
+msgstr ""
+
+#: i18n/extra-strings.php:54
+msgid "Khmer PDF not available"
+msgstr ""
+
+#: inc/advanced-navigation.php:115 page-data.php:36
 msgid "Text search"
 msgstr "Tìm văn bản"
 
-#: inc/advanced-navigation.php:116
+#: inc/advanced-navigation.php:116 page-data.php:37
 msgid "Type your search here"
 msgstr "Nhập từ khóa tìm kiếm"
 
-#: inc/advanced-navigation.php:126 inc/utils/content.php:52
+#: inc/advanced-navigation.php:126 inc/utils/content.php:51
 msgid "Categories"
 msgstr "Phân mục"
 
@@ -535,35 +538,35 @@ msgstr "Phân mục"
 msgid "Select categories"
 msgstr "Chọn phân mục"
 
-#: inc/advanced-navigation.php:155
+#: inc/advanced-navigation.php:157
 msgid "Content type"
 msgstr "Hình thức nội dung"
 
-#: inc/advanced-navigation.php:156
+#: inc/advanced-navigation.php:158
 msgid "Select content types"
 msgstr "Chọn hình thức nội dung"
 
-#: inc/advanced-navigation.php:166
+#: inc/advanced-navigation.php:168
 msgid "Date range"
 msgstr "Khoảng thời gian"
 
-#: inc/advanced-navigation.php:169
+#: inc/advanced-navigation.php:171
 msgid "From"
 msgstr "Từ"
 
-#: inc/advanced-navigation.php:172
+#: inc/advanced-navigation.php:174
 msgid "To"
 msgstr "đến"
 
-#: inc/advanced-navigation.php:178
+#: inc/advanced-navigation.php:180 page-data.php:113
 msgid "Search Filter"
 msgstr "Bộ lọc tìm kiếm"
 
-#: inc/advanced-navigation.php:189 inc/advanced-navigation.php:200
+#: inc/advanced-navigation.php:191 inc/advanced-navigation.php:202
 msgid "Cancel filters"
 msgstr "Hủy lọc"
 
-#: inc/advanced-navigation.php:197
+#: inc/advanced-navigation.php:199
 msgid "More filters"
 msgstr "Thêm tiêu chí lọc"
 
@@ -571,7 +574,7 @@ msgstr "Thêm tiêu chí lọc"
 msgid "Interactive Map"
 msgstr "Bản đồ tương tác"
 
-#: inc/interactive-map.php:89 single-map.php:16
+#: inc/interactive-map.php:89 inc/utils/mapping.php:77
 msgid "Map Layers"
 msgstr "Các lớp bản đồ"
 
@@ -902,10 +905,6 @@ msgstr "Chuyên đề"
 msgid "Map"
 msgstr "Bản đồ"
 
-#: inc/mapping.php:263
-msgid "LEGEND"
-msgstr "CHÚ GIẢI"
-
 #: inc/post-types/announcements.php:19
 msgctxt "post type general name"
 msgid "Announcements"
@@ -1227,221 +1226,201 @@ msgstr "Lựa chọn chủ đề phát triển mở"
 msgid "Style"
 msgstr "Hình thức"
 
-#: inc/theme-options.php:62
-msgid "News: Filtered By Tags"
-msgstr "Tin tức: Lọc theo từ khóa"
-
-#: inc/theme-options.php:68
+#: inc/theme-options.php:63
 msgid "Links"
 msgstr "Đường dẫn"
 
-#: inc/theme-options.php:75
+#: inc/theme-options.php:70
 msgid "Interactive map"
 msgstr "Bản đồ tương tác"
 
-#: inc/theme-options.php:81
+#: inc/theme-options.php:76
 msgid "Choose a style"
 msgstr "Chọn hình thức"
 
-#: inc/theme-options.php:89
+#: inc/theme-options.php:84
 msgid "Notice Message appear above the slider"
 msgstr "Thông báo hiện phía trên nội dung trình chiếu"
 
-#: inc/theme-options.php:97
+#: inc/theme-options.php:92
 msgid "Frontpage slider id"
 msgstr "ID trình chiếu trên giao diện chính"
 
-#: inc/theme-options.php:105
-msgid "Filter News By Tags"
-msgstr "Lọc tin tức theo từ khóa"
-
-#: inc/theme-options.php:113
+#: inc/theme-options.php:100
 msgid "Facebook url"
 msgstr " Url Facebook"
 
-#: inc/theme-options.php:121
+#: inc/theme-options.php:108
 msgid "Twitter url"
 msgstr "Url Twitter "
 
-#: inc/theme-options.php:129
+#: inc/theme-options.php:116
 msgid "Legal disclaimer"
 msgstr "Khuyến cáo"
 
-#: inc/theme-options.php:137
+#: inc/theme-options.php:124
 msgid "Contact page"
 msgstr "Trang liên hệ"
 
-#: inc/theme-options.php:145
+#: inc/theme-options.php:132
 msgid "Data page"
 msgstr "Trang dữ liệu"
 
-#: inc/theme-options.php:153
+#: inc/theme-options.php:140
 msgid "Base map settings"
 msgstr "Thiết lập bản đồ nền"
 
-#: inc/theme-options.php:176
+#: inc/theme-options.php:163
 msgid "Notification messages"
 msgstr "Thông điệp"
 
-#: inc/theme-options.php:177
+#: inc/theme-options.php:164
 msgid ""
 "(The notification will be appeared at the top above the featue images "
 "slider. )"
 msgstr "(Thông báo sẽ hiện ở phía trên thanh trượt ảnh đại diện)"
 
-#: inc/theme-options.php:184 inc/theme-options.php:185
+#: inc/theme-options.php:171 inc/theme-options.php:172
 msgid "281321"
 msgstr "281321"
 
-#: inc/theme-options.php:188
+#: inc/theme-options.php:175
 msgid "(This id can be found on the Featured Area plugin slider's settings.)"
 msgstr "(ID này có thể tìm thấy trong phần cài đặt của FA PRO)"
 
-#: inc/theme-options.php:197
-msgid "Add tags"
-msgstr "Thêm từ khóa"
-
-#: inc/theme-options.php:198
-msgid "Add tags."
-msgstr "Thêm từ khóa."
-
-#: inc/theme-options.php:201
-msgid "Separate tags with commas. Only 5 tags are allowed. "
-msgstr "Dùng dấu phẩy để tách các từ khóa. Cho phép tối đa 5 từ khóa."
-
-#: inc/theme-options.php:227 inc/theme-options.php:230
-#: inc/theme-options.php:237 inc/theme-options.php:240
-#: inc/theme-options.php:299
+#: inc/theme-options.php:201 inc/theme-options.php:204
+#: inc/theme-options.php:211 inc/theme-options.php:214
+#: inc/theme-options.php:273
 msgid "None"
 msgstr "Không"
 
-#: inc/theme-options.php:279
+#: inc/theme-options.php:253
 msgid "Select base layer"
 msgstr "Chọn lớp bản đồ nền"
 
-#: inc/theme-options.php:293
+#: inc/theme-options.php:267
 msgid "(USA Only)"
 msgstr "(Chỉ dành cho USA)"
 
-#: inc/theme-options.php:296
+#: inc/theme-options.php:270
 msgid "Custom"
 msgstr "Tùy chỉnh"
 
-#: inc/theme-options.php:302
+#: inc/theme-options.php:276
 msgid "Enter layer URL"
 msgstr "Nhập URL của layer"
 
-#: inc/theme-options.php:307 inc/theme-options.php:501
+#: inc/theme-options.php:281 inc/theme-options.php:475
 msgid "Update preview"
 msgstr "Xem trước nội dung cập nhật"
 
-#: inc/theme-options.php:310
+#: inc/theme-options.php:284
 msgid "Preview map"
 msgstr "Xem trước bản đồ"
 
-#: inc/theme-options.php:316
+#: inc/theme-options.php:290
 msgid "Map settings"
 msgstr "Thiết lập thuộc tính cho bản đồ"
 
-#: inc/theme-options.php:319
+#: inc/theme-options.php:293
 msgid "Currently viewing"
 msgstr "Đang rà soát"
 
-#: inc/theme-options.php:323 inc/theme-options.php:361
+#: inc/theme-options.php:297 inc/theme-options.php:335
 msgid "Center"
 msgstr "Trung tâm"
 
-#: inc/theme-options.php:328 inc/theme-options.php:372
+#: inc/theme-options.php:302 inc/theme-options.php:346
 msgid "Zoom"
 msgstr "Phóng to - Thu nhỏ"
 
-#: inc/theme-options.php:333 inc/theme-options.php:424
+#: inc/theme-options.php:307 inc/theme-options.php:398
 msgid "East"
 msgstr "Đông "
 
-#: inc/theme-options.php:338 inc/theme-options.php:432
+#: inc/theme-options.php:312 inc/theme-options.php:406
 msgid "North"
 msgstr "Bắc"
 
-#: inc/theme-options.php:343 inc/theme-options.php:440
+#: inc/theme-options.php:317 inc/theme-options.php:414
 msgid "South"
 msgstr "Nam"
 
-#: inc/theme-options.php:348 inc/theme-options.php:448
+#: inc/theme-options.php:322 inc/theme-options.php:422
 msgid "West"
 msgstr "Tây"
 
-#: inc/theme-options.php:355
+#: inc/theme-options.php:329
 msgid "Map center & zoom"
 msgstr "Trung tâm vả thu phóng bản đồ "
 
-#: inc/theme-options.php:357
+#: inc/theme-options.php:331
 msgid "Set current as map center & zoom"
 msgstr "Đặt chế độ hiện tại làm bản đồ chuẩn để thu phóng"
 
-#: inc/theme-options.php:380
+#: inc/theme-options.php:354
 msgid "Min zoom"
 msgstr "Thu nhỏ tối thiểu"
 
-#: inc/theme-options.php:387 inc/theme-options.php:399
+#: inc/theme-options.php:361 inc/theme-options.php:373
 msgid "Current"
 msgstr "Hiện tại"
 
-#: inc/theme-options.php:392
+#: inc/theme-options.php:366
 msgid "Max zoom"
 msgstr "Phóng to tối đa"
 
-#: inc/theme-options.php:418
+#: inc/theme-options.php:392
 msgid "Pan limits"
 msgstr "Giới hạn di chuyển bản đồ"
 
-#: inc/theme-options.php:420
+#: inc/theme-options.php:394
 msgid "Set current as map panning limits"
 msgstr "Đặt chế độ hiện tại để xác định giới hạn di chuyển bản đồ"
 
-#: inc/theme-options.php:474
+#: inc/theme-options.php:448
 msgid "Enable geocoding service"
 msgstr "Kịch hoạt dịch vụ geocode"
 
-#: inc/theme-options.php:481
+#: inc/theme-options.php:455
 msgid "Enable geocode search service"
 msgstr "Kích hoạt dịch vụ tìm kiếm geocode"
 
-#: inc/theme-options.php:486
+#: inc/theme-options.php:460
 msgid "Map handlers"
 msgstr "Điều khiển bản đồ"
 
-#: inc/theme-options.php:493
+#: inc/theme-options.php:467
 msgid "Disable mousewheel zooming"
 msgstr "Tắt chức năng thu phóng bằng lăn chuột"
 
-#: inc/theme-options.php:503
+#: inc/theme-options.php:477
 msgid "Preview mode"
 msgstr "Chế độ xem trước"
 
-#: inc/theme-options.php:505
+#: inc/theme-options.php:479
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
 "(chế độ xem trước không áp dụng chức năng thu phóng hoặc thiết lập giới hạn "
 "di chuyển bản đồ)"
 
-#: inc/utils/content.php:378
+#: inc/utils/content.php:396
 msgid "Summary translated by "
 msgstr "Được lược dịch bởi"
 
-#: inc/utils/content.php:433
+#: inc/utils/content.php:451
 msgid "Download: "
 msgstr "Tải về:"
 
-#: inc/utils/content.php:438
+#: inc/utils/content.php:456
 msgid "English PDF"
 msgstr "Phiên bản tiếng Anh dạng PDF"
 
-#: inc/utils/content.php:443
+#: inc/utils/content.php:461
 msgid "English PDF not available"
 msgstr "Không có phiên bản tiếng Anh dạng PDF"
 
-#: inc/utils/content.php:451 inc/utils/content.php:456
+#: inc/utils/content.php:469 inc/utils/content.php:474
 msgid " "
 msgstr " "
 
@@ -1449,6 +1428,14 @@ msgstr " "
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr "Lỗi định vị  %s"
+
+#: inc/utils/mapping.php:88
+msgid "Hide news icons"
+msgstr "Ẩn biểu tượng tin tức"
+
+#: inc/utils/mapping.php:300
+msgid "LEGEND"
+msgstr "CHÚ GIẢI"
 
 #: inc/widgets/odm-category-widget.php:12
 msgid "ODM Post Taxonomy"
@@ -1473,25 +1460,20 @@ msgid ""
 msgstr ""
 "Hiển thị các nội dung khác cùng phân mục đã được tích hợp trong widget"
 
-#: inc/widgets/odm-contents-same-category-widget.php:93
-#: inc/widgets/odm-custom-posts-widget.php:109
-msgid "Custom posts"
-msgstr "Điều chỉnh"
-
-#: inc/widgets/odm-contents-same-category-widget.php:95
-#: inc/widgets/odm-custom-posts-widget.php:125
-#: inc/widgets/odm-related-recent-news-widget.php:138
+#: inc/widgets/odm-contents-same-category-widget.php:90
+#: inc/widgets/odm-custom-posts-widget.php:145
+#: inc/widgets/odm-related-recent-news-widget.php:130
 #: inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr "Tiêu đề"
 
-#: inc/widgets/odm-contents-same-category-widget.php:100
-#: inc/widgets/odm-custom-posts-widget.php:130
+#: inc/widgets/odm-contents-same-category-widget.php:95
+#: inc/widgets/odm-custom-posts-widget.php:149
 msgid "Select custom post type:"
 msgstr "Chọn hình thức điều chỉnh "
 
-#: inc/widgets/odm-contents-same-category-widget.php:110
-#: inc/widgets/odm-custom-posts-widget.php:165
+#: inc/widgets/odm-contents-same-category-widget.php:105
+#: inc/widgets/odm-custom-posts-widget.php:182
 msgid "Select max number of posts to list (-1 to show all):"
 msgstr "Chọn liệt kê tối đa số lượng bài đăng (-1 để hiển thị toàn bộ):"
 
@@ -1503,25 +1485,29 @@ msgstr "Các bài đăng thủ công trên ODM"
 msgid "Display entries of the spefied custom post type"
 msgstr "Hiển thị tin theo yêu cầu"
 
-#: inc/widgets/odm-custom-posts-widget.php:139
+#: inc/widgets/odm-custom-posts-widget.php:157
 msgid "Select layout:"
 msgstr "Chọn bố cục:"
 
-#: inc/widgets/odm-custom-posts-widget.php:147
+#: inc/widgets/odm-custom-posts-widget.php:165
 msgid "Show post excerpt:"
 msgstr "Hiển thị nội dung rút gọn:"
 
-#: inc/widgets/odm-custom-posts-widget.php:151
+#: inc/widgets/odm-custom-posts-widget.php:169
 msgid "Show post thumbnail:"
 msgstr "Hiển thị ảnh thu nhỏ:"
 
-#: inc/widgets/odm-custom-posts-widget.php:155
+#: inc/widgets/odm-custom-posts-widget.php:173
 msgid "Show post meta:"
 msgstr "Hiển thị thông tin mô tả:"
 
-#: inc/widgets/odm-custom-posts-widget.php:159
+#: inc/widgets/odm-custom-posts-widget.php:177
 msgid "Show Source meta:"
 msgstr "Hiển thị thông tin mô tả nguồn:"
+
+#: inc/widgets/odm-custom-posts-widget.php:186
+msgid "Order by:"
+msgstr ""
 
 #: inc/widgets/odm-related-recent-news-widget.php:10
 msgid "ODM Related Recent News Widget"
@@ -1531,15 +1517,15 @@ msgstr "Bảng điều khiển Tin bài liên quan đến ODM"
 msgid "Display ODM the related recent news for the topics"
 msgstr "Hiển thị các tin bài liên quan đến ODM theo chủ đề"
 
-#: inc/widgets/odm-related-recent-news-widget.php:117
+#: inc/widgets/odm-related-recent-news-widget.php:109
 msgid "Related News"
 msgstr "Tin tức liên quan"
 
-#: inc/widgets/odm-related-recent-news-widget.php:142
+#: inc/widgets/odm-related-recent-news-widget.php:134
 msgid "Option:"
 msgstr "Lựa chọn:"
 
-#: inc/widgets/odm-related-recent-news-widget.php:159
+#: inc/widgets/odm-related-recent-news-widget.php:151
 msgid "Category slugs:"
 msgstr "Tên định danh của phân mục:"
 
@@ -1550,10 +1536,6 @@ msgstr "Bảng điều khiển Cây thư mục nội dung của ODM"
 #: inc/widgets/odm-taxonomy-widget.php:11
 msgid "Display ODM taxonomy for content"
 msgstr "Hiển thị Cây thư mục nội dung của ODM"
-
-#: inc/widgets/odm-taxonomy-widget.php:217
-msgid "Topic areas"
-msgstr "Khu vực dành cho chuyên đề"
 
 #: inc/widgets/odm-taxonomy-widget.php:226
 msgid "Include Category by IDs (separated by commas):"
@@ -1592,6 +1574,66 @@ msgstr "Trang trước"
 msgid "Next page"
 msgstr "Trang tiếp"
 
+#: page-data.php:43
+msgid "Type"
+msgstr ""
+
+#: page-data.php:44
+msgid "Select dataset type"
+msgstr ""
+
+#: page-data.php:59
+msgid "Language"
+msgstr ""
+
+#: page-data.php:60
+msgid "Select language"
+msgstr ""
+
+#: page-data.php:61 page-data.php:80 page-data.php:102
+msgid "All"
+msgstr ""
+
+#: page-data.php:76
+msgid "Country"
+msgstr ""
+
+#: page-data.php:77
+msgid "Select country"
+msgstr ""
+
+#: page-data.php:100
+msgid "Taxonomy"
+msgstr ""
+
+#: page-data.php:101
+msgid "Select term"
+msgstr ""
+
+#: page-data.php:117
+msgid "Clear"
+msgstr ""
+
+#: page-data.php:135
+msgid "Current statistics: "
+msgstr ""
+
+#: page-data.php:161
+msgid "Most viewed datasets"
+msgstr ""
+
+#: page-data.php:166
+msgid "Most viewed library records"
+msgstr ""
+
+#: page-data.php:171
+msgid "Most viewed laws"
+msgstr ""
+
+#: page-data.php:221
+msgid "More on the law compendium"
+msgstr ""
+
 #: page-dataset-detail.php:17
 msgid "Please provide an id as parameter"
 msgstr "Cung cấp ID dạng tham số"
@@ -1599,6 +1641,10 @@ msgstr "Cung cấp ID dạng tham số"
 #: page-pdf-view.php:24 page-pdf-view.php:27 section-query-actions.php:25
 msgid "Download"
 msgstr "Tải về"
+
+#: page.php:19 single-topic.php:41 single.php:39
+msgid "Pages:"
+msgstr "Trang:"
 
 #: section-query-actions.php:13
 msgid "Content API"
@@ -1636,13 +1682,13 @@ msgstr "Ẩn chi tiết"
 msgid "Keep reading"
 msgstr "Đọc tiếp"
 
-#: single-map.php:27
-msgid "Hide news icons"
-msgstr "Ẩn biểu tượng tin tức"
-
-#: single-map.php:68
+#: single-map.php:46
 msgid "Latest articles on"
 msgstr "Các tin bài gần nhất về"
+
+#: single-topic.php:68
+msgid "More on the Land Portal library"
+msgstr ""
 
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
