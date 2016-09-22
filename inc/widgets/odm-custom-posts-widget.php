@@ -68,7 +68,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<?php endif; ?>
 			</div>
 			<div class="eight columns align-right">
-				<a href="/<?php echo $post_type_slug?>"> More...</a>
+				<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
 			</div>
 			<div class="sixteen columns">
 				<?php
