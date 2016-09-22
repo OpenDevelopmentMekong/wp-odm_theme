@@ -556,11 +556,28 @@ function available_custom_post_types(){
 	 return (strpos(get_page_template(), 'page-dataset-detail') !== false);
  }
 
- function get_categories_array($post){
-		return array_map(function($cat){
-			return $cat->name;
-		},get_the_category($post->ID));
- }
+ function get_top_level_category_english_name($cat_id) {
+	 global $wpdb;
+	 while ($cat_id) {
+			 $cat = get_category($cat_id); // get the object for the catid
+			 $cat_id = $cat->category_parent; // assign parent ID (if exists) to $catid
+			 $cat_parent_id = $cat->cat_ID;
+	 }
+
+	 $cat_parent_name = $wpdb->get_var($wpdb->prepare(
+							 "SELECT `name` FROM $wpdb->terms WHERE `term_id` =  %d", $cat_parent_id));
+	 $cat_parent_name = apply_filters('translate_text', $cat_parent_name, 'en'); 
+	 return $cat_parent_name;
+}
+
+function get_localized_taxonomy($tax_array) {
+	$taxonomy_translated = array();
+	foreach ($tax_array as $value):
+		$tax = __($value,'odm');
+		array_push($taxonomy_translated,$tax);
+	endforeach;
+	return $taxonomy_translated;
+}
 
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
