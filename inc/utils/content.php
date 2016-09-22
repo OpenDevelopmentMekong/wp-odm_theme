@@ -466,12 +466,12 @@ function echo_downloaded_documents ($postID = "") {
 			if($get_localized_document !=""){
 				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_localized_document.'">';
 					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-					echo __(ucfirst($country_name). " " ."PDF");
+					echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " ."PDF");
 				echo '</a>';
 			}
 			else{
 				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-				echo __(ucfirst($country_name). " " . "PDF not available");
+				echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " . "PDF not available");
 			}
 			echo "</span></div>";
 		endif;
