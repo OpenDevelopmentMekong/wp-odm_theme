@@ -566,17 +566,8 @@ function available_custom_post_types(){
 
 	 $cat_parent_name = $wpdb->get_var($wpdb->prepare(
 							 "SELECT `name` FROM $wpdb->terms WHERE `term_id` =  %d", $cat_parent_id));
-	 $cat_parent_name = apply_filters('translate_text', $cat_parent_name, 'en'); 
+	 $cat_parent_name = apply_filters('translate_text', $cat_parent_name, 'en');
 	 return $cat_parent_name;
-}
-
-function get_localized_taxonomy($tax_array) {
-	$taxonomy_translated = array();
-	foreach ($tax_array as $value):
-		$tax = __($value,'odm');
-		array_push($taxonomy_translated,$tax);
-	endforeach;
-	return $taxonomy_translated;
 }
 
  function odm_echo_extras($postID = "") {
