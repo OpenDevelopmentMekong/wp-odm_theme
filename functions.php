@@ -15,6 +15,7 @@ require_once get_stylesheet_directory().'/inc/post-types/topics.php';
 require_once get_stylesheet_directory().'/inc/post-types/announcements.php';
 require_once get_stylesheet_directory().'/inc/post-types/site-updates.php';
 require_once get_stylesheet_directory().'/inc/post-types/stories.php';
+require_once get_stylesheet_directory().'/inc/post-types/timeline.php';
 
 /*
  * Importing utility classes
