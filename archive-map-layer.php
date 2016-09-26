@@ -30,13 +30,18 @@
 				//List cetegory and layer by cat for menu items
 				$map_catalogue = get_all_layers_grouped_by_subcategory(0, $exclude_posts_in_cats);
 
-				//Pagination
 				$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
 				foreach ($map_catalogue as $key => $layer) {
-					odm_get_template('post-grid-single-4-cols',array(
-            "post" => $layer,
-            "show_meta" => false)
-          , true);
+					if($key >= $pagination["start_post"]): 
+						odm_get_template('post-grid-single-4-cols',array(
+	            "post" => $layer,
+	            "show_meta" => false)
+	          , true);
+					endif;
+
+					if($key == $pagination["end_post"]):
+						 break;
+					endif;
 				}
 			?>
       </div>
