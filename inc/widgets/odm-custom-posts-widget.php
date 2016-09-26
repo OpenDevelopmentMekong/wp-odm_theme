@@ -67,9 +67,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 						<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title']; ?></a>
 				<?php endif; ?>
 			</div>
-			<div class="eight columns align-right">
-				<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
-			</div>
+
 			<div class="sixteen columns">
 				<?php
 					$index = 1;
@@ -93,7 +91,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 						$index++;
 					endforeach;
 					?>
-
+				<div class="sixteen columns align-right">
+					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
+				</div>
 			</div>
 			<?php echo $args['after_widget']; ?>
 		</div>
