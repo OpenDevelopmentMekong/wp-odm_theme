@@ -55,7 +55,7 @@
   </nav>
 
   <!-- Logo and contact icons -->
-  <header id="od-head">
+  <nav id="od-head">
     <div class="container">
         <div class="thirteen columns">
           <div class="site-meta">
@@ -68,7 +68,7 @@
           </div>
         </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Menu and search -->
   <nav id="od-menu">
