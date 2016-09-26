@@ -112,7 +112,7 @@
 			}else {
 				$(this_item).addClass('loading');
 				jeo.toggle_layers(map, all_layers_value[get_layer_id]);
-				if( all_layers_legends ){
+				if( all_layers_legends && all_layers_legends[get_layer_id]){
 					var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
 					if( typeof get_legend != "undefined"){
 						var legend_li = '<li class="legend-list hide_show_container '+$(this_item).data('layer')+'" id ='+$(this_item).data('layer')+'>'+ get_legend +'</li>';
