@@ -76,16 +76,28 @@
 		}
 	}
 
-  @media (min-device-width: 320px) and (max-device-width: 370px) {
-    #od-head {
-      .side-title {
-        line-height: 0 !important;
-        margin-top: @xsmall-padd !important;
-      }
+  #od-selector {
+    #qtranslate-chooser {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
-    .social {
-      padding: 0;
-      margin-top: 0;
+    ul, ul li {
+      padding-right: 3px !important;
+      padding-left: 3px !important;
     }
+  }
+}
+
+@media (min-device-width: 320px) and (max-device-width: 370px) {
+  #od-head {
+    .side-title {
+      line-height: 0 !important;
+      margin-top: @xsmall-padd !important;
+    }
+  }
+  .social {
+    padding: 0;
+    margin-top: 0;
   }
 }
