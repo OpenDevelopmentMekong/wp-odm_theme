@@ -27,6 +27,11 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			"date" => "Created date",
 			"modified" => "Modified date"
 		);
+
+		$this->more_location = array(
+			"top" => "Top",
+			"bottom" => "Bottom"
+		);
 	}
 
 	/**
@@ -45,6 +50,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
+		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
 
 		$post_type = get_post_type_object($selected_custom_post_id);
 		$post_type_slug = $post_type->rewrite['slug'];
@@ -67,9 +73,13 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 						<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title']; ?></a>
 				<?php endif; ?>
 			</div>
-			<div class="eight columns align-right">
-				<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
-			</div>
+
+			<?php if ($more_location == 'top'): ?>
+				<div class="eight columns align-right">
+					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
+				</div>
+			<?php endif; ?>
+
 			<div class="sixteen columns">
 				<?php
 					$index = 1;
@@ -92,9 +102,13 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 						<?php endif;
 						$index++;
 					endforeach;
-					?>
-
+				?>
 			</div>
+			<?php if ($more_location == 'bottom'): ?>
+				<div class="sixteen columns align-right">
+					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
+				</div>
+			<?php endif; ?>
 			<?php echo $args['after_widget']; ?>
 		</div>
 
@@ -116,6 +130,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
+		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
 
 		$args = array(
 		   'public'   => true,
@@ -190,6 +205,15 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				<?php endforeach; ?>
 			</select>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'more_location' ); ?>"><?php _e( "Select location of 'More...':" ); ?></label>
+			<select class='widefat' id="<?php echo $this->get_field_id('more_location'); ?>" name="<?php echo $this->get_field_name('more_location'); ?>" type="text">
+				<?php foreach ( $this->more_location as $key => $value ): ?>
+					<option <?php if ($more_location == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $key ?></option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+
 		<?php
 	}
 
@@ -211,6 +235,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : true;
 		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
+		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
 
 		return $instance;
 	}

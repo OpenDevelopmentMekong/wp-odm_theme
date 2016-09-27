@@ -35,17 +35,14 @@ function odm_logo()
   <div id="od-logo">
 		<?php od_logo_icon(); ?>
 		<?php
-        //if(odm_language_manager()->get_current_language() == "km"):
-        // TODO: https://github.com/OpenDevelopmentMekong/wp-odm_theme/issues/455
-        // TODO: https://github.com/OpenDevelopmentMekong/wp-odm_theme/issues/452 
-        if (false):
-						echo '<img src="'. get_stylesheet_directory_uri() .'/img/odc-khmer-name.png" />';
-					else:
-						echo '<h1>Op<sup>e</sup>nDevelopment</h1>';
-					  echo '<div>';
-					  echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
-					  echo '</div>';
-				 	endif;
+        if(odm_language_manager()->get_current_language() == "km"):
+          echo '<img src="'. get_stylesheet_directory_uri() .'/img/odc-khmer-name.png" />';
+        else:
+          echo '<h1>Op<sup>e</sup>nDevelopment</h1>';
+          echo '<div>';
+          echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
+          echo '</div>';
+        endif;
 		?>
   </div>
   <?php

@@ -112,36 +112,39 @@
 			}else {
 				$(this_item).addClass('loading');
 				jeo.toggle_layers(map, all_layers_value[get_layer_id]);
-				var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
-				if( typeof get_legend != "undefined"){
-					var legend_li = '<li class="legend-list hide_show_container '+$(this_item).data('layer')+'" id ='+$(this_item).data('layer')+'>'+ get_legend +'</li>';
+				if( all_layers_legends && all_layers_legends[get_layer_id]){
+					var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
+					if( typeof get_legend != "undefined"){
+						var legend_li = '<li class="legend-list hide_show_container '+$(this_item).data('layer')+'" id ='+$(this_item).data('layer')+'>'+ get_legend +'</li>';
 
-					$('.map-legend-ul').prepend(legend_li);
+						$('.map-legend-ul').prepend(legend_li);
 
-					// Add class title to the legend title
-					var legend_h5 = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
-					if (legend_h5.length === 0){
-					var h5_title = '<h5>'+ $(this_item).children('.layer-item-name').text()+ '</h5>';
-					$( ".map-legend-ul ."+$(this_item).data('layer')+" .legend").first().prepend(h5_title);
-					}
-					var legend_h5_title = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
-					legend_h5_title.addClass("title");
+						// Add class title to the legend title
+						var legend_h5 = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
+						if (legend_h5.length === 0){
+						var h5_title = '<h5>'+ $(this_item).children('.layer-item-name').text()+ '</h5>';
+						$( ".map-legend-ul ."+$(this_item).data('layer')+" .legend").first().prepend(h5_title);
+						}
+						var legend_h5_title = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
+						legend_h5_title.addClass("title");
 
-					// Add class dropdown to the individual legend box
-					legend_h5_title.siblings().addClass( "dropdown" );
+						// Add class dropdown to the individual legend box
+						legend_h5_title.siblings().addClass( "dropdown" );
 
-					//dropdown legen auto show
-					$( ".map-legend-ul ."+$(this_item).data('layer')+" .dropdown").show();
+						//dropdown legen auto show
+						$( ".map-legend-ul ."+$(this_item).data('layer')+" .dropdown").show();
 
-					// Add hide_show_icon into h5 element
-					var hide_show_icon = "<i class='fa fa-times-circle' id='"+$(this_item).data('layer')+"' aria-hidden='true'></i>";
-						hide_show_icon += "<i class='fa fa-caret-down hide_show_icon'></i>";
-					legend_h5_title.prepend(hide_show_icon);
+						// Add hide_show_icon into h5 element
+						var hide_show_icon = "<i class='fa fa-times-circle' id='"+$(this_item).data('layer')+"' aria-hidden='true'></i>";
+							hide_show_icon += "<i class='fa fa-caret-down hide_show_icon'></i>";
+						legend_h5_title.prepend(hide_show_icon);
 
-					if ($(".map-legend-ul li").length){
-					 $('.map-legend-container').slideDown('slow');
-					}
-				}//typeof get_legend != "undefined"
+						if ($(".map-legend-ul li").length){
+						 $('.map-legend-container').slideDown('slow');
+						}
+					}//typeof get_legend != "undefined"
+
+				}
 
 			} //if has class active
 		}

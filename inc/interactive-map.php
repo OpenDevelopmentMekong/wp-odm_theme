@@ -93,8 +93,8 @@ class OpenDev_InteractiveMap {
                         echo '<ul class="categories">';
                           foreach( $terms_layer as $term ) {
                             $args_layer = array(
+                               'posts_per_page' => -1,
                                'post_type' => 'map-layer',
-                               'post_status' => 'publish',
                                'orderby'   => 'name',
                                'order'   => 'asc',
                                'tax_query' => array(
@@ -121,10 +121,8 @@ class OpenDev_InteractiveMap {
                                 $layer_items = "";
                                 $cat_layer_ul= "<ul class='cat-layers switch-layers'>";
                                     while ( $query_layer->have_posts() ) : $query_layer->the_post();
-                                        if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
                                             $count_items_of_main_cat++;
                                             $layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
-                                         }
                                     endwhile;
                                     // use reset postdata to restore orginal query
                                     wp_reset_postdata();
@@ -186,9 +184,9 @@ class OpenDev_InteractiveMap {
                 var resize_height_map_layer = window.innerHeight - $("#od-head").height()  - 73 + "px";*/
 
                 // Page is scrollable
-                var resize_height_map_container = window.innerHeight - 160 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight - 175 + "px";
-                var resize_height_map_layer = window.innerHeight - 215+ "px";
+                var resize_height_map_container = window.innerHeight - 135 + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight - 150 + "px";
+                var resize_height_map_layer = window.innerHeight - 190+ "px";
                 var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -35 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
