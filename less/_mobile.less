@@ -76,11 +76,23 @@
 		}
 	}
 
-  @media (min-device-width: 320px) and (max-device-width: 370px) {
+  @media (min-device-width: 320px) and (max-device-width: 369px) {
     #od-head {
       .side-title {
         line-height: 0 !important;
         margin-top: @xsmall-padd !important;
+      }
+    }
+    .social {
+      padding: 0;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-device-width: 370px) and (max-device-width: 480px) {
+    #od-head {
+      .side-title {
+        line-height: 38px !important;
       }
     }
     .social {
