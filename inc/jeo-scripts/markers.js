@@ -1,9 +1,7 @@
 (function($) {
 
 	jeo.createCallback('markerCentered');
-
 	var markers = function(map) {
-
 		if(map.conf.disableMarkers || map.conf.admin)
 			return false;
 
@@ -51,9 +49,9 @@
 			} else {
 				parentLayer = new L.layerGroup();
 			}
-
-			map.addLayer(parentLayer);
-
+			if(map.conf.news_markers){
+					map.addLayer(parentLayer);
+			}
 			layer = L.geoJson(geojson, {
 				pointToLayer: function(f, latLng) {
 
@@ -106,7 +104,7 @@
 
 			map._markers = features;
 			map._markerLayer = parentLayer;
-
+			map.conf.markerLayer = parentLayer;
 			layer = parentLayer;
 
 			jeo.runCallbacks('markersReady', [map]);
@@ -163,6 +161,16 @@
 
 			}
 
+		};
+
+		markers.toggle_news_markers = function(icon_option) {
+			if(icon_option == true){
+						map.addLayer(parentLayer);
+						map.addLayer(layer);
+			}else {
+						map.removeLayer(parentLayer);
+						map.removeLayer(layer);
+			}
 		};
 
 		markers.getMarker = function(markerID) {
@@ -475,5 +483,23 @@
 	jeo.createCallback('markersReady');
 	jeo.createCallback('markerClicked');
 	jeo.createCallback('markerOpened');
+
+	//Add option to show and hide news markers
+	jeo.markersReady(function(map) {
+		var marker_layer = map._markerLayer;
+		var $news_marker = $('.interactive-map .interactive-map-layers input.news-marker-toggle');
+		if($news_marker.is(':checked')){
+				map.addLayer(marker_layer);
+		}else{
+				map.removeLayer(marker_layer);
+		}
+		$news_marker.on('click', function() {
+			 if($news_marker.is(':checked')){
+						map.addLayer(marker_layer);
+			 }else{
+						map.removeLayer(marker_layer);
+			 }
+		});
+	});
 
 })(jQuery);
