@@ -47,11 +47,12 @@
 
 				$('body').removeClass('map-fullscreen');
 				container.removeClass('fullscreen-map');
-
+				$(".baselayer-container").removeClass('fullscreen-map');
 			} else {
 
 				$('body').addClass('map-fullscreen');
 				container.addClass('fullscreen-map');
+				$(".baselayer-container").addClass('fullscreen-map');
 
 			}
 
