@@ -17,4 +17,11 @@
 	<?php endif; ?>
 	<?php do_action('jeo_map'); ?>
 </div>
-<script type="text/javascript">jeo(<?php echo jeo_map_conf(); ?>);</script>
+<?php
+	//$map_conf = jeo_get_map_data(get_the_ID());
+	$map_conf = jeo_get_map_conf();
+	$map_conf['news_markers'] = false; //show if true
+?>
+<script type="text/javascript">
+jeo(<?php echo json_encode($map_conf); ?>);
+</script>
