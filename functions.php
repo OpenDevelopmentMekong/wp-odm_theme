@@ -239,15 +239,8 @@ function odm_jeo_scripts()
          wp_deregister_script('jeo');
          wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
       }
-      if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.js')){
-         wp_deregister_script('leaflet');
-      	 wp_register_script('leaflet', get_stylesheet_directory_uri() . '/inc/jeo-scripts/leaflet.js', array(), '0.7.7');
-      }
-      if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.css')){
-         wp_deregister_style('leaflet');
-         wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/lib/jeo-scripts/leaflet.css');
-      }
-      if ( file_exists( STYLESHEETPATH . '/inc/js/fullscreen.js')){
+
+      if ( file_exists( STYLESHEETPATH . '/inc//jeo-scripts/fullscreen.js')){
          wp_deregister_script('jeo.fullscreen');
          wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
       }
@@ -275,22 +268,9 @@ add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
-			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
-
-//add_action( 'wp_print_scripts', 'deregister_script_and_style' ); //wp_print_scripts
-// function odm_jeo_admin_scripts()
-// {
-//     if (file_exists(get_stylesheet_directory().'/inc/js/filter-layers.js')) {
-//         wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
-//     }
-//
-//     if (file_exists(get_stylesheet_directory().'/inc/js/baselayer.js')) {
-//         wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
-//     }
-// }
-// add_action('admin_enqueue_scripts', 'odm_jeo_admin_scripts');
 
 function odm_styles()
 {
