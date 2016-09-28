@@ -84,8 +84,8 @@ function display_map_layer_sidebar_and_legend_box($layers){
 					}
 				echo "</ul>";
 				echo '<div class="news-marker">';
-				echo '<label><input class="news-marker-toggle" type="checkbox" value="1"/>';
-				 	echo '<span class="label">'.__("Hide news icons", "opendev")."</span>";
+				echo '<label><input class="news-marker-toggle" type="checkbox" />';
+				 	echo '<span class="label">'.__("Show news on map", "opendev")."</span>";
 				echo '</label>';
 				echo '</div>';
 			echo '</div>'; //interactive-map-layers dropdown

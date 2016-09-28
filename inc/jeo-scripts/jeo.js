@@ -6,6 +6,7 @@ var overbaselayers_object = {};
 var overbaselayers_cartodb = {};
 var overlayers_cartodb = [];
 var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
+var marker_layer;
 detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
@@ -76,16 +77,16 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
   if(!conf.containerID)
    conf.containerID = 'map_' + conf.postID + '_' + conf.count;
-
   var map_id = conf.containerID;
-
+  if(conf.news_markers){
+    conf.news_markers = conf.news_markers
+  }
   // use mapbox map for more map resources
   map = L.mapbox.map(map_id, null, options);
   globalmap = map;
 
   if(conf.mainMap)
    jeo.map = map;
-
   /*
    * DOM settings
    */
@@ -97,7 +98,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    if(!$('body').hasClass('displaying-map'))
     $('body').addClass('displaying-map');
   }
-
   // store conf
   map.conf = conf;
 
@@ -105,15 +105,16 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   map.map_id = map_id;
   if(conf.postID)
    map.postID = conf.postID;
+
   // Defaul Baselayers
   default_baselayer = conf.layers[0];
-
   jeo.loadLayers(map, jeo.parse_layer(map, default_baselayer));
 
   // set bounds
   if(conf.fitBounds instanceof L.LatLngBounds)
    map.fitBounds(conf.fitBounds);
 
+   conf.disable_mousewheel = false;
    if(conf.disable_mousewheel == false){
      conf.disableHandlers = false;
    }
@@ -149,14 +150,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    */
   if(map.conf.geocode)
    map.addControl(new jeo.geocode());
-
-  /*
-   * Filter layers
-   */
-  //if(map.conf.filteringLayers)
-   //map.addControl(new jeo.filterLayers());
-
-
   /*
    * CALLBACKS
    */
@@ -481,7 +474,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
  jeo.parseConf = function(conf) {
   var newConf = $.extend({}, conf);
-
   newConf.server = conf.server;
 
   if(conf.conf)
@@ -503,74 +495,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
       newConf.layers.push(_.clone(layer));
     //  newConf.baselayers[0] = layer;
     }
-    /*if(layer.filtering == 'switch') {
-     if(detect_lang_site == "en-US"){
-        var switchLayer = {
-         ID: layer.ID,
-         title: layer.title,
-         tile_url: layer.tile_url,
-         mapbox_id: layer.mapbox_id,
-         content: layer.post_content,
-         excerpt: layer.excerpt,
-         map_category: layer.map_category,
-         download: layer.download_url,
-         profilepage: layer.profilepage_url,
-         legend: layer.legend
-        };
-     }else{
-        var switchLayer = {
-         ID: layer.ID,
-         title: layer.title,
-         tile_url: layer.tile_url,
-         mapbox_id: layer.mapbox_id,
-         content: layer.post_content,
-         excerpt: layer.excerpt,
-         map_category: layer.map_category,
-         download: layer.download_url_localization,
-         profilepage: layer.profilepage_url_localization,
-         legend: layer.legend_localization
-        };
-    }
-
-    if(layer.hidden){
-         switchLayer.hidden = true;
-    }
-    newConf.filteringLayers.switchLayers.push(switchLayer);
-   }
-   if(layer.filtering == 'swap') {
-      if(detect_lang_site == "en-US"){
-          var swapLayer = {
-           ID: layer.ID,
-           title: layer.title,
-           tile_url: layer.tile_url,
-           mapbox_id: layer.mapbox_id,
-           content: layer.post_content,
-           excerpt: layer.excerpt,
-           download: layer.download_url,
-           profilepage: layer.profilepage_url,
-           legend: layer.legend
-          };
-      }else{
-        var swapLayer = {
-         ID: layer.ID,
-         title: layer.title,
-         tile_url: layer.tile_url,
-         mapbox_id: layer.mapbox_id,
-         content: layer.post_content,
-         excerpt: layer.excerpt,
-         download: layer.download_url_localization,
-         profilepage: layer.profilepage_url_localization,
-         legend: layer.legend_localization
-        };
-      }
-
-    if(layer.first_swap)
-     swapLayer.first = true;
-    newConf.filteringLayers.swapLayers.push(swapLayer);
-   }
-   */
-
-
   });
 
   newConf.center = [parseFloat(conf.center.lat), parseFloat(conf.center.lon)];
