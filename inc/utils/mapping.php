@@ -1,11 +1,15 @@
 <?php
 // get baselayer Navigation
 function display_baselayer_navigation($num=5, $cat='base-layers', $include_children=false ){
-	$base_layer_posts = query_get_baselayer_posts();
-	if($base_layer_posts){
+	$selected_baselayer = $GLOBALS['extended_jeo_layers']->get_map_layers(get_the_ID(), "baselayer");
+	$selected_baselayer_obj = json_decode(json_encode($selected_baselayer));
+
+	$get_all_baselayers = query_get_baselayer_posts();
+	$baselayer_posts = $selected_baselayer ? $selected_baselayer_obj : $get_all_baselayers;
+	if($baselayer_posts){
 		echo '<div class="baselayer-container box-shadow">';
 		echo '<ul class="baselayer-ul">';
-		foreach ( $base_layer_posts as $baselayer ) :
+		foreach ( $baselayer_posts as $baselayer ) :
 			setup_postdata( $baselayer ); ?>
 			<li class="baselayer" data-layer="<?php echo $baselayer->ID; ?>">
 				<?php if ( has_post_thumbnail($baselayer->ID) ) { ?>
@@ -42,7 +46,8 @@ function query_get_baselayer_posts($num=5, $cat='base-layers', $include_children
 							  'taxonomy' => 'layer-category',
 							  'field' => 'slug',
 							  'terms' => $cat,
-							  'include_children' => $include_children
+							  'include_children' => $include_children,
+								'operator' => 'IN'
 							)
 						  )
 						);
@@ -374,9 +379,7 @@ function get_post_meta_of_layer($post_ID, $layer_option = false){
 
 //List all layers' value into an array by post ID
 function get_selected_layers_of_map_by_mapID($map_ID) {
-	if ($map_ID == "" ){
-		$map_ID = get_the_ID();
-	}
+	$map_ID = $map_ID ? $map_ID : get_the_ID();
 
 	$get_basemap = get_post_meta($map_ID, 'map_data', true);
 	if(!empty($get_basemap)){
@@ -399,7 +402,7 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 					$layers[0] = $base_map;
 			}
 	}
-	$get_layers = $GLOBALS['jeo_layers']->get_map_layers($map_ID); //called from parent theme
+	$get_layers = $GLOBALS['extended_jeo_layers']->get_map_layers($map_ID, "layer");
 
 	if(!empty($get_layers)){
 		foreach ($get_layers as $key => $layer) {
@@ -408,7 +411,7 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 			$layer_postmeta['filtering'] = $layer['filtering'];
 			$layer_postmeta['hidden'] = $layer['hidden']==""? 1: $layer['hidden'];
 			$layer_postmeta['first_swap'] = $layer['first_swap'];
- 		    $layers[$layer_ID] = $layer_postmeta;
+		    $layers[$layer_ID] = $layer_postmeta;
 		}//foreach
 	}
 	return $layers;
