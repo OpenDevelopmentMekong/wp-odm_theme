@@ -7,9 +7,6 @@
 			$(this).siblings(".layer-toggle-info").removeClass('show_it');
 		});
 
-		$('.news-marker label').on( "click", '.news-marker-toggle', function(e){
-			$('.leaflet-marker-icon').toggle();
-		});
 
 		//Hide and show on click the collapse and expend icon
 		$(document).on('click',".hide_show_container h2 > .hide_show_icon, .hide_show_container h5 > .hide_show_icon", function (e) {
@@ -230,12 +227,6 @@
 			 }
 		  }
 		});
-
-		if ($('input.news-marker-toggle').is(':checked')) {
-				$('#map_embed').find('.leaflet-marker-icon').toggle();
-		}else{
-			$('.leaflet-marker-icon').show();
-		}
 
 	}); //	jeo.mapReady
 
