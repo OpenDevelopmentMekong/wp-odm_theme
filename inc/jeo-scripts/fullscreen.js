@@ -37,6 +37,7 @@
 		toggle: function() {
 
 			var container;
+			var frame = window.frameElement;
 
 			if(this._map.$.parents('.content-map').length)
 				container = this._map.$.parents('.content-map');
@@ -44,15 +45,25 @@
 				container = this._map.$.parents('.map-container');
 
 			if(container.hasClass('fullscreen-map')) {
-
 				$('body').removeClass('map-fullscreen');
 				container.removeClass('fullscreen-map');
 				$(".baselayer-container").removeClass('fullscreen-map');
+				if (frame) {
+						frame.id = "";
+				}
 			} else {
-
 				$('body').addClass('map-fullscreen');
 				container.addClass('fullscreen-map');
 				$(".baselayer-container").addClass('fullscreen-map');
+
+				if (frame) {
+						frame.id = "iframe-fullscreen-map";
+				}
+
+				/*if ( self !== top ) {
+
+				}else{
+				}*/
 
 			}
 
