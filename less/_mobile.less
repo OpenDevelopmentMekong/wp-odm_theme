@@ -1,5 +1,8 @@
 /* Largest Mobile Screen */
 @media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  #od-head {
+    margin-top: 33px;
+  }
 	#od-selector {
 		height: auto;
 		padding: 0;
@@ -87,7 +90,7 @@
 	#od-head {
 		h1 {
 			font-size: 26px;
-			letter-spacing: -3px;
+			letter-spacing: -2px;
 			sup {
 				top: -7px;
 			}
@@ -113,29 +116,40 @@
 }
 
 /* Small Mobile Screen */
-@media screen and (min-device-width: 360px) and (max-device-width: 480px) {
+@media screen and (min-device-width: 361px) and (max-device-width: 480px) {
   #od-head {
     .side-title {
       line-height: 38px !important;
     }
   }
-
-  .social {
-    padding: 0;
-    margin-top: 0;
-  }
 }
 
 /* Smallest Mobile Screen */
-@media (max-device-width: 369px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 360px) {
   #od-head {
-    .side-title {
-      line-height: 0 !important;
-      margin-top: @xsmall-padd !important;
-    }
-  }
-  .social {
     padding: 0;
-    margin-top: 0;
+    #icon-od-logo {
+      .svg-od-logo {
+        width: 37px;
+      }
+    }
+    h1 {
+      margin: 10px 10px 0 0;
+      font-size: 24px;
+    }
+    h2.side-title {
+      line-height: 40px;
+      font-size: 15px;
+    }
+    .social {
+      padding: 0;
+      margin-top: 0;
+      right: 0;
+      top: 0;
+      position: absolute;
+      i {
+        font-size: 5px;
+      }
+    }
   }
 }
