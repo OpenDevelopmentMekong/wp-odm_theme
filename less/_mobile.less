@@ -57,8 +57,26 @@
   }
 }
 
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+	#od-head {
+		h1 {
+	    margin: 10px 10px 0 0;
+		}
+		.social {
+      padding: 0;
+      margin-top: 0;
+      right: 0;
+      top: 0;
+      position: absolute;
+      i {
+        font-size: 15px;
+      }
+    }
+	}
+}
+
 /* Large Mobile Screen - Change Menu Style */
-@media screen and (min-device-width: 360px) and (max-device-width: 650px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 650px) {
 	#content {
 		.post-content {
 			iframe {
@@ -87,6 +105,10 @@
 		h1 {
 			font-size: 38px;
 		}
+		h2.side-title {
+			font-size: 22px;
+			line-height: 45px;
+		}
 	}
 }
 
@@ -114,6 +136,14 @@
   }
 }
 
+@media screen and (min-device-width: 480px) and (max-device-width: 550px) {
+	#od-head {
+		h2.side-title {
+			line-height: 38px;
+		}
+	}
+}
+
 @media only screen and (max-device-width: 480px) {
   .hideOnMobile {
     display: none;
@@ -121,16 +151,17 @@
 }
 
 /* Small Mobile Screen */
-@media screen and (min-device-width: 361px) and (max-device-width: 480px) {
+@media screen and (min-device-width: 370px) and (max-device-width: 480px) {
   #od-head {
-    .side-title {
-      line-height: 38px !important;
+		padding: 0;
+    h2.side-title {
+      line-height: 39px;
     }
   }
 }
 
 /* Smallest Mobile Screen */
-@media screen and (min-device-width: 320px) and (max-device-width: 360px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 370px) {
   #od-head {
     padding: 0;
     #icon-od-logo {
@@ -139,22 +170,11 @@
       }
     }
     h1 {
-      margin: 10px 10px 0 0;
       font-size: 24px;
     }
     h2.side-title {
       line-height: 40px;
-      font-size: 15px;
-    }
-    .social {
-      padding: 0;
-      margin-top: 0;
-      right: 0;
-      top: 0;
-      position: absolute;
-      i {
-        font-size: 15px;
-      }
+      font-size: 16px;
     }
   }
 }
