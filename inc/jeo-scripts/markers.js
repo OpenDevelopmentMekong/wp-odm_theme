@@ -487,11 +487,13 @@
 	//Add option to show and hide news markers
 	jeo.markersReady(function(map) {
 		var marker_layer = map._markerLayer;
-		var $news_marker = $('.interactive-map .interactive-map-layers input.news-marker-toggle');
-		if($news_marker.is(':checked')){
-				map.addLayer(marker_layer);
-		}else{
-				map.removeLayer(marker_layer);
+		var $news_marker = $('.interactive-map .interactive-map-layers input.news-marker-toggle'); 
+		if($news_marker.length > 0){
+			if($news_marker.is(':checked')){
+					map.addLayer(marker_layer);
+			}else{
+					map.removeLayer(marker_layer);
+			}
 		}
 		$news_marker.on('click', function() {
 			 if($news_marker.is(':checked')){
