@@ -33,7 +33,6 @@
 		//Drag Drop to change zIndex of layers
 		$( ".map-legend-ul" ).sortable({
 			stop: function (event, ui) {
-				//var layer_Id = $(ui.item).attr('id');
 			   $($(".map-legend-ul > li").get().reverse()).each(function (index) {
 					var layer_Id = $(this).attr('id');
 					jeo.bringLayerToFront(layer_Id, index);
@@ -112,33 +111,7 @@
 				if( all_layers_legends && all_layers_legends[get_layer_id]){
 					var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
 					if( typeof get_legend != "undefined"){
-						var legend_li = '<li class="legend-list hide_show_container '+$(this_item).data('layer')+'" id ='+$(this_item).data('layer')+'>'+ get_legend +'</li>';
-
-						$('.map-legend-ul').prepend(legend_li);
-
-						// Add class title to the legend title
-						var legend_h5 = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
-						if (legend_h5.length === 0){
-						var h5_title = '<h5>'+ $(this_item).children('.layer-item-name').text()+ '</h5>';
-						$( ".map-legend-ul ."+$(this_item).data('layer')+" .legend").first().prepend(h5_title);
-						}
-						var legend_h5_title = $( ".map-legend-ul ."+$(this_item).data('layer')+" h5" );
-						legend_h5_title.addClass("title");
-
-						// Add class dropdown to the individual legend box
-						legend_h5_title.siblings().addClass( "dropdown" );
-
-						//dropdown legen auto show
-						$( ".map-legend-ul ."+$(this_item).data('layer')+" .dropdown").show();
-
-						// Add hide_show_icon into h5 element
-						var hide_show_icon = "<i class='fa fa-times-circle' id='"+$(this_item).data('layer')+"' aria-hidden='true'></i>";
-							hide_show_icon += "<i class='fa fa-caret-down hide_show_icon'></i>";
-						legend_h5_title.prepend(hide_show_icon);
-
-						if ($(".map-legend-ul li").length){
-						 $('.map-legend-container').slideDown('slow');
-						}
+						display_layer_legen($(this_item).data('layer'), get_legend);
 					}//typeof get_legend != "undefined"
 
 				}
@@ -231,3 +204,86 @@
 	}); //	jeo.mapReady
 
 })(jQuery);
+
+function display_layer_legen (layer_ID, legend_content) {
+		var legend_li = '<li class="legend-list hide_show_container '+layer_ID+'" id ='+layer_ID+'>'+ legend_content +'</li>';
+		$('.map-legend-ul').prepend(legend_li);
+
+		// Add class title to the legend title
+		var legend_h5 = $( ".map-legend-ul ."+layer_ID+" h5" );
+		if (legend_h5.length === 0){
+			var h5_title = '<h5>'+ $(this_item).children('.layer-item-name').text()+ '</h5>';
+			$( ".map-legend-ul ."+layer_ID+" .legend").first().prepend(h5_title);
+		}
+		var legend_h5_title = $( ".map-legend-ul ."+layer_ID+" h5" );
+		legend_h5_title.addClass("title");
+
+		// Add class dropdown to the individual legend box
+		legend_h5_title.siblings().addClass( "dropdown" );
+
+		//dropdown legen auto show
+		$( ".map-legend-ul ."+layer_ID+" .dropdown").show();
+
+		// Add hide_show_icon into h5 element
+		var hide_show_icon = "<i class='fa fa-times-circle' id='"+layer_ID+"' aria-hidden='true'></i>";
+			hide_show_icon += "<i class='fa fa-caret-down hide_show_icon'></i>";
+		legend_h5_title.prepend(hide_show_icon);
+
+		if ($(".map-legend-ul li").length){
+		 $('.map-legend-container').slideDown('slow');
+		}
+}
+
+function cartodb_timeslider_init(torqueLayer, layer_ID) {
+		var legend_added = $('.map-legend-ul').has('.'+layer_ID);
+		var torque_container_class = "torque-container-"+layer_ID;
+		var torque_container = '<div class="'+torque_container_class+'" id ="torque-container">';
+				torque_container += '<a id="torque-pause" class=""></a>';
+				torque_container +='<div id="torque-slider"></div>';
+				torque_container += '<div id ="torque-time"></div>';
+				torque_container +=	'</div>';
+				console.log(legend_added);
+		if(legend_added.length > 0) {
+			$('.map-legend-ul .legend-list.'+layer_ID +" .legend .dropdown").append(torque_container);
+		}else{
+			var h5_title = '<h5>'+ $("#post-"+layer_ID).children('.layer-item-name').text()+ '</h5>';
+
+			var	legend_content = '<div class="legend">';
+					legend_content += h5_title;
+					legend_content += '<div class="legend-title dropdown">';
+					legend_content += torque_container;
+					legend_content += '</div></div>';
+		 			display_layer_legen(layer_ID, legend_content);
+		}
+
+	  $("."+torque_container_class+" #torque-slider").slider({
+	      min: 0,
+	      max: torqueLayer.options.steps,
+	      value: 0,
+	      step: 1,
+	      slide: function(event, ui){
+	        var step = ui.value;
+	        torqueLayer.setStep(step);
+	      }
+	  });
+
+	  // each time time changes, move the slider
+
+	  torqueLayer.on('change:time', function(changes) {
+	    $("."+torque_container_class+" #torque-slider" ).slider({ value: changes.step });
+			if (changes.step === torqueLayer.provider.getSteps() - 1) {
+          torqueLayer.pause();
+			    $("."+torque_container_class+" #torque-pause").toggleClass('playing');
+      }
+			var month_day_year = changes.time.toString().substr(4).split(' ');
+			$("."+torque_container_class+" #torque-time" ).text(month_day_year[1]+"/"+month_day_year[0]+"/"+month_day_year[2]);
+	  });
+	  // play-pause toggle
+		$("."+torque_container_class+" #torque-pause").toggleClass('playing');
+	  $("."+torque_container_class+" #torque-pause").click(function(){
+	    torqueLayer.toggle();
+	    $(this).toggleClass('playing');
+	  });
+
+		$("div.cartodb-timeslider").hide();
+	};
