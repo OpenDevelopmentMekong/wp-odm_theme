@@ -93,6 +93,10 @@
 				background: #fff !important;
 		}
 
+		.cartodb-timeslider{
+			display: none !important;
+		}
+
 	}
 
 	.category-map-layers{
@@ -490,7 +494,47 @@
 					height: auto!important;
 					text-decoration: none;
 				}
+
+				#torque-container {
+			    display: inline-block;
+			    width: 100%;
+				}
+				#torque-time {
+			    float: left;
+			    margin-left: 25px;
+				}
+				#torque-slider {
+			    width: 83%;
+    			margin: 2px 0 2px 10px;
+			    float: left;
+
+					&:hover{
+						cursor: pointer;
+					}
+				}
+
+				#torque-pause {
+					width: 15px;
+			    height: 15px;
+			    z-index: 1000;
+			    border-radius: 3px;
+			    cursor: pointer;
+			    background-color: @light-gray;
+			    background-image: url(../../img/play.png);
+			    background-repeat: no-repeat;
+			    background-position: center;
+			    float: left;
+    			padding: 1px 2px 1px;
+    			margin-top: -1px;
 			}
+
+				#torque-pause.playing {
+					padding: 0;
+    			margin: 1px 2px;
+			    background-color: @white;
+				  background-image: url(../../img/pause.png);
+				}
+			} /*li*/
 		}/*.map-legend-ul*/
 	}/*.map-legend*/
 } /*.map-legend-container*/
