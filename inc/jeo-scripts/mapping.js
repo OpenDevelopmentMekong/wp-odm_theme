@@ -245,7 +245,7 @@ function cartodb_timeslider_init(torqueLayer, layer_ID) {
 				console.log(legend_added);
 		if(legend_added.length > 0) {
 			$('.map-legend-ul .legend-list.'+layer_ID +" .legend .dropdown").append(torque_container);
-		}else{ 
+		}else{
 			var h5_title = '<h5>'+ $("#post-"+layer_ID).children('.layer-item-name').text()+ '</h5>';
 
 			var	legend_content = '<div class="legend">';
@@ -272,7 +272,7 @@ function cartodb_timeslider_init(torqueLayer, layer_ID) {
 	  torqueLayer.on('change:time', function(changes) {
 	    $("."+torque_container_class+" #torque-slider" ).slider({ value: changes.step });
 			if (changes.step === torqueLayer.provider.getSteps() - 1) {
-          torqueLayer.stop();
+          torqueLayer.pause();
 			    $("."+torque_container_class+" #torque-pause").toggleClass('playing');
       }
 			var month_day_year = changes.time.toString().substr(4).split(' ');
