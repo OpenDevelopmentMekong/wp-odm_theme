@@ -235,17 +235,17 @@ function display_layer_legen (layer_ID, legend_content) {
 }
 
 function cartodb_timeslider_init(torqueLayer, layer_ID) {
-		var legend_added = $(".map-legend-ul").hasClass(".legend-list."+layer_ID);
+		var legend_added = $('.map-legend-ul').has('.'+layer_ID);
 		var torque_container_class = "torque-container-"+layer_ID;
 		var torque_container = '<div class="'+torque_container_class+'" id ="torque-container">';
 				torque_container += '<a id="torque-pause" class=""></a>';
 				torque_container +='<div id="torque-slider"></div>';
 				torque_container += '<div id ="torque-time"></div>';
 				torque_container +=	'</div>';
-
-		if(legend_added){
+				console.log(legend_added);
+		if(legend_added.length > 0) {
 			$('.map-legend-ul .legend-list.'+layer_ID +" .legend .dropdown").append(torque_container);
-		}else{
+		}else{ 
 			var h5_title = '<h5>'+ $("#post-"+layer_ID).children('.layer-item-name').text()+ '</h5>';
 
 			var	legend_content = '<div class="legend">';
