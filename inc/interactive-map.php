@@ -117,8 +117,8 @@ class OpenDev_InteractiveMap {
                             $query_layer = new WP_Query( $args_layer );
                             $count_items_of_main_cat = 0;
                             $main_category_li = '<li class="cat-item cat-item-'.get_the_ID().'" id="post-'.get_the_ID().'"><a href="#">'.$term->name.'</a>';
+                            $layer_items = "";
                             if($query_layer->have_posts() ){
-                                $layer_items = "";
                                 $cat_layer_ul= "<ul class='cat-layers switch-layers'>";
                                     while ( $query_layer->have_posts() ) : $query_layer->the_post();
                                             $count_items_of_main_cat++;
