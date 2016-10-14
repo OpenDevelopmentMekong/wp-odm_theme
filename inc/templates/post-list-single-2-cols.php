@@ -29,8 +29,7 @@
 						?>
 
 						<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>">
-							<?php echo $post_type->labels->name ?>
-						</a>
+							<?php echo $post_type->labels->name ?></a>
 					<?php
 					endif; ?>
 
