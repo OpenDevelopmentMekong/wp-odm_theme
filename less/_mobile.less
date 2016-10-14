@@ -32,37 +32,8 @@ and (orientation : portrait) {
 		.eight.columns {
 			  width: 50%;
 		}
-		#country-select-dropdown {
-			display:inline-block !important;
-			cursor: pointer;
-			color: #fff;
-		    position: absolute;
-		    top: 6px;
-		}
-		ul {
-      padding-right: 3px !important;
-      padding-left: 3px !important;
-      li {
-        padding-right: 3px !important;
-        padding-left: 3px !important;
-      }
-			&.country-selector {
-				position: relative;
-				li {
-					float: none;
-					&:not(.active-country) {
-						display:none;
-					}
-				}
 
-				&.showall {
-					li {
-						display:block;
-						line-height: 2em;
-					}
-				}
-			}
-		}
+
     #qtranslate-chooser {
       position: absolute;
       right: 0;
@@ -91,6 +62,39 @@ and (orientation : portrait) {
       }
     }
 	}
+  #od-selector {
+    #country-select-dropdown {
+      display:inline-block !important;
+      cursor: pointer;
+      color: #fff;
+        position: absolute;
+        top: 6px;
+    }
+    ul {
+      padding-right: 3px !important;
+      padding-left: 3px !important;
+      li {
+        padding-right: 3px !important;
+        padding-left: 3px !important;
+      }
+			&.country-selector {
+				position: relative;
+				li {
+					float: none;
+					&:not(.active-country) {
+						display:none;
+					}
+				}
+
+				&.showall {
+					li {
+						display:block;
+						line-height: 2em;
+					}
+				}
+			}
+		}
+  }
 }
 
 /* Large Mobile Screen - Change Menu Style */
