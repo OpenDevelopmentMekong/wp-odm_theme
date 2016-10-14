@@ -28,7 +28,8 @@
 						$post_type = get_post_type_object($post_type_name);
 						?>
 
-						<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>"> <?php echo $post_type->labels->name ?></a>
+						<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>">
+							<?php echo $post_type->labels->name ?></a>
 					<?php
 					endif; ?>
 
