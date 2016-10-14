@@ -177,12 +177,14 @@ class OpenDev_InteractiveMap {
             jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
 
             (function($) {
-
-                // Page is scrollable
-                var resize_height_map_container = window.innerHeight - 140 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight - 175 + "px";
-                var resize_height_map_layer = window.innerHeight - 212+ "px";
-                var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -35 + "px";
+                var adminbar = 0;
+                if($('body').hasClass("admin-bar")){
+                  adminbar = 35;
+                } 
+                var resize_height_map_container = window.innerHeight - adminbar -140 + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight  - adminbar - 178 + "px";
+                var resize_height_map_layer = window.innerHeight  - adminbar - 215+ "px";
+                var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
                 $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
