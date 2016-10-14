@@ -83,7 +83,7 @@ function display_map_layer_sidebar_and_legend_box($layers){
 				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
 			echo '</h2>';
 			echo '<div class="interactive-map-layers dropdown">';
-				echo "<ul class='cat-layers switch-layers'>";
+				echo "<ul class='cat-layers switch-layers cat-layer-items'>";
 					foreach ($layers as $id => $layer) {
 						display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
 					}
@@ -101,6 +101,19 @@ function display_map_layer_sidebar_and_legend_box($layers){
 
 		//show layer information
     display_layer_information($layers);
+		?>
+		<script type="text/javascript">
+		(function($) {
+				// Resize height of layer menu
+				var resize_height_map_category = $('.map-container').height() - 120 + "px";
+
+				$(".category-map-layers .cat-layer-items").css("max-height", resize_height_map_category);
+				$(window).resize(function() {
+						$(".category-map-layers .cat-layer-items").css("max-height", resize_height_map_category);
+				});
+		})(jQuery);
+		</script>
+		<?php
 	}
 }
 
