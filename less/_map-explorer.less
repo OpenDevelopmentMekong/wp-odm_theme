@@ -40,6 +40,7 @@
 .baselayer-container.fullscreen-map{
 	top: 5px;
 	left: 5px;
+	right: auto;
 }
 .interactive-map {
 	border: 0;
@@ -97,6 +98,60 @@
 			display: none !important;
 		}
 
+		.leaflet-popup-content-wrapper {
+	    background: #fff;
+	    -webkit-box-shadow: 0 0 0 4px rgba(0,0,0,.15);
+	    border-radius: 2px;
+
+			.leaflet-popup-content {
+  			max-width: 250px;
+  			margin: 2px;
+    		padding-top: 10px;
+			}
+		}
+
+		.leaflet-popup-tip-container {
+	    width: 22px;
+	    height: 20px;
+
+			.leaflet-popup-tip {
+				width: 0;
+		    margin: 0;
+		    top: -35px;
+		    height: 44px;
+				left: 3px;
+				margin: 0;
+				border-right: 15px solid #fff;
+				border-bottom: 15px solid transparent;
+				box-shadow: none;
+				position: relative;
+				background: none;
+			}
+		}
+
+		.leaflet-popup-close-button {
+			right: -10px;
+			top: -10px;
+			width: 20px;
+			height: 20px;
+			background: none;
+			background-color: #fff;
+			-webkit-border-radius: 18px;
+			-moz-border-radius: 18px;
+			border-radius: 18px;
+			text-indent: 4px;
+			line-height: 12px;
+			box-shadow: 0 0 0 3px rgba(0,0,0,.15);
+			display: block!important;
+			opacity: 1;
+			color: @gray;
+
+			&:hover {
+    		box-shadow: 0 0 0 3px rgba(0,0,0,.25);
+				color: @black;
+			}
+		}
+
 	}
 
 	.category-map-layers{
@@ -125,6 +180,7 @@
 	.interactive-map-layers {
 		min-height: 100%; /* real browsers*/
 		width: 100%;
+		padding-bottom: 1px;
 		background: white;
 		overflow-y: auto;
 

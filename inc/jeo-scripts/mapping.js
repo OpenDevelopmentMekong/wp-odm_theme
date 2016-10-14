@@ -212,7 +212,7 @@ function display_layer_legen (layer_ID, legend_content) {
 		// Add class title to the legend title
 		var legend_h5 = $( ".map-legend-ul ."+layer_ID+" h5" );
 		if (legend_h5.length === 0){
-			var h5_title = '<h5>'+ $(this_item).children('.layer-item-name').text()+ '</h5>';
+			var h5_title = '<h5>'+ $("#post-"+layer_ID).children('.layer-item-name').text()+ '</h5>';
 			$( ".map-legend-ul ."+layer_ID+" .legend").first().prepend(h5_title);
 		}
 		var legend_h5_title = $( ".map-legend-ul ."+layer_ID+" h5" );
@@ -242,7 +242,7 @@ function cartodb_timeslider_init(torqueLayer, layer_ID) {
 				torque_container +='<div id="torque-slider"></div>';
 				torque_container += '<div id ="torque-time"></div>';
 				torque_container +=	'</div>';
-				console.log(legend_added);
+				
 		if(legend_added.length > 0) {
 			$('.map-legend-ul .legend-list.'+layer_ID +" .legend .dropdown").append(torque_container);
 		}else{
