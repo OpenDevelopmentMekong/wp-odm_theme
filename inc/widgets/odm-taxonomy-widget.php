@@ -152,8 +152,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
    </script>
 	<?php
 		echo $args['before_widget'];
-		if ( ! empty( $instance['od_title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', __( $instance['od_title'], 'odm' ) ). $args['after_title'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
 		}
 		if ( ! empty( $instance['od_include'] ) ) {
 			$cat_included_id_arr = explode(",", $instance['od_include']);
@@ -214,13 +214,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on
-		$title = ! empty( $instance['od_title'] ) ? $instance['od_title'] : 'Topic areas';
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : 'Topic areas';
 		$od_include = $instance['od_include'];
 		$od_exclude = $instance['od_exclude'];
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'od_title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'od_title' ); ?>" name="<?php echo $this->get_field_name( 'od_title' ); ?>" type="text" value="<?php _e( $title , 'odm' ); ?>">
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php _e( $title , 'odm' ); ?>">
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'od_include' ); ?>"><?php _e( 'Include Category by IDs (separated by commas):' ); ?></label>
@@ -246,7 +246,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		// processes widget options to be saved
 		$instance = array();
-		$instance['od_title'] = ( ! empty( $new_instance['od_title'] ) ) ? strip_tags( $new_instance['od_title'] ) : '';
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
 		$instance['od_include'] = $new_instance['od_include'] ;
 		$instance['od_exclude'] = $new_instance['od_exclude'] ;
