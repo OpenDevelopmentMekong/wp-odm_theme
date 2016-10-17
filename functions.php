@@ -113,7 +113,7 @@ function odm_setup_theme()
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Profile area sidebar left', 'odm'),
+    'name' => __('Profile area right sidebar', 'odm'),
     'id' => 'profile-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>'
@@ -134,6 +134,14 @@ function odm_setup_theme()
     'before_widget' => '',
     'after_widget'  => ''
   ));
+  register_sidebar(array(
+  'name' => __('Profile sub-page right sidebar', 'odm'),
+  'id' => 'profile-sub-page-sidebar',
+  'before_title' => '<h2 class="widget-title">',
+  'after_title' => '</h2>',
+  'before_widget' => '',
+  'after_widget'  => ''
+));
 
   include_once get_stylesheet_directory().'/inc/layers.php';
   include_once get_stylesheet_directory().'/inc/embed.php';
@@ -231,15 +239,8 @@ function odm_jeo_scripts()
          wp_deregister_script('jeo');
          wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
       }
-      if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.js')){
-         wp_deregister_script('leaflet');
-      	 wp_register_script('leaflet', get_stylesheet_directory_uri() . '/inc/jeo-scripts/leaflet.js', array(), '0.7.7');
-      }
-      if ( file_exists( STYLESHEETPATH . '/inc/js/leaflet.css')){
-         wp_deregister_style('leaflet');
-         wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/lib/jeo-scripts/leaflet.css');
-      }
-      if ( file_exists( STYLESHEETPATH . '/inc/js/fullscreen.js')){
+
+      if ( file_exists( STYLESHEETPATH . '/inc//jeo-scripts/fullscreen.js')){
          wp_deregister_script('jeo.fullscreen');
          wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
       }
@@ -267,22 +268,9 @@ add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
-			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/js/clearscreen.js', array('jeo'), '1.0.0');
+			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
-
-//add_action( 'wp_print_scripts', 'deregister_script_and_style' ); //wp_print_scripts
-// function odm_jeo_admin_scripts()
-// {
-//     if (file_exists(get_stylesheet_directory().'/inc/js/filter-layers.js')) {
-//         wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri().'/inc/js/clearscreen.js', array('jeo'), '1.0.0');
-//     }
-//
-//     if (file_exists(get_stylesheet_directory().'/inc/js/baselayer.js')) {
-//         wp_enqueue_script('jeo.baselayer', get_stylesheet_directory_uri().'/inc/js/baselayer.js', array('jeo'), '1.0.0');
-//     }
-// }
-// add_action('admin_enqueue_scripts', 'odm_jeo_admin_scripts');
 
 function odm_styles()
 {
@@ -434,37 +422,45 @@ add_action( 'pre_get_posts', 'odm_return_all_topics' );
 
 function odm_search_pre_get_posts($query)
 {
+  if(get_post_type()){
+    $post_type = $query->query['post_type'][0];
+  }else {
     if (!is_admin() && ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
       $query->set('post_type', available_post_types_search());
     }
+  }
+
 }
 add_action('pre_get_posts', 'odm_search_pre_get_posts');
 
 function odm_category_pre_get_posts($query)
 {
-    if ($query->is_category) {
-        $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
-        $query->set('post_type', array($post_type));
-    }
+  if(get_post_type()){
+    $post_type = $query->query['post_type'][0];
+  }else {
+      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
+  }
+  if ($query->is_category && isset($post_type)) {
+      $query->set('post_type', array($post_type));
+  }
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
 
 function odm_posts_clauses_join($join)
 {
     global $wpdb;
-
-    $join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
-
+    if (get_post_type() == 'map' && get_post_type() == 'map-group'){
+      $join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
     return $join;
+    }
 }
-//add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
+add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
 
 function odm_posts_clauses_where($where)
 {
+  if (get_post_type() == 'map' && get_post_type() == 'map-group'){
     $map_id = jeo_get_map_id();
-
     $where = '';
-
      // MAP
      if (get_post_type($map_id) == 'map') {
          $where = " AND ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$map_id}' ) ";
@@ -490,14 +486,13 @@ function odm_posts_clauses_where($where)
 
                ++$i;
            }
-
            $where .= ' ) ';
        }
-   }
-
+     }
     return $where;
+  }
 }
-//add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
+  add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
 
 function odm_ignore_sticky($query)
 {

@@ -31,9 +31,6 @@
 		$conf = jeo_get_map_embed_conf();
 	endif;
 
-	//print_r(	 odm_get_interactive_map_data() );
-			$get_map_setting = odm_get_interactive_map_data();
-			$get_map_setting['disable_mousewheel'];
 	$obj_conf = json_decode($conf, true);
 	?>
 	<?php
@@ -85,23 +82,8 @@
 			});
 
 		})(jQuery);
-
-
-		$(document).ready(function(){
-			<?php if($obj_conf['map_only'] == true) { ?>
-					$('input.news-marker-toggle').prop('checked', false);
-			<?php }else {?>
-					$('input.news-marker-toggle').prop('checked', true);
-			<?php } ?>
-		});
+ 
 	</script>
-	<?php if($obj_conf['map_only']) { ?>
-		<style type="text/css">
-			#map_embed .leaflet-marker-icon{
-				display: block;
-			}
-		</style>
-	<?php }?>
 <?php wp_footer(); ?>
 </body>
 </html>

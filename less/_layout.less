@@ -2,7 +2,11 @@
 
 body{
   display: inline-table;
-  word-wrap: break-word;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 .clear, #clear{
@@ -146,6 +150,13 @@ body{
 	}
 
 }
+
+#homepage-area-3 {
+  .post-grid-item {
+    margin-bottom: @small-padd !important;
+  }
+}
+
 .grid-row {
   display: -ms-flex;
   display: -webkit-flex;
@@ -208,7 +219,7 @@ body{
 }
 
 .post-list-item {
-	margin-bottom: @small-padd;
+	margin-bottom: @xsmall-padd;
   //border-bottom: 1px solid @light-gray;
 
   &:nth-child(odd) {
@@ -219,7 +230,7 @@ body{
   }
 
   p {
-    margin-bottom: @small-padd;
+    margin-bottom: @xsmall-padd;
 
     &:first-child {
       margin-bottom: 0;
@@ -267,7 +278,7 @@ body{
 
 	.item-content {
     overflow: hidden;
-    padding: 0 0 @small-padd;
+    padding: 0 0 @xsmall-padd;
     display: table-cell;
 
     img {
@@ -323,7 +334,7 @@ body{
 
   li{
     list-style-type: none;
-    display: inline-block;
+    display: inline;
     margin-bottom: 0px;
   }
 
@@ -358,40 +369,11 @@ This query will take effect for any screen smaller than 760px
 and also iPads specifically.
 */
 @media
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+only screen and (max-width: 980px),
+(min-device-width: 768px) and (max-device-width: 980px)  {
 
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-
-	tr { border: 1px solid #ccc; }
-
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-
+}
+@media
+only screen and (max-width: 640px),
+(min-device-width: 320px) and (max-device-width: 640px)  {
 }

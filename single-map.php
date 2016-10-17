@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php require_once (STYLESHEETPATH ."/inc/mapping.php"); ?>
+<?php require_once (STYLESHEETPATH ."/inc/utils/mapping.php"); ?>
 <div class="interactive-map">
 	<?php jeo_map(); ?>
 	<?php

@@ -6,6 +6,7 @@ var overbaselayers_object = {};
 var overbaselayers_cartodb = {};
 var overlayers_cartodb = [];
 var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
+var marker_layer;
 detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
@@ -76,16 +77,16 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
   if(!conf.containerID)
    conf.containerID = 'map_' + conf.postID + '_' + conf.count;
-
   var map_id = conf.containerID;
-
+  if(conf.news_markers){
+    conf.news_markers = conf.news_markers
+  }
   // use mapbox map for more map resources
   map = L.mapbox.map(map_id, null, options);
   globalmap = map;
 
   if(conf.mainMap)
    jeo.map = map;
-
   /*
    * DOM settings
    */
@@ -97,7 +98,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    if(!$('body').hasClass('displaying-map'))
     $('body').addClass('displaying-map');
   }
-
   // store conf
   map.conf = conf;
 
@@ -105,15 +105,16 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   map.map_id = map_id;
   if(conf.postID)
    map.postID = conf.postID;
+
   // Defaul Baselayers
   default_baselayer = conf.layers[0];
-
   jeo.loadLayers(map, jeo.parse_layer(map, default_baselayer));
 
   // set bounds
   if(conf.fitBounds instanceof L.LatLngBounds)
    map.fitBounds(conf.fitBounds);
 
+   conf.disable_mousewheel = false;
    if(conf.disable_mousewheel == false){
      conf.disableHandlers = false;
    }
@@ -149,14 +150,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    */
   if(map.conf.geocode)
    map.addControl(new jeo.geocode());
-
-  /*
-   * Filter layers
-   */
-  //if(map.conf.filteringLayers)
-   //map.addControl(new jeo.filterLayers());
-
-
   /*
    * CALLBACKS
    */
@@ -252,113 +245,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
              };
          //geoserver_URL = "https://geoserver.opendevelopmentmekong.net/geoserver/wms";
          var pLayer = L.tileLayer.betterWms(geoserver_URL, options);
-         //var pLayer = L.tileLayer.wms(geoserver_URL, options);
-
-             /* var defaultParameters = {
-                 service: 'WFS',
-                 version: '1.0.0',
-                 request: 'GetFeature',
-                // bbox: this._map.getBounds().toBBoxString(),
-                 typeName : 'Testing:Test_mining',
-                 outputFormat : 'text/javascript',
-                 typeName : layer_name,
-                 format_options : 'callback:getJson',
-                 SrsName : 'EPSG:4326'
-             };
-             var parameters = L.Util.extend(defaultParameters);
-             var URL = geoserver_URL + L.Util.getParamString(parameters); */
-             //console.log(URL);
-
-             /*var WFSLayer = null;
-             var ajax = $.ajax({
-                 url : URL,
-                 dataType : 'jsonp',
-                 jsonpCallback : 'getJson',
-                 success : function (response) {
-                     WFSLayer = L.geoJson(response, {
-                         style: function (feature) {
-                             return {
-                                 stroke: false,
-                                 fillColor: 'FFFFFF',
-                                 fillOpacity: 0
-                             };
-                         },
-                         pointToLayer: function(feature, latlng) {
-                             return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.85});
-                         },
-                         onEachFeature: function (feature, layer) {
-                             popupOptions = {maxWidth: 400, maxHeight:200};
-                             var content = "";
-                             var count_properties = 0;
-                             var exclude = ["map_id","language","geo_type", "legal_documents", "land_utilization_plan", "published_status", "last_update", "last_updat"];
-                             for (var name in feature.properties) {
-                                 if ( $.inArray(name, exclude) == -1 ) {
-                                     var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
-                                     var field_value = feature.properties[name] ;
-                                     //if (field_value == "") field_value = "Not found";  //How about Khmer?
-                                     if (name != "map_id"){
-                                         if (count_properties == 1)
-                                              content = content + "<h5>"  + field_value + " </h5>";
-                                         else{
-                                             // Set the regex string
-                                              var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
-                                             // Replace plain text links by hyperlinks
-                                             if (regexp.test(field_value)){
-                                                 var field_url_value = field_value.split(";");
-                                                 console.log(field_url_value.length);
-                                                 var url_doc = "";
-                                                 for(var url =0; url < field_url_value.length; url++ ){
-                                                      url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
-                                                 }
-                                                 field_value = url_doc;
-                                             }
-
-                                             content = content + "<strong>" + field_name.replace("_", " ") + ": </strong>" + field_value + "<br>";
-                                         }
-
-                                     }
-                                     count_properties= count_properties + 1;
-                                 }//if exclude
-                             }; //for
-                             layer.bindPopup(content ,popupOptions);
-                             layer.on({
-                                 mouseover: function highlightFeature(e) {
-                                     var layer = e.target;
-
-                                     if (feature.geometry.type != "Point"){
-                                         layer.setStyle({
-                                             //fillColor: "yellow",
-                                             stroke: true,
-                                             color: "orange",
-                                             weight: 2,
-                                             opacity: 0.7,
-                                             fillOpacity: 0.2
-                                         });
-                                     }else {
-                                         layer.setStyle({
-                                             stroke: true,
-                                             color: "orange",
-                                             radius: 5,
-                                             weight: 4,
-                                             opacity: 0.7,
-                                             fillOpacity: 0.2
-                                         });
-                                     }
-
-                                     if (!L.Browser.ie && !L.Browser.opera) {
-                                         layer.bringToFront();
-                                     }
-                                 },
-                                 mouseout: function resetHighlight(e) {
-                                         WFSLayer.resetStyle(e.target);
-                                         //info.update();
-                                 }
-                             });
-                         }
-                     }).addTo(map);
-                     //map.fitBounds(WFSLayer.getBounds());
-                     }
-                 });*/ //var ajax = $.ajax
 
          if(layer.legend) {
               pLayer._legend = layer.legend;
@@ -382,12 +268,16 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
   var layer_index = 0;
   jeo.toggle_layers = function(map, layer ) {
-     if(map.hasLayer(overlayers[layer.ID]) ) {
+     if(map.hasLayer(overlayers[layer.ID]) ) {  //RemoveLayer title and wms layers
         map.removeLayer(overlayers[layer.ID]);
         $("#post-"+ layer.ID).removeClass('loading');
         $("#post-"+ layer.ID).toggleClass('active');
-     }else if( layer.ID in overlayers_cartodb ) {
-           overlayers_cartodb[layer.ID].toggle();
+     }else if(map.hasLayer(overlayers_cartodb[layer.ID])) { //RemoveLayer cartodb layer
+           if(overlayers_cartodb[layer.ID].type == "torque"){
+                map.removeLayer(overlayers_cartodb[layer.ID]);
+           }else{
+              overlayers_cartodb[layer.ID].toggle();
+           }
            $("#post-"+ layer.ID).removeClass('loading');
            $("#post-"+ layer.ID).toggleClass('active');
            var visible = $("#post-"+layer.ID).hasClass("active");
@@ -395,12 +285,16 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
                layer_index = layer_index + 1; //increate when the layer is actived
                jeo.bringLayerToFront(layer.ID, layer_index);
            }
-     }else {
+     }else { //Add layer
          layer_index = layer_index + 1; //increate when the layer is actived
          overlayers[layer.ID] = jeo.parse_layer(map, layer);
          if (layer.type == "cartodb" ){
             overlayers[layer.ID].addTo(map).on('done', function(lay) {
+
                  overlayers_cartodb[layer.ID]= lay;
+                 if(overlayers_cartodb[layer.ID].type == "torque"){
+                   cartodb_timeslider_init(lay, layer.ID);
+                 }
                  lay.setZIndex(layer_index);
                  setTimeout(function() {
                      $("#post-"+ layer.ID).removeClass('loading');
@@ -481,7 +375,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
  jeo.parseConf = function(conf) {
   var newConf = $.extend({}, conf);
-
   newConf.server = conf.server;
 
   if(conf.conf)
@@ -503,74 +396,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
       newConf.layers.push(_.clone(layer));
     //  newConf.baselayers[0] = layer;
     }
-    /*if(layer.filtering == 'switch') {
-     if(detect_lang_site == "en-US"){
-        var switchLayer = {
-         ID: layer.ID,
-         title: layer.title,
-         tile_url: layer.tile_url,
-         mapbox_id: layer.mapbox_id,
-         content: layer.post_content,
-         excerpt: layer.excerpt,
-         map_category: layer.map_category,
-         download: layer.download_url,
-         profilepage: layer.profilepage_url,
-         legend: layer.legend
-        };
-     }else{
-        var switchLayer = {
-         ID: layer.ID,
-         title: layer.title,
-         tile_url: layer.tile_url,
-         mapbox_id: layer.mapbox_id,
-         content: layer.post_content,
-         excerpt: layer.excerpt,
-         map_category: layer.map_category,
-         download: layer.download_url_localization,
-         profilepage: layer.profilepage_url_localization,
-         legend: layer.legend_localization
-        };
-    }
-
-    if(layer.hidden){
-         switchLayer.hidden = true;
-    }
-    newConf.filteringLayers.switchLayers.push(switchLayer);
-   }
-   if(layer.filtering == 'swap') {
-      if(detect_lang_site == "en-US"){
-          var swapLayer = {
-           ID: layer.ID,
-           title: layer.title,
-           tile_url: layer.tile_url,
-           mapbox_id: layer.mapbox_id,
-           content: layer.post_content,
-           excerpt: layer.excerpt,
-           download: layer.download_url,
-           profilepage: layer.profilepage_url,
-           legend: layer.legend
-          };
-      }else{
-        var swapLayer = {
-         ID: layer.ID,
-         title: layer.title,
-         tile_url: layer.tile_url,
-         mapbox_id: layer.mapbox_id,
-         content: layer.post_content,
-         excerpt: layer.excerpt,
-         download: layer.download_url_localization,
-         profilepage: layer.profilepage_url_localization,
-         legend: layer.legend_localization
-        };
-      }
-
-    if(layer.first_swap)
-     swapLayer.first = true;
-    newConf.filteringLayers.swapLayers.push(swapLayer);
-   }
-   */
-
-
   });
 
   newConf.center = [parseFloat(conf.center.lat), parseFloat(conf.center.lon)];

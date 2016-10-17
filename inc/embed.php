@@ -101,8 +101,11 @@
 		}else {
 			 $conf['layers'] = get_selected_layers_of_map_by_mapID($conf['postID']);
 		}
-		if(isset($_GET['news-icons'])) {
-			$conf['news-icons'] = $_GET['news-icons'];
+
+		if(isset($_GET['news_markers'])) {
+			$conf['news_markers'] = $_GET['news_markers'];
+		}else {
+			$conf['news_markers'] = false;
 		}
 
 		$get_map_setting = get_post_meta($conf['postID'], 'map_data', true);

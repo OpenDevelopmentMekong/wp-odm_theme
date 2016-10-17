@@ -15,8 +15,7 @@ function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 				);
 
 		foreach ($get_post as $page_topic) {
-			$pagetitle = qtrans_use(odm_language_manager()->get_current_language(), $page_topic->post_title, false);//get content by langauge
-
+			$pagetitle = apply_filters('translate_text', $page_topic->post_title, odm_language_manager()->get_current_language());
 			if (trim(strtolower($title_str)) == strtolower($pagetitle)) {
 					$page_id = $page_topic->ID;
 					return $page_id;
@@ -109,7 +108,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 }
 // Check if post specific to any langue or not
 function posts_for_both_and_current_languages($postID, $current_lang = "en", $taxonomy ="language"){
-    $site_language = strtolower(get_the_language_by_language_code($current_lang));
+    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang));
     $terms = get_the_terms($postID, $taxonomy);
     if ( empty($terms) && !is_wp_error( $terms )) {
         return true;
@@ -250,7 +249,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags'), $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags', 'show_summary_translated_by_odc_team'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
@@ -346,6 +345,9 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
       <?php if (in_array('tags',$show_elements)):
         the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
       endif; ?>
+			<?php if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
+				<?php echo_post_translated_by_od_team(get_the_ID());
+			endif; ?>
 		</ul>
 	</div>
 
@@ -381,7 +383,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
- 	    $site_language = strtolower(get_the_language_by_language_code($current_lang)); //english
+ 	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
  			$translated_term =  $site_language."-translated";
  			$org_name = ucfirst(get_bloginfo('name'));
  			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
@@ -391,7 +393,7 @@ function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonom
  	    $terms = get_the_terms($postID, $taxonomy);
  	    if (!is_wp_error( $terms ) && !empty($terms)) {
  				if (has_term($translated_term, $taxonomy, $postID)) {
- 					echo "<p class='translated-by-team'><strong>".__('Summary translated by '.$team_name.' Team')."</strong></p>";
+ 					echo "<li class='translated-by-team'> <i class='fa fa-pencil' aria-hidden='true'></i> &nbsp;" .__('Summary translated by '.$team_name.' Team')."</li>";
  				}
  			}
  }
@@ -464,12 +466,12 @@ function echo_downloaded_documents ($postID = "") {
 			if($get_localized_document !=""){
 				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_localized_document.'">';
 					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-					echo __(ucfirst($country_name). " " ."PDF");
+					echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " ."PDF");
 				echo '</a>';
 			}
 			else{
 				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-				echo __(ucfirst($country_name). " " . "PDF not available");
+				echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " . "PDF not available");
 			}
 			echo "</span></div>";
 		endif;
@@ -554,14 +556,21 @@ function available_custom_post_types(){
 	 return (strpos(get_page_template(), 'page-dataset-detail') !== false);
  }
 
- function get_categories_array($post){
-		return array_map(function($cat){
-			return $cat->name;
-		},get_the_category($post->ID));
- }
+ function get_top_level_category_english_name($cat_id) {
+	 global $wpdb;
+	 while ($cat_id) {
+			 $cat = get_category($cat_id); // get the object for the catid
+			 $cat_id = $cat->category_parent; // assign parent ID (if exists) to $catid
+			 $cat_parent_id = $cat->cat_ID;
+	 }
+
+	 $cat_parent_name = $wpdb->get_var($wpdb->prepare(
+							 "SELECT `name` FROM $wpdb->terms WHERE `term_id` =  %d", $cat_parent_id));
+	 $cat_parent_name = apply_filters('translate_text', $cat_parent_name, 'en');
+	 return $cat_parent_name;
+}
 
  function odm_echo_extras($postID = "") {
-	 echo $postID ." ";
  	 $postID = $postID ? $postID : get_the_ID();
 	 if (function_exists('get_post_meta')) :
 		 $get_author = get_post_meta($postID, 'author', true);

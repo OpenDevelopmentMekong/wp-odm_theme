@@ -1,11 +1,15 @@
 <?php
 // get baselayer Navigation
 function display_baselayer_navigation($num=5, $cat='base-layers', $include_children=false ){
-	$base_layer_posts = query_get_baselayer_posts();
-	if($base_layer_posts){
+	$selected_baselayer = $GLOBALS['extended_jeo_layers']->get_map_layers(get_the_ID(), "baselayer");
+	$selected_baselayer_obj = json_decode(json_encode($selected_baselayer));
+
+	$get_all_baselayers = query_get_baselayer_posts();
+	$baselayer_posts = $selected_baselayer ? $selected_baselayer_obj : $get_all_baselayers;
+	if($baselayer_posts){
 		echo '<div class="baselayer-container box-shadow">';
 		echo '<ul class="baselayer-ul">';
-		foreach ( $base_layer_posts as $baselayer ) :
+		foreach ( $baselayer_posts as $baselayer ) :
 			setup_postdata( $baselayer ); ?>
 			<li class="baselayer" data-layer="<?php echo $baselayer->ID; ?>">
 				<?php if ( has_post_thumbnail($baselayer->ID) ) { ?>
@@ -42,7 +46,8 @@ function query_get_baselayer_posts($num=5, $cat='base-layers', $include_children
 							  'taxonomy' => 'layer-category',
 							  'field' => 'slug',
 							  'terms' => $cat,
-							  'include_children' => $include_children
+							  'include_children' => $include_children,
+								'operator' => 'IN'
 							)
 						  )
 						);
@@ -78,14 +83,14 @@ function display_map_layer_sidebar_and_legend_box($layers){
 				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
 			echo '</h2>';
 			echo '<div class="interactive-map-layers dropdown">';
-				echo "<ul class='cat-layers switch-layers'>";
+				echo "<ul class='cat-layers switch-layers cat-layer-items'>";
 					foreach ($layers as $id => $layer) {
 						display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
 					}
 				echo "</ul>";
 				echo '<div class="news-marker">';
-				echo '<label><input class="news-marker-toggle" type="checkbox" value="1"/>';
-				 	echo '<span class="label">'.__("Hide news icons", "opendev")."</span>";
+				echo '<label><input class="news-marker-toggle" type="checkbox" />';
+				 	echo '<span class="label">'.__("Show news on map", "opendev")."</span>";
 				echo '</label>';
 				echo '</div>';
 			echo '</div>'; //interactive-map-layers dropdown
@@ -96,6 +101,19 @@ function display_map_layer_sidebar_and_legend_box($layers){
 
 		//show layer information
     display_layer_information($layers);
+		?>
+		<script type="text/javascript">
+		(function($) {
+				// Resize height of layer menu
+				var resize_height_map_category = $('.map-container').height() - 120 + "px";
+
+				$(".category-map-layers .cat-layer-items").css("max-height", resize_height_map_category);
+				$(window).resize(function() {
+						$(".category-map-layers .cat-layer-items").css("max-height", resize_height_map_category);
+				});
+		})(jQuery);
+		</script>
+		<?php
 	}
 }
 
@@ -103,13 +121,8 @@ function display_map_layer_sidebar_and_legend_box($layers){
 function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option=""){
 	if($post_ID !== 0){
 		$get_post = get_post($post_ID);
-		if (function_exists( qtrans_use)){
-			$title = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_title,false);//get TITLE by langauge
-			$content = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_content,false);//get CONTENT by langauge
-		}else {
-			$title = $get_post->post_title;
-			$content = $get_post->post_content;
-		}
+		$title = apply_filters('translate_text', $get_post->post_title, odm_language_manager()->get_current_language());
+		$content = apply_filters('translate_text', $get_post->post_content, odm_language_manager()->get_current_language());
 		$layer_items = '<li class="layer-item '.$option.'" data-layer="'.$post_ID.'" id="post-'.$post_ID.'">
 		  <img class="list-loading" src="'. get_stylesheet_directory_uri(). '/img/loading-map.gif">
 		  <span class="list-circle-active"></span>
@@ -117,16 +130,17 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 		  <span class="layer-item-name">'.$title.'</span>';
 
 		  if ( (odm_language_manager()->get_current_language() != "en") ){
-		  $layer_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
-		  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
+			  $get_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
+			  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
 		  }else {
-		  $layer_download_link = get_post_meta($post_ID, '_layer_download_link', true);
-		  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
-
+			  $get_download_link = get_post_meta($post_ID, '_layer_download_link', true);
+			  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link', true);
 		  }
 
-		  if($layer_download_link!=""){
-		   $layer_items .= '
+		  if($get_download_link!=""){
+				$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_link);
+				$layer_download_link = wpckan_get_link_to_dataset($ckan_dataset_id);
+		   	$layer_items .= '
 		      <a class="download-url" href="'.$layer_download_link.'" target="_blank"><i class="fa fa-arrow-down"></i></a>
 		      <a class="toggle-info" alt="Info" href="#"><i id="'. $post_ID.'" class="fa fa-info-circle"></i></a>';
 		  }else if($content!= ""){
@@ -191,13 +205,13 @@ $exclude_cats =""){
 
 function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='', 			$layer_taxonomy='layer-category'){
 	//List cetegory and layer by cat for menu items
+	if($term_id == 0){
 		$layer_term_args= array(
-			'parent' => 0,
+			'parent' => $term_id,
 			'orderby'   => 'name',
 			'order'   => 'ASC',
 			'exclude' => $exclude_cats
 		);
-		//$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
 		$terms_layer = get_terms($layer_taxonomy, $layer_term_args);
 		if ($terms_layer) {
 			foreach( $terms_layer as $term ) {
@@ -239,35 +253,33 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 
 			return $map_catalogue;
 		}//if terms_layer
-	return;
-}
-
-function get_all_layers_by_term_id_grouped_by_subcategory( $term_id = 0, $exclude_cats =""){
-	//Get layers of posts of term_id
-	$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
-	if($query_layer->have_posts() ){
-		while ( $query_layer->have_posts() ) : $query_layer->the_post();
-				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-					$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
-			}
-		endwhile;
-		wp_reset_postdata();
-	}
-	//Get Layers/posts grouped by subcategory of term id
-	$children_term = get_terms("layer-category", array('parent' => $term_id, 'hide_empty' => 0, 'orderby' => 'name') );
-	if(!empty($children_term)) {
-		foreach($children_term as $child){
-			$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
-			//check if the sub category has children
-			$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
-			if ( !empty($has_children) ) {
-				foreach($has_children as $sub_child){
-					$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
+	}else{
+		$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
+		if($query_layer->have_posts() ){
+			while ( $query_layer->have_posts() ) : $query_layer->the_post();
+					if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+						$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
 				}
-			}
-		}//foreach
-	}//if empty($children_term) )
-	return $layers_catalogue;
+			endwhile;
+			wp_reset_postdata();
+		}
+		//Get Layers/posts grouped by subcategory of term id
+		$children_term = get_terms("layer-category", array('parent' => $term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+		if(!empty($children_term)) {
+			foreach($children_term as $child){
+				$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
+				//check if the sub category has children
+				$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+				if ( !empty($has_children) ) {
+					foreach($has_children as $sub_child){
+						$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
+					}
+				}
+			}//foreach
+		}//if empty($children_term) )
+		return $layers_catalogue;
+	}//if term_id
+	return;
 }
 
 function get_sort_posts_by_post_title($array_layers){
@@ -320,23 +332,15 @@ function display_layer_information($layers){
 	   foreach($layers as $individual_layer){
 		  $get_post_by_id = get_post($individual_layer["ID"]);
 		  if ( (odm_language_manager()->get_current_language() != "en") ){
-			 $get_download_url = str_replace("?type=dataset", "", get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true));
+				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
 		  }else {
-			 $get_download_url = str_replace("?type=dataset", "", get_post_meta($get_post_by_id->ID, '_layer_download_link', true));
+			 	$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link', true);
 		  }
 
 		  // get post content if has
-		  if (function_exists('qtrans_use')){
-				$get_post_content_by_id = qtrans_use(odm_language_manager()->get_current_language(), $get_post_by_id->post_content,false);
-		  }else{
-				$get_post_content_by_id = $get_post_by_id->post_content;
-		  }
+			$get_post_content_by_id = apply_filters('translate_text', $get_post_by_id->post_content, odm_language_manager()->get_current_language());
+
 			if($get_download_url!="" ){
-				  $ckan_dataset_id_exploded_by_dataset = explode("/dataset/", $get_download_url);
-				  $ckan_dataset_id = $ckan_dataset_id_exploded_by_dataset[1];
-				  $ckan_domain = $ckan_dataset_id_exploded_by_dataset[0];
-				  // get ckan record by id
-				  //$get_info_from_ckan = wpckan_api_package_show($ckan_domain,$ckan_dataset_id);
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
@@ -345,6 +349,9 @@ function display_layer_information($layers){
 										"odm_completeness" => "Completeness",
 										"license_id" => "License"
 									);
+
+					$ckan_domain = wpckan_get_ckan_domain();
+					$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_url);
 				  if($ckan_dataset_id!= ""):
 					  wpckan_get_metadata_info_of_dataset_by_id($ckan_domain, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
 				  endif;
@@ -383,9 +390,7 @@ function get_post_meta_of_layer($post_ID, $layer_option = false){
 
 //List all layers' value into an array by post ID
 function get_selected_layers_of_map_by_mapID($map_ID) {
-	if ($map_ID == "" ){
-		$map_ID = get_the_ID();
-	}
+	$map_ID = $map_ID ? $map_ID : get_the_ID();
 
 	$get_basemap = get_post_meta($map_ID, 'map_data', true);
 	if(!empty($get_basemap)){
@@ -408,7 +413,7 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 					$layers[0] = $base_map;
 			}
 	}
-	$get_layers = $GLOBALS['jeo_layers']->get_map_layers($map_ID); //called from parent theme
+	$get_layers = $GLOBALS['extended_jeo_layers']->get_map_layers($map_ID, "layer");
 
 	if(!empty($get_layers)){
 		foreach ($get_layers as $key => $layer) {
@@ -417,7 +422,7 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 			$layer_postmeta['filtering'] = $layer['filtering'];
 			$layer_postmeta['hidden'] = $layer['hidden']==""? 1: $layer['hidden'];
 			$layer_postmeta['first_swap'] = $layer['first_swap'];
- 		    $layers[$layer_ID] = $layer_postmeta;
+		    $layers[$layer_ID] = $layer_postmeta;
 		}//foreach
 	}
 	return $layers;
@@ -462,32 +467,19 @@ function get_legend_of_map_by($post_ID = false){
 function get_layer_information_in_array($post_ID){
 	//link to WP dataset page by dataset ID
 	if ( (odm_language_manager()->get_current_language() != "en") ){
-		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link_localization', true)));
+		$get_download_url = get_post_meta($post_ID, '_layer_download_link_localization', true);
 	}else {
-		$get_ckan_dataset_id = explode("/dataset/", str_replace("?type=dataset", "", get_post_meta($post_ID, '_layer_download_link', true)) );
+		$get_download_url = get_post_meta($post_ID, '_layer_download_link', true);
 	}
-	/*
-	if(function_exists("wpckan_api_package_show")):
-		$dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$get_ckan_dataset_id[1]);
-		if (is_array($dataset['resources'])) {
-				foreach ($dataset['resources'] as $resource) {
-						if($resource['format'] == "JPEG" || $resource['format'] == "JPG" || $resource['format'] == "PNG"):
-							if($resource['odm_language'][0] == odm_language_manager()->get_current_language()){
-								$thumbnail_url = $resource['url'];
-							}
-						endif;
-					}
-			}
-	endif;
-	*/
+	if($get_download_url){
+	 	$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_url);
+	}
 
-	$download_link = get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1];
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
-								"download_link" => $download_link,
-								"dataset_link" => get_site_url()."/dataset/?id=".$get_ckan_dataset_id[1],
+								"dataset_link" => wpckan_get_link_to_dataset($ckan_dataset_id),
 								"title_and_link" => $title_and_link,
 								//"thumbnail_link" => $thumbnail_url,
 								//"description" => get_the_content(),
@@ -519,7 +511,6 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
 					$get_layer_info = get_layer_information_in_array(get_the_ID());
-					$permalink = $get_layer_info->download_link;
 				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
 					//find all map layer post to get it ID. eg. layer name: All Natural protected area
 					if(substr( strtolower(get_the_title()), 0, 4 ) === "all"):
@@ -534,7 +525,8 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 
 				$layers_list_array = (object) array("ID" => $get_layer_info->ID,
 										"post_title" => $child_term->name,
-										"title_and_link" => "<a class='item-title' target='_blank' href='". $permalink."' 	title='".$child_term->name."'>".$child_term->name."</a>",
+										"title_and_link" => "<a class='item-title' target='_blank' href='". $get_layer_info->dataset_link."' 	title='".$child_term->name."'>".$child_term->name."</a>",
+										"dataset_link" => $get_layer_info->dataset_link,
 										//"description" => "<ul>" .$layers_list."</ul>",
 										"category" => $child_term->name,
 										"parent" => $child_term->parent

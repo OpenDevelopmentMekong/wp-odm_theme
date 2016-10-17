@@ -4,7 +4,7 @@
  * Interactive Map
  */
 
-require_once get_stylesheet_directory().'/inc/mapping.php';
+require_once get_stylesheet_directory().'/inc/utils/mapping.php';
 class OpenDev_InteractiveMap {
     function __construct() {
         add_shortcode('odmap', array($this, 'shortcode'));
@@ -93,6 +93,7 @@ class OpenDev_InteractiveMap {
                         echo '<ul class="categories">';
                           foreach( $terms_layer as $term ) {
                             $args_layer = array(
+                               'posts_per_page' => -1,
                                'post_type' => 'map-layer',
                                'orderby'   => 'name',
                                'order'   => 'asc',
@@ -116,14 +117,12 @@ class OpenDev_InteractiveMap {
                             $query_layer = new WP_Query( $args_layer );
                             $count_items_of_main_cat = 0;
                             $main_category_li = '<li class="cat-item cat-item-'.get_the_ID().'" id="post-'.get_the_ID().'"><a href="#">'.$term->name.'</a>';
+                            $layer_items = "";
                             if($query_layer->have_posts() ){
-                                $layer_items = "";
                                 $cat_layer_ul= "<ul class='cat-layers switch-layers'>";
                                     while ( $query_layer->have_posts() ) : $query_layer->the_post();
-                                        if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
                                             $count_items_of_main_cat++;
                                             $layer_items .= display_layer_as_menu_item_on_mapNavigation(get_the_ID(), 0);
-                                         }
                                     endwhile;
                                     // use reset postdata to restore orginal query
                                     wp_reset_postdata();
@@ -178,17 +177,14 @@ class OpenDev_InteractiveMap {
             jeo(jeo.parseConf(<?php echo json_encode($map); ?>));
 
             (function($) {
-                // Resize the map container and category box based on the browsers
-                /*   //Page is not schollable
-                var resize_height_map_container = window.innerHeight - $("#od-head").height() -10 + "px";
-                var resize_height_map_category = window.innerHeight - $("#od-head").height() -33 + "px";
-                var resize_height_map_layer = window.innerHeight - $("#od-head").height()  - 73 + "px";*/
-
-                // Page is scrollable
-                var resize_height_map_container = window.innerHeight - 135 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight - 150 + "px";
-                var resize_height_map_layer = window.innerHeight - 190+ "px";
-                var resize_layer_toggle_info = $(".layer-toggle-info-container").height() -35 + "px";
+                var adminbar = 0;
+                if($('body').hasClass("admin-bar")){
+                  adminbar = 35;
+                } 
+                var resize_height_map_container = window.innerHeight - adminbar -140 + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight  - adminbar - 178 + "px";
+                var resize_height_map_layer = window.innerHeight  - adminbar - 215+ "px";
+                var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
                 $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);

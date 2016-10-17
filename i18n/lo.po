@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ODM odm-wptheme\n"
-"POT-Creation-Date: 2016-08-15 16:32+0200\n"
-"PO-Revision-Date: 2016-08-15 16:32+0200\n"
+"POT-Creation-Date: 2016-09-22 19:37+0200\n"
+"PO-Revision-Date: 2016-09-22 19:37+0200\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>\n"
 "Language-Team: Lao (http://www.transifex.com/open-development-mekong/odm-odm-"
 "wptheme/language/lo/)\n"
@@ -28,27 +28,26 @@ msgstr ""
 msgid "Not found!"
 msgstr ""
 
-#: 404.php:17
+#: 404.php:16
 msgid ""
-"The contents that you are looking for are not available, you have following "
-"options:"
+"If you received this error after selecting a new geographic location from "
+"the top menu, it means the new location doesn't have an information page on "
+"this topic that the old location had. To see what information does exist for "
+"this new location you've chosen simply click any of the navigation main menu "
+"items (News, Topics, Maps, Data, etc..) from the navigation menu above this "
+"message ."
 msgstr ""
 
-#: 404.php:18
+#: 404.php:22
 msgid "Back to the previous page"
 msgstr ""
 
-#: 404.php:19
+#: 404.php:23
+msgid "Go to the current site's home"
+msgstr ""
+
+#: 404.php:26
 msgid "Contact us"
-msgstr ""
-
-#: Cambodia/page-forest-cover.php:19
-msgid "Filed under:"
-msgstr ""
-
-#: Cambodia/page-forest-cover.php:59 page.php:19 single-topic.php:41
-#: single.php:40
-msgid "Pages:"
 msgstr ""
 
 #: advanced-search.php:31
@@ -64,7 +63,7 @@ msgid "Announcements"
 msgstr ""
 
 #: archive-map-layer.php:8
-msgid "Maps catalogue"
+msgid "Maps catalog"
 msgstr ""
 
 #: archive-map.php:8 i18n/extra-strings.php:17
@@ -100,11 +99,11 @@ msgstr ""
 msgid "Environment and land"
 msgstr ""
 
-#: archive-topic.php:43
+#: archive-topic.php:45
 msgid "Economy"
 msgstr ""
 
-#: archive-topic.php:58
+#: archive-topic.php:60
 msgid "People"
 msgstr ""
 
@@ -142,11 +141,16 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: category.php:64
+#: category.php:69
 msgid "No results found."
 msgstr ""
 
-#: content-map-group.php:27
+#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8
+#: inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:211
+msgid "Page"
+msgstr ""
+
+#: content-map-group.php:27 inc/widgets/odm-custom-posts-widget.php:71
 msgid "More..."
 msgstr ""
 
@@ -154,7 +158,7 @@ msgstr ""
 msgid "View all maps"
 msgstr ""
 
-#: footer.php:27
+#: footer.php:38
 #, php-format
 msgid ""
 "This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external"
@@ -162,163 +166,154 @@ msgid ""
 "\">JEO Beta</a> theme"
 msgstr ""
 
-#: functions.php:50
+#: functions.php:52
 msgid "Topic sidebar"
 msgstr ""
 
-#: functions.php:56
+#: functions.php:58
 msgid "Homepage area top left"
 msgstr ""
 
-#: functions.php:64
+#: functions.php:66
 msgid "Homepage area top right"
 msgstr ""
 
-#: functions.php:72
+#: functions.php:74
 msgid "Homepage area middle"
 msgstr ""
 
-#: functions.php:80
+#: functions.php:82
 msgid "Homepage area bottom left"
 msgstr ""
 
-#: functions.php:88
+#: functions.php:90
 msgid "Homepage area bottom right"
 msgstr ""
 
-#: functions.php:96
+#: functions.php:98
 msgid "WPCKAN Dataset detail sidebar"
 msgstr ""
 
-#: functions.php:102
-msgid "Data main left"
-msgstr ""
-
-#: functions.php:108
-msgid "Data main middle"
-msgstr ""
-
-#: functions.php:114
-msgid "Data main right"
-msgstr ""
-
-#: functions.php:120
-msgid "Data main bottom"
-msgstr ""
-
-#: functions.php:126
-msgid "Data sidebar"
-msgstr ""
-
-#: functions.php:132
-msgid "Archive page sidebar"
-msgstr ""
-
-#: functions.php:138
+#: functions.php:104
 msgid "Story top"
 msgstr ""
 
-#: functions.php:144
+#: functions.php:110
 msgid "Story bottom"
 msgstr ""
 
-#: functions.php:208
+#: functions.php:116
+msgid "Profile area right sidebar"
+msgstr ""
+
+#: functions.php:122
+msgid "Profile area bottom left"
+msgstr ""
+
+#: functions.php:130
+msgid "Profile area bottom right"
+msgstr ""
+
+#: functions.php:138
+msgid "Profile sub-page right sidebar"
+msgstr ""
+
+#: functions.php:205
 msgid "stories"
 msgstr ""
 
-#: functions.php:210
+#: functions.php:207
 msgid "Copy the embed code"
 msgstr ""
 
-#: functions.php:211 loop-latest.php:21
+#: functions.php:208 loop-latest.php:21
 msgid "Share"
 msgstr ""
 
-#: functions.php:212
+#: functions.php:209
 msgid "Print"
 msgstr ""
 
-#: functions.php:223 loop-latest.php:19
+#: functions.php:220 loop-latest.php:19
 msgid "Read more"
 msgstr ""
 
-#: functions.php:225
+#: functions.php:222
 msgid "Open slideshow"
 msgstr ""
 
-#: functions.php:226
+#: functions.php:223
 msgid "Watch video gallery"
 msgstr ""
 
-#: functions.php:227
+#: functions.php:224
 msgid "Watch video"
 msgstr ""
 
-#: functions.php:228
+#: functions.php:225
 msgid "View image gallery"
 msgstr ""
 
-#: functions.php:229
+#: functions.php:226
 msgid "View fullscreen image"
 msgstr ""
 
-#: functions.php:230
+#: functions.php:227
 msgid "View infographic"
 msgstr ""
 
-#: functions.php:231
+#: functions.php:228
 msgid "View infographics"
 msgstr ""
 
-#: functions.php:322
+#: functions.php:268
+msgid "default"
+msgstr ""
+
+#: functions.php:328
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr ""
 
-#: functions.php:323
+#: functions.php:329
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr ""
 
-#: functions.php:324
+#: functions.php:330
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:325
+#: functions.php:331
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:326
+#: functions.php:332
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:327
+#: functions.php:333
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:328
+#: functions.php:334
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:329
+#: functions.php:335
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:330
+#: functions.php:336
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:331
+#: functions.php:337
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:332
+#: functions.php:338
 msgid "News Source"
-msgstr ""
-
-#: header.php:21 inc/templates/pagination.php:8
-#: inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:211
-msgid "Page"
 msgstr ""
 
 #: i18n/extra-strings.php:2
@@ -517,15 +512,23 @@ msgid ""
 "harm or damage suffered as a result of its use."
 msgstr ""
 
-#: inc/advanced-navigation.php:115
+#: i18n/extra-strings.php:53
+msgid "Khmer PDF"
+msgstr ""
+
+#: i18n/extra-strings.php:54
+msgid "Khmer PDF not available"
+msgstr ""
+
+#: inc/advanced-navigation.php:115 page-data.php:36
 msgid "Text search"
 msgstr ""
 
-#: inc/advanced-navigation.php:116
+#: inc/advanced-navigation.php:116 page-data.php:37
 msgid "Type your search here"
 msgstr ""
 
-#: inc/advanced-navigation.php:126 inc/utils/content.php:52
+#: inc/advanced-navigation.php:126 inc/utils/content.php:51
 msgid "Categories"
 msgstr ""
 
@@ -533,35 +536,35 @@ msgstr ""
 msgid "Select categories"
 msgstr ""
 
-#: inc/advanced-navigation.php:155
+#: inc/advanced-navigation.php:157
 msgid "Content type"
 msgstr ""
 
-#: inc/advanced-navigation.php:156
+#: inc/advanced-navigation.php:158
 msgid "Select content types"
 msgstr ""
 
-#: inc/advanced-navigation.php:166
+#: inc/advanced-navigation.php:168
 msgid "Date range"
 msgstr ""
 
-#: inc/advanced-navigation.php:169
+#: inc/advanced-navigation.php:171
 msgid "From"
 msgstr ""
 
-#: inc/advanced-navigation.php:172
+#: inc/advanced-navigation.php:174
 msgid "To"
 msgstr ""
 
-#: inc/advanced-navigation.php:178
+#: inc/advanced-navigation.php:180 page-data.php:113
 msgid "Search Filter"
 msgstr ""
 
-#: inc/advanced-navigation.php:189 inc/advanced-navigation.php:200
+#: inc/advanced-navigation.php:191 inc/advanced-navigation.php:202
 msgid "Cancel filters"
 msgstr ""
 
-#: inc/advanced-navigation.php:197
+#: inc/advanced-navigation.php:199
 msgid "More filters"
 msgstr ""
 
@@ -569,7 +572,7 @@ msgstr ""
 msgid "Interactive Map"
 msgstr ""
 
-#: inc/interactive-map.php:89 single-map.php:16
+#: inc/interactive-map.php:89 inc/utils/mapping.php:77
 msgid "Map Layers"
 msgstr ""
 
@@ -885,10 +888,6 @@ msgstr ""
 
 #: inc/live-search/live-search.php:25
 msgid "Map"
-msgstr ""
-
-#: inc/mapping.php:263
-msgid "LEGEND"
 msgstr ""
 
 #: inc/post-types/announcements.php:19
@@ -1212,225 +1211,213 @@ msgstr ""
 msgid "Style"
 msgstr ""
 
-#: inc/theme-options.php:62
-msgid "News: Filtered By Tags"
-msgstr ""
-
-#: inc/theme-options.php:68
+#: inc/theme-options.php:63
 msgid "Links"
 msgstr ""
 
-#: inc/theme-options.php:75
+#: inc/theme-options.php:70
 msgid "Interactive map"
 msgstr ""
 
-#: inc/theme-options.php:81
+#: inc/theme-options.php:76
 msgid "Choose a style"
 msgstr ""
 
-#: inc/theme-options.php:89
+#: inc/theme-options.php:84
 msgid "Notice Message appear above the slider"
 msgstr ""
 
-#: inc/theme-options.php:97
+#: inc/theme-options.php:92
 msgid "Frontpage slider id"
 msgstr ""
 
-#: inc/theme-options.php:105
-msgid "Filter News By Tags"
-msgstr ""
-
-#: inc/theme-options.php:113
+#: inc/theme-options.php:100
 msgid "Facebook url"
 msgstr ""
 
-#: inc/theme-options.php:121
+#: inc/theme-options.php:108
 msgid "Twitter url"
 msgstr ""
 
-#: inc/theme-options.php:129
+#: inc/theme-options.php:116
 msgid "Legal disclaimer"
 msgstr ""
 
-#: inc/theme-options.php:137
+#: inc/theme-options.php:124
 msgid "Contact page"
 msgstr ""
 
-#: inc/theme-options.php:145
+#: inc/theme-options.php:132
 msgid "Data page"
 msgstr ""
 
-#: inc/theme-options.php:153
+#: inc/theme-options.php:140
 msgid "Base map settings"
 msgstr ""
 
-#: inc/theme-options.php:176
+#: inc/theme-options.php:163
 msgid "Notification messages"
 msgstr ""
 
-#: inc/theme-options.php:177
+#: inc/theme-options.php:164
 msgid ""
 "(The notification will be appeared at the top above the featue images "
 "slider. )"
 msgstr ""
 
-#: inc/theme-options.php:184 inc/theme-options.php:185
+#: inc/theme-options.php:171 inc/theme-options.php:172
 msgid "281321"
 msgstr ""
 
-#: inc/theme-options.php:188
+#: inc/theme-options.php:175
 msgid "(This id can be found on the Featured Area plugin slider's settings.)"
 msgstr ""
 
-#: inc/theme-options.php:197
-msgid "Add tags"
-msgstr ""
-
-#: inc/theme-options.php:198
-msgid "Add tags."
-msgstr ""
-
-#: inc/theme-options.php:201
-msgid "Separate tags with commas. Only 5 tags are allowed. "
-msgstr ""
-
-#: inc/theme-options.php:227 inc/theme-options.php:230
-#: inc/theme-options.php:237 inc/theme-options.php:240
-#: inc/theme-options.php:299
+#: inc/theme-options.php:201 inc/theme-options.php:204
+#: inc/theme-options.php:211 inc/theme-options.php:214
+#: inc/theme-options.php:273
 msgid "None"
 msgstr ""
 
-#: inc/theme-options.php:279
+#: inc/theme-options.php:253
 msgid "Select base layer"
 msgstr ""
 
-#: inc/theme-options.php:293
+#: inc/theme-options.php:267
 msgid "(USA Only)"
 msgstr ""
 
-#: inc/theme-options.php:296
+#: inc/theme-options.php:270
 msgid "Custom"
 msgstr ""
 
-#: inc/theme-options.php:302
+#: inc/theme-options.php:276
 msgid "Enter layer URL"
 msgstr ""
 
-#: inc/theme-options.php:307 inc/theme-options.php:501
+#: inc/theme-options.php:281 inc/theme-options.php:475
 msgid "Update preview"
 msgstr ""
 
-#: inc/theme-options.php:310
+#: inc/theme-options.php:284
 msgid "Preview map"
 msgstr ""
 
-#: inc/theme-options.php:316
+#: inc/theme-options.php:290
 msgid "Map settings"
 msgstr ""
 
-#: inc/theme-options.php:319
+#: inc/theme-options.php:293
 msgid "Currently viewing"
 msgstr ""
 
-#: inc/theme-options.php:323 inc/theme-options.php:361
+#: inc/theme-options.php:297 inc/theme-options.php:335
 msgid "Center"
 msgstr ""
 
-#: inc/theme-options.php:328 inc/theme-options.php:372
+#: inc/theme-options.php:302 inc/theme-options.php:346
 msgid "Zoom"
 msgstr ""
 
-#: inc/theme-options.php:333 inc/theme-options.php:424
+#: inc/theme-options.php:307 inc/theme-options.php:398
 msgid "East"
 msgstr ""
 
-#: inc/theme-options.php:338 inc/theme-options.php:432
+#: inc/theme-options.php:312 inc/theme-options.php:406
 msgid "North"
 msgstr ""
 
-#: inc/theme-options.php:343 inc/theme-options.php:440
+#: inc/theme-options.php:317 inc/theme-options.php:414
 msgid "South"
 msgstr ""
 
-#: inc/theme-options.php:348 inc/theme-options.php:448
+#: inc/theme-options.php:322 inc/theme-options.php:422
 msgid "West"
 msgstr ""
 
-#: inc/theme-options.php:355
+#: inc/theme-options.php:329
 msgid "Map center & zoom"
 msgstr ""
 
-#: inc/theme-options.php:357
+#: inc/theme-options.php:331
 msgid "Set current as map center & zoom"
 msgstr ""
 
-#: inc/theme-options.php:380
+#: inc/theme-options.php:354
 msgid "Min zoom"
 msgstr ""
 
-#: inc/theme-options.php:387 inc/theme-options.php:399
+#: inc/theme-options.php:361 inc/theme-options.php:373
 msgid "Current"
 msgstr ""
 
-#: inc/theme-options.php:392
+#: inc/theme-options.php:366
 msgid "Max zoom"
 msgstr ""
 
-#: inc/theme-options.php:418
+#: inc/theme-options.php:392
 msgid "Pan limits"
 msgstr ""
 
-#: inc/theme-options.php:420
+#: inc/theme-options.php:394
 msgid "Set current as map panning limits"
 msgstr ""
 
-#: inc/theme-options.php:474
+#: inc/theme-options.php:448
 msgid "Enable geocoding service"
 msgstr ""
 
-#: inc/theme-options.php:481
+#: inc/theme-options.php:455
 msgid "Enable geocode search service"
 msgstr ""
 
-#: inc/theme-options.php:486
+#: inc/theme-options.php:460
 msgid "Map handlers"
 msgstr ""
 
-#: inc/theme-options.php:493
+#: inc/theme-options.php:467
 msgid "Disable mousewheel zooming"
 msgstr ""
 
-#: inc/theme-options.php:503
+#: inc/theme-options.php:477
 msgid "Preview mode"
 msgstr ""
 
-#: inc/theme-options.php:505
+#: inc/theme-options.php:479
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
 
-#: inc/utils/content.php:378
+#: inc/utils/content.php:396
 msgid "Summary translated by "
 msgstr ""
 
-#: inc/utils/content.php:433
+#: inc/utils/content.php:451
 msgid "Download: "
 msgstr ""
 
-#: inc/utils/content.php:438
+#: inc/utils/content.php:456
 msgid "English PDF"
 msgstr ""
 
-#: inc/utils/content.php:443
+#: inc/utils/content.php:461
 msgid "English PDF not available"
 msgstr ""
 
-#: inc/utils/content.php:451 inc/utils/content.php:456
+#: inc/utils/content.php:469 inc/utils/content.php:474
 msgid " "
 msgstr ""
 
 #: inc/utils/layout.php:57
 #, php-format
 msgid "Error locating %s for inclusion"
+msgstr ""
+
+#: inc/utils/mapping.php:88
+msgid "Hide news icons"
+msgstr ""
+
+#: inc/utils/mapping.php:300
+msgid "LEGEND"
 msgstr ""
 
 #: inc/widgets/odm-category-widget.php:12
@@ -1455,25 +1442,20 @@ msgid ""
 "as the one where the widget is integrated."
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:93
-#: inc/widgets/odm-custom-posts-widget.php:109
-msgid "Custom posts"
-msgstr ""
-
-#: inc/widgets/odm-contents-same-category-widget.php:95
-#: inc/widgets/odm-custom-posts-widget.php:125
-#: inc/widgets/odm-related-recent-news-widget.php:138
+#: inc/widgets/odm-contents-same-category-widget.php:90
+#: inc/widgets/odm-custom-posts-widget.php:145
+#: inc/widgets/odm-related-recent-news-widget.php:130
 #: inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:100
-#: inc/widgets/odm-custom-posts-widget.php:130
+#: inc/widgets/odm-contents-same-category-widget.php:95
+#: inc/widgets/odm-custom-posts-widget.php:149
 msgid "Select custom post type:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:110
-#: inc/widgets/odm-custom-posts-widget.php:165
+#: inc/widgets/odm-contents-same-category-widget.php:105
+#: inc/widgets/odm-custom-posts-widget.php:182
 msgid "Select max number of posts to list (-1 to show all):"
 msgstr ""
 
@@ -1485,24 +1467,28 @@ msgstr ""
 msgid "Display entries of the spefied custom post type"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:139
+#: inc/widgets/odm-custom-posts-widget.php:157
 msgid "Select layout:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:147
+#: inc/widgets/odm-custom-posts-widget.php:165
 msgid "Show post excerpt:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:151
+#: inc/widgets/odm-custom-posts-widget.php:169
 msgid "Show post thumbnail:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:155
+#: inc/widgets/odm-custom-posts-widget.php:173
 msgid "Show post meta:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:159
+#: inc/widgets/odm-custom-posts-widget.php:177
 msgid "Show Source meta:"
+msgstr ""
+
+#: inc/widgets/odm-custom-posts-widget.php:186
+msgid "Order by:"
 msgstr ""
 
 #: inc/widgets/odm-related-recent-news-widget.php:10
@@ -1513,15 +1499,15 @@ msgstr ""
 msgid "Display ODM the related recent news for the topics"
 msgstr ""
 
-#: inc/widgets/odm-related-recent-news-widget.php:117
+#: inc/widgets/odm-related-recent-news-widget.php:109
 msgid "Related News"
 msgstr ""
 
-#: inc/widgets/odm-related-recent-news-widget.php:142
+#: inc/widgets/odm-related-recent-news-widget.php:134
 msgid "Option:"
 msgstr ""
 
-#: inc/widgets/odm-related-recent-news-widget.php:159
+#: inc/widgets/odm-related-recent-news-widget.php:151
 msgid "Category slugs:"
 msgstr ""
 
@@ -1531,10 +1517,6 @@ msgstr ""
 
 #: inc/widgets/odm-taxonomy-widget.php:11
 msgid "Display ODM taxonomy for content"
-msgstr ""
-
-#: inc/widgets/odm-taxonomy-widget.php:217
-msgid "Topic areas"
 msgstr ""
 
 #: inc/widgets/odm-taxonomy-widget.php:226
@@ -1574,12 +1556,76 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
+#: page-data.php:43
+msgid "Type"
+msgstr ""
+
+#: page-data.php:44
+msgid "Select dataset type"
+msgstr ""
+
+#: page-data.php:59
+msgid "Language"
+msgstr ""
+
+#: page-data.php:60
+msgid "Select language"
+msgstr ""
+
+#: page-data.php:61 page-data.php:80 page-data.php:102
+msgid "All"
+msgstr ""
+
+#: page-data.php:76
+msgid "Country"
+msgstr ""
+
+#: page-data.php:77
+msgid "Select country"
+msgstr ""
+
+#: page-data.php:100
+msgid "Taxonomy"
+msgstr ""
+
+#: page-data.php:101
+msgid "Select term"
+msgstr ""
+
+#: page-data.php:117
+msgid "Clear"
+msgstr ""
+
+#: page-data.php:135
+msgid "Current statistics: "
+msgstr ""
+
+#: page-data.php:161
+msgid "Most viewed datasets"
+msgstr ""
+
+#: page-data.php:166
+msgid "Most viewed library records"
+msgstr ""
+
+#: page-data.php:171
+msgid "Most viewed laws"
+msgstr ""
+
+#: page-data.php:221
+msgid "More on the law compendium"
+msgstr ""
+
 #: page-dataset-detail.php:17
 msgid "Please provide an id as parameter"
 msgstr ""
 
 #: page-pdf-view.php:24 page-pdf-view.php:27 section-query-actions.php:25
 msgid "Download"
+msgstr ""
+
+#: page.php:19 single-topic.php:41 single.php:39
+msgid "Pages:"
 msgstr ""
 
 #: section-query-actions.php:13
@@ -1618,12 +1664,12 @@ msgstr ""
 msgid "Keep reading"
 msgstr ""
 
-#: single-map.php:27
-msgid "Hide news icons"
+#: single-map.php:46
+msgid "Latest articles on"
 msgstr ""
 
-#: single-map.php:68
-msgid "Latest articles on"
+#: single-topic.php:68
+msgid "More on the Land Portal library"
 msgstr ""
 
 #: taxonomy-layer-category.php:8

@@ -23,17 +23,18 @@ Template Name: Upcoming site
    </section>
  <?php endif; ?>
 
- <section id="page-content" style="margin-top:0">
-  <div class="section-title no-margin-buttom">
-   <div class="container">
-    <div class="sixteen columns">
-      <header class="single-post-header">
-				<h1><?php the_title(); ?></h1>
-	    </header>
-      <?php the_content(); ?>
-    </div>
+ <section class="container section-title main-title">
+   <header class="row">
+     <div class="sixteen columns">
+       <h1><?php the_title(); ?></h1>
+     </div>
+   </header>
+ </section>
+
+ <section class="container">
+   <div class="sixteen columns">
+     <?php the_content(); ?>
    </div>
-  </div>
  </section>
 
  <section id="homepage-area-1" class="page-section">

@@ -11,6 +11,11 @@
         add_post_type_support( 'map-layer', 'thumbnail' );
     }
 
+    function add_layers_box_to_post_types(){
+      $supported_post_types = array("map");
+      return $supported_post_types;
+    }
+
     function get_localization_language($site=""){
         $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
         $language['ODM'] = "";
@@ -63,6 +68,248 @@
               <textarea name="_layer_legend_localization" style="width:100%;height: 200px;"><?php echo $legend_localization; ?></textarea>
         <?php
             }
+    }
+
+    function post_layers_box($post = false) {
+     $layer_query = new WP_Query(array('post_type' => 'map-layer', 'posts_per_page' => -1));
+     $layers = array();
+     $post_layers = $post ? $this->get_map_layers($post->ID) : false;
+     ?>
+
+     <p>
+      <?php
+      printf(__('Add and manage <a href="%s" target="_blank">layers</a> on your map.', 'jeo'), admin_url('edit.php?post_type=map-layer'));
+      if(!$layer_query->have_posts())
+       printf(__(' You haven\'t created any layers yet, <a href="%s" target="_blank">click here</a> to create your first!'), admin_url('post-new.php?post_type=map-layer'));
+      ?>
+     </p>
+
+     <?php
+     if($layer_query->have_posts()) {
+      while($layer_query->have_posts()) {
+       $layer_query->the_post();
+       $layers[] = $this->get_layer(get_the_ID());
+       wp_reset_postdata();
+      }
+      ?>
+      <input type="text" data-bind="textInput: search" placeholder="<?php _e('Search for layers', 'jeo'); ?>" size="50">
+
+      <!-- ko if: !search() -->
+       <h4 class="results-title"><?php _e('Latest layers', 'jeo'); ?></h4>
+      <!-- /ko -->
+
+      <!-- ko if: search() -->
+       <h4 class="results-title"><?php _e('Search results', 'jeo'); ?></h4>
+      <!-- /ko -->
+
+      <!-- ko if: !filteredLayers().length && !search() -->
+       <p style="font-style:italic;color: #999;"><?php _e('You are using all of your layers.', 'jeo'); ?></p>
+      <!-- /ko -->
+
+      <!-- ko if: !filteredLayers().length && search() -->
+       <p style="font-style:italic;color: #999;"><?php _e('No layers were found.', 'jeo'); ?></p>
+      <!-- /ko -->
+
+      <table class="layers-list available-layers">
+       <tbody data-bind="foreach: filteredLayers">
+        <tr>
+         <td><strong data-bind="text: title"></strong></td>
+         <td data-bind="text: type"></td>
+         <td style="width:1%;"><a class="button" data-bind="click: $parent.addLayer" href="javascript:void(0);" title="<?php _e('Add layer', 'jeo'); ?>">+ <?php _e('Add'); ?></a></td>
+        </tr>
+       </tbody>
+      </table>
+
+      <h4 class="selected-title"><?php _e('Selected layers', 'jeo'); ?></h4>
+
+      <table class="layers-list selected-layers">
+       <tbody class="selected-layers-list">
+        <!-- ko foreach: {data: selectedLayers} -->
+         <tr class="layer-item">
+          <td style="width: 30%;">
+           <p><strong data-bind="text: title"></strong></p>
+           <p data-bind="text: type"></p>
+          </td>
+          <td>
+           <p><?php _e('Layer options', 'jeo'); ?></p>
+           <div class="filter-opts">
+            <input type="radio" value="fixed" data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_fixed'}, checked: $data.filtering" />
+            <label data-bind="attr: {for: ID + '_filtering_opt_fixed'}"><?php _e('Enable', 'jeo'); ?></label> &nbsp; &nbsp; &nbsp;
+            <input  type="radio" value="switch" data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_switch'}, checked: $data.filtering" />
+            <label data-bind="attr: {for: ID + '_filtering_opt_switch'}"><?php _e('Disable', 'jeo'); ?></label>
+            <!--<input type="radio" value="swap"  data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_swap'}, checked: $data.filtering" />
+            <label data-bind="attr: {for: ID + '_filtering_opt_swap'}"><?php _e('Swapable', 'jeo'); ?></label>-->
+
+            <div class="filtering-opts" style="display: none;">
+             <!-- ko if: $data.filtering() == 'switch' -->
+              <input type="checkbox" data-bind="attr: {id: ID + '_switch_hidden'}, checked: $data.hidden" />
+              <label data-bind="attr: {for: ID + '_switch_hidden'}"><?php _e('Hidden', 'jeo'); ?></label>
+             <!-- /ko -->
+             <!-- ko if: $data.filtering() == 'swap' -->
+              <input type="radio" data-bind="attr: {id: ID + '_first_swap'}, checked: $data.first_swap" name="_jeo_map_layer_first_swap" />
+              <label data-bind="attr: {for: ID + '_first_swap'}"><?php _e('Default swap option', 'jeo'); ?></label>
+             <!-- /ko -->
+            </div>
+           </div>
+          </td>
+          <td style="width:1%;"><a class="button" data-bind="click: $parent.removeLayer" href="javascript:void(0);" title="<?php _e('Remove layer', 'jeo'); ?>"><?php _e('Remove'); ?></a></td>
+         </tr>
+        <!-- /ko -->
+       </tbody>
+      </table>
+
+      <input type="hidden" name="_jeo_map_layers" data-bind="textInput: selection" />
+
+      <style type="text/css">
+       #post-layers input[type='text'] {
+        width: 100%;
+       }
+       #post-layers .layers-list {
+        background: #fcfcfc;
+        border-collapse: collapse;
+        width: 100%;
+       }
+       #post-layers .selected-layers .layer-item {
+        width: 100%;
+        height: 100px;
+       }
+       #post-layers .layers-list tr td {
+        margin: 0;
+        border: 1px solid #f0f0f0;
+        padding: 5px 8px;
+       }
+       #post-layers .layers-list tr:hover td {
+        background: #fff;
+       }
+      </style>
+
+      <script type="text/javascript">
+       function LayersModel() {
+        var self = this;
+
+        var origLayers = <?php echo json_encode($layers); ?>;
+        self.search = ko.observable('');
+
+        self.addLayer = function(layer) {
+         var layer = layer || this;
+         if(typeof layer.filtering !== 'function')
+          layer.filtering = ko.observable(layer.filtering || 'fixed');
+         if(typeof layer.hidden !== 'function')
+          layer.hidden = ko.observable(layer.hidden || false);
+         if(typeof layer.first_swap !== 'function')
+          layer.first_swap = ko.observable(layer.first_swap || false);
+         self.selectedLayers.push(layer);
+         self.layers.remove(layer);
+        };
+
+        self.removeLayer = function(layer) {
+         var layer = layer || this;
+         self.layers.push(layer);
+         self.selectedLayers.remove(layer);
+        };
+
+        /*
+         * Layer list
+         */
+
+        self.layers = ko.observableArray(origLayers.slice(0));
+
+        self.filteredLayers = ko.computed(function() {
+         if(!self.search()) {
+          return self.layers().slice(0, 4);
+         } else {
+          return ko.utils.arrayFilter(self.layers(), function(l) {
+           return l.title.toLowerCase().indexOf(self.search().toLowerCase()) !== -1;
+          }).slice(0, 4);
+         }
+        });
+
+        /*
+         * Layer selection
+         */
+
+        self.selectedLayers = ko.observableArray([]);
+
+        var initSelection = <?php if($post_layers) echo json_encode($post_layers); else echo '[]'; ?>;
+
+        if(initSelection.length) {
+         _.each(initSelection, function(l) {
+          var layer = _.extend(_.find(self.layers(), function(layer) {
+           if(layer.ID == l.ID) {
+            _.extend(l, layer);
+            return true;
+           }
+           return false;
+          }), l);
+          self.addLayer(layer);
+         });
+        }
+
+        self.selection = ko.computed(function() {
+         var layers = [];
+         _.each(self.selectedLayers(), function(layer) {
+          var layer = _.extend({}, layer);
+          layer.filtering = layer.filtering();
+          layer.hidden = layer.hidden();
+          layer.first_swap = layer.first_swap();
+          layers.push(layer);
+         });
+         window.editingLayers = layers;
+         return JSON.stringify(layers);
+        });
+
+        /*
+         * Sortable selected layers
+         */
+
+        // jquery sort binding method
+        self.bindSort = function(listSelector, listKey) {
+         var startIndex = -1;
+
+         var sortableSetup = {
+
+          // on sorting start
+          start: function (event, ui) {
+           // cache the item index when the dragging starts
+           startIndex = ui.item.index();
+          },
+
+          // on sorting stop
+          stop: function (event, ui) {
+
+           // get the new location item index
+           var newIndex = ui.item.index();
+
+           if (startIndex > -1) {
+            //  get the item to be moved
+            var item = self[listKey]()[startIndex];
+
+            //  move the item
+            self[listKey].remove(item);
+            self[listKey].splice(newIndex, 0, item);
+
+            //  ko rebinds to the array so we need to remove duplicate ui item
+            ui.item.remove();
+           }
+
+          }
+         };
+
+         // bind jquery using the .fruitList class selector
+         jQuery(listSelector).sortable( sortableSetup );
+
+        };
+
+       }
+
+       jQuery(document).ready(function() {
+        var model = new LayersModel();
+        model.bindSort('.selected-layers-list', 'selectedLayers');
+        ko.applyBindings(model);
+       });
+      </script>
+      <?php
+     }
     }
 
     function settings_box($post = false) {
@@ -486,6 +733,57 @@
         }// if post type: 'map-layer'
     }//end function
 
+    function map_save($post_id) {
+     if(in_array(get_post_type($post_id), $this->add_layers_box_to_post_types() )) {
+      if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+       return;
+
+      if (false !== wp_is_post_revision($post_id))
+       return;
+
+      if(isset($_REQUEST['_jeo_map_layers'])) {
+       update_post_meta($post_id, '_jeo_map_layers', json_decode(stripslashes($_REQUEST['_jeo_map_layers']), true));
+      }
+     }
+    }
+
+    function get_map_layers($post_id = false, $filter = "") {
+     global $post;
+     $post_id = $post_id ? $post_id : $post->ID;
+
+     $layers = array();
+
+     $map_layers = get_post_meta($post_id, '_jeo_map_layers', true);
+
+     if($map_layers) {
+        foreach($map_layers as $l) {
+           $layer = $this->get_layer($l['ID']);
+           $layer['filtering'] = $l['filtering'];
+           if($layer['filtering'] == 'swap') {
+            $layer['first_swap'] = $l['first_swap'];
+           } elseif($layer['filtering'] == 'switch') {
+            $layer['hidden'] = $l['hidden'];
+           }
+
+           if($filter == "baselayer") {
+               if($layer['map_category'] == "base-layers"){
+                  $layer['post_title'] = $l['title'];
+                  $layers[] = $layer;
+               }
+           }elseif($filter == "layer") {
+              if($layer['map_category'] != "base-layers"){
+                  $layers[] = $layer;
+              }
+          }else{
+             $layers[] = $layer;
+           }
+        }//foreach
+     }
+
+     return $layers;
+
+    }
+
     function get_layer($post_id = false) {
         global $post;
         $post_id = $post_id ? $post_id : $post->ID;
@@ -496,13 +794,9 @@
         $type = $this->get_layer_type();
 
         //$content = apply_filters('the_content', $post->post_content);
-        if (function_exists('qtrans_use')){
-            $content = qtrans_use(odm_language_manager()->get_current_language(), $post->post_content,false);//get content by langauge
-            $excerpt = qtrans_use(odm_language_manager()->get_current_language(), $post->excerpt,false);//get content by langauge
-        }else {
-            $content =  $post->post_content;//get content by langauge
-            $excerpt =  $post->excerpt;//get content by langauge
-        }
+        $content = apply_filters('translate_text', $post->post_content, odm_language_manager()->get_current_language());
+        $excerpt = apply_filters('translate_text', $post->excerpt, odm_language_manager()->get_current_language());
+
         $in_category = get_the_terms( $post->ID, 'layer-category' );
         if ( (odm_language_manager()->get_current_language() != "en") ){
             $layer_legend = get_post_meta( $post->ID , '_layer_legend_localization', true);

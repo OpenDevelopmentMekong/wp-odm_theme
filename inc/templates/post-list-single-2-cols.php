@@ -29,8 +29,7 @@
 						?>
 
 						<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>">
-							<?php echo $post_type->labels->name ?>
-						</a>
+							<?php echo $post_type->labels->name ?></a>
 					<?php
 					endif; ?>
 
@@ -41,17 +40,13 @@
 		<?php endif; ?>
 
 		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources'),$order); ?>
-		<?php endif; ?>
-
-		<?php if ($show_summary_translated_by_odc_team): ?>
-			<?php echo_post_translated_by_od_team(get_the_ID());?>
+			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
 		<?php endif; ?>
 
 		<section class="content section-content">
 			<?php
 			if ($show_thumbnail):
-				$thumb_src = odm_get_thumbnail($post->ID,false);
+				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
 				if (isset($thumb_src)):
 					echo $thumb_src;
 				else:
@@ -61,13 +56,14 @@
 			?>
 			<?php if ($show_excerpt || $show_source_meta): ?>
 				<div class="item-content">
+						<?php if( echo_downloaded_documents()):
+							echo_downloaded_documents();
+						endif; ?>
 						<?php if ($show_excerpt): ?>
 							<div class="post-excerpt">
 								<?php echo odm_excerpt($post); ?>
 							</div>
-							<?php if( echo_downloaded_documents()):
-								echo_downloaded_documents();
-							endif; ?>
+
 						<?php endif; ?>
 
 						<?php if ($show_source_meta): ?>

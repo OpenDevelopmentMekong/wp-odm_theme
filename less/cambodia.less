@@ -17,13 +17,15 @@ body{
   font-family: 'Suwannaphum', "Open Sans","Helvetica","Arial",sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, li, div {
+h1, h2, h3, h4, h5, h6, p, a, li, td, th, div {
     font-family: inherit !important;
 }
 .kh select, .km select{
     font-family: inherit;
 }
-
+tr:nth-child(2n+1){
+		background-color: @cambodia-bright;
+}
 .mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
 .fa_slider_opendev .fa_slide_content div.description p {
   font-family: inherit !important;
@@ -83,7 +85,7 @@ html#map-embed #embed-header {
   ul li {
     span.plusimage-cambodia {
       display: inline-block;
-      background: url("../../img/expand-kh.png") no-repeat 0 5px!important;
+      background: url("../../img/expand-kh.png") no-repeat 0 8px!important;
       padding-left: 20px;
     }
     span.minusimage-cambodia {

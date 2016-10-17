@@ -2,12 +2,20 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+<?php global $post, $page, $paged; ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?php bloginfo('charset'); ?>" />
+<meta property="og:title" content="<?php the_title(); ?>" />
+<meta property="og:description" content="<?php echo strip_tags(odm_excerpt($post)); ?>" />
+<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
+<meta property="og:type" content="<?php echo get_post_type(); ?>" />
+<?php if(has_post_thumbnail( $post->ID )) { ?>
+<meta property="og:image:secure_url" content="<?php $img_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false); echo $img_src[0]; ?>" />
+<?php } ?>
+<meta property="og:url" content="<?php echo get_permalink()?>" />
 <title>
 
   <?php
-    global $page, $paged;
     wp_title('|', true, 'right');
 
     bloginfo('name');
@@ -47,7 +55,7 @@
   </nav>
 
   <!-- Logo and contact icons -->
-  <header id="od-head">
+  <nav id="od-head">
     <div class="container">
         <div class="thirteen columns">
           <div class="site-meta">
@@ -60,7 +68,7 @@
           </div>
         </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Menu and search -->
   <nav id="od-menu">
@@ -80,28 +88,27 @@
     </div>
   </nav>
 
-  <!-- Disclaimer -->
-  <?php if (isset($options_msg['notice_message'])): ?>
-    <nav id="od-disclaimer">
-      <div class="container">
-        <div class="row">
-          <?php
-            $options_msg = get_option('odm_options');
-            if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
-              <div id="notification-message">
-                <div class="container">
-                  <div class="sixteen columns">
-                    <div class="notification-message-box">
-                      <?php echo $options_msg['notice_message']; ?>
-                    </div>
+  <!-- notification-message -->
+	<?php
+	$options_msg = get_option('odm_options');
+	if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
+  <nav id="od-notification">
+    <div class="container">
+      <div class="row">
+            <div id="notification-message">
+              <div class="container">
+                <div class="sixteen columns">
+                  <div class="notification-message-box">
+                    <?php echo $options_msg['notice_message']; ?>
                   </div>
                 </div>
               </div>
-        <?php endif; ?>
-        </div>
+            </div>
       </div>
-    </nav>
-  <?php endif; ?>
+    </div>
+  </nav>
+	<?php endif; ?>
+
 
   <!-- Breadcrumb -->
   <nav id="od-breadcrumb">

@@ -50,4 +50,6 @@ Site users are encouraged to do additional research in support of their activiti
 By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use.');
 //echo _('<< Previous');
 //echo _('Next >>');
+echo _('Khmer PDF');
+echo _('Khmer PDF not available');
 ?>

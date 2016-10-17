@@ -9,9 +9,9 @@ class Odm_Country_Manager {
 
   var $countries = [
     'mekong' => array('name' => 'Mekong', 'theme' => 'mekong', 'code' => 'mekong', 'lang' => null, 'url' => 'https://opendevelopmentmekong.net', 'url_pp' => 'https://pp.opendevelopmentmekong.net'),
-    'cambodia' => array('name' => 'Cambodia', 'theme' => 'cambodia', 'code' => 'kh', 'lang' => 'km', 'url' => 'https://cambodia.opendevelopmentmekong.net', 'url_pp' => 'https://cambodia.pp.opendevelopmentmekong.net'),
+    'cambodia' => array('name' => 'Cambodia', 'theme' => 'cambodia', 'code' => 'kh', 'lang' => 'km', 'url' => 'https://opendevelopmentcambodia.net', 'url_pp' => 'https://pp.opendevelopmentcambodia.net'),
     'laos' => array('name' => 'Laos', 'theme' => 'laos', 'code' => 'lo', 'lang' => 'la', 'url' => 'https://laos.opendevelopmentmekong.net', 'url_pp' => 'https://laos.pp.opendevelopmentmekong.net'),
-    'myanmar' => array('name' => 'Myanmar', 'theme' => 'myanmar', 'code' => 'mm', 'lang' => 'my', 'url' => 'https://myanmar.opendevelopmentmekong.net', 'url_pp' => 'https://myanmar.pp.opendevelopmentmekong.net'),
+    'myanmar' => array('name' => 'Myanmar', 'theme' => 'myanmar', 'code' => 'mm', 'lang' => 'my', 'url' => 'https://opendevelopmentmyanmar.net', 'url_pp' => 'https://pp.opendevelopmentmyanmar.net'),
     'thailand' => array('name' => 'Thailand', 'theme' => 'thailand', 'code' => 'th', 'lang' => 'th', 'url' => 'https://thailand.opendevelopmentmekong.net', 'url_pp' => 'https://thailand.pp.opendevelopmentmekong.net'),
     'vietnam' => array('name' => 'Vietnam', 'theme' => 'vietnam', 'code' => 'vn', 'lang' => 'vi', 'url' => 'https://vietnam.opendevelopmentmekong.net', 'url_pp' => 'https://vietnam.pp.opendevelopmentmekong.net')
   ];
@@ -46,12 +46,30 @@ class Odm_Country_Manager {
 
   function get_country_codes(){
     return [
-      'mekong' => 'mekong',
-      'cambodia' => 'kh',
-      'thailand' => 'th',
-      'laos' => 'lo',
-      'myanmar' => 'mm',
-      'vietnam' => 'vn'
+      'mekong' => array(
+        'iso2' =>'mekong',
+        'iso3' =>'mekong'
+      ),
+      'cambodia' => array(
+        'iso2' =>'kh',
+        'iso3' =>'khm'
+      ),
+      'thailand' => array(
+        'iso2' =>'th',
+        'iso3' =>'tha'
+      ),
+      'laos' => array(
+        'iso2' =>'lo',
+        'iso3' =>'lao'
+      ),
+      'myanmar' => array(
+        'iso2' =>'mm',
+        'iso3' =>'mmr'
+      ),
+      'vietnam' => array(
+        'iso2' =>'vn',
+        'iso3' =>'vnm'
+      ),
     ];
   }
 

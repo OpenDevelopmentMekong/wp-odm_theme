@@ -76,11 +76,25 @@ td{
 }
 
 .wp-caption-text {
-    font-size: 17px;
+    font-size: @font-size-h5;
     line-height: 24px;
     color: #777;
     font-style: italic;
+    clear: both;
+    a {
+      font-size: @font-size-h5;
+    }
 }
+
+.frame {
+  height: 350px;
+  padding: 5px;
+  overflow-y: hidden;
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
 
 .map-sidebar a {
 	color: @mekong-bright;
@@ -178,7 +192,7 @@ td{
 
 .align-right{
 	float:right;
-	margin: 5px 0 0 10px;
+	margin: 15px 0 5px 10px;
 }
 
 /* Headings */
