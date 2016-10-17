@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2016-09-22 19:37+0200\n"
-"PO-Revision-Date: 2016-09-22 19:37+0200\n"
+"POT-Creation-Date: 2016-10-17 10:41+0700\n"
+"PO-Revision-Date: 2016-10-17 10:41+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -19,6 +19,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
 
 #: 404.php:10
 msgid "Not found!"
@@ -56,6 +57,10 @@ msgstr ""
 
 #: archive-announcement.php:8
 msgid "Announcements"
+msgstr ""
+
+#: archive-dashboard.php:8
+msgid "Dashboards"
 msgstr ""
 
 #: archive-map-layer.php:8
@@ -146,7 +151,8 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: content-map-group.php:27 inc/widgets/odm-custom-posts-widget.php:71
+#: content-map-group.php:27 inc/widgets/odm-custom-posts-widget.php:79
+#: inc/widgets/odm-custom-posts-widget.php:109
 msgid "More..."
 msgstr ""
 
@@ -262,53 +268,53 @@ msgstr ""
 msgid "View infographics"
 msgstr ""
 
-#: functions.php:268
+#: functions.php:261
 msgid "default"
 msgstr ""
 
-#: functions.php:328
+#: functions.php:308
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr ""
 
-#: functions.php:329
+#: functions.php:309
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr ""
 
-#: functions.php:330
+#: functions.php:310
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:331
+#: functions.php:311
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:332
+#: functions.php:312
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:333
+#: functions.php:313
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:334
+#: functions.php:314
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:335
+#: functions.php:315
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:336
+#: functions.php:316
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:337
+#: functions.php:317
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:338
+#: functions.php:318
 msgid "News Source"
 msgstr ""
 
@@ -568,7 +574,7 @@ msgstr ""
 msgid "Interactive Map"
 msgstr ""
 
-#: inc/interactive-map.php:89 inc/utils/mapping.php:77
+#: inc/interactive-map.php:89 inc/utils/mapping.php:82
 msgid "Map Layers"
 msgstr ""
 
@@ -618,251 +624,327 @@ msgstr ""
 msgid "New Layer category Name"
 msgstr ""
 
-#: inc/layers.php:28
+#: inc/layers.php:33
 msgid "Layer settings"
 msgstr ""
 
-#: inc/layers.php:37
+#: inc/layers.php:42
 msgid "Layer legend"
 msgstr ""
 
-#: inc/layers.php:46
+#: inc/layers.php:51
 msgid "Layers"
 msgstr ""
 
-#: inc/layers.php:59
+#: inc/layers.php:64
 msgid "Enter your HTML code to use as legend on the layer (English)"
 msgstr ""
 
-#: inc/layers.php:62
+#: inc/layers.php:67
 msgid "Enter your HTML code to use as legend on the layer ("
 msgstr ""
 
-#: inc/layers.php:77
-msgid "Download Page URL"
+#: inc/layers.php:81
+#, php-format
+msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
 msgstr ""
 
-#: inc/layers.php:80
-msgid "Download URL (English)"
+#: inc/layers.php:83
+#, php-format
+msgid ""
+" You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click "
+"here</a> to create your first!"
 msgstr ""
 
-#: inc/layers.php:83 inc/layers.php:91
-msgid "A link to a dataset's page on CKAN"
+#: inc/layers.php:95
+msgid "Search for layers"
 msgstr ""
 
-#: inc/layers.php:88
-msgid "Download URL ("
-msgstr ""
-
-#: inc/layers.php:99
-msgid "Profile Page URL"
+#: inc/layers.php:98
+msgid "Latest layers"
 msgstr ""
 
 #: inc/layers.php:102
-msgid "Profile Page URL (English)"
+msgid "Search results"
 msgstr ""
 
-#: inc/layers.php:105 inc/layers.php:113
-msgid "A link to profile page on Wordpress"
+#: inc/layers.php:106
+msgid "You are using all of your layers."
 msgstr ""
 
 #: inc/layers.php:110
-msgid "Profile Page URL ("
+msgid "No layers were found."
 msgstr ""
 
-#: inc/layers.php:121
-msgid "Layer type"
+#: inc/layers.php:118
+msgid "Add layer"
 msgstr ""
 
-#: inc/layers.php:124
-msgid "Tile layer"
+#: inc/layers.php:118
+msgid "Add"
 msgstr ""
 
-#: inc/layers.php:126
-msgid "WMS layer"
+#: inc/layers.php:123
+msgid "Selected layers"
 msgstr ""
 
-#: inc/layers.php:129
-msgid "MapBox"
+#: inc/layers.php:134
+msgid "Layer options"
 msgstr ""
 
-#: inc/layers.php:132
-msgid "CartoDB"
+#: inc/layers.php:137
+msgid "Enable"
 msgstr ""
 
-#: inc/layers.php:145
-msgid "URL"
+#: inc/layers.php:139
+msgid "Disable"
 msgstr ""
 
-#: inc/layers.php:147
-msgid "http://{s}.example.com/{z}/{x}/{y}.png"
+#: inc/layers.php:141
+msgid "Swapable"
 msgstr ""
 
-#: inc/layers.php:148
-msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
+#: inc/layers.php:146
+msgid "Hidden"
 msgstr ""
 
-#: inc/layers.php:152
-msgid "UTFGrid URL (optional)"
-msgstr ""
-
-#: inc/layers.php:154
-msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
+#: inc/layers.php:150
+msgid "Default swap option"
 msgstr ""
 
 #: inc/layers.php:155
+msgid "Remove layer"
+msgstr ""
+
+#: inc/layers.php:155
+msgid "Remove"
+msgstr ""
+
+#: inc/layers.php:324
+msgid "Download Page URL"
+msgstr ""
+
+#: inc/layers.php:327
+msgid "Download URL (English)"
+msgstr ""
+
+#: inc/layers.php:330 inc/layers.php:338
+msgid "A link to a dataset's page on CKAN"
+msgstr ""
+
+#: inc/layers.php:335
+msgid "Download URL ("
+msgstr ""
+
+#: inc/layers.php:346
+msgid "Profile Page URL"
+msgstr ""
+
+#: inc/layers.php:349
+msgid "Profile Page URL (English)"
+msgstr ""
+
+#: inc/layers.php:352 inc/layers.php:360
+msgid "A link to profile page on Wordpress"
+msgstr ""
+
+#: inc/layers.php:357
+msgid "Profile Page URL ("
+msgstr ""
+
+#: inc/layers.php:368
+msgid "Layer type"
+msgstr ""
+
+#: inc/layers.php:371
+msgid "Tile layer"
+msgstr ""
+
+#: inc/layers.php:373
+msgid "WMS layer"
+msgstr ""
+
+#: inc/layers.php:376
+msgid "MapBox"
+msgstr ""
+
+#: inc/layers.php:379
+msgid "CartoDB"
+msgstr ""
+
+#: inc/layers.php:392
+msgid "URL"
+msgstr ""
+
+#: inc/layers.php:394
+msgid "http://{s}.example.com/{z}/{x}/{y}.png"
+msgstr ""
+
+#: inc/layers.php:395
+msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
+msgstr ""
+
+#: inc/layers.php:399
+msgid "UTFGrid URL (optional)"
+msgstr ""
+
+#: inc/layers.php:401
+msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
+msgstr ""
+
+#: inc/layers.php:402
 msgid ""
 "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: inc/layers.php:159
+#: inc/layers.php:406
 msgid "UTFGrid Template (optional)"
 msgstr ""
 
-#: inc/layers.php:162 inc/layers.php:313
+#: inc/layers.php:409 inc/layers.php:560
 msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
 msgstr ""
 
-#: inc/layers.php:166
+#: inc/layers.php:413
 msgid "TMS"
 msgstr ""
 
-#: inc/layers.php:168
+#: inc/layers.php:415
 msgid "Enable TMS"
 msgstr ""
 
-#: inc/layers.php:169
+#: inc/layers.php:416
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
 msgstr ""
 
-#: inc/layers.php:185
+#: inc/layers.php:432
 msgid "WMS Service URL"
 msgstr ""
 
-#: inc/layers.php:187
+#: inc/layers.php:434
 msgid "http://{geoserver adress & port}/geoserver/wms"
 msgstr ""
 
-#: inc/layers.php:188
+#: inc/layers.php:435
 msgid "Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 msgstr ""
 
-#: inc/layers.php:192
+#: inc/layers.php:439
 msgid "Workspaces:Layer Name (English)"
 msgstr ""
 
-#: inc/layers.php:194 inc/layers.php:202
+#: inc/layers.php:441 inc/layers.php:449
 msgid "Workspaces and Layer name\""
 msgstr ""
 
-#: inc/layers.php:195
+#: inc/layers.php:442
 msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
-#: inc/layers.php:200
+#: inc/layers.php:447
 msgid "Workspaces:Layer Name ("
 msgstr ""
 
-#: inc/layers.php:203
+#: inc/layers.php:450
 msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
-#: inc/layers.php:210
+#: inc/layers.php:457
 msgid "WMS format (optional)"
 msgstr ""
 
-#: inc/layers.php:212
+#: inc/layers.php:459
 msgid "image/png"
 msgstr ""
 
-#: inc/layers.php:213
+#: inc/layers.php:460
 msgid "E.g.: image/png or image/jpeg"
 msgstr ""
 
-#: inc/layers.php:217 inc/layers.php:220
+#: inc/layers.php:464 inc/layers.php:467
 msgid "Transparent"
 msgstr ""
 
-#: inc/layers.php:221
+#: inc/layers.php:468
 msgid "Enable it to make transparent the layer of WMS."
 msgstr ""
 
-#: inc/layers.php:230
+#: inc/layers.php:477
 msgid "MapBox ID"
 msgstr ""
 
-#: inc/layers.php:233
+#: inc/layers.php:480
 msgid "MapBox map ID. E.g.: examples.map-20v6611k"
 msgstr ""
 
-#: inc/layers.php:257
+#: inc/layers.php:504
 msgid "Visualization type"
 msgstr ""
 
-#: inc/layers.php:260
+#: inc/layers.php:507
 msgid "Visualization"
 msgstr ""
 
-#: inc/layers.php:262
+#: inc/layers.php:509
 msgid "Advanced (build from your tables)"
 msgstr ""
 
-#: inc/layers.php:262
+#: inc/layers.php:509
 msgid "coming soon"
 msgstr ""
 
-#: inc/layers.php:266
+#: inc/layers.php:513
 msgid "CartoDB URL (English)"
 msgstr ""
 
-#: inc/layers.php:269 inc/layers.php:277
+#: inc/layers.php:516 inc/layers.php:524
 msgid ""
 "CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
 "viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
-#: inc/layers.php:274
+#: inc/layers.php:521
 msgid "CartoDB URL ("
 msgstr ""
 
-#: inc/layers.php:282
+#: inc/layers.php:529
 msgid "Username"
 msgstr ""
 
-#: inc/layers.php:285
+#: inc/layers.php:532
 msgid "Your CartoDB username."
 msgstr ""
 
-#: inc/layers.php:289
+#: inc/layers.php:536
 msgid "Table"
 msgstr ""
 
-#: inc/layers.php:292
+#: inc/layers.php:539
 msgid "The CartoDB table you'd like to visualize."
 msgstr ""
 
-#: inc/layers.php:296
+#: inc/layers.php:543
 msgid "Where (optional)"
 msgstr ""
 
-#: inc/layers.php:299
+#: inc/layers.php:546
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
 msgstr ""
 
-#: inc/layers.php:303
+#: inc/layers.php:550
 msgid "CartoCSS"
 msgstr ""
 
-#: inc/layers.php:306
+#: inc/layers.php:553
 #, php-format
 msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr ""
 
-#: inc/layers.php:310
+#: inc/layers.php:557
 msgid "Template"
 msgstr ""
 
@@ -1403,16 +1485,16 @@ msgstr ""
 msgid " "
 msgstr ""
 
-#: inc/utils/layout.php:57
+#: inc/utils/layout.php:62
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: inc/utils/mapping.php:88
-msgid "Hide news icons"
+#: inc/utils/mapping.php:93
+msgid "Show news on map"
 msgstr ""
 
-#: inc/utils/mapping.php:300
+#: inc/utils/mapping.php:316
 msgid "LEGEND"
 msgstr ""
 
@@ -1439,19 +1521,19 @@ msgid ""
 msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:90
-#: inc/widgets/odm-custom-posts-widget.php:145
+#: inc/widgets/odm-custom-posts-widget.php:160
 #: inc/widgets/odm-related-recent-news-widget.php:130
 #: inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:95
-#: inc/widgets/odm-custom-posts-widget.php:149
+#: inc/widgets/odm-custom-posts-widget.php:164
 msgid "Select custom post type:"
 msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:105
-#: inc/widgets/odm-custom-posts-widget.php:182
+#: inc/widgets/odm-custom-posts-widget.php:197
 msgid "Select max number of posts to list (-1 to show all):"
 msgstr ""
 
@@ -1463,28 +1545,32 @@ msgstr ""
 msgid "Display entries of the spefied custom post type"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:157
+#: inc/widgets/odm-custom-posts-widget.php:172
 msgid "Select layout:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:165
+#: inc/widgets/odm-custom-posts-widget.php:180
 msgid "Show post excerpt:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:169
+#: inc/widgets/odm-custom-posts-widget.php:184
 msgid "Show post thumbnail:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:173
+#: inc/widgets/odm-custom-posts-widget.php:188
 msgid "Show post meta:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:177
+#: inc/widgets/odm-custom-posts-widget.php:192
 msgid "Show Source meta:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:186
+#: inc/widgets/odm-custom-posts-widget.php:201
 msgid "Order by:"
+msgstr ""
+
+#: inc/widgets/odm-custom-posts-widget.php:209
+msgid "Select location of 'More...':"
 msgstr ""
 
 #: inc/widgets/odm-related-recent-news-widget.php:10
