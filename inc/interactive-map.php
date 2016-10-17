@@ -86,7 +86,7 @@ class OpenDev_InteractiveMap {
             $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
             if ($terms_layer) {
                 echo '<div class="category-map-layers box-shadow hide_show_container">';
-                    echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "opendev");
+                    echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "odm");
                         echo "<i class='fa fa-caret-down hide_show_icon'></i>";
                     echo '</h2>';
                     echo '<div class="interactive-map-layers dropdown">';
@@ -180,7 +180,7 @@ class OpenDev_InteractiveMap {
                 var adminbar = 0;
                 if($('body').hasClass("admin-bar")){
                   adminbar = 35;
-                } 
+                }
                 var resize_height_map_container = window.innerHeight - adminbar -140 + "px"; //map, layer cat, and legend
                 var resize_height_map_category = window.innerHeight  - adminbar - 178 + "px";
                 var resize_height_map_layer = window.innerHeight  - adminbar - 215+ "px";
