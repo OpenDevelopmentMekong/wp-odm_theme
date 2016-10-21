@@ -79,7 +79,7 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 function display_map_layer_sidebar_and_legend_box($layers){
 	if (!empty($layers)){
 		echo '<div class="category-map-layers box-shadow hide_show_container">';
-			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "opendev");
+			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "odm");
 				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
 			echo '</h2>';
 			echo '<div class="interactive-map-layers dropdown">';
@@ -90,7 +90,7 @@ function display_map_layer_sidebar_and_legend_box($layers){
 				echo "</ul>";
 				echo '<div class="news-marker">';
 				echo '<label><input class="news-marker-toggle" type="checkbox" />';
-				 	echo '<span class="label">'.__("Show news on map", "opendev")."</span>";
+				 	echo '<span class="label">'.__("Show news on map", "odm")."</span>";
 				echo '</label>';
 				echo '</div>';
 			echo '</div>'; //interactive-map-layers dropdown
@@ -313,7 +313,7 @@ function get_pagination_of_layers_grouped_by_subcategory($list){
 
 function display_legend_container(){
 	echo '<div class="box-shadow map-legend-container hide_show_container">';
-	echo '<h2 class="widget_headline">'.__("LEGEND", "opendev");
+	echo '<h2 class="widget_headline">'.__("LEGEND", "odm");
 	echo '<i class="fa fa-caret-down hide_show_icon"></i>';
 	echo '</h2>';
 	echo '<hr class="color-line" />';

@@ -90,9 +90,9 @@ if(!empty($datasets)) {
 						$('.toggle-resources').on('click', function() {
 							toggle();
 							if(viewingAll) {
-								$(this).text('<?php _e("Hide resources details", "opendev"); ?>');
+								$(this).text('<?php _e("Hide resources details", "odm"); ?>');
 							} else {
-								$(this).text('<?php _e("Show resources details", "opendev"); ?>');
+								$(this).text('<?php _e("Show resources details", "odm"); ?>');
 							}
 						});
 
