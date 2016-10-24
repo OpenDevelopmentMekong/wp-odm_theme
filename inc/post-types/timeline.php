@@ -10,7 +10,6 @@ class Odm_Timeline {
 	function __construct() {
 
 		add_action('init', array($this, 'register_post_type'));
-		add_action('add_meta_boxes', array($this, 'add_meta_box'));
 		add_action('save_post', array($this, 'save_post_data'));
 
 	}
@@ -53,51 +52,6 @@ class Odm_Timeline {
 
 		register_post_type( 'timeline', $args );
 
-	}
-
-
-	function add_meta_box($post_type) {
-		$list_post_types = array('profiles', 'topic');
-		if(in_array($post_type, $list_post_types)){
-			add_meta_box(
-					'related-timeline',
-					__('Add Related Timeline', 'odm'),
-					array($this, 'add_related_timeline_box'),
-					$post_type,
-					'advanced',
-					'high'
-			);
-		}
-	}
-
-	function add_related_timeline_box($post = false){
-		$related_timeline_post = get_post_meta($post->ID, '_related_timeline_post', true);
-		?>
-		<div class="related_timeline">
-			<?php $get_timeline_post = get_posts( array(  'post_type' => 'timeline', 'posts_per_page' => -1, 'post_status' => 'publish' ) );
-			?>
-			<p><label for="related_timeline"><?php _e('Select any Timeline Post to display on the right sidebar of the page.', 'odm' ); ?></label></p>
-				 <select name="_related_timeline_post">
-					 <option value="">Select a timeline</option>
-						<?php
-						foreach($get_timeline_post as $timeline_post){
-							$timeline_post_title = apply_filters("translate_text", $timeline_post->post_title, odm_language_manager()->get_current_language());
-						?>
-							<option value="<?php echo $timeline_post->ID ?>" <?php echo ($related_timeline_post == $timeline_post->ID ? ' selected="selected"' : ''); ?>><?php echo $timeline_post_title; ?>
-							</option>
-						<?php
-			 			 }
-						?>
-				 </select>
-		</div>
-		<?php
-	}
-
-
-	function save_post_data($post_id) {
-		if(isset($_REQUEST['_related_timeline_post'])):
-			update_post_meta($post_id, '_related_timeline_post', $_REQUEST['_related_timeline_post']);
-		endif;
 	}
 
 }//class
