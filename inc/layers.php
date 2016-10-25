@@ -7,12 +7,13 @@
         // parent::__construct();
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
         add_action('save_post', array($this, 'layer_save'));
+        add_action('save_post', array($this, 'map_save'));
 
         add_post_type_support( 'map-layer', 'thumbnail' );
     }
 
     function add_layers_box_to_post_types(){
-      $supported_post_types = array("map");
+      $supported_post_types = array("map", "profiles");
       return $supported_post_types;
     }
 
@@ -50,7 +51,7 @@
             'post-layers',
             __('Layers', 'jeo'),
             array($this, 'post_layers_box'),
-            'map',
+            $this->add_layers_box_to_post_types(),
             'advanced',
             'high'
         );
@@ -231,7 +232,6 @@
         self.selectedLayers = ko.observableArray([]);
 
         var initSelection = <?php if($post_layers) echo json_encode($post_layers); else echo '[]'; ?>;
-
         if(initSelection.length) {
          _.each(initSelection, function(l) {
           var layer = _.extend(_.find(self.layers(), function(layer) {
