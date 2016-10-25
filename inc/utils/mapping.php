@@ -93,6 +93,9 @@ function display_map_layer_sidebar_and_legend_box($layers){
 				 	echo '<span class="label">'.__("Show news on map", "opendev")."</span>";
 				echo '</label>';
 				echo '</div>';
+				echo '<div class="searchFeature">';
+					echo '<input type="text" name="searchFeature_by_mapID" class="hidden" value="" id="searchFeature_by_mapID" size="10" />';
+				echo '</div>';
 			echo '</div>'; //interactive-map-layers dropdown
 		echo '</div>'; //category-map-layers  box-shadow
 
@@ -432,24 +435,29 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 function get_legend_of_map_by($post_ID = false){
 	if ($post_ID != ""){
 		$is_map = jeo_is_map($post_ID); //if postID is map post type
+	}else if( get_post_type( $post_ID ) == "profiles" ){
+		$post_ID = get_the_ID();
+		$is_map = true;
 	}else{
 		$post_ID = get_the_ID();
 	}
 	$legends = null;
 	if ($is_map){
 		$map_layers = get_post_meta($post_ID, '_jeo_map_layers', true);
-		foreach ($map_layers as $key => $lay) {
-		   $post_ID =  $lay['ID'];
-		   if ( (odm_language_manager()->get_current_language() != "en") ){
-			   $layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
-		   }else {
-			   $layer_legend = get_post_meta($post_ID , '_layer_legend', true);
-		   }
+		if($map_layers){
+			foreach ($map_layers as $key => $lay) {
+			   $post_ID =  $lay['ID'];
+			   if ( (odm_language_manager()->get_current_language() != "en") ){
+				   $layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
+			   }else {
+				   $layer_legend = get_post_meta($post_ID , '_layer_legend', true);
+			   }
 
-		   if($layer_legend!=""){
-			   $legends[$post_ID ] = '<div class="legend">'. $layer_legend.'</div>';
-		   }
-		}//foreach
+			   if($layer_legend!=""){
+				   $legends[$post_ID ] = '<div class="legend">'. $layer_legend.'</div>';
+			   }
+			}//foreach
+		}
 	}else {
 		if ( (odm_language_manager()->get_current_language() != "en") ){
 			$layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);

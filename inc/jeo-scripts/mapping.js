@@ -242,7 +242,7 @@ function cartodb_timeslider_init(torqueLayer, layer_ID) {
 				torque_container +='<div id="torque-slider"></div>';
 				torque_container += '<div id ="torque-time"></div>';
 				torque_container +=	'</div>';
-				
+
 		if(legend_added.length > 0) {
 			$('.map-legend-ul .legend-list.'+layer_ID +" .legend .dropdown").append(torque_container);
 		}else{
