@@ -783,7 +783,6 @@
 
         $type = $this->get_layer_type();
 
-        //$content = apply_filters('the_content', $post->post_content);
         $content = apply_filters('translate_text', $post->post_content, odm_language_manager()->get_current_language());
         $excerpt = apply_filters('translate_text', $post->excerpt, odm_language_manager()->get_current_language());
 
@@ -796,14 +795,7 @@
         $layer = array(
             'ID' => $post->ID,
             'title' => get_the_title(),
-            //'post_content' => $content, //content(999)
-            //'excerpt' => $excerpt,
-            //'download_url' => get_post_meta($post->ID, '_layer_download_link', true),
-            //'download_url_localization' => get_post_meta($post->ID, '_layer_download_link_localization', true),
-            //'profilepage_url' => get_post_meta($post->ID, '_layer_profilepage_link', true),
-            //'profilepage_url_localization' => get_post_meta($post->ID, '_layer_profilepage_link_localization', true),
             'type' => $type
-            //, 'legend' => $layer_legend
         );
 
         if (!empty($in_category)):
