@@ -17,16 +17,6 @@
       return $supported_post_types;
     }
 
-    function get_localization_language($site=""){
-        $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
-        $language['ODM'] = "";
-        $language['Cambodia'] = "Khmer";
-        $language['Laos'] = "Lao";
-        $language['Myanmar'] = "Burmese";
-        $language['Thailand'] = "Thai";
-        $language['Vietnam'] = "Vietnamese";
-        return $language[$site_name];
-    }
     function add_meta_box() {
         // Layer settings
         add_meta_box(
@@ -64,8 +54,8 @@
         ?>
         <h4><?php _e('Enter your HTML code to use as legend on the layer (English)', 'jeo'); ?></h4>
         <textarea name="_layer_legend" style="width:100%;height: 200px;"><?php echo $legend; ?></textarea>
-        <?php if($this->get_localization_language()){ ?>
-              <h4><?php _e('Enter your HTML code to use as legend on the layer ('.$this->get_localization_language().')', 'jeo'); ?></h4>
+        <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
+              <h4><?php _e('Enter your HTML code to use as legend on the layer ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></h4>
               <textarea name="_layer_legend_localization" style="width:100%;height: 200px;"><?php echo $legend_localization; ?></textarea>
         <?php
             }
@@ -330,9 +320,9 @@
                             <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'jeo'); ?></p>
                         </td>
                     </tr>
-                    <?php if($this->get_localization_language()){ ?>
+                    <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                     <tr>
-                        <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.$this->get_localization_language().')', 'jeo'); ?></label></th>
+                        <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></label></th>
                         <td>
                             <input id="_layer_download_link_localization" type="text" placeholder="https://" size="40" name="_layer_download_link_localization" value="<?php echo $layer_download_link_localization; ?>" />
                             <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'jeo'); ?></p>
@@ -352,9 +342,9 @@
                             <p class="description"><?php _e('A link to profile page on Wordpress', 'jeo'); ?></p>
                         </td>
                     </tr>
-                    <?php if($this->get_localization_language()){ ?>
+                    <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                     <tr>
-                        <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.$this->get_localization_language().')', 'jeo'); ?></label></th>
+                        <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></label></th>
                         <td>
                             <input id="_layer_profilepage_link_localization" type="text" placeholder="https://" size="40" name="_layer_profilepage_link_localization" value="<?php echo $layer_profilepage_link_localization; ?>" />
                             <p class="description"><?php _e('A link to profile page on Wordpress', 'jeo'); ?></p>
@@ -442,9 +432,9 @@
                             <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
                         </td>
                     </tr>
-                    <?php if($this->get_localization_language()){ ?>
+                    <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                     <tr>
-                        <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.$this->get_localization_language().')', 'opendev'); ?></label></th>
+                        <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.odm_language_manager()->get_the_language_by_site().')', 'opendev'); ?></label></th>
                         <td>
                             <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
                             <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
@@ -516,9 +506,9 @@
                     <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
                   </td>
                 </tr>
-                <?php if($this->get_localization_language()){ ?>
+                <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                 <tr class="subopt viz_type_viz">
-                  <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.$this->get_localization_language().')', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></label></th>
                   <td>
                     <input id="cartodb_viz_url_localization" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url_localization" value="<?php echo $vizurl_localization; ?>" />
                     <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
@@ -808,7 +798,6 @@
             'title' => get_the_title(),
             //'post_content' => $content, //content(999)
             //'excerpt' => $excerpt,
-            'map_category' => $in_category[0]->slug,
             //'download_url' => get_post_meta($post->ID, '_layer_download_link', true),
             //'download_url_localization' => get_post_meta($post->ID, '_layer_download_link_localization', true),
             //'profilepage_url' => get_post_meta($post->ID, '_layer_profilepage_link', true),
@@ -816,6 +805,10 @@
             'type' => $type
             //, 'legend' => $layer_legend
         );
+
+        if (!empty($in_category)):
+          $layer['map_category'] = $in_category[0]->slug;
+        endif;
 
         if($type == 'tilelayer') {
             $layer['tile_url'] = htmlspecialchars(urldecode(get_post_meta($post->ID, '_tilelayer_tile_url', true)));

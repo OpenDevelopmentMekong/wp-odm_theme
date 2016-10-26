@@ -151,7 +151,6 @@ function display_embedded_map($map_ID, $show_odlogo = null) {
 		$conf = extended_jeo_get_map_embed_conf();
 	else:
 		$conf = jeo_get_map_embed_conf();
-    print_r($conf);
 	endif;
   ?>
   <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
