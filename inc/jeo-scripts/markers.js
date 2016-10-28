@@ -487,19 +487,28 @@
 	//Add option to show and hide news markers
 	jeo.markersReady(function(map) {
 		var marker_layer = map._markerLayer;
-		var $news_marker = $('.interactive-map .interactive-map-layers input.news-marker-toggle'); 
+		var $news_marker = $('.interactive-map .interactive-map-layers input.news-marker-toggle');
 		if($news_marker.length > 0){
 			if($news_marker.is(':checked')){
 					map.addLayer(marker_layer);
 			}else{
 					map.removeLayer(marker_layer);
+
 			}
 		}
 		$news_marker.on('click', function() {
 			 if($news_marker.is(':checked')){
 						map.addLayer(marker_layer);
+						if($('.jeo-date-range-slider').length > 0){
+							$('.jeo-date-range-slider').show();
+							$('.ui-rangeSlider-container').css("width", '218px');
+
+						}
 			 }else{
 						map.removeLayer(marker_layer);
+						if($('.jeo-date-range-slider').length > 0){
+							$('.jeo-date-range-slider').hide();
+						}
 			 }
 		});
 	});

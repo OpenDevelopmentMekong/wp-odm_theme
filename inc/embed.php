@@ -86,7 +86,7 @@
 		$conf['containerID'] = 'map_embed';
 		$conf['disableHash'] = true;
 		$conf['mainMap'] = true;
-		if(isset($_GET['map_id'])) {
+		if(isset($_GET['map_id']) and (get_post_type() != "profiles") ) {
 			$conf['postID'] = $_GET['map_id'];
 		} else {
 			$conf['postID'] = jeo_get_the_ID();
@@ -145,3 +145,50 @@ function extended_jeo_get_map_embed_conf() {
 function get_embedded_map_id() {
 	return $GLOBALS['extended_jeo_embed']->get_map_id();
 }
+
+function display_embedded_map($map_ID, $show_odlogo = null) {
+  if(function_exists('extended_jeo_get_map_embed_conf')):
+		$conf = extended_jeo_get_map_embed_conf();
+	else:
+		$conf = jeo_get_map_embed_conf();
+	endif;
+  ?>
+  <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
+		<div class="map-container"><div id="map_embed" class="map"></div></div>
+		<?php
+      if(isset($mapID))
+			$mapID = get_embedded_map_id();
+			//show basemap
+			display_baselayer_navigation();
+			$layers = get_selected_layers_of_map_by_mapID($mapID);
+			$base_layers = get_post_meta_of_all_baselayer();
+			$layers_legend = get_legend_of_map_by($mapID);
+			 //Show Menu Layers and legendbox
+			display_map_layer_sidebar_and_legend_box($layers);
+		?>
+	</div>
+  <script type="text/javascript">
+		var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
+		var all_layers_value = <?php echo json_encode($layers) ?>;
+		var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
+
+    (function($) {
+      jeo(<?php echo $conf; ?>, function(map) {
+        var track = function() {
+          var c = map.getCenter();
+          $('#latitude').val(c.lat);
+          $('#longitude').val(c.lng);
+          $('#zoom').val(map.getZoom());
+        }
+
+        map.on('zoomend', track);
+        map.on('dragend', track);
+
+      });
+
+    })(jQuery);
+
+	</script>
+  <?php
+}
+?>
