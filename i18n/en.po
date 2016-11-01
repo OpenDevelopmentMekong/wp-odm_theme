@@ -1562,7 +1562,7 @@ msgid "Show post meta:"
 msgstr ""
 
 #: inc/widgets/odm-custom-posts-widget.php:192
-msgid "Show Source meta:"
+msgid "Show source meta:"
 msgstr ""
 
 #: inc/widgets/odm-custom-posts-widget.php:201

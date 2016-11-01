@@ -1502,7 +1502,7 @@ msgid "Show post meta:"
 msgstr "Hiển thị thông tin mô tả:"
 
 #: inc/widgets/odm-custom-posts-widget.php:177
-msgid "Show Source meta:"
+msgid "Show source meta:"
 msgstr "Hiển thị thông tin mô tả nguồn:"
 
 #: inc/widgets/odm-custom-posts-widget.php:186

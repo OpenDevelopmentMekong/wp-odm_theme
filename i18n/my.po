@@ -1486,7 +1486,7 @@ msgid "Show post meta:"
 msgstr "Post meta ကိုပြပါ"
 
 #: inc/widgets/odm-custom-posts-widget.php:177
-msgid "Show Source meta:"
+msgid "Show source meta:"
 msgstr "Source meta ကိုပြပါ"
 
 #: inc/widgets/odm-custom-posts-widget.php:186
