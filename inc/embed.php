@@ -152,15 +152,24 @@ function display_embedded_map($map_ID, $show_odlogo = null) {
 	else:
 		$conf = jeo_get_map_embed_conf();
 	endif;
+
+	$map_conf = json_decode($conf, true);
+	$map_conf['forceCenter']=true;
+	$conf	 = json_encode($map_conf);
+
+	if(isset($mapID)):
+		$mapID = get_embedded_map_id();
+	endif;
+
+	$layers = get_selected_layers_of_map_by_mapID($mapID);
+
+	if(count($layers) > 1){ //no layer selectd
   ?>
   <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
 		<div class="map-container"><div id="map_embed" class="map"></div></div>
 		<?php
-      if(isset($mapID))
-			$mapID = get_embedded_map_id();
 			//show basemap
 			display_baselayer_navigation();
-			$layers = get_selected_layers_of_map_by_mapID($mapID);
 			$base_layers = get_post_meta_of_all_baselayer();
 			$layers_legend = get_legend_of_map_by($mapID);
 			 //Show Menu Layers and legendbox
@@ -190,5 +199,6 @@ function display_embedded_map($map_ID, $show_odlogo = null) {
 
 	</script>
   <?php
+	}
 }
 ?>
