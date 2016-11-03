@@ -54,6 +54,16 @@ class Odm_Timeline {
 
 	}
 
+	function save_post_data($post_id) {
+	 if(get_post_type($post_id) == 'timeline') {
+
+		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+		 return;
+
+		// save variables here
+	 }
+	}
+
 }//class
 
 $GLOBALS['odm_timeline'] = new Odm_Timeline();
