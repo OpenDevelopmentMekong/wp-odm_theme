@@ -109,10 +109,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
 				</div>
 			<?php endif; ?>
+
 			<?php echo $args['after_widget']; ?>
 		</div>
 
 	<?php
+	wp_reset_query();
 	}
 
 
