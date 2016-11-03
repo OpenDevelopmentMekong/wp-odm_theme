@@ -46,13 +46,12 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
 			$post_type =  get_post_type( get_the_ID() );
 			$get_post_id = get_post_or_page_id_by_title($category->name);
+			$current_page = "";
 			if ($get_post_id){ // if page of the topic exists
 				$topic_page = get_post($get_post_id);
 				$topic_slug = $topic_page->post_name;
 				if ($topic_slug == $current_page_slug){
 					 $current_page = " ".$current_page_slug;
-				}else {
-					 $current_page = "";
 				}
 			}
 
