@@ -120,6 +120,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 					<?php endif; ?>
 			</div>
 
+		<?php wp_reset_query(); ?>
 
 		<?php echo $args['after_widget'];
 

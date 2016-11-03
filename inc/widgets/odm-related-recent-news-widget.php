@@ -92,8 +92,10 @@ class Odm_Related_Recent_News_Widget extends WP_Widget {
     		echo "<div>";
     		  echo $this->get_related_news( $category_slug );
     		echo "</div>";
+				
+				wp_reset_query();
 
-    	   echo $args['after_widget'];
+    	  echo $args['after_widget'];
     	} //if news avaialable
 	}
 
