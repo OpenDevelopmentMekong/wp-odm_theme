@@ -65,7 +65,6 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			$query = array(
 					'post_type'        => $supported_post_types,
 					'posts_per_page'   => $limit,
-    			'post_type' => $supported_post_types,
 					'tax_query' => array(
 									array(
 										'taxonomy' => 'category',

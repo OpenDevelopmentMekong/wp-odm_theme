@@ -113,6 +113,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		</div>
 
 	<?php
+	wp_reset_query();
 	}
 
 
