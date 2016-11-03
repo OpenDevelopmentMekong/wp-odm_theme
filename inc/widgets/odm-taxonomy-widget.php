@@ -155,12 +155,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
 		}
+		$cat_included_id_arr = array();
 		if ( ! empty( $instance['od_include'] ) ) {
 			$cat_included_id_arr = explode(",", $instance['od_include']);
 		}
+		$cat_excluded_id_arr = array();
 		if ( ! empty( $instance['od_exclude'] ) ) {
 			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
-		//	$cat_excluded_id_arr = str_split($instance['od_exclude']);
 		}
 		echo "<div>";
 		$args = array(
