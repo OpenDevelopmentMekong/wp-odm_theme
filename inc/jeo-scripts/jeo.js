@@ -299,8 +299,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
                 var cartodb_table = lay.options.layer_definition.layers[0].options.layer_name;
                 var cartodb_user = cartodb_layer_url.split('.')[0].split('//')[1];
-                
-                if($("#searchFeature_by_mapID").val() != ""){
+
+                if($("#searchFeature_by_mapID").length && $("#searchFeature_by_mapID").val() != ""){
                     jeo.search_map_feature(map, lay, cartodb_user, cartodb_table);
                 }
 
@@ -365,18 +365,20 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   jeo.search_map_feature = function (map, layer, cartodb_user, cartodb_table) {
 		var query;
 		input = $("#searchFeature_by_mapID").val();
-		var sql = new cartodb.SQL({ user: cartodb_user });
-		query = "SELECT * FROM " + cartodb_table + " WHERE map_id in " + input;
-		var sublayerOptions = {
-				sql: query
-				}
-		layer.getSubLayer(0).set(sublayerOptions); // set layer options
-		sql.getBounds(query).done(function(bounds) {
-			map.fitBounds(bounds);
-			map.maxZoom = 10;
-		}).error(function(errors) {
-				//console.log("errors:" + errors);
-		});
+    if (input){
+  		var sql = new cartodb.SQL({ user: cartodb_user });
+  		query = "SELECT * FROM " + cartodb_table + " WHERE map_id in " + input;
+  		var sublayerOptions = {
+  				sql: query
+  				}
+  		layer.getSubLayer(0).set(sublayerOptions); // set layer options
+  		sql.getBounds(query).done(function(bounds) {
+  			map.fitBounds(bounds);
+  			map.maxZoom = 10;
+  		}).error(function(errors) {
+  				console.log("errors:" + errors);
+  		});
+    }
   }
 
  /*
@@ -411,6 +413,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
  //jeo.loadLayers_filterlayer(map, jeo.parse_layer(map, default_baselayer));
 
  jeo.parseConf = function(conf) {
+   console.log(conf);
   var newConf = $.extend({}, conf);
   newConf.server = conf.server;
 
