@@ -34,7 +34,7 @@
 		</header>
  	<?php } ?>
 	<?php
-	$mapID = get_embedded_map_id(); 
+	$mapID = get_embedded_map_id();
 	?>
 	<?php
 	if(function_exists(display_embedded_map)){
