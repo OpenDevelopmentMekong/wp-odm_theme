@@ -434,13 +434,14 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 //List all legends' value into an array by post ID
 function get_legend_of_map_by($post_ID = false){
 	if ($post_ID != ""){
-		$is_map = jeo_is_map($post_ID); //if postID is map post type
-	}else if( get_post_type( $post_ID ) == "profiles" ){
-		$post_ID = get_the_ID();
-		$is_map = true;
+		if( get_post_type( $post_ID ) == "profiles" ){
+				$is_map = true;
+		}else {
+			$is_map = jeo_is_map($post_ID); //if postID is map post type
+		}
 	}else{
 		$post_ID = get_the_ID();
-	}
+	} 
 	$legends = null;
 	if ($is_map){
 		$map_layers = get_post_meta($post_ID, '_jeo_map_layers', true);

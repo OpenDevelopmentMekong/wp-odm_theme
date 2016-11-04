@@ -10,7 +10,7 @@ var marker_layer;
 detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
- jeo = function(conf, callback) {
+ jeo = function(conf, callback) { 
   var _init = function() {
    if(conf.mainMap)
     $('body').addClass('loading-map');
@@ -413,7 +413,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
  //jeo.loadLayers_filterlayer(map, jeo.parse_layer(map, default_baselayer));
 
  jeo.parseConf = function(conf) {
-   console.log(conf);
   var newConf = $.extend({}, conf);
   newConf.server = conf.server;
 
