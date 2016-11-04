@@ -146,7 +146,8 @@ function get_embedded_map_id() {
 	return $GLOBALS['extended_jeo_embed']->get_map_id();
 }
 
-function display_embedded_map($map_ID, $show_odlogo = null) {
+function display_embedded_map($mapID, $show_odlogo = null) {
+
   if(function_exists('extended_jeo_get_map_embed_conf')):
 		$conf = extended_jeo_get_map_embed_conf();
 	else:
@@ -162,7 +163,6 @@ function display_embedded_map($map_ID, $show_odlogo = null) {
 	endif;
 
 	$layers = get_selected_layers_of_map_by_mapID($mapID);
-
 	if(count($layers) > 1){ //no layer selectd
   ?>
   <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
@@ -180,10 +180,10 @@ function display_embedded_map($map_ID, $show_odlogo = null) {
 		var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
 		var all_layers_value = <?php echo json_encode($layers) ?>;
 		var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
-
+		console.log(<?php echo json_encode($layers) ?>);
     (function($) {
       jeo(<?php echo $conf; ?>, function(map) {
-        var track = function() {
+        var track = function() { 
           var c = map.getCenter();
           $('#latitude').val(c.lat);
           $('#longitude').val(c.lng);
@@ -196,7 +196,6 @@ function display_embedded_map($map_ID, $show_odlogo = null) {
       });
 
     })(jQuery);
-
 	</script>
   <?php
 	}
