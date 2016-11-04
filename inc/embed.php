@@ -75,8 +75,12 @@
 	function get_map_id() {
 		if(isset($_GET['map_id'])) {
 			$mapID = $_GET['map_id'];
-		} else {
+		} else if (jeo_get_the_ID()){
 			$mapID  = jeo_get_the_ID();
+		}else {
+			//get map_id from feature map in Jeo Setting
+			$get_featured_map_id = get_option('jeo_settings');
+			$mapID = $get_featured_map_id['jeo_settings']['front_page']['featured_map'];
 		}
 		return $mapID;
 	}
@@ -91,6 +95,7 @@
 		} else {
 			$conf['postID'] = jeo_get_the_ID();
 		}
+
 		if(isset($_GET['map_only'])) {
 			$conf['disableMarkers'] = true;
 		}
@@ -157,11 +162,9 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 	$map_conf = json_decode($conf, true);
 	$map_conf['forceCenter']=true;
 	$conf	 = json_encode($map_conf);
-
-	if(isset($mapID)):
+	if($mapID == ""):
 		$mapID = get_embedded_map_id();
 	endif;
-
 	$layers = get_selected_layers_of_map_by_mapID($mapID);
 	if(count($layers) > 1){ //no layer selectd
   ?>
@@ -172,6 +175,7 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 			display_baselayer_navigation();
 			$base_layers = get_post_meta_of_all_baselayer();
 			$layers_legend = get_legend_of_map_by($mapID);
+ 
 			 //Show Menu Layers and legendbox
 			display_map_layer_sidebar_and_legend_box($layers);
 		?>
@@ -183,7 +187,7 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 		console.log(<?php echo json_encode($layers) ?>);
     (function($) {
       jeo(<?php echo $conf; ?>, function(map) {
-        var track = function() { 
+        var track = function() {
           var c = map.getCenter();
           $('#latitude').val(c.lat);
           $('#longitude').val(c.lng);
