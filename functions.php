@@ -15,6 +15,7 @@ require_once get_stylesheet_directory().'/inc/post-types/topics.php';
 require_once get_stylesheet_directory().'/inc/post-types/announcements.php';
 require_once get_stylesheet_directory().'/inc/post-types/site-updates.php';
 require_once get_stylesheet_directory().'/inc/post-types/stories.php';
+require_once get_stylesheet_directory().'/inc/post-types/timeline.php';
 
 /*
  * Importing utility classes
@@ -27,7 +28,6 @@ require_once get_stylesheet_directory().'/inc/summary.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
-require_once get_stylesheet_directory().'/inc/widgets/odm-related-recent-news-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
@@ -145,6 +145,7 @@ function odm_setup_theme()
 
   include_once get_stylesheet_directory().'/inc/layers.php';
   include_once get_stylesheet_directory().'/inc/embed.php';
+  include_once get_stylesheet_directory().'/inc/utils/markers.php';
 }
 add_action('after_setup_theme', 'odm_setup_theme');
 
@@ -201,7 +202,7 @@ function odm_jeo_scripts()
 
   wp_localize_script('jeo.markers', 'opendev_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
-    'query' => $jeo_markers->query(),
+    'query' => extended_jeo_markers_query(),
     'stories_label' => __('stories', 'odm'),
     'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
     'copy_embed_label' => __('Copy the embed code', 'odm'),
@@ -210,23 +211,23 @@ function odm_jeo_scripts()
     'embed_base_url' => home_url('/embed/'),
     'share_base_url' => home_url('/share/'),
     'marker_active' => array(
-    'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
-    'iconSize' => array(26, 30),
-    'iconAnchor' => array(13, 30),
-    'popupAnchor' => array(0, -40),
-    'markerId' => 'none',
-  ),
+      'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
+      'iconSize' => array(26, 30),
+      'iconAnchor' => array(13, 30),
+      'popupAnchor' => array(0, -40),
+      'markerId' => 'none',
+    ),
    'site_url' => home_url('/'),
    'read_more_label' => __('Read more', 'odm'),
    'lightbox_label' => array(
-   'slideshow' => __('Open slideshow', 'odm'),
-   'videos' => __('Watch video gallery', 'odm'),
-   'video' => __('Watch video', 'odm'),
-   'images' => __('View image gallery', 'odm'),
-   'image' => __('View fullscreen image', 'odm'),
-   'infographic' => __('View infographic', 'odm'),
-   'infographics' => __('View infographics', 'odm'),
-  ),
+     'slideshow' => __('Open slideshow', 'odm'),
+     'videos' => __('Watch video gallery', 'odm'),
+     'video' => __('Watch video', 'odm'),
+     'images' => __('View image gallery', 'odm'),
+     'image' => __('View fullscreen image', 'odm'),
+     'infographic' => __('View infographic', 'odm'),
+     'infographics' => __('View infographics', 'odm'),
+    ),
    'enable_clustering' => jeo_use_clustering() ? true : false,
    'default_icon' => jeo_formatted_default_marker(),
   ));
@@ -234,13 +235,13 @@ function odm_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
-  if (is_page( array( 'map-explorer', 'maps', 'embed' )) || is_singular('map') || is_home()){
+  if (is_page( array( 'map-explorer', 'maps', 'embed' )) || is_singular('map') ||is_singular('profiles') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
          wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
       }
 
-      if ( file_exists( STYLESHEETPATH . '/inc//jeo-scripts/fullscreen.js')){
+      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')){
          wp_deregister_script('jeo.fullscreen');
          wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
       }

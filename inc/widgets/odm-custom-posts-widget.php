@@ -48,7 +48,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
-		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
+		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
 
@@ -109,10 +109,12 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
 				</div>
 			<?php endif; ?>
+
 			<?php echo $args['after_widget']; ?>
 		</div>
 
 	<?php
+	wp_reset_query();
 	}
 
 
@@ -128,7 +130,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
-		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
+		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
 
@@ -189,7 +191,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<input type="checkbox" name="<?php echo $this->get_field_name('show_meta'); ?>" id="<?php echo $this->get_field_id('show_meta'); ?>" <?php if ($show_meta)  echo 'checked="true"'; ?>/>
 		</p>
 		<p class="<?php echo $this->get_field_id('show_source_meta'); ?>" id="show_source_meta" style="<?php if ( !in_array($layout_type, array("list-1-cols", "list-2-cols"))): echo "display: none"; endif; ?>">
-			<label for="<?php echo $this->get_field_id( 'show_source_meta' ); ?>"><?php _e( 'Show Source meta:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'show_source_meta' ); ?>"><?php _e( 'Show source meta:' ); ?></label>
 			<input type="checkbox" name="<?php echo $this->get_field_name('show_source_meta'); ?>" id="<?php echo $this->get_field_id('show_source_meta'); ?>" <?php if ($show_source_meta)  echo 'checked="true"'; ?>/>
 		</p>
 		<?php $limit = !empty($instance['limit']) ? $instance['limit'] : -1 ?>
@@ -230,10 +232,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['limit'] = (!empty($new_instance['limit'])) ? $new_instance['limit'] : -1;
 		$instance['post_type'] = (!empty( $new_instance['post_type'])) ? $new_instance['post_type'] : '';
 		$instance['layout_type'] = (!empty( $new_instance['layout_type'])) ? $new_instance['layout_type'] : 'grid-4-cols';
-		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : true;
+		$instance['show_meta'] = (!empty( $new_instance['show_meta'])) ? $new_instance['show_meta'] : false;
 		$instance['show_source_meta'] = (!empty( $new_instance['show_source_meta'])) ? $new_instance['show_source_meta'] : false;
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
-		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : true;
+		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
 		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
 		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
 

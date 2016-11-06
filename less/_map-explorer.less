@@ -98,60 +98,6 @@
 			display: none !important;
 		}
 
-		.leaflet-popup-content-wrapper {
-	    background: #fff;
-	    -webkit-box-shadow: 0 0 0 4px rgba(0,0,0,.15);
-	    border-radius: 2px;
-
-			.leaflet-popup-content {
-  			max-width: 250px;
-  			margin: 2px;
-    		padding-top: 10px;
-			}
-		}
-
-		.leaflet-popup-tip-container {
-	    width: 22px;
-	    height: 20px;
-
-			.leaflet-popup-tip {
-				width: 0;
-		    margin: 0;
-		    top: -35px;
-		    height: 44px;
-				left: 3px;
-				margin: 0;
-				border-right: 15px solid #fff;
-				border-bottom: 15px solid transparent;
-				box-shadow: none;
-				position: relative;
-				background: none;
-			}
-		}
-
-		.leaflet-popup-close-button {
-			right: -10px;
-			top: -10px;
-			width: 20px;
-			height: 20px;
-			background: none;
-			background-color: #fff;
-			-webkit-border-radius: 18px;
-			-moz-border-radius: 18px;
-			border-radius: 18px;
-			text-indent: 4px;
-			line-height: 12px;
-			box-shadow: 0 0 0 3px rgba(0,0,0,.15);
-			display: block!important;
-			opacity: 1;
-			color: @gray;
-
-			&:hover {
-    		box-shadow: 0 0 0 3px rgba(0,0,0,.25);
-				color: @black;
-			}
-		}
-
 	}
 
 	.category-map-layers{
@@ -382,6 +328,7 @@
 			margin-top: 0;
 			margin-left: 15px;
 			background: #f7f7f7;
+			overflow-y: auto;
 
 			li {
 				&:before {
@@ -404,9 +351,6 @@
 
 		} /*cat-layers*/
 
-		.cat-layer-items {
-			overflow-y: auto;
-		}
 	} /*interactive-map-layers*/
 
 	.interactive-map-layers > ul >li {
@@ -507,12 +451,14 @@
 		.map-legend-ul {
 			margin-right: 0;
 			margin-bottom: 0;
+    	margin-left: 0 !important;
 			padding: 0 0 0 15px;
 			width: 215px;
 
 			li {
 				margin-bottom: 0;
 				padding: 5px 0;
+	    	list-style-type: none !important;
 
 				&:hover {
 					cursor: move;
@@ -791,7 +737,13 @@
 		background: #eee;
 	}
 } /*.baselayer-container */
+.searchFeature{
+	display: none;
 
+	input[type="text"] {
+    margin: 5px 0 5px 25px;
+	}
+}
 .news-marker{
     padding: 5px 12px;
     background: #eee;
@@ -849,12 +801,20 @@ html#map-embed {
 	.map-legend-container {
 		bottom: 0;
 	}
+
+	.jeo-date-range-slider {
+		display: none;
+	}
 }
 #embeded-interactive-map-has-odlogo {
 	height: 100%;
 
 	.map-legend-container {
 		bottom: 28px;
+	}
+
+	.jeo-date-range-slider {
+		display: none;
 	}
 }
 /*********************************/
