@@ -3,6 +3,8 @@
 class Odm_Custom_Posts_Widget extends WP_Widget {
 
 	private $templates;
+	private $order_options;
+	private $more_location;
 	/**
 	 * Sets up the widgets name etc
 	 */
