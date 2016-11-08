@@ -89,11 +89,15 @@
 		$conf = array();
 		$conf['containerID'] = 'map_embed';
 		$conf['disableHash'] = true;
-		$conf['mainMap'] = true;
-		if(isset($_GET['map_id']) and (get_post_type() != "profiles") ) {
-			$conf['postID'] = $_GET['map_id'];
-		} else {
-			$conf['postID'] = jeo_get_the_ID();
+		$conf['mainMap'] = true; 
+		if(get_post_type() == "profiles") {
+			 $conf['postID'] = jeo_get_the_ID();
+		}else {
+			if(isset($_GET['map_id'])) {
+				$conf['postID'] = $_GET['map_id'];
+			} else {
+				$conf['postID'] = jeo_get_the_ID();
+			}
 		}
 
 		if(isset($_GET['map_only'])) {
@@ -162,12 +166,14 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 	$map_conf = json_decode($conf, true);
 	$map_conf['forceCenter']=true;
 	$conf	 = json_encode($map_conf);
+
 	if($mapID == ""):
 		$mapID = get_embedded_map_id();
 	endif;
 	$layers = get_selected_layers_of_map_by_mapID($mapID);
 	if(count($layers) > 1){ //no layer selectd
   ?>
+
   <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
 		<div class="map-container"><div id="map_embed" class="map"></div></div>
 		<?php
@@ -175,12 +181,13 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 			display_baselayer_navigation();
 			$base_layers = get_post_meta_of_all_baselayer();
 			$layers_legend = get_legend_of_map_by($mapID);
- 
+
 			 //Show Menu Layers and legendbox
 			display_map_layer_sidebar_and_legend_box($layers);
 		?>
 	</div>
   <script type="text/javascript">
+		console.log(<?php print_r($conf) ?>);
 		var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
 		var all_layers_value = <?php echo json_encode($layers) ?>;
 		var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
