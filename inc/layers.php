@@ -748,12 +748,7 @@
      if($map_layers) {
         foreach($map_layers as $l) {
            $layer = $this->get_layer($l['ID']);
-           $layer['filtering'] = $l['filtering'];
-           if($layer['filtering'] == 'swap') {
-            $layer['first_swap'] = $l['first_swap'];
-           } elseif($layer['filtering'] == 'switch') {
-            $layer['hidden'] = $l['hidden'];
-           }
+           $layer['filtering'] = $l['filtering']; 
 
            if($filter == "baselayer") {
                if($layer['map_category'] == "base-layers"){

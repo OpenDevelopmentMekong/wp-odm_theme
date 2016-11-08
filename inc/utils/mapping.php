@@ -55,17 +55,24 @@ function query_get_baselayer_posts($num=5, $cat='base-layers', $include_children
 	return $baselayer_posts;
 }
 
+function set_default_map_baselayer($baselayer){
+	if($baselayer){
+		$default_map = array(
+			'ID' => 0,
+			'filtering' => '',
+			'type' => 'tilelayer',
+			'tile_url' => $baselayer['url']
+		);
+		return $default_map;
+	}
+	return;
+}
 //Query all baselayers' post meta into an array
 function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_children=false){
 	//get map configure from the opendev-setting
 	$map = odm_get_interactive_map_data();
 	if($map['base_layer']) {
-			$default_map = array(
-				'ID' => 0,
-				'type' => 'tilelayer',
-				'tile_url' => $map['base_layer']['url']
-			);
-			$base_layers[0] = $default_map;
+			$base_layers[0] = set_default_map_baselayer($map['base_layer']);
 	}
 	$base_layer_posts = query_get_baselayer_posts();
 	if($base_layer_posts){
@@ -155,11 +162,12 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 		      <a class="profilepage_link" href="'. $layer_profilepage_link.'" target="_blank"><i class="fa fa-table"></i></a>';
 		  }
 		$layer_items .= '</li>';
-	}
-	if($echo == 1){
-		echo $layer_items;
-	}else {
-		return $layer_items;
+
+		if($echo == 1){
+			echo $layer_items;
+		}else {
+			return $layer_items;
+		}
 	}
 
 }
@@ -398,22 +406,12 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 	$get_basemap = get_post_meta($map_ID, 'map_data', true);
 	if(!empty($get_basemap)){
 		if($get_basemap['base_layer']) {
-				$base_map = array(
-					'ID' => 0,
-					'type' => 'tilelayer',
-					'tile_url' => $get_basemap['base_layer']['url']
-				);
-				$layers[0] = $base_map;
+				$layers[0] = set_default_map_baselayer($get_basemap['base_layer']);
 		}
 	} else { //get basemap from setting as default
 			$map = odm_get_interactive_map_data();
 			if($map['base_layer']) {
-					$base_map = array(
-						'ID' => 0,
-						'type' => 'tilelayer',
-						'tile_url' => $map['base_layer']['url']
-					);
-					$layers[0] = $base_map;
+					$layers[0] = set_default_map_baselayer($map['base_layer']);
 			}
 	}
 	$get_layers = $GLOBALS['extended_jeo_layers']->get_map_layers($map_ID, "layer");
@@ -422,10 +420,10 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 		foreach ($get_layers as $key => $layer) {
 			$layer_ID = $layer['ID'];
 			$layer_postmeta = get_post_meta_of_layer($layer_ID, true);
-			$layer_postmeta['filtering'] = $layer['filtering'];
-			$layer_postmeta['hidden'] = $layer['hidden']==""? 1: $layer['hidden'];
-			$layer_postmeta['first_swap'] = $layer['first_swap'];
-		    $layers[$layer_ID] = $layer_postmeta;
+			if($layer['filtering']) :
+				$layer_postmeta['filtering'] = $layer['filtering'];
+			endif;
+		  $layers[$layer_ID] = $layer_postmeta;
 		}//foreach
 	}
 	return $layers;
@@ -441,7 +439,7 @@ function get_legend_of_map_by($post_ID = false){
 		}
 	}else{
 		$post_ID = get_the_ID();
-	} 
+	}
 	$legends = null;
 	if ($is_map){
 		$map_layers = get_post_meta($post_ID, '_jeo_map_layers', true);
