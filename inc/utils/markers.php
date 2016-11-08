@@ -26,9 +26,9 @@
   			$query['map_id'] = $wp_query->get('map_id');
   		}
 
-  		if(!$query['post_type'])
+  		if(!isset($query['post_type'])):
   			$query['post_type'] = jeo_get_mapped_post_types();
-
+			endif;	
   		$query['post_status'] = 'publish';
 
   		$markers_limit = parent::get_limit();

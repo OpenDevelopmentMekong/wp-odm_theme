@@ -24,20 +24,25 @@
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
 	<?php
-	$reffer_domain = parse_url($_SERVER['HTTP_REFERER']);
-	if($reffer_domain['host'] != $_SERVER["HTTP_HOST"]) {
-		$add_odlogo = "-has-odlogo";
-	?>
-		<header id="embed-header">
-			<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php od_logo_icon(); ?> <?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
-			<h2 id="embed-title" style="display:none;"><?php wp_title('', true, 'right'); ?></h2>
-		</header>
- 	<?php } ?>
+	if(isset($_SERVER['HTTP_REFERER'])):
+		$reffer_domain = parse_url($_SERVER['HTTP_REFERER']);
+	endif;
+
+	if(isset($reffer_domain)):
+		if($reffer_domain['host'] != $_SERVER["HTTP_HOST"]) {
+			$add_odlogo = "-has-odlogo";
+		?>
+			<header id="embed-header">
+				<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php od_logo_icon(); ?> <?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
+				<h2 id="embed-title" style="display:none;"><?php wp_title('', true, 'right'); ?></h2>
+			</header>
+ 	<?php }
+	endif; ?>
 	<?php
 	$mapID = get_embedded_map_id();
 	?>
 	<?php
-	if(function_exists(display_embedded_map)){
+	if(function_exists("display_embedded_map")){
 		display_embedded_map($mapID);
 	}
 	?>
