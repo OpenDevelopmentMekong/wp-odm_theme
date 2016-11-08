@@ -46,7 +46,7 @@ class Odm_News_Article {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 5,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions')
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'custom-fields')
 		);
 
 		register_post_type( 'news-article', $args );
