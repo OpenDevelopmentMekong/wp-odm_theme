@@ -3,7 +3,6 @@
 <script type="text/javascript">
   $(document).ready(function(){
     // Hectares
-    console.log("ddddddddd");
     $(".selected_img_ha").show();
     $('.graph_options').each(function(column)
     {
@@ -401,7 +400,7 @@
 
         ]);
         var options = {
-          colors: ['#00bb11', '#007600', '#afdb6d'], 
+          colors: ['#00bb11', '#007600', '#afdb6d'],
           bar:{groupWidth: '80%'},
           fontSize:10,
           legend: {'position': 'top'},

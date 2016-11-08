@@ -187,11 +187,9 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 		?>
 	</div>
   <script type="text/javascript">
-		console.log(<?php print_r($conf) ?>);
 		var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
 		var all_layers_value = <?php echo json_encode($layers) ?>;
 		var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
-		console.log(<?php echo json_encode($layers) ?>);
     (function($) {
       jeo(<?php echo $conf; ?>, function(map) {
         var track = function() {
