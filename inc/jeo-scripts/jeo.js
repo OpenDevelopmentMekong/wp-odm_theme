@@ -174,7 +174,6 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
       pLayer = cartodb.createLayer(map, layer.cartodb_viz_url_localization, {legends: false, https: true});
 
       if(detect_lang_site == "en-US"){
-        var cartodb_layers = null;
         pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true});
       }
 
