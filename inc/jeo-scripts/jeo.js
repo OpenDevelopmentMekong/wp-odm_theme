@@ -10,7 +10,7 @@ var marker_layer;
 detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
- jeo = function(conf, callback) { 
+ jeo = function(conf, callback) {
   var _init = function() {
    if(conf.mainMap)
     $('body').addClass('loading-map');
@@ -33,7 +33,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
      mapConf = _.extend(mapConf, conf);
      return jeo.build(mapConf, callback);
     });
-  }
+  };
 
   if($.isReady) {
    return _init();
@@ -79,7 +79,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    conf.containerID = 'map_' + conf.postID + '_' + conf.count;
   var map_id = conf.containerID;
   if(conf.news_markers){
-    conf.news_markers = conf.news_markers
+    conf.news_markers = conf.news_markers;
   }
   // use mapbox map for more map resources
   map = L.mapbox.map(map_id, null, options);
@@ -115,7 +115,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    map.fitBounds(conf.fitBounds);
 
    conf.disable_mousewheel = false;
-   if(conf.disable_mousewheel == false){
+   if(conf.disable_mousewheel === false){
      conf.disableHandlers = false;
    }
   // Handlers
@@ -165,96 +165,98 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    callback(map);
 
   return map;
- }
+};
 
   jeo.create_layer_by_maptype = function (map, layer = null){
+    var pLayer = null;
+    var options = {};
     if(layer.type == 'cartodb' && layer.cartodb_type == 'viz') {
-        //alert(layer.wms_layer_name_localization);
-        if(detect_lang_site == "en-US"){
-          var cartodb_layers = null;
-          var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true});
-        }else{
-          var pLayer = cartodb.createLayer(map, layer.cartodb_viz_url_localization, {legends: false, https: true});
-        }
+      pLayer = cartodb.createLayer(map, layer.cartodb_viz_url_localization, {legends: false, https: true});
 
-       if(layer.legend) {
+      if(detect_lang_site == "en-US"){
+        var cartodb_layers = null;
+        pLayer = cartodb.createLayer(map, layer.cartodb_viz_url, {legends: false, https: true});
+      }
+
+      if(layer.legend) {
         pLayer._legend = layer.legend;
-       }
+      }
 
     } else if(layer.type == 'mapbox') {
-       var pLayer = L.mapbox.tileLayer(layer.mapbox_id);
+       pLayer = L.mapbox.tileLayer(layer.mapbox_id);
 
        if(layer.legend) {
         pLayer._legend = layer.legend;
        }
-       //parsedLayers.push(L.mapbox.gridLayer(layer.mapbox_id));
+
     } else if(layer.type == 'tilelayer') {
-         var options = {};
-         if(layer.tms)
-          options.tms = true;
 
-         var pLayer = L.tileLayer(layer.tile_url, options);
-         if(layer.legend) {
-          pLayer._legend = layer.legend;
-         }
+      if(layer.tms){
+        options.tms = true;
+      }
 
-         if(typeof(layer.ID) == 'undefined'){
-           layer.ID = 0;
-         }
 
-        if(layer.utfgrid_url && layer.utfgrid_template) {
-              parsedLayers.push(L.mapbox.gridLayer({
-               "name": layer.title,
-               "tilejson": "2.0.0",
-               "scheme": "xyz",
-               "template": layer.utfgrid_template,
-               "grids": [layer.utfgrid_url.replace('{s}', 'a')]
-              }));
+      pLayer = L.tileLayer(layer.tile_url, options);
+      if(layer.legend) {
+        pLayer._legend = layer.legend;
+      }
 
-         }
+      if(typeof(layer.ID) == 'undefined'){
+        layer.ID = 0;
+      }
 
-    //end else if(layer.type == 'tilelayer') //H.E
+      if(layer.utfgrid_url && layer.utfgrid_template) {
+        parsedLayers.push(L.mapbox.gridLayer({
+         "name": layer.title,
+         "tilejson": "2.0.0",
+         "scheme": "xyz",
+         "template": layer.utfgrid_template,
+         "grids": [layer.utfgrid_url.replace('{s}', 'a')]
+        }));
+
+      }
+
     }else if(layer.type == 'wmslayer') {
-         if(layer.wms_transparent)
-          var transparent = true;
 
-         if(layer.wms_format)
-             var wms_format = layer.wms_format;
-         else
-             var wms_format = 'image/png';
+      wms_format = 'image/png';
+      transparent = false;
+      if(layer.wms_transparent){
+        transparent = true;
+      }
 
-         var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
-             //geoserver_URL = spited_wms_tile_url[0]+"/"; for sample test 2
-             geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
-             //alert(layer.wms_layer_name_localization);
-             if(detect_lang_site == "en-US"){
-                  layer_name = layer.wms_layer_name;
-             }else{
-                  layer_name = layer.wms_layer_name_localization;
-             }
+      if(layer.wms_format){
+        wms_format = layer.wms_format;
+      }
+
+      var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
+      geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
+      if(detect_lang_site == "en-US"){
+        layer_name = layer.wms_layer_name;
+      }else{
+        layer_name = layer.wms_layer_name_localization;
+      }
 
 
-         var options = {
-             layers: layer_name,
-             version: '1.1.0',
-             transparent: transparent,
-             //pointerCursor: true,
-             format: wms_format,
-             crs: L.CRS.EPSG4326,
-             tiled:true
-             };
-         //geoserver_URL = "https://geoserver.opendevelopmentmekong.net/geoserver/wms";
-         var pLayer = L.tileLayer.betterWms(geoserver_URL, options);
+      options = {
+        layers: layer_name,
+        version: '1.1.0',
+        transparent: transparent,
+        format: wms_format,
+        crs: L.CRS.EPSG4326,
+        tiled:true
+      };
 
-         if(layer.legend) {
-              pLayer._legend = layer.legend;
-         } else {
-              pLayer._legend = '<img src="'+geoserver_URL+'?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=30&HEIGHT=25&LAYER='+layer_name+'&legend_options=fontName:Times%20New%20Roman;fontAntiAliasing:true" alt = "Legend"></img>';
-         }
-    }//else
-    // End H.E
+      pLayer = L.tileLayer.betterWms(geoserver_URL, options);
+
+      if(layer.legend) {
+        pLayer._legend = layer.legend;
+      } else {
+        pLayer._legend = '<img src="'+geoserver_URL+'?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=30&HEIGHT=25&LAYER='+layer_name+'&legend_options=fontName:Times%20New%20Roman;fontAntiAliasing:true" alt = "Legend"></img>';
+      }
+    }
+
    return pLayer;
-  }//end function
+ };
 
   jeo.bringLayerToFront = function(layer_ID, zIndex){
       zIndex = zIndex || 0;
@@ -285,48 +287,47 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
                layer_index = layer_index + 1; //increate when the layer is actived
                jeo.bringLayerToFront(layer.ID, layer_index);
            }
-     }else { //Add layer
-         layer_index = layer_index + 1; //increate when the layer is actived
+     }else {
+         layer_index = layer_index + 1;
          overlayers[layer.ID] = jeo.parse_layer(map, layer);
-         if (layer.type == "cartodb" ){
-            overlayers[layer.ID].addTo(map).on('done', function(lay) {
-                overlayers_cartodb[layer.ID]= lay;
-                if(detect_lang_site == "en-US"){
-                  var cartodb_layer_url = layer.cartodb_viz_url;
-                }else {
-                  var cartodb_layer_url = layer.cartodb_viz_url_localization
-                }
 
-                var cartodb_table = lay.options.layer_definition.layers[0].options.layer_name;
-                var cartodb_user = cartodb_layer_url.split('.')[0].split('//')[1];
+        if (layer.type == "cartodb" ){
+          overlayers[layer.ID].addTo(map).on('done', function(lay) {
+              overlayers_cartodb[layer.ID]= lay;
+              var cartodb_layer_url = layer.cartodb_viz_url_localization;
+              if(detect_lang_site == "en-US"){
+                cartodb_layer_url = layer.cartodb_viz_url;
+              }
 
-                if($("#searchFeature_by_mapID").length && $("#searchFeature_by_mapID").val() != ""){
-                    jeo.search_map_feature(map, lay, cartodb_user, cartodb_table);
-                }
+              var cartodb_table = lay.options.layer_definition.layers[0].options.layer_name;
+              var cartodb_user = cartodb_layer_url.split('.')[0].split('//')[1];
 
-                $('#searchFeature_by_mapID').keyup(function(){
-                  jeo.search_map_feature(map, lay, cartodb_user, cartodb_table);
-                });
+              if($("#searchFeature_by_mapID").length && $("#searchFeature_by_mapID").val() !== ""){
+                jeo.search_map_feature(map, lay, cartodb_user, cartodb_table);
+              }
 
-                 if(overlayers_cartodb[layer.ID].type == "torque"){
-                   cartodb_timeslider_init(lay, layer.ID);
-                 }
-                 lay.setZIndex(layer_index);
-                 setTimeout(function() {
-                     $("#post-"+ layer.ID).removeClass('loading');
-                     $("#post-"+ layer.ID).addClass('active');
-                 }, 1000);
-             });
-         }else{
-            overlayers[layer.ID].addTo(map);
-            //overlayers[layer.ID].bringToFront();
-            jeo.bringLayerToFront(layer.ID, layer_index);
-            $("#post-"+ layer.ID).removeClass('loading');
-            $("#post-"+ layer.ID).addClass('active');
-         }
+              $('#searchFeature_by_mapID').keyup(function(){
+                jeo.search_map_feature(map, lay, cartodb_user, cartodb_table);
+              });
 
-     }//else
-  }//end function
+               if(overlayers_cartodb[layer.ID].type == "torque"){
+                 cartodb_timeslider_init(lay, layer.ID);
+               }
+               lay.setZIndex(layer_index);
+               setTimeout(function() {
+                   $("#post-"+ layer.ID).removeClass('loading');
+                   $("#post-"+ layer.ID).addClass('active');
+               }, 1000);
+           });
+        }else{
+          overlayers[layer.ID].addTo(map);
+          jeo.bringLayerToFront(layer.ID, layer_index);
+          $("#post-"+ layer.ID).removeClass('loading');
+          $("#post-"+ layer.ID).addClass('active');
+        }
+
+     }
+  };
 
   jeo.toggle_baselayers = function(map, layer ) {
         var current_layer = "baselayer_"+ layer.ID;
@@ -360,7 +361,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
             }
         });
 
-  }//end function
+  };
 
   jeo.search_map_feature = function (map, layer, cartodb_user, cartodb_table) {
 		var query;
@@ -369,8 +370,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   		var sql = new cartodb.SQL({ user: cartodb_user });
   		query = "SELECT * FROM " + cartodb_table + " WHERE map_id in " + input;
   		var sublayerOptions = {
-  				sql: query
-  				}
+				sql: query
+      };
   		layer.getSubLayer(0).set(sublayerOptions); // set layer options
   		sql.getBounds(query).done(function(bounds) {
   			map.fitBounds(bounds);
@@ -379,7 +380,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   				console.log("errors:" + errors);
   		});
     }
-  }
+  };
 
  /*
   * Utils
@@ -405,9 +406,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
     } else {
       overbaselayers_object["baselayer_0"] = parsedLayers;
       map.addLayer(parsedLayers);
-      //parsedLayers.addTo(map);
     }
- }// end function
+ };
 
  //default_baselayer = conf.layers[0];
  //jeo.loadLayers_filterlayer(map, jeo.parse_layer(map, default_baselayer));
@@ -425,15 +425,10 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   newConf.filteringLayers.swapLayers = [];
 
   newConf.baselayers = [];
-  /*$.each(conf.baselayers, function(i, layer) {
-    //if (i == 0){
-      newConf.baselayers.push(_.clone(layer));
-    //}
-  }); */
+
   $.each(conf.layers, function(i, layer) {
-    if (i == 0){
+    if (i === 0){
       newConf.layers.push(_.clone(layer));
-    //  newConf.baselayers[0] = layer;
     }
   });
 
@@ -463,7 +458,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    newConf.legend_full = conf.legend_full;
 
   return newConf;
- }
+};
 
  /*
   * Legend page (map details)
@@ -492,7 +487,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
    });
 
   });
- }
+};
 
  /*
   * Callback manager
@@ -504,12 +499,11 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   jeo.callbacks[name] = [];
   jeo[name] = function(callback) {
    jeo.callbacks[name].push(callback);
-  }
- }
+ };
+};
 
  jeo.runCallbacks = function(name, args) {
   if(!jeo.callbacks[name]) {
-  // console.log('A JEO callback tried to run, but wasn\'t initialized');
    return false;
   }
   if(!jeo.callbacks[name].length)
@@ -522,9 +516,10 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
       c.apply(this, args);
     });
    }
-  }
+ };
   _run(jeo.callbacks[name]);
- }
+};
+
 
  jeo.createCallback('mapReady');
  jeo.createCallback('layersReady');
