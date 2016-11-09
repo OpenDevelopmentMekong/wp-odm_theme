@@ -84,7 +84,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			endif; ?>
 
 			<?php if ($more_location == 'top'): ?>
-				<div class="eight columns align-right">
+				<div class="sixteen columns align-right">
 					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
 				</div>
 			<?php endif; ?>

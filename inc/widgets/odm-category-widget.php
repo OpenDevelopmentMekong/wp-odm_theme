@@ -34,7 +34,7 @@ class Odm_Category_Widget extends WP_Widget {
 
 		$taxonomies = $instance['taxonomies'];
 		foreach($taxonomies as $taxonomy) {
-			$args_term = array( 
+			$args_term = array(
 			'taxonomy' => $taxonomy,
 			'parent' => 0
 			);
@@ -57,7 +57,6 @@ class Odm_Category_Widget extends WP_Widget {
 					echo '<div class="od-tax-widget-tax-item tax-' . $taxonomy . $tax_class .'">';
 								echo $args['before_title'] . $tax->labels->name . $args['after_title'];
 								$term_ids = implode( ',' , $post_terms );
-								//echo wp_list_categories( 'title_li=&echo=0&taxonomy=' . $taxonomy . '&include=' . $term_ids );
 								list_category_by_post_type($post_type, $args_term, 0, 0);
 					echo '</div>';
 				echo $args['after_widget'];
