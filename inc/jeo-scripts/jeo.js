@@ -217,8 +217,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 
     }else if(layer.type == 'wmslayer') {
 
-      wms_format = 'image/png';
-      transparent = false;
+      var wms_format = 'image/png';
+      var transparent = false;
       if(layer.wms_transparent){
         transparent = true;
       }
