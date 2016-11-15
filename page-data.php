@@ -11,11 +11,12 @@ Template Name: Data
   // get following variables from URL for filtering
   $param_type = isset($_GET['type']) ? $_GET['type'] : 'dataset';
   $param_query = !empty($_GET['query']) ? $_GET['query'] : null;
+  $param_query_source = !empty($_GET['source']) ? $_GET['source'] : null;
   $param_taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : null;
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
   $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
   $param_country = odm_country_manager()->get_current_country() == 'mekong' && isset($_GET['country']) ? $_GET['country'] : odm_country_manager()->get_current_country();
-  $active_filters = !empty($_GET['type']) || !empty($param_taxonomy) || !empty($param_language) || !empty($param_query);
+  $active_filters = !empty($_GET['type']) || !empty($param_taxonomy) || !empty($param_language) || !empty($param_query) || !empty($param_query_source);
 ?>
 
 <?php
@@ -38,7 +39,7 @@ Template Name: Data
           </div>
         </div>
 
-        <div class="three columns">
+        <div class="two columns">
           <div class="adv-nav-input">
             <p class="label"><label for="type"><?php _e('Type', 'odm'); ?></label></p>
             <select id="type" name="type" data-placeholder="<?php _e('Select dataset type', 'odm'); ?>">
@@ -54,7 +55,7 @@ Template Name: Data
         <?php
           $languages = odm_language_manager()->get_supported_languages();
         ?>
-        <div class="three columns">
+        <div class="two columns">
           <div class="adv-nav-input">
             <p class="label"><label for="language"><?php _e('Language', 'odm'); ?></label></p>
             <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
@@ -71,7 +72,7 @@ Template Name: Data
         <?php
           $countries = odm_country_manager()->get_country_codes();
         ?>
-        <div class="three columns">
+        <div class="two columns">
           <div class="adv-nav-input">
             <p class="label"><label for="country"><?php _e('Country', 'odm'); ?></label></p>
             <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odm'); ?>">
@@ -95,7 +96,7 @@ Template Name: Data
         <?php
           $taxonomy_list = odm_taxonomy_manager()->get_taxonomy_list();
         ?>
-        <div class="three columns">
+        <div class="two columns">
           <div class="adv-nav-input">
             <p class="label"><label for="taxonomy"><?php _e('Taxonomy', 'odm'); ?></label></p>
             <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
@@ -106,6 +107,13 @@ Template Name: Data
               <?php
                 endforeach; ?>
             </select>
+          </div>
+        </div>
+
+        <div class="two columns">
+          <div class="adv-nav-input">
+            <p class="label"><label for="source"><?php _e('Source', 'odm'); ?></label></p>
+            <input type="text" id="source" name="source" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query_source; ?>" />
           </div>
         </div>
 
@@ -195,6 +203,9 @@ Template Name: Data
             endif;
             if (!empty($param_taxonomy) && $param_taxonomy != 'All'):
               array_push($filter_field_strings,'"extras_taxonomy":"'. $param_taxonomy . '"');
+            endif;
+            if (!empty($param_query_source)):
+              array_push($filter_field_strings,'"extras_odm_source":"'. $param_query_source . '"');
             endif;
             $shortcode_params .= implode(",",$filter_field_strings) . '}\'';
           endif;
