@@ -151,7 +151,7 @@ Template Name: Data
       <?php
         if (!$active_filters):
           $shortcode = '[wpckan_number_of_query_datasets limit="1"';
-          if (isset($param_country)):
+          if (isset($param_country) && $param_country != 'mekong'):
             $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"}\'';
           endif;
           ?>
@@ -216,7 +216,7 @@ Template Name: Data
             if (!empty($param_language) && $param_language != 'all'):
               array_push($filter_field_strings,'"extras_odm_language":"'. $param_language . '"');
             endif;
-            if (!empty($param_country) && $param_country != 'all'):
+            if (!empty($param_country) && $param_country != 'mekong' && $param_country != 'all'):
               array_push($filter_field_strings,'"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"');
             endif;
             if (!empty($param_taxonomy) && $param_taxonomy != 'all'):
