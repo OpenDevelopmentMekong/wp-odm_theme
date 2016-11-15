@@ -38,6 +38,7 @@ require_once get_stylesheet_directory().'/inc/utils/content.php';
 require_once get_stylesheet_directory().'/inc/utils/breadcrumbs.php';
 require_once get_stylesheet_directory().'/inc/utils/layout.php';
 require_once get_stylesheet_directory().'/inc/utils/urls.php';
+require_once get_stylesheet_directory().'/inc/utils/config.php';
 
 /*
  * Loads the theme's translated strings. for 'odm' and 'jeo' domains
