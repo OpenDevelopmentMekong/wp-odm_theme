@@ -9,7 +9,7 @@ Template Name: Data
 
 <?php
   // get following variables from URL for filtering
-  $param_type = isset($_GET['type']) ? $_GET['type'] : 'dataset';
+  $param_type = isset($_GET['type']) ? $_GET['type'] : null;
   $param_query = !empty($_GET['query']) ? $_GET['query'] : null;
   $param_query_source = !empty($_GET['source']) ? $_GET['source'] : null;
   $param_license = !empty($_GET['license']) ? $_GET['license'] : null;
@@ -44,7 +44,8 @@ Template Name: Data
           <div class="adv-nav-input">
             <p class="label"><label for="type"><?php _e('Type', 'odm'); ?></label></p>
             <select id="type" name="type" data-placeholder="<?php _e('Select dataset type', 'odm'); ?>">
-              <?php
+							<option value="all"  selected><?php _e('All','odm') ?></option>
+							<?php
                 foreach($types as $key => $value): ?>
                 <option value="<?php echo $key; ?>" <?php if ($key == $param_type) echo 'selected'; ?>><?php echo $value; ?></option>
               <?php
@@ -204,8 +205,12 @@ Template Name: Data
         else:  ?>
 
         <?php
-          $shortcode_params = ' type="'.$param_type.'" limit="16" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"';
-          //query
+          $shortcode_params = ' limit="16" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"';
+					//type
+					if (isset($param_type) && $param_type != 'all'):
+						$shortcode_params .= ' type="'.$param_type.'"';
+					endif;
+					//query
           if (isset($param_query)):
             $shortcode_params .= ' query="'. $param_query. '"';
           endif;
@@ -225,7 +230,7 @@ Template Name: Data
             if (!empty($param_query_source)):
               array_push($filter_field_strings,'"extras_odm_source":"'. $param_query_source . '"');
             endif;
-						if (!empty($param_license)):
+						if (!empty($param_license) && $param_license != 'all'):
               array_push($filter_field_strings,'"license_id":"'. $param_license . '"');
             endif;
             $shortcode_params .= implode(",",$filter_field_strings) . '}\'';
