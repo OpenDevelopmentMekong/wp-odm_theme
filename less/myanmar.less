@@ -15,7 +15,7 @@
 #myanmar-bgcolor, .myanmar-bgcolor{
     background: @myanmar-bright !important
 }
-#myanmar-bgdarkcolor, .cambodia-bgdarkcolor{
+#myanmar-bgdarkcolor, .myanmar-bgdarkcolor{
     background: @myanmar-bgcolor !important
 }
 
@@ -52,21 +52,39 @@
   background: @myanmar-bright !important;
 }
 
-#sidebar .widgets .widget ul li span.plusimage-myanmar{
-    display: inline-block;
-    background: url("../../img/expand-my.png") no-repeat 0 8px!important;
-    padding-left: 20px;
+.widget .od-tax-widget-tax-item,
+#sidebar .widgets .widget {
+
+  .widget-title {
+    color: @myanmar-bgcolor;
+  }
+
+  li a {
+    color: @myanmar-text-color;
+    &:hover {
+      color: @myanmar-bgcolor;
+    }
+  }
+
+  ul li {
+    span.plusimage-myanmar {
+      display: inline-block;
+      background: url("../../img/expand-my.png") no-repeat 0 8px!important;
+      padding-left: 20px;
+    }
+    span.minusimage-myanmar {
+      display: inline-block;
+      background: url("../../img/collapse-my.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+    span.nochildimage-myanmar {
+      display: inline-block;
+      background: url("../../img/no-child-my.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+  }
 }
-#sidebar .widgets .widget ul li span.minusimage-myanmar{
-    display: inline-block;
-    background: url("../../img/collapse-my.png") no-repeat 0 5px!important;
-    padding-left: 20px;
-}
-#sidebar .widgets .widget ul li span.nochildimage-myanmar{
-    display: inline-block;
-    background: url("../../img/no-child-my.png") no-repeat 0 5px!important;
-    padding-left: 20px;
-}
+
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
     background-color: @myanmar-bright;
     border: 1px solid @myanmar-bright;
