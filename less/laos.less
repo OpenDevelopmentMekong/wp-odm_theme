@@ -4,6 +4,7 @@
 @import "_country-mixin.less";
 
 /* Color */
+@laos-text-color: #D61E2A;
 @laos-bright: #D61E2A;
 @laos-bgcolor: #3b2226;
 @laos-menu-color: #583A43;
@@ -22,7 +23,7 @@
   display: none!important;
 }
 
-.country-mixin(@laos-bright, @laos-bgcolor, @laos-menu-color);
+.country-mixin(@laos-text-color, @laos-bgcolor, @laos-menu-color);
 
 #od-head {
 	#od-logo .svg-od-logo {
@@ -40,20 +41,37 @@ html#map-embed #embed-header {
 	}
 }
 
-#sidebar .widgets .widget ul li span.plusimage-laos{
-    display: inline-block;
-    background: url("../../img/expand-lo.png") no-repeat 0 8px!important;
-    padding-left: 20px;
-}
-#sidebar .widgets .widget ul li span.minusimage-laos{
-    display: inline-block;
-    background: url("../../img/collapse-lo.png") no-repeat 0 5px!important;
-    padding-left: 20px;
-}
-#sidebar .widgets .widget ul li span.nochildimage-laos{
-    display: inline-block;
-    background: url("../../img/no-child-lo.png") no-repeat 0 5px!important;
-    padding-left: 20px;
+.widget .od-tax-widget-tax-item,
+#sidebar .widgets .widget {
+
+  .widget-title {
+    color: @laos-bgcolor;
+  }
+
+  li a {
+    color: @laos-text-color;
+    &:hover {
+      color: @laos-bgcolor;
+    }
+  }
+
+  ul li {
+    span.plusimage-laos {
+      display: inline-block;
+      background: url("../../img/expand-lo.png") no-repeat 0 8px!important;
+      padding-left: 20px;
+    }
+    span.minusimage-laos {
+      display: inline-block;
+      background: url("../../img/collapse-lo.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+    span.nochildimage-laos {
+      display: inline-block;
+      background: url("../../img/no-child-lo.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+  }
 }
 
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
