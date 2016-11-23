@@ -32,7 +32,6 @@
 }
 
 .widget {
-
   list-style: none !important;
   list-style-type: none !important;
 
@@ -101,7 +100,6 @@
 #sidebar .widgets .widget,
 .widget .od-tax-widget-tax-item,
 .widget {
-
   margin-bottom: 10px;
 	border: none;
 	padding: 10px;
@@ -122,7 +120,7 @@
 	.widget-title {
 	  font-family: @primary-font;
 	  font-weight: bold;
-	  margin: -11px -10px 10px;
+	  margin: 0 -10px 10px !important;
 	  padding: 10px;
 	  border-bottom: 1px solid @light-gray;
 	  font-size: @font-size-h3;
@@ -138,7 +136,10 @@
 		  text-decoration:none;
       color: @mekong-dark;
 		}
-
+    
+    &:first-child {
+      padding-top:0;
+    }
 		&:last-child {
 		  border-bottom: 0;
 	  }
