@@ -136,12 +136,10 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
   register_sidebar(array(
-  'name' => __('Profile sub-page right sidebar', 'odm'),
-  'id' => 'profile-sub-page-sidebar',
+  'name' => __('Profile with right sidebar only', 'odm'),
+  'id' => 'profile-right-sidebar',
   'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
-  'before_widget' => '',
-  'after_widget'  => ''
+  'after_title' => '</h2>'
 ));
 
   include_once get_stylesheet_directory().'/inc/layers.php';

@@ -46,7 +46,7 @@ Template Name: Forest Cover and Forest Cover Analysis
         <div class="four columns offset-by-one">
           <aside id="sidebar">
 		        <ul class="widgets">
-		        	<?php dynamic_sidebar('profile-sub-page-sidebar'); ?>
+		        	<?php dynamic_sidebar('profile-right-sidebar'); ?>
 		        </ul>
           </aside>
         </div>
