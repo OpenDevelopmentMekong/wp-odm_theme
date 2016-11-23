@@ -136,7 +136,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
   register_sidebar(array(
-  'name' => __('Profile sub-page right sidebar', 'odm'),
+  'name' => __('Profile with right sidebar only', 'odm'),
   'id' => 'profile-sub-page-sidebar',
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>'
