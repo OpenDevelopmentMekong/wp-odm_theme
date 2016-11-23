@@ -75,53 +75,54 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 				);
 			  $posts = query_posts($query);
 		endif;
+		if($posts){
+			$post_type_slug = $supported_post_types[0];
+			echo $args['before_widget']; ?>
 
-		$post_type_slug = $supported_post_types[0];
-		echo $args['before_widget']; ?>
-
-		<?php if ($more_location == 'top'): ?>
-			<div class="row float-right">
-				<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
-			</div>
-		<?php endif; ?>
-
-		<?php
-			if (!empty($instance['title'])):
-				 echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
-			endif; ?>
-
-			<div class="sixteen columns">
-				<?php
-					$index = 1;
-					foreach($posts as $post):
-						if (should_open_row($layout_type,$index)): ?>
-							<div class="row">
-						<?php endif; ?>
-						<?php
-						$template = $this->templates[$layout_type];
-						odm_get_template($template,array(
-							"post" => $post,
-							"show_meta" => $show_meta,
-							"show_source_meta" => $show_source_meta,
-							"show_excerpt" => $show_excerpt,
-							"show_thumbnail" => $show_thumbnail,
-							"order" => $order
-						),true);
-						if (should_close_row($layout_type,$index)): ?>
-							</div>
-						<?php endif;
-						$index++;
-					endforeach;
-				?>
-			</div>
-
-			<?php if ($more_location == 'bottom'): ?>
+			<?php if ($more_location == 'top'): ?>
 				<div class="row float-right">
-					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
+					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
 				</div>
 			<?php endif; ?>
 
-		<?php echo $args['after_widget'];
+			<?php
+				if (!empty($instance['title'])):
+					 echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
+				endif; ?>
+
+				<div class="sixteen columns">
+					<?php
+						$index = 1;
+						foreach($posts as $post):
+							if (should_open_row($layout_type,$index)): ?>
+								<div class="row">
+							<?php endif; ?>
+							<?php
+							$template = $this->templates[$layout_type];
+							odm_get_template($template,array(
+								"post" => $post,
+								"show_meta" => $show_meta,
+								"show_source_meta" => $show_source_meta,
+								"show_excerpt" => $show_excerpt,
+								"show_thumbnail" => $show_thumbnail,
+								"order" => $order
+							),true);
+							if (should_close_row($layout_type,$index)): ?>
+								</div>
+							<?php endif;
+							$index++;
+						endforeach;
+					?>
+				</div>
+
+				<?php if ($more_location == 'bottom'): ?>
+					<div class="row float-right">
+						<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
+					</div>
+				<?php endif; ?>
+
+			<?php echo $args['after_widget'];
+		}	
 		wp_reset_query();
 	}
 
