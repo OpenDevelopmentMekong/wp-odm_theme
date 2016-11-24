@@ -583,4 +583,16 @@ function teslina_tinymce_config($init)
 }
 add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 
+function run_tags_migration_script() {
+
+ob_start();
+
+include( dirname(__FILE__) . '/admin-scripts/migrate-tags.php' );
+
+$output = ob_get_contents();;
+ob_end_clean();
+
+return $output;
+}
+add_shortcode( 'admin_scripts_migrate_tags', 'run_tags_migration_script' );
 ?>
