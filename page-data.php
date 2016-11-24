@@ -160,7 +160,7 @@ Template Name: Data
             <?php wpdash_get_ckan_stats_dataviz_by_type(); ?>
           </div>
           <div class="twelve columns">
-            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(); ?>
+            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(null); ?>
           </div>
         </div>
       </div>
