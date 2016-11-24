@@ -153,11 +153,14 @@ Template Name: Data
   </div>
 
   <?php
-    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz')): ?>
+    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
       <div class="container">
         <div class="row">
-          <div class="eight columns">
-            <?php wpdash_get_ckan_stats_dataviz(); ?>
+          <div class="four columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_type(); ?>
+          </div>
+          <div class="twelve columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(); ?>
           </div>
         </div>
       </div>
