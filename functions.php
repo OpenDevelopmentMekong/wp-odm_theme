@@ -589,7 +589,7 @@ ob_start();
 
 include( dirname(__FILE__) . '/admin-scripts/migrate-tags.php' );
 
-$output = ob_get_contents();;
+$output = ob_get_contents();
 ob_end_clean();
 
 return $output;
