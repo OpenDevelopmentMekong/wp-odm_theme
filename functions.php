@@ -582,16 +582,23 @@ function teslina_tinymce_config($init)
 }
 add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 
-function run_tags_migration_script() {
+function migrate_tags_to_related() {
 
-ob_start();
-
-include( dirname(__FILE__) . '/admin-scripts/migrate-tags.php' );
-
-$output = ob_get_contents();
-ob_end_clean();
-
-return $output;
+		ob_start();
+		include( dirname(__FILE__) . '/admin-scripts/migrate-tags-to-related.php' );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
 }
-add_shortcode( 'admin_scripts_migrate_tags', 'run_tags_migration_script' );
+add_shortcode( 'admin_scripts_migrate_tags_to_related', 'migrate_tags_to_related' );
+
+function convert_keywords_to_related() {
+
+		ob_start();
+		include( dirname(__FILE__) . '/admin-scripts/convert-keywords-to-related.php' );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+}
+add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to_related' );
 ?>
