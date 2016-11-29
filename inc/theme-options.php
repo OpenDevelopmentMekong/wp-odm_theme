@@ -250,7 +250,7 @@ class Odm_Options
         ?>
 
     <div>
-     <?php _e('Select base layer', 'jeo');
+     <?php _e('Select base layer', 'odm');
         ?>
      <select name="odm_options[map_data][base_layer][type]" id="baselayer_drop_down">
       <option value="openstreetmap" <?php echo $select_base_layer == 'openstreetmap' ? ' selected="selected"' : '';
@@ -264,75 +264,75 @@ class Odm_Options
       <option value="stamen_watercolor" <?php echo $select_base_layer == 'stamen_watercolor' ? ' selected="selected"' : '';
         ?>>Stamen Watercolor</option>
       <option value="stamen_terrain" <?php echo $select_base_layer == 'stamen_terrain' ? ' selected="selected"' : '';
-        ?> >Stamen Terrain <?php _e('(USA Only)', 'jeo');
+        ?> >Stamen Terrain <?php _e('(USA Only)', 'odm');
         ?></option>
       <option value="custom" <?php echo $select_base_layer == 'custom' ? ' selected="selected"' : '';
-        ?> ><?php _e('Custom', 'jeo');
+        ?> ><?php _e('Custom', 'odm');
         ?></option>
       <option value="none" <?php echo $select_base_layer == 'none' ? ' selected="selected"' : '';
-        ?> ><?php _e('None', 'jeo');
+        ?> ><?php _e('None', 'odm');
         ?></option>
      </select>
-     <input type="text" name="odm_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'jeo');
+     <input type="text" name="odm_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'odm');
         ?>" value="<?php echo $base_layer_url;
         ?>" />
     </div>
 
-    <p><a class="button-primary preview-map" href="#"><?php _e('Update preview', 'jeo');
+    <p><a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odm');
         ?></a></p>
    </div>
-   <h3><?php _e('Preview map', 'jeo');
+   <h3><?php _e('Preview map', 'odm');
         ?></h3>
    <div class="map-container">
     <div id="map_preview" class="map"></div>
    </div>
    <div class="map-settings clearfix">
-    <h3><?php _e('Map settings', 'jeo');
+    <h3><?php _e('Map settings', 'odm');
         ?></h3>
     <div class="current map-setting">
-     <h4><?php _e('Currently viewing', 'jeo');
+     <h4><?php _e('Currently viewing', 'odm');
         ?></h4>
      <table>
       <tr>
-       <td><?php _e('Center', 'jeo');
+       <td><?php _e('Center', 'odm');
         ?></td>
        <td><span class="center"></span></td>
       </tr>
       <tr>
-       <td><?php _e('Zoom', 'jeo');
+       <td><?php _e('Zoom', 'odm');
         ?></td>
        <td><span class="zoom"></span></td>
       </tr>
       <tr>
-       <td><?php _e('East', 'jeo');
+       <td><?php _e('East', 'odm');
         ?></td>
        <td><span class="east"></span></td>
       </tr>
       <tr>
-       <td><?php _e('North', 'jeo');
+       <td><?php _e('North', 'odm');
         ?></td>
        <td><span class="north"></span></td>
       </tr>
       <tr>
-       <td><?php _e('South', 'jeo');
+       <td><?php _e('South', 'odm');
         ?></td>
        <td><span class="south"></span></td>
       </tr>
       <tr>
-       <td><?php _e('West', 'jeo');
+       <td><?php _e('West', 'odm');
         ?></td>
        <td><span class="west"></span></td>
       </tr>
      </table>
     </div>
     <div class="centerzoom map-setting">
-     <h4><?php _e('Map center & zoom', 'jeo');
+     <h4><?php _e('Map center & zoom', 'odm');
         ?></h4>
-     <p><a class="button set-map-centerzoom"><?php _e('Set current as map center & zoom', 'jeo');
+     <p><a class="button set-map-centerzoom"><?php _e('Set current as map center & zoom', 'odm');
         ?></a></p>
      <table>
       <tr>
-       <td><?php _e('Center', 'jeo');
+       <td><?php _e('Center', 'odm');
         ?></td>
        <td><span class="center">(<?php if (isset($map_data['center'])) {
     echo $map_data['center']['lat'];
@@ -343,7 +343,7 @@ class Odm_Options
         ?>)</span></td>
       </tr>
       <tr>
-       <td><?php _e('Zoom', 'jeo');
+       <td><?php _e('Zoom', 'odm');
         ?></td>
        <td><span class="zoom"><?php if (isset($map_data['zoom'])) {
     echo $map_data['zoom'];
@@ -351,26 +351,26 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><label for="min-zoom-input"><?php _e('Min zoom', 'jeo');
+       <td><label for="min-zoom-input"><?php _e('Min zoom', 'odm');
         ?></label></td>
        <td>
         <input type="text" size="2" id="min-zoom-input" value="<?php if (isset($map_data['min_zoom'])) {
     echo $map_data['min_zoom'];
 }
         ?>" name="odm_options[map_data][min_zoom]" />
-        <a class="button set-min-zoom" href="#"><?php _e('Current', 'jeo');
+        <a class="button set-min-zoom" href="#"><?php _e('Current', 'odm');
         ?></a>
        </td>
       </tr>
       <tr>
-       <td><label for="max-zoom-input"><?php _e('Max zoom', 'jeo');
+       <td><label for="max-zoom-input"><?php _e('Max zoom', 'odm');
         ?></label></td>
        <td>
         <input type="text" size="2" id="max-zoom-input" value="<?php if (isset($map_data['center'])) {
     echo $map_data['max_zoom'];
 }
         ?>" name="odm_options[map_data][max_zoom]" />
-        <a class="button set-max-zoom" href="#"><?php _e('Current', 'jeo');
+        <a class="button set-max-zoom" href="#"><?php _e('Current', 'odm');
         ?></a>
        </td>
       </tr>
@@ -389,13 +389,13 @@ class Odm_Options
         ?>" />
     </div>
     <div class="pan-limits map-setting">
-     <h4><?php _e('Pan limits', 'jeo');
+     <h4><?php _e('Pan limits', 'odm');
         ?></h4>
-     <p><a class="button set-map-pan"><?php _e('Set current as map panning limits', 'jeo');
+     <p><a class="button set-map-pan"><?php _e('Set current as map panning limits', 'odm');
         ?></a></p>
      <table>
       <tr>
-       <td><?php _e('East', 'jeo');
+       <td><?php _e('East', 'odm');
         ?></td>
        <td><span class="east"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['east'];
@@ -403,7 +403,7 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><?php _e('North', 'jeo');
+       <td><?php _e('North', 'odm');
         ?></td>
        <td><span class="north"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['north'];
@@ -411,7 +411,7 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><?php _e('South', 'jeo');
+       <td><?php _e('South', 'odm');
         ?></td>
        <td><span class="south"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['south'];
@@ -419,7 +419,7 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><?php _e('West', 'jeo');
+       <td><?php _e('West', 'odm');
         ?></td>
        <td><span class="west"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['west'];
@@ -445,26 +445,26 @@ class Odm_Options
         ?>" />
     </div>
     <div class="geocode map-setting">
-     <h4><?php _e('Enable geocoding service', 'jeo');
+     <h4><?php _e('Enable geocoding service', 'odm');
         ?></h4>
      <p>
       <input class="enable-geocode" id="enable_geocode" type="checkbox" name="odm_options[map_data][geocode]" <?php if (isset($map_data['geocode']) && $map_data['geocode']) {
     echo 'checked';
 }
         ?> />
-      <label for="enable_geocode"><?php _e('Enable geocode search service', 'jeo');
+      <label for="enable_geocode"><?php _e('Enable geocode search service', 'odm');
         ?></label>
      </p>
     </div>
     <div class="handlers map-setting">
-     <h4><?php _e('Map handlers', 'jeo');
+     <h4><?php _e('Map handlers', 'odm');
         ?></h4>
      <p>
       <input class="disable-mousewheel" id="disable_mousewheel" type="checkbox" name="odm_options[map_data][disable_mousewheel]" <?php if (isset($map_data['disable_mousewheel']) && $map_data['disable_mousewheel']) {
     echo 'checked';
 }
         ?> />
-      <label for="disable_mousewheel"><?php _e('Disable mousewheel zooming', 'jeo');
+      <label for="disable_mousewheel"><?php _e('Disable mousewheel zooming', 'odm');
         ?></label>
      </p>
     </div>
@@ -472,11 +472,11 @@ class Odm_Options
         ?>
    </div>
    <p>
-    <a class="button-primary preview-map" href="#"><?php _e('Update preview', 'jeo');
+    <a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odm');
         ?></a>
-    <input type="checkbox" class="toggle-preview-mode" id="toggle_preview_mode" checked /> <label for="toggle_preview_mode"><strong><?php _e('Preview mode', 'jeo');
+    <input type="checkbox" class="toggle-preview-mode" id="toggle_preview_mode" checked /> <label for="toggle_preview_mode"><strong><?php _e('Preview mode', 'odm');
         ?></strong></label>
-    <i><?php _e("(preview mode doesn't apply zoom range nor pan limits setup)", 'jeo');
+    <i><?php _e("(preview mode doesn't apply zoom range nor pan limits setup)", 'odm');
         ?></i>
    </p>
   </div>

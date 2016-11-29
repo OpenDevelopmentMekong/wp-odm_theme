@@ -15,7 +15,7 @@ class OpenDev_Map_Category {
 	}
 
 	function admin_menu() {
-		add_submenu_page('edit.php?post_type=map', __('Layer categories', 'jeo'), __('Layer categories', 'jeo'), 'edit_posts', 'edit-tags.php?taxonomy=layer-category');
+		add_submenu_page('edit.php?post_type=map', __('Layer categories', 'odm'), __('Layer categories', 'odm'), 'edit_posts', 'edit-tags.php?taxonomy=layer-category');
 	}
 
 	function register_taxonomy() {
