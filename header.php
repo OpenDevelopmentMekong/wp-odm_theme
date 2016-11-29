@@ -26,7 +26,7 @@
     }
 
     if ($paged >= 2 || $page >= 2) {
-        echo ' | '.__('Page', 'jeo').max($paged, $page);
+        echo ' | '.__('Page', 'odm').max($paged, $page);
     } ?>
 
 </title>

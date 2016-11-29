@@ -26,6 +26,19 @@
         </div>
       </section>
 
+			<?php
+			$middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
+			if (odm_language_manager()->get_current_language() != 'en') {
+    		$middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
+  		}
+			if($middle_content): ?>
+      <div class="row">
+        <div class="sixteen columns">
+          <?php echo "<div class='iframe-visualitation'>".$middle_content."</div>"; ?>
+        </div>
+      </div>
+  		<?php endif; ?>
+
       <section class="container">
     		<div class="row">
     			<div class="ten columns offset-by-three">

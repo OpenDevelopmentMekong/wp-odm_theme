@@ -24,7 +24,7 @@ foreach($mapgroup['maps'] as $map) {
 				endforeach; ?>
 				<?php if($more_maps) : ?>
 					<li class="more-tab">
-						<a href="#" class="toggle-more"><?php _e('More...', 'jeo'); ?></a>
+						<a href="#" class="toggle-more"><?php _e('More...', 'odm'); ?></a>
 						<ul class="more-maps-list">
 							<?php foreach($more_maps as $map) :
 								$post = get_post($map['id']);
@@ -34,7 +34,7 @@ foreach($mapgroup['maps'] as $map) {
 								<?php
 								wp_reset_postdata();
 							endforeach; ?>
-							<li><a href="<?php echo qtrans_convertURL(get_post_type_archive_link('map')); ?>"><?php _e('View all maps', 'jeo'); ?></a></li>
+							<li><a href="<?php echo qtrans_convertURL(get_post_type_archive_link('map')); ?>"><?php _e('View all maps', 'odm'); ?></a></li>
 						</ul>
 					</li>
 				<?php endif; ?>
