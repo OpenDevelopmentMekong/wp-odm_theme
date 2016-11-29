@@ -32,13 +32,9 @@
     		$middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
   		}
 			if($middle_content): ?>
-			<section class="container">
-	      <div class="row">
-	        <div class="sixteen columns">
-	          <?php echo "<div class='iframe-visualitation'>".$middle_content."</div>"; ?>
-	        </div>
-	      </div>
-			</section>
+        <div style="width: 100%;">
+          <?php echo "<div class='iframe-visualitation'>".$middle_content."</div>"; ?>
+        </div>
   		<?php endif; ?>
 
       <section class="container">
