@@ -33,6 +33,11 @@ class Odm_Country_Manager {
     return $current_country;
   }
 
+	function get_current_country_code(){
+    $current_country = $this->get_current_country();
+		return $this->countries[$current_country]['code'];
+  }
+
   function get_country_themes(){
     return [
       'Mekong' => 'mekong',

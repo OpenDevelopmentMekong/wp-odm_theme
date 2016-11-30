@@ -149,28 +149,23 @@ Template Name: Data
 
       </form>
 
-      <?php
-        if (!$active_filters):
-          $shortcode = '[wpckan_number_of_query_datasets limit="1"';
-          if (isset($param_country) && $param_country != 'mekong'):
-            $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"}\'';
-          endif;
-          ?>
-          <div class="sixteen columns">
-            <div class="data-number-results-small">
-              <p>
-                <p class="label"><label><?php _e('Current statistics: ','odm'); ?></label></p>
-                <?php echo do_shortcode($shortcode . ' type="dataset" suffix=" Datasets"]'); ?>
-                <?php echo do_shortcode($shortcode . ' type="library_record" suffix=" Library records"]'); ?>
-                <?php echo do_shortcode($shortcode . ' type="laws_record" suffix=" Laws"]'); ?>
-              </p>
-            </div>
-          </div>
-          <?php
-        endif; ?>
-
     </div>
   </div>
+
+  <?php
+    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
+      <div class="container">
+        <div class="row">
+          <div class="four columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_type(); ?>
+          </div>
+          <div class="twelve columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(null); ?>
+          </div>
+        </div>
+      </div>
+  <?php
+    endif; ?>
 
   <section class="container">
     <div class="row">
