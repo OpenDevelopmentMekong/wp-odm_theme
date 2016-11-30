@@ -173,7 +173,7 @@ Template Name: Data
       <?php
         if (!$active_filters):
           $shortcode = '[wpckan_query_datasets limit="8" include_fields_dataset="title,notes" include_fields_resources="format" blank_on_empty="true"';
-          if (isset($param_country)):
+          if (isset($param_country) && $param_country != 'mekong'):
             $shortcode .= ' filter_fields=\'{"extras_odm_spatial_range":"'. $countries[$param_country]['iso2'] . '"}\'';
           endif;?>
 
