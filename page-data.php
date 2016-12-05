@@ -34,7 +34,6 @@ Template Name: Data
       <form class="advanced-nav-filters sixteen columns panel">
 
         <?php $num_columns = ($param_country === 'mekong') ? "two" : "three"; ?>
-        <?php echo $param_country ?>
         <div class="<?php echo $num_columns ?> columns">
           <div class="adv-nav-input">
             <p class="label"><label for="s"><?php _e('Text search', 'odm'); ?></label></p>
