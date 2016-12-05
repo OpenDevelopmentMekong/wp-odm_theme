@@ -85,14 +85,14 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<div class="sixteen columns">
 				<?php
 					$index = 1;
-					foreach($posts as $post):
+					foreach($posts as $post_item):
 						if (should_open_row($layout_type,$index)): ?>
 							<div class="row">
 						<?php endif; ?>
 								<?php
 								$template = $this->templates[$layout_type];
 								odm_get_template($template,array(
-									"post" => $post,
+									"post" => $post_item,
 									"show_meta" => $show_meta,
 									"show_source_meta" => $show_source_meta,
 									"show_excerpt" => $show_excerpt,

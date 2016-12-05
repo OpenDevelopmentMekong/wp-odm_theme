@@ -357,14 +357,11 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
 
 function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
-	  global $post;
-		$post = $the_post;
-
 		$limit = $num + 1;
-		if(get_the_excerpt($post->ID)):
-			$get_the_excerpt = get_the_excerpt($post->ID);
+		if(get_the_excerpt($the_post->ID)):
+			$get_the_excerpt = get_the_excerpt($the_post->ID);
 		else:
-				$get_the_excerpt = $post->post_content;
+				$get_the_excerpt = $the_post->post_content;
 		endif;
 
 		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
@@ -376,7 +373,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_words = $excerpt_string.' ...';
 		if ($read_more != '') {
 			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
-			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+			 $excerpt_words .=  " (<a href='".get_permalink($the_post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
 		}
 
 		return $excerpt_words;

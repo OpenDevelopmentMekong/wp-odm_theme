@@ -1,5 +1,5 @@
 <?php
-	$post = isset($params["post"]) ? $params["post"] : null;
+	$post_item = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
@@ -14,17 +14,17 @@
 	<div class="post-list-item">
 		<?php if ($header_tag): ?>
       <?php
-        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
+        $link = isset($post_item->dataset_link) ? $post_item->dataset_link : get_permalink($post_item->ID); ?>
 			<h3>
-				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>">
-					<?php echo $post->post_title; ?>
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post_item->post_title; ?>">
+					<?php echo $post_item->post_title; ?>
 				</a>
 			</h3>
 		<?php else: ?>
 			<p>
 				<?php
 					if ($show_post_type):
-						$post_type_name = get_post_type($post->ID);
+						$post_type_name = get_post_type($post_item->ID);
 						$post_type = get_post_type_object($post_type_name);
 						?>
 
@@ -34,24 +34,24 @@
 					<?php
 					endif; ?>
 
-					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
-						<?php echo $post->post_title; ?>
+					<a class="item-title" href="<?php echo get_permalink($post_item->ID); ?>" title="<?php echo $post_item->post_title; ?>">
+						<?php echo $post_item->post_title; ?>
 					</a>
 			</p>
 		<?php endif; ?>
 
 		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
+			<?php echo_post_meta($post_item,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
 		<?php endif; ?>
 
 		<section class="content section-content">
 			<?php
 			if ($show_thumbnail):
-				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
+				$thumb_src = odm_get_thumbnail($post_item->ID, false, array( 300, 'auto'));
 				if (isset($thumb_src)):
 					echo $thumb_src;
 				else:
-					echo_documents_cover($post->ID);
+					echo_documents_cover($post_item->ID);
 				endif;
 			endif;
 			?>
@@ -59,7 +59,7 @@
 				<div class="item-content">
 						<?php if ($show_excerpt): ?>
 							<div class="post-excerpt">
-								<?php echo odm_excerpt($post); ?>
+								<?php echo odm_excerpt($post_item); ?>
 							</div>
 							<?php if( echo_downloaded_documents()):
 								echo_downloaded_documents();
