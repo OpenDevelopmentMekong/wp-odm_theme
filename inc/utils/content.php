@@ -357,11 +357,12 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
 
 function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
+	 	$the_post = get_post($the_post->ID);
 		$limit = $num + 1;
 		if(get_the_excerpt($the_post->ID)):
 			$get_the_excerpt = get_the_excerpt($the_post->ID);
 		else:
-				$get_the_excerpt = $the_post->post_content;
+			$get_the_excerpt = $the_post->post_content;
 		endif;
 
 		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
