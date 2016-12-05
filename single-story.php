@@ -28,7 +28,7 @@
 
 			<?php
 			$middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content', true);
-			if (odm_language_manager()->get_current_language() != 'en') {
+			if (odm_language_manager()->get_current_language() !== 'en') {
     		$middle_content = get_post_meta(get_the_ID(), '_full_width_middle_content_localization', true);
   		}
 			if($middle_content): ?>

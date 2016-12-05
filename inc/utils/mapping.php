@@ -139,7 +139,7 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 		  <span class="list-circle-o"></span>
 		  <span class="layer-item-name">'.$title.'</span>';
 
-		  if ( (odm_language_manager()->get_current_language() != "en") ){
+		  if ( (odm_language_manager()->get_current_language() !== "en") ){
 			  $get_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);
 			  $layer_profilepage_link = get_post_meta($post_ID, '_layer_profilepage_link_localization', true);
 		  }else {
@@ -342,7 +342,7 @@ function display_layer_information($layers){
 	   <?php
 	   foreach($layers as $individual_layer){
 		  $get_post_by_id = get_post($individual_layer["ID"]);
-		  if ( (odm_language_manager()->get_current_language() != "en") ){
+		  if ( (odm_language_manager()->get_current_language() !== "en") ){
 				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
 		  }else {
 			 	$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link', true);
@@ -446,7 +446,7 @@ function get_legend_of_map_by($post_ID = false){
 		if($map_layers){
 			foreach ($map_layers as $key => $lay) {
 			   $post_ID =  $lay['ID'];
-			   if ( (odm_language_manager()->get_current_language() != "en") ){
+			   if ( (odm_language_manager()->get_current_language() !== "en") ){
 				   $layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
 			   }else {
 				   $layer_legend = get_post_meta($post_ID , '_layer_legend', true);
@@ -458,7 +458,7 @@ function get_legend_of_map_by($post_ID = false){
 			}//foreach
 		}
 	}else {
-		if ( (odm_language_manager()->get_current_language() != "en") ){
+		if ( (odm_language_manager()->get_current_language() !== "en") ){
 			$layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
 		}else {
 			$layer_legend = get_post_meta($post_ID , '_layer_legend', true);
@@ -473,7 +473,7 @@ function get_legend_of_map_by($post_ID = false){
 
 function get_layer_information_in_array($post_ID){
 	//link to WP dataset page by dataset ID
-	if ( (odm_language_manager()->get_current_language() != "en") ){
+	if ( (odm_language_manager()->get_current_language() !== "en") ){
 		$get_download_url = get_post_meta($post_ID, '_layer_download_link_localization', true);
 	}else {
 		$get_download_url = get_post_meta($post_ID, '_layer_download_link', true);

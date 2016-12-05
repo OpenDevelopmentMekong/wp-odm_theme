@@ -782,7 +782,7 @@
         $excerpt = apply_filters('translate_text', $post->excerpt, odm_language_manager()->get_current_language());
 
         $in_category = get_the_terms( $post->ID, 'layer-category' );
-        if ( (odm_language_manager()->get_current_language() != "en") ){
+        if ( (odm_language_manager()->get_current_language() !== "en") ){
             $layer_legend = get_post_meta( $post->ID , '_layer_legend_localization', true);
         }else {
             $layer_legend = get_post_meta( $post->ID , '_layer_legend', true);
