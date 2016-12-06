@@ -359,12 +359,12 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
-
+ 
 		$limit = $num + 1;
-		if(get_the_excerpt($post->ID)):
-			$get_the_excerpt = get_the_excerpt($post->ID);
+		if($post->post_excerpt):
+			$get_the_excerpt = $post->post_excerpt;
 		else:
-				$get_the_excerpt = $post->post_content;
+			$get_the_excerpt = $post->post_content;
 		endif;
 
 		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
