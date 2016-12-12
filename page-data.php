@@ -139,7 +139,7 @@ Template Name: Data
           </div>
         </div>
 
-        <div class="two columns">
+        <div class="<?php echo $num_columns; ?> columns">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
           <?php
             if ($active_filters):
@@ -295,11 +295,13 @@ Template Name: Data
       $(this).css("border","1px solid #ccc");
       $(this).children('.wpckan_resources_list').show();
       $(this).children('.wpckan_dataset_notes').show();
+      $(this).children('.wpckan_dataset_notes_translated').show();
     });
     $('.wpckan_dataset').mouseout(function() {
       $(this).css("border","none");
       $(this).children('.wpckan_resources_list').hide();
       $(this).children('.wpckan_dataset_notes').hide();
+      $(this).children('.wpckan_dataset_notes_translated').hide();
     });
   })
 </script>
