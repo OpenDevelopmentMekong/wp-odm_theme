@@ -139,7 +139,7 @@ Template Name: Data
           </div>
         </div>
 
-        <div class="two columns">
+        <div class="<?php echo $num_columns; ?> columns">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
           <?php
             if ($active_filters):
