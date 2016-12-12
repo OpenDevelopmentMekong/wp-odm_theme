@@ -95,7 +95,7 @@
 		<div id="notification-message" class="container">
 			<div class="sixteen column">
 				<div class="notification-message-box">
-					<a href="#" class="close-btn"><i class="fa fa-times-circle fa-2x"></i></a>
+					<a id="notification-message-close-btn" href="#" class="close-btn"><i class="fa fa-times-circle fa-2x"></i></a>
 	        <?php echo $options_msg['notice_message']; ?>
 				</div>
 			</div>
