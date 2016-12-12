@@ -300,6 +300,7 @@ Template Name: Data
     $('.wpckan_dataset').mouseout(function() {
       $(this).css("border","none");
       $(this).children('.wpckan_resources_list').hide();
+      $(this).children('.wpckan_dataset_notes').hide();
       $(this).children('.wpckan_dataset_notes_translated').hide();
     });
   })
