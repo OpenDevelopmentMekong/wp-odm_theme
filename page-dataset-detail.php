@@ -20,21 +20,25 @@
 				?>
 			</div>
 
-			<div class="four columns offset-by-one">
+			<aside id="sidebar" class="four columns offset-by-one">
 
-				<div class="sixteen columns">
-					<h2 class="widget-title"><?php _e('Download metadata','odm') ?></h2>
-					<a target="_blank" class="button download format" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
-					<a target="_blank" class="button download format" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
+				<div class="sixteen columns widgets">
+					<div class="widget">
+						<h2 class="widget-title"><?php _e('Download metadata','odm') ?></h2>
+						</br>
+						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.xml"><?php _e('XML', 'odm')?></a>
+						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
+						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
+					</div>
 				</div>
 
-				<aside id="sidebar" class="sixteen columns">
+				<div class="sixteen columns">
 					<ul class="widgets">
 						<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
 					</ul>
-				</aside>
-			</div>
-		</div>
+				</div>
+
+		</aside>
 	</section>
 <?php endif; ?>
 
