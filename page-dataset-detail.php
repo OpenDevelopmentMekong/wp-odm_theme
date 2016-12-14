@@ -23,6 +23,7 @@
 			<div class="four columns offset-by-one">
 
 				<div class="sixteen columns">
+					<h2 class="widget-title"><?php _e('Download metadata','odm') ?></h2>
 					<a target="_blank" class="button download format" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
 					<a target="_blank" class="button download format" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
 				</div>
