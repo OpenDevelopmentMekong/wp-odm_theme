@@ -92,21 +92,15 @@
 	<?php
 	$options_msg = get_option('odm_options');
 	if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
-  <nav id="od-notification">
-    <div class="container">
-      <div class="row">
-            <div id="notification-message">
-              <div class="container">
-                <div class="sixteen columns">
-                  <div class="notification-message-box">
-                    <?php echo $options_msg['notice_message']; ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-      </div>
-    </div>
-  </nav>
+		<div id="notification-message" class="container">
+			<div class="sixteen columns">
+				<div class="notification-message-box">
+					<a id="notification-message-close-btn" href="#" class="close-btn"><i class="fa fa-times-circle fa-2x"></i></a>
+	        <?php echo $options_msg['notice_message']; ?>
+				</div>
+			</div>
+	  </div>
+
 	<?php endif; ?>
 
 

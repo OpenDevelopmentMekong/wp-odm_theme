@@ -1261,8 +1261,7 @@ msgstr ""
 
 #: inc/theme-options.php:164
 msgid ""
-"(The notification will be appeared at the top above the featue images "
-"slider. )"
+"(The notification will appear floating at the bottom of the site)"
 msgstr ""
 
 #: inc/theme-options.php:171 inc/theme-options.php:172

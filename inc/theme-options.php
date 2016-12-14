@@ -161,7 +161,7 @@ class Odm_Options
       $notice_message = $this->options['notice_message'];
       ?>
       <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','odm'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','odm');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
-      <i><?php _e("(The notification will be appeared at the top above the featue images slider. )", 'odm'); ?></i>
+      <i><?php _e("(The notification will appear floating at the bottom of the site)", 'odm'); ?></i>
       <?php
    }
 
