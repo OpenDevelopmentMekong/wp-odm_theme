@@ -29,6 +29,9 @@
 }
 
 .wpckan_dataset_detail{
+  h1, .wpckan_dataset_title{
+      margin-bottom: 0;
+  }
 
   h2 {
     color: @mekong-bright;
@@ -45,7 +48,7 @@
   }
 
   .wpckan_dataset_organization{
-    margin: 0px;
+    margin: @small-padd 0 0 0;
   }
 
   .wpckan_dataset_organization:before {
@@ -69,15 +72,14 @@
   }
 
   .wpckan_dataset_tags{
-
     margin: 0px !important;
+    margin-bottom: @xsmall-padd;
 
     li {
       list-style-type: none !important;
       display: inline-block;
-      font-size: 18px;
-      line-height: 34px;
-      margin-bottom: 8px;
+      font-size: 12px;
+      margin-bottom: 0;
     }
 
   }
