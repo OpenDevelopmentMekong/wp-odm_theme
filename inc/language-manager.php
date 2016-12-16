@@ -59,6 +59,21 @@ class Odm_Language_Manager {
     return $this->supported_languages;
   }
 
+  function get_supported_languages_by_site($site = null){
+    $theme = isset($site) ? $site : odm_country_manager()->get_current_country();
+
+    if ($theme == 'mekong'):
+      return $this->supported_languages;
+    endif;
+
+    $supported_languages = array(
+      "en" => "English"
+    );
+    $local_lang_code = $this->languages_by_theme[$theme];
+    $supported_languages[$local_lang_code] = $this->supported_languages[$local_lang_code];
+    return $supported_languages;
+  }
+
   function echo_language_selectors(){
     if (function_exists('qtranxf_generateLanguageSelectCode')) {
         qtranxf_generateLanguageSelectCode('image');
