@@ -28,6 +28,33 @@ Template Name: Data
   );
 ?>
 
+  <?php
+    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
+      <div class="container hideOnMobileAndTablet">
+        <div class="row">
+          <div class="two columns align-center">
+            <i class="fa fa-table fa-5x"></i>
+            <a href="?type=dataset"><div id="num_datasets" class="counter"></div>
+            <div><?php _e('Datasets','odm') ?></div></a>
+          </div>
+          <div class="two columns align-center">
+            <i class="fa fa-book fa-5x"></i>
+            <a href="?type=library_record"><div id="num_library_records" class="counter"></div>
+            <div><?php _e('Library records','odm') ?></div></a>
+          </div>
+          <div class="two columns align-center">
+            <i class="fa fa-gavel fa-5x"></i>
+            <a href="?type=laws_record"><div id="num_laws_records" class="counter"></div>
+            <div><?php _e('Laws records','odm') ?></div></a>
+          </div>
+          <div class="ten columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(null); ?>
+          </div>
+        </div>
+      </div>
+  <?php
+    endif; ?>
+
   <div class="container">
     <div class="row">
 
@@ -155,21 +182,6 @@ Template Name: Data
     </div>
   </div>
 
-  <?php
-    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
-      <div class="container">
-        <div class="row">
-          <div class="four columns">
-            <?php wpdash_get_ckan_stats_dataviz_by_type(); ?>
-          </div>
-          <div class="twelve columns">
-            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(null); ?>
-          </div>
-        </div>
-      </div>
-  <?php
-    endif; ?>
-
   <section class="container">
     <div class="row">
 
@@ -243,7 +255,9 @@ Template Name: Data
         ?>
 
         <div class="sixteen columns data-number-results">
-          <?php echo do_shortcode('[wpckan_number_of_query_datasets suffix=" ' . $types[$param_type] .' found."' . $shortcode_params . ']'); ?>
+          <?php
+            $suffix = isset($types[$param_type]) ? $types[$param_type] : __('Records', 'odm');
+            echo do_shortcode('[wpckan_number_of_query_datasets suffix=" ' . $suffix .' found."' . $shortcode_params . ']'); ?>
         </div>
 
         <div class="sixteen columns data-results">
@@ -313,9 +327,26 @@ Template Name: Data
 
 <script type="text/javascript">
 
+var getNumberOfRecordsByType = function(type,output){
+  var url = '<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_search?fq=type:' + type;
+  $.ajax({
+    url: url,
+    dataType : 'json',
+    success: function (data) {
+      output.text(data["result"]["count"]);
+    },
+    error: function (xhr, status, error) {
+      console.log(xhr);
+    }
+  });
+}
+
 jQuery(document).ready(function($) {
 
  $('select').select2();
+ getNumberOfRecordsByType('dataset',$('#num_datasets'));
+ getNumberOfRecordsByType('library_record',$('#num_library_records'));
+ getNumberOfRecordsByType('laws_record',$('#num_laws_records'));
 
 });
 
