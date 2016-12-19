@@ -90,13 +90,14 @@ function echo_the_breadcrumb()
                 }
             } else {
                 $get_parent= get_post_ancestors($post->ID);
-                $parent_id = $get_parent[0];
-                $parent = get_post($parent_id);
-                if(!empty($parent) ):
-                  echo '<li class="item-parent item-parent-' . $parent_id . ' item-parent-' . $parent->post_name . '"><a class="bread-parent bread-parent-' . $parent_id . ' bread-parent-' . $parent->post_name . '" href="' . get_post_permalink($parent_id) . '" title="' . get_the_title($parent_id). '">' . get_the_title($parent_id) . '</a></li>';
-                  echo the_separated_breadcrumb($separator,  $parent_id , 'parent');
-                endif;
-
+                if($get_parent):
+                  $parent_id = $get_parent[0];
+                  $parent = get_post($parent_id);
+                  if(!empty($parent) ):
+                    echo '<li class="item-parent item-parent-' . $parent_id . ' item-parent-' . $parent->post_name . '"><a class="bread-parent bread-parent-' . $parent_id . ' bread-parent-' . $parent->post_name . '" href="' . get_post_permalink($parent_id) . '" title="' . get_the_title($parent_id). '">' . get_the_title($parent_id) . '</a></li>';
+                    echo the_separated_breadcrumb($separator,  $parent_id , 'parent');
+                  endif;
+                endif;    
                 echo '<li class="item-current item-'.$post->ID.'">';
                 echo '<div class="text-bgcolor bread-current-page bread-'.$post->ID.'" title="'.get_the_title().'">';
                   echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
