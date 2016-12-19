@@ -16,18 +16,17 @@ function get_all_parent_category($current_cat_id, $post_type, $separator = '', $
         if ($page_id_exist) {
             $page_name_title = trim(strtolower($page_title));
             if ($page_name_title == $current_page_name) {
-                echo '<strong class="bread-current bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page
+                echo '<div class="text-bgcolor bread-current-page bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page
             }
             echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'" title="'.$page_title.'">';
         }
         echo $page_title;
 
         if ($page_id_exist) {
-            //Strong if current page
-             if ($page_name_title == $current_page_name) {
-                 echo '</strong>';
-             }
             echo '</a>';
+            if ($page_name_title == $current_page_name) {
+               echo '</div>';
+             }
         }
         echo '</li>';
         echo the_separated_breadcrumb($separator, $page_id_exist, $post_type);
@@ -53,8 +52,7 @@ function echo_the_breadcrumb()
 
     // Get the query & post information
     global $post,$wp_query;
-    //$category = get_the_category();
-    $category = get_category(get_query_var('cat'), false);
+    $category = get_the_category();
     // Build the breadcrums
     echo '<ul id="'.$id.'" class="breadcrumb '.$class.'">';
     // Do not display on the homepage
@@ -66,7 +64,6 @@ function echo_the_breadcrumb()
         echo the_separated_breadcrumb($separator, '', 'home');
 
         if (is_single()) {
-
             $post_type_name = get_post_type(get_the_ID());
             $post_type = get_post_type_object($post_type_name);
             echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type->labels->name.'">'.$post_type->labels->name.'</a></li>';
@@ -89,16 +86,23 @@ function echo_the_breadcrumb()
                   }
                 } else {
                   //if topic page is not categorized or the topic name is different from the category
-                  echo '<li class="item-current item-'.$post->ID.'"><strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong></li>';
+                  echo '<li class="item-current item-'.$post->ID.'"><div class="text-bgcolor bread-current-page bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</div></li>';
                 }
             } else {
-                // Single post (Only display the first category)
-                /* echo '<li class="item-cat item-cat-' . $category[0]->term_id . ' item-cat-' . $category[0]->category_nicename . '"><a class="bread-cat bread-cat-' . $category[0]->term_id . ' bread-cat-' . $category[0]->category_nicename . '" href="' . get_category_link($category[0]->term_id ) . '" title="' . $category[0]->cat_name . '">' . $category[0]->cat_name . '</a></li>'; */
-                //echo '<li class="separator separator-' . $category[0]->term_id . '"> ' . $separator . ' </li>';
+                $get_parent= get_post_ancestors($post->ID);
+                $parent_id = $get_parent[0];
+                $parent = get_post($parent_id);
+                if(!empty($parent) ):
+                  echo '<li class="item-parent item-parent-' . $parent_id . ' item-parent-' . $parent->post_name . '"><a class="bread-parent bread-parent-' . $parent_id . ' bread-parent-' . $parent->post_name . '" href="' . get_post_permalink($parent_id) . '" title="' . get_the_title($parent_id). '">' . get_the_title($parent_id) . '</a></li>';
+                  echo the_separated_breadcrumb($separator,  $parent_id , 'parent');
+                endif;
+
                 echo '<li class="item-current item-'.$post->ID.'">';
-                echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
-                echo '<strong class="bread-current bread-'.$post->ID.'" title="'.get_the_title().'">'.get_the_title().'</strong>';
-                echo '</a>';
+                echo '<div class="text-bgcolor bread-current-page bread-'.$post->ID.'" title="'.get_the_title().'">';
+                  echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
+                    echo get_the_title();
+                  echo '</a>';
+                echo '</div>';
                 echo '</li>';
             }
         } elseif (is_category()) {
