@@ -8,6 +8,8 @@
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
         add_action('save_post', array($this, 'layer_save'));
         add_action('save_post', array($this, 'map_save'));
+        add_action('add_meta_boxes', array($this, 'od_mapbox_add_meta_box'));
+        add_action('save_post', array($this, 'od_mapbox_save_postdata'));
 
         add_post_type_support( 'map-layer', 'thumbnail' );
     }
@@ -45,6 +47,18 @@
             'advanced',
             'high'
         );
+    }
+
+    function od_mapbox_add_meta_box() {
+    	// register the metabox
+    	add_meta_box(
+    		'mapbox', // metabox id
+    		__('Map setup', 'odm'), // metabox title
+    		'mapbox_inner_custom_box', // metabox inner code
+    		'profiles', // post type
+    		'advanced', // metabox position (advanced to show on main area)
+    		'high' // metabox priority (kind of an ordering)
+    	);
     }
 
     function legend_box($post = false) {
@@ -299,6 +313,7 @@
        });
       </script>
       <?php
+      wp_reset_query();
      }
     }
 
