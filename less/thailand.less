@@ -47,21 +47,39 @@
   background: @thailand-bright !important;
 }
 
-#sidebar .widgets .widget ul li span.plusimage-thailand{
-    display: inline-block;
-    background: url("../../img/expand-th.png") no-repeat 0 8px!important;
-    padding-left: 20px;
+.widget .od-tax-widget-tax-item,
+#sidebar .widgets .widget {
+
+  .widget-title {
+    color: @thailand-bgcolor;
+  }
+
+  li a {
+    color: @thailand-text-color;
+    &:hover {
+      color: @thailand-bgcolor;
+    }
+  }
+
+  ul li {
+    span.plusimage-thailand {
+      display: inline-block;
+      background: url("../../img/expand-th.png") no-repeat 0 8px!important;
+      padding-left: 20px;
+    }
+    span.minusimage-thailand {
+      display: inline-block;
+      background: url("../../img/collapse-th.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+    span.nochildimage-thailand {
+      display: inline-block;
+      background: url("../../img/no-child-th.png") no-repeat 0 5px!important;
+      padding-left: 20px;
+    }
+  }
 }
-#sidebar .widgets .widget ul li span.minusimage-thailand{
-    display: inline-block;
-    background: url("../../img/collapse-th.png") no-repeat 0 5px!important;
-    padding-left: 20px;
-}
-#sidebar .widgets .widget ul li span.nochildimage-thailand{
-    display: inline-block;
-    background: url("../../img/no-child-th.png") no-repeat 0 5px!important;
-    padding-left: 20px;
-}
+
 .layer-toggle-info-container .layer-toggle-info table tr:first-child {
     background-color: @thailand-bright;
     border: 1px solid @thailand-bright;

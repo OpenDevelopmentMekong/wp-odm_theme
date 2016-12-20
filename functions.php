@@ -38,24 +38,24 @@ require_once get_stylesheet_directory().'/inc/utils/content.php';
 require_once get_stylesheet_directory().'/inc/utils/breadcrumbs.php';
 require_once get_stylesheet_directory().'/inc/utils/layout.php';
 require_once get_stylesheet_directory().'/inc/utils/urls.php';
+require_once get_stylesheet_directory().'/inc/utils/config.php';
 
 /*
- * Loads the theme's translated strings. for 'odm' and 'jeo' domains
+ * Loads the theme's translated strings. for 'odm' domains
  * Registers widget sidebars
  */
 function odm_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
     load_theme_textdomain('odm', $gsd[0].'/wp-content/languages');
-    load_theme_textdomain('jeo', $gsd[0].'/wp-content/languages');
     register_sidebar(array(
-    'name' => __('Topic sidebar', 'jeo'),
+    'name' => __('Topic sidebar', 'odm'),
     'id' => 'topic',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Homepage area top left', 'jeo'),
+    'name' => __('Homepage area top left', 'odm'),
     'id' => 'homepage-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -63,7 +63,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area top right', 'jeo'),
+    'name' => __('Homepage area top right', 'odm'),
     'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -71,7 +71,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area middle', 'jeo'),
+    'name' => __('Homepage area middle', 'odm'),
     'id' => 'homepage-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -79,7 +79,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area bottom left', 'jeo'),
+    'name' => __('Homepage area bottom left', 'odm'),
     'id' => 'homepage-area-4',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -87,7 +87,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area bottom right', 'jeo'),
+    'name' => __('Homepage area bottom right', 'odm'),
     'id' => 'homepage-area-5',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -95,19 +95,19 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('WPCKAN Dataset detail sidebar', 'jeo'),
+    'name' => __('WPCKAN Dataset detail sidebar', 'odm'),
     'id' => 'wpckan-dataset-detail-sidebar',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Story top', 'jeo'),
+    'name' => __('Story top', 'odm'),
     'id' => 'story-top',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Story bottom', 'jeo'),
+    'name' => __('Story bottom', 'odm'),
     'id' => 'story-bottom',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -135,12 +135,10 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
   register_sidebar(array(
-  'name' => __('Profile sub-page right sidebar', 'odm'),
-  'id' => 'profile-sub-page-sidebar',
+  'name' => __('Profile with right sidebar only', 'odm'),
+  'id' => 'profile-right-sidebar',
   'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>',
-  'before_widget' => '',
-  'after_widget'  => ''
+  'after_title' => '</h2>'
 ));
 
   include_once get_stylesheet_directory().'/inc/layers.php';
@@ -246,10 +244,9 @@ function odm_jeo_scripts()
          wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
       }
 
+
       wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
-
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
-
       wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
   }
 
@@ -259,11 +256,11 @@ function odm_jeo_scripts()
 
     wp_localize_script('jeo-share-widget', 'extended_jeo_share_widget_settings', array(
     	'baseurl' => extended_jeo_get_embed_url(),
-    	'default_label' => __('default', 'jeo')
+    	'default_label' => __('default', 'odm')
     ));
   }
 
-  wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
+	wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 }
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
@@ -584,4 +581,23 @@ function teslina_tinymce_config($init)
 }
 add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 
+function migrate_tags_to_related() {
+
+		ob_start();
+		include( dirname(__FILE__) . '/admin-scripts/migrate-tags-to-related.php' );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+}
+add_shortcode( 'admin_scripts_migrate_tags_to_related', 'migrate_tags_to_related' );
+
+function convert_keywords_to_related() {
+
+		ob_start();
+		include( dirname(__FILE__) . '/admin-scripts/convert-keywords-to-related.php' );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+}
+add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to_related' );
 ?>

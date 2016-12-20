@@ -8,6 +8,8 @@
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
         add_action('save_post', array($this, 'layer_save'));
         add_action('save_post', array($this, 'map_save'));
+        add_action('add_meta_boxes', array($this, 'od_mapbox_add_meta_box'));
+        add_action('save_post', array($this, 'od_mapbox_save_postdata'));
 
         add_post_type_support( 'map-layer', 'thumbnail' );
     }
@@ -21,7 +23,7 @@
         // Layer settings
         add_meta_box(
             'layer-settings',
-            __('Layer settings', 'jeo'),
+            __('Layer settings', 'odm'),
             array($this, 'settings_box'),
             'map-layer',
             'advanced',
@@ -30,7 +32,7 @@
         // Layer legend
         add_meta_box(
             'layer-legend',
-            __('Layer legend', 'jeo'),
+            __('Layer legend', 'odm'),
             array($this, 'legend_box'),
             'map-layer',
             'side',
@@ -39,7 +41,7 @@
         // Post layers
         add_meta_box(
             'post-layers',
-            __('Layers', 'jeo'),
+            __('Layers', 'odm'),
             array($this, 'post_layers_box'),
             $this->add_layers_box_to_post_types(),
             'advanced',
@@ -47,15 +49,27 @@
         );
     }
 
+    function od_mapbox_add_meta_box() {
+    	// register the metabox
+    	add_meta_box(
+    		'mapbox', // metabox id
+    		__('Map setup', 'odm'), // metabox title
+    		'mapbox_inner_custom_box', // metabox inner code
+    		'profiles', // post type
+    		'advanced', // metabox position (advanced to show on main area)
+    		'high' // metabox priority (kind of an ordering)
+    	);
+    }
+
     function legend_box($post = false) {
         $legend = $post ? get_post_meta($post->ID, '_layer_legend', true) : '';
         $legend_localization = $post ? get_post_meta($post->ID, '_layer_legend_localization', true) : '';
 
         ?>
-        <h4><?php _e('Enter your HTML code to use as legend on the layer (English)', 'jeo'); ?></h4>
+        <h4><?php _e('Enter your HTML code to use as legend on the layer (English)', 'odm'); ?></h4>
         <textarea name="_layer_legend" style="width:100%;height: 200px;"><?php echo $legend; ?></textarea>
         <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
-              <h4><?php _e('Enter your HTML code to use as legend on the layer ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></h4>
+              <h4><?php _e('Enter your HTML code to use as legend on the layer ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></h4>
               <textarea name="_layer_legend_localization" style="width:100%;height: 200px;"><?php echo $legend_localization; ?></textarea>
         <?php
             }
@@ -69,7 +83,7 @@
 
      <p>
       <?php
-      printf(__('Add and manage <a href="%s" target="_blank">layers</a> on your map.', 'jeo'), admin_url('edit.php?post_type=map-layer'));
+      printf(__('Add and manage <a href="%s" target="_blank">layers</a> on your map.', 'odm'), admin_url('edit.php?post_type=map-layer'));
       if(!$layer_query->have_posts())
        printf(__(' You haven\'t created any layers yet, <a href="%s" target="_blank">click here</a> to create your first!'), admin_url('post-new.php?post_type=map-layer'));
       ?>
@@ -83,22 +97,22 @@
        wp_reset_postdata();
       }
       ?>
-      <input type="text" data-bind="textInput: search" placeholder="<?php _e('Search for layers', 'jeo'); ?>" size="50">
+      <input type="text" data-bind="textInput: search" placeholder="<?php _e('Search for layers', 'odm'); ?>" size="50">
 
       <!-- ko if: !search() -->
-       <h4 class="results-title"><?php _e('Latest layers', 'jeo'); ?></h4>
+       <h4 class="results-title"><?php _e('Latest layers', 'odm'); ?></h4>
       <!-- /ko -->
 
       <!-- ko if: search() -->
-       <h4 class="results-title"><?php _e('Search results', 'jeo'); ?></h4>
+       <h4 class="results-title"><?php _e('Search results', 'odm'); ?></h4>
       <!-- /ko -->
 
       <!-- ko if: !filteredLayers().length && !search() -->
-       <p style="font-style:italic;color: #999;"><?php _e('You are using all of your layers.', 'jeo'); ?></p>
+       <p style="font-style:italic;color: #999;"><?php _e('You are using all of your layers.', 'odm'); ?></p>
       <!-- /ko -->
 
       <!-- ko if: !filteredLayers().length && search() -->
-       <p style="font-style:italic;color: #999;"><?php _e('No layers were found.', 'jeo'); ?></p>
+       <p style="font-style:italic;color: #999;"><?php _e('No layers were found.', 'odm'); ?></p>
       <!-- /ko -->
 
       <table class="layers-list available-layers">
@@ -106,12 +120,12 @@
         <tr>
          <td><strong data-bind="text: title"></strong></td>
          <td data-bind="text: type"></td>
-         <td style="width:1%;"><a class="button" data-bind="click: $parent.addLayer" href="javascript:void(0);" title="<?php _e('Add layer', 'jeo'); ?>">+ <?php _e('Add'); ?></a></td>
+         <td style="width:1%;"><a class="button" data-bind="click: $parent.addLayer" href="javascript:void(0);" title="<?php _e('Add layer', 'odm'); ?>">+ <?php _e('Add'); ?></a></td>
         </tr>
        </tbody>
       </table>
 
-      <h4 class="selected-title"><?php _e('Selected layers', 'jeo'); ?></h4>
+      <h4 class="selected-title"><?php _e('Selected layers', 'odm'); ?></h4>
 
       <table class="layers-list selected-layers">
        <tbody class="selected-layers-list">
@@ -122,28 +136,28 @@
            <p data-bind="text: type"></p>
           </td>
           <td>
-           <p><?php _e('Layer options', 'jeo'); ?></p>
+           <p><?php _e('Layer options', 'odm'); ?></p>
            <div class="filter-opts">
             <input type="radio" value="fixed" data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_fixed'}, checked: $data.filtering" />
-            <label data-bind="attr: {for: ID + '_filtering_opt_fixed'}"><?php _e('Enable', 'jeo'); ?></label> &nbsp; &nbsp; &nbsp;
+            <label data-bind="attr: {for: ID + '_filtering_opt_fixed'}"><?php _e('Enable', 'odm'); ?></label> &nbsp; &nbsp; &nbsp;
             <input  type="radio" value="switch" data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_switch'}, checked: $data.filtering" />
-            <label data-bind="attr: {for: ID + '_filtering_opt_switch'}"><?php _e('Disable', 'jeo'); ?></label>
+            <label data-bind="attr: {for: ID + '_filtering_opt_switch'}"><?php _e('Disable', 'odm'); ?></label>
             <!--<input type="radio" value="swap"  data-bind="attr: {name: ID + '_filtering_opt', id: ID + '_filtering_opt_swap'}, checked: $data.filtering" />
-            <label data-bind="attr: {for: ID + '_filtering_opt_swap'}"><?php _e('Swapable', 'jeo'); ?></label>-->
+            <label data-bind="attr: {for: ID + '_filtering_opt_swap'}"><?php _e('Swapable', 'odm'); ?></label>-->
 
             <div class="filtering-opts" style="display: none;">
              <!-- ko if: $data.filtering() == 'switch' -->
               <input type="checkbox" data-bind="attr: {id: ID + '_switch_hidden'}, checked: $data.hidden" />
-              <label data-bind="attr: {for: ID + '_switch_hidden'}"><?php _e('Hidden', 'jeo'); ?></label>
+              <label data-bind="attr: {for: ID + '_switch_hidden'}"><?php _e('Hidden', 'odm'); ?></label>
              <!-- /ko -->
              <!-- ko if: $data.filtering() == 'swap' -->
               <input type="radio" data-bind="attr: {id: ID + '_first_swap'}, checked: $data.first_swap" name="_jeo_map_layer_first_swap" />
-              <label data-bind="attr: {for: ID + '_first_swap'}"><?php _e('Default swap option', 'jeo'); ?></label>
+              <label data-bind="attr: {for: ID + '_first_swap'}"><?php _e('Default swap option', 'odm'); ?></label>
              <!-- /ko -->
             </div>
            </div>
           </td>
-          <td style="width:1%;"><a class="button" data-bind="click: $parent.removeLayer" href="javascript:void(0);" title="<?php _e('Remove layer', 'jeo'); ?>"><?php _e('Remove'); ?></a></td>
+          <td style="width:1%;"><a class="button" data-bind="click: $parent.removeLayer" href="javascript:void(0);" title="<?php _e('Remove layer', 'odm'); ?>"><?php _e('Remove'); ?></a></td>
          </tr>
         <!-- /ko -->
        </tbody>
@@ -299,6 +313,7 @@
        });
       </script>
       <?php
+      wp_reset_query();
      }
     }
 
@@ -311,21 +326,21 @@
         ?>
         <div id="layer_settings_box">
             <div class="layer-download-link">
-                <h4><?php _e('Download Page URL', 'jeo'); ?></h4>
+                <h4><?php _e('Download Page URL', 'odm'); ?></h4>
                 <tbody>
                     <tr>
-                        <th><label for="_layer_download_link"><?php _e('Download URL (English)', 'jeo'); ?></label></th>
+                        <th><label for="_layer_download_link"><?php _e('Download URL (English)', 'odm'); ?></label></th>
                         <td>
                             <input id="_layer_download_link" type="text" placeholder="https://" size="40" name="_layer_download_link" value="<?php echo $layer_download_link; ?>" />
-                            <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'jeo'); ?></p>
+                            <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'odm'); ?></p>
                         </td>
                     </tr>
                     <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                     <tr>
-                        <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></label></th>
+                        <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
                             <input id="_layer_download_link_localization" type="text" placeholder="https://" size="40" name="_layer_download_link_localization" value="<?php echo $layer_download_link_localization; ?>" />
-                            <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'jeo'); ?></p>
+                            <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'odm'); ?></p>
                         </td>
                     </tr>
                  <?php } ?>
@@ -333,21 +348,21 @@
             </div>
 
             <div class="layer-profilepage-link">
-                <h4><?php _e('Profile Page URL', 'jeo'); ?></h4>
+                <h4><?php _e('Profile Page URL', 'odm'); ?></h4>
                 <tbody>
                     <tr>
-                        <th><label for="_layer_profilepage_link"><?php _e('Profile Page URL (English)', 'jeo'); ?></label></th>
+                        <th><label for="_layer_profilepage_link"><?php _e('Profile Page URL (English)', 'odm'); ?></label></th>
                         <td>
                             <input id="_layer_profilepage_link" type="text" placeholder="https://" size="40" name="_layer_profilepage_link" value="<?php echo $layer_profilepage_link; ?>" />
-                            <p class="description"><?php _e('A link to profile page on Wordpress', 'jeo'); ?></p>
+                            <p class="description"><?php _e('A link to profile page on Wordpress', 'odm'); ?></p>
                         </td>
                     </tr>
                     <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                     <tr>
-                        <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></label></th>
+                        <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
                             <input id="_layer_profilepage_link_localization" type="text" placeholder="https://" size="40" name="_layer_profilepage_link_localization" value="<?php echo $layer_profilepage_link_localization; ?>" />
-                            <p class="description"><?php _e('A link to profile page on Wordpress', 'jeo'); ?></p>
+                            <p class="description"><?php _e('A link to profile page on Wordpress', 'odm'); ?></p>
                         </td>
                     </tr>
                   <?php } ?>
@@ -355,18 +370,18 @@
             </div>
 
             <div class="layer-type">
-                <h4><?php _e('Layer type', 'jeo'); ?></h4>
+                <h4><?php _e('Layer type', 'odm'); ?></h4>
                 <p>
                      <input type="radio" id="layer_type_tilelayer" name="layer_type" value="tilelayer" <?php if($layer_type == 'tilelayer' || !$layer_type) echo 'checked'; ?> />
-                     <label for="layer_type_tilelayer"><?php _e('Tile layer', 'jeo'); ?></label>
+                     <label for="layer_type_tilelayer"><?php _e('Tile layer', 'odm'); ?></label>
                      <input type="radio" id="layer_type_wmslayer" name="layer_type" value="wmslayer" <?php if($layer_type == 'wmslayer') echo 'checked'; ?> />
-                     <label for="layer_type_wmslayer"><?php _e('WMS layer', 'jeo'); ?></label>
+                     <label for="layer_type_wmslayer"><?php _e('WMS layer', 'odm'); ?></label>
 
                      <input type="radio" id="layer_type_mapbox" name="layer_type" value="mapbox" <?php if($layer_type == 'mapbox') echo 'checked'; ?> />
-                     <label for="layer_type_mapbox"><?php _e('MapBox', 'jeo'); ?></label>
+                     <label for="layer_type_mapbox"><?php _e('MapBox', 'odm'); ?></label>
 
                      <input type="radio" id="layer_type_cartodb" name="layer_type" value="cartodb" <?php if($layer_type == 'cartodb') echo 'checked'; ?> />
-                     <label for="layer_type_cartodb"><?php _e('CartoDB', 'jeo'); ?></label>
+                     <label for="layer_type_cartodb"><?php _e('CartoDB', 'odm'); ?></label>
                 </p>
             </div>
 
@@ -379,30 +394,30 @@
                 ?>
                 <tbody>
                     <tr>
-                        <th><label for="tilelayer_tile_url"><?php _e('URL', 'jeo'); ?></label></th>
+                        <th><label for="tilelayer_tile_url"><?php _e('URL', 'odm'); ?></label></th>
                         <td>
-                            <input id="tilelayer_tile_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.png', 'jeo'); ?>" size="40" name="_tilelayer_tile_url" value="<?php echo $tileurl; ?>" />
-                            <p class="description"><?php _e('Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png', 'jeo'); ?></p>
+                            <input id="tilelayer_tile_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.png', 'odm'); ?>" size="40" name="_tilelayer_tile_url" value="<?php echo $tileurl; ?>" />
+                            <p class="description"><?php _e('Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png', 'odm'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="tilelayer_utfgrid_url"><?php _e('UTFGrid URL (optional)', 'jeo'); ?></label></th>
+                        <th><label for="tilelayer_utfgrid_url"><?php _e('UTFGrid URL (optional)', 'odm'); ?></label></th>
                         <td>
-                            <input id="tilelayer_utfgrid_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.grid.json', 'jeo'); ?>" size="40" name="_tilelayer_utfgrid_url" value="<?php echo $utfgridurl; ?>" />
-                            <p class="description"><?php _e('Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json', 'jeo'); ?></p>
+                            <input id="tilelayer_utfgrid_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.grid.json', 'odm'); ?>" size="40" name="_tilelayer_utfgrid_url" value="<?php echo $utfgridurl; ?>" />
+                            <p class="description"><?php _e('Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json', 'odm'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="tilelayer_utfgrid_template"><?php _e('UTFGrid Template (optional)', 'jeo'); ?></label></th>
+                        <th><label for="tilelayer_utfgrid_template"><?php _e('UTFGrid Template (optional)', 'odm'); ?></label></th>
                         <td>
                             <textarea id="tilelayer_utfgrid_template" rows="10" cols="40" name="_tilelayer_utfgrid_template"><?php echo $utfgrid_template; ?></textarea>
                             <p class="description"><?php _e('UTFGrid template using mustache.<br/>E.g.: City: {{city}}'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="tilelayer_tms"><?php _e('TMS', 'jeo'); ?></label></th>
+                        <th><label for="tilelayer_tms"><?php _e('TMS', 'odm'); ?></label></th>
                         <td>
-                            <input id="tilelayer_tms" type="checkbox" name="_tilelayer_tms" <?php if($tms) echo 'checked'; ?> /> <label for="tilelayer_tms"><?php _e('Enable TMS', 'jeo'); ?></label>
+                            <input id="tilelayer_tms" type="checkbox" name="_tilelayer_tms" <?php if($tms) echo 'checked'; ?> /> <label for="tilelayer_tms"><?php _e('Enable TMS', 'odm'); ?></label>
                             <p class="description"><?php _e('Inverses Y axis numbering for tiles (turn this on for TMS services).'); ?></p>
                         </td>
                     </tr>
@@ -421,14 +436,14 @@
                     <tr>
                         <th><label for="wmslayer_tile_url"><?php _e('WMS Service URL', 'opendev'); ?></label></th>
                         <td>
-                            <input id="wmslayer_tile_url" type="text" placeholder="<?php _e('http://{geoserver adress & port}/geoserver/wms', 'jeo'); ?>" size="65" name="_wmslayer_tile_url" value="<?php echo $wmstileurl; ?>" />
+                            <input id="wmslayer_tile_url" type="text" placeholder="<?php _e('http://{geoserver adress & port}/geoserver/wms', 'odm'); ?>" size="65" name="_wmslayer_tile_url" value="<?php echo $wmstileurl; ?>" />
                             <p class="description"><?php _e('Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms', 'opendev'); ?></p>
                         </td>
                     </tr>
                     <tr>
                         <th><label for="wmslayer_layer_name"><?php _e('Workspaces:Layer Name (English)', 'opendev'); ?></label></th>
                         <td>
-                            <input id="wmslayer_layer_name" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name" value="<?php echo $layername; ?>" />
+                            <input id="wmslayer_layer_name" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'odm'); ?>" size="40" name="_wmslayer_layer_name" value="<?php echo $layername; ?>" />
                             <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
                         </td>
                     </tr>
@@ -436,7 +451,7 @@
                     <tr>
                         <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.odm_language_manager()->get_the_language_by_site().')', 'opendev'); ?></label></th>
                         <td>
-                            <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'jeo'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
+                            <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'odm'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
                             <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
                         </td>
                      </tr>
@@ -451,10 +466,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="wmslayer_transparent"><?php _e('Transparent', 'jeo'); ?></label></th>
+                        <th><label for="wmslayer_transparent"><?php _e('Transparent', 'odm'); ?></label></th>
                         <td>
                             <?php $is_new_page = get_current_screen(); // Transparent is checked by default. ?>
-                            <input id="wmslayer_transparent" type="checkbox" name="_wmslayer_transparent" <?php if($transparent) echo 'checked'; else if ( $is_new_page->action =="add") echo 'checked'; ?> /> <label for="wmslayer_transparent"><?php _e('Transparent', 'jeo'); ?></label>
+                            <input id="wmslayer_transparent" type="checkbox" name="_wmslayer_transparent" <?php if($transparent) echo 'checked'; else if ( $is_new_page->action =="add") echo 'checked'; ?> /> <label for="wmslayer_transparent"><?php _e('Transparent', 'odm'); ?></label>
                             <p class="description"><?php _e('Enable it to make transparent the layer of WMS.'); ?></p>
                         </td>
                     </tr>
@@ -464,10 +479,10 @@
                 <?php $mapbox_id = $post ? get_post_meta($post->ID, '_mapbox_id', true) : ''; ?>
                 <tbody>
                     <tr>
-                        <th><label for="mapbox_id"><?php _e('MapBox ID', 'jeo'); ?></label></th>
+                        <th><label for="mapbox_id"><?php _e('MapBox ID', 'odm'); ?></label></th>
                         <td>
                             <input id="mapbox_id" type="text" placeholder="examples.map-20v6611k" size="40" name="_mapbox_id" value="<?php echo $mapbox_id; ?>" />
-                            <p class="description"><?php _e('MapBox map ID. E.g.: examples.map-20v6611k', 'jeo'); ?></p>
+                            <p class="description"><?php _e('MapBox map ID. E.g.: examples.map-20v6611k', 'odm'); ?></p>
                         </td>
                     </tr>
                 </tbody>
@@ -491,60 +506,60 @@
               ?>
               <tbody>
                 <tr>
-                  <th><?php _e('Visualization type', 'jeo'); ?></th>
+                  <th><?php _e('Visualization type', 'odm'); ?></th>
                   <td>
                     <input name="_cartodb_type" id="cartodb_viz_type_viz" type="radio" value="viz" <?php if($cartodb_type == 'viz' || !$cartodb_type) echo 'checked'; ?> />
-                    <label for="cartodb_viz_type_viz"><?php _e('Visualization', 'jeo'); ?></label>
+                    <label for="cartodb_viz_type_viz"><?php _e('Visualization', 'odm'); ?></label>
                     <input name="_cartodb_type" id="cartodb_viz_type_custom" type="radio" value="custom" disabled <?php if($cartodb_type == 'custom') echo 'checked'; ?> />
-                    <label for="cartodb_viz_type_custom"><?php _e('Advanced (build from your tables)', 'jeo'); ?> - <?php _e('coming soon', 'jeo'); ?></label>
+                    <label for="cartodb_viz_type_custom"><?php _e('Advanced (build from your tables)', 'odm'); ?> - <?php _e('coming soon', 'odm'); ?></label>
                   </td>
                 </tr>
                 <tr class="subopt viz_type_viz">
-                <th><label for="cartodb_viz_url"><?php _e('CartoDB URL (English)', 'jeo'); ?></label></th>
+                <th><label for="cartodb_viz_url"><?php _e('CartoDB URL (English)', 'odm'); ?></label></th>
                   <td>
                     <input id="cartodb_viz_url" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url" value="<?php echo $vizurl; ?>" />
-                    <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
+                    <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm'); ?></p>
                   </td>
                 </tr>
                 <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
                 <tr class="subopt viz_type_viz">
-                  <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.odm_language_manager()->get_the_language_by_site().')', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                   <td>
                     <input id="cartodb_viz_url_localization" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url_localization" value="<?php echo $vizurl_localization; ?>" />
-                    <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'jeo'); ?></p>
+                    <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm'); ?></p>
                   </td>
                 </tr>
                 <?php } ?>
                 <tr class="subopt viz_type_custom">
-                  <th><label for="cartodb_viz_username"><?php _e('Username', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_username"><?php _e('Username', 'odm'); ?></label></th>
                   <td>
                     <input id="cartodb_viz_username" type="text" placeholder="johndoe" name="_cartodb_username" value="<?php echo $username; ?>" />
                     <p class="description"><?php _e('Your CartoDB username.'); ?></p>
                   </td>
                 </tr>
                 <tr class="subopt viz_type_custom">
-                  <th><label for="cartodb_viz_table"><?php _e('Table', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_table"><?php _e('Table', 'odm'); ?></label></th>
                   <td>
                     <input id="cartodb_viz_table" type="text" placeholder="deforestation_2012" name="_cartodb_table" value="<?php echo $table; ?>" />
                     <p class="description"><?php _e('The CartoDB table you\'d like to visualize.'); ?></p>
                   </td>
                 </tr>
                 <tr class="subopt viz_type_custom">
-                  <th><label for="cartodb_viz_where"><?php _e('Where (optional)', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_where"><?php _e('Where (optional)', 'odm'); ?></label></th>
                   <td>
                     <textarea id="cartodb_viz_where" rows="3" cols="40" name="_cartodb_where"><?php echo $where; ?></textarea>
                     <p class="description"><?php _e('Query data from your table.<br/>E.g.: region = "north"'); ?></p>
                   </td>
                 </tr>
                 <tr class="subopt viz_type_custom">
-                  <th><label for="cartodb_viz_cartocss"><?php _e('CartoCSS', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_cartocss"><?php _e('CartoCSS', 'odm'); ?></label></th>
                   <td>
                     <textarea id="cartodb_viz_cartocss" rows="10" cols="40" name="_cartodb_cartocss"><?php echo $cartocss; ?></textarea>
                     <p class="description"><?php printf(__('Styles for your table. <a href="%s" target="_blank">Learn more</a>.'), 'https://www.mapbox.com/tilemill/docs/manual/carto/'); ?></p>
                   </td>
                 </tr>
                 <tr class="subopt viz_type_custom">
-                  <th><label for="cartodb_viz_template"><?php _e('Template', 'jeo'); ?></label></th>
+                  <th><label for="cartodb_viz_template"><?php _e('Template', 'odm'); ?></label></th>
                   <td>
                     <textarea id="cartodb_viz_template" rows="10" cols="40" name="_cartodb_template"><?php echo $template; ?></textarea>
                     <p class="description"><?php _e('UTFGrid template using mustache.<br/>E.g.: City: {{city}}'); ?></p>
@@ -749,11 +764,6 @@
         foreach($map_layers as $l) {
            $layer = $this->get_layer($l['ID']);
            $layer['filtering'] = $l['filtering'];
-           if($layer['filtering'] == 'swap') {
-            $layer['first_swap'] = $l['first_swap'];
-           } elseif($layer['filtering'] == 'switch') {
-            $layer['hidden'] = $l['hidden'];
-           }
 
            if($filter == "baselayer") {
                if($layer['map_category'] == "base-layers"){
@@ -787,7 +797,7 @@
         $excerpt = apply_filters('translate_text', $post->excerpt, odm_language_manager()->get_current_language());
 
         $in_category = get_the_terms( $post->ID, 'layer-category' );
-        if ( (odm_language_manager()->get_current_language() != "en") ){
+        if ( (odm_language_manager()->get_current_language() !== "en") ){
             $layer_legend = get_post_meta( $post->ID , '_layer_legend_localization', true);
         }else {
             $layer_legend = get_post_meta( $post->ID , '_layer_legend', true);

@@ -7,7 +7,7 @@
   padding-top: @med-padd;
 
   ul {
-    text-align: righ;
+    text-align: right;
 
     li {
       float: left;
@@ -32,7 +32,6 @@
 }
 
 .widget {
-
   list-style: none !important;
   list-style-type: none !important;
 
@@ -51,67 +50,6 @@
 			text-decoration: underline;
 		}
 	}
-
-	// .od-tax-widget-tax-item {
-  //
-  //   .widget-title {
-  //     font-family: @primary-font;
-  //     font-weight: bold;
-  //     margin: -11px -10px 10px;
-  //     padding: 10px;
-  //     border-bottom: 1px solid @light-gray;
-  //     font-size: @font-size-h3;
-  //     color: @mekong-bright;
-  //   }
-  //
-  //   ol {
-  //     margin-left: 10px;
-  //     padding-left: 10px;
-  //     li {
-  //       padding-left: 10px;
-  //     }
-  //   }
-  //
-  //   ul {
-  //     ul {
-  //       font-size: 98%;
-  //     }
-  //
-  //     li {
-  //       border: none;
-  //       margin: 0;
-  //       padding: 5px 0;
-  //
-  //       span.plusimage-mekong,
-  //       span.minusimage-mekong,
-  //       span.nochildimage-mekong {
-  //           display: inline-block;
-  //           padding-left: 20px;
-  //       }
-  //       span.plusimage-mekong {
-  //           background: url("../../img/expand-mekong.png") no-repeat 0 5px!important;
-  //       }
-  //       span.minusimage-mekong {
-  //           background: url("../../img/collapse-mekong.png") no-repeat 0 5px!important;
-  //       }
-  //       span.nochildimage-mekong {
-  //           background: url("../../img/no-child-mekong.png") no-repeat 0 5px!important;
-  //       }
-  //
-  //       ul {
-  //         margin-left: 10px;
-  //         padding-left: 10px;
-  //       }
-  //
-  //     }
-  //   }
-  //
-	// 	margin: 0 0 20px;
-  //
-	// 	&:last-child {
-	// 		margin: 0;
-	// 	}
-	// }
 
 	.wpckan_dataset_list > ul > li {
 		margin: 0 0 10px !important;
@@ -139,7 +77,6 @@
 	}
 }
 
-/* Taxonomy Navigation */
 .odm_taxonomy_widget_ul {
 	li {
 		&.topic_nav_item, &.cat_item {
@@ -163,11 +100,11 @@
 #sidebar .widgets .widget,
 .widget .od-tax-widget-tax-item,
 .widget {
-
   margin-bottom: 10px;
 	border: none;
 	padding: 10px;
 	width: 100%;
+  clear: both;
 
 	.widget_search {
 	  box-shadow: 0 0 0;
@@ -183,16 +120,18 @@
 	.widget-title {
 	  font-family: @primary-font;
 	  font-weight: bold;
-	  margin: -11px -10px 10px;
+	  margin: 0 -10px 10px !important;
 	  padding: 10px;
 	  border-bottom: 1px solid @light-gray;
 	  font-size: @font-size-h3;
 	  color: @mekong-dark;
 	}
 
+  .item-title {
+    font-size: @base-font-size;
+  }
 	li a {
     font-family: @title-font;
-    //font-size: @font-size-h4;
     text-decoration: none;
     color: @mekong-text-color;
 
@@ -201,6 +140,9 @@
       color: @mekong-dark;
 		}
 
+    &:first-child {
+      padding-top:0;
+    }
 		&:last-child {
 		  border-bottom: 0;
 	  }
@@ -275,11 +217,6 @@
   }
 }
 
-// .widget_odm_taxonomy_widget ul:first-child{
-//     //max-height: 650px;
-//     //overflow-y: auto;
-// }
-
 .widget_odm_related_resources_widget, .widget_odm_query_resources_widget {
 	font-size: 90%;
 	p {
@@ -291,99 +228,6 @@ ul.odm_taxonomy_widget_ul span:hover{
 	cursor: pointer;
   color: @mekong-dark;
 }
-
-/*
- * Related datasets box
- */
-// #related-datasets {
-// 	.box-items {
-// 		table-layout: fixed;
-// 	}
-//
-// 	.group-item h3 {
-// 		text-transform: uppercase;
-// 		font-size: 18px;
-// 		color: #999;
-// 		line-height: 18px;
-// 		margin: 0 0 20px;
-// 	}
-//
-// 	.dataset-list {
-// 		margin: 0;
-// 		padding: 0;
-// 	}
-//
-// 	.dataset-item {
-// 		margin: 0 -20px 20px;
-// 		padding: 0 20px 20px;
-// 		border-bottom: 1px solid #ddd;
-// 		&:last-child {
-// 			border-bottom: 0;
-// 			margin-bottom: 0;
-// 		}
-// 		h4 {
-// 			font-size: 18px;
-// 			a {
-// 				text-decoration: none;
-// 			}
-// 		}
-//
-// 		p {
-// 			margin: 0 0 10px;
-// 			&.read-more {
-// 				margin: 0;
-// 			}
-// 		}
-// 	}
-//
-// 	.dataset-resources {
-// 		margin: 0 0 10px;
-// 		padding: 0;
-// 		width: 100%;
-// 		border-top: 1px solid #eee;
-// 		border-left: 1px solid #eee;
-// 		border-right: 1px solid #eee;
-//
-// 		.resource-item {
-// 			margin: 0;
-// 			padding: 10px;
-// 			border-bottom: 1px solid #eee;
-//
-// 			a {
-// 				text-decoration: none;
-// 			}
-//
-// 			.format {
-// 				background: #eee;
-// 				padding: 3px 7px;
-// 				font-size: 12px;
-// 				margin-left: 10px;
-// 			}
-// 		}
-//
-// 	}
-//
-// 	.toggle-resources {
-// 		display: block;
-// 		text-align: center;
-// 		text-transform: uppercase;
-// 		text-decoration: none;
-// 		color: #444;
-// 		border-top: 1px solid #ddd;
-// 		padding: 10px 0;
-// 	}
-//
-// 	&.collapsed {
-// 		.dataset-item {
-// 			h4,p {
-// 				width: 100%;
-// 				white-space: nowrap;
-// 				overflow: hidden;
-// 				text-overflow: ellipsis;
-// 			}
-// 		}
-// 	}
-// }
 
 /* Sidebar Related News  */
 .widget_odm_related_recent_news_widget{
@@ -467,7 +311,7 @@ ul.odm_taxonomy_widget_ul span:hover{
 	input[type=submit] {
 		margin-top: 35px;
     height: 36px !important;
-		padding: 8px 0;
+		padding: 5px 0;
 		text-align: center;
 		display: block;
 		width: 100%;

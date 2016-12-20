@@ -35,7 +35,7 @@
   			</nav>
   		</div>
       <div class="four columns">
-  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external">WordPress</a> using the <a href="%s" target="_blank" rel="external">JEO Beta</a> theme', 'jeo'), 'http://wordpress.org', 'https://github.com/oeco/jeo'); ?></p>
+  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external">WordPress</a> using the <a href="%s" target="_blank" rel="external">JEO Beta</a> theme', 'odm'), 'http://wordpress.org', 'https://github.com/oeco/jeo'); ?></p>
   		</div>
 			<?php
 		  if(odm_country_manager()->get_current_country() != "cambodia"): ?>

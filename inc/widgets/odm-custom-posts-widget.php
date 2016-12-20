@@ -3,6 +3,8 @@
 class Odm_Custom_Posts_Widget extends WP_Widget {
 
 	private $templates;
+	private $order_options;
+	private $more_location;
 	/**
 	 * Sets up the widgets name etc
 	 */
@@ -87,17 +89,17 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 						if (should_open_row($layout_type,$index)): ?>
 							<div class="row">
 						<?php endif; ?>
-						<?php
-						$template = $this->templates[$layout_type];
-						odm_get_template($template,array(
-							"post" => $post,
-							"show_meta" => $show_meta,
-							"show_source_meta" => $show_source_meta,
-							"show_excerpt" => $show_excerpt,
-							"show_thumbnail" => $show_thumbnail,
-							"order" => $order
-						),true);
-						if (should_close_row($layout_type,$index)): ?>
+								<?php
+								$template = $this->templates[$layout_type];
+								odm_get_template($template,array(
+									"post" => $post,
+									"show_meta" => $show_meta,
+									"show_source_meta" => $show_source_meta,
+									"show_excerpt" => $show_excerpt,
+									"show_thumbnail" => $show_thumbnail,
+									"order" => $order
+								),true);
+								if (should_close_row($layout_type,$index)): ?>
 							</div>
 						<?php endif;
 						$index++;
@@ -109,9 +111,9 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
 				</div>
 			<?php endif; ?>
-
-			<?php echo $args['after_widget']; ?>
 		</div>
+
+		<?php echo $args['after_widget']; ?>
 
 	<?php
 	wp_reset_query();
