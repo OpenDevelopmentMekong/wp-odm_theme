@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2016-10-17 09:14+0700\n"
-"PO-Revision-Date: 2016-10-17 10:01+0700\n"
+"POT-Creation-Date: 2016-12-21 12:35+0700\n"
+"PO-Revision-Date: 2016-12-21 16:23+0700\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -28,10 +28,8 @@ msgstr "ព័ត៌មានពុំអាចរកបាន!"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't have "
-"an information page on this topic that the old location had. To see what information does exist for this new location you've "
-"chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, etc..) from the navigation menu above "
-"this message ."
+"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't have an information page on this topic that the old location had. To see what information "
+"does exist for this new location you've chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, etc..) from the navigation menu above this message ."
 msgstr ""
 
 #: 404.php:22
@@ -60,6 +58,10 @@ msgstr "សេចក្តីប្រកាស"
 
 #: archive-dashboard.php:8
 msgid "Dashboards"
+msgstr ""
+
+#: archive-dataviz.php:8
+msgid "Data visualizations"
 msgstr ""
 
 #: archive-map-layer.php:8
@@ -144,12 +146,12 @@ msgstr "បណ្ណសារ"
 msgid "No results found."
 msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វែងរកទេ"
 
-#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8 inc/templates/pagination.php:16
-#: inc/utils/breadcrumbs.php:211
+#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8 inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:216
 msgid "Page"
 msgstr "ទំព័រ"
 
-#: content-map-group.php:27 inc/widgets/odm-custom-posts-widget.php:79 inc/widgets/odm-custom-posts-widget.php:109
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:84 inc/widgets/odm-contents-same-category-widget.php:120 inc/widgets/odm-custom-posts-widget.php:81
+#: inc/widgets/odm-custom-posts-widget.php:111
 msgid "More..."
 msgstr "បន្ថែម..."
 
@@ -159,9 +161,7 @@ msgstr "មើលផែនទីទាំងអស់"
 
 #: footer.php:38
 #, php-format
-msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" target="
-"\"_blank\" rel=\"external\">JEO Beta</a> theme"
+msgid "This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
 msgstr ""
 
 #: functions.php:52
@@ -213,104 +213,104 @@ msgid "Profile area bottom right"
 msgstr ""
 
 #: functions.php:138
-msgid "Profile sub-page right sidebar"
+msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:205
+#: functions.php:204
 msgid "stories"
 msgstr "ដំណើររឿង"
 
-#: functions.php:207
+#: functions.php:206
 msgid "Copy the embed code"
 msgstr "ថតចម្លងលេខកូដបង្កប់"
 
-#: functions.php:208 loop-latest.php:21
+#: functions.php:207 loop-latest.php:21
 msgid "Share"
 msgstr "ចែករំលែក"
 
-#: functions.php:209
+#: functions.php:208
 msgid "Print"
 msgstr "បោះពុម្ព"
 
-#: functions.php:220 loop-latest.php:19
+#: functions.php:219 loop-latest.php:19
 msgid "Read more"
 msgstr "អានបន្ថែម"
 
-#: functions.php:222
+#: functions.php:221
 msgid "Open slideshow"
 msgstr "ចាក់បញ្ចាំងស្លាយ"
 
-#: functions.php:223
+#: functions.php:222
 msgid "Watch video gallery"
 msgstr "ទស្សនាវិចិត្រសាលវីដេអូ"
 
-#: functions.php:224
+#: functions.php:223
 msgid "Watch video"
 msgstr "មើលវីដេអូ"
 
-#: functions.php:225
+#: functions.php:224
 msgid "View image gallery"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:226
+#: functions.php:225
 msgid "View fullscreen image"
 msgstr "ទស្សនារូបភាពទាំងមូល"
 
-#: functions.php:227
+#: functions.php:226
 msgid "View infographic"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:228
+#: functions.php:227
 msgid "View infographics"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:261
+#: functions.php:259
 msgid "default"
 msgstr ""
 
-#: functions.php:308
+#: functions.php:306
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:309
+#: functions.php:307
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:310
+#: functions.php:308
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:311
+#: functions.php:309
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:312
+#: functions.php:310
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:313
+#: functions.php:311
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:312
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:315
+#: functions.php:313
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:316
+#: functions.php:314
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:317
+#: functions.php:315
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:318
+#: functions.php:316
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
@@ -484,36 +484,25 @@ msgstr "ការអភិវឌ្ឍ និងការគ្រប់គ្�
 
 #: i18n/extra-strings.php:48
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA "
-"3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their "
-"respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are "
-"compiled from publicly available documentation and provided without fee for general informational purposes only. This is "
-"neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as "
-"a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and "
-"verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party "
-"sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in "
-"law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced "
-"herein or provided.\n"
-"Site users are encouraged to do additional research in support of their activities and to share the results of that research "
-"with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site "
-"information provided and to hold harmless and waive any and all liability against individuals or entities associated with its "
-"development, form and content for any loss, harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use "
+"principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation "
+"and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private "
+"non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or "
+"reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or "
+"appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against "
+"individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
 msgstr ""
-"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​ {​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​}​ ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 3.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​"
-"បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ​នៅ​លើ​គេហទំព័រ​របស់​ {​"
-"អូ​ឌី​ស៊ី​}​ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​"
-"សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ "
-"។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​"
-"មើល​ បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ {​អូ​ឌី​ស៊ី​}​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ {​អូ​ឌី​ស៊ី​}​ សូម​"
-"មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​"
-"មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
-"​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ ជាមួយនឹង​"
-"ក្រុមការងារ​យើងខ្ញុំ​។​ \n"
+"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​ {​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​}​ ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 3.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​"
+"ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ​នៅ​លើ​គេហទំព័រ​របស់​ {​អូ​ឌី​ស៊ី​}​ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​"
+"ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ ។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​មើល​ "
+"បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ {​អូ​ឌី​ស៊ី​}​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ {​អូ​ឌី​ស៊ី​}​ សូម​មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ "
+"ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
+"​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ ជាមួយនឹង​ក្រុមការងារ​យើងខ្ញុំ​។​ \n"
 "​សូម​ ទំនាក់ទំនង​មក​កាន់​យើងខ្ញុំ​ ដើម្បី​ចូលរួម​ចំណែក​ធ្វើ​ឱ្យ​ភាព​សុក្រឹត​របស់​គេហទំព័​នេះ​ កាន់តែ​ល្អ​ប្រសើរ​ឡើង​។​\n"
-"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​"
-"នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​"
-"ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
+"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​"
+"ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
 
 #: i18n/extra-strings.php:53
 msgid "Khmer PDF"
@@ -523,11 +512,11 @@ msgstr "ភាសា​ខ្មែរ​ PDF"
 msgid "Khmer PDF not available"
 msgstr "ភាសា​ខ្មែរ​ពុំ​អាច​រក​បាន"
 
-#: inc/advanced-navigation.php:115 page-data.php:36
+#: inc/advanced-navigation.php:115 page-data.php:39
 msgid "Text search"
 msgstr "ពាក្យស្វែងរក"
 
-#: inc/advanced-navigation.php:116 page-data.php:37
+#: inc/advanced-navigation.php:116 page-data.php:40 page-data.php:138
 msgid "Type your search here"
 msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
@@ -559,7 +548,7 @@ msgstr "ពី"
 msgid "To"
 msgstr "ដល់"
 
-#: inc/advanced-navigation.php:180 page-data.php:113
+#: inc/advanced-navigation.php:180 page-data.php:143
 msgid "Search Filter"
 msgstr "ស្វែងរកការជ្រើសរើស"
 
@@ -575,7 +564,7 @@ msgstr "ជ្រើសរើសបន្ថែម"
 msgid "Interactive Map"
 msgstr "ផែនទី"
 
-#: inc/interactive-map.php:89 inc/utils/mapping.php:82
+#: inc/interactive-map.php:89 inc/utils/mapping.php:89
 msgid "Map Layers"
 msgstr "ស្រទាប់ផែនទី"
 
@@ -625,323 +614,322 @@ msgstr ""
 msgid "New Layer category Name"
 msgstr ""
 
-#: inc/layers.php:33
+#: inc/layers.php:26
 msgid "Layer settings"
 msgstr ""
 
-#: inc/layers.php:42
+#: inc/layers.php:35
 msgid "Layer legend"
 msgstr ""
 
-#: inc/layers.php:51
+#: inc/layers.php:44
 msgid "Layers"
 msgstr ""
 
-#: inc/layers.php:64
+#: inc/layers.php:56
+msgid "Map setup"
+msgstr ""
+
+#: inc/layers.php:69
 msgid "Enter your HTML code to use as legend on the layer (English)"
 msgstr ""
 
-#: inc/layers.php:67
+#: inc/layers.php:72
 msgid "Enter your HTML code to use as legend on the layer ("
 msgstr ""
 
-#: inc/layers.php:81
+#: inc/layers.php:86
 #, php-format
 msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
 msgstr ""
 
-#: inc/layers.php:83
+#: inc/layers.php:88
 #, php-format
 msgid " You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click here</a> to create your first!"
 msgstr ""
 
-#: inc/layers.php:95
+#: inc/layers.php:100
 msgid "Search for layers"
 msgstr ""
 
-#: inc/layers.php:98
+#: inc/layers.php:103
 msgid "Latest layers"
 msgstr ""
 
-#: inc/layers.php:102
+#: inc/layers.php:107
 msgid "Search results"
 msgstr ""
 
-#: inc/layers.php:106
+#: inc/layers.php:111
 msgid "You are using all of your layers."
 msgstr ""
 
-#: inc/layers.php:110
+#: inc/layers.php:115
 msgid "No layers were found."
 msgstr ""
 
-#: inc/layers.php:118
+#: inc/layers.php:123
 msgid "Add layer"
 msgstr ""
 
-#: inc/layers.php:118
+#: inc/layers.php:123
 msgid "Add"
 msgstr ""
 
-#: inc/layers.php:123
+#: inc/layers.php:128
 msgid "Selected layers"
 msgstr ""
 
-#: inc/layers.php:134
+#: inc/layers.php:139
 msgid "Layer options"
 msgstr ""
 
-#: inc/layers.php:137
+#: inc/layers.php:142
 msgid "Enable"
 msgstr ""
 
-#: inc/layers.php:139
+#: inc/layers.php:144
 msgid "Disable"
 msgstr ""
 
-#: inc/layers.php:141
+#: inc/layers.php:146
 msgid "Swapable"
 msgstr ""
 
-#: inc/layers.php:146
+#: inc/layers.php:151
 msgid "Hidden"
 msgstr ""
 
-#: inc/layers.php:150
+#: inc/layers.php:155
 msgid "Default swap option"
 msgstr ""
 
-#: inc/layers.php:155
+#: inc/layers.php:160
 msgid "Remove layer"
 msgstr ""
 
-#: inc/layers.php:155
+#: inc/layers.php:160
 msgid "Remove"
 msgstr ""
 
-#: inc/layers.php:324
+#: inc/layers.php:329
 msgid "Download Page URL"
 msgstr ""
 
-#: inc/layers.php:327
+#: inc/layers.php:332
 msgid "Download URL (English)"
 msgstr ""
 
-#: inc/layers.php:330 inc/layers.php:338
+#: inc/layers.php:335 inc/layers.php:343
 msgid "A link to a dataset's page on CKAN"
 msgstr ""
 
-#: inc/layers.php:335
+#: inc/layers.php:340
 msgid "Download URL ("
 msgstr ""
 
-#: inc/layers.php:346
+#: inc/layers.php:351
 msgid "Profile Page URL"
 msgstr ""
 
-#: inc/layers.php:349
+#: inc/layers.php:354
 msgid "Profile Page URL (English)"
 msgstr ""
 
-#: inc/layers.php:352 inc/layers.php:360
+#: inc/layers.php:357 inc/layers.php:365
 msgid "A link to profile page on Wordpress"
 msgstr ""
 
-#: inc/layers.php:357
+#: inc/layers.php:362
 msgid "Profile Page URL ("
 msgstr ""
 
-#: inc/layers.php:368
+#: inc/layers.php:373
 msgid "Layer type"
 msgstr ""
 
-#: inc/layers.php:371
+#: inc/layers.php:376
 msgid "Tile layer"
 msgstr ""
 
-#: inc/layers.php:373
+#: inc/layers.php:378
 msgid "WMS layer"
 msgstr ""
 
-#: inc/layers.php:376
+#: inc/layers.php:381
 msgid "MapBox"
 msgstr ""
 
-#: inc/layers.php:379
+#: inc/layers.php:384
 msgid "CartoDB"
 msgstr ""
 
-#: inc/layers.php:392
+#: inc/layers.php:397
 msgid "URL"
 msgstr ""
 
-#: inc/layers.php:394
+#: inc/layers.php:399
 msgid "http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr ""
 
-#: inc/layers.php:395
+#: inc/layers.php:400
 msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr ""
 
-#: inc/layers.php:399
+#: inc/layers.php:404
 msgid "UTFGrid URL (optional)"
 msgstr ""
 
-#: inc/layers.php:401
+#: inc/layers.php:406
 msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: inc/layers.php:402
+#: inc/layers.php:407
 msgid "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: inc/layers.php:406
+#: inc/layers.php:411
 msgid "UTFGrid Template (optional)"
 msgstr ""
 
-#: inc/layers.php:409 inc/layers.php:560
+#: inc/layers.php:414 inc/layers.php:565
 msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
 msgstr ""
 
-#: inc/layers.php:413
+#: inc/layers.php:418
 msgid "TMS"
 msgstr ""
 
-#: inc/layers.php:415
+#: inc/layers.php:420
 msgid "Enable TMS"
 msgstr ""
 
-#: inc/layers.php:416
+#: inc/layers.php:421
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
 msgstr ""
 
-#: inc/layers.php:432
+#: inc/layers.php:437
 msgid "WMS Service URL"
 msgstr ""
 
-#: inc/layers.php:434
+#: inc/layers.php:439
 msgid "http://{geoserver adress & port}/geoserver/wms"
 msgstr ""
 
-#: inc/layers.php:435
+#: inc/layers.php:440
 msgid "Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 msgstr ""
 
-#: inc/layers.php:439
+#: inc/layers.php:444
 msgid "Workspaces:Layer Name (English)"
 msgstr ""
 
-#: inc/layers.php:441 inc/layers.php:449
+#: inc/layers.php:446 inc/layers.php:454
 msgid "Workspaces and Layer name\""
 msgstr ""
 
-#: inc/layers.php:442
-msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
-"strong> is layer name."
+#: inc/layers.php:447
+msgid "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
-#: inc/layers.php:447
+#: inc/layers.php:452
 msgid "Workspaces:Layer Name ("
 msgstr ""
 
-#: inc/layers.php:450
-msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
-"strong> is layer name."
+#: inc/layers.php:455
+msgid "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
-#: inc/layers.php:457
+#: inc/layers.php:462
 msgid "WMS format (optional)"
 msgstr ""
 
-#: inc/layers.php:459
+#: inc/layers.php:464
 msgid "image/png"
 msgstr ""
 
-#: inc/layers.php:460
+#: inc/layers.php:465
 msgid "E.g.: image/png or image/jpeg"
 msgstr ""
 
-#: inc/layers.php:464 inc/layers.php:467
+#: inc/layers.php:469 inc/layers.php:472
 msgid "Transparent"
 msgstr ""
 
-#: inc/layers.php:468
+#: inc/layers.php:473
 msgid "Enable it to make transparent the layer of WMS."
 msgstr ""
 
-#: inc/layers.php:477
+#: inc/layers.php:482
 msgid "MapBox ID"
 msgstr ""
 
-#: inc/layers.php:480
+#: inc/layers.php:485
 msgid "MapBox map ID. E.g.: examples.map-20v6611k"
 msgstr ""
 
-#: inc/layers.php:504
+#: inc/layers.php:509
 msgid "Visualization type"
 msgstr ""
 
-#: inc/layers.php:507
+#: inc/layers.php:512
 msgid "Visualization"
 msgstr ""
 
-#: inc/layers.php:509
+#: inc/layers.php:514
 msgid "Advanced (build from your tables)"
 msgstr ""
 
-#: inc/layers.php:509
+#: inc/layers.php:514
 msgid "coming soon"
 msgstr ""
 
-#: inc/layers.php:513
+#: inc/layers.php:518
 msgid "CartoDB URL (English)"
 msgstr ""
 
-#: inc/layers.php:516 inc/layers.php:524
-msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+#: inc/layers.php:521 inc/layers.php:529
+msgid "CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
-#: inc/layers.php:521
+#: inc/layers.php:526
 msgid "CartoDB URL ("
 msgstr ""
 
-#: inc/layers.php:529
+#: inc/layers.php:534
 msgid "Username"
 msgstr ""
 
-#: inc/layers.php:532
+#: inc/layers.php:537
 msgid "Your CartoDB username."
 msgstr ""
 
-#: inc/layers.php:536
+#: inc/layers.php:541
 msgid "Table"
 msgstr ""
 
-#: inc/layers.php:539
+#: inc/layers.php:544
 msgid "The CartoDB table you'd like to visualize."
 msgstr ""
 
-#: inc/layers.php:543
+#: inc/layers.php:548
 msgid "Where (optional)"
 msgstr ""
 
-#: inc/layers.php:546
+#: inc/layers.php:551
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
 msgstr ""
 
-#: inc/layers.php:550
+#: inc/layers.php:555
 msgid "CartoCSS"
 msgstr ""
 
-#: inc/layers.php:553
+#: inc/layers.php:558
 #, php-format
 msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr ""
 
-#: inc/layers.php:557
+#: inc/layers.php:562
 msgid "Template"
 msgstr ""
 
@@ -1079,11 +1067,11 @@ msgstr ""
 msgid "Parent news articles:"
 msgstr ""
 
-#: inc/post-types/news-article.php:31 inc/post-types/stories.php:31
+#: inc/post-types/news-article.php:31 inc/post-types/stories.php:33
 msgid "No stories found."
 msgstr ""
 
-#: inc/post-types/news-article.php:32 inc/post-types/stories.php:32
+#: inc/post-types/news-article.php:32 inc/post-types/stories.php:34
 msgid "No stories found in trash."
 msgstr ""
 
@@ -1148,57 +1136,138 @@ msgstr ""
 msgid "No site updates found in trash."
 msgstr ""
 
-#: inc/post-types/stories.php:19
+#: inc/post-types/stories.php:21
 msgctxt "post type general name"
 msgid "Stories"
 msgstr ""
 
-#: inc/post-types/stories.php:20
+#: inc/post-types/stories.php:22
 msgctxt "post type singular name"
 msgid "Story"
 msgstr ""
 
-#: inc/post-types/stories.php:21
+#: inc/post-types/stories.php:23
 msgctxt "admin menu"
 msgid "Stories"
 msgstr ""
 
-#: inc/post-types/stories.php:22
+#: inc/post-types/stories.php:24
 msgctxt "add new on admin bar"
 msgid "Story"
 msgstr ""
 
-#: inc/post-types/stories.php:23
+#: inc/post-types/stories.php:25
 msgctxt "story"
 msgid "Add new"
 msgstr ""
 
-#: inc/post-types/stories.php:24
+#: inc/post-types/stories.php:26
 msgid "Add new story"
 msgstr ""
 
-#: inc/post-types/stories.php:25
+#: inc/post-types/stories.php:27
 msgid "New story"
 msgstr ""
 
-#: inc/post-types/stories.php:26
+#: inc/post-types/stories.php:28
 msgid "Edit story"
 msgstr ""
 
-#: inc/post-types/stories.php:27
+#: inc/post-types/stories.php:29
 msgid "View story"
 msgstr ""
 
-#: inc/post-types/stories.php:28
+#: inc/post-types/stories.php:30
 msgid "All stories"
 msgstr ""
 
-#: inc/post-types/stories.php:29
+#: inc/post-types/stories.php:31
 msgid "Search stories"
 msgstr ""
 
-#: inc/post-types/stories.php:30
+#: inc/post-types/stories.php:32
 msgid "Parent stories:"
+msgstr ""
+
+#: inc/post-types/stories.php:62
+msgid "Full Width Middle Content"
+msgstr ""
+
+#: inc/post-types/stories.php:78
+msgid "ENGLISH"
+msgstr ""
+
+#: inc/post-types/stories.php:91
+msgid "Full width content (English)"
+msgstr ""
+
+#: inc/post-types/stories.php:95 inc/post-types/stories.php:111
+msgid "Any content can add to under the Editor content and sidebar and  full width of website even the iframe."
+msgstr ""
+
+#: inc/post-types/stories.php:107
+msgid "Full width content (("
+msgstr ""
+
+#: inc/post-types/timeline.php:20
+msgctxt "post type general name"
+msgid "Timelines"
+msgstr ""
+
+#: inc/post-types/timeline.php:21
+msgctxt "post type singular name"
+msgid "Timeline"
+msgstr ""
+
+#: inc/post-types/timeline.php:22
+msgctxt "admin menu"
+msgid "Timelines"
+msgstr ""
+
+#: inc/post-types/timeline.php:23
+msgctxt "add new on admin bar"
+msgid "Timeline"
+msgstr ""
+
+#: inc/post-types/timeline.php:24
+msgctxt "timeline"
+msgid "Add new"
+msgstr ""
+
+#: inc/post-types/timeline.php:25
+msgid "Add new timeline"
+msgstr ""
+
+#: inc/post-types/timeline.php:26
+msgid "New timeline"
+msgstr ""
+
+#: inc/post-types/timeline.php:27
+msgid "Edit timeline"
+msgstr ""
+
+#: inc/post-types/timeline.php:28
+msgid "View timeline"
+msgstr ""
+
+#: inc/post-types/timeline.php:29
+msgid "All timelines"
+msgstr ""
+
+#: inc/post-types/timeline.php:30
+msgid "Search timelines"
+msgstr ""
+
+#: inc/post-types/timeline.php:31
+msgid "Parent timelines:"
+msgstr ""
+
+#: inc/post-types/timeline.php:32
+msgid "No timelines found."
+msgstr ""
+
+#: inc/post-types/timeline.php:33
+msgid "No timelines found in trash."
 msgstr ""
 
 #: inc/post-types/topics.php:19
@@ -1346,8 +1415,7 @@ msgstr ""
 msgid "(This id can be found on the Featured Area plugin slider's settings.)"
 msgstr ""
 
-#: inc/theme-options.php:201 inc/theme-options.php:204 inc/theme-options.php:211 inc/theme-options.php:214
-#: inc/theme-options.php:273
+#: inc/theme-options.php:201 inc/theme-options.php:204 inc/theme-options.php:211 inc/theme-options.php:214 inc/theme-options.php:273
 msgid "None"
 msgstr ""
 
@@ -1484,11 +1552,11 @@ msgstr ""
 msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: inc/utils/mapping.php:93
+#: inc/utils/mapping.php:100
 msgid "Show news on map"
-msgstr ""
+msgstr "បង្ហាញព័ត៍មាននៅលើផែនទី"
 
-#: inc/utils/mapping.php:316
+#: inc/utils/mapping.php:327
 msgid "LEGEND"
 msgstr "សញ្ញាផែនទី"
 
@@ -1500,7 +1568,7 @@ msgstr ""
 msgid "Display post taxonomies hierarchically."
 msgstr ""
 
-#: inc/widgets/odm-category-widget.php:111
+#: inc/widgets/odm-category-widget.php:110
 msgid "Taxonomies to display:"
 msgstr ""
 
@@ -1512,73 +1580,52 @@ msgstr ""
 msgid "Display other content from other post types tagged with the same categories as the one where the widget is integrated."
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:90 inc/widgets/odm-custom-posts-widget.php:160
-#: inc/widgets/odm-related-recent-news-widget.php:130 inc/widgets/odm-taxonomy-widget.php:222
+#: inc/widgets/odm-contents-same-category-widget.php:148 inc/widgets/odm-custom-posts-widget.php:164 inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:95 inc/widgets/odm-custom-posts-widget.php:164
+#: inc/widgets/odm-contents-same-category-widget.php:153 inc/widgets/odm-custom-posts-widget.php:168
 msgid "Select custom post type:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:105 inc/widgets/odm-custom-posts-widget.php:197
-msgid "Select max number of posts to list (-1 to show all):"
-msgstr ""
-
-#: inc/widgets/odm-custom-posts-widget.php:13
-msgid "ODM Custom Posts"
-msgstr ""
-
-#: inc/widgets/odm-custom-posts-widget.php:14
-msgid "Display entries of the spefied custom post type"
-msgstr ""
-
-#: inc/widgets/odm-custom-posts-widget.php:172
+#: inc/widgets/odm-contents-same-category-widget.php:162 inc/widgets/odm-custom-posts-widget.php:176
 msgid "Select layout:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:180
+#: inc/widgets/odm-contents-same-category-widget.php:170 inc/widgets/odm-custom-posts-widget.php:184
 msgid "Show post excerpt:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:184
+#: inc/widgets/odm-contents-same-category-widget.php:174 inc/widgets/odm-custom-posts-widget.php:188
 msgid "Show post thumbnail:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:188
+#: inc/widgets/odm-contents-same-category-widget.php:178 inc/widgets/odm-custom-posts-widget.php:192
 msgid "Show post meta:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:192
+#: inc/widgets/odm-contents-same-category-widget.php:182 inc/widgets/odm-custom-posts-widget.php:196
 msgid "Show source meta:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:201
+#: inc/widgets/odm-contents-same-category-widget.php:187 inc/widgets/odm-custom-posts-widget.php:201
+msgid "Select max number of posts to list (-1 to show all):"
+msgstr ""
+
+#: inc/widgets/odm-contents-same-category-widget.php:191 inc/widgets/odm-custom-posts-widget.php:205
 msgid "Order by:"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:209
+#: inc/widgets/odm-contents-same-category-widget.php:199 inc/widgets/odm-custom-posts-widget.php:213
 msgid "Select location of 'More...':"
 msgstr ""
 
-#: inc/widgets/odm-related-recent-news-widget.php:10
-msgid "ODM Related Recent News Widget"
+#: inc/widgets/odm-custom-posts-widget.php:15
+msgid "ODM Custom Posts"
 msgstr ""
 
-#: inc/widgets/odm-related-recent-news-widget.php:11
-msgid "Display ODM the related recent news for the topics"
-msgstr ""
-
-#: inc/widgets/odm-related-recent-news-widget.php:109
-msgid "Related News"
-msgstr "ព័ត៌មានពាក់ព័ន្ធ"
-
-#: inc/widgets/odm-related-recent-news-widget.php:134
-msgid "Option:"
-msgstr ""
-
-#: inc/widgets/odm-related-recent-news-widget.php:151
-msgid "Category slugs:"
+#: inc/widgets/odm-custom-posts-widget.php:16
+msgid "Display entries of the spefied custom post type"
 msgstr ""
 
 #: inc/widgets/odm-taxonomy-widget.php:10
@@ -1626,68 +1673,92 @@ msgstr "ទំព័រមុខ"
 msgid "Next page"
 msgstr "ទំព័របន្ទាប់"
 
-#: page-data.php:43
+#: page-data.php:46
 msgid "Type"
-msgstr ""
+msgstr "ប្រភេទ"
 
-#: page-data.php:44
+#: page-data.php:47
 msgid "Select dataset type"
-msgstr ""
+msgstr "ជ្រើសរើសប្រភេទទិន្នន័យ"
 
-#: page-data.php:59
-msgid "Language"
-msgstr ""
-
-#: page-data.php:60
-msgid "Select language"
-msgstr ""
-
-#: page-data.php:61 page-data.php:80 page-data.php:102
+#: page-data.php:48 page-data.php:65 page-data.php:85 page-data.php:108 page-data.php:125
 msgid "All"
 msgstr "ទាំងអស់"
 
-#: page-data.php:76
+#: page-data.php:63
+msgid "Language"
+msgstr "ភាសា"
+
+#: page-data.php:64
+msgid "Select language"
+msgstr "ជ្រើសរើសភាសា"
+
+#: page-data.php:81
 msgid "Country"
-msgstr ""
+msgstr "ប្រទេស"
 
-#: page-data.php:77
+#: page-data.php:82
 msgid "Select country"
-msgstr ""
+msgstr "ជ្រើសរើសប្រទេស"
 
-#: page-data.php:100
+#: page-data.php:106
 msgid "Taxonomy"
-msgstr ""
+msgstr "ប្រធានបទ"
 
-#: page-data.php:101
+#: page-data.php:107
 msgid "Select term"
-msgstr ""
+msgstr "ជ្រើសរើសប្រធានបទ"
 
-#: page-data.php:117
+#: page-data.php:123
+msgid "License"
+msgstr "អាជ្ញាប័ណ្ណ"
+
+#: page-data.php:124
+msgid "Select license"
+msgstr "ជ្រើសរើសអាជ្ញាប័ណ្ណ"
+
+#: page-data.php:137
+msgid "Source"
+msgstr "ធនធាន"
+
+#: page-data.php:147
 msgid "Clear"
-msgstr ""
+msgstr "សំអាតការជ្រើសរើស"
 
-#: page-data.php:135
-msgid "Current statistics: "
-msgstr ""
-
-#: page-data.php:161
+#: page-data.php:186
 msgid "Most viewed datasets"
-msgstr ""
+msgstr "ទិន្នន័យដែលពេញនិយម"
 
-#: page-data.php:166
+#: page-data.php:191
 msgid "Most viewed library records"
-msgstr ""
+msgstr "ឯកសារបណ្ណាល័យដែលពេញនិយម"
 
-#: page-data.php:171
+#: page-data.php:196
 msgid "Most viewed laws"
-msgstr ""
+msgstr "ឯកសារ​ច្បាប់​ដែលពេញនិយម"
 
-#: page-data.php:221
+#: page-data.php:256
 msgid "More on the law compendium"
+msgstr "មើលឯកសារច្បាប់បន្ថែម"
+
+#: page-dataset-detail.php:18
+msgid "Please provide an id as parameter"
 msgstr ""
 
-#: page-dataset-detail.php:17
-msgid "Please provide an id as parameter"
+#: page-dataset-detail.php:27
+msgid "Download metadata"
+msgstr "ទាញយកមេតានៃទិន្នន័យ"
+
+#: page-dataset-detail.php:29
+msgid "XML"
+msgstr ""
+
+#: page-dataset-detail.php:30
+msgid "JSON"
+msgstr ""
+
+#: page-dataset-detail.php:31
+msgid "RDF"
 msgstr ""
 
 #: page-pdf-view.php:24 page-pdf-view.php:27 section-query-actions.php:25
@@ -1710,33 +1781,13 @@ msgstr ""
 msgid "Get GeoJSON"
 msgstr ""
 
-#: section-related-datasets.php:18
-msgid "Other"
-msgstr "ផ្សេងៗទៀត"
-
-#: section-related-datasets.php:31
-msgid "Related resources"
-msgstr "ទិន្នន័យពាក់ព័ន្ធ"
-
-#: section-related-datasets.php:71
-msgid "Read more..."
-msgstr "អានបន្ថែម..."
-
-#: section-related-datasets.php:81 section-related-datasets.php:95
-msgid "Show resources details"
-msgstr ""
-
-#: section-related-datasets.php:93
-msgid "Hide resources details"
-msgstr ""
-
 #: section-sticky-posts.php:151
 msgid "Keep reading"
 msgstr "អានបន្ត"
 
 #: single-map.php:46
 msgid "Latest articles on"
-msgstr ""
+msgstr "ព័ត៌មានថ្មីបំផុត"
 
 #: single-topic.php:68
 msgid "More on the Land Portal library"
@@ -1745,3 +1796,15 @@ msgstr ""
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
 msgstr "ការតាឡុកផែនទី"
+
+#~ msgid "Related News"
+#~ msgstr "ព័ត៌មានពាក់ព័ន្ធ"
+
+#~ msgid "Other"
+#~ msgstr "ផ្សេងៗទៀត"
+
+#~ msgid "Related resources"
+#~ msgstr "ទិន្នន័យពាក់ព័ន្ធ"
+
+#~ msgid "Read more..."
+#~ msgstr "អានបន្ថែម..."
