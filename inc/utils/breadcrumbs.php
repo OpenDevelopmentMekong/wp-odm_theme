@@ -66,7 +66,7 @@ function echo_the_breadcrumb()
         if (is_single()) {
             $post_type_name = get_post_type(get_the_ID());
             $post_type = get_post_type_object($post_type_name);
-            echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type->labels->name.'">'.$post_type->labels->name.'</a></li>';
+            echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type->labels->name.'">'.__($post_type->labels->name, "odm").'</a></li>';
             echo the_separated_breadcrumb($separator, '', 'post-type');
             if ($post_type_name  == 'topic') {
                 $get_topic_title = get_the_title();
@@ -97,7 +97,7 @@ function echo_the_breadcrumb()
                     echo '<li class="item-parent item-parent-' . $parent_id . ' item-parent-' . $parent->post_name . '"><a class="bread-parent bread-parent-' . $parent_id . ' bread-parent-' . $parent->post_name . '" href="' . get_post_permalink($parent_id) . '" title="' . get_the_title($parent_id). '">' . get_the_title($parent_id) . '</a></li>';
                     echo the_separated_breadcrumb($separator,  $parent_id , 'parent');
                   endif;
-                endif;    
+                endif;
                 echo '<li class="item-current item-'.$post->ID.'">';
                 echo '<div class="text-bgcolor bread-current-page bread-'.$post->ID.'" title="'.get_the_title().'">';
                   echo '<a class="item-current bread-current-'.$post->ID.'" href="'.get_permalink().'" title="'.get_the_title().'">';
@@ -169,7 +169,7 @@ function echo_the_breadcrumb()
             echo '<li class="item-current item-tag-'.$terms[0]->term_id.' item-tag-'.$terms[0]->slug.'">';
             echo '<strong class="bread-current bread-tag-'.$terms[0]->term_id.'bread-tag-'.$terms[0]->slug.'">';
             echo '<a href="'.get_tag_link($terms[0]->term_id).'">';
-            echo $terms[0]->name;
+              _e($terms[0]->name, "odm");
             echo '</a>';
             echo '</strong></li>';
         } elseif (is_day()) {
@@ -206,7 +206,7 @@ function echo_the_breadcrumb()
               $post_type_slug = $post_type_data->rewrite['slug'];
               echo '<li class="item-current item-current-'.$post_type_slug.'"> ';
               echo '<div class="bread-current bread-current-'.$post_type_slug.'">';
-              echo post_type_archive_title();
+                _e(post_type_archive_title("", false), "odm");
               echo '</div>';
               echo '</li>';
               echo the_separated_breadcrumb($separator, '', 'post-type');
@@ -229,7 +229,7 @@ function echo_the_breadcrumb()
             }
             echo '<li class="item-current item-current-'.$post_type_slug.'"> ';
             echo '<div class="bread-current bread-current-'.$post_type_slug.'">';
-            echo post_type_archive_title();
+              _e(post_type_archive_title("", false), "odm");
             echo '</div>';
             echo '</li>';
           }
