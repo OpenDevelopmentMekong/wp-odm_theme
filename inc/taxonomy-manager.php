@@ -20,6 +20,7 @@ class Odm_Taxonomy_Manager {
     $this->taxonomy_tree = json_decode($string, true);
 
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($this->taxonomy_tree));
+    $iterator->setMaxDepth(2);
     foreach($iterator as $key=>$value) {
       array_push($this->taxonomy_list,$value);
     }
