@@ -76,7 +76,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			  $posts = query_posts($query);
 		endif;
 		if($posts){
-			$post_type_slug = $supported_post_types[0];
+			$selected_post_type = get_post_type_object($supported_post_types[0]);
+			$post_type_slug = $selected_post_type->rewrite['slug'];
 			echo $args['before_widget']; ?>
 
 			<?php if ($more_location == 'top'): ?>
@@ -122,7 +123,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 				<?php endif; ?>
 
 			<?php echo $args['after_widget'];
-		}	
+		}
 		wp_reset_query();
 	}
 
