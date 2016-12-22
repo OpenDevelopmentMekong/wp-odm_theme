@@ -182,6 +182,21 @@ Template Name: Data
     </div>
   </div>
 
+  <?php
+    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
+      <div class="container">
+        <div class="row">
+          <div class="four columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_type(); ?>
+          </div>
+          <div class="twelve columns">
+            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(null); ?>
+          </div>
+        </div>
+      </div>
+  <?php
+    endif; ?>
+
   <section class="container">
     <div class="row">
 
