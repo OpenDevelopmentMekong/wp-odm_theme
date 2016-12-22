@@ -359,8 +359,8 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
- 
-		$limit = $num + 1;
+		$limit = $num;
+		
 		if($post->post_excerpt):
 			$get_the_excerpt = $post->post_excerpt;
 		else:
@@ -368,11 +368,11 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		endif;
 
 		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
-		array_pop($excerpt);
+
 		$excerpt_string = implode(' ', $excerpt);
-		$excerpt_hidden_space = explode('?', $excerpt_string, $limit);
-		array_pop($excerpt_hidden_space);
-		$$excerpt_string = implode('?', $excerpt_hidden_space);
+		$excerpt_hidden_space = explode("​", $excerpt_string, $limit); //explode by zerowidthspace
+
+		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string.' ...';
 		if ($read_more != '') {
 			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
