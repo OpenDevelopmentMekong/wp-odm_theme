@@ -91,10 +91,10 @@
 		$conf['disableHash'] = true;
 		$conf['mainMap'] = true;
     $conf['dataReady'] = true;
-		if(get_post_type() == "profiles") {
+    if(get_post_type() == "profiles") {
 			$conf['postID'] = jeo_get_the_ID();
       if(get_post_meta(get_the_ID(), 'map_data', true)){
-        $get_map_data = get_post_meta(get_the_ID(), 'map_data', true); 
+        $get_map_data = get_post_meta(get_the_ID(), 'map_data', true);
         if (count(array_filter($get_map_data['center'])) != 0){
          $conf['postID'] = get_the_ID();
         }
