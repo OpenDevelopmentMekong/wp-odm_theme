@@ -167,7 +167,7 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   return map;
 };
 
-  jeo.create_layer_by_maptype = function (map, layer){
+jeo.create_layer_by_maptype = function (map, layer){
     layer = (typeof layer !== 'undefined') ?  layer : null;
     var pLayer = null;
     var options = {};

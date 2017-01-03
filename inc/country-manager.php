@@ -93,10 +93,12 @@ class Odm_Country_Manager {
       <?php
         foreach ($this->countries as $country):
           $url = $this->is_pp() ? $country['url_pp'] : $country['url'];
+          $path_without_lang = remove_language_code_from_url($_SERVER['REQUEST_URI']);
+          $destination = $url . $path_without_lang;
           if ($this->is_current_country($country)): ?>
             <li class="active-country"><?php od_logo_icon($country['name']); echo __($country['name']);?></li>
           <?php else: ?>
-            <li><a href="<?php echo $url; ?>"><?php od_logo_icon($country['name']); ?><?php echo __($country['name']);?></a></li>
+            <li><a href="<?php echo $destination; ?>"><?php od_logo_icon($country['name']); ?><?php echo __($country['name']);?></a></li>
           <?php endif; ?>
       <?php
         endforeach;
