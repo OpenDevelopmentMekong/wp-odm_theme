@@ -28,7 +28,7 @@ Template Name: Data
   );
 ?>
 
-  <?php
+  <!-- <?php
     if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
       <div class="container hideOnMobileAndTablet">
         <div class="row">
@@ -53,7 +53,7 @@ Template Name: Data
         </div>
       </div>
   <?php
-    endif; ?>
+    endif; ?> -->
 
   <div class="container">
     <div class="row">
