@@ -17,12 +17,12 @@
 		<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>"><?php echo $post_type->labels->name ?></a>
 		<?php
 			endif; ?>
-    <?php
-      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
-		<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
 		<?php if ($show_meta): ?>
 		<div class="meta">
-				<?php echo_post_meta($post,array('date','sources','categories'),$order); ?>
+			<?php
+				$link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
+			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+			<?php echo_post_meta($post,array('date','sources','categories'),$order); ?>
 		</div>
 		<?php endif; ?>
 		<?php
