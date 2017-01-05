@@ -11,6 +11,17 @@
 	<div class="grid-content-wrapper">
 		<?php if ($show_meta): ?>
 		<div class="meta">
+				<?php
+		      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+					<?php
+				if (isset($post->description) && $post->description != "") :?>
+					<div class="post-grid-item-list">
+							<?php echo $post->description;   ?>
+					</div>
+					<?php
+				endif;
+				?>
 				<?php echo_post_meta($post,array('date','sources','categories'),$order); ?>
 		</div>
 		<?php endif; ?>
@@ -19,18 +30,6 @@
 			if (isset($thumb_src)):
 				echo $thumb_src;
 			endif;
-		?>
-
-    <?php
-      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
-		<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
-			<?php
-		if (isset($post->description) && $post->description != "") :?>
-			<div class="post-grid-item-list">
-					<?php echo $post->description;   ?>
-			</div>
-			<?php
-		endif;
 		?>
 	</div>
 </div>
