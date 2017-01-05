@@ -17,14 +17,16 @@
 		<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>"><?php echo $post_type->labels->name ?></a>
 		<?php
 			endif; ?>
-		<?php if ($show_meta): ?>
 		<div class="meta">
 			<?php
 	      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
 			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
-			<?php echo_post_meta($post,array('date','sources','categories'),$order); ?>
+			<?php
+				if ($show_meta):
+					echo_post_meta($post,array('date','sources','categories'),$order);
+			 	endif;
+			?>
 		</div>
-		<?php endif; ?>
 		<?php
 			if ($show_thumbnail):
 				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
