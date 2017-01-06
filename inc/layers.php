@@ -129,7 +129,7 @@
       <h4 class="selected-title"><?php _e('Selected layers', 'odm'); ?></h4>
       <p class='jeo_map_show_cat'>
         <input type="checkbox" name="_jeo_map_show_cat" id="_jeo_map_show_cat" value="1" <?php checked(1, $show_cat);?>>
-        <label for="_jeo_map_show_cat"><?php _e('Group layers by showing category:', 'odm'); ?></label>
+        <label for="_jeo_map_show_cat"><?php _e('Group layers by showing category', 'odm'); ?></label>
       </p>
 
       <table class="layers-list selected-layers">
