@@ -79,6 +79,7 @@
      $layer_query = new WP_Query(array('post_type' => 'map-layer', 'posts_per_page' => -1));
      $layers = array();
      $post_layers = $post ? $this->get_map_layers($post->ID) : false;
+     $show_cat = get_post_meta($post->ID, '_jeo_map_show_cat', true);
      ?>
 
      <p>
@@ -126,6 +127,10 @@
       </table>
 
       <h4 class="selected-title"><?php _e('Selected layers', 'odm'); ?></h4>
+      <p class='jeo_map_show_cat'>
+        <input type="checkbox" name="_jeo_map_show_cat" id="_jeo_map_show_cat" value="1" <?php checked(1, $show_cat);?>>
+        <label for="_jeo_map_show_cat"><?php _e('Group layers by showing category:', 'odm'); ?></label>
+      </p>
 
       <table class="layers-list selected-layers">
        <tbody class="selected-layers-list">
@@ -186,6 +191,9 @@
        #post-layers .layers-list tr:hover td {
         background: #fff;
        }
+       .jeo_map_show_cat{
+         display: none;
+       }
       </style>
 
       <script type="text/javascript">
@@ -205,6 +213,7 @@
           layer.first_swap = ko.observable(layer.first_swap || false);
          self.selectedLayers.push(layer);
          self.layers.remove(layer);
+         $('.jeo_map_show_cat').show();
         };
 
         self.removeLayer = function(layer) {
@@ -259,6 +268,13 @@
           layers.push(layer);
          });
          window.editingLayers = layers;
+
+         if(layers.length){
+           $('.jeo_map_show_cat').show();
+         }else{
+           $('.jeo_map_show_cat').hide();
+         }
+
          return JSON.stringify(layers);
         });
 
@@ -305,6 +321,7 @@
         };
 
        }
+
 
        jQuery(document).ready(function() {
         var model = new LayersModel();
@@ -749,6 +766,13 @@
       if(isset($_REQUEST['_jeo_map_layers'])) {
        update_post_meta($post_id, '_jeo_map_layers', json_decode(stripslashes($_REQUEST['_jeo_map_layers']), true));
       }
+
+      if(isset($_REQUEST['_jeo_map_show_cat'])) {
+       update_post_meta($post_id, '_jeo_map_show_cat', TRUE);
+      }else{
+       update_post_meta($post_id, '_jeo_map_show_cat', FALSE);
+      }
+
      }
     }
 
