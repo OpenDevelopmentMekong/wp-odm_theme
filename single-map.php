@@ -12,8 +12,9 @@
 	display_baselayer_navigation();
 	$layers = get_selected_layers_of_map_by_mapID($mapID);
 
+	$show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
 	 //Show Menu Layers and legendbox
-	display_map_layer_sidebar_and_legend_box($layers);
+	display_map_layer_sidebar_and_legend_box($layers, $show_cat);
 
 	$base_layers = get_post_meta_of_all_baselayer();
 	$layers_legend = get_legend_of_map_by($mapID);
