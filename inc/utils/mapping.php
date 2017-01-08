@@ -83,18 +83,50 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 	return $base_layers;
 }
 //************//
-function display_map_layer_sidebar_and_legend_box($layers){
+function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null){
 	if (!empty($layers)){
+		unset($layers[0]); //basemap
+
 		echo '<div class="category-map-layers box-shadow hide_show_container">';
 			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "odm");
 				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
 			echo '</h2>';
 			echo '<div class="interactive-map-layers dropdown">';
-				echo "<ul class='cat-layers switch-layers cat-layer-items'>";
-					foreach ($layers as $id => $layer) {
-						display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+				if($show_cat):
+					$tmp_category = array();
+					foreach ($layers as $key => $row) {
+						$tmp_category[$key] = null;
+						if(isset($row['map_category'])):
+							$tmp_category[$key] = $row['map_category'];
+							$layer_cat[] = $row['map_category'];
+						endif;
 					}
-				echo "</ul>";
+					$layer_category = array_unique($layer_cat);
+					asort($layer_category);
+					array_multisort($tmp_category, SORT_ASC, $layers);
+					echo '<ul class="categories layer-category">';
+						foreach ($layer_category as $cat) {
+									$category = get_term_by('slug', $cat, 'layer-category');
+									echo '<li class="cat-item cat-item-"'.$category->term_id.' id="post-"'.$category->term_id.'>';
+										echo'<a href="#">'.$category->name.'</a>';
+										echo "<ul class='cat-layers switch-layers cat-layer-items'>";
+											foreach ($layers as $id => $layer) {
+												if($layer['map_category'] == $cat):
+													display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+												endif;
+											}
+										echo "</ul>";
+									echo "</li>";
+						}
+
+					echo "</ul>";
+				else:
+					echo "<ul class='cat-layers switch-layers cat-layer-items'>";
+						foreach ($layers as $id => $layer) {
+							display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+						}
+					echo "</ul>";
+				endif;
 				echo '<div class="news-marker">';
 				echo '<label><input class="news-marker-toggle" type="checkbox" />';
 				 	echo '<span class="label">'.__("Show news on map", "odm")."</span>";
@@ -229,8 +261,8 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 				$query_layer = query_get_layer_posts($term->term_id, false, $exclude_cats);
 				if($query_layer->have_posts() ){
 					while ( $query_layer->have_posts() ) : $query_layer->the_post();
-							if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-									$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
+						if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+								$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
 						}
 					endwhile;
 					wp_reset_postdata();
@@ -254,10 +286,9 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 			}//foreach $terms_layer
 			//Sort Map Catalogue by name
 			$map_catalogue = $layers_catalogue;
-
 			$tmp_arr = array();
 			foreach ($map_catalogue as $key => $row) {
-					$tmp_arr[$key] = $row->post_title;
+				$tmp_arr[$key] = $row->post_title;
 			}
 			array_multisort($tmp_arr, SORT_ASC, $map_catalogue);
 			//unset($map_catalogue[0]);
@@ -484,12 +515,13 @@ function get_layer_information_in_array($post_ID){
 
 	//get category of post by post_id
 	$layer_cat = wp_get_post_terms($post_ID, 'layer-category',  array("fields" => "all"));
+	$dataset_link = null;
+	if(isset($ckan_dataset_id)):
+		 $dataset_link = wpckan_get_link_to_dataset($ckan_dataset_id);
+	endif;
 	$layer = (object) array("ID" => get_the_ID(),
 								"post_title" => get_the_title(),
-								"dataset_link" => wpckan_get_link_to_dataset($ckan_dataset_id),
-								"title_and_link" => $title_and_link,
-								//"thumbnail_link" => $thumbnail_url,
-								//"description" => get_the_content(),
+								"dataset_link" => $dataset_link,
 								"category" => $layer_cat[0]->name,
 								"parent" => $layer_cat[0]->parent
 					);
@@ -513,12 +545,11 @@ function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category
 		);
 		$child_term = get_term( $child_id, $layer_taxonomy );
 		$query_get_post = new WP_Query( $args_get_post );
+		$layer_id = null;
 		if($query_get_post->have_posts() ){
-			$layers_list = "";
 			while ( $query_get_post->have_posts() ) : $query_get_post->the_post();
 				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
 					$get_layer_info = get_layer_information_in_array(get_the_ID());
-				  $layers_list .= "<li>".$get_layer_info->title_and_link."</li>";
 					//find all map layer post to get it ID. eg. layer name: All Natural protected area
 					if(substr( strtolower(get_the_title()), 0, 4 ) === "all"):
 						$layer_id = get_the_ID();
