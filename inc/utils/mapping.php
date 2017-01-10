@@ -478,7 +478,7 @@ function get_selected_layers_of_map_by_layerID($layer_ID, $map_ID = null) {
 				$layers[$lay_ID]['filtering'] = 'fixed';
 			}
 	}else {
-		$layers[$layer_ID] = extended_jeo_get_layer($lay_ID);
+		$layers[$layer_ID] = extended_jeo_get_layer($layer_ID);
 		$layers[$layer_ID]['filtering'] = 'fixed';
 	}
 
@@ -501,25 +501,36 @@ function get_legend_of_map_by($post_ID = false){
 		$map_layers = get_post_meta($post_ID, '_jeo_map_layers', true);
 		if($map_layers){
 			foreach ($map_layers as $key => $lay) {
-			   $post_ID =  $lay['ID'];
+			   $lay_ID =  $lay['ID'];
 			   if ( (odm_language_manager()->get_current_language() !== "en") ){
-				   $layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
+				   $layer_legend = get_post_meta($lay_ID , '_layer_legend_localization', true);
 			   }else {
-				   $layer_legend = get_post_meta($post_ID , '_layer_legend', true);
+				   $layer_legend = get_post_meta($lay_ID , '_layer_legend', true);
 			   }
 
 			   if($layer_legend!=""){
-				   $legends[$post_ID ] = '<div class="legend">'. $layer_legend.'</div>';
+				   $legends[$lay_ID ] = '<div class="legend">'. $layer_legend.'</div>';
 			   }
 			}//foreach
 		}
+	}if(is_array($post_ID) ){
+			foreach ($post_ID as $postID) {
+				if ( (odm_language_manager()->get_current_language() !== "en") ){
+					$layer_legend = get_post_meta($postID , '_layer_legend_localization', true);
+				}else {
+					$layer_legend = get_post_meta($postID , '_layer_legend', true);
+				}
+
+				if($layer_legend!=""){
+					$legends[$postID ] = '<div class="legend">'. $layer_legend.'</div>';
+				}
+			}
 	}else {
 		if ( (odm_language_manager()->get_current_language() !== "en") ){
 			$layer_legend = get_post_meta($post_ID , '_layer_legend_localization', true);
 		}else {
 			$layer_legend = get_post_meta($post_ID , '_layer_legend', true);
 		}
-
 		if($layer_legend!=""){
 			$legends = '<div class="legend">'. $layer_legend.'</div>';
 		}
