@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 <?php if(have_posts()) : the_post(); ?>
-
   <section class="container section-title main-title">
 		<header class="row">
 			<div class="sixteen columns">
