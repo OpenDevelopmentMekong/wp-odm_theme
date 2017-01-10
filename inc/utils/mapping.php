@@ -464,6 +464,27 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 	return $layers;
 }
 
+//List all layers' value into an array by post ID
+function get_selected_layers_of_map_by_layerID($layer_ID, $map_ID = null) {
+	$layer_ID = $layer_ID ? $layer_ID : get_the_ID();
+
+	if(set_default_map_baselayer($map_ID)):
+		$layers[0] = set_default_map_baselayer($map_ID);
+	endif;
+
+	if(is_array($layer_ID) ){
+			foreach ($layer_ID as $key => $lay_ID) {
+				$layers[$lay_ID] = extended_jeo_get_layer($lay_ID);
+				$layers[$lay_ID]['filtering'] = 'fixed';
+			}
+	}else {
+		$layers[$layer_ID] = extended_jeo_get_layer($lay_ID);
+		$layers[$layer_ID]['filtering'] = 'fixed';
+	}
+
+	return $layers;
+}
+
 //List all legends' value into an array by post ID
 function get_legend_of_map_by($post_ID = false){
 	if ($post_ID != ""){
