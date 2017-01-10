@@ -55,25 +55,37 @@ function query_get_baselayer_posts($num=5, $cat='base-layers', $include_children
 	return $baselayer_posts;
 }
 
-function set_default_map_baselayer($baselayer){
-	if($baselayer){
-		$default_map = array(
-			'ID' => 0,
-			'filtering' => '',
-			'type' => 'tilelayer',
-			'tile_url' => $baselayer['url']
-		);
-		return $default_map;
-	}
+function set_default_map_baselayer($map_ID = null){
+	if($map_ID):
+		$map = get_post_meta($map_ID, 'map_data', true);
+	else:
+		$map = odm_get_interactive_map_data();
+	endif;
+
+	if(!empty($map)):
+		if($map['base_layer']):
+			$baselayer = $map['base_layer'];
+			if($baselayer):
+				$default_map = array(
+					'ID' => 0,
+					'filtering' => '',
+					'type' => 'tilelayer',
+					'tile_url' => $baselayer['url']
+				);
+
+				return $default_map;
+			endif;
+		endif;
+	endif;
+
 	return;
 }
 //Query all baselayers' post meta into an array
 function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_children=false){
 	//get map configure from the opendev-setting
-	$map = odm_get_interactive_map_data();
-	if($map['base_layer']) {
-			$base_layers[0] = set_default_map_baselayer($map['base_layer']);
-	}
+	if(set_default_map_baselayer()):
+			$base_layers[0] = set_default_map_baselayer();
+	endif;
 	$base_layer_posts = query_get_baselayer_posts();
 	if($base_layer_posts){
 		foreach ( $base_layer_posts as $baselayer ) :
@@ -433,18 +445,10 @@ function get_post_meta_of_layer($post_ID, $layer_option = false){
 //List all layers' value into an array by post ID
 function get_selected_layers_of_map_by_mapID($map_ID) {
 	$map_ID = $map_ID ? $map_ID : get_the_ID();
+	if(set_default_map_baselayer($map_ID)):
+		$layers[0] = set_default_map_baselayer($map_ID);
+	endif;
 
-	$get_basemap = get_post_meta($map_ID, 'map_data', true);
-	if(!empty($get_basemap)){
-		if($get_basemap['base_layer']) {
-				$layers[0] = set_default_map_baselayer($get_basemap['base_layer']);
-		}
-	} else { //get basemap from setting as default
-			$map = odm_get_interactive_map_data();
-			if($map['base_layer']) {
-					$layers[0] = set_default_map_baselayer($map['base_layer']);
-			}
-	}
 	$get_layers = $GLOBALS['extended_jeo_layers']->get_map_layers($map_ID, "layer");
 
 	if(!empty($get_layers)){
