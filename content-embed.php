@@ -40,10 +40,11 @@
 	endif; ?>
 	<?php
 	$mapID = get_embedded_map_id();
+	$layerID = get_embedded_layer_id();
 	?>
 	<?php
 	if(function_exists("display_embedded_map")){
-		display_embedded_map($mapID);
+		display_embedded_map($mapID, $layerID);
 	}
 	?>
 

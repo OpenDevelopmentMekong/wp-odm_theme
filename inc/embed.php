@@ -85,6 +85,18 @@
 		return $mapID;
 	}
 
+  function get_layer_id() {
+    $layerID = null;
+		if(isset($_GET['layer'])) {
+			$layerID = explode(',', $_GET['layer']);
+		} else if(isset($_GET['layers'])) {
+			$layerID = explode(',', $_GET['layers']);
+		}else if( get_post_type(get_the_ID()) == "map-layer" ){
+          $layerID = get_the_ID();
+    }
+		return $layerID;
+	}
+
 	function get_map_conf() {
 		$conf = array();
 		$conf['containerID'] = 'map_embed';
@@ -110,12 +122,11 @@
 		if(isset($_GET['map_only'])) {
 			$conf['disableMarkers'] = true;
 		}
-		if(isset($_GET['layers'])) {
-			$conf['layers'] = explode(',', $_GET['layers']);
-			if(isset($conf['postID']))
-				unset($conf['postID']);
+		if( $this->get_layer_id() ) {
+			$get_layers = $this->get_layer_id();
+      $conf['layers'] = get_selected_layers_of_map_by_layerID($this->get_layer_id());
 		}else {
-			 $conf['layers'] = get_selected_layers_of_map_by_mapID($conf['postID']);
+			$conf['layers'] = get_selected_layers_of_map_by_mapID($conf['postID']);
 		}
 
 		if(isset($_GET['news_markers'])) {
@@ -123,7 +134,6 @@
 		}else {
 			$conf['news_markers'] = false;
 		}
-
 		$get_map_setting = get_post_meta($conf['postID'], 'map_data', true);
 		if(isset($_GET['zoom'])) {
 			$conf['zoom'] = $_GET['zoom'];
@@ -162,7 +172,11 @@ function get_embedded_map_id() {
 	return $GLOBALS['extended_jeo_embed']->get_map_id();
 }
 
-function display_embedded_map($mapID, $show_odlogo = null) {
+function get_embedded_layer_id() {
+	return $GLOBALS['extended_jeo_embed']->get_layer_id();
+}
+
+function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
   if(function_exists('extended_jeo_get_map_embed_conf')):
 		$conf = extended_jeo_get_map_embed_conf();
 	else:
@@ -175,7 +189,14 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 	if($mapID == ""):
 		$mapID = get_embedded_map_id();
 	endif;
-	$layers = get_selected_layers_of_map_by_mapID($mapID);
+
+  $layers = get_selected_layers_of_map_by_mapID($mapID);
+  $layers_legend = get_legend_of_map_by($mapID);
+  if($layerID){
+    $layers = get_selected_layers_of_map_by_layerID($layerID);
+    $layers_legend = get_legend_of_map_by(array($layerID));
+  }
+
 	if(count($layers) > 1){ //no layer selectd
   ?>
 
@@ -185,7 +206,6 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 			//show basemap
 			display_baselayer_navigation();
 			$base_layers = get_post_meta_of_all_baselayer();
-			$layers_legend = get_legend_of_map_by($mapID);
       $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
 			 //Show Menu Layers and legendbox
 			display_map_layer_sidebar_and_legend_box($layers, $show_cat);
@@ -206,7 +226,6 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 
         map.on('zoomend', track);
         map.on('dragend', track);
-
       });
 
     })(jQuery);
