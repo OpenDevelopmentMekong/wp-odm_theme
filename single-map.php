@@ -1,25 +1,24 @@
 <?php get_header(); ?>
-<?php require_once (STYLESHEETPATH ."/inc/utils/mapping.php"); ?>
-<div class="interactive-map">
-	<?php jeo_map(); ?>
-	<?php
-	//Get all layers of map by map_id
-	if(isset($GET['map_id']) && ($GET['map_id'] !="")){
-		$mapID =  $GET['map_id'];
-	}else {
-		$mapID =  get_the_ID();
-	}
-	display_baselayer_navigation();
-	$layers = get_selected_layers_of_map_by_mapID($mapID);
 
-	$show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
-	 //Show Menu Layers and legendbox
-	display_map_layer_sidebar_and_legend_box($layers, $show_cat);
+<?php if(have_posts()) : the_post(); ?>
+	<section id="map" class="section-title">
+		<?php
+			if(isset($GET['map_id']) && ($GET['map_id'] !="")){
+				$mapID =  $GET['map_id'];
+			}else {
+				$mapID =  get_the_ID();
+			}
 
-	$base_layers = get_post_meta_of_all_baselayer();
-	$layers_legend = get_legend_of_map_by($mapID);
-	?>
-</div>
+			$layerID = get_embedded_layer_id();
+			?>
+			<?php
+			if(function_exists("display_embedded_map")){
+				display_embedded_map($mapID, $layerID);
+			}
+			?>
+	</section>
+
+<?php endif; ?>
 <?php
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 query_posts(array(
@@ -68,10 +67,4 @@ if(have_posts()) :
 endif;
 wp_reset_query();
 ?>
-<script type="text/javascript">
-	var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
-	var all_layers_value = <?php echo json_encode($layers) ?>;
-	var all_layers_legends = <?php echo json_encode($layers_legend) ?>;
-</script>
-
 <?php get_footer(); ?>
