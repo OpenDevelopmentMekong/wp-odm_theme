@@ -45,49 +45,51 @@ body{
 	position: relative;
 	height: @grid-height;
 	text-align: left;
-	background: @black;
+	background: @light-gray;
 	margin-bottom: @big-padd;
 	font-family: @title-font;
   overflow: hidden;
+  bottom: 0px;
 
 	.grid-content-wrapper {
-		padding: 10px;
-
 		color: @white;
 
     .item-post-type {
-      background: @white;
-      color: @black;
       padding: @xsmall-padd @small-padd;
-
     }
 
 		.item-title {
+      background-color: rgba(0,0,0,0.3);
       font-family: @title-font;
 			font-size: @font-size-h3;
 			display: inline-block;
+      width: 100%;
       color: @white;
+      position: relative;
+      bottom: 0px;
       z-index: 2;
-      padding: @xsmall-padd;
+      padding: @small-padd;
 		}
 
-    .post-grid-item-list {
-      padding: @xsmall-padd;
+    .meta{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
 
-    .post-meta > ul > li {
-			display: block;
-		}
-
-		.post-meta {
+    .post-meta {
       z-index: 2;
       margin: 0px;
-      position: absolute;
+      width: 100%;
+      position: relative;
       bottom: 0px;
-      padding: @xsmall-padd;
+			display: inline-block;
+      color: @white;
+      padding: @small-padd;
+      background-color: rgba(0,0,0,0.3);
 
 			.date {
-				color: @white;
+        color: @white;
 			}
 
       ul{
@@ -96,7 +98,7 @@ body{
       }
 
 			li {
-				margin-bottom: 10px;
+				//margin-bottom: 10px;
 				padding-right: 0px;
 			}
 
@@ -104,9 +106,17 @@ body{
 				display: none;
 			}
 			.post-categories li a {
-				color: @white;
+        color: @black;
 				background: transparent;
 			}
+		}
+
+    .post-grid-item-list {
+      padding: @small-padd;
+    }
+
+    .post-meta > ul > li {
+			display: block;
 		}
 
 		img {
@@ -115,17 +125,17 @@ body{
 	    height: 100%;
 	    top: 0;
 	    left: 0;
-			opacity: 0.3;
+			//opacity: 0.3;
 
       //max-width: none;
       //height: 400px;
-      -webkit-transition: opacity 1s, -webkit-transform 1s;
-      transition: opacity 1s, transform 1s;
+      /*-webkit-transition: opacity 1s, -webkit-transform 1s;*/
+      transition: transform 1s;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
 
       &:hover {
-        opacity: 0.4;
+        //opacity: 0.4;
         -webkit-transform: scale3d(1.1,1.1,1);
         transform: scale3d(1.2,1.2,1);
       }
@@ -136,7 +146,7 @@ body{
 			top: 0px;
 			left: 0px;
 			z-index: 10;
-			color: @white;
+			color: @black;
 			text-decoration: none;
 		}
 
@@ -240,7 +250,7 @@ body{
 	img {
 		margin: 0px @small-padd @small-padd 0px;
     max-width: 80px;
-    max-height: 80px;
+    max-height: 100px;
     width: auto;
     height: auto;
     margin-top:  @xsmall-padd;
@@ -279,7 +289,7 @@ body{
 	.item-content {
     overflow: hidden;
     padding: 0 0 @xsmall-padd;
-    display: table-cell;
+    display: inherit;
 
     img {
       float:left;

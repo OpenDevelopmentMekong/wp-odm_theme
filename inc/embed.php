@@ -91,10 +91,13 @@
 		$conf['disableHash'] = true;
 		$conf['mainMap'] = true;
     $conf['dataReady'] = true;
-		if(get_post_type() == "profiles") {
+    if(get_post_type() == "profiles") {
 			$conf['postID'] = jeo_get_the_ID();
-      if (get_post_meta(get_the_ID(), 'map_data', true)){
-			 $conf['postID'] = get_the_ID();
+      if(get_post_meta(get_the_ID(), 'map_data', true)){
+        $get_map_data = get_post_meta(get_the_ID(), 'map_data', true);
+        if (count(array_filter($get_map_data['center'])) != 0){
+         $conf['postID'] = get_the_ID();
+        }
       }
 		}else {
 			if(isset($_GET['map_id'])) {
@@ -160,7 +163,6 @@ function get_embedded_map_id() {
 }
 
 function display_embedded_map($mapID, $show_odlogo = null) {
-
   if(function_exists('extended_jeo_get_map_embed_conf')):
 		$conf = extended_jeo_get_map_embed_conf();
 	else:
@@ -169,7 +171,7 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 
 	$map_conf = json_decode($conf, true);
 	$map_conf['forceCenter']=true;
-	$conf	 = json_encode($map_conf); 
+	$conf	 = json_encode($map_conf);
 	if($mapID == ""):
 		$mapID = get_embedded_map_id();
 	endif;
@@ -184,9 +186,9 @@ function display_embedded_map($mapID, $show_odlogo = null) {
 			display_baselayer_navigation();
 			$base_layers = get_post_meta_of_all_baselayer();
 			$layers_legend = get_legend_of_map_by($mapID);
-
+      $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
 			 //Show Menu Layers and legendbox
-			display_map_layer_sidebar_and_legend_box($layers);
+			display_map_layer_sidebar_and_legend_box($layers, $show_cat);
 		?>
 	</div>
   <script type="text/javascript">

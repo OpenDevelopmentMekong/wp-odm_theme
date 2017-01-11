@@ -167,7 +167,8 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   return map;
 };
 
-  jeo.create_layer_by_maptype = function (map, layer = null){
+jeo.create_layer_by_maptype = function (map, layer){
+    layer = (typeof layer !== 'undefined') ?  layer : null;
     var pLayer = null;
     var options = {};
     if(layer.type == 'cartodb' && layer.cartodb_type == 'viz') {

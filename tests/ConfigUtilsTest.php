@@ -30,7 +30,16 @@ class ConfigUtilsTest extends PHPUnit_Framework_TestCase
     {
       $mapping_raw = "key1 => value1\r\nkey2";
       $array = parse_mapping_pairs($mapping_raw);
-      $this->assertNull($array);
+      $this->assertEquals(count($array),0);
+      $this->assertTrue(is_array($array));
+    }
+
+    public function testParseMappingPairsEmpty()
+    {
+      $mapping_raw = "";
+      $array = parse_mapping_pairs($mapping_raw);
+      $this->assertEquals(count($array),0);
+      $this->assertTrue(is_array($array));
     }
 
 }
