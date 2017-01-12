@@ -32,6 +32,8 @@
 				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
 				if (isset($thumb_src)):
 					echo $thumb_src;
+				else:
+					echo '<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="' . get_stylesheet_directory_uri() .'/img/watermark.png"></img>';
 				endif;
 			endif; ?>
 	</div>
