@@ -9,6 +9,7 @@ class Odm_Taxonomy_Manager {
 
   var $taxonomy_tree;
   var $taxonomy_list = array();
+	var $taxonomy_top_tier = array();
 
 	function __construct() {
     $this->init_taxonomy_manager();
@@ -26,6 +27,10 @@ class Odm_Taxonomy_Manager {
     }
     // Delete first child
     unset($this->taxonomy_list[0]);
+
+		$path_to_taxonomy_top_tier = ABSPATH . 'stats/top_tier_taxonomic_terms.json';
+		$string = file_get_contents($path_to_taxonomy_top_tier);
+		$this->taxonomy_top_tier = json_decode($string, true);
   }
 
   function get_taxonomy_tree(){
@@ -34,6 +39,10 @@ class Odm_Taxonomy_Manager {
 
   function get_taxonomy_list(){
     return $this->taxonomy_list;
+  }
+
+	function get_taxonomy_top_tier(){
+    return $this->taxonomy_top_tier;
   }
 
 }
