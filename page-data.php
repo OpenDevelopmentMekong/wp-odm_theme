@@ -28,33 +28,6 @@ Template Name: Data
   );
 ?>
 
-  <!-- <?php
-    if (!$active_filters && function_exists('wpdash_get_ckan_stats_dataviz_by_type') && function_exists('wpdash_get_ckan_stats_dataviz_by_taxonomy')): ?>
-      <div class="container hideOnMobileAndTablet">
-        <div class="row">
-          <div class="two columns align-center">
-            <i class="fa fa-table fa-5x"></i>
-            <a href="?type=dataset"><div id="num_datasets" class="counter"></div>
-            <div><?php _e('Datasets','odm') ?></div></a>
-          </div>
-          <div class="two columns align-center">
-            <i class="fa fa-book fa-5x"></i>
-            <a href="?type=library_record"><div id="num_library_records" class="counter"></div>
-            <div><?php _e('Library records','odm') ?></div></a>
-          </div>
-          <div class="two columns align-center">
-            <i class="fa fa-gavel fa-5x"></i>
-            <a href="?type=laws_record"><div id="num_laws_records" class="counter"></div>
-            <div><?php _e('Laws records','odm') ?></div></a>
-          </div>
-          <div class="ten columns">
-            <?php wpdash_get_ckan_stats_dataviz_by_taxonomy(null); ?>
-          </div>
-        </div>
-      </div>
-  <?php
-    endif; ?> -->
-
   <div class="container">
     <div class="row">
 
