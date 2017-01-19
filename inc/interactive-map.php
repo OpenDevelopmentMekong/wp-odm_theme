@@ -32,6 +32,7 @@ class OpenDev_InteractiveMap {
         $term_map_catalogue = get_term_by('slug', $cat_map_catalogue, 'layer-category');
         $cat_map_catalogue_id =  $term_map_catalogue->term_id;
 
+        $exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
         $categories = get_terms('layer-category');
         ob_start();
         ?>
@@ -76,7 +77,6 @@ class OpenDev_InteractiveMap {
 
         	//List cetegory and layer by cat for menu items
             $layer_taxonomy = 'layer-category';
-            $exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
             $layer_term_args=array(
               'parent' => 0,
               'orderby'   => 'name',
@@ -181,9 +181,9 @@ class OpenDev_InteractiveMap {
                 if($('body').hasClass("admin-bar")){
                   adminbar = 35;
                 }
-                var resize_height_map_container = window.innerHeight - adminbar -140 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight  - adminbar - 178 + "px";
-                var resize_height_map_layer = window.innerHeight  - adminbar - 215+ "px";
+                var resize_height_map_container = window.innerHeight - adminbar -40 + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight  - adminbar - 78 + "px";
+                var resize_height_map_layer = window.innerHeight  - adminbar - 115+ "px";
                 var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
