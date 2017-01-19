@@ -101,16 +101,19 @@
 	display: table;
 	margin: 0 0 20px;
 	padding: 0;
-	border-bottom: 1px solid #ddd;
 
 	li {
 		display: table-cell;
 		width: 1%;
 		text-align: center;
+		border-bottom: 1px solid #ddd;
 		border-right: 1px solid #ddd;
 
 		&:last-child {
 			border-right: 0;
+		}
+		&.active {
+			border-bottom: 1px solid #f7f7f7;
 		}
 
 		a, div.tag-name {
@@ -119,11 +122,11 @@
 			width: 100%;
 			text-decoration: none;
 			text-transform: uppercase;
-			background: #f0f0f0;
+			background: #eee;
 		}
 
 		&.active a, &.tab-tag-active div.tag-name {
-			background: #fff;
+			background: #f7f7f7;
 			font-weight: 600;
 		}
 
