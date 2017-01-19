@@ -108,13 +108,13 @@ function echo_the_breadcrumb()
             }
         } elseif (is_category()) {
             // Category page
-            $parent_cat = get_category_parents($category->term_id, true, '||');
+            $parent_cat = get_category_parents($category[0]->term_id, true, '||');
             $parent_cat = substr($parent_cat, 0, -2);
             $parent_cats = explode('||', $parent_cat);
             foreach ($parent_cats as $cat) {
-              echo '<li class="item-current item-cat-'.$category->term_id.' item-cat-'.$category->category_nicename.'">';
+              echo '<li class="item-current item-cat-'.$category[0]->term_id.' item-cat-'.$category[0]->category_nicename.'">';
               if ($cat === end($parent_cats)) {
-                  echo '<strong class="bread-current bread-cat-'.$category->term_id.' bread-cat-'.$category->category_nicename.'">';
+                  echo '<strong class="bread-current bread-cat-'.$category[0]->term_id.' bread-cat-'.$category[0]->category_nicename.'">';
               }
 
               echo $cat;
@@ -126,7 +126,7 @@ function echo_the_breadcrumb()
 
               //add separated
               if ($cat != end($parent_cats)) {
-                  echo the_separated_breadcrumb($separator, $category->term_id, 'category');
+                  echo the_separated_breadcrumb($separator, $category[0]->term_id, 'category');
               }
             }
         } elseif (is_page()) {
