@@ -206,7 +206,7 @@ class Odm_Options
 
     public function category_page_field()
     {
-        $selected_post_type = isset($this->options['category_page'])? $this->options['category_page']: "news-article,announcement,topic,profiles";?>
+        $selected_post_type = isset($this->options['category_page'])? $this->options['category_page']: "news-article, announcement ,topic ,profiles";?>
         <input id="odm_category_page" name="odm_options[category_page]" type="text" placeholder="<?php _e('news-article,announcement,topic,profiles');
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('news-article,announcement,topic,profiles');
               ?>'" value="<?php echo $selected_post_type;?>" size="70" /><br/>
@@ -565,7 +565,7 @@ function odm_get_post_types_for_category_page()
         $post_type = array_map('trim', explode(',', $options['category_page']));
         return $post_type;
     } else {
-        return false;
+        return array('news-article', 'announcement', 'topic', 'profiles');
     }
 }
 
