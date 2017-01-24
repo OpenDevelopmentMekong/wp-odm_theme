@@ -120,6 +120,14 @@ class Odm_Options
         );
 
         add_settings_field(
+         'odm_category_page',
+         __('Category page', 'odm'),
+         array($this, 'category_page_field'),
+         'odm_options',
+         'odm_links_section'
+        );
+
+        add_settings_field(
          'odm_contact',
          __('Contact page', 'odm'),
          array($this, 'contact_page_field'),
@@ -193,6 +201,17 @@ class Odm_Options
         $twitter = $this->options['twitter_url']; ?>
         <input id="odm_twitter_url" name="odm_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
 
+  <?php
+    }
+
+    public function category_page_field()
+    {
+        $selected_post_type = isset($this->options['category_page'])? $this->options['category_page']: "news-article, announcement ,topic ,profiles";?>
+        <input id="odm_category_page" name="odm_options[category_page]" type="text" placeholder="<?php _e('news-article,announcement,topic,profiles');
+              ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('news-article,announcement,topic,profiles');
+              ?>'" value="<?php echo $selected_post_type;?>" size="70" /><br/>
+              <i><?php _e("(Add the post type name that would like to show on the category page. (separated by comma))", 'odm');
+              ?></i>
   <?php
     }
 
@@ -536,6 +555,17 @@ function odm_get_legal_disclaimer()
         return $options['legal_disclaimer'];
     } else {
         return false;
+    }
+}
+
+function odm_get_post_types_for_category_page()
+{
+    $options = get_option('odm_options');
+    if (isset($options['category_page'])) {
+        $post_type = array_map('trim', explode(',', $options['category_page']));
+        return $post_type;
+    } else {
+        return array('news-article', 'announcement', 'topic', 'profiles');
     }
 }
 

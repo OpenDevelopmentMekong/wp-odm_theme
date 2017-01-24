@@ -5,9 +5,11 @@ $post_types = get_post_types(array(
   'public' => true,
   '_builtin' => false
 ));
+
 $tax_post_types = array();
-foreach($post_types as $pt) {
-  if (in_array($pt, array('news-article', 'topic', 'profile', 'announcement', 'site-update', 'map-layer'))){
+$selected_posttype = odm_get_post_types_for_category_page();
+foreach($selected_posttype as $pt) {
+  if (in_array($pt, $post_types)){
 		$pt_tax = get_object_taxonomies($pt);
 		if(in_array($term->taxonomy, $pt_tax)) {
 			$tax_post_types[] = $pt;
@@ -17,7 +19,6 @@ foreach($post_types as $pt) {
 ?>
 
 <div class="container category-container">
-
   <section class="container">
 		<header class="row">
 			<div class="eight columns">
@@ -44,7 +45,7 @@ foreach($post_types as $pt) {
     				<nav id="tabbed-post-type-nav">
     					<ul>
     						<?php
-    						$current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
+    						$current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
     						foreach($tax_post_types as $pt) :
     							$pt = get_post_type_object($pt);
     							$title = $pt->labels->name;?>
@@ -54,17 +55,27 @@ foreach($post_types as $pt) {
     				</nav>
     			<?php endif; ?>
     			<?php if(have_posts()) : ?>
-    					<?php while(have_posts()) : the_post();
-                odm_get_template('post-list-single-2-cols',array(
-                  "post" => get_post(),
-                  "show_meta" => true,
-                  "show_source_meta" => true,
-                  "show_thumbnail" => true,
-                  "show_excerpt" => true,
-                  "show_summary_translated_by_odc_team" => true,
-                  "header_tag" => true
-              ),true);
-    					endwhile; ?>
+	    					<?php
+								$index = 1;
+								echo '<div class="row">';
+								while(have_posts()) : the_post();
+	                odm_get_template('post-list-single-2-cols',array(
+				  					"post" => get_post(),
+				  					"show_meta" => true,
+				  					"show_source_meta" => true,
+										"show_thumbnail" => true,
+										"show_excerpt" => true,
+										"show_summary_translated_by_odc_team" => true,
+										"header_tag" => true
+				  			),true);
+								if ($index % 2 == 0):
+									echo '</div>';
+									echo '<div class="row">';
+							  endif;
+								$index++;
+	    					endwhile;
+								echo '</div>';
+						?>
     			<?php else : ?>
     				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
     			<?php endif; ?>

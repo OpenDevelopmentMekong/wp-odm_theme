@@ -395,12 +395,6 @@ add_filter('jeo_mapgroup_data', 'odm_map_data');
 
 function odm_custom_admin_css()
 {
-/*    ?>
- <style>
-  .handlers.map-setting { display: none !important; }
- </style>
- <?php
-*/
  // dequeue parent script and enqueue from child theme
  wp_dequeue_script('mapbox-metabox');
  wp_enqueue_script('child-mapbox-metabox', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapbox.js', array('jquery', 'jeo', 'jquery-ui-sortable'), '0.5.1');
