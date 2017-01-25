@@ -103,7 +103,7 @@ Template Name: Data
         ?>
         <div class="two columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="taxonomy"><?php _e('Taxonomy', 'odm'); ?></label></p>
+            <p class="label"><label for="taxonomy"><?php _e('Topic', 'odm'); ?></label></p>
             <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
               <option value="all" selected><?php _e('All','odm') ?></option>
               <?php
