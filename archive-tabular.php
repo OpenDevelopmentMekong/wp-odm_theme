@@ -5,7 +5,7 @@
 	<section class="container">
 		<header class="row">
 			<div class="eight columns">
-				<h1><?php _e('Tabular pages','odm') ?></h1>
+				<h1><?php _e('Database','odm') ?></h1>
 			</div>
       <div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
