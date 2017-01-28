@@ -404,16 +404,16 @@ add_action('admin_footer', 'odm_custom_admin_css', 100);
 
 function odm_return_all_topics( $query ) {
 
-  if (is_archive() && $query->get('post_type') == 'topic') {
+  if (!is_admin() && is_archive() && $query->get('post_type') == 'topic') {
       $query->query_vars['posts_per_page'] = -1;
   }
 
 }
-add_action( 'pre_get_posts', 'odm_return_all_topics' );
+add_action('pre_get_posts', 'odm_return_all_topics' );
 
 function odm_search_pre_get_posts($query)
 {
-  if(get_post_type()){
+  if(get_post_type() && !is_admin()){
     $post_type = $query->query['post_type'][0];
   }else {
     if (!is_admin() && ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
@@ -426,14 +426,16 @@ add_action('pre_get_posts', 'odm_search_pre_get_posts');
 
 function odm_category_pre_get_posts($query)
 {
-  if(get_post_type()){
-    $post_type = $query->query['post_type'][0];
-  }else {
-      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
-  }
-  if ($query->is_category && isset($post_type)) {
-      $query->set('post_type', array($post_type));
-  }
+  if(!is_admin()):
+    if(get_post_type()){
+      $post_type = $query->query['post_type'][0];
+    }else {
+        $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
+    }
+    if ($query->is_category && isset($post_type)) {
+        $query->set('post_type', array($post_type));
+    }
+  endif;
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
 
