@@ -360,7 +360,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 	  global $post;
 		$post = $the_post;
 		$limit = $num;
-		
+
 		if($post->post_excerpt):
 			$get_the_excerpt = $post->post_excerpt;
 		else:
@@ -505,7 +505,7 @@ function available_custom_post_types(){
  }
 
  function available_post_types_search(){
- 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer','nav_menu_item');
+ 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer');
   }
 
  function content_types_breakdown_for_query($search_term,$posts_per_page){
