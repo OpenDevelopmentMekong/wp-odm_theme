@@ -16,6 +16,10 @@ echo _('News');
 echo _('Issues');
 echo _('Maps');
 echo _('Data');
+echo _('Law');
+echo _('Blog');
+echo _('Timelines');
+echo _('Layers');
 echo _('Share a map');
 echo _('Search for posts, maps and briefings...');
 echo _('Search Datasets for Mekong');
@@ -52,4 +56,16 @@ By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full 
 //echo _('Next >>');
 echo _('Khmer PDF');
 echo _('Khmer PDF not available');
+echo _('Jan');
+echo _('Feb');
+echo _('Mar');
+echo _('Apr');
+echo _('May');
+echo _('Jun');
+echo _('Jul');
+echo _('Aug');
+echo _('Sep');
+echo _('Oct');
+echo _('Nov');
+echo _('Dec');
 ?>
