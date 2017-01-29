@@ -417,7 +417,7 @@ function odm_search_pre_get_posts($query)
     if(isset($query->query['post_type'])){
       $query->set('post_type', $query->query['post_type']);
     }else {
-      if (!is_admin() && ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
+      if ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag) {
         $query->set('post_type', available_post_types_search());
       }
     }
