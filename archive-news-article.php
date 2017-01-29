@@ -14,10 +14,8 @@
 	</section>
 
 	<section class="container">
-
 		<div class="row">
 			<div class="sixteen columns">
-
 				<?php if (jeo_has_marker_location()): ?>
 					<section id="featured-media" class="row">
 						<div style="height:350px;">
@@ -25,8 +23,26 @@
 						</div>
 					</section>
 				<?php endif; ?>
-
-
+			</div>
+		</div>
+		<div class="row">
+			<div class="sixteen columns filter-container">
+				<div class="panel more-filters-content row">
+					<?php
+					$filter_arg = array(
+															'search_box' => true,
+															'cat_selector' => true,
+															'con_selector' => false,
+															'date_rang' => true,
+															'post_type' => "news-article"
+														 );
+					odm_adv_nav_filters($filter_arg);
+					?>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="sixteen columns">
   			<?php
 					$index = 1;
 					while (have_posts()) : the_post();
