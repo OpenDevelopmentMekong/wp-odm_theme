@@ -542,7 +542,7 @@ msgid "Type your search here"
 msgstr ""
 
 #: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
+msgid "Topic"
 msgstr ""
 
 #: inc/advanced-navigation.php:127

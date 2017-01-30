@@ -2,13 +2,13 @@
 
 /*
  * opendev
- * Advanced navigation
+ * Archive navigation
  */
 
-class odm_AdvancedNav {
+class odm_ArchiveNav {
 
-	var $prefix = 'odm_filter_';
-	var $slug = 'explore';
+	var $prefix = 'odm_filter_archive_';
+	var $slug = 'explore_archive';
 
 	function __construct() {
 
@@ -16,44 +16,33 @@ class odm_AdvancedNav {
 		add_filter('body_class', array($this, 'body_class'));
 		add_action('pre_get_posts', array($this, 'pre_get_posts'), 100);
 		add_action('generate_rewrite_rules', array($this, 'generate_rewrite_rules'));
-		add_action('template_redirect', array($this, 'template_redirect'));
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 110);
 
 	}
 
 	function query_vars($vars) {
-		$vars[] = 'odm_advanced_nav';
+		$vars[] = 'odm_archive_nav';
 		return $vars;
 	}
 
 	function body_class($class) {
-		if(get_query_var('odm_advanced_nav'))
-			$class[] = 'advanced-nav';
+		if(get_query_var('odm_archive_nav'))
+			$class[] = 'archive-nav';
 		return $class;
 	}
 
 	function generate_rewrite_rules($wp_rewrite) {
 		$widgets_rule = array(
-			$this->slug . '$' => 'index.php?odm_advanced_nav=1'
+			$this->slug . '$' => 'index.php?odm_archive_nav=1'
 		);
 		$wp_rewrite->rules = $widgets_rule + $wp_rewrite->rules;
-	}
-
-	function template_redirect() {
-		if(get_query_var('odm_advanced_nav')) {
-			add_filter('template_include', array($this, 'template'));
-		}
-	}
-
-	function template() {
-		return get_stylesheet_directory() . '/search.php';
 	}
 
 	function pre_get_posts($query) {
 
 		if($query->is_main_query()) {
 
-			if($query->get('odm_advanced_nav')) {
+			if($query->get('odm_archive_nav')) {
 				$query->is_home = false;
 				$query->set('posts_per_page', 30);
 				$query->set('ignore_sticky_posts', true);
@@ -61,10 +50,6 @@ class odm_AdvancedNav {
 
 			if(isset($_GET[$this->prefix . 's'])) {
 				$query->set('s', $_GET[$this->prefix . 's']);
-			}
-
-			if(isset($_GET[$this->prefix . 'post_type'])) {
-				$query->set('post_type', $_GET[$this->prefix . 'post_type']);
 			}
 
 			if(isset($_GET[$this->prefix . 'category'])) {
@@ -108,10 +93,10 @@ class odm_AdvancedNav {
 		?>
 
 		<form class="advanced-nav-filters <?php if(isset($_GET[$this->prefix])) echo 'active'; ?>">
-			<input type="hidden" name="odm_advanced_nav" value="1" />
+			<input type="hidden" name="odm_archive_nav" value="1" />
 			<input type="hidden" name="<?php echo $this->prefix; ?>" value="1" />
-			<div class="three columns">
-				<div class="search-input adv-nav-input">
+			<div class="four columns">
+				<div class="search-input archive-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'odm'); ?></label></p>
 					<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $s; ?>" />
 				</div>
@@ -121,10 +106,10 @@ class odm_AdvancedNav {
 			$active_cats = isset($_GET[$this->prefix . 'category']) ? $_GET[$this->prefix . 'category'] : array();
 			if($categories) :
 				?>
-				<div class="three columns">
-					<div class="category-input adv-nav-input">
+				<div class="four columns">
+					<div class="category-input archive-nav-input">
 						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Topic', 'odm'); ?></label></p>
-						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
+						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select topic', 'odm'); ?>">
 							<?php wp_list_categories(array('title_li' => '', 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'selected' => $active_cats)); ?>
 						</select>
 					</div>
@@ -139,32 +124,8 @@ class odm_AdvancedNav {
 			$before = $oldest->post_date;
 			$after = $newest->post_date;
 			?>
-			<?php
-			$post_types = get_post_types(array(
-				'public' => true,
-			  '_builtin' => false
-			), 'object');
-			if($post_types) :
-				unset($post_types['map']);
-				unset($post_types['map-group']);
-				unset($post_types['attachment']);
-				unset($post_types['rssmi_feed']);
-				unset($post_types['rssmi_feed_item']);
-				$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
-				?>
-				<div class="three columns">
-					<div class="post-type-input adv-nav-input">
-						<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'odm'); ?></label></p>
-						<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select content types', 'odm'); ?>">
-							<?php foreach($post_types as $post_type) : ?>
-								<option value="<?php echo $post_type->name; ?>" <?php if(in_array($post_type->name, $active_types)) echo 'selected'; ?>><?php echo $post_type->labels->name; ?></option>
-							<?php endforeach; ?>
-						</select>
-					</div>
-				</div>
-			<?php endif; ?>
 			<div class="four columns">
-				<div class="date-input adv-nav-input">
+				<div class="date-input archive-nav-input">
 					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'odm'); ?></label></p>
 					<div class="date-range-inputs">
 						<div class="date-from-container">
@@ -176,7 +137,7 @@ class odm_AdvancedNav {
 					</div>
 				</div>
 			</div>
-			<div class="three columns">
+			<div class="four columns">
 				<input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
 			</div>
 		</form>
@@ -185,28 +146,26 @@ class odm_AdvancedNav {
 
 				$(document).ready(function() {
 
-					var advNav = $('.advanced-nav-filters');
+					var archiveNav = $('.advanced-nav-filters');
 
-					if(advNav.hasClass('active')) {
+					if(archiveNav.hasClass('active')) {
 						$('.toggle-more-filters a').text('<?php _e('Cancel filters', 'odm'); ?>');
 					}
 
 					$('.toggle-more-filters a').click(function() {
 
-						if(advNav.hasClass('active')) {
-							$(advNav).removeClass('active');
+						if(archiveNav.hasClass('active')) {
+							$(archiveNav).removeClass('active');
 							window.location = '<?php echo remove_query_arg(array($this->prefix, $this->prefix . 's', $this->prefix . 'category', $this->prefix . 'date_start', $this->prefix . 'date_end')); ?>';
 							$(this).text('<?php _e('More filters', 'odm'); ?>');
 						} else {
-							$(advNav).addClass('active');
+							$(archiveNav).addClass('active');
 							$(this).text('<?php _e('Cancel filters', 'odm'); ?>');
 						}
 
 						return false;
 
 					});
-
-					$('.post-type-input select').chosen();
 
 					$('.category-input select').chosen();
 
@@ -241,10 +200,10 @@ class odm_AdvancedNav {
 
 }
 
-$GLOBALS['odm_adv_nav'] = new odm_AdvancedNav();
+$GLOBALS['odm_arch_nav'] = new odm_ArchiveNav();
 
-function odm_adv_nav_filters() {
-	return $GLOBALS['odm_adv_nav']->form();
+function odm_archive_nav_filters() {
+	return $GLOBALS['odm_arch_nav']->form();
 }
 
 ?>

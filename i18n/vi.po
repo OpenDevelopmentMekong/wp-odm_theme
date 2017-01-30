@@ -565,7 +565,7 @@ msgid "Type your search here"
 msgstr "Nhập từ khóa tìm kiếm"
 
 #: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
+msgid "Topic"
 msgstr "Phân mục"
 
 #: inc/advanced-navigation.php:127

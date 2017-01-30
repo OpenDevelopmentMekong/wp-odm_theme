@@ -31,6 +31,7 @@ require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
+require_once get_stylesheet_directory().'/inc/archive-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/utils/localization.php';
 require_once get_stylesheet_directory().'/inc/max-mega-menu-options.php';

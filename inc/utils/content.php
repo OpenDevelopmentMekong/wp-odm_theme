@@ -48,7 +48,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		}
 
 		if ($title == 1) {
-				echo '<h2 class="widget-title">'.__('Categories', 'odm').'</h2>';
+				echo '<h2 class="widget-title">'.__('Topic', 'odm').'</h2>';
 		}
 
 		echo "<ul class='odm_taxonomy_widget_ul'>";
