@@ -182,6 +182,7 @@ add_action( 'admin_head', 'add_menu_icons_styles' );
 function odm_dependency_scripts()
 {
   wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
+	wp_enqueue_script('odm-dependencies-moment', get_stylesheet_directory_uri().'/bower_components/moment/min/moment.min.js');
   wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
   //wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
 }
