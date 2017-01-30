@@ -34,7 +34,7 @@
 															'cat_selector' => true,
 															'con_selector' => false,
 															'date_rang' => true,
-															'post_type' => "news-article"
+															'post_type' => get_post_type()
 														 );
 					odm_adv_nav_filters($filter_arg);
 					?>
