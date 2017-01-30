@@ -538,7 +538,7 @@ msgid "Type your search here"
 msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
 #: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
+msgid "Topic"
 msgstr "ប្រធានបទ"
 
 #: inc/advanced-navigation.php:127

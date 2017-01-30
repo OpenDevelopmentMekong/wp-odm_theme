@@ -14,6 +14,14 @@
 	</section>
 
 	<section class="container">
+		<div class="sixteen columns">
+			<div class="panel more-filters-content row">
+				<?php odm_archive_nav_filters(); ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="container">
 
     <div class="row">
 

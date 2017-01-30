@@ -543,7 +543,7 @@ msgid "Type your search here"
 msgstr "သင်ရှာဖွေလိုသည့်အရာကို ဤနေရာတွင်ရိုက်နှိပ်ပါ"
 
 #: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
+msgid "Topic"
 msgstr "အမျိုးအစားခွဲခြားမှုများ"
 
 #: inc/advanced-navigation.php:127

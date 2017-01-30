@@ -14,6 +14,14 @@
 	</section>
 
 	<section class="container">
+		<div class="sixteen columns">
+			<div class="panel more-filters-content row">
+				<?php odm_archive_nav_filters(); ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="container">
 
     <div class="row">
 
@@ -32,7 +40,7 @@
 
 				$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
 				foreach ($map_catalogue as $key => $layer) {
-					if($key >= $pagination["start_post"]): 
+					if($key >= $pagination["start_post"]):
 						odm_get_template('post-grid-single-4-cols',array(
 	            "post" => $layer,
 	            "show_meta" => false)

@@ -31,6 +31,7 @@ require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
+require_once get_stylesheet_directory().'/inc/archive-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
 require_once get_stylesheet_directory().'/inc/utils/localization.php';
 require_once get_stylesheet_directory().'/inc/max-mega-menu-options.php';
@@ -181,6 +182,7 @@ add_action( 'admin_head', 'add_menu_icons_styles' );
 function odm_dependency_scripts()
 {
   wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
+	wp_enqueue_script('odm-dependencies-moment', get_stylesheet_directory_uri().'/bower_components/moment/min/moment.min.js');
   wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
   //wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
 }
