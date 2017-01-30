@@ -7,7 +7,7 @@
 
 class odm_AdvancedNav {
 
-	var $prefix = 'odm_filter_';
+	var $prefix = 'filter_';
 	var $slug = 'explore';
 
 	function __construct() {
@@ -91,7 +91,6 @@ class odm_AdvancedNav {
 			}
 
 		}
-
 	}
 
 	function enqueue_scripts() {
@@ -106,7 +105,6 @@ class odm_AdvancedNav {
 													'cat_selector' => true,
 													'con_selector' => false,
 													'date_rang' => true
-													//,'post_type' => "news-article"
 												 );
 		}
 		$s = isset($_GET[$this->prefix . 's']) ? $_GET[$this->prefix . 's'] : '';
@@ -135,7 +133,7 @@ class odm_AdvancedNav {
 				$active_cats = isset($_GET[$this->prefix . 'category']) ? $_GET[$this->prefix . 'category'] : array();
 				if($categories) :
 					?>
-					<div class="four columns">
+					<div class="three columns">
 						<div class="category-input adv-nav-input">
 							<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'odm'); ?></label></p>
 							<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
@@ -146,7 +144,7 @@ class odm_AdvancedNav {
 				<?php endif; ?>
 			<?php endif; ?>
 
-			<?php if($filter_arg['con_selector']):?>
+			<?php if($filter_arg['con_selector'] || !is_post_type_archive() ):?>
 				<?php
 				$post_types = get_post_types(array(
 					'public' => true,
