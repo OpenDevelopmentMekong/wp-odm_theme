@@ -290,8 +290,8 @@ class odm_AdvancedNav {
 
 $GLOBALS['odm_adv_nav'] = new odm_AdvancedNav();
 
-function odm_adv_nav_filters() {
-	return $GLOBALS['odm_adv_nav']->form();
+function odm_adv_nav_filters($filter_arg = null) {
+	return $GLOBALS['odm_adv_nav']->form($filter_arg);
 }
 
 ?>
