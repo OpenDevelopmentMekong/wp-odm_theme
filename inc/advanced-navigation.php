@@ -69,6 +69,22 @@ class odm_AdvancedNav {
 				$query->set('category__in', $_GET[$this->prefix . 'category']);
 			}
 
+			if(isset($_GET[$this->prefix . 'taxonomy'])) {
+				$taxonomy_name = array_keys($_GET[$this->prefix . 'taxonomy']);
+				$selected_terms = $_GET[$this->prefix . 'taxonomy'][$taxonomy_name[0]];
+				$term_ids = array_values($selected_terms);
+		    $taxquery = array(
+							        array(
+							            'taxonomy' => $taxonomy_name[0],
+							            'field' => 'id',
+							            'terms' => $term_ids,
+							            'operator'=> 'IN'
+							        )
+		    						);
+
+			  $query->set( 'tax_query', $taxquery );
+			} 
+
 			if(isset($_GET[$this->prefix . 'date_start'])) {
 
 				$after = $_GET[$this->prefix . 'date_start'];
@@ -103,8 +119,10 @@ class odm_AdvancedNav {
 			$filter_arg =	array(
 													'search_box' => true,
 													'cat_selector' => true,
-													'con_selector' => false,
-													'date_rang' => true
+													'con_selector' => true,
+													'date_rang' => true,
+													'taxonomy' => "category",
+													'depth' => 2
 												 );
 		}
 		$s = isset($_GET[$this->prefix . 's']) ? $_GET[$this->prefix . 's'] : '';
@@ -130,33 +148,40 @@ class odm_AdvancedNav {
 			<?php if($filter_arg['cat_selector']):?>
 				<?php
 				$categories = get_categories();
+				if($filter_arg['taxonomy'] != "category"):
+					$categories = get_terms($filter_arg['taxonomy']);
+				endif;
+
 				$active_cats = isset($_GET[$this->prefix . 'category']) ? $_GET[$this->prefix . 'category'] : array();
 				if($categories) :
 					?>
-					<div class="three columns">
+					<div class="four columns">
 						<div class="category-input adv-nav-input">
-							<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'odm'); ?></label></p>
+						<p class="label"><label for="<?php echo $this->prefix . $filter_arg['taxonomy']; ?>"><?php _e('Topic', 'odm'); ?></label></p>
+						<?php
+						if($filter_arg['taxonomy'] == "category"):
+							?>
 							<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
-								<?php wp_list_categories(array('title_li' => '', 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => 3, 'selected' => $active_cats)); ?>
+								<?php wp_list_categories(array('title_li' => '', 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $filter_arg['depth'], 'selected' => $active_cats)); ?>
 							</select>
+							<?php
+						else: ?>
+							<select id="<?php echo $this->prefix; ?>taxonomy" name="<?php echo $this->prefix; ?>taxonomy[<?php echo $filter_arg['taxonomy']; ?>][]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
+								<?php wp_list_categories(array('title_li' => '', 'taxonomy' => $filter_arg['taxonomy'], 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $filter_arg['depth'], 'selected' => $active_cats)); ?>
+							</select>
+						<?php
+						endif;
+						?>
 						</div>
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>
 
-			<?php if($filter_arg['con_selector'] || !is_post_type_archive() ):?>
+			<?php if($filter_arg['con_selector'] && !is_post_type_archive() ):?>
 				<?php
-				$post_types = get_post_types(array(
-					'public' => true,
-					'_builtin' => false
-				), 'object');
+				$post_types = available_post_types_search("object");
+
 				if($post_types) :
-					unset($post_types['map']);
-					unset($post_types['map-group']);
-					unset($post_types['attachment']);
-					unset($post_types['site-update']);
-					unset($post_types['rssmi_feed']);
-					unset($post_types['rssmi_feed_item']);
 					$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
 					?>
 					<div class="three columns">
@@ -184,6 +209,7 @@ class odm_AdvancedNav {
 					$oldest_post_arg['post_type'] = available_post_types_search();
 					$newest_post_arg['post_type'] = available_post_types_search();
 				endif;
+
 				$oldest = get_posts($oldest_post_arg);
 				$oldest = array_shift($oldest);
 				$newest = get_posts($newest_post_arg);
@@ -290,7 +316,7 @@ class odm_AdvancedNav {
 
 $GLOBALS['odm_adv_nav'] = new odm_AdvancedNav();
 
-function odm_adv_nav_filters($filter_arg = null) {
+function odm_adv_nav_filters($filter_arg=null) {
 	return $GLOBALS['odm_adv_nav']->form($filter_arg);
 }
 
