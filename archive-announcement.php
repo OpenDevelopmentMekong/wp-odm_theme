@@ -14,9 +14,24 @@
 	</section>
 
 	<section class="container">
-
+		<div class="row">
+			<div class="sixteen columns filter-container">
+				<div class="panel more-filters-content row">
+					<?php
+					$filter_arg = array(
+															'search_box' => true,
+															'cat_selector' => true,
+															'con_selector' => false,
+															'date_rang' => true,
+															'post_type' => get_post_type()
+														 );
+					odm_adv_nav_filters($filter_arg);
+					?>
+				</div>
+			</div>
+		</div>
+		
     <div class="row">
-
       <div class="sixteen columns">
 				<?php
 					$index = 1;
