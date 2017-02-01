@@ -83,7 +83,7 @@ class odm_AdvancedNav {
 		    						);
 
 			  $query->set( 'tax_query', $taxquery );
-			} 
+			}
 
 			if(isset($_GET[$this->prefix . 'date_start'])) {
 
@@ -120,11 +120,20 @@ class odm_AdvancedNav {
 													'search_box' => true,
 													'cat_selector' => true,
 													'con_selector' => true,
-													'date_rang' => true,
-													'taxonomy' => "category",
-													'depth' => 2
+													'date_rang' => true
 												 );
 		}
+		$filter_taxonomy = "category";
+		$taxonomy_depth = 2;
+
+		if(isset($filter_arg['taxonomy']) && !empty($filter_arg['taxonomy'])):
+			$filter_taxonomy = $filter_arg['taxonomy'];
+		endif;
+		
+		if(isset($filter_arg['depth']) && !empty($filter_arg['depth'])):
+			$taxonomy_depth = $filter_arg['depth'];
+		endif;
+
 		$s = isset($_GET[$this->prefix . 's']) ? $_GET[$this->prefix . 's'] : '';
 		$s = !$s && isset($_GET['s']) ? $_GET['s'] : $s;
 		?>
@@ -148,8 +157,8 @@ class odm_AdvancedNav {
 			<?php if($filter_arg['cat_selector']):?>
 				<?php
 				$categories = get_categories();
-				if($filter_arg['taxonomy'] != "category"):
-					$categories = get_terms($filter_arg['taxonomy']);
+				if($filter_taxonomy != "category"):
+					$categories = get_terms($filter_taxonomy);
 				endif;
 
 				$active_cats = isset($_GET[$this->prefix . 'category']) ? $_GET[$this->prefix . 'category'] : array();
@@ -157,17 +166,17 @@ class odm_AdvancedNav {
 					?>
 					<div class="four columns">
 						<div class="category-input adv-nav-input">
-						<p class="label"><label for="<?php echo $this->prefix . $filter_arg['taxonomy']; ?>"><?php _e('Topic', 'odm'); ?></label></p>
+						<p class="label"><label for="<?php echo $this->prefix . $filter_taxonomy; ?>"><?php _e('Topic', 'odm'); ?></label></p>
 						<?php
-						if($filter_arg['taxonomy'] == "category"):
+						if($filter_taxonomy == "category"):
 							?>
 							<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
-								<?php wp_list_categories(array('title_li' => '', 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $filter_arg['depth'], 'selected' => $active_cats)); ?>
+								<?php wp_list_categories(array('title_li' => '', 'category' => $filter_taxonomy, 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $taxonomy_depth, 'selected' => $active_cats)); ?>
 							</select>
 							<?php
 						else: ?>
-							<select id="<?php echo $this->prefix; ?>taxonomy" name="<?php echo $this->prefix; ?>taxonomy[<?php echo $filter_arg['taxonomy']; ?>][]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
-								<?php wp_list_categories(array('title_li' => '', 'taxonomy' => $filter_arg['taxonomy'], 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $filter_arg['depth'], 'selected' => $active_cats)); ?>
+							<select id="<?php echo $this->prefix; ?>taxonomy" name="<?php echo $this->prefix; ?>taxonomy[<?php echo $filter_taxonomy; ?>][]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
+								<?php wp_list_categories(array('title_li' => '', 'taxonomy' => $filter_taxonomy, 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $taxonomy_depth, 'selected' => $active_cats)); ?>
 							</select>
 						<?php
 						endif;
