@@ -235,51 +235,51 @@ msgstr ""
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:205
+#: functions.php:204
 msgid "stories"
 msgstr ""
 
-#: functions.php:207
+#: functions.php:206
 msgid "Copy the embed code"
 msgstr ""
 
-#: functions.php:208 loop-latest.php:21
+#: functions.php:207 loop-latest.php:21
 msgid "Share"
 msgstr ""
 
-#: functions.php:209
+#: functions.php:208
 msgid "Print"
 msgstr ""
 
-#: functions.php:220 loop-latest.php:19
+#: functions.php:219 loop-latest.php:19
 msgid "Read more"
 msgstr ""
 
-#: functions.php:222
+#: functions.php:221
 msgid "Open slideshow"
 msgstr ""
 
-#: functions.php:223
+#: functions.php:222
 msgid "Watch video gallery"
 msgstr ""
 
-#: functions.php:224
+#: functions.php:223
 msgid "Watch video"
 msgstr ""
 
-#: functions.php:225
+#: functions.php:224
 msgid "View image gallery"
 msgstr ""
 
-#: functions.php:226
+#: functions.php:225
 msgid "View fullscreen image"
 msgstr ""
 
-#: functions.php:227
+#: functions.php:226
 msgid "View infographic"
 msgstr ""
 
-#: functions.php:228
+#: functions.php:227
 msgid "View infographics"
 msgstr ""
 

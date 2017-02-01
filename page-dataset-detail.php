@@ -22,6 +22,18 @@
 
 			<aside id="sidebar" class="four columns offset-by-one">
 
+				<?php
+					if (is_user_logged_in()): ?>
+						<div class="sixteen columns widgets">
+							<div class="widget">
+								<h2 class="widget-title"><?php _e('Manage on CKAN','odm') ?></h2>
+								</br>
+								<a target="_blank" class="button" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/edit/<?php echo $dataset_id;?>"><?php _e('Manage', 'odm')?></a>
+							</div>
+						</div>
+				<?php
+					endif;?>
+
 				<div class="sixteen columns widgets">
 					<div class="widget">
 						<h2 class="widget-title"><?php _e('Download metadata','odm') ?></h2>

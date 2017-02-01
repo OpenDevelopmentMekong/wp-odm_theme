@@ -229,51 +229,51 @@ msgstr ""
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:205
+#: functions.php:204
 msgid "stories"
 msgstr "သတင်းများ"
 
-#: functions.php:207
+#: functions.php:206
 msgid "Copy the embed code"
 msgstr "Embed code ကိုကူးယူမည်"
 
-#: functions.php:208 loop-latest.php:21
+#: functions.php:207 loop-latest.php:21
 msgid "Share"
 msgstr "ဝေမျှမည်"
 
-#: functions.php:209
+#: functions.php:208
 msgid "Print"
 msgstr "Print"
 
-#: functions.php:220 loop-latest.php:19
+#: functions.php:219 loop-latest.php:19
 msgid "Read more"
 msgstr "ဆက်လက်ဖတ်ရှုမည်"
 
-#: functions.php:222
+#: functions.php:221
 msgid "Open slideshow"
 msgstr "Slideshow ကိုဖွင့်မည်"
 
-#: functions.php:223
+#: functions.php:222
 msgid "Watch video gallery"
 msgstr "ရုပ်သံပြခန်းထဲတွင်ဝင်ကြည့်မည်"
 
-#: functions.php:224
+#: functions.php:223
 msgid "Watch video"
 msgstr "ရုပ်သံကြည့်ရှုမည်"
 
-#: functions.php:225
+#: functions.php:224
 msgid "View image gallery"
 msgstr "ရုပ်ပုံပြခန်းကိုကြည့်ရှုမည်"
 
-#: functions.php:226
+#: functions.php:225
 msgid "View fullscreen image"
 msgstr "ပုံကိုမျက်နှာပြင်အပြည့်ကြည့်မည်"
 
-#: functions.php:227
+#: functions.php:226
 msgid "View infographic"
 msgstr "သရုပ်ဖော်ပုံကြည့်ရှုမည်"
 
-#: functions.php:228
+#: functions.php:227
 msgid "View infographics"
 msgstr "သရုပ်ဖော်ပုံများကြည့်ရှုမည်"
 
@@ -1957,6 +1957,39 @@ msgstr ""
 
 #~ msgid "Next >>"
 #~ msgstr "ရှေ့စာမျက်နှာ >>"
+
+#~ msgid "Other"
+#~ msgstr "အခြား"
+
+#~ msgid "Related resources"
+#~ msgstr "ဆက်နွှယ်မှုရှိသောအရင်းအမြစ်များ"
+
+#~ msgid "Read more..."
+#~ msgstr "ဆက်လက်ဖတ်ရှုမည်"
+
+#~ msgid "Show resources details"
+#~ msgstr "အရင်းမြစ်များအကြောင်းအသေးစိတ်ပြမည်"
+
+#~ msgid "Hide resources details"
+#~ msgstr "အရင်းမြစ်များအကြောင်းအသေးစိတ်မပြပါ"
+
+#~ msgid "Hide news icons"
+#~ msgstr "သတင်း icons များ မပြပါနှင့်"
+
+#~ msgid "ODM Related Recent News Widget"
+#~ msgstr "ODM နှင့်ဆက်နွှယ်သော မကြာသေးမီက သတင်း Widget"
+
+#~ msgid "Display ODM the related recent news for the topics"
+#~ msgstr "ခေါင်းစဥ်များအတွက် ODM နှင့်ဆက်နွှယ်သော မကြာသေးမီက သတင်းများကိုပြပါ"
+
+#~ msgid "Related News"
+#~ msgstr "ဆက်နွှယ်သော သတင်းများ"
+
+#~ msgid "Option:"
+#~ msgstr "ရွေးချယ်စရာ"
+
+#~ msgid "Category slugs:"
+#~ msgstr "အမျိုးအစားခွဲများ"
 
 #~ msgid "Other"
 #~ msgstr "အခြား"
