@@ -57,7 +57,7 @@ class odm_AdvancedNav {
 				$query->set('ignore_sticky_posts', true);
 			}
 
-			if(isset($_GET[$this->prefix . 's'])  && $_GET[$this->prefix . 's'] !="") {
+			if(isset($_GET[$this->prefix . 's'])  && !empty($_GET[$this->prefix . 's'])) {
 				$query->set('s', $_GET[$this->prefix . 's']);
 			}
 
