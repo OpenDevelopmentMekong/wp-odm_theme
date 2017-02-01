@@ -129,7 +129,7 @@ class odm_AdvancedNav {
 		if(isset($filter_arg['taxonomy']) && !empty($filter_arg['taxonomy'])):
 			$filter_taxonomy = $filter_arg['taxonomy'];
 		endif;
-		
+
 		if(isset($filter_arg['depth']) && !empty($filter_arg['depth'])):
 			$taxonomy_depth = $filter_arg['depth'];
 		endif;
@@ -147,7 +147,7 @@ class odm_AdvancedNav {
 			<?php endif; ?>
 
 			<?php if($filter_arg['search_box']): ?>
-				<div class="three columns">
+				<div class="four columns">
 					<div class="search-input adv-nav-input">
 						<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'odm'); ?></label></p>
 						<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $s; ?>" />
@@ -193,7 +193,7 @@ class odm_AdvancedNav {
 				if($post_types) :
 					$active_types = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'] : array();
 					?>
-					<div class="three columns">
+					<div class="four columns">
 						<div class="post-type-input adv-nav-input">
 							<p class="label"><label for="<?php echo $this->prefix; ?>post_type"><?php _e('Content type', 'odm'); ?></label></p>
 							<select id="<?php echo $this->prefix; ?>post_type" name="<?php echo $this->prefix; ?>post_type[]" multiple data-placeholder="<?php _e('Select content types', 'odm'); ?>">
@@ -240,7 +240,7 @@ class odm_AdvancedNav {
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="three columns">
+			<div class="four columns">
 				<input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
 			</div>
 		</form>
