@@ -23,7 +23,7 @@ Template Name: Data
 <?php
   $types = array(
     "dataset" => "Datasets",
-    "library_record" => "Library records",
+    "library_record" => "Publications",
     "laws_record" => "Laws"
   );
 ?>
