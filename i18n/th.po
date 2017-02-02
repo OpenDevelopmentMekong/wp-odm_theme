@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ODM odm-wptheme\n"
-"POT-Creation-Date: 2017-01-25 12:18+0100\n"
-"PO-Revision-Date: 2017-01-25 12:18+0100\n"
+"POT-Creation-Date: 2017-02-01 22:16+0700\n"
+"PO-Revision-Date: 2017-02-01 22:16+0700\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/open-development-mekong/odm-"
 "odm-wptheme/language/th/)\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -49,6 +49,10 @@ msgstr ""
 
 #: 404.php:26
 msgid "Contact us"
+msgstr ""
+
+#: ______taxonomy-layer-category.php:8
+msgid "Map catalogue"
 msgstr ""
 
 #: advanced-search.php:31
@@ -104,15 +108,15 @@ msgstr ""
 msgid "Topics"
 msgstr ""
 
-#: archive-topic.php:22
+#: archive-topic.php:36
 msgid "Environment and land"
 msgstr ""
 
-#: archive-topic.php:45
+#: archive-topic.php:59
 msgid "Economy"
 msgstr ""
 
-#: archive-topic.php:60
+#: archive-topic.php:74
 msgid "People"
 msgstr ""
 
@@ -279,53 +283,53 @@ msgstr ""
 msgid "View infographics"
 msgstr ""
 
-#: functions.php:258
+#: functions.php:259
 msgid "default"
 msgstr ""
 
-#: functions.php:305
+#: functions.php:306
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr ""
 
-#: functions.php:306
+#: functions.php:307
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr ""
 
-#: functions.php:307
+#: functions.php:308
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:308
+#: functions.php:309
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:309
+#: functions.php:310
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:310
+#: functions.php:311
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:311
+#: functions.php:312
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:312
+#: functions.php:313
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:313
+#: functions.php:314
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:315
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:315
+#: functions.php:316
 msgid "News Source"
 msgstr ""
 
@@ -390,114 +394,130 @@ msgid "Data"
 msgstr ""
 
 #: i18n/extra-strings.php:19
-msgid "Share a map"
+msgid "Law"
 msgstr ""
 
 #: i18n/extra-strings.php:20
-msgid "Search for posts, maps and briefings..."
+msgid "Blog"
 msgstr ""
 
 #: i18n/extra-strings.php:21
-msgid "Search Datasets for Mekong"
+msgid "Timelines"
 msgstr ""
 
-#: i18n/extra-strings.php:22
-msgid "Search Datasets for Cambodia"
+#: i18n/extra-strings.php:22 inc/layers.php:44
+msgid "Layers"
 msgstr ""
 
 #: i18n/extra-strings.php:23
-msgid "Search Datasets for Laos"
+msgid "Share a map"
 msgstr ""
 
 #: i18n/extra-strings.php:24
-msgid "Search Datasets for Myanmar"
+msgid "Search for posts, maps and briefings..."
 msgstr ""
 
 #: i18n/extra-strings.php:25
-msgid "Search Datasets for Thailand"
+msgid "Search Datasets for Mekong"
 msgstr ""
 
 #: i18n/extra-strings.php:26
-msgid "Search Datasets for Vietnam"
+msgid "Search Datasets for Cambodia"
 msgstr ""
 
 #: i18n/extra-strings.php:27
-msgid "More information"
+msgid "Search Datasets for Laos"
 msgstr ""
 
 #: i18n/extra-strings.php:28
-msgid "Announcements and Press releases"
+msgid "Search Datasets for Myanmar"
+msgstr ""
+
+#: i18n/extra-strings.php:29
+msgid "Search Datasets for Thailand"
 msgstr ""
 
 #: i18n/extra-strings.php:30
-msgid "Agriculture and fishing"
+msgid "Search Datasets for Vietnam"
 msgstr ""
 
 #: i18n/extra-strings.php:31
-msgid "Disasters and emergency response"
+msgid "More information"
 msgstr ""
 
 #: i18n/extra-strings.php:32
-msgid "Environment and natural resources"
-msgstr ""
-
-#: i18n/extra-strings.php:33
-msgid "Extractive industries"
+msgid "Announcements and Press releases"
 msgstr ""
 
 #: i18n/extra-strings.php:34
-msgid "Land"
+msgid "Agriculture and fishing"
 msgstr ""
 
 #: i18n/extra-strings.php:35
-msgid "Economy and commerce"
+msgid "Disasters and emergency response"
 msgstr ""
 
 #: i18n/extra-strings.php:36
-msgid "Energy"
+msgid "Environment and natural resources"
 msgstr ""
 
 #: i18n/extra-strings.php:37
-msgid "Infrastructure"
+msgid "Extractive industries"
 msgstr ""
 
 #: i18n/extra-strings.php:38
-msgid "Industry"
+msgid "Land"
 msgstr ""
 
 #: i18n/extra-strings.php:39
-msgid "Labor"
+msgid "Economy and commerce"
 msgstr ""
 
 #: i18n/extra-strings.php:40
-msgid "Science and technology"
+msgid "Energy"
 msgstr ""
 
 #: i18n/extra-strings.php:41
-msgid "Aid and development"
+msgid "Infrastructure"
 msgstr ""
 
 #: i18n/extra-strings.php:42
-msgid "Government"
+msgid "Industry"
 msgstr ""
 
 #: i18n/extra-strings.php:43
-msgid "Law and judiciary"
+msgid "Labor"
 msgstr ""
 
 #: i18n/extra-strings.php:44
-msgid "Population and censuses"
+msgid "Science and technology"
 msgstr ""
 
 #: i18n/extra-strings.php:45
-msgid "Social development"
+msgid "Aid and development"
 msgstr ""
 
 #: i18n/extra-strings.php:46
-msgid "Urban administration and development"
+msgid "Government"
+msgstr ""
+
+#: i18n/extra-strings.php:47
+msgid "Law and judiciary"
 msgstr ""
 
 #: i18n/extra-strings.php:48
+msgid "Population and censuses"
+msgstr ""
+
+#: i18n/extra-strings.php:49
+msgid "Social development"
+msgstr ""
+
+#: i18n/extra-strings.php:50
+msgid "Urban administration and development"
+msgstr ""
+
+#: i18n/extra-strings.php:52
 msgid ""
 "This work and any original materials produced and published by Open "
 "Development {country} herein are licensed under a CC BY-SA 3.0. News article "
@@ -525,60 +545,137 @@ msgid ""
 "harm or damage suffered as a result of its use."
 msgstr ""
 
-#: i18n/extra-strings.php:53
+#: i18n/extra-strings.php:57
 msgid "Khmer PDF"
 msgstr ""
 
-#: i18n/extra-strings.php:54
+#: i18n/extra-strings.php:58
 msgid "Khmer PDF not available"
 msgstr ""
 
-#: inc/advanced-navigation.php:115 page-data.php:39
+#: i18n/extra-strings.php:59 inc/advanced-navigation.php:293
+msgid "Jan"
+msgstr ""
+
+#: i18n/extra-strings.php:60 inc/advanced-navigation.php:294
+msgid "Feb"
+msgstr ""
+
+#: i18n/extra-strings.php:61 inc/advanced-navigation.php:295
+msgid "Mar"
+msgstr ""
+
+#: i18n/extra-strings.php:62 inc/advanced-navigation.php:296
+msgid "Apr"
+msgstr ""
+
+#: i18n/extra-strings.php:63 inc/advanced-navigation.php:297
+msgid "May"
+msgstr ""
+
+#: i18n/extra-strings.php:64 inc/advanced-navigation.php:298
+msgid "Jun"
+msgstr ""
+
+#: i18n/extra-strings.php:65 inc/advanced-navigation.php:299
+msgid "Jul"
+msgstr ""
+
+#: i18n/extra-strings.php:66 inc/advanced-navigation.php:300
+msgid "Aug"
+msgstr ""
+
+#: i18n/extra-strings.php:67 inc/advanced-navigation.php:301
+msgid "Sep"
+msgstr ""
+
+#: i18n/extra-strings.php:68 inc/advanced-navigation.php:302
+msgid "Oct"
+msgstr ""
+
+#: i18n/extra-strings.php:69 inc/advanced-navigation.php:303
+msgid "Nov"
+msgstr ""
+
+#: i18n/extra-strings.php:70 inc/advanced-navigation.php:304
+msgid "Dec"
+msgstr ""
+
+#: inc/advanced-navigation.php:152 page-data.php:39
 msgid "Text search"
 msgstr ""
 
-#: inc/advanced-navigation.php:116 page-data.php:40 page-data.php:138
+#: inc/advanced-navigation.php:153 page-data.php:40 page-data.php:138
 msgid "Type your search here"
 msgstr ""
 
-#: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
+#: inc/advanced-navigation.php:169 inc/live-search/live-search.php:24
+#: inc/utils/content.php:51
+msgid "Topic"
 msgstr ""
 
-#: inc/advanced-navigation.php:127
+#: inc/advanced-navigation.php:173 inc/advanced-navigation.php:178
 msgid "Select categories"
 msgstr ""
 
-#: inc/advanced-navigation.php:157
+#: inc/advanced-navigation.php:198
 msgid "Content type"
 msgstr ""
 
-#: inc/advanced-navigation.php:158
+#: inc/advanced-navigation.php:199
 msgid "Select content types"
 msgstr ""
 
-#: inc/advanced-navigation.php:168
+#: inc/advanced-navigation.php:231
 msgid "Date range"
 msgstr ""
 
-#: inc/advanced-navigation.php:171
+#: inc/advanced-navigation.php:234
 msgid "From"
 msgstr ""
 
-#: inc/advanced-navigation.php:174
+#: inc/advanced-navigation.php:237
 msgid "To"
 msgstr ""
 
-#: inc/advanced-navigation.php:180 page-data.php:143
+#: inc/advanced-navigation.php:244 page-data.php:143
 msgid "Search Filter"
 msgstr ""
 
-#: inc/advanced-navigation.php:191 inc/advanced-navigation.php:202
+#: inc/advanced-navigation.php:253 inc/advanced-navigation.php:263
 msgid "Cancel filters"
 msgstr ""
 
-#: inc/advanced-navigation.php:199
+#: inc/advanced-navigation.php:260
 msgid "More filters"
+msgstr ""
+
+#: inc/advanced-navigation.php:284
+msgid "Su"
+msgstr ""
+
+#: inc/advanced-navigation.php:285
+msgid "Mo"
+msgstr ""
+
+#: inc/advanced-navigation.php:286
+msgid "Tu"
+msgstr ""
+
+#: inc/advanced-navigation.php:287
+msgid "We"
+msgstr ""
+
+#: inc/advanced-navigation.php:288
+msgid "Th"
+msgstr ""
+
+#: inc/advanced-navigation.php:289
+msgid "Fr"
+msgstr ""
+
+#: inc/advanced-navigation.php:290
+msgid "Sa"
 msgstr ""
 
 #: inc/interactive-map.php:27
@@ -641,10 +738,6 @@ msgstr ""
 
 #: inc/layers.php:35
 msgid "Layer legend"
-msgstr ""
-
-#: inc/layers.php:44
-msgid "Layers"
 msgstr ""
 
 #: inc/layers.php:56
@@ -977,10 +1070,6 @@ msgstr ""
 
 #: inc/live-search/live-search.php:22
 msgid "Showing all results"
-msgstr ""
-
-#: inc/live-search/live-search.php:24 page-data.php:106
-msgid "Topic"
 msgstr ""
 
 #: inc/live-search/live-search.php:25
@@ -1608,7 +1697,7 @@ msgstr ""
 msgid "Show news on map"
 msgstr ""
 
-#: inc/utils/mapping.php:370
+#: inc/utils/mapping.php:407
 msgid "LEGEND"
 msgstr ""
 
@@ -1714,14 +1803,6 @@ msgctxt "reduced date format"
 msgid "m/d/Y"
 msgstr ""
 
-#: loop.php:39
-msgid "<< Previous"
-msgstr ""
-
-#: loop.php:40
-msgid "Next >>"
-msgstr ""
-
 #: page-data-archive.php:14
 msgid "Access the complete database"
 msgstr ""
@@ -1765,6 +1846,10 @@ msgstr ""
 
 #: page-data.php:82
 msgid "Select country"
+msgstr ""
+
+#: page-data.php:106
+msgid "Taxonomy"
 msgstr ""
 
 #: page-data.php:107
@@ -1857,10 +1942,6 @@ msgstr ""
 
 #: single-topic.php:68
 msgid "More on the Land Portal library"
-msgstr ""
-
-#: taxonomy-layer-category.php:8
-msgid "Map catalogue"
 msgstr ""
 
 #~ msgid "Vietnamese"

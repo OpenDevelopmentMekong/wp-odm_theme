@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-01-25 12:17+0100\n"
-"PO-Revision-Date: 2017-01-25 12:17+0100\n"
+"POT-Creation-Date: 2017-02-01 22:05+0700\n"
+"PO-Revision-Date: 2017-02-01 22:08+0700\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -45,6 +45,10 @@ msgstr ""
 #: 404.php:26
 msgid "Contact us"
 msgstr "ទាក់ទង​មក​​យើងខ្ញុំ"
+
+#: ______taxonomy-layer-category.php:8
+msgid "Map catalogue"
+msgstr "ការតាឡុកផែនទី"
 
 #: advanced-search.php:31
 msgid "Data results"
@@ -98,15 +102,15 @@ msgstr ""
 msgid "Topics"
 msgstr "ប្រធានបទ"
 
-#: archive-topic.php:22
+#: archive-topic.php:36
 msgid "Environment and land"
 msgstr "បរិស្ថាន និងដី"
 
-#: archive-topic.php:45
+#: archive-topic.php:59
 msgid "Economy"
 msgstr "សេដ្ឋកិច្ច"
 
-#: archive-topic.php:60
+#: archive-topic.php:74
 msgid "People"
 msgstr "មនុស្ស"
 
@@ -153,8 +157,8 @@ msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វ
 msgid "Page"
 msgstr "ទំព័រ"
 
-#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:90
-#: inc/widgets/odm-contents-same-category-widget.php:126 inc/widgets/odm-custom-posts-widget.php:81
+
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:90 inc/widgets/odm-contents-same-category-widget.php:126 inc/widgets/odm-custom-posts-widget.php:81
 #: inc/widgets/odm-custom-posts-widget.php:111
 msgid "More..."
 msgstr "បន្ថែម..."
@@ -222,51 +226,51 @@ msgstr ""
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:204
+#: functions.php:205
 msgid "stories"
 msgstr "ដំណើររឿង"
 
-#: functions.php:206
+#: functions.php:207
 msgid "Copy the embed code"
 msgstr "ថតចម្លងលេខកូដបង្កប់"
 
-#: functions.php:207 loop-latest.php:21
+#: functions.php:208 loop-latest.php:21
 msgid "Share"
 msgstr "ចែករំលែក"
 
-#: functions.php:208
+#: functions.php:209
 msgid "Print"
 msgstr "បោះពុម្ព"
 
-#: functions.php:219 loop-latest.php:19
+#: functions.php:220 loop-latest.php:19
 msgid "Read more"
 msgstr "អានបន្ថែម"
 
-#: functions.php:221
+#: functions.php:222
 msgid "Open slideshow"
 msgstr "ចាក់បញ្ចាំងស្លាយ"
 
-#: functions.php:222
+#: functions.php:223
 msgid "Watch video gallery"
 msgstr "ទស្សនាវិចិត្រសាលវីដេអូ"
 
-#: functions.php:223
+#: functions.php:224
 msgid "Watch video"
 msgstr "មើលវីដេអូ"
 
-#: functions.php:224
+#: functions.php:225
 msgid "View image gallery"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:225
+#: functions.php:226
 msgid "View fullscreen image"
 msgstr "ទស្សនារូបភាពទាំងមូល"
 
-#: functions.php:226
+#: functions.php:227
 msgid "View infographic"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:227
+#: functions.php:228
 msgid "View infographics"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
@@ -381,114 +385,130 @@ msgid "Data"
 msgstr "ទិន្នន័យ"
 
 #: i18n/extra-strings.php:19
+msgid "Law"
+msgstr ""
+
+#: i18n/extra-strings.php:20
+msgid "Blog"
+msgstr ""
+
+#: i18n/extra-strings.php:21
+msgid "Timelines"
+msgstr ""
+
+#: i18n/extra-strings.php:22 inc/layers.php:44
+msgid "Layers"
+msgstr ""
+
+#: i18n/extra-strings.php:23
 msgid "Share a map"
 msgstr "ចែករំលែកផែនទី"
 
-#: i18n/extra-strings.php:20
+#: i18n/extra-strings.php:24
 msgid "Search for posts, maps and briefings..."
 msgstr "ស្វែងរកអត្ថបទ ផែនទី និងអត្ថបទសង្ខេប..."
 
-#: i18n/extra-strings.php:21
+#: i18n/extra-strings.php:25
 msgid "Search Datasets for Mekong"
 msgstr "ស្វែងរកទិន្នន័យតំបន់មេគង្គ"
 
-#: i18n/extra-strings.php:22
+#: i18n/extra-strings.php:26
 msgid "Search Datasets for Cambodia"
 msgstr "ស្វែងរកទិន្នន័យប្រទេសកម្ពុជា"
 
-#: i18n/extra-strings.php:23
+#: i18n/extra-strings.php:27
 msgid "Search Datasets for Laos"
 msgstr "ស្វែងរកទិន្នន័យប្រទេសឡាវ"
 
-#: i18n/extra-strings.php:24
+#: i18n/extra-strings.php:28
 msgid "Search Datasets for Myanmar"
 msgstr "ស្វែងរកទិន្នន័យប្រទេសមីយ៉ាន់ម៉ា"
 
-#: i18n/extra-strings.php:25
+#: i18n/extra-strings.php:29
 msgid "Search Datasets for Thailand"
 msgstr "ស្វែងរកទិន្នន័យប្រទេសថៃ"
 
-#: i18n/extra-strings.php:26
+#: i18n/extra-strings.php:30
 msgid "Search Datasets for Vietnam"
 msgstr "ស្វែងរកទិន្នន័យប្រទេសវៀតណាម"
 
-#: i18n/extra-strings.php:27
+#: i18n/extra-strings.php:31
 msgid "More information"
 msgstr "ព័ត៌មាន​បន្ថែម"
 
-#: i18n/extra-strings.php:28
+#: i18n/extra-strings.php:32
 msgid "Announcements and Press releases"
 msgstr "សេចក្តីប្រកាសនិងសេចក្តីថ្លែងការណ៍"
 
-#: i18n/extra-strings.php:30
+#: i18n/extra-strings.php:34
 msgid "Agriculture and fishing"
 msgstr "កសិកម្ម និងការនេសាទ"
 
-#: i18n/extra-strings.php:31
+#: i18n/extra-strings.php:35
 msgid "Disasters and emergency response"
 msgstr "គ្រោះមហន្តរាយ និងការឆ្លើយតបក្នុងគ្រាអាសន្ន"
 
-#: i18n/extra-strings.php:32
+#: i18n/extra-strings.php:36
 msgid "Environment and natural resources"
 msgstr "បរិស្ថាន និងធនធានធម្មជាតិ"
 
-#: i18n/extra-strings.php:33
+#: i18n/extra-strings.php:37
 msgid "Extractive industries"
 msgstr "ឧស្សាហកម្មនិស្សារណកម្ម"
 
-#: i18n/extra-strings.php:34
+#: i18n/extra-strings.php:38
 msgid "Land"
 msgstr "ដី"
 
-#: i18n/extra-strings.php:35
+#: i18n/extra-strings.php:39
 msgid "Economy and commerce"
 msgstr "សេដ្ឋកិច្ច និងពាណិជ្ជកម្ម "
 
-#: i18n/extra-strings.php:36
+#: i18n/extra-strings.php:40
 msgid "Energy"
 msgstr "ថាមពល"
 
-#: i18n/extra-strings.php:37
+#: i18n/extra-strings.php:41
 msgid "Infrastructure"
 msgstr "ហេដ្ឋារចនាសម្ព័ន្ធ"
 
-#: i18n/extra-strings.php:38
+#: i18n/extra-strings.php:42
 msgid "Industry"
 msgstr "ឧស្សាហកម្ម"
 
-#: i18n/extra-strings.php:39
+#: i18n/extra-strings.php:43
 msgid "Labor"
 msgstr "ពលកម្ម"
 
-#: i18n/extra-strings.php:40
+#: i18n/extra-strings.php:44
 msgid "Science and technology"
 msgstr "វិទ្យាសាស្ត្រ និងបច្ចេកវិទ្យា"
 
-#: i18n/extra-strings.php:41
+#: i18n/extra-strings.php:45
 msgid "Aid and development"
 msgstr "ជំនួយ និងការអភិវឌ្ឍ"
 
-#: i18n/extra-strings.php:42
+#: i18n/extra-strings.php:46
 msgid "Government"
 msgstr "រដ្ឋាភិបាល"
 
-#: i18n/extra-strings.php:43
+#: i18n/extra-strings.php:47
 msgid "Law and judiciary"
 msgstr "ច្បាប់ និងប្រព័ន្ធតុលាការ"
 
-#: i18n/extra-strings.php:44
+#: i18n/extra-strings.php:48
 msgid "Population and censuses"
 msgstr "ប្រជាជន និងជំរឿន"
 
-#: i18n/extra-strings.php:45
+#: i18n/extra-strings.php:49
 msgid "Social development"
 msgstr "ការអភិវឌ្ឍសង្គម"
 
-#: i18n/extra-strings.php:46
+#: i18n/extra-strings.php:50
 msgid "Urban administration and development"
 msgstr "ការអភិវឌ្ឍ និងការគ្រប់គ្រងទីក្រុង"
 
-#: i18n/extra-strings.php:48
+#: i18n/extra-strings.php:52
 msgid ""
 "This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA "
 "3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their "
@@ -521,61 +541,137 @@ msgstr ""
 "នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​"
 "ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
 
-#: i18n/extra-strings.php:53
+#: i18n/extra-strings.php:57
 msgid "Khmer PDF"
 msgstr "ភាសា​ខ្មែរ​ PDF"
 
-#: i18n/extra-strings.php:54
+#: i18n/extra-strings.php:58
 msgid "Khmer PDF not available"
 msgstr "ភាសា​ខ្មែរ​ពុំ​អាច​រក​បាន"
 
-#: inc/advanced-navigation.php:115 page-data.php:39
+#: i18n/extra-strings.php:59 inc/advanced-navigation.php:293
+msgid "Jan"
+msgstr "​មករា​"
+
+#: i18n/extra-strings.php:60 inc/advanced-navigation.php:294
+msgid "Feb"
+msgstr "កុម្ភៈ"
+
+#: i18n/extra-strings.php:61 inc/advanced-navigation.php:295
+msgid "Mar"
+msgstr "មិនា"
+
+#: i18n/extra-strings.php:62 inc/advanced-navigation.php:296
+msgid "Apr"
+msgstr "មេសា"
+
+#: i18n/extra-strings.php:63 inc/advanced-navigation.php:297
+msgid "May"
+msgstr "ឧសភា"
+
+#: i18n/extra-strings.php:64 inc/advanced-navigation.php:298
+msgid "Jun"
+msgstr "មិថុនា"
+
+#: i18n/extra-strings.php:65 inc/advanced-navigation.php:299
+msgid "Jul"
+msgstr "កក្កដា"
+
+#: i18n/extra-strings.php:66 inc/advanced-navigation.php:300
+msgid "Aug"
+msgstr "សីហា"
+
+#: i18n/extra-strings.php:67 inc/advanced-navigation.php:301
+msgid "Sep"
+msgstr "កញ្ញា"
+
+#: i18n/extra-strings.php:68 inc/advanced-navigation.php:302
+msgid "Oct"
+msgstr "តុលា"
+
+#: i18n/extra-strings.php:69 inc/advanced-navigation.php:303
+msgid "Nov"
+msgstr "វិច្ឆិកា"
+
+#: i18n/extra-strings.php:70 inc/advanced-navigation.php:304
+msgid "Dec"
+msgstr "ធ្នូ"
+
+#: inc/advanced-navigation.php:152 page-data.php:39
 msgid "Text search"
 msgstr "ពាក្យស្វែងរក"
 
-#: inc/advanced-navigation.php:116 page-data.php:40 page-data.php:138
+#: inc/advanced-navigation.php:153 page-data.php:40 page-data.php:138
 msgid "Type your search here"
 msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
-#: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
+#: inc/advanced-navigation.php:169 inc/live-search/live-search.php:24 inc/utils/content.php:51
+msgid "Topic"
 msgstr "ប្រធានបទ"
 
-#: inc/advanced-navigation.php:127
+#: inc/advanced-navigation.php:173 inc/advanced-navigation.php:178
 msgid "Select categories"
 msgstr "ជ្រើសរើសប្រធានបទ"
 
-#: inc/advanced-navigation.php:157
+#: inc/advanced-navigation.php:198
 msgid "Content type"
 msgstr "ប្រភេទអត្ថបទ"
 
-#: inc/advanced-navigation.php:158
+#: inc/advanced-navigation.php:199
 msgid "Select content types"
 msgstr "ជ្រើសរើសប្រភេទអត្ថបទ"
 
-#: inc/advanced-navigation.php:168
+#: inc/advanced-navigation.php:231
 msgid "Date range"
 msgstr "អំឡុងពេល"
 
-#: inc/advanced-navigation.php:171
+#: inc/advanced-navigation.php:234
 msgid "From"
 msgstr "ពី"
 
-#: inc/advanced-navigation.php:174
+#: inc/advanced-navigation.php:237
 msgid "To"
 msgstr "ដល់"
 
-#: inc/advanced-navigation.php:180 page-data.php:143
+#: inc/advanced-navigation.php:244 page-data.php:143
 msgid "Search Filter"
 msgstr "ស្វែងរកការជ្រើសរើស"
 
-#: inc/advanced-navigation.php:191 inc/advanced-navigation.php:202
+#: inc/advanced-navigation.php:253 inc/advanced-navigation.php:263
 msgid "Cancel filters"
 msgstr "ជ្រើសរើសជាថ្មី"
 
-#: inc/advanced-navigation.php:199
+#: inc/advanced-navigation.php:260
 msgid "More filters"
 msgstr "ជ្រើសរើសបន្ថែម"
+
+#: inc/advanced-navigation.php:284
+msgid "Su"
+msgstr "អា"
+
+#: inc/advanced-navigation.php:285
+msgid "Mo"
+msgstr "ច"
+
+#: inc/advanced-navigation.php:286
+msgid "Tu"
+msgstr "អ"
+
+#: inc/advanced-navigation.php:287
+msgid "We"
+msgstr "ពុ"
+
+#: inc/advanced-navigation.php:288
+msgid "Th"
+msgstr "ព្រ"
+
+#: inc/advanced-navigation.php:289
+msgid "Fr"
+msgstr "សុ"
+
+#: inc/advanced-navigation.php:290
+msgid "Sa"
+msgstr "ស"
 
 #: inc/interactive-map.php:27
 msgid "Interactive Map"
@@ -637,10 +733,6 @@ msgstr ""
 
 #: inc/layers.php:35
 msgid "Layer legend"
-msgstr ""
-
-#: inc/layers.php:44
-msgid "Layers"
 msgstr ""
 
 #: inc/layers.php:56
@@ -850,9 +942,7 @@ msgid "Workspaces and Layer name\""
 msgstr ""
 
 #: inc/layers.php:464
-msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
-"strong> is layer name."
+msgid "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
 #: inc/layers.php:469
@@ -860,9 +950,7 @@ msgid "Workspaces:Layer Name ("
 msgstr ""
 
 #: inc/layers.php:472
-msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
-"strong> is layer name."
+msgid "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
 #: inc/layers.php:479
@@ -914,8 +1002,7 @@ msgid "CartoDB URL (English)"
 msgstr ""
 
 #: inc/layers.php:538 inc/layers.php:546
-msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+msgid "CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
 #: inc/layers.php:543
@@ -970,10 +1057,6 @@ msgstr ""
 #: inc/live-search/live-search.php:22
 msgid "Showing all results"
 msgstr ""
-
-#: inc/live-search/live-search.php:24 page-data.php:106
-msgid "Topic"
-msgstr "ប្រធានបទ"
 
 #: inc/live-search/live-search.php:25
 msgid "Map"
@@ -1453,8 +1536,8 @@ msgstr ""
 msgid "(Add the post type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
-#: inc/theme-options.php:220 inc/theme-options.php:223 inc/theme-options.php:230 inc/theme-options.php:233
-#: inc/theme-options.php:292
+
+#: inc/theme-options.php:220 inc/theme-options.php:223 inc/theme-options.php:230 inc/theme-options.php:233 inc/theme-options.php:292
 msgid "None"
 msgstr ""
 
@@ -1595,7 +1678,7 @@ msgstr ""
 msgid "Show news on map"
 msgstr "បង្ហាញព័ត៍មាននៅលើផែនទី"
 
-#: inc/utils/mapping.php:370
+#: inc/utils/mapping.php:407
 msgid "LEGEND"
 msgstr "សញ្ញាផែនទី"
 
@@ -1619,8 +1702,8 @@ msgstr ""
 msgid "Display other content from other post types tagged with the same categories as the one where the widget is integrated."
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:154 inc/widgets/odm-custom-posts-widget.php:164
-#: inc/widgets/odm-taxonomy-widget.php:222
+
+#: inc/widgets/odm-contents-same-category-widget.php:154 inc/widgets/odm-custom-posts-widget.php:164 inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr ""
 
@@ -1687,14 +1770,6 @@ msgstr ""
 #: loop-latest.php:10
 msgctxt "reduced date format"
 msgid "m/d/Y"
-msgstr ""
-
-#: loop.php:39
-msgid "<< Previous"
-msgstr ""
-
-#: loop.php:40
-msgid "Next >>"
 msgstr ""
 
 #: page-data-archive.php:14
@@ -1833,9 +1908,8 @@ msgstr "ព័ត៌មានថ្មីបំផុត"
 msgid "More on the Land Portal library"
 msgstr ""
 
-#: taxonomy-layer-category.php:8
-msgid "Map catalogue"
-msgstr "ការតាឡុកផែនទី"
+#~ msgid "Categories"
+#~ msgstr "ប្រធានបទ"
 
 #~ msgid "Taxonomy"
 #~ msgstr "ប្រធានបទ"

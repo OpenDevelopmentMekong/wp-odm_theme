@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-01-25 12:17+0100\n"
-"PO-Revision-Date: 2017-01-25 12:17+0100\n"
+"POT-Creation-Date: 2017-02-01 22:11+0700\n"
+"PO-Revision-Date: 2017-02-01 22:15+0700\n"
 "Last-Translator: Theint Naing Yoon <yoon@phandeeyar.org>, 2016\n"
 "Language-Team: Burmese (https://www.transifex.com/open-development-mekong/teams/27158/my/)\n"
 "Language: my\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -46,6 +46,10 @@ msgstr ""
 #: 404.php:26
 msgid "Contact us"
 msgstr "ကျွန်ုပ်တို့ကို ဆက်သွယ်ရန်"
+
+#: ______taxonomy-layer-category.php:8
+msgid "Map catalogue"
+msgstr "မြေပုံ ကတ်တလောက် "
 
 #: advanced-search.php:31
 msgid "Data results"
@@ -99,15 +103,15 @@ msgstr "Tabular စာမျက်နှာများ"
 msgid "Topics"
 msgstr "ခေါင်းစဉ်များ"
 
-#: archive-topic.php:22
+#: archive-topic.php:36
 msgid "Environment and land"
 msgstr "သဘာဝပါတ်ဝန်းကျင်နှင့် မြေယာ"
 
-#: archive-topic.php:45
+#: archive-topic.php:59
 msgid "Economy"
 msgstr "စီးပွားရေး"
 
-#: archive-topic.php:60
+#: archive-topic.php:74
 msgid "People"
 msgstr "လူများ"
 
@@ -273,53 +277,53 @@ msgstr "သရုပ်ဖော်ပုံကြည့်ရှုမည်"
 msgid "View infographics"
 msgstr "သရုပ်ဖော်ပုံများကြည့်ရှုမည်"
 
-#: functions.php:258
+#: functions.php:259
 msgid "default"
 msgstr ""
 
-#: functions.php:305
+#: functions.php:306
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "သတင်းရင်းမြစ်များ"
 
-#: functions.php:306
+#: functions.php:307
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "သတင်းရင်းမြစ်"
 
-#: functions.php:307
+#: functions.php:308
 msgid "Search News Source"
 msgstr "သတင်းရင်းမြစ်ရှာဖွေမည်"
 
-#: functions.php:308
+#: functions.php:309
 msgid "All News Sources"
 msgstr "သတင်းရင်းမြစ်များအားလုံး"
 
-#: functions.php:309
+#: functions.php:310
 msgid "Parent News Source"
 msgstr "မူရင်းသတင်းရင်းမြစ်"
 
-#: functions.php:310
+#: functions.php:311
 msgid "Parent News Source:"
 msgstr "မူရင်းသတင်းရင်းမြစ်:"
 
-#: functions.php:311
+#: functions.php:312
 msgid "Edit News Source"
 msgstr "သတင်းရင်းမြစ်ကိုတည်းဖြတ်မည်"
 
-#: functions.php:312
+#: functions.php:313
 msgid "Update News Source"
 msgstr "သတင်းရင်းမြစ်ကို update လုပ်မည်"
 
-#: functions.php:313
+#: functions.php:314
 msgid "Add New News Source"
 msgstr "သတင်းရင်းမြစ်အသစ်ထည့်သွင်းမည်"
 
-#: functions.php:314
+#: functions.php:315
 msgid "New News Source Name"
 msgstr "သတင်းရင်းမြစ်အသစ် အမည်"
 
-#: functions.php:315
+#: functions.php:316
 msgid "News Source"
 msgstr "သတင်းရင်းမြစ်"
 
@@ -384,114 +388,130 @@ msgid "Data"
 msgstr "Data"
 
 #: i18n/extra-strings.php:19
+msgid "Law"
+msgstr ""
+
+#: i18n/extra-strings.php:20
+msgid "Blog"
+msgstr ""
+
+#: i18n/extra-strings.php:21
+msgid "Timelines"
+msgstr ""
+
+#: i18n/extra-strings.php:22 inc/layers.php:44
+msgid "Layers"
+msgstr "အလွှာများ"
+
+#: i18n/extra-strings.php:23
 msgid "Share a map"
 msgstr "မြေပုံဝေမျှမည်။"
 
-#: i18n/extra-strings.php:20
+#: i18n/extra-strings.php:24
 msgid "Search for posts, maps and briefings..."
 msgstr "Posts၊ မြေပုံများနှင့် ရှင်းလင်းချက်များ"
 
-#: i18n/extra-strings.php:21
+#: i18n/extra-strings.php:25
 msgid "Search Datasets for Mekong"
 msgstr "မဲခေါင်အတွက် dataset များရှာဖွေမည်"
 
-#: i18n/extra-strings.php:22
+#: i18n/extra-strings.php:26
 msgid "Search Datasets for Cambodia"
 msgstr "ကမ္ဘောဒီးယားနိုင်ငံအတွက် dataset များရှာဖွေမည်"
 
-#: i18n/extra-strings.php:23
+#: i18n/extra-strings.php:27
 msgid "Search Datasets for Laos"
 msgstr "လာအိုနိုင်ငံအတွက် dataset များရှာဖွေမည်"
 
-#: i18n/extra-strings.php:24
+#: i18n/extra-strings.php:28
 msgid "Search Datasets for Myanmar"
 msgstr "မြန်မာနိုင်ငံအတွက် dataset များရှာဖွေမည်"
 
-#: i18n/extra-strings.php:25
+#: i18n/extra-strings.php:29
 msgid "Search Datasets for Thailand"
 msgstr "ထိုင်းနိုင်ငံအတွက် dataset များရှာဖွေမည်"
 
-#: i18n/extra-strings.php:26
+#: i18n/extra-strings.php:30
 msgid "Search Datasets for Vietnam"
 msgstr "ဗီယက်နမ်နိုင်ငံအတွက် dataset များရှာဖွေမည်"
 
-#: i18n/extra-strings.php:27
+#: i18n/extra-strings.php:31
 msgid "More information"
 msgstr "နောက်ထပ်သတင်းအချက်အလက်များ"
 
-#: i18n/extra-strings.php:28
+#: i18n/extra-strings.php:32
 msgid "Announcements and Press releases"
 msgstr "ကြေငြာချက်များနှင့် သတင်းထုတ်ပြန်မှုများ"
 
-#: i18n/extra-strings.php:30
+#: i18n/extra-strings.php:34
 msgid "Agriculture and fishing"
 msgstr "စိုက်ပျိုးရေးနှင့် ငါးဖမ်းလုပ်ငန်း"
 
-#: i18n/extra-strings.php:31
+#: i18n/extra-strings.php:35
 msgid "Disasters and emergency response"
 msgstr "သဘာဝဘေးအန္တရာယ်နှင့် အရေးပေါ်တုံ့ပြန်မှု"
 
-#: i18n/extra-strings.php:32
+#: i18n/extra-strings.php:36
 msgid "Environment and natural resources"
 msgstr "သဘာဝပါတ်ဝန်းကျင်နှင့် သဘာဝရင်းမြစ်များ"
 
-#: i18n/extra-strings.php:33
+#: i18n/extra-strings.php:37
 msgid "Extractive industries"
 msgstr "မြေအောက်သယံဇာတ ထုတ်ယူရေးလုပ်ငန်းများ"
 
-#: i18n/extra-strings.php:34
+#: i18n/extra-strings.php:38
 msgid "Land"
 msgstr "မြေယာ"
 
-#: i18n/extra-strings.php:35
+#: i18n/extra-strings.php:39
 msgid "Economy and commerce"
 msgstr "စီးပွါးရေးနှင့် ကုန်သွယ်ရေး"
 
-#: i18n/extra-strings.php:36
+#: i18n/extra-strings.php:40
 msgid "Energy"
 msgstr "စွမ်းအင် "
 
-#: i18n/extra-strings.php:37
+#: i18n/extra-strings.php:41
 msgid "Infrastructure"
 msgstr "အခြေခံအဆောက်အဦများ"
 
-#: i18n/extra-strings.php:38
+#: i18n/extra-strings.php:42
 msgid "Industry"
 msgstr "စက်ရုံအလုပ်ရုံများ"
 
-#: i18n/extra-strings.php:39
+#: i18n/extra-strings.php:43
 msgid "Labor"
 msgstr "အလုပ်သမား "
 
-#: i18n/extra-strings.php:40
+#: i18n/extra-strings.php:44
 msgid "Science and technology"
 msgstr "သိပ္ပံနှင့်နည်းပညာ "
 
-#: i18n/extra-strings.php:41
+#: i18n/extra-strings.php:45
 msgid "Aid and development"
 msgstr "ကူညီထောက်ပံ့မှုနှင့် ဖွံ့ဖြိုးတိုးတက်မှု "
 
-#: i18n/extra-strings.php:42
+#: i18n/extra-strings.php:46
 msgid "Government"
 msgstr "အစိုးရ "
 
-#: i18n/extra-strings.php:43
+#: i18n/extra-strings.php:47
 msgid "Law and judiciary"
 msgstr "ဥပဒေနှင့် တရားစီရင်ရေး "
 
-#: i18n/extra-strings.php:44
+#: i18n/extra-strings.php:48
 msgid "Population and censuses"
 msgstr "လူဦးရေနှင့် သန်းခေါင်စာရင်း "
 
-#: i18n/extra-strings.php:45
+#: i18n/extra-strings.php:49
 msgid "Social development"
 msgstr "လူမှုဖွံ့ဖြိုးတိုးတက်ရေး "
 
-#: i18n/extra-strings.php:46
+#: i18n/extra-strings.php:50
 msgid "Urban administration and development"
 msgstr "မြို့ပြ စီမံခန့်ခွဲရေးနှင့် ဖွံ့ဖြိုးတိုးတက်မှု"
 
-#: i18n/extra-strings.php:48
+#: i18n/extra-strings.php:52
 msgid ""
 "This work and any original materials produced and published by Open Development {country} herein are licensed "
 "under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles "
@@ -526,61 +546,137 @@ msgstr ""
 "တာဝန်ယူပြီး အသုံးပြုမှုကြောင့် တစ်ဦးချင်းစီ သို့မဟုတ် ပုဂ္ဂလများ၏ဖွံ့ဖြိုးတိုးတက်မှု၊ ပုံစံနှင့် အကြောင်းအရာများဆုံးရှုံးမှု၊အန္တရာယ် ဖြစ်စေမှု သို့မဟုတ် "
 "ပျက်ဆီးစေမှုတို့မဖြစ်အောင် အသုံးပြုရမည်။"
 
-#: i18n/extra-strings.php:53
+#: i18n/extra-strings.php:57
 msgid "Khmer PDF"
 msgstr ""
 
-#: i18n/extra-strings.php:54
+#: i18n/extra-strings.php:58
 msgid "Khmer PDF not available"
 msgstr ""
 
-#: inc/advanced-navigation.php:115 page-data.php:39
+#: i18n/extra-strings.php:59 inc/advanced-navigation.php:293
+msgid "Jan"
+msgstr ""
+
+#: i18n/extra-strings.php:60 inc/advanced-navigation.php:294
+msgid "Feb"
+msgstr ""
+
+#: i18n/extra-strings.php:61 inc/advanced-navigation.php:295
+msgid "Mar"
+msgstr ""
+
+#: i18n/extra-strings.php:62 inc/advanced-navigation.php:296
+msgid "Apr"
+msgstr ""
+
+#: i18n/extra-strings.php:63 inc/advanced-navigation.php:297
+msgid "May"
+msgstr ""
+
+#: i18n/extra-strings.php:64 inc/advanced-navigation.php:298
+msgid "Jun"
+msgstr ""
+
+#: i18n/extra-strings.php:65 inc/advanced-navigation.php:299
+msgid "Jul"
+msgstr ""
+
+#: i18n/extra-strings.php:66 inc/advanced-navigation.php:300
+msgid "Aug"
+msgstr ""
+
+#: i18n/extra-strings.php:67 inc/advanced-navigation.php:301
+msgid "Sep"
+msgstr ""
+
+#: i18n/extra-strings.php:68 inc/advanced-navigation.php:302
+msgid "Oct"
+msgstr ""
+
+#: i18n/extra-strings.php:69 inc/advanced-navigation.php:303
+msgid "Nov"
+msgstr ""
+
+#: i18n/extra-strings.php:70 inc/advanced-navigation.php:304
+msgid "Dec"
+msgstr ""
+
+#: inc/advanced-navigation.php:152 page-data.php:39
 msgid "Text search"
 msgstr "စာသားဖြင့်ရှာဖွေခြင်း"
 
-#: inc/advanced-navigation.php:116 page-data.php:40 page-data.php:138
+#: inc/advanced-navigation.php:153 page-data.php:40 page-data.php:138
 msgid "Type your search here"
 msgstr "သင်ရှာဖွေလိုသည့်အရာကို ဤနေရာတွင်ရိုက်နှိပ်ပါ"
 
-#: inc/advanced-navigation.php:126 inc/utils/content.php:51
-msgid "Categories"
-msgstr "အမျိုးအစားခွဲခြားမှုများ"
+#: inc/advanced-navigation.php:169 inc/live-search/live-search.php:24 inc/utils/content.php:51
+msgid "Topic"
+msgstr "ခေါင်းစဥ်"
 
-#: inc/advanced-navigation.php:127
+#: inc/advanced-navigation.php:173 inc/advanced-navigation.php:178
 msgid "Select categories"
 msgstr "အမျိုးအစားများရွေးချယ်ခြင်း"
 
-#: inc/advanced-navigation.php:157
+#: inc/advanced-navigation.php:198
 msgid "Content type"
 msgstr "အကြောင်းအရာအမျိုးအစား"
 
-#: inc/advanced-navigation.php:158
+#: inc/advanced-navigation.php:199
 msgid "Select content types"
 msgstr "အကြောင်းအရာအမျိုးအစားများရွေးချယ်ခြင်း"
 
-#: inc/advanced-navigation.php:168
+#: inc/advanced-navigation.php:231
 msgid "Date range"
 msgstr "ရက်စွဲအပိုင်းအခြား"
 
-#: inc/advanced-navigation.php:171
+#: inc/advanced-navigation.php:234
 msgid "From"
 msgstr "မှ"
 
-#: inc/advanced-navigation.php:174
+#: inc/advanced-navigation.php:237
 msgid "To"
 msgstr "သို့"
 
-#: inc/advanced-navigation.php:180 page-data.php:143
+#: inc/advanced-navigation.php:244 page-data.php:143
 msgid "Search Filter"
 msgstr "ရှာဖွေမှုကို စစ်ထုတ်ခြင်း"
 
-#: inc/advanced-navigation.php:191 inc/advanced-navigation.php:202
+#: inc/advanced-navigation.php:253 inc/advanced-navigation.php:263
 msgid "Cancel filters"
 msgstr "Filter များကိုဖျက်မည်"
 
-#: inc/advanced-navigation.php:199
+#: inc/advanced-navigation.php:260
 msgid "More filters"
 msgstr "နောက်ထပ် filter များ"
+
+#: inc/advanced-navigation.php:284
+msgid "Su"
+msgstr ""
+
+#: inc/advanced-navigation.php:285
+msgid "Mo"
+msgstr ""
+
+#: inc/advanced-navigation.php:286
+msgid "Tu"
+msgstr ""
+
+#: inc/advanced-navigation.php:287
+msgid "We"
+msgstr ""
+
+#: inc/advanced-navigation.php:288
+msgid "Th"
+msgstr ""
+
+#: inc/advanced-navigation.php:289
+msgid "Fr"
+msgstr ""
+
+#: inc/advanced-navigation.php:290
+msgid "Sa"
+msgstr ""
 
 #: inc/interactive-map.php:27
 msgid "Interactive Map"
@@ -643,10 +739,6 @@ msgstr "Layer settings"
 #: inc/layers.php:35
 msgid "Layer legend"
 msgstr "Layer legend"
-
-#: inc/layers.php:44
-msgid "Layers"
-msgstr "အလွှာများ"
 
 #: inc/layers.php:56
 msgid "Map setup"
@@ -982,10 +1074,6 @@ msgstr "ပိတ်မည် "
 #: inc/live-search/live-search.php:22
 msgid "Showing all results"
 msgstr "ရလဒ်အားလုံးကိုပြသမည်"
-
-#: inc/live-search/live-search.php:24 page-data.php:106
-msgid "Topic"
-msgstr "ခေါင်းစဥ်"
 
 #: inc/live-search/live-search.php:25
 msgid "Map"
@@ -1607,7 +1695,7 @@ msgstr "ထည့်သွင်းမှုအတွက် %s ကိုရှ�
 msgid "Show news on map"
 msgstr ""
 
-#: inc/utils/mapping.php:370
+#: inc/utils/mapping.php:407
 msgid "LEGEND"
 msgstr "LEGEND"
 
@@ -1703,14 +1791,6 @@ msgctxt "reduced date format"
 msgid "m/d/Y"
 msgstr "m/d/Y"
 
-#: loop.php:39
-msgid "<< Previous"
-msgstr "<< နောက်စာမျက်နှာ "
-
-#: loop.php:40
-msgid "Next >>"
-msgstr "ရှေ့စာမျက်နှာ >>"
-
 #: page-data-archive.php:14
 msgid "Access the complete database"
 msgstr "ပြည့်စုံပြီးသား database ကိုရယူမည်"
@@ -1753,6 +1833,10 @@ msgstr ""
 
 #: page-data.php:82
 msgid "Select country"
+msgstr ""
+
+#: page-data.php:106
+msgid "Taxonomy"
 msgstr ""
 
 #: page-data.php:107
@@ -1847,9 +1931,47 @@ msgstr "နောက်ဆုံးရ သတင်းဆောင်းပါ�
 msgid "More on the Land Portal library"
 msgstr ""
 
-#: taxonomy-layer-category.php:8
-msgid "Map catalogue"
-msgstr "မြေပုံ ကတ်တလောက် "
+#~ msgid "Categories"
+#~ msgstr "အမျိုးအစားခွဲခြားမှုများ"
+
+#~ msgid "Hide news icons"
+#~ msgstr "သတင်း icons များ မပြပါနှင့်"
+
+#~ msgid "ODM Related Recent News Widget"
+#~ msgstr "ODM နှင့်ဆက်နွှယ်သော မကြာသေးမီက သတင်း Widget"
+
+#~ msgid "Display ODM the related recent news for the topics"
+#~ msgstr "ခေါင်းစဥ်များအတွက် ODM နှင့်ဆက်နွှယ်သော မကြာသေးမီက သတင်းများကိုပြပါ"
+
+#~ msgid "Related News"
+#~ msgstr "ဆက်နွှယ်သော သတင်းများ"
+
+#~ msgid "Option:"
+#~ msgstr "ရွေးချယ်စရာ"
+
+#~ msgid "Category slugs:"
+#~ msgstr "အမျိုးအစားခွဲများ"
+
+#~ msgid "<< Previous"
+#~ msgstr "<< နောက်စာမျက်နှာ "
+
+#~ msgid "Next >>"
+#~ msgstr "ရှေ့စာမျက်နှာ >>"
+
+#~ msgid "Other"
+#~ msgstr "အခြား"
+
+#~ msgid "Related resources"
+#~ msgstr "ဆက်နွှယ်မှုရှိသောအရင်းအမြစ်များ"
+
+#~ msgid "Read more..."
+#~ msgstr "ဆက်လက်ဖတ်ရှုမည်"
+
+#~ msgid "Show resources details"
+#~ msgstr "အရင်းမြစ်များအကြောင်းအသေးစိတ်ပြမည်"
+
+#~ msgid "Hide resources details"
+#~ msgstr "အရင်းမြစ်များအကြောင်းအသေးစိတ်မပြပါ"
 
 #~ msgid "Hide news icons"
 #~ msgstr "သတင်း icons များ မပြပါနှင့်"
