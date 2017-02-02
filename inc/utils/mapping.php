@@ -217,23 +217,32 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 }
 
 //Query all baselayers' post meta into an array
-function query_get_layer_posts($term_id, $num=-1, $include_children =false,
-$exclude_cats =""){
-	$layer_taxonomy = "layer-category";
-	if($exclude_cats != ""){
+function query_get_layer_posts($term_id, $num = -1, $exclude_cats = null, $filter_arr = null, $layer_taxonomy=null){
+	$layer_taxonomy = $layer_taxonomy? $layer_taxonomy : "layer-category";
+	if($filter_arr){
+		$filter_string = isset($filter_arr['filter_s'])? $filter_arr['filter_s'] : null;
+		$filter_taxonomy = isset($filter_arr['filter_taxonomy'])? $filter_arr['filter_taxonomy'] : null;
+		if($filter_taxonomy):
+			$taxonomy_name = array_keys($filter_taxonomy);
+			$selected_terms = $filter_taxonomy[$taxonomy_name[0]];
+			$term_id = $selected_terms;
+		endif;
+	}
+
+	if($exclude_cats){
 		$tax_query = array(
 	 										'relation' => 'AND',
 	 										 array(
 	 											 'taxonomy' => $layer_taxonomy,
 	 											 'field' => 'id',
-	 											 'terms' => $term->term_id,
+	 											 'terms' => $term_id,
 	 											 'include_children' => false,
 	 											 'operator' => 'IN'
 	 										 ),
 	 										 array(
 	 											 'taxonomy' => $layer_taxonomy,
 	 											 'field' => 'id',
-	 											 'terms' => $exclude_posts_in_cats,
+	 											 'terms' => $exclude_cats,
 	 											 'operator' => 'NOT IN'
 	 											)
 	 									 );
@@ -247,8 +256,10 @@ $exclude_cats =""){
 											)
 						  		);
 	}
+
 	$args_layer = array(
 		'post_type' => 'map-layer',
+    's' => $filter_string,
 		'orderby'   => 'name',
 		'order'   => 'asc',
 		'posts_per_page' => $num,
@@ -258,8 +269,17 @@ $exclude_cats =""){
 	return $layers;
 }
 
-function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='', 			$layer_taxonomy='layer-category'){
-	//List cetegory and layer by cat for menu items
+function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='', $filter_arr = null, $layer_taxonomy=null){
+	$layer_taxonomy = $layer_taxonomy?$layer_taxonomy : "layer-category";
+	if(array_filter($filter_arr)){
+		$filter_taxonomy = isset($filter_arr['filter_taxonomy'])? $filter_arr['filter_taxonomy'] : null;
+		if($filter_taxonomy):
+			$taxonomy_name = array_keys($filter_taxonomy);
+			$selected_terms = $filter_taxonomy[$taxonomy_name[0]];
+			$term_id = $selected_terms;
+		endif;
+	}
+
 	if($term_id == 0){
 		$layer_term_args= array(
 			'parent' => $term_id,
@@ -269,71 +289,68 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 		);
 		$terms_layer = get_terms($layer_taxonomy, $layer_term_args);
 		if ($terms_layer) {
-			foreach( $terms_layer as $term ) {
-				$query_layer = query_get_layer_posts($term->term_id, false, $exclude_cats);
-				if($query_layer->have_posts() ){
-					while ( $query_layer->have_posts() ) : $query_layer->the_post();
-						if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-								$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
-						}
-					endwhile;
-					wp_reset_postdata();
-				} //$query_layer->have_posts
+			foreach( $terms_layer as $term ):
+				$query_layers[] = query_get_layer_posts_by_terms($term->term_id, false, $exclude_cats, $filter_arr);
+		  endforeach;
 
-				//Get Layers of subcategory
-				$children_term = get_terms($layer_taxonomy, array('parent' => $term->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
-				if ( !empty($children_term) ) {
-					foreach($children_term as $child){
-						$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
-
-						//check if the sub category has children
-						$has_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
-						if ( !empty($has_children) ) {
-							foreach($has_children as $sub_child){
-								$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
-							}
-						}
-					}//foreach
-				}//if empty($children_term) )
-			}//foreach $terms_layer
-			//Sort Map Catalogue by name
-			$map_catalogue = $layers_catalogue;
-			$tmp_arr = array();
-			foreach ($map_catalogue as $key => $row) {
-				$tmp_arr[$key] = $row->post_title;
+			foreach($query_layers as $layers ) {
+				foreach($layers as $key => $layer) {
+					$layers_catalogue[$key] = $layer;
+				}
 			}
+
+			$map_catalogue = array_filter($layers_catalogue);
+			$tmp_arr = array();
+			//Sort Map Catalogue by name
+			if($map_catalogue):
+				foreach ($map_catalogue as $key => $row):
+					$tmp_arr[$key] = $row->post_title;
+				endforeach;
+			endif;
 			array_multisort($tmp_arr, SORT_ASC, $map_catalogue);
-			//unset($map_catalogue[0]);
 
 			return $map_catalogue;
 		}//if terms_layer
 	}else{
-		$query_layer = query_get_layer_posts($term_id, false, $exclude_cats);
-		if($query_layer->have_posts() ){
-			while ( $query_layer->have_posts() ) : $query_layer->the_post();
-					if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
-						$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
-				}
-			endwhile;
-			wp_reset_postdata();
+		if(is_array($term_id)){
+			foreach ($term_id as $key => $id):
+				$map_catalogue = query_get_layer_posts_by_terms($id, false, $exclude_cats, $filter_arr, $layer_taxonomy);
+			endforeach;
+		}else {
+				$map_catalogue = query_get_layer_posts_by_terms($term_id, false, $exclude_cats, $filter_arr, $layer_taxonomy);
 		}
-		//Get Layers/posts grouped by subcategory of term id
-		$children_term = get_terms("layer-category", array('parent' => $term_id, 'hide_empty' => 0, 'orderby' => 'name') );
-		if(!empty($children_term)) {
-			foreach($children_term as $child){
-				$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id);
-				//check if the sub category has children
-				$has_children = get_terms("layer-category", array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
-				if ( !empty($has_children) ) {
-					foreach($has_children as $sub_child){
-						$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id);
-					}
-				}
-			}//foreach
-		}//if empty($children_term) )
-		return $layers_catalogue;
+
 	}//if term_id
-	return;
+	return $map_catalogue;
+}
+
+function query_get_layer_posts_by_terms($term_id, $num = -1, $exclude_cats = null, $filter_arr = null, $layer_taxonomy=null){
+	$layer_taxonomy = $layer_taxonomy?$layer_taxonomy:"layer-category";
+	$layers_catalogue = array();
+	$query_layer = query_get_layer_posts($term_id, false, $exclude_cats, $filter_arr, $layer_taxonomy);
+	if($query_layer->have_posts() ){
+		while ( $query_layer->have_posts() ) : $query_layer->the_post();
+				if(posts_for_both_and_current_languages(get_the_ID(), odm_language_manager()->get_current_language())){
+					$layers_catalogue[get_the_ID()] = get_layer_information_in_array(get_the_ID());
+			}
+		endwhile;
+		wp_reset_postdata();
+	}
+	//Get Layers/posts grouped by subcategory of term id
+	$children_term = get_terms($layer_taxonomy, array('parent' => $term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+	if(!empty($children_term)) {
+		foreach($children_term as $child){
+			$layers_catalogue[$child->term_id] = get_layers_of_sub_category( $child->term_id, $filter_arr);
+			//check if the sub category has children
+			$has_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+			if ( !empty($has_children) ) {
+				foreach($has_children as $sub_child){
+					$layers_catalogue[$sub_child->term_id] = get_layers_of_sub_category( $sub_child->term_id, $filter_arr);
+				}
+			}
+		}//foreach
+	}//if empty($children_term) )
+	return $layers_catalogue;
 }
 
 function get_sort_posts_by_post_title($array_layers){
@@ -564,12 +581,14 @@ function get_layer_information_in_array($post_ID){
 	return $layer;
 }
 
-function get_layers_of_sub_category( $child_id, $layer_taxonomy= "layer-category", $post_type = "map-layer") {
+function get_layers_of_sub_category( $child_id, $filter_arr = null, $layer_taxonomy= "layer-category", $post_type = "map-layer") {
+	$filter_string = isset($filter_arr['filter_s'])? $filter_arr['filter_s'] : null;
+
 	if($post_type == "map-layer"){
 		$args_get_post = array(
 		    'post_type' => $post_type,
+		    's' => $filter_string,
 				'orderby'   => 'name',
-				//'order'   => 'asc',
 		    'tax_query' => array(
 		                        array(
 		                          'taxonomy' => $layer_taxonomy,
