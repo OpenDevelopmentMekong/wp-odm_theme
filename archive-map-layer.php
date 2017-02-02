@@ -24,7 +24,7 @@
 															'con_selector' => false,
 															'date_rang' => true,
 															'post_type' => get_post_type(),
-															//'taxonomy' => "layer-category",
+															'taxonomy' => "layer-category",
 															'depth' => 1
 														 );
 					odm_adv_nav_filters($filter_arg);
