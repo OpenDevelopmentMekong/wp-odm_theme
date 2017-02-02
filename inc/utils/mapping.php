@@ -256,7 +256,6 @@ function query_get_layer_posts($term_id, $num = -1, $exclude_cats = null, $filte
 											)
 						  		);
 	}
-
 	$args_layer = array(
 		'post_type' => 'map-layer',
     's' => $filter_string,
@@ -269,12 +268,17 @@ function query_get_layer_posts($term_id, $num = -1, $exclude_cats = null, $filte
 	return $layers;
 }
 
-function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='', $filter_arr = null, $layer_taxonomy=null){
-	$layer_taxonomy = $layer_taxonomy?$layer_taxonomy : "layer-category";
+function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='', $filter_arr = null, $layer_taxonomy=null) {
+	$layer_taxonomy = $layer_taxonomy? $layer_taxonomy : "layer-category";
+	if(isset($_GET['filter_category']) && !empty($_GET['filter_category'])):
+		$layer_taxonomy = "category";
+	endif;
+
 	if(array_filter($filter_arr)){
 		$filter_taxonomy = isset($filter_arr['filter_taxonomy'])? $filter_arr['filter_taxonomy'] : null;
 		if($filter_taxonomy):
 			$taxonomy_name = array_keys($filter_taxonomy);
+			$layer_taxonomy = $taxonomy_name[0];
 			$selected_terms = $filter_taxonomy[$taxonomy_name[0]];
 			$term_id = $selected_terms;
 		endif;
@@ -290,7 +294,7 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 		$terms_layer = get_terms($layer_taxonomy, $layer_term_args);
 		if ($terms_layer) {
 			foreach( $terms_layer as $term ):
-				$query_layers[] = query_get_layer_posts_by_terms($term->term_id, false, $exclude_cats, $filter_arr);
+				$query_layers[] = query_get_layer_posts_by_terms($term->term_id, false, $exclude_cats, $filter_arr, $layer_taxonomy);
 		  endforeach;
 
 			foreach($query_layers as $layers ) {
