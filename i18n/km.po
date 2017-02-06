@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-02-01 22:05+0700\n"
-"PO-Revision-Date: 2017-02-01 22:08+0700\n"
+"POT-Creation-Date: 2017-02-02 17:01+0100\n"
+"PO-Revision-Date: 2017-02-02 17:01+0100\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -45,10 +45,6 @@ msgstr ""
 #: 404.php:26
 msgid "Contact us"
 msgstr "ទាក់ទង​មក​​យើងខ្ញុំ"
-
-#: ______taxonomy-layer-category.php:8
-msgid "Map catalogue"
-msgstr "ការតាឡុកផែនទី"
 
 #: advanced-search.php:31
 msgid "Data results"
@@ -95,7 +91,7 @@ msgid "Stories"
 msgstr "ដំណើររឿង"
 
 #: archive-tabular.php:8
-msgid "Tabular pages"
+msgid "Database"
 msgstr ""
 
 #: archive-topic.php:8
@@ -157,8 +153,8 @@ msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វ
 msgid "Page"
 msgstr "ទំព័រ"
 
-
-#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:90 inc/widgets/odm-contents-same-category-widget.php:126 inc/widgets/odm-custom-posts-widget.php:81
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:90
+#: inc/widgets/odm-contents-same-category-widget.php:126 inc/widgets/odm-custom-posts-widget.php:81
 #: inc/widgets/odm-custom-posts-widget.php:111
 msgid "More..."
 msgstr "បន្ថែម..."
@@ -226,101 +222,101 @@ msgstr ""
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:205
+#: functions.php:207
 msgid "stories"
 msgstr "ដំណើររឿង"
 
-#: functions.php:207
+#: functions.php:209
 msgid "Copy the embed code"
 msgstr "ថតចម្លងលេខកូដបង្កប់"
 
-#: functions.php:208 loop-latest.php:21
+#: functions.php:210 loop-latest.php:21
 msgid "Share"
 msgstr "ចែករំលែក"
 
-#: functions.php:209
+#: functions.php:211
 msgid "Print"
 msgstr "បោះពុម្ព"
 
-#: functions.php:220 loop-latest.php:19
+#: functions.php:222 loop-latest.php:19
 msgid "Read more"
 msgstr "អានបន្ថែម"
 
-#: functions.php:222
+#: functions.php:224
 msgid "Open slideshow"
 msgstr "ចាក់បញ្ចាំងស្លាយ"
 
-#: functions.php:223
+#: functions.php:225
 msgid "Watch video gallery"
 msgstr "ទស្សនាវិចិត្រសាលវីដេអូ"
 
-#: functions.php:224
+#: functions.php:226
 msgid "Watch video"
 msgstr "មើលវីដេអូ"
 
-#: functions.php:225
+#: functions.php:227
 msgid "View image gallery"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:226
+#: functions.php:228
 msgid "View fullscreen image"
 msgstr "ទស្សនារូបភាពទាំងមូល"
 
-#: functions.php:227
+#: functions.php:229
 msgid "View infographic"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:228
+#: functions.php:230
 msgid "View infographics"
 msgstr "ទស្សនាវិចិត្រសាលរូបភាព"
 
-#: functions.php:258
+#: functions.php:261
 msgid "default"
 msgstr ""
 
-#: functions.php:305
+#: functions.php:308
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:306
+#: functions.php:309
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:307
+#: functions.php:310
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:308
+#: functions.php:311
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:309
+#: functions.php:312
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:310
+#: functions.php:313
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:311
+#: functions.php:314
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:312
+#: functions.php:315
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:313
+#: functions.php:316
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:317
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:315
+#: functions.php:318
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
@@ -396,7 +392,7 @@ msgstr ""
 msgid "Timelines"
 msgstr ""
 
-#: i18n/extra-strings.php:22 inc/layers.php:44
+#: i18n/extra-strings.php:22 inc/layers.php:48
 msgid "Layers"
 msgstr ""
 
@@ -549,127 +545,127 @@ msgstr "ភាសា​ខ្មែរ​ PDF"
 msgid "Khmer PDF not available"
 msgstr "ភាសា​ខ្មែរ​ពុំ​អាច​រក​បាន"
 
-#: i18n/extra-strings.php:59 inc/advanced-navigation.php:293
+#: i18n/extra-strings.php:59 inc/advanced-navigation.php:296
 msgid "Jan"
 msgstr "​មករា​"
 
-#: i18n/extra-strings.php:60 inc/advanced-navigation.php:294
+#: i18n/extra-strings.php:60 inc/advanced-navigation.php:297
 msgid "Feb"
 msgstr "កុម្ភៈ"
 
-#: i18n/extra-strings.php:61 inc/advanced-navigation.php:295
+#: i18n/extra-strings.php:61 inc/advanced-navigation.php:298
 msgid "Mar"
 msgstr "មិនា"
 
-#: i18n/extra-strings.php:62 inc/advanced-navigation.php:296
+#: i18n/extra-strings.php:62 inc/advanced-navigation.php:299
 msgid "Apr"
 msgstr "មេសា"
 
-#: i18n/extra-strings.php:63 inc/advanced-navigation.php:297
+#: i18n/extra-strings.php:63 inc/advanced-navigation.php:300
 msgid "May"
 msgstr "ឧសភា"
 
-#: i18n/extra-strings.php:64 inc/advanced-navigation.php:298
+#: i18n/extra-strings.php:64 inc/advanced-navigation.php:301
 msgid "Jun"
 msgstr "មិថុនា"
 
-#: i18n/extra-strings.php:65 inc/advanced-navigation.php:299
+#: i18n/extra-strings.php:65 inc/advanced-navigation.php:302
 msgid "Jul"
 msgstr "កក្កដា"
 
-#: i18n/extra-strings.php:66 inc/advanced-navigation.php:300
+#: i18n/extra-strings.php:66 inc/advanced-navigation.php:303
 msgid "Aug"
 msgstr "សីហា"
 
-#: i18n/extra-strings.php:67 inc/advanced-navigation.php:301
+#: i18n/extra-strings.php:67 inc/advanced-navigation.php:304
 msgid "Sep"
 msgstr "កញ្ញា"
 
-#: i18n/extra-strings.php:68 inc/advanced-navigation.php:302
+#: i18n/extra-strings.php:68 inc/advanced-navigation.php:305
 msgid "Oct"
 msgstr "តុលា"
 
-#: i18n/extra-strings.php:69 inc/advanced-navigation.php:303
+#: i18n/extra-strings.php:69 inc/advanced-navigation.php:306
 msgid "Nov"
 msgstr "វិច្ឆិកា"
 
-#: i18n/extra-strings.php:70 inc/advanced-navigation.php:304
+#: i18n/extra-strings.php:70 inc/advanced-navigation.php:307
 msgid "Dec"
 msgstr "ធ្នូ"
 
-#: inc/advanced-navigation.php:152 page-data.php:39
+#: inc/advanced-navigation.php:154 page-data.php:39
 msgid "Text search"
 msgstr "ពាក្យស្វែងរក"
 
-#: inc/advanced-navigation.php:153 page-data.php:40 page-data.php:138
+#: inc/advanced-navigation.php:155 page-data.php:40 page-data.php:138
 msgid "Type your search here"
 msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
-#: inc/advanced-navigation.php:169 inc/live-search/live-search.php:24 inc/utils/content.php:51
+#: inc/advanced-navigation.php:169 inc/live-search/live-search.php:24 inc/utils/content.php:51 page-data.php:106
 msgid "Topic"
 msgstr "ប្រធានបទ"
 
-#: inc/advanced-navigation.php:173 inc/advanced-navigation.php:178
+#: inc/advanced-navigation.php:174 inc/advanced-navigation.php:181
 msgid "Select categories"
 msgstr "ជ្រើសរើសប្រធានបទ"
 
-#: inc/advanced-navigation.php:198
+#: inc/advanced-navigation.php:201
 msgid "Content type"
 msgstr "ប្រភេទអត្ថបទ"
 
-#: inc/advanced-navigation.php:199
+#: inc/advanced-navigation.php:202
 msgid "Select content types"
 msgstr "ជ្រើសរើសប្រភេទអត្ថបទ"
 
-#: inc/advanced-navigation.php:231
+#: inc/advanced-navigation.php:234
 msgid "Date range"
 msgstr "អំឡុងពេល"
 
-#: inc/advanced-navigation.php:234
+#: inc/advanced-navigation.php:237
 msgid "From"
 msgstr "ពី"
 
-#: inc/advanced-navigation.php:237
+#: inc/advanced-navigation.php:240
 msgid "To"
 msgstr "ដល់"
 
-#: inc/advanced-navigation.php:244 page-data.php:143
+#: inc/advanced-navigation.php:247 page-data.php:143
 msgid "Search Filter"
 msgstr "ស្វែងរកការជ្រើសរើស"
 
-#: inc/advanced-navigation.php:253 inc/advanced-navigation.php:263
+#: inc/advanced-navigation.php:256 inc/advanced-navigation.php:266
 msgid "Cancel filters"
 msgstr "ជ្រើសរើសជាថ្មី"
 
-#: inc/advanced-navigation.php:260
+#: inc/advanced-navigation.php:263
 msgid "More filters"
 msgstr "ជ្រើសរើសបន្ថែម"
 
-#: inc/advanced-navigation.php:284
+#: inc/advanced-navigation.php:287
 msgid "Su"
 msgstr "អា"
 
-#: inc/advanced-navigation.php:285
+#: inc/advanced-navigation.php:288
 msgid "Mo"
 msgstr "ច"
 
-#: inc/advanced-navigation.php:286
+#: inc/advanced-navigation.php:289
 msgid "Tu"
 msgstr "អ"
 
-#: inc/advanced-navigation.php:287
+#: inc/advanced-navigation.php:290
 msgid "We"
 msgstr "ពុ"
 
-#: inc/advanced-navigation.php:288
+#: inc/advanced-navigation.php:291
 msgid "Th"
 msgstr "ព្រ"
 
-#: inc/advanced-navigation.php:289
+#: inc/advanced-navigation.php:292
 msgid "Fr"
 msgstr "សុ"
 
-#: inc/advanced-navigation.php:290
+#: inc/advanced-navigation.php:293
 msgid "Sa"
 msgstr "ស"
 
@@ -727,322 +723,327 @@ msgstr ""
 msgid "New Layer category Name"
 msgstr ""
 
-#: inc/layers.php:26
+#: inc/layers.php:30
 msgid "Layer settings"
 msgstr ""
 
-#: inc/layers.php:35
+#: inc/layers.php:39
 msgid "Layer legend"
 msgstr ""
 
-#: inc/layers.php:56
+#: inc/layers.php:60
 msgid "Map setup"
 msgstr ""
 
-#: inc/layers.php:69
+#: inc/layers.php:73
 msgid "Enter your HTML code to use as legend on the layer (English)"
 msgstr ""
 
-#: inc/layers.php:72
+#: inc/layers.php:76
 msgid "Enter your HTML code to use as legend on the layer ("
 msgstr ""
 
-#: inc/layers.php:87
+#: inc/layers.php:91
 #, php-format
 msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
 msgstr ""
 
-#: inc/layers.php:89
+#: inc/layers.php:93
 #, php-format
 msgid " You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click here</a> to create your first!"
 msgstr ""
 
-#: inc/layers.php:101
+#: inc/layers.php:105
 msgid "Search for layers"
 msgstr ""
 
-#: inc/layers.php:104
+#: inc/layers.php:108
 msgid "Latest layers"
 msgstr ""
 
-#: inc/layers.php:108
+#: inc/layers.php:112
 msgid "Search results"
 msgstr ""
 
-#: inc/layers.php:112
+#: inc/layers.php:116
 msgid "You are using all of your layers."
 msgstr ""
 
-#: inc/layers.php:116
+#: inc/layers.php:120
 msgid "No layers were found."
 msgstr ""
 
-#: inc/layers.php:124
+#: inc/layers.php:128
 msgid "Add layer"
 msgstr ""
 
-#: inc/layers.php:124
+#: inc/layers.php:128
 msgid "Add"
 msgstr ""
 
-#: inc/layers.php:129
+#: inc/layers.php:133
 msgid "Selected layers"
 msgstr ""
 
-#: inc/layers.php:132
+#: inc/layers.php:136
 msgid "Group layers by showing category"
 msgstr ""
 
-#: inc/layers.php:144
+#: inc/layers.php:148
 msgid "Layer options"
 msgstr ""
 
-#: inc/layers.php:147
+#: inc/layers.php:151
 msgid "Enable"
 msgstr ""
 
-#: inc/layers.php:149
+#: inc/layers.php:153
 msgid "Disable"
 msgstr ""
 
-#: inc/layers.php:151
+#: inc/layers.php:155
 msgid "Swapable"
 msgstr ""
 
-#: inc/layers.php:156
+#: inc/layers.php:160
 msgid "Hidden"
 msgstr ""
 
-#: inc/layers.php:160
+#: inc/layers.php:164
 msgid "Default swap option"
 msgstr ""
 
-#: inc/layers.php:165
+#: inc/layers.php:169
 msgid "Remove layer"
 msgstr ""
 
-#: inc/layers.php:165
+#: inc/layers.php:169
 msgid "Remove"
 msgstr ""
 
-#: inc/layers.php:346
+#: inc/layers.php:350
 msgid "Download Page URL"
 msgstr ""
 
-#: inc/layers.php:349
+#: inc/layers.php:353
 msgid "Download URL (English)"
 msgstr ""
 
-#: inc/layers.php:352 inc/layers.php:360
+#: inc/layers.php:356 inc/layers.php:364
 msgid "A link to a dataset's page on CKAN"
 msgstr ""
 
-#: inc/layers.php:357
+#: inc/layers.php:361
 msgid "Download URL ("
 msgstr ""
 
-#: inc/layers.php:368
+#: inc/layers.php:372
 msgid "Profile Page URL"
 msgstr ""
 
-#: inc/layers.php:371
+#: inc/layers.php:375
 msgid "Profile Page URL (English)"
 msgstr ""
 
-#: inc/layers.php:374 inc/layers.php:382
+#: inc/layers.php:378 inc/layers.php:386
 msgid "A link to profile page on Wordpress"
 msgstr ""
 
-#: inc/layers.php:379
+#: inc/layers.php:383
 msgid "Profile Page URL ("
 msgstr ""
 
-#: inc/layers.php:390
+#: inc/layers.php:394
 msgid "Layer type"
 msgstr ""
 
-#: inc/layers.php:393
+#: inc/layers.php:397
 msgid "Tile layer"
 msgstr ""
 
-#: inc/layers.php:395
+#: inc/layers.php:399
 msgid "WMS layer"
 msgstr ""
 
-#: inc/layers.php:398
+#: inc/layers.php:402
 msgid "MapBox"
 msgstr ""
 
-#: inc/layers.php:401
+#: inc/layers.php:405
 msgid "CartoDB"
 msgstr ""
 
-#: inc/layers.php:414
+#: inc/layers.php:418
 msgid "URL"
 msgstr ""
 
-#: inc/layers.php:416
+#: inc/layers.php:420
 msgid "http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr ""
 
-#: inc/layers.php:417
+#: inc/layers.php:421
 msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr ""
 
-#: inc/layers.php:421
+#: inc/layers.php:425
 msgid "UTFGrid URL (optional)"
 msgstr ""
 
-#: inc/layers.php:423
+#: inc/layers.php:427
 msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: inc/layers.php:424
+#: inc/layers.php:428
 msgid "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
-#: inc/layers.php:428
+#: inc/layers.php:432
 msgid "UTFGrid Template (optional)"
 msgstr ""
 
-#: inc/layers.php:431 inc/layers.php:582
+#: inc/layers.php:435 inc/layers.php:586
 msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
 msgstr ""
 
-#: inc/layers.php:435
+#: inc/layers.php:439
 msgid "TMS"
 msgstr ""
 
-#: inc/layers.php:437
+#: inc/layers.php:441
 msgid "Enable TMS"
 msgstr ""
 
-#: inc/layers.php:438
+#: inc/layers.php:442
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
 msgstr ""
 
-#: inc/layers.php:454
+#: inc/layers.php:458
 msgid "WMS Service URL"
 msgstr ""
 
-#: inc/layers.php:456
+#: inc/layers.php:460
 msgid "http://{geoserver adress & port}/geoserver/wms"
 msgstr ""
 
-#: inc/layers.php:457
+#: inc/layers.php:461
 msgid "Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 msgstr ""
 
-#: inc/layers.php:461
+#: inc/layers.php:465
 msgid "Workspaces:Layer Name (English)"
 msgstr ""
 
-#: inc/layers.php:463 inc/layers.php:471
+#: inc/layers.php:467 inc/layers.php:475
 msgid "Workspaces and Layer name\""
 msgstr ""
 
-#: inc/layers.php:464
-msgid "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
+#: inc/layers.php:468
+msgid ""
+"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
+"strong> is layer name."
 msgstr ""
 
-#: inc/layers.php:469
+#: inc/layers.php:473
 msgid "Workspaces:Layer Name ("
 msgstr ""
 
-#: inc/layers.php:472
-msgid "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
+#: inc/layers.php:476
+msgid ""
+"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
+"strong> is layer name."
 msgstr ""
 
-#: inc/layers.php:479
+#: inc/layers.php:483
 msgid "WMS format (optional)"
 msgstr ""
 
-#: inc/layers.php:481
+#: inc/layers.php:485
 msgid "image/png"
 msgstr ""
 
-#: inc/layers.php:482
+#: inc/layers.php:486
 msgid "E.g.: image/png or image/jpeg"
 msgstr ""
 
-#: inc/layers.php:486 inc/layers.php:489
+#: inc/layers.php:490 inc/layers.php:493
 msgid "Transparent"
 msgstr ""
 
-#: inc/layers.php:490
+#: inc/layers.php:494
 msgid "Enable it to make transparent the layer of WMS."
 msgstr ""
 
-#: inc/layers.php:499
+#: inc/layers.php:503
 msgid "MapBox ID"
 msgstr ""
 
-#: inc/layers.php:502
+#: inc/layers.php:506
 msgid "MapBox map ID. E.g.: examples.map-20v6611k"
 msgstr ""
 
-#: inc/layers.php:526
+#: inc/layers.php:530
 msgid "Visualization type"
 msgstr ""
 
-#: inc/layers.php:529
+#: inc/layers.php:533
 msgid "Visualization"
 msgstr ""
 
-#: inc/layers.php:531
+#: inc/layers.php:535
 msgid "Advanced (build from your tables)"
 msgstr ""
 
-#: inc/layers.php:531
+#: inc/layers.php:535
 msgid "coming soon"
 msgstr ""
 
-#: inc/layers.php:535
+#: inc/layers.php:539
 msgid "CartoDB URL (English)"
 msgstr ""
 
-#: inc/layers.php:538 inc/layers.php:546
-msgid "CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+#: inc/layers.php:542 inc/layers.php:550
+msgid ""
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
-#: inc/layers.php:543
+#: inc/layers.php:547
 msgid "CartoDB URL ("
 msgstr ""
 
-#: inc/layers.php:551
+#: inc/layers.php:555
 msgid "Username"
 msgstr ""
 
-#: inc/layers.php:554
+#: inc/layers.php:558
 msgid "Your CartoDB username."
 msgstr ""
 
-#: inc/layers.php:558
+#: inc/layers.php:562
 msgid "Table"
 msgstr ""
 
-#: inc/layers.php:561
+#: inc/layers.php:565
 msgid "The CartoDB table you'd like to visualize."
 msgstr ""
 
-#: inc/layers.php:565
+#: inc/layers.php:569
 msgid "Where (optional)"
 msgstr ""
 
-#: inc/layers.php:568
+#: inc/layers.php:572
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
 msgstr ""
 
-#: inc/layers.php:572
+#: inc/layers.php:576
 msgid "CartoCSS"
 msgstr ""
 
-#: inc/layers.php:575
+#: inc/layers.php:579
 #, php-format
 msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr ""
 
-#: inc/layers.php:579
+#: inc/layers.php:583
 msgid "Template"
 msgstr ""
 
@@ -1536,8 +1537,8 @@ msgstr ""
 msgid "(Add the post type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
-
-#: inc/theme-options.php:220 inc/theme-options.php:223 inc/theme-options.php:230 inc/theme-options.php:233 inc/theme-options.php:292
+#: inc/theme-options.php:220 inc/theme-options.php:223 inc/theme-options.php:230 inc/theme-options.php:233
+#: inc/theme-options.php:292
 msgid "None"
 msgstr ""
 
@@ -1678,7 +1679,7 @@ msgstr ""
 msgid "Show news on map"
 msgstr "បង្ហាញព័ត៍មាននៅលើផែនទី"
 
-#: inc/utils/mapping.php:407
+#: inc/utils/mapping.php:391
 msgid "LEGEND"
 msgstr "សញ្ញាផែនទី"
 
@@ -1702,8 +1703,8 @@ msgstr ""
 msgid "Display other content from other post types tagged with the same categories as the one where the widget is integrated."
 msgstr ""
 
-
-#: inc/widgets/odm-contents-same-category-widget.php:154 inc/widgets/odm-custom-posts-widget.php:164 inc/widgets/odm-taxonomy-widget.php:222
+#: inc/widgets/odm-contents-same-category-widget.php:154 inc/widgets/odm-custom-posts-widget.php:164
+#: inc/widgets/odm-taxonomy-widget.php:222
 msgid "Title:"
 msgstr ""
 
@@ -1860,19 +1861,27 @@ msgstr "មើលឯកសារច្បាប់បន្ថែម"
 msgid "Please provide an id as parameter"
 msgstr ""
 
-#: page-dataset-detail.php:27
-msgid "Download metadata"
-msgstr "ទាញយកមេតានៃទិន្នន័យ"
-
 #: page-dataset-detail.php:29
-msgid "XML"
-msgstr ""
-
-#: page-dataset-detail.php:30
-msgid "JSON"
+msgid "Manage on CKAN"
 msgstr ""
 
 #: page-dataset-detail.php:31
+msgid "Manage"
+msgstr ""
+
+#: page-dataset-detail.php:39
+msgid "Download metadata"
+msgstr "ទាញយកមេតានៃទិន្នន័យ"
+
+#: page-dataset-detail.php:41
+msgid "XML"
+msgstr ""
+
+#: page-dataset-detail.php:42
+msgid "JSON"
+msgstr ""
+
+#: page-dataset-detail.php:43
 msgid "RDF"
 msgstr ""
 
@@ -1907,6 +1916,10 @@ msgstr "ព័ត៌មានថ្មីបំផុត"
 #: single-topic.php:68
 msgid "More on the Land Portal library"
 msgstr ""
+
+#: taxonomy-layer-category.php:8
+msgid "Map catalogue"
+msgstr "ការតាឡុកផែនទី"
 
 #~ msgid "Categories"
 #~ msgstr "ប្រធានបទ"

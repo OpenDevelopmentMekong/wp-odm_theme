@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-02-01 22:17+0700\n"
-"PO-Revision-Date: 2017-02-01 22:18+0700\n"
+"POT-Creation-Date: 2017-02-02 17:00+0100\n"
+"PO-Revision-Date: 2017-02-02 17:00+0100\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/"
 "teams/27158/vi/)\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -48,10 +48,6 @@ msgstr ""
 #: 404.php:26
 msgid "Contact us"
 msgstr "Liên hệ"
-
-#: ______taxonomy-layer-category.php:8
-msgid "Map catalogue"
-msgstr "Danh mục bản đồ"
 
 #: advanced-search.php:31
 msgid "Data results"
@@ -99,8 +95,8 @@ msgid "Stories"
 msgstr ""
 
 #: archive-tabular.php:8
-msgid "Tabular pages"
-msgstr "Trang bảng biểu"
+msgid "Database"
+msgstr ""
 
 #: archive-topic.php:8
 msgid "Topics"
@@ -236,102 +232,101 @@ msgstr ""
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:204
+#: functions.php:207
 msgid "stories"
 msgstr ""
 
-#: functions.php:206
+#: functions.php:209
 msgid "Copy the embed code"
 msgstr "Sao chép mã nhúng"
 
-#: functions.php:207 loop-latest.php:21
+#: functions.php:210 loop-latest.php:21
 msgid "Share"
 msgstr "Chia sẻ "
 
-#: functions.php:208
+#: functions.php:211
 msgid "Print"
 msgstr "In "
 
-#: functions.php:219 loop-latest.php:19
+#: functions.php:222 loop-latest.php:19
 msgid "Read more"
 msgstr "Đọc tiếp "
 
-#: functions.php:221
+#: functions.php:224
 msgid "Open slideshow"
 msgstr "Mở trình chiếu"
 
-#: functions.php:222
+#: functions.php:225
 msgid "Watch video gallery"
 msgstr "Xem thư viện video "
 
-#: functions.php:223
+#: functions.php:226
 msgid "Watch video"
 msgstr "Xem video "
 
-#: functions.php:224
+#: functions.php:227
 msgid "View image gallery"
 msgstr "Xem thư viện ảnh "
 
-#: functions.php:225
+#: functions.php:228
 msgid "View fullscreen image"
 msgstr "Xem ở chế độ toàn màn hình"
 
-#: functions.php:226
+#: functions.php:229
 msgid "View infographic"
 msgstr "Xem ảnh đồ họa"
 
-#: functions.php:227
+#: functions.php:230
 msgid "View infographics"
 msgstr "Xem đồ họa "
 
-#: functions.php:259
+#: functions.php:261
 msgid "default"
 msgstr ""
 
-#: functions.php:306
+#: functions.php:308
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "Nguồn tin "
 
-
-#: functions.php:307
+#: functions.php:309
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "Nguồn tin"
 
-#: functions.php:308
+#: functions.php:310
 msgid "Search News Source"
 msgstr "Tìm kiếm nguồn tin"
 
-#: functions.php:309
+#: functions.php:311
 msgid "All News Sources"
 msgstr "Tất cả nguồn tin "
 
-#: functions.php:310
+#: functions.php:312
 msgid "Parent News Source"
 msgstr "Nguồn tin gốc"
 
-#: functions.php:311
+#: functions.php:313
 msgid "Parent News Source:"
 msgstr "Nguồn tin gốc:"
 
-#: functions.php:312
+#: functions.php:314
 msgid "Edit News Source"
 msgstr "Sửa nguồn tin "
 
-#: functions.php:313
+#: functions.php:315
 msgid "Update News Source"
 msgstr "Cập nhật nguồn tin"
 
-#: functions.php:314
+#: functions.php:316
 msgid "Add New News Source"
 msgstr "Bổ sung nguồn tin"
 
-#: functions.php:315
+#: functions.php:317
 msgid "New News Source Name"
 msgstr "Tên nguồn tin mới "
 
-#: functions.php:316
+#: functions.php:318
 msgid "News Source"
 msgstr "Nguồn tin"
 
@@ -407,7 +402,7 @@ msgstr ""
 msgid "Timelines"
 msgstr ""
 
-#: i18n/extra-strings.php:22 inc/layers.php:44
+#: i18n/extra-strings.php:22 inc/layers.php:48
 msgid "Layers"
 msgstr "Lớp bản đồ"
 
@@ -577,128 +572,128 @@ msgstr ""
 msgid "Khmer PDF not available"
 msgstr ""
 
-#: i18n/extra-strings.php:59 inc/advanced-navigation.php:293
+#: i18n/extra-strings.php:59 inc/advanced-navigation.php:296
 msgid "Jan"
 msgstr ""
 
-#: i18n/extra-strings.php:60 inc/advanced-navigation.php:294
+#: i18n/extra-strings.php:60 inc/advanced-navigation.php:297
 msgid "Feb"
 msgstr ""
 
-#: i18n/extra-strings.php:61 inc/advanced-navigation.php:295
+#: i18n/extra-strings.php:61 inc/advanced-navigation.php:298
 msgid "Mar"
 msgstr ""
 
-#: i18n/extra-strings.php:62 inc/advanced-navigation.php:296
+#: i18n/extra-strings.php:62 inc/advanced-navigation.php:299
 msgid "Apr"
 msgstr ""
 
-#: i18n/extra-strings.php:63 inc/advanced-navigation.php:297
+#: i18n/extra-strings.php:63 inc/advanced-navigation.php:300
 msgid "May"
 msgstr ""
 
-#: i18n/extra-strings.php:64 inc/advanced-navigation.php:298
+#: i18n/extra-strings.php:64 inc/advanced-navigation.php:301
 msgid "Jun"
 msgstr ""
 
-#: i18n/extra-strings.php:65 inc/advanced-navigation.php:299
+#: i18n/extra-strings.php:65 inc/advanced-navigation.php:302
 msgid "Jul"
 msgstr ""
 
-#: i18n/extra-strings.php:66 inc/advanced-navigation.php:300
+#: i18n/extra-strings.php:66 inc/advanced-navigation.php:303
 msgid "Aug"
 msgstr ""
 
-#: i18n/extra-strings.php:67 inc/advanced-navigation.php:301
+#: i18n/extra-strings.php:67 inc/advanced-navigation.php:304
 msgid "Sep"
 msgstr ""
 
-#: i18n/extra-strings.php:68 inc/advanced-navigation.php:302
+#: i18n/extra-strings.php:68 inc/advanced-navigation.php:305
 msgid "Oct"
 msgstr ""
 
-#: i18n/extra-strings.php:69 inc/advanced-navigation.php:303
+#: i18n/extra-strings.php:69 inc/advanced-navigation.php:306
 msgid "Nov"
 msgstr ""
 
-#: i18n/extra-strings.php:70 inc/advanced-navigation.php:304
+#: i18n/extra-strings.php:70 inc/advanced-navigation.php:307
 msgid "Dec"
 msgstr ""
 
-#: inc/advanced-navigation.php:152 page-data.php:39
+#: inc/advanced-navigation.php:154 page-data.php:39
 msgid "Text search"
 msgstr "Tìm văn bản"
 
-#: inc/advanced-navigation.php:153 page-data.php:40 page-data.php:138
+#: inc/advanced-navigation.php:155 page-data.php:40 page-data.php:138
 msgid "Type your search here"
 msgstr "Nhập từ khóa tìm kiếm"
 
 #: inc/advanced-navigation.php:169 inc/live-search/live-search.php:24
-#: inc/utils/content.php:51
+#: inc/utils/content.php:51 page-data.php:106
 msgid "Topic"
 msgstr "Chuyên đề"
 
-#: inc/advanced-navigation.php:173 inc/advanced-navigation.php:178
+#: inc/advanced-navigation.php:174 inc/advanced-navigation.php:181
 msgid "Select categories"
 msgstr "Chọn phân mục"
 
-#: inc/advanced-navigation.php:198
+#: inc/advanced-navigation.php:201
 msgid "Content type"
 msgstr "Hình thức nội dung"
 
-#: inc/advanced-navigation.php:199
+#: inc/advanced-navigation.php:202
 msgid "Select content types"
 msgstr "Chọn hình thức nội dung"
 
-#: inc/advanced-navigation.php:231
+#: inc/advanced-navigation.php:234
 msgid "Date range"
 msgstr "Khoảng thời gian"
 
-#: inc/advanced-navigation.php:234
+#: inc/advanced-navigation.php:237
 msgid "From"
 msgstr "Từ"
 
-#: inc/advanced-navigation.php:237
+#: inc/advanced-navigation.php:240
 msgid "To"
 msgstr "đến"
 
-#: inc/advanced-navigation.php:244 page-data.php:143
+#: inc/advanced-navigation.php:247 page-data.php:143
 msgid "Search Filter"
 msgstr "Bộ lọc tìm kiếm"
 
-#: inc/advanced-navigation.php:253 inc/advanced-navigation.php:263
+#: inc/advanced-navigation.php:256 inc/advanced-navigation.php:266
 msgid "Cancel filters"
 msgstr "Hủy lọc"
 
-#: inc/advanced-navigation.php:260
+#: inc/advanced-navigation.php:263
 msgid "More filters"
 msgstr "Thêm tiêu chí lọc"
 
-#: inc/advanced-navigation.php:284
+#: inc/advanced-navigation.php:287
 msgid "Su"
 msgstr ""
 
-#: inc/advanced-navigation.php:285
+#: inc/advanced-navigation.php:288
 msgid "Mo"
 msgstr ""
 
-#: inc/advanced-navigation.php:286
+#: inc/advanced-navigation.php:289
 msgid "Tu"
 msgstr ""
 
-#: inc/advanced-navigation.php:287
+#: inc/advanced-navigation.php:290
 msgid "We"
 msgstr ""
 
-#: inc/advanced-navigation.php:288
+#: inc/advanced-navigation.php:291
 msgid "Th"
 msgstr ""
 
-#: inc/advanced-navigation.php:289
+#: inc/advanced-navigation.php:292
 msgid "Fr"
 msgstr ""
 
-#: inc/advanced-navigation.php:290
+#: inc/advanced-navigation.php:293
 msgid "Sa"
 msgstr ""
 
@@ -756,227 +751,227 @@ msgstr "Thêm phân mục lớp bản đồ"
 msgid "New Layer category Name"
 msgstr "Tên phân mục lớp mới"
 
-#: inc/layers.php:26
+#: inc/layers.php:30
 msgid "Layer settings"
 msgstr "Cấu hình lớp"
 
-#: inc/layers.php:35
+#: inc/layers.php:39
 msgid "Layer legend"
 msgstr "Chú giải lớp bản dồ"
 
-#: inc/layers.php:56
+#: inc/layers.php:60
 msgid "Map setup"
 msgstr ""
 
-#: inc/layers.php:69
+#: inc/layers.php:73
 msgid "Enter your HTML code to use as legend on the layer (English)"
 msgstr "Nhập mã HTML để chú thích cho lớp (tiếng Anh)"
 
-#: inc/layers.php:72
+#: inc/layers.php:76
 msgid "Enter your HTML code to use as legend on the layer ("
 msgstr "Nhập mã HTML để chú thích cho lớp ("
 
-#: inc/layers.php:87
+#: inc/layers.php:91
 #, php-format
 msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
 msgstr ""
 
-#: inc/layers.php:89
+#: inc/layers.php:93
 #, php-format
 msgid ""
 " You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click "
 "here</a> to create your first!"
 msgstr ""
 
-#: inc/layers.php:101
+#: inc/layers.php:105
 msgid "Search for layers"
 msgstr ""
 
-#: inc/layers.php:104
+#: inc/layers.php:108
 msgid "Latest layers"
 msgstr ""
 
-#: inc/layers.php:108
+#: inc/layers.php:112
 msgid "Search results"
 msgstr ""
 
-#: inc/layers.php:112
+#: inc/layers.php:116
 msgid "You are using all of your layers."
 msgstr ""
 
-#: inc/layers.php:116
+#: inc/layers.php:120
 msgid "No layers were found."
 msgstr ""
 
-#: inc/layers.php:124
+#: inc/layers.php:128
 msgid "Add layer"
 msgstr ""
 
-#: inc/layers.php:124
+#: inc/layers.php:128
 msgid "Add"
 msgstr ""
 
-#: inc/layers.php:129
+#: inc/layers.php:133
 msgid "Selected layers"
 msgstr ""
 
-#: inc/layers.php:132
+#: inc/layers.php:136
 msgid "Group layers by showing category"
 msgstr ""
 
-#: inc/layers.php:144
+#: inc/layers.php:148
 msgid "Layer options"
 msgstr ""
 
-#: inc/layers.php:147
+#: inc/layers.php:151
 msgid "Enable"
 msgstr ""
 
-#: inc/layers.php:149
+#: inc/layers.php:153
 msgid "Disable"
 msgstr ""
 
-#: inc/layers.php:151
+#: inc/layers.php:155
 msgid "Swapable"
 msgstr ""
 
-#: inc/layers.php:156
+#: inc/layers.php:160
 msgid "Hidden"
 msgstr ""
 
-#: inc/layers.php:160
+#: inc/layers.php:164
 msgid "Default swap option"
 msgstr ""
 
-#: inc/layers.php:165
+#: inc/layers.php:169
 msgid "Remove layer"
 msgstr ""
 
-#: inc/layers.php:165
+#: inc/layers.php:169
 msgid "Remove"
 msgstr ""
 
-#: inc/layers.php:346
+#: inc/layers.php:350
 msgid "Download Page URL"
 msgstr "Tải URL "
 
-#: inc/layers.php:349
+#: inc/layers.php:353
 msgid "Download URL (English)"
 msgstr "Tải URL (tiếng Anh)"
 
-#: inc/layers.php:352 inc/layers.php:360
+#: inc/layers.php:356 inc/layers.php:364
 msgid "A link to a dataset's page on CKAN"
 msgstr "Đường dẫn tới trang dữ liệu trên CKAN"
 
-#: inc/layers.php:357
+#: inc/layers.php:361
 msgid "Download URL ("
 msgstr "Tải URL ("
 
-#: inc/layers.php:368
+#: inc/layers.php:372
 msgid "Profile Page URL"
 msgstr "URL chuyên trang dữ liệu"
 
-#: inc/layers.php:371
+#: inc/layers.php:375
 msgid "Profile Page URL (English)"
 msgstr "URL chuyên trang dữ liệu  (Tiếng Anh)"
 
-#: inc/layers.php:374 inc/layers.php:382
+#: inc/layers.php:378 inc/layers.php:386
 msgid "A link to profile page on Wordpress"
 msgstr "Đường link tới chuyên trang dữ liệu trong Wordpress"
 
-#: inc/layers.php:379
+#: inc/layers.php:383
 msgid "Profile Page URL ("
 msgstr "URL chuyên trang dữ liệu"
 
-#: inc/layers.php:390
+#: inc/layers.php:394
 msgid "Layer type"
 msgstr "Dạng lớp"
 
-#: inc/layers.php:393
+#: inc/layers.php:397
 msgid "Tile layer"
 msgstr "Lớp xếp chồng "
 
-#: inc/layers.php:395
+#: inc/layers.php:399
 msgid "WMS layer"
 msgstr "Lớp WMS"
 
-#: inc/layers.php:398
+#: inc/layers.php:402
 msgid "MapBox"
 msgstr "MapBox"
 
-#: inc/layers.php:401
+#: inc/layers.php:405
 msgid "CartoDB"
 msgstr "CartoDB"
 
-#: inc/layers.php:414
+#: inc/layers.php:418
 msgid "URL"
 msgstr "URL"
 
-#: inc/layers.php:416
+#: inc/layers.php:420
 msgid "http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr "http://{s}.example.com/{z}/{x}/{y}.png"
 
-#: inc/layers.php:417
+#: inc/layers.php:421
 msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
 msgstr "URL lớp xếp chồng. VD: http://{s}.example.com/{z}/{x}/{y}.png"
 
-#: inc/layers.php:421
+#: inc/layers.php:425
 msgid "UTFGrid URL (optional)"
 msgstr "URL UTFGrid  (tùy chọn)"
 
-#: inc/layers.php:423
+#: inc/layers.php:427
 msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 
-#: inc/layers.php:424
+#: inc/layers.php:428
 msgid ""
 "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 "URL tùy chọn UTFGrid. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 
-#: inc/layers.php:428
+#: inc/layers.php:432
 msgid "UTFGrid Template (optional)"
 msgstr "Mẫu UTFGrid (tùy chọn)"
 
-#: inc/layers.php:431 inc/layers.php:582
+#: inc/layers.php:435 inc/layers.php:586
 msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
 msgstr "Mẫu UTFGrid dùng dấu ngoặc nhọn.<br/>E.g.: City: {{city}}"
 
-#: inc/layers.php:435
+#: inc/layers.php:439
 msgid "TMS"
 msgstr "TMS"
 
-#: inc/layers.php:437
+#: inc/layers.php:441
 msgid "Enable TMS"
 msgstr "Kích hoạt TMS"
 
-#: inc/layers.php:438
+#: inc/layers.php:442
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
 msgstr ""
 "Đảo ngược cách đánh số trục Y để chồng lớp bản đồ (bật chế độ này để chồng "
 "lớp bản đồ)"
 
-#: inc/layers.php:454
+#: inc/layers.php:458
 msgid "WMS Service URL"
 msgstr "URL dịch vụ WMS"
 
-#: inc/layers.php:456
+#: inc/layers.php:460
 msgid "http://{geoserver adress & port}/geoserver/wms"
 msgstr "http://{geoserver adress & port}/geoserver/wms"
 
-#: inc/layers.php:457
+#: inc/layers.php:461
 msgid "Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 msgstr "VD. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 
-#: inc/layers.php:461
+#: inc/layers.php:465
 msgid "Workspaces:Layer Name (English)"
 msgstr "Không gian làm việc: Tên lớp (tiếng Anh)"
 
-#: inc/layers.php:463 inc/layers.php:471
+#: inc/layers.php:467 inc/layers.php:475
 msgid "Workspaces and Layer name\""
 msgstr "Không gian làm việc và tên lớp\""
 
-#: inc/layers.php:464
+#: inc/layers.php:468
 msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
@@ -985,11 +980,11 @@ msgstr ""
 "strong> là không gian làm việc và  <strong>Đường dây_truyền tải</strong> là "
 "tên lớp."
 
-#: inc/layers.php:469
+#: inc/layers.php:473
 msgid "Workspaces:Layer Name ("
 msgstr "Không gian làm việc: Tên lớp ("
 
-#: inc/layers.php:472
+#: inc/layers.php:476
 msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
@@ -998,55 +993,55 @@ msgstr ""
 "strong> là không gian làm việc và  <strong>Đường dây_truyền tải</strong> là "
 "tên lớp."
 
-#: inc/layers.php:479
+#: inc/layers.php:483
 msgid "WMS format (optional)"
 msgstr "Định dạng WMS (tùy chọn)"
 
-#: inc/layers.php:481
+#: inc/layers.php:485
 msgid "image/png"
 msgstr "Ảnh/png"
 
-#: inc/layers.php:482
+#: inc/layers.php:486
 msgid "E.g.: image/png or image/jpeg"
 msgstr "E.g.: Ảnh/png or Ảnh/jpeg"
 
-#: inc/layers.php:486 inc/layers.php:489
+#: inc/layers.php:490 inc/layers.php:493
 msgid "Transparent"
 msgstr "Trong suốt"
 
-#: inc/layers.php:490
+#: inc/layers.php:494
 msgid "Enable it to make transparent the layer of WMS."
 msgstr "Cho phép làm trong suốt lớp WMS"
 
-#: inc/layers.php:499
+#: inc/layers.php:503
 msgid "MapBox ID"
 msgstr "MapBox ID"
 
-#: inc/layers.php:502
+#: inc/layers.php:506
 msgid "MapBox map ID. E.g.: examples.map-20v6611k"
 msgstr "ID bản đồ MapBox . E.g.: examples.map-20v6611k"
 
-#: inc/layers.php:526
+#: inc/layers.php:530
 msgid "Visualization type"
 msgstr "Kiểu hiển thị"
 
-#: inc/layers.php:529
+#: inc/layers.php:533
 msgid "Visualization"
 msgstr "Hiển thị"
 
-#: inc/layers.php:531
+#: inc/layers.php:535
 msgid "Advanced (build from your tables)"
 msgstr "Nâng cao (từ dữ liệu trong bảng)"
 
-#: inc/layers.php:531
+#: inc/layers.php:535
 msgid "coming soon"
 msgstr "Sắp phát hành"
 
-#: inc/layers.php:535
+#: inc/layers.php:539
 msgid "CartoDB URL (English)"
 msgstr "CartoDB URL (tiếng Anh)"
 
-#: inc/layers.php:538 inc/layers.php:546
+#: inc/layers.php:542 inc/layers.php:550
 msgid ""
 "CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
 "viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
@@ -1054,44 +1049,44 @@ msgstr ""
 "URL hiển thị CartoDB.<br/>VD.: http://infoamazonia.cartodb.com/api/v2/"
 "viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 
-#: inc/layers.php:543
+#: inc/layers.php:547
 msgid "CartoDB URL ("
 msgstr "CartoDB URL ("
 
-#: inc/layers.php:551
+#: inc/layers.php:555
 msgid "Username"
 msgstr "Tên tài khoản"
 
-#: inc/layers.php:554
+#: inc/layers.php:558
 msgid "Your CartoDB username."
 msgstr "Tên tài khoản CartoDB"
 
-#: inc/layers.php:558
+#: inc/layers.php:562
 msgid "Table"
 msgstr "Bảng"
 
-#: inc/layers.php:561
+#: inc/layers.php:565
 msgid "The CartoDB table you'd like to visualize."
 msgstr "Bảng CartoDB chọn để hiển thị"
 
-#: inc/layers.php:565
+#: inc/layers.php:569
 msgid "Where (optional)"
 msgstr "Ở đâu (tùy chọn)"
 
-#: inc/layers.php:568
+#: inc/layers.php:572
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
 msgstr "Truy vấn dữ liệu từ bảng.<br/>VD: region = \"north\""
 
-#: inc/layers.php:572
+#: inc/layers.php:576
 msgid "CartoCSS"
 msgstr "CartoCSS"
 
-#: inc/layers.php:575
+#: inc/layers.php:579
 #, php-format
 msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr "Kiểu dạng bảng. <a href=\"%s\" target=\"_blank\">Tham khảo thêm</a>."
 
-#: inc/layers.php:579
+#: inc/layers.php:583
 msgid "Template"
 msgstr "Mẫu"
 
@@ -1734,7 +1729,7 @@ msgstr "Lỗi định vị  %s"
 msgid "Show news on map"
 msgstr ""
 
-#: inc/utils/mapping.php:407
+#: inc/utils/mapping.php:391
 msgid "LEGEND"
 msgstr "CHÚ GIẢI"
 
@@ -1885,10 +1880,6 @@ msgstr ""
 msgid "Select country"
 msgstr ""
 
-#: page-data.php:106
-msgid "Taxonomy"
-msgstr ""
-
 #: page-data.php:107
 msgid "Select term"
 msgstr ""
@@ -1933,19 +1924,27 @@ msgstr ""
 msgid "Please provide an id as parameter"
 msgstr "Cung cấp ID dạng tham số"
 
-#: page-dataset-detail.php:27
-msgid "Download metadata"
-msgstr ""
-
 #: page-dataset-detail.php:29
-msgid "XML"
-msgstr ""
-
-#: page-dataset-detail.php:30
-msgid "JSON"
+msgid "Manage on CKAN"
 msgstr ""
 
 #: page-dataset-detail.php:31
+msgid "Manage"
+msgstr ""
+
+#: page-dataset-detail.php:39
+msgid "Download metadata"
+msgstr ""
+
+#: page-dataset-detail.php:41
+msgid "XML"
+msgstr ""
+
+#: page-dataset-detail.php:42
+msgid "JSON"
+msgstr ""
+
+#: page-dataset-detail.php:43
 msgid "RDF"
 msgstr ""
 
@@ -1980,6 +1979,13 @@ msgstr "Các tin bài gần nhất về"
 #: single-topic.php:68
 msgid "More on the Land Portal library"
 msgstr ""
+
+#: taxonomy-layer-category.php:8
+msgid "Map catalogue"
+msgstr "Danh mục bản đồ"
+
+#~ msgid "Tabular pages"
+#~ msgstr "Trang bảng biểu"
 
 #~ msgid "Categories"
 #~ msgstr "Phân mục"
