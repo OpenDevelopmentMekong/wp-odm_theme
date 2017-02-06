@@ -126,23 +126,26 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
-			if($('.odm_taxonomy_widget_ul > li.topic_nav_item:has(ul)')){
-				$('.odm_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
-				$('.odm_taxonomy_widget_ul > li.topic_nav_item ul').siblings('span').addClass("plusimage-<?php echo $site_name;?>");
-			}
-			//if parent is showed, child need to expend
-			$('span.<?php echo $current_page_slug; ?>').siblings("ul").show();
-			$('span.<?php echo $current_page_slug; ?>').toggleClass('minusimage-<?php echo $site_name;?>');
-			$('span.<?php echo $current_page_slug; ?>').toggleClass('plusimage-<?php echo $site_name;?>');
+			if( $(this).has('ul') ){
+		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
+		    $('ul', this).siblings('span').addClass("plusimage-<?php echo $site_name;?>");
+		  }
 
-			//if child is showed, parent expended
-			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").show();
-			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
-			$('span.<?php echo $current_page_slug; ?>').parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');
+			//if parent is showed, child need to expend
+		  if( $(this).find('span.<?php echo $current_page_slug; ?>').length != 0 ){
+				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
+				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo $site_name;?>');
+				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('plusimage-<?php echo $site_name;?>');
+
+				//if child is showed, parent expended
+				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").show();
+				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
+				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');
+			}
 		});
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
 			if($(event.target).parent("li").find('ul').length){
-				$(event.target).parent("li").find('ul:first').slideToggle();
+				$(event.target).parent("li").find('ul:first').slideToggle('fast');
 				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");
 				$(event.target).toggleClass('minusimage-<?php echo $site_name;?>');
 			}
