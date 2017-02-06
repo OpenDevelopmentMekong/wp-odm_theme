@@ -405,7 +405,8 @@ function display_layer_information($layers){
 	   <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
 	   <?php
 	   foreach($layers as $individual_layer){
-		  $get_post_by_id = get_post($individual_layer["ID"]);
+			$get_post_content_by_id = null;
+		  $get_post_by_id = get_post($individual_layer["ID"]); 
 		  if ( (odm_language_manager()->get_current_language() !== "en") ){
 				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
 		  }else {
@@ -414,8 +415,17 @@ function display_layer_information($layers){
 
 		  // get post content if has
 			$get_post_content_by_id = apply_filters('translate_text', $get_post_by_id->post_content, odm_language_manager()->get_current_language());
-
-			if($get_download_url!="" ){
+			$check_post_content= trim(str_replace("&nbsp;", "", strip_tags($get_post_content_by_id)));
+			if(!empty($check_post_content)){ ?>
+					<div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
+						<div class="layer-toggle-info-content">
+							<h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
+							<?php echo $get_post_content_by_id ?>
+						</div>
+					</div>
+			<?php
+			}
+			elseif($get_download_url!="" ){
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
@@ -430,15 +440,6 @@ function display_layer_information($layers){
 				  if($ckan_dataset_id!= ""):
 					  wpckan_get_metadata_info_of_dataset_by_id($ckan_domain, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
 				  endif;
-			} else if($get_post_content_by_id){ ?>
-				  <div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
-					  <div class="layer-toggle-info-content">
-						  <h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
-						  <?php echo $get_post_content_by_id ?>
-						  <?php //echo $individual_layer['excerpt']; ?>
-					  </div>
-				  </div>
-			<?php
 			}
 			?>
 		<?php
