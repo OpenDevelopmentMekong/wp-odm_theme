@@ -200,6 +200,11 @@ class OpenDev_InteractiveMap {
                 // End Resize
             })(jQuery);
 
+						jQuery(".interactive-map").on( "click", function() {
+							console.log("ready");
+							jQuery.print(".map" /*, options*/);
+						});
+
         </script>
         <?php
         $html = ob_get_clean();

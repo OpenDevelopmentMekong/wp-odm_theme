@@ -180,12 +180,13 @@ add_action( 'admin_head', 'add_menu_icons_styles' );
 
 function odm_dependency_scripts()
 {
-  wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
-	wp_enqueue_script('odm-dependencies-moment', get_stylesheet_directory_uri().'/bower_components/moment/min/moment.min.js');
-  wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
-  wp_enqueue_script('odm-dependencies-datatables-buttons', get_stylesheet_directory_uri().'/bower_components/datatables-buttons/js/dataTables.buttons.js');
-  wp_enqueue_script('odm-dependencies-datatables-buttons-html5', get_stylesheet_directory_uri().'/bower_components/datatables-buttons/js/buttons.html5.js');
-	//wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
+	$bower_base = get_stylesheet_directory_uri().'/bower_components/';
+  wp_enqueue_script('odm-dependencies-chosen', $bower_base.'chosen/chosen.jquery.js');
+	wp_enqueue_script('odm-dependencies-moment', $bower_base.'moment/min/moment.min.js');
+  wp_enqueue_script('odm-dependencies-datatables', $bower_base.'datatables/media/js/jquery.dataTables.min.js');
+  wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'datatables-buttons/js/dataTables.buttons.js');
+  wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'datatables-buttons/js/buttons.html5.js');
+	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'jQuery.print/jQuery.print.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
