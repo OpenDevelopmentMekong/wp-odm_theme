@@ -200,12 +200,17 @@ class OpenDev_InteractiveMap {
                 // End Resize
             })(jQuery);
 
-						jQuery(".interactive-map").on( "click", function() {
-							console.log("ready");
-							jQuery.print(".map" /*, options*/);
-						});
-
         </script>
+
+				<script type="text/javascript">
+					var map = jQuery.print("#map");
+					var print_button = jQuery('<a class="print_map">PRINT</a>');
+					map.append();
+					print_button.on( "click", function() {
+						jQuery.print("#map" /*, options*/);
+					});
+				</script>
+
         <?php
         $html = ob_get_clean();
         return $html;
