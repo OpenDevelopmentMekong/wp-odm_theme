@@ -187,6 +187,7 @@ function odm_dependency_scripts()
   wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'datatables-buttons/js/dataTables.buttons.js');
   wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'datatables-buttons/js/buttons.html5.js');
 	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'jQuery.print/jQuery.print.js');
+	wp_enqueue_script('odm-dependencies-jquery-easybutton', $bower_base.'Leaflet.EasyButton/src/easy-button.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
@@ -250,6 +251,7 @@ function odm_jeo_scripts()
 
       wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
+			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
       wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
   }
 
@@ -270,6 +272,9 @@ add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
+		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js'))
+			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
+
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
 
@@ -290,6 +295,7 @@ function odm_styles()
     $bower_base = get_stylesheet_directory_uri().'/bower_components/';
     wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
     wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
+		wp_enqueue_style('bower-jquery-easybutton-style', $bower_base.'Leaflet.EasyButton/src/easy-button.css');
 
     $dist_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
