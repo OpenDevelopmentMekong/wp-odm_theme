@@ -285,6 +285,9 @@ class Odm_Options
       <option value="stamen_terrain" <?php echo $select_base_layer == 'stamen_terrain' ? ' selected="selected"' : '';
         ?> >Stamen Terrain <?php _e('(USA Only)', 'odm');
         ?></option>
+      <option value="nextgis" <?php echo $select_base_layer == 'nextgis' ? ' selected="selected"' : '';
+        ?> >Nextgis
+			</option>
       <option value="custom" <?php echo $select_base_layer == 'custom' ? ' selected="selected"' : '';
         ?> ><?php _e('Custom', 'odm');
         ?></option>

@@ -332,6 +332,10 @@
        base_layer_url_box.val('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg');
        base_layer_url_box.attr('readonly', true);
        break;
+      case 'nextgis':
+       base_layer_url_box.val('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}');
+       base_layer_url_box.attr('readonly', true);
+       break;
       case 'none':
        base_layer_url_box.val('');
        base_layer_url_box.attr('readonly', true);
