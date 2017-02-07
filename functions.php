@@ -187,7 +187,6 @@ function odm_dependency_scripts()
   wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'datatables-buttons/js/dataTables.buttons.js');
   wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'datatables-buttons/js/buttons.html5.js');
 	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'jQuery.print/jQuery.print.js');
-	wp_enqueue_script('odm-dependencies-jquery-easybutton', $bower_base.'Leaflet.EasyButton/src/easy-button.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
@@ -295,7 +294,6 @@ function odm_styles()
     $bower_base = get_stylesheet_directory_uri().'/bower_components/';
     wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
     wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
-		wp_enqueue_style('bower-jquery-easybutton-style', $bower_base.'Leaflet.EasyButton/src/easy-button.css');
 
     $dist_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
