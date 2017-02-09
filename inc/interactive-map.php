@@ -201,6 +201,7 @@ class OpenDev_InteractiveMap {
             })(jQuery);
 
         </script>
+
         <?php
         $html = ob_get_clean();
         return $html;

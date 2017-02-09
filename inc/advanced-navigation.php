@@ -244,7 +244,8 @@ class odm_AdvancedNav {
 				</div>
 			<?php endif; ?>
 			<div class="four columns">
-				<input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
+				<input class="button" type="submit" value="<?php _e('Search filter', 'odm'); ?>"/>
+				<a class="float-right" href="<?php echo get_bloginfo("url").strtok($_SERVER["REQUEST_URI"],'?'); ?>"><?php _e("Clear filter", "odm"); ?></a>
 			</div>
 		</form>
 		<script type="text/javascript">

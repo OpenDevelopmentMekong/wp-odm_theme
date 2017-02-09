@@ -146,6 +146,12 @@ detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
   map.addControl(new jeo.clearscreen());
 
   /*
+   * Print map
+   */
+  if(typeof(jeo.printmap) != 'undefined')
+  map.addControl(new jeo.printmap());
+
+  /*
    * Geocode
    */
   if(map.conf.geocode)
