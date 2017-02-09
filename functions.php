@@ -186,6 +186,7 @@ function odm_dependency_scripts()
   wp_enqueue_script('odm-dependencies-datatables', $bower_base.'datatables/media/js/jquery.dataTables.min.js');
   wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'datatables-buttons/js/dataTables.buttons.js');
   wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'datatables-buttons/js/buttons.html5.js');
+  wp_enqueue_script('odm-dependencies-datatables-buttons-print', $bower_base.'datatables-buttons/js/buttons.print.js');
 	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'jQuery.print/jQuery.print.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
