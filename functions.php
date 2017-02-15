@@ -600,4 +600,24 @@ function convert_keywords_to_related() {
 		return $output;
 }
 add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to_related' );
+
+function add_custom_meta_tags() {
+    global $post;
+
+    if(is_single()) {
+
+    ?>
+
+    <meta property="odm_spatial_range" content="<?php echo odm_country_manager()->get_current_country_code(); ?>"/>
+    <meta property="odm_language" content="<?php echo odm_language_manager()->get_current_language(); ?>"/>
+    <meta property="odm_type" content="<?php echo get_post_type(); ?>"/>
+    <meta property="odm_license" content="CC-BY-SA-4.0"/>
+
+    <?php
+    } else {
+      return;
+    }
+}
+add_action('wp_head', 'add_custom_meta_tags', 5);
+
 ?>
