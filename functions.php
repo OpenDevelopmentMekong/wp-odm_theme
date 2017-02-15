@@ -610,6 +610,11 @@ add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to
 function add_custom_meta_tags() {
     global $post;
 
+    ?>
+
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+
+    <?php
     if(is_single()) {
 
     ?>
