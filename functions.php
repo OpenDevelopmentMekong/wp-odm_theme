@@ -612,8 +612,18 @@ function add_custom_meta_tags() {
 
     ?>
 
+    <!-- ODM -->
     <meta name="google-site-verification" content="c8Nm3o8w38t9HrQtk3Em8tx_JCvhlBM7I0d4d2BvbOA" />
-
+    <!-- ODC -->
+    <meta name="google-site-verification" content="Wj4wmK5q6lq4Rk0x4iqDhuBFaZxfTY2luq9p09Qr2kM" />
+    <!-- ODMM -->
+    <meta name="google-site-verification" content="BXhPDDG3ECyUWrdJqbsVr0eba3buOb8XEjV9nudDSk4" />
+    <!-- ODV -->
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+    <!-- ODL -->
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+    <!-- ODT -->
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
     <?php
     if(is_single()) {
 
