@@ -27,6 +27,7 @@
 			<div class="twelve columns">
 				<h2>Results</h2>
 				<div id="cse_results"></div>
+				<div id="cse_pagination"></div>
 			</div>
 		</div>
 	</section>
@@ -47,7 +48,9 @@
     return url.startsWith("https://data.");
   }
 
-	function hndlr(response) {
+	function outputSearchResults(resultsDiv,response){
+
+		resultsDiv.innerHTML = "";
 
 		for (var i = 0; i < response.items.length; i++) {
 
@@ -69,12 +72,31 @@
       itemHtml.append(description);
       itemHtml.append(component);
 
-			document.getElementById("cse_results").innerHTML += itemHtml.html();
+			resultsDiv.innerHTML += itemHtml.html();
 		}
 	}
 
+	function renderPagination(startIndex,count,totalResults){
+		var paginationDiv = document.getElementById("cse_pagination");
+		var paginationContent = jQuery("<h2>Pagination</h2>");
+
+		paginationDiv.innerHTML += paginationContent.html();
+	}
+
+	function hndlr(response) {
+
+		var resultsDiv = document.getElementById("cse_results");
+		var totalResults = response.queries.request[0].totalResults;
+		var count = response.queries.request[0].count;
+		var startIndex = response.queries.request[0].startIndex;
+		console.log("showing " + startIndex + " - " + startIndex+count + " from " + totalResults);
+
+		outputSearchResults(resultsDiv,response);
+		renderPagination(startIndex,count,totalResults);
+	}
+
 	var api_key= "AIzaSyCHHIlx8Q1wEUj1-h9zIvfnGYqIxooTRdY";
-  	var cx = "018137511656225297663:skc7uxrvvfq";
+  var cx = "018137511656225297663:skc7uxrvvfq";
 	jQuery(document).ready(function($) {
 		$('#cse_submit').on('click', function(){
 			var search_query = "https://www.googleapis.com/customsearch/v1?key=" + api_key + "&cx=" + cx +"&q="+ $('#cse_search').val() +"&callback=hndlr";
