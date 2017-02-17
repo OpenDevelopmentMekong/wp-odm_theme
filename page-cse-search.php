@@ -36,17 +36,45 @@
 
 <script type="text/javascript">
 
+  // micro tests
+  //console.log(isCkanRecord("https://openDevelopmentMekong.net/dataset/1"));
+
+  function ckanToWpLink(url){
+    return url;
+  }
+
+  function isCkanRecord(url){
+    return url.startsWith("https://data.");
+  }
+
 	function hndlr(response) {
-		console.log(response);
+
 		for (var i = 0; i < response.items.length; i++) {
-			var item = response.items[i];
-			// in production code, item.htmlTitle should have the HTML entities escaped.
-			document.getElementById("cse_results").innerHTML += "<br>" + item.htmlTitle;
+
+      var item = response.items[i];
+
+      // in production code, item.htmlTitle should have the HTML entities escaped.
+      console.log(item.link);
+      console.log(item.title);
+
+      var link = isCkanRecord(item.link) ? ckanToWpLink(item.link) : item.link;
+      var component = isCkanRecord(item.link) ? "CKAN" : "WP";
+
+      var itemHtml = jQuery('<div class="cse_result"></div>');
+      var title = jQuery('<a href="' + link + '" target="_blank">' + item.title + '</a>');
+      var description = jQuery('<p>' + item.htmlSnippet + '</p>');
+      var component = jQuery('<p>' + component + '</p>');
+
+      itemHtml.append(title);
+      itemHtml.append(description);
+      itemHtml.append(component);
+
+			document.getElementById("cse_results").innerHTML += itemHtml.html();
 		}
 	}
 
 	var api_key= "AIzaSyCHHIlx8Q1wEUj1-h9zIvfnGYqIxooTRdY";
-	var cx = "018137511656225297663:n6xbxvkroog";
+  	var cx = "018137511656225297663:skc7uxrvvfq";
 	jQuery(document).ready(function($) {
 		$('#cse_submit').on('click', function(){
 			var search_query = "https://www.googleapis.com/customsearch/v1?key=" + api_key + "&cx=" + cx +"&q="+ $('#cse_search').val() +"&callback=hndlr";
