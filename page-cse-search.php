@@ -41,7 +41,10 @@
   //console.log(isCkanRecord("https://openDevelopmentMekong.net/dataset/1"));
 
   function ckanToWpLink(url){
-    return url;
+
+    var dataset = url.split('dataset/')[1].split('/')[0];
+    console.log("/dataset/?id=" + dataset);
+    return "/dataset/?id=" + dataset;
   }
 
   function isCkanRecord(url){
@@ -66,44 +69,84 @@
       var itemHtml = jQuery('<div class="cse_result"></div>');
       var title = jQuery('<a href="' + link + '" target="_blank">' + item.title + '</a>');
       var description = jQuery('<p>' + item.htmlSnippet + '</p>');
-      var component = jQuery('<p>' + component + '</p>');
+
+      var meta = jQuery('<div class="cse_result_meta"><h4>Metadata</h4></div>');
+      var metatags = item.pagemap.metatags[0];
+      if (metatags.odm_spatial_range){
+        var country = jQuery('<p>' + metatags.odm_spatial_range + '</p>');
+        meta.append(country);
+      }
+      if (metatags.odm_language){
+        var language = jQuery('<p>' + metatags.odm_language + '</p>');
+        meta.append(language);
+      }
+      if (metatags.odm_license){
+        var license = jQuery('<p>' + metatags.odm_license + '</p>');
+        meta.append(license);
+      }
+      var componentHtml = jQuery('<p>' + component + '</p>');
+      meta.append(componentHtml);
 
       itemHtml.append(title);
       itemHtml.append(description);
-      itemHtml.append(component);
+      itemHtml.append(meta);
 
-			resultsDiv.innerHTML += itemHtml.html();
+			resultsDiv.append(itemHtml);
 		}
 	}
 
-	function renderPagination(startIndex,count,totalResults){
-		var paginationDiv = document.getElementById("cse_pagination");
-		var paginationContent = jQuery("<h2>Pagination</h2>");
+	function renderPagination(paginationDiv,startIndex,count,totalResults){
 
-		paginationDiv.innerHTML += paginationContent.html();
+		var paginationContent = jQuery("<h2>Pagination</h2>");
+    var paginationLinks = jQuery('<div id="cse_pagination_links"><ul></ul></div>');
+
+    var numPages = totalResults / count;
+    var currentPage = startIndex / count;
+    console.log(numPages);
+    console.log(currentPage);
+
+    for (var i=0; i < numPages; i++){
+      var link = jQuery('<li><a href="#">' + i + '</a></li>');
+      link.on('click', function(){
+        var pageIndex = jQuery(this).text() * count;
+        console.log("loading page: " + pageIndex);
+        triggerQuery(pageIndex);
+      })
+      paginationLinks.append(link);
+    }
+
+		paginationDiv.append(paginationContent);
+    paginationDiv.append(paginationLinks);
+
 	}
 
 	function hndlr(response) {
 
-		var resultsDiv = document.getElementById("cse_results");
+		var resultsDiv = jQuery("#cse_results");
+    resultsDiv.empty();
+    var paginationDiv = jQuery("#cse_results");
+    paginationDiv.empty();
 		var totalResults = response.queries.request[0].totalResults;
 		var count = response.queries.request[0].count;
 		var startIndex = response.queries.request[0].startIndex;
 		console.log("showing " + startIndex + " - " + startIndex+count + " from " + totalResults);
 
 		outputSearchResults(resultsDiv,response);
-		renderPagination(startIndex,count,totalResults);
+		renderPagination(paginationDiv,startIndex,count,totalResults);
 	}
 
-	var api_key= "AIzaSyCHHIlx8Q1wEUj1-h9zIvfnGYqIxooTRdY";
+  function triggerQuery(startIndex){
+    var search_query = "https://www.googleapis.com/customsearch/v1?key=" + api_key + "&cx=" + cx +"&q="+ $('#cse_search').val() +"&start=" + startIndex + "&callback=hndlr";
+    console.log(search_query);
+    $.get(search_query, function(data, status){
+      console.log("Query finished with status: " + status);
+    });
+  }
+  var api_key= "AIzaSyCHHIlx8Q1wEUj1-h9zIvfnGYqIxooTRdY";
   var cx = "018137511656225297663:skc7uxrvvfq";
 	jQuery(document).ready(function($) {
 		$('#cse_submit').on('click', function(){
-			var search_query = "https://www.googleapis.com/customsearch/v1?key=" + api_key + "&cx=" + cx +"&q="+ $('#cse_search').val() +"&callback=hndlr";
-			console.log(search_query);
-			$.get(search_query, function(data, status){
-        console.log("Data: " + data + "\nStatus: " + status);
-	    });
+			triggerQuery(1);
 		})
 	});
 </script>
