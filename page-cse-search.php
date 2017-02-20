@@ -6,7 +6,11 @@
 ?>
 <?php get_header(); ?>
 
-<?php if(have_posts()) : the_post(); ?>
+<?php if(have_posts()) : the_post();
+
+	global $post;
+
+	?>
 
   <section class="container section-title main-title">
 		<header class="row">
@@ -14,6 +18,10 @@
 				<h1><?php the_title(); ?></h1>
 			</div>
 		</header>
+	</section>
+
+	<section style="display:none">
+		<div id="cse_cfg" data-cse_api_key="<?php echo get_post_meta($post->ID,'cse_api_key',true); ?>" data-cse_cx="<?php echo get_post_meta($post->ID,'cse_cx',true); ?>"></div>
 	</section>
 
 	<section class="container">
@@ -190,10 +198,11 @@
     });
   }
 
+	var api_key;
+	var cx;
 
-  var api_key= "KEY";
-  var cx = "018137511656225297663:skc7uxrvvfq";
 	jQuery(document).ready(function($) {
+
 		jQuery(".accordion").accordion({ header: "h3", active: false, collapsible: true, heightstyle: "content" });
 		$('#cse_submit').on('click', function(){
 			//triggerQuery(jQuery("#cse_results_dataset"),1,"");
@@ -203,5 +212,10 @@
 			triggerQuery(jQuery("#cse_results_profiles"),1,"profile");
 			triggerQuery(jQuery("#cse_results_dashboards"),1,"dashboard");
 		})
+
+		api_key = $("#cse_cfg").data("cse_api_key");
+		cx = $("#cse_cfg").data("cse_cx");
+		console.log(api_key);
+		console.log(cx);
 	});
 </script>
