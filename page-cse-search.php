@@ -37,15 +37,15 @@
 				<div id="cse_results" class="accordion">
 					<!-- <div class="cse_results_section"><h3><?php _e("Datasets","odm") ?></h3><div id="cse_results_dataset"></div></div> -->
 					<h3><?php _e("Maps","odm") ?></h3>
-					<div id="cse_results_maps" class="cse_results_section"></div>
+					<div id="cse_results_maps" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 					<h3><?php _e("News articles","odm") ?></h3>
-					<div id="cse_results_news" class="cse_results_section"></div>
+					<div id="cse_results_news" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 					<h3><?php _e("Topics","odm") ?></h3>
-					<div id="cse_results_topics" class="cse_results_section"></div>
+					<div id="cse_results_topics" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 					<h3><?php _e("Profiles","odm") ?></h3>
-					<div id="cse_results_profiles" class="cse_results_section"></div>
+					<div id="cse_results_profiles" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 					<h3><?php _e("Dashboards","odm") ?></h3>
-					<div id="cse_results_dashboards" class="cse_results_section"></div>
+					<div id="cse_results_dashboards" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 				</div>
 				<div id="cse_pagination"></div>
 			</div>
@@ -125,7 +125,7 @@
 
 		}else{
 
-			var noRecordsFound = jQuery("<p>No records found</p>");
+			var noRecordsFound = jQuery("<p><?php _e('No records found','odm'); ?></p>");
 			resultsDiv.append(noRecordsFound);
 			resultsDiv.height(100);
 		}
