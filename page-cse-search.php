@@ -67,7 +67,7 @@
       var component = isCkanRecord(item.link) ? "CKAN" : "WP";
 
       var itemHtml = jQuery('<div class="cse_result"></div>');
-      var title = jQuery('<a href="' + link + '" target="_blank">' + item.title + '</a>');
+      var title = jQuery('<a href="' + link + '" target="_blank">' + item.htmlTitle + '</a>');
       var description = jQuery('<p>' + item.htmlSnippet + '</p>');
 
       var meta = jQuery('<div class="cse_result_meta"><h4>Metadata</h4></div>');
