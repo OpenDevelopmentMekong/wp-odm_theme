@@ -26,7 +26,19 @@
 			</div>
 			<div class="twelve columns">
 				<h2>Results</h2>
-				<div id="cse_results"></div>
+				<div id="cse_results" class="accordion">
+					<!-- <div class="cse_results_section"><h3><?php _e("Datasets","odm") ?></h3><div id="cse_results_dataset"></div></div> -->
+					<h3><?php _e("Maps","odm") ?></h3>
+					<div id="cse_results_maps" class="cse_results_section"></div>
+					<h3><?php _e("News articles","odm") ?></h3>
+					<div id="cse_results_news" class="cse_results_section"></div>
+					<h3><?php _e("Topics","odm") ?></h3>
+					<div id="cse_results_topics" class="cse_results_section"></div>
+					<h3><?php _e("Profiles","odm") ?></h3>
+					<div id="cse_results_profiles" class="cse_results_section"></div>
+					<h3><?php _e("Dashboards","odm") ?></h3>
+					<div id="cse_results_dashboards" class="cse_results_section"></div>
+				</div>
 				<div id="cse_pagination"></div>
 			</div>
 		</div>
@@ -53,46 +65,65 @@
 
 	function outputSearchResults(resultsDiv,response){
 
-		resultsDiv.innerHTML = "";
+		console.log(response);
 
-		for (var i = 0; i < response.items.length; i++) {
+		resultsDiv.innerHtml = "";
 
-      var item = response.items[i];
+		if (response.items){
 
-      // in production code, item.htmlTitle should have the HTML entities escaped.
-      console.log(item.link);
-      console.log(item.title);
+			var totalHeight = 0;
 
-      var link = isCkanRecord(item.link) ? ckanToWpLink(item.link) : item.link;
-      var component = isCkanRecord(item.link) ? "CKAN" : "WP";
+			for (var i = 0; i < response.items.length; i++) {
 
-      var itemHtml = jQuery('<div class="cse_result"></div>');
-      var title = jQuery('<a href="' + link + '" target="_blank">' + item.htmlTitle + '</a>');
-      var description = jQuery('<p>' + item.htmlSnippet + '</p>');
+	      var item = response.items[i];
 
-      var meta = jQuery('<div class="cse_result_meta"><h4>Metadata</h4></div>');
-      var metatags = item.pagemap.metatags[0];
-      if (metatags.odm_spatial_range){
-        var country = jQuery('<p>' + metatags.odm_spatial_range + '</p>');
-        meta.append(country);
-      }
-      if (metatags.odm_language){
-        var language = jQuery('<p>' + metatags.odm_language + '</p>');
-        meta.append(language);
-      }
-      if (metatags.odm_license){
-        var license = jQuery('<p>' + metatags.odm_license + '</p>');
-        meta.append(license);
-      }
-      var componentHtml = jQuery('<p>' + component + '</p>');
-      meta.append(componentHtml);
+	      var link = isCkanRecord(item.link) ? ckanToWpLink(item.link) : item.link;
+	      var component = isCkanRecord(item.link) ? "CKAN" : "WP";
 
-      itemHtml.append(title);
-      itemHtml.append(description);
-      itemHtml.append(meta);
+	      var itemHtml = jQuery('<div class="cse_result"></div>');
+	      var title = jQuery('<a href="' + link + '" target="_blank">' + item.htmlTitle + '</a>');
+	      var description = jQuery('<p>' + item.htmlSnippet + '</p>');
 
-			resultsDiv.append(itemHtml);
+	      var meta = jQuery('<div class="cse_result_meta"></div>');
+				var metadataList = jQuery('<ul></ul>');
+
+	      var metatags = item.pagemap.metatags[0];
+	      if (metatags.odm_spatial_range){
+	        var country = jQuery('<li>' + metatags.odm_spatial_range + '</li>');
+	        metadataList.append(country);
+	      }
+	      if (metatags.odm_language){
+	        var language = jQuery('<li>' + metatags.odm_language + '</li>');
+	        metadataList.append(language);
+	      }
+	      if (metatags.odm_license){
+	        var license = jQuery('<li>' + metatags.odm_license + '</li>');
+	        metadataList.append(license);
+	      }
+				if (metatags.odm_type){
+	        var type = jQuery('<li>' + metatags.odm_type + '<li>');
+	        metadataList.append(type);
+	      }
+	      var componentHtml = jQuery('<li>' + component + '</li>');
+	      metadataList.append(componentHtml);
+				meta.append(metadataList);
+
+	      itemHtml.append(title);
+	      itemHtml.append(description);
+	      itemHtml.append(meta);
+
+				resultsDiv.append(itemHtml);
+			}
+
+		}else{
+
+			var noRecordsFound = jQuery("<p>No records found</p>");
+			resultsDiv.append(noRecordsFound);
+			resultsDiv.height(100);
 		}
+
+		jQuery(".accordion").accordion("refresh");
+
 	}
 
 	function renderPagination(paginationDiv,startIndex,count,totalResults){
@@ -120,7 +151,7 @@
 
 	}
 
-	function hndlr(response) {
+	/*function hndlr(response) {
 
 		var resultsDiv = jQuery("#cse_results");
     resultsDiv.empty();
@@ -133,20 +164,44 @@
 
 		outputSearchResults(resultsDiv,response);
 		renderPagination(paginationDiv,startIndex,count,totalResults);
-	}
+	}*/
 
-  function triggerQuery(startIndex){
-    var search_query = "https://www.googleapis.com/customsearch/v1?key=" + api_key + "&cx=" + cx +"&q="+ $('#cse_search').val() +"&start=" + startIndex + "&callback=hndlr";
-    console.log(search_query);
-    $.get(search_query, function(data, status){
+  function triggerQuery(resultsDiv,startIndex,type){
+
+    var search_query = "https://www.googleapis.com/customsearch/v1?key=" + api_key + "&cx=" + cx +"&q="+ $('#cse_search').val() +" more:pagemap:metatags-odm_type:" + type + "&start=" + startIndex;
+		//search_query += "&callback=hndlr"
+		console.log(search_query);
+
+    $.get(search_query, function(response, status){
       console.log("Query finished with status: " + status);
+
+	    resultsDiv.empty();
+
+			var totalResults = response.queries.request[0].totalResults;
+			var count = response.queries.request[0].count;
+			var startIndex = response.queries.request[0].startIndex;
+			console.log("showing " + startIndex + " - " + startIndex+count + " from " + totalResults);
+
+			if (count > 0){
+				outputSearchResults(resultsDiv,response);
+			}
+
+			//renderPagination(paginationDiv,startIndex,count,totalResults);
     });
   }
-  var api_key= "AIzaSyCHHIlx8Q1wEUj1-h9zIvfnGYqIxooTRdY";
+
+
+  var api_key= "KEY";
   var cx = "018137511656225297663:skc7uxrvvfq";
 	jQuery(document).ready(function($) {
+		jQuery(".accordion").accordion({ header: "h3", active: false, collapsible: true, heightstyle: "content" });
 		$('#cse_submit').on('click', function(){
-			triggerQuery(1);
+			//triggerQuery(jQuery("#cse_results_dataset"),1,"");
+			triggerQuery(jQuery("#cse_results_maps"),1,"layer");
+			triggerQuery(jQuery("#cse_results_news"),1,"news-article");
+			triggerQuery(jQuery("#cse_results_topics"),1,"topic");
+			triggerQuery(jQuery("#cse_results_profiles"),1,"profile");
+			triggerQuery(jQuery("#cse_results_dashboards"),1,"dashboard");
 		})
 	});
 </script>
