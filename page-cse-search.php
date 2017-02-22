@@ -35,7 +35,12 @@
 			<div class="twelve columns">
 				<h2>Results</h2>
 				<div id="cse_results" class="accordion">
-					<!-- <div class="cse_results_section"><h3><?php _e("Datasets","odm") ?></h3><div id="cse_results_dataset"></div></div> -->
+					<h3><?php _e("Datasets","odm") ?></h3>
+					<div id="cse_results_datasets" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
+					<h3><?php _e("Library Publications","odm") ?></h3>
+					<div id="cse_results_library" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
+					<h3><?php _e("Laws","odm") ?></h3>
+					<div id="cse_results_laws" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 					<h3><?php _e("Maps","odm") ?></h3>
 					<div id="cse_results_maps" class="cse_results_section"><p><?php _e('No records found','odm'); ?></p></div>
 					<h3><?php _e("News articles","odm") ?></h3>
@@ -205,7 +210,9 @@
 
 		jQuery(".accordion").accordion({ header: "h3", active: false, collapsible: true, heightstyle: "content" });
 		$('#cse_submit').on('click', function(){
-			//triggerQuery(jQuery("#cse_results_dataset"),1,"");
+			triggerQuery(jQuery("#cse_results_dataset"),1,"dataset");
+			triggerQuery(jQuery("#cse_results_library"),1,"library_record");
+			triggerQuery(jQuery("#cse_results_laws"),1,"laws_record");
 			triggerQuery(jQuery("#cse_results_maps"),1,"layer");
 			triggerQuery(jQuery("#cse_results_news"),1,"news-article");
 			triggerQuery(jQuery("#cse_results_topics"),1,"topic");
