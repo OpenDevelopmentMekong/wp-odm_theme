@@ -1,0 +1,151 @@
+.chosen-container{
+	.chosen-results{
+		li{
+			padding: 2px 4px !important;
+		  user-select: none;
+		  -webkit-user-select: none;
+		  margin: 0;
+		  border-bottom: 1px #ccc dashed;
+			font-size: 13px;
+			line-height: 24px !important;
+		}
+		.level-0 {
+			margin-left: 0.1em;
+		}
+		.level-1 {
+			margin-left: 1.2em;
+		}
+		.level-2 {
+			margin-left: 1.7em;
+		}
+		.level-3 {
+			margin-left: 2.2em;
+		}
+		.level-4 {
+			margin-left: 2.7em;
+		}
+		.level-5 {
+			margin-left: 3.2em;
+		}
+
+	}
+}
+
+#od-search-results{
+  background: @almost-white;
+
+  .row{
+    margin: 0px;
+  }
+}
+
+.results-container {
+  display: none;
+  border-top: 1px @gray solid;
+
+  .results{
+    clear:both;
+  }
+
+  .more{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    margin-top: 20px;
+
+    #close-results {
+      margin-left: 10px;
+    }
+
+  }
+
+}
+
+.advanced-nav-filters {
+	margin-top: 0;
+
+  .label{
+      margin-bottom: @xsmall-padd;
+  }
+	label {
+		display: inline;
+		color: #444;
+		cursor: pointer;
+	}
+
+	input {
+		width: 100%;
+	}
+
+	.chosen-container {
+		width: 100% !important;
+	}
+
+	.chosen-choices {
+		border-color: #ccc !important;
+		background-image: none !important;
+    padding-top: 1px;
+	}
+
+	input[type="text"], li.search-field input[type="text"]{
+		color: #999 !important;
+		padding: 4px 5px 0;
+		line-height: 24px;
+		font-size: 100%;
+	}
+
+	.date-input {
+		.date-range-inputs > div {
+			width: 50%;
+			float: left;
+			.sublabel {
+				float: left;
+				line-height: 30px;
+				padding-right: 10px;
+				font-size: 10px;
+			}
+			input {
+				float: left;
+				width: 90%;
+			}
+		}
+	}
+
+	.adv-nav-input {
+	 	margin: 0 0 @small-padd;
+	}
+
+	input[type=submit] {
+    margin-top: 28px;
+    height: 32px !important;
+		padding: 5px;
+		text-align: center;
+		display: block;
+		width: 100%;
+		cursor: pointer;
+	}
+}
+.ui-datepicker-title select{
+    display: inline-block;
+}
+
+#ui-datepicker-div {
+	z-index: 5 !important;
+
+  table{
+    tr{
+				th {
+					padding: 0;
+				}
+		    td a, td span{
+		      padding: 2px;
+			    font-size: @font-size-h6;
+		    }
+
+			&:nth-child(2n+1){
+	      background: none;
+	    }
+		}
+  }
+}

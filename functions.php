@@ -180,9 +180,14 @@ add_action( 'admin_head', 'add_menu_icons_styles' );
 
 function odm_dependency_scripts()
 {
-  wp_enqueue_script('odm-dependencies-chosen', get_stylesheet_directory_uri().'/bower_components/chosen/chosen.jquery.js');
-  wp_enqueue_script('odm-dependencies-datatables', get_stylesheet_directory_uri().'/bower_components/datatables/media/js/jquery.dataTables.min.js');
-  //wp_enqueue_script('odm-dependencies-leaflet', get_stylesheet_directory_uri().'/bower_components/leaflet/dist/leaflet.js');
+	$bower_base = get_stylesheet_directory_uri().'/bower_components/';
+  wp_enqueue_script('odm-dependencies-chosen', $bower_base.'chosen/chosen.jquery.js');
+	wp_enqueue_script('odm-dependencies-moment', $bower_base.'moment/min/moment.min.js');
+  wp_enqueue_script('odm-dependencies-datatables', $bower_base.'datatables/media/js/jquery.dataTables.min.js');
+  wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'datatables-buttons/js/dataTables.buttons.js');
+  wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'datatables-buttons/js/buttons.html5.js');
+  wp_enqueue_script('odm-dependencies-datatables-buttons-print', $bower_base.'datatables-buttons/js/buttons.print.js');
+	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'jQuery.print/jQuery.print.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
@@ -233,7 +238,7 @@ function odm_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
-  if (is_page( array( 'map-explorer', 'maps', 'embed' )) || is_singular('map') ||is_singular('profiles') || is_home()){
+  if (is_page( array( 'map-explorer', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
          wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
@@ -244,9 +249,9 @@ function odm_jeo_scripts()
          wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
       }
 
-
       wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
+			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
       wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
   }
 
@@ -267,6 +272,9 @@ add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
+		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js'))
+			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
+
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
 
@@ -396,12 +404,6 @@ add_filter('jeo_mapgroup_data', 'odm_map_data');
 
 function odm_custom_admin_css()
 {
-/*    ?>
- <style>
-  .handlers.map-setting { display: none !important; }
- </style>
- <?php
-*/
  // dequeue parent script and enqueue from child theme
  wp_dequeue_script('mapbox-metabox');
  wp_enqueue_script('child-mapbox-metabox', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapbox.js', array('jquery', 'jeo', 'jquery-ui-sortable'), '0.5.1');
@@ -411,36 +413,40 @@ add_action('admin_footer', 'odm_custom_admin_css', 100);
 
 function odm_return_all_topics( $query ) {
 
-  if (is_archive() && $query->get('post_type') == 'topic') {
+  if (!is_admin() && is_archive() && $query->get('post_type') == 'topic') {
       $query->query_vars['posts_per_page'] = -1;
   }
 
 }
-add_action( 'pre_get_posts', 'odm_return_all_topics' );
+add_action('pre_get_posts', 'odm_return_all_topics' );
 
 function odm_search_pre_get_posts($query)
 {
-  if(get_post_type()){
-    $post_type = $query->query['post_type'][0];
-  }else {
-    if (!is_admin() && ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag)) {
-      $query->set('post_type', available_post_types_search());
+  if(!is_admin()):
+    if(isset($query->query['post_type'])){
+      $query->set('post_type', $query->query['post_type']);
+    }else {
+      if ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag) {
+        $query->set('post_type', available_post_types_search());
+      }
     }
-  }
-
+  endif;
 }
 add_action('pre_get_posts', 'odm_search_pre_get_posts');
 
 function odm_category_pre_get_posts($query)
 {
-  if(get_post_type()){
-    $post_type = $query->query['post_type'][0];
-  }else {
-      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'topic';
-  }
-  if ($query->is_category && isset($post_type)) {
-      $query->set('post_type', array($post_type));
-  }
+  if(!is_admin()):
+    if(isset($query->query['post_type'])){
+      $post_type = $query->query['post_type'];
+    }else {
+      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
+    }
+
+    if ($query->is_category && isset($post_type)) {
+        $query->set('post_type', array($post_type));
+    }
+  endif;
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
 

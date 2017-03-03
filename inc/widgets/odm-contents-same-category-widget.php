@@ -75,14 +75,19 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 				);
 			  $posts = query_posts($query);
 		endif;
+
 		if($posts){
 			$selected_post_type = get_post_type_object($supported_post_types[0]);
-			$post_type_slug = $selected_post_type->rewrite['slug'];
-			echo $args['before_widget']; ?>
+			$post_type_page = $selected_post_type->rewrite['slug'];
+			$more_url = "/".$post_type_page;
+			if(!empty($categories)):
+				$more_url = get_category_link($categories[0])."?queried_post_type=".$selected_post_type->name;
+			endif;
 
+			echo $args['before_widget']; ?>
 			<?php if ($more_location == 'top'): ?>
 				<div class="row float-right">
-					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
+					<a href="<?php echo $more_url?>"> <?php _e('More...', 'odm');?> </a>
 				</div>
 			<?php endif; ?>
 
@@ -118,7 +123,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 				<?php if ($more_location == 'bottom'): ?>
 					<div class="row float-right">
-						<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
+						<a href="<?php echo $more_url?>"> <?php _e('More...','odm') ?></a>
 					</div>
 				<?php endif; ?>
 

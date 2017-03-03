@@ -48,7 +48,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		}
 
 		if ($title == 1) {
-				echo '<h2 class="widget-title">'.__('Categories', 'odm').'</h2>';
+				echo '<h2 class="widget-title">'.__('Topic', 'odm').'</h2>';
 		}
 
 		echo "<ul class='odm_taxonomy_widget_ul'>";
@@ -360,7 +360,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 	  global $post;
 		$post = $the_post;
 		$limit = $num;
-		
+
 		if($post->post_excerpt):
 			$get_the_excerpt = $post->post_excerpt;
 		else:
@@ -504,8 +504,24 @@ function available_custom_post_types(){
 	 return $post_types;
  }
 
- function available_post_types_search(){
- 	 return array('topic','annoucement','profile','site-update','news-article','story', 'map-layer','nav_menu_item');
+ function available_post_types_search($output = null){
+	 $searchable_post_types = array('topic','annoucement','profile','site-update','news-article','story', 'map-layer');
+
+	 if($output == "object"):
+		 $post_types = get_post_types(array(
+		 	'public' => true,
+		 	'_builtin' => false
+		 ), 'object');
+
+		 foreach ($post_types as $post_type) {
+			 if(!in_array($post_type->name, $searchable_post_types)):
+				 unset($post_types[$post_type->name]);
+			 endif;
+		 }
+		 return $post_types;
+	 endif;
+
+ 	 return $searchable_post_types;
   }
 
  function content_types_breakdown_for_query($search_term,$posts_per_page){

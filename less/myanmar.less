@@ -3,6 +3,24 @@
 
 @import "_country-mixin.less";
 
+@import url('http://mmwebfonts.comquas.com/fonts/?font=myanmar3');
+
+.my {
+  font-family: "Open Sans","Helvetica","Arial", 'Myanmar3', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, td, th, div, input {
+    font-family: inherit !important;
+}
+.my select, .my select{
+    font-family: inherit;
+}
+
+.mainNav-inner .level1 li a, #mainNav-inner .level1 li a, a#user_feedback_form,
+.fa_slider_opendev .fa_slide_content div.description p {
+  font-family: inherit !important;
+}
+
 /* Color */
 @myanmar-text-color: #E29000;
 @myanmar-bright: #F8BF42;
@@ -74,12 +92,12 @@
     }
     span.minusimage-myanmar {
       display: inline-block;
-      background: url("../../img/collapse-my.png") no-repeat 0 5px!important;
+      background: url("../../img/collapse-my.png") no-repeat 0 8px!important;
       padding-left: 20px;
     }
     span.nochildimage-myanmar {
       display: inline-block;
-      background: url("../../img/no-child-my.png") no-repeat 0 5px!important;
+      background: url("../../img/no-child-my.png") no-repeat 0 8px!important;
       padding-left: 20px;
     }
   }
