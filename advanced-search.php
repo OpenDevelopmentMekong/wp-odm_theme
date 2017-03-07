@@ -3,63 +3,54 @@
 	<section class="container">
 		<div class="row">
 
-			<div class="twelve columns">
-					<?php
-						global $wp_query;
-						$args = array(
-							"s" => $s,
-							"posts_per_page" => -1,
-							"post_status" => "published"
-						);
-						$search_results = new WP_Query($args); ?>
+			<div class="sixteen columns">
 
-						<?php
-							while (have_posts()) : the_post(); ?>
-								<?php odm_get_template('post-list-single-2-cols',array(
-									"post" => get_post(),
-									"show_meta" => true,
-									"show_excerpt" => true,
-									"show_post_type" => true
-								),true);
-							endwhile;
+				<h2>CKAN results</h2>
+ 				<?php
+ 					$resultset = Odm_Solr_CKAN_Manager()->query($s);
+ 				?>
+
+ 				<h2><?php echo count($resultset); ?> results found</h2>
+
+ 				<?php
+ 					foreach ($resultset as $document) {
+
+ 						?>
+
+ 						<div id="cse_results">
+ 							<div class="cse_result">
+ 								<h3><a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><?php echo $document->title ?></a></h3>
+ 								<p><?php echo $document->notes ?></p>
+ 							</div>
+ 						</div>
+
+ 						<?php
+ 					}
+ 				 ?>
+
+				<h2>WP results</h2>
+				<?php
+					$resultset = Odm_Solr_WP_Manager()->query($s);
+				?>
+
+				<h2><?php echo count($resultset); ?> results found</h2>
+
+				<?php
+					foreach ($resultset as $document) {
+
 						?>
 
-			</div>
+						<div id="cse_results">
+							<div class="cse_result">
+								<h3><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h3>
+								<p><?php echo $document->content ?></p>
+							</div>
+						</div>
 
-			<div class="four columns">
-				<section id="wpckan_search_results">
-					<h2><?php _e('Data results'); ?></h2>
-					<?php echo do_shortcode('[wpckan_query_datasets query="'.$s.'" limit="10" include_fields_dataset="title" include_fields_resources="" blank_on_empty="true"]'); ?>
-					<?php
-	            $data_page_id = odm_get_data_page_id();
-	            if ($data_page_id) : ?>
-								<a class="button" href="<?php echo get_permalink($data_page_id);?>?ckan_s=<?php echo $s;?>"><?php _e('View all data results', 'odm');?></a>
-				<?php endif ?>
-				</section>
-			</div>
+						<?php
+					}
+				 ?>
 
-			<script type="text/javascript">
-				jQuery(document).ready(function($) {
-					if(!$('.wpckan_dataset_list ul li').length)
-						$('#wpckan_search_results').hide();
-				})
-			</script>
-
-			<div class="sixteen columns">
-				<div class="navigation">
-					<?php
-            global $wp_query;
-
-            $big = 999999999; // need an unlikely integer
-
-            echo paginate_links(array(
-                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                'format' => '?paged=%#%',
-                'current' => max(1, $paged),
-                'total' => $wp_query->max_num_pages,
-            ));
-          ?>
-				</div>
 			</div>
 		</div>
 	</section>

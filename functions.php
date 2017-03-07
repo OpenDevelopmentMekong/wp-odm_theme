@@ -1,11 +1,15 @@
 <?php
 
+require 'vendor/autoload.php';
+
 /*
  * Managers
  */
 require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
 require_once get_stylesheet_directory().'/inc/taxonomy-manager.php';
+require_once get_stylesheet_directory().'/inc/solr-wp-manager.php';
+require_once get_stylesheet_directory().'/inc/solr-ckan-manager.php';
 
 /*
  * Post types
@@ -607,6 +611,16 @@ function convert_keywords_to_related() {
 		return $output;
 }
 add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to_related' );
+
+function reindex_wp_contents() {
+
+		ob_start();
+		include( dirname(__FILE__) . '/admin-scripts/reindex-wp-contents.php' );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+}
+add_shortcode( 'admin_scripts_reindex_wp_contents', 'reindex_wp_contents' );
 
 function add_custom_meta_tags() {
     global $post;
