@@ -21,7 +21,8 @@ else:
 	foreach ( $post_types_to_index as $post_type):
 
 			$args = array(
-		    'post_type' => $post_type
+		    'post_type' => $post_type,
+				'posts_per_page' => -1
 			);
 
 			$posts = get_posts($args);
