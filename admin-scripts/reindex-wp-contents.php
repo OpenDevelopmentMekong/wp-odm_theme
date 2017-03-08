@@ -47,7 +47,7 @@ else:
 
 			$current_post_number += 50;
 
-		}while (count($posts) > 0 && $current_post_number < $max_posts_to_index_per_type);
+		}while (count($posts) > 0 && $current_post_number < ($max_posts_to_index_per_type + 50));
 
 		echo("Indexed " . count($current_post_number - 50) . " of type " . $post_type . nl2br("\n"));
 
