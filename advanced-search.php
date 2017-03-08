@@ -30,7 +30,7 @@
 
 								<div id="solr_results">
 									<div class="solr_result">
-										<h4><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h4>
+										<h4><a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><?php echo $document->title ?></a></h4>
 										<p><?php echo strip_tags(substr($document->notes,0,400)) ?></p>
 									</div>
 								</div>
