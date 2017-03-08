@@ -32,8 +32,9 @@
 									<div class="solr_result">
 										<h4><a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><?php echo $document->title ?></a></h4>
 										<p><?php echo strip_tags(substr($document->notes,0,400)) ?></p>
-										<p><?php echo $document->extras_odm_spatial_range ?></p>
-										<p><?php echo $document->extras_odm_language ?></p>
+										<p><?php echo "country: " . $document->extras_odm_spatial_range ?> <?php echo "language: " . $document->extras_odm_language ?> <?php echo "topics: " . $document->extras_taxonomy ?></p>
+										<p></p>
+										<p></p>
 									</div>
 								</div>
 
