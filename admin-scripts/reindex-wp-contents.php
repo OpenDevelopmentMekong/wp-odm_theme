@@ -45,11 +45,11 @@ else:
 
 			wp_reset_postdata();
 
-			$current_post_number += 50;
+			$current_post_number += count($posts);
 
 		}while (count($posts) > 0 && $current_post_number < ($max_posts_to_index_per_type + 50));
 
-		echo("Indexed " . count($current_post_number - 50) . " of type " . $post_type . nl2br("\n"));
+		echo("Indexed " . count($current_post_number) . " of type " . $post_type . nl2br("\n"));
 
 	endforeach;
 
