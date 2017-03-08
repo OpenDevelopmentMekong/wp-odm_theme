@@ -27,26 +27,28 @@ else:
 
 			$args = array(
 		    'post_type'      => $post_type,
-				'posts_per_page' => 100,
+				'posts_per_page' => 50,
         'offset'         => $current_post_number,
 			);
 
 			$posts = get_posts($args);
 
-			echo("Batch of " . count($posts) . " posts found with post type:" . $post_type . nl2br("\n"));
+			#echo("Batch of " . count($posts) . " posts found with post type:" . $post_type . nl2br("\n"));
 
 			foreach ( $posts as $post):
 
-				echo("Indexing post with title:" . $post->post_title . nl2br("\n"));
+				#echo("Indexing post with title:" . $post->post_title . nl2br("\n"));
 				Odm_Solr_WP_Manager()->index_post($post);
 
 			endforeach;
 
 			wp_reset_postdata();
 
-			$current_post_number += 100;
+			$current_post_number += 50;
 
 		}while (count($posts) > 0);
+
+		echo("Indexed " . count($current_post_number - 50) . " of type " . $post_type . nl2br("\n"));
 
 	endforeach;
 
