@@ -1,6 +1,7 @@
 <?php
 
  use Solarium\Solarium;
+ use Solarium\QueryType\Select\Query\Query as Select;
 /*
  * OpenDev
  * Solr Manager
@@ -24,6 +25,11 @@ class Odm_Solr_WP_Manager {
 
 	function __construct() {
 		$this->client = new \Solarium\Client($this->server_config);
+
+		$options = get_option('odm_options');
+		$solr_config = $options['solr_config'];
+    $this->client->getEndpoint()->setAuthentication($solr_config['solr_user'],$solr_config['solr_pwd']);
+
 	}
 
   function ping_server(){
@@ -79,9 +85,12 @@ class Odm_Solr_WP_Manager {
 		return $result;
   }
 
-	function query($text){
+	function query($text, $typeFilter = null){
 		$query = $this->client->createSelect();
 		$query->setQuery($text);
+		if (isset($typeFilter)):
+			$query->createFilterQuery('type')->setQuery('type:' . $typeFilter);
+		endif;
 		$resultset = $this->client->select($query);
 		return $resultset;
 	}

@@ -4,6 +4,7 @@ function isSiteAdmin(){
   return in_array('administrator',  wp_get_current_user()->roles);
 }
 
+$max_posts_to_index_per_type = 100;
 $post_types_to_index = array(
 	'news-article','topic','dashboard','dataviz','profiles','tabular','announcement','site-update','story','map-layer'
 );
@@ -46,7 +47,7 @@ else:
 
 			$current_post_number += 50;
 
-		}while (count($posts) > 0);
+		}while (count($posts) > 0 && $current_post_number < $max_posts_to_index_per_type);
 
 		echo("Indexed " . count($current_post_number - 50) . " of type " . $post_type . nl2br("\n"));
 

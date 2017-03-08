@@ -1,3 +1,4 @@
+
 <?php if (have_posts()) : ?>
 
 	<section class="container">
@@ -5,54 +6,93 @@
 
 			<div class="sixteen columns">
 
-				<h2>CKAN results</h2>
- 				<?php
- 					$resultset = Odm_Solr_CKAN_Manager()->query($s);
- 				?>
+				<div id="accordion">
 
- 				<h2><?php echo count($resultset); ?> results found</h2>
+					<?php
 
- 				<?php
- 					foreach ($resultset as $document) {
+					$supported_ckan_types = array(
+						'dataset' => 'Datasets',
+						'library_record' => 'Library publications',
+						'laws_record' => 'Laws',
+						'agreement' => 'Agreements'
+					);
 
- 						?>
+					foreach( $supported_ckan_types as $key => $value):
+						$resultset = Odm_Solr_CKAN_Manager()->query($s,$key);
+					?>
 
- 						<div id="cse_results">
- 							<div class="cse_result">
- 								<h3><a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><?php echo $document->title ?></a></h3>
- 								<p><?php echo $document->notes ?></p>
- 							</div>
- 						</div>
-
- 						<?php
- 					}
- 				 ?>
-
-				<h2>WP results</h2>
-				<?php
-					$resultset = Odm_Solr_WP_Manager()->query($s);
-				?>
-
-				<h2><?php echo count($resultset); ?> results found</h2>
-
-				<?php
-					foreach ($resultset as $document) {
-
-						?>
-
-						<div id="cse_results">
-							<div class="cse_result">
-								<h3><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h3>
-								<p><?php echo strip_tags(substr($document->content,0,400)) ?></p>
-							</div>
-						</div>
-
+						<h3><?php echo $value . " (" . count($resultset) . ")" ?></h3>
+						<div>
 						<?php
-					}
-				 ?>
+							foreach ($resultset as $document):
 
+								?>
+
+								<div id="solr_results">
+									<div class="solr_result">
+										<h4><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h4>
+										<p><?php echo strip_tags(substr($document->notes,0,400)) ?></p>
+									</div>
+								</div>
+
+								<?php
+							endforeach;
+						 ?>
+					 </div>
+
+					<?php
+ 						endforeach;
+ 			 		?>
+
+					<?php
+
+					$supported_wp_types = array(
+						'map-layer' => 'Maps',
+						'news-article' => 'News articles',
+						'topic' => 'Topics',
+						'profiles' => 'Profiles',
+						'story' => 'Story',
+						'announcement' => 'Announcements',
+						'site-update' => 'Site updates'
+					);
+
+					foreach( $supported_wp_types as $key => $value):
+						$resultset = Odm_Solr_WP_Manager()->query($s,$key);
+					?>
+
+						<h3><?php echo $value . " (" . count($resultset) . ")" ?></h3>
+						<div>
+						<?php
+							foreach ($resultset as $document):
+
+								?>
+
+								<div id="solr_results">
+									<div class="solr_result">
+										<h4><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h4>
+										<p><?php echo strip_tags(substr($document->content,0,400)) ?></p>
+									</div>
+								</div>
+
+								<?php
+							endforeach;
+						 ?>
+					 </div>
+
+					<?php
+					endforeach;
+					?>
+				</div>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		jQuery( function() {
+			jQuery( "#accordion" ).accordion({
+				collapsible: true, active: false
+			});
+		} );
+	</script>
 
 <?php endif; ?>

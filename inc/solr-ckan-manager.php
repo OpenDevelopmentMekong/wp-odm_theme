@@ -24,6 +24,10 @@ class Odm_Solr_CKAN_Manager {
 
 	function __construct() {
 		$this->client = new \Solarium\Client($this->server_config);
+
+		$options = get_option('odm_options');
+		$solr_config = $options['solr_config'];
+    $this->client->getEndpoint()->setAuthentication($solr_config['solr_user'],$solr_config['solr_pwd']);
 	}
 
   function ping_server(){
@@ -38,11 +42,12 @@ class Odm_Solr_CKAN_Manager {
     return true;
   }
 
-	function query($text){
+	function query($text, $typeFilter = null){
 		$query = $this->client->createSelect();
-		$dismax = $query->getDisMax();
-		$dismax->setQueryFields('title name');
-		$query->setQuery('%P1%', array($text));
+		$query->setQuery($text);
+		if (isset($typeFilter)):
+			$query->createFilterQuery('dataset_type')->setQuery('type:' . $typeFilter);
+		endif;
 		$resultset = $this->client->select($query);
 		return $resultset;
 	}
