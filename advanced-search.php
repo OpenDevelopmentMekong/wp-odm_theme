@@ -43,7 +43,7 @@
 						<div id="cse_results">
 							<div class="cse_result">
 								<h3><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h3>
-								<p><?php echo $document->content ?></p>
+								<p><?php echo strip_tags(substr($document->content,0,400)) ?></p>
 							</div>
 						</div>
 
