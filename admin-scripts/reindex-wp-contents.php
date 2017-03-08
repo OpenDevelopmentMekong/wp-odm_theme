@@ -18,16 +18,22 @@ else:
 
   Odm_Solr_WP_Manager()->clear_index();
 
+
 	foreach ( $post_types_to_index as $post_type):
 
+		$current_post_number = 0;
+
+		do{
+
 			$args = array(
-		    'post_type' => $post_type,
-				'posts_per_page' => 100
+		    'post_type'      => $post_type,
+				'posts_per_page' => 100,
+        'offset'         => $current_post_number,
 			);
 
 			$posts = get_posts($args);
 
-			echo(count($posts) . "posts found with post type:" . $post_type . nl2br("\n"));
+			echo("Batch of " . count($posts) . " posts found with post type:" . $post_type . nl2br("\n"));
 
 			foreach ( $posts as $post):
 
@@ -37,6 +43,10 @@ else:
 			endforeach;
 
 			wp_reset_postdata();
+
+			$current_post_number += 100;
+
+		}while (count($posts) > 0);
 
 	endforeach;
 
