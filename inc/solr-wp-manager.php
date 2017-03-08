@@ -15,7 +15,8 @@ class Odm_Solr_WP_Manager {
         'localhost' => array(
             'host' => 'solr.pp.opendevelopmentmekong.net',
             'port' => 443,
-            'path' => '/solr/wordpress_content/',
+            'path' => '/solr/',
+						'core' => 'wordpress_content',
 						'scheme' => 'https'
         )
     )

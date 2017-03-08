@@ -15,7 +15,8 @@ class Odm_Solr_CKAN_Manager {
         'localhost' => array(
             'host' => 'solr.pp.opendevelopmentmekong.net',
             'port' => 443,
-            'path' => '/solr/collection1/',
+            'path' => '/solr/',
+						'core' => 'collection1',
 						'scheme' => 'https'
         )
     )
