@@ -22,7 +22,7 @@ else:
 
 			$args = array(
 		    'post_type' => $post_type,
-				'posts_per_page' => -1
+				'posts_per_page' => 100
 			);
 
 			$posts = get_posts($args);
