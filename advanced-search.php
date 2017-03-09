@@ -74,6 +74,7 @@
 									<div class="solr_result">
 										<h4><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h4>
 										<p><?php echo strip_tags(substr($document->content,0,400)) ?></p>
+										<p><?php echo "language: " . $document->odm_language ?> <?php echo "topics: " . $document->categories ?></p>
 									</div>
 								</div>
 
