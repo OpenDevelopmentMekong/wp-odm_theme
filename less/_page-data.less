@@ -62,3 +62,158 @@
 	font-weight: bold;
 	font-size: @font-size-h4;
 }
+
+/* New Data Page Template */
+.data-advanced-filters {
+	background-color: #f4f4f4;
+	border: 1px solid #d2d2d2;
+	padding: 20px;
+	.single-filter {
+		select {
+			width: 100%;
+			height: 30px;
+		}
+
+		.button {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+.full-width-search-box {
+	width: 100% !important;
+	border-radius: 5px !important;
+	padding: 10px !important;
+}
+
+span.meta-label {
+	padding:1px 3px;
+	border-radius: 2px;
+	background-color: @primary-color;
+	color: @white;
+	font-size: 12px;
+}
+
+.single_result_container {
+	.data_title {
+		a {
+			font-size: 16px;	
+		}
+	}
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #f2f2f2;
+	.data_format {
+		text-align: right;
+	}
+	.data_meta_wrapper {
+		display: block;
+		overflow: hidden;
+		.country_indicator {
+			margin-top: -5px;
+			.svg-od-logo {
+				width: 20px;
+				height: 20px;
+				position: relative;
+				top: 5px;
+			}
+		}
+		.data_meta {
+			float:left;
+			display: inline-block;
+			padding-right: 15px;
+			margin-bottom: 5px;
+		}
+		.data_languages {
+			.meta-label {
+				&.en {
+					background-color: @mekong-bright;
+				}
+				&.km {
+					background-color: @cambodia-bright;
+				}
+				&.lo {
+					background-color: @laos-bright;
+				}
+				&.my {
+					background-color: @myanmar-bright;
+				}
+				&.th {
+					background-color: @thailand-bright;
+				}
+				&.vi {
+					background-color: @vietnam-bright;
+				}
+			}
+		}
+	}
+}
+
+.label, .meta-label {
+
+	&.html{
+		background-color:#55a1ce;
+	}
+	&.json{
+		background-color:#ef7100;
+	}
+	&.xlsx {
+		background-color: #2db55d;
+	}
+	&.xml{
+		background-color:#ef7100;
+	}
+	&.text{
+		background-color:#74cbec;
+	}
+	&.csv{
+		background-color:#dfb100;
+	}
+	&.xls{
+		background-color:#2db55d;
+	}
+	&.zip{
+		background-color:#686868;
+	}
+	&.api{
+		background-color:#ec96be;
+	}
+	&.pdf{
+		background-color: @format-pdf;
+	}
+	&.rdf, &.nquad, &.ntriples, &.turtle {
+		background-color:#0b4498;
+	}
+	&.wfs  {
+	    background-color: #7aae3d;
+	}
+
+	&.wms {
+	    background-color: #adc717;
+	}
+	&.gml {
+	    background-color: #7aae3d;
+	}
+	&.kml {
+	    background-color: #7aae3d;
+	}
+	&.geojson {
+	    background-color: #9855e0;
+	}
+	&.wmts {
+	    background-color: #3333ff;
+	}
+	&.arcgis_rest {
+	    background-color: #5c3ee0;
+	}
+}
+
+.pagination_wrapper {
+	margin-bottom: 40px;
+	text-align: right;
+	a {
+		padding: 0px 20px;
+	}
+}
+
