@@ -69,7 +69,11 @@ Template Name: Data
   //================== Pagination ======================
   $request_url = $_SERVER['REQUEST_URI'];
   $url_parts = parse_url($request_url);
-  parse_str($url_parts['query'], $params);
+  if (isset($url_parts['query'])) {
+    parse_str($url_parts['query'], $params);
+  } else {
+    $params = [];
+  }
 
   //Next Page Link
   $next_page_params = $params;
