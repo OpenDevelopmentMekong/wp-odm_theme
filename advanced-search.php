@@ -21,7 +21,7 @@
 						$resultset = Odm_Solr_CKAN_Manager()->query($s,$key);
 					?>
 
-						<h3><?php echo $value . " (" . count($resultset) . ")" ?></h3>
+						<h3><?php echo $value . " (" . $resultset->getNumFound() . ")" ?></h3>
 						<div>
 						<?php
 							foreach ($resultset as $document):
@@ -63,7 +63,7 @@
 						$resultset = Odm_Solr_WP_Manager()->query($s,$key);
 					?>
 
-						<h3><?php echo $value . " (" . count($resultset) . ")" ?></h3>
+						<h3><?php echo $value . " (" . $resultset->getNumFound() . ")" ?></h3>
 						<div>
 						<?php
 							foreach ($resultset as $document):
