@@ -25,14 +25,14 @@ Template Name: Data
   );
 
   //================ Filter Values ===================== //
-  
+
   $taxonomy_list = odm_taxonomy_manager()->get_taxonomy_list();
   $countries = odm_country_manager()->get_country_codes();
   $languages = odm_language_manager()->get_supported_languages();
   $license_list = wpckan_get_license_list();
 
   //================ Build Filters ===================== //
-  
+
   // Query
   if ($param_query) {
     $attrs['query'] = $param_query;
@@ -40,22 +40,22 @@ Template Name: Data
 
   $filter_fields = [];
 
-  //Taxonomy 
+  //Taxonomy
   if (!empty($param_taxonomy) && $param_taxonomy != 'all') {
     $filter_fields["extras_taxonomy"] = $param_taxonomy;
   }
 
-  // Language 
+  // Language
   if (!empty($param_language) && $param_language != 'all') {
     $filter_fields["extras_odm_language"] = $param_language;
   }
 
-  // Country 
+  // Country
   if (!empty($param_country) && $param_country != 'mekong' && $param_country != 'all') {
     $filter_fields["extras_odm_spatial_range"] = $countries[$param_country]['iso2'];
   }
 
-  //License 
+  //License
   if (!empty($param_license) && $param_license != 'all') {
     $filter_fields['license_id'] = $param_license;
   }
@@ -130,7 +130,7 @@ Template Name: Data
         </div>
         <?php endif; ?>
         <!-- END OF COUNTRY FILTER  -->
-        
+
         <!-- LANGUAGE FILTER -->
         <div class="single-filter">
           <label for="language"><?php _e('Language', 'odm'); ?></label>
@@ -144,7 +144,7 @@ Template Name: Data
           </select>
         </div>
         <!-- END OF LANGUAGE FILTER -->
-        
+
         <!-- LICENSE FILTER -->
         <div class="single-filter">
           <label for="license"><?php _e('License', 'odm'); ?></label>
@@ -161,7 +161,7 @@ Template Name: Data
         <div class="single-filter">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
         </div>
-      
+
     </div>
     <div class="eleven columns">
       <div class="search_bar">
@@ -170,16 +170,16 @@ Template Name: Data
       </div>
       <div class="results_info"><h2><?php echo $datasets['count'] ?> records found.</h2></div>
       <div class="result_container">
-        
+
         <?php foreach($datasets['results'] as $dataset): ?>
         <!-- TEMPLATE -->
         <div class="single_result_container">
           <div class="data_format">
-            <?php 
+            <?php
               $resource_formats = array_unique(array_column($dataset['resources'], 'format'));
              ?>
             <?php foreach ($resource_formats as $format): ?>
-              <span class="meta-label <?php echo $format; ?>"><?php echo $format; ?></span>  
+              <span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
             <?php endforeach ?>
           </div>
           <h2 class="data_title">
@@ -196,25 +196,25 @@ Template Name: Data
               <div class="country_indicator data_meta">
               <?php
                 od_logo_icon($dataset_country);
-                echo $dataset_country; 
+                echo $dataset_country;
                 ?>
               </div>
             <?php endif; ?>
             <div class="data_languages data_meta">
               <?php foreach ($dataset['odm_language'] as $lang): ?>
-                <span class="meta-label <?php echo $lang ?>"><?php echo $lang ?></span>
+                <span class="meta-label <?php echo strtolower($lang) ?>"><?php echo strtolower($lang) ?></span>
               <?php endforeach; ?>
             </div>
             <div class="data_topics data_meta">
-              <i class="fa fa-tags"></i> 
-              <?php 
-                $tags = array_column($dataset['tags'], 'display_name'); 
+              <i class="fa fa-tags"></i>
+              <?php
+                $tags = array_column($dataset['tags'], 'display_name');
                 echo implode(", ", $tags);
               ?>
             </div>
           </div>
         </div>
-        <!-- END OF TEMPLATE --> 
+        <!-- END OF TEMPLATE -->
         <?php endforeach; ?>
       </div>
       <div class="pagination_wrapper">
