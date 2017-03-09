@@ -32,7 +32,7 @@
 									<div class="solr_result">
 										<h4><a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><?php echo $document->title ?></a></h4>
 										<p><?php echo strip_tags(substr($document->notes,0,400)) ?></p>
-										<p><?php echo "country: " . $document->extras_odm_spatial_range ?> <?php echo "language: " . $document->extras_odm_language ?> <?php echo "topics: " . $document->extras_taxonomy ?></p>
+										<p><?php echo "<b>contry</b>: " . $document->extras_odm_spatial_range ?> <?php echo "<b>language</b>: " . $document->extras_odm_language ?> <?php echo "<b>topics</b>: " . $document->extras_taxonomy ?></p>
 										<p></p>
 										<p></p>
 									</div>
@@ -74,7 +74,7 @@
 									<div class="solr_result">
 										<h4><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h4>
 										<p><?php echo strip_tags(substr($document->content,0,400)) ?></p>
-										<p><?php if (is_array($document->odm_language)) echo "language: " . implode(", ",$document->odm_language)  ?> <?php echo "topics: " . implode(", ",$document->categories) ?></p>
+										<p><?php if (is_array($document->odm_language)) echo "<b>language</b>: " . implode(", ",$document->odm_language)  ?> <?php echo "<b>topics</b>: " . implode(", ",$document->categories) ?></p>
 									</div>
 								</div>
 
