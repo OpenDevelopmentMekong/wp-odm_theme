@@ -91,6 +91,12 @@ class Odm_Solr_WP_Manager {
 		if (isset($typeFilter)):
 			$query->createFilterQuery('type')->setQuery('type:' . $typeFilter);
 		endif;
+
+    $current_country = odm_country_manager()->get_current_country();
+    if ( $current_country != "mekong"):
+			$query->createFilterQuery('country_site')->setQuery('country_site:' . $typeFilter);
+		endif;
+
 		$resultset = $this->client->select($query);
 		return $resultset;
 	}

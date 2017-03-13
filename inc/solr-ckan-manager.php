@@ -48,6 +48,13 @@ class Odm_Solr_CKAN_Manager {
 		if (isset($typeFilter)):
 			$query->createFilterQuery('dataset_type')->setQuery('type:' . $typeFilter);
 		endif;
+
+    $current_country = odm_country_manager()->get_current_country();
+    if ( $current_country != "mekong"):
+      $current_country_code = odm_country_manager()->get_current_country_code();
+			$query->createFilterQuery('extras_odm_spatial_range')->setQuery('extras_odm_spatial_range:' . $typeFilter);
+		endif;
+
 		$resultset = $this->client->select($query);
 		return $resultset;
 	}
