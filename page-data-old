@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Data
+Template Name: Data Page old Template
 */
 ?>
 <?php get_header(); ?>
