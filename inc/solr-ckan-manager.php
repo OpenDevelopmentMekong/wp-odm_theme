@@ -55,6 +55,10 @@ class Odm_Solr_CKAN_Manager {
 			$query->createFilterQuery('extras_odm_spatial_range')->setQuery('extras_odm_spatial_range:' . $current_country_code);
 		endif;
 
+    $dismax = $query->getDisMax();
+    $dismax->setQueryFields('title notes tags');
+    $dismax->setQueryFields('tags^3 title^2 notes^1');
+
 		$resultset = $this->client->select($query);
 		return $resultset;
 	}
