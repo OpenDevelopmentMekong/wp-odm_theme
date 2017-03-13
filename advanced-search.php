@@ -74,7 +74,7 @@
 									<div class="solr_result">
 										<h4><a href="<?php echo $document->permalink ?>"><?php echo $document->title ?></a></h4>
 										<p><?php echo strip_tags(substr($document->content,0,400)) ?></p>
-										<p><?php if (is_array($document->country_site)) echo "<b>country</b>: " . $document->country_site ?> <?php if (is_array($document->odm_language)) echo "<b>language</b>: " . implode(", ",$document->odm_language)  ?> <?php if (is_array($document->categories)) echo "<b>topics</b>: " . implode(", ",$document->categories) ?></p>
+										<p><?php if (isset($document->country_site)) echo "<b>country</b>: " . $document->country_site ?> <?php if (is_array($document->odm_language)) echo "<b>language</b>: " . implode(", ",$document->odm_language)  ?> <?php if (is_array($document->categories)) echo "<b>topics</b>: " . implode(", ",$document->categories) ?></p>
 									</div>
 								</div>
 
