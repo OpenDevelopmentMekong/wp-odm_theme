@@ -36,11 +36,21 @@
     <div class="row">
       <div class="sixteen columns">
 	      <?php
-				//get id of base-layer and map-catalogue category for excluding
+				$cat_baselayers = 'base-layers';
+				$cat_map_catalogue = 'map-catalogue';
+				$layer_category = 'layer-category';
+
+				$term_baselayers = get_term_by('slug', $cat_baselayers, $layer_category);
+				$cat_baselayers_id =  $term_baselayers->term_id;
+				$term_map_catalogue = get_term_by('slug', $cat_map_catalogue, $layer_category);
+				$cat_map_catalogue_id =  $term_map_catalogue->term_id;
+
 				$search_string = isset($_GET['filter_s'])? $_GET['filter_s'] : null;
 				$filter_date_start = isset($_GET['filter_date_start'])? $_GET['filter_date_start'] : null;
 				$filter_date_end = isset($_GET['filter_date_end'])? $_GET['filter_date_end'] : null;
 				$filter_category = isset($_GET['filter_category'])? $_GET['filter_category'] : null;
+
+				$filter_taxonomy[$layer_category][] = $cat_map_catalogue_id;
 				$filter_post_type = isset($_GET['filter_post_type'])? $_GET['filter_post_type'] : null;
 				$filter_taxonomy = isset($_GET['filter_taxonomy'])? $_GET['filter_taxonomy'] : null;
 				$filter_layer = array(
@@ -52,15 +62,9 @@
 														'filter_date_end' => $filter_date_end
 													);
 
-				$cat_baselayers = 'base-layers';
-				$term_baselayers = get_term_by('slug', $cat_baselayers, 'layer-category');
-				$cat_baselayers_id =  $term_baselayers->term_id;
-				$cat_map_catalogue = 'map-catalogue';
-				$term_map_catalogue = get_term_by('slug', $cat_map_catalogue, 'layer-category');
-				$cat_map_catalogue_id =  $term_map_catalogue->term_id;
-				$exclude_posts_in_cats = array($cat_baselayers_id, $cat_map_catalogue_id);
 				//List cetegory and layer by cat for menu items
-				$map_catalogue = get_all_layers_grouped_by_subcategory(0, $exclude_posts_in_cats, $filter_layer);
+				$map_catalogue = get_all_layers_grouped_by_subcategory(0, null, $filter_layer);
+
 				$pagination = get_pagination_of_layers_grouped_by_subcategory($map_catalogue);
 				foreach ($map_catalogue as $key => $layer) {
 					$started_index = $key +1;
