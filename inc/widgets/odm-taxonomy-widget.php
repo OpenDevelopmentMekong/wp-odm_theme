@@ -43,7 +43,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 	public function print_category( $category, $current_page_slug ="") {
-			$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
 			$post_type =  get_post_type( get_the_ID() );
 			$get_post_id = get_post_or_page_id_by_title($category->name);
 			$current_page = "";
@@ -55,7 +54,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				}
 			}
 
-			echo "<span class='nochildimage-".$site_name.$current_page."'>";
+			echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
 
 			if ($get_post_id){ // if page of the topic exists
 				$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
@@ -119,7 +118,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-	$site_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name')));
 	$current_page = get_post();
 	$current_page_slug = $current_page->post_name;
 	?>
@@ -127,27 +125,27 @@ class Odm_Taxonomy_Widget extends WP_Widget {
     jQuery(document).ready(function($) {
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
 			if( $(this).has('ul') ){
-		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo $site_name;?>");
-		    $('ul', this).siblings('span').addClass("plusimage-<?php echo $site_name;?>");
+		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
+		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
 		  }
 
 			//if parent is showed, child need to expend
 		  if( $(this).find('span.<?php echo $current_page_slug; ?>').length != 0 ){
 				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
-				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo $site_name;?>');
-				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('plusimage-<?php echo $site_name;?>');
+				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
+				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('plusimage-<?php echo odm_country_manager()->get_current_country();?>');
 
 				//if child is showed, parent expended
 				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").show();
-				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo $site_name;?>');
-				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo $site_name;?>');
+				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
+				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo odm_country_manager()->get_current_country();?>');
 			}
 		});
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
 			if($(event.target).parent("li").find('ul').length){
 				$(event.target).parent("li").find('ul:first').slideToggle('fast');
-				$(event.target).toggleClass("plusimage-<?php echo $site_name;?>");
-				$(event.target).toggleClass('minusimage-<?php echo $site_name;?>');
+				$(event.target).toggleClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
+				$(event.target).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
 			}
 		});
     });

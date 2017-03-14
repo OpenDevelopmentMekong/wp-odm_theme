@@ -196,7 +196,7 @@ function odm_jeo_scripts()
   wp_dequeue_script('jeo-site');
   wp_enqueue_script('jquery-isotope');
   wp_register_script('twttr', 'https://platform.twitter.com/widgets.js');
-  wp_register_script('jquery-ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js');
+  wp_register_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js');
   $site_name = str_replace('Open Development ', '', get_bloginfo('name'));
   // custom marker system
   global $jeo_markers;
@@ -265,6 +265,7 @@ function odm_jeo_scripts()
     ));
   }
 
+	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
 }
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
@@ -612,8 +613,18 @@ function add_custom_meta_tags() {
 
     ?>
 
+    <!-- ODM -->
     <meta name="google-site-verification" content="c8Nm3o8w38t9HrQtk3Em8tx_JCvhlBM7I0d4d2BvbOA" />
-
+    <!-- ODC -->
+    <meta name="google-site-verification" content="Wj4wmK5q6lq4Rk0x4iqDhuBFaZxfTY2luq9p09Qr2kM" />
+    <!-- ODMM -->
+    <meta name="google-site-verification" content="BXhPDDG3ECyUWrdJqbsVr0eba3buOb8XEjV9nudDSk4" />
+    <!-- ODV -->
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+    <!-- ODL -->
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+    <!-- ODT -->
+    <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
     <?php
     if(is_single()) {
 
