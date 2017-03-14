@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		
+
     <div class="row">
       <div class="sixteen columns">
 				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
@@ -46,11 +46,13 @@
 				 	while (have_posts()) : the_post();
 						$post = get_post();
 						$category = get_the_category($post->ID);
-						$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
-						if (in_array($top_level_cat,$taxonomy_categories_1)):
-							odm_get_template('post-grid-single-4-cols',array(
-		  					"post" => $post,
-		  					"show_meta" => true),true);
+						if(isset($category[0]->cat_ID)):
+							$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
+							if (in_array($top_level_cat,$taxonomy_categories_1)):
+								odm_get_template('post-grid-single-4-cols',array(
+			  					"post" => $post,
+			  					"show_meta" => true),true);
+							endif;
 						endif;
 					endwhile; ?>
 
@@ -61,12 +63,14 @@
 					while (have_posts()) : the_post();
 					$post = get_post();
 					$category = get_the_category($post->ID);
-					$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
-					if (in_array($top_level_cat,$taxonomy_categories_2)):
-							odm_get_template('post-grid-single-4-cols',array(
-		  					"post" => $post,
-		  					"show_meta" => true),true);
+					if(isset($category[0]->cat_ID)):
+						$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
+						if (in_array($top_level_cat,$taxonomy_categories_2)):
+								odm_get_template('post-grid-single-4-cols',array(
+			  					"post" => $post,
+			  					"show_meta" => true),true);
 						endif;
+					endif;
 					endwhile; ?>
 
 				<?php rewind_posts(); ?>
@@ -77,21 +81,17 @@
 					while (have_posts()) : the_post();
 						$post = get_post();
 						$category = get_the_category($post->ID);
-						$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
-						if (in_array($top_level_cat,$taxonomy_categories_3)):
-							odm_get_template('post-grid-single-4-cols',array(
-		  					"post" => $post,
-		  					"show_meta" => true),true);
+						if(isset($category[0]->cat_ID)):
+							$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
+							if (in_array($top_level_cat,$taxonomy_categories_3)):
+								odm_get_template('post-grid-single-4-cols',array(
+			  					"post" => $post,
+			  					"show_meta" => true),true);
+							endif;
 						endif;
 					endwhile; ?>
-
       </div>
-
     </div>
-
 	</section>
-
 </div>
-
-
 <?php get_footer(); ?>
