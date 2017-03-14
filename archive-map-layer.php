@@ -18,6 +18,14 @@
 			<div class="sixteen columns filter-container">
 				<div class="panel more-filters-content row">
 					<?php
+					$cat_baselayers = 'base-layers';
+					$cat_map_catalogue = 'map-catalogue';
+					$layer_category = 'layer-category';
+
+					$term_baselayers = get_term_by('slug', $cat_baselayers, $layer_category);
+					$cat_baselayers_id =  $term_baselayers->term_id;
+					$term_map_catalogue = get_term_by('slug', $cat_map_catalogue, $layer_category);
+					$cat_map_catalogue_id =  $term_map_catalogue->term_id;
 					$filter_arg = array(
 															'search_box' => true,
 															'cat_selector' => true,
@@ -25,6 +33,7 @@
 															'date_rang' => true,
 															'post_type' => get_post_type(),
 															'taxonomy' => "layer-category",
+															'exclude_cat_id' => $cat_map_catalogue_id,
 															'depth' => 1
 														 );
 					odm_adv_nav_filters($filter_arg);
@@ -36,21 +45,11 @@
     <div class="row">
       <div class="sixteen columns">
 	      <?php
-				$cat_baselayers = 'base-layers';
-				$cat_map_catalogue = 'map-catalogue';
-				$layer_category = 'layer-category';
-
-				$term_baselayers = get_term_by('slug', $cat_baselayers, $layer_category);
-				$cat_baselayers_id =  $term_baselayers->term_id;
-				$term_map_catalogue = get_term_by('slug', $cat_map_catalogue, $layer_category);
-				$cat_map_catalogue_id =  $term_map_catalogue->term_id;
-
 				$search_string = isset($_GET['filter_s'])? $_GET['filter_s'] : null;
 				$filter_date_start = isset($_GET['filter_date_start'])? $_GET['filter_date_start'] : null;
 				$filter_date_end = isset($_GET['filter_date_end'])? $_GET['filter_date_end'] : null;
 				$filter_category = isset($_GET['filter_category'])? $_GET['filter_category'] : null;
 
-				$filter_taxonomy[$layer_category][] = $cat_map_catalogue_id;
 				$filter_post_type = isset($_GET['filter_post_type'])? $_GET['filter_post_type'] : null;
 				$filter_taxonomy = isset($_GET['filter_taxonomy'])? $_GET['filter_taxonomy'] : null;
 				$filter_layer = array(
