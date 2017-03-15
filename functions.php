@@ -610,16 +610,6 @@ function convert_keywords_to_related() {
 }
 add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to_related' );
 
-function reindex_wp_contents() {
-
-		ob_start();
-		include( dirname(__FILE__) . '/admin-scripts/reindex-wp-contents.php' );
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
-}
-add_shortcode( 'admin_scripts_reindex_wp_contents', 'reindex_wp_contents' );
-
 function add_custom_meta_tags() {
     global $post;
 

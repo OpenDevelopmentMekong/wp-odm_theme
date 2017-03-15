@@ -72,13 +72,6 @@ class Odm_Options
          'odm_options'
         );
 
-        add_settings_section(
-         'odm_solr_based_search_section',
-         __('Solr based search', 'odm'),
-         '',
-         'odm_options'
-        );
-
         add_settings_field(
          'odm_style',
          __('Choose a style', 'odm'),
@@ -157,14 +150,6 @@ class Odm_Options
          array($this, 'interactive_map_field'),
          'odm_options',
          'odm_interactive_map_section'
-        );
-
-        add_settings_field(
-         'odm_solr_based_search',
-         __('Authentication', 'odm'),
-         array($this, 'solr_based_search_authentication_field'),
-         'odm_options',
-         'odm_solr_based_search_section'
         );
 
         register_setting('odm_options_group', 'odm_options');
@@ -522,21 +507,6 @@ class Odm_Options
 
     }
 
-    public function solr_based_search_authentication_field()
-    {
-			$solr_config = isset($this->options['solr_config']) ? $this->options['solr_config'] : array('solr_user' => '', 'solr_pwd' => '');
-      $solr_user = $solr_config['solr_user'];
-      $solr_pwd = $solr_config['solr_pwd'];
-    ?>
-
-		<label for="odm_solr_user"><?php _e('Solr username', 'odm'); ?></label></br>
-    <input id="odm_solr_user" name="odm_options[solr_config][solr_user]" type="text" value="<?php echo $solr_user;?>" /></br>
-		<label for="odm_solr_pwd"><?php _e('Solr password', 'odm'); ?></label></br>
-		<input id="odm_solr_pwd" name="odm_options[solr_config][solr_pwd]" type="text" value="<?php echo $solr_pwd;?>" /></br>
-
-  <?php
-
-    }
 }
 
 if (is_admin()) {
@@ -629,16 +599,6 @@ function odm_get_interactive_map_data()
     $options = get_option('odm_options');
     if (isset($options['map_data'])) {
         return $options['map_data'];
-    } else {
-        return false;
-    }
-}
-
-function odm_get_solr_config()
-{
-    $options = get_option('odm_options');
-    if (isset($options['solr_config'])) {
-        return $options['solr_config'];
     } else {
         return false;
     }
