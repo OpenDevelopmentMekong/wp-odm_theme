@@ -71,6 +71,7 @@ class Odm_Options
          '',
          'odm_options'
         );
+
         add_settings_field(
          'odm_style',
          __('Choose a style', 'odm'),
@@ -505,6 +506,7 @@ class Odm_Options
   <?php
 
     }
+
 }
 
 if (is_admin()) {
