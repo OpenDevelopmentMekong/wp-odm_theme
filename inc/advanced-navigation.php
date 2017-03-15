@@ -134,6 +134,8 @@ class odm_AdvancedNav {
 			$taxonomy_depth = $filter_arg['depth'];
 		endif;
 
+		$exclude_cat_id = (isset($filter_arg['exclude_cat_id']) && !is_null($filter_arg['exclude_cat_id']))? $filter_arg['exclude_cat_id']:null;
+
 		$s = isset($_GET[$this->prefix . 's']) ? $_GET[$this->prefix . 's'] : '';
 		$s = !$s && isset($_GET['s']) ? $_GET['s'] : $s;
 		?>
@@ -172,14 +174,14 @@ class odm_AdvancedNav {
 						if($filter_taxonomy == "category"):
 							?>
 							<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
-								<?php wp_list_categories(array('title_li' => '', 'category' => $filter_taxonomy, 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $taxonomy_depth, 'selected' => $active_cats)); ?>
+								<?php wp_list_categories(array('title_li' => '', 'category' => $filter_taxonomy, 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $taxonomy_depth, 'exclude' => $exclude_cat_id, 'selected' => $active_cats)); ?>
 							</select>
 							<?php
 						else:
 							$active_cats = isset($_GET[$this->prefix . 'taxonomy']) ? $_GET[$this->prefix . 'taxonomy'][$filter_taxonomy] : array();
 							?>
 							<select id="<?php echo $this->prefix; ?>taxonomy" name="<?php echo $this->prefix; ?>taxonomy[<?php echo $filter_taxonomy; ?>][]" multiple data-placeholder="<?php _e('Select categories', 'odm'); ?>">
-								<?php wp_list_categories(array('title_li' => '', 'taxonomy' => $filter_taxonomy, 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $taxonomy_depth, 'selected' => $active_cats)); ?>
+								<?php wp_list_categories(array('title_li' => '', 'taxonomy' => $filter_taxonomy, 'walker' => new Odm_Walker_CategoryDropdown_Multiple(), 'depth' => $taxonomy_depth, 'exclude' => $exclude_cat_id, 'selected' => $active_cats)); ?>
 							</select>
 						<?php
 						endif;
