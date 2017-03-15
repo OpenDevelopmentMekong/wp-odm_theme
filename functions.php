@@ -8,8 +8,6 @@ require 'vendor/autoload.php';
 require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
 require_once get_stylesheet_directory().'/inc/taxonomy-manager.php';
-require_once get_stylesheet_directory().'/inc/solr-wp-manager.php';
-require_once get_stylesheet_directory().'/inc/solr-ckan-manager.php';
 
 /*
  * Post types
