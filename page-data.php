@@ -169,12 +169,18 @@ Template Name: Data
         </form>
       </div>
       <div class="results_info"><h2><?php echo $datasets['count'] ?> records found.</h2></div>
-      <div class="result_container">
+      <div class="result_container container">
 
         <?php foreach($datasets['results'] as $dataset): ?>
         <!-- TEMPLATE -->
-        <div class="single_result_container">
-          <div class="data_format">
+        <div class="single_result_container row">
+
+          <h2 class="data_title twelve columns">
+            <a href="<?php echo wpckan_get_link_to_dataset($dataset['name']);?>">
+              <?php echo getMultilingualValueOrFallback($dataset['title_translated'], odm_language_manager()->get_current_language(),$dataset['title']);?>
+            </a>
+          </h2>
+          <div class="data_format four columns">
             <?php
               $resource_formats = array_unique(array_column($dataset['resources'], 'format'));
              ?>
@@ -182,15 +188,10 @@ Template Name: Data
               <span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
             <?php endforeach ?>
           </div>
-          <h2 class="data_title">
-            <a href="<?php echo wpckan_get_link_to_dataset($dataset['name']);?>">
-              <?php echo getMultilingualValueOrFallback($dataset['title_translated'], odm_language_manager()->get_current_language(),$dataset['title']);?>
-            </a>
-          </h2>
-          <p class="data_description">
+          <p class="data_description sixteen columns">
             <?php echo getMultilingualValueOrFallback($dataset["notes_translated"], odm_language_manager()->get_current_language(),$dataset['notes']) ?>
           </p>
-          <div class="data_meta_wrapper">
+          <div class="data_meta_wrapper sixteen columns">
             <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
               <?php $dataset_country = str_replace("Open Development ", "", $dataset['organization']['title']); ?>
               <div class="country_indicator data_meta">
@@ -200,18 +201,18 @@ Template Name: Data
                 ?>
               </div>
             <?php endif; ?>
-            <div class="data_languages data_meta">
-              <?php foreach ($dataset['odm_language'] as $lang): ?>
-                <span class="meta-label <?php echo strtolower($lang) ?>"><?php echo strtolower($lang) ?></span>
-              <?php endforeach; ?>
-            </div>
-            <div class="data_topics data_meta">
-              <i class="fa fa-tags"></i>
-              <?php
-                $tags = array_column($dataset['tags'], 'display_name');
-                echo implode(", ", $tags);
-              ?>
-            </div>
+              <div class="data_languages data_meta">
+                <?php foreach ($dataset['odm_language'] as $lang): ?>
+                  <span class="meta-label <?php echo strtolower($lang) ?>"><?php echo strtolower($lang) ?></span>
+                <?php endforeach; ?>
+              </div>
+              <div class="data_topics data_meta">
+                <i class="fa fa-tags"></i>
+                <?php
+                  $tags = array_column($dataset['tags'], 'display_name');
+                  echo implode(", ", $tags);
+                ?>
+              </div>
           </div>
         </div>
         <!-- END OF TEMPLATE -->
