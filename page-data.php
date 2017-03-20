@@ -203,7 +203,7 @@ Template Name: Data
             <?php endif; ?>
               <div class="data_languages data_meta">
                 <?php foreach ($dataset['odm_language'] as $lang): ?>
-                  <span class="meta-label <?php echo strtolower($lang) ?>"><?php echo strtolower($lang) ?></span>
+                  <img alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
                 <?php endforeach; ?>
               </div>
               <div class="data_topics data_meta">

@@ -80,6 +80,10 @@ class Odm_Language_Manager {
     }
   }
 
+	function get_path_to_flag_image($lang){
+    return get_stylesheet_directory_uri().'/img/'.$lang.'.png';
+  }
+
 }
 
 $GLOBALS['odm_language_manager'] = new Odm_Language_Manager();
