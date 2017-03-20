@@ -193,13 +193,14 @@ Template Name: Data
           </p>
           <div class="data_meta_wrapper sixteen columns">
             <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
-              <?php $dataset_country = str_replace("Open Development ", "", $dataset['organization']['title']); ?>
-              <div class="country_indicator data_meta">
-              <?php
-                od_logo_icon($dataset_country);
-                echo $dataset_country;
-                ?>
-              </div>
+							<div class="country_indicator data_meta">
+								<ul>
+							<?php foreach ($dataset['odm_spatial_range'] as $country_code):
+								$country_name = odm_country_manager()->get_country_name_by_country_code($country_code); ?>
+	              <li><?php echo $country_name; ?></li>
+							<?php endforeach; ?>
+								</ul>
+							</div>
             <?php endif; ?>
               <div class="data_languages data_meta">
                 <?php foreach ($dataset['odm_language'] as $lang): ?>
