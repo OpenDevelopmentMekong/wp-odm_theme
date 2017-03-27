@@ -19,7 +19,8 @@ Template Name: Data
 
   //Get Datasets
   $attrs = array(
-    'type' => 'dataset'
+    'dataset_type' => 'dataset',
+		'capacity' => 'public'
   );
 
 	$control_attrs = array(
@@ -35,12 +36,6 @@ Template Name: Data
   $license_list = wpckan_get_license_list();
 
   //================ Build Filters ===================== //
-
-  // Attributes
-  $attrs = [];
-
-	//Type
-	$attrs["dataset_type"] = 'dataset';
 
   //Taxonomy
   if (!empty($param_taxonomy) && $param_taxonomy != 'all') {
