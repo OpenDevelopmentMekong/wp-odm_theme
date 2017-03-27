@@ -250,7 +250,7 @@ Template Name: Data
           var core_wp = jQuery('#search_field').data("solr-core-wp");
           var core_ckan = jQuery('#search_field').data("solr-core-ckan");
           var url = scheme + "://" + host  + path + core_ckan + "/suggest";
-
+					console.log("pulling suggestions from: " + url);
           jQuery.ajax({
             url: url,
             data: {'wt':'json', 'q':request.term, 'json.wrf': 'callback'},
