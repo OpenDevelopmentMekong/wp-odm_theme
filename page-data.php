@@ -63,7 +63,7 @@ Template Name: Data
   }
 
   $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs,$control_attrs);
-  $datasets = $result["resultset"];
+  $results = $result["resultset"];
 
   //================== Pagination ======================
   $request_url = $_SERVER['REQUEST_URI'];
@@ -88,7 +88,7 @@ Template Name: Data
   $prev_page_url_parts['query'] = http_build_query($prev_page_params);
   $prev_page_link = $prev_page_url_parts['path'] . '?' . $prev_page_url_parts['query'];
 
-  $total_pages = ceil($datasets->getNumFound()/$control_attrs['limit']);
+  $total_pages = ceil($results->getNumFound()/$control_attrs['limit']);
 ?>
 
 <div class="container">
@@ -167,25 +167,26 @@ Template Name: Data
         <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
         </form>
       </div>
-      <div class="results_info"><h2><?php echo $datasets->getNumFound() ?> records found.</h2></div>
+      <div class="results_info"><h2><?php echo $results->getNumFound() ?> records found.</h2></div>
       <div class="result_container container">
 
-        <?php foreach($datasets as $document):
-          $dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$document["id"]);
-          ?>
+        <?php foreach($results as $result):
+					$fields = $result->getFields();
+					$document = json_decode($fields["data_dict"]);
+					?>
         <!-- TEMPLATE -->
         <div class="single_result_container row">
 
           <h2 class="data_title twelve columns">
-            <a href="<?php echo wpckan_get_link_to_dataset($dataset['name']);?>">
+            <a href="<?php echo wpckan_get_link_to_dataset($document->name);?>">
               <?php
-								$title = isset($dataset['title_translated']) ? $dataset['title_translated'] : $dataset["title"];
-								echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(),$dataset['title']);?>
+								$title = isset($document->title_translated) ? $document->title_translated : $document->title;
+								echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(),$document->title);?>
             </a>
           </h2>
           <div class="data_format four columns">
             <?php
-              $resource_formats = array_unique(array_column($dataset['resources'], 'format'));
+              $resource_formats = array_unique(array_column($document->resources, 'format'));
              ?>
             <?php foreach ($resource_formats as $format): ?>
               <span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
@@ -193,30 +194,43 @@ Template Name: Data
           </div>
           <p class="data_description sixteen columns">
             <?php
-							$notes = isset($dataset['notes_translated']) ? $dataset['notes_translated'] : $dataset["notes"];
-							echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(),$dataset['notes']) ?>
+							$notes = isset($document->notes_translated) ? $document->notes_translated : $document->notes;
+							echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(),$document->notes) ?>
           </p>
           <div class="data_meta_wrapper sixteen columns">
             <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
 							<div class="country_indicator data_meta">
 								<ul>
-							<?php foreach ($dataset['odm_spatial_range'] as $country_code):
-								$country_name = odm_country_manager()->get_country_name_by_country_code($country_code); ?>
-	              <li><?php echo $country_name; ?></li>
-							<?php endforeach; ?>
+							<?php
+								$spatial_range = json_decode($fields['extras_odm_spatial_range']) ;
+								if (isset($spatial_range)):
+									foreach ($spatial_range as $country_code):
+									$country_name = odm_country_manager()->get_country_name_by_country_code($country_code); ?>
+		              <li><?php echo $country_name; ?></li>
+							<?php
+									endforeach;
+								endif;
+									?>
 								</ul>
 							</div>
             <?php endif; ?>
               <div class="data_languages data_meta">
-                <?php foreach ($dataset['odm_language'] as $lang): ?>
-                  <img alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
-                <?php endforeach; ?>
+                <?php
+								 	$language = json_decode($fields['extras_odm_language']) ;
+									if (isset($spatial_range)):
+										foreach ($language as $lang): ?>
+	                  <img alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
+	                <?php
+										endforeach;
+									endif; ?>
               </div>
               <div class="data_topics data_meta">
                 <i class="fa fa-tags"></i>
                 <?php
-                  $tags = array_column($dataset['tags'], 'display_name');
-                  echo implode(", ", $tags);
+									$tag_names = array_map(function($tag) {
+									    return is_object($tag) ? $tag->display_name : $tag['display_name'];
+									}, $document->tags);
+                  echo implode(", ", $tag_names);
                 ?>
               </div>
           </div>
@@ -258,6 +272,7 @@ Template Name: Data
             jsonpCallback: 'callback',
             contentType: "application/json",
             success: function( data ) {
+
               var options = [];
               if (data){
                 if(data.spellcheck){
