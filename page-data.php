@@ -13,13 +13,17 @@ Template Name: Data
   $param_license = !empty($_GET['license']) ? $_GET['license'] : null;
   $param_taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : null;
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
-  $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
   $param_country = odm_country_manager()->get_current_country() == 'mekong' && isset($_GET['country']) ? $_GET['country'] : odm_country_manager()->get_current_country();
   $active_filters =  !empty($param_taxonomy) || !empty($param_language) || !empty($param_query) || !empty($param_license);
 
   //Get Datasets
   $attrs = array(
-    'type' => 'dataset',
+    'dataset_type' => 'dataset',
+		'capacity' => 'public'
+  );
+
+	$control_attrs = array(
     'limit' => 15,
     'page' => $param_page
   );
@@ -33,38 +37,28 @@ Template Name: Data
 
   //================ Build Filters ===================== //
 
-  // Query
-  if ($param_query) {
-    $attrs['query'] = $param_query;
-  }
-
-  $filter_fields = [];
-
   //Taxonomy
   if (!empty($param_taxonomy) && $param_taxonomy != 'all') {
-    $filter_fields["extras_taxonomy"] = $param_taxonomy;
+    $attrs["extras_taxonomy"] = $param_taxonomy;
   }
 
   // Language
   if (!empty($param_language) && $param_language != 'all') {
-    $filter_fields["extras_odm_language"] = $param_language;
+    $attrs["extras_odm_language"] = $param_language;
   }
 
   // Country
   if (!empty($param_country) && $param_country != 'mekong' && $param_country != 'all') {
-    $filter_fields["extras_odm_spatial_range"] = $countries[$param_country]['iso2'];
+    $attrs["extras_odm_spatial_range"] = $countries[$param_country]['iso2'];
   }
 
   //License
   if (!empty($param_license) && $param_license != 'all') {
-    $filter_fields['license_id'] = $param_license;
+    $attrs['license_id'] = $param_license;
   }
 
-  if (!empty($filter_fields)) {
-    $attrs['filter_fields'] = json_encode($filter_fields);
-  }
-
-  $datasets = wpckan_api_package_search(wpckan_get_ckan_domain(),$attrs);
+  $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs,$control_attrs);
+  $results = $result["resultset"];
 
   //================== Pagination ======================
   $request_url = $_SERVER['REQUEST_URI'];
@@ -89,7 +83,7 @@ Template Name: Data
   $prev_page_url_parts['query'] = http_build_query($prev_page_params);
   $prev_page_link = $prev_page_url_parts['path'] . '?' . $prev_page_url_parts['query'];
 
-  $total_pages = ceil($datasets['count']/$attrs['limit']);
+  $total_pages = ceil($results->getNumFound()/$control_attrs['limit']);
 ?>
 
 <div class="container">
@@ -165,53 +159,73 @@ Template Name: Data
     </div>
     <div class="eleven columns">
       <div class="search_bar">
-        <input type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" />
+        <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
         </form>
       </div>
-      <div class="results_info"><h2><?php echo $datasets['count'] ?> records found.</h2></div>
+      <div class="results_info"><h2><?php echo $results->getNumFound() ?> records found.</h2></div>
       <div class="result_container container">
 
-        <?php foreach($datasets['results'] as $dataset): ?>
+        <?php foreach($results as $result):
+					$fields = $result->getFields();
+					$document = json_decode($fields["data_dict"]);
+					?>
         <!-- TEMPLATE -->
         <div class="single_result_container row">
 
           <h2 class="data_title twelve columns">
-            <a href="<?php echo wpckan_get_link_to_dataset($dataset['name']);?>">
-              <?php echo getMultilingualValueOrFallback($dataset['title_translated'], odm_language_manager()->get_current_language(),$dataset['title']);?>
+            <a href="<?php echo wpckan_get_link_to_dataset($document->name);?>">
+              <?php
+								$title = isset($document->title_translated) ? $document->title_translated : $document->title;
+								echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(),$document->title);?>
             </a>
           </h2>
           <div class="data_format four columns">
             <?php
-              $resource_formats = array_unique(array_column($dataset['resources'], 'format'));
+              $resource_formats = array_unique(array_column($document->resources, 'format'));
              ?>
             <?php foreach ($resource_formats as $format): ?>
               <span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
             <?php endforeach ?>
           </div>
           <p class="data_description sixteen columns">
-            <?php echo getMultilingualValueOrFallback($dataset["notes_translated"], odm_language_manager()->get_current_language(),$dataset['notes']) ?>
+            <?php
+							$notes = isset($document->notes_translated) ? $document->notes_translated : $document->notes;
+							echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(),$document->notes) ?>
           </p>
           <div class="data_meta_wrapper sixteen columns">
             <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
 							<div class="country_indicator data_meta">
 								<ul>
-							<?php foreach ($dataset['odm_spatial_range'] as $country_code):
-								$country_name = odm_country_manager()->get_country_name_by_country_code($country_code); ?>
-	              <li><?php echo $country_name; ?></li>
-							<?php endforeach; ?>
+							<?php
+								$spatial_range = json_decode($fields['extras_odm_spatial_range']) ;
+								if (isset($spatial_range)):
+									foreach ($spatial_range as $country_code):
+									$country_name = odm_country_manager()->get_country_name_by_country_code($country_code); ?>
+		              <li><?php echo $country_name; ?></li>
+							<?php
+									endforeach;
+								endif;
+									?>
 								</ul>
 							</div>
             <?php endif; ?>
               <div class="data_languages data_meta">
-                <?php foreach ($dataset['odm_language'] as $lang): ?>
-                  <img alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
-                <?php endforeach; ?>
+                <?php
+								 	$language = json_decode($fields['extras_odm_language']) ;
+									if (isset($spatial_range)):
+										foreach ($language as $lang): ?>
+	                  <img alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
+	                <?php
+										endforeach;
+									endif; ?>
               </div>
               <div class="data_topics data_meta">
                 <i class="fa fa-tags"></i>
                 <?php
-                  $tags = array_column($dataset['tags'], 'display_name');
-                  echo implode(", ", $tags);
+									$tag_names = array_map(function($tag) {
+									    return is_object($tag) ? $tag->display_name : $tag['display_name'];
+									}, $document->tags);
+                  echo implode(", ", $tag_names);
                 ?>
               </div>
           </div>
@@ -232,5 +246,56 @@ Template Name: Data
 </div>
 
 <?php endif; ?>
+
+<script>
+
+    jQuery(document).ready(function() {
+
+      jQuery('#search_field').autocomplete({
+        source: function( request, response ) {
+          var host = jQuery('#search_field').data("solr-host");
+          var scheme = jQuery('#search_field').data("solr-scheme");
+          var path = jQuery('#search_field').data("solr-path");
+          var core_wp = jQuery('#search_field').data("solr-core-wp");
+          var core_ckan = jQuery('#search_field').data("solr-core-ckan");
+          var url = scheme + "://" + host  + path + core_ckan + "/suggest";
+					console.log("pulling suggestions from: " + url);
+          jQuery.ajax({
+            url: url,
+            data: {'wt':'json', 'q':request.term, 'json.wrf': 'callback'},
+            dataType: "jsonp",
+            jsonpCallback: 'callback',
+            contentType: "application/json",
+            success: function( data ) {
+
+              var options = [];
+              if (data){
+                if(data.spellcheck){
+                  var spellcheck = data.spellcheck;
+                  if (spellcheck.suggestions){
+                    var suggestions = spellcheck.suggestions;
+                    if (suggestions[1]){
+                      var suggestionObject = suggestions[1];
+                      options = suggestionObject.suggestion;
+                    }
+                  }
+                }
+              }
+              response( options );
+            }
+          });
+        },
+        minLength: 2,
+        select: function( event, ui ) {
+          var terms = this.value.split(" ");
+          terms.pop();
+          terms.push( ui.item.value );
+          this.value = terms.join( " " );
+          return false;
+        }
+      });
+    });
+
+	</script>
 
 <?php get_footer(); ?>
