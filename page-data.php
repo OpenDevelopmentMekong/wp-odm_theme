@@ -13,13 +13,16 @@ Template Name: Data
   $param_license = !empty($_GET['license']) ? $_GET['license'] : null;
   $param_taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : null;
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
-  $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
   $param_country = odm_country_manager()->get_current_country() == 'mekong' && isset($_GET['country']) ? $_GET['country'] : odm_country_manager()->get_current_country();
   $active_filters =  !empty($param_taxonomy) || !empty($param_language) || !empty($param_query) || !empty($param_license);
 
   //Get Datasets
   $attrs = array(
-    'type' => 'dataset',
+    'type' => 'dataset'
+  );
+
+	$control_attrs = array(
     'limit' => 15,
     'page' => $param_page
   );
@@ -33,38 +36,34 @@ Template Name: Data
 
   //================ Build Filters ===================== //
 
-  // Query
-  if ($param_query) {
-    $attrs['query'] = $param_query;
-  }
+  // Attributes
+  $attrs = [];
 
-  $filter_fields = [];
+	//Type
+	$attrs["dataset_type"] = 'dataset';
 
   //Taxonomy
   if (!empty($param_taxonomy) && $param_taxonomy != 'all') {
-    $filter_fields["extras_taxonomy"] = $param_taxonomy;
+    $attrs["extras_taxonomy"] = $param_taxonomy;
   }
 
   // Language
   if (!empty($param_language) && $param_language != 'all') {
-    $filter_fields["extras_odm_language"] = $param_language;
+    $attrs["extras_odm_language"] = $param_language;
   }
 
   // Country
   if (!empty($param_country) && $param_country != 'mekong' && $param_country != 'all') {
-    $filter_fields["extras_odm_spatial_range"] = $countries[$param_country]['iso2'];
+    $attrs["extras_odm_spatial_range"] = $countries[$param_country]['iso2'];
   }
 
   //License
   if (!empty($param_license) && $param_license != 'all') {
-    $filter_fields['license_id'] = $param_license;
+    $attrs['license_id'] = $param_license;
   }
 
-  if (!empty($filter_fields)) {
-    $attrs['filter_fields'] = json_encode($filter_fields);
-  }
-
-  $datasets = wpckan_api_package_search(wpckan_get_ckan_domain(),$attrs);
+  $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs);
+  $datasets = $result["resultset"];
 
   //================== Pagination ======================
   $request_url = $_SERVER['REQUEST_URI'];
@@ -89,7 +88,7 @@ Template Name: Data
   $prev_page_url_parts['query'] = http_build_query($prev_page_params);
   $prev_page_link = $prev_page_url_parts['path'] . '?' . $prev_page_url_parts['query'];
 
-  $total_pages = ceil($datasets['count']/$attrs['limit']);
+  $total_pages = ceil($datasets->getNumFound()/$control_attrs['limit']);
 ?>
 
 <div class="container">
@@ -165,13 +164,15 @@ Template Name: Data
     </div>
     <div class="eleven columns">
       <div class="search_bar">
-        <input type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" />
+        <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
         </form>
       </div>
-      <div class="results_info"><h2><?php echo $datasets['count'] ?> records found.</h2></div>
+      <div class="results_info"><h2><?php echo $datasets->getNumFound() ?> records found.</h2></div>
       <div class="result_container container">
 
-        <?php foreach($datasets['results'] as $dataset): ?>
+        <?php foreach($datasets as $document):
+          $dataset = wpckan_api_package_show(wpckan_get_ckan_domain(),$document["id"]);
+          ?>
         <!-- TEMPLATE -->
         <div class="single_result_container row">
 
@@ -232,5 +233,55 @@ Template Name: Data
 </div>
 
 <?php endif; ?>
+
+<script>
+
+    jQuery(document).ready(function() {
+
+      jQuery('#search_field').autocomplete({
+        source: function( request, response ) {
+          var host = jQuery('#search_field').data("solr-host");
+          var scheme = jQuery('#search_field').data("solr-scheme");
+          var path = jQuery('#search_field').data("solr-path");
+          var core_wp = jQuery('#search_field').data("solr-core-wp");
+          var core_ckan = jQuery('#search_field').data("solr-core-ckan");
+          var url = scheme + "://" + host  + path + core_ckan + "/suggest";
+
+          jQuery.ajax({
+            url: url,
+            data: {'wt':'json', 'q':request.term, 'json.wrf': 'callback'},
+            dataType: "jsonp",
+            jsonpCallback: 'callback',
+            contentType: "application/json",
+            success: function( data ) {
+              var options = [];
+              if (data){
+                if(data.spellcheck){
+                  var spellcheck = data.spellcheck;
+                  if (spellcheck.suggestions){
+                    var suggestions = spellcheck.suggestions;
+                    if (suggestions[1]){
+                      var suggestionObject = suggestions[1];
+                      options = suggestionObject.suggestion;
+                    }
+                  }
+                }
+              }
+              response( options );
+            }
+          });
+        },
+        minLength: 2,
+        select: function( event, ui ) {
+          var terms = this.value.split(" ");
+          terms.pop();
+          terms.push( ui.item.value );
+          this.value = terms.join( " " );
+          return false;
+        }
+      });
+    });
+
+	</script>
 
 <?php get_footer(); ?>
