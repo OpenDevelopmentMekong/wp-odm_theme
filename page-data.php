@@ -62,7 +62,7 @@ Template Name: Data
     $attrs['license_id'] = $param_license;
   }
 
-  $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs);
+  $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs,$control_attrs);
   $datasets = $result["resultset"];
 
   //================== Pagination ======================
@@ -178,7 +178,9 @@ Template Name: Data
 
           <h2 class="data_title twelve columns">
             <a href="<?php echo wpckan_get_link_to_dataset($dataset['name']);?>">
-              <?php echo getMultilingualValueOrFallback($dataset['title_translated'], odm_language_manager()->get_current_language(),$dataset['title']);?>
+              <?php
+								$title = isset($dataset['title_translated']) ? $dataset['title_translated'] : $dataset["title"];
+								echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(),$dataset['title']);?>
             </a>
           </h2>
           <div class="data_format four columns">
@@ -190,7 +192,9 @@ Template Name: Data
             <?php endforeach ?>
           </div>
           <p class="data_description sixteen columns">
-            <?php echo getMultilingualValueOrFallback($dataset["notes_translated"], odm_language_manager()->get_current_language(),$dataset['notes']) ?>
+            <?php
+							$notes = isset($dataset['notes_translated']) ? $dataset['notes_translated'] : $dataset["notes"];
+							echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(),$dataset['notes']) ?>
           </p>
           <div class="data_meta_wrapper sixteen columns">
             <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
