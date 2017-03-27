@@ -61,6 +61,7 @@ Template Name: Data
 
   $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs,$control_attrs);
   $results = $result["resultset"];
+  $facets = $result["facets"];
 
   //================== Pagination ======================
   $request_url = $_SERVER['REQUEST_URI'];
@@ -100,9 +101,17 @@ Template Name: Data
           <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
-              foreach($taxonomy_list as $value): ?>
-              <option value="<?php echo $value; ?>" <?php if($value == $param_taxonomy) echo 'selected'; ?>><?php echo $value; ?></option>
+              foreach($taxonomy_list as $value):
+                if (array_key_exists("vocab_taxonomy",$facets)):
+                  $taxonomy_facets = $facets["vocab_taxonomy"];
+                  if (array_key_exists($value,$taxonomy_facets)):
+                    $available_records = $taxonomy_facets[$value];
+                    if ($available_records > 0): ?>
+                    <option value="<?php echo $value; ?>" <?php if($value == $param_taxonomy) echo 'selected'; ?>><?php echo $value . " (" . $available_records . ")"; ?></option>
             <?php
+                    endif;
+                  endif;
+                endif;
               endforeach; ?>
           </select>
         </div>
@@ -116,9 +125,19 @@ Template Name: Data
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($countries as $key => $value):
-                if ($key != 'mekong'): ?>
-                  <option value="<?php echo $key; ?>" <?php if($key == $param_country) echo 'selected'; ?> <?php if (odm_country_manager()->get_current_country() != 'mekong' && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key); ?></option>
+                if ($key != 'mekong'):
+                  if (array_key_exists("extras_odm_spatial_range",$facets)):
+                    $spatial_range_facets = $facets["extras_odm_spatial_range"];
+                    $country_codes = odm_country_manager()->get_country_codes();
+                    $country_code = $country_codes[$key]["iso2"];
+                    if (array_key_exists($country_code,$spatial_range_facets)):
+                      $available_records = $spatial_range_facets[$country_code];
+                      if ($available_records > 0): ?>
+                  <option value="<?php echo $key; ?>" <?php if($key == $param_country) echo 'selected'; ?> <?php if (odm_country_manager()->get_current_country() != 'mekong' && $key != odm_country_manager()->get_current_country()) echo 'disabled'; ?>><?php echo odm_country_manager()->get_country_name($key) . " (" . $available_records . ")"; ?></option>
               <?php
+                      endif;
+                    endif;
+                  endif;
                 endif; ?>
                 <?php
               endforeach; ?>
@@ -133,9 +152,17 @@ Template Name: Data
           <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
             <option value="all"  selected><?php _e('All','odm') ?></option>
             <?php
-              foreach($languages as $key => $value): ?>
-              <option value="<?php echo $key; ?>" <?php if($key == $param_language) echo 'selected'; ?>><?php echo $value; ?></option>
+              foreach($languages as $key => $value):
+                if (array_key_exists("extras_odm_language",$facets)):
+                  $language_facets = $facets["extras_odm_language"];
+                  if (array_key_exists($key,$language_facets)):
+                    $available_records = $language_facets[$key];
+                    if ($available_records > 0): ?>
+            <option value="<?php echo $key; ?>" <?php if($key == $param_language) echo 'selected'; ?>><?php echo $value . " (" . $available_records . ")" ?></option>
             <?php
+                    endif;
+                  endif;
+                endif;
               endforeach; ?>
           </select>
         </div>
@@ -147,9 +174,17 @@ Template Name: Data
           <select id="license" name="license" data-placeholder="<?php _e('Select license', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
-              foreach($license_list as $license):?>
-                <option value="<?php echo $license->id; ?>" <?php if($license->id == $param_license) echo 'selected'; ?>><?php echo $license->title; ?></option>
+              foreach($license_list as $license):
+                if (array_key_exists("license_id",$facets)):
+                  $license_facets = $facets["license_id"];
+                  if (array_key_exists($license->id,$license_facets)):
+                    $available_records = $license_facets[$license->id];
+                    if ($available_records > 0): ?>
+                <option value="<?php echo $license->id; ?>" <?php if($license->id == $param_license) echo 'selected'; ?>><?php echo $license->title . " (" . $available_records . ")" ?></option>
             <?php
+                    endif;
+                  endif;
+                endif;
               endforeach; ?>
           </select>
         </div>
