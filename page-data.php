@@ -15,6 +15,7 @@ Template Name: Data
   $param_language = isset($_GET['language']) ? $_GET['language'] : null;
   $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
   $param_country = odm_country_manager()->get_current_country() == 'mekong' && isset($_GET['country']) ? $_GET['country'] : odm_country_manager()->get_current_country();
+	$param_sorting = isset($_GET['sorting']) ? $_GET['sorting'] : 'score';
   $active_filters =  !empty($param_taxonomy) || !empty($param_language) || !empty($param_query) || !empty($param_license);
 
   //Get Datasets
@@ -25,7 +26,8 @@ Template Name: Data
 
 	$control_attrs = array(
     'limit' => 15,
-    'page' => $param_page
+    'page' => $param_page,
+		'sorting' => $param_sorting
   );
 
   //================ Filter Values ===================== //
@@ -151,7 +153,19 @@ Template Name: Data
               endforeach; ?>
           </select>
         </div>
-        <!-- END OF LICENSE FILTER -->
+				<!-- END OF LICENSE FILTER -->
+
+				<!-- SORTING FUNCTION -->
+				<h3><i class="fa fa-sort"></i> Sorting</h3>
+				<div class="single-filter">
+          <label for="sorting"><?php _e('Sort by', 'odm'); ?></label>
+          <select id="sorting" name="sorting" data-placeholder="<?php _e('Sort by', 'odm'); ?>">
+            <option <?php if($param_sorting == "score") echo 'selected'; ?> value="score"><?php _e('Relevance','odm') ?></option>
+          	<option <?php if($param_sorting == "metadata_modified") echo 'selected'; ?> value="metadata_modified"><?php _e('Date modified','odm') ?></option>
+          </select>
+        </div>
+				<!-- END OF LICENSE FILTER -->
+
         <div class="single-filter">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
         </div>
