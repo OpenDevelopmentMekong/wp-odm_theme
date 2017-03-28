@@ -214,9 +214,8 @@ Template Name: Data
       <div class="result_container container">
 
         <?php foreach($results as $document): ?>
-        <!-- TEMPLATE -->
-        <div class="single_result_container row">
 
+        <div class="single_result_container row">
 					<?php
 					$title = wp_odm_solr_parse_multilingual_ckan_content($document->extras_title_translated,odm_language_manager()->get_current_language(),$document->title);
 					$title = wp_odm_solr_highlight_search_words($s,$title);
@@ -253,13 +252,15 @@ Template Name: Data
 					      <i class="fa fa-globe"></i>
 					      <span>
 					        <?php
-					          $odm_country_arr = json_decode($document->extras_odm_spatial_range);
+					          $odm_country_arr = json_decode($document->extras_odm_spatial_range,true);
 					          foreach ($odm_country_arr as $country_code):
 					            $country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
-					            _e($country_name, "wp-odm_solr");
-					            if ($country_code !== end($odm_country_arr)):
-					              echo ', ';
-					            endif;
+					            if (!empty($country_name)):
+												_e($country_name, "wp-odm_solr");
+						            if ($country_code !== end($odm_country_arr)):
+						              echo ', ';
+						            endif;
+											endif;
 					          endforeach; ?>
 					      </span>
 					    </div>
@@ -267,11 +268,16 @@ Template Name: Data
 					  <!-- Language -->
 					  <?php if (!empty($document->extras_odm_language)): ?>
 					    <div class="data_languages data_meta">
-					      <?php $odm_lang_arr = json_decode($document->extras_odm_language); ?>
+					      <?php $odm_lang_arr = json_decode($document->extras_odm_language,true); ?>
 					      <span>
-					        <?php foreach ($odm_lang_arr as $lang): ?>
-					          <img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
-					        <?php endforeach; ?>
+					        <?php
+									foreach ($odm_lang_arr as $lang):
+										$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
+										if (!empty($path_to_flag)): ?>
+					          	<img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
+				        <?php
+										endif;
+									endforeach; ?>
 					      </span>
 					    </div>
 					  <?php endif; ?>
