@@ -90,7 +90,8 @@ Template Name: Data
 
 <div class="container">
   <div class="row">
-    <div class="four columns data-advanced-filters">
+    <div class="four columns">
+			<div class="data-advanced-filters">
       <form>
         <h3><i class="fa fa-filter"></i> Filters</h3>
 
@@ -203,9 +204,9 @@ Template Name: Data
         <div class="single-filter">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
         </div>
-
+			</div>
     </div>
-    <div class="eleven columns">
+    <div class="twelve columns">
       <div class="search_bar">
         <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
         </form>
@@ -318,9 +319,8 @@ Template Name: Data
 					</div>
 				</div>
 			</section>
-
-    </div>
-  </div>
+  	</div>
+	</div>
 </div>
 
 <?php endif; ?>
