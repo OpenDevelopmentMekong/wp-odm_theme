@@ -167,13 +167,15 @@
 }
 
 .ui-state-default {
-	background: #f2f2f2 !important;
-	border: 0px;
+	background: #f0f0f0 !important;
+	border: 0px !important;
+	color: @light-gray;
 }
 
 .ui-state-hover, .ui-state-focus {
-	background: #bcbcbc !important;
-	border: 0px;
+	background: #c8c8c8 !important;
+	border: 0px !important;
+	color: @gray;
 }
 
 .ui-widget-content a {
@@ -194,9 +196,21 @@
 }
 
 .single-filter{
+	margin-bottom: @small-padd;
 
 	.select2-container{
 		width:100%;
 	}
 
+	label{
+		font-size: @font-size-h5;
+		font-weight: normal;
+		margin-bottom: @xsmall-padd;
+	}
+
+}
+
+#search_field{
+	font-size: @font-size-h4;
+	font-weight: normal;
 }

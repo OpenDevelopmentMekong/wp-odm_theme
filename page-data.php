@@ -247,7 +247,23 @@ Template Name: Data
 					  ?>
 					</p>
 					<div class="data_meta_wrapper sixteen columns">
-					    <!-- Country -->
+            <!-- Language -->
+					  <?php if (!empty($document->extras_odm_language)): ?>
+					    <div class="data_languages data_meta">
+					      <?php $odm_lang_arr = json_decode($document->extras_odm_language,true); ?>
+					      <span>
+					        <?php
+									foreach ($odm_lang_arr as $lang):
+										$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
+										if (!empty($path_to_flag)): ?>
+					          	<img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
+				        <?php
+										endif;
+									endforeach; ?>
+					      </span>
+					    </div>
+					  <?php endif; ?>
+				    <!-- Country -->
 					  <?php if (!empty($document->extras_odm_spatial_range)): ?>
 					    <div class="country_indicator data_meta">
 					      <i class="fa fa-globe"></i>
@@ -263,22 +279,6 @@ Template Name: Data
 						            endif;
 											endif;
 					          endforeach; ?>
-					      </span>
-					    </div>
-					  <?php endif; ?>
-					  <!-- Language -->
-					  <?php if (!empty($document->extras_odm_language)): ?>
-					    <div class="data_languages data_meta">
-					      <?php $odm_lang_arr = json_decode($document->extras_odm_language,true); ?>
-					      <span>
-					        <?php
-									foreach ($odm_lang_arr as $lang):
-										$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
-										if (!empty($path_to_flag)): ?>
-					          	<img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
-				        <?php
-										endif;
-									endforeach; ?>
 					      </span>
 					    </div>
 					  <?php endif; ?>
