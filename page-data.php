@@ -223,7 +223,7 @@ Template Name: Data
           <h2 class="data_title twelve columns">
             <a href="<?php echo wpckan_get_link_to_dataset($document->name);?>">
               <?php
-								$title = isset($document->title_translated) ? $document->title_translated : $document->title;
+								$title = isset($fields['extras_title_translated']) ? json_decode($fields['extras_title_translated'],true) : $document->title;
 								echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(),$document->title);?>
             </a>
           </h2>
@@ -237,7 +237,7 @@ Template Name: Data
           </div>
           <p class="data_description sixteen columns">
             <?php
-							$notes = isset($document->notes_translated) ? $document->notes_translated : $document->notes;
+							$notes = isset($fields['extras_notes_translated']) ? json_decode($fields['extras_notes_translated'],true) : $document->notes;
 							echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(),$document->notes) ?>
           </p>
           <div class="data_meta_wrapper sixteen columns">
