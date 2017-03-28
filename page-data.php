@@ -97,7 +97,7 @@ Template Name: Data
         <!-- TAXONOMY FILTER -->
         <div class="single-filter">
           <label for="taxonomy"><?php _e('Topic', 'odm'); ?></label>
-          <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
+          <select id="taxonomy" name="taxonomy" class="filter_box" data-placeholder="<?php _e('Select term', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($taxonomy_list as $value):
@@ -120,7 +120,7 @@ Template Name: Data
         <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
         <div class="single-filter">
           <label for="country"><?php _e('Country', 'odm'); ?></label>
-          <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odm'); ?>">
+          <select id="country" name="country" class="filter_box" data-placeholder="<?php _e('Select country', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($countries as $key => $value):
@@ -148,7 +148,7 @@ Template Name: Data
         <!-- LANGUAGE FILTER -->
         <div class="single-filter">
           <label for="language"><?php _e('Language', 'odm'); ?></label>
-          <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
+          <select id="language" name="language" class="filter_box" data-placeholder="<?php _e('Select language', 'odm'); ?>">
             <option value="all"  selected><?php _e('All','odm') ?></option>
             <?php
               foreach($languages as $key => $value):
@@ -170,7 +170,7 @@ Template Name: Data
         <!-- LICENSE FILTER -->
         <div class="single-filter">
           <label for="license"><?php _e('License', 'odm'); ?></label>
-          <select id="license" name="license" data-placeholder="<?php _e('Select license', 'odm'); ?>">
+          <select id="license" name="license" class="filter_box" data-placeholder="<?php _e('Select license', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($license_list as $license):
@@ -193,7 +193,7 @@ Template Name: Data
 				<h3><i class="fa fa-sort"></i> Sorting</h3>
 				<div class="single-filter">
           <label for="sorting"><?php _e('Sort by', 'odm'); ?></label>
-          <select id="sorting" name="sorting" data-placeholder="<?php _e('Sort by', 'odm'); ?>">
+          <select id="sorting" name="sorting" class="filter_box" data-placeholder="<?php _e('Sort by', 'odm'); ?>">
             <option <?php if($param_sorting == "score") echo 'selected'; ?> value="score"><?php _e('Relevance','odm') ?></option>
           	<option <?php if($param_sorting == "metadata_modified") echo 'selected'; ?> value="metadata_modified"><?php _e('Date modified','odm') ?></option>
           </select>
@@ -328,6 +328,8 @@ Template Name: Data
 <script>
 
     jQuery(document).ready(function() {
+
+			jQuery( ".filter_box" ).select2();
 
       jQuery('#search_field').autocomplete({
         source: function( request, response ) {
