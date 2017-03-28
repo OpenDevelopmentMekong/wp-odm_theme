@@ -279,17 +279,21 @@ Template Name: Data
           </div>
         </div>
         <!-- END OF TEMPLATE -->
-        <?php endforeach; ?>
+			<?php endforeach; ?>
       </div>
-      <div class="pagination_wrapper">
-        <?php if ($param_page > 1): ?>
-          <a href="<?php echo $prev_page_link; ?>"> << Previous Page </a>
-        <?php endif ?>
-        <?php if ($param_page < $total_pages): ?>
-          <a href="<?php echo $next_page_link; ?>"> Next Page >> </a>
-        <?php endif ?>
-      </div>
-    </div> <!-- end of right container -->
+
+			<section class="container">
+				<div class="row">
+					<div class="sixteen columns">
+						<?php odm_get_template('pagination_solr',array(
+							"current_page" => $param_page,
+							"total_pages" => $total_pages
+						),true); ?>
+					</div>
+				</div>
+			</section>
+
+    </div>
   </div>
 </div>
 
