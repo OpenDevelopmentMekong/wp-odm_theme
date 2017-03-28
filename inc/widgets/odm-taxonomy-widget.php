@@ -58,7 +58,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 			if ($get_post_id){ // if page of the topic exists
 				$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-				echo '<a'.$hyperlink_color.' href="/category/' . $category->name . '">';
+				echo '<a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
 			}else{
                 $hyperlink_color = "";
             }
