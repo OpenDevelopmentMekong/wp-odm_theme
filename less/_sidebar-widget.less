@@ -245,16 +245,23 @@ ul.odm_taxonomy_widget_ul span:hover{
 /*
  * Advanced Navigation
  */
-.navigation .page-numbers{
-	padding: 0 5px;
-	border: 1px solid #ddd;;
-	background: #eee;
-}
+.navigation {
+	margin:10px 0px;
 
-.navigation .current{
-	background: @mekong-bright;
-	border: 1px solid @mekong-dark;
-  color: @mekong-dark;
+	.page-numbers{
+		padding: 5px 10px;
+		border: 1px solid #ddd;
+		background: #eee;
+	}
+	.current{
+		background: @mekong-bright;
+	  	color: @white;
+	  	border: 1px solid @mekong-bright;
+	}
+	.dots {
+		background: #fff;
+		border:none;
+	}
 }
 
 .list-posts {
