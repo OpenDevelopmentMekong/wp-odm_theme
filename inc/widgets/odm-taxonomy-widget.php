@@ -43,43 +43,38 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 	public function print_category( $category, $current_page_slug ="") {
-			$post_type =  get_post_type( get_the_ID() );
-			$get_post_id = get_post_or_page_id_by_title($category->name);
-			$current_page = "";
-			if ($get_post_id){ // if page of the topic exists
-				$topic_page = get_post($get_post_id);
-				$topic_slug = $topic_page->post_name;
-				if ($topic_slug == $current_page_slug){
-					 $current_page = " ".$current_page_slug;
-				}
-			}
 
-			echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
+		$args = array( 'category' => $category->name );
+		$posts_by_category = get_posts( $args );
+		$category_has_contents = count($posts_by_category) > 0;
 
-			if ($get_post_id){ // if page of the topic exists
-				$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-				echo '<a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
-			}else{
-                $hyperlink_color = "";
-            }
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
 
-			$in_category = in_category( $category->term_id );
-			if ($in_category){
-				 echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
-				 $hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-			}else {
-				$hyperlink_color = "";
-			}
-				echo $category->name;
+		// add link if contetns categorized by this topic exist
+		if ($category_has_contents):
+			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
+			echo '<a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
+		else:
+      $hyperlink_color = "";
+    endif;
 
-			if ($in_category){
-				 echo "</strong>";
-			}
+		$in_category = in_category( $category->term_id );
+		if ($in_category):
+			echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
+			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
+		else:
+			$hyperlink_color = "";
+		endif;
+		echo $category->name;
 
-			if ($get_post_id)
-				echo "</a>";
+		if ($in_category){
+			 echo "</strong>";
+		}
 
-			echo "</span>";
+		if ($category_has_contents)
+			echo "</a>";
+
+		echo "</span>";
 
 	}
 	/**
