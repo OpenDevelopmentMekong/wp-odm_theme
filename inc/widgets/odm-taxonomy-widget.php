@@ -46,7 +46,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$args = array( 'category_name' => $category->slug );
 		$posts_by_category = get_posts( $args );
-		print_r($category);
+		print_r($posts_by_category);
 		$category_has_contents = count($posts_by_category) > 0;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
