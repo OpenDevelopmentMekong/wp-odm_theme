@@ -45,12 +45,17 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function print_category( $category, $current_page_slug ="") {
 
 		$args = array(
-			'category' 		 => $category->cat_ID,
-			'post_status'  => 'publish'
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'slug',
+					'terms'    => $category->slug,
+				),
+			),
 		);
-		$posts_by_category = get_posts( $args );
-		print_r($posts_by_category);
-		$category_has_contents = count($posts_by_category) > 0;
+		$query = new WP_Query( $args );
+		print_r($query);
+		$category_has_contents = count($query) > 0;
 		wp_reset_postdata();
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
