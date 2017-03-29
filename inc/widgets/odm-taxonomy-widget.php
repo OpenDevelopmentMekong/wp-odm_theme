@@ -45,7 +45,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function print_category( $category, $current_page_slug ="") {
 
 		$args = array(
-			'category' => 33,
+			'category' => $category->term_id,
 			'posts_per_page'   => 1,
 			'post_status'      => 'publish'
 		);
