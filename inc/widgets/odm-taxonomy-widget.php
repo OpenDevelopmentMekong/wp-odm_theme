@@ -54,9 +54,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			),
 		);
 		$query = new WP_Query( $args );
-		print_r($query);
-		$category_has_contents = count($query) > 0;
-		wp_reset_postdata();
+		$category_has_contents = $query->found_posts > 0;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
 
