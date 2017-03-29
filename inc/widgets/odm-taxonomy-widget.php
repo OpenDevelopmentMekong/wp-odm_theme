@@ -46,13 +46,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$args = array(
 			'category' 		 => $category->cat_ID,
-			'tax_query' 	 => array(
-				array(
-					'taxonomy' => 'category',
-					'field'    => 'slug',
-					'terms'    => $category->slug,
-				)
-			),
 			'post_status'  => 'publish'
 		);
 		$posts_by_category = get_posts( $args );
