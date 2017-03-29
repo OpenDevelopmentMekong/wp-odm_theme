@@ -46,7 +46,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$args = array(
 			'category' => $category->cat_ID,
-			'posts_per_page'   => 1,
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'category',
