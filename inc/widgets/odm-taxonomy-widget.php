@@ -50,7 +50,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			'post_status'      => 'publish'
 		);
 		$posts_by_category = get_posts( $args );
-		print_r($posts_by_category);
+		print_r($category->term_id);
 		$category_has_contents = count($posts_by_category) > 0;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
