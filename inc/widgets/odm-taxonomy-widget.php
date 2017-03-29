@@ -44,7 +44,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 */
 	public function print_category( $category, $current_page_slug ="") {
 
-		$args = array( 'category' => $category->name );
+		$args = array( 'category_name' => $category->name );
 		$posts_by_category = get_posts( $args );
 		$category_has_contents = count($posts_by_category) > 0;
 
