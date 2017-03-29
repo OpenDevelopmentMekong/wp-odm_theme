@@ -12,8 +12,9 @@
 		<?php if ($show_meta): ?>
 		<div class="meta">
 				<?php
-		      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
-				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+		      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
+					$title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language()); ?>
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
 					<?php
 				if (isset($post->description) && $post->description != "") :?>
 					<div class="post-grid-item-list">
