@@ -33,8 +33,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<?php $site_name = str_replace('Open Development ', '', get_bloginfo('name')); ?>
-<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/<?php echo strtolower($site_name); ?>-favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon/<?php echo odm_country_manager()->get_current_country(); ?>-favicon.ico" type="image/x-icon" />
 
 <?php wp_head(); ?>
 
