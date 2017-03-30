@@ -249,7 +249,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags', 'show_summary_translated_by_odc_team'), $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags', 'show_summary_translated_by_odc_team','author'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
@@ -336,6 +336,23 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
   					}
   			}
       endif; ?>
+
+			<?php if (in_array('author', $show_elements) && get_post_type() !='news-article'):
+				$postID = $postID ? $postID : get_the_ID();
+		 	 	if (function_exists('get_post_meta')):
+					$get_author = get_post_meta($postID, 'author', true);
+			 		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
+			 	   if ($get_author != '' || $get_localized_author != ''):
+			 	     $news_source_info = '<span class="lsf">&#xE041;</span> ';
+			 	     if ($get_localized_author != ''):
+			 	         echo $news_source_info .= $get_localized_author.'<br />';
+			 	     else:
+			 	         echo $news_source_info .= $get_author.'<br />';
+			 	     endif;
+			 	   endif;
+				endif;
+			endif;?>
+
       <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
         <li class="categories">&nbsp;
   				<i class="fa fa-folder-o"></i>
@@ -588,17 +605,19 @@ function available_custom_post_types(){
 
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
-	 if (function_exists('get_post_meta')) :
-		 $get_author = get_post_meta($postID, 'author', true);
-		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
-	   if ($get_author != '' || $get_localized_author != ''):
-	     $news_source_info = '<span class="lsf">&#xE041;</span> ';
-	     if ($get_localized_author != ''):
-	         $news_source_info .= $get_localized_author.'<br />';
-	     else:
-	         $news_source_info .= $get_author.'<br />';
-	     endif;
-	   endif;
+	 if (function_exists('get_post_meta')):
+		 if (get_post_type()=='news-article'):
+			 $get_author = get_post_meta($postID, 'author', true);
+			 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
+		   if ($get_author != '' || $get_localized_author != ''):
+		     $news_source_info = '<span class="lsf">&#xE041;</span> ';
+		     if ($get_localized_author != ''):
+		         $news_source_info .= $get_localized_author.'<br />';
+		     else:
+		         $news_source_info .= $get_author.'<br />';
+		     endif;
+		   endif;
+		 endif;
 
 		 $get_article_link = get_post_meta($postID, 'article_link', true);
 		 $get_localized_article_link = get_post_meta($postID, 'article_link_'.odm_language_manager()->get_current_language(), true);
