@@ -356,7 +356,7 @@
                             <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'odm'); ?></p>
                         </td>
                     </tr>
-                    <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
+                    <?php if (odm_language_manager()->get_the_language_by_site() != "English") { ?>
                     <tr>
                         <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
@@ -378,7 +378,7 @@
                             <p class="description"><?php _e('A link to profile page on Wordpress', 'odm'); ?></p>
                         </td>
                     </tr>
-                    <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
+                    <?php if(odm_country_manager()->get_current_country()!="mekong"){ ?>
                     <tr>
                         <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
@@ -468,7 +468,7 @@
                             <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
                         </td>
                     </tr>
-                    <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
+                    <?php if(odm_country_manager()->get_current_country()!="mekong"){ ?>
                     <tr>
                         <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.odm_language_manager()->get_the_language_by_site().')', 'opendev'); ?></label></th>
                         <td>
@@ -542,7 +542,7 @@
                     <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm'); ?></p>
                   </td>
                 </tr>
-                <?php if(odm_language_manager()->get_the_language_by_site()){ ?>
+                <?php if(odm_country_manager()->get_current_country()!="mekong"){ ?>
                 <tr class="subopt viz_type_viz">
                   <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                   <td>
