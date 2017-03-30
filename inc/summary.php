@@ -73,7 +73,7 @@ class Odm_Summary {
 		//wp_enqueue_script('odm-summary', get_stylesheet_directory_uri() . '/js/summary.js', array('jquery'));
 		?>
 		<div class="odm-summary">
-			<h2 class="widget-title"><?php _e('On this page', 'odm'); ?></h2>
+			<h2 class="widget-title"><?php _e('On this page', 'odi'); ?></h2>
 			<div class="table-of-contents">
 			</div>
 		</div>

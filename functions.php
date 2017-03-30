@@ -41,21 +41,21 @@ require_once get_stylesheet_directory().'/inc/utils/urls.php';
 require_once get_stylesheet_directory().'/inc/utils/config.php';
 
 /*
- * Loads the theme's translated strings. for 'odm' domains
+ * Loads the theme's translated strings. for 'odi' domains
  * Registers widget sidebars
  */
 function odm_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
-    load_theme_textdomain('odm', $gsd[0].'/wp-content/languages');
+    load_theme_textdomain('odi', $gsd[0].'/wp-content/languages');
     register_sidebar(array(
-    'name' => __('Topic sidebar', 'odm'),
+    'name' => __('Topic sidebar', 'odi'),
     'id' => 'topic',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Homepage area top left', 'odm'),
+    'name' => __('Homepage area top left', 'odi'),
     'id' => 'homepage-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -63,7 +63,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area top right', 'odm'),
+    'name' => __('Homepage area top right', 'odi'),
     'id' => 'homepage-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -71,7 +71,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area middle', 'odm'),
+    'name' => __('Homepage area middle', 'odi'),
     'id' => 'homepage-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -79,7 +79,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area bottom left', 'odm'),
+    'name' => __('Homepage area bottom left', 'odi'),
     'id' => 'homepage-area-4',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -87,7 +87,7 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Homepage area bottom right', 'odm'),
+    'name' => __('Homepage area bottom right', 'odi'),
     'id' => 'homepage-area-5',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -95,31 +95,31 @@ function odm_setup_theme()
 	  'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('WPCKAN Dataset detail sidebar', 'odm'),
+    'name' => __('WPCKAN Dataset detail sidebar', 'odi'),
     'id' => 'wpckan-dataset-detail-sidebar',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Story top', 'odm'),
+    'name' => __('Story top', 'odi'),
     'id' => 'story-top',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Story bottom', 'odm'),
+    'name' => __('Story bottom', 'odi'),
     'id' => 'story-bottom',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
   ));
     register_sidebar(array(
-    'name' => __('Profile area right sidebar', 'odm'),
+    'name' => __('Profile area right sidebar', 'odi'),
     'id' => 'profile-area-1',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>'
   ));
     register_sidebar(array(
-    'name' => __('Profile area bottom left', 'odm'),
+    'name' => __('Profile area bottom left', 'odi'),
     'id' => 'profile-area-2',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -127,7 +127,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
     register_sidebar(array(
-    'name' => __('Profile area bottom right', 'odm'),
+    'name' => __('Profile area bottom right', 'odi'),
     'id' => 'profile-area-3',
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
@@ -135,7 +135,7 @@ function odm_setup_theme()
     'after_widget'  => ''
   ));
   register_sidebar(array(
-  'name' => __('Profile with right sidebar only', 'odm'),
+  'name' => __('Profile with right sidebar only', 'odi'),
   'id' => 'profile-right-sidebar',
   'before_title' => '<h2 class="widget-title">',
   'after_title' => '</h2>'
@@ -207,11 +207,11 @@ function odm_jeo_scripts()
   wp_localize_script('jeo.markers', 'opendev_markers', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'query' => extended_jeo_markers_query(),
-    'stories_label' => __('stories', 'odm'),
+    'stories_label' => __('stories', 'odi'),
     'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
-    'copy_embed_label' => __('Copy the embed code', 'odm'),
-    'share_label' => __('Share', 'odm'),
-    'print_label' => __('Print', 'odm'),
+    'copy_embed_label' => __('Copy the embed code', 'odi'),
+    'share_label' => __('Share', 'odi'),
+    'print_label' => __('Print', 'odi'),
     'embed_base_url' => home_url('/embed/'),
     'share_base_url' => home_url('/share/'),
     'marker_active' => array(
@@ -222,15 +222,15 @@ function odm_jeo_scripts()
       'markerId' => 'none',
     ),
    'site_url' => home_url('/'),
-   'read_more_label' => __('Read more', 'odm'),
+   'read_more_label' => __('Read more', 'odi'),
    'lightbox_label' => array(
-     'slideshow' => __('Open slideshow', 'odm'),
-     'videos' => __('Watch video gallery', 'odm'),
-     'video' => __('Watch video', 'odm'),
-     'images' => __('View image gallery', 'odm'),
-     'image' => __('View fullscreen image', 'odm'),
-     'infographic' => __('View infographic', 'odm'),
-     'infographics' => __('View infographics', 'odm'),
+     'slideshow' => __('Open slideshow', 'odi'),
+     'videos' => __('Watch video gallery', 'odi'),
+     'video' => __('Watch video', 'odi'),
+     'images' => __('View image gallery', 'odi'),
+     'image' => __('View fullscreen image', 'odi'),
+     'infographic' => __('View infographic', 'odi'),
+     'infographics' => __('View infographics', 'odi'),
     ),
    'enable_clustering' => jeo_use_clustering() ? true : false,
    'default_icon' => jeo_formatted_default_marker(),
@@ -262,7 +262,7 @@ function odm_jeo_scripts()
 
     wp_localize_script('jeo-share-widget', 'extended_jeo_share_widget_settings', array(
     	'baseurl' => extended_jeo_get_embed_url(),
-    	'default_label' => __('default', 'odm')
+    	'default_label' => __('default', 'odi')
     ));
   }
 

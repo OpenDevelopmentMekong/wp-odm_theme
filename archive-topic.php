@@ -5,7 +5,7 @@
 	<section class="container">
 		<header class="row">
 			<div class="eight columns">
-				<h1><?php _e('Topics','odm') ?></h1>
+				<h1><?php _e('Topics','odi') ?></h1>
 			</div>
       <div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
@@ -33,7 +33,7 @@
 
     <div class="row">
       <div class="sixteen columns">
-				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
+				<h3 class="clearfix"><?php _e('Environment and land','odi'); ?></h3>
 
         <?php
 
@@ -58,7 +58,7 @@
 
 				<?php rewind_posts(); ?>
 
-				<h3 class="clearfix"><?php _e('Economy','odm'); ?></h3>
+				<h3 class="clearfix"><?php _e('Economy','odi'); ?></h3>
 				<?php
 					while (have_posts()) : the_post();
 					$post = get_post();
@@ -75,7 +75,7 @@
 
 				<?php rewind_posts(); ?>
 
-				<h3 class="clearfix"><?php _e('People','odm'); ?></h3>
+				<h3 class="clearfix"><?php _e('People','odi'); ?></h3>
 
 				<?php
 					while (have_posts()) : the_post();

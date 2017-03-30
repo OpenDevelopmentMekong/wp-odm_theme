@@ -12,8 +12,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'odm_custom_posts_widget',
-			__('ODM Custom Posts', 'odm'),
-			array('description' => __('Display entries of the spefied custom post type', 'odm'))
+			__('ODM Custom Posts', 'odi'),
+			array('description' => __('Display entries of the spefied custom post type', 'odi'))
 		);
 
 		$this->templates = array(
@@ -72,13 +72,13 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<div class="eight columns">
 				<?php
 					if (!empty($instance['title'])): ?>
-						<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odm')).$args['after_title']; ?></a>
+						<a href="/<?php echo $post_type_slug?>"><?php echo $args['before_title'].apply_filters('widget_title', __($instance['title'], 'odi')).$args['after_title']; ?></a>
 				<?php endif; ?>
 			</div>
 
 			<?php if ($more_location == 'top'): ?>
 				<div class="eight columns align-right">
-					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odm');?> </a>
+					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...', 'odi');?> </a>
 				</div>
 			<?php endif; ?>
 
@@ -108,7 +108,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</div>
 			<?php if ($more_location == 'bottom'): ?>
 				<div class="sixteen columns align-right">
-					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odm') ?></a>
+					<a href="/<?php echo $post_type_slug?>"> <?php _e('More...','odi') ?></a>
 				</div>
 			<?php endif; ?>
 		</div>
@@ -162,7 +162,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	  </script>
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title,'odm');?>">
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title,'odi');?>">
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>

@@ -16,20 +16,20 @@ class Odm_Site_Updates {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Site updates', 'post type general name', 'odm' ),
-			'singular_name'      => _x( 'Site update', 'post type singular name', 'odm' ),
-			'menu_name'          => _x( 'Site updates', 'admin menu', 'odm' ),
-			'name_admin_bar'     => _x( 'Site update', 'add new on admin bar', 'odm' ),
-			'add_new'            => _x( 'Add new', 'site update', 'odm' ),
-			'add_new_item'       => __( 'Add new site update', 'odm' ),
-			'new_item'           => __( 'New site update', 'odm' ),
-			'edit_item'          => __( 'Edit site update', 'odm' ),
-			'view_item'          => __( 'View site update', 'odm' ),
-			'all_items'          => __( 'All site updates', 'odm' ),
-			'search_items'       => __( 'Search site updates', 'odm' ),
-			'parent_item_colon'  => __( 'Parent site updates:', 'odm' ),
-			'not_found'          => __( 'No site updates found.', 'odm' ),
-			'not_found_in_trash' => __( 'No site updates found in trash.', 'odm' )
+			'name'               => _x( 'Site updates', 'post type general name', 'odi' ),
+			'singular_name'      => _x( 'Site update', 'post type singular name', 'odi' ),
+			'menu_name'          => _x( 'Site updates', 'admin menu', 'odi' ),
+			'name_admin_bar'     => _x( 'Site update', 'add new on admin bar', 'odi' ),
+			'add_new'            => _x( 'Add new', 'site update', 'odi' ),
+			'add_new_item'       => __( 'Add new site update', 'odi' ),
+			'new_item'           => __( 'New site update', 'odi' ),
+			'edit_item'          => __( 'Edit site update', 'odi' ),
+			'view_item'          => __( 'View site update', 'odi' ),
+			'all_items'          => __( 'All site updates', 'odi' ),
+			'search_items'       => __( 'Search site updates', 'odi' ),
+			'parent_item_colon'  => __( 'Parent site updates:', 'odi' ),
+			'not_found'          => __( 'No site updates found.', 'odi' ),
+			'not_found_in_trash' => __( 'No site updates found in trash.', 'odi' )
 		);
 
 		$args = array(

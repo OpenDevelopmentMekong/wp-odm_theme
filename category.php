@@ -77,7 +77,7 @@ foreach($selected_posttype as $pt) {
 								echo '</div>';
 						?>
     			<?php else : ?>
-    				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
+    				<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odi'); ?></h3>
     			<?php endif; ?>
     		</section>
     	</div>

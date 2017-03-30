@@ -48,7 +48,7 @@ function list_category_by_post_type($post_type = 'post', $args = '', $title = 1,
 		}
 
 		if ($title == 1) {
-				echo '<h2 class="widget-title">'.__('Topic', 'odm').'</h2>';
+				echo '<h2 class="widget-title">'.__('Topic', 'odi').'</h2>';
 		}
 
 		echo "<ul class='odm_taxonomy_widget_ul'>";
@@ -376,7 +376,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_words = $excerpt_string.' ...';
 		if ($read_more != '') {
 			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
-			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odi').'</a>)';
 		}
 
 		return $excerpt_words;

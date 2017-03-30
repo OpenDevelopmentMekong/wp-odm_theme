@@ -24,7 +24,7 @@ class Odm_Options
 
     public function admin_menu()
     {
-        add_theme_page(__('Open Development Style', 'odm'), __('Open Development', 'odm'), 'edit_theme_options', 'odm_options', array($this, 'admin_page'));
+        add_theme_page(__('Open Development Style', 'odi'), __('Open Development', 'odi'), 'edit_theme_options', 'odm_options', array($this, 'admin_page'));
     }
 
     public function admin_page()
@@ -34,7 +34,7 @@ class Odm_Options
         ?>
         <div class="wrap">
           <?php screen_icon(); ?>
-          <h2><?php _e('Open Development Theme Options', 'odm');?></h2>
+          <h2><?php _e('Open Development Theme Options', 'odi');?></h2>
           <form method="post" action="options.php">
             <?php
             settings_fields('odm_options_group');
@@ -53,28 +53,28 @@ class Odm_Options
 
         add_settings_section(
          'odm_style_section',
-         __('Style', 'odm'),
+         __('Style', 'odi'),
          '',
          'odm_options'
         );
 
         add_settings_section(
          'odm_links_section',
-         __('Links', 'odm'),
+         __('Links', 'odi'),
          '',
          'odm_options'
         );
 
         add_settings_section(
          'odm_interactive_map_section',
-         __('Interactive map', 'odm'),
+         __('Interactive map', 'odi'),
          '',
          'odm_options'
         );
 
         add_settings_field(
          'odm_style',
-         __('Choose a style', 'odm'),
+         __('Choose a style', 'odi'),
          array($this, 'style_field'),
          'odm_options',
          'odm_style_section'
@@ -82,7 +82,7 @@ class Odm_Options
 
         add_settings_field(
           'odm_notice_message',
-          __('Notice Message appear above the slider', 'odm'),
+          __('Notice Message appear above the slider', 'odi'),
           array($this, 'notice_message_field'),
           'odm_options',
           'odm_style_section'
@@ -90,7 +90,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_frontpage_slider_id',
-         __('Frontpage slider id', 'odm'),
+         __('Frontpage slider id', 'odi'),
          array($this, 'frontpage_slider_id_field'),
          'odm_options',
          'odm_style_section'
@@ -98,7 +98,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_facebook',
-         __('Facebook url', 'odm'),
+         __('Facebook url', 'odi'),
          array($this, 'facebook_field'),
          'odm_options',
          'odm_links_section'
@@ -106,7 +106,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_twitter',
-         __('Twitter url', 'odm'),
+         __('Twitter url', 'odi'),
          array($this, 'twitter_field'),
          'odm_options',
          'odm_links_section'
@@ -114,7 +114,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_legal_disclaimer',
-         __('Legal disclaimer', 'odm'),
+         __('Legal disclaimer', 'odi'),
          array($this, 'legal_disclaimer_field'),
          'odm_options',
          'odm_links_section'
@@ -122,7 +122,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_category_page',
-         __('Category page', 'odm'),
+         __('Category page', 'odi'),
          array($this, 'category_page_field'),
          'odm_options',
          'odm_links_section'
@@ -130,7 +130,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_contact',
-         __('Contact page', 'odm'),
+         __('Contact page', 'odi'),
          array($this, 'contact_page_field'),
          'odm_options',
          'odm_links_section'
@@ -138,7 +138,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_data_page',
-         __('Data page', 'odm'),
+         __('Data page', 'odi'),
          array($this, 'data_page_field'),
          'odm_options',
          'odm_links_section'
@@ -146,7 +146,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_interactive_map',
-         __('Base map settings', 'odm'),
+         __('Base map settings', 'odi'),
          array($this, 'interactive_map_field'),
          'odm_options',
          'odm_interactive_map_section'
@@ -169,8 +169,8 @@ class Odm_Options
     function notice_message_field() {
       $notice_message = $this->options['notice_message'];
       ?>
-      <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','odm'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','odm');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
-      <i><?php _e("(The notification will appear floating at the bottom of the site)", 'odm'); ?></i>
+      <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','odi'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','odi');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
+      <i><?php _e("(The notification will appear floating at the bottom of the site)", 'odi'); ?></i>
       <?php
    }
 
@@ -181,7 +181,7 @@ class Odm_Options
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');
               ?>'" value="<?php echo $frontpage_slider_id;
               ?>" size="70" /><br/>
-        <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'odm');
+        <i><?php _e("(This id can be found on the Featured Area plugin slider's settings.)", 'odi');
               ?></i>
   <?php
 
@@ -211,7 +211,7 @@ class Odm_Options
         <input id="odm_category_page" name="odm_options[category_page]" type="text" placeholder="<?php _e('news-article,announcement,topic,profiles');
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('news-article,announcement,topic,profiles');
               ?>'" value="<?php echo $selected_post_type;?>" size="70" /><br/>
-              <i><?php _e("(Add the post type name that would like to show on the category page. (separated by comma))", 'odm');
+              <i><?php _e("(Add the post type name that would like to show on the category page. (separated by comma))", 'odi');
               ?></i>
   <?php
     }
@@ -270,7 +270,7 @@ class Odm_Options
         ?>
 
     <div>
-     <?php _e('Select base layer', 'odm');
+     <?php _e('Select base layer', 'odi');
         ?>
      <select name="odm_options[map_data][base_layer][type]" id="baselayer_drop_down">
       <option value="openstreetmap" <?php echo $select_base_layer == 'openstreetmap' ? ' selected="selected"' : '';
@@ -284,78 +284,78 @@ class Odm_Options
       <option value="stamen_watercolor" <?php echo $select_base_layer == 'stamen_watercolor' ? ' selected="selected"' : '';
         ?>>Stamen Watercolor</option>
       <option value="stamen_terrain" <?php echo $select_base_layer == 'stamen_terrain' ? ' selected="selected"' : '';
-        ?> >Stamen Terrain <?php _e('(USA Only)', 'odm');
+        ?> >Stamen Terrain <?php _e('(USA Only)', 'odi');
         ?></option>
       <option value="nextgis" <?php echo $select_base_layer == 'nextgis' ? ' selected="selected"' : '';
         ?> >Nextgis
 			</option>
       <option value="custom" <?php echo $select_base_layer == 'custom' ? ' selected="selected"' : '';
-        ?> ><?php _e('Custom', 'odm');
+        ?> ><?php _e('Custom', 'odi');
         ?></option>
       <option value="none" <?php echo $select_base_layer == 'none' ? ' selected="selected"' : '';
-        ?> ><?php _e('None', 'odm');
+        ?> ><?php _e('None', 'odi');
         ?></option>
      </select>
-     <input type="text" name="odm_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'odm');
+     <input type="text" name="odm_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'odi');
         ?>" value="<?php echo $base_layer_url;
         ?>" />
     </div>
 
-    <p><a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odm');
+    <p><a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odi');
         ?></a></p>
    </div>
-   <h3><?php _e('Preview map', 'odm');
+   <h3><?php _e('Preview map', 'odi');
         ?></h3>
    <div class="map-container">
     <div id="map_preview" class="map"></div>
    </div>
    <div class="map-settings clearfix">
-    <h3><?php _e('Map settings', 'odm');
+    <h3><?php _e('Map settings', 'odi');
         ?></h3>
     <div class="current map-setting">
-     <h4><?php _e('Currently viewing', 'odm');
+     <h4><?php _e('Currently viewing', 'odi');
         ?></h4>
      <table>
       <tr>
-       <td><?php _e('Center', 'odm');
+       <td><?php _e('Center', 'odi');
         ?></td>
        <td><span class="center"></span></td>
       </tr>
       <tr>
-       <td><?php _e('Zoom', 'odm');
+       <td><?php _e('Zoom', 'odi');
         ?></td>
        <td><span class="zoom"></span></td>
       </tr>
       <tr>
-       <td><?php _e('East', 'odm');
+       <td><?php _e('East', 'odi');
         ?></td>
        <td><span class="east"></span></td>
       </tr>
       <tr>
-       <td><?php _e('North', 'odm');
+       <td><?php _e('North', 'odi');
         ?></td>
        <td><span class="north"></span></td>
       </tr>
       <tr>
-       <td><?php _e('South', 'odm');
+       <td><?php _e('South', 'odi');
         ?></td>
        <td><span class="south"></span></td>
       </tr>
       <tr>
-       <td><?php _e('West', 'odm');
+       <td><?php _e('West', 'odi');
         ?></td>
        <td><span class="west"></span></td>
       </tr>
      </table>
     </div>
     <div class="centerzoom map-setting">
-     <h4><?php _e('Map center & zoom', 'odm');
+     <h4><?php _e('Map center & zoom', 'odi');
         ?></h4>
-     <p><a class="button set-map-centerzoom"><?php _e('Set current as map center & zoom', 'odm');
+     <p><a class="button set-map-centerzoom"><?php _e('Set current as map center & zoom', 'odi');
         ?></a></p>
      <table>
       <tr>
-       <td><?php _e('Center', 'odm');
+       <td><?php _e('Center', 'odi');
         ?></td>
        <td><span class="center">(<?php if (isset($map_data['center'])) {
     echo $map_data['center']['lat'];
@@ -366,7 +366,7 @@ class Odm_Options
         ?>)</span></td>
       </tr>
       <tr>
-       <td><?php _e('Zoom', 'odm');
+       <td><?php _e('Zoom', 'odi');
         ?></td>
        <td><span class="zoom"><?php if (isset($map_data['zoom'])) {
     echo $map_data['zoom'];
@@ -374,26 +374,26 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><label for="min-zoom-input"><?php _e('Min zoom', 'odm');
+       <td><label for="min-zoom-input"><?php _e('Min zoom', 'odi');
         ?></label></td>
        <td>
         <input type="text" size="2" id="min-zoom-input" value="<?php if (isset($map_data['min_zoom'])) {
     echo $map_data['min_zoom'];
 }
         ?>" name="odm_options[map_data][min_zoom]" />
-        <a class="button set-min-zoom" href="#"><?php _e('Current', 'odm');
+        <a class="button set-min-zoom" href="#"><?php _e('Current', 'odi');
         ?></a>
        </td>
       </tr>
       <tr>
-       <td><label for="max-zoom-input"><?php _e('Max zoom', 'odm');
+       <td><label for="max-zoom-input"><?php _e('Max zoom', 'odi');
         ?></label></td>
        <td>
         <input type="text" size="2" id="max-zoom-input" value="<?php if (isset($map_data['center'])) {
     echo $map_data['max_zoom'];
 }
         ?>" name="odm_options[map_data][max_zoom]" />
-        <a class="button set-max-zoom" href="#"><?php _e('Current', 'odm');
+        <a class="button set-max-zoom" href="#"><?php _e('Current', 'odi');
         ?></a>
        </td>
       </tr>
@@ -412,13 +412,13 @@ class Odm_Options
         ?>" />
     </div>
     <div class="pan-limits map-setting">
-     <h4><?php _e('Pan limits', 'odm');
+     <h4><?php _e('Pan limits', 'odi');
         ?></h4>
-     <p><a class="button set-map-pan"><?php _e('Set current as map panning limits', 'odm');
+     <p><a class="button set-map-pan"><?php _e('Set current as map panning limits', 'odi');
         ?></a></p>
      <table>
       <tr>
-       <td><?php _e('East', 'odm');
+       <td><?php _e('East', 'odi');
         ?></td>
        <td><span class="east"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['east'];
@@ -426,7 +426,7 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><?php _e('North', 'odm');
+       <td><?php _e('North', 'odi');
         ?></td>
        <td><span class="north"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['north'];
@@ -434,7 +434,7 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><?php _e('South', 'odm');
+       <td><?php _e('South', 'odi');
         ?></td>
        <td><span class="south"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['south'];
@@ -442,7 +442,7 @@ class Odm_Options
         ?></span></td>
       </tr>
       <tr>
-       <td><?php _e('West', 'odm');
+       <td><?php _e('West', 'odi');
         ?></td>
        <td><span class="west"><?php if (isset($map_data['pan_limits'])) {
     echo $map_data['pan_limits']['west'];
@@ -468,26 +468,26 @@ class Odm_Options
         ?>" />
     </div>
     <div class="geocode map-setting">
-     <h4><?php _e('Enable geocoding service', 'odm');
+     <h4><?php _e('Enable geocoding service', 'odi');
         ?></h4>
      <p>
       <input class="enable-geocode" id="enable_geocode" type="checkbox" name="odm_options[map_data][geocode]" <?php if (isset($map_data['geocode']) && $map_data['geocode']) {
     echo 'checked';
 }
         ?> />
-      <label for="enable_geocode"><?php _e('Enable geocode search service', 'odm');
+      <label for="enable_geocode"><?php _e('Enable geocode search service', 'odi');
         ?></label>
      </p>
     </div>
     <div class="handlers map-setting">
-     <h4><?php _e('Map handlers', 'odm');
+     <h4><?php _e('Map handlers', 'odi');
         ?></h4>
      <p>
       <input class="disable-mousewheel" id="disable_mousewheel" type="checkbox" name="odm_options[map_data][disable_mousewheel]" <?php if (isset($map_data['disable_mousewheel']) && $map_data['disable_mousewheel']) {
     echo 'checked';
 }
         ?> />
-      <label for="disable_mousewheel"><?php _e('Disable mousewheel zooming', 'odm');
+      <label for="disable_mousewheel"><?php _e('Disable mousewheel zooming', 'odi');
         ?></label>
      </p>
     </div>
@@ -495,11 +495,11 @@ class Odm_Options
         ?>
    </div>
    <p>
-    <a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odm');
+    <a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odi');
         ?></a>
-    <input type="checkbox" class="toggle-preview-mode" id="toggle_preview_mode" checked /> <label for="toggle_preview_mode"><strong><?php _e('Preview mode', 'odm');
+    <input type="checkbox" class="toggle-preview-mode" id="toggle_preview_mode" checked /> <label for="toggle_preview_mode"><strong><?php _e('Preview mode', 'odi');
         ?></strong></label>
-    <i><?php _e("(preview mode doesn't apply zoom range nor pan limits setup)", 'odm');
+    <i><?php _e("(preview mode doesn't apply zoom range nor pan limits setup)", 'odi');
         ?></i>
    </p>
   </div>

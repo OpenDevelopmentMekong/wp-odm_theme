@@ -148,7 +148,7 @@
                      the_excerpt();
                    }
                    else{
-                     echo odm_excerpt(20, __('Keep reading', 'odm'));
+                     echo odm_excerpt(20, __('Keep reading', 'odi'));
                    }
                 ?>
               </section>
@@ -156,7 +156,7 @@
          <footer class="post-actions">
               <!-- <a class="button" href="<?php the_permalink(); ?>">
               <img src="<?php // echo get_stylesheet_directory_uri()?>/img/info-icon.png"/>
-              <?php // _e('Read more', 'odm'); ?></a>-->
+              <?php // _e('Read more', 'odi'); ?></a>-->
          </footer>
         </article>
 <?php

@@ -11,7 +11,7 @@ Template Name: Data archive
   		<header class="row">
   			<div class="sixteen columns">
   				<h1><?php the_title(); ?></h1>
-          <p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odm'); ?></a></p>
+          <p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odi'); ?></a></p>
   			</div>
   		</header>
   	</section>
@@ -23,7 +23,7 @@ Template Name: Data archive
 			<div class="sixteen columns">
 				<div id="wpckan_archive">
 					<form id="wpckan_search_form" method="GET">
-						<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'odm'); ?>" value="<?php echo $_GET['ckan_s']; ?>" />
+						<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'odi'); ?>" value="<?php echo $_GET['ckan_s']; ?>" />
 					</form>
 					<div class="row">
 						<?php
@@ -34,9 +34,9 @@ Template Name: Data archive
 					</div>
 					<nav id="wpckan_nav">
 						<?php if ($page > 1) : ?>
-							<a class="prev-page button" href="<?php echo add_query_arg(array('ckan_page' => $page - 1)); ?>"><?php _e('Previous page', 'odm'); ?></a>
+							<a class="prev-page button" href="<?php echo add_query_arg(array('ckan_page' => $page - 1)); ?>"><?php _e('Previous page', 'odi'); ?></a>
 						<?php endif; ?>
-						<a class="next-page button" href="<?php echo add_query_arg(array('ckan_page' => $page + 1)); ?>"><?php _e('Next page', 'odm'); ?></a>
+						<a class="next-page button" href="<?php echo add_query_arg(array('ckan_page' => $page + 1)); ?>"><?php _e('Next page', 'odi'); ?></a>
 					</nav>
 					<script type="text/javascript">
 						jQuery(document).ready(function($) {

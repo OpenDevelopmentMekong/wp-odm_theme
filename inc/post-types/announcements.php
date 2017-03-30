@@ -16,20 +16,20 @@ class Odm_Announcement {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Announcements', 'post type general name', 'odm' ),
-			'singular_name'      => _x( 'Announcement', 'post type singular name', 'odm' ),
-			'menu_name'          => _x( 'Announcements', 'admin menu', 'odm' ),
-			'name_admin_bar'     => _x( 'Announcement', 'add new on admin bar', 'odm' ),
-			'add_new'            => _x( 'Add new', 'announcement', 'odm' ),
-			'add_new_item'       => __( 'Add new announcement', 'odm' ),
-			'new_item'           => __( 'New announcement', 'odm' ),
-			'edit_item'          => __( 'Edit announcement', 'odm' ),
-			'view_item'          => __( 'View announcement', 'odm' ),
-			'all_items'          => __( 'All announcements', 'odm' ),
-			'search_items'       => __( 'Search announcements', 'odm' ),
-			'parent_item_colon'  => __( 'Parent announcements:', 'odm' ),
-			'not_found'          => __( 'No announcements found.', 'odm' ),
-			'not_found_in_trash' => __( 'No announcements found in trash.', 'odm' )
+			'name'               => _x( 'Announcements', 'post type general name', 'odi' ),
+			'singular_name'      => _x( 'Announcement', 'post type singular name', 'odi' ),
+			'menu_name'          => _x( 'Announcements', 'admin menu', 'odi' ),
+			'name_admin_bar'     => _x( 'Announcement', 'add new on admin bar', 'odi' ),
+			'add_new'            => _x( 'Add new', 'announcement', 'odi' ),
+			'add_new_item'       => __( 'Add new announcement', 'odi' ),
+			'new_item'           => __( 'New announcement', 'odi' ),
+			'edit_item'          => __( 'Edit announcement', 'odi' ),
+			'view_item'          => __( 'View announcement', 'odi' ),
+			'all_items'          => __( 'All announcements', 'odi' ),
+			'search_items'       => __( 'Search announcements', 'odi' ),
+			'parent_item_colon'  => __( 'Parent announcements:', 'odi' ),
+			'not_found'          => __( 'No announcements found.', 'odi' ),
+			'not_found_in_trash' => __( 'No announcements found in trash.', 'odi' )
 		);
 
 		$args = array(

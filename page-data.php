@@ -97,9 +97,9 @@ Template Name: Data
 
         <!-- TAXONOMY FILTER -->
         <div class="single-filter">
-          <label for="taxonomy"><?php _e('Topic', 'odm'); ?></label>
-          <select id="taxonomy" name="taxonomy" class="filter_box" data-placeholder="<?php _e('Select term', 'odm'); ?>">
-            <option value="all" selected><?php _e('All','odm') ?></option>
+          <label for="taxonomy"><?php _e('Topic', 'odi'); ?></label>
+          <select id="taxonomy" name="taxonomy" class="filter_box" data-placeholder="<?php _e('Select term', 'odi'); ?>">
+            <option value="all" selected><?php _e('All','odi') ?></option>
             <?php
               foreach($taxonomy_list as $value):
                 if (array_key_exists("vocab_taxonomy",$facets)):
@@ -120,9 +120,9 @@ Template Name: Data
         <!-- COUNTRY FILTER -->
         <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
         <div class="single-filter">
-          <label for="country"><?php _e('Country', 'odm'); ?></label>
-          <select id="country" name="country" class="filter_box" data-placeholder="<?php _e('Select country', 'odm'); ?>">
-            <option value="all" selected><?php _e('All','odm') ?></option>
+          <label for="country"><?php _e('Country', 'odi'); ?></label>
+          <select id="country" name="country" class="filter_box" data-placeholder="<?php _e('Select country', 'odi'); ?>">
+            <option value="all" selected><?php _e('All','odi') ?></option>
             <?php
               foreach($countries as $key => $value):
                 if ($key != 'mekong'):
@@ -148,9 +148,9 @@ Template Name: Data
 
         <!-- LANGUAGE FILTER -->
         <div class="single-filter">
-          <label for="language"><?php _e('Language', 'odm'); ?></label>
-          <select id="language" name="language" class="filter_box" data-placeholder="<?php _e('Select language', 'odm'); ?>">
-            <option value="all"  selected><?php _e('All','odm') ?></option>
+          <label for="language"><?php _e('Language', 'odi'); ?></label>
+          <select id="language" name="language" class="filter_box" data-placeholder="<?php _e('Select language', 'odi'); ?>">
+            <option value="all"  selected><?php _e('All','odi') ?></option>
             <?php
               foreach($languages as $key => $value):
                 if (array_key_exists("extras_odm_language",$facets)):
@@ -170,9 +170,9 @@ Template Name: Data
 
         <!-- LICENSE FILTER -->
         <div class="single-filter">
-          <label for="license"><?php _e('License', 'odm'); ?></label>
-          <select id="license" name="license" class="filter_box" data-placeholder="<?php _e('Select license', 'odm'); ?>">
-            <option value="all" selected><?php _e('All','odm') ?></option>
+          <label for="license"><?php _e('License', 'odi'); ?></label>
+          <select id="license" name="license" class="filter_box" data-placeholder="<?php _e('Select license', 'odi'); ?>">
+            <option value="all" selected><?php _e('All','odi') ?></option>
             <?php
               foreach($license_list as $license):
                 if (array_key_exists("license_id",$facets)):
@@ -193,22 +193,22 @@ Template Name: Data
 				<!-- SORTING FUNCTION -->
 				<h3><i class="fa fa-sort"></i> Sorting</h3>
 				<div class="single-filter">
-          <label for="sorting"><?php _e('Sort by', 'odm'); ?></label>
-          <select id="sorting" name="sorting" class="filter_box" data-placeholder="<?php _e('Sort by', 'odm'); ?>">
-            <option <?php if($param_sorting == "score") echo 'selected'; ?> value="score"><?php _e('Relevance','odm') ?></option>
-          	<option <?php if($param_sorting == "metadata_modified") echo 'selected'; ?> value="metadata_modified"><?php _e('Date modified','odm') ?></option>
+          <label for="sorting"><?php _e('Sort by', 'odi'); ?></label>
+          <select id="sorting" name="sorting" class="filter_box" data-placeholder="<?php _e('Sort by', 'odi'); ?>">
+            <option <?php if($param_sorting == "score") echo 'selected'; ?> value="score"><?php _e('Relevance','odi') ?></option>
+          	<option <?php if($param_sorting == "metadata_modified") echo 'selected'; ?> value="metadata_modified"><?php _e('Date modified','odi') ?></option>
           </select>
         </div>
 				<!-- END OF LICENSE FILTER -->
 
         <div class="single-filter">
-          <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
+          <input class="button" type="submit" value="<?php _e('Search Filter', 'odi'); ?>"/>
         </div>
 			</div>
     </div>
     <div class="twelve columns">
       <div class="search_bar">
-        <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
+        <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odi'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
         </form>
       </div>
       <div class="results_info"><h2><?php echo $results->getNumFound() ?> records found.</h2></div>

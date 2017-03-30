@@ -18,20 +18,20 @@ class Odm_Story {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Stories', 'post type general name', 'odm' ),
-			'singular_name'      => _x( 'Story', 'post type singular name', 'odm' ),
-			'menu_name'          => _x( 'Stories', 'admin menu', 'odm' ),
-			'name_admin_bar'     => _x( 'Story', 'add new on admin bar', 'odm' ),
-			'add_new'            => _x( 'Add new', 'story', 'odm' ),
-			'add_new_item'       => __( 'Add new story', 'odm' ),
-			'new_item'           => __( 'New story', 'odm' ),
-			'edit_item'          => __( 'Edit story', 'odm' ),
-			'view_item'          => __( 'View story', 'odm' ),
-			'all_items'          => __( 'All stories', 'odm' ),
-			'search_items'       => __( 'Search stories', 'odm' ),
-			'parent_item_colon'  => __( 'Parent stories:', 'odm' ),
-			'not_found'          => __( 'No stories found.', 'odm' ),
-			'not_found_in_trash' => __( 'No stories found in trash.', 'odm' )
+			'name'               => _x( 'Stories', 'post type general name', 'odi' ),
+			'singular_name'      => _x( 'Story', 'post type singular name', 'odi' ),
+			'menu_name'          => _x( 'Stories', 'admin menu', 'odi' ),
+			'name_admin_bar'     => _x( 'Story', 'add new on admin bar', 'odi' ),
+			'add_new'            => _x( 'Add new', 'story', 'odi' ),
+			'add_new_item'       => __( 'Add new story', 'odi' ),
+			'new_item'           => __( 'New story', 'odi' ),
+			'edit_item'          => __( 'Edit story', 'odi' ),
+			'view_item'          => __( 'View story', 'odi' ),
+			'all_items'          => __( 'All stories', 'odi' ),
+			'search_items'       => __( 'Search stories', 'odi' ),
+			'parent_item_colon'  => __( 'Parent stories:', 'odi' ),
+			'not_found'          => __( 'No stories found.', 'odi' ),
+			'not_found_in_trash' => __( 'No stories found in trash.', 'odi' )
 		);
 
 		$args = array(
@@ -59,7 +59,7 @@ class Odm_Story {
   {
     add_meta_box(
      'full_width_middle_content',
-     __('Full Width Middle Content', 'odm'),
+     __('Full Width Middle Content', 'odi'),
      array($this, 'full_width_middle_content_box'),
      'story',
      'advanced',
@@ -75,10 +75,10 @@ class Odm_Story {
     ?>
     <div id="multiple-site">
       <input type="radio" id="middle_content_en" class="en" name="language_site1" value="en" checked />
-      <label for="middle_content_en"><?php _e('ENGLISH', 'odm'); ?></label> &nbsp;
+      <label for="middle_content_en"><?php _e('ENGLISH', 'odi'); ?></label> &nbsp;
       <?php if (odm_language_manager()->get_the_language_by_site() != "English"): ?>
         <input type="radio" id="middle_content_localization" class="localization" name="language_site1" value="localization" />
-        <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'odm');  ?></label>
+        <label for="middle_content_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'odi');  ?></label>
       <?php endif; ?>
 
     </div>
@@ -88,11 +88,11 @@ class Odm_Story {
         <table class="form-table middle_content_box">
           <tbody>
             <tr>
-            <td><label for="_full_width_middle_content"><?php _e('Full width content (English)', 'odm');
+            <td><label for="_full_width_middle_content"><?php _e('Full width content (English)', 'odi');
             ?></label>
             </br>
             <textarea name="_full_width_middle_content" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content; ?></textarea>
-            <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'odm');
+            <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'odi');
             ?></p>
             </td>
            </tr>
@@ -104,11 +104,11 @@ class Odm_Story {
         <table class="form-table form-table-localization middle_content_box">
           <tbody>
             <tr>
-            <td><label for="_full_width_middle_content_localization"><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'odm');
+            <td><label for="_full_width_middle_content_localization"><?php _e('Full width content (('.odm_language_manager()->get_the_language_by_site().')', 'odi');
             ?></label>
             </br>
             <textarea name="_full_width_middle_content_localization" style="width:100%;height: 50px;" placeholder=""><?php echo $full_width_middle_content_localization; ?></textarea>
-            <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'odm');
+            <p class="description"><?php _e('Any content can add to under the Editor content and sidebar and  full width of website even the iframe.', 'odi');
             ?></p>
             </td>
            </tr>

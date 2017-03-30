@@ -43,7 +43,7 @@ if(have_posts()) :
 <section class="container">
 	<header class="row">
 		<div class="eight columns">
-			<h2><?php _e('Latest articles on', 'odm'); ?> <?php the_title(); ?></H2>
+			<h2><?php _e('Latest articles on', 'odi'); ?> <?php the_title(); ?></H2>
 		</div>
 		<div class="eight columns">
 			<?php get_template_part('section', 'query-actions'); ?>

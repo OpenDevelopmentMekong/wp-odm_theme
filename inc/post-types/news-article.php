@@ -16,20 +16,20 @@ class Odm_News_Article {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'News', 'post type general name', 'odm' ),
-			'singular_name'      => _x( 'News article', 'post type singular name', 'odm' ),
-			'menu_name'          => _x( 'News', 'admin menu', 'odm' ),
-			'name_admin_bar'     => _x( 'News article', 'add new on admin bar', 'odm' ),
-			'add_new'            => _x( 'Add new', 'news article', 'odm' ),
-			'add_new_item'       => __( 'Add new news article', 'odm' ),
-			'new_item'           => __( 'New news article', 'odm' ),
-			'edit_item'          => __( 'Edit news article', 'odm' ),
-			'view_item'          => __( 'View news article', 'odm' ),
-			'all_items'          => __( 'All news articles', 'odm' ),
-			'search_items'       => __( 'Search news articles', 'odm' ),
-			'parent_item_colon'  => __( 'Parent news articles:', 'odm' ),
-			'not_found'          => __( 'No stories found.', 'odm' ),
-			'not_found_in_trash' => __( 'No stories found in trash.', 'odm' )
+			'name'               => _x( 'News', 'post type general name', 'odi' ),
+			'singular_name'      => _x( 'News article', 'post type singular name', 'odi' ),
+			'menu_name'          => _x( 'News', 'admin menu', 'odi' ),
+			'name_admin_bar'     => _x( 'News article', 'add new on admin bar', 'odi' ),
+			'add_new'            => _x( 'Add new', 'news article', 'odi' ),
+			'add_new_item'       => __( 'Add new news article', 'odi' ),
+			'new_item'           => __( 'New news article', 'odi' ),
+			'edit_item'          => __( 'Edit news article', 'odi' ),
+			'view_item'          => __( 'View news article', 'odi' ),
+			'all_items'          => __( 'All news articles', 'odi' ),
+			'search_items'       => __( 'Search news articles', 'odi' ),
+			'parent_item_colon'  => __( 'Parent news articles:', 'odi' ),
+			'not_found'          => __( 'No stories found.', 'odi' ),
+			'not_found_in_trash' => __( 'No stories found in trash.', 'odi' )
 		);
 
 		$args = array(

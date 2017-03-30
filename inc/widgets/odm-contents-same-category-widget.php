@@ -9,8 +9,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'odm_contents_same_category_widget',
-			__('ODM Contents same category', 'odm'),
-			array('description' => __('Display other content from other post types tagged with the same categories as the one where the widget is integrated.', 'odm'))
+			__('ODM Contents same category', 'odi'),
+			array('description' => __('Display other content from other post types tagged with the same categories as the one where the widget is integrated.', 'odi'))
 		);
 
 		$this->templates = array(
@@ -87,7 +87,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			echo $args['before_widget']; ?>
 			<?php if ($more_location == 'top'): ?>
 				<div class="row float-right">
-					<a href="<?php echo $more_url?>"> <?php _e('More...', 'odm');?> </a>
+					<a href="<?php echo $more_url?>"> <?php _e('More...', 'odi');?> </a>
 				</div>
 			<?php endif; ?>
 
@@ -123,7 +123,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 				<?php if ($more_location == 'bottom'): ?>
 					<div class="row float-right">
-						<a href="<?php echo $more_url?>"> <?php _e('More...','odm') ?></a>
+						<a href="<?php echo $more_url?>"> <?php _e('More...','odi') ?></a>
 					</div>
 				<?php endif; ?>
 
@@ -152,7 +152,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title, 'odm');?>">
+			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title, 'odi');?>">
 		</p>
 
 		<p>

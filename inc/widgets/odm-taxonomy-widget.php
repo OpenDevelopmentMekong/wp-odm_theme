@@ -7,8 +7,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'odm_taxonomy_widget', // Base ID
-			__( 'ODM Content Taxonomy Widget', 'odm' ), // Name
-			array( 'description' => __( 'Display ODM taxonomy for content', 'odm' ), ) // Args
+			__( 'ODM Content Taxonomy Widget', 'odi' ), // Name
+			array( 'description' => __( 'Display ODM taxonomy for content', 'odi' ), ) // Args
 		);
 	}
 
@@ -221,7 +221,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php _e( $title , 'odm' ); ?>">
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php _e( $title , 'odi' ); ?>">
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'od_include' ); ?>"><?php _e( 'Include Category by IDs (separated by commas):' ); ?></label>

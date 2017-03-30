@@ -36,16 +36,16 @@ Template Name: Data Page old Template
         <?php $num_columns = ($param_country === 'mekong') ? "two" : "three"; ?>
         <div class="<?php echo $num_columns ?> columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="s"><?php _e('Text search', 'odm'); ?></label></p>
-            <input type="text" id="query" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" />
+            <p class="label"><label for="s"><?php _e('Text search', 'odi'); ?></label></p>
+            <input type="text" id="query" name="query" placeholder="<?php _e('Type your search here', 'odi'); ?>" value="<?php echo $param_query; ?>" />
           </div>
         </div>
 
         <div class="two columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="type"><?php _e('Type', 'odm'); ?></label></p>
-            <select id="type" name="type" data-placeholder="<?php _e('Select dataset type', 'odm'); ?>">
-							<option value="all"  selected><?php _e('All','odm') ?></option>
+            <p class="label"><label for="type"><?php _e('Type', 'odi'); ?></label></p>
+            <select id="type" name="type" data-placeholder="<?php _e('Select dataset type', 'odi'); ?>">
+							<option value="all"  selected><?php _e('All','odi') ?></option>
 							<?php
                 foreach($types as $key => $value): ?>
                 <option value="<?php echo $key; ?>" <?php if ($key == $param_type) echo 'selected'; ?>><?php echo $value; ?></option>
@@ -60,9 +60,9 @@ Template Name: Data Page old Template
         ?>
         <div class="two columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="language"><?php _e('Language', 'odm'); ?></label></p>
-            <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
-              <option value="all"  selected><?php _e('All','odm') ?></option>
+            <p class="label"><label for="language"><?php _e('Language', 'odi'); ?></label></p>
+            <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odi'); ?>">
+              <option value="all"  selected><?php _e('All','odi') ?></option>
               <?php
                 foreach($languages as $key => $value): ?>
                 <option value="<?php echo $key; ?>" <?php if($key == $param_language) echo 'selected'; ?>><?php echo $value; ?></option>
@@ -78,11 +78,11 @@ Template Name: Data Page old Template
         <?php if ($param_country === 'mekong'): ?>
           <div class="<?php echo $num_columns ?> columns">
             <div class="adv-nav-input">
-              <p class="label"><label for="country"><?php _e('Country', 'odm'); ?></label></p>
-              <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odm'); ?>">
+              <p class="label"><label for="country"><?php _e('Country', 'odi'); ?></label></p>
+              <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odi'); ?>">
                 <?php
                   if (odm_country_manager()->get_current_country() == 'mekong'): ?>
-                    <option value="all" selected><?php _e('All','odm') ?></option>
+                    <option value="all" selected><?php _e('All','odi') ?></option>
                 <?php
                   endif; ?>
                 <?php
@@ -103,9 +103,9 @@ Template Name: Data Page old Template
         ?>
         <div class="two columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="taxonomy"><?php _e('Topic', 'odm'); ?></label></p>
-            <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
-              <option value="all" selected><?php _e('All','odm') ?></option>
+            <p class="label"><label for="taxonomy"><?php _e('Topic', 'odi'); ?></label></p>
+            <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odi'); ?>">
+              <option value="all" selected><?php _e('All','odi') ?></option>
               <?php
                 foreach($taxonomy_list as $value): ?>
                 <option value="<?php echo $value; ?>" <?php if($value == $param_taxonomy) echo 'selected'; ?>><?php echo $value; ?></option>
@@ -120,9 +120,9 @@ Template Name: Data Page old Template
         ?>
 				<div class="two columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="license"><?php _e('License', 'odm'); ?></label></p>
-            <select id="license" name="license" data-placeholder="<?php _e('Select license', 'odm'); ?>">
-              <option value="all" selected><?php _e('All','odm') ?></option>
+            <p class="label"><label for="license"><?php _e('License', 'odi'); ?></label></p>
+            <select id="license" name="license" data-placeholder="<?php _e('Select license', 'odi'); ?>">
+              <option value="all" selected><?php _e('All','odi') ?></option>
               <?php
                 foreach($license_list as $license):?>
                 	<option value="<?php echo $license->id; ?>" <?php if($license->id == $param_license) echo 'selected'; ?>><?php echo $license->title; ?></option>
@@ -134,17 +134,17 @@ Template Name: Data Page old Template
 
         <div class="two columns">
           <div class="adv-nav-input">
-            <p class="label"><label for="source"><?php _e('Source', 'odm'); ?></label></p>
-            <input type="text" id="source" name="source" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query_source; ?>" />
+            <p class="label"><label for="source"><?php _e('Source', 'odi'); ?></label></p>
+            <input type="text" id="source" name="source" placeholder="<?php _e('Type your search here', 'odi'); ?>" value="<?php echo $param_query_source; ?>" />
           </div>
         </div>
 
         <div class="<?php echo $num_columns; ?> columns">
-          <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
+          <input class="button" type="submit" value="<?php _e('Search Filter', 'odi'); ?>"/>
           <?php
             if ($active_filters):
               ?>
-              <a href="?clear"><?php _e('Clear','odm') ?></a>
+              <a href="?clear"><?php _e('Clear','odi') ?></a>
           <?php
             endif;
            ?>
@@ -168,17 +168,17 @@ Template Name: Data Page old Template
         <section class="container">
 
       		<div class="sixteen columns data-results">
-            <h2><?php _e('Most viewed datasets','odm') ?></h2>
+            <h2><?php _e('Most viewed datasets','odi') ?></h2>
             <?php echo do_shortcode($shortcode . ' type="dataset"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
-            <h2><?php _e('Most viewed library records','odm') ?></h2>
+            <h2><?php _e('Most viewed library records','odi') ?></h2>
             <?php echo do_shortcode($shortcode . ' type="library_record"]'); ?>
           </div>
 
           <div class="sixteen columns data-results">
-            <h2><?php _e('Most viewed laws','odm') ?></h2>
+            <h2><?php _e('Most viewed laws','odi') ?></h2>
             <?php echo do_shortcode($shortcode . ' type="laws_record"]'); ?>
           </div>
 
@@ -229,7 +229,7 @@ Template Name: Data Page old Template
 
         <div class="sixteen columns data-number-results">
           <?php
-            $suffix = isset($types[$param_type]) ? $types[$param_type] : __('Records', 'odm');
+            $suffix = isset($types[$param_type]) ? $types[$param_type] : __('Records', 'odi');
             echo do_shortcode('[wpckan_number_of_query_datasets suffix=" ' . $suffix .' found."' . $shortcode_params . ']'); ?>
         </div>
 
@@ -240,7 +240,7 @@ Template Name: Data Page old Template
         <?php
           if ($param_type == 'laws_record' && url_path_exists("/tabular/laws/")): ?>
             <div class="sixteen columns more-links">
-              <a href="/tabular/laws/"><?php _e('More on the law compendium','odm'); ?></a>
+              <a href="/tabular/laws/"><?php _e('More on the law compendium','odi'); ?></a>
             </div>
         <?php
           endif; ?>

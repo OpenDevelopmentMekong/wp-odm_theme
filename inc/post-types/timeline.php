@@ -17,20 +17,20 @@ class Odm_Timeline {
 	function register_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Timelines', 'post type general name', 'odm' ),
-			'singular_name'      => _x( 'Timeline', 'post type singular name', 'odm' ),
-			'menu_name'          => _x( 'Timelines', 'admin menu', 'odm' ),
-			'name_admin_bar'     => _x( 'Timeline', 'add new on admin bar', 'odm' ),
-			'add_new'            => _x( 'Add new', 'timeline', 'odm' ),
-			'add_new_item'       => __( 'Add new timeline', 'odm' ),
-			'new_item'           => __( 'New timeline', 'odm' ),
-			'edit_item'          => __( 'Edit timeline', 'odm' ),
-			'view_item'          => __( 'View timeline', 'odm' ),
-			'all_items'          => __( 'All timelines', 'odm' ),
-			'search_items'       => __( 'Search timelines', 'odm' ),
-			'parent_item_colon'  => __( 'Parent timelines:', 'odm' ),
-			'not_found'          => __( 'No timelines found.', 'odm' ),
-			'not_found_in_trash' => __( 'No timelines found in trash.', 'odm' )
+			'name'               => _x( 'Timelines', 'post type general name', 'odi' ),
+			'singular_name'      => _x( 'Timeline', 'post type singular name', 'odi' ),
+			'menu_name'          => _x( 'Timelines', 'admin menu', 'odi' ),
+			'name_admin_bar'     => _x( 'Timeline', 'add new on admin bar', 'odi' ),
+			'add_new'            => _x( 'Add new', 'timeline', 'odi' ),
+			'add_new_item'       => __( 'Add new timeline', 'odi' ),
+			'new_item'           => __( 'New timeline', 'odi' ),
+			'edit_item'          => __( 'Edit timeline', 'odi' ),
+			'view_item'          => __( 'View timeline', 'odi' ),
+			'all_items'          => __( 'All timelines', 'odi' ),
+			'search_items'       => __( 'Search timelines', 'odi' ),
+			'parent_item_colon'  => __( 'Parent timelines:', 'odi' ),
+			'not_found'          => __( 'No timelines found.', 'odi' ),
+			'not_found_in_trash' => __( 'No timelines found in trash.', 'odi' )
 		);
 
 		$args = array(

@@ -26,9 +26,9 @@
 					if (is_user_logged_in()): ?>
 						<div class="sixteen columns widgets">
 							<div class="widget">
-								<h2 class="widget-title"><?php _e('Manage on CKAN','odm') ?></h2>
+								<h2 class="widget-title"><?php _e('Manage on CKAN','odi') ?></h2>
 								</br>
-								<a target="_blank" class="button" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/edit/<?php echo $dataset_id;?>"><?php _e('Manage', 'odm')?></a>
+								<a target="_blank" class="button" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/edit/<?php echo $dataset_id;?>"><?php _e('Manage', 'odi')?></a>
 							</div>
 						</div>
 				<?php
@@ -36,11 +36,11 @@
 
 				<div class="sixteen columns widgets">
 					<div class="widget">
-						<h2 class="widget-title"><?php _e('Download metadata','odm') ?></h2>
+						<h2 class="widget-title"><?php _e('Download metadata','odi') ?></h2>
 						</br>
-						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.xml"><?php _e('XML', 'odm')?></a>
-						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
-						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
+						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.xml"><?php _e('XML', 'odi')?></a>
+						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odi')?></a>
+						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odi')?></a>
 					</div>
 				</div>
 

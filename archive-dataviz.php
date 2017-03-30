@@ -5,7 +5,7 @@
 	<section class="container">
 		<header class="row">
 			<div class="eight columns">
-				<h1><?php _e('Data visualizations','odm') ?></h1>
+				<h1><?php _e('Data visualizations','odi') ?></h1>
 			</div>
       <div class="eight columns">
 				<?php get_template_part('section', 'query-actions'); ?>
