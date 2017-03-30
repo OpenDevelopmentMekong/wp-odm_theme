@@ -47,7 +47,7 @@ require_once get_stylesheet_directory().'/inc/utils/config.php';
 function odm_setup_theme()
 {
     $gsd = explode('wp-content', get_stylesheet_directory());
-    load_theme_textdomain('odi', $gsd[0].'/wp-content/languages');
+    load_theme_textdomain( 'odi', trailingslashit( WP_LANG_DIR ) . 'odi' );
     register_sidebar(array(
     'name' => __('Topic sidebar', 'odi'),
     'id' => 'topic',
