@@ -588,6 +588,7 @@ function available_custom_post_types(){
 
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
+	 $news_source_info = null;
 	 if (function_exists('get_post_meta')) :
 		 $get_author = get_post_meta($postID, 'author', true);
 		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
