@@ -10,7 +10,7 @@
 <meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
 <meta property="og:type" content="<?php echo get_post_type(); ?>" />
 <?php if(has_post_thumbnail( $post->ID )) { ?>
-<meta property="og:image:secure_url" content="<?php $img_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false); echo $img_src[0]; ?>" />
+<meta property="og:image" content="<?php $img_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false); echo $img_src[0]; ?>" />
 <?php } ?>
 <meta property="og:url" content="<?php echo get_permalink()?>" />
 <title>
