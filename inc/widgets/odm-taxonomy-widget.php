@@ -265,8 +265,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function form( $instance ) {
 		// outputs the options form on
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : 'Topic areas';
-		$od_include = $instance['od_include'];
-		$od_exclude = $instance['od_exclude'];
+		$od_include = isset($instance['od_include']) ? $instance['od_include'] : '';
+		$od_exclude = isset($instance['od_exclude']) ? $instance['od_exclude'] : '';
 		$topic_or_category = isset($instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
 		?>
 		<p>
@@ -283,7 +283,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'topic_or_category' ); ?>"><?php _e( 'Links should take user to:' ); ?></label>
-			<select id="<?php echo $this->get_field_id( 'topic_or_category' ); ?>" name="<?php echo $this->get_field_id( 'topic_or_category' ); ?>">
+			<select id="<?php echo $this->get_field_id( 'topic_or_category' ); ?>" name="<?php echo $this->get_field_name( 'topic_or_category' ); ?>" type="text">
 				<option <?php if ($topic_or_category == 'topic') { echo " selected"; } ?> value="topic">Topic</option>
 				<option <?php if ($topic_or_category == 'category') { echo " selected"; } ?> value="category">Category</option>
 			</select>
@@ -308,7 +308,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$instance['od_include'] = $new_instance['od_include'] ;
 		$instance['od_exclude'] = $new_instance['od_exclude'] ;
-		$instance['topic_or_category'] = $new_instance['topic_or_category'] ;
+		$instance['topic_or_category'] = isset($new_instance['topic_or_category']) ? $new_instance['topic_or_category'] : 'topic';
 
 		return $instance;
 	}
