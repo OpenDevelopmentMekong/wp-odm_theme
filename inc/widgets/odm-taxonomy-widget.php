@@ -210,9 +210,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$topic_or_category = 'topic';
 		if (isset( $instance['topic_or_category'])):
 			$topic_or_category = $instance['topic_or_category'];
-			print("not empty");
 		endif;
-		print_r($instance);
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
