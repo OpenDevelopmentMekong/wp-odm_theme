@@ -285,7 +285,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'topic_or_category' ); ?>"><?php _e( 'Links should take user to:' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'topic_or_category' ); ?>" name="<?php echo $this->get_field_id( 'topic_or_category' ); ?>">
 				<option <?php if ($topic_or_category == 'topic') { echo " selected"; } ?> value="topic">Topic</option>
-				<option <?php if ($topic_or_category == 'category') { echo " selected"; } ?> value="topic">Category</option>
+				<option <?php if ($topic_or_category == 'category') { echo " selected"; } ?> value="category">Category</option>
 			</select>
 		</p>
 		<?php
