@@ -4,6 +4,26 @@
 
   <article id="content" class="single-post">
 
+		<?php
+			if (has_post_thumbnail() ): ?>
+			<div style="width:100%">
+				<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail' ); ?>
+        <header style="width:100%;min-height:400px;background-image: url('<?php echo $image[0]; ?>')">
+					<div  class="container">
+						<div class="twelve columns post-title">
+	            <h1><?php the_title(); ?></h1>
+	            <?php echo_post_meta(get_post()); ?>
+	          </div>
+	          <div class="four columns">
+	            <div class="widget share-widget">
+	              <?php odm_get_template('social-share',array(),true); ?>
+	            </div>
+	          </div>
+					</div>
+			</header>
+		</section>
+		<?php
+			else: ?>
       <section class="container">
         <header class="row">
           <div class="twelve columns post-title">
@@ -17,6 +37,9 @@
           </div>
         </header>
       </section>
+
+		<?php
+			endif; ?>
 
       <section class="container">
     		<div class="row">
