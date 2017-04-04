@@ -90,14 +90,15 @@ Template Name: Data
 
 <div class="container">
   <div class="row">
-    <div class="four columns data-advanced-filters">
+    <div class="four columns">
+			<div class="data-advanced-filters">
       <form>
         <h3><i class="fa fa-filter"></i> Filters</h3>
 
         <!-- TAXONOMY FILTER -->
         <div class="single-filter">
           <label for="taxonomy"><?php _e('Topic', 'odm'); ?></label>
-          <select id="taxonomy" name="taxonomy" data-placeholder="<?php _e('Select term', 'odm'); ?>">
+          <select id="taxonomy" name="taxonomy" class="filter_box" data-placeholder="<?php _e('Select term', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($taxonomy_list as $value):
@@ -120,7 +121,7 @@ Template Name: Data
         <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
         <div class="single-filter">
           <label for="country"><?php _e('Country', 'odm'); ?></label>
-          <select id="country" name="country" data-placeholder="<?php _e('Select country', 'odm'); ?>">
+          <select id="country" name="country" class="filter_box" data-placeholder="<?php _e('Select country', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($countries as $key => $value):
@@ -148,7 +149,7 @@ Template Name: Data
         <!-- LANGUAGE FILTER -->
         <div class="single-filter">
           <label for="language"><?php _e('Language', 'odm'); ?></label>
-          <select id="language" name="language" data-placeholder="<?php _e('Select language', 'odm'); ?>">
+          <select id="language" name="language" class="filter_box" data-placeholder="<?php _e('Select language', 'odm'); ?>">
             <option value="all"  selected><?php _e('All','odm') ?></option>
             <?php
               foreach($languages as $key => $value):
@@ -170,7 +171,7 @@ Template Name: Data
         <!-- LICENSE FILTER -->
         <div class="single-filter">
           <label for="license"><?php _e('License', 'odm'); ?></label>
-          <select id="license" name="license" data-placeholder="<?php _e('Select license', 'odm'); ?>">
+          <select id="license" name="license" class="filter_box" data-placeholder="<?php _e('Select license', 'odm'); ?>">
             <option value="all" selected><?php _e('All','odm') ?></option>
             <?php
               foreach($license_list as $license):
@@ -193,7 +194,7 @@ Template Name: Data
 				<h3><i class="fa fa-sort"></i> Sorting</h3>
 				<div class="single-filter">
           <label for="sorting"><?php _e('Sort by', 'odm'); ?></label>
-          <select id="sorting" name="sorting" data-placeholder="<?php _e('Sort by', 'odm'); ?>">
+          <select id="sorting" name="sorting" class="filter_box" data-placeholder="<?php _e('Sort by', 'odm'); ?>">
             <option <?php if($param_sorting == "score") echo 'selected'; ?> value="score"><?php _e('Relevance','odm') ?></option>
           	<option <?php if($param_sorting == "metadata_modified") echo 'selected'; ?> value="metadata_modified"><?php _e('Date modified','odm') ?></option>
           </select>
@@ -203,9 +204,9 @@ Template Name: Data
         <div class="single-filter">
           <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
         </div>
-
+			</div>
     </div>
-    <div class="eleven columns">
+    <div class="twelve columns">
       <div class="search_bar">
         <input id="search_field" type="text" class="full-width-search-box" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" data-solr-host="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_host'); ?>" data-solr-scheme="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_scheme'); ?>" data-solr-path="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_path'); ?>" data-solr-core-wp="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_wp'); ?>" data-solr-core-ckan="<?php echo $GLOBALS['wp_odm_solr_options']->get_option('wp_odm_solr_setting_solr_core_ckan'); ?>"></input>
         </form>
@@ -213,84 +214,113 @@ Template Name: Data
       <div class="results_info"><h2><?php echo $results->getNumFound() ?> records found.</h2></div>
       <div class="result_container container">
 
-        <?php foreach($results as $result):
-					$fields = $result->getFields();
-					$document = json_decode($fields["data_dict"]);
-					?>
-        <!-- TEMPLATE -->
-        <div class="single_result_container row">
+        <?php foreach($results as $document): ?>
 
-          <h2 class="data_title twelve columns">
-            <a href="<?php echo wpckan_get_link_to_dataset($document->name);?>">
-              <?php
-								$title = isset($document->title_translated) ? $document->title_translated : $document->title;
-								echo getMultilingualValueOrFallback($title, odm_language_manager()->get_current_language(),$document->title);?>
-            </a>
-          </h2>
-          <div class="data_format four columns">
-            <?php
-              $resource_formats = array_unique(array_column($document->resources, 'format'));
-             ?>
-            <?php foreach ($resource_formats as $format): ?>
-              <span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
-            <?php endforeach ?>
-          </div>
-          <p class="data_description sixteen columns">
-            <?php
-							$notes = isset($document->notes_translated) ? $document->notes_translated : $document->notes;
-							echo getMultilingualValueOrFallback($notes, odm_language_manager()->get_current_language(),$document->notes) ?>
-          </p>
-          <div class="data_meta_wrapper sixteen columns">
-            <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>
-							<div class="country_indicator data_meta">
-								<ul>
-							<?php
-								$spatial_range = json_decode($fields['extras_odm_spatial_range']) ;
-								if (isset($spatial_range)):
-									foreach ($spatial_range as $country_code):
-									$country_name = odm_country_manager()->get_country_name_by_country_code($country_code); ?>
-		              <li><?php echo $country_name; ?></li>
-							<?php
-									endforeach;
-								endif;
-									?>
-								</ul>
-							</div>
-            <?php endif; ?>
-              <div class="data_languages data_meta">
-                <?php
-								 	$language = json_decode($fields['extras_odm_language']) ;
-									if (isset($spatial_range)):
-										foreach ($language as $lang): ?>
-	                  <img alt="<?php echo $lang ?>" src="<?php echo odm_language_manager()->get_path_to_flag_image($lang); ?>"></img>
-	                <?php
-										endforeach;
-									endif; ?>
-              </div>
-              <div class="data_topics data_meta">
-                <i class="fa fa-tags"></i>
-                <?php
-									$tag_names = array_map(function($tag) {
-									    return is_object($tag) ? $tag->display_name : $tag['display_name'];
-									}, $document->tags);
-                  echo implode(", ", $tag_names);
-                ?>
-              </div>
-          </div>
+        <div class="single_result_container row">
+					<?php
+					$title = wp_odm_solr_parse_multilingual_ckan_content($document->extras_title_translated,odm_language_manager()->get_current_language(),$document->title);
+					$title = wp_odm_solr_highlight_search_words($s,$title);
+					?>
+					<h4 class="data_title ten columns">
+					  <a target="_blank" href="<?php echo wpckan_get_link_to_dataset($document->id) ?>">
+					    <?php echo $title ?>
+					  </a>
+					</h4>
+					<div class="data_format six columns">
+					  <?php $resource_formats = array_unique($document->res_format); ?>
+					  <?php foreach ($resource_formats as $format): ?>
+					    <span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
+					  <?php endforeach ?>
+					</div>
+					<?php
+					  $description = wp_odm_solr_parse_multilingual_ckan_content($document->extras_notes_translated,odm_language_manager()->get_current_language(),$document->notes);
+					  $description = strip_tags($description);
+					  $description = substr($description,0,400);
+					  $description = wp_odm_solr_highlight_search_words($s,$description);
+					 ?>
+					<p class="data_description sixteen columns">
+					<?php
+					  echo $description;
+					  if (strlen($description) >= 400):
+					    echo "...";
+					  endif;
+					  ?>
+					</p>
+					<div class="data_meta_wrapper sixteen columns">
+            <!-- Language -->
+					  <?php if (!empty($document->extras_odm_language)): ?>
+					    <div class="data_languages data_meta">
+					      <?php $odm_lang_arr = json_decode($document->extras_odm_language,true); ?>
+					      <span>
+					        <?php
+									foreach ($odm_lang_arr as $lang):
+										$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
+										if (!empty($path_to_flag)): ?>
+					          	<img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
+				        <?php
+										endif;
+									endforeach; ?>
+					      </span>
+					    </div>
+					  <?php endif; ?>
+				    <!-- Country -->
+					  <?php if (!empty($document->extras_odm_spatial_range)): ?>
+					    <div class="country_indicator data_meta">
+					      <i class="fa fa-globe"></i>
+					      <span>
+					        <?php
+					          $odm_country_arr = json_decode($document->extras_odm_spatial_range,true);
+					          foreach ($odm_country_arr as $country_code):
+					            $country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
+					            if (!empty($country_name)):
+												_e($country_name, "wp-odm_solr");
+						            if ($country_code !== end($odm_country_arr)):
+						              echo ', ';
+						            endif;
+											endif;
+					          endforeach; ?>
+					      </span>
+					    </div>
+					  <?php endif; ?>
+					  <!-- Topics -->
+					  <?php if (!empty($document->vocab_taxonomy)): ?>
+					    <div class="data_meta">
+					      <i class="fa fa-tags"></i>
+					      <span>
+					        <?php
+					          foreach ($document->vocab_taxonomy as $topic):
+					            _e($topic. " ", "wp-odm_solr");
+					          endforeach; ?>
+					      </span>
+					    </div>
+					  <?php endif; ?>
+					  <!-- Keywords -->
+					  <?php if (!empty($document->extras_odm_keywords)): ?>
+					    <div class="data_meta">
+					      <i class="fa fa-tags"></i>
+					      <?php
+					        $hihglighted_value = wp_odm_solr_highlight_search_words($s,implode(", ",$document->extras_odm_keywords));
+					        _e($hihglighted_value, "wp-odm_solr") ?>
+					    </div>
+					  <?php endif; ?>
+					</div>
         </div>
         <!-- END OF TEMPLATE -->
-        <?php endforeach; ?>
+			<?php endforeach; ?>
       </div>
-      <div class="pagination_wrapper">
-        <?php if ($param_page > 1): ?>
-          <a href="<?php echo $prev_page_link; ?>"> << Previous Page </a>
-        <?php endif ?>
-        <?php if ($param_page < $total_pages): ?>
-          <a href="<?php echo $next_page_link; ?>"> Next Page >> </a>
-        <?php endif ?>
-      </div>
-    </div> <!-- end of right container -->
-  </div>
+
+			<section class="container">
+				<div class="row">
+					<div class="sixteen columns">
+						<?php odm_get_template('pagination_solr',array(
+							"current_page" => $param_page,
+							"total_pages" => $total_pages
+						),true); ?>
+					</div>
+				</div>
+			</section>
+  	</div>
+	</div>
 </div>
 
 <?php endif; ?>
@@ -298,6 +328,8 @@ Template Name: Data
 <script>
 
     jQuery(document).ready(function() {
+
+			jQuery( ".filter_box" ).select2();
 
       jQuery('#search_field').autocomplete({
         source: function( request, response ) {
