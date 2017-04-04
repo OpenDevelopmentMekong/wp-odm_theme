@@ -29,6 +29,12 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		return false;
 	}
 
+	/**
+	 * Outputs HTML containing a string of the category name as a link
+	 * and if the current post is in the category, to make it <strong>
+	 *
+	 * @param category $category a category object to display
+	 */
 	public function print_category_linked_to_topic($category, $current_page_slug ="") {
 		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($category->name);
@@ -63,16 +69,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		echo "</span>";
 	}
 
-	/**
-	 * Outputs HTML containing a string of the category name as a link
-	 * and if the current post is in the category, to make it <strong>
-	 *
-	 * @param category $category a category object to display
-	 */
-
 		/**
-	 * Outputs HTML containing a string of the category name as a link
-	 * and if the current post is in the category, to make it <strong>
+	 * Outputs HTML containing a string of the category name linked to the
+	 * category page related to the topic <strong>
 	 *
 	 * @param category $category a category object to display
 	 */
