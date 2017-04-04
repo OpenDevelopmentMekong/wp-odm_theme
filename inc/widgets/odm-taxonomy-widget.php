@@ -144,7 +144,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				// add a sublevel
 				echo "<ul>";
 				// display the children
-				$this->walk_child_category( $cat_children );
+				$this->walk_child_category( $cat_children,  $post_or_category);
 				echo "</ul>";
 			}
 			echo "</li>";
@@ -241,7 +241,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			if ( !empty($children) ) {
 				echo '<ul>';
 
-				$this->walk_child_category( $children );
+				$this->walk_child_category( $children, $post_or_category );
 
 				echo '</ul>';
 			}
