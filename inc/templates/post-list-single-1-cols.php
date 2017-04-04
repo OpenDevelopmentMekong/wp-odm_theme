@@ -13,7 +13,7 @@
 ?>
 
 <div class="sixteen columns">
-	<div class="post-list-item">
+	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
       <?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
