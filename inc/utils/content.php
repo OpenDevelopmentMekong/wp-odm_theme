@@ -628,4 +628,63 @@ function available_custom_post_types(){
 
  }
 
+ function odm_echo_solr_meta($solr_search_result){
+
+	 ?>
+
+	 <div class="data_meta_wrapper sixteen columns">
+	 <!-- Language -->
+	 <?php if (!empty($solr_search_result->odm_language)): ?>
+		 <div class="data_languages data_meta">
+			 <span>
+				 <?php
+				 foreach ($solr_search_result->odm_language as $lang):
+					 $path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
+					 if (!empty($path_to_flag)): ?>
+					 <img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
+				 <?php
+					 endif;
+				 endforeach; ?>
+			 </span>
+		 </div>
+	 <?php endif; ?>
+	 <!-- Country -->
+	 <?php if (!empty($solr_search_result->odm_spatial_range)): ?>
+		 <div class="country_indicator data_meta">
+			 <i class="fa fa-globe"></i>
+			 <span>
+				 <?php
+					 $countries = (array) $solr_search_result->odm_spatial_range;
+					 foreach ($countries as $country_code):
+						 $country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
+						 if (!empty($country_name)):
+							 _e($country_name, 'odm');
+							 if ($country_code !== end($countries)):
+								 echo ', ';
+							 endif;
+						 endif;
+					 endforeach; ?>
+			 </span>
+		 </div>
+	 <?php
+		 endif;
+		 if (!empty($solr_search_result->categories)): ?>
+			 <i class="fa fa-tags"></i>
+			 <span>
+				 <?php
+					 $categories = (array) $solr_search_result->categories;
+					 foreach ($categories as $category):
+						 _e($category, 'odm') ;
+						 if ($category !== end($categories)):
+							 echo ", ";
+						 endif;
+					 endforeach;?>
+			 </span>
+	 <?php
+ 		endif; ?>
+		</div>
+
+	<?php
+ }
+
  ?>

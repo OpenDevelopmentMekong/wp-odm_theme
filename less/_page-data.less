@@ -107,6 +107,11 @@ span.meta-label {
 }
 
 .single_result_container {
+
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #f2f2f2;
+
 	.data_title {
 		a {
 			font-size: @font-size-h5;
@@ -117,17 +122,15 @@ span.meta-label {
 		font-size: @font-size-h5;
 	}
 
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #f2f2f2;
 	.data_format {
 		text-align: right;
 	}
+
 	.data_meta_wrapper {
 		display: block;
 		overflow: hidden;
-		font-size: @font-size-h5;
-		color: @gray;
+		font-size: @font-size-h5 !important;
+		color: @gray !important;
 
 		.country_indicator {
 
@@ -145,6 +148,11 @@ span.meta-label {
 			padding-right: 15px;
 			margin-bottom: 5px;
 
+			.lang_flag{
+				border: none !important;
+				margin: 0px;
+			}
+
 			img{
 				padding-top: 2px;
 			}
@@ -158,6 +166,7 @@ span.meta-label {
 
 		}
 		.data_languages {
+
 			.meta-label {
 				&.en {
 					background-color: @mekong-bright;

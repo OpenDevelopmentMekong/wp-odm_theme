@@ -4,6 +4,8 @@
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_source_meta = isset($params["show_source_meta"]) ? $params["show_source_meta"] : false;
+	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
+	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
@@ -11,7 +13,7 @@
 ?>
 
 <div class="eight columns ">
-	<div class="post-list-item">
+	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
       <?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
@@ -75,5 +77,11 @@
 				</div>
 			<?php endif; ?>
 		</section>
+
+		<?php
+			if ($show_solr_meta && isset($solr_search_result)):
+				odm_echo_solr_meta($solr_search_result);
+			endif; ?>
+
 	</div>
 </div>
