@@ -79,12 +79,9 @@
 		</section>
 
 		<?php
-			if ($show_solr_meta && isset($solr_search_result)): ?>
+			if ($show_solr_meta && isset($solr_search_result)):
 				odm_echo_solr_meta($solr_search_result);
-		  </div>
-		<?php
-			endif;
-		 ?>
+			endif; ?>
 
 	</div>
 </div>

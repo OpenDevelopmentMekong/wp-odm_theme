@@ -695,7 +695,10 @@ function available_custom_post_types(){
 					 endforeach;?>
 			 </span>
 	 <?php
-		 endif;
+ 		endif; ?>
+		</div>
+
+	<?php
  }
 
  ?>
