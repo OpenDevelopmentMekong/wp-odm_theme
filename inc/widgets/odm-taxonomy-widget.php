@@ -124,7 +124,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param array $children an array of categories to display
 	 */
-	public function walk_child_category( $children, $post_or_category ) {
+	public function walk_child_category( $children, $topic_or_category ) {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
 		foreach($children as $child){
@@ -132,7 +132,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
 			echo "<li>";
 			// Display current category
-			if ($post_or_category == 'topic'):
+			if ($topic_or_category == 'topic'):
 				$this->print_category_linked_to_topic($child, $current_page_slug);
 			else:
 				$this->print_category_linked_to_category($child, $current_page_slug);
@@ -143,7 +143,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				// add a sublevel
 				echo "<ul>";
 				// display the children
-				$this->walk_child_category( $cat_children,  $post_or_category);
+				$this->walk_child_category( $cat_children,  $topic_or_category);
 				echo "</ul>";
 			}
 			echo "</li>";
@@ -193,21 +193,26 @@ class Odm_Taxonomy_Widget extends WP_Widget {
    </script>
 	<?php
 		echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
+		if (!empty($instance['title'])):
 			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
-		}
+		endif;
+
 		$cat_included_id_arr = array();
-		if ( ! empty( $instance['od_include'] ) ) {
+		if (!empty($instance['od_include'])):
 			$cat_included_id_arr = explode(",", $instance['od_include']);
-		}
+		endif;
+
 		$cat_excluded_id_arr = array();
-		if ( ! empty( $instance['od_exclude'] ) ) {
+		if (!empty($instance['od_exclude'])):
 			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
-		}
-		$post_or_category = 'topic';
-		if ( ! empty( $instance['post_or_category'] ) ) {
-			$post_or_category = $instance['post_or_category'];
-		}
+		endif;
+
+		$topic_or_category = 'topic';
+		if (isset( $instance['topic_or_category'])):
+			$topic_or_category = $instance['topic_or_category'];
+			print("not empty");
+		endif;
+		print_r($instance);
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
@@ -231,7 +236,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			}
 
 			echo "<li class='topic_nav_item'>";
-			if ($post_or_category == 'topic'):
+			if ($topic_or_category == 'topic'):
 				$this->print_category_linked_to_topic($category, $current_page_slug);
 			else:
 				$this->print_category_linked_to_category($category, $current_page_slug);
@@ -240,7 +245,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			if ( !empty($children) ) {
 				echo '<ul>';
 
-				$this->walk_child_category( $children, $post_or_category );
+				$this->walk_child_category( $children, $topic_or_category );
 
 				echo '</ul>';
 			}
