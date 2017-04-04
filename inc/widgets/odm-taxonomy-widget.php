@@ -205,6 +205,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		if ( ! empty( $instance['od_exclude'] ) ) {
 			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
 		}
+		$post_or_category = 'topic';
+		if ( ! empty( $instance['post_or_category'] ) ) {
+			$post_or_category = $instance['post_or_category'];
+		}
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
