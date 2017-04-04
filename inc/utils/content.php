@@ -681,20 +681,6 @@ function available_custom_post_types(){
 					 endforeach;?>
 			 </span>
 	 <?php
-		 endif;
-		 if (!empty($solr_search_result->tags)): ?>
-			 <i class="fa fa-tags"></i>
-			 <span>
-				 <?php
-					 $tags = (array) $solr_search_result->tags;
-					 foreach ($tags as $tag):
-						 _e($tag, 'odm') ;
-						 if ($tag !== end($tags)):
-							 echo ", ";
-						 endif;
-					 endforeach;?>
-			 </span>
-	 <?php
  		endif; ?>
 		</div>
 
