@@ -4,6 +4,32 @@
 
   <article id="content" class="single-post">
 
+		<?php
+			if (has_post_thumbnail() ): ?>
+			<div class="story-header">
+				<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail' ); ?>
+        <header style="min-height:400px;background-image: url('<?php echo $image[0]; ?>')">
+					<div  class="container">
+						<div class="row">
+							<div class="eight columns offset-by-four">
+								<div class="post-title">
+									<h1><?php the_title(); ?></h1>
+									<p><?php echo_post_meta(get_post()); ?></p>
+								</div>
+		          </div>
+						</div>
+						<!-- <div class="row">
+							<div class="sixteen columns">
+								<div class="widget share-widget center post-meta">
+									<?php odm_get_template('social-share',array(),true); ?>
+								</div>
+							</div>
+						</div> -->
+					</div>
+			</header>
+		</section>
+		<?php
+			else: ?>
       <section class="container">
         <header class="row">
           <div class="twelve columns post-title">
@@ -17,6 +43,9 @@
           </div>
         </header>
       </section>
+
+		<?php
+			endif; ?>
 
       <section class="container">
     		<div class="row">
