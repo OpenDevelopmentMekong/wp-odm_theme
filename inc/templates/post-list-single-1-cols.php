@@ -1,6 +1,8 @@
 <?php
 	$post = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
+	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
+	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_source_meta = isset($params["show_source_meta"]) ? $params["show_source_meta"] : false;
@@ -11,7 +13,7 @@
 ?>
 
 <div class="sixteen columns">
-	<div class="post-list-item">
+	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
       <?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
@@ -34,8 +36,11 @@
 					<?php
 					endif; ?>
 
-					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
-						<?php echo $post->post_title; ?>
+					<?php
+						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+					 ?>
+					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
+						<?php echo $localized_title; ?>
 					</a>
 			</p>
 		<?php endif; ?>
@@ -72,5 +77,10 @@
 				</div>
 			<?php endif; ?>
 		</section>
+
+		<?php
+			if ($show_solr_meta && isset($solr_search_result)):
+				odm_echo_solr_meta($solr_search_result);
+			endif; ?>
 	</div>
 </div>

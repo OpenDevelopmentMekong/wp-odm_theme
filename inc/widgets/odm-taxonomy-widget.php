@@ -35,51 +35,87 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
+	public function print_category_linked_to_topic($category, $current_page_slug ="") {
+		$post_type =  get_post_type( get_the_ID() );
+		$get_post_id = get_post_or_page_id_by_title($category->name);
+		$current_page = "";
+		if ($get_post_id){ // if page of the topic exists
+			$topic_page = get_post($get_post_id);
+			$topic_slug = $topic_page->post_name;
+			if ($topic_slug == $current_page_slug){
+				 $current_page = " ".$current_page_slug;
+			}
+		}
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
+		if ($get_post_id){ // if page of the topic exists
+			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
+			echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
+		}else{
+							$hyperlink_color = "";
+					}
+		$in_category = in_category( $category->term_id );
+		if ($in_category){
+			 echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
+			 $hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
+		}else {
+			$hyperlink_color = "";
+		}
+			echo $category->name;
+		if ($in_category){
+			 echo "</strong>";
+		}
+		if ($get_post_id)
+			echo "</a>";
+		echo "</span>";
+	}
 
 		/**
-	 * Outputs HTML containing a string of the category name as a link
-	 * and if the current post is in the category, to make it <strong>
+	 * Outputs HTML containing a string of the category name linked to the
+	 * category page related to the topic <strong>
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category( $category, $current_page_slug ="") {
-			$post_type =  get_post_type( get_the_ID() );
-			$get_post_id = get_post_or_page_id_by_title($category->name);
-			$current_page = "";
-			if ($get_post_id){ // if page of the topic exists
-				$topic_page = get_post($get_post_id);
-				$topic_slug = $topic_page->post_name;
-				if ($topic_slug == $current_page_slug){
-					 $current_page = " ".$current_page_slug;
-				}
-			}
+	public function print_category_linked_to_category( $category, $current_page_slug ="") {
 
-			echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
+		$args = array(
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'slug',
+					'terms'    => $category->slug,
+				),
+			),
+		);
+		$query = new WP_Query( $args );
+		$category_has_contents = $query->found_posts > 0;
 
-			if ($get_post_id){ // if page of the topic exists
-				$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-				echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
-			}else{
-                $hyperlink_color = "";
-            }
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
 
-			$in_category = in_category( $category->term_id );
-			if ($in_category){
-				 echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
-				 $hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-			}else {
-				$hyperlink_color = "";
-			}
-				echo $category->name;
+		// add link if contetns categorized by this topic exist
+		if ($category_has_contents):
+			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
+			echo '<a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
+		else:
+      $hyperlink_color = "";
+    endif;
 
-			if ($in_category){
-				 echo "</strong>";
-			}
+		$in_category = in_category( $category->term_id );
+		if ($in_category):
+			echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
+			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
+		else:
+			$hyperlink_color = "";
+		endif;
+		echo $category->name;
 
-			if ($get_post_id)
-				echo "</a>";
+		if ($in_category){
+			 echo "</strong>";
+		}
 
-			echo "</span>";
+		if ($category_has_contents)
+			echo "</a>";
+
+		echo "</span>";
 
 	}
 	/**
@@ -88,7 +124,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param array $children an array of categories to display
 	 */
-	public function walk_child_category( $children ) {
+	public function walk_child_category( $children, $topic_or_category ) {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
 		foreach($children as $child){
@@ -96,13 +132,18 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
 			echo "<li>";
 			// Display current category
-			$this -> print_category($child, $current_page_slug);
+			if ($topic_or_category == 'topic'):
+				$this->print_category_linked_to_topic($child, $current_page_slug);
+			else:
+				$this->print_category_linked_to_category($child, $current_page_slug);
+			endif;
+
 			// if current category has children
 			if ( !empty($cat_children) ) {
 				// add a sublevel
 				echo "<ul>";
 				// display the children
-				$this->walk_child_category( $cat_children );
+				$this->walk_child_category( $cat_children,  $topic_or_category);
 				echo "</ul>";
 			}
 			echo "</li>";
@@ -152,17 +193,24 @@ class Odm_Taxonomy_Widget extends WP_Widget {
    </script>
 	<?php
 		echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
+		if (!empty($instance['title'])):
 			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
-		}
+		endif;
+
 		$cat_included_id_arr = array();
-		if ( ! empty( $instance['od_include'] ) ) {
+		if (!empty($instance['od_include'])):
 			$cat_included_id_arr = explode(",", $instance['od_include']);
-		}
+		endif;
+
 		$cat_excluded_id_arr = array();
-		if ( ! empty( $instance['od_exclude'] ) ) {
+		if (!empty($instance['od_exclude'])):
 			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
-		}
+		endif;
+
+		$topic_or_category = 'topic';
+		if (isset( $instance['topic_or_category'])):
+			$topic_or_category = $instance['topic_or_category'];
+		endif;
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
@@ -186,12 +234,16 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			}
 
 			echo "<li class='topic_nav_item'>";
-					$this -> print_category($category, $current_page_slug);
+			if ($topic_or_category == 'topic'):
+				$this->print_category_linked_to_topic($category, $current_page_slug);
+			else:
+				$this->print_category_linked_to_category($category, $current_page_slug);
+			endif;
 
 			if ( !empty($children) ) {
 				echo '<ul>';
 
-				$this->walk_child_category( $children );
+				$this->walk_child_category( $children, $topic_or_category );
 
 				echo '</ul>';
 			}
@@ -216,8 +268,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function form( $instance ) {
 		// outputs the options form on
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : 'Topic areas';
-		$od_include = $instance['od_include'];
-		$od_exclude = $instance['od_exclude'];
+		$od_include = isset($instance['od_include']) ? $instance['od_include'] : '';
+		$od_exclude = isset($instance['od_exclude']) ? $instance['od_exclude'] : '';
+		$topic_or_category = isset($instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
@@ -230,6 +283,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'od_exclude' ); ?>"><?php _e( 'Exclude Category by IDs (separated by commas):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'od_exclude' ); ?>" name="<?php echo $this->get_field_name( 'od_exclude' ); ?>" type="text" value="<?php echo esc_attr( $od_exclude ); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'topic_or_category' ); ?>"><?php _e( 'Links should take user to:' ); ?></label>
+			<select id="<?php echo $this->get_field_id( 'topic_or_category' ); ?>" name="<?php echo $this->get_field_name( 'topic_or_category' ); ?>" type="text">
+				<option <?php if ($topic_or_category == 'topic') { echo " selected"; } ?> value="topic">Topic</option>
+				<option <?php if ($topic_or_category == 'category') { echo " selected"; } ?> value="category">Category</option>
+			</select>
 		</p>
 		<?php
 	}
@@ -251,6 +311,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$instance['od_include'] = $new_instance['od_include'] ;
 		$instance['od_exclude'] = $new_instance['od_exclude'] ;
+		$instance['topic_or_category'] = isset($new_instance['topic_or_category']) ? $new_instance['topic_or_category'] : 'topic';
 
 		return $instance;
 	}
