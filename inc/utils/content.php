@@ -367,6 +367,8 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 			$get_the_excerpt = $post->post_content;
 		endif;
 
+		$get_the_excerpt = apply_filters('translate_text', $get_the_excerpt, odm_language_manager()->get_current_language());
+
 		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
 
 		$excerpt_string = implode(' ', $excerpt);
