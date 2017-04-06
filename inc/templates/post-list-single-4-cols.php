@@ -19,6 +19,9 @@
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
 			<h3>
+				<?php
+					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+				 ?>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 					<?php echo $localized_title; ?>
 				</a>
