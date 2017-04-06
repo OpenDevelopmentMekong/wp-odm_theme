@@ -375,7 +375,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string.' ...';
 		if ($read_more != '') {
-			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
+			 $color_name = odm_country_manager()->get_current_country().'-color';
 			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
 		}
 
@@ -385,10 +385,9 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
  	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
  			$translated_term =  $site_language."-translated";
- 			$org_name = ucfirst(get_bloginfo('name'));
- 			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
+			$team_name = "OD". ucfirst(substr(odm_country_manager()->get_current_country(), 0, 1));
  			if (odm_country_manager()->get_current_country() == "mekong"):
- 				$team_name = substr($team_name, 0, -1). " ".ucfirst(odm_country_manager()->get_current_country());
+ 				$team_name = "OD". " ".ucfirst(odm_country_manager()->get_current_country());
  			endif;
  	    $terms = get_the_terms($postID, $taxonomy);
  	    if (!is_wp_error( $terms ) && !empty($terms)) {
