@@ -14,7 +14,7 @@
 	<?php
 			$contact_id = odm_get_contact_page_id();
 			if ($contact_id) : ?>
-				<a href="<?php echo get_permalink($contact_id); ?>"><i class="fa fa-envelope"></i></a>
+				<a href="<?php echo get_permalink($contact_id); ?>" title="Subscribe"><i class="fa fa-envelope"></i></a>
 	<?php
 			endif; ?>
 </nav>
