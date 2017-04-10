@@ -70,7 +70,9 @@
 					if($started_index >= $pagination["start_post"]):
 						odm_get_template('post-grid-single-4-cols',array(
 	            "post" => $layer,
-	            "show_meta" => false)
+	            "show_meta" => false,
+							"view_large_image" => true
+							)
 	          , true);
 					endif;
 
