@@ -22,7 +22,7 @@
    mapConf.center = [
     parseFloat($centerInputs.find('input.center-lat').val()),
     parseFloat($centerInputs.find('input.center-lon').val())
-   ]
+  ];
   }
 
   // zoom
@@ -38,7 +38,7 @@
 
   // pan limits
   if($('.pan-limits.map-setting input.east').val()) {
-   mapConf.panLimits =	[
+   mapConf.panLimits =  [
     [
      $('.pan-limits.map-setting input.south').val(),
      $('.pan-limits.map-setting input.west').val()
@@ -334,6 +334,22 @@
        break;
       case 'nextgis':
        base_layer_url_box.val('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}');
+       base_layer_url_box.attr('readonly', true);
+       break;
+      case 'world_imagery':
+       base_layer_url_box.val('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+       base_layer_url_box.attr('readonly', true);
+       break;
+      case 'world_boundaries_and_places':
+       base_layer_url_box.val('http://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer/tile/{z}/{y}/{x}');
+       base_layer_url_box.attr('readonly', true);
+       break;
+      case 'national_geographic_world_map':
+       base_layer_url_box.val('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}');
+       base_layer_url_box.attr('readonly', true);
+       break;
+      case 'world_topographic_map':
+       base_layer_url_box.val('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}');
        base_layer_url_box.attr('readonly', true);
        break;
       case 'none':
