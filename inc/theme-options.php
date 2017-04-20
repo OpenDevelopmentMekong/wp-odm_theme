@@ -289,6 +289,18 @@ class Odm_Options
       <option value="nextgis" <?php echo $select_base_layer == 'nextgis' ? ' selected="selected"' : '';
         ?> >Nextgis
 			</option>
+      <option value="world_imagery" <?php echo $select_base_layer == 'world_imagery' ? ' selected="selected"' : '';
+        ?> >World Imagery
+			</option>
+			<option value="world_boundaries_and_places" <?php echo $select_base_layer == 'world_boundaries_and_places' ? ' selected="selected"' : '';
+        ?> >World boundaries and places
+			</option>
+			<option value="national_geographic_world_map" <?php echo $select_base_layer == 'national_geographic_world_map' ? ' selected="selected"' : '';
+        ?> >National Geographic World Map
+			</option>
+			<option value="world_topographic_map" <?php echo $select_base_layer == 'world_topographic_map' ? ' selected="selected"' : '';
+        ?> >World Topografic Map
+			</option>
       <option value="custom" <?php echo $select_base_layer == 'custom' ? ' selected="selected"' : '';
         ?> ><?php _e('Custom', 'odm');
         ?></option>
