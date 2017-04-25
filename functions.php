@@ -609,6 +609,16 @@ function convert_keywords_to_related() {
 }
 add_shortcode( 'admin_scripts_convert_keywords_to_related', 'convert_keywords_to_related' );
 
+function posts_by_category_and_type() {
+
+		ob_start();
+		include( dirname(__FILE__) . '/admin-scripts/posts-by-category-and-type.php' );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+}
+add_shortcode( 'admin_scripts_posts_by_category_and_type', 'posts_by_category_and_type' );
+
 function add_custom_meta_tags() {
     global $post;
 
