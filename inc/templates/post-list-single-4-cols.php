@@ -37,10 +37,9 @@
 					<?php
 						if ($show_post_type):
 							$post_type_name = get_post_type($post->ID);
-							$post_type = get_post_type_object($post_type_name);
 							?>
 
-							<i class="<?php echo get_post_type_icon_class($post_type); ?>"></i>
+							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
 						<?php
 						endif; ?>
 
