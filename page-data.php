@@ -222,7 +222,7 @@ Template Name: Data
 					$title = wp_odm_solr_highlight_search_words($s,$title);
 					?>
 					<h4 class="data_title ten columns">
-					  <a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>">
+					  <a target="_blank" href="<?php echo wpckan_get_link_to_dataset($document->id) ?>">
 					    <?php echo $title ?>
 					  </a>
 					</h4>

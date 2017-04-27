@@ -4,6 +4,7 @@
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
+	$view_large_image = isset($params["view_large_image"]) ? $params["view_large_image"] : false;
 	$order = isset($params["order"]) ? $params["order"] : 'created';
 	?>
 
@@ -19,8 +20,9 @@
 			endif; ?>
 		<div class="meta">
 			<?php
-	      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
-			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $post->post_title; ?>"><?php echo $post->post_title; ?></a>
+	      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
+				$title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language()); ?>
+			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
 			<?php
 				if ($show_meta):
 					echo_post_meta($post,array('date','sources','categories'),$order);
@@ -29,12 +31,7 @@
 		</div>
 		<?php
 			if ($show_thumbnail):
-				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
-				if (isset($thumb_src)):
-					echo $thumb_src;
-				else:
-					echo '<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="' . get_stylesheet_directory_uri() .'/img/watermark.png"></img>';
-				endif;
+				echo odm_get_thumbnail($post->ID, true, array( 300, 'auto'), $view_large_image);
 			endif; ?>
 	</div>
 </div>

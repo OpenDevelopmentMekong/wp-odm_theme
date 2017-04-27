@@ -22,7 +22,7 @@
   "dependencies": {
     "datatables": "~1.10.12",
     "chosen": "~1.5.1",
-    "fontawesome": "~4.6.3",
+    "fontawesome": "~4.7",
     "leaflet": "~1.0.1",
     "moment": "~2.17.1",
     "datatables-buttons": "~1.2.4",

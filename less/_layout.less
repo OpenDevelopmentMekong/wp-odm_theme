@@ -59,10 +59,10 @@ body{
     }
 
 		.item-title {
-      font-family: @title-font;
+      font-family: @title-font !important;
 			font-size: @font-size-h3;
 			display: inline-block;
-      color: @white;
+      color: @white !important;
       position: relative;
       bottom: 0px;
       padding: @xsmall-padd @small-padd;
@@ -140,13 +140,9 @@ body{
 		}
 
 		a {
-			position: relative;
-			top: 0px;
-			left: 0px;
-			z-index: 10;
 			color: @black;
 			text-decoration: none;
-		}
+    }
 
 		p {
 			position: relative;
@@ -154,6 +150,52 @@ body{
 			left: 0px;
 			z-index: 10;
 		}
+    .popup-overlay {
+    	position: fixed !important;
+    	bottom: 0;
+    	height: auto !important;
+    	left: 0;
+    	right: 0;
+    	top: 0;
+    	width: auto !important;
+    	z-index: 9999999;
+    	margin-bottom: 0;
+    	background:  rgba(0, 0, 0, 0.9) ;
+      width: 100%;
+    	padding: 1em;
+      display: none;
+
+      img.popup-enlarge {
+        display: inline;
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        margin: auto;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border: 10px solid;
+
+        &:hover {
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+
+      .fa-times-circle {
+				cursor: pointer;
+				float: right;
+				font-size: 20px;
+				color: red;
+				margin-right: -5px;
+
+				&:hover{
+					color: lightcoral;
+				}
+			}
+
+    }
 
 	}
 
@@ -186,10 +228,10 @@ body{
   		padding: 1px 1px 10px 1px;
 
   		.item-title {
-        font-family: @title-font;
+        font-family: @title-font  !important;
   			font-size: @font-size-h3;
   			display: inline-block;
-        color: @white;
+        color: @white !important;
         padding: @xsmall-padd @small-padd;
   		}
 
@@ -197,7 +239,7 @@ body{
           padding: 0;
 
           .item-title {
-			      font-size: @font-size-h4;
+			      font-size: @font-size-h4 !important;
           }
 
           li {
@@ -262,9 +304,9 @@ body{
 
   .item-title {
     font-family: @title-font;
-    font-size: @font-size-h4;
+    font-size: @font-size-h4 !important;
     text-decoration: none;
-    color: @mekong-bright;
+    color: @mekong-bright !important;
 	}
 
   .documents_cover {
