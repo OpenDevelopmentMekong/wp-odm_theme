@@ -31,41 +31,81 @@ $supported_post_types = odm_get_post_types_for_category_page();
 		</header>
 	</section>
 
+  <?php
+    $pt = get_post_type_object("topic");
+    $args = array(
+      'post_type' => $pt->name,
+      'post_status' => 'publish',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'category',
+          'field' => 'slug',
+          'terms' => $term->name,
+          'operator' => 'IN'
+        )
+        )
+      );
+
+    $topic_posts = get_posts($args); ?>
+
   <section class="container">
     <div class="row">
-      <div class="sixteen columns">
-        <?php
-          $pt = get_post_type_object("topic");
-          $args = array(
-        		'post_type' => $pt->name,
-        		'post_status' => 'publish',
-        		'tax_query' => array(
-							array(
-							  'taxonomy' => 'category',
-							  'field' => 'slug',
-							  'terms' => $term->name,
-								'operator' => 'IN'
-							)
-						  )
-						);
 
-          $posts = get_posts($args);
-          foreach ($posts as $post) : ?>
-  					<?php
-						echo '<div class="row">';
-              odm_get_template('post-list-single-1-cols',array(
-			  					"post" => $post,
-			  					"show_meta" => true,
-			  					"show_source_meta" => true,
-									"show_thumbnail" => true,
-									"show_excerpt" => true,
-									"show_summary_translated_by_odc_team" => true,
-									"header_tag" => true
-			  			),true);
-						echo '</div>';
-          endforeach;
-				?>
-      </div>
+      <?php
+        if (count($topic_posts) > 0): ?>
+
+        <?php
+          if (count($topic_posts) == 1):
+            $post = current($topic_posts); ?>
+            <div class="sixteen columns">
+              <div class="row">
+                <?php
+                  odm_get_template('post-list-single-1-cols',array(
+                      "post" => $post,
+                      "show_meta" => true,
+                      "show_source_meta" => true,
+                      "show_thumbnail" => true,
+                      "show_excerpt" => true,
+                      "show_summary_translated_by_odc_team" => true,
+                      "header_tag" => true
+                  ),true);
+                 ?>
+              </div>
+            </div>
+        <?php
+          else:
+            $post = end($topic_posts);?>
+            <div class="twelve columns">
+              <div class="row">
+                <?php
+                  odm_get_template('post-list-single-1-cols',array(
+                      "post" => $post,
+                      "show_meta" => true,
+                      "show_source_meta" => true,
+                      "show_thumbnail" => true,
+                      "show_excerpt" => true,
+                      "show_summary_translated_by_odc_team" => true,
+                      "header_tag" => true
+                  ),true);
+                 ?>
+              </div>
+            </div>
+
+            <div class="four columns">
+              <div class="row">
+                <?php
+                  foreach ($topic_posts as $post):
+                    if ($post != end($topic_posts)):
+                      odm_get_template('post-link-single-1-cols',array(
+                          "post" => $post
+                      ),true);
+                    endif;
+                  endforeach; ?>
+              </div>
+            </div>
+        <?php
+          endif;
+        endif; ?>
     </div>
   </section>
 
