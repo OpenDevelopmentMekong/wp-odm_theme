@@ -93,14 +93,20 @@ $supported_post_types = odm_get_post_types_for_category_page();
 
             <div class="four columns">
               <div class="row">
+                <ul>
                 <?php
                   foreach ($topic_posts as $post):
-                    if ($post != end($topic_posts)):
-                      odm_get_template('post-link-single-1-cols',array(
-                          "post" => $post
-                      ),true);
+                    if ($post != end($topic_posts)): ?>
+                      <li>
+                      <?php
+                        odm_get_template('post-link-single-1-cols',array(
+                            "post" => $post
+                        ),true); ?>
+                      </li>
+                  <?php
                     endif;
                   endforeach; ?>
+                </ul>
               </div>
             </div>
         <?php
