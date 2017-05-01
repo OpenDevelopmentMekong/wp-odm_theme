@@ -106,7 +106,7 @@ function echo_the_breadcrumb()
                 echo '</div>';
                 echo '</li>';
             }
-        } elseif (is_category()) {
+        } elseif (is_category() && !empty($category)) {
             // Category page
             $parent_cat = get_category_parents($category[0]->term_id, true, '||');
             $parent_cat = substr($parent_cat, 0, -2);
