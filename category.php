@@ -93,6 +93,7 @@ $supported_post_types = odm_get_post_types_for_category_page();
 
             <div class="four columns">
               <div class="row">
+                <h3><?php _e('Related briefings','odm'); ?></h3>
                 <ul>
                 <?php
                   foreach ($topic_posts as $post):
