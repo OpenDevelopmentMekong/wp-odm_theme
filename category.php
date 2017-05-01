@@ -85,7 +85,7 @@ $supported_post_types = odm_get_post_types_for_category_page();
                       "show_thumbnail" => true,
                       "show_excerpt" => true,
                       "show_summary_translated_by_odc_team" => true,
-                      "header_tag" => true
+                      "header_tag" => false
                   ),true);
                  ?>
               </div>
