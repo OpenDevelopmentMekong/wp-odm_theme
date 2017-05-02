@@ -1,15 +1,8 @@
 <?php
 get_header();
 $term = $wp_query->queried_object;
-$supported_post_types = odm_get_post_types_for_category_page();
-// foreach($supported_post_types as $pt):
-//   if (in_array($pt, $post_types)):
-// 		$pt_tax = get_object_taxonomies($pt);
-// 		if(in_array($term->taxonomy, $pt_tax)):
-// 			$tax_post_types[] = $pt;
-// 		endif;
-//   endif;
-// endforeach;
+$supported_wp_post_types = odm_get_wp_post_types_for_category_page();
+$supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
 ?>
 
 <div class="container category-container">
@@ -122,13 +115,17 @@ $supported_post_types = odm_get_post_types_for_category_page();
     		<section class="tabbed-posts-section container">
 
           <?php
-            $current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
-            if(count($supported_post_types) > 1) : ?>
+            $current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'dataset';
+            if(count($supported_wp_post_types) > 1) : ?>
     				<nav id="tabbed-post-type-nav">
     					<ul>
     						<?php
+								foreach ($supported_ckan_post_types as $pt): ?>
+									<li <?php if($current_pt == $pt) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt)); ?>"><?php echo $pt; ?></a></li>
+								<?php
+								endforeach;
 
-                foreach($supported_post_types as $pt):
+                foreach($supported_wp_post_types as $pt):
                   $pt = get_post_type_object($pt);
                   if (isset($pt)):
       							$title = $pt->labels->name;?>
@@ -153,8 +150,8 @@ $supported_post_types = odm_get_post_types_for_category_page();
   							  'terms' => $term->name,
   								'operator' => 'IN'
   							)
-  						  )
-  						);
+						  )
+						);
 
             $posts = get_posts($args);
             if (count($posts) > 0):
@@ -175,7 +172,30 @@ $supported_post_types = odm_get_post_types_for_category_page();
             else : ?>
             <h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
           <?php
-            endif;
+						endif;
+					elseif (in_array($current_pt,$supported_ckan_post_types)):
+
+						$attrs = array(
+							'dataset_type' => $current_pt,
+							'extras_taxonomy' => $term->name,
+							'capacity' => 'public'
+						);
+
+						$control_attrs = array();
+
+						$result = WP_Odm_Solr_CKAN_Manager()->query(null,$attrs,null);
+						$results = $result["resultset"]; ?>
+
+						<div class="result_container container">
+
+							<?php
+								foreach($results as $document):
+									odm_get_template('solr-result-single',array(),true);
+								endforeach; ?>
+
+						</div>
+
+					<?php
           endif; ?>
     		</section>
     	</div>
