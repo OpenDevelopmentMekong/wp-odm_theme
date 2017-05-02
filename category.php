@@ -5,7 +5,7 @@ $supported_wp_post_types = odm_get_wp_post_types_for_category_page();
 $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
 ?>
 
-<div class="container category-container">
+<div class="container search-results category-container">
   <section class="container">
 		<header class="row">
 			<div class="eight columns">
@@ -187,7 +187,7 @@ $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
 						$result = WP_Odm_Solr_CKAN_Manager()->query(null,$attrs,null);
 						$results = $result["resultset"]; ?>
 
-						<div class="result_container container">
+						<div class="solr_results result_container container">
 
 							<?php
 								if (isset($results) && $results->getNumFound() > 0):
