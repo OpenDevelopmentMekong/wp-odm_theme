@@ -52,8 +52,7 @@ function echo_the_breadcrumb()
 
     // Get the query & post information
     global $post,$wp_query;
-    $term = $wp_query->queried_object;
-    $category[] = get_category_by_slug($term->slug);
+    $category = get_the_category();
 
     // Build the breadcrums
     echo '<ul id="'.$id.'" class="breadcrumb '.$class.'">';
@@ -108,7 +107,11 @@ function echo_the_breadcrumb()
                 echo '</div>';
                 echo '</li>';
             }
-        } elseif (is_category() && !empty($category)) {
+        } elseif (is_category()) {
+            if (empty($category)):
+              $term = $wp_query->queried_object;
+              $category[] = get_category_by_slug($term->slug);
+            endif;
             // Category page
             $parent_cat = get_category_parents($category[0]->term_id, true, '||');
             $parent_cat = substr($parent_cat, 0, -2);
