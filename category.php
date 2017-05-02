@@ -3,6 +3,12 @@ get_header();
 $term = $wp_query->queried_object;
 $supported_wp_post_types = odm_get_wp_post_types_for_category_page();
 $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
+$ckan_post_types_names = array(
+  "dataset" => "Datasets",
+  "library_record" => "Publications",
+  "laws_record" => "Laws",
+  "agreement" => "Agreements"
+)
 ?>
 
 <div class="container category-container">
@@ -121,8 +127,9 @@ $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
     				<nav id="category-post-type-nav">
     					<ul>
     						<?php
-								foreach ($supported_ckan_post_types as $pt): ?>
-									<li <?php if($current_pt == $pt) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt)); ?>"><?php echo $pt; ?></a></li>
+								foreach ($supported_ckan_post_types as $pt):
+                  $post_type_name = array_key_exists($pt,$ckan_post_types_names) ? $ckan_post_types_names[$pt] : $pt ?>
+									<li <?php if($current_pt == $pt) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt)); ?>"><?php echo $post_type_name; ?></a></li>
 								<?php
 								endforeach;
 
