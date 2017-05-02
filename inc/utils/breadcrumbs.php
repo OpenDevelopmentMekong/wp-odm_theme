@@ -109,6 +109,7 @@ function echo_the_breadcrumb()
             }
         } elseif (is_category()) {
             if (empty($category)):
+              global $wp_query;
               $term = $wp_query->queried_object;
               $category[] = get_category_by_slug($term->slug);
             endif;
