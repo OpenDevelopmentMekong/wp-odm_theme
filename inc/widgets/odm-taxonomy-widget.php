@@ -163,8 +163,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		if (isset($current_page)):
 			$current_page_slug = $current_page->post_name;
 		else:
-			$categories = get_the_category();
-			$current_page_slug = $categories[0];
+			$current_page_slug = single_term_title('',false);
 		endif;
 	?>
 	<script type="text/javascript">
@@ -202,20 +201,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
 		endif;
 
-		$cat_included_id_arr = array();
-		if (!empty($instance['od_include'])):
-			$cat_included_id_arr = explode(",", $instance['od_include']);
-		endif;
+		$cat_included_id_arr = !empty($instance['od_include']) ? explode(",", $instance['od_include']) : array();
+		$cat_excluded_id_arr = !empty($instance['od_exclude']) ? explode(",", $instance['od_exclude']) : array();
+		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
 
-		$cat_excluded_id_arr = array();
-		if (!empty($instance['od_exclude'])):
-			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
-		endif;
-
-		$topic_or_category = 'topic';
-		if (isset( $instance['topic_or_category'])):
-			$topic_or_category = $instance['topic_or_category'];
-		endif;
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
