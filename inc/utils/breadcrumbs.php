@@ -53,6 +53,10 @@ function echo_the_breadcrumb()
     // Get the query & post information
     global $post,$wp_query;
     $category = get_the_category();
+    if (!isset($category)):
+      $term = $wp_query->queried_object;
+      $category[] = get_categoy_by_slug($term->slug);
+    endif;
 
     // Build the breadcrums
     echo '<ul id="'.$id.'" class="breadcrumb '.$class.'">';

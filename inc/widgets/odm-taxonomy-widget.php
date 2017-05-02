@@ -163,7 +163,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		if (isset($current_page)):
 			$current_page_slug = $current_page->post_name;
 		else:
-			$current_page_slug = single_term_title('',false);
+			$term = $wp_query->queried_object;
+			$current_page_slug = $term->slug;
 		endif;
 	?>
 	<script type="text/javascript">
