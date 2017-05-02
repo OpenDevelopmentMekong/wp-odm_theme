@@ -28,13 +28,6 @@ $ckan_post_types_names = array(
     <section class="container">
   		<header class="row">
   			<div class="eight columns">
-          <?php
-    			if($term->parent):
-    				$parent = get_term($term->parent, $term->taxonomy);
-    				?>
-    				<h3 class="parent-term"><a href="<?php echo get_term_link($parent); ?>"><?php echo $parent->name; ?></a></h3>
-    				<?php
-    			endif; ?>
           <h1 class="archive-title"><?php single_cat_title(); ?></h1>
   			</div>
         <div class="eight columns">
