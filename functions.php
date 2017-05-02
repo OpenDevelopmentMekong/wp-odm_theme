@@ -134,12 +134,18 @@ function odm_setup_theme()
     'before_widget' => '',
     'after_widget'  => ''
   ));
-  register_sidebar(array(
-  'name' => __('Profile with right sidebar only', 'odm'),
-  'id' => 'profile-right-sidebar',
-  'before_title' => '<h2 class="widget-title">',
-  'after_title' => '</h2>'
-));
+    register_sidebar(array(
+    'name' => __('Profile with right sidebar only', 'odm'),
+    'id' => 'profile-right-sidebar',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>'
+  ));
+    register_sidebar(array(
+    'name' => __('Category page', 'odm'),
+    'id' => 'category-page-sidebar',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>'
+  ));
 
   include_once get_stylesheet_directory().'/inc/layers.php';
   include_once get_stylesheet_directory().'/inc/embed.php';
