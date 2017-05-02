@@ -5,7 +5,7 @@ $supported_wp_post_types = odm_get_wp_post_types_for_category_page();
 $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
 ?>
 
-<div class="container search-results category-container">
+<div class="container category-container">
   <section class="container">
 		<header class="row">
 			<div class="eight columns">
@@ -109,7 +109,7 @@ $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
     </div>
   </section>
 
-  <section class="container">
+  <section class="search-results container">
     <div class="row">
       <div class="twelve columns">
     		<section class="category-post-type-section container">
