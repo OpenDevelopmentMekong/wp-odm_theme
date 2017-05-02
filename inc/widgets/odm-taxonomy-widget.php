@@ -159,8 +159,12 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-	$current_page = get_post();
-	$current_page_slug = $current_page->post_name;
+		$current_page = get_post();
+		if (isset($current_page)):
+			$current_page_slug = $current_page->post_name;
+		else:
+			$current_page_slug = single_cat_title();
+		endif;
 	?>
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
