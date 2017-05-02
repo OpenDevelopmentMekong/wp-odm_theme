@@ -53,9 +53,7 @@ function echo_the_breadcrumb()
     // Get the query & post information
     global $post,$wp_query;
     $category = get_the_category();
-    if (!isset($category)):
-      $category[] = single_term_title('',false);
-    endif;
+
     // Build the breadcrums
     echo '<ul id="'.$id.'" class="breadcrumb '.$class.'">';
     // Do not display on the homepage
