@@ -1,4 +1,4 @@
-<div class="single_result_container row">
+<div class="solr_result single_result_container row">
 	<?php
 	global $document;
 	$title = wp_odm_solr_parse_multilingual_ckan_content($document->extras_title_translated,odm_language_manager()->get_current_language(),$document->title);

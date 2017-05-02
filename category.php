@@ -112,12 +112,13 @@ $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
   <section class="container">
     <div class="row">
       <div class="twelve columns">
-    		<section class="tabbed-posts-section container">
+    		<section class="category-post-type-section container">
 
           <?php
             $current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'dataset';
-            if(count($supported_wp_post_types) > 1) : ?>
-    				<nav id="tabbed-post-type-nav">
+						$total_results_found = count($supported_ckan_post_types) + count($supported_wp_post_types);
+            if( $total_results_found > 0) : ?>
+    				<nav id="category-post-type-nav">
     					<ul>
     						<?php
 								foreach ($supported_ckan_post_types as $pt): ?>
@@ -189,10 +190,16 @@ $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
 						<div class="result_container container">
 
 							<?php
-								foreach($results as $document):
-									odm_get_template('solr-result-single',array(),true);
-								endforeach; ?>
+								if (isset($results) && $results->getNumFound() > 0):
+									foreach($results as $document):
+										odm_get_template('solr-result-single',array(),true);
+									endforeach;
+								else: ?>
 
+								<h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
+
+							<?php
+								endif; ?>
 						</div>
 
 					<?php

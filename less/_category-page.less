@@ -1,0 +1,42 @@
+.category-post-type-section {
+	margin-top: 20px;
+}
+
+#category-post-type-nav ul {
+	width: 100%;
+	display: table;
+	margin: 0 0 10px;
+	padding: 0;
+
+	li {
+		display: table-cell;
+		width: 1%;
+		text-align: center;
+		border-bottom: 1px solid @light-gray;
+
+		&:last-child {
+			border-right: 0;
+		}
+		&.active {
+			border-bottom: 1px solid @mekong-dark;
+		}
+
+		a, div.tag-name {
+			display: block;
+			padding: 15px 0;
+			width: 100%;
+			font-size: @font-size-h6;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+
+		&.active a, &.tab-tag-active div.tag-name {
+			font-weight: 600;
+		}
+
+		a:hover, div.tag-name:hover {
+			cursor: pointer;
+			font-weight: 600;
+		}
+	}
+}
