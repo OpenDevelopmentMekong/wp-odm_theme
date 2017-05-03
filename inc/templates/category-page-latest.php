@@ -93,10 +93,11 @@ $ckan_post_types_names = array(
                         "show_thumbnail" => true,
                         "show_excerpt" => true,
                         "show_summary_translated_by_odc_team" => true,
-                        "header_tag" => false
+                        "header_tag" => false,
+												"show_more_link" => true
                     ),true);
                    ?>
-									 <a href="<?php echo $post->permalink; ?>"><?php _e('Read more','odm'); ?></a>
+
                 </div>
               </div>
 

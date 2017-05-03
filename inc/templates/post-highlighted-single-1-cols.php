@@ -9,6 +9,7 @@
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
+	$show_more_link = isset($params["show_more_link"]) ? $params["show_more_link"] : false;
 	$order = isset($params["order"]) ? $params["order"] : 'created';
 ?>
 
@@ -66,6 +67,11 @@
 						<?php if ($show_excerpt): ?>
 							<div class="post-excerpt">
 								<?php echo odm_excerpt($post); ?>
+								<?php
+									if ($show_more_link): ?>
+										<a href="<?php echo $post->permalink; ?>"><?php _e('Read more','odm'); ?></a>
+								<?php
+									endif; ?>
 							</div>
 							<?php if( echo_downloaded_documents()):
 								echo_downloaded_documents();
