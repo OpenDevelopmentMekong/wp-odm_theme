@@ -83,6 +83,7 @@ $ckan_post_types_names = array(
               $post = end($topic_posts);?>
               <div class="twelve columns">
                 <div class="row">
+									<h3><?php _e('Main topical briefing','odm'); ?></h3>
                   <?php
                     odm_get_template('post-list-single-1-cols',array(
                         "post" => $post,
@@ -100,20 +101,17 @@ $ckan_post_types_names = array(
               <div class="four columns">
                 <div class="row">
                   <h3><?php _e('Related briefings','odm'); ?></h3>
-                  <ul>
                   <?php
                     foreach ($topic_posts as $post):
                       if ($post != end($topic_posts)): ?>
-                        <li>
                         <?php
                           odm_get_template('post-link-single-1-cols',array(
                               "post" => $post
                           ),true); ?>
-                        </li>
+                        </br>
                     <?php
                       endif;
                     endforeach; ?>
-                  </ul>
                 </div>
               </div>
           <?php
