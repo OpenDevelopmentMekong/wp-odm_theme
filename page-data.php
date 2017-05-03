@@ -53,24 +53,24 @@ Template Name: Data
       //================ Build Filters ===================== //
 
       //Taxonomy
-      if (!empty($param_taxonomy) && $param_taxonomy != 'all') {
+      if (!empty($param_taxonomy) && $param_taxonomy != 'all'):
         $attrs["extras_taxonomy"] = $param_taxonomy;
-      }
+      endif;
 
       // Language
-      if (!empty($param_language) && $param_language != 'all') {
+      if (!empty($param_language) && $param_language != 'all'):
         $attrs["extras_odm_language"] = $param_language;
-      }
+      endif;
 
       // Country
-      if (!empty($param_country) && $param_country != 'mekong' && $param_country != 'all') {
+      if (!empty($param_country) && $param_country != 'mekong' && $param_country != 'all'):
         $attrs["extras_odm_spatial_range"] = $countries[$param_country]['iso2'];
-      }
+      endif;
 
       //License
-      if (!empty($param_license) && $param_license != 'all') {
+      if (!empty($param_license) && $param_license != 'all'):
         $attrs['license_id'] = $param_license;
-      }
+      endif;
 
       $result = WP_Odm_Solr_CKAN_Manager()->query($param_query,$attrs,$control_attrs);
       $results = $result["resultset"];
@@ -79,11 +79,11 @@ Template Name: Data
       //================== Pagination ======================
       $request_url = $_SERVER['REQUEST_URI'];
       $url_parts = parse_url($request_url);
-      if (isset($url_parts['query'])) {
+      if (isset($url_parts['query'])):
         parse_str($url_parts['query'], $params);
-      } else {
+      else:
         $params = [];
-      }
+      endif;
 
       //Next Page Link
       $next_page_params = $params;
@@ -246,98 +246,99 @@ Template Name: Data
 
         <?php foreach($results as $document): ?>
 
-        <div class="single_result_container row">
-					<?php
-					$title = wp_odm_solr_parse_multilingual_ckan_content($document->extras_title_translated,odm_language_manager()->get_current_language(),$document->title);
-					$title = wp_odm_solr_highlight_search_words($s,$title);
-					?>
-					<h4 class="data_title ten columns">
-					  <a target="_blank" href="<?php echo wpckan_get_link_to_dataset($document->id) ?>">
-					    <?php echo $title ?>
-					  </a>
-					</h4>
-					<div class="data_format six columns">
-					  <?php $resource_formats = array_unique($document->res_format); ?>
-					  <?php foreach ($resource_formats as $format): ?>
-					    <a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span></a>
-					  <?php endforeach ?>
-					</div>
-					<?php
-					  $description = wp_odm_solr_parse_multilingual_ckan_content($document->extras_notes_translated,odm_language_manager()->get_current_language(),$document->notes);
-					  $description = strip_tags($description);
-					  $description = substr($description,0,400);
-					  $description = wp_odm_solr_highlight_search_words($s,$description);
-					 ?>
-					<p class="data_description sixteen columns">
-					<?php
-					  echo $description;
-					  if (strlen($description) >= 400):
-					    echo "...";
-					  endif;
-					  ?>
-					</p>
-					<div class="data_meta_wrapper sixteen columns">
-            <!-- Language -->
-					  <?php if (!empty($document->extras_odm_language)): ?>
-					    <div class="data_languages data_meta">
-					      <?php $odm_lang_arr = json_decode($document->extras_odm_language,true); ?>
-					      <span>
-					        <?php
-									foreach ($odm_lang_arr as $lang):
-										$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
-										if (!empty($path_to_flag)): ?>
-					          	<a href="<?php echo construct_filter_url($_SERVER['REQUEST_URI'],'language', $lang); ?>"><img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img></a>
-				        <?php
-										endif;
-									endforeach; ?>
-					      </span>
-					    </div>
-					  <?php endif; ?>
-				    <!-- Country -->
-					  <?php if (!empty($document->extras_odm_spatial_range)): ?>
-					    <div class="country_indicator data_meta">
-					      <i class="fa fa-globe"></i>
-					      <span>
-					        <?php
-					          $odm_country_arr = json_decode($document->extras_odm_spatial_range,true);
-					          foreach ($odm_country_arr as $country_code):
-					            $country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
-					            if (!empty($country_name)):
-                        echo '<a href="'.construct_filter_url($_SERVER['REQUEST_URI'],'country', strtolower($country_name)).'">';
-												_e($country_name, "wp-odm_solr");
-                        echo '</a>';
-						            if ($country_code !== end($odm_country_arr)):
-						              echo ', ';
-						            endif;
-											endif;
-					          endforeach; ?>
-					      </span>
-					    </div>
-					  <?php endif; ?>
-					  <!-- Topics -->
-					  <?php if (!empty($document->vocab_taxonomy)): ?>
-					    <div class="data_meta">
-					      <i class="fa fa-tags"></i>
-					      <span>
-					        <?php
-					          foreach ($document->vocab_taxonomy as $topic):
-					            _e($topic. " ", "wp-odm_solr");
-					          endforeach; ?>
-					      </span>
-					    </div>
-					  <?php endif; ?>
-					  <!-- Keywords -->
-					  <?php if (!empty($document->extras_odm_keywords)): ?>
-					    <div class="data_meta">
-					      <i class="fa fa-tags"></i>
-					      <?php
-					        $hihglighted_value = wp_odm_solr_highlight_search_words($s,implode(", ",$document->extras_odm_keywords));
-					        _e($hihglighted_value, "wp-odm_solr") ?>
-					    </div>
-					  <?php endif; ?>
-					</div>
+          <div class="single_result_container row">
+  					<?php
+  					$title = wp_odm_solr_parse_multilingual_ckan_content($document->extras_title_translated,odm_language_manager()->get_current_language(),$document->title);
+  					$title = wp_odm_solr_highlight_search_words($s,$title);
+  					?>
+  					<h4 class="data_title ten columns">
+  					  <a target="_blank" href="<?php echo wpckan_get_link_to_dataset($document->id) ?>">
+  					    <?php echo $title ?>
+  					  </a>
+  					</h4>
+  					<div class="data_format six columns">
+  					  <?php $resource_formats = array_unique($document->res_format); ?>
+  					  <?php foreach ($resource_formats as $format): ?>
+  					    <a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span></a>
+  					  <?php endforeach ?>
+  					</div>
+  					<?php
+  					  $description = wp_odm_solr_parse_multilingual_ckan_content($document->extras_notes_translated,odm_language_manager()->get_current_language(),$document->notes);
+  					  $description = strip_tags($description);
+  					  $description = substr($description,0,400);
+  					  $description = wp_odm_solr_highlight_search_words($s,$description);
+  					 ?>
+  					<p class="data_description sixteen columns">
+  					<?php
+  					  echo $description;
+  					  if (strlen($description) >= 400):
+  					    echo "...";
+  					  endif;
+  					  ?>
+  					</p>
+  					<div class="data_meta_wrapper sixteen columns">
+              <!-- Language -->
+  					  <?php if (!empty($document->extras_odm_language)): ?>
+  					    <div class="data_languages data_meta">
+  					      <?php $odm_lang_arr = json_decode($document->extras_odm_language,true); ?>
+  					      <span>
+  					        <?php
+  									foreach ($odm_lang_arr as $lang):
+  										$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
+  										if (!empty($path_to_flag)): ?>
+  					          	<a href="<?php echo construct_filter_url($_SERVER['REQUEST_URI'],'language', $lang); ?>"><img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img></a>
+  				        <?php
+  										endif;
+  									endforeach; ?>
+  					      </span>
+  					    </div>
+  					  <?php endif; ?>
+  				    <!-- Country -->
+  					  <?php if (!empty($document->extras_odm_spatial_range)): ?>
+  					    <div class="country_indicator data_meta">
+  					      <i class="fa fa-globe"></i>
+  					      <span>
+  					        <?php
+  					          $odm_country_arr = json_decode($document->extras_odm_spatial_range,true);
+  					          foreach ($odm_country_arr as $country_code):
+  					            $country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
+  					            if (!empty($country_name)):
+                          echo '<a href="'.construct_filter_url($_SERVER['REQUEST_URI'],'country', strtolower($country_name)).'">';
+  												_e($country_name, "wp-odm_solr");
+                          echo '</a>';
+  						            if ($country_code !== end($odm_country_arr)):
+  						              echo ', ';
+  						            endif;
+  											endif;
+  					          endforeach; ?>
+  					      </span>
+  					    </div>
+  					  <?php endif; ?>
+  					  <!-- Topics -->
+  					  <?php if (!empty($document->vocab_taxonomy)): ?>
+  					    <div class="data_meta">
+  					      <i class="fa fa-tags"></i>
+  					      <span>
+  					        <?php
+  					          foreach ($document->vocab_taxonomy as $topic):
+  					            _e($topic. " ", "wp-odm_solr");
+  					          endforeach; ?>
+  					      </span>
+  					    </div>
+  					  <?php endif; ?>
+  					  <!-- Keywords -->
+  					  <?php if (!empty($document->extras_odm_keywords)): ?>
+  					    <div class="data_meta">
+  					      <i class="fa fa-tags"></i>
+  					      <?php
+  					        $hihglighted_value = wp_odm_solr_highlight_search_words($s,implode(", ",$document->extras_odm_keywords));
+  					        _e($hihglighted_value, "wp-odm_solr") ?>
+  					    </div>
+  					  <?php endif; ?>
+  					</div>
+          </div>
 
-        </div>
+        <?php endforeach; ?>
 
   			<section class="container">
   				<div class="row">
@@ -352,12 +353,11 @@ Template Name: Data
     	</div>
   	</div>
 
-  <?php
-  endif; ?>
-
 </div>
 
-<?php endif; ?>
+<?php
+    endif;
+  endif; ?>
 
 <script>
 
