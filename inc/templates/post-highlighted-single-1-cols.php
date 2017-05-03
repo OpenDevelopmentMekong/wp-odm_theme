@@ -69,7 +69,7 @@
 								<?php echo odm_excerpt($post); ?>
 								<?php
 									if ($show_more_link): ?>
-										<a href="<?php echo $post->permalink; ?>"><?php _e('Read more','odm'); ?></a>
+										<a href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>
 								<?php
 									endif; ?>
 							</div>
