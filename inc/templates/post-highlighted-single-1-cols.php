@@ -60,6 +60,9 @@
 			?>
 			<?php if ($show_excerpt || $show_source_meta): ?>
 				<div class="item-content">
+						<?php if ($show_meta):
+							echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order);
+						endif; ?>
 						<?php if ($show_excerpt): ?>
 							<div class="post-excerpt">
 								<?php echo odm_excerpt($post); ?>
@@ -80,10 +83,6 @@
 				</div>
 			<?php endif; ?>
 		</section>
-
-		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
-		<?php endif; ?>
 
 		<?php
 			if ($show_solr_meta && isset($solr_search_result)):
