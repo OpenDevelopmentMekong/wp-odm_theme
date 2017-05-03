@@ -137,6 +137,14 @@ class Odm_Options
         );
 
         add_settings_field(
+         'odm_category_page_template',
+         __('Category page template', 'odm'),
+         array($this, 'category_page_template_field'),
+         'odm_options',
+         'odm_links_section'
+        );
+
+        add_settings_field(
          'odm_contact',
          __('Contact page', 'odm'),
          array($this, 'contact_page_field'),
@@ -232,6 +240,16 @@ class Odm_Options
               ?>'" value="<?php echo $selected_post_type;?>" size="70" /><br/>
               <i><?php _e("(Add the ckan record's type name that would like to show on the category page. (separated by comma))", 'odm');
               ?></i>
+  <?php
+    }
+
+    public function category_page_template_field()
+    {
+        $selected_template = isset($this->options['category_page_template'])? $this->options['category_page_template'] : "default";?>
+        <select id="odm_category_page_template" name="odm_options[category_page_template]" type="text" />
+          <option <?php if (isset($this->options['category_page_template']) && $this->options['category_page_template'] == "default"): echo 'selected'; endif;?> value="default">2.0</option>
+          <option <?php if (isset($this->options['category_page_template']) && $this->options['category_page_template'] == "latest"): echo 'selected'; endif;?> value="latest">2.2</option>
+        </select>
   <?php
     }
 

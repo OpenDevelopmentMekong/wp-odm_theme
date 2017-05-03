@@ -159,8 +159,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-	$current_page = get_post();
-	$current_page_slug = $current_page->post_name;
+		$current_page = get_post();
+		if (isset($current_page)):
+			$current_page_slug = $current_page->post_name;
+		else:
+			global $wp_query;
+			$term = $wp_query->queried_object;
+			$current_page_slug = $term->slug;
+		endif;
 	?>
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -197,20 +203,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
 		endif;
 
-		$cat_included_id_arr = array();
-		if (!empty($instance['od_include'])):
-			$cat_included_id_arr = explode(",", $instance['od_include']);
-		endif;
+		$cat_included_id_arr = !empty($instance['od_include']) ? explode(",", $instance['od_include']) : array();
+		$cat_excluded_id_arr = !empty($instance['od_exclude']) ? explode(",", $instance['od_exclude']) : array();
+		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
 
-		$cat_excluded_id_arr = array();
-		if (!empty($instance['od_exclude'])):
-			$cat_excluded_id_arr = explode(",", $instance['od_exclude']);
-		endif;
-
-		$topic_or_category = 'topic';
-		if (isset( $instance['topic_or_category'])):
-			$topic_or_category = $instance['topic_or_category'];
-		endif;
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
