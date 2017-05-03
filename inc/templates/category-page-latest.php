@@ -96,6 +96,7 @@ $ckan_post_types_names = array(
                         "header_tag" => false
                     ),true);
                    ?>
+									 <a href="<?php echo $post->permalink; ?>"><?php _e('Read more','odm'); ?></a>
                 </div>
               </div>
 
