@@ -66,6 +66,13 @@ class Odm_Options
         );
 
         add_settings_section(
+         'odm_category_page_section',
+         __('Category page', 'odm'),
+         '',
+         'odm_options'
+        );
+
+        add_settings_section(
          'odm_interactive_map_section',
          __('Interactive map', 'odm'),
          '',
@@ -121,30 +128,6 @@ class Odm_Options
         );
 
         add_settings_field(
-         'odm_category_page',
-         __('Category page (WP)', 'odm'),
-         array($this, 'category_page_field'),
-         'odm_options',
-         'odm_links_section'
-        );
-
-				add_settings_field(
-         'odm_category_page_ckan',
-         __('Category page (CKAN)', 'odm'),
-         array($this, 'category_page_ckan_field'),
-         'odm_options',
-         'odm_links_section'
-        );
-
-        add_settings_field(
-         'odm_category_page_template',
-         __('Category page template', 'odm'),
-         array($this, 'category_page_template_field'),
-         'odm_options',
-         'odm_links_section'
-        );
-
-        add_settings_field(
          'odm_contact',
          __('Contact page', 'odm'),
          array($this, 'contact_page_field'),
@@ -158,6 +141,30 @@ class Odm_Options
          array($this, 'data_page_field'),
          'odm_options',
          'odm_links_section'
+        );
+
+        add_settings_field(
+         'odm_category_page',
+         __('Category page (WP)', 'odm'),
+         array($this, 'category_page_field'),
+         'odm_options',
+         'odm_category_page_section'
+        );
+
+        add_settings_field(
+         'odm_category_page_ckan',
+         __('Category page (CKAN)', 'odm'),
+         array($this, 'category_page_ckan_field'),
+         'odm_options',
+         'odm_category_page_section'
+        );
+
+        add_settings_field(
+         'odm_category_page_template',
+         __('Category page template', 'odm'),
+         array($this, 'category_page_template_field'),
+         'odm_options',
+         'odm_category_page_section'
         );
 
         add_settings_field(
