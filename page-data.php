@@ -232,9 +232,6 @@ Template Name: Data
   					odm_get_template('solr-result-single',array(),true);
   				endforeach; ?>
 
-        <div class="single-filter">
-          <input class="button" type="submit" value="<?php _e('Search Filter', 'odm'); ?>"/>
-        </div>
 			</div>
     </div>
 
