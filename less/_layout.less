@@ -322,6 +322,7 @@ body{
     vertical-align: top;
     float: left;
   }
+
   img {
     max-width: 80px;
     max-height: 80px;
@@ -370,6 +371,24 @@ body{
 		color: @mekong-bright;
 		float:right;
 	}
+
+}
+
+.highlighted{
+
+  .item-title {
+    font-size: @font-size-h2 !important;
+	}
+
+  .post-excerpt {
+    font-size: @font-size-h4 !important;
+    .text-ellipsis(6, @font-size-h4);
+  }
+
+  img {
+    max-width: 140px;
+    max-height: 140px;
+  }
 
 }
 
