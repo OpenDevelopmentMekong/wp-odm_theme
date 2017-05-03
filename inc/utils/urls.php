@@ -13,4 +13,27 @@
 		return $response_code == 'OK';
 	}
 
+	/**
+	 * Construct Filter Url
+	 *
+	 * @return string
+	 * @author
+	 **/
+	function construct_filter_url($current_url, $key, $value) {
+
+	  $url_parts = parse_url($current_url);
+	  if (isset($url_parts['query'])) {
+	    parse_str($url_parts['query'], $params);
+	  } else {
+	    $params = [];
+	  }
+
+	  $params[$key] = $value;
+
+	  $url_parts['query'] = http_build_query($params);
+
+	  return $url_parts['path'] . '?' . $url_parts['query'];
+
+	}
+
  ?>
