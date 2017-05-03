@@ -67,7 +67,7 @@ $ckan_post_types_names = array(
                 <div class="row">
 									<h3><?php _e('Main topical briefing','odm'); ?></h3>
                   <?php
-                    odm_get_template('post-list-single-1-cols',array(
+                    odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
                         "show_meta" => true,
                         "show_source_meta" => true,
@@ -86,7 +86,7 @@ $ckan_post_types_names = array(
                 <div class="row">
 									<h3><?php _e('Main topical briefing','odm'); ?></h3>
                   <?php
-                    odm_get_template('post-list-single-1-cols',array(
+                    odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
                         "show_meta" => true,
                         "show_source_meta" => true,
