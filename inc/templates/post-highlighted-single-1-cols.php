@@ -15,7 +15,7 @@
 
 <div class="sixteen columns">
 	<div class="post-list-item highlighted single_result_container">
-		<?php if ($header_tag): ?>
+		<!-- <?php if ($header_tag): ?>
 			<?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
@@ -45,11 +45,7 @@
 						</a>
 				</h2>
 			</p>
-		<?php endif; ?>
-
-		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
-		<?php endif; ?>
+		<?php endif; ?> -->
 
 		<section class="content section-content">
 			<?php
@@ -84,6 +80,10 @@
 				</div>
 			<?php endif; ?>
 		</section>
+
+		<?php if ($show_meta): ?>
+			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
+		<?php endif; ?>
 
 		<?php
 			if ($show_solr_meta && isset($solr_search_result)):
