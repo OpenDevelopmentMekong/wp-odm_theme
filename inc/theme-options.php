@@ -122,8 +122,24 @@ class Odm_Options
 
         add_settings_field(
          'odm_category_page',
-         __('Category page', 'odm'),
+         __('Category page (WP)', 'odm'),
          array($this, 'category_page_field'),
+         'odm_options',
+         'odm_links_section'
+        );
+
+				add_settings_field(
+         'odm_category_page_ckan',
+         __('Category page (CKAN)', 'odm'),
+         array($this, 'category_page_ckan_field'),
+         'odm_options',
+         'odm_links_section'
+        );
+
+        add_settings_field(
+         'odm_category_page_template',
+         __('Category page template', 'odm'),
+         array($this, 'category_page_template_field'),
          'odm_options',
          'odm_links_section'
         );
@@ -211,8 +227,29 @@ class Odm_Options
         <input id="odm_category_page" name="odm_options[category_page]" type="text" placeholder="<?php _e('news-article,announcement,topic,profiles');
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('news-article,announcement,topic,profiles');
               ?>'" value="<?php echo $selected_post_type;?>" size="70" /><br/>
-              <i><?php _e("(Add the post type name that would like to show on the category page. (separated by comma))", 'odm');
+              <i><?php _e("(Add the WP post type name that would like to show on the category page. (separated by comma))", 'odm');
               ?></i>
+  <?php
+    }
+
+		public function category_page_ckan_field()
+    {
+        $selected_post_type = isset($this->options['category_page_ckan'])? $this->options['category_page_ckan']: "dataset, library_record, laws_record, agreement";?>
+        <input id="odm_category_page_ckan" name="odm_options[category_page_ckan]" type="text" placeholder="<?php _e('dataset, library_record, laws_record, agreement');
+              ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('dataset, library_record, laws_record, agreement');
+              ?>'" value="<?php echo $selected_post_type;?>" size="70" /><br/>
+              <i><?php _e("(Add the ckan record's type name that would like to show on the category page. (separated by comma))", 'odm');
+              ?></i>
+  <?php
+    }
+
+    public function category_page_template_field()
+    {
+        $selected_template = isset($this->options['category_page_template'])? $this->options['category_page_template'] : "default";?>
+        <select id="odm_category_page_template" name="odm_options[category_page_template]" type="text" />
+          <option <?php if (isset($this->options['category_page_template']) && $this->options['category_page_template'] == "default"): echo 'selected'; endif;?> value="default">2.0</option>
+          <option <?php if (isset($this->options['category_page_template']) && $this->options['category_page_template'] == "latest"): echo 'selected'; endif;?> value="latest">2.2</option>
+        </select>
   <?php
     }
 
@@ -575,14 +612,25 @@ function odm_get_legal_disclaimer()
     }
 }
 
-function odm_get_post_types_for_category_page()
+function odm_get_wp_post_types_for_category_page()
 {
     $options = get_option('odm_options');
     if (isset($options['category_page'])) {
         $post_type = array_map('trim', explode(',', $options['category_page']));
         return $post_type;
     } else {
-        return array('news-article', 'announcement', 'topic', 'profiles');
+        return array('news-article', 'announcement', 'topic', 'profiles', 'map-layer');
+    }
+}
+
+function odm_get_ckan_post_types_for_category_page()
+{
+    $options = get_option('odm_options');
+    if (isset($options['category_page_ckan'])) {
+        $post_type = array_map('trim', explode(',', $options['category_page_ckan']));
+        return $post_type;
+    } else {
+        return array('dataset', 'library_record', 'laws_record', 'agreement');
     }
 }
 
