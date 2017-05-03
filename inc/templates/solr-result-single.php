@@ -11,7 +11,7 @@
 	<div class="data_format six columns">
 		<?php $resource_formats = array_unique($document->res_format); ?>
 		<?php foreach ($resource_formats as $format): ?>
-			<span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span>
+			<a href="<?php echo wpckan_get_link_to_dataset($document->id) ?>"><span class="meta-label <?php echo strtolower($format); ?>"><?php echo strtolower($format); ?></span></a>
 		<?php endforeach ?>
 	</div>
 	<?php
@@ -37,7 +37,7 @@
 					foreach ($odm_lang_arr as $lang):
 						$path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
 						if (!empty($path_to_flag)): ?>
-							<img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
+							<a href="<?php echo construct_filter_url($_SERVER['REQUEST_URI'],'language', $lang); ?>"><img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img></a>
 				<?php
 						endif;
 					endforeach; ?>
@@ -54,7 +54,9 @@
 						foreach ($odm_country_arr as $country_code):
 							$country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
 							if (!empty($country_name)):
+								echo '<a href="'.construct_filter_url($_SERVER['REQUEST_URI'],'country', strtolower($country_name)).'">';
 								_e($country_name, "wp-odm_solr");
+								echo '</a>';
 								if ($country_code !== end($odm_country_arr)):
 									echo ', ';
 								endif;
