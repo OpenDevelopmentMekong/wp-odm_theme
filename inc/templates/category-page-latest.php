@@ -73,7 +73,8 @@ $ckan_post_types_names = array(
                         "show_thumbnail" => true,
                         "show_excerpt" => true,
                         "show_summary_translated_by_odc_team" => true,
-                        "header_tag" => true
+                        "header_tag" => true,
+												"show_more_link" => true
                     ),true);
                    ?>
                 </div>
