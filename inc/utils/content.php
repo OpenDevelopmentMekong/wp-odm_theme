@@ -391,7 +391,12 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$post = $the_post;
 		$limit = $num;
 
-		$untranslated_excerpt = wp_trim_words( $post->the_content, $num, '...' );
+		$the_excerpt = $post->post_excerpt;
+		if(!isset($the_excerpt)):
+			$the_excerpt = $post->post_content;
+		endif;
+
+		$untranslated_excerpt = wp_trim_words( $the_excerpt, $num, '...' );
 		$translated_excerpt = apply_filters('translate_text', $untranslated_excerpt, odm_language_manager()->get_current_language());
 		$excerpt_no_shortcodes = explode(' ', strip_shortcodes($translated_excerpt), $limit);
 		$excerpt_no_whitespaces = implode(' ', $excerpt_no_shortcodes);
