@@ -7,7 +7,7 @@
 		echo "<span class='page-numbers pagexofy'>".__("Page", "odm"). " " . max(1, $params["current_page"]).__(" of", "odm"). " " . $params["total_pages"] ."</span> ";
 		echo paginate_links(array(
 				'format' => '?page=%#%',
-				'current' => max(1, $params["current_page"]),
+				'current' => max(1, $params["current_page"]) -1,
 				'total' => $params["total_pages"]
 		));
 
