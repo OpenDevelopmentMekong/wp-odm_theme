@@ -25,7 +25,7 @@
 			</h3>
 		<?php else: ?>
 			<p>
-				<h2>
+				<h3>
 					<?php
 						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 					 ?>
@@ -42,7 +42,7 @@
 
 							<?php echo $localized_title; ?>
 						</a>
-				</h2>
+				</h3>
 			</p>
 		<?php endif; ?>
 
