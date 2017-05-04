@@ -9,23 +9,24 @@
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
+	$show_more_link = isset($params["show_more_link"]) ? $params["show_more_link"] : false;
 	$order = isset($params["order"]) ? $params["order"] : 'created';
 ?>
 
 <div class="sixteen columns">
-	<div class="post-list-item single_result_container">
-		<?php if ($header_tag): ?>
+	<div class="post-list-item highlighted single_result_container">
+		<!-- <?php if ($header_tag): ?>
 			<?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
-			<h3>
+			<h2>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 					<?php echo $localized_title; ?>
 				</a>
-			</h3>
+			</h2>
 		<?php else: ?>
 			<p>
-				<h3>
+				<h2>
 					<?php
 						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 					 ?>
@@ -42,13 +43,9 @@
 
 							<?php echo $localized_title; ?>
 						</a>
-				</h3>
+				</h2>
 			</p>
-		<?php endif; ?>
-
-		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
-		<?php endif; ?>
+		<?php endif; ?> -->
 
 		<section class="content section-content">
 			<?php
@@ -63,9 +60,17 @@
 			?>
 			<?php if ($show_excerpt || $show_source_meta): ?>
 				<div class="item-content">
+						<?php if ($show_meta):
+							echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order);
+						endif; ?>
 						<?php if ($show_excerpt): ?>
 							<div class="post-excerpt">
 								<?php echo odm_excerpt($post); ?>
+								<?php
+									if ($show_more_link): ?>
+										<a href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>
+								<?php
+									endif; ?>
 							</div>
 							<?php if( echo_downloaded_documents()):
 								echo_downloaded_documents();
