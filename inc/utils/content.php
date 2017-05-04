@@ -391,7 +391,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$post = $the_post;
 		$limit = $num;
 
-		$translated_excerpt = get_the_excerpt($post);
+		$untranslated_excerpt = get_the_excerpt($post);
 		$translated_excerpt = apply_filters('translate_text', $untranslated_excerpt, odm_language_manager()->get_current_language());
 		$excerpt_no_shortcodes = explode(' ', strip_shortcodes($translated_excerpt), $limit);
 		$excerpt_no_whitespaces = implode(' ', $excerpt_no_shortcodes);
