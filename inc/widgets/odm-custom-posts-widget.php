@@ -53,7 +53,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
-		$override_order = isset($instance['override_order']) ? $instance['override_order'] : null;
+		$override_order = isset($instance['override_order']) && !empty($instance['override_order']) ? $instance['override_order'] : null;
 
 		$post_type = get_post_type_object($selected_custom_post_id);
 		$post_type_slug = $post_type->rewrite['slug'];
@@ -66,7 +66,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				'orderby' 				 => $order
 			);
 
-		if (isset($override_order)):
+		if (isset($override_order) && !empty($override_order)):
 			$override_order = str_replace(" ","",$override_order);
 			$post_slugs = explode(",",$override_order);
 			$query['post_name__in'] = $post_slugs;
@@ -253,7 +253,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
 		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
 		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
-		$instance['override_order'] = (!empty( $new_instance['override_order'])) ? $new_instance['override_order'] : '';
+		$instance['override_order'] = isset($new_instance['override_order']) && !empty($new_instance['override_order']) ? $new_instance['override_order'] : null;
 
 		return $instance;
 	}
