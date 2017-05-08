@@ -53,6 +53,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
+		$override_order = isset($instance['override_order']) && !empty($instance['override_order']) ? $instance['override_order'] : null;
 
 		$post_type = get_post_type_object($selected_custom_post_id);
 		$post_type_slug = $post_type->rewrite['slug'];
@@ -64,6 +65,13 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 				'post_status'      => 'publish',
 				'orderby' 				 => $order
 			);
+
+		if (isset($override_order) && !empty($override_order)):
+			$override_order = str_replace(" ","",$override_order);
+			$post_slugs = explode(",",$override_order);
+			$query['post_name__in'] = $post_slugs;
+		endif;
+
 		$posts = get_posts( $query );
 
 		echo $args['before_widget']; ?>
@@ -135,6 +143,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
 		$order = isset($instance['order']) ? $instance['order'] : 'date';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
+		$override_order = isset($instance['override_order']) ? $instance['override_order'] : null;
 
 		$args = array(
 		   'public'   => true,
@@ -210,6 +219,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</select>
 		</p>
 		<p>
+			<label for="<?php echo $this->get_field_id( 'override_order' ); ?>"><?php _e( 'Override order (enter comma-separated list of slugs):' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('override_order');?>" name="<?php echo $this->get_field_name('override_order');?>" type="text" value="<?php echo $override_order;?>">
+		</p>
+		<p>
 			<label for="<?php echo $this->get_field_id( 'more_location' ); ?>"><?php _e( "Select location of 'More...':" ); ?></label>
 			<select class='widefat' id="<?php echo $this->get_field_id('more_location'); ?>" name="<?php echo $this->get_field_name('more_location'); ?>" type="text">
 				<?php foreach ( $this->more_location as $key => $value ): ?>
@@ -240,6 +253,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
 		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
 		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
+		$instance['override_order'] = isset($new_instance['override_order']) && !empty($new_instance['override_order']) ? $new_instance['override_order'] : null;
 
 		return $instance;
 	}
