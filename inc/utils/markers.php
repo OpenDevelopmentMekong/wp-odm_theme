@@ -65,7 +65,7 @@
 	}
 
 	function use_browser_caching() {
-		return apply_filters('jeo_markers_enable_browser_caching', true);
+		return apply_filters('jeo_markers_enable_browser_caching', false);
 	}
 
 	function geocode_type() {
@@ -333,15 +333,23 @@
 
 	function get_properties() {
 		global $post;
+    $get_post = get_page($post->ID);
+    $get_title = qtrans_use(odm_language_manager()->get_current_language(), $get_post->post_content,false);
 		$properties = array();
 		$properties['id'] = 'post-' . $post->ID;
 		$properties['postID'] = $post->ID;
-		$properties['title'] = get_the_title();
+		$properties['title'] = $get_title;
 		$properties['date'] = get_the_date(_x('m/d/Y', 'reduced date format', 'jeo'));
 		$properties['url'] = apply_filters('the_permalink', get_permalink());
 		$properties['bubble'] = $this->get_bubble();
 		$properties['marker'] = $this->get_icon();
 		$properties['class'] = implode(' ', $this->get_class());
+    $properties['permalink'] = add_query_arg(array('lang' => odm_language_manager()->get_current_language()), get_permalink());
+    $properties['thumbnail'] = odm_get_thumbnail();
+    if (get_post_meta($post->ID, 'geocode_zoom', true)) {
+        $properties['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
+    }
+
 		return apply_filters('jeo_marker_data', $properties, $post);
 	}
 
@@ -388,7 +396,8 @@
 		if(!$geojson)
 			return $this->update_geojson($post_id);
 
-		return $geojson;
+      return $this->update_geojson($post_id);
+		//return $geojson;
 	}
 
 	function update_geojson($post_id = false) {
@@ -400,15 +409,9 @@
 
 		$geometry = $this->get_geometry();
 
-		/*
-		if(!$geometry) {
-			$this->clean_geojson($post_id);
-			return false;
-		}
-		*/
-
 		$geojson = array();
 
+    $geojson['MMM'] = 'Feature';
 		$geojson['type'] = 'Feature';
 
 		// marker geometry

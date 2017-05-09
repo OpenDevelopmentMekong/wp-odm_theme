@@ -30,12 +30,15 @@
 			if(geojson === 0)
 				return;
 			_build(geojson);
-		});
+		},
+		function( jqXHR, textStatus, errorThrown ) {
+			 console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+	 	}
+		);
 
 		var _build = function(geojson) {
 
 			var icons = {};
-
 			var parentLayer;
 			if(opendev_markers.enable_clustering) {
 
@@ -87,7 +90,7 @@
 					});
 					l.on('mouseout', function(e) {
 						e.target.setZIndexOffset(e.target.previousOffset);
-						//e.target.closePopup();
+						e.target.closePopup();
 					});
 					l.on('click', function(e) {
 						jeo.runCallbacks('markerClicked', [e]);
