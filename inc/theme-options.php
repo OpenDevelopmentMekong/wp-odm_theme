@@ -177,7 +177,7 @@ class Odm_Options
         add_settings_field(
          'odm_single_page_date',
          __('Date shown on single page template', 'odm'),
-         array($this, 'category_single_page_date_field'),
+         array($this, 'single_page_date_field'),
          'odm_options',
          'odm_single_page_section'
         );
