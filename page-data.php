@@ -33,7 +33,7 @@ Template Name: Data
 
       //Get Datasets
       $attrs = array(
-        'dataset_type' => 'dataset',
+        'dataset_type' => '("dataset" OR "library_record" OR "laws_record" OR "agreement")',
     		'capacity' => 'public'
       );
 
