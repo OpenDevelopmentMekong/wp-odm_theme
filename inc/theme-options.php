@@ -73,6 +73,13 @@ class Odm_Options
         );
 
         add_settings_section(
+         'odm_single_page_section',
+         __('Single page', 'odm'),
+         '',
+         'odm_options'
+        );
+
+        add_settings_section(
          'odm_interactive_map_section',
          __('Interactive map', 'odm'),
          '',
@@ -168,6 +175,14 @@ class Odm_Options
         );
 
         add_settings_field(
+         'odm_single_page_date',
+         __('Date shown on single page template', 'odm'),
+         array($this, 'category_single_page_date_field'),
+         'odm_options',
+         'odm_single_page_section'
+        );
+
+        add_settings_field(
          'odm_interactive_map',
          __('Base map settings', 'odm'),
          array($this, 'interactive_map_field'),
@@ -256,6 +271,16 @@ class Odm_Options
         <select id="odm_category_page_template" name="odm_options[category_page_template]" type="text" />
           <option <?php if (isset($this->options['category_page_template']) && $this->options['category_page_template'] == "default"): echo 'selected'; endif;?> value="default">2.0</option>
           <option <?php if (isset($this->options['category_page_template']) && $this->options['category_page_template'] == "latest"): echo 'selected'; endif;?> value="latest">2.2</option>
+        </select>
+  <?php
+    }
+
+    public function single_page_date_field()
+    {
+        $selected_date = isset($this->options['single_page_date'])? $this->options['single_page_date'] : "created";?>
+        <select id="odm_single_page_date" name="odm_options[odm_single_page_date]" type="text" />
+          <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "created"): echo 'selected'; endif;?> value="created"><?php _e('Created','odm'); ?></option>
+          <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "modified"): echo 'selected'; endif;?> value="modified"><?php _e('Modified','odm'); ?></option>
         </select>
   <?php
     }
