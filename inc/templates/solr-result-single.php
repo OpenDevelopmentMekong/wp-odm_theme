@@ -54,9 +54,13 @@
 						foreach ($odm_country_arr as $country_code):
 							$country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
 							if (!empty($country_name)):
-								echo '<a href="'.construct_filter_url($_SERVER['REQUEST_URI'],'country', strtolower($country_name)).'">';
-								_e($country_name, "wp-odm_solr");
-								echo '</a>';
+								if (odm_country_manager()->get_current_country() != 'mekong'):
+									echo '<a href="'.construct_filter_url($_SERVER['REQUEST_URI'],'country', strtolower($country_name)).'">';
+									_e($country_name, "wp-odm_solr");
+									echo '</a>';
+								else:
+									_e($country_name, "wp-odm_solr");
+								endif;
 								if ($country_code !== end($odm_country_arr)):
 									echo ', ';
 								endif;
