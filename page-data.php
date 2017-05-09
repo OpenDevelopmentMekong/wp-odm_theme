@@ -143,6 +143,7 @@ Template Name: Data
               <option <?php if($param_type == "all") echo 'selected'; ?> value="all"><?php _e('All','odm') ?></option>
             	<option <?php if($param_type == "dataset") echo 'selected'; ?> value="dataset"><?php _e('Datasets','odm') ?></option>
 							<option <?php if($param_type == "library_record") echo 'selected'; ?> value="library_record"><?php _e('Library publications','odm') ?></option>
+							<option <?php if($param_type == "laws_record") echo 'selected'; ?> value="laws_record"><?php _e('Laws','odm') ?></option>
 							<option <?php if($param_type == "agreement") echo 'selected'; ?> value="agreement"><?php _e('Agreements','odm') ?></option>
             </select>
           </div>
