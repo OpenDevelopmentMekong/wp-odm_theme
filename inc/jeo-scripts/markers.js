@@ -22,7 +22,7 @@
 
 		$.getJSON(opendev_markers.ajaxurl,
 		{
-			action: 'markers_geojson',
+			action: 'od_markers_geojson',
 			query: opendev_markers.query
 		},
 		function(data) {
@@ -87,11 +87,10 @@
 					});
 					l.on('mouseout', function(e) {
 						e.target.setZIndexOffset(e.target.previousOffset);
-						e.target.closePopup();
+						//e.target.closePopup();
 					});
 					l.on('click', function(e) {
 						jeo.runCallbacks('markerClicked', [e]);
-						console.log(e.target);
 						//markers.openMarker(e.target, false);
 						//window.location = e.target.feature.properties.permalink;
 						window.open(e.target.feature.properties.permalink, '_blank');
