@@ -22,7 +22,7 @@
 
 		$.getJSON(opendev_markers.ajaxurl,
 		{
-			action: 'markers_geojson',
+			action: 'od_markers_geojson',
 			query: opendev_markers.query
 		},
 		function(data) {
@@ -30,12 +30,15 @@
 			if(geojson === 0)
 				return;
 			_build(geojson);
-		});
+		},
+		function( jqXHR, textStatus, errorThrown ) {
+			 console.log( 'Could not get posts, server response: ' + textStatus + ': ' + errorThrown );
+	 	}
+		);
 
 		var _build = function(geojson) {
 
 			var icons = {};
-
 			var parentLayer;
 			if(opendev_markers.enable_clustering) {
 
@@ -91,7 +94,6 @@
 					});
 					l.on('click', function(e) {
 						jeo.runCallbacks('markerClicked', [e]);
-						console.log(e.target);
 						//markers.openMarker(e.target, false);
 						//window.location = e.target.feature.properties.permalink;
 						window.open(e.target.feature.properties.permalink, '_blank');

@@ -205,43 +205,6 @@ function odm_jeo_scripts()
   wp_register_script('jquery-ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js');
   $site_name =  odm_country_manager()->get_current_country();
 
-  // custom marker system
-  global $jeo_markers;
-  wp_deregister_script('jeo.markers');
-  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/inc/jeo-scripts/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-
-  wp_localize_script('jeo.markers', 'opendev_markers', array(
-    'ajaxurl' => admin_url('admin-ajax.php'),
-    'query' => extended_jeo_markers_query(),
-    'stories_label' => __('stories', 'odm'),
-    'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
-    'copy_embed_label' => __('Copy the embed code', 'odm'),
-    'share_label' => __('Share', 'odm'),
-    'print_label' => __('Print', 'odm'),
-    'embed_base_url' => home_url('/embed/'),
-    'share_base_url' => home_url('/share/'),
-    'marker_active' => array(
-      'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
-      'iconSize' => array(26, 30),
-      'iconAnchor' => array(13, 30),
-      'popupAnchor' => array(0, -40),
-      'markerId' => 'none',
-    ),
-   'site_url' => home_url('/'),
-   'read_more_label' => __('Read more', 'odm'),
-   'lightbox_label' => array(
-     'slideshow' => __('Open slideshow', 'odm'),
-     'videos' => __('Watch video gallery', 'odm'),
-     'video' => __('Watch video', 'odm'),
-     'images' => __('View image gallery', 'odm'),
-     'image' => __('View fullscreen image', 'odm'),
-     'infographic' => __('View infographic', 'odm'),
-     'infographics' => __('View infographics', 'odm'),
-    ),
-   'enable_clustering' => jeo_use_clustering() ? true : false,
-   'default_icon' => jeo_formatted_default_marker(),
-  ));
-
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
