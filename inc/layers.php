@@ -9,7 +9,6 @@
         add_action('save_post', array($this, 'layer_save'));
         add_action('save_post', array($this, 'map_save'));
         add_action('add_meta_boxes', array($this, 'od_mapbox_add_meta_box'));
-        add_action('save_post', array($this, 'od_mapbox_save_postdata'));
         add_action( 'init', array($this, 'od_add_category_to_map_layer_posttype'));
         add_post_type_support( 'map-layer', 'thumbnail' );
     }

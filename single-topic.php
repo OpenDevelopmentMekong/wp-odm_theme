@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
-<?php if (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post();
+	$options = get_option('odm_options');
+  $date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created";
+  ?>
 
   <article id="content" class="single-post">
 
@@ -8,7 +11,7 @@
         <header class="row">
           <div class="twelve columns post-title">
             <h1><?php the_title(); ?></h1>
-            <?php echo_post_meta(get_post()); ?>
+            <?php echo_post_meta(get_post(),array('date','categories','tags'),$date_to_show); ?>
           </div>
           <div class="four columns">
             <div class="widget share-widget">
