@@ -57,7 +57,6 @@ var original_layers_height;
 	});
 
  	$("document").ready(function(){
-
 			$('#print-button').click(function() {
 				$(".print-loading").show();
 				$(".print-preview-map").html2canvas({
@@ -117,7 +116,21 @@ var original_layers_height;
 		});
 
 		$('.fa-times-circle').click(function(){
-			exit_print_preview();
+			if($(".interactive-map").hasClass('print-preview-map')) {
+				$(".print-setting").hide();
+				$(".priting_footer").hide();
+				$(".interactive-map").removeClass('print-preview-map');
+				$('body').removeClass('print-preview');
+				$("section#map > .map-wraper").contents().unwrap();
+				$(".baselayer-container").removeClass('print-preview-basemap');
+				$(".print-preview .interactive-map-layers").css("max-height", original_layers_height);
+				$('.map-title').remove();
+				$(".print-loading").hide();
+				$(".printing-description").hide();
+				$(".baselayer-container").show();
+				$(".category-map-layers").show();
+				$(".leaflet-control-container").show();
+			}
 		});
 
 	});
@@ -130,24 +143,6 @@ var original_layers_height;
 */
 
 })(jQuery);
-
-function exit_print_preview(){
-	if($(".interactive-map").hasClass('print-preview-map')) {
-		$(".print-setting").hide();
-		$(".interactive-map").removeClass('print-preview-map');
-		$('body').removeClass('print-preview');
-		$("section#map > .map-wraper").contents().unwrap();
-		$(".baselayer-container").removeClass('print-preview-basemap');
-		$(".print-preview .interactive-map-layers").css("max-height", original_layers_height);
-		$('.map-title').remove();
-		$(".priting_footer").hide();
-		$(".printing-description").hide();
-		$(".baselayer-container").show();
-		$(".category-map-layers").show();
-		$(".leaflet-control-container").show();
-		$(".print-loading").hide();
-	}
-}
 
 function manipulateCanvasFunction(savedMap) {
 	dataURL = savedMap.toDataURL("image/jpg");
