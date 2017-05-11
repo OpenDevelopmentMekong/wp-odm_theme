@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: No title
+*/
+?>
+
 <?php get_header(); ?>
 
 <!-- //cookie -->
