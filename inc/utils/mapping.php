@@ -7,8 +7,8 @@ function display_baselayer_navigation($num=5, $cat='base-layers', $include_child
 	$get_all_baselayers = query_get_baselayer_posts();
 	$baselayer_posts = $selected_baselayer ? $selected_baselayer_obj : $get_all_baselayers;
 	if($baselayer_posts){
-		echo '<div class="baselayer-container box-shadow">';
-		echo '<ul class="baselayer-ul">';
+		echo '<div class="baselayer-container">';
+		echo '<ul class="baselayer-ul box-shadow">';
 		foreach ( $baselayer_posts as $baselayer ) :
 			setup_postdata( $baselayer ); ?>
 			<li class="baselayer" data-layer="<?php echo $baselayer->ID; ?>">
@@ -119,7 +119,7 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null){
 					echo '<ul class="categories layer-category">';
 						foreach ($layer_category as $cat) {
 									$category = get_term_by('slug', $cat, 'layer-category');
-									echo '<li class="cat-item cat-item-"'.$category->term_id.' id="post-"'.$category->term_id.'>';
+									echo '<li class="cat-item cat-item-'.$category->term_id.'" id="post-'.$category->term_id.'">';
 										echo'<a href="#">'.$category->name.'</a>';
 										echo "<ul class='cat-layers switch-layers cat-layer-items'>";
 											foreach ($layers as $id => $layer) {
@@ -406,7 +406,7 @@ function display_layer_information($layers){
 	   <?php
 	   foreach($layers as $individual_layer){
 			$get_post_content_by_id = null;
-		  $get_post_by_id = get_post($individual_layer["ID"]); 
+		  $get_post_by_id = get_post($individual_layer["ID"]);
 		  if ( (odm_language_manager()->get_current_language() !== "en") ){
 				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
 		  }else {
@@ -636,4 +636,112 @@ function get_layers_of_sub_category( $child_id, $filter_arr = null, $layer_taxon
 }
 /** END CATEGORY */
 
+function priting_map_setting(){ ?>
+	<div class="print-setting hide">
+		<h2><?php _e("Create Map", "odm");?> <i class="fa fa-times-circle" aria-hidden="true"></i></h2>
+		<form name="print-map" class="print-setting-form form-inline" action="javascript:void(0);">
+			<div class="form-group inline">
+				<label for="print-title"><?php _e("Title", "odm"); ?>: </label>
+				<input type="text" value="" class="form-control" id="print-title" />
+			</div>
+			<div class="form-group inline">
+				<label for="print-description"><?php _e("Description", "odm"); ?>: </label>
+				<textarea value="" class="form-control" id="print-description"></textarea>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" class="form-control" id="print-basemap" checked="checked" value="1" />
+				<label for="print-basemap"><?php _e("Basemap", "odm"); ?></label>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" class="form-control" id="print-layer" checked="checked" value="1" />
+				<label for="print-layer"><?php _e("Map layers", "odm"); ?></label>
+			</div>
+
+			<div class="form-group">
+				<input type="checkbox" class="form-control" id="print-north-direction" checked="checked" value="1" />
+				<label for="print-north-direction"><?php _e("North Direction", "odm"); ?></label>
+			</div>
+
+			<div class="form-group">
+				<input type="checkbox" class="form-control" id="print-tools" value="1" />
+				<label for="print-tools"><?php _e("Map tools", "odm"); ?></label>
+			</div>
+
+
+
+			<div class="form-group"><label for="print-legend"><?php _e("Legend", "odm"); ?>:</label>
+				<select name="print-legend" id="print-legend" class="form-control">
+					<option value="left"><?php _e("Left", "odm"); ?></option>
+					<option value="right"><?php _e("Right", "odm"); ?></option>
+				</select>
+			</div>
+
+			<div class="form-group"><label for="print-file-format"><?php _e("Format", "odm"); ?>:</label>
+				<select name="print-file-format" id="print-file-format" class="form-control">
+					<option value="image"><?php _e("Image (JPG)", "odm"); ?></option>
+				</select>
+			</div>
+
+			<div class="form-group"><label for="print-layout"><?php _e("Layout", "odm"); ?>:</label>
+				<select name="print-layout" id="print-layout"  class="form-control">
+					<option value="landscape"><?php _e("Landscape", "odm"); ?></option>
+					<option value="portrait"><?php _e("Portrait", "odm"); ?></option>
+				</select>
+			</div>
+
+			<div class="form-group"><label for="print-paper-size"><?php _e("Size", "odm"); ?>:</label>
+				<select name="print-paper-size" id="print-paper-size" class="form-control">
+					<option value="A4"><?php _e("A4", "odm"); ?></option>
+				</select>
+			</div>
+			<!--
+			<div class="form-group"><label for="print-scale"><?php _e("Scale", "odm"); ?>:</label>
+				<select name="print-scale" id="print-scale" class="form-control">
+					<option value="1:20,000,000"><?php _e("1:20,000,000", "odm"); ?></option>
+					<option value="1:10,000,000"><?php _e("1:10,000,000", "odm"); ?></option>
+				</select>
+			</div>--->
+
+			<!--
+			<div class="form-group"><label for="print-dpi"><?php _e("DPI", "odm"); ?>:</label>
+				<select name="print-dpi" id="print-dpi" class="form-control">
+					<option value="96"><?php _e("96", "odm"); ?></option>
+					<option value="150"><?php _e("150", "odm"); ?></option>
+					<option value="300"><?php _e("300", "odm"); ?></option>
+				</select>
+			</div>--->
+
+			<div class="form-group inline">
+				<input type="button" class="form-control" id="print-button" onclick="" value="<?php _e('Print', 'odm'); ?>" />
+				<img class="print-loading" src="<?php echo get_stylesheet_directory_uri() ?>/img/loading-black-bg.gif">
+			</div>
+		</form>
+
+    <div id="divtest"></div>
+	</div>
+	<?php //window.print();
+}
+
+function priting_map_footnote(){ ?>
+	<div class="priting_footer">
+		<p class="printing-description"></p>
+    <span id="icon-od-logo">
+			<svg class="svg-od-logo <?php echo odm_country_manager()->get_current_country(); ?>-logo"><use xlink:href="#icon-od-logo"></use></svg>
+		</span>
+		<span>
+			<?php bloginfo(); ?> | <?php the_permalink(); ?>
+		</span>
+		<span class="printing_date">
+			<?php
+			_e("Created date: ", "odm");
+			if (odm_language_manager()->get_current_language() == 'km') {
+					echo convert_date_to_kh_date(date('j.M.Y'));
+			} else {
+					echo date('j M Y');
+			}
+			?>
+		</span>
+	</div>
+	<?php
+}
 ?>
