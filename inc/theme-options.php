@@ -74,7 +74,7 @@ class Odm_Options
 
         add_settings_section(
          'odm_single_page_section',
-         __('Single page', 'odm'),
+         __('Single and archive pages', 'odm'),
          '',
          'odm_options'
         );
@@ -176,7 +176,7 @@ class Odm_Options
 
         add_settings_field(
          'odm_single_page_date',
-         __('Date shown on single page template', 'odm'),
+         __('Date shown on single and archive page templates', 'odm'),
          array($this, 'single_page_date_field'),
          'odm_options',
          'odm_single_page_section'
