@@ -1,4 +1,7 @@
-<?php get_header();?>
+<?php get_header();
+
+$options = get_option('odm_options');
+$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created"; ?>
 
 <div class="section-title main-title">
 
@@ -30,7 +33,7 @@
 				</div>
 			</div>
 		</div>
-		
+
     <div class="row">
       <div class="sixteen columns">
 				<?php
@@ -46,7 +49,8 @@
 						"show_thumbnail" => true,
 						"show_excerpt" => true,
 						"show_summary_translated_by_odc_team" => true,
-						"header_tag" => true
+						"header_tag" => true,
+						"order" => $date_to_show
   			),true);
 				if (should_close_row("list-2-cols",$index)): ?>
 					</div>
