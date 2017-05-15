@@ -700,7 +700,7 @@ function available_custom_post_types(){
 	 <?php
 		 endif;
 		 if (!empty($solr_search_result->categories)): ?>
-			 <i class="fa fa-tags"></i>
+			 <i class="fa fa-folder-o"></i>
 			 <span>
 				 <?php
 					 $categories = (array) $solr_search_result->categories;
