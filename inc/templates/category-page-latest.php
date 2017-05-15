@@ -65,6 +65,7 @@ $ckan_post_types_names = array(
               $post = current($topic_posts); ?>
               <div class="sixteen columns">
                 <div class="row">
+									<h3><?php _e('Main briefing page','odm'); ?></h3>
                   <?php
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
@@ -84,7 +85,7 @@ $ckan_post_types_names = array(
               $post = end($topic_posts);?>
               <div class="twelve columns">
                 <div class="row">
-
+									<h3><?php _e('Main briefing page','odm'); ?></h3>
                   <?php
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
