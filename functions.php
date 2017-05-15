@@ -178,6 +178,9 @@ function add_menu_icons_styles(){
 #adminmenu .menu-icon-tabular div.wp-menu-image:before {
   content: "\f509";
 }
+#adminmenu .menu-icon-search-pages div.wp-menu-image:before {
+  content: "\f179";
+}
 </style>
 
 <?php
