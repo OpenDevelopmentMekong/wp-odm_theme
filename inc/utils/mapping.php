@@ -663,11 +663,9 @@ function priting_map_setting(){ ?>
 			</div>
 
 			<div class="form-group">
-				<input type="checkbox" class="form-control" id="print-tools" value="1" />
+				<input type="checkbox" class="form-control" id="print-tools" checked="checked" value="1" />
 				<label for="print-tools"><?php _e("Map tools", "odm"); ?></label>
 			</div>
-
-
 
 			<div class="form-group"><label for="print-legend"><?php _e("Legend", "odm"); ?>:</label>
 				<select name="print-legend" id="print-legend" class="form-control">

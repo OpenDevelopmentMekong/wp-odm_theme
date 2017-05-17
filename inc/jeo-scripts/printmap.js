@@ -47,9 +47,37 @@ var original_layers_height;
 				$("section#map").wrapInner( "<div class='map-wraper print-preview-overlay'></div>" );
 				$(".print-preview .interactive-map-layers").css("max-height", $(".print-preview-map").height() -150);
 				$(".baselayer-container").addClass('print-preview-basemap');
-				$(".print-setting").show();
 				$(".priting_footer").show();
 				$(".print-preview-map").prepend("<h1 class='map-title'></h1>")
+				$(".print-setting").show(function(){
+					$(".baselayer-ul").hide();
+					$(".category-map-layers").hide();
+					$(".leaflet-control-container").hide();
+
+					if($("#print-basemap").is(':checked')){
+						$(".baselayer-ul").show();
+					}
+
+					if($("#print-layer").is(':checked')){
+						$(".category-map-layers").show();
+					}
+
+					if($("#print-tools").is(':checked')){
+						$(".leaflet-control-container").show();
+					}
+
+					if(!$("#print-north-direction").is(':checked')){
+						$(".print-preview-basemap").addClass("no-north-direction");
+					}
+					if($("#print-legend").val()== "right"){
+						$(".map-legend-container").css("left", "");
+						$(".map-legend-container").css("right", 0);
+					}else{
+						$(".map-legend-container").css("right", "");
+						$(".map-legend-container").css("left", 0);
+					}
+
+				});
 			}
 
 			this._map.invalidateSize(true);
@@ -69,7 +97,7 @@ var original_layers_height;
 		});
 
 		$("#print-basemap").change(function(){
-			$(".baselayer-container").fadeToggle();
+			$(".baselayer-ul").fadeToggle();
 		});
 
 		$("#print-layer").change(function(){
@@ -82,10 +110,12 @@ var original_layers_height;
 
 		$("#print-legend").change(function(){
 			if($("#print-legend").val()== "left"){
+				$(".map-legend-container").css("right", "");
 				$(".map-legend-container").css("left", 0);
 			}
 
 			if($("#print-legend").val()== "right"){
+				$(".map-legend-container").css("left", "");
 				$(".map-legend-container").css("right", 0);
 				$(".map-legend-container").css("bottom", $(".priting_footer").height());
 			}
@@ -131,6 +161,7 @@ var original_layers_height;
 				$(".printing-description").text("");
 				$(".baselayer-container").show();
 				$(".category-map-layers").show();
+				$(".map-legend-container").css("left", 0);
 				$(".leaflet-control-container").show();
 			}
 		});
