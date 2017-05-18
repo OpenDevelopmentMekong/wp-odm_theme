@@ -110,14 +110,20 @@ var original_layers_height;
 
 		$("#print-legend").change(function(){
 			if($("#print-legend").val()== "left"){
+				$(".map-legend-container").fadeIn();
 				$(".map-legend-container").css("right", "");
 				$(".map-legend-container").css("left", 0);
 			}
 
 			if($("#print-legend").val()== "right"){
+				$(".map-legend-container").fadeIn();
 				$(".map-legend-container").css("left", "");
 				$(".map-legend-container").css("right", 0);
 				$(".map-legend-container").css("bottom", $(".priting_footer").height());
+			}
+
+			if($("#print-legend").val()== "none"){
+				$(".map-legend-container").fadeOut();
 			}
 		});
 

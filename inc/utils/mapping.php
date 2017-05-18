@@ -671,6 +671,7 @@ function priting_map_setting(){ ?>
 				<select name="print-legend" id="print-legend" class="form-control">
 					<option value="left"><?php _e("Left", "odm"); ?></option>
 					<option value="right"><?php _e("Right", "odm"); ?></option>
+					<option value="none"><?php _e("None", "odm"); ?></option>
 				</select>
 			</div>
 
