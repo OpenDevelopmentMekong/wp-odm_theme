@@ -182,6 +182,10 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			</select>
 		</p>
 		<p>
+			<label for="<?php echo $this->get_field_id( 'override_order' ); ?>"><?php _e( 'Specific list of posts (optional):' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('override_order');?>" name="<?php echo $this->get_field_name('override_order');?>" type="text" value="<?php echo $override_order;?>" placeholder="Enter comma-separated list of slugs">
+		</p>
+		<p>
 			<label for="<?php echo $this->get_field_id( 'layout_type' ); ?>"><?php _e( 'Select layout:' ); ?></label>
 			<select class='widefat layout_type' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
 				<?php foreach ( $this->templates  as $key => $value ): ?>
@@ -217,10 +221,6 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 					<option <?php if ($order == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $key ?></option>
 				<?php endforeach; ?>
 			</select>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'override_order' ); ?>"><?php _e( 'Override order (enter comma-separated list of slugs):' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('override_order');?>" name="<?php echo $this->get_field_name('override_order');?>" type="text" value="<?php echo $override_order;?>">
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'more_location' ); ?>"><?php _e( "Select location of 'More...':" ); ?></label>

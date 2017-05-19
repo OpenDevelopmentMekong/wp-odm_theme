@@ -14,7 +14,7 @@ function get_post_type_icon_class($type){
 	}elseif ($type == "map-layer"){
 		$icon = "fa fa-map-marker";
 	}elseif ($type == "news-article"){
-		$icon = "fa fa-newspaper-o";
+		$icon = "fa fa-quote-left";
 	}elseif ($type == "topic"){
 		$icon = "fa fa-list";
 	}elseif ($type == "profiles"){
@@ -700,7 +700,7 @@ function available_custom_post_types(){
 	 <?php
 		 endif;
 		 if (!empty($solr_search_result->categories)): ?>
-			 <i class="fa fa-tags"></i>
+			 <i class="fa fa-folder-o"></i>
 			 <span>
 				 <?php
 					 $categories = (array) $solr_search_result->categories;
