@@ -70,15 +70,10 @@
                 <li class="widget">
                   <h2 class="widget-title"><?php _e("More on the Land Portal library","odm") ?></h2>
                   <?php
-                  $current_country = odm_country_manager()->get_current_country();
-                  $country_codes = odm_country_manager()->get_country_codes()[$current_country];
-                  if ($current_country == "mekong"):
-                    $filter = 'VALUES ?country  { <http://data.landportal.info/geo/KHM> <http://data.landportal.info/geo/LAO> <http://data.landportal.info/geo/MMR> <http://data.landportal.info/geo/THA> <http://data.landportal.info/geo/VNM> }';
-                  else:
-                    $filter = 'VALUES ?country  { <http://data.landportal.info/geo/' . strtoupper($country_codes["iso3"]) . '>}';
-                  endif;
+                  $filter = odm_land_portal_manager()->get_filter_values();
+									$more_url = odm_land_portal_manager()->get_more_url();
                   $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a dct:BibliographicResource ; dct:title ?llrLabel ; dct:spatial ?country . ' . $filter .' ?country rdfs:label ?countryLabel OPTIONAL { ?llr dct:issued ?date . } } ORDER BY DESC(?date) LIMIT 10';
-                  echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "']");
+                  echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "' more_url='" . $more_url ."']");
                   ?>
                 </li>
               <?php endif; ?>
