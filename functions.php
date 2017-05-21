@@ -211,6 +211,7 @@ function odm_jeo_scripts()
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
+
   if (is_page( array( 'map-explorer', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
