@@ -38,7 +38,7 @@ class Odm_Land_Portal_Manager {
 
   function get_more_url(){
 
-    return '/more-on-the-land-portal/';
+    return '/more-on-the-land-portal-library/';
 
   }
 
