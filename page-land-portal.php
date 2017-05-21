@@ -18,7 +18,7 @@ Template Name: More on the land portal
       else:
         $filter = 'VALUES ?country  { <http://data.landportal.info/geo/' . strtoupper($country_codes["iso3"]) . '>}';
       endif;
-      $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a dct:BibliographicResource ; dct:title ?llrLabel ; dct:spatial ?country . ' . $filter .' ?country rdfs:label ?countryLabel OPTIONAL { ?llr dct:issued ?date . } } ORDER BY DESC(?date) LIMIT 10';
+      $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a dct:BibliographicResource ; dct:title ?llrLabel ; dct:spatial ?country . ' . $filter .' ?country rdfs:label ?countryLabel OPTIONAL { ?llr dct:issued ?date . } } ORDER BY DESC(?date)';
       echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "']");
       ?>
     </li>
