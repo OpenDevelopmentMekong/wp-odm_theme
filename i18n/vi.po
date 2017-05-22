@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-05-11 16:59+0700\n"
-"PO-Revision-Date: 2017-05-11 16:59+0700\n"
+"POT-Creation-Date: 2017-05-22 15:44+0700\n"
+"PO-Revision-Date: 2017-05-22 15:44+0700\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/"
 "teams/27158/vi/)\n"
@@ -248,7 +248,7 @@ msgstr "Sao chép mã nhúng"
 msgid "Share"
 msgstr "Chia sẻ "
 
-#: functions.php:214 inc/utils/mapping.php:715
+#: functions.php:214 inc/utils/mapping.php:702
 msgid "Print"
 msgstr "In "
 
@@ -714,7 +714,7 @@ msgstr ""
 msgid "Interactive Map"
 msgstr "Bản đồ tương tác"
 
-#: inc/interactive-map.php:90 inc/utils/mapping.php:103
+#: inc/interactive-map.php:90 inc/utils/mapping.php:104
 msgid "Map Layers"
 msgstr "Các lớp bản đồ"
 
@@ -1599,7 +1599,7 @@ msgstr ""
 
 #: inc/theme-options.php:221 inc/theme-options.php:224
 #: inc/theme-options.php:231 inc/theme-options.php:234
-#: inc/theme-options.php:296
+#: inc/theme-options.php:296 inc/utils/mapping.php:675
 msgid "None"
 msgstr "Không"
 
@@ -1738,121 +1738,99 @@ msgstr " "
 msgid "Error locating %s for inclusion"
 msgstr "Lỗi định vị  %s"
 
-#: inc/utils/mapping.php:144
+#: inc/utils/mapping.php:145
 msgid "Show news on map"
 msgstr ""
 
-#: inc/utils/mapping.php:391
+#: inc/utils/mapping.php:392
 msgid "LEGEND"
 msgstr "CHÚ GIẢI"
 
-#: inc/utils/mapping.php:641
+#: inc/utils/mapping.php:642
 #, fuzzy
 #| msgid "Interactive Map"
 msgid "Create Map"
 msgstr "Bản đồ tương tác"
 
-#: inc/utils/mapping.php:644
+#: inc/utils/mapping.php:645
 #, fuzzy
 #| msgid "Title:"
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: inc/utils/mapping.php:648
+#: inc/utils/mapping.php:649
 msgid "Description"
 msgstr ""
 
-#: inc/utils/mapping.php:653
+#: inc/utils/mapping.php:654
 msgid "Basemap"
 msgstr ""
 
-#: inc/utils/mapping.php:657
+#: inc/utils/mapping.php:658
 #, fuzzy
 #| msgid "Map Layers"
 msgid "Map layers"
 msgstr "Các lớp bản đồ"
 
-#: inc/utils/mapping.php:662
+#: inc/utils/mapping.php:663
 msgid "North Direction"
 msgstr ""
 
-#: inc/utils/mapping.php:667
+#: inc/utils/mapping.php:668
 msgid "Map tools"
 msgstr ""
 
-#: inc/utils/mapping.php:672
+#: inc/utils/mapping.php:671
 #, fuzzy
 #| msgid "Layer legend"
 msgid "Legend"
 msgstr "Chú giải lớp bản dồ"
 
-#: inc/utils/mapping.php:674
+#: inc/utils/mapping.php:673
 msgid "Left"
 msgstr ""
 
-#: inc/utils/mapping.php:675
+#: inc/utils/mapping.php:674
 msgid "Right"
 msgstr ""
 
-#: inc/utils/mapping.php:679
+#: inc/utils/mapping.php:680
+#, fuzzy
+#| msgid "Showing all results"
+msgid "Show all legends"
+msgstr "Hiển thị tất cả kết quả tìm kiếm"
+
+#: inc/utils/mapping.php:682
 msgid "Format"
 msgstr ""
 
-#: inc/utils/mapping.php:681
+#: inc/utils/mapping.php:684
 msgid "Image (JPG)"
 msgstr ""
 
-#: inc/utils/mapping.php:685
+#: inc/utils/mapping.php:688
 msgid "Layout"
 msgstr ""
 
-#: inc/utils/mapping.php:687
+#: inc/utils/mapping.php:690
 #, fuzzy
 #| msgid "Land"
 msgid "Landscape"
 msgstr "Đất đai"
 
-#: inc/utils/mapping.php:688
+#: inc/utils/mapping.php:691
 msgid "Portrait"
 msgstr ""
 
-#: inc/utils/mapping.php:692
+#: inc/utils/mapping.php:695
 msgid "Size"
 msgstr ""
 
-#: inc/utils/mapping.php:694
+#: inc/utils/mapping.php:697
 msgid "A4"
 msgstr ""
 
-#: inc/utils/mapping.php:698
-msgid "Scale"
-msgstr ""
-
-#: inc/utils/mapping.php:700
-msgid "1:20,000,000"
-msgstr ""
-
-#: inc/utils/mapping.php:701
-msgid "1:10,000,000"
-msgstr ""
-
-#: inc/utils/mapping.php:706
-msgid "DPI"
-msgstr ""
-
-#: inc/utils/mapping.php:708
-msgid "96"
-msgstr ""
-
-#: inc/utils/mapping.php:709
-msgid "150"
-msgstr ""
-
-#: inc/utils/mapping.php:710
-msgid "300"
-msgstr ""
-
-#: inc/utils/mapping.php:736
+#: inc/utils/mapping.php:721
 msgid "Created date: "
 msgstr ""
 

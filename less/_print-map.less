@@ -29,6 +29,10 @@
 	.jeo-printmap{
 		display: none;
 	}
+
+	.widget_headline{
+		text-align: left;
+	}
 }
 
 .print-preview {
@@ -38,18 +42,12 @@
 		height: 100%;
 	}
 
-	.print-preview-basemap::before {
-    content: url(../../img/north-direction.png);
+	.print-preview-basemap .north-direction {
     width: 14px;
     height: 32px;
     float: left;
     margin-top: 1px;
 		margin-right: 2px;
-	}
-	.print-preview-basemap.no-north-direction::before {
-    content: "";
-		width: 0;
-		margin-right: 0;
 	}
 	.map-container {
 		position: absolute;
@@ -69,6 +67,10 @@
 		width: auto;
 		text-shadow: 2px 3px 1px #fff;
 		color: #000;
+
+		.adding-map-title{
+			text-align: left;
+		}
 	}
 
 	.category-map-layers{
@@ -160,11 +162,6 @@
 	background: #fff;
 	border-top: 1px solid #888;
 
-	.svg-od-logo {
-		width: 20px;
-		height: 20px;
-		vertical-align: top;
-	}
 	.printing-description{
 		display: none;
 		margin-bottom: 10px;
@@ -174,10 +171,19 @@
 		font-size: 13px;
 		padding-bottom: 5px;
 		overflow: hidden;
+		text-align: left;
+	}
+	.printing-od-logo {
+		float: left;
+		margin-right: 3px;
+	}
+	.printing-od-info{
+		text-align: left;
+		float: left;
 	}
 	.printing_date{
-		text-align: right;
 		float: right;
+		text-align: right;
 	}
 	.print-button{
 		cursor: pointer;
