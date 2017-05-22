@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
 "POT-Creation-Date: 2017-05-22 15:42+0700\n"
-"PO-Revision-Date: 2017-05-22 15:47+0700\n"
+"PO-Revision-Date: 2017-05-22 16:18+0700\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -28,8 +28,8 @@ msgstr "ព័ត៌មានពុំអាចរកបាន!"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't have an information page on this topic that the old location had. To see what information "
-"does exist for this new location you've chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, etc..) from the navigation menu above this message ."
+"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't have an information page on this topic that the old location had. To see what information does exist for this new location you've chosen simply click any of the navigation main menu items (News, Topics, Maps, "
+"Data, etc..) from the navigation menu above this message ."
 msgstr ""
 
 #: 404.php:22
@@ -154,8 +154,7 @@ msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វ
 msgid "Page"
 msgstr "ទំព័រ"
 
-#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:89 inc/widgets/odm-contents-same-category-widget.php:125 inc/widgets/odm-custom-posts-widget.php:81
-#: inc/widgets/odm-custom-posts-widget.php:111
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:89 inc/widgets/odm-contents-same-category-widget.php:125 inc/widgets/odm-custom-posts-widget.php:81 inc/widgets/odm-custom-posts-widget.php:111
 msgid "More..."
 msgstr "បន្ថែម..."
 
@@ -504,25 +503,20 @@ msgstr "ការអភិវឌ្ឍ និងការគ្រប់គ្�
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use "
-"principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation "
-"and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private "
-"non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or "
-"reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or "
-"appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} "
+"website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge "
+"media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with "
+"respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
 "Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against "
-"individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its "
+"use."
 msgstr ""
-"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​ {​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​}​ ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 3.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​"
-"ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ​នៅ​លើ​គេហទំព័រ​របស់​ {​អូ​ឌី​ស៊ី​}​ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​"
-"ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ ។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​មើល​ "
-"បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ {​អូ​ឌី​ស៊ី​}​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ {​អូ​ឌី​ស៊ី​}​ សូម​មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ "
-"ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
+"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​ {​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​}​ ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 3.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ​នៅ​លើ​គេហទំព័រ​របស់​ {​អូ​ឌី​ស៊ី​}​ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​"
+"យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ ។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​មើល​ បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ {​អូ​"
+"ឌី​ស៊ី​}​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ {​អូ​ឌី​ស៊ី​}​ សូម​មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
 "​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ ជាមួយនឹង​ក្រុមការងារ​យើងខ្ញុំ​។​ \n"
 "​សូម​ ទំនាក់ទំនង​មក​កាន់​យើងខ្ញុំ​ ដើម្បី​ចូលរួម​ចំណែក​ធ្វើ​ឱ្យ​ភាព​សុក្រឹត​របស់​គេហទំព័​នេះ​ កាន់តែ​ល្អ​ប្រសើរ​ឡើង​។​\n"
-"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​"
-"ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
+"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
 
 #: i18n/extra-strings.php:57
 msgid "Khmer PDF"
@@ -1680,7 +1674,7 @@ msgstr "ចំណងជើង"
 
 #: inc/utils/mapping.php:649
 msgid "Description"
-msgstr "ការពិព័ណ៌នា"
+msgstr "ពិព័ណ៌នា"
 
 #: inc/utils/mapping.php:654
 msgid "Basemap"

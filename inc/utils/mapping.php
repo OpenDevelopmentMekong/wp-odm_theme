@@ -695,7 +695,7 @@ function priting_map_setting(){ ?>
 				</select>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group print-all-legend">
 				<input type="checkbox" class="form-control" id="print-all-legend" value="1" />
 				<label for="print-all-legend"><?php _e("Show all legends", "odm"); ?></label>
 			</div>
