@@ -50,7 +50,7 @@ class Odm_Country_Manager {
   }
 
   function get_country_codes_iso2_list(){
-    return array('kh','th','lo','mm','vn');
+    return array('kh','th','la','mm','vn');
   }
 
   function get_country_codes(){
