@@ -68,7 +68,7 @@ class Odm_Country_Manager {
         'iso3' =>'tha'
       ),
       'laos' => array(
-        'iso2' =>'lo',
+        'iso2' =>'la',
         'iso3' =>'lao'
       ),
       'myanmar' => array(

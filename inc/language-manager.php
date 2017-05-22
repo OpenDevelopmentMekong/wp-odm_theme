@@ -15,7 +15,7 @@ class Odm_Language_Manager {
     "vi" => "Vietnamese",
     "th" => "Thai",
     "my" => "Burmese",
-    "la" => "Lao"
+    "lo" => "Lao"
   );
 
   var $languages_by_theme = array(
@@ -24,7 +24,7 @@ class Odm_Language_Manager {
     "vietnam" => "vi",
     "thailand" => "th",
     "myanmar" => "my",
-    "laos" => "la"
+    "laos" => "lo"
   );
 
 	function __construct() {
