@@ -70,9 +70,8 @@ var original_layers_height;
 						$(".print-preview-basemap .north-direction").fadeIn();
 					}
 
-					$("#print-all-legend").parent(".form-group").hide();
-					if ($(".map-legend-ul li").length){
-						$("#print-all-legend").parent().fadeIn();
+					if ($(".map-legend-ul li").length > 2){
+						$("#print-all-legend").parent(".form-group").fadeIn();
 						if($("#print-all-legend").is(':checked')){
 							$(".map-legend-container").css("max-height", "100%");
 							$(".map-legend-container .map-legend").css("max-height", "100%");
@@ -85,20 +84,18 @@ var original_layers_height;
 					if($("#print-legend").val()== "right"){
 						$(".map-legend-container").css("left", "");
 						$(".map-legend-container").css("right", 0);
-						if ($(".map-legend-ul li").length){
+						if ($(".map-legend-ul li").length > 2){
 							$(".map-legend-container").fadeIn();
 						}
 					}else if($("#print-legend").val()== "left"){
 						$(".map-legend-container").css("right", "");
 						$(".map-legend-container").css("left", 0);
-						if ($(".map-legend-ul li").length){
+						if ($(".map-legend-ul li").length > 2){
 							$(".map-legend-container").fadeIn();
 						}
 					}else{
 						$(".map-legend-container").fadeOut();
 					}
-
-					$(".map-legend-container").css("bottom", $(".priting_footer").height());
 
 					if($("#print-title").val() !=""){
 						$('.map-title .adding-map-title').text($("#print-title").val());
@@ -118,22 +115,12 @@ var original_layers_height;
 	});
 
  	$("document").ready(function(){
-			$('#print-button').click(function(event) {
-			//$(document).on('click', "#print-button", function (event) {
-    		event.preventDefault();
-				$(".print-loading").show();
-				html2canvas($(".print-preview-map"), {
-							flashcanvas: "/wp-content/themes/wp-odm_theme/inc/html2canvas/flashcanvas.min.js",
-              logging: true,
-              profile: false,
-							proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
-              useCORS: true,
-							svgRendering:true,
-							useOverflow:true,
-							onrendered: function(canvas) {
-	               manipulateCanvasFunction(canvas);
-	            }
-          });
+		$(".cat-layers").click(function(){
+			if($(this).children('li.active').length > 1){
+				$("#print-all-legend").parent(".form-group").fadeIn();
+			}else {
+				$("#print-all-legend").parent(".form-group").fadeOut();
+			}
 		});
 
 		$("#print-basemap").change(function(){
@@ -152,13 +139,13 @@ var original_layers_height;
 			if($("#print-legend").val()== "left"){
 				$(".map-legend-container").css("right", "");
 				$(".map-legend-container").css("left", 0);
-				if ($(".map-legend-ul li").length){
+				if ($(".map-legend-ul li").length > 2){
 					$(".map-legend-container").fadeIn();
 				}
 			}else if($("#print-legend").val()== "right"){
 				$(".map-legend-container").css("left", "");
 				$(".map-legend-container").css("right", 0);
-				if ($(".map-legend-ul li").length){
+				if ($(".map-legend-ul li").length > 2){
 					$(".map-legend-container").fadeIn();
 				}
 			}else{
@@ -170,7 +157,7 @@ var original_layers_height;
 		$("#print-all-legend").change(function(){
 			if($("#print-all-legend").is(':checked')){
 				$(".map-legend-container").css("max-height", "100%");
-					$(".map-legend-container .map-legend").css("max-height", "100%");
+				$(".map-legend-container .map-legend").css("max-height", "100%");
 			}else {
 				$(".map-legend-container").css("max-height", "350px");
 				$(".map-legend-container .map-legend").css("max-height", "25vh");
@@ -218,7 +205,7 @@ var original_layers_height;
 				$(".printing-description").text("");
 				$(".baselayer-container").show();
 				$(".category-map-layers").show();
-				if ($(".map-legend-ul li").length){
+				if ($(".map-legend-ul li").length > 2){
 					$(".map-legend-container").fadeIn();
 				}
 				$(".map-legend-container").css("left", 0);
@@ -226,7 +213,41 @@ var original_layers_height;
 			}
 		});
 
+		});
+
+
+		//$('#print-button').click(function(event) {
+		$(document).on('click', "#print-button", function (event) {
+  		event.preventDefault();
+			$(".print-loading").show();
+			var img_width = 1024;
+			var img_height = 640;
+			if($("#print-layout").val() == "portrait"){
+				img_width = 640;
+				img_height = 1024;
+			}
+
+			$(".map-wraper").prepend("<div class='clone-preview-container'></div>");
+			$(".print-preview-map").clone().css({"width":img_width+"px", "height":img_height+"px"}).appendTo('.clone-preview-container').addClass('clone-interactive-map');
+			html2canvas($(".clone-interactive-map"), {
+					flashcanvas: "/wp-content/themes/wp-odm_theme/inc/html2canvas/flashcanvas.min.js",
+          logging: false,
+          profile: false,
+					proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
+          useCORS: true,
+					svgRendering:true,
+					useOverflow:true,
+					onrendered: function(canvas) {
+						/*var canvas = document.createElement("canvas");
+						var ctx = extra_canvas.getContext('2d');
+						ctx.drawImage(canvas, 0, 0, img_width, img_height, 0, 0, img_width, img_height);*/
+
+	 					manipulateCanvasFunction(canvas, img_width, img_height);
+          }
+      });
 	});
+
+
 	/*
 	$(document).keyup(function(e) {
 	  if (e.keyCode == 27){
@@ -237,14 +258,11 @@ var original_layers_height;
 
 })(jQuery);
 
-function manipulateCanvasFunction(savedMap) {
-	dataURL = savedMap.toDataURL("image/jpg", 1.0);
-
-	var a = document.createElement('a');
-	a.href = dataURL;
-	a.download = "downloaded_map.jpg";
-	document.getElementsByClassName("print-setting")[0].appendChild(a);
-	//window.open(dataURL);
-	a.click();
+function manipulateCanvasFunction(savedMap, width, height) {
+	 width = typeof width !== 'undefined' ? width : null;
+	 height = typeof height !== 'undefined' ? height : null;
+	Canvas2Image.saveAsPNG(savedMap, width, height, "downloaded_map");
+	window.open(savedMap.toDataURL("image/png"));
+	$(".clone-preview-container").remove();
 	$(".print-loading").hide();
 }

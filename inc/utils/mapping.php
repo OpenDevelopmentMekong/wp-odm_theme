@@ -670,7 +670,7 @@ function priting_map_setting(){ ?>
 
 			<div class="form-group"><label for="print-file-format"><?php _e("Format", "odm"); ?>:</label>
 				<select name="print-file-format" id="print-file-format" class="form-control">
-					<option value="image"><?php _e("Image (JPG)", "odm"); ?></option>
+					<option value="image"><?php _e("Image (PNG)", "odm"); ?></option>
 				</select>
 			</div>
 
