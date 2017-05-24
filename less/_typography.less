@@ -1,3 +1,5 @@
+@import url(_open_sans.less);
+@import url(_droid_sans.less);
 
 
 body {
@@ -40,7 +42,7 @@ p {
 	font-weight: normal;
 }
 
-a{
+a, a:visited{
 	text-decoration: none;
 	font-family: @primary-font;
 	color: @mekong-bright;
@@ -48,13 +50,12 @@ a{
 	font-weight: normal;
 }
 
-b{
-	font-weight: bold;
+a:hover, a:focus{
+	color: @mekong-dark;
 }
 
-a:visited {
-	text-decoration: none;
-	color: @mekong-bright;
+b{
+	font-weight: bold;
 }
 
 a:hover,

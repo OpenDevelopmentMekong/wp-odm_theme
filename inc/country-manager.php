@@ -49,6 +49,10 @@ class Odm_Country_Manager {
     ];
   }
 
+  function get_country_codes_iso2_list(){
+    return array('kh','th','la','mm','vn');
+  }
+
   function get_country_codes(){
     return [
       'mekong' => array(
@@ -64,7 +68,7 @@ class Odm_Country_Manager {
         'iso3' =>'tha'
       ),
       'laos' => array(
-        'iso2' =>'lo',
+        'iso2' =>'la',
         'iso3' =>'lao'
       ),
       'myanmar' => array(

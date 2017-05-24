@@ -3,7 +3,7 @@
 
 @import "_country-mixin.less";
 
-@import url('http://mmwebfonts.comquas.com/fonts/?font=myanmar3');
+@import url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3');
 
 .my {
   font-family: "Open Sans","Helvetica","Arial", 'Myanmar3', sans-serif;
@@ -27,9 +27,6 @@ h1, h2, h3, h4, h5, h6, p, a, li, td, th, div, input {
 @myanmar-bgcolor: #59396C;
 @myanmar-menu-color: #704C98;
 
-#myanmar-color, .myanmar-color{
-    color: @myanmar-text-color;  /* #66cc00*/
-}
 #myanmar-bgcolor, .myanmar-bgcolor{
     background: @myanmar-bright !important
 }
@@ -117,10 +114,13 @@ h1, h2, h3, h4, h5, h6, p, a, li, td, th, div, input {
  */
 .navigation .current{
 	background: @myanmar-bright;
-	border: 1px solid @myanmar-bgcolor;
-  color: @myanmar-bgcolor;
+	border: 1px solid @myanmar-bright;
 }
 
 .div-button {
   background-color: @myanmar-bright !important;
+}
+
+.ui-widget-content a, .result_links h4 {
+  color: @myanmar-text-color !important;
 }

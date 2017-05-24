@@ -1,5 +1,35 @@
 <?php
 
+function get_post_type_icon_class($type){
+
+	$icon = "fa fa-database";
+	if ($type == "dataset"){
+		$icon = "fa fa-database";
+	}elseif ($type == "library_record"){
+		$icon = "fa fa-book";
+	}elseif ($type == "laws_record"){
+		$icon = "fa fa-gavel";
+	}elseif ($type == "agreement"){
+		$icon = "fa fa-handshake-o";
+	}elseif ($type == "map-layer"){
+		$icon = "fa fa-map-marker";
+	}elseif ($type == "news-article"){
+		$icon = "fa fa-quote-left";
+	}elseif ($type == "topic"){
+		$icon = "fa fa-list";
+	}elseif ($type == "profiles"){
+		$icon = "fa fa-briefcase";
+	}elseif ($type == "story"){
+		$icon = "fa fa-lightbulb-o";
+	}elseif ($type == "announcement"){
+		$icon = "fa fa-bullhorn";
+	}elseif ($type == "site-update"){
+		$icon = "fa fa-flag";
+	}
+
+	return $icon;
+}
+
 function get_post_or_page_id_by_title($title_str, $post_type = 'topic')
 {
 		global $wpdb;
@@ -367,6 +397,8 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 			$get_the_excerpt = $post->post_content;
 		endif;
 
+		$get_the_excerpt = apply_filters('translate_text', $get_the_excerpt, odm_language_manager()->get_current_language());
+
 		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
 
 		$excerpt_string = implode(' ', $excerpt);
@@ -375,7 +407,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string.' ...';
 		if ($read_more != '') {
-			 $color_name = strtolower(str_replace('Open Development ', '', get_bloginfo('name'))).'-color';
+			 $color_name = odm_country_manager()->get_current_country().'-color';
 			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
 		}
 
@@ -385,10 +417,9 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
  	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
  			$translated_term =  $site_language."-translated";
- 			$org_name = ucfirst(get_bloginfo('name'));
- 			$team_name = implode('', array_map(function($v) { return $v[0]; }, explode(' ', $org_name)));
+			$team_name = "OD". ucfirst(substr(odm_country_manager()->get_current_country(), 0, 1));
  			if (odm_country_manager()->get_current_country() == "mekong"):
- 				$team_name = substr($team_name, 0, -1). " ".ucfirst(odm_country_manager()->get_current_country());
+ 				$team_name = "OD". " ".ucfirst(odm_country_manager()->get_current_country());
  			endif;
  	    $terms = get_the_terms($postID, $taxonomy);
  	    if (!is_wp_error( $terms ) && !empty($terms)) {
@@ -588,6 +619,7 @@ function available_custom_post_types(){
 
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
+	 $news_source_info = null;
 	 if (function_exists('get_post_meta')) :
 		 $get_author = get_post_meta($postID, 'author', true);
 		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
@@ -625,6 +657,65 @@ function available_custom_post_types(){
      echo '<p>'.$news_source_info.'</p>';
    endif;
 
+ }
+
+ function odm_echo_solr_meta($solr_search_result){
+
+	 ?>
+
+	 <div class="data_meta_wrapper sixteen columns">
+	 <!-- Language -->
+	 <?php if (!empty($solr_search_result->odm_language)): ?>
+		 <div class="data_languages data_meta">
+			 <span>
+				 <?php
+				 foreach ($solr_search_result->odm_language as $lang):
+					 $path_to_flag = odm_language_manager()->get_path_to_flag_image($lang);
+					 if (!empty($path_to_flag)): ?>
+					 <img class="lang_flag" alt="<?php echo $lang ?>" src="<?php echo $path_to_flag; ?>"></img>
+				 <?php
+					 endif;
+				 endforeach; ?>
+			 </span>
+		 </div>
+	 <?php endif; ?>
+	 <!-- Country -->
+	 <?php if (!empty($solr_search_result->odm_spatial_range)): ?>
+		 <div class="country_indicator data_meta">
+			 <i class="fa fa-globe"></i>
+			 <span>
+				 <?php
+					 $countries = (array) $solr_search_result->odm_spatial_range;
+					 foreach ($countries as $country_code):
+						 $country_name = odm_country_manager()->get_country_name_by_country_code($country_code);
+						 if (!empty($country_name)):
+							 _e($country_name, 'odm');
+							 if ($country_code !== end($countries)):
+								 echo ', ';
+							 endif;
+						 endif;
+					 endforeach; ?>
+			 </span>
+		 </div>
+	 <?php
+		 endif;
+		 if (!empty($solr_search_result->categories)): ?>
+			 <i class="fa fa-folder-o"></i>
+			 <span>
+				 <?php
+					 $categories = (array) $solr_search_result->categories;
+					 foreach ($categories as $category):
+						 _e($category, 'odm') ;
+						 if ($category !== end($categories)):
+							 echo ", ";
+						 endif;
+					 endforeach;?>
+			 </span>
+	 <?php
+ 		endif; ?>
+		</div>
+
+	<?php
  }
 
  ?>

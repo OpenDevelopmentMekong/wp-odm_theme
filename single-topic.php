@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
-<?php if (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post();
+	$options = get_option('odm_options');
+  $date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created";
+  ?>
 
   <article id="content" class="single-post">
 
@@ -8,7 +11,7 @@
         <header class="row">
           <div class="twelve columns post-title">
             <h1><?php the_title(); ?></h1>
-            <?php echo_post_meta(get_post()); ?>
+            <?php echo_post_meta(get_post(),array('date','categories','tags'),$date_to_show); ?>
           </div>
           <div class="four columns">
             <div class="widget share-widget">
@@ -67,15 +70,10 @@
                 <li class="widget">
                   <h2 class="widget-title"><?php _e("More on the Land Portal library","odm") ?></h2>
                   <?php
-                  $current_country = odm_country_manager()->get_current_country();
-                  $country_codes = odm_country_manager()->get_country_codes()[$current_country];
-                  if ($current_country == "mekong"):
-                    $filter = '?iso3 = "KHM" || ?iso3 = "LAO" || ?iso3 = "MMR" || ?iso3 = "THA" || ?iso3 = "VNM"';
-                  else:
-                    $filter = '?iso3 = "' . strtoupper($country_codes["iso3"]) . '"';
-                  endif;
-                  $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a bibo:Document ; dc:spatial ?country ; dc:title ?llrLabel . ?country dc:identifier ?iso3 ; rdfschema:label ?countryLabel FILTER ( ' . $filter . ') } ORDER BY ?llr';
-                  echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "']");
+                  $filter = odm_land_portal_manager()->get_filter_values();
+									$more_url = odm_land_portal_manager()->get_more_url();
+                  $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a dct:BibliographicResource ; dct:title ?llrLabel ; dct:spatial ?country . ' . $filter .' ?country rdfs:label ?countryLabel OPTIONAL { ?llr dct:issued ?date . } } ORDER BY DESC(?date) LIMIT 10';
+                  echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "' more_url='" . $more_url ."']");
                   ?>
                 </li>
               <?php endif; ?>
