@@ -680,7 +680,7 @@ function available_custom_post_types(){
 		 </div>
 	 <?php endif; ?>
 	 <!-- Country -->
-	 <?php if (!empty($solr_search_result->odm_spatial_range)): ?>
+	 <?php if (odm_country_manager()->get_current_country() == "mekong" && !empty($solr_search_result->odm_spatial_range)): ?>
 		 <div class="country_indicator data_meta">
 			 <i class="fa fa-globe"></i>
 			 <span>
