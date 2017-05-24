@@ -37,6 +37,7 @@ function get_url_details($url, $attempt = 1, $callback = "")
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_NOBODY, 0);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 500); 
     //curl_setopt($ch, CURLOPT_PROXY, 'username:password@host:port');
     $data = curl_exec($ch);
     $error = curl_error($ch);

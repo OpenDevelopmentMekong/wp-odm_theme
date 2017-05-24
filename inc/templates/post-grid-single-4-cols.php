@@ -4,6 +4,7 @@
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
+	$view_large_image = isset($params["view_large_image"]) ? $params["view_large_image"] : false;
 	$order = isset($params["order"]) ? $params["order"] : 'created';
 	?>
 
@@ -30,12 +31,7 @@
 		</div>
 		<?php
 			if ($show_thumbnail):
-				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
-				if (isset($thumb_src)):
-					echo $thumb_src;
-				else:
-					echo '<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="' . get_stylesheet_directory_uri() .'/img/watermark.png"></img>';
-				endif;
+				echo odm_get_thumbnail($post->ID, true, array( 300, 'auto'), $view_large_image);
 			endif; ?>
 	</div>
 </div>

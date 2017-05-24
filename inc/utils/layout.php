@@ -1,16 +1,24 @@
 <?php
 
-function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'post-thumbnail')
+function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'post-thumbnail', $view_enlarge = false)
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
     $thumb_src = get_the_post_thumbnail( $post_id, $size);
     if ($thumb_src) {
-      return $thumb_src;
+      if($view_enlarge):
+				$full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'full');
+				$thumbnail = '<a class="view-enlarge" href="#" title="' . __("View large image", "odm") . '" >'.get_the_post_thumbnail( $post_id, $size	). '</a>';
+        $thumbnail .= '<div class="popup-overlay hide"><div class="toggle-close-icon"><i class="enlarge-close fa fa-times-circle" aria-hidden="true"></i></div>
+                      <img class="popup-enlarge" src="'. $full_image_url[0] .'" title="'.get_the_title($post_id).'" /></div>';
+      else:
+        $thumbnail = get_the_post_thumbnail( $post_id, 'thumbnail');
+      endif;
+      return $thumbnail;
     }
 
     if ($fallback):
-      return '<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="' . get_stylesheet_directory_uri() .'/img/thumbnail.png"></img>';
+      return '<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="' . get_stylesheet_directory_uri() .'/img/watermark.png" />';
     endif;
 
     return null;
@@ -87,7 +95,4 @@ function should_close_row($layout_type,$index){
   }
   return false;
 }
-
-
-
  ?>

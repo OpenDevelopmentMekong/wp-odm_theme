@@ -55,6 +55,11 @@ gulp.task('build-scripts', function(){
 });
 
 gulp.task('watch', function(){
+	runSequence(
+  	'build-less',
+  	'build-styles',
+    'build-scripts'
+  );
 	gulp.watch(LESS_PATH + '/*less', ['build-less', 'build-styles']);
 	gulp.watch(CSS_PATH + '/*.css', ['build-styles']);
 	gulp.watch(JS_PATH + '/*.js', ['build-scripts']);

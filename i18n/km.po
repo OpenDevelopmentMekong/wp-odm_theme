@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-05-11 16:45+0700\n"
-"PO-Revision-Date: 2017-05-11 16:54+0700\n"
+"POT-Creation-Date: 2017-05-22 15:42+0700\n"
+"PO-Revision-Date: 2017-05-22 16:18+0700\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -28,10 +28,8 @@ msgstr "ព័ត៌មានពុំអាចរកបាន!"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't have "
-"an information page on this topic that the old location had. To see what information does exist for this new location you've "
-"chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, etc..) from the navigation menu above "
-"this message ."
+"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't have an information page on this topic that the old location had. To see what information does exist for this new location you've chosen simply click any of the navigation main menu items (News, Topics, Maps, "
+"Data, etc..) from the navigation menu above this message ."
 msgstr ""
 
 #: 404.php:22
@@ -96,7 +94,7 @@ msgstr "ដំណើររឿង"
 
 #: archive-tabular.php:8
 msgid "Database"
-msgstr ""
+msgstr "មូលដ្ឋានទិន្នន័យ"
 
 #: archive-topic.php:8
 msgid "Topics"
@@ -152,14 +150,11 @@ msgstr "បណ្ណសារ"
 msgid "No results found."
 msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វែងរកទេ"
 
-#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8 inc/templates/pagination.php:16
-#: inc/utils/breadcrumbs.php:216
+#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8 inc/templates/pagination.php:16 inc/utils/breadcrumbs.php:216
 msgid "Page"
 msgstr "ទំព័រ"
 
-#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:89
-#: inc/widgets/odm-contents-same-category-widget.php:125 inc/widgets/odm-custom-posts-widget.php:81
-#: inc/widgets/odm-custom-posts-widget.php:111
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:89 inc/widgets/odm-contents-same-category-widget.php:125 inc/widgets/odm-custom-posts-widget.php:81 inc/widgets/odm-custom-posts-widget.php:111
 msgid "More..."
 msgstr "បន្ថែម..."
 
@@ -169,9 +164,7 @@ msgstr "មើលផែនទីទាំងអស់"
 
 #: footer.php:38
 #, php-format
-msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" target="
-"\"_blank\" rel=\"external\">JEO Beta</a> theme"
+msgid "This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
 msgstr ""
 
 #: functions.php:52
@@ -238,7 +231,7 @@ msgstr "ថតចម្លងលេខកូដបង្កប់"
 msgid "Share"
 msgstr "ចែករំលែក"
 
-#: functions.php:214 inc/utils/mapping.php:715
+#: functions.php:214 inc/utils/mapping.php:702
 msgid "Print"
 msgstr "បោះពុម្ព"
 
@@ -510,36 +503,20 @@ msgstr "ការអភិវឌ្ឍ និងការគ្រប់គ្�
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA "
-"3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their "
-"respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are "
-"compiled from publicly available documentation and provided without fee for general informational purposes only. This is "
-"neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as "
-"a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and "
-"verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party "
-"sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in "
-"law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced "
-"herein or provided.\n"
-"Site users are encouraged to do additional research in support of their activities and to share the results of that research "
-"with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site "
-"information provided and to hold harmless and waive any and all liability against individuals or entities associated with its "
-"development, form and content for any loss, harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} "
+"website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge "
+"media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with "
+"respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its "
+"use."
 msgstr ""
-"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​ {​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​}​ ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 3.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​"
-"បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ​នៅ​លើ​គេហទំព័រ​របស់​ {​"
-"អូ​ឌី​ស៊ី​}​ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​"
-"សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ "
-"។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​"
-"មើល​ បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ {​អូ​ឌី​ស៊ី​}​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ {​អូ​ឌី​ស៊ី​}​ សូម​"
-"មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​"
-"មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
-"​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ ជាមួយនឹង​"
-"ក្រុមការងារ​យើងខ្ញុំ​។​ \n"
+"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​ {​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​}​ ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 3.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ​នៅ​លើ​គេហទំព័រ​របស់​ {​អូ​ឌី​ស៊ី​}​ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​"
+"យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ ។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​មើល​ បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ {​អូ​"
+"ឌី​ស៊ី​}​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ {​អូ​ឌី​ស៊ី​}​ សូម​មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
+"​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ ជាមួយនឹង​ក្រុមការងារ​យើងខ្ញុំ​។​ \n"
 "​សូម​ ទំនាក់ទំនង​មក​កាន់​យើងខ្ញុំ​ ដើម្បី​ចូលរួម​ចំណែក​ធ្វើ​ឱ្យ​ភាព​សុក្រឹត​របស់​គេហទំព័​នេះ​ កាន់តែ​ល្អ​ប្រសើរ​ឡើង​។​\n"
-"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​"
-"នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​"
-"ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
+"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
 
 #: i18n/extra-strings.php:57
 msgid "Khmer PDF"
@@ -605,8 +582,7 @@ msgstr "ពាក្យស្វែងរក"
 msgid "Type your search here"
 msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
-#: inc/advanced-navigation.php:171 inc/live-search/live-search.php:24 inc/utils/content.php:51 page-data-old.php:106
-#: page-data.php:103
+#: inc/advanced-navigation.php:171 inc/live-search/live-search.php:24 inc/utils/content.php:51 page-data-old.php:106 page-data.php:103
 msgid "Topic"
 msgstr "ប្រធានបទ"
 
@@ -684,7 +660,7 @@ msgstr "ស"
 msgid "Interactive Map"
 msgstr "ផែនទី"
 
-#: inc/interactive-map.php:90 inc/utils/mapping.php:103
+#: inc/interactive-map.php:90 inc/utils/mapping.php:104
 msgid "Map Layers"
 msgstr "ស្រទាប់ផែនទី"
 
@@ -949,9 +925,7 @@ msgid "Workspaces and Layer name\""
 msgstr ""
 
 #: inc/layers.php:468
-msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
-"strong> is layer name."
+msgid "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
 #: inc/layers.php:473
@@ -959,9 +933,7 @@ msgid "Workspaces:Layer Name ("
 msgstr ""
 
 #: inc/layers.php:476
-msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
-"strong> is layer name."
+msgid "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
 
 #: inc/layers.php:483
@@ -1013,8 +985,7 @@ msgid "CartoDB URL (English)"
 msgstr ""
 
 #: inc/layers.php:542 inc/layers.php:550
-msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+msgid "CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
 #: inc/layers.php:547
@@ -1548,10 +1519,9 @@ msgstr ""
 msgid "(Add the post type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
-#: inc/theme-options.php:221 inc/theme-options.php:224 inc/theme-options.php:231 inc/theme-options.php:234
-#: inc/theme-options.php:296
+#: inc/theme-options.php:221 inc/theme-options.php:224 inc/theme-options.php:231 inc/theme-options.php:234 inc/theme-options.php:296 inc/utils/mapping.php:675
 msgid "None"
-msgstr ""
+msgstr "មិនបង្ហាញ"
 
 #: inc/theme-options.php:273
 msgid "Select base layer"
@@ -1686,111 +1656,87 @@ msgstr ""
 msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: inc/utils/mapping.php:144
+#: inc/utils/mapping.php:145
 msgid "Show news on map"
 msgstr "បង្ហាញព័ត៍មាននៅលើផែនទី"
 
-#: inc/utils/mapping.php:391
+#: inc/utils/mapping.php:392
 msgid "LEGEND"
 msgstr "សញ្ញាផែនទី"
 
-#: inc/utils/mapping.php:641
+#: inc/utils/mapping.php:642
 msgid "Create Map"
 msgstr "បង្កើតផែនទី"
 
-#: inc/utils/mapping.php:644
+#: inc/utils/mapping.php:645
 msgid "Title"
 msgstr "ចំណងជើង"
 
-#: inc/utils/mapping.php:648
+#: inc/utils/mapping.php:649
 msgid "Description"
-msgstr "ការពិព័ណ៌នា"
+msgstr "ពិព័ណ៌នា"
 
-#: inc/utils/mapping.php:653
+#: inc/utils/mapping.php:654
 msgid "Basemap"
 msgstr "ផែនទីគោល"
 
-#: inc/utils/mapping.php:657
+#: inc/utils/mapping.php:658
 msgid "Map layers"
 msgstr "ស្រទាប់ផែនទី"
 
-#: inc/utils/mapping.php:662
+#: inc/utils/mapping.php:663
 msgid "North Direction"
 msgstr "ទិសខាងជើង"
 
-#: inc/utils/mapping.php:667
+#: inc/utils/mapping.php:668
 msgid "Map tools"
 msgstr "ឧបករណ៍ផែនទី"
 
-#: inc/utils/mapping.php:672
+#: inc/utils/mapping.php:671
 msgid "Legend"
 msgstr "សញ្ញាផែនទី"
 
-#: inc/utils/mapping.php:674
+#: inc/utils/mapping.php:673
 msgid "Left"
 msgstr "ខាងឆ្វេង"
 
-#: inc/utils/mapping.php:675
+#: inc/utils/mapping.php:674
 msgid "Right"
 msgstr "ខាងស្តាំ"
 
-#: inc/utils/mapping.php:679
+#: inc/utils/mapping.php:680
+msgid "Show all legends"
+msgstr " បង្ហាញសញ្ញាផែនទីទាំងអស់"
+
+#: inc/utils/mapping.php:682
 msgid "Format"
 msgstr "ប្រភេទ"
 
-#: inc/utils/mapping.php:681
+#: inc/utils/mapping.php:684
 msgid "Image (JPG)"
 msgstr "រូបភាព (JPG)"
 
-#: inc/utils/mapping.php:685
+#: inc/utils/mapping.php:688
 msgid "Layout"
 msgstr "ទំរង់"
 
-#: inc/utils/mapping.php:687
+#: inc/utils/mapping.php:690
 msgid "Landscape"
 msgstr "ផ្តេក"
 
-#: inc/utils/mapping.php:688
+#: inc/utils/mapping.php:691
 msgid "Portrait"
 msgstr "បញ្ឈរ"
 
-#: inc/utils/mapping.php:692
+#: inc/utils/mapping.php:695
 msgid "Size"
 msgstr "ទំហំ"
 
-#: inc/utils/mapping.php:694
+#: inc/utils/mapping.php:697
 msgid "A4"
 msgstr ""
 
-#: inc/utils/mapping.php:698
-msgid "Scale"
-msgstr ""
-
-#: inc/utils/mapping.php:700
-msgid "1:20,000,000"
-msgstr ""
-
-#: inc/utils/mapping.php:701
-msgid "1:10,000,000"
-msgstr ""
-
-#: inc/utils/mapping.php:706
-msgid "DPI"
-msgstr ""
-
-#: inc/utils/mapping.php:708
-msgid "96"
-msgstr ""
-
-#: inc/utils/mapping.php:709
-msgid "150"
-msgstr ""
-
-#: inc/utils/mapping.php:710
-msgid "300"
-msgstr ""
-
-#: inc/utils/mapping.php:736
+#: inc/utils/mapping.php:721
 msgid "Created date: "
 msgstr "កាលបរិច្ឆេទបង្កើត៖"
 
@@ -1814,8 +1760,7 @@ msgstr ""
 msgid "Display other content from other post types tagged with the same categories as the one where the widget is integrated."
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:153 inc/widgets/odm-custom-posts-widget.php:164
-#: inc/widgets/odm-taxonomy-widget.php:223
+#: inc/widgets/odm-contents-same-category-widget.php:153 inc/widgets/odm-custom-posts-widget.php:164 inc/widgets/odm-taxonomy-widget.php:223
 msgid "Title:"
 msgstr ""
 
@@ -1908,8 +1853,7 @@ msgstr "ប្រភេទ"
 msgid "Select dataset type"
 msgstr "ជ្រើសរើសប្រភេទទិន្នន័យ"
 
-#: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85 page-data-old.php:108 page-data-old.php:125 page-data.php:105
-#: page-data.php:120 page-data.php:138 page-data.php:152
+#: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85 page-data-old.php:108 page-data-old.php:125 page-data.php:105 page-data.php:120 page-data.php:138 page-data.php:152
 msgid "All"
 msgstr "ទាំងអស់"
 

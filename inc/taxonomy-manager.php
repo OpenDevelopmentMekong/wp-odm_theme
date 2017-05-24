@@ -45,6 +45,16 @@ class Odm_Taxonomy_Manager {
     return $this->taxonomy_top_tier;
   }
 
+  function get_top_tier_term_for_subterm($subterm){
+    foreach( $this->taxonomy_top_tier as $top_tier => $children):
+      if (in_array($subterm,array_values($children))):
+        return $top_tier;
+      endif;
+    endforeach;
+
+    return null;
+  }
+
 }
 
 $GLOBALS['odm_taxonomy_manager'] = new Odm_Taxonomy_Manager();

@@ -153,12 +153,16 @@
 					font-weight: 500;
 					display: block;
 					padding: 8px 15px;
-					color: #333333;
+					color: #000;
 					font-size: 13px;
 
 					&:hover {
  						color: @mekong-bright;
  					}
+
+					i {
+						color:#333;
+					}
 				}
 
 				/*ul{
@@ -254,6 +258,7 @@
 
 			.layer-item-name {
 				max-width: 64%;
+				color: #000;
 				display: inline-table;
 			}
 
@@ -288,11 +293,9 @@
 				margin: 0 5px 0 -1px;
 				position: relative;
 				top: 2px;
-
-				&:before {
-				  content: url(../../img/cycle-list-active.png);
-				  margin: 2px 0 0 0;
-				}
+				background: url(../../img/cycle-list-active.png);
+				width: 13px;
+				height: 13px;
 			}
 
 			.fa{
@@ -808,6 +811,10 @@ html#map-embed {
 
 			}
 		}
+	}
+
+	#wrap-feedback {
+    display: none;
 	}
 
 }

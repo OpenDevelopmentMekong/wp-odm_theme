@@ -19,28 +19,28 @@
         timer = date.getTime();
         options = options || {};
         options.elements = this;
-        options.flashcanvas = "js/flashcanvas.min.js";
-        
-        html2canvas.logging = options && options.logging;
+        options.flashcanvas = "./flashcanvas.min.js";
+
+        _html2canvas.logging = options && options.logging;
         options.complete = function(images){
-            var queue = html2canvas.Parse(this[0], images, options),
-            $canvas = $(html2canvas.Renderer(queue, options)),
+            var queue = _html2canvas.Parse(this[0], images, options),
+            $canvas = $(_html2canvas.Renderer(queue, options)),
             finishTime = new Date();
 
             if (options && options.profile && window.console && window.console.profileEnd) {
                 console.profileEnd();
             }
             $canvas.css({
-                position: 'absolute', 
-                left: 0, 
+                position: 'absolute',
+                left: 0,
                 top: 0,
-				display: 'none'
+								display: 'none'
             }).appendTo(document.body);
-			
+
 			$canvas.attr('id', 'savedMap');
-			
+
 			manipulateCanvasFunction(document.getElementById('savedMap'));
-			
+
 			/*
             $canvas.siblings().toggle();
 
@@ -49,9 +49,9 @@
                 throwMessage("Canvas Render " + ($canvas.is(':visible') ? "visible" : "hidden"));
             });
             throwMessage('Screenshot created in '+ ((finishTime.getTime()-timer)) + " ms<br />",4000);
-			
+
 			*/
-            
+
             // test if canvas is read-able
             try {
                 $canvas[0].toDataURL();
@@ -61,9 +61,9 @@
                     alert("Canvas is tainted, unable to read data");
                 }
             }
-            
+
         };
-        html2canvas.Preload(this[0],  options);
+        _html2canvas.Preload(this[0],  options);
 
         function throwMessage(msg,duration){
             window.clearTimeout(timeoutTimer);
@@ -97,4 +97,3 @@
         }
     };
 })( jQuery );
-

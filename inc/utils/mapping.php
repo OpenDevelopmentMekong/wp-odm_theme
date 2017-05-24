@@ -8,6 +8,7 @@ function display_baselayer_navigation($num=5, $cat='base-layers', $include_child
 	$baselayer_posts = $selected_baselayer ? $selected_baselayer_obj : $get_all_baselayers;
 	if($baselayer_posts){
 		echo '<div class="baselayer-container">';
+		echo '<img class="north-direction hide" src="'.get_bloginfo('url').'/wp-content/themes/wp-odm_theme/img/north-direction.png" />';
 		echo '<ul class="baselayer-ul box-shadow">';
 		foreach ( $baselayer_posts as $baselayer ) :
 			setup_postdata( $baselayer ); ?>
@@ -667,18 +668,15 @@ function priting_map_setting(){ ?>
 				<label for="print-tools"><?php _e("Map tools", "odm"); ?></label>
 			</div>
 
-
-
-			<div class="form-group"><label for="print-legend"><?php _e("Legend", "odm"); ?>:</label>
-				<select name="print-legend" id="print-legend" class="form-control">
-					<option value="left"><?php _e("Left", "odm"); ?></option>
-					<option value="right"><?php _e("Right", "odm"); ?></option>
+			<div class="form-group"><label for="print-file-format"><?php _e("Format", "odm"); ?>:</label>
+				<select name="print-file-format" id="print-file-format" class="form-control">
+					<option value="image"><?php _e("Image (PNG)", "odm"); ?></option>
 				</select>
 			</div>
 
-			<div class="form-group"><label for="print-file-format"><?php _e("Format", "odm"); ?>:</label>
-				<select name="print-file-format" id="print-file-format" class="form-control">
-					<option value="image"><?php _e("Image (JPG)", "odm"); ?></option>
+			<div class="form-group"><label for="print-paper-size"><?php _e("Size", "odm"); ?>:</label>
+				<select name="print-paper-size" id="print-paper-size" class="form-control">
+					<option value="A4"><?php _e("A4", "odm"); ?></option>
 				</select>
 			</div>
 
@@ -689,35 +687,24 @@ function priting_map_setting(){ ?>
 				</select>
 			</div>
 
-			<div class="form-group"><label for="print-paper-size"><?php _e("Size", "odm"); ?>:</label>
-				<select name="print-paper-size" id="print-paper-size" class="form-control">
-					<option value="A4"><?php _e("A4", "odm"); ?></option>
+			<div class="form-group"><label for="print-legend"><?php _e("Legend", "odm"); ?>:</label>
+				<select name="print-legend" id="print-legend" class="form-control">
+					<option value="left"><?php _e("Left", "odm"); ?></option>
+					<option value="right"><?php _e("Right", "odm"); ?></option>
+					<option value="none"><?php _e("None", "odm"); ?></option>
 				</select>
 			</div>
-			<!--
-			<div class="form-group"><label for="print-scale"><?php _e("Scale", "odm"); ?>:</label>
-				<select name="print-scale" id="print-scale" class="form-control">
-					<option value="1:20,000,000"><?php _e("1:20,000,000", "odm"); ?></option>
-					<option value="1:10,000,000"><?php _e("1:10,000,000", "odm"); ?></option>
-				</select>
-			</div>--->
 
-			<!--
-			<div class="form-group"><label for="print-dpi"><?php _e("DPI", "odm"); ?>:</label>
-				<select name="print-dpi" id="print-dpi" class="form-control">
-					<option value="96"><?php _e("96", "odm"); ?></option>
-					<option value="150"><?php _e("150", "odm"); ?></option>
-					<option value="300"><?php _e("300", "odm"); ?></option>
-				</select>
-			</div>--->
+			<div class="form-group print-all-legend">
+				<input type="checkbox" class="form-control" id="print-all-legend" value="1" />
+				<label for="print-all-legend"><?php _e("Show all legends", "odm"); ?></label>
+			</div>
 
 			<div class="form-group inline">
 				<input type="button" class="form-control" id="print-button" onclick="" value="<?php _e('Print', 'odm'); ?>" />
 				<img class="print-loading" src="<?php echo get_stylesheet_directory_uri() ?>/img/loading-black-bg.gif">
 			</div>
 		</form>
-
-    <div id="divtest"></div>
 	</div>
 	<?php //window.print();
 }
@@ -725,17 +712,17 @@ function priting_map_setting(){ ?>
 function priting_map_footnote(){ ?>
 	<div class="priting_footer">
 		<p class="printing-description"></p>
-    <span id="icon-od-logo">
-			<svg class="svg-od-logo <?php echo odm_country_manager()->get_current_country(); ?>-logo"><use xlink:href="#icon-od-logo"></use></svg>
+    <span class="printing-od-logo">
+			<img src="<?php echo get_bloginfo('url')?>/wp-content/themes/wp-odm_theme/img/od-<?php echo odm_country_manager()->get_current_country(); ?>-logo.png">
 		</span>
-		<span>
+		<span class="printing-od-info">
 			<?php bloginfo(); ?> | <?php the_permalink(); ?>
 		</span>
 		<span class="printing_date">
 			<?php
 			_e("Created date: ", "odm");
 			if (odm_language_manager()->get_current_language() == 'km') {
-					echo convert_date_to_kh_date(date('j.M.Y'));
+					echo "<span> &nbsp;&nbsp; ".convert_date_to_kh_date(date('j.M.Y'))."</span>";
 			} else {
 					echo date('j M Y');
 			}

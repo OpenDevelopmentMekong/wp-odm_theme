@@ -9,6 +9,22 @@
 
 }
 
+.data-number-results-medium{
+
+	p{
+		float:left;
+		margin-right: 20px;
+	}
+
+	a, a:hover{
+		cursor: default;
+		color: @black;
+		font-size: @font-size-h5;
+		font-weight: bold;
+	}
+
+}
+
 .data-number-results-small{
 
 	p{
@@ -68,6 +84,7 @@
 	background-color: #f4f4f4;
 	border: 1px solid #d2d2d2;
 	padding: 20px;
+	margin-bottom: 20px;
 
 	.single-filter {
 		margin-bottom: @small-padd;
@@ -104,8 +121,14 @@ span.meta-label {
 	font-size: 12px;
 	font-weight: bold;
 }
+.search-results, .page-template-page-data{
 
-.single_result_container {
+	.single_result_container {
+
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #f2f2f2;
+
 	.data_title {
 		a {
 			font-size: @font-size-h5;
@@ -116,17 +139,15 @@ span.meta-label {
 		font-size: @font-size-h5;
 	}
 
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #f2f2f2;
 	.data_format {
 		text-align: right;
 	}
+
 	.data_meta_wrapper {
 		display: block;
 		overflow: hidden;
-		font-size: @font-size-h5;
-		color: @gray;
+		font-size: @font-size-h5 !important;
+		color: @gray !important;
 
 		.country_indicator {
 
@@ -144,6 +165,11 @@ span.meta-label {
 			padding-right: 15px;
 			margin-bottom: 5px;
 
+			.lang_flag{
+				border: none !important;
+				margin: 0px;
+			}
+
 			img{
 				padding-top: 2px;
 			}
@@ -157,6 +183,7 @@ span.meta-label {
 
 		}
 		.data_languages {
+
 			.meta-label {
 				&.en {
 					background-color: @mekong-bright;
@@ -180,7 +207,7 @@ span.meta-label {
 		}
 	}
 }
-
+}
 .label, .meta-label, span.meta-label {
 
 	&.html{

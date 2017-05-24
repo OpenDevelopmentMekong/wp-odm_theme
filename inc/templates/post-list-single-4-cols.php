@@ -4,6 +4,8 @@
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_source_meta = isset($params["show_source_meta"]) ? $params["show_source_meta"] : false;
+	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
+	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
@@ -11,10 +13,11 @@
 ?>
 
 <div class="four columns ">
-	<div class="post-list-item">
+	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
       <?php
-        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
+        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
+				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
 			<h3>
 				<?php
 					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
@@ -25,21 +28,24 @@
 			</h3>
 		<?php else: ?>
 			<p>
-				<?php
-					if ($show_post_type):
-						$post_type_name = get_post_type($post->ID);
-						$post_type = get_post_type_object($post_type_name);
-						?>
-
-						<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>">
-							<?php echo $post_type->labels->name ?>
-						</a>
+				<h3>
 					<?php
-					endif; ?>
+						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+					 ?>
+					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 
-					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>">
-						<?php echo $post->post_title; ?>
+					<?php
+						if ($show_post_type):
+							$post_type_name = get_post_type($post->ID);
+							?>
+
+							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
+						<?php
+						endif; ?>
+
+						<?php echo $localized_title; ?>
 					</a>
+				</h3>
 			</p>
 		<?php endif; ?>
 
@@ -75,5 +81,11 @@
 				</div>
 			<?php endif; ?>
 		</section>
+
+		<?php
+			if ($show_solr_meta && isset($solr_search_result)):
+				odm_echo_solr_meta($solr_search_result);
+			endif; ?>
+
 	</div>
 </div>

@@ -1,4 +1,7 @@
-<?php get_header();?>
+<?php get_header();
+
+$options = get_option('odm_options');
+$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created"; ?>
 
 <div class="section-title main-title">
 
@@ -70,7 +73,10 @@
 					if($started_index >= $pagination["start_post"]):
 						odm_get_template('post-grid-single-4-cols',array(
 	            "post" => $layer,
-	            "show_meta" => false)
+	            "show_meta" => false,
+							"view_large_image" => true,
+							"order" => $date_to_show
+							)
 	          , true);
 					endif;
 
