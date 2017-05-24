@@ -44,6 +44,7 @@ var printing_map;
 				container.parent().addClass('print-preview-map');
 				$('body').addClass('print-preview');
 				$("section#map").wrapInner( "<div class='map-wraper print-preview-overlay'></div>" );
+				$("section#map").css("min-height", $(".map-container").height());
 				$(".print-preview .interactive-map-layers").css("max-height", $(".print-preview-map").height() -150);
 				$(".baselayer-container").addClass('print-preview-basemap');
 				$(".priting_footer").show();
@@ -258,10 +259,14 @@ var printing_map;
 })(jQuery);
 
 function manipulateCanvasFunction(savedMap, width, height) {
-	width = typeof width !== 'undefined' ? width : null;
-	height = typeof height !== 'undefined' ? height : null;
-	Canvas2Image.saveAsPNG(savedMap, width, height, "downloaded_map");
-	window.open(savedMap.toDataURL("image/png"));
+	dataURL = savedMap.toDataURL("image/png", 1.0);
+	var a = document.createElement('a');
+	a.href = dataURL;
+	a.download = "downloaded_map.png";
+	document.getElementsByClassName("print-setting")[0].appendChild(a);
+	a.click();
 	$(".clone-preview-container").remove();
 	$(".print-loading").hide();
+	//window.open(savedMap.toDataURL("image/png"));
+
 }
