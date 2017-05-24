@@ -48,7 +48,7 @@
 		<?php endif; ?>
 
 		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
+			<?php echo_post_meta($post,array('date','categories','tags','sources','show_summary_translated_by_odc_team'),$order); ?>
 		<?php endif; ?>
 
 		<section class="content section-content">
