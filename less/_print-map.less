@@ -1,3 +1,6 @@
+section#map{
+	min-height: 400px;
+}
 .print-preview-overlay {
 	position: fixed !important;
 	bottom: 0;
@@ -11,6 +14,7 @@
 	background:  rgba(0, 0, 0, 0.9) ;
   width: 100%;
 	padding: 1em;
+	overflow-y: auto;
 }
 
 .interactive-map.print-preview-map {
@@ -25,6 +29,7 @@
 	height: 100%;
 	overflow: hidden;
 	background: #fff;
+	margin-bottom: 0;
 
 	.jeo-printmap{
 		display: none;
@@ -38,13 +43,13 @@
 	opacity: 0.0;
 
 		.clone-interactive-map{
-			position: fixed;
+			position: absolute;
 		}
 }
 .print-preview {
 	.portrait{
-		width: 50%;
-		margin: auto;
+		width: 60%;
+		margin: 0 auto;
 		height: 100%;
 	}
 
@@ -66,8 +71,8 @@
 		height: auto !important;
 
 		.map {
-			left: -13%;
-			width: 115%;
+			/*left: -13%;
+			width: 115%;*/
 		}
 	}
 
