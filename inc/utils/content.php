@@ -399,11 +399,9 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 
 		$get_the_excerpt = apply_filters('translate_text', $get_the_excerpt, odm_language_manager()->get_current_language());
 
-		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
-
+		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), -$limit);
 		$excerpt_string = implode(' ', $excerpt);
-		$excerpt_hidden_space = explode("​", $excerpt_string, $limit); //explode by zerowidthspace
-
+		$excerpt_hidden_space = explode("​", $excerpt_string, $limit); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string.' ...';
 		if ($read_more != '') {
