@@ -398,7 +398,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 
 		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
-		$excerpt_words = $excerpt_string.' ...';
+		$excerpt_words = $excerpt_string . ' ...';
 
 		if ($read_more != '') {
 			 $color_name = odm_country_manager()->get_current_country().'-color';
