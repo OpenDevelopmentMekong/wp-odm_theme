@@ -4,7 +4,7 @@
 	$options = get_option('odm_options');
 	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created";
 	?>
-<?php echo strip_tags(odm_excerpt($post)); ?>
+
   <article id="content" class="single-post">
 
     <section class="container">
