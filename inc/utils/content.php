@@ -400,6 +400,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_hidden_space = explode("​", $excerpt_string, $limit); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string.' ...';
+
 		if ($read_more != '') {
 			 $color_name = odm_country_manager()->get_current_country().'-color';
 			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
