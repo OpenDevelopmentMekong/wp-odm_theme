@@ -394,10 +394,9 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$post_content = apply_filters('the_content',$post->post_content);
 		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
 		$stripped_content = strip_tags($translated_content);
+		$stripped_content = strip_shortcodes($stripped_content);
 
-		$excerpt = explode(' ', strip_shortcodes($stripped_content), -$limit);
-		$excerpt_string = implode(' ', $excerpt);
-		$excerpt_hidden_space = explode("​", $excerpt_string, $limit); //explode by zerowidthspace​
+		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string.' ...';
 
