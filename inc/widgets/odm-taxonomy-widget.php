@@ -76,18 +76,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 	public function print_category_linked_to_category( $category, $current_page_slug ="") {
-
-		$args = array(
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'category',
-					'field'    => 'slug',
-					'terms'    => $category->slug,
-				),
-			),
-		);
-		$query = new WP_Query( $args );
-		$category_has_contents = $query->found_posts > 0;
+		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
 
