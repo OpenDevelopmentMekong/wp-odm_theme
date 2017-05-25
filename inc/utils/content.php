@@ -394,7 +394,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		if($post->post_excerpt):
 			$get_the_excerpt = $post->post_excerpt;
 		else:
-			$get_the_excerpt = $post->post_content;
+			$get_the_excerpt = strip_tags(apply_filters('the_content',$post->post_content));
 		endif;
 
 		$get_the_excerpt = apply_filters('translate_text', $get_the_excerpt, odm_language_manager()->get_current_language());
