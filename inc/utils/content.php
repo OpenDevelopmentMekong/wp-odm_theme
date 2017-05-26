@@ -431,7 +431,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
 		}
 
-		return $excerpt_words;
+		return '<p>' . $excerpt_words . '</p>';
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
