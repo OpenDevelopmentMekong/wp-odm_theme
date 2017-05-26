@@ -389,9 +389,12 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
 				</li>
 			<?php
       endif; ?>
-			<?php if (in_array('language',$show_elements)):
-        odm_language_manager()->print_language_flags_for_post($post);
-      endif; ?>
+			<?php if (in_array('language',$show_elements)): ?>
+				<li class="post-languages">
+					<?php
+		        odm_language_manager()->print_language_flags_for_post($post);
+		      endif; ?>
+				</li>
 		</ul>
 	</div>
 
