@@ -13,10 +13,8 @@
 	<div class="grid-content-wrapper">
 		<?php
 			if ($show_post_type):
-				$post_type_name = get_post_type($post->ID);
-				$post_type = get_post_type_object($post_type_name);
-				?>
-		<a class="item-post-type" href="<?php echo $post_type->rewrite['slug'] ?>"><?php echo $post_type->labels->name ?></a>
+				$post_type_name = get_post_type($post->ID); ?>
+				<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
 		<?php
 			endif; ?>
 		<div class="meta">
