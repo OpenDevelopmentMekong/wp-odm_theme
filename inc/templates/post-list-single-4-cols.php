@@ -52,7 +52,7 @@
 
 		<?php
 			if ($show_meta):
-				$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date','categories','tags','sources','show_summary_translated_by_odc_team');
+				$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date');
 				echo_post_meta($post,$fields_to_show,$order);
 			endif; ?>
 

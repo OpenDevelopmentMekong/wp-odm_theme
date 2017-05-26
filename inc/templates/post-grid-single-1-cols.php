@@ -26,8 +26,8 @@
 			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
 			<?php
 				if ($show_meta):
-					$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date','sources','categories');
-					echo_post_meta($post,array('date','sources','categories'),$order);
+					$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date');
+					echo_post_meta($post,$fields_to_show,$order);
 			 	endif;
 			?>
 		</div>

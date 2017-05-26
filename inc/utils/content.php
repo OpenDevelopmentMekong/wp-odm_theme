@@ -279,7 +279,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags', 'show_summary_translated_by_odc_team'), $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
@@ -378,6 +378,20 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
 			<?php if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());
 			endif; ?>
+			<?php
+				if (odm_country_manager()->get_current_country() == "mekong" && in_array('country',$show_elements)): ?>
+        <li class="post-country">
+					<i class="fa fa-globe"></i>
+					<?php
+						$country = odm_country_manager()->get_country_name(odm_country_manager()->get_current_country());
+						_e($country,'odm');
+					 ?>
+				</li>
+			<?php
+      endif; ?>
+			<?php if (in_array('language',$show_elements)):
+        odm_language_manager()->print_language_flags_for_post($post);
+      endif; ?>
 		</ul>
 	</div>
 

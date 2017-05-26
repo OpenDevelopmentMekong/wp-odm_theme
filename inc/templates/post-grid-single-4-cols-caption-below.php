@@ -25,7 +25,7 @@
 				endif;
 				?>
 				<?php
-					$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date','sources','categories');
+					$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date');
 					echo_post_meta($post,$fields_to_show,$order); ?>
 		</div>
 		<?php endif; ?>
