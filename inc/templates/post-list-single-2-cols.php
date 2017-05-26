@@ -57,7 +57,7 @@
 				echo_post_meta($post,$meta_fields,$order);
 			endif; ?>
 
-		<section class="content section-content">
+		<section class="content item-content section-content">
 			<?php
 			if ($show_thumbnail):
 				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
@@ -69,21 +69,19 @@
 			endif;
 			?>
 			<?php if ($show_excerpt || $show_source_meta): ?>
-				<div class="item-content">
-						<?php if( echo_downloaded_documents()):
-							echo_downloaded_documents();
-						endif; ?>
-						<?php if ($show_excerpt): ?>
-							<div class="post-excerpt">
-								<?php echo odm_excerpt($post); ?>
-							</div>
+				<?php if( echo_downloaded_documents()):
+					echo_downloaded_documents();
+				endif; ?>
+				<?php if ($show_excerpt): ?>
+					<div class="post-excerpt">
+						<?php echo odm_excerpt($post); ?>
+					</div>
 
-						<?php endif; ?>
+				<?php endif; ?>
 
-						<?php if ($show_source_meta): ?>
-							<?php odm_echo_extras(); ?>
-						<?php endif; ?>
-				</div>
+				<?php if ($show_source_meta): ?>
+					<?php odm_echo_extras(); ?>
+				<?php endif; ?>
 			<?php endif; ?>
 		</section>
 
