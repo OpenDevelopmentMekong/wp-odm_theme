@@ -11,17 +11,19 @@
 
 <div class="four columns post-grid-item">
 	<div class="grid-content-wrapper">		
-		<div class="meta">
-			<?php
-				if ($show_post_type):
-					$post_type_name = get_post_type($post->ID); ?>
-					<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
-			<?php
-				endif; ?>
+		<div class="meta">			
 			<?php
 				$link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language()); ?>
-			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>">
+					<?php
+						if ($show_post_type):
+							$post_type_name = get_post_type($post->ID); ?>
+							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
+					<?php
+						endif; ?>
+					<?php echo $title; ?>
+				</a>
 			<?php
 				if ($show_meta):
 					echo_post_meta($post,$meta_fields,$order);

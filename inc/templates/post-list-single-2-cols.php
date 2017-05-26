@@ -21,6 +21,12 @@
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
 			<h3>
 				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
+					<?php
+						if ($show_post_type):
+							$post_type_name = get_post_type($post->ID); ?>
+							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
+						<?php
+						endif; ?>
 					<?php echo $localized_title; ?>
 				</a>
 			</h3>
