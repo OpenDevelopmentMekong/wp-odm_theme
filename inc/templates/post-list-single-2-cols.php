@@ -19,7 +19,7 @@
       <?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
-			<h3>
+			<h4>
 				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
 					<?php
 						if ($show_post_type):
@@ -29,10 +29,10 @@
 						endif; ?>
 					<?php echo $localized_title; ?>
 				</a>
-			</h3>
+			</h4>
 		<?php else: ?>
 			<p>
-				<h3>
+				<h4>
 
 					<?php
 						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
@@ -48,7 +48,7 @@
 
 						<?php echo $localized_title; ?>
 					</a>
-				</h3>
+				</h4>
 			</p>
 		<?php endif; ?>
 
