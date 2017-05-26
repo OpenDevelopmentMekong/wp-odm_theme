@@ -86,7 +86,7 @@ class Odm_Language_Manager {
   
   function print_language_flags_for_post($post){
     
-    foreach ($this->$supported_languages as $lang_code => $lang):
+    foreach ($this->supported_languages as $lang_code => $lang):
       if(!qtranxf_isAvailableIn($post->ID, $lang_code) && qtranxf_getLanguage() != $lang_code){ // no En content
         $path_to_flag = odm_language_manager()->get_path_to_flag_image($lang_code);
         if (!empty($path_to_flag)):
