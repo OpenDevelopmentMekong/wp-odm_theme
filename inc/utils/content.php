@@ -295,7 +295,7 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
 			<?php 
 			endif; ?>
 			<?php
-				if (odm_country_manager()->get_current_country() == "mekong" && in_array('country',$show_elements)): ?>
+				if (in_array('country',$show_elements)): ?>
         <li class="post-country">
 					<i class="fa fa-globe"></i>
 					<?php
