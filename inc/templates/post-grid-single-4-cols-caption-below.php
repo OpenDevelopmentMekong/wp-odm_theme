@@ -1,7 +1,7 @@
 <?php
 	$post = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
-	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : null;
+	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : array('date');
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
@@ -25,8 +25,9 @@
 				endif;
 				?>
 				<?php
-					$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date');
-					echo_post_meta($post,$fields_to_show,$order); ?>
+					if ($show_meta):
+						echo_post_meta($post,$meta_fields,$order);
+				 	endif; ?>
 		</div>
 		<?php endif; ?>
 		<?php

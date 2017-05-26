@@ -1,7 +1,7 @@
 <?php
 	$post = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
-	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : null;
+	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : array("date");
 	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
 	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
@@ -49,8 +49,7 @@
 
 		<?php
 			if ($show_meta):
-				$fields_to_show = isset($meta_fields ) ? $meta_fields : array('date');
-				echo_post_meta($post,$fields_to_show,$order);
+				echo_post_meta($post,$meta_fields,$order);
 			endif; ?>
 
 		<section class="content section-content">
