@@ -18,6 +18,11 @@
 		$slug = str_replace(" ","-",$slug);
 		return $slug;
 	}
+	
+	function generate_link_to_category_from_name($name){
+		$slug = category_name_to_slug($name);
+		return "/category/" . $slug;
+	}
 
 	/**
 	 * Construct Filter Url
