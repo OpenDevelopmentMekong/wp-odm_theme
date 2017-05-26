@@ -98,12 +98,13 @@ body{
       ul{
         margin-left: 0px;
         margin-bottom: 0px;
+        
+        li {
+          float: left;
+          margin-right: @small-padd;
+  			}
+        
       }
-
-			li {
-				//margin-bottom: 10px;
-				padding-right: 0px;
-			}
 
 			.categories {
 				display: none;
@@ -117,10 +118,6 @@ body{
     .post-grid-item-list {
       padding: @small-padd;
     }
-
-    .post-meta > ul > li {
-			display: block;
-		}
 
 		.attachment-thumbnail {
 			position: absolute;
@@ -347,7 +344,8 @@ body{
       margin-left: 0px;
 
       li {
-        margin-right: 5px;
+        float: left;
+        margin-right: @small-padd;
         color: @primary-color;
         margin-bottom: 5px;
       }
