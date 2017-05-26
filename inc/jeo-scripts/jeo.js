@@ -233,18 +233,38 @@ jeo.create_layer_by_maptype = function (map, layer){
       if(layer.wms_format){
         wms_format = layer.wms_format;
       }
-
+      var info_title = null, info_attributes = null, info_detail = null;
       var spited_wms_tile_url=  layer.wms_tile_url.split("/geoserver/");
       geoserver_URL = spited_wms_tile_url[0]+"/geoserver/wms";
       if(detect_lang_site == "en-US"){
         layer_name = layer.wms_layer_name;
+        if(layer.infowindow_title){
+          info_title = layer.infowindow_title;
+        }
+        if(layer.infowindow_attributes){
+          info_attributes = layer.infowindow_attributes;
+        }
+        if(layer.infowindow_detail){
+          info_detail = layer.infowindow_detail;
+        }
       }else{
         layer_name = layer.wms_layer_name_localization;
+        if(layer.infowindow_title_localization){
+          info_title = layer.infowindow_title_localization;
+        }
+        if(layer.infowindow_attributes_localization){
+          info_attributes = layer.infowindow_attributes_localization;
+        }
+        if(layer.infowindow_detail_localization){
+          info_detail = layer.infowindow_detail_localization;
+        }
       }
-
 
       options = {
         layers: layer_name,
+        info_title: info_title,
+        info_attributes: info_attributes,
+        info_detail: info_detail,
         version: '1.1.0',
         transparent: transparent,
         format: wms_format,

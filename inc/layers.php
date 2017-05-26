@@ -200,6 +200,7 @@
       </style>
 
       <script type="text/javascript">
+
        function LayersModel() {
         var self = this;
 
@@ -325,7 +326,6 @@
 
        }
 
-
        jQuery(document).ready(function() {
         var model = new LayersModel();
         model.bindSort('.selected-layers-list', 'selectedLayers');
@@ -344,14 +344,14 @@
         $layer_profilepage_link = get_post_meta($post->ID, '_layer_profilepage_link', true);
         $layer_profilepage_link_localization = get_post_meta($post->ID, '_layer_profilepage_link_localization', true);
         ?>
-        <div id="layer_settings_box">
+        <div class="layer_settings_box">
             <div class="layer-download-link">
                 <h4><?php _e('Download Page URL', 'odm'); ?></h4>
                 <tbody>
                     <tr>
                         <th><label for="_layer_download_link"><?php _e('Download URL (English)', 'odm'); ?></label></th>
                         <td>
-                            <input id="_layer_download_link" type="text" placeholder="https://" size="40" name="_layer_download_link" value="<?php echo $layer_download_link; ?>" />
+                            <input id="_layer_download_link" type="text" placeholder="https://" size="65" name="_layer_download_link" value="<?php echo $layer_download_link; ?>" />
                             <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'odm'); ?></p>
                         </td>
                     </tr>
@@ -359,7 +359,7 @@
                     <tr>
                         <th><label for="_layer_download_link_localization"><?php _e('Download URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
-                            <input id="_layer_download_link_localization" type="text" placeholder="https://" size="40" name="_layer_download_link_localization" value="<?php echo $layer_download_link_localization; ?>" />
+                            <input id="_layer_download_link_localization" type="text" placeholder="https://" size="65" name="_layer_download_link_localization" value="<?php echo $layer_download_link_localization; ?>" />
                             <p class="description"><?php _e('A link to a dataset\'s page on CKAN', 'odm'); ?></p>
                         </td>
                     </tr>
@@ -373,7 +373,7 @@
                     <tr>
                         <th><label for="_layer_profilepage_link"><?php _e('Profile Page URL (English)', 'odm'); ?></label></th>
                         <td>
-                            <input id="_layer_profilepage_link" type="text" placeholder="https://" size="40" name="_layer_profilepage_link" value="<?php echo $layer_profilepage_link; ?>" />
+                            <input id="_layer_profilepage_link" type="text" placeholder="https://" size="65" name="_layer_profilepage_link" value="<?php echo $layer_profilepage_link; ?>" />
                             <p class="description"><?php _e('A link to profile page on Wordpress', 'odm'); ?></p>
                         </td>
                     </tr>
@@ -381,7 +381,7 @@
                     <tr>
                         <th><label for="_layer_profilepage_link_localization"><?php _e('Profile Page URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
-                            <input id="_layer_profilepage_link_localization" type="text" placeholder="https://" size="40" name="_layer_profilepage_link_localization" value="<?php echo $layer_profilepage_link_localization; ?>" />
+                            <input id="_layer_profilepage_link_localization" type="text" placeholder="https://" size="65" name="_layer_profilepage_link_localization" value="<?php echo $layer_profilepage_link_localization; ?>" />
                             <p class="description"><?php _e('A link to profile page on Wordpress', 'odm'); ?></p>
                         </td>
                     </tr>
@@ -392,15 +392,15 @@
             <div class="layer-type">
                 <h4><?php _e('Layer type', 'odm'); ?></h4>
                 <p>
-                     <input type="radio" id="layer_type_tilelayer" name="layer_type" value="tilelayer" <?php if($layer_type == 'tilelayer' || !$layer_type) echo 'checked'; ?> />
+                     <input type="radio" id="layer_type_tilelayer" name="layer_type" value="tilelayer" class="tilelayer" <?php if($layer_type == 'tilelayer' || !$layer_type) echo 'checked'; ?> />
                      <label for="layer_type_tilelayer"><?php _e('Tile layer', 'odm'); ?></label>
-                     <input type="radio" id="layer_type_wmslayer" name="layer_type" value="wmslayer" <?php if($layer_type == 'wmslayer') echo 'checked'; ?> />
+                     <input type="radio" id="layer_type_wmslayer" name="layer_type" value="wmslayer"  class="wmslayer" <?php if($layer_type == 'wmslayer') echo 'checked'; ?> />
                      <label for="layer_type_wmslayer"><?php _e('WMS layer', 'odm'); ?></label>
 
-                     <input type="radio" id="layer_type_mapbox" name="layer_type" value="mapbox" <?php if($layer_type == 'mapbox') echo 'checked'; ?> />
+                     <input type="radio" id="layer_type_mapbox" name="layer_type" value="mapbox"  class="mapbox" <?php if($layer_type == 'mapbox') echo 'checked'; ?> />
                      <label for="layer_type_mapbox"><?php _e('MapBox', 'odm'); ?></label>
 
-                     <input type="radio" id="layer_type_cartodb" name="layer_type" value="cartodb" <?php if($layer_type == 'cartodb') echo 'checked'; ?> />
+                     <input type="radio" id="layer_type_cartodb" name="layer_type" value="cartodb"  class="cartodb" <?php if($layer_type == 'cartodb') echo 'checked'; ?> />
                      <label for="layer_type_cartodb"><?php _e('CartoDB', 'odm'); ?></label>
                 </p>
             </div>
@@ -416,14 +416,14 @@
                     <tr>
                         <th><label for="tilelayer_tile_url"><?php _e('URL', 'odm'); ?></label></th>
                         <td>
-                            <input id="tilelayer_tile_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.png', 'odm'); ?>" size="40" name="_tilelayer_tile_url" value="<?php echo $tileurl; ?>" />
+                            <input id="tilelayer_tile_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.png', 'odm'); ?>" size="65" name="_tilelayer_tile_url" value="<?php echo $tileurl; ?>" />
                             <p class="description"><?php _e('Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png', 'odm'); ?></p>
                         </td>
                     </tr>
                     <tr>
                         <th><label for="tilelayer_utfgrid_url"><?php _e('UTFGrid URL (optional)', 'odm'); ?></label></th>
                         <td>
-                            <input id="tilelayer_utfgrid_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.grid.json', 'odm'); ?>" size="40" name="_tilelayer_utfgrid_url" value="<?php echo $utfgridurl; ?>" />
+                            <input id="tilelayer_utfgrid_url" type="text" placeholder="<?php _e('http://{s}.example.com/{z}/{x}/{y}.grid.json', 'odm'); ?>" size="65" name="_tilelayer_utfgrid_url" value="<?php echo $utfgridurl; ?>" />
                             <p class="description"><?php _e('Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json', 'odm'); ?></p>
                         </td>
                     </tr>
@@ -443,7 +443,6 @@
                     </tr>
                 </tbody>
             </table>
-
             <table class="form-table type-setting wmslayer">
                 <?php
                 $wmstileurl = $post ? get_post_meta($post->ID, '_wmslayer_tile_url', true) : '';
@@ -451,37 +450,43 @@
                 $layername_localization = $post ? get_post_meta($post->ID, '_wmslayer_layer_name_localization', true) : '';
                 $wms_format = $post ? get_post_meta($post->ID, '_wmslayer_wms_format', true) : '';
                 $transparent = $post ? get_post_meta($post->ID, '_wmslayer_transparent', true) : '';
+                $infowindow_attributes =  $post ? get_post_meta($post->ID, '_infowindow_attributes', true) : '';
+                $infowindow_attributes_localization =  $post ? get_post_meta($post->ID, '_infowindow_attributes_localization', true) : '';
+                $infowindow_title = $post ? get_post_meta($post->ID, '_infowindow_title', true) : '';
+                $infowindow_title_localization = $post ? get_post_meta($post->ID, '_infowindow_title_localization', true) : '';
+                $infowindow_detail = $post ? get_post_meta($post->ID, '_infowindow_detail', true) : '';
+                $infowindow_detail_localization = $post ? get_post_meta($post->ID, '_infowindow_detail_localization', true) : '';
                 ?>
                 <tbody>
                     <tr>
-                        <th><label for="wmslayer_tile_url"><?php _e('WMS Service URL', 'opendev'); ?></label></th>
+                        <th><label for="wmslayer_tile_url"><?php _e('WMS Service URL', 'odm'); ?></label></th>
                         <td>
                             <input id="wmslayer_tile_url" type="text" placeholder="<?php _e('http://{geoserver adress & port}/geoserver/wms', 'odm'); ?>" size="65" name="_wmslayer_tile_url" value="<?php echo $wmstileurl; ?>" />
-                            <p class="description"><?php _e('Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms', 'opendev'); ?></p>
+                            <p class="description"><?php _e('Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms', 'odm'); ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="wmslayer_layer_name"><?php _e('Workspaces:Layer Name (English)', 'opendev'); ?></label></th>
+                        <th><label for="wmslayer_layer_name"><?php _e('Workspaces:Layer Name (English)', 'odm'); ?></label></th>
                         <td>
-                            <input id="wmslayer_layer_name" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'odm'); ?>" size="40" name="_wmslayer_layer_name" value="<?php echo $layername; ?>" />
-                            <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
+                            <input id="wmslayer_layer_name" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'odm'); ?>" size="65" name="_wmslayer_layer_name" value="<?php echo $layername; ?>" />
+                            <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'odm'); ?></p>
                         </td>
                     </tr>
                     <?php if(odm_country_manager()->get_current_country()!="mekong"){ ?>
                     <tr>
-                        <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.odm_language_manager()->get_the_language_by_site().')', 'opendev'); ?></label></th>
+                        <th><label for="wmslayer_layer_name_localization"><?php _e('Workspaces:Layer Name ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                         <td>
-                            <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'odm'); ?>" size="40" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
-                            <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'opendev'); ?></p>
+                            <input id="wmslayer_layer_name_localization" type="text" placeholder="<?php _e('Workspaces and Layer name"', 'odm'); ?>" size="65" name="_wmslayer_layer_name_localization" value="<?php echo $layername_localization; ?>" />
+                            <p class="description"><?php _e('Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</strong> is layer name.', 'odm'); ?></p>
                         </td>
                      </tr>
                     <?php
                     }
                     ?>
                     <tr>
-                        <th><label for="wmslayer_wms_format"><?php _e('WMS format (optional)', 'opendev'); ?></label></th>
+                        <th><label for="wmslayer_wms_format"><?php _e('WMS format (optional)', 'odm'); ?></label></th>
                         <td>
-                            <input id="wmslayer_wms_format" type="text" placeholder="<?php _e('image/png', 'opendev'); ?>" size="40" name="_wmslayer_wms_format" value="<?php echo $wms_format; ?>" />
+                            <input id="wmslayer_wms_format" type="text" placeholder="<?php _e('image/png', 'odm'); ?>" size="65" name="_wmslayer_wms_format" value="<?php echo $wms_format; ?>" />
                             <p class="description"><?php _e('E.g.: image/png or image/jpeg'); ?></p>
                         </td>
                     </tr>
@@ -493,6 +498,45 @@
                             <p class="description"><?php _e('Enable it to make transparent the layer of WMS.'); ?></p>
                         </td>
                     </tr>
+                    <tr>
+                      <th><label for="wmslayer_transparent"><?php _e('Inforwindow (popup)', 'odm'); ?></label></th>
+                      <td>
+                        <div id="infowindow_multiple_box box-shadow">
+                          <div id="multiple-site">
+                            <input type="radio" id="infowindow_en" class="en" name="language_switch" value="en" checked />
+                            <label for="infowindow_en"><?php _e('English', 'wp-odm_profile_pages'); ?></label> &nbsp;
+                            <?php if (odm_language_manager()->get_the_language_by_site() != "English"):   ?>
+                              <input type="radio" id="infowindow_localization" class="localization" name="language_switch" value="localization" />
+                              <label for="infowindow_localization"><?php _e(odm_language_manager()->get_the_language_by_site(), 'wp-odm_profile_pages'); ?></label>
+                            <?php endif; ?>
+                          </div>
+
+                          <div id="infowindow_box">
+                            <div class="language_settings en">
+                              <p class="description"><?php _e('Please add the attribute_name or strings to display as the title in inforwindow. ', 'odm'); ?></p>
+                              <input id="infowindow_title" type="text" placeholder="<?php _e('Strings or attribute_name', 'odm'); ?>" size="65" name="_infowindow_title" value="<?php echo $infowindow_title; ?>" />
+
+                              <textarea name="_infowindow_attributes" style="width:100%;height: 100px;" placeholder="attribute_name => Label"><?php echo $infowindow_attributes;  ?></textarea>
+
+                              <p class="description"><?php _e('View detail link on infowindow,  please add the URL with {{attribute_name}}.', 'odm'); ?></p>
+                              <input id="infowindow_detail" type="text" placeholder="<?php _e('View detail URL', 'odm'); ?>" size="65" name="_infowindow_detail" value="<?php echo $infowindow_detail; ?>" />
+                              <p class="description">eg. https://opendevelopmentcambodia.net/profiles/economic-land-concessions/?feature_id={{map_id}}</p>
+                            </div>
+                            <?php if (odm_language_manager()->get_the_language_by_site() != "English"):   ?>
+                              <div class="language_settings localization">
+                                  <p class="description"><?php _e('Please add the attribute_name or strings to display as the title in inforwindow. ', 'odm'); ?></p>
+                                  <input id="infowindow_title_localization" type="text" placeholder="<?php _e('Strings or attribute_name', 'odm'); ?>" size="65" name="_infowindow_title_localization" value="<?php echo $infowindow_title_localization; ?>" />
+                                  <textarea name="_infowindow_attributes_localization" style="width:100%;height: 100px;" placeholder="attribute_name => Label"><?php echo $infowindow_attributes_localization;  ?></textarea>
+
+                                  <p class="description"><?php _e('View detail link on infowindow,  please add the URL with {{attribute_name}}.', 'odm'); ?></p>
+                                  <input id="infowindow_detail_localization" type="text" placeholder="<?php _e('View detail URL', 'odm'); ?>" size="65" name="_infowindow_detail_localization" value="<?php echo $infowindow_detail_localization; ?>" />
+                                  <p class="description">eg. https://opendevelopmentcambodia.net/profiles/economic-land-concessions/?feature_id={{map_id}}</p>
+                              </div>
+                            <?php endif; ?>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                 </tbody>
             </table>
             <table class="form-table type-setting mapbox">
@@ -501,7 +545,7 @@
                     <tr>
                         <th><label for="mapbox_id"><?php _e('MapBox ID', 'odm'); ?></label></th>
                         <td>
-                            <input id="mapbox_id" type="text" placeholder="examples.map-20v6611k" size="40" name="_mapbox_id" value="<?php echo $mapbox_id; ?>" />
+                            <input id="mapbox_id" type="text" placeholder="examples.map-20v6611k" size="65" name="_mapbox_id" value="<?php echo $mapbox_id; ?>" />
                             <p class="description"><?php _e('MapBox map ID. E.g.: examples.map-20v6611k', 'odm'); ?></p>
                         </td>
                     </tr>
@@ -537,7 +581,7 @@
                 <tr class="subopt viz_type_viz">
                 <th><label for="cartodb_viz_url"><?php _e('CartoDB URL (English)', 'odm'); ?></label></th>
                   <td>
-                    <input id="cartodb_viz_url" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url" value="<?php echo $vizurl; ?>" />
+                    <input id="cartodb_viz_url" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="65" name="_cartodb_viz_url" value="<?php echo $vizurl; ?>" />
                     <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm'); ?></p>
                   </td>
                 </tr>
@@ -545,7 +589,7 @@
                 <tr class="subopt viz_type_viz">
                   <th><label for="cartodb_viz_url_localization"><?php _e('CartoDB URL ('.odm_language_manager()->get_the_language_by_site().')', 'odm'); ?></label></th>
                   <td>
-                    <input id="cartodb_viz_url_localization" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="40" name="_cartodb_viz_url_localization" value="<?php echo $vizurl_localization; ?>" />
+                    <input id="cartodb_viz_url_localization" type="text" placeholder="http://user.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json" size="65" name="_cartodb_viz_url_localization" value="<?php echo $vizurl_localization; ?>" />
                     <p class="description"><?php _e('CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json', 'odm'); ?></p>
                   </td>
                 </tr>
@@ -595,41 +639,27 @@
             }
         </style>
         <script type="text/javascript">
+            function show_infowindow(inputname, settings_box){
+              var $forms = $("."+settings_box);
+              $forms.hide();
+              var selected = $('input[type="radio"][name='+ inputname+ ']').filter(':checked').val();
+              $('.'+settings_box+"." + selected).show();
+            }
             jQuery(document).ready(function($) {
-                var $container = $('#layer_settings_box');
-                var $layerSelection = $container.find('input[name="layer_type"]');
-                var $forms = $container.find('.form-table');
+                show_infowindow("language_switch", "language_settings");
+                show_infowindow("layer_type", "form-table");
 
-                $forms.hide();
+                var $language_Selection = $('input[type="radio"][name="language_switch"]');
+                $language_Selection.on('change', function() {
+                  $('.' + this.className).prop('checked', this.checked);
+                  show_infowindow("language_switch", "language_settings");
+                });
 
-                var showForms = function() {
-                    var selected = $layerSelection.filter(':checked').val();
-                    $forms.hide().filter('.' + selected).show();
-                }
-
+                var $layerSelection = $('input[type="radio"][name="layer_type"]');
                 $layerSelection.on('change', function() {
-                    showForms();
+                  $('.' + this.className).prop('checked', this.checked);
+                  show_infowindow("layer_type", "form-table");
                 });
-                showForms();
-                /*
-                 * CartoDB sub options
-                 */
-
-                var $form = $forms.filter('.cartodb');
-
-                var $subOpts = $form.find('tr.subopt');
-
-                $subOpts.hide();
-
-                var showSubOpts = function() {
-                    var selected = $form.find('input[name="_cartodb_type"]:checked').val();
-                    $subOpts.hide().filter('.viz_type_' + selected).show();
-                };
-
-                $form.find('input[name="_cartodb_type"]').on('change', function() {
-                    showSubOpts();
-                });
-                showSubOpts();
             });
         </script>
         <?php
@@ -720,7 +750,23 @@
             } else {
                 delete_post_meta($post_id, '_wmslayer_transparent');
             }
+            if(isset($_REQUEST['_infowindow_attributes']))
+                update_post_meta($post_id, '_infowindow_attributes', $_REQUEST['_infowindow_attributes']);
 
+            if(isset($_REQUEST['_infowindow_attributes_localization']))
+                update_post_meta($post_id, '_infowindow_attributes_localization', $_REQUEST['_infowindow_attributes_localization']);
+
+            if(isset($_REQUEST['_infowindow_title']))
+                update_post_meta($post_id, '_infowindow_title', $_REQUEST['_infowindow_title']);
+
+            if(isset($_REQUEST['_infowindow_title_localization']))
+                update_post_meta($post_id, '_infowindow_title_localization', $_REQUEST['_infowindow_title_localization']);
+
+            if(isset($_REQUEST['_infowindow_detail']))
+                update_post_meta($post_id, '_infowindow_detail', $_REQUEST['_infowindow_detail']);
+
+            if(isset($_REQUEST['_infowindow_detail_localization']))
+                update_post_meta($post_id, '_infowindow_detail_localization', $_REQUEST['_infowindow_detail_localization']);
             /*
             * MapBox
             */
@@ -851,6 +897,21 @@
             $layer['wms_layer_name_localization'] = get_post_meta($post->ID, '_wmslayer_layer_name_localization', true);
             $layer['wms_format'] = get_post_meta($post->ID, '_wmslayer_wms_format', true);
             $layer['wms_transparent'] = get_post_meta($post->ID, '_wmslayer_transparent', true);
+            $layer['infowindow_title'] = get_post_meta($post->ID, '_infowindow_title', true);
+            $layer['infowindow_title_localization'] = get_post_meta($post->ID, '_infowindow_title_localization', true);
+            $infowindow_attributes = get_post_meta($post->ID, '_infowindow_attributes', true);
+            if ($infowindow_attributes) {
+                $array_attribute = parse_mapping_pairs(trim($infowindow_attributes));
+                $layer['infowindow_attributes'] = $array_attribute;
+            }
+            $infowindow_attributes_localization = get_post_meta($post->ID, '_infowindow_attributes_localization', true);
+            if ($infowindow_attributes_localization) {
+                $array_attribute_localization = parse_mapping_pairs(trim($infowindow_attributes_localization));
+                $layer['infowindow_attributes_localization'] = $array_attribute_localization;
+            }
+
+            $layer['infowindow_detail'] = get_post_meta($post->ID, '_infowindow_detail', true);
+            $layer['infowindow_detail_localization'] = get_post_meta($post->ID, '_infowindow_detail_localization', true);
         }
         elseif($type == 'mapbox') {
             $layer['mapbox_id'] = get_post_meta($post->ID, '_mapbox_id', true);

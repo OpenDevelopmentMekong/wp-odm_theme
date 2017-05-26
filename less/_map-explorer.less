@@ -872,6 +872,23 @@ html#map-embed {
 	border-radius: 2px !important;
 	box-shadow: 0 0 0 3px rgba(0,0,0,.15) !important;
 }
+.leaflet-popup-content{
+	max-width: 280px !important;
+	margin: 0 !important;
+	padding: 13px 15px 15px 15x !important;
+	max-height: 250px;
+	font-size: 13px;
+	color: black;
+
+	.popupinfo{
+		overflow-y: auto;
+		max-height: 140px;
+
+		a.related_doc{
+			font-size: 13px;
+		}
+	}
+}
 .leaflet-container a.leaflet-popup-close-button{
 	display: block !important;
 	margin: 5px -5px auto 0 !important;
@@ -882,6 +899,7 @@ html#map-embed {
 	background: #fff !important;
 	width: 18px !important;
 	height: 18px !important;
+	padding: 1px 4px 0 0 !important;
 	border-radius: 10px;
 	box-shadow: 0 0 0 2px rgba(0,0,0,.15);
 }
