@@ -45,6 +45,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
   				odm_get_template('post-list-single-2-cols',array(
   					"post" => get_post(),
   					"show_meta" => true,
+						"meta_fields" => array("date","categories","tags"),
   					"show_source_meta" => true,
 						"show_thumbnail" => true,
 						"show_excerpt" => true,

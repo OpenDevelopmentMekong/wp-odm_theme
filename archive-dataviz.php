@@ -39,6 +39,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
         <?php while (have_posts()) : the_post();
   				odm_get_template('post-grid-single-4-cols',array(
   					"post" => get_post(),
+						"meta_fields" => array("date"),
   					"show_meta" => true,
 						"order" => $date_to_show
   			),true);

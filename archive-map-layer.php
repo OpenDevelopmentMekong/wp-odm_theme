@@ -74,6 +74,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 						odm_get_template('post-grid-single-4-cols',array(
 	            "post" => $layer,
 	            "show_meta" => false,
+							"meta_fields" => array("date"),
 							"view_large_image" => true,
 							"order" => $date_to_show
 							)
