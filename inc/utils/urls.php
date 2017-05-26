@@ -12,6 +12,12 @@
 		$response_code = wp_remote_retrieve_response_message( $response );
 		return $response_code == 'OK';
 	}
+	
+	function category_name_to_slug($name){
+		$slug = strtolower($name);
+		$slug = str_replace(" ","-",$slug);
+		return $slug;
+	}
 
 	/**
 	 * Construct Filter Url
