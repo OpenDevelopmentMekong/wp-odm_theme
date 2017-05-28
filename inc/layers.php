@@ -518,9 +518,9 @@
 
                               <textarea name="_infowindow_attributes" style="width:100%;height: 100px;" placeholder="attribute_name => Label"><?php echo $infowindow_attributes;  ?></textarea>
 
-                              <p class="description"><?php _e('View detail link on infowindow,  please add the URL with {{attribute_name}}.', 'odm'); ?></p>
+                              <p class="description"><?php _e('View detail', 'odm'); ?></p>
                               <input id="infowindow_detail" type="text" placeholder="<?php _e('View detail URL', 'odm'); ?>" size="65" name="_infowindow_detail" value="<?php echo $infowindow_detail; ?>" />
-                              <p class="description">eg. https://opendevelopmentcambodia.net/profiles/economic-land-concessions/?feature_id={{map_id}}</p>
+                              <p class="description"><?php _e('To show the view detail link on infowindow, please add the URL with {{attribute_name}} or only the attribute_name that contains the link.', 'odm'); ?> eg. https://opendevelopmentcambodia.net/profiles/economic-land-concessions/?feature_id={{map_id}} OR view_detail_column_name</p>
                             </div>
                             <?php if (odm_language_manager()->get_the_language_by_site() != "English"):   ?>
                               <div class="language_settings localization">
@@ -528,9 +528,9 @@
                                   <input id="infowindow_title_localization" type="text" placeholder="<?php _e('Strings or attribute_name', 'odm'); ?>" size="65" name="_infowindow_title_localization" value="<?php echo $infowindow_title_localization; ?>" />
                                   <textarea name="_infowindow_attributes_localization" style="width:100%;height: 100px;" placeholder="attribute_name => Label"><?php echo $infowindow_attributes_localization;  ?></textarea>
 
-                                  <p class="description"><?php _e('View detail link on infowindow,  please add the URL with {{attribute_name}}.', 'odm'); ?></p>
+                                  <p class="description"><?php _e('View detail', 'odm'); ?></p>
                                   <input id="infowindow_detail_localization" type="text" placeholder="<?php _e('View detail URL', 'odm'); ?>" size="65" name="_infowindow_detail_localization" value="<?php echo $infowindow_detail_localization; ?>" />
-                                  <p class="description">eg. https://opendevelopmentcambodia.net/profiles/economic-land-concessions/?feature_id={{map_id}}</p>
+                                  <p class="description"><?php _e('To show the view detail link on infowindow, please add the URL with {{attribute_name}} or only the attribute_name that contains the link.', 'odm'); ?> eg. https://opendevelopmentcambodia.net/profiles/economic-land-concessions/?feature_id={{map_id}} OR view_detail_column_name</p>
                               </div>
                             <?php endif; ?>
                           </div>

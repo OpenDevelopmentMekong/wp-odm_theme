@@ -71,7 +71,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
   showGetFeatureInfo: function (err, latlng, content) {
     var info_title = this.wmsParams.info_title;
     var info_attributes = this.wmsParams.info_attributes;
-    var info_detail = this.wmsParams.infowindow_detail;
+    var info_detail = this.wmsParams.info_detail;
     if (err) { console.log(err); return; } // do nothing if there's an error
 
     // Otherwise show the content in a popup, or something.
@@ -94,9 +94,22 @@ L.tileLayer.betterWms = function (url, options) {
 
 //added H.E
 function buildpopup(content, info_title, info_attributes, info_detail){
-
   if( ((info_title !== null) && (info_title != "")) || ((info_attributes !== null) && (info_attributes != "")) || ((info_detail !== null) && (info_detail != ""))){
-    var record; var full_name_of_filename;
+    var record;
+    var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
+    var translations = {
+      en:  { view_detail: "View detail"},
+      km:  { view_detail: "មើលលម្អិត" },
+      my:  { view_detail: "ကြည့်ရန်အသေးစိတ်" },
+      lo:  { view_detail: "ເບິ່ງ​ລາຍ​ລະ​ອຽດ" },
+      th:  { view_detail: "ดูรายละเอียด" },
+      vi:  { view_detail: "Xem chi tiết" }
+    };
+
+    var view_detail_label = translations.en.view_detail;
+    if(detect_lang_site != "en-US"){
+      view_detail_label = translations[ detect_lang_site ].view_detail;
+    }
     var info = "<div class=\"wmspopupinfo\">";
     for (var i=0 ; i < content.features.length; i++ ){
         record = content.features[i];
@@ -114,15 +127,14 @@ function buildpopup(content, info_title, info_attributes, info_detail){
           for(var info_attr in info_attributes){
             if(info_attr in record.properties){
               var field_value = record.properties[info_attr];
-              var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
               // Replace plain text links by hyperlinks
              if (regexp.test(field_value)){
                  var field_url_value = field_value.split(";");
                  var url_doc = "";
                  for(var url =0; url < field_url_value.length; url++ ){
-                      url_doc = url_doc + field_url_value[url].replace(regexp, "<a class='related_doc' href='$1' target='_blank'>$1</a><br />");
+                      url_doc = url_doc + "- "+field_url_value[url].replace(regexp, "<a class='related_doc' href='$1' target='_blank'>$1</a><br />");
                  }
-                 field_value = "<br/>"+url_doc;
+                 field_value = "<br/>"+url_doc.replace(/^\s*<br\s*\/?>|<br\s*\/?>\s*$/g,'');;
              }
 
                 info += info_attributes[info_attr]+": "+field_value+"<br />";
@@ -131,55 +143,32 @@ function buildpopup(content, info_title, info_attributes, info_detail){
         }
 
 
-        if((info_detail !== undefined) && (info_detail != "") ){
+        if((info_detail !== null) && (info_detail != "") ){
           var view_detail_link = info_detail.split("{{");
           if(view_detail_link){
-            var detail_url = view_detail_link[0];
-            var detail_link =detail_url;
-            if( view_detail_link[1]){
-              var attribute_name = view_detail_link[1].replace("}}", "");
-            }
-            if(attribute_name){
-              if(attribute_name in record.properties){
-                var detail_link =detail_url + record.properties[attribute_name]
+              var view_detail = view_detail_link[0];
+              if(regexp.test(view_detail)){
+                var detail_link = view_detail;
+              }else{
+                if(view_detail in record.properties){
+                   var detail_link = record.properties[view_detail]
+                }
               }
+
+              if( view_detail_link[1]){
+                var attribute_name = view_detail_link[1].replace("}}", "");
+                if(attribute_name in record.properties){
+                   detail_link =detail_link + record.properties[attribute_name]
+                }
+              }
+
+              info += "<a class='view-detail' href='"+detail_link+"' target='_blank'>"+view_detail_label+"</a>";
             }
-          }
-          if(detail_link){
-              info += "<a class='view-detail' href='"+detail_link+"' target='_blank'>View detail</a>";
-          }
+
+
         }
 
         for (var name in record.properties) {
-          console.log(name);
-              //if ( $.inArray(name, exclude) == -1 ) {
-              /*if ( $.inArray(name, include) > -1 ) {
-                // var field_name = name.substr(0, 1).toUpperCase() + name.substr(1);
-                //console.log(full_name_of_filename);
-                 var field_name = full_name_of_filename[name];
-                 if (typeof(field_name) == "undefined"){
-                    field_name = name;
-                 }
-                 var field_value = record.properties[name] ;
-
-                     // Set the regex string
-                     var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
-                     // Replace plain text links by hyperlinks
-                    if (regexp.test(field_value)){
-                        var field_url_value = field_value.split(";");
-                        //console.log(field_url_value.length);
-                        var url_doc = "";
-                        for(var url =0; url < field_url_value.length; url++ ){
-                             url_doc = url_doc + field_url_value[url].replace(regexp, "<a href='$1' target='_blank'>$1</a><br />");
-                        }
-                        field_value = url_doc;
-                    }
-                    if(name == "name"){
-                        info += "<h3>"+field_value+"</h3>";
-                    }else{
-                        info += "<strong>"+field_name+"</strong>: "+field_value+"<br />";
-                    }
-              }*/
         }
 
         info+="</div>";
