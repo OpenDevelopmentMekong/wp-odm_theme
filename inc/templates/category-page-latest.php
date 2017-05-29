@@ -146,7 +146,7 @@ $ckan_post_types_names = array(
                     $pt = get_post_type_object($pt);
                     if (isset($pt)):
         							$title = $pt->labels->name;?>
-        							<li <?php if($current_pt == $pt->name): echo 'class="active"'; endif; ?>><i class="<?php echo get_post_type_icon_class($pt->name); ?>"><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
+        							<li <?php if($current_pt == $pt->name): echo 'class="active"'; endif; ?>><i class="<?php echo get_post_type_icon_class($pt->name); ?>"></i><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
       						<?php
                     endif;
                   endforeach; ?>
