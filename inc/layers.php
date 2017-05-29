@@ -502,7 +502,7 @@
                       <th><label for="wmslayer_transparent"><?php _e('Inforwindow (popup)', 'odm'); ?></label></th>
                       <td>
                         <div id="infowindow_multiple_box box-shadow">
-                          <div id="multiple-site">
+                          <div id="multiple-site" class="<?php if(odm_country_manager()->get_current_country()=="mekong") echo 'hide'; ?>">
                             <input type="radio" id="infowindow_en" class="en" name="language_switch" value="en" checked />
                             <label for="infowindow_en"><?php _e('English', 'wp-odm_profile_pages'); ?></label> &nbsp;
                             <?php if (odm_language_manager()->get_the_language_by_site() != "English"):   ?>

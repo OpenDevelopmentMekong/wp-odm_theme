@@ -45,23 +45,23 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
     var point = this._map.latLngToContainerPoint(latlng, this._map.getZoom()),
         size = this._map.getSize(),
         params = {
-          request: 'GetFeatureInfo',
-          service: 'WMS',
-          srs: 'EPSG:4326',
-          styles: this.wmsParams.styles,
-          transparent: this.wmsParams.transparent,
-          version: this.wmsParams.version,
-          format: this.wmsParams.format,
-          bbox: this._map.getBounds().toBBoxString(),
-          height: size.y,
-          width: size.x,
-          layers: this.wmsParams.layers,
-          query_layers: this.wmsParams.layers,
-          // INFO FORMAT JSON
-		      info_format: 'text/javascript',
-          outputFormat : 'text/javascript',
-          format_options : 'callback:getJson'
-        };
+        request: 'GetFeatureInfo',
+        service: 'WMS',
+        srs: 'EPSG:4326',
+        styles: this.wmsParams.styles,
+        transparent: this.wmsParams.transparent,
+        version: this.wmsParams.version,
+        format: this.wmsParams.format,
+        bbox: this._map.getBounds().toBBoxString(),
+        height: size.y,
+        width: size.x,
+        layers: this.wmsParams.layers,
+        query_layers: this.wmsParams.layers,
+        // INFO FORMAT JSON
+	      info_format: 'text/javascript',
+        outputFormat : 'text/javascript',
+        format_options : 'callback:getJson'
+      };
 
     params[params.version === '1.3.0' ? 'i' : 'x'] = point.x;
     params[params.version === '1.3.0' ? 'j' : 'y'] = point.y;
@@ -92,7 +92,6 @@ L.tileLayer.betterWms = function (url, options) {
   return new L.TileLayer.BetterWMS(url, options);
 };
 
-//added H.E
 function buildpopup(content, info_title, info_attributes, info_detail){
   if( ((info_title !== null) && (info_title != "")) || ((info_attributes !== null) && (info_attributes != "")) || ((info_detail !== null) && (info_detail != ""))){
     var record;
@@ -107,7 +106,7 @@ function buildpopup(content, info_title, info_attributes, info_detail){
     };
 
     var view_detail_label = translations.en.view_detail;
-    if(detect_lang_site != "en-US"){
+    if(document.documentElement.lang != "en-US"){
       view_detail_label = translations[ detect_lang_site ].view_detail;
     }
     var info = "<div class=\"wmspopupinfo\">";
