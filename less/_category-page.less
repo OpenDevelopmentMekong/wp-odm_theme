@@ -4,15 +4,16 @@
 
 #category-post-type-nav ul {
 	width: 100%;
-	display: table;
 	margin: 0 0 10px;
 	padding: 0;
+	border-bottom: 1px solid @light-gray;
+	display: inline-block;
 
 	li {
-		display: table-cell;
-		width: 1%;
-		text-align: center;
-		border-bottom: 1px solid @light-gray;
+		float: left;
+		list-style: none;
+		padding-right: 10px;	
+		margin-bottom: 0px;	
 
 		&:last-child {
 			border-right: 0;
@@ -25,7 +26,7 @@
 			display: block;
 			padding: 15px 0;
 			width: 100%;
-			font-size: @font-size-h6;
+			font-size: @font-size-h5;
 			text-decoration: none;
 			text-transform: capitalize;
 		}
@@ -36,7 +37,6 @@
 
 		a:hover, div.tag-name:hover {
 			cursor: pointer;
-			font-weight: 600;
 		}
 	}
 }
