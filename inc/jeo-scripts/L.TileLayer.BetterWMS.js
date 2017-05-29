@@ -94,6 +94,7 @@ L.tileLayer.betterWms = function (url, options) {
 
 //added H.E
 function buildpopup(content, info_title, info_attributes, info_detail){
+  var current_language = document.documentElement.lang;
   if( ((info_title !== null) && (info_title != "")) || ((info_attributes !== null) && (info_attributes != "")) || ((info_detail !== null) && (info_detail != ""))){
     var record;
     var regexp = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([-\w\/_\.]*(\?\S+)?)?)?)/ig;
@@ -107,8 +108,8 @@ function buildpopup(content, info_title, info_attributes, info_detail){
     };
 
     var view_detail_label = translations.en.view_detail;
-    if(detect_lang_site != "en-US"){
-      view_detail_label = translations[ detect_lang_site ].view_detail;
+    if (current_language != "en-US"){
+      view_detail_label = translations[ current_language ].view_detail;
     }
     var info = "<div class=\"wmspopupinfo\">";
     for (var i=0 ; i < content.features.length; i++ ){
