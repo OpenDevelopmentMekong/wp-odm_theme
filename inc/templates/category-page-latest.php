@@ -1,5 +1,9 @@
 <?php
 
+$queried_post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'dataset';
+$param_page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
+$param_page_solr = (isset($_GET['page']) && (int)$_GET['page'] > 0) ? ((int)$_GET['page'] -1) : 0;
+      
 $term = $wp_query->queried_object;
 $supported_wp_post_types = odm_get_wp_post_types_for_category_page();
 $supported_ckan_post_types = odm_get_ckan_post_types_for_category_page();
@@ -26,12 +30,12 @@ $ckan_post_types_names = array(
   <?php
     else: ?>
 
-    <section class="container">
+    <section class="container section-title main-title">
   		<header class="row">
   			<div class="eight columns">
           <h1 class="archive-title"><?php single_cat_title(); ?></h1>
   			</div>
-        <div class="eight columns">
+        <div class="eight columns align-right">
   				<?php get_template_part('section', 'query-actions'); ?>
   			</div>
   		</header>
@@ -136,23 +140,24 @@ $ckan_post_types_names = array(
 			        <div class="sixteen columns">
       							
 	            <?php
-	              $current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'dataset';
 	  						$total_results_found = count($supported_ckan_post_types) + count($supported_wp_post_types);
 	              if( $total_results_found > 0) : ?>
 	      				<nav id="category-post-type-nav">
 	      					<ul>
 	      						<?php
 	  								foreach ($supported_ckan_post_types as $pt):
-	                    $post_type_name = array_key_exists($pt,$ckan_post_types_names) ? $ckan_post_types_names[$pt] : $pt ?>
-	  									<li <?php if($current_pt == $pt): echo 'class="active"'; endif; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt)); ?>"><i class="<?php echo get_post_type_icon_class($pt); ?>"></i> <?php echo $post_type_name; ?></a></li>
+	                    $post_type_name = array_key_exists($pt,$ckan_post_types_names) ? $ckan_post_types_names[$pt] : $pt;											
+											$new_url = add_query_arg(array('queried_post_type' => $pt),remove_query_arg('page'));?>
+	  									<li <?php if($queried_post_type == $pt): echo 'class="active"'; endif; ?>><a href="<?php echo $new_url; ?>"><i class="<?php echo get_post_type_icon_class($pt); ?>"></i> <?php echo $post_type_name; ?></a></li>
 	  								<?php
 	  								endforeach;
 
 	                  foreach($supported_wp_post_types as $pt):
 	                    $pt = get_post_type_object($pt);
 	                    if (isset($pt)):
-	        							$title = $pt->labels->name;?>
-	        							<li <?php if($current_pt == $pt->name): echo 'class="active"'; endif; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><i class="<?php echo get_post_type_icon_class($pt->name); ?>"></i> <?php echo $title; ?></a></li>
+	        							$title = $pt->labels->name;												
+												$new_url = add_query_arg(array('queried_post_type' => $pt->name),remove_query_arg('page')); ?>
+	        							<li <?php if($queried_post_type == $pt->name): echo 'class="active"'; endif; ?>><a href="<?php echo $new_url; ?>"><i class="<?php echo get_post_type_icon_class($pt->name); ?>"></i> <?php echo $title; ?></a></li>
 	      						<?php
 	                    endif;
 	                  endforeach; ?>
@@ -167,11 +172,13 @@ $ckan_post_types_names = array(
 						<div class="sixteen columns">
 
 		          <?php					
-		            $pt = get_post_type_object($current_pt);
+		            $pt = get_post_type_object($queried_post_type);
 		            if (isset($pt)):
 		              $args = array(
 		            		'post_type' => $pt->name,
 		            		'post_status' => 'publish',
+										'number' => 12,
+										'offset' => $param_page,
 		            		'tax_query' => array(
 		    							array(
 		    							  'taxonomy' => 'category',
@@ -200,22 +207,35 @@ $ckan_post_types_names = array(
 		      									"header_tag" => true
 		      			  			),true);
 		      						echo '</div>';
-		                endforeach;
+		                endforeach; ?>
+										
+										<section class="container">
+											<div class="row">
+												<div class="sixteen columns">
+													<?php odm_get_template('pagination',array(),true); ?>
+												</div>
+											</div>
+										</section>
+										
+									<?php
 		              else : ?>
 		              <h3 style="padding: 0 20px 10px;"><?php _e('No results found.', 'odm'); ?></h3>
 		            <?php
 		  						endif;
-		  					elseif (in_array($current_pt,$supported_ckan_post_types)):
+		  					elseif (in_array($queried_post_type,$supported_ckan_post_types)):
 
 		  						$attrs = array(
-		  							'dataset_type' => $current_pt,
+		  							'dataset_type' => $queried_post_type,
 		  							'extras_taxonomy' => $term->name,
 		  							'capacity' => 'public'
 		  						);
 
-		  						$control_attrs = array();
+									$control_attrs = array(
+							      "limit" => 12,
+							      "page" => $param_page_solr
+							    );
 
-		  						$result = WP_Odm_Solr_CKAN_Manager()->query(null,$attrs,null);
+		  						$result = WP_Odm_Solr_CKAN_Manager()->query(null,$attrs,$control_attrs);
 		  						$results = $result["resultset"]; ?>
 
 		  						<div class="solr_results result_container container">
@@ -232,12 +252,30 @@ $ckan_post_types_names = array(
 		  							<?php
 		  								endif; ?>
 		  						</div>
+									
+									<?php
+			              if (isset($results) && $results->getNumFound() > 0):
+			                $total_pages = ceil($results->getNumFound()/$control_attrs['limit']);
+			                if ($total_pages > 1): ?>
+			                  <div class="row">
+			                    <div class="pagination sixteen columns">
+			                      <?php
+			                      odm_get_template('pagination_solr', array(
+			                                    "current_page" => $param_page,
+			                                    "total_pages" => $total_pages
+			                                  ),true); ?>
+			                    </div>
+			                  </div>
+			              <?php
+			                endif;
+			              endif; ?>
 
 		  					<?php
 		            endif; ?>
       		
 		    			</div>
-						</div>
+						</div>											
+								
 					</section>
 				</div>
 			
