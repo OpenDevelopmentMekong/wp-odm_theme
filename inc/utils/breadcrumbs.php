@@ -108,15 +108,14 @@ function echo_the_breadcrumb()
                 echo '</li>';
             }
         } elseif (is_category()) {
-            if (empty($category)):
-              global $wp_query;
-              $term = $wp_query->queried_object;
-              $category[] = get_category_by_slug($term->slug);
-            endif;
+            global $wp_query;
+            $term = $wp_query->queried_object;
+            
             // Category page
-            $parent_cat = get_category_parents($category[0]->term_id, true, '||');
+            $parent_cat = get_category_parents($term->term_id, true, '||');
             $parent_cat = substr($parent_cat, 0, -2);
             $parent_cats = explode('||', $parent_cat);
+            
             foreach ($parent_cats as $cat) {
               echo '<li class="item-current item-cat-'.$category[0]->term_id.' item-cat-'.$category[0]->category_nicename.'">';
               if ($cat === end($parent_cats)) {
