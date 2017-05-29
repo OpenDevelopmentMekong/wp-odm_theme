@@ -9,9 +9,9 @@ var overlayers = [];
 var overbaselayers_object = {};
 var overbaselayers_cartodb = {};
 var overlayers_cartodb = [];
-var layer_name, geoserver_URL, layer_name_localization, detect_lang_site;
+var layer_name, geoserver_URL, layer_name_localization;
 var marker_layer;
-detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
+var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lang');
 (function($) {
 
  jeo = function(conf, callback) {
