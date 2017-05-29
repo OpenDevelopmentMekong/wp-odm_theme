@@ -7,7 +7,7 @@
 
   <article id="content" class="single-post">
 
-      <section class="container">
+      <section class="container section-title main-title">
         <header class="row">
           <div class="twelve columns post-title">
             <h1><?php the_title(); ?></h1>
