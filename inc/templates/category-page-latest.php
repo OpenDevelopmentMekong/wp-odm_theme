@@ -65,7 +65,7 @@ $ckan_post_types_names = array(
               $post = current($topic_posts); ?>
               <div class="sixteen columns">
                 <div class="row">
-									<h3><?php _e('Main briefing page','odm'); ?></h3>
+									<h3><?php _e('Topic briefing','odm'); ?></h3>
                   <?php
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
@@ -85,7 +85,7 @@ $ckan_post_types_names = array(
               $post = end($topic_posts);?>
               <div class="twelve columns">
                 <div class="row">
-									<h3><?php _e('Main briefing page','odm'); ?></h3>
+									<h3><?php _e('Topic briefing','odm'); ?></h3>
                   <?php
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
@@ -128,7 +128,7 @@ $ckan_post_types_names = array(
       <div class="row">
         <div class="twelve columns">
       		<section class="category-post-type-section container">
-
+						
             <?php
               $current_pt = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'dataset';
   						$total_results_found = count($supported_ckan_post_types) + count($supported_wp_post_types);
@@ -138,7 +138,7 @@ $ckan_post_types_names = array(
       						<?php
   								foreach ($supported_ckan_post_types as $pt):
                     $post_type_name = array_key_exists($pt,$ckan_post_types_names) ? $ckan_post_types_names[$pt] : $pt ?>
-  									<li <?php if($current_pt == $pt) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt)); ?>"><?php echo $post_type_name; ?></a></li>
+  									<li <?php if($current_pt == $pt): echo 'class="active"'; endif; ?>><i class="<?php echo get_post_type_icon_class($pt); ?>"></i><a href="<?php echo add_query_arg(array('queried_post_type' => $pt)); ?>"><?php echo $post_type_name; ?></a></li>
   								<?php
   								endforeach;
 
@@ -146,7 +146,7 @@ $ckan_post_types_names = array(
                     $pt = get_post_type_object($pt);
                     if (isset($pt)):
         							$title = $pt->labels->name;?>
-        							<li <?php if($current_pt == $pt->name) echo 'class="active"'; ?>><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
+        							<li <?php if($current_pt == $pt->name): echo 'class="active"'; endif; ?>><i class="<?php echo get_post_type_icon_class($pt->name); ?>"><a href="<?php echo add_query_arg(array('queried_post_type' => $pt->name)); ?>"><?php echo $title; ?></a></li>
       						<?php
                     endif;
                   endforeach; ?>
