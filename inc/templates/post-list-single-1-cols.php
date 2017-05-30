@@ -1,6 +1,7 @@
 <?php
 	$post = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
+	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : array("date");
 	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
 	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
@@ -18,14 +19,20 @@
 			<?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
-			<h3>
+			<h4>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
+					<?php
+						if ($show_post_type):
+							$post_type_name = get_post_type($post->ID); ?>
+							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
+						<?php
+						endif; ?>
 					<?php echo $localized_title; ?>
 				</a>
-			</h3>
+			</h4>
 		<?php else: ?>
 			<p>
-				<h3>
+				<h4>
 					<?php
 						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 					 ?>
@@ -33,24 +40,23 @@
 
 					<?php
 						if ($show_post_type):
-							$post_type_name = get_post_type($post->ID);
-							?>
-
+							$post_type_name = get_post_type($post->ID); ?>
 							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
 						<?php
 						endif; ?>
 
 							<?php echo $localized_title; ?>
 						</a>
-				</h3>
+				</h4>
 			</p>
 		<?php endif; ?>
 
-		<?php if ($show_meta): ?>
-			<?php echo_post_meta($post,array('date','sources','show_summary_translated_by_odc_team'),$order); ?>
-		<?php endif; ?>
+		<?php
+			if ($show_meta):
+				echo_post_meta($post,$meta_fields,$order);
+			endif; ?>
 
-		<section class="content section-content">
+		<section class="content item-content section-content">
 			<?php
 			if ($show_thumbnail):
 				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
@@ -61,21 +67,19 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>
-				<div class="item-content">
-						<?php if ($show_excerpt): ?>
-							<div class="post-excerpt">
-								<?php echo odm_excerpt($post); ?>
-							</div>
-							<?php if( echo_downloaded_documents()):
-								echo_downloaded_documents();
-							endif; ?>
-						<?php endif; ?>
+			<?php if ($show_excerpt || $show_source_meta): ?>				
+					<?php if ($show_excerpt): ?>
+						<div class="post-excerpt">
+							<?php echo odm_excerpt($post); ?>
+						</div>
+						<?php if( echo_downloaded_documents()):
+							echo_downloaded_documents();
+						endif; ?>
+					<?php endif; ?>
 
-						<?php if ($show_source_meta): ?>
-							<?php odm_echo_extras(); ?>
-						<?php endif; ?>
-				</div>
+					<?php if ($show_source_meta): ?>
+						<?php odm_echo_extras(); ?>
+					<?php endif; ?>
 			<?php endif; ?>
 		</section>
 

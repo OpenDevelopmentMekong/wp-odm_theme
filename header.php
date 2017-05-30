@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?php bloginfo('charset'); ?>" />
 <meta property="og:title" content="<?php the_title(); ?>" />
-<meta property="og:description" content="<?php echo strip_tags(odm_excerpt($post)); ?>" />
+<meta property="og:description" content="<?php echo odm_excerpt($post); ?>" />
 <meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
 <meta property="og:type" content="opendevelopment:<?php echo get_post_type(); ?>" />
 <?php if(isset($post) && has_post_thumbnail( $post->ID )) { ?>

@@ -200,6 +200,7 @@ function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
 	if(count($layers) > 1){ //no layer selectd
   ?>
 
+  <?php priting_map_setting();?>
   <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
 		<div class="map-container"><div id="map_embed" class="map"></div></div>
 		<?php

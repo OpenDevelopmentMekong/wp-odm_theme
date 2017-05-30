@@ -4,7 +4,7 @@
 
 	<section class="container">
 		<div class="row">
-			<div class="sixteen columns">
+			<div class="sixteen columns align-right">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</div>

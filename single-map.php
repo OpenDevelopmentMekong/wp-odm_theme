@@ -45,7 +45,7 @@ if(have_posts()) :
 		<div class="eight columns">
 			<h2><?php _e('Latest articles on', 'odm'); ?> <?php the_title(); ?></H2>
 		</div>
-		<div class="eight columns">
+		<div class="eight columns align-right">
 			<?php get_template_part('section', 'query-actions'); ?>
 		</div>
 	</header>

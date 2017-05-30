@@ -279,14 +279,34 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','sources','categories','tags', 'show_summary_translated_by_odc_team'), $order = 'created')
+function echo_post_meta($the_post, $show_elements, $order = 'created')
 {
 	global $post;
 	$post = $the_post;
 	?>
 	<div class="post-meta">
 		<ul>
-      <?php if (in_array('date',$show_elements)): ?>
+			<?php 
+			if (in_array('language',$show_elements)): ?>
+				<li class="post-languages">
+					<?php
+		        odm_language_manager()->print_language_flags_for_post($post); ?>		      
+				</li>
+			<?php 
+			endif; ?>
+			<?php
+				if (in_array('country',$show_elements)): ?>
+        <li class="post-country">
+					<i class="fa fa-globe"></i>
+					<?php
+						$country = odm_country_manager()->get_country_name(odm_country_manager()->get_current_country());
+						_e($country,'odm');
+					 ?>
+				</li>
+			<?php
+      endif; ?>	
+      <?php 
+			if (in_array('date',$show_elements)): ?>
         <li class="date">
 					<?php if ($order == 'modified'): ?>
   					<i class="fa fa-pencil"></i>
@@ -308,8 +328,10 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
 					  ?>
 					<?php endif; ?>
   			</li>
-      <?php endif; ?>
-      <?php if (in_array('sources', $show_elements)):
+      <?php 
+			endif; ?>
+      <?php 
+			if (in_array('sources', $show_elements)):
         if (taxonomy_exists('news_source') && isset($post)) {
   				$terms_news_source = get_the_terms($post->ID, 'news_source');
   				if ($terms_news_source && !is_wp_error($terms_news_source)) {
@@ -366,18 +388,22 @@ function echo_post_meta($the_post, $show_elements = array('date','sources','cate
   					}
   			}
       endif; ?>
-      <?php if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
+      <?php 
+			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
         <li class="categories">&nbsp;
   				<i class="fa fa-folder-o"></i>
   				<?php the_category(' / '); ?>
   			</li>
-      <?php endif; ?>
-      <?php if (in_array('tags',$show_elements)):
+      <?php 
+			endif; ?>
+      <?php 
+			if (in_array('tags',$show_elements)):
         the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
       endif; ?>
-			<?php if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
+			<?php 
+			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());
-			endif; ?>
+			endif; ?>		
 		</ul>
 	</div>
 
@@ -391,27 +417,21 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$post = $the_post;
 		$limit = $num;
 
-		if($post->post_excerpt):
-			$get_the_excerpt = $post->post_excerpt;
-		else:
-			$get_the_excerpt = $post->post_content;
-		endif;
+		$post_content = apply_filters('the_content',$post->post_content);
+		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
+		$stripped_content = strip_tags($translated_content);
+		$stripped_content = strip_shortcodes($stripped_content);
 
-		$get_the_excerpt = apply_filters('translate_text', $get_the_excerpt, odm_language_manager()->get_current_language());
-
-		$excerpt = explode(' ', strip_shortcodes($get_the_excerpt), $limit);
-
-		$excerpt_string = implode(' ', $excerpt);
-		$excerpt_hidden_space = explode("​", $excerpt_string, $limit); //explode by zerowidthspace
-
+		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
-		$excerpt_words = $excerpt_string.' ...';
+		$excerpt_words = $excerpt_string . ' ...';
+
 		if ($read_more != '') {
 			 $color_name = odm_country_manager()->get_current_country().'-color';
 			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
 		}
 
-		return $excerpt_words;
+		return '<p>' . $excerpt_words . '</p>';
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
@@ -680,7 +700,7 @@ function available_custom_post_types(){
 		 </div>
 	 <?php endif; ?>
 	 <!-- Country -->
-	 <?php if (!empty($solr_search_result->odm_spatial_range)): ?>
+	 <?php if (odm_country_manager()->get_current_country() == "mekong" && !empty($solr_search_result->odm_spatial_range)): ?>
 		 <div class="country_indicator data_meta">
 			 <i class="fa fa-globe"></i>
 			 <span>
