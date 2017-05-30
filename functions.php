@@ -336,41 +336,6 @@ function odm_marker_data($data, $post)
 }
 add_filter('jeo_marker_data', 'odm_marker_data', 10, 2);
 
-// function odm_social_apis()
-// {
-// 
-//  // Facebook
-//  ?>
-//  <div id="fb-root"></div>
-//  <script>(function(d, s, id) {
-//    var js, fjs = d.getElementsByTagName(s)[0];
-//    if (d.getElementById(id)) return;
-//    js = d.createElement(s); js.id = id;
-//    //js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1413694808863403";
-//    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1066174610071139";
-//    fjs.parentNode.insertBefore(js, fjs);
-//  }(document, 'script', 'facebook-jssdk'));</script>
-//  <?php
-// 
-//  // Twitter
-//  ?>
-//  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-//  <?php
-// 
-//  // Google Plus
-//  ?>
-//  <script type="text/javascript">
-//    (function() {
-//      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-//      po.src = 'https://apis.google.com/js/plusone.js';
-//      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-//    })();
-//  </script>
-//  <?php
-// 
-// }
-// add_action('wp_footer', 'odm_social_apis');
-
 // Disable mousewheel zoom by default
 function odm_map_data($data)
 {
