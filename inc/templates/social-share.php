@@ -1,6 +1,6 @@
 <div class="share clearfix">
 	<?php 
-		global $post;
+		//requires social warfare plugin
 		echo do_shortcode('[social_warfare]');
 	?>
 </div>
