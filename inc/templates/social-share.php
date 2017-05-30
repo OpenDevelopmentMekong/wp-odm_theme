@@ -1,7 +1,7 @@
 <?php 
 	global $post;
 	$current_language = odm_language_manager()->get_current_language();
-	$twitter_url = "https://twitter.com/share?via=" . odm_country_manager()->get_current_twitter() . "&text=" . $post->title;
+	$twitter_url = "https://twitter.com/share?via=" . odm_country_manager()->get_current_twitter() . "&text=" . $post->post_title;
 ?>
 
 <div class="share clearfix">
