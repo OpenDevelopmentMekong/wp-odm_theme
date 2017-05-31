@@ -8,12 +8,12 @@
 class Odm_Country_Manager {
 
   var $countries = [
-    'mekong' => array('name' => 'Mekong', 'theme' => 'mekong', 'code' => 'mekong', 'lang' => null, 'url' => 'https://opendevelopmentmekong.net', 'url_pp' => 'https://pp.opendevelopmentmekong.net'),
-    'cambodia' => array('name' => 'Cambodia', 'theme' => 'cambodia', 'code' => 'kh', 'lang' => 'km', 'url' => 'https://opendevelopmentcambodia.net', 'url_pp' => 'https://pp.opendevelopmentcambodia.net'),
-    'laos' => array('name' => 'Laos', 'theme' => 'laos', 'code' => 'la', 'lang' => 'lo', 'url' => 'https://laos.opendevelopmentmekong.net', 'url_pp' => 'https://laos.pp.opendevelopmentmekong.net'),
-    'myanmar' => array('name' => 'Myanmar', 'theme' => 'myanmar', 'code' => 'mm', 'lang' => 'my', 'url' => 'https://opendevelopmentmyanmar.net', 'url_pp' => 'https://pp.opendevelopmentmyanmar.net'),
-    'thailand' => array('name' => 'Thailand', 'theme' => 'thailand', 'code' => 'th', 'lang' => 'th', 'url' => 'https://thailand.opendevelopmentmekong.net', 'url_pp' => 'https://thailand.pp.opendevelopmentmekong.net'),
-    'vietnam' => array('name' => 'Vietnam', 'theme' => 'vietnam', 'code' => 'vn', 'lang' => 'vi', 'url' => 'https://vietnam.opendevelopmentmekong.net', 'url_pp' => 'https://vietnam.pp.opendevelopmentmekong.net')
+    'mekong' => array('name' => 'Mekong', 'theme' => 'mekong', 'code' => 'mekong', 'lang' => null, 'url' => 'https://opendevelopmentmekong.net', 'url_pp' => 'https://pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong'),
+    'cambodia' => array('name' => 'Cambodia', 'theme' => 'cambodia', 'code' => 'kh', 'lang' => 'km', 'url' => 'https://opendevelopmentcambodia.net', 'url_pp' => 'https://pp.opendevelopmentcambodia.net', 'twitter' => 'opendevcam'),
+    'laos' => array('name' => 'Laos', 'theme' => 'laos', 'code' => 'la', 'lang' => 'lo', 'url' => 'https://laos.opendevelopmentmekong.net', 'url_pp' => 'https://laos.pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong'),
+    'myanmar' => array('name' => 'Myanmar', 'theme' => 'myanmar', 'code' => 'mm', 'lang' => 'my', 'url' => 'https://opendevelopmentmyanmar.net', 'url_pp' => 'https://pp.opendevelopmentmyanmar.net', 'twitter' => 'opendevmekong'),
+    'thailand' => array('name' => 'Thailand', 'theme' => 'thailand', 'code' => 'th', 'lang' => 'th', 'url' => 'https://thailand.opendevelopmentmekong.net', 'url_pp' => 'https://thailand.pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong'),
+    'vietnam' => array('name' => 'Vietnam', 'theme' => 'vietnam', 'code' => 'vn', 'lang' => 'vi', 'url' => 'https://vietnam.opendevelopmentmekong.net', 'url_pp' => 'https://vietnam.pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong')
   ];
 
 	function __construct() {
@@ -37,6 +37,11 @@ class Odm_Country_Manager {
     $current_country = $this->get_current_country();
 		return $this->countries[$current_country]['code'];
   }
+  
+  function get_current_twitter(){
+    $current_country = $this->get_current_country();
+		return $this->countries[$current_country]['twitter'];
+  }
 
   function get_country_themes(){
     return [
@@ -47,6 +52,10 @@ class Odm_Country_Manager {
       'Myanmar' => 'myanmar',
       'Vietnam' => 'vietnam'
     ];
+  }
+
+  function get_country_codes_iso2_list(){
+    return array('kh','th','la','mm','vn');
   }
 
   function get_country_codes(){
@@ -64,7 +73,7 @@ class Odm_Country_Manager {
         'iso3' =>'tha'
       ),
       'laos' => array(
-        'iso2' =>'lo',
+        'iso2' =>'la',
         'iso3' =>'lao'
       ),
       'myanmar' => array(

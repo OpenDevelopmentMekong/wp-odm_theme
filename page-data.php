@@ -26,6 +26,7 @@ Template Name: Data
       $param_query = !empty($_GET['query']) ? $_GET['query'] : null;
       $param_license = !empty($_GET['license']) ? $_GET['license'] : null;
       $param_taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : null;
+			$param_type = isset($_GET['type']) ? $_GET['type'] : 'all';
       $param_language = isset($_GET['language']) ? $_GET['language'] : null;
       $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
       $param_country = odm_country_manager()->get_current_country() == 'mekong' && isset($_GET['country']) ? $_GET['country'] : odm_country_manager()->get_current_country();
@@ -33,7 +34,7 @@ Template Name: Data
 
       //Get Datasets
       $attrs = array(
-        'dataset_type' => 'dataset',
+        'dataset_type' => '("dataset" OR "library_record" OR "laws_record" OR "agreement")',
     		'capacity' => 'public'
       );
 
@@ -55,6 +56,11 @@ Template Name: Data
       //Taxonomy
       if (!empty($param_taxonomy) && $param_taxonomy != 'all'):
         $attrs["extras_taxonomy"] = $param_taxonomy;
+      endif;
+
+			//dataset type
+      if (!empty($param_type) && $param_type != 'all'):
+        $attrs["dataset_type"] = $param_type;
       endif;
 
       // Language
@@ -129,6 +135,19 @@ Template Name: Data
             </select>
           </div>
           <!-- END OF TAXONOMY FILTER -->
+
+					<!-- DATASET TYPE FILTER -->
+  				<div class="single-filter">
+            <label for="type"><?php _e('Dataset type', 'odm'); ?></label>
+            <select id="type" name="type" class="filter_box">
+              <option <?php if($param_type == "all") echo 'selected'; ?> value="all"><?php _e('All','odm') ?></option>
+            	<option <?php if($param_type == "dataset") echo 'selected'; ?> value="dataset"><?php _e('Datasets','odm') ?></option>
+							<option <?php if($param_type == "library_record") echo 'selected'; ?> value="library_record"><?php _e('Library publications','odm') ?></option>
+							<option <?php if($param_type == "laws_record") echo 'selected'; ?> value="laws_record"><?php _e('Laws','odm') ?></option>
+							<option <?php if($param_type == "agreement") echo 'selected'; ?> value="agreement"><?php _e('Agreements','odm') ?></option>
+            </select>
+          </div>
+					<!-- END DATASET TYPE FILTER -->
 
           <!-- COUNTRY FILTER -->
           <?php if (odm_country_manager()->get_current_country() == 'mekong'): ?>

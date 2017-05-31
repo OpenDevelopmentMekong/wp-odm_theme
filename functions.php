@@ -6,6 +6,7 @@
 require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
 require_once get_stylesheet_directory().'/inc/taxonomy-manager.php';
+require_once get_stylesheet_directory().'/inc/land-portal-manager.php';
 
 /*
  * Post types
@@ -178,6 +179,9 @@ function add_menu_icons_styles(){
 #adminmenu .menu-icon-tabular div.wp-menu-image:before {
   content: "\f509";
 }
+#adminmenu .menu-icon-search-pages div.wp-menu-image:before {
+  content: "\f179";
+}
 </style>
 
 <?php
@@ -205,46 +209,10 @@ function odm_jeo_scripts()
   wp_register_script('jquery-ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.js');
   $site_name =  odm_country_manager()->get_current_country();
 
-  // custom marker system
-  global $jeo_markers;
-  wp_deregister_script('jeo.markers');
-  wp_register_script('jeo.markers', get_stylesheet_directory_uri().'/inc/jeo-scripts/markers.js', array('jeo', 'underscore', 'twttr'), '0.3.17', true);
-
-  wp_localize_script('jeo.markers', 'opendev_markers', array(
-    'ajaxurl' => admin_url('admin-ajax.php'),
-    'query' => extended_jeo_markers_query(),
-    'stories_label' => __('stories', 'odm'),
-    'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
-    'copy_embed_label' => __('Copy the embed code', 'odm'),
-    'share_label' => __('Share', 'odm'),
-    'print_label' => __('Print', 'odm'),
-    'embed_base_url' => home_url('/embed/'),
-    'share_base_url' => home_url('/share/'),
-    'marker_active' => array(
-      'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
-      'iconSize' => array(26, 30),
-      'iconAnchor' => array(13, 30),
-      'popupAnchor' => array(0, -40),
-      'markerId' => 'none',
-    ),
-   'site_url' => home_url('/'),
-   'read_more_label' => __('Read more', 'odm'),
-   'lightbox_label' => array(
-     'slideshow' => __('Open slideshow', 'odm'),
-     'videos' => __('Watch video gallery', 'odm'),
-     'video' => __('Watch video', 'odm'),
-     'images' => __('View image gallery', 'odm'),
-     'image' => __('View fullscreen image', 'odm'),
-     'infographic' => __('View infographic', 'odm'),
-     'infographics' => __('View infographics', 'odm'),
-    ),
-   'enable_clustering' => jeo_use_clustering() ? true : false,
-   'default_icon' => jeo_formatted_default_marker(),
-  ));
-
   if (is_home()) {
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   }
+
   if (is_page( array( 'map-explorer', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()){
       if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
          wp_deregister_script('jeo');
@@ -258,8 +226,11 @@ function odm_jeo_scripts()
 
       wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
-			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
       wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
+			wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
+			wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
+			wp_enqueue_script('printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.1.0');
+
   }
 
   if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')) {
@@ -364,41 +335,6 @@ function odm_marker_data($data, $post)
     return $data;
 }
 add_filter('jeo_marker_data', 'odm_marker_data', 10, 2);
-
-function odm_social_apis()
-{
-
- // Facebook
- ?>
- <div id="fb-root"></div>
- <script>(function(d, s, id) {
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) return;
-   js = d.createElement(s); js.id = id;
-   //js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1413694808863403";
-   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1066174610071139";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));</script>
- <?php
-
- // Twitter
- ?>
- <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
- <?php
-
- // Google Plus
- ?>
- <script type="text/javascript">
-   (function() {
-     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-     po.src = 'https://apis.google.com/js/plusone.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-   })();
- </script>
- <?php
-
-}
-add_action('wp_footer', 'odm_social_apis');
 
 // Disable mousewheel zoom by default
 function odm_map_data($data)

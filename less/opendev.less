@@ -122,7 +122,7 @@ td{
 	margin-bottom: 1em;
 	float:left;
 
-	a {
+	a, a:visited {
 		display: block;
 		font-weight: 800;
 		padding: 5px;
@@ -138,141 +138,105 @@ td{
 	}
 }
 
+.section-title {
+  padding: @med-padd 0px @xsmall-padd 0px;
+  box-shadow: none;
+  margin: 0;
+}
+
 .section-content {
-	.post-categories li, .post-tags {
+  
+	.post-categories li {
 		margin-bottom: 0;
 	}
 
-	.post-categories li a, .post-tags a {
-		display: inline-block;
-		padding: 5px;
-		background: #EEE none repeat scroll 0% 0%;
-		border-radius: 3px;
-		margin: 0px 5px 2px 0px;
-		font-size: 11px;
-		line-height: 11px;
-		text-decoration: none;
-		color: #333;
-		width: auto;
-		text-transform: uppercase;
+  .leaflet-div-icon {
+  	background: url(../../img/marker.png) no-repeat !important;
+  	width: 25px !important;
+  	height: 30px !important;
+  	margin-top: -30px !important;
+  	margin-left: -12px !important;
+  	border: 0 !important;
+  	box-sizing: border-box !important;
+  	text-align: center;
+  	padding-top: 5px;
+  	padding-left: 1px;
+  	font-weight: 800;
+  	font-size: 10px;
+  	line-height: 10px;
+  }
 
-		&:hover {
-			background: #333 none repeat scroll 0% 0%;
-    		color: #fff;
-		}
-	}
-}
+  .mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
+  	background: #6393d2;
+  	border-color: #6393d2;
 
-.leaflet-div-icon {
-	background: url(../../img/marker.png) no-repeat !important;
-	width: 25px !important;
-	height: 30px !important;
-	margin-top: -30px !important;
-	margin-left: -12px !important;
-	border: 0 !important;
-	box-sizing: border-box !important;
-	text-align: center;
-	padding-top: 5px;
-	padding-left: 1px;
-	font-weight: 800;
-	font-size: 10px;
-	line-height: 10px;
-}
+  	&:after {
+  		border-bottom: 10px solid #6393d2;
+  	}
+  }
 
-.mapgroup-container .mapgroup .map-nav-container .map-nav li a.active {
-	background: #6393d2;
-	border-color: #6393d2;
+  .lang-en, .lang-pt, .lang-es {
+  	display: block;
+  }
 
-	&:after {
-		border-bottom: 10px solid #6393d2;
-	}
-}
+  /* Headings */
 
-.lang-en, .lang-pt, .lang-es {
-	display: block;
-}
+  .search h1 {
+  	margin: 10px 0;
+  }
 
-.align-left{
-	float:left;
-	margin: 5px 10px 0 0;
-}
+  .poat-date-source{
+      padding:5px 0 10px;
+      word-wrap: break-word;
+  }
 
-.align-right{
-	float:right;
-	margin: 15px 0 5px 10px;
-}
+  .date {
+  	color: @gray;
+  	display:inline;
+  	font-size: 14px;
+  }
+  .source {
+  	color: @gray;
+  	display:inline;
+  	font-size: @base-font-size;
+  }
 
-/* Headings */
+  .query-actions {
+  	text-align: right;
+  	margin-bottom: 0;
+    padding-top: 10px;
 
-.search h1 {
-	margin: 10px 0;
-}
+  	.query-actions-title {
+  		font-weight: 600;
+  		margin-right: 10px;
+  		text-transform: uppercase;
+  		color: @gray;
+  		font-size: 12px;
+  	}
 
-.poat-date-source{
-    padding:5px 0 10px;
-    word-wrap: break-word;
-}
+  	a {
+  		text-decoration: none;
+  		text-transform: uppercase;
+  		margin-left: 10px;
+  		font-size: 12px;
+  	}
 
-.date {
-	color: @gray;
-	display:inline;
-	font-size: 14px;
-}
-.source {
-	color: @gray;
-	display:inline;
-	font-size: @base-font-size;
-}
+  	[class^="icon-"],
+  	[class*=" icon-"] {
+  		margin-right: 5px;
+  		color: @gray;
+  	}
 
-.section-content {
-	.post-tags {
-		color: @gray;
-		font-size: @base-font-size;
-		padding-top: 4px;
-	}
-}
+  }
 
-.section-title {
-	padding: 5px 0 15px;
-  box-shadow: none;
-	margin: 0;
-}
+  .page-header h1,
+  .archive-title {
+  	padding-bottom: 20px;
+  }
 
-.query-actions {
-	text-align: right;
-	margin-bottom: 0;
-  padding-top: 10px;
-
-	.query-actions-title {
-		font-weight: 600;
-		margin-right: 10px;
-		text-transform: uppercase;
-		color: @gray;
-		font-size: 12px;
-	}
-
-	a {
-		text-decoration: none;
-		text-transform: uppercase;
-		margin-left: 10px;
-		font-size: 12px;
-	}
-
-	[class^="icon-"],
-	[class*=" icon-"] {
-		margin-right: 5px;
-		color: @gray;
-	}
-
-}
-
-.page-header h1,
-.archive-title {
-	padding-bottom: 20px;
-}
-
-.archive-title {
-	float: left;
+  .archive-title {
+  	float: left;
+  }
 }
 
 #main-title-nav {
@@ -361,7 +325,7 @@ td{
 	.fa_slide_content {
 		div.description {
 			p {
-				a, a:visited {
+				a {
 					word-wrap: break-word;
 				}
 			}

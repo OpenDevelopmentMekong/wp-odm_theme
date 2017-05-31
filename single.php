@@ -1,15 +1,18 @@
 <?php get_header(); ?>
 
-<?php if (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : the_post();
+	$options = get_option('odm_options');
+	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created";
+	?>
 
   <article id="content" class="single-post">
 
-    <section class="container">
+    <section class="container section-title main-title">
         <div class="eleven columns post-title">
           <header class="row">
           <h1><?php the_title(); ?></h1>
-          <?php echo_post_meta(get_post()); ?>
-
+          <?php echo_post_meta(get_post(),array('date','categories','tags'),$date_to_show); ?>
+					</header>
 					<section class="content section-content">
             <?php
               if (jeo_has_marker_location()): ?>
@@ -18,22 +21,22 @@
                   <?php jeo_map(); ?>
                 </div>
               </section>
-            <?php endif; ?>
-						<section id="post-content" class="row">
-							<?php
+	            <?php endif; ?>
+							<section id="post-content" class="row">
+								<?php
 								$thumb_src = odm_get_thumbnail(get_the_ID(),false);
 								if (isset($thumb_src)):
 									echo $thumb_src;
 								else:
 									echo_documents_cover();
 								endif;
-							?>
-							<div class="item-content">
-	            	<?php the_content(); ?>
-		            <?php echo_downloaded_documents(); ?>
-		            <?php odm_echo_extras(); ?>
-							</div>
-						</section>
+								?>
+								<div class="item-content">
+		            	<?php echo get_the_content(); ?>
+			            <?php echo_downloaded_documents(); ?>
+			            <?php odm_echo_extras(); ?>
+								</div>
+							</section>
             <?php
               wp_link_pages(array(
                       'before' => '<div class="page-links"><span class="page-links-title">'.__('Pages:', 'odm').'</span>',
@@ -57,7 +60,6 @@
 	          </aside>
 	        </div>
         </div>
-      </header>
     </section>
   </article>
 

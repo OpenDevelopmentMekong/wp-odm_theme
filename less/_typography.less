@@ -1,6 +1,7 @@
 @import url(_open_sans.less);
 @import url(_droid_sans.less);
 
+
 body {
 	font-family: @primary-font;
 	color: @primary-color;
@@ -41,7 +42,7 @@ p {
 	font-weight: normal;
 }
 
-a{
+a, a:visited{
 	text-decoration: none;
 	font-family: @primary-font;
 	color: @mekong-bright;
@@ -49,13 +50,12 @@ a{
 	font-weight: normal;
 }
 
-b{
-	font-weight: bold;
+a:hover, a:focus{
+	color: @mekong-dark;
 }
 
-a:visited {
-	text-decoration: none;
-	color: @mekong-bright;
+b{
+	font-weight: bold;
 }
 
 a:hover,
@@ -99,7 +99,7 @@ blockquote {
 	display: block; /* Fallback for non-webkit */
 	display: -webkit-box;
 	max-width: 100%;
-	height: @font-size*@line-height*@lines-to-show; /* Fallback for non-webkit */
+	max-height: @font-size*@line-height*@lines-to-show; /* Fallback for non-webkit */
 	margin: 0 auto;
 	font-size: @font-size;
 	line-height: @line-height;

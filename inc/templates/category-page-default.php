@@ -31,7 +31,7 @@ foreach($selected_posttype as $pt) {
   			endif; ?>
         <h1 class="archive-title"><?php single_cat_title(); ?></h1>
 			</div>
-      <div class="eight columns">
+      <div class="eight columns align-right">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</header>

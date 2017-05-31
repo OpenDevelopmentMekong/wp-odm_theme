@@ -71,7 +71,7 @@ class Odm_Category_Widget extends WP_Widget {
 					$('.odm_taxonomy_widget_ul > li.cat_item ul').siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
 				}
 				//if parent is showed, child need to expend
-				if ($('span.<?php echo $current_cat_page; ?>').length){
+				 if( $(this).children("span").hasClass('<?php echo $current_cat_page; ?>') ){
 					$('span.<?php echo $current_cat_page; ?>').siblings("ul").show();
 					$('span.<?php echo $current_cat_page; ?>').toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
 					$('span.<?php echo $current_cat_page; ?>').toggleClass('plusimage-<?php echo odm_country_manager()->get_current_country();?>');

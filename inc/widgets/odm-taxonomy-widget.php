@@ -46,7 +46,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				 $current_page = " ".$current_page_slug;
 			}
 		}
-		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 		if ($get_post_id){ // if page of the topic exists
 			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
 			echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
@@ -76,20 +76,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 	public function print_category_linked_to_category( $category, $current_page_slug ="") {
+		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
-		$args = array(
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'category',
-					'field'    => 'slug',
-					'terms'    => $category->slug,
-				),
-			),
-		);
-		$query = new WP_Query( $args );
-		$category_has_contents = $query->found_posts > 0;
-
-		echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$category->slug."'>";
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
 		// add link if contetns categorized by this topic exist
 		if ($category_has_contents):
@@ -177,7 +166,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		  }
 
 			//if parent is showed, child need to expend
-		  if( $(this).find('span.<?php echo $current_page_slug; ?>').length != 0 ){
+		  if( $(this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
 				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('plusimage-<?php echo odm_country_manager()->get_current_country();?>');

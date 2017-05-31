@@ -1,4 +1,7 @@
-<?php get_header();?>
+<?php get_header();
+
+$options = get_option('odm_options');
+$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created"; ?>
 
 <div class="section-title main-title">
 
@@ -7,7 +10,7 @@
 			<div class="eight columns">
 				<h1><?php _e('Topics','odm') ?></h1>
 			</div>
-      <div class="eight columns">
+      <div class="eight columns align-right">
 				<?php get_template_part('section', 'query-actions'); ?>
 			</div>
 		</header>
@@ -51,7 +54,10 @@
 							if (in_array($top_level_cat,$taxonomy_categories_1)):
 								odm_get_template('post-grid-single-4-cols',array(
 			  					"post" => $post,
-			  					"show_meta" => true),true);
+			  					"show_meta" => true,
+									"meta_fields" => array("date"),
+									"order" => $date_to_show
+								),true);
 							endif;
 						endif;
 					endwhile; ?>
@@ -68,7 +74,9 @@
 						if (in_array($top_level_cat,$taxonomy_categories_2)):
 								odm_get_template('post-grid-single-4-cols',array(
 			  					"post" => $post,
-			  					"show_meta" => true),true);
+			  					"show_meta" => true,
+									"order" => $date_to_show
+								),true);
 						endif;
 					endif;
 					endwhile; ?>
@@ -86,7 +94,9 @@
 							if (in_array($top_level_cat,$taxonomy_categories_3)):
 								odm_get_template('post-grid-single-4-cols',array(
 			  					"post" => $post,
-			  					"show_meta" => true),true);
+			  					"show_meta" => true,
+									"order" => $date_to_show
+								),true);
 							endif;
 						endif;
 					endwhile; ?>

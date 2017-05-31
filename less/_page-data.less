@@ -9,6 +9,22 @@
 
 }
 
+.data-number-results-medium{
+
+	p{
+		float:left;
+		margin-right: 20px;
+	}
+
+	a, a:hover{
+		cursor: default;
+		color: @black;
+		font-size: @font-size-h5;
+		font-weight: bold;
+	}
+
+}
+
 .data-number-results-small{
 
 	p{
@@ -109,6 +125,7 @@ span.meta-label {
 
 	.single_result_container {
 
+	display: inline-block;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #f2f2f2;
@@ -125,6 +142,7 @@ span.meta-label {
 
 	.data_format {
 		text-align: right;
+		line-height: 24px;
 	}
 
 	.data_meta_wrapper {
@@ -147,12 +165,7 @@ span.meta-label {
 			float:left;
 			display: inline-block;
 			padding-right: 15px;
-			margin-bottom: 5px;
-
-			.lang_flag{
-				border: none !important;
-				margin: 0px;
-			}
+			margin-bottom: 5px;			
 
 			img{
 				padding-top: 2px;

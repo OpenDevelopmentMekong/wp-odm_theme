@@ -15,7 +15,7 @@ class Odm_Language_Manager {
     "vi" => "Vietnamese",
     "th" => "Thai",
     "my" => "Burmese",
-    "la" => "Lao"
+    "lo" => "Lao"
   );
 
   var $languages_by_theme = array(
@@ -24,7 +24,7 @@ class Odm_Language_Manager {
     "vietnam" => "vi",
     "thailand" => "th",
     "myanmar" => "my",
-    "laos" => "la"
+    "laos" => "lo"
   );
 
 	function __construct() {
@@ -82,6 +82,21 @@ class Odm_Language_Manager {
 
 	function get_path_to_flag_image($lang){
     return get_stylesheet_directory_uri().'/img/'.$lang.'.png';
+  }
+  
+  function print_language_flags_for_post($post){
+    
+    foreach ($this->supported_languages as $lang_code => $lang):
+      if(function_exists('qtranxf_isAvailableIn') && qtranxf_isAvailableIn($post->ID, $lang_code)){ // no En content
+        $path_to_flag = odm_language_manager()->get_path_to_flag_image($lang_code);
+        if (!empty($path_to_flag)):
+          echo '<img class="lang_flag" alt="' . $lang . '" src="' . $path_to_flag .'"></img>';
+        endif;
+      }
+    endforeach;
+    
+
+
   }
 
 }
