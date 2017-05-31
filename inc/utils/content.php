@@ -279,7 +279,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements, $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
@@ -314,7 +314,7 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
 						 if (odm_language_manager()->get_current_language() == 'km') {
 								 echo convert_date_to_kh_date(get_the_modified_time('j.M.Y'));
 						 } else {
-								 echo get_the_modified_time('j F Y');
+								 echo get_the_modified_time('Y-m-d');
 						 }
 					  ?>
 					<?php else: ?>
@@ -323,7 +323,7 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
 						 if (odm_language_manager()->get_current_language() == 'km') {
 								 echo convert_date_to_kh_date(get_the_time('j.M.Y'));
 						 } else {
-								 echo get_the_time('j F Y');
+								 echo get_the_time('Y-m-d');
 						 }
 					  ?>
 					<?php endif; ?>
