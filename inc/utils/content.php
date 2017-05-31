@@ -279,7 +279,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements, $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
