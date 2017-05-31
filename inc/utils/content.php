@@ -279,20 +279,20 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements, $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created')
 {
 	global $post;
 	$post = $the_post;
 	?>
 	<div class="post-meta">
 		<ul>
-			<?php 
+			<?php
 			if (in_array('language',$show_elements)): ?>
 				<li class="post-languages">
 					<?php
-		        odm_language_manager()->print_language_flags_for_post($post); ?>		      
+		        odm_language_manager()->print_language_flags_for_post($post); ?>
 				</li>
-			<?php 
+			<?php
 			endif; ?>
 			<?php
 				if (in_array('country',$show_elements)): ?>
@@ -304,8 +304,8 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
 					 ?>
 				</li>
 			<?php
-      endif; ?>	
-      <?php 
+      endif; ?>
+      <?php
 			if (in_array('date',$show_elements)): ?>
         <li class="date">
 					<?php if ($order == 'modified'): ?>
@@ -328,9 +328,9 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
 					  ?>
 					<?php endif; ?>
   			</li>
-      <?php 
+      <?php
 			endif; ?>
-      <?php 
+      <?php
 			if (in_array('sources', $show_elements)):
         if (taxonomy_exists('news_source') && isset($post)) {
   				$terms_news_source = get_the_terms($post->ID, 'news_source');
@@ -388,22 +388,22 @@ function echo_post_meta($the_post, $show_elements, $order = 'created')
   					}
   			}
       endif; ?>
-      <?php 
+      <?php
 			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
         <li class="categories">&nbsp;
   				<i class="fa fa-folder-o"></i>
   				<?php the_category(' / '); ?>
   			</li>
-      <?php 
+      <?php
 			endif; ?>
-      <?php 
+      <?php
 			if (in_array('tags',$show_elements)):
         the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
       endif; ?>
-			<?php 
+			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());
-			endif; ?>		
+			endif; ?>
 		</ul>
 	</div>
 
