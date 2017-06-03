@@ -832,7 +832,6 @@
      $layers = array();
 
      $map_layers = get_post_meta($post_id, '_jeo_map_layers', true);
-
      if($map_layers) {
         foreach($map_layers as $l) {
            $layer = $this->get_layer($l['ID']);
@@ -870,6 +869,16 @@
         $excerpt = apply_filters('translate_text', $post->excerpt, odm_language_manager()->get_current_language());
 
         $in_category = get_the_terms( $post->ID, 'layer-category' );
+        if (($key = array_search('map-catalogue', $in_category)) !== false) {
+            unset($array[$key]);
+        }
+        foreach ($in_category as $key => $in_cat) {
+          if($in_cat->slug == "map-catalogue"){
+            unset($in_category[$key]);
+          }
+        }
+        $in_category = array_values($in_category);
+
         if ( (odm_language_manager()->get_current_language() !== "en") ){
             $layer_legend = get_post_meta( $post->ID , '_layer_legend_localization', true);
         }else {
