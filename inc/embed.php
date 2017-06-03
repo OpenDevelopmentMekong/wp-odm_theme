@@ -200,7 +200,7 @@ function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
 	if(count($layers) > 1){ //no layer selectd
   ?>
   <section id="map">
-    <?php priting_map_setting();?>
+    <?php printing_map_setting();?>
     <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
   		<div class="map-container"><div id="map_embed" class="map"></div></div>
   		<?php
@@ -210,7 +210,7 @@ function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
         $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
   			 //Show Menu Layers and legendbox
   			display_map_layer_sidebar_and_legend_box($layers, $show_cat);
-        priting_map_footnote();
+        printing_map_footnote();
   		?>
   	</div>
   </section>
