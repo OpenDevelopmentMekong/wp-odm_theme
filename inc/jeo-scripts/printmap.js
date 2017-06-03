@@ -101,7 +101,7 @@ var printing_map;
 					if($("#print-title").val() !=""){
 						$('.map-title .adding-map-title').text($("#print-title").val());
 					}
-
+					$(".map-legend-container").css("bottom", $(".priting_footer").height());
 					if($("#print-description").val() !=""){
 						$(".printing-description").show();
 						$('.printing-description').text($("#print-description").val());

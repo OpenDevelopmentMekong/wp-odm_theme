@@ -36,7 +36,7 @@ class OpenDev_InteractiveMap {
         $categories = get_terms('layer-category');
         ob_start();
         ?>
-        <?php priting_map_setting();?>
+        <?php printing_map_setting();?>
         <div class="interactive-map">
         	<div class="map-container">
         		<div id="map_interactive_map_0" class="map"></div>
@@ -168,7 +168,7 @@ class OpenDev_InteractiveMap {
             display_layer_information($layers);
             ?>
 
-            <?php priting_map_footnote();?>
+            <?php printing_map_footnote();?>
         </div><!-- interactive-map" -->
 
         <script type="text/javascript">

@@ -199,19 +199,21 @@ function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
 
 	if(count($layers) > 1){ //no layer selectd
   ?>
-
-  <?php priting_map_setting();?>
-  <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
-		<div class="map-container"><div id="map_embed" class="map"></div></div>
-		<?php
-			//show basemap
-			display_baselayer_navigation();
-			$base_layers = get_post_meta_of_all_baselayer();
-      $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
-			 //Show Menu Layers and legendbox
-			display_map_layer_sidebar_and_legend_box($layers, $show_cat);
-		?>
-	</div>
+  <section id="map">
+    <?php printing_map_setting();?>
+    <div class="interactive-map" id="embeded-interactive-map<?php echo $show_odlogo?>">
+  		<div class="map-container"><div id="map_embed" class="map"></div></div>
+  		<?php
+  			//show basemap
+  			display_baselayer_navigation();
+  			$base_layers = get_post_meta_of_all_baselayer();
+        $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
+  			 //Show Menu Layers and legendbox
+  			display_map_layer_sidebar_and_legend_box($layers, $show_cat);
+        printing_map_footnote();
+  		?>
+  	</div>
+  </section>
   <script type="text/javascript">
 		var all_baselayer_value = <?php echo json_encode($base_layers) ?>;
 		var all_layers_value = <?php echo json_encode($layers) ?>;

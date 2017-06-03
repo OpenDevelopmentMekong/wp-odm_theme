@@ -637,10 +637,10 @@ function get_layers_of_sub_category( $child_id, $filter_arr = null, $layer_taxon
 }
 /** END CATEGORY */
 
-function priting_map_setting(){ ?>
+function printing_map_setting(){ ?>
 	<div class="print-setting hide">
 		<h2><?php _e("Create Map", "odm");?> <i class="fa fa-times-circle" aria-hidden="true"></i></h2>
-		<form name="print-map" class="print-setting-form form-inline" action="javascript:void(0);">
+		<form name="print-map" class="print-setting-form form-inline" action="javascript:void(0);" autocomplete="off">
 			<div class="form-group inline">
 				<label for="print-title"><?php _e("Title", "odm"); ?>: </label>
 				<input type="text" value="" class="form-control" id="print-title" />
@@ -709,7 +709,7 @@ function priting_map_setting(){ ?>
 	<?php //window.print();
 }
 
-function priting_map_footnote(){ ?>
+function printing_map_footnote(){ ?>
 	<div class="priting_footer">
 		<p class="printing-description"></p>
     <span class="printing-od-logo">
