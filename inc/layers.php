@@ -838,12 +838,12 @@
            $layer['filtering'] = $l['filtering'];
 
            if($filter == "baselayer") {
-               if($layer['map_category'] == "base-layers"){
+               if($layer['map_category']['name'] == "base-layers"){
                   $layer['post_title'] = $l['title'];
                   $layers[] = $layer;
                }
            }elseif($filter == "layer") {
-              if($layer['map_category'] != "base-layers"){
+              if($layer['map_category']['name'] != "base-layers"){
                   $layers[] = $layer;
               }
           }else{
@@ -891,7 +891,9 @@
         );
 
         if (!empty($in_category)):
-          $layer['map_category'] = $in_category[0]->slug;
+          $layer['map_category']['id'] = $in_category[0]->term_id;
+          $layer['map_category']['name'] = $in_category[0]->slug;
+          $layer['map_category']['parent'] = $in_category[0]->parent;
         endif;
 
         if($type == 'tilelayer') {
