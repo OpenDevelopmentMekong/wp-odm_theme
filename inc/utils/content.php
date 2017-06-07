@@ -14,7 +14,7 @@ function get_post_type_icon_class($type){
 	}elseif ($type == "map-layer"){
 		$icon = "fa fa-map-marker";
 	}elseif ($type == "news-article"){
-		$icon = "fa fa-quote-left";
+		$icon = "fa fa-newspaper-o";
 	}elseif ($type == "topic"){
 		$icon = "fa fa-list";
 	}elseif ($type == "profiles"){
