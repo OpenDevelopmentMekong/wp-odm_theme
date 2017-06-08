@@ -423,13 +423,12 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
 		
-		$chopped = strlen($stripped_content) > $limit;
-		
-		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
+		$excerpt_hidden_space = explode("​", $stripped_content); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string;
 		
-		if ($chopped):
+		if (strlen($stripped_content) > $limit):
+			$excerpt_words = substr($excerpt_words,$$limit);
 			$excerpt_words .= " ...";
 		endif;
 		
