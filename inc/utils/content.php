@@ -423,7 +423,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
 		
-		if ($stripped_content > $limit):
+		if (strlen($stripped_content) > $limit):
 			$chopped = true;
 		endif;
 		
