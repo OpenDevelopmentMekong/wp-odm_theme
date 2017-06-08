@@ -423,9 +423,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
 		
-		if (strlen($stripped_content) > $limit):
-			$chopped = true;
-		endif;
+		$chopped = strlen($stripped_content) > $limit;
 		
 		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
