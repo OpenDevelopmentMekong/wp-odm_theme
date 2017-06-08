@@ -411,26 +411,32 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 40, $read_more = '')
+function odm_excerpt($the_post, $num = 400, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
 		$limit = $num;
+		$chopped = false;
 
 		$post_content = apply_filters('the_content',$post->post_content);
 		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
-
-		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
+		
+		$excerpt_hidden_space = explode("​", $stripped_content); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string;
-
-		if ($read_more != '') {
+		
+		if (strlen($excerpt_words) > $limit):
+			$excerpt_words = substr($excerpt_words,0,$limit);
+			$excerpt_words .= "...";
+		endif;
+		
+		if (!empty($read_more)):
 			 $color_name = odm_country_manager()->get_current_country().'-color';
 			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
-		}
-
+		endif;
+		
 		return '<p>' . $excerpt_words . '</p>';
  }
 
