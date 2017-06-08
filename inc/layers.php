@@ -83,6 +83,7 @@
      $layers = array();
      $post_layers = $post ? $this->get_map_layers($post->ID) : false;
      $show_cat = get_post_meta($post->ID, '_jeo_map_show_cat', true);
+     $show_hierarchy = get_post_meta($post->ID, '_jeo_map_show_hierarchy', true);
      ?>
 
      <p>
@@ -122,8 +123,9 @@
       <table class="layers-list available-layers">
        <tbody data-bind="foreach: filteredLayers">
         <tr>
-         <td><strong data-bind="text: title"></strong></td>
+         <td><strong><a data-bind="text: title, attr: {href: url}" target="_new"></a></strong></td>
          <td data-bind="text: type"></td>
+         <td><a target="_blank" data-bind="attr: {href:'<?php echo get_bloginfo("url")."/wp-admin/post.php?action=edit&post="; ?>'+ID}" title="<?php _e('edit', 'odm'); ?>"><?php _e('Edit'); ?></a></td>
          <td style="width:1%;"><a class="button" data-bind="click: $parent.addLayer" href="javascript:void(0);" title="<?php _e('Add layer', 'odm'); ?>">+ <?php _e('Add'); ?></a></td>
         </tr>
        </tbody>
@@ -131,16 +133,19 @@
 
       <h4 class="selected-title"><?php _e('Selected layers', 'odm'); ?></h4>
       <p class='jeo_map_show_cat'>
-        <input type="checkbox" name="_jeo_map_show_cat" id="_jeo_map_show_cat" value="1" <?php checked(1, $show_cat);?>>
-        <label for="_jeo_map_show_cat"><?php _e('Group layers by showing category', 'odm'); ?></label>
+        <input type="checkbox" name="_jeo_map_show_cat" id="jeo_map_show_cat" value="1" <?php checked(1, $show_cat);?>>
+        <label for="jeo_map_show_cat"><?php _e('Group layers by showing category', 'odm'); ?></label> &nbsp;&nbsp;
+
+        <input type="checkbox" name="_jeo_map_show_hierarchy" id="jeo_map_show_hierarchy" disabled value="1" <?php checked(1, $show_hierarchy);?>>
+        <label for="jeo_map_show_hierarchy"><?php _e('Show category layers in hierarchy', 'odm'); ?></label>
       </p>
 
       <table class="layers-list selected-layers">
        <tbody class="selected-layers-list">
         <!-- ko foreach: {data: selectedLayers} -->
          <tr class="layer-item">
-          <td style="width: 30%;">
-           <p><strong data-bind="text: title"></strong></p>
+          <td style="width: 60%;">
+           <p><strong><a data-bind="text: title, attr: {href: url}" target="_new"></a></strong></p>
            <p data-bind="text: type"></p>
           </td>
           <td>
@@ -165,6 +170,7 @@
             </div>
            </div>
           </td>
+          <td><a target="_blank" data-bind="attr: {href:'<?php echo get_bloginfo("url")."/wp-admin/post.php?action=edit&post="; ?>'+ID}" title="<?php _e('edit', 'odm'); ?>"><?php _e('Edit'); ?></a></td>
           <td style="width:1%;"><a class="button" data-bind="click: $parent.removeLayer" href="javascript:void(0);" title="<?php _e('Remove layer', 'odm'); ?>"><?php _e('Remove'); ?></a></td>
          </tr>
         <!-- /ko -->
@@ -184,15 +190,21 @@
        }
        #post-layers .selected-layers .layer-item {
         width: 100%;
-        height: 100px;
+        max-height: 100px;
+        font-size: 14px;
        }
        #post-layers .layers-list tr td {
         margin: 0;
         border: 1px solid #f0f0f0;
         padding: 5px 8px;
+        font-size: 14px;
        }
        #post-layers .layers-list tr:hover td {
         background: #fff;
+       }
+
+       #post-layers p{
+         margin: 5px  0
        }
        .jeo_map_show_cat{
          display: none;
@@ -330,7 +342,18 @@
         var model = new LayersModel();
         model.bindSort('.selected-layers-list', 'selectedLayers');
         ko.applyBindings(model);
+
+        enable_hierarchy_checkbox();
+        $("#jeo_map_show_cat").click(enable_hierarchy_checkbox);
        });
+
+       function enable_hierarchy_checkbox() {
+          if ($('#jeo_map_show_cat').is(":checked")) {
+            $("input#jeo_map_show_hierarchy").removeAttr("disabled");
+          } else {
+            $("input#jeo_map_show_hierarchy").attr("disabled", true);
+          }
+        }
       </script>
       <?php
       wp_reset_query();
@@ -822,6 +845,12 @@
        update_post_meta($post_id, '_jeo_map_show_cat', FALSE);
       }
 
+      if(isset($_REQUEST['_jeo_map_show_hierarchy'])) {
+       update_post_meta($post_id, '_jeo_map_show_hierarchy', TRUE);
+      }else{
+       update_post_meta($post_id, '_jeo_map_show_hierarchy', FALSE);
+      }
+
      }
     }
 
@@ -887,6 +916,7 @@
         $layer = array(
             'ID' => $post->ID,
             'title' => get_the_title(),
+            'url' => get_permalink(),
             'type' => $type
         );
 

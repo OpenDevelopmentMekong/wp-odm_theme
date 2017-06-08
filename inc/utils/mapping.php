@@ -99,7 +99,6 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is_hierarchy = false){
 	if (!empty($layers)){
 		unset($layers[0]); //basemap
-
 		echo '<div class="category-map-layers box-shadow hide_show_container">';
 			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "odm");
 				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
