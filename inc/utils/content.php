@@ -411,7 +411,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 40, $read_more = '')
+function odm_excerpt($the_post, $num = 400, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
@@ -428,7 +428,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_words = $excerpt_string;
 		
 		if (strlen($excerpt_words) > $limit):
-			$excerpt_words = substr($excerpt_words,$$limit);
+			$excerpt_words = substr($excerpt_words,0,$limit);
 			$excerpt_words .= " ...";
 		endif;
 		
