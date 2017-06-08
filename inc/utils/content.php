@@ -427,7 +427,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string;
 		
-		if (strlen($stripped_content) > $limit):
+		if (strlen($excerpt_words) > $limit):
 			$excerpt_words = substr($excerpt_words,$$limit);
 			$excerpt_words .= " ...";
 		endif;
