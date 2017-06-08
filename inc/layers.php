@@ -123,7 +123,7 @@
       <table class="layers-list available-layers">
        <tbody data-bind="foreach: filteredLayers">
         <tr>
-         <td><strong><a data-bind="text: title, attr: {href: url}" target="_new"></a></strong></td>
+         <td><strong><a data-bind="text: title, attr: {href: url}" target="_blank"></a></strong></td>
          <td data-bind="text: type"></td>
          <td><a target="_blank" data-bind="attr: {href:'<?php echo get_bloginfo("url")."/wp-admin/post.php?action=edit&post="; ?>'+ID}" title="<?php _e('edit', 'odm'); ?>"><?php _e('Edit'); ?></a></td>
          <td style="width:1%;"><a class="button" data-bind="click: $parent.addLayer" href="javascript:void(0);" title="<?php _e('Add layer', 'odm'); ?>">+ <?php _e('Add'); ?></a></td>
@@ -145,7 +145,7 @@
         <!-- ko foreach: {data: selectedLayers} -->
          <tr class="layer-item">
           <td style="width: 60%;">
-           <p><strong><a data-bind="text: title, attr: {href: url}" target="_new"></a></strong></p>
+           <p><strong><a data-bind="text: title, attr: {href: url}" target="_blank"></a></strong></p>
            <p data-bind="text: type"></p>
           </td>
           <td>
