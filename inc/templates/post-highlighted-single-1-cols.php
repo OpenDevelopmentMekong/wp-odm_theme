@@ -16,7 +16,7 @@
 <div class="sixteen columns">
 	<div class="post-list-item highlighted single_result_container">
 		
-		<section class="panel">
+		<section class="newpanel">
 			<?php
 			if ($show_thumbnail): ?>
 				<a href="<?php echo get_permalink($post->ID); ?>">
