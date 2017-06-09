@@ -45,11 +45,7 @@
 									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
 								endif;
 								echo $excerpt; ?>
-								
-								<div class="sixteen columns align-right">
-				          <a class="button" href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>
-								</div>
-								
+								<a class="button" href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>							
 						</div>											
 						<?php if( echo_downloaded_documents()):
 							echo_downloaded_documents();
