@@ -40,11 +40,15 @@
 								endif; ?>
 								
 							<?php 
-								$excerpt = odm_excerpt($post, 600, "Read more..."); 
+								$excerpt = odm_excerpt($post, 600); 
 								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
 									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
 								endif;
 								echo $excerpt; ?>
+						</div>
+						
+						<div class="sixteen columns align-right">
+		          <a class="button" href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>
 						</div>
 						<?php if( echo_downloaded_documents()):
 							echo_downloaded_documents();
