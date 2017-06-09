@@ -466,7 +466,7 @@ function odm_excerpt($the_post, $num = 400, $read_more = '')
 		
 		if (!empty($read_more)):
 			 $color_name = odm_country_manager()->get_current_country().'-color';
-			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+			 $excerpt_words .=  " <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
 		endif;
 		
 		return '<p>' . $excerpt_words . '</p>';

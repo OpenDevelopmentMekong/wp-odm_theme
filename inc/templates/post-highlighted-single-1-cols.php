@@ -17,14 +17,14 @@
 ?>
 
 <div class="sixteen columns">
-	<div class="post-list-item single_result_container">
+	<div class="panel post-list-item single_result_container">
 		
 		<?php
 			if ($show_meta):
-				echo_post_meta($post,$meta_fields,$order,$max_num_topics,$max_num_tags);
+				echo_post_meta($post,array("date", "tags"),$order,$max_num_topics,$max_num_tags);
 			endif; ?>
 			
-		<section class="panel content item-content section-content">	
+		<section class="content item-content section-content">	
 			<?php
 			if ($show_thumbnail):
 				$thumb_src = odm_get_thumbnail($post->ID, false, 'medium');
