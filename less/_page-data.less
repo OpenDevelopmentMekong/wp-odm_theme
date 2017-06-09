@@ -113,99 +113,106 @@
 	padding: 10px !important;
 }
 
-span.meta-label {
-	padding: 2px 4px;
-	border-radius: 2px;
-	background-color: @primary-color;
-	color: @white;
-	font-size: 12px;
-	font-weight: bold;
-}
 .search-results, .page-template-page-data{
 
 	.single_result_container {
 
-	display: inline-block;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #f2f2f2;
+		display: inline-block;
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #f2f2f2;
 
-	.data_title {
-		a {
+		.data_title {
+			a {
+				font-size: @font-size-h5;
+			}
+		}
+
+		.data_description{
 			font-size: @font-size-h5;
 		}
-	}
 
-	.data_description{
-		font-size: @font-size-h5;
-	}
-
-	.data_format {
-		text-align: right;
-		line-height: 24px;
-	}
-
-	.data_meta_wrapper {
-		display: block;
-		overflow: hidden;
-		font-size: @font-size-h5 !important;
-		color: @gray !important;
-
-		.country_indicator {
-
-			.svg-od-logo {
-				width: 20px;
-				height: 20px;
-				position: relative;
-				top: 5px;
-			}
+		.data_format {
+			text-align: right;
+			line-height: 24px;
 		}
 
-		.data_meta {
-			float:left;
-			display: inline-block;
-			padding-right: 15px;
-			margin-bottom: 5px;			
+		.data_meta_wrapper {
+			display: block;
+			overflow: hidden;
+			font-size: @font-size-h5 !important;
+			color: @gray !important;
 
-			img{
-				padding-top: 2px;
+			.country_indicator {
+
+				.svg-od-logo {
+					width: 20px;
+					height: 20px;
+					position: relative;
+					top: 5px;
+				}
 			}
 
-			ul{
-				li {
-					display: inline;
-					padding-top: 5px;
+			.data_meta {
+				float:left;
+				display: inline-block;
+				padding-right: 15px;
+				margin-bottom: 5px;			
+
+				img{
+					padding-top: 2px;
 				}
+
+				ul{
+					li {
+						display: inline;
+						padding-top: 5px;
+					}
+				}
+
 			}
+			.data_languages {
 
-		}
-		.data_languages {
-
-			.meta-label {
-				&.en {
-					background-color: @mekong-bright;
-				}
-				&.km {
-					background-color: @cambodia-bright;
-				}
-				&.lo {
-					background-color: @laos-bright;
-				}
-				&.my {
-					background-color: @myanmar-bright;
-				}
-				&.th {
-					background-color: @thailand-bright;
-				}
-				&.vi {
-					background-color: @vietnam-bright;
+				.meta-label {
+					&.en {
+						background-color: @mekong-bright;
+					}
+					&.km {
+						background-color: @cambodia-bright;
+					}
+					&.lo {
+						background-color: @laos-bright;
+					}
+					&.my {
+						background-color: @myanmar-bright;
+					}
+					&.th {
+						background-color: @thailand-bright;
+					}
+					&.vi {
+						background-color: @vietnam-bright;
+					}
 				}
 			}
 		}
 	}
 }
-}
+
 .label, .meta-label, span.meta-label {
+	
+	padding: 2px 4px;
+	border-radius: 2px;
+	background-color: @primary-color;
+	color: @white;
+	font-size: @font-size-h7;
+	font-weight: bold;
+	
+	a {
+		color: @white;
+		text-decoration: none;
+		font-size: @font-size-h7;
+		font-weight: bold;
+	}
 
 	&.html{
 		background-color:#55a1ce;

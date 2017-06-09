@@ -269,6 +269,25 @@ body{
   }
 }
 
+.item-content {
+  overflow: hidden;
+  clear: left;
+  padding: 0 0 @xsmall-padd;
+  display: inherit;
+
+  img {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    float: left;
+    margin: @xsmall-padd @small-padd @xsmall-padd 0px;
+    border:1px solid @light-gray;
+    padding: @xsmall-padd;
+  }
+
+}
+
 .post-list-item {
 	margin-bottom: @xsmall-padd;
 
@@ -290,25 +309,6 @@ body{
     vertical-align: top;
     float: left;
   }
-
-	.item-content {
-    overflow: hidden;
-    clear: left;
-    padding: 0 0 @xsmall-padd;
-    display: inherit;
-
-    img {
-      max-width: 80px;
-      max-height: 80px;
-      width: auto;
-      height: auto;
-      float: left;
-      margin: @xsmall-padd @small-padd @xsmall-padd 0px;
-      border:1px solid @light-gray;
-      padding: @xsmall-padd;
-    }
-
-	}
 
   .post-meta {
     text-align: left;
