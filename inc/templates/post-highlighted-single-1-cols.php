@@ -18,11 +18,6 @@
 
 <div class="sixteen columns">
 	<div class="panel post-list-item single_result_container">
-		
-		<?php
-			if ($show_meta):
-				echo_post_meta($post,array("date", "tags"),$order,$max_num_topics,$max_num_tags);
-			endif; ?>
 			
 		<section class="content item-content section-content">	
 			<?php
@@ -38,6 +33,12 @@
 			<?php if ($show_excerpt || $show_source_meta): ?>				
 					<?php if ($show_excerpt): ?>
 						<div class="post-excerpt">
+							
+							<?php
+								if ($show_meta):
+									echo_post_meta($post,array("date", "tags"),$order,$max_num_topics,$max_num_tags);
+								endif; ?>
+								
 							<?php 
 								$excerpt = odm_excerpt($post, 600, "Read more..."); 
 								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
