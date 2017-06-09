@@ -408,19 +408,25 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
       <?php
 			endif; ?>
       <?php
-			if (in_array('tags',$show_elements)):
-				$tag_list = get_the_tags();
-				if (isset($max_num_tags) && $max_num_tags > 0):
-					$tag_list = array_splice($tag_list,0,$max_num_topics);
-				endif;
-			  foreach($tag_list as $tag): ?>
-			    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
-			  <?php 
-					if ($tag != end($tag_list)):
-						echo " / ";
+			if (in_array('tags',$show_elements)): ?>
+				<li class="tags">
+  				<i class="fa fa-tags"></i>
+					<?php 
+					$tag_list = get_the_tags();
+					if (isset($max_num_tags) && $max_num_tags > 0):
+						$tag_list = array_splice($tag_list,0,$max_num_topics);
 					endif;
-				endforeach; 
+				  foreach($tag_list as $tag): ?>
+				    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
+				  <?php 
+						if ($tag != end($tag_list)):
+							echo " / ";
+						endif;
+					endforeach; ?>
+				</li>
+		<?php 
       endif; ?>
+			
 			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());
