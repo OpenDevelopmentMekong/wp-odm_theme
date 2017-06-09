@@ -393,12 +393,12 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
         <li class="categories">
   				<i class="fa fa-folder-o"></i>
   				<?php 
-						$category_list = wp_get_post_categories($post->ID,array('fields' => 'all'));
+						$category_list = wp_get_post_categories($post->ID,array('fields' => 'all_with_object_id'));
 						if (isset($max_num_topics) && $max_num_topics > 0):
 							$category_list = array_splice($category_list,0,$max_num_topics);
 						endif;
 						foreach ($category_list as $category): ?>
-						<a href="<?php echo get_category_link($category->id) ?>"><?php echo $category->name ?></a>
+						<a href="<?php echo get_category_link($category->ID) ?>"><?php echo $category->name ?></a>
 					<?php 
 						if ($category != end($category_list)):
 							echo " / ";
@@ -413,13 +413,13 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 				if (isset($max_num_tags) && $max_num_tags > 0):
 					$tag_list = array_splice($tag_list,0,$max_num_topics);
 				endif;
-				  foreach($tag_list as $tag): ?>
-				    <a href="<?php echo get_tag_link($tag->id) ?>"><?php echo $tag->name ?></a>
-				  <?php 
-						if ($tag != end($tag_list)):
-							echo " / ";
-						endif;
-					endforeach; 
+			  foreach($tag_list as $tag): ?>
+			    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
+			  <?php 
+					if ($tag != end($tag_list)):
+						echo " / ";
+					endif;
+				endforeach; 
       endif; ?>
 			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
