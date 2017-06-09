@@ -34,7 +34,7 @@
 					<?php if ($show_excerpt): ?>
 						<div class="post-excerpt">
 							<?php 
-								$excerpt = odm_excerpt($post); 
+								$excerpt = odm_excerpt($post, 600, "Read more..."); 
 								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
 									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
 								endif;
