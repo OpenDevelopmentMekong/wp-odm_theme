@@ -19,12 +19,7 @@
 <div class="sixteen columns">
 	<div class="post-list-item single_result_container">
 	
-		<?php
-			if ($show_meta):
-				echo_post_meta($post,$meta_fields,$order,$max_num_topics,$max_num_tags);
-			endif; ?>
-
-		<section class="content item-content section-content">
+		<section class="panel content item-content section-content">
 			<?php
 			if ($show_thumbnail):
 				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
@@ -55,10 +50,6 @@
 					<?php endif; ?>
 			<?php endif; ?>
 		</section>
-
-		<?php
-			if ($show_solr_meta && isset($solr_search_result)):
-				odm_echo_solr_meta($solr_search_result);
-			endif; ?>
+		
 	</div>
 </div>
