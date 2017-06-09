@@ -414,7 +414,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 					<?php 
 					$tag_list = get_the_tags();
 					if (isset($max_num_tags) && $max_num_tags > 0):
-						$tag_list = array_splice($tag_list,0,$max_num_topics);
+						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
 				  foreach($tag_list as $tag): ?>
 				    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
