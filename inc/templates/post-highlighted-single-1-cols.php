@@ -1,7 +1,7 @@
 <?php
 	$post = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
-	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : array("date");
+	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : array("date", "tags");
 	$max_num_topics = isset($params["max_num_topics"]) ? $params["max_num_topics"] : null;
 	$max_num_tags = isset($params["max_num_tags"]) ? $params["max_num_tags"] : null;
 	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
@@ -18,7 +18,12 @@
 
 <div class="sixteen columns">
 	<div class="post-list-item single_result_container">
-	
+		
+		<?php
+			if ($show_meta):
+				echo_post_meta($post,$meta_fields,$order,$max_num_topics,$max_num_tags);
+			endif; ?>
+			
 		<section class="panel content item-content section-content">	
 			<?php
 			if ($show_thumbnail):
