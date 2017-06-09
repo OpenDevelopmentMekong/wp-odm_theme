@@ -8,7 +8,7 @@
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_source_meta = isset($params["show_source_meta"]) ? $params["show_source_meta"] : false;
 	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
-	$highlight_words_query_query = isset($params["highlight_words_query"]) ? $params["highlight_words_query"] : null;
+	$highlight_words_query = isset($params["highlight_words_query"]) ? $params["highlight_words_query"] : null;
 	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
@@ -78,8 +78,8 @@
 					<div class="post-excerpt">
 						<?php 
 							$excerpt = odm_excerpt($post); 
-							if (isset($highlight_words_query_query) && function_exists('wp_odm_solr_highlight_search_words')):
-								$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query_query,$excerpt); 								
+							if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
+								$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 								
 							endif; 
 							echo $excerpt; ?>
 					</div>
