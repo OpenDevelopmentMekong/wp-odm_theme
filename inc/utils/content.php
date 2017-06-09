@@ -398,7 +398,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 							$category_list = array_splice($category_list,0,$max_num_topics);
 						endif;
 						foreach ($category_list as $category): ?>
-						<a href="<?php echo get_category_link($category->ID) ?>"><?php echo $category->name ?></a>
+						<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
 					<?php 
 						if ($category != end($category_list)):
 							echo " / ";
