@@ -279,7 +279,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created', $max_num_topics = null, $max_num_tags = null)
 {
 	global $post;
 	$post = $the_post;
@@ -390,14 +390,36 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
       endif; ?>
       <?php
 			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
-        <li class="categories">&nbsp;
+        <li class="categories">
   				<i class="fa fa-folder-o"></i>
-  				<?php the_category(' / '); ?>
+  				<?php 
+						$category_list = wp_get_post_categories($post->ID,array('fields' => 'all'));
+						if (isset($max_num_topics) && $max_num_topics > 0):
+							$category_list = array_splice($category_list,0,$max_num_topics);
+						endif;
+						foreach ($category_list as $category): ?>
+						<a href="<?php echo get_category_link($category->id) ?>"><?php echo $category->name ?></a>
+					<?php 
+						if ($category != end($category_list)):
+							echo " / ";
+						endif;
+						endforeach; ?>
   			</li>
       <?php
 			endif; ?>
       <?php
 			if (in_array('tags',$show_elements)):
+				$tag_list = get_the_tags();
+				if (isset($max_num_tags) && $max_num_tags > 0):
+					$tag_list = array_splice($tag_list,0,$max_num_topics);
+				endif;
+				  foreach($tag_list as $tag): ?>
+				    <a href="<?php echo get_tag_link($tag->id) ?>"><?php echo $tag->name ?></a>
+			  <?php 
+					if ($tag != end($tag_list)):
+						echo " / ";
+					endif;
+					endforeach;  ?>
         the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
       endif; ?>
 			<?php

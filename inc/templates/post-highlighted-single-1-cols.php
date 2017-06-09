@@ -34,7 +34,7 @@
 			<?php if ($show_excerpt || $show_source_meta): ?>
 				<div>
 						<?php if ($show_meta):
-							echo_post_meta($post,$meta_fields,$order);
+							echo_post_meta($post,$meta_fields,$order,null,null);
 						endif; ?>
 						<?php if ($show_excerpt): ?>
 							<div class="post-excerpt">

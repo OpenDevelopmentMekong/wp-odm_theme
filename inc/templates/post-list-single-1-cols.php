@@ -2,6 +2,8 @@
 	$post = isset($params["post"]) ? $params["post"] : null;
 	$show_meta = isset($params["show_meta"]) ? $params["show_meta"] : true;
 	$meta_fields = isset($params["meta_fields"]) ? $params["meta_fields"] : array("date");
+	$max_num_topics = isset($params["max_num_topics"]) ? $params["max_num_topics"] : null;
+	$max_num_tags = isset($params["max_num_tags"]) ? $params["max_num_tags"] : null;
 	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
 	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
@@ -53,7 +55,7 @@
 
 		<?php
 			if ($show_meta):
-				echo_post_meta($post,$meta_fields,$order);
+				echo_post_meta($post,$meta_fields,$order,$max_num_topics,$max_num_tags);
 			endif; ?>
 
 		<section class="content item-content section-content">
