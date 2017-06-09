@@ -389,44 +389,49 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
   			}
       endif; ?>
       <?php
-			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
-        <li class="categories">
-  				<i class="fa fa-folder-o"></i>
-  				<?php 
-						$category_list = wp_get_post_categories($post->ID,array('fields' => 'all_with_object_id'));
-						if (isset($max_num_topics) && $max_num_topics > 0):
-							$category_list = array_splice($category_list,0,$max_num_topics);
-						endif;
+			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>        
+			<?php 
+				$category_list = wp_get_post_categories($post->ID,array('fields' => 'all_with_object_id'));
+				if (isset($max_num_topics) && $max_num_topics > 0):
+					$category_list = array_splice($category_list,0,$max_num_topics);
+				endif;
+				if (!empty($category_list)): ?>
+					<li class="categories">
+	  				<i class="fa fa-folder-o"></i>
+					<?php
 						foreach ($category_list as $category): ?>
-						<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
-					<?php 
-						if ($category != end($category_list)):
-							echo " / ";
-						endif;
+							<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
+						<?php 
+							if ($category != end($category_list)):
+								echo " / ";
+							endif;
 						endforeach; ?>
-  			</li>
-      <?php
+					</li>
+	      <?php
+				endif;
 			endif; ?>
       <?php
-			if (in_array('tags',$show_elements)): ?>
-				<li class="tags">
-  				<i class="fa fa-tags"></i>
+			if (in_array('tags',$show_elements)): ?>				
 					<?php 
 					$tag_list = get_the_tags();
 					if (isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
-				  foreach($tag_list as $tag): ?>
-				    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
-				  <?php 
-						if ($tag != end($tag_list)):
-							echo " / ";
-						endif;
-					endforeach; ?>
-				</li>
-		<?php 
-      endif; ?>
-			
+					if (!empty($tag_list)): ?>
+						<li class="tags">
+		  				<i class="fa fa-tags"></i>
+								<?php
+							  foreach($tag_list as $tag): ?>
+							    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
+							  <?php 
+									if ($tag != end($tag_list)):
+										echo " / ";
+									endif;
+								endforeach; ?>
+						</li>
+				<?php
+				 	endif;
+	      endif; ?>			
 			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());
@@ -461,7 +466,7 @@ function odm_excerpt($the_post, $num = 400, $read_more = '')
 		
 		if (!empty($read_more)):
 			 $color_name = odm_country_manager()->get_current_country().'-color';
-			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+			 $excerpt_words .=  " <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
 		endif;
 		
 		return '<p>' . $excerpt_words . '</p>';
