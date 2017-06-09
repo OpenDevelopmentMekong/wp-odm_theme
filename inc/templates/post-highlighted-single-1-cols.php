@@ -20,35 +20,37 @@
 	<div class="post-list-item single_result_container">
 	
 		<section class="panel content item-content section-content">
-			<?php
-			if ($show_thumbnail):
-				$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
-				if (isset($thumb_src)):
-					echo $thumb_src;
-				else:
-					echo_documents_cover($post->ID);
+			<a href="<?php echo get_permalink($post->ID); ?>">
+				<?php
+				if ($show_thumbnail):
+					$thumb_src = odm_get_thumbnail($post->ID, false, array( 300, 'auto'));
+					if (isset($thumb_src)):
+						echo $thumb_src;
+					else:
+						echo_documents_cover($post->ID);
+					endif;
 				endif;
-			endif;
-			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>				
-					<?php if ($show_excerpt): ?>
-						<div class="post-excerpt">
-							<?php 
-								$excerpt = odm_excerpt($post, 600, "Read more..."); 
-								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
-									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
-								endif;
-								echo $excerpt; ?>
-						</div>
-						<?php if( echo_downloaded_documents()):
-							echo_downloaded_documents();
-						endif; ?>
-					<?php endif; ?>
+				?>
+				<?php if ($show_excerpt || $show_source_meta): ?>				
+						<?php if ($show_excerpt): ?>
+							<div class="post-excerpt">
+								<?php 
+									$excerpt = odm_excerpt($post, 600, "Read more..."); 
+									if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
+										$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
+									endif;
+									echo $excerpt; ?>
+							</div>
+							<?php if( echo_downloaded_documents()):
+								echo_downloaded_documents();
+							endif; ?>
+						<?php endif; ?>
 
-					<?php if ($show_source_meta): ?>
-						<?php odm_echo_extras(); ?>
-					<?php endif; ?>
-			<?php endif; ?>
+						<?php if ($show_source_meta): ?>
+							<?php odm_echo_extras(); ?>
+						<?php endif; ?>
+				<?php endif; ?>
+			</a>
 		</section>
 		
 	</div>
