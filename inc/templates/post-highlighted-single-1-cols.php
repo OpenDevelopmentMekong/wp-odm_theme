@@ -17,7 +17,7 @@
 ?>
 
 <div class="sixteen columns">
-	<div class="panel post-list-item single_result_container">
+	<div class="post-list-item single_result_container">
 			
 		<section class="content item-content section-content">	
 			<?php
@@ -45,8 +45,12 @@
 									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
 								endif;
 								echo $excerpt; ?>
-								<a class="button" href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>							
-						</div>											
+						</div>
+						
+						<div class="sixteen columns align-right">
+		          <a class="button" href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>
+						</div>
+						
 						<?php if( echo_downloaded_documents()):
 							echo_downloaded_documents();
 						endif; ?>
