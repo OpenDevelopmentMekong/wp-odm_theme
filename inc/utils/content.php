@@ -415,12 +415,11 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 				endif;
 				  foreach($tag_list as $tag): ?>
 				    <a href="<?php echo get_tag_link($tag->id) ?>"><?php echo $tag->name ?></a>
-			  <?php 
-					if ($tag != end($tag_list)):
-						echo " / ";
-					endif;
-					endforeach;  ?>
-        the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
+				  <?php 
+						if ($tag != end($tag_list)):
+							echo " / ";
+						endif;
+					endforeach; 
       endif; ?>
 			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
