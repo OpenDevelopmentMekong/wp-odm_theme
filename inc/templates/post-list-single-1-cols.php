@@ -5,6 +5,7 @@
 	$max_num_topics = isset($params["max_num_topics"]) ? $params["max_num_topics"] : null;
 	$max_num_tags = isset($params["max_num_tags"]) ? $params["max_num_tags"] : null;
 	$show_solr_meta = isset($params["show_solr_meta"]) ? $params["show_solr_meta"] : false;
+	$highlight_words_query = isset($params["highlight_words"]) ? $params["highlight_words"] : null;
 	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_thumbnail = isset($params["show_thumbnail"]) ? $params["show_thumbnail"] : true;
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
@@ -72,7 +73,12 @@
 			<?php if ($show_excerpt || $show_source_meta): ?>				
 					<?php if ($show_excerpt): ?>
 						<div class="post-excerpt">
-							<?php echo odm_excerpt($post); ?>
+							<?php 
+								$excerpt = odm_excerpt($post); 
+								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
+									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
+								endif;
+								echo $excerpt; ?>
 						</div>
 						<?php if( echo_downloaded_documents()):
 							echo_downloaded_documents();
