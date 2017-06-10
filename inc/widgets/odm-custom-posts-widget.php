@@ -26,8 +26,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		);
 
 		$this->order_options = array(
-			"date" => "Created date",
-			"modified" => "Modified date"
+			"metadata_created" => "Creation date",
+			"metadata_modified" => "Modification date"
 		);
 
 		$this->more_location = array(
@@ -51,7 +51,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
-		$order = isset($instance['order']) ? $instance['order'] : 'date';
+		$order = isset($instance['order']) ? $instance['order'] : 'metadata_created';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
 		$override_order = isset($instance['override_order']) && !empty($instance['override_order']) ? $instance['override_order'] : null;
 
@@ -251,7 +251,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$instance['show_source_meta'] = (!empty( $new_instance['show_source_meta'])) ? $new_instance['show_source_meta'] : false;
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
-		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
+		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : 'metadata_created';
 		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
 		$instance['override_order'] = isset($new_instance['override_order']) && !empty($new_instance['override_order']) ? $new_instance['override_order'] : null;
 

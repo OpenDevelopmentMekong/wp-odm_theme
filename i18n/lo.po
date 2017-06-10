@@ -1606,11 +1606,11 @@ msgid ""
 msgstr ""
 
 #: inc/theme-options.php:282
-msgid "Created"
+msgid "Metadata created"
 msgstr ""
 
 #: inc/theme-options.php:283
-msgid "Modified"
+msgid "Metadata modified"
 msgstr ""
 
 #: inc/theme-options.php:290 inc/theme-options.php:293

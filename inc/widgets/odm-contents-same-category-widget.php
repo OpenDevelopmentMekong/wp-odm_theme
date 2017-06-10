@@ -23,8 +23,8 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		);
 
 		$this->order_options = array(
-			"date" => "Created date",
-			"modified" => "Modified date"
+			"metadata_created" => "Creation date",
+			"metadata_modified" => "Modification date"
 		);
 
 		$this->more_location = array(
@@ -51,7 +51,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
-		$order = isset($instance['order']) ? $instance['order'] : 'date';
+		$order = isset($instance['order']) ? $instance['order'] : 'metadata_created';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
 		$supported_post_types = array();
 		$post_types = available_custom_post_types();
@@ -147,7 +147,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$show_source_meta = isset($instance['show_source_meta']) ? $instance['show_source_meta'] : false;
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
-		$order = isset($instance['order']) ? $instance['order'] : 'date';
+		$order = isset($instance['order']) ? $instance['order'] : 'metadata_created';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom'; ?>
 
 		<p>
@@ -228,7 +228,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$instance['show_source_meta'] = (!empty( $new_instance['show_source_meta'])) ? $new_instance['show_source_meta'] : false;
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
-		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : '';
+		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : 'metadata_created';
 		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
 
 		$post_types = available_custom_post_types();
