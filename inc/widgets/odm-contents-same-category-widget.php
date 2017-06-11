@@ -197,7 +197,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order by:' ); ?></label>
 			<select class='widefat' id="<?php echo $this->get_field_id('order'); ?>" name="<?php echo $this->get_field_name('order'); ?>" type="text">
 				<?php foreach ( $this->order_options  as $key => $value ): ?>
-					<option <?php if ($order == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $key ?></option>
+					<option <?php if ($order == $key) { echo " selected"; } ?> value="<?php echo $key ?>"><?php echo $value ?></option>
 				<?php endforeach; ?>
 			</select>
 		</p>
