@@ -14,6 +14,8 @@
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
 	$order = isset($params["order"]) ? $params["order"] : 'created';
+
+	$normal_header = (!$show_meta && !$show_thumbnail && !$show_excerpt)? "class='normal-header'" : null;
 ?>
 
 <div class="sixteen columns">
@@ -34,24 +36,22 @@
 				</a>
 			</h4>
 		<?php else: ?>
-			<p>
-				<h4>
-					<?php
-						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-					 ?>
-					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
+			<h4 <?php echo $normal_header; ?>>
+				<?php
+					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+				 ?>
+				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 
+				<?php
+					if ($show_post_type):
+						$post_type_name = get_post_type($post->ID); ?>
+						<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
 					<?php
-						if ($show_post_type):
-							$post_type_name = get_post_type($post->ID); ?>
-							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
-						<?php
-						endif; ?>
+					endif; ?>
 
-							<?php echo $localized_title; ?>
-						</a>
-				</h4>
-			</p>
+						<?php echo $localized_title; ?>
+					</a>
+			</h4>
 		<?php endif; ?>
 
 		<?php
@@ -70,13 +70,13 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>				
+			<?php if ($show_excerpt || $show_source_meta): ?>
 					<?php if ($show_excerpt): ?>
 						<div class="post-excerpt">
-							<?php 
-								$excerpt = odm_excerpt($post); 
+							<?php
+								$excerpt = odm_excerpt($post);
 								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
-									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
+									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt);
 								endif;
 								echo $excerpt; ?>
 						</div>
