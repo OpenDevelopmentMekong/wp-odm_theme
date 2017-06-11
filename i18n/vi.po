@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-06-09 15:03+0200\n"
-"PO-Revision-Date: 2017-06-09 15:03+0200\n"
+"POT-Creation-Date: 2017-06-11 23:58+0200\n"
+"PO-Revision-Date: 2017-06-11 23:58+0200\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
 "Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/"
 "teams/27158/vi/)\n"
@@ -1491,23 +1491,21 @@ msgid "On this page"
 msgstr "Trong trang này"
 
 #: inc/templates/category-page-default.php:80
-#: inc/templates/category-page-latest.php:222
-#: inc/templates/category-page-latest.php:250
 msgid "No results found."
 msgstr "Không tìm thấy kết qủa. "
 
-#: inc/templates/category-page-latest.php:26 page-data.php:17
+#: inc/templates/category-page-latest.php:17 page-data.php:17
 msgid ""
 "wp-odm_solr plugin is not properly configured. Please contact the system's "
 "administrator"
 msgstr ""
 
-#: inc/templates/category-page-latest.php:72
-#: inc/templates/category-page-latest.php:93
+#: inc/templates/category-page-latest.php:63
+#: inc/templates/category-page-latest.php:84
 msgid "Topic briefing"
 msgstr ""
 
-#: inc/templates/category-page-latest.php:113
+#: inc/templates/category-page-latest.php:104
 msgid "Related briefings"
 msgstr ""
 
@@ -1516,13 +1514,13 @@ msgstr ""
 msgid " of"
 msgstr ""
 
-#: inc/templates/post-highlighted-single-1-cols.php:44
+#: inc/templates/post-highlighted-single-1-cols.php:51
 #: inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
 msgstr "Đọc tiếp "
 
-#: inc/templates/solr-result-single.php:79 inc/utils/content.php:553
-#: inc/utils/content.php:558
+#: inc/templates/solr-result-single.php:79 inc/utils/content.php:559
+#: inc/utils/content.php:564
 msgid " "
 msgstr " "
 
@@ -1643,16 +1641,16 @@ msgid ""
 msgstr ""
 
 #: inc/theme-options.php:282
-msgid "Metadata created"
+msgid "Creation date"
 msgstr ""
 
 #: inc/theme-options.php:283
-msgid "Metadata modified"
+msgid "Modification date"
 msgstr ""
 
 #: inc/theme-options.php:290 inc/theme-options.php:293
 #: inc/theme-options.php:300 inc/theme-options.php:303
-#: inc/theme-options.php:377 inc/utils/mapping.php:723
+#: inc/theme-options.php:377 inc/utils/mapping.php:733
 msgid "None"
 msgstr "Không"
 
@@ -1770,19 +1768,19 @@ msgstr ""
 msgid "Search results for:"
 msgstr ""
 
-#: inc/utils/content.php:480
+#: inc/utils/content.php:486
 msgid "Summary translated by "
 msgstr "Được lược dịch bởi"
 
-#: inc/utils/content.php:535
+#: inc/utils/content.php:541
 msgid "Download: "
 msgstr "Tải về:"
 
-#: inc/utils/content.php:540
+#: inc/utils/content.php:546
 msgid "English PDF"
 msgstr "Phiên bản tiếng Anh dạng PDF"
 
-#: inc/utils/content.php:545
+#: inc/utils/content.php:551
 msgid "English PDF not available"
 msgstr "Không có phiên bản tiếng Anh dạng PDF"
 
@@ -1795,97 +1793,97 @@ msgstr ""
 msgid "Error locating %s for inclusion"
 msgstr "Lỗi định vị  %s"
 
-#: inc/utils/mapping.php:174
+#: inc/utils/mapping.php:184
 msgid "Show news on map"
 msgstr ""
 
-#: inc/utils/mapping.php:421
+#: inc/utils/mapping.php:431
 msgid "LEGEND"
 msgstr "CHÚ GIẢI"
 
-#: inc/utils/mapping.php:671
+#: inc/utils/mapping.php:681
 #, fuzzy
 msgid "Create Map"
 msgstr "Bản đồ tương tác"
 
-#: inc/utils/mapping.php:674
+#: inc/utils/mapping.php:684
 #, fuzzy
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: inc/utils/mapping.php:678
+#: inc/utils/mapping.php:688
 msgid "Description"
 msgstr ""
 
-#: inc/utils/mapping.php:683
+#: inc/utils/mapping.php:693
 msgid "Basemap"
 msgstr ""
 
-#: inc/utils/mapping.php:687
+#: inc/utils/mapping.php:697
 #, fuzzy
 msgid "Map layers"
 msgstr "Các lớp bản đồ"
 
-#: inc/utils/mapping.php:692
+#: inc/utils/mapping.php:702
 msgid "North Direction"
 msgstr ""
 
-#: inc/utils/mapping.php:697
+#: inc/utils/mapping.php:707
 msgid "Map tools"
 msgstr ""
 
-#: inc/utils/mapping.php:700
+#: inc/utils/mapping.php:710
 msgid "Format"
 msgstr ""
 
-#: inc/utils/mapping.php:702
+#: inc/utils/mapping.php:712
 msgid "Image (PNG)"
 msgstr ""
 
-#: inc/utils/mapping.php:706
+#: inc/utils/mapping.php:716
 msgid "Size"
 msgstr ""
 
-#: inc/utils/mapping.php:708
+#: inc/utils/mapping.php:718
 msgid "A4"
 msgstr ""
 
-#: inc/utils/mapping.php:712
+#: inc/utils/mapping.php:722
 msgid "Layout"
 msgstr ""
 
-#: inc/utils/mapping.php:714
+#: inc/utils/mapping.php:724
 #, fuzzy
 msgid "Landscape"
 msgstr "Đất đai"
 
-#: inc/utils/mapping.php:715
+#: inc/utils/mapping.php:725
 msgid "Portrait"
-msgstr ""
-
-#: inc/utils/mapping.php:719
-#, fuzzy
-msgid "Legend"
-msgstr "Chú giải lớp bản dồ"
-
-#: inc/utils/mapping.php:721
-msgid "Left"
-msgstr ""
-
-#: inc/utils/mapping.php:722
-msgid "Right"
 msgstr ""
 
 #: inc/utils/mapping.php:729
 #, fuzzy
+msgid "Legend"
+msgstr "Chú giải lớp bản dồ"
+
+#: inc/utils/mapping.php:731
+msgid "Left"
+msgstr ""
+
+#: inc/utils/mapping.php:732
+msgid "Right"
+msgstr ""
+
+#: inc/utils/mapping.php:739
+#, fuzzy
 msgid "Show all legends"
 msgstr "Hiển thị tất cả kết quả tìm kiếm"
 
-#: inc/utils/mapping.php:733 inc/utils/markers.php:139
+#: inc/utils/mapping.php:743 inc/utils/markers.php:139
 msgid "Print"
 msgstr "In "
 
-#: inc/utils/mapping.php:752
+#: inc/utils/mapping.php:762
 msgid "Created date: "
 msgstr ""
 
