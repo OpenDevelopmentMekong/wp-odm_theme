@@ -14,9 +14,10 @@
 	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
 	$order = isset($params["order"]) ? $params["order"] : "metadata_created";
+	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
 ?>
 
-<div class="four columns ">
+<div class="four columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>)">
 	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
       <?php

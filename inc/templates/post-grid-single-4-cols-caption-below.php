@@ -6,9 +6,10 @@
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$order = isset($params["order"]) ? $params["order"] : "metadata_created";
+	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
 	?>
 
-<div class="four columns post-grid-item post-grid-item-caption-bolow <?php echo odm_country_manager()->get_current_country(); ?>-bgdarkcolor">
+<div class="four columns post-grid-item post-grid-item-caption-bolow <?php echo odm_country_manager()->get_current_country(); ?>-bgdarkcolor<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>)">
 	<div class="grid-content-wrapper">
 		<?php if ($show_meta): ?>
 		<div class="meta">				

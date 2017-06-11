@@ -7,9 +7,10 @@
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$view_large_image = isset($params["view_large_image"]) ? $params["view_large_image"] : false;
 	$order = isset($params["order"]) ? $params["order"] : "metadata_created";
+	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
 	?>
 
-<div class="eight columns post-grid-item">
+<div class="eight columns post-grid-item<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>)">
 	<div class="grid-content-wrapper">		
 		<div class="meta">
 			
