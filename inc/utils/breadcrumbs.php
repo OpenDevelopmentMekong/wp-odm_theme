@@ -221,7 +221,7 @@ function echo_the_breadcrumb()
             echo '<li class="item-current item-current-'.get_query_var('paged').'"><strong class="bread-current bread-current-'.get_query_var('paged').'" title="Page '.get_query_var('paged').'">'.__('Page').' '.get_query_var('paged').'</strong></li>';
         } elseif (is_search()) {
             // Search results page
-            echo '<li class="item-current item-current-'.get_search_query().'"><strong class="bread-current bread-current-'.get_search_query().'" title="Search results for: '.get_search_query().'">Search results for: '.get_search_query().'</strong></li>';
+            echo '<li class="item-current item-current-'.get_search_query().'"><strong class="bread-current bread-current-'.get_search_query().'" title="' . __('Search results for:','odm') . ' ' . get_search_query(). '">' . __('Search results for:','odm') . ' ' . get_search_query().'</strong></li>';
         } elseif (is_404()) {
             // 404 page
             echo '<li>'.'Error 404'.'</li>';

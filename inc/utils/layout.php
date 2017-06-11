@@ -1,6 +1,6 @@
 <?php
 
-function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'post-thumbnail', $view_enlarge = false)
+function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'thumbnail', $view_enlarge = false)
 {
     global $post;
     $post_id = $post_id ? $post_id : $post->ID;
@@ -12,7 +12,7 @@ function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'post-th
         $thumbnail .= '<div class="popup-overlay hide"><div class="toggle-close-icon"><i class="enlarge-close fa fa-times-circle" aria-hidden="true"></i></div>
                       <img class="popup-enlarge" src="'. $full_image_url[0] .'" title="'.get_the_title($post_id).'" /></div>';
       else:
-        $thumbnail = get_the_post_thumbnail( $post_id, 'thumbnail');
+        $thumbnail = get_the_post_thumbnail( $post_id, $size);
       endif;
       return $thumbnail;
     }

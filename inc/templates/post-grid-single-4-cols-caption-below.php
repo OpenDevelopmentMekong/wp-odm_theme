@@ -34,7 +34,7 @@
 				?>
 				<?php
 					if ($show_meta):
-						echo_post_meta($post,$meta_fields,$order);
+						echo_post_meta($post,$meta_fields,$order,null,null);
 				 	endif; ?>
 		</div>
 		<?php endif; ?>
