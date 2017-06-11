@@ -678,7 +678,7 @@ function get_layers_of_sub_category( $child_id, $filter_arr = null, $layer_taxon
 
 function printing_map_setting(){ ?>
 	<div class="print-setting hide">
-		<h2><?php _e("Create Map", "odm");?> <i class="fa fa-times-circle" aria-hidden="true"></i></h2>
+		<h2><?php _e("Create Map", "odm");?> <i class="fa fa-times-circle <?php echo odm_country_manager()->get_current_country(); ?>-color" aria-hidden="true"></i></h2>
 		<form name="print-map" class="print-setting-form form-inline" action="javascript:void(0);" autocomplete="off">
 			<div class="form-group inline">
 				<label for="print-title"><?php _e("Title", "odm"); ?>: </label>
