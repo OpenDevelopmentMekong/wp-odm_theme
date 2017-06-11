@@ -233,25 +233,26 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
     if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
        $cat_item_and_posts = "";
        $count_items_of_subcat = 0;
+			 $layer_taxonomy = 'layer-category';
           foreach($children as $child){
-            $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+						$cat_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+
             $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat, $exclude_cat);
             if ($get_cat_and_posts != ""){
                 $count_items_of_subcat++;
                 $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
                     // Display current category
                     $cat_item_and_posts .= $get_cat_and_posts;
-                    // if current category has children
+
                     if ( !empty($cat_children) ) {
-                      // add a sublevel
                       // display the children
-                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat, $exclude_cat);
+                      $cat_item_and_posts .= walk_child_category_by_post_type( $cat_children, $post_type, $current_cat, $exclude_cat);
                     }
                 $cat_item_and_posts .= "</li>";
             }
           }//foreach
       $print_sub_cat_and_posts = "";
-      if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
+      if($count_items_of_subcat > 0){
           $print_sub_cat_and_posts .= '<ul class="children">';
           $print_sub_cat_and_posts .= $cat_item_and_posts;
           $print_sub_cat_and_posts .= '</ul>';
@@ -454,21 +455,21 @@ function odm_excerpt($the_post, $num = 400, $read_more = '')
 		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
-		
+
 		$excerpt_hidden_space = explode("​", $stripped_content); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string;
-		
+
 		if (strlen($excerpt_words) > $limit):
 			$excerpt_words = substr($excerpt_words,0,$limit);
 			$excerpt_words .= "...";
 		endif;
-		
+
 		if (!empty($read_more)):
 			 $color_name = odm_country_manager()->get_current_country().'-color';
 			 $excerpt_words .=  " <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
 		endif;
-		
+
 		return '<p>' . $excerpt_words . '</p>';
  }
 
