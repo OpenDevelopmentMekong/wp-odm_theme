@@ -495,7 +495,7 @@ function echo_documents_cover ($postID = "") {
 
 	if ($get_cover != '' || $get_localized_cover != ''):
 
-		$img_attr = array("h" => 600, "w" => 800, "zc" => 1, "q" =>100);
+		$img_attr = array("h" => 80, "w" => 80, "zc" => 1, "q" =>100);
 		$files_mf_dir = get_bloginfo('url')."/wp-content/blogs.dir/".get_current_blog_id()."/files_mf/";
 
 		if($get_localized_cover !=""){
