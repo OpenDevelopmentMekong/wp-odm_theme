@@ -6,7 +6,7 @@
 	$show_excerpt = isset($params["show_excerpt"]) ? $params["show_excerpt"] : false;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
 	$view_large_image = isset($params["view_large_image"]) ? $params["view_large_image"] : false;
-	$order = isset($params["order"]) ? $params["order"] : 'created';
+	$order = isset($params["order"]) ? $params["order"] : "metadata_created";
 	?>
 
 <div class="eight columns post-grid-item">

@@ -279,7 +279,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created', $max_num_topics = null, $max_num_tags = null)
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = "metadata_created", $max_num_topics = null, $max_num_tags = null)
 {
 	global $post;
 	$post = $the_post;
@@ -308,7 +308,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
       <?php
 			if (in_array('date',$show_elements)): ?>
         <li class="date">
-					<?php if ($order == 'modified'): ?>
+					<?php if ($order == 'metadata_modified'): ?>
   					<i class="fa fa-pencil"></i>
 						<?php
 						 if (odm_language_manager()->get_current_language() == 'km') {
