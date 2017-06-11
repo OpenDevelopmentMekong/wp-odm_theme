@@ -277,10 +277,10 @@ class Odm_Options
 
     public function single_page_date_field()
     {
-        $selected_date = isset($this->options['single_page_date']) ? $this->options['single_page_date'] : "created";?>
+        $selected_date = isset($this->options['single_page_date']) ? $this->options['single_page_date'] : "metadata_created";?>
         <select id="odm_single_page_date" name="odm_options[single_page_date]" type="text" />
-          <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "created"): echo 'selected'; endif;?> value="created"><?php _e('Created','odm'); ?></option>
-          <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "modified"): echo 'selected'; endif;?> value="modified"><?php _e('Modified','odm'); ?></option>
+          <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "metadata_created"): echo 'selected'; endif;?> value="metadata_created"><?php _e('Creation date','odm'); ?></option>
+          <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "metadata_modified"): echo 'selected'; endif;?> value="metadata_modified"><?php _e('Modification date','odm'); ?></option>
         </select>
   <?php
     }
