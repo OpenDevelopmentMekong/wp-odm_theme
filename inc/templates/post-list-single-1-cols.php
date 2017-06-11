@@ -18,7 +18,7 @@
 	
 ?>
 
-<div class="sixteen columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>)">
+<div class="sixteen columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
 	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
 			<?php

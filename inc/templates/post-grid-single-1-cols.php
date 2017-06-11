@@ -10,7 +10,7 @@
 	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
 	?>
 
-<div class="sixteen columns post-grid-item<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>)">
+<div class="sixteen columns post-grid-item<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
 	<div class="grid-content-wrapper">		
 		<div class="meta">
 			

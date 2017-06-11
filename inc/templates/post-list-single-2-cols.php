@@ -17,7 +17,7 @@
 	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
 ?>
 
-<div class="eight columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>)">
+<div class="eight columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
 	<div class="post-list-item single_result_container">
 		<?php if ($header_tag): ?>
       <?php
