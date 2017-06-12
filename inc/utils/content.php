@@ -170,9 +170,9 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 		$included_posttype = '?post_type='.$post_type;
 	endif;
   if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
-    $cat_name = '<h4><a href="' . $get_category_link. $included_posttype.'">';
+    $cat_name = '<a href="' . $get_category_link. $included_posttype.'">';
     $cat_name .= $category->name;
-    $cat_name .= "</a></h4>";
+    $cat_name .= "</a>";
     $count_layer_items = 0;
     $args_get_post = array(
         'post_type' => $post_type,
@@ -216,7 +216,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     } //$query_get_post->have_posts
   }else {
     echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
-            echo '<h4><a href="' . get_category_link( $category->cat_ID ) .$included_posttype.'">';
+            echo '<a href="' . get_category_link( $category->cat_ID ) .$included_posttype.'">';
                 if ($current_cat == $category->slug){ // if page of the topic exists
                     echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
                         echo $category->name;
@@ -224,7 +224,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
                 }else{
                       echo $category->name;
                 }
-            echo "</a></h4>";
+            echo "</a>";
       echo "</span>";
   }
 }
@@ -390,8 +390,8 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
   			}
       endif; ?>
       <?php
-			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>        
-			<?php 
+			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
+			<?php
 				$category_list = wp_get_post_categories($post->ID,array('fields' => 'all_with_object_id'));
 				if (isset($max_num_topics) && $max_num_topics > 0):
 					$category_list = array_splice($category_list,0,$max_num_topics);
@@ -402,7 +402,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 					<?php
 						foreach ($category_list as $category): ?>
 							<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
-						<?php 
+						<?php
 							if ($category != end($category_list)):
 								echo " / ";
 							endif;
@@ -412,8 +412,8 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 				endif;
 			endif; ?>
       <?php
-			if (in_array('tags',$show_elements)): ?>				
-					<?php 
+			if (in_array('tags',$show_elements)): ?>
+					<?php
 					$tag_list = get_the_tags();
 					if (isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
@@ -424,7 +424,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 								<?php
 							  foreach($tag_list as $tag): ?>
 							    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
-							  <?php 
+							  <?php
 									if ($tag != end($tag_list)):
 										echo " / ";
 									endif;
@@ -432,7 +432,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 						</li>
 				<?php
 				 	endif;
-	      endif; ?>			
+	      endif; ?>
 			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());

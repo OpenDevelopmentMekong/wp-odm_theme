@@ -51,8 +51,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
 			echo '<h4><a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
 		}else{
-							$hyperlink_color = "";
-					}
+			$hyperlink_color = "";
+		}
 		$in_category = in_category( $category->term_id );
 		if ($in_category){
 			 echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
@@ -65,7 +65,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			 echo "</strong>";
 		}
 		if ($get_post_id)
-			echo "</a><h4>";
+			echo "</a></h4>";
 		echo "</span>";
 	}
 
@@ -83,7 +83,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		// add link if contetns categorized by this topic exist
 		if ($category_has_contents):
 			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-			echo '<a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
+			echo '<h4><a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
 		else:
       $hyperlink_color = "";
     endif;
@@ -102,7 +102,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		}
 
 		if ($category_has_contents)
-			echo "</a>";
+			echo "</a></h4>";
 
 		echo "</span>";
 
