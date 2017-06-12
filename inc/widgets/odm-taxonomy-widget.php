@@ -48,19 +48,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		}
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 		if ($get_post_id): // if page of the topic exists
-			echo '<h4><a class="' . odm_country_manager()->get_current_country() . '-color" href="' . get_permalink( $get_post_id ) . '">';
-		endif;
-
-		$in_category = in_category( $category->term_id );
-		if ($in_category):
-			echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
+			echo '<h4><a href="' . get_permalink( $get_post_id ) . '">';
 		endif;
 
 		echo $category->name;
-
-		if ($in_category):
-			 echo "</strong>";
-		endif;
 
 		if ($get_post_id):
 			echo "</a></h4>";
@@ -82,19 +73,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		// add link if contetns categorized by this topic exist
 		if ($category_has_contents):
-			echo '<h4><a class="' . odm_country_manager()->get_current_country() . '-color" href="/category/' . $category->slug . '">';
+			echo '<h4><a href="/category/' . $category->slug . '">';
     endif;
 
-		$in_category = in_category( $category->term_id );
-		if ($in_category):
-			echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
-		endif;
-
 		echo $category->name;
-
-		if ($in_category):
-			echo "</strong>";
-		endif;
 
 		if ($category_has_contents):
 			echo "</a></h4>";

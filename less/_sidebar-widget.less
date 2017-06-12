@@ -39,15 +39,6 @@
 		}
 	}
 
-	.odm-summary ol li a {
-		text-decoration: none;
-		color: #333;
-		&:hover {
-			color: #4683d2; /*6393D2, 2774da;*/
-			text-decoration: underline;
-		}
-	}
-
 	.wpckan_dataset_list > ul > li {
 		margin: 0 0 10px !important;
 		padding: 0 !important;
@@ -193,6 +184,11 @@
 	  list-style-position: inside;
 	}
 
+	.summary-item a{
+		font-weight: bolder;
+		font-size: @font-size-h4;
+	}
+
 	li {
 		list-style: none !important;
 		list-style-type: none !important;
@@ -335,9 +331,4 @@ ul.odm_taxonomy_widget_ul span:hover{
 
 		}
 	}
-}
-
-.summary-item a{
-	font-weight: bolder;
-	font-size: @font-size-h4;
 }
