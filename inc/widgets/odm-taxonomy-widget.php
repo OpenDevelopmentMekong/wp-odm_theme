@@ -48,13 +48,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		}
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 		if ($get_post_id): // if page of the topic exists
-			echo '<h4><a href="' . get_permalink( $get_post_id ) . '">';
+			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
 		endif;
 
 		echo $category->name;
 
 		if ($get_post_id):
-			echo "</a></h4>";
+			echo "</a></h5>";
 		endif;
 
 		echo "</span>";
@@ -73,13 +73,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		// add link if contetns categorized by this topic exist
 		if ($category_has_contents):
-			echo '<h4><a href="/category/' . $category->slug . '">';
+			echo '<h5><a href="/category/' . $category->slug . '">';
     endif;
 
 		echo $category->name;
 
 		if ($category_has_contents):
-			echo "</a></h4>";
+			echo "</a></h5>";
 		endif;
 
 		echo "</span>";
