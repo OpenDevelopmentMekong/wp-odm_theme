@@ -6,7 +6,7 @@
 <div class="sixteen columns">
 	<div class="post-list-item single_result_container">
 		<p>
-			<h3>
+			<h5>
 				<?php
 					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 				 ?>
@@ -19,7 +19,7 @@
 						endif; ?>
 					<?php echo $localized_title; ?>
 				</a>
-			</h3>
+			</h5>
 		</p>
 	</div>
 </div>

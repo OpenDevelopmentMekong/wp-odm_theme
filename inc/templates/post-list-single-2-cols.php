@@ -23,7 +23,7 @@
       <?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
-			<h4>
+			<h5>
 				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
 					<?php
 						if ($show_post_type):
@@ -33,11 +33,10 @@
 						endif; ?>
 					<?php echo $localized_title; ?>
 				</a>
-			</h4>
+			</h5>
 		<?php else: ?>
 			<p>
-				<h4>
-
+				<h5>
 					<?php
 						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 					 ?>
@@ -52,7 +51,7 @@
 
 						<?php echo $localized_title; ?>
 					</a>
-				</h4>
+				</h5>
 			</p>
 		<?php endif; ?>
 
@@ -78,11 +77,11 @@
 				endif; ?>
 				<?php if ($show_excerpt): ?>
 					<div class="post-excerpt">
-						<?php 
-							$excerpt = odm_excerpt($post); 
+						<?php
+							$excerpt = odm_excerpt($post);
 							if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
-								$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 								
-							endif; 
+								$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt);
+							endif;
 							echo $excerpt;?>
 					</div>
 				<?php endif; ?>

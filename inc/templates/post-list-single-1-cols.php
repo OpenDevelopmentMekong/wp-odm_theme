@@ -15,7 +15,7 @@
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
 	$order = isset($params["order"]) ? $params["order"] : "metadata_created";
 	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
-	
+
 ?>
 
 <div class="sixteen columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
@@ -24,7 +24,7 @@
 			<?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
-			<h4>
+			<h5>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 					<?php
 						if ($show_post_type):
@@ -34,10 +34,10 @@
 						endif; ?>
 					<?php echo $localized_title; ?>
 				</a>
-			</h4>
+			</h5>
 		<?php else: ?>
 			<p>
-				<h4>
+				<h5>
 					<?php
 						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 					 ?>
@@ -52,7 +52,7 @@
 
 							<?php echo $localized_title; ?>
 						</a>
-				</h4>
+				</h5>
 			</p>
 		<?php endif; ?>
 
@@ -72,13 +72,13 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>				
+			<?php if ($show_excerpt || $show_source_meta): ?>
 					<?php if ($show_excerpt): ?>
 						<div class="post-excerpt">
-							<?php 
-								$excerpt = odm_excerpt($post); 
+							<?php
+								$excerpt = odm_excerpt($post);
 								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
-									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
+									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt);
 								endif;
 								echo $excerpt; ?>
 						</div>
