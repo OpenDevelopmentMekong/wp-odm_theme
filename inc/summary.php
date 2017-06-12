@@ -38,7 +38,7 @@ class Odm_Summary {
 
 					$el->setAttribute('id', sanitize_title($name));
 					$el->setAttribute('class', 'summary-item');
-					$link = $dom->createElement('h4');
+					$link = $dom->createElement('a');
 					$link->setAttribute('href', '#' . sanitize_title($name));
 					$link->setAttribute("title", $name);
 					//$link->nodeValue = htmlspecialchars($name);
