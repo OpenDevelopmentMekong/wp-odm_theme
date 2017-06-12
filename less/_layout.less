@@ -83,11 +83,9 @@ body{
     }
 
     .post-meta {
-      margin: 0px;
       width: 100%;
       position: relative;
       bottom: 0px;
-			display: inline-block;
       color: @white;
       padding: @xsmall-padd @small-padd;
 
@@ -100,9 +98,7 @@ body{
         margin-bottom: 0px;
 
         li {
-          float: left;
           margin-right: @small-padd;
-          display: contents;
   			}
 
       }
@@ -189,7 +185,6 @@ body{
 				cursor: pointer;
 				float: right;
 				font-size: 20px;
-				color: red;
 				margin-right: -5px;
 
 				&:hover{
@@ -269,6 +264,21 @@ body{
   }
 }
 
+.item-content {
+  overflow: hidden;
+  clear: left;
+  padding: 0 0 @xsmall-padd;
+  display: inherit;
+
+  img {
+    float: left;
+    margin: @xsmall-padd @small-padd @xsmall-padd 0px;
+    border:1px solid @light-gray;
+    padding: @xsmall-padd;
+  }
+
+}
+
 .post-list-item {
 	margin-bottom: @xsmall-padd;
 
@@ -289,41 +299,23 @@ body{
     display: table-cell;
     vertical-align: top;
     float: left;
-  }
-
-	.item-content {
-    overflow: hidden;
-    clear: left;
-    padding: 0 0 @xsmall-padd;
-    display: inherit;
-
-    img {
+    
+    img{
       max-width: 80px;
       max-height: 80px;
-      width: auto;
-      height: auto;
-      float: left;
-      margin: @xsmall-padd @small-padd @xsmall-padd 0px;
-      border:1px solid @light-gray;
-      padding: @xsmall-padd;
     }
-
-	}
+  }
 
   .post-meta {
     text-align: left;
-    margin-top: 0;
-    margin-bottom: @xsmall-padd;
 
     ul {
       margin-left: 0px;
 
       li {
-        float: left;
         margin-right: @small-padd;
         color: @primary-color;
         margin-bottom: 5px;
-        display: contents;
       }
 
     }
@@ -331,7 +323,7 @@ body{
   }
 
 	.post-excerpt, .excerpt {
-		.text-ellipsis(6, @font-size-h5);
+		//.text-ellipsis(6, @font-size-h5);
 	}
 
   .readmore a {
@@ -348,8 +340,8 @@ body{
 	}
 
   .post-excerpt {
-    font-size: @font-size-h4 !important;
-    .text-ellipsis(6, @font-size-h5);
+    font-size: @font-size-h3 !important;
+    //.text-ellipsis(6, @font-size-h5);
   }
 
   img {
@@ -370,9 +362,11 @@ body{
     float: none !important;
   }
 }
+
 .post-meta{
-  margin: 0px !important;
-  
+  display: inline-block;
+  display: -webkit-box;
+
   ul{
     list-style-type: none;
     margin-left: 0px !important;
@@ -381,8 +375,8 @@ body{
 
   li{
     list-style-type: none;
-    display: inline;
     margin-bottom: 0px;
+    display: inline;
   }
 
   li, i, a{
@@ -408,6 +402,8 @@ body{
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
 }
 
 .clearfix {

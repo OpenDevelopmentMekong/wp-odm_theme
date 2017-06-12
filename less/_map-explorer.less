@@ -16,6 +16,10 @@
 	display: block;
 }
 
+section#map{
+		height: 100%
+}
+
 #iframe-fullscreen-map{
 	position: fixed !important;
 	top: 0;
@@ -215,6 +219,13 @@
 							border-left: 1px solid #ccc;
 							border-right: 1px solid #ccc;
 						}
+
+						ul {
+							li.cat-item:last-child{
+								border-top: 1px solid #eee;
+								border-bottom: 1px solid #eee;
+							}
+						}
 					}
 
 				}
@@ -408,7 +419,7 @@
 		width: 99%;
 		height: 0;
 	}
-	
+
 	.widget_headline {
 		padding: 10px 5px 0 15px;
 		color: @black;

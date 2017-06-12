@@ -233,25 +233,26 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
     if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
        $cat_item_and_posts = "";
        $count_items_of_subcat = 0;
+			 $layer_taxonomy = 'layer-category';
           foreach($children as $child){
-            $cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name') );
+						$cat_children = get_terms($layer_taxonomy, array('parent' => $child->term_id, 'hide_empty' => 0, 'orderby' => 'name') );
+
             $get_cat_and_posts = print_category_by_post_type($child, $post_type, $current_cat, $exclude_cat);
             if ($get_cat_and_posts != ""){
                 $count_items_of_subcat++;
                 $cat_item_and_posts .= "<li class='cat-item cat-item-".$child->term_id."'>";
                     // Display current category
                     $cat_item_and_posts .= $get_cat_and_posts;
-                    // if current category has children
+
                     if ( !empty($cat_children) ) {
-                      // add a sublevel
                       // display the children
-                        walk_child_category_by_post_type( $cat_children, $post_type, $current_cat, $exclude_cat);
+                      $cat_item_and_posts .= walk_child_category_by_post_type( $cat_children, $post_type, $current_cat, $exclude_cat);
                     }
                 $cat_item_and_posts .= "</li>";
             }
           }//foreach
       $print_sub_cat_and_posts = "";
-      if($count_items_of_subcat > 0){ //if sub cats have layer items and sub-cats
+      if($count_items_of_subcat > 0){
           $print_sub_cat_and_posts .= '<ul class="children">';
           $print_sub_cat_and_posts .= $cat_item_and_posts;
           $print_sub_cat_and_posts .= '</ul>';
@@ -279,7 +280,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = 'created')
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = "metadata_created", $max_num_topics = null, $max_num_tags = null)
 {
 	global $post;
 	$post = $the_post;
@@ -308,7 +309,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
       <?php
 			if (in_array('date',$show_elements)): ?>
         <li class="date">
-					<?php if ($order == 'modified'): ?>
+					<?php if ($order == 'metadata_modified'): ?>
   					<i class="fa fa-pencil"></i>
 						<?php
 						 if (odm_language_manager()->get_current_language() == 'km') {
@@ -389,17 +390,49 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
   			}
       endif; ?>
       <?php
-			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>
-        <li class="categories">&nbsp;
-  				<i class="fa fa-folder-o"></i>
-  				<?php the_category(' / '); ?>
-  			</li>
-      <?php
+			if (in_array('categories',$show_elements) && !empty(get_the_category())): ?>        
+			<?php 
+				$category_list = wp_get_post_categories($post->ID,array('fields' => 'all_with_object_id'));
+				if (isset($max_num_topics) && $max_num_topics > 0):
+					$category_list = array_splice($category_list,0,$max_num_topics);
+				endif;
+				if (!empty($category_list)): ?>
+					<li class="categories">
+	  				<i class="fa fa-folder-o"></i>
+					<?php
+						foreach ($category_list as $category): ?>
+							<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
+						<?php 
+							if ($category != end($category_list)):
+								echo " / ";
+							endif;
+						endforeach; ?>
+					</li>
+	      <?php
+				endif;
 			endif; ?>
       <?php
-			if (in_array('tags',$show_elements)):
-        the_tags('<li class="post-tags"><i class="fa fa-tags"></i> ', ' / ', '</li>');
-      endif; ?>
+			if (in_array('tags',$show_elements)): ?>				
+					<?php 
+					$tag_list = get_the_tags();
+					if (isset($max_num_tags) && $max_num_tags > 0):
+						$tag_list = array_splice($tag_list,0,$max_num_tags);
+					endif;
+					if (!empty($tag_list)): ?>
+						<li class="tags">
+		  				<i class="fa fa-tags"></i>
+								<?php
+							  foreach($tag_list as $tag): ?>
+							    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
+							  <?php 
+									if ($tag != end($tag_list)):
+										echo " / ";
+									endif;
+								endforeach; ?>
+						</li>
+				<?php
+				 	endif;
+	      endif; ?>			
 			<?php
 			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
 				<?php echo_post_translated_by_od_team(get_the_ID());
@@ -411,25 +444,31 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 40, $read_more = '')
+function odm_excerpt($the_post, $num = 400, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
 		$limit = $num;
+		$chopped = false;
 
 		$post_content = apply_filters('the_content',$post->post_content);
 		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
 
-		$excerpt_hidden_space = explode("​", $stripped_content, $limit); //explode by zerowidthspace​
+		$excerpt_hidden_space = explode("​", $stripped_content); //explode by zerowidthspace​
 		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
 		$excerpt_words = $excerpt_string;
 
-		if ($read_more != '') {
+		if (strlen($excerpt_words) > $limit):
+			$excerpt_words = substr($excerpt_words,0,$limit);
+			$excerpt_words .= "...";
+		endif;
+
+		if (!empty($read_more)):
 			 $color_name = odm_country_manager()->get_current_country().'-color';
-			 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
-		}
+			 $excerpt_words .=  " <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
+		endif;
 
 		return '<p>' . $excerpt_words . '</p>';
  }
@@ -457,7 +496,7 @@ function echo_documents_cover ($postID = "") {
 
 	if ($get_cover != '' || $get_localized_cover != ''):
 
-		$img_attr = array("h" => 600, "w" => 800, "zc" => 1, "q" =>100);
+		$img_attr = array("h" => 80, "w" => 80, "zc" => 1, "q" =>100);
 		$files_mf_dir = get_bloginfo('url')."/wp-content/blogs.dir/".get_current_blog_id()."/files_mf/";
 
 		if($get_localized_cover !=""){

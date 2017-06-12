@@ -106,6 +106,12 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 			echo '<div class="interactive-map-layers dropdown">';
 				if($show_cat):
 					$tmp_category = array();
+					foreach ($layers as $key => $val) :
+						if(isset($val['map_category'])):
+							$layerID[] = $val['map_category']['id'];
+						endif;
+					endforeach;
+
 					foreach ($layers as $key => $row) :
 						$tmp_category[$key] = null;
 						if(isset($row['map_category'])):
@@ -115,7 +121,11 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 									$layer_cat[] = $row['map_category']['name'];
 								else:
 									$parent_cat = $row['map_category']['parent'];
-									$layer_subcat[$parent_cat][] = $row['map_category']['name'];
+									if(in_array($parent_cat, array_unique($layerID))){
+										$layer_subcat[$parent_cat][] = $row['map_category']['name'];
+									}else{
+										$layer_cat[] = $row['map_category']['name'];
+									}
 								endif;
 							else:
 									$tmp_category[$key] = $row['map_category']['name'];
@@ -668,7 +678,7 @@ function get_layers_of_sub_category( $child_id, $filter_arr = null, $layer_taxon
 
 function printing_map_setting(){ ?>
 	<div class="print-setting hide">
-		<h2><?php _e("Create Map", "odm");?> <i class="fa fa-times-circle" aria-hidden="true"></i></h2>
+		<h2><?php _e("Create Map", "odm");?> <i class="fa fa-times-circle <?php echo odm_country_manager()->get_current_country(); ?>-color" aria-hidden="true"></i></h2>
 		<form name="print-map" class="print-setting-form form-inline" action="javascript:void(0);" autocomplete="off">
 			<div class="form-group inline">
 				<label for="print-title"><?php _e("Title", "odm"); ?>: </label>
