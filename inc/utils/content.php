@@ -170,9 +170,9 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 		$included_posttype = '?post_type='.$post_type;
 	endif;
   if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
-    $cat_name = '<a href="' . $get_category_link. $included_posttype.'">';
+    $cat_name = '<h4><a href="' . $get_category_link. $included_posttype.'">';
     $cat_name .= $category->name;
-    $cat_name .= "</a>";
+    $cat_name .= "</a></h4>";
     $count_layer_items = 0;
     $args_get_post = array(
         'post_type' => $post_type,
@@ -216,7 +216,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
     } //$query_get_post->have_posts
   }else {
     echo "<span class='nochildimage-".odm_country_manager()->get_current_country().$current_page."'>";
-            echo '<a href="' . get_category_link( $category->cat_ID ) .$included_posttype.'">';
+            echo '<h4><a href="' . get_category_link( $category->cat_ID ) .$included_posttype.'">';
                 if ($current_cat == $category->slug){ // if page of the topic exists
                     echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
                         echo $category->name;
@@ -224,7 +224,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
                 }else{
                       echo $category->name;
                 }
-            echo "</a>";
+            echo "</a></h4>";
       echo "</span>";
   }
 }
