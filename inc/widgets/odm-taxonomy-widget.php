@@ -49,7 +49,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 		if ($get_post_id){ // if page of the topic exists
 			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-			echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
+			echo '<h4><a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
 		}else{
 							$hyperlink_color = "";
 					}
@@ -65,7 +65,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			 echo "</strong>";
 		}
 		if ($get_post_id)
-			echo "</a>";
+			echo "</a><h4>";
 		echo "</span>";
 	}
 
