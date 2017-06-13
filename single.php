@@ -23,15 +23,16 @@
               </section>
 	            <?php endif; ?>
 							<section id="post-content" class="row">
-								<?php
-								$thumb_src = odm_get_thumbnail(get_the_ID(),false);
-								if (isset($thumb_src)):
-									echo $thumb_src;
-								else:
-									echo_documents_cover();
-								endif;
-								?>
+
 								<div class="item-content">
+									<?php
+									$thumb_src = odm_get_thumbnail(get_the_ID(),false);
+									if (isset($thumb_src)):
+										echo $thumb_src;
+									else:
+										echo_documents_cover();
+									endif;
+									?>
 		            	<?php echo get_the_content(); ?>
 			            <?php echo_downloaded_documents(); ?>
 			            <?php odm_echo_extras(); ?>
