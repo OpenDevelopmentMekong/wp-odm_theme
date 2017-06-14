@@ -36,24 +36,22 @@
 				</a>
 			</h5>
 		<?php else: ?>
-			<p>
-				<h5>
-					<?php
-						$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-					 ?>
-					<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
+			<h5>
+				<?php
+					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+				 ?>
+				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 
+				<?php
+					if ($show_post_type):
+						$post_type_name = get_post_type($post->ID); ?>
+						<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
 					<?php
-						if ($show_post_type):
-							$post_type_name = get_post_type($post->ID); ?>
-							<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
-						<?php
-						endif; ?>
+					endif; ?>
 
-							<?php echo $localized_title; ?>
-						</a>
-				</h5>
-			</p>
+						<?php echo $localized_title; ?>
+					</a>
+			</h5>
 		<?php endif; ?>
 
 		<?php
