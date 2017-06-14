@@ -11,13 +11,14 @@
 	?>
 
 <div class="sixteen columns post-grid-item<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
-	<div class="grid-content-wrapper">		
+	<div class="grid-content-wrapper">
 		<div class="meta">
-			
+
 			<?php
 	      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language()); ?>
-			<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>">
+			<h5>
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>">
 				<?php
 					if ($show_post_type):
 						$post_type_name = get_post_type($post->ID); ?>
@@ -25,7 +26,8 @@
 				<?php
 					endif; ?>
 				<?php echo $title; ?>
-			</a>
+				</a>
+			</h5>
 			<?php
 				if ($show_meta):
 					echo_post_meta($post,$meta_fields,$order,null,null);
