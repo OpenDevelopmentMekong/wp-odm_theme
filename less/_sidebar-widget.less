@@ -39,15 +39,6 @@
 		}
 	}
 
-	.odm-summary ol li a {
-		text-decoration: none;
-		color: #333;
-		&:hover {
-			color: #4683d2; /*6393D2, 2774da;*/
-			text-decoration: underline;
-		}
-	}
-
 	.wpckan_dataset_list > ul > li {
 		margin: 0 0 10px !important;
 		padding: 0 !important;
@@ -124,16 +115,9 @@
 	  color: @mekong-dark;
 	}
 
-  .item-title {
-    font-size: @base-font-size !important;
-  }
 	li a {
-    font-family: @title-font;
-    text-decoration: none;
-    color: @mekong-text-color;
 
 		&:hover {
-		  text-decoration:none;
       color: @mekong-dark;
 		}
 
@@ -169,6 +153,7 @@
 		  span.nochildimage-mekong {
 	      display: inline-block;
 	      padding-left: 20px;
+        font-size: @font-size-h5;
 		  }
       span.plusimage-mekong {
         background: url("../../img/expand-mekong.png") no-repeat 0 8px!important;
@@ -197,6 +182,11 @@
 	  margin-right: -10px !important;
 	  padding-left: 30px !important;
 	  list-style-position: inside;
+	}
+
+	.summary-item a{
+		font-weight: normal;
+		font-size: @font-size-h5;
 	}
 
 	li {

@@ -2,6 +2,7 @@
 // to be converted to dist/css/myanmar.css
 
 @import "_country-mixin.less";
+@import "_variables.less";
 
 @import url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3');
 
@@ -86,20 +87,23 @@ h1, h2, h3, h4, h5, h6, p, a, li, td, th, div, input {
   }
 
   ul li {
+
+		span.plusimage-myanmar,
+		span.minusimage-myanmar,
+		span.nochildimage-myanmar {
+			display: inline-block;
+			padding-left: 20px;
+			font-size: @font-size-h5;
+		}
+
     span.plusimage-myanmar {
-      display: inline-block;
       background: url("../../img/expand-my.png") no-repeat 0 8px!important;
-      padding-left: 20px;
     }
     span.minusimage-myanmar {
-      display: inline-block;
       background: url("../../img/collapse-my.png") no-repeat 0 8px!important;
-      padding-left: 20px;
     }
     span.nochildimage-myanmar {
-      display: inline-block;
       background: url("../../img/no-child-my.png") no-repeat 0 8px!important;
-      padding-left: 20px;
     }
   }
 }

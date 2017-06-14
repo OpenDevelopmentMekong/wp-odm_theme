@@ -47,25 +47,16 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			}
 		}
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
-		if ($get_post_id){ // if page of the topic exists
-			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-			echo '<a'.$hyperlink_color.' href="' . get_permalink( $get_post_id ) . '">';
-		}else{
-							$hyperlink_color = "";
-					}
-		$in_category = in_category( $category->term_id );
-		if ($in_category){
-			 echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
-			 $hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-		}else {
-			$hyperlink_color = "";
-		}
-			echo $category->name;
-		if ($in_category){
-			 echo "</strong>";
-		}
-		if ($get_post_id)
-			echo "</a>";
+		if ($get_post_id): // if page of the topic exists
+			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
+		endif;
+
+		echo $category->name;
+
+		if ($get_post_id):
+			echo "</a></h5>";
+		endif;
+
 		echo "</span>";
 	}
 
@@ -82,27 +73,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		// add link if contetns categorized by this topic exist
 		if ($category_has_contents):
-			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-			echo '<a'.$hyperlink_color.' href="/category/' . $category->slug . '">';
-		else:
-      $hyperlink_color = "";
+			echo '<h5><a href="/category/' . $category->slug . '">';
     endif;
 
-		$in_category = in_category( $category->term_id );
-		if ($in_category):
-			echo "<strong class='".odm_country_manager()->get_current_country()."-color'>";
-			$hyperlink_color =  " class='".odm_country_manager()->get_current_country()."-color'";
-		else:
-			$hyperlink_color = "";
-		endif;
 		echo $category->name;
 
-		if ($in_category){
-			 echo "</strong>";
-		}
-
-		if ($category_has_contents)
-			echo "</a>";
+		if ($category_has_contents):
+			echo "</a></h5>";
+		endif;
 
 		echo "</span>";
 

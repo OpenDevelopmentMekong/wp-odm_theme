@@ -1,7 +1,6 @@
 @import url(_open_sans.less);
 @import url(_droid_sans.less);
 
-
 body {
 	font-family: @primary-font;
 	color: @primary-color;
@@ -17,22 +16,55 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 	font-size: @font-size-h1;
 	line-height: @title-line-height;
+
+	a{
+		font-size: @font-size-h1;
+		text-decoration: none;
+	}
 }
 h2 {
 	font-size: @font-size-h2;
 	line-height: @title-line-height;
+
+	a{
+		font-size: @font-size-h2;
+		text-decoration: none;
+	}
 }
 h3 {
 	font-size: @font-size-h3;
 	line-height: @subtitle-line-height;
+
+	a{
+		font-size: @font-size-h3;
+		text-decoration: none;
+	}
 }
 h4 {
 	font-size: @font-size-h4;
 	line-height: @subtitle-line-height;
+
+	a{
+		font-size: @font-size-h4;
+		text-decoration: none;
+	}
 }
 h5 {
 	font-size: @font-size-h5;
 	line-height: @subtitle-line-height;
+
+	a{
+		font-size: @font-size-h5;
+		text-decoration: none;
+	}
+}
+
+#sidebar{
+	h5 {
+		a{
+			font-weight: normal;
+		}
+	}
 }
 
 p {
@@ -40,6 +72,7 @@ p {
 	color: @primary-color;
 	font-size: @base-font-size;
 	font-weight: normal;
+	line-height: @paragraph-line-height;
 }
 
 a, a:visited{
@@ -63,8 +96,6 @@ a strong:hover{
 	color: @mekong-dark;
 }
 
-
-
 td, li {
 	font-family: @primary-font;
 	font-size: @base-font-size;
@@ -73,11 +104,8 @@ td, li {
 
 .excerpt { font-weight: light; }
 
-h5 a {
-    text-decoration: none;
-}
 h2 em {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 sup{
