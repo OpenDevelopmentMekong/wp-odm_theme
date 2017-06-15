@@ -2,6 +2,7 @@
 // to be converted to dist/css/vietnam.css
 
 @import "_country-mixin.less";
+@import "_variables.less";
 
 /* Color */
 @vietnam-text-color: #A89B04;
@@ -59,20 +60,23 @@
   }
 
   ul li {
+
+		span.plusimage-vietnam,
+		span.minusimage-vietnam,
+		span.nochildimage-vietnam {
+			display: inline-block;
+			padding-left: 20px;
+			font-size: @font-size-h5;
+		}
+
     span.plusimage-vietnam {
-      display: inline-block;
       background: url("../../img/expand-vn.png") no-repeat 0 8px!important;
-      padding-left: 20px;
     }
     span.minusimage-vietnam {
-      display: inline-block;
       background: url("../../img/collapse-vn.png") no-repeat 0 8px!important;
-      padding-left: 20px;
     }
     span.nochildimage-vietnam {
-      display: inline-block;
       background: url("../../img/no-child-vn.png") no-repeat 0 8px!important;
-      padding-left: 20px;
     }
   }
 }

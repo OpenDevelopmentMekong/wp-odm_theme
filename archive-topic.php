@@ -1,7 +1,7 @@
 <?php get_header();
 
 $options = get_option('odm_options');
-$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created"; ?>
+$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created"; ?>
 
 <div class="section-title main-title">
 

@@ -2,7 +2,7 @@
 
 <?php if (have_posts()) : the_post();
 	$options = get_option('odm_options');
-	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "created";
+	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created";
 	?>
 
   <article id="content" class="single-post">
@@ -23,15 +23,16 @@
               </section>
 	            <?php endif; ?>
 							<section id="post-content" class="row">
-								<?php
-								$thumb_src = odm_get_thumbnail(get_the_ID(),false);
-								if (isset($thumb_src)):
-									echo $thumb_src;
-								else:
-									echo_documents_cover();
-								endif;
-								?>
+
 								<div class="item-content">
+									<?php
+									$thumb_src = odm_get_thumbnail(get_the_ID(),false);
+									if (isset($thumb_src)):
+										echo $thumb_src;
+									else:
+										echo_documents_cover();
+									endif;
+									?>
 		            	<?php echo get_the_content(); ?>
 			            <?php echo_downloaded_documents(); ?>
 			            <?php odm_echo_extras(); ?>

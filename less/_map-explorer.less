@@ -16,6 +16,10 @@
 	display: block;
 }
 
+section#map{
+		height: 100%
+}
+
 #iframe-fullscreen-map{
 	position: fixed !important;
 	top: 0;
@@ -215,6 +219,13 @@
 							border-left: 1px solid #ccc;
 							border-right: 1px solid #ccc;
 						}
+
+						ul {
+							li.cat-item:last-child{
+								border-top: 1px solid #eee;
+								border-bottom: 1px solid #eee;
+							}
+						}
 					}
 
 				}
@@ -402,6 +413,13 @@
 	margin: 10px;
 	display: none;
 
+	.color-line {
+		border: @mekong-bright solid 1px;
+		margin: 0 0 5px;
+		width: 99%;
+		height: 0;
+	}
+
 	.widget_headline {
 		padding: 10px 5px 0 15px;
 		color: @black;
@@ -459,13 +477,6 @@
 				}
 			}
 		}/*title*/
-
-		.color-line {
-			border: @mekong-bright solid 1px;
-			margin: 0 0 5px;
-			width: 99%;
-			height: 0;
-		}
 
 		.map-legend-ul {
 			margin-right: 0;
@@ -820,10 +831,6 @@ html#map-embed {
 }
 #embeded-interactive-map {
 	height: 100%;
-
-	.map-legend-container {
-		bottom: 0;
-	}
 
 	.jeo-date-range-slider {
 		display: none;

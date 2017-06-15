@@ -208,8 +208,15 @@ function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
   			display_baselayer_navigation();
   			$base_layers = get_post_meta_of_all_baselayer();
         $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
+        if(isset($_GET['show_cat'])){
+          $show_cat = $_GET['show_cat'];
+        }
+        $show_hierarchy = get_post_meta($mapID, '_jeo_map_show_hierarchy', true);
+        if(isset($_GET['show_hierarchy'])){
+          $show_hierarchy = $_GET['show_hierarchy'];
+        }
   			 //Show Menu Layers and legendbox
-  			display_map_layer_sidebar_and_legend_box($layers, $show_cat);
+  			display_map_layer_sidebar_and_legend_box($layers, $show_cat, $show_hierarchy);
         printing_map_footnote();
   		?>
   	</div>
