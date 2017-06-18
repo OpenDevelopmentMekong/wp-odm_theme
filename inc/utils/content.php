@@ -452,7 +452,7 @@ function odm_excerpt($the_post, $num = 400, $read_more = '')
 		$chopped = false;
 		
 		if (odm_language_manager()->get_current_language() == "km"):
-			$limit = $limit *2;
+			$limit = $limit *4;
 		endif;
 
 		$post_content = apply_filters('the_content',$post->post_content);
