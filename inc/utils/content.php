@@ -450,6 +450,10 @@ function odm_excerpt($the_post, $num = 400, $read_more = '')
 		$post = $the_post;
 		$limit = $num;
 		$chopped = false;
+		
+		if (odm_language_manager()->get_current_language() == "km"):
+			$limit = $limit *2;
+		endif;
 
 		$post_content = apply_filters('the_content',$post->post_content);
 		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
