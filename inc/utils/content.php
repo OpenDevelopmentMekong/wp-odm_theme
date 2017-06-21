@@ -482,7 +482,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 			endif;
 		endif;
 
-		return $stripped_content;
+		return '<p>' . $stripped_content . '</p>';
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
