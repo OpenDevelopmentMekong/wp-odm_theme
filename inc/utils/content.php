@@ -460,7 +460,7 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
 
-		if($stripped_content){
+		if($stripped_content):
 			$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
 			$stripped_content_arr = explode(' ', trim($stripped_content), $num+1);
 
@@ -474,15 +474,15 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 
 				$excerpt_words = $excerpt_content.' ...';
 
-				if ($read_more != '') {
+				if ($read_more != ''):
 					 $color_name = odm_country_manager()->get_current_country().'-color';
 					 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
-				}
+				endif;
 				return '<p>' . $excerpt_words . '</p>';
 			endif;
-		}
+		endif;
 
-		return;
+		return $stripped_content;
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
