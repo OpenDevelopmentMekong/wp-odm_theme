@@ -17,7 +17,7 @@
 			<?php
 	      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-				$localized_title = !empty($localized_title) ? $localized_title : $post->post_title; ?>
+				$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 			<h5>
 				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
 				<?php

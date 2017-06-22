@@ -22,7 +22,7 @@
 	<div class="post-list-item single_result_container">
 		<?php 
 			$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-			$localized_title = !empty($localized_title) ? $localized_title : $post->post_title; ?>
+			$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 		<?php if ($header_tag): ?>
 			<?php
         $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>

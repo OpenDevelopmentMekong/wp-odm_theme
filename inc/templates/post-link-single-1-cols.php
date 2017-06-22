@@ -9,7 +9,7 @@
 			<h5>
 				<?php
 				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-				$localized_title = !empty($localized_title) ? $localized_title : $post->post_title; ?>
+				$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
 					<?php
 						if ($show_post_type):
