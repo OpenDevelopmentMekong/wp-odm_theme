@@ -414,7 +414,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
       <?php
 			if (in_array('tags',$show_elements)): ?>
 					<?php
-					$tag_list = get_the_tags();
+					$tag_list = get_the_tags($post->ID);
 					if (isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
@@ -444,37 +444,45 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 400, $read_more = '')
+function odm_excerpt($the_post, $num = 40, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
 		$limit = $num;
-		$chopped = false;
-		
-		if (odm_language_manager()->get_current_language() == "km"):
-			$limit = $limit * 4;
+
+		if($post->post_excerpt):
+			$post_content = $post->post_excerpt;
+		else:
+			$post_content = strip_tags(apply_filters('the_content',$post->post_content));
 		endif;
 
-		$post_content = apply_filters('the_content',$post->post_content);
-		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
+		$translated_content = apply_filters('translate_text', $post_content, odm_language_manager()->get_current_language());
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
 
-		$excerpt_hidden_space = explode("​", $stripped_content); //explode by zerowidthspace​
-		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
-		$excerpt_words = $excerpt_string;
+		if($stripped_content):
+			$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
+			$stripped_content_arr = explode(' ', trim($stripped_content), $num+1);
 
-		if (strlen($excerpt_words) > $limit):
-			$excerpt_words = substr($excerpt_words,0,$limit);
-			$excerpt_words .= "...";
+			if($stripped_content_arr):
+				array_splice($stripped_content_arr, $limit);
+				$excerpt_content = implode(' ', $stripped_content_arr);
+		    if (odm_language_manager()->get_current_language() == "km"):
+		  		$excerpt_zeo_space = explode("​", $excerpt_content, $limit); //explode by zerowidthspace​
+		  		$excerpt_content = implode("​", $excerpt_zeo_space); //implode by zerowidthspace
+				endif;
+
+				$excerpt_words = $excerpt_content.' ...';
+
+				if ($read_more != ''):
+					 $color_name = odm_country_manager()->get_current_country().'-color';
+					 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+				endif;
+				return '<p>' . $excerpt_words . '</p>';
+			endif;
 		endif;
 
-		if (!empty($read_more)):
-			 $color_name = odm_country_manager()->get_current_country().'-color';
-			 $excerpt_words .=  " <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
-		endif;
-
-		return '<p>' . $excerpt_words . '</p>';
+		return '<p>' . $stripped_content . '</p>';
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
