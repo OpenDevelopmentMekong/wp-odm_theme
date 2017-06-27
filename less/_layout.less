@@ -59,6 +59,7 @@ body{
 
 	.grid-content-wrapper {
 		color: @white;
+    height: 100%;
 
     .item-post-type {
       padding: @xsmall-padd @small-padd;
@@ -116,7 +117,7 @@ body{
       padding: @small-padd;
     }
 
-		.attachment-thumbnail {
+		.attachment-thumbnail, .wp-post-image {
 			position: absolute;
 	    z-index: 1;
 	    height: 100%;
@@ -191,6 +192,10 @@ body{
 				}
 			}
 
+    }
+
+    img {
+      height: 100%;
     }
 
 	}
