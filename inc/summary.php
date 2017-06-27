@@ -36,10 +36,10 @@ class Odm_Summary {
 
 					$name = $el->nodeValue;
 
-					$el->setAttribute('id', sanitize_title($name));
+					$el->setAttribute('id', base64_encode($name));
 					$el->setAttribute('class', 'summary-item');
 					$link = $dom->createElement('a');
-					$link->setAttribute('href', '#' . sanitize_title($name));
+					$link->setAttribute('href', '#' . base64_encode($name));
 					$link->setAttribute("title", $name);
 					//$link->nodeValue = htmlspecialchars($name);
 
