@@ -536,49 +536,24 @@ function echo_documents_cover ($postID = "") {
 
 function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
-	$country_name = odm_country_manager()->get_current_country();
-	$local_lang = 'en';
-	if(function_exists('qtrans_getSortedLanguages')){
-		$enabled_languages_codes = qtrans_getSortedLanguages( true );
-		if(!empty($enabled_languages_codes[1])):
-			$local_lang = $enabled_languages_codes[1];
-		endif;
-	}
-
+	$local_lang = odm_language_manager()->get_the_language_code_by_site();
+	$current_lang = odm_language_manager()->get_current_language();
+	
 	//Get Download files
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-	if ($get_document != '' || $get_localized_document != ''):
-			echo "<div id='documents_download'><span>";
-			_e("Download: ");
-			//Get English PDF
-			if($get_document !=""){
-				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_document.'">';
-					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
-					_e ('English PDF');
-				echo '</a>';
-			}
-			else{
-				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
-				_e("English PDF not available");
-			}
-			echo "&nbsp; &nbsp;";
-
-			//Get Khmer PDF
-			if($get_localized_document !=""){
-				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_localized_document.'">';
-					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-					echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " ."PDF");
-				echo '</a>';
-			}
-			else{
-				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-				echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " . "PDF not available");
-			}
-			echo "</span></div>";
-		endif;
-		?>
-	<?php
+	
+	if (!empty($get_document) || !empty($get_localized_document)):		
+		if (!empty($get_document) && !empty($get_localized_document)):		
+			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document; 
+		else:
+			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
+		endif;?>
+		<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
+			<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
+		</p>
+<?php
+	endif;
 }
 
 function available_post_types(){

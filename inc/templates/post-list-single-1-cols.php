@@ -68,26 +68,29 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>
-					<?php if ($show_excerpt): ?>
-						<div class="post-excerpt">
-							<?php
-								$excerpt = odm_excerpt($post);
-								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
-									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt);
-								endif;
-								echo $excerpt; ?>
-						</div>
-						<?php if( echo_downloaded_documents()):
-							echo_downloaded_documents();
-						endif; ?>
-					<?php endif; ?>
-
-					<?php if ($show_source_meta): ?>
-						<?php odm_echo_extras(); ?>
-					<?php endif; ?>
-			<?php endif; ?>
-		</section>
+			<?php 
+				if ($show_excerpt || $show_source_meta): ?>
+				<?php 
+					if ($show_excerpt): ?>
+					<div class="post-excerpt">
+						<?php
+							$excerpt = odm_excerpt($post);
+							if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
+								$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt);
+							endif;
+							echo $excerpt; ?>
+					</div>
+					<?php 
+					endif;
+					if ($show_source_meta):
+						odm_echo_extras(); 
+					endif; 
+				endif; ?>
+			</section>
+			
+			<section>
+				<?php echo_downloaded_documents(); ?>
+			</section>
 
 		<?php
 			if ($show_solr_meta && isset($solr_search_result)):
