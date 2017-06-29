@@ -39,6 +39,7 @@
 									<p>
 			            	<?php echo_downloaded_documents(); ?>
 									</p>
+									</br>
 									<p>									
 			            	<?php odm_echo_extras(); ?>
 									</p>
