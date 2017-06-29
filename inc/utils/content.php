@@ -536,7 +536,6 @@ function echo_documents_cover ($postID = "") {
 
 function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
-	$country_name = odm_country_manager()->get_current_country();
 	$local_lang = odm_language_manager()->get_current_language();
 	
 	//Get Download files
