@@ -16,16 +16,17 @@
 
 			<?php
 	      $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
-				$title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language()); ?>
+				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+				$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 				<h5>
-					<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $title; ?>">
+					<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
 						<?php
 							if ($show_post_type):
 								$post_type_name = get_post_type($post->ID); ?>
 								<i class="<?php echo get_post_type_icon_class($post_type_name); ?>"></i>
 						<?php
 							endif; ?>
-						<?php echo $title; ?>
+						<?php echo $localized_title; ?>
 					</a>
 				</h5>
 			<?php

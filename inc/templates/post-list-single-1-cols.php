@@ -20,12 +20,14 @@
 
 <div class="sixteen columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
 	<div class="post-list-item single_result_container">
+		<?php 
+			$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+			$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 		<?php if ($header_tag): ?>
 			<?php
-        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
-				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
+        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
 			<h5>
-				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
+				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
 					<?php
 						if ($show_post_type):
 							$post_type_name = get_post_type($post->ID); ?>
@@ -37,11 +39,7 @@
 			</h5>
 		<?php else: ?>
 			<h5>
-				<?php
-					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-				 ?>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
-
 				<?php
 					if ($show_post_type):
 						$post_type_name = get_post_type($post->ID); ?>

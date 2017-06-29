@@ -51,6 +51,11 @@ class Odm_Language_Manager {
     return $this->supported_languages[$lang_code];
   }
 
+	function get_the_language_code_by_site($site = null){
+    $theme = isset($site) ? $site : odm_country_manager()->get_current_country();
+    return $this->languages_by_theme[$theme];
+  }
+
   function get_current_language(){
     return $this->current_language;
   }
@@ -83,9 +88,9 @@ class Odm_Language_Manager {
 	function get_path_to_flag_image($lang){
     return get_stylesheet_directory_uri().'/img/'.$lang.'.png';
   }
-  
+
   function print_language_flags_for_post($post){
-    
+
     foreach ($this->supported_languages as $lang_code => $lang):
       if(function_exists('qtranxf_isAvailableIn') && qtranxf_isAvailableIn($post->ID, $lang_code)){ // no En content
         $path_to_flag = odm_language_manager()->get_path_to_flag_image($lang_code);
@@ -94,7 +99,7 @@ class Odm_Language_Manager {
         endif;
       }
     endforeach;
-    
+
 
 
   }
