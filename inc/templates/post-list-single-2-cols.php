@@ -67,11 +67,10 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>
-				<?php if( echo_downloaded_documents()):
-					echo_downloaded_documents();
-				endif; ?>
-				<?php if ($show_excerpt): ?>
+			<?php 
+				if ($show_excerpt || $show_source_meta): ?>
+				<?php 
+					if ($show_excerpt): ?>
 					<div class="post-excerpt">
 						<?php
 							$excerpt = odm_excerpt($post);
@@ -80,12 +79,16 @@
 							endif;
 							echo $excerpt;?>
 					</div>
-				<?php endif; ?>
-
-				<?php if ($show_source_meta): ?>
-					<?php odm_echo_extras(); ?>
-				<?php endif; ?>
-			<?php endif; ?>
+					<?php 
+					endif;
+					if ($show_source_meta):
+						odm_echo_extras(); 
+					endif; 
+				endif; ?>
+		</section>
+		
+		<section>
+			<?php echo_downloaded_documents(); ?>
 		</section>
 
 		<?php
