@@ -71,7 +71,7 @@
 
       <section class="container">
     		<div class="row">
-    			<div class="ten columns offset-by-three">
+    			<div class="sixteen columns">
             <?php the_content(); ?>
             <?php odm_echo_extras(); ?>
           </section>
