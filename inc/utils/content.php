@@ -543,24 +543,16 @@ function echo_downloaded_documents ($postID = "") {
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
 	
-	if ($get_document != '' && $get_localized_document != ''):		
-		$document_curent_lang = $local_lang == "en" ? $get_document : $get_localized_document; ?>
+	if (!empty($get_document) || !empty($get_localized_document)):		
+		if (!empty($get_document) && !empty($get_localized_document)):		
+			$document_curent_lang = $local_lang == "en" ? $get_document : $get_localized_document; 
+		else:
+			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
+		endif;?>
 		<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
 			<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
 		</p>
-	<?php
-	elseif ($get_document != '' && $get_localized_document == ''):	
-		$document_curent_lang = $get_document ?>
-		<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
-			<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
-		</p>
-	<?php
-	elseif ($get_document == '' && $get_localized_document != ''):
-		$document_curent_lang = $get_localized_document ?>
-		<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
-			<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
-		</p>
-	<?php
+<?php
 	endif;
 }
 
