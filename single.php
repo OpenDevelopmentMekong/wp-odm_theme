@@ -32,17 +32,19 @@
 									else:
 										echo_documents_cover();
 									endif;
+
+									if(get_the_content()):
+										echo "<p>".get_the_content()."</p>";
+									endif;
+
+									if(echo_downloaded_documents()):
+										echo_downloaded_documents();
+									endif;
+
+									if(odm_echo_extras()):
+										odm_echo_extras();
+									endif;
 									?>
-									<p>
-		            		<?php echo get_the_content(); ?>
-									</p>
-									<p>
-			            	<?php echo_downloaded_documents(); ?>
-									</p>
-									</br>
-									<p>									
-			            	<?php odm_echo_extras(); ?>
-									</p>
 								</div>
 							</section>
             <?php
