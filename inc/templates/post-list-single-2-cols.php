@@ -19,7 +19,7 @@
 
 <div class="eight columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
 	<div class="post-list-item single_result_container">
-		<?php 
+		<?php
 			$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
 			$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 		<?php if ($header_tag): ?>
@@ -67,9 +67,9 @@
 				endif;
 			endif;
 			?>
-			<?php 
+			<?php
 				if ($show_excerpt || $show_source_meta): ?>
-				<?php 
+				<?php
 					if ($show_excerpt): ?>
 					<div class="post-excerpt">
 						<?php
@@ -79,16 +79,17 @@
 							endif;
 							echo $excerpt;?>
 					</div>
-					<?php 
+					<?php
 					endif;
 					if ($show_source_meta):
-						odm_echo_extras(); 
-					endif; 
-				endif; ?>
-		</section>
-		
-		<section>
-			<?php echo_downloaded_documents(); ?>
+						odm_echo_extras();
+					endif;
+
+					if(echo_downloaded_documents()):
+						echo_downloaded_documents();
+					endif;
+				endif;
+				?>
 		</section>
 
 		<?php
