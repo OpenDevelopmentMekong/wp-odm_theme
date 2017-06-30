@@ -37,12 +37,12 @@
 										echo "<p>".get_the_content()."</p>";
 									endif;
 
-									if(echo_downloaded_documents()):
-										echo_downloaded_documents();
-									endif;
-
 									if(odm_echo_extras()):
 										odm_echo_extras();
+									endif;
+
+									if(echo_downloaded_documents()):
+										echo_downloaded_documents();
 									endif;
 									?>
 								</div>
