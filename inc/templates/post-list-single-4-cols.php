@@ -85,9 +85,9 @@
 
 					if ($show_source_meta):
 						odm_echo_extras();
-					endif;					
+					endif;
 
-					if(echo_downloaded_documents()):
+					if(post_has_downloaded_documents()):
 						echo_downloaded_documents();
 					endif;
 				endif;

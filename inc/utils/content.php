@@ -534,18 +534,34 @@ function echo_documents_cover ($postID = "") {
 	endif;
 }
 
+function post_has_downloaded_documents ($postID = "") {
+	$postID = $postID ? $postID : get_the_ID();
+	$local_lang = odm_language_manager()->get_the_language_code_by_site();
+	$current_lang = odm_language_manager()->get_current_language();
+
+	//Get Download files
+	$get_document = get_post_meta($postID, 'upload_document', true);
+	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
+
+	if (!empty($get_document) || !empty($get_localized_document)):
+		return true;
+	endif;
+
+	return false;
+}
+
 function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
 	$local_lang = odm_language_manager()->get_the_language_code_by_site();
 	$current_lang = odm_language_manager()->get_current_language();
-	
+
 	//Get Download files
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-	
-	if (!empty($get_document) || !empty($get_localized_document)):		
-		if (!empty($get_document) && !empty($get_localized_document)):		
-			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document; 
+
+	if (!empty($get_document) || !empty($get_localized_document)):
+		if (!empty($get_document) && !empty($get_localized_document)):
+			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document;
 		else:
 			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
 		endif;?>
