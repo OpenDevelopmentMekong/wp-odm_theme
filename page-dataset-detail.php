@@ -55,7 +55,7 @@
                   <ul>
                   <?php 
                     foreach ($result["resultset"] as $document): 
-                      $link_to_dataset = wpckan_get_link_to_dataset($document->id,$_SERVER['QUERY_STRING']);?>
+                      $link_to_dataset = wpckan_get_link_to_dataset($document->id,$search_query);?>
                       <li>
                         <h5><a target="_blank" href="<?php echo $link_to_dataset; ?>"><?php echo $document->title; ?></a></h5>
                       </li>
