@@ -52,11 +52,13 @@
               <div class="sixteen columns widgets">
                 <div class="widget">
       						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
+                  </br>
                   <ul>
                   <?php 
-                    foreach ($result["resultset"] as $document): ?>
+                    foreach ($result["resultset"] as $document): 
+                      $link_to_dataset = wpckan_get_link_to_dataset($document->id,$_SERVER['QUERY_STRING']);?>
                       <li>
-                        <h5><i class="<?php echo get_post_type_icon_class($document->dataset_type); ?>"></i> <a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
+                        <h5><a target="_blank" href="<?php echo $link_to_dataset; ?>"><?php echo $document->title; ?></a></h5>
                       </li>
                   <?php 
                     endforeach; ?>
