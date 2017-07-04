@@ -45,27 +45,20 @@
 						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
 						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
 					</div>
-				</div>
-
-				<div class="sixteen columns">
-					<ul class="widgets">
-
-						<?php
-							if (isset($search_query)):
-                $results = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query);?>
-								<li class="widget">
-									<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
-                  <?php 
-                    foreach ($result["resultset"] as $document): ?>
-                      <h5><a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
-                  <?php 
-                    endforeach;?>
-								</li>
-						<?php
-						 	endif; ?>
-
-						<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
-					</ul>
+          <?php
+            if (isset($search_query)): 
+              $results = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query); ?>
+              <div class="widget">
+    						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
+    						</br>
+                <?php 
+                  foreach ($result["resultset"] as $document): ?>
+                    <h5><a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
+                <?php 
+                  endforeach; ?>
+    					</div>
+          <?php 
+            endif; ?>
 				</div>
 
 		</aside>
