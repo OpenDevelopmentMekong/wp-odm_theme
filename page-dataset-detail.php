@@ -49,8 +49,8 @@
           <?php
             if (isset($search_query)): 
               $result = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query); ?>
-              <div class="sixteen columns">
-                <div class="widgets">
+              <div class="sixteen columns widgets">
+                <div class="widget">
       						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
                   <ul>
                   <?php 
