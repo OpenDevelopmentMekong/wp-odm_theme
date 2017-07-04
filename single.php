@@ -37,9 +37,7 @@
 										echo "<p>".get_the_content()."</p>";
 									endif;
 
-									if(odm_echo_extras()):
-										odm_echo_extras();
-									endif;
+									odm_echo_extras();
 
 									echo_downloaded_documents();
 									
