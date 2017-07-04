@@ -53,7 +53,7 @@
     						</br>
                 <?php 
                   foreach ($result["resultset"] as $document): ?>
-                    <h5><a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
+                    <h5><i class="<?php echo get_post_type_icon_class($document->dataset_type); ?>"></i> <a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
                 <?php 
                   endforeach; ?>
     					</div>
