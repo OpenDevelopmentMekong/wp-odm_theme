@@ -60,8 +60,8 @@
           <?php 
             endif; ?>
 				</div>
-
-		</aside>
+	    </aside>
+    </div>
 	</section>
 <?php endif; ?>
 
