@@ -2,6 +2,7 @@
 /*
  * Template Name: WPCKAN Dataset detail
  */
+ $search_query = isset($_GET["search_query"]) ? base64_decode($_GET["search_query"]) : null;
 ?>
 <?php get_header(); ?>
 
@@ -46,6 +47,16 @@
 
 				<div class="sixteen columns">
 					<ul class="widgets">
+
+						<?php
+							if (isset($search_query)): ?>
+								<li class="widget">
+									<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
+
+								</li>
+						<?php
+						 	endif; ?>
+
 						<?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
 					</ul>
 				</div>
