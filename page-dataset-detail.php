@@ -47,7 +47,7 @@
 					</div>
           <?php
             if (isset($search_query)): 
-              $results = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query); ?>
+              $result = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query); ?>
               <div class="widget">
     						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
     						</br>
