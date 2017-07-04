@@ -2,9 +2,11 @@
 /*
  * Template Name: WPCKAN Dataset detail
  */
- $search_query = isset($_GET["search_query"]) ? base64_decode($_GET["search_query"]) : null;
 ?>
 <?php get_header(); ?>
+
+<?php 
+  $search_query = isset($_GET["search_query"]) ? base64_decode($_GET["search_query"]) : null; ?>
 
 <?php if(have_posts()) : the_post(); ?>
 	<section id="content" class="container single-post">
