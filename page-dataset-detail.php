@@ -65,10 +65,10 @@
 	</section>
 <?php endif; ?>
 
+<?php get_footer(); ?>
+
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('.download').prepend($('<i class="fa fa-download"></i> '));
   })
 </script>
-
-<?php get_footer(); ?>
