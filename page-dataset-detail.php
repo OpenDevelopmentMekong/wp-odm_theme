@@ -52,7 +52,6 @@
               <div class="sixteen columns widgets">
                 <div class="widget">
       						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
-                  </br>
                   <ul>
                   <?php 
                     foreach ($result["resultset"] as $document): 
