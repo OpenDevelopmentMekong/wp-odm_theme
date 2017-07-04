@@ -45,21 +45,33 @@
 						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
 						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
 					</div>
+                    
           <?php
             if (isset($search_query)): 
               $result = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query); ?>
-              <div class="widget">
-    						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
-    						</br>
-                <?php 
-                  foreach ($result["resultset"] as $document): ?>
-                    <h5><i class="<?php echo get_post_type_icon_class($document->dataset_type); ?>"></i> <a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
-                <?php 
-                  endforeach; ?>
-    					</div>
+              <div class="sixteen columns">
+                <div class="widgets">
+      						<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
+                  <ul>
+                  <?php 
+                    foreach ($result["resultset"] as $document): ?>
+                      <li>
+                        <h5><i class="<?php echo get_post_type_icon_class($document->dataset_type); ?>"></i> <a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
+                      </li>
+                  <?php 
+                    endforeach; ?>
+                  </ul>
+      					</div>
+              </div>
           <?php 
             endif; ?>
-				</div>
+				        
+        <div class="sixteen columns">
+          <ul class="widgets">
+            <?php dynamic_sidebar('wpckan-dataset-detail-sidebar'); ?>
+          </ul>
+        </div>
+        
 	    </aside>
     </div>
 	</section>
