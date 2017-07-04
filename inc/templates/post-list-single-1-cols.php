@@ -88,9 +88,8 @@
 					odm_echo_extras();
 				endif;
 
-				if(post_has_downloaded_documents()):
-					echo_downloaded_documents();
-				endif;
+				echo_downloaded_documents();
+				
 			endif;
 				?>
 			</section>

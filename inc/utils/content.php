@@ -534,22 +534,6 @@ function echo_documents_cover ($postID = "") {
 	endif;
 }
 
-function post_has_downloaded_documents ($postID = "") {
-	$postID = $postID ? $postID : get_the_ID();
-	$local_lang = odm_language_manager()->get_the_language_code_by_site();
-	$current_lang = odm_language_manager()->get_current_language();
-
-	//Get Download files
-	$get_document = get_post_meta($postID, 'upload_document', true);
-	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-
-	if (!empty($get_document) || !empty($get_localized_document)):
-		return true;
-	endif;
-
-	return false;
-}
-
 function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
 	$local_lang = odm_language_manager()->get_the_language_code_by_site();
@@ -558,18 +542,23 @@ function echo_downloaded_documents ($postID = "") {
 	//Get Download files
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-
+	$document_curent_lang = null;
+	
 	if (!empty($get_document) || !empty($get_localized_document)):
 		if (!empty($get_document) && !empty($get_localized_document)):
 			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document;
 		else:
 			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
-		endif;?>
-		<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
-			<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
-		</p>
-<?php
-	endif;
+		endif;
+	endif;?>
+	
+	<?php 
+		if (isset($document_curent_lang)): ?>
+			<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
+				<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
+			</p>
+	<?php 
+		endif; 
 }
 
 function available_post_types(){
@@ -682,7 +671,7 @@ function available_custom_post_types(){
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
 	 $news_source_info = null;
-	 if (function_exists('get_post_meta')) :
+	 if (function_exists('get_post_meta')):
 		 $get_author = get_post_meta($postID, 'author', true);
 		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
 	   if ($get_author != '' || $get_localized_author != ''):
@@ -705,13 +694,13 @@ function available_custom_post_types(){
 			 endif;
 		 endif;
 
-		 if (isset($source) && $source != '') {
-					if (false === strpos($source, '://')) {
-							$news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
-					}  else {
-							$news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
-					}
-		 }
+		 if (isset($source) && $source != ''):
+			if (false === strpos($source, '://')):
+					$news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+			else:
+					$news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+			endif;
+		endif;
 
    endif;
 
