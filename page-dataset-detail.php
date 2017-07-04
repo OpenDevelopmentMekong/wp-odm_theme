@@ -49,10 +49,15 @@
 					<ul class="widgets">
 
 						<?php
-							if (isset($search_query)): ?>
+							if (isset($search_query)):
+                $results = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query);?>
 								<li class="widget">
 									<h2 class="widget-title"><?php _e('Other search results', 'odm'); ?></h2>
-
+                  <?php 
+                    foreach ($result["resultset"] as $document): ?>
+                      <h5><a href="<?php echo $document->permalink; ?>"><?php echo $document->title; ?></a></h5>
+                  <?php 
+                    endforeach;?>
 								</li>
 						<?php
 						 	endif; ?>
