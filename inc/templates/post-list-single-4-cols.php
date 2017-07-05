@@ -85,11 +85,10 @@
 
 					if ($show_source_meta):
 						odm_echo_extras();
-					endif;					
-
-					if(echo_downloaded_documents()):
-						echo_downloaded_documents();
 					endif;
+
+					echo_downloaded_documents();
+					
 				endif;
 				?>
 		</section>
