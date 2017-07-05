@@ -69,7 +69,9 @@ function echo_the_breadcrumbs()
       echo_the_breadcrumb_category($separator);
     elseif (is_page() && !empty(get_post_ancestors(get_the_ID()))):
 			echo_the_breadcrumb_page_with_parents($separator);
-    elseif (is_page() && empty(get_post_ancestors(get_the_ID()))):
+    elseif (is_page() && is_page_template('page-dataset-detail.php')):
+			echo_the_breadcrumb_dataset_detail_page($separator);
+		elseif (is_page()):
 			echo_the_breadcrumb_page_single($separator);
     elseif (is_tag()):
 			echo_the_breadcrumb_tag($separator);
@@ -171,6 +173,20 @@ function echo_the_breadcrumb_category($separator){
 				echo the_separated_breadcrumb($separator, $categories[0]->term_id, 'category');
 		endif;
 	endforeach;
+}
+
+function echo_the_breadcrumb_dataset_detail_page($separator){
+	$dataset_id = isset($_GET["id"]) ? $_GET["id"] : null;
+	$search_query = isset($_GET["search_query"]) ? base64_decode($_GET["search_query"]) : null;
+	if (isset($search_query)):
+		$search_term = wp_odm_solr_parse_query_from_string($search_query);
+		echo '<li class="item-current item-'.$search_term.'"><a class="item-current bread-current-'.$search_term.'" href="'.$search_query.'"><strong>' . __('Search results for:','odm') . ' \'' . $search_term . '\'</strong></a></li>';
+		echo the_separated_breadcrumb($separator, '', 'page');
+	else:
+		echo '<li class="item-current item-dataset-detail"><a class="item-current bread-current-item-dataset-detail"><strong>' . __('Dataset detail','odm') . '</strong></a></li>';
+		echo the_separated_breadcrumb($separator, '', 'page');
+	endif;
+	echo '<li class="item-current item-'.get_the_ID().'"><a class="bread-'.get_the_ID().'" href="#"> '. wpckan_get_dataset_title($dataset_id) .'</a></li>';
 }
 
 function echo_the_breadcrumb_page_single($separator){
