@@ -180,7 +180,7 @@ function echo_the_breadcrumb_dataset_detail_page($separator){
 	$search_query = isset($_GET["search_query"]) ? base64_decode($_GET["search_query"]) : null;
 	if (isset($search_query)):
 		$search_term = wp_odm_solr_parse_query_from_string($search_query);
-		echo '<li class="item-current item-'.$search_term.'"><a class="item-current bread-current-'.$search_term.'" href="'.$search_query.'"><strong>' . __('Search results for:','odm') . ' \'' . $search_term . '\'</strong></a></li>';
+		echo '<li class="item-current item-'.$search_term.'"><a class="item-current bread-current-'.$search_term.'" href="/'.$search_query.'"><strong>' . __('Search results for:','odm') . ' \'' . $search_term . '\'</strong></a></li>';
 		echo the_separated_breadcrumb($separator, '', 'page');
 	else:
 		echo '<li class="item-current item-dataset-detail"><a class="item-current bread-current-item-dataset-detail"><strong>' . __('Dataset detail','odm') . '</strong></a></li>';
