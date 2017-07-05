@@ -52,7 +52,7 @@ function echo_the_breadcrumbs()
     echo '<ul id="breadcrumbs" class="breadcrumb breadcrumbs">';
 
     if (!is_front_page()):
-			echo_the_breadcrumb_home();
+			echo_the_breadcrumb_home($separator);
 		endif;
 
     if (is_single()):
@@ -93,7 +93,7 @@ function echo_the_breadcrumbs()
     echo '</ul>';
 }
 
-function echo_the_breadcrumb_home(){
+function echo_the_breadcrumb_home($separator){
 	echo '<li class="item-home"><a class="bread-link bread-home" href="'.get_home_url().'" title="Home">';
 	echo '<i class="fa fa-home"></i>';
 	echo '</a></li>';
