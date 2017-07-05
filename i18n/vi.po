@@ -4,24 +4,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-06-11 23:58+0200\n"
-"PO-Revision-Date: 2017-06-11 23:58+0200\n"
+"POT-Creation-Date: 2017-06-11 23:57+0200\n"
+"PO-Revision-Date: 2017-06-11 23:57+0200\n"
 "Last-Translator: Alex Corbi <a.corbi@gmail.com>, 2016\n"
-"Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/"
-"teams/27158/vi/)\n"
-"Language: vi\n"
+"Language-Team: Vietnamese (https://www.transifex.com/open-development-mekong/teams/27158/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: i18n\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:10
 msgid "Not found!"
@@ -31,10 +31,10 @@ msgstr "Không tìm thấy"
 msgid ""
 "If you received this error after selecting a new geographic location from "
 "the top menu, it means the new location doesn't have an information page on "
-"this topic that the old location had. To see what information does exist for "
-"this new location you've chosen simply click any of the navigation main menu "
-"items (News, Topics, Maps, Data, etc..) from the navigation menu above this "
-"message ."
+"this topic that the old location had. To see what information does exist for"
+" this new location you've chosen simply click any of the navigation main "
+"menu items (News, Topics, Maps, Data, etc..) from the navigation menu above "
+"this message ."
 msgstr ""
 
 #: 404.php:22
@@ -169,13 +169,13 @@ msgstr "Hiển thị tất cả bản đồ"
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external"
-"\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" rel=\"external"
-"\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" "
+"rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" "
+"rel=\"external\">JEO Beta</a> theme"
 msgstr ""
-"Website này được xây dựng trên nền tảng <a href=\"%s\" target=\"_blank\" rel="
-"\"external\">WordPress</a> sử dụng<a href=\"%s\" target=\"_blank\" rel="
-"\"external\">JEO Beta</a> "
+"Website này được xây dựng trên nền tảng <a href=\"%s\" target=\"_blank\" "
+"rel=\"external\">WordPress</a> sử dụng<a href=\"%s\" target=\"_blank\" "
+"rel=\"external\">JEO Beta</a> "
 
 #: functions.php:53
 msgid "Topic sidebar"
@@ -211,7 +211,7 @@ msgstr "Tin bài hiển thị trên cùng"
 
 #: functions.php:111
 msgid "Story bottom"
-msgstr ""
+msgstr "Tin bải hiển thị dưới cùng"
 
 #: functions.php:117
 msgid "Profile area right sidebar"
@@ -469,52 +469,31 @@ msgstr "Quản lý và phát triển đô thị"
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open "
-"Development {country} herein are licensed under a CC BY-SA 3.0. News article "
-"summaries are extracted from their sources, as guided by fair-use principles "
-"and are copyrighted by their respective sources. Materials on the Open "
-"Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database "
-"are compiled from publicly available documentation and provided without fee "
-"for general informational purposes only. This is neither a commercial "
-"research service nor a domain managed by any governmental or inter-"
-"governmental agency; it is managed as a private non-profit open data/open "
-"knowledge media group. Information is publicly posted only after a careful "
-"vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee "
-"accuracy, completeness or reliability from third party sources in every "
-"instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either "
-"expressed or implied, in fact or in law, with respect to the accuracy, "
-"completeness or appropriateness of the data, materials or documents "
-"contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their "
-"activities and to share the results of that research with our team, contact "
-"us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take "
-"full responsibility for reliance on any site information provided and to "
-"hold harmless and waive any and all liability against individuals or "
-"entities associated with its development, form and content for any loss, "
-"harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
 msgstr ""
-"Trang web này cùng toàn bộ dữ liệu được xây dựng và công bố bởi nhóm Dữ liệu "
-"mở về phát triển {country}  đều áp dụng giấy phép bản quyền mở phiên bản 3.0 "
-"Ghi công – Chia sẻ tương tự. Các nội dung tóm lược đều được trích dẫn từ tài "
-"liêu gốc, áp dụng nguyên tắc sử dụng công bằng và tôn trọng quyền tác giả. "
-"Tài nguyên và các dữ liệu trên trang web  {country} {ODM/C/V/Mm/T/L} được "
-"thu thập từ các tài liệu đã công bố và chia sẻ miễn phí với mục tiêu cung "
-"cấp thông tin rộng rãi cho công chúng. Trang web này không phải là dịch vụ "
-"mang tính thương mại và không do cơ quan nhà nước hay một cơ chế liên chính "
-"phủ nào vận hành mà vận hành bởi một nhóm phi lợi nhuận trong lĩnh vực dữ "
-"liệu mở và tri thức mở.  Thông tin công bố trên trang web đã được kiểm tra "
-"và xác minh. Mặc dù vậy, {ODM/C/V/Mm/T/L}  miễn trừ trách nhiệm đối với "
+"Trang web này cùng toàn bộ dữ liệu được xây dựng và công bố bởi nhóm Dữ liệu"
+" mở về phát triển {country}  đều áp dụng giấy phép bản quyền mở phiên bản "
+"3.0 Ghi công – Chia sẻ tương tự. Các nội dung tóm lược đều được trích dẫn từ"
+" tài liêu gốc, áp dụng nguyên tắc sử dụng công bằng và tôn trọng quyền tác "
+"giả. Tài nguyên và các dữ liệu trên trang web  {country} {ODM/C/V/Mm/T/L} "
+"được thu thập từ các tài liệu đã công bố và chia sẻ miễn phí với mục tiêu "
+"cung cấp thông tin rộng rãi cho công chúng. Trang web này không phải là dịch"
+" vụ mang tính thương mại và không do cơ quan nhà nước hay một cơ chế liên "
+"chính phủ nào vận hành mà vận hành bởi một nhóm phi lợi nhuận trong lĩnh vực"
+" dữ liệu mở và tri thức mở.  Thông tin công bố trên trang web đã được kiểm "
+"tra và xác minh. Mặc dù vậy, {ODM/C/V/Mm/T/L}  miễn trừ trách nhiệm đối với "
 "thông tin do bên thứ ba cung cấp. {ODM/C/V/Mm/T/L} không đại diện hay chịu "
 "trách nhiệm, cả về khía cạnh thực tế và luật pháp, về tính chính xác, toàn "
 "vẹn và tương thích của dữ liệu và tài liệu được công bố hoặc tham chiếu. "
 "Chúng tôi khuyến khích người dùng khai thác sâu dữ liệu trên trang web để "
 "phục vụ nghiên cứu của bản thân, đồng thời chia sẻ lại kết quả nghiên cứu "
-"của quý vị nhằm giúp trang web ngày hoàn thiện dữ liệu. Với việc truy cập và "
-"khai thác dữ liệu trên trang web {ODM/C/V/Mm/T/L}, người dùng cam kết chịu "
+"của quý vị nhằm giúp trang web ngày hoàn thiện dữ liệu. Với việc truy cập và"
+" khai thác dữ liệu trên trang web {ODM/C/V/Mm/T/L}, người dùng cam kết chịu "
 "trách nhiệm cá nhân khi quyết định tin cậy các thông tin được cung cấp, "
-"không gây phiền hà hay đổ trách nhiệm cho các cá nhân, tổ chức tham gia phát "
-"triển và xây dựng nội dung trang web, ngay cả khi xảy ra bất cứ sự thiệt "
+"không gây phiền hà hay đổ trách nhiệm cho các cá nhân, tổ chức tham gia phát"
+" triển và xây dựng nội dung trang web, ngay cả khi xảy ra bất cứ sự thiệt "
 "hại, mất mát nào từ quá trình sử dụng dữ liệu "
 
 #: i18n/extra-strings.php:57
@@ -612,14 +591,12 @@ msgid "To"
 msgstr "đến"
 
 #: inc/advanced-navigation.php:249
-#, fuzzy
 msgid "Search filter"
-msgstr "Bộ lọc tìm kiếm"
+msgstr ""
 
 #: inc/advanced-navigation.php:250
-#, fuzzy
 msgid "Clear filter"
-msgstr "Bộ lọc tìm kiếm"
+msgstr ""
 
 #: inc/advanced-navigation.php:259 inc/advanced-navigation.php:269
 msgid "Cancel filters"
@@ -948,9 +925,9 @@ msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
-"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải, <strong>Năng lượng</"
-"strong> là không gian làm việc và  <strong>Đường dây_truyền tải</strong> là "
-"tên lớp."
+"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải, <strong>Năng "
+"lượng</strong> là không gian làm việc và  <strong>Đường dây_truyền "
+"tải</strong> là tên lớp."
 
 #: inc/layers.php:500
 msgid "Workspaces:Layer Name ("
@@ -961,9 +938,9 @@ msgid ""
 "Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
 "workspace name and <strong>Transmission_lines</strong> is layer name."
 msgstr ""
-"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải_kh, <strong>Năng lượng</"
-"strong> là không gian làm việc và  <strong>Đường dây_truyền tải</strong> là "
-"tên lớp."
+"VD. trong Geoserver, Năng lượng:Đường dây_truyền tải_kh, <strong>Năng "
+"lượng</strong> là không gian làm việc và  <strong>Đường dây_truyền "
+"tải</strong> là tên lớp."
 
 #: inc/layers.php:510
 msgid "WMS format (optional)"
@@ -1043,11 +1020,13 @@ msgstr "CartoDB URL (tiếng Anh)"
 
 #: inc/layers.php:608 inc/layers.php:616
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
-"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: "
+"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
+"11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
-"URL hiển thị CartoDB.<br/>VD.: http://infoamazonia.cartodb.com/api/v2/"
-"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+"URL hiển thị CartoDB.<br/>VD.: "
+"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
+"11e4-ab03-0e853d047bba/viz.json"
 
 #: inc/layers.php:613
 msgid "CartoDB URL ("
@@ -1610,7 +1589,7 @@ msgstr "Thông điệp"
 
 #: inc/theme-options.php:211
 msgid "(The notification will appear floating at the bottom of the site)"
-msgstr "(Thông báo sẽ hiện ở phía trên thanh trượt ảnh đại diện)"
+msgstr ""
 
 #: inc/theme-options.php:218 inc/theme-options.php:219
 msgid "281321"
@@ -1802,14 +1781,12 @@ msgid "LEGEND"
 msgstr "CHÚ GIẢI"
 
 #: inc/utils/mapping.php:681
-#, fuzzy
 msgid "Create Map"
-msgstr "Bản đồ tương tác"
+msgstr ""
 
 #: inc/utils/mapping.php:684
-#, fuzzy
 msgid "Title"
-msgstr "Tiêu đề"
+msgstr ""
 
 #: inc/utils/mapping.php:688
 msgid "Description"
@@ -1820,9 +1797,8 @@ msgid "Basemap"
 msgstr ""
 
 #: inc/utils/mapping.php:697
-#, fuzzy
 msgid "Map layers"
-msgstr "Các lớp bản đồ"
+msgstr ""
 
 #: inc/utils/mapping.php:702
 msgid "North Direction"
@@ -1853,18 +1829,16 @@ msgid "Layout"
 msgstr ""
 
 #: inc/utils/mapping.php:724
-#, fuzzy
 msgid "Landscape"
-msgstr "Đất đai"
+msgstr ""
 
 #: inc/utils/mapping.php:725
 msgid "Portrait"
 msgstr ""
 
 #: inc/utils/mapping.php:729
-#, fuzzy
 msgid "Legend"
-msgstr "Chú giải lớp bản dồ"
+msgstr ""
 
 #: inc/utils/mapping.php:731
 msgid "Left"
@@ -1875,9 +1849,8 @@ msgid "Right"
 msgstr ""
 
 #: inc/utils/mapping.php:739
-#, fuzzy
 msgid "Show all legends"
-msgstr "Hiển thị tất cả kết quả tìm kiếm"
+msgstr ""
 
 #: inc/utils/mapping.php:743 inc/utils/markers.php:139
 msgid "Print"
@@ -1952,7 +1925,8 @@ msgstr "Nội dung cùng phân mục trên ODM"
 msgid ""
 "Display other content from other post types tagged with the same categories "
 "as the one where the widget is integrated."
-msgstr "Hiển thị các nội dung khác cùng phân mục đã được tích hợp trong widget"
+msgstr ""
+"Hiển thị các nội dung khác cùng phân mục đã được tích hợp trong widget"
 
 #: inc/widgets/odm-contents-same-category-widget.php:154
 #: inc/widgets/odm-custom-posts-widget.php:173
@@ -1988,7 +1962,7 @@ msgstr "Hiển thị thông tin mô tả:"
 #: inc/widgets/odm-contents-same-category-widget.php:188
 #: inc/widgets/odm-custom-posts-widget.php:209
 msgid "Show source meta:"
-msgstr "Hiển thị thông tin mô tả nguồn:"
+msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:193
 #: inc/widgets/odm-custom-posts-widget.php:214
@@ -2222,51 +2196,3 @@ msgstr ""
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
 msgstr "Danh mục bản đồ"
-
-#~ msgid "of"
-#~ msgstr "của"
-
-#~ msgid "Tabular pages"
-#~ msgstr "Trang bảng biểu"
-
-#~ msgid "Categories"
-#~ msgstr "Phân mục"
-
-#~ msgid "Hide news icons"
-#~ msgstr "Ẩn biểu tượng tin tức"
-
-#~ msgid "ODM Related Recent News Widget"
-#~ msgstr "Bảng điều khiển Tin bài liên quan đến ODM"
-
-#~ msgid "Display ODM the related recent news for the topics"
-#~ msgstr "Hiển thị các tin bài liên quan đến ODM theo chủ đề"
-
-#~ msgid "Related News"
-#~ msgstr "Tin tức liên quan"
-
-#~ msgid "Option:"
-#~ msgstr "Lựa chọn:"
-
-#~ msgid "Category slugs:"
-#~ msgstr "Tên định danh của phân mục:"
-
-#~ msgid "<< Previous"
-#~ msgstr "<< Trước"
-
-#~ msgid "Next >>"
-#~ msgstr "Tiếp theo >>"
-
-#~ msgid "Other"
-#~ msgstr "Khác"
-
-#~ msgid "Related resources"
-#~ msgstr "Tài nguyên liên quan"
-
-#~ msgid "Read more..."
-#~ msgstr "Đọc tiếp..."
-
-#~ msgid "Show resources details"
-#~ msgstr "Hiển thị chi tiết"
-
-#~ msgid "Hide resources details"
-#~ msgstr "Ẩn chi tiết"
