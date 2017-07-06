@@ -111,7 +111,7 @@
         <?php
           if (!is_front_page() && !is_page('map-explorer')) : ?>
             <div id="main-breadcrumb">
-              <?php echo_the_breadcrumb(); ?>
+              <?php echo_the_breadcrumbs(); ?>
             </div>
         <?php
           endif; ?>
