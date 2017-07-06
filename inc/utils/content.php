@@ -444,7 +444,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 40, $read_more = '')
+function odm_excerpt($the_post, $num = 45, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
@@ -468,8 +468,9 @@ function odm_excerpt($the_post, $num = 40, $read_more = '')
 				array_splice($stripped_content_arr, $limit);
 				$excerpt_content = implode(' ', $stripped_content_arr);
 		    if (odm_language_manager()->get_current_language() == "km"):
-		  		$excerpt_zeo_space = explode("​", $excerpt_content, $limit); //explode by zerowidthspace​
-		  		$excerpt_content = implode("​", $excerpt_zeo_space); //implode by zerowidthspace
+		  		$excerpt_zeo_space = explode("&#8203;", $excerpt_content, $num+1); //explode by zerowidthspace​
+					array_splice($excerpt_zeo_space, $limit);
+		  		$excerpt_content = implode("&#8203;", $excerpt_zeo_space); //implode by zerowidthspace
 				endif;
 
 				$excerpt_words = $excerpt_content.' ...';
@@ -538,14 +539,14 @@ function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
 	$local_lang = odm_language_manager()->get_the_language_code_by_site();
 	$current_lang = odm_language_manager()->get_current_language();
-	
+
 	//Get Download files
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-	
-	if (!empty($get_document) || !empty($get_localized_document)):		
-		if (!empty($get_document) && !empty($get_localized_document)):		
-			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document; 
+
+	if (!empty($get_document) || !empty($get_localized_document)):
+		if (!empty($get_document) && !empty($get_localized_document)):
+			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document;
 		else:
 			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
 		endif;?>
