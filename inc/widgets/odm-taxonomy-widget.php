@@ -143,8 +143,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
 		  }
 
-			//if parent is showed, child need to expend
-		  if( $(this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
+			//if parent is showed, child need to expend 
+		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
 				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('plusimage-<?php echo odm_country_manager()->get_current_country();?>');
