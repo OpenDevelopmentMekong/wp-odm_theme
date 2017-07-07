@@ -324,7 +324,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 						 if (odm_language_manager()->get_current_language() == 'km') {
 								 echo convert_date_to_kh_date(get_the_time('j.M.Y'));
 						 } else {
-								 echo get_the_time('Y-m-d');
+								 echo get_the_date('j F Y');
 						 }
 					  ?>
 					<?php endif; ?>
@@ -543,8 +543,8 @@ function echo_downloaded_documents ($postID = "") {
 	//Get Download files
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-  
-	$document_curent_lang = null; 
+
+	$document_curent_lang = null;
 	if (!empty($get_document) || !empty($get_localized_document)):
 		if (!empty($get_document) && !empty($get_localized_document)):
 			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document;
@@ -552,14 +552,14 @@ function echo_downloaded_documents ($postID = "") {
 			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
 		endif;
 	endif;?>
-	
-	<?php 
+
+	<?php
 		if (isset($document_curent_lang)): ?>
 			<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
 				<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
 			</p>
-	<?php 
-		endif; 
+	<?php
+		endif;
 }
 
 function available_post_types(){
