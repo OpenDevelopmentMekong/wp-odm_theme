@@ -5,3 +5,5 @@ var _mare_sc = '00fdba319ea2ad38cdce9fe19ea4bb7b';
   mare.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'mare.io/API/script.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mare, s);
 })(); 
+
+console.log("integrating mare.io scripts");
