@@ -254,11 +254,15 @@ function odm_jeo_admin_scripts() {
 	if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js')):
 		wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
   endif;
-  if ( file_exists( get_stylesheet_directory_uri() . '/inc/mareio/surveys.js')):
-		wp_enqueue_script('mareio', get_stylesheet_directory_uri() . '/inc/mareio/surveys.js');		
-  endif;
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
+
+function odm_survey_scripts() {
+  if ( file_exists( get_stylesheet_directory_uri() . '/inc/mareio/surveys.js')):
+		wp_enqueue_script('mareio', get_stylesheet_directory_uri() . '/inc/mareio/surveys.js', null, null, true);	
+  endif;
+}
+add_action( 'wp_enqueue_scripts', 'odm_survey_scripts' );
 
 function odm_styles()
 {
