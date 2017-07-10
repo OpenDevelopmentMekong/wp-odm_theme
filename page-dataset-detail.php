@@ -24,7 +24,9 @@
 			</div>
 
 			<aside id="sidebar" class="four columns offset-by-one">
-      
+        <p class="expandible">
+          The dataset describes hectare forest cover by province in Cambodia in 1973, 1989, 2000, 2004, 2009, 2013 and 2014. This dataset was derived from ODC forest cover in Cambodia (1973-2014). Provincial boundaries are based on the Cambodian Economic Census (2011) administrative boundary data. Data is available for download in xlsx and csv. Display other content from other post types tagged with the same categories as the one where the widget is integrated. Display other content from other post types tagged with the same categories as the one where the widget is integrated. Display other content from other post types tagged with the same categories as the one where the widget is integrated. 
+        </p>
 				<?php
 					if (is_user_logged_in()): ?>
 						<div class="sixteen columns widgets">
