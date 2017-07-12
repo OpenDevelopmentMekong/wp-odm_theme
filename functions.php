@@ -555,7 +555,7 @@ function posts_by_category_and_type() {
 }
 add_shortcode( 'admin_scripts_posts_by_category_and_type', 'posts_by_category_and_type' );
 
-function add_custom_meta_tags() {    
+function add_custom_meta_tags() {
   set_site_meta();
 }
 add_action('wp_head', 'add_custom_meta_tags', 5);
