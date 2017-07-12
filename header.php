@@ -16,18 +16,7 @@
 <title>
 
   <?php
-    wp_title('|', true, 'right');
-
-    bloginfo('name');
-
-    $site_description = get_bloginfo('description', 'display');
-    if ($site_description && (is_home() || is_front_page())) {
-        echo " | $site_description";
-    }
-
-    if ($paged >= 2 || $page >= 2) {
-        echo ' | '.__('Page', 'odm').max($paged, $page);
-    } ?>
+    set_site_title(); ?>
 
 </title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />

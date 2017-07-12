@@ -1,5 +1,49 @@
 <?php
 
+function set_site_title(){
+	global $post, $page, $paged;
+	wp_title('|', true, 'right');
+
+	bloginfo('name');
+
+	$site_description = get_bloginfo('description', 'display');
+	if ($site_description && (is_home() || is_front_page())) {
+			echo " | $site_description";
+	}
+
+	if ($paged >= 2 || $page >= 2) {
+			echo ' | '.__('Page', 'odm').max($paged, $page);
+	} 
+}
+
+function set_site_meta(){ ?>
+	
+	<!-- ODM -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODC -->
+	<meta name="google-site-verification" content="Wj4wmK5q6lq4Rk0x4iqDhuBFaZxfTY2luq9p09Qr2kM" />
+	<!-- ODMM -->
+	<meta name="google-site-verification" content="BXhPDDG3ECyUWrdJqbsVr0eba3buOb8XEjV9nudDSk4" />
+	<!-- ODV -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODL -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODT -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+<?php
+	if(is_single()): ?>
+
+		<meta property="odm_spatial_range" content="<?php echo odm_country_manager()->get_current_country_code(); ?>"/>
+		<meta property="odm_language" content="<?php echo odm_language_manager()->get_current_language(); ?>"/>
+		<meta property="odm_type" content="<?php echo get_post_type(); ?>"/>
+		<meta property="odm_license" content="CC-BY-SA-4.0"/>
+
+<?php
+	else:
+		return;
+	endif;
+}
+
 function get_post_type_icon_class($type){
 
 	$icon = "fa fa-database";
