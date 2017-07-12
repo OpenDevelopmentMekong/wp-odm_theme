@@ -52,6 +52,15 @@ function set_site_meta(){
 		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
 
 	<?php
+	 	$excerpt = get_the_excerpt();
+		if (!empty($excerpt)): ?>
+			<meta name="description" content="<?php echo strip_tags($excerpt); ?>" />
+			<meta name="twitter:description" content="<?php echo strip_tags($excerpt); ?>" />
+			<meta property="og:description" content="<?php echo strip_tags($excerpt); ?>" />
+	<?php
+    endif;	?>
+
+	<?php
 	 	$img_array = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
 		$img_url = $img_array[0];
 		if (!empty($img_url)): ?>
@@ -65,11 +74,14 @@ function set_site_meta(){
 <?php
 	elseif (is_page() && is_page_template('page-dataset-detail.php')):
 		$dataset_id = isset($_GET["id"]) ? $_GET["id"] : null;
-		$dataset_title = wpckan_get_dataset_title($dataset_id); ?>
+		$dataset_title = wpckan_get_dataset_title($dataset_id);
+		$dataset_description = wpckan_get_dataset_notes($dataset_id); ?>
 
 		<meta property="og:title" content="<?php echo $dataset_title; ?>" />
 		<meta name="twitter:title" content="<?php echo $dataset_title; ?>" />
-
+		<meta name="description" content="<?php echo $dataset_description; ?>" />
+		<meta name="twitter:description" content="<?php echo $dataset_description; ?>" />
+		<meta property="og:description" content="<?php echo $dataset_description; ?>" />
 		<meta property="og:url" content="<?php echo get_site_url() . wpckan_get_link_to_dataset($dataset_id); ?>" />
 
 	<?php
@@ -77,14 +89,7 @@ function set_site_meta(){
 
 	<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
 
-	<?php
-	 	$excerpt = get_the_excerpt();
-		if (!empty($excerpt)): ?>
-			<meta name="description" content="<?php echo strip_tags($excerpt); ?>" />
-			<meta name="twitter:description" content="<?php echo strip_tags($excerpt); ?>" />
-			<meta property="og:description" content="<?php echo strip_tags($excerpt); ?>" />
-	<?php
-    endif;	?>
+
 
 	<?php
 	 	$tags = get_the_tags();
