@@ -473,11 +473,11 @@ function odm_excerpt($the_post, $num = 45, $read_more = '')
 		  		$excerpt_content = implode("&#8203;", $excerpt_zeo_space); //implode by zerowidthspace
 				endif;
 
-				$excerpt_words = $excerpt_content.' ...';
-
+				$color_name = odm_country_manager()->get_current_country().'-color';
 				if ($read_more != ''):
-					 $color_name = odm_country_manager()->get_current_country().'-color';
-					 $excerpt_words .=  " (<a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>)';
+					$excerpt_words =  $excerpt_content." ... <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
+				else:
+					$excerpt_words = $excerpt_content." <a href='".get_permalink($post->ID)." ' class='".$color_name."'>...</a>";
 				endif;
 				return '<p>' . $excerpt_words . '</p>';
 			endif;
