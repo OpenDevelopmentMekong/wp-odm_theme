@@ -58,7 +58,8 @@ function echo_the_breadcrumbs()
     if (is_single()):
         $post_type_name = get_post_type(get_the_ID());
         $post_type = get_post_type_object($post_type_name);
-        echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type->labels->name.'">'.__($post_type->labels->name, "odm").'</a></li>';
+        $post_type_lable = ($post_type->labels->name =="Posts")? __("Blogs", "odm") : $post_type->labels->name;
+        echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type_lable.'">'.__($post_type_lable, "odm").'</a></li>';
         echo the_separated_breadcrumb($separator, '', 'post-type');
         if ($post_type_name  == 'topic'):
           echo_the_breadcrumb_single_topic($separator);

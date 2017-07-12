@@ -22,7 +22,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			"grid-1-cols" => "post-grid-single-1-cols",
 			"list-4-cols" => "post-list-single-4-cols",
 			"list-2-cols" => "post-list-single-2-cols",
-			"list-1-cols" => "post-list-single-1-cols"
+			"list-1-cols" => "post-list-single-1-cols",
+			"blog-layout-2-cols" => "post-blog-layout-2-cols"
 		);
 
 		$this->order_options = array(
@@ -105,7 +106,8 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 									"show_source_meta" => $show_source_meta,
 									"show_excerpt" => $show_excerpt,
 									"show_thumbnail" => $show_thumbnail,
-									"order" => $order
+									"order" => $order,
+									"index" => $index
 								),true);
 								if (should_close_row($layout_type,$index)): ?>
 							</div>

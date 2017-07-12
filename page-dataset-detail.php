@@ -38,13 +38,6 @@
 					endif;?>
 
 				<div class="sixteen columns widgets">
-					<div class="widget">
-						<h2 class="widget-title"><?php _e('Download metadata','odm') ?></h2>
-						</br>
-						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.xml"><?php _e('XML', 'odm')?></a>
-						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/api/3/action/package_show?id=<?php echo $dataset_id;?>"><?php _e('JSON', 'odm')?></a>
-						<a target="_blank" class="button download" href="<?php echo wpckan_get_ckan_domain(); ?>/dataset/<?php echo $dataset_id;?>.rdf"><?php _e('RDF', 'odm')?></a>
-					</div>
 
           <?php
             if (isset($search_query)):
