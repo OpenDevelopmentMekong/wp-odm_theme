@@ -457,10 +457,10 @@ function odm_excerpt($the_post, $num = 45, $read_more = '')
 		endif;
 
 		$translated_content = apply_filters('translate_text', $post_content, odm_language_manager()->get_current_language());
+
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
-
-		if($stripped_content):
+		if(trim($stripped_content)):
 			$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
 			$stripped_content_arr = explode(' ', trim($stripped_content), $num+1);
 
@@ -481,9 +481,9 @@ function odm_excerpt($the_post, $num = 45, $read_more = '')
 				endif;
 				return '<p>' . $excerpt_words . '</p>';
 			endif;
-		endif;
 
-		return '<p>' . $stripped_content . '</p>';
+			return '<p>' . $stripped_content . '</p>';
+		endif;
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
