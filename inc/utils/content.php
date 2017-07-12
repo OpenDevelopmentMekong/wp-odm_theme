@@ -89,14 +89,12 @@ function set_site_meta(){
 
 	<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
 
-
-
-	<?php
+	<!-- <?php
 	 	$tags = get_the_tags();
 		if (!empty($tags)): ?>
 			<meta name="keywords" content="<?php echo implode(",",$tags); ?>" />
 	<?php
-    endif;	?>
+    endif;	?> -->
 
 	<meta property="og:type" content="article" />
 	<meta name="twitter:card" content="summary" />
