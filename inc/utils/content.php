@@ -1,5 +1,109 @@
 <?php
 
+function set_site_title(){
+	global $post, $page, $paged;
+
+	if (is_page() && is_page_template('page-dataset-detail.php')):
+		$dataset_id = isset($_GET["id"]) ? $_GET["id"] : null;
+		$dataset_title = wpckan_get_dataset_title($dataset_id);
+		echo "$dataset_title | ";
+	else:
+		wp_title('|', true, 'right');
+	endif;
+
+	bloginfo('name');
+
+	$site_description = get_bloginfo('description', 'display');
+	if ($site_description && (is_home() || is_front_page())):
+		echo " | $site_description";
+	endif;
+
+	if ($paged >= 2 || $page >= 2):
+		echo ' | '.__('Page', 'odm'). " " . max($paged, $page);
+	endif;
+}
+
+function set_site_meta(){
+	global $post; ?>
+
+	<!-- ODM -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODC -->
+	<meta name="google-site-verification" content="Wj4wmK5q6lq4Rk0x4iqDhuBFaZxfTY2luq9p09Qr2kM" />
+	<!-- ODMM -->
+	<meta name="google-site-verification" content="BXhPDDG3ECyUWrdJqbsVr0eba3buOb8XEjV9nudDSk4" />
+	<!-- ODV -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODL -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODT -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+
+	<!-- ODM Metadata -->
+	<meta property="odm_spatial_range" content="<?php echo odm_country_manager()->get_current_country_code(); ?>"/>
+	<meta property="odm_language" content="<?php echo odm_language_manager()->get_current_language(); ?>"/>
+	<meta property="odm_license" content="CC-BY-SA-4.0"/>
+
+<?php
+	if(is_single()): ?>
+
+		<meta property="odm_type" content="<?php echo get_post_type(); ?>"/>
+		<meta property="og:title" content="<?php echo get_the_title(); ?>" />
+		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
+
+	<?php
+	 	$excerpt = get_the_excerpt();
+		if (!empty($excerpt)): ?>
+			<meta name="description" content="<?php echo strip_tags($excerpt); ?>" />
+			<meta name="twitter:description" content="<?php echo strip_tags($excerpt); ?>" />
+			<meta property="og:description" content="<?php echo strip_tags($excerpt); ?>" />
+	<?php
+    endif;	?>
+
+	<?php
+	 	$img_array = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
+		$img_url = $img_array[0];
+		if (!empty($img_url)): ?>
+			<meta property="og:image" content="<?php echo $img_url; ?>" />
+			<meta name="twitter:image" content="<?php echo $img_url; ?>" />
+	<?php
+		endif; ?>
+
+		<meta property="og:url" content="<?php echo get_permalink(); ?>" />
+
+<?php
+	elseif (is_page() && is_page_template('page-dataset-detail.php')):
+		$dataset_id = isset($_GET["id"]) ? $_GET["id"] : null;
+		$dataset_title = wpckan_get_dataset_title($dataset_id);
+		$dataset_description = wpckan_get_dataset_notes($dataset_id); ?>
+
+		<meta property="og:title" content="<?php echo $dataset_title; ?>" />
+		<meta name="twitter:title" content="<?php echo $dataset_title; ?>" />
+		<meta name="description" content="<?php echo $dataset_description; ?>" />
+		<meta name="twitter:description" content="<?php echo $dataset_description; ?>" />
+		<meta property="og:description" content="<?php echo $dataset_description; ?>" />
+		<meta property="og:url" content="<?php echo get_site_url() . wpckan_get_link_to_dataset($dataset_id); ?>" />
+
+	<?php
+	endif; ?>
+
+	<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
+
+
+
+	<?php
+	 	$tags = get_the_tags();
+		if (!empty($tags)): ?>
+			<meta name="keywords" content="<?php echo implode(",",$tags); ?>" />
+	<?php
+    endif;	?>
+
+	<meta property="og:type" content="article" />
+	<meta name="twitter:card" content="summary" />
+
+	<?php
+}
+
 function get_post_type_icon_class($type){
 
 	$icon = "fa fa-database";
