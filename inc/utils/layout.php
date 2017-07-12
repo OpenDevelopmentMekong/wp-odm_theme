@@ -81,6 +81,8 @@ function should_open_row($layout_type,$index){
     return true;
   }else if ($layout_type == 'list-1-cols'){
     return true;
+  }else if ($layout_type == 'blog-layout-2-cols' && ($index-1)%2 == 1){
+    return true;
   }
   return false;
 }
