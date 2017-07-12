@@ -68,6 +68,8 @@ function set_site_meta(){
 	<?php
 	endif; ?>
 
+	<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
+
 	<?php
 	 	$excerpt = get_the_excerpt();
 		if (!empty($excerpt)): ?>
