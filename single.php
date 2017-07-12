@@ -34,13 +34,13 @@
 									endif;
 
 									if(get_the_content()):
-										echo "<p>".get_the_content()."</p>";
+											the_content();
 									endif;
 
 									odm_echo_extras();
 
 									echo_downloaded_documents();
-									
+
 									?>
 								</div>
 							</section>
