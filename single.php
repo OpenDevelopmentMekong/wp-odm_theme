@@ -33,8 +33,8 @@
 										echo_documents_cover();
 									endif;
 
-									if(get_the_content()):
-											the_content();
+									if(trim(strip_tags(get_the_content()))):
+										the_content();
 									endif;
 
 									odm_echo_extras();

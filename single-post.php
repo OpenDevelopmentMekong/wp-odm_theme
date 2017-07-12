@@ -17,7 +17,7 @@
 							<section id="post-content" class="row">
 								<div class="item-content blog-content">
 									<?php
-									if(get_the_content()):
+									if(trim(strip_tags(get_the_content()))):
 										the_content();
 									endif;
 
