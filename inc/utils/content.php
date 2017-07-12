@@ -53,7 +53,7 @@ function set_site_meta(){
 
 	<?php
 	 	$img_array = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
-		$img_url = $img_array["url"];
+		$img_url = $img_array[0];
 		if (!empty($img_url)): ?>
 			<meta property="og:image" content="<?php echo $img_url; ?>" />
 			<meta name="twitter:image" content="<?php echo $img_url; ?>" />
