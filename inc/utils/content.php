@@ -51,8 +51,15 @@ function set_site_meta(){
 		<meta property="og:title" content="<?php echo get_the_title(); ?>" />
 		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
 
-		<meta property="og:image" content="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full');?>" />
-		<meta name="twitter:image" content="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full');?>" />
+	<?php
+	 	$img_array = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
+		$img_url = $img_array["url"];
+		if (!empty($img_url)): ?>
+			<meta property="og:image" content="<?php echo $img_url; ?>" />
+			<meta name="twitter:image" content="<?php echo $img_url; ?>" />
+	<?php
+		endif; ?>
+
 		<meta property="og:url" content="<?php echo get_permalink(); ?>" />
 
 <?php
