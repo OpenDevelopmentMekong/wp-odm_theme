@@ -20,7 +20,7 @@ Template Name: Blog Page
   global $paged;
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 ?>
-<?php query_posts('post_type=post&post_status=publish&posts_per_page=20&paged='. $paged); ?>
+<?php query_posts('post_type=post&post_status=publish&posts_per_page=25&paged='. $paged); ?>
 
 <?php if( have_posts() ): ?>
   <section id="blog" class="container">
@@ -61,7 +61,5 @@ Template Name: Blog Page
   		</div>
   	</div>
   </section>
-
-              <?php if(function_exists('wp_page_numbers')) : wp_page_numbers(); endif; ?>
   <?php wp_reset_query(); ?>
   <?php get_footer(); ?>
