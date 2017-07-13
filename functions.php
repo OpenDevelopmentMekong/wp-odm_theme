@@ -369,9 +369,9 @@ function odm_search_pre_get_posts($query)
     if(isset($query->query['post_type'])){
       $query->set('post_type', $query->query['post_type']);
     }else {
-      if ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag) {
-        $query->set('post_type', available_post_types_search());
-      }
+      if ($query->is_search || get_query_var('odm_advanced_nav')):
+          $query->set('post_type', available_post_types_search());
+      endif;
     }
   endif;
 }
@@ -392,6 +392,23 @@ function odm_category_pre_get_posts($query)
   endif;
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
+
+
+function odm_tag_pre_get_posts($query)
+{
+  if(!is_admin()):
+    if(isset($query->query['post_type'])){
+      $post_type = $query->query['post_type'];
+    }else {
+      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
+    }
+
+    if ($query->is_tag && isset($post_type)) {
+        $query->set('post_type', array($post_type));
+    }
+  endif;
+}
+add_action('pre_get_posts', 'odm_tag_pre_get_posts');
 
 function odm_posts_clauses_join($join)
 {

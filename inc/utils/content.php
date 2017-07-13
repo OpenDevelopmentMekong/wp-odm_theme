@@ -89,12 +89,16 @@ function set_site_meta(){
 
 	<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
 
-	<!-- <?php
-	 	$tags = get_the_tags();
-		if (!empty($tags)): ?>
-			<meta name="keywords" content="<?php echo implode(",",$tags); ?>" />
 	<?php
-    endif;	?> -->
+	 	$tags = get_the_tags();
+		if (!empty($tags)):
+			foreach($tags as $tag):
+		    $posttags[] = $tag->name;
+		  endforeach
+			?>
+			<meta name="keywords" content="<?php echo implode(",", $posttags); ?>" />
+			<?php
+		endif;	?>
 
 	<meta property="og:type" content="article" />
 	<meta name="twitter:card" content="summary" />
@@ -269,7 +273,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 	if(is_tax( 'layer-category' ) ||  get_post_type()== "map-layer"):
 		$included_posttype = "";
 	else :
-		$included_posttype = '?post_type='.$post_type;
+		$included_posttype = '?queried_post_type='.$post_type;
 	endif;
   if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
     $cat_name = '<a href="' . $get_category_link. $included_posttype.'">';
@@ -503,7 +507,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 	  				<i class="fa fa-folder-o"></i>
 					<?php
 						foreach ($category_list as $category): ?>
-							<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
+							<a href="<?php echo get_category_link($category->term_id) ?>?queried_post_type=<?php echo get_post_type(); ?>"><?php echo $category->name ?></a>
 						<?php
 							if ($category != end($category_list)):
 								echo " / ";
@@ -525,7 +529,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 		  				<i class="fa fa-tags"></i>
 								<?php
 							  foreach($tag_list as $tag): ?>
-							    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
+							    <a href="<?php echo get_tag_link($tag->term_id) ?>?queried_post_type=<?php echo get_post_type(); ?>"><?php echo $tag->name ?></a>
 							  <?php
 									if ($tag != end($tag_list)):
 										echo " / ";
