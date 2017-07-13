@@ -6,6 +6,7 @@ function get_all_parent_category($current_cat_id, $post_type, $separator = '', $
 
     $parent_cat = get_category_parents($current_cat_id, false);
     $parent_cats = explode('/', substr($parent_cat, 0, -1));
+    $queried_post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : get_post_type();
     foreach ($parent_cats as $p_cat) {
         $page_title = $p_cat;
         $page_id_exist = get_post_or_page_id_by_title($page_title);
@@ -18,7 +19,7 @@ function get_all_parent_category($current_cat_id, $post_type, $separator = '', $
             if ($page_name_title == $current_page_name) {
                 echo '<div class="text-bgcolor bread-current-page bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page
             }
-            echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'" title="'.$page_title.'">';
+            echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'?queried_post_type='.$queried_post_type.'" title="'.$page_title.'">';
         }
         echo $page_title;
 
@@ -59,7 +60,8 @@ function echo_the_breadcrumbs()
         $post_type_name = get_post_type(get_the_ID());
         $post_type = get_post_type_object($post_type_name);
         $post_type_lable = ($post_type->labels->name =="Posts")? __("Blogs", "odm") : $post_type->labels->name;
-        echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type->rewrite['slug'] .'" title="'.$post_type_lable.'">'.__($post_type_lable, "odm").'</a></li>';
+        $post_type_slug = ($post_type->labels->name =="Posts")? 'blog' : $post_type->rewrite['slug'];
+        echo '<li class="item-post-type"><a class="bread-current bread-'.$post_type_name.'" href="/'. $post_type_slug .'" title="'.$post_type_lable.'">'.__($post_type_lable, "odm").'</a></li>';
         echo the_separated_breadcrumb($separator, '', 'post-type');
         if ($post_type_name  == 'topic'):
           echo_the_breadcrumb_single_topic($separator);
@@ -152,28 +154,29 @@ function echo_the_breadcrumb_category($separator){
 	$categories = get_the_category();
 
 	// Category page
-	$parent_cat = get_category_parents($term->term_id, true, '||');
+	$parent_cat = get_category_parents($term->term_id, false, '||');
 	$parent_cat = substr($parent_cat, 0, -2);
 	$parent_cats = explode('||', $parent_cat);
+  $queried_post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : get_post_type();
+  if($parent_cats && $categories):
+  	foreach ($parent_cats as $cat):
+  		echo '<li class="item-current item-cat-'.$categories[0]->term_id.' item-cat-'.$categories[0]->category_nicename.'">';
+  		if ($cat === end($parent_cats)):
+  				echo '<strong class="bread-current bread-cat-'.$categories[0]->term_id.' bread-cat-'.$categories[0]->category_nicename.'">';
+  		endif;
+  		echo '<a href="'.get_category_link($categories[0]->term_id).'?queried_post_type='.$queried_post_type.'">'.$cat.'</a>';
 
-	foreach ($parent_cats as $cat):
-		echo '<li class="item-current item-cat-'.$categories[0]->term_id.' item-cat-'.$categories[0]->category_nicename.'">';
-		if ($cat === end($parent_cats)):
-				echo '<strong class="bread-current bread-cat-'.$categories[0]->term_id.' bread-cat-'.$categories[0]->category_nicename.'">';
-		endif;
+  		if ($cat === end($parent_cats)):
+  				echo '</strong>';
+  		endif;
+  		echo '</li>';
 
-		echo $cat;
-
-		if ($cat === end($parent_cats)):
-				echo '</strong>';
-		endif;
-		echo '</li>';
-
-		//add separated
-		if ($cat != end($parent_cats)):
-				echo the_separated_breadcrumb($separator, $categories[0]->term_id, 'category');
-		endif;
-	endforeach;
+  		//add separated
+  		if ($cat != end($parent_cats)):
+  				echo the_separated_breadcrumb($separator, $categories[0]->term_id, 'category');
+  		endif;
+  	endforeach;
+  endif;
 }
 
 function echo_the_breadcrumb_dataset_detail_page($separator){
@@ -225,10 +228,11 @@ function echo_the_breadcrumb_tag($separator){
 	$taxonomy = 'post_tag';
 	$args = 'include='.$term_id;
 	$terms = get_terms($taxonomy, $args);
+  $queried_post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : get_post_type();
 	// Display the tag name
 	echo '<li class="item-current item-tag-'.$terms[0]->term_id.' item-tag-'.$terms[0]->slug.'">';
 	echo '<strong class="bread-current bread-tag-'.$terms[0]->term_id.'bread-tag-'.$terms[0]->slug.'">';
-	echo '<a href="'.get_tag_link($terms[0]->term_id).'">';
+	echo '<a href="'.get_tag_link($terms[0]->term_id).'?queried_post_type='.$queried_post_type.'">';
 		_e($terms[0]->name, "odm");
 	echo '</a>';
 	echo '</strong></li>';
