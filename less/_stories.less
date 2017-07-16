@@ -1,18 +1,27 @@
 .story-header{
 
 	header{
+		min-height:  400px;
 
 		.post-title{
-			background-color: rgba(0,0,0,0.3);
-			margin: 200px auto;
 			text-align: center;
 			padding: @big-padd;
 
 			h1{
 				font-size: 48px;
 				color: #fff;
+				line-height: @header-line-height;
 			}
 
+			img{
+				-webkit-filter: brightness(70%);
+   			filter: brightness(70%);
+			}
+
+		}
+
+		p{
+			color: #fff;
 		}
 
 		.post-meta{

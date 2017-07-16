@@ -211,6 +211,7 @@ var printing_map;
 				$(".printing-description").hide();
 				$(".printing-description").text("");
 				$(".baselayer-container").show();
+				$(".map-legend-container").height("5px");
 				$(".category-map-layers").show();
 				if ($(".map-legend-ul li").length > 2){
 					$(".map-legend-container").fadeIn();

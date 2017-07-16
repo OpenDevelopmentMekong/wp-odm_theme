@@ -13,32 +13,34 @@ img {
 
 table {
     border-collapse: collapse;
-    margin: 25px 0 20px;
+    margin: 20px auto;
     border-spacing: 0px;
-    border-left: 1px solid #AAA;
-    border-right: 1px solid #AAA;
-    border-bottom: 1px solid #AAA;
     color: #111;
-}
 
-tr{
-    border: 1px solid #AAA;
+    tr{
 
-    &:nth-child(2n) {
-    	background-color: #FFF;
+        &:nth-child(2n) {
+        	background-color: #FFF;
+        }
+
+        &:nth-child(2n+1) {
+        	background-color: @light-gray;
+        }
     }
 
-    &:nth-child(2n+1) {
-    	background-color: #6393D2;
+    td{
+        padding: 2px 10px;
+        line-height: 1.42857;
+        vertical-align: top;
+
+        p{
+          padding: @xsmall-padd;
+					margin: 0px;
+        }
     }
 }
 
-td{
-    padding: 8px;
-    line-height: 1.42857;
-    vertical-align: top;
-    border-top: 1px solid #bbb;
-}
+
 
 #od-head {
   h1 {

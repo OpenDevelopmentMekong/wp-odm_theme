@@ -421,7 +421,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 						 if (odm_language_manager()->get_current_language() == 'km') {
 								 echo convert_date_to_kh_date(get_the_modified_time('j.M.Y'));
 						 } else {
-								 echo get_the_modified_time('Y-m-d');
+								 echo get_the_modified_time('j F Y');
 						 }
 					  ?>
 					<?php else: ?>

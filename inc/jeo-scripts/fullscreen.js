@@ -48,6 +48,8 @@
 				$('body').removeClass('map-fullscreen');
 				container.removeClass('fullscreen-map');
 				$(".baselayer-container").removeClass('fullscreen-map');
+				$(".category-map-layers").removeClass('fullscreen-map');
+				$(".map-legend-container").removeClass('fullscreen-map');
 				if (frame) {
 						frame.id = "";
 				}
@@ -55,16 +57,12 @@
 				$('body').addClass('map-fullscreen');
 				container.addClass('fullscreen-map');
 				$(".baselayer-container").addClass('fullscreen-map');
+				$(".category-map-layers").addClass('fullscreen-map');
+				$(".map-legend-container").addClass('fullscreen-map');
 
 				if (frame) {
 						frame.id = "iframe-fullscreen-map";
-				}
-
-				/*if ( self !== top ) {
-
-				}else{
-				}*/
-
+				} 
 			}
 
 			this._map.invalidateSize(true);

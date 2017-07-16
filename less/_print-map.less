@@ -49,12 +49,16 @@
 		height: 100%;
 	}
 
-	.print-preview-basemap .north-direction {
-    width: 14px;
-    height: 32px;
-    float: left;
-    margin-top: 1px;
-		margin-right: 2px;
+	.print-preview-basemap {
+		left: 5px;
+
+		.north-direction {
+	    width: 14px;
+	    height: 32px;
+	    float: left;
+	    margin-top: 1px;
+			margin-right: 2px;
+		}
 	}
 	.map-container {
 		position: absolute;
@@ -66,15 +70,39 @@
 		width: auto !important;
 		height: auto !important;
 
-		.map {
-			/*left: -13%;
-			width: 115%;*/
+		&.fullscreen-map {
+			position: absolute !important;
 		}
+
+		.leaflet-left {
+			left: 0 !important;
+		}
+	}
+
+	.category-map-layers {
+		&.fullscreen-map {
+			position: absolute !important;
+		}
+	}
+
+	.map-legend-container {
+		&.fullscreen-map {
+			position: absolute !important;
+		}
+	}
+
+	.baselayer-container {
+		&.fullscreen-map {
+			position: absolute !important;
+		}
+	}
+	.priting_footer {
+		z-index: 9999999;
 	}
 
 	.map-title{
 		margin-top: 5px;
-		z-index: 9;
+		z-index: 99999999;
 		position: relative;
 		text-align: center;
 		width: auto;
