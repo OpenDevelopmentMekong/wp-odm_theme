@@ -9,67 +9,67 @@
   font-style: normal;
 }
 
-i.icomoon {
+i.imoon {
   font-family: 'icomoon' !important;
 }
 
-.icon-od_budget .path1:before {
+.i-od_budget .path1:before {
   content: "\e900";
   color: rgb(255, 255, 255);
 }
-.icon-od_budget .path2:before {
+.i-od_budget .path2:before {
   content: "\e901";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_budget .path3:before {
+.i-od_budget .path3:before {
   content: "\e902";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_document:before {
+.i-od_document:before {
   content: "\e903";
 }
-.icon-od_fee .path1:before {
+.i-od_fee .path1:before {
   content: "\e904";
   color: rgb(51, 51, 51);
 }
-.icon-od_fee .path2:before {
+.i-od_fee .path2:before {
   content: "\e905";
   margin-left: -1em;
   color: rgb(255, 255, 255);
 }
-.icon-od_fee .path3:before {
+.i-od_fee .path3:before {
   content: "\e906";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_fee .path4:before {
+.i-od_fee .path4:before {
   content: "\e907";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_fee .path5:before {
+.i-od_fee .path5:before {
   content: "\e908";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_fee .path6:before {
+.i-od_fee .path6:before {
   content: "\e909";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_fee .path7:before {
+.i-od_fee .path7:before {
   content: "\e90a";
   margin-left: -1em;
   color: rgb(51, 51, 51);
 }
-.icon-od_od:before {
+.i-od_od:before {
   content: "\e90b";
 }
-.icon-od_school:before {
+.i-od_school:before {
   content: "\e90c";
 }
-.icon-od_waternelectricity:before {
+.i-od_waternelectricity:before {
   content: "\e90d";
 }
