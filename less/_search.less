@@ -162,10 +162,6 @@
 	padding: 0px !important;
 }
 
-.ui-widget-content {
-	border: 0px !important;
-}
-
 .ui-state-default {
 	background: #f0f0f0 !important;
 	border: 0px !important;
@@ -173,7 +169,7 @@
 }
 
 .ui-state-hover, .ui-state-focus {
-	background: #c8c8c8 !important;
+	background: @light-gray !important;
 	border: 0px !important;
 	color: @gray;
 }
@@ -213,4 +209,24 @@
 #search_field{
 	font-size: @font-size-h4;
 	font-weight: normal;
+}
+
+.content-type-tabs-odc .result_link_list a:hover{
+	border-bottom: 2px solid @mekong-bright;
+}
+
+.content-type-tabs-odc .result_link_list a:active{
+	border-bottom: 2px solid @mekong-bright;
+}
+
+.content-type-tabs-odc .result_link_list.data-number-results-medium a{
+	border-bottom: 2px solid @mekong-bright;
+}
+
+.content-type-tabs-category .result_link_list a:hover{
+	border-bottom: 2px solid @mekong-bright;
+}
+
+.content-type-tabs-category .result_link_list a:active{
+	border-bottom: 2px solid @mekong-bright;
 }

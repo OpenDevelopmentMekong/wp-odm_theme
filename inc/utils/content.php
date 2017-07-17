@@ -1,5 +1,111 @@
 <?php
 
+function set_site_title(){
+	global $post, $page, $paged;
+
+	if (is_page() && is_page_template('page-dataset-detail.php')):
+		$dataset_id = isset($_GET["id"]) ? $_GET["id"] : null;
+		$dataset_title = wpckan_get_dataset_title($dataset_id);
+		echo "$dataset_title | ";
+	else:
+		wp_title('|', true, 'right');
+	endif;
+
+	bloginfo('name');
+
+	$site_description = get_bloginfo('description', 'display');
+	if ($site_description && (is_home() || is_front_page())):
+		echo " | $site_description";
+	endif;
+
+	if ($paged >= 2 || $page >= 2):
+		echo ' | '.__('Page', 'odm'). " " . max($paged, $page);
+	endif;
+}
+
+function set_site_meta(){
+	global $post; ?>
+
+	<!-- ODM -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODC -->
+	<meta name="google-site-verification" content="Wj4wmK5q6lq4Rk0x4iqDhuBFaZxfTY2luq9p09Qr2kM" />
+	<!-- ODMM -->
+	<meta name="google-site-verification" content="BXhPDDG3ECyUWrdJqbsVr0eba3buOb8XEjV9nudDSk4" />
+	<!-- ODV -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODL -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+	<!-- ODT -->
+	<meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
+
+	<!-- ODM Metadata -->
+	<meta property="odm_spatial_range" content="<?php echo odm_country_manager()->get_current_country_code(); ?>"/>
+	<meta property="odm_language" content="<?php echo odm_language_manager()->get_current_language(); ?>"/>
+	<meta property="odm_license" content="CC-BY-SA-4.0"/>
+
+<?php
+	if(is_single()): ?>
+
+		<meta property="odm_type" content="<?php echo get_post_type(); ?>"/>
+		<meta property="og:title" content="<?php echo get_the_title(); ?>" />
+		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
+
+	<?php
+	 	$excerpt = get_the_excerpt();
+		if (!empty($excerpt)): ?>
+			<meta name="description" content="<?php echo strip_tags($excerpt); ?>" />
+			<meta name="twitter:description" content="<?php echo strip_tags($excerpt); ?>" />
+			<meta property="og:description" content="<?php echo strip_tags($excerpt); ?>" />
+	<?php
+    endif;	?>
+
+	<?php
+	 	$img_array = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
+		$img_url = $img_array[0];
+		if (!empty($img_url)): ?>
+			<meta property="og:image" content="<?php echo $img_url; ?>" />
+			<meta name="twitter:image" content="<?php echo $img_url; ?>" />
+	<?php
+		endif; ?>
+
+		<meta property="og:url" content="<?php echo get_permalink(); ?>" />
+
+<?php
+	elseif (is_page() && is_page_template('page-dataset-detail.php')):
+		$dataset_id = isset($_GET["id"]) ? $_GET["id"] : null;
+		$dataset_title = wpckan_get_dataset_title($dataset_id);
+		$dataset_description = wpckan_get_dataset_notes($dataset_id); ?>
+
+		<meta property="og:title" content="<?php echo $dataset_title; ?>" />
+		<meta name="twitter:title" content="<?php echo $dataset_title; ?>" />
+		<meta name="description" content="<?php echo $dataset_description; ?>" />
+		<meta name="twitter:description" content="<?php echo $dataset_description; ?>" />
+		<meta property="og:description" content="<?php echo $dataset_description; ?>" />
+		<meta property="og:url" content="<?php echo get_site_url() . wpckan_get_link_to_dataset($dataset_id); ?>" />
+
+	<?php
+	endif; ?>
+
+	<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
+
+	<?php
+	 	$tags = get_the_tags();
+		if (!empty($tags)):
+			foreach($tags as $tag):
+		    $posttags[] = $tag->name;
+		  endforeach
+			?>
+			<meta name="keywords" content="<?php echo implode(",", $posttags); ?>" />
+			<?php
+		endif;	?>
+
+	<meta property="og:type" content="article" />
+	<meta name="twitter:card" content="summary" />
+
+	<?php
+}
+
 function get_post_type_icon_class($type){
 
 	$icon = "fa fa-database";
@@ -167,7 +273,7 @@ function print_category_by_post_type( $category, $post_type ="post", $current_ca
 	if(is_tax( 'layer-category' ) ||  get_post_type()== "map-layer"):
 		$included_posttype = "";
 	else :
-		$included_posttype = '?post_type='.$post_type;
+		$included_posttype = '?queried_post_type='.$post_type;
 	endif;
   if($post_type == "map-layer" && is_page(array("map-explorer", "maps")) ){
     $cat_name = '<a href="' . $get_category_link. $included_posttype.'">';
@@ -315,7 +421,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 						 if (odm_language_manager()->get_current_language() == 'km') {
 								 echo convert_date_to_kh_date(get_the_modified_time('j.M.Y'));
 						 } else {
-								 echo get_the_modified_time('Y-m-d');
+								 echo get_the_modified_time('j F Y');
 						 }
 					  ?>
 					<?php else: ?>
@@ -324,7 +430,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 						 if (odm_language_manager()->get_current_language() == 'km') {
 								 echo convert_date_to_kh_date(get_the_time('j.M.Y'));
 						 } else {
-								 echo get_the_time('Y-m-d');
+								 echo get_the_date('j F Y');
 						 }
 					  ?>
 					<?php endif; ?>
@@ -401,7 +507,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 	  				<i class="fa fa-folder-o"></i>
 					<?php
 						foreach ($category_list as $category): ?>
-							<a href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name ?></a>
+							<a href="<?php echo get_category_link($category->term_id) ?>?queried_post_type=<?php echo get_post_type(); ?>"><?php echo $category->name ?></a>
 						<?php
 							if ($category != end($category_list)):
 								echo " / ";
@@ -414,7 +520,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
       <?php
 			if (in_array('tags',$show_elements)): ?>
 					<?php
-					$tag_list = get_the_tags();
+					$tag_list = get_the_tags($post->ID);
 					if (isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
@@ -423,7 +529,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 		  				<i class="fa fa-tags"></i>
 								<?php
 							  foreach($tag_list as $tag): ?>
-							    <a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo $tag->name ?></a>
+							    <a href="<?php echo get_tag_link($tag->term_id) ?>?queried_post_type=<?php echo get_post_type(); ?>"><?php echo $tag->name ?></a>
 							  <?php
 									if ($tag != end($tag_list)):
 										echo " / ";
@@ -444,33 +550,46 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 400, $read_more = '')
+function odm_excerpt($the_post, $num = 45, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
 		$limit = $num;
-		$chopped = false;
 
-		$post_content = apply_filters('the_content',$post->post_content);
-		$translated_content = apply_filters('translate_text',$post_content, odm_language_manager()->get_current_language());
+		if($post->post_excerpt):
+			$post_content = $post->post_excerpt;
+		else:
+			$post_content = strip_tags(apply_filters('the_content',$post->post_content));
+		endif;
+
+		$translated_content = apply_filters('translate_text', $post_content, odm_language_manager()->get_current_language());
+
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
+		if(trim($stripped_content)):
+			$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
+			$stripped_content_arr = explode(' ', trim($stripped_content), $num+1);
 
-		$excerpt_hidden_space = explode("​", $stripped_content); //explode by zerowidthspace​
-		$excerpt_string = implode("​", $excerpt_hidden_space); //implode by zerowidthspace
-		$excerpt_words = $excerpt_string;
+			if($stripped_content_arr):
+				array_splice($stripped_content_arr, $limit);
+				$excerpt_content = implode(' ', $stripped_content_arr);
+		    if (odm_language_manager()->get_current_language() == "km"):
+		  		$excerpt_zeo_space = explode("&#8203;", $excerpt_content, $num+1); //explode by zerowidthspace​
+					array_splice($excerpt_zeo_space, $limit);
+		  		$excerpt_content = implode("&#8203;", $excerpt_zeo_space); //implode by zerowidthspace
+				endif;
 
-		if (strlen($excerpt_words) > $limit):
-			$excerpt_words = substr($excerpt_words,0,$limit);
-			$excerpt_words .= "...";
+				$color_name = odm_country_manager()->get_current_country().'-color';
+				if ($read_more != ''):
+					$excerpt_words =  $excerpt_content." ... <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
+				else:
+					$excerpt_words = $excerpt_content." <a href='".get_permalink($post->ID)." ' class='".$color_name."'>...</a>";
+				endif;
+				return '<p>' . $excerpt_words . '</p>';
+			endif;
+
+			return '<p>' . $stripped_content . '</p>';
 		endif;
-
-		if (!empty($read_more)):
-			 $color_name = odm_country_manager()->get_current_country().'-color';
-			 $excerpt_words .=  " <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
-		endif;
-
-		return '<p>' . $excerpt_words . '</p>';
  }
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
@@ -524,49 +643,29 @@ function echo_documents_cover ($postID = "") {
 
 function echo_downloaded_documents ($postID = "") {
 	$postID = $postID ? $postID : get_the_ID();
-	$country_name = odm_country_manager()->get_current_country();
-	$local_lang = 'en';
-	if(function_exists('qtrans_getSortedLanguages')){
-		$enabled_languages_codes = qtrans_getSortedLanguages( true );
-		if(!empty($enabled_languages_codes[1])):
-			$local_lang = $enabled_languages_codes[1];
-		endif;
-	}
+	$local_lang = odm_language_manager()->get_the_language_code_by_site();
+	$current_lang = odm_language_manager()->get_current_language();
 
 	//Get Download files
 	$get_document = get_post_meta($postID, 'upload_document', true);
 	$get_localized_document = get_post_meta($postID, 'upload_document_'.$local_lang, true);
-	if ($get_document != '' || $get_localized_document != ''):
-			echo "<div id='documents_download'><span>";
-			_e("Download: ");
-			//Get English PDF
-			if($get_document !=""){
-				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_document.'">';
-					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
-					_e ('English PDF');
-				echo '</a>';
-			}
-			else{
-				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/en_us.png" /> ';
-				_e("English PDF not available");
-			}
-			echo "&nbsp; &nbsp;";
 
-			//Get Khmer PDF
-			if($get_localized_document !=""){
-				echo '<a target="_blank" href="'.get_bloginfo("url").'/pdf-viewer/?pdf=files_mf/'.$get_localized_document.'">';
-					echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-					echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " ."PDF");
-				echo '</a>';
-			}
-			else{
-				echo '<img src="'.get_bloginfo('stylesheet_directory').'/img/'. $country_name .'.png" /> ';
-				echo __(ucfirst(odm_language_manager()->get_the_language_by_language_code($local_lang)). " " . "PDF not available");
-			}
-			echo "</span></div>";
+	$document_curent_lang = null;
+	if (!empty($get_document) || !empty($get_localized_document)):
+		if (!empty($get_document) && !empty($get_localized_document)):
+			$document_curent_lang = $current_lang == "en" ? $get_document : $get_localized_document;
+		else:
+			$document_curent_lang = !empty($get_document) ? $get_document : $get_localized_document;
 		endif;
-		?>
+	endif;?>
+
 	<?php
+		if (isset($document_curent_lang)): ?>
+			<p class="download_data_buttons"><?php _e('Download:','wp-odm_solr'); ?>
+				<span class="meta-label pdf"><a target="_blank" href="<?php echo get_bloginfo("url") . '/pdf-viewer/?pdf=files_mf/' . $document_curent_lang  ?>">pdf</a></span>
+			</p>
+	<?php
+		endif;
 }
 
 function available_post_types(){
@@ -679,7 +778,7 @@ function available_custom_post_types(){
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
 	 $news_source_info = null;
-	 if (function_exists('get_post_meta')) :
+	 if (function_exists('get_post_meta')):
 		 $get_author = get_post_meta($postID, 'author', true);
 		 $get_localized_author = get_post_meta($postID, 'author_'.odm_language_manager()->get_current_language(), true);
 	   if ($get_author != '' || $get_localized_author != ''):
@@ -702,13 +801,13 @@ function available_custom_post_types(){
 			 endif;
 		 endif;
 
-		 if (isset($source) && $source != '') {
-					if (false === strpos($source, '://')) {
-							$news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
-					}  else {
-							$news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
-					}
-		 }
+		 if (isset($source) && $source != ''):
+			if (false === strpos($source, '://')):
+					$news_source_info .= '<a href="http://'.$source.'" target="_blank">http://'.$source.'</a>';
+			else:
+					$news_source_info .= '<a href="'.$source.'" target="_blank">'.$source.'</a>';
+			endif;
+		endif;
 
    endif;
 

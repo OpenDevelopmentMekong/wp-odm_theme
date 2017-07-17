@@ -18,8 +18,8 @@
 
 <div class="sixteen columns">
 	<div class="post-list-item single_result_container">
-			
-		<section class="content item-content section-content">	
+
+		<section class="content item-content section-content">
 			<?php
 			if ($show_thumbnail):
 				$thumb_src = odm_get_thumbnail($post->ID, false, 'medium');
@@ -30,37 +30,38 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>				
+			<?php if ($show_excerpt || $show_source_meta): ?>
 					<?php if ($show_excerpt): ?>
 						<div class="post-excerpt">
-							
+
 							<?php
 								if ($show_meta):
 									echo_post_meta($post,array("date", "tags"),$order,$max_num_topics,$max_num_tags);
 								endif; ?>
-								
-							<?php 
-								$excerpt = odm_excerpt($post, 600); 
+
+							<?php
+								$excerpt = odm_excerpt($post, 600);
 								if (isset($highlight_words_query) && function_exists('wp_odm_solr_highlight_search_words')):
-									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt); 									
+									$excerpt = wp_odm_solr_highlight_search_words($highlight_words_query,$excerpt);
 								endif;
 								echo $excerpt; ?>
-								
+
 								</br>
-								
+
 								<a class="button" href="<?php echo get_permalink($post->ID); ?>"><?php _e('Read more','odm'); ?></a>
 						</div>
-						
-						<?php if( echo_downloaded_documents()):
-							echo_downloaded_documents();
-						endif; ?>
-					<?php endif; ?>
+						<?php
+					endif;
 
-					<?php if ($show_source_meta): ?>
-						<?php odm_echo_extras(); ?>
-					<?php endif; ?>
-			<?php endif; ?>
+					if ($show_source_meta):
+						odm_echo_extras();
+					endif;
+
+					echo_downloaded_documents();
+						
+				endif;
+					?>
 		</section>
-		
+
 	</div>
 </div>

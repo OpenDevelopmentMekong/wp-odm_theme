@@ -218,7 +218,6 @@
 }
 
 .single {
-	
 	.documents_cover {
 		padding-right: @med-padd;
 		width: 150px;
@@ -227,15 +226,24 @@
     float: left;
 	}
 
-	#post-content img {
-		margin-top:  @xsmall-padd;
-		border:1px solid @light-gray;
-		padding: @xsmall-padd;
-		max-width: 140px;
-    height: auto;
-    float: left;
-    margin-right: 20px;
+	#post-content {
+			.fa-image-container img{
+				border: none;
+			}
+
+			img {
+				margin-top:  @xsmall-padd;
+				border:1px solid @light-gray;
+				padding: @xsmall-padd;
+				max-width: 140px;
+		    height: auto;
+		    float: left;
+		    margin-right: 20px;
+			}
 	}
+
+
+
 
 }
 /*

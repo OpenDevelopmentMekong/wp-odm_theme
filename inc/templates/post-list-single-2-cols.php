@@ -19,10 +19,12 @@
 
 <div class="eight columns<?php if (isset($extra_classes)): echo " ". $extra_classes; endif; ?>">
 	<div class="post-list-item single_result_container">
+		<?php
+			$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
+			$localized_title = !empty($localized_title) ? $localized_title : strip_shortcodes($post->post_title); ?>
 		<?php if ($header_tag): ?>
       <?php
-        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID);
-				$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());?>
+        $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
 			<h5>
 				<a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
 					<?php
@@ -36,11 +38,7 @@
 			</h5>
 		<?php else: ?>
 			<h5>
-				<?php
-					$localized_title = apply_filters('translate_text', $post->post_title, odm_language_manager()->get_current_language());
-				 ?>
 				<a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
-
 				<?php
 					if ($show_post_type):
 						$post_type_name = get_post_type($post->ID); ?>
@@ -69,11 +67,10 @@
 				endif;
 			endif;
 			?>
-			<?php if ($show_excerpt || $show_source_meta): ?>
-				<?php if( echo_downloaded_documents()):
-					echo_downloaded_documents();
-				endif; ?>
-				<?php if ($show_excerpt): ?>
+			<?php
+				if ($show_excerpt || $show_source_meta): ?>
+				<?php
+					if ($show_excerpt): ?>
 					<div class="post-excerpt">
 						<?php
 							$excerpt = odm_excerpt($post);
@@ -82,12 +79,16 @@
 							endif;
 							echo $excerpt;?>
 					</div>
-				<?php endif; ?>
+					<?php
+					endif;
+					if ($show_source_meta):
+						odm_echo_extras();
+					endif;
 
-				<?php if ($show_source_meta): ?>
-					<?php odm_echo_extras(); ?>
-				<?php endif; ?>
-			<?php endif; ?>
+					echo_downloaded_documents();
+					
+				endif;
+				?>
 		</section>
 
 		<?php

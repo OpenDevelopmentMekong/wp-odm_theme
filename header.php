@@ -5,31 +5,7 @@
 <?php global $post, $page, $paged; ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="<?php bloginfo('charset'); ?>" />
-<meta property="og:title" content="<?php the_title(); ?>" />
-<meta property="og:description" content="<?php echo odm_excerpt($post); ?>" />
-<meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
-<meta property="og:type" content="opendevelopment:<?php echo get_post_type(); ?>" />
-<?php if(isset($post) && has_post_thumbnail( $post->ID )) { ?>
-<meta property="og:image" content="<?php $img_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false); echo $img_src[0]; ?>" />
-<?php } ?>
-<meta property="og:url" content="<?php echo get_permalink()?>" />
-<title>
-
-  <?php
-    wp_title('|', true, 'right');
-
-    bloginfo('name');
-
-    $site_description = get_bloginfo('description', 'display');
-    if ($site_description && (is_home() || is_front_page())) {
-        echo " | $site_description";
-    }
-
-    if ($paged >= 2 || $page >= 2) {
-        echo ' | '.__('Page', 'odm').max($paged, $page);
-    } ?>
-
-</title>
+<title><?php set_site_title(); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -111,7 +87,7 @@
         <?php
           if (!is_front_page() && !is_page('map-explorer')) : ?>
             <div id="main-breadcrumb">
-              <?php echo_the_breadcrumb(); ?>
+              <?php echo_the_breadcrumbs(); ?>
             </div>
         <?php
           endif; ?>
