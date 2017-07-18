@@ -1187,15 +1187,15 @@ msgid "View news article"
 msgstr "သတင်းဆောင်းပါးများဖတ်မည်"
 
 #: inc/post-types/news-article.php:28
-msgid "All news articles"
+msgid "All news"
 msgstr "သတင်းဆောင်းပါးအသစ်များအားလုံး"
 
 #: inc/post-types/news-article.php:29
-msgid "Search news articles"
+msgid "Search news"
 msgstr "သတင်းဆောင်းပါးများရှာဖွေမည်"
 
 #: inc/post-types/news-article.php:30
-msgid "Parent news articles:"
+msgid "Parent news:"
 msgstr "ပင်မသတင်းဆောင်းပါးများ "
 
 #: inc/post-types/news-article.php:31 inc/post-types/stories.php:33
@@ -2118,7 +2118,7 @@ msgid "Datasets"
 msgstr "Dataset များ"
 
 #: page-data.php:145
-msgid "Library publications"
+msgid "Publications"
 msgstr "စားကြည့်တိုက်ထုတ်ဝေမှုများ"
 
 #: page-data.php:146
