@@ -273,6 +273,7 @@ function odm_styles()
     $bower_base = get_stylesheet_directory_uri().'/bower_components/';
     wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
     wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
+    wp_enqueue_style('od-icomoon-style',  get_stylesheet_directory_uri() . '/inc/fonts/od-icomoon.css');
 
     $dist_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
