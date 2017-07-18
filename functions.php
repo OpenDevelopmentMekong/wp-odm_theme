@@ -25,7 +25,6 @@ require_once get_stylesheet_directory().'/inc/query-multisite.php';
 require_once get_stylesheet_directory().'/inc/theme-options.php';
 require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
-//require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
@@ -232,7 +231,7 @@ function odm_jeo_scripts()
 		wp_enqueue_script('printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.1.0');
   }
 
-  if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')) {
+  if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')):
     wp_deregister_script('jeo-share-widget');
     wp_enqueue_script('jeo-share-widget', get_stylesheet_directory_uri() . '/inc/jeo-scripts/share-widget.js', array('jquery', 'underscore', 'chosen'), '1.5.6');
 
@@ -240,7 +239,7 @@ function odm_jeo_scripts()
     	'baseurl' => extended_jeo_get_embed_url(),
     	'default_label' => __('default', 'odm')
     ));
-  }
+  endif;
 
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('odm-scripts', get_stylesheet_directory_uri().'/dist/js/scripts.min.js');
@@ -248,100 +247,107 @@ function odm_jeo_scripts()
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
 function odm_jeo_admin_scripts() {
-    if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
-			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
-		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js'))
-			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
-
+  if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js')):
+		wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
+  endif;
+	if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js')):
+		wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
+  endif;
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
 
+function odm_survey_scripts() {
+  if ( file_exists( get_stylesheet_directory_uri() . '/inc/mareio/surveys.js')):
+		wp_enqueue_script('mareio', get_stylesheet_directory_uri() . '/inc/mareio/surveys.js', null, null, true);	
+  endif;
+}
+add_action( 'wp_enqueue_scripts', 'odm_survey_scripts' );
+
 function odm_styles()
 {
-    $options = get_option('odm_options');
+  $options = get_option('odm_options');
 
-    $css_base = get_stylesheet_directory_uri().'/dist/css/';
-    wp_register_style('odm-cambodia',  $css_base.'cambodia.css');
-    wp_register_style('odm-thailand',  $css_base.'thailand.css');
-    wp_register_style('odm-laos',  $css_base.'laos.css');
-    wp_register_style('odm-myanmar',  $css_base.'myanmar.css');
-    wp_register_style('odm-vietnam',  $css_base.'vietnam.css');
+  $css_base = get_stylesheet_directory_uri().'/dist/css/';
+  wp_register_style('odm-cambodia',  $css_base.'cambodia.css');
+  wp_register_style('odm-thailand',  $css_base.'thailand.css');
+  wp_register_style('odm-laos',  $css_base.'laos.css');
+  wp_register_style('odm-myanmar',  $css_base.'myanmar.css');
+  wp_register_style('odm-vietnam',  $css_base.'vietnam.css');
 
-    $cambodia_base = get_stylesheet_directory_uri().'/Cambodia/';
-    wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
+  $cambodia_base = get_stylesheet_directory_uri().'/Cambodia/';
+  wp_enqueue_style('forest-cover',  $cambodia_base.'forest-cover.css');
 
-    $bower_base = get_stylesheet_directory_uri().'/bower_components/';
-    wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
-    wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
-    wp_enqueue_style('od-icomoon-style',  get_stylesheet_directory_uri() . '/inc/fonts/od-icomoon.css');
+  $bower_base = get_stylesheet_directory_uri().'/bower_components/';
+  wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
+  wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
+  wp_enqueue_style('od-icomoon-style',  get_stylesheet_directory_uri() . '/inc/fonts/od-icomoon.css');
 
-    $dist_base = get_stylesheet_directory_uri().'/dist/css/';
-    wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
-    wp_enqueue_style('odm-style',  $dist_base.'odm.css');
+  $dist_base = get_stylesheet_directory_uri().'/dist/css/';
+  wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
+  wp_enqueue_style('odm-style',  $dist_base.'odm.css');
 
-    if ($options['style']) {
-        wp_enqueue_style('odm-'.$options['style']);
-    }
+  if ($options['style']):
+      wp_enqueue_style('odm-'.$options['style']);
+  endif;
 }
 add_action('wp_enqueue_scripts', 'odm_styles', 15);
 
 // create two taxonomies, genres and writers for the post type "book"
 function create_news_source_taxonomies()
 {
-    // Add new taxonomy, make it hierarchical (like categories)
-    $labels = array(
-        'name' => _x('News Sources', 'taxonomy general name'),
-        'singular_name' => _x('News Source', 'taxonomy singular name'),
-        'search_items' => __('Search News Source'),
-        'all_items' => __('All News Sources'),
-        'parent_item' => __('Parent News Source'),
-        'parent_item_colon' => __('Parent News Source:'),
-        'edit_item' => __('Edit News Source'),
-        'update_item' => __('Update News Source'),
-        'add_new_item' => __('Add New News Source'),
-        'new_item_name' => __('New News Source Name'),
-        'menu_name' => __('News Source'),
-    );
+  // Add new taxonomy, make it hierarchical (like categories)
+  $labels = array(
+      'name' => _x('News Sources', 'taxonomy general name'),
+      'singular_name' => _x('News Source', 'taxonomy singular name'),
+      'search_items' => __('Search News Source'),
+      'all_items' => __('All News Sources'),
+      'parent_item' => __('Parent News Source'),
+      'parent_item_colon' => __('Parent News Source:'),
+      'edit_item' => __('Edit News Source'),
+      'update_item' => __('Update News Source'),
+      'add_new_item' => __('Add New News Source'),
+      'new_item_name' => __('New News Source Name'),
+      'menu_name' => __('News Source'),
+  );
 
-    $args = array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true, /* ,
-        'rewrite'           => array( 'slug' => 'news_source' ) */
-    );
+  $args = array(
+      'hierarchical' => true,
+      'labels' => $labels,
+      'show_ui' => true,
+      'show_admin_column' => true,
+      'query_var' => true, /* ,
+      'rewrite'           => array( 'slug' => 'news_source' ) */
+  );
 
-    register_taxonomy('news_source', array('news-article'), $args);
+  register_taxonomy('news_source', array('news-article'), $args);
 }
 add_action('init', 'create_news_source_taxonomies', 0);
 
 function odm_marker_data($data, $post)
 {
-    global $post;
+  global $post;
 
-    $permalink = $data['url'];
-    $permalink = add_query_arg(array('lang' => odm_language_manager()->get_current_language()), $permalink);
+  $permalink = $data['url'];
+  $permalink = add_query_arg(array('lang' => odm_language_manager()->get_current_language()), $permalink);
 
-    $data['permalink'] = $permalink;
-    $data['url'] = $permalink;
-    $data['content'] = get_the_excerpt();
-    if (get_post_meta($post->ID, 'geocode_zoom', true)) {
-        $data['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
-    }
+  $data['permalink'] = $permalink;
+  $data['url'] = $permalink;
+  $data['content'] = get_the_excerpt();
+  if (get_post_meta($post->ID, 'geocode_zoom', true)):
+    $data['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
+  endif;
 
-    $data['thumbnail'] = odm_get_thumbnail();
+  $data['thumbnail'] = odm_get_thumbnail();
 
-    return $data;
+  return $data;
 }
 add_filter('jeo_marker_data', 'odm_marker_data', 10, 2);
 
 // Disable mousewheel zoom by default
 function odm_map_data($data)
 {
-    $data['disable_mousewheel'] = true;
-
-    return $data;
+  $data['disable_mousewheel'] = true;
+  return $data;
 }
 add_filter('jeo_map_data', 'odm_map_data');
 add_filter('jeo_mapgroup_data', 'odm_map_data');
@@ -357,9 +363,9 @@ add_action('admin_footer', 'odm_custom_admin_css', 100);
 
 function odm_return_all_topics( $query ) {
 
-  if (!is_admin() && is_archive() && $query->get('post_type') == 'topic') {
-      $query->query_vars['posts_per_page'] = -1;
-  }
+  if (!is_admin() && is_archive() && $query->get('post_type') == 'topic'):
+    $query->query_vars['posts_per_page'] = -1;
+  endif;
 
 }
 add_action('pre_get_posts', 'odm_return_all_topics' );
@@ -367,7 +373,7 @@ add_action('pre_get_posts', 'odm_return_all_topics' );
 function odm_search_pre_get_posts($query)
 {
   if(!is_admin()):
-    if(isset($query->query['post_type'])){
+    if(isset($query->query['post_type'])):
       $query->set('post_type', $query->query['post_type']);
     }else {
       if ($query->is_search || get_query_var('odm_advanced_nav')):
@@ -381,15 +387,15 @@ add_action('pre_get_posts', 'odm_search_pre_get_posts');
 function odm_category_pre_get_posts($query)
 {
   if(!is_admin()):
-    if(isset($query->query['post_type'])){
+    if(isset($query->query['post_type'])):
       $post_type = $query->query['post_type'];
-    }else {
+    else:
       $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
-    }
+    endif;
 
-    if ($query->is_category && isset($post_type)) {
-        $query->set('post_type', array($post_type));
-    }
+    if ($query->is_category && isset($post_type)):
+      $query->set('post_type', array($post_type));
+    endif;
   endif;
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
@@ -423,7 +429,7 @@ add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
 
 function odm_posts_clauses_where($where)
 {
-  if (get_post_type() == 'map' && get_post_type() == 'map-group'){
+  if (get_post_type() == 'map' && get_post_type() == 'map-group'):
     $map_id = jeo_get_map_id();
     $where = '';
     // MAP
@@ -438,7 +444,6 @@ function odm_posts_clauses_where($where)
 
         $size = count($groupdata['maps']);
         $i = 1;
-
         foreach ($groupdata['maps'] as $m) {
           $c_map_id = $m['id'];
 
@@ -454,9 +459,9 @@ function odm_posts_clauses_where($where)
        }
     }
     return $where;
-  }
+  endif;
 }
-  add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
+add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
 
 function odm_ignore_sticky($query)
 {
@@ -523,7 +528,7 @@ if (!function_exists('tmce_replace')) {
 <?php
     }//end function
   add_action('after_wp_tiny_mce', 'tmce_replace');
-}
+endif;
 // eof advanced tinymce plugin
 // http://tinymce.moxiecode.com/wiki.php/Configuration
 function teslina_tinymce_config($init)
@@ -576,6 +581,4 @@ add_shortcode( 'admin_scripts_posts_by_category_and_type', 'posts_by_category_an
 function add_custom_meta_tags() {
   set_site_meta();
 }
-add_action('wp_head', 'add_custom_meta_tags', 5);
-
-?>
+add_action('wp_head', 'add_custom_meta_tags', 5); ?>

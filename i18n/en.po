@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-06-11 23:57+0200\n"
-"PO-Revision-Date: 2017-06-11 23:57+0200\n"
+"POT-Creation-Date: 2017-07-09 18:56+0200\n"
+"PO-Revision-Date: 2017-07-09 18:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -76,7 +76,6 @@ msgid "Maps"
 msgstr ""
 
 #: archive-news-article.php:9 i18n/extra-strings.php:15
-#: inc/live-search/live-search.php:23
 msgid "News"
 msgstr ""
 
@@ -148,7 +147,7 @@ msgstr ""
 
 #: content-embed.php:16 header.php:29 inc/templates/pagination.php:8
 #: inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
-#: inc/utils/breadcrumbs.php:221
+#: inc/utils/breadcrumbs.php:277
 msgid "Page"
 msgstr ""
 
@@ -172,109 +171,109 @@ msgid ""
 "\">JEO Beta</a> theme"
 msgstr ""
 
-#: functions.php:53
+#: functions.php:52
 msgid "Topic sidebar"
 msgstr ""
 
-#: functions.php:59
+#: functions.php:58
 msgid "Homepage area top left"
 msgstr ""
 
-#: functions.php:67
+#: functions.php:66
 msgid "Homepage area top right"
 msgstr ""
 
-#: functions.php:75
+#: functions.php:74
 msgid "Homepage area middle"
 msgstr ""
 
-#: functions.php:83
+#: functions.php:82
 msgid "Homepage area bottom left"
 msgstr ""
 
-#: functions.php:91
+#: functions.php:90
 msgid "Homepage area bottom right"
 msgstr ""
 
-#: functions.php:99
+#: functions.php:98
 msgid "WPCKAN Dataset detail sidebar"
 msgstr ""
 
-#: functions.php:105
+#: functions.php:104
 msgid "Story top"
 msgstr ""
 
-#: functions.php:111
+#: functions.php:110
 msgid "Story bottom"
 msgstr ""
 
-#: functions.php:117
+#: functions.php:116
 msgid "Profile area right sidebar"
 msgstr ""
 
-#: functions.php:123
+#: functions.php:122
 msgid "Profile area bottom left"
 msgstr ""
 
-#: functions.php:131
+#: functions.php:130
 msgid "Profile area bottom right"
 msgstr ""
 
-#: functions.php:139
+#: functions.php:138
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:145 inc/theme-options.php:70
+#: functions.php:144 inc/theme-options.php:70
 msgid "Category page"
 msgstr ""
 
-#: functions.php:242
+#: functions.php:241
 msgid "default"
 msgstr ""
 
-#: functions.php:293
+#: functions.php:300
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr ""
 
-#: functions.php:294
+#: functions.php:301
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr ""
 
-#: functions.php:295
+#: functions.php:302
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:296
+#: functions.php:303
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:297
+#: functions.php:304
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:298
+#: functions.php:305
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:299
+#: functions.php:306
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:300
+#: functions.php:307
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:301
+#: functions.php:308
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:302
+#: functions.php:309
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:303
+#: functions.php:310
 msgid "News Source"
 msgstr ""
 
@@ -555,8 +554,8 @@ msgstr ""
 msgid "Type your search here"
 msgstr ""
 
-#: inc/advanced-navigation.php:171 inc/live-search/live-search.php:24
-#: inc/utils/content.php:81 page-data-old.php:106 page-data.php:119
+#: inc/advanced-navigation.php:171 inc/utils/content.php:81
+#: page-data-old.php:106 page-data.php:119
 msgid "Topic"
 msgstr ""
 
@@ -1050,22 +1049,6 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: inc/live-search/live-search.php:20
-msgid "Go to the advanced search"
-msgstr ""
-
-#: inc/live-search/live-search.php:21
-msgid "Close"
-msgstr ""
-
-#: inc/live-search/live-search.php:22
-msgid "Showing all results"
-msgstr ""
-
-#: inc/live-search/live-search.php:25
-msgid "Map"
-msgstr ""
-
 #: inc/post-types/announcements.php:19
 msgctxt "post type general name"
 msgid "Announcements"
@@ -1479,8 +1462,7 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: inc/templates/solr-result-single.php:79 inc/utils/content.php:559
-#: inc/utils/content.php:564
+#: inc/templates/solr-result-single.php:79
 msgid " "
 msgstr ""
 
@@ -1722,24 +1704,20 @@ msgstr ""
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
 
-#: inc/utils/breadcrumbs.php:224
+#: inc/utils/breadcrumbs.php:183 inc/utils/breadcrumbs.php:281
 msgid "Search results for:"
 msgstr ""
 
-#: inc/utils/content.php:486
+#: inc/utils/breadcrumbs.php:186
+msgid "Dataset detail"
+msgstr ""
+
+#: inc/utils/content.php:499
 msgid "Summary translated by "
 msgstr ""
 
-#: inc/utils/content.php:541
-msgid "Download: "
-msgstr ""
-
-#: inc/utils/content.php:546
-msgid "English PDF"
-msgstr ""
-
-#: inc/utils/content.php:551
-msgid "English PDF not available"
+#: inc/utils/content.php:558
+msgid "Download:"
 msgstr ""
 
 #: inc/utils/layout.php:11
@@ -1908,7 +1886,7 @@ msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:154
 #: inc/widgets/odm-custom-posts-widget.php:173
-#: inc/widgets/odm-taxonomy-widget.php:261
+#: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
 msgstr ""
 
@@ -1977,15 +1955,15 @@ msgstr ""
 msgid "Display ODM taxonomy for content"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:265
+#: inc/widgets/odm-taxonomy-widget.php:243
 msgid "Include Category by IDs (separated by commas):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:269
+#: inc/widgets/odm-taxonomy-widget.php:247
 msgid "Exclude Category by IDs (separated by commas):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:273
+#: inc/widgets/odm-taxonomy-widget.php:251
 msgid "Links should take user to:"
 msgstr ""
 
@@ -2111,35 +2089,39 @@ msgstr ""
 msgid "Date modified"
 msgstr ""
 
-#: page-dataset-detail.php:18
+#: page-dataset-detail.php:21
 msgid "Please provide an id as parameter"
 msgstr ""
 
-#: page-dataset-detail.php:29
+#: page-dataset-detail.php:32
 msgid "Manage on CKAN"
 msgstr ""
 
-#: page-dataset-detail.php:31
+#: page-dataset-detail.php:34
 msgid "Manage"
 msgstr ""
 
-#: page-dataset-detail.php:39
+#: page-dataset-detail.php:42
 msgid "Download metadata"
 msgstr ""
 
-#: page-dataset-detail.php:41
+#: page-dataset-detail.php:44
 msgid "XML"
 msgstr ""
 
-#: page-dataset-detail.php:42
+#: page-dataset-detail.php:45
 msgid "JSON"
 msgstr ""
 
-#: page-dataset-detail.php:43
+#: page-dataset-detail.php:46
 msgid "RDF"
 msgstr ""
 
-#: page-no-title.php:17 page.php:19 single-topic.php:44 single.php:42
+#: page-dataset-detail.php:55
+msgid "Other search results"
+msgstr ""
+
+#: page-no-title.php:17 page.php:19 single-topic.php:44 single.php:49
 msgid "Pages:"
 msgstr ""
 
