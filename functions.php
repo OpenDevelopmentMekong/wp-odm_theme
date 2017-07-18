@@ -209,19 +209,19 @@ function odm_jeo_scripts()
   $site_name =  odm_country_manager()->get_current_country();
 
   if (is_home()):
-    wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
+      wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   endif;
 
-  if (is_page( array( 'map-explorer', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()):
-    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')):
+  if (is_page( array( 'map-explorer', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()){
+    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')) {
        wp_deregister_script('jeo');
        wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
-    endif;
+    }
 
-    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')):
+    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')){
        wp_deregister_script('jeo.fullscreen');
        wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/fullscreen.js',array('jeo'), '0.2.0');
-    endif;
+    }
 
     wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
     wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
@@ -229,8 +229,7 @@ function odm_jeo_scripts()
 		wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
 		wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
 		wp_enqueue_script('printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.1.0');
-
-  endif;
+  }
 
   if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')):
     wp_deregister_script('jeo-share-widget');
@@ -281,6 +280,7 @@ function odm_styles()
   $bower_base = get_stylesheet_directory_uri().'/bower_components/';
   wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
   wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
+  wp_enqueue_style('od-icomoon-style',  get_stylesheet_directory_uri() . '/inc/fonts/od-icomoon.css');
 
   $dist_base = get_stylesheet_directory_uri().'/dist/css/';
   wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');
@@ -375,11 +375,11 @@ function odm_search_pre_get_posts($query)
   if(!is_admin()):
     if(isset($query->query['post_type'])):
       $query->set('post_type', $query->query['post_type']);
-    else:
-      if ($query->is_search || get_query_var('odm_advanced_nav') || $query->is_tax || $query->is_category || $query->is_tag):
-        $query->set('post_type', available_post_types_search());
+    }else {
+      if ($query->is_search || get_query_var('odm_advanced_nav')):
+          $query->set('post_type', available_post_types_search());
       endif;
-    endif;
+    }
   endif;
 }
 add_action('pre_get_posts', 'odm_search_pre_get_posts');
@@ -400,13 +400,30 @@ function odm_category_pre_get_posts($query)
 }
 add_action('pre_get_posts', 'odm_category_pre_get_posts', 20, 1);
 
+
+function odm_tag_pre_get_posts($query)
+{
+  if(!is_admin()):
+    if(isset($query->query['post_type'])){
+      $post_type = $query->query['post_type'];
+    }else {
+      $post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'news-article';
+    }
+
+    if ($query->is_tag && isset($post_type)) {
+        $query->set('post_type', array($post_type));
+    }
+  endif;
+}
+add_action('pre_get_posts', 'odm_tag_pre_get_posts');
+
 function odm_posts_clauses_join($join)
 {
-    global $wpdb;
-    if (get_post_type() == 'map' && get_post_type() == 'map-group'):
-      $join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
-      return $join;
-    endif;
+  global $wpdb;
+  if (get_post_type() == 'map' && get_post_type() == 'map-group'){
+    $join = " INNER JOIN {$wpdb->postmeta} m_maps ON ({$wpdb->posts}.ID = m_maps.post_id) ";
+  return $join;
+  }
 }
 add_filter('jeo_posts_clauses_join', 'odm_posts_clauses_join');
 
@@ -415,32 +432,32 @@ function odm_posts_clauses_where($where)
   if (get_post_type() == 'map' && get_post_type() == 'map-group'):
     $map_id = jeo_get_map_id();
     $where = '';
-     // MAP
-    if (get_post_type($map_id) == 'map'):
+    // MAP
+    if (get_post_type($map_id) == 'map') {
       $where = " AND ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$map_id}' ) ";
-    elseif (get_post_type($map_id) == 'map-group'):
+    // MAPGROUP
+    } elseif (get_post_type($map_id) == 'map-group') {
       $groupdata = get_post_meta($map_id, 'mapgroup_data', true);
 
-       if (isset($groupdata['maps']) && is_array($groupdata['maps'])):
+      if (isset($groupdata['maps']) && is_array($groupdata['maps'])) {
         $where = ' AND ( ';
 
         $size = count($groupdata['maps']);
         $i = 1;
-
-        foreach ($groupdata['maps'] as $m):
+        foreach ($groupdata['maps'] as $m) {
           $c_map_id = $m['id'];
 
           $where .= " ( m_maps.meta_key = 'maps' AND CAST(m_maps.meta_value AS CHAR) = '{$c_map_id}' ) ";
 
-          if ($i < $size):
+          if ($i < $size) {
             $where .= ' OR ';
-          endif;
+          }
 
           ++$i;
-        endforeach;
+        }
         $where .= ' ) ';
-      endif;
-    endif;
+       }
+    }
     return $where;
   endif;
 }
@@ -448,9 +465,9 @@ add_filter('jeo_posts_clauses_where', 'odm_posts_clauses_where');
 
 function odm_ignore_sticky($query)
 {
-  if ($query->is_main_query()):
+  if ($query->is_main_query()) {
     $query->set('ignore_sticky_posts', true);
-  endif;
+  }
 }
 add_action('pre_get_posts', 'odm_ignore_sticky');
 
@@ -489,26 +506,27 @@ add_filter('tiny_mce_before_init', 'add_iframe');
 remove_filter('the_content', 'wpautop');
 remove_filter('the_excerpt', 'wpautop');
 // function aus advanced tinymce plugin
-if (!function_exists('tmce_replace')):
-    function tmce_replace(){
-        $tadv_options = get_option('tadv_options', array());
-        $tadv_plugins = get_option('tadv_plugins', array());
+if (!function_exists('tmce_replace')) {
+    function tmce_replace()
+    {
+      $tadv_options = get_option('tadv_options', array());
+      $tadv_plugins = get_option('tadv_plugins', array());
 
-        ?>
-        <script type="text/javascript">
-            if ( typeof(jQuery) != 'undefined' ) {
-              jQuery('body').bind('afterPreWpautop', function(e, o){
-                o.data = o.unfiltered
-                .replace(/caption\]\ +?<\/object>/g, function(a) {
-                  return a.replace(/[\r\n]+/g, ' ');
-                });
-              }).bind('afterWpautop', function(e, o){
-                o.data = o.unfiltered;
-              });
-            }
-        </script>
+      ?>
+      <script type="text/javascript">
+        if ( typeof(jQuery) != 'undefined' ) {
+          jQuery('body').bind('afterPreWpautop', function(e, o){
+            o.data = o.unfiltered
+            .replace(/caption\]\ +?<\/object>/g, function(a) {
+              return a.replace(/[\r\n]+/g, ' ');
+            });
+          }).bind('afterWpautop', function(e, o){
+            o.data = o.unfiltered;
+          });
+        }
+      </script>
 <?php
-  }//end function
+    }//end function
   add_action('after_wp_tiny_mce', 'tmce_replace');
 endif;
 // eof advanced tinymce plugin
@@ -561,29 +579,6 @@ function posts_by_category_and_type() {
 add_shortcode( 'admin_scripts_posts_by_category_and_type', 'posts_by_category_and_type' );
 
 function add_custom_meta_tags() {
-  global $post; ?>
-
-  <!-- ODM -->
-  <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
-  <!-- ODC -->
-  <meta name="google-site-verification" content="Wj4wmK5q6lq4Rk0x4iqDhuBFaZxfTY2luq9p09Qr2kM" />
-  <!-- ODMM -->
-  <meta name="google-site-verification" content="BXhPDDG3ECyUWrdJqbsVr0eba3buOb8XEjV9nudDSk4" />
-  <!-- ODV -->
-  <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
-  <!-- ODL -->
-  <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
-  <!-- ODT -->
-  <meta name="google-site-verification" content="wSjmxxjHngo-qyApV6i_ACDJ6EgX6bkl1VthAXS0s_I" />
-  <?php
-    if(is_single()): ?>
-      <meta property="odm_spatial_range" content="<?php echo odm_country_manager()->get_current_country_code(); ?>"/>
-      <meta property="odm_language" content="<?php echo odm_language_manager()->get_current_language(); ?>"/>
-      <meta property="odm_type" content="<?php echo get_post_type(); ?>"/>
-      <meta property="odm_license" content="CC-BY-SA-4.0"/>
-    <?php
-  else:
-    return;
-  endif;
+  set_site_meta();
 }
 add_action('wp_head', 'add_custom_meta_tags', 5); ?>

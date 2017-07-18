@@ -7,6 +7,7 @@ var gulp = require('gulp'),
 
 var LESS_PATH = 'less/';
 var JS_PATH = 'js/';
+var LIB_PATH = 'lib/';
 var CSS_PATH = 'css/';
 var DEST_PATH = 'dist/'; //Temp path will change later
 var CSS_DIST_PATH = DEST_PATH + 'css/';
@@ -63,4 +64,5 @@ gulp.task('watch', function(){
 	gulp.watch(LESS_PATH + '/*less', ['build-less', 'build-styles']);
 	gulp.watch(CSS_PATH + '/*.css', ['build-styles']);
 	gulp.watch(JS_PATH + '/*.js', ['build-scripts']);
+	gulp.watch(LIB_PATH + '/js/*.js', ['build-scripts']);
 });
