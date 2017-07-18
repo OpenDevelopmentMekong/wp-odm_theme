@@ -81,7 +81,7 @@
 
       <section class="container">
     		<div class="row">
-    			<div class="sixteen columns">
+    			<div class="fourteen offset-by-one columns">
             <?php the_content(); ?>
             <?php odm_echo_extras(); ?>
           </section>
