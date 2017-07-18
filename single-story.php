@@ -14,7 +14,7 @@
 				if (has_post_thumbnail() ): ?>
 				<div class="sixteen columns post-title story-header">
 					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail' ); ?>
-	        <header style="min-height:400px;background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('<?php echo $image[0]; ?>')">
+	        <header style="min-height:400px;background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url('<?php echo $image[0]; ?>')">
 						<div  class="container">
 							<div class="row">
 								<div class="eight columns offset-by-four">
