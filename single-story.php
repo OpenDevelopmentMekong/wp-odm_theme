@@ -5,7 +5,7 @@
 	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created";
 	?>
 
-  <article id="content" class="single-post">
+  <article id="content" class="single-post story-content">
 
 		<section class="container section-title main-title">
 			<div class="row">
