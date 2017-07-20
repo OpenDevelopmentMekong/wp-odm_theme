@@ -257,7 +257,7 @@ add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
-		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js'))
+		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js') && odm_screen_manager()->is_desktop())
 			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
 
 }
