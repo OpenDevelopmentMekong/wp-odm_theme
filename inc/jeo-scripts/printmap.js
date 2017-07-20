@@ -8,14 +8,14 @@ var printing_map;
 		},
 
 		onAdd: function(map) {
-			this._container = L.DomUtil.create('div', 'jeo-printmap leaflet-bar leaflet-control');
+			this._container = L.DomUtil.create('div', 'jeo-printmap leaflet-bar leaflet-control hideOnMobileAndTablet');
 			this._$ = $(this._container);
 
 			this._map = map;
 
 			this._map.printmap = this;
 
-			this._$.append('<a class="map-printmap print hideOnMobileAndTablet" href="#printmap"></a>');
+			this._$.append('<a class="map-printmap print" href="#printmap"></a>');
 
 			this._bindEvents();
 
