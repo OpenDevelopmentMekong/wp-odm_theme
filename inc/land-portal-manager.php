@@ -7,7 +7,6 @@
 
 class Odm_Land_Portal_Manager {
 
-
 	function __construct() {
     //
 	}
