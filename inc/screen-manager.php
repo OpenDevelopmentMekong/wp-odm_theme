@@ -14,19 +14,19 @@ class Odm_Screen_Manager {
 	}
 
   function init_screen_manager(){
-		$detect = new Mobile_Detect;
+		$this->detect = new Mobile_Detect;
 	}
 
   function is_mobile(){
-    return $detect->isMobile();
+    return $this->detect->isMobile();
   }
 
 	function is_tablet(){
-    return $detect->isTablet();
+    return $this->detect->isTablet();
   }
 
 	function is_desktop(){
-    return !$detect->isMobile() && !$detect->isTablet();
+    return !$this->detect->isMobile() && !$this->detect->isTablet();
   }
 
 }
