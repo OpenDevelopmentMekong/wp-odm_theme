@@ -1,28 +1,29 @@
-/* Largest Mobile Screen */
-@media screen
-and (min-device-width: 768px)
-and (max-device-width: 1024px)
-and (orientation : landscape) {
-  .float-left {
-    max-width: 83% !important;
-  }
-  .wp-caption{
-    padding: 10px;
+/* Properties applicable also to desktop screens */
+.mobile-dialog {
+	//display:none;
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 99999999999;
+	width: 100%;
+	height: 100%;
+}
+
+/* Only Desktop */
+@media only screen and (min-device-width: 1024px) {
+  .hideOnDesktop {
+    display: none;
   }
 }
 
-@media screen
-and (min-device-width: 768px)
-and (max-device-width: 1024px)
-and (orientation : portrait) {
-  .float-left {
-    max-width: 77% !important;
-  }
-  .wp-caption{
-    padding: 10px;
+/* Desktop and tablet */
+@media only screen and (min-device-width: 480px) {
+	.hideOnDesktopAndTablet {
+    display: none;
   }
 }
 
+/* Common smartphone and table screens */
 @media screen and (min-device-width: 320px) and (max-device-width: 768px) {
   #od-head {
     margin-top: 33px;
@@ -50,8 +51,61 @@ and (orientation : portrait) {
   .back-to-top {
     left: 95%;
   }
+
+
+
+	.fa_slider_opendev.default {
+		.fa_slide{
+			.fa_slide_content{
+
+				h2{
+					margin-bottom: 0px !important;
+					a{
+						font-size: @font-size-h6;
+					}
+				}
+
+				div.description p{
+					font-size: @font-size-h7;
+
+					a{
+						font-size: @font-size-h7;
+					}
+				}
+
+			}
+		}
+	}
+
 }
 
+/* Large Mobile Screen (Portrait) */
+@media screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation : landscape) {
+  .float-left {
+    max-width: 83% !important;
+  }
+  .wp-caption{
+    padding: 10px;
+  }
+}
+
+/* Large Mobile Screen (Landscape) */
+@media screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation : portrait) {
+  .float-left {
+    max-width: 77% !important;
+  }
+  .wp-caption{
+    padding: 10px;
+  }
+}
+
+/* Special header & social-buttons adaptations */
 @media screen and (min-device-width: 320px) and (max-device-width: 767px) {
 	#od-head {
 		h1 {
@@ -132,6 +186,7 @@ and (orientation : portrait) {
   }
 }
 
+/* Special header & social-buttons adaptations */
 @media (min-device-width: 550px) and (max-device-width: 650px) {
 	#od-head {
 		h1 {
@@ -144,7 +199,7 @@ and (orientation : portrait) {
 	}
 }
 
-/* Medium Mobile Screen */
+/* Special header & social-buttons adaptations */
 @media screen and (max-device-width: 550px) {
 	#od-head {
 		h1 {
@@ -168,6 +223,7 @@ and (orientation : portrait) {
   }
 }
 
+/* Special header & social-buttons adaptations */
 @media screen and (min-device-width: 480px) and (max-device-width: 550px) {
 	#od-head {
 		h2.side-title {
@@ -176,12 +232,14 @@ and (orientation : portrait) {
 	}
 }
 
+/* Mobile and Tablet */
 @media only screen and (max-device-width: 768px) {
   .hideOnMobileAndTablet {
     display: none;
   }
 }
 
+/* Mobile */
 @media only screen and (max-device-width: 480px) {
   .hideOnMobile {
     display: none;
@@ -198,13 +256,14 @@ and (orientation : portrait) {
   }
 }
 
+/* Small Mobile Screen */
 @media screen and (min-device-width: 360px) and (max-device-width: 450px) {
   .alignleft, .alignright {
     width: 50%;
   }
 }
 
-/* Smallest Mobile Screen */
+/* Small Mobile Screen */
 @media screen and (min-device-width: 320px) and (max-device-width: 370px) {
   #od-head {
     padding: 0;
