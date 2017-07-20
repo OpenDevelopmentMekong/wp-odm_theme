@@ -6,6 +6,7 @@
 require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
 require_once get_stylesheet_directory().'/inc/taxonomy-manager.php';
+require_once get_stylesheet_directory().'/inc/screen-manager.php';
 require_once get_stylesheet_directory().'/inc/land-portal-manager.php';
 
 /*
@@ -40,8 +41,6 @@ require_once get_stylesheet_directory().'/inc/utils/breadcrumbs.php';
 require_once get_stylesheet_directory().'/inc/utils/layout.php';
 require_once get_stylesheet_directory().'/inc/utils/urls.php';
 require_once get_stylesheet_directory().'/inc/utils/config.php';
-
-require_once get_stylesheet_directory().'/vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
 
 /*
  * Loads the theme's translated strings. for 'odm' domains
