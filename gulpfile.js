@@ -48,7 +48,7 @@ gulp.task('build-styles', function(){
 
 gulp.task('build-scripts', function(){
 	return gulp.src([
-    'inc/js/*.js', 'lib/js/*.js'
+    'lib/js/*.js'
 	])
 	.pipe(uglify())
 	.pipe(concat('scripts.min.js', {newLine: ';'}))
@@ -63,6 +63,5 @@ gulp.task('watch', function(){
   );
 	gulp.watch(LESS_PATH + '/*less', ['build-less', 'build-styles']);
 	gulp.watch(CSS_PATH + '/*.css', ['build-styles']);
-	gulp.watch(JS_PATH + '/*.js', ['build-scripts']);
 	gulp.watch(LIB_PATH + '/js/*.js', ['build-scripts']);
 });
