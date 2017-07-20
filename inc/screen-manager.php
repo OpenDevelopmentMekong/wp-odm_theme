@@ -10,21 +10,22 @@ class Odm_Screen_Manager {
   var $detect = null;
 
 	function __construct() {
-    $detect = new Mobile_Detect;
+		add_action( 'after_setup_theme', array($this,'init_screen_manager'));
+	}
+
+  function init_screen_manager(){
+		$detect = new Mobile_Detect;
 	}
 
   function is_mobile(){
-		$detect = new Mobile_Detect;
     return $detect->isMobile();
   }
 
 	function is_tablet(){
-		$detect = new Mobile_Detect;
     return $detect->isTablet();
   }
 
 	function is_desktop(){
-		$detect = new Mobile_Detect;
     return !$detect->isMobile() && !$detect->isTablet();
   }
 
