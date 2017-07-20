@@ -41,6 +41,10 @@ require_once get_stylesheet_directory().'/inc/utils/layout.php';
 require_once get_stylesheet_directory().'/inc/utils/urls.php';
 require_once get_stylesheet_directory().'/inc/utils/config.php';
 
+require_once get_stylesheet_directory().'/vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
+
+$detect = new Mobile_Detect;
+
 /*
  * Loads the theme's translated strings. for 'odm' domains
  * Registers widget sidebars
@@ -230,7 +234,6 @@ function odm_jeo_scripts()
 		wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
 		wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
 
-    $detect = new Mobile_Detect;
     if( !$detect->isMobile() && !$detect->isTablet() ):
       wp_enqueue_script('printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.1.0');
     endif;
