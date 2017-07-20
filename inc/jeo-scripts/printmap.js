@@ -15,7 +15,7 @@ var printing_map;
 
 			this._map.printmap = this;
 
-			this._$.append('<a class="map-printmap print" href="#printmap"></a>');
+			this._$.append('<a class="map-printmap print hideOnMobileAndTablet" href="#printmap"></a>');
 
 			this._bindEvents();
 
