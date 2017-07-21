@@ -104,81 +104,7 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
 			echo '</h2>';
 			echo '<div class="interactive-map-layers dropdown">';
-				if($show_cat):
-					$tmp_category = array();
-					foreach ($layers as $key => $val) :
-						if(isset($val['map_category'])):
-							$layerID[] = $val['map_category']['id'];
-						endif;
-					endforeach;
-
-					foreach ($layers as $key => $row) :
-						$tmp_category[$key] = null;
-						if(isset($row['map_category'])):
-							if($is_hierarchy):
-								if($row['map_category']['parent'] == 0):
-									$tmp_category[$key] = $row['map_category']['name'];
-									$layer_cat[] = $row['map_category']['name'];
-								else:
-									$parent_cat = $row['map_category']['parent'];
-									if(in_array($parent_cat, array_unique($layerID))){
-										$layer_subcat[$parent_cat][] = $row['map_category']['name'];
-									}else{
-										$layer_cat[] = $row['map_category']['name'];
-									}
-								endif;
-							else:
-									$tmp_category[$key] = $row['map_category']['name'];
-									$layer_cat[] = $row['map_category']['name'];
-							endif;
-						endif;
-					endforeach;
-					$layer_category = array_unique($layer_cat);
-					asort($layer_category);
-					array_multisort($tmp_category, SORT_ASC, $layers);
-
-					echo '<ul class="categories layer-category">';
-						foreach ($layer_category as $cat) {
-									$category = get_term_by('slug', $cat, 'layer-category');
-									echo '<li class="cat-item cat-item-'.$category->term_id.'" id="post-'.$category->term_id.'">';
-										echo'<a href="#">'.$category->name.'</a>';
-										echo "<ul class='cat-layers switch-layers cat-layer-items'>";
-											foreach ($layers as $id => $layer) {
-												if($layer['map_category']['name'] == $cat):
-													display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
-												endif;
-											}
-										echo "</ul>";
-										if(isset($layer_subcat[$category->term_id])):
-											$layer_subcategory = array_unique($layer_subcat[$category->term_id]);
-											asort($layer_subcategory);
-											foreach ($layer_subcategory as $subcat):
-												echo '<ul class="children">';
-													 $sub_category = get_term_by('slug', $subcat, 'layer-category');
-												 	 echo '<li class="cat-item cat-item-'.$sub_category->term_id.'" id="post-'.$sub_category->term_id.'">';
-													 echo'<a href="#">'.$sub_category->name.'</a>';
-													 echo "<ul class='cat-layers switch-layers cat-layer-items'>";
-														 foreach ($layers as $id => $layer) {
-															 if($layer['map_category']['name'] == $subcat):
-																 display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
-															 endif;
-														 }
-													 echo "</ul>";
-												 echo "</li>";
-												echo "</ul>";
-											endforeach;
-										endif;
-									echo "</li>";
-						}
-
-					echo "</ul>";
-				else:
-					echo "<ul class='cat-layers switch-layers cat-layer-items'>";
-						foreach ($layers as $id => $layer) {
-							display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
-						}
-					echo "</ul>";
-				endif;
+				display_layer_container($layers,$show_cat,$is_hierarchy);
 				echo '<div class="news-marker">';
 				echo '<label><input class="news-marker-toggle" type="checkbox" />';
 				 	echo '<span class="label">'.__("Show news on map", "odm")."</span>";
@@ -436,6 +362,84 @@ function display_legend_container(){
 	echo '<ul class="map-legend-ul"></ul>';
 	echo '</div>';
 	echo '</div>'; //map-legend-container
+}
+
+function display_layer_container($layers, $show_cat = null, $is_hierarchy = false){
+	if($show_cat):
+		$tmp_category = array();
+		foreach ($layers as $key => $val) :
+			if(isset($val['map_category'])):
+				$layerID[] = $val['map_category']['id'];
+			endif;
+		endforeach;
+
+		foreach ($layers as $key => $row) :
+			$tmp_category[$key] = null;
+			if(isset($row['map_category'])):
+				if($is_hierarchy):
+					if($row['map_category']['parent'] == 0):
+						$tmp_category[$key] = $row['map_category']['name'];
+						$layer_cat[] = $row['map_category']['name'];
+					else:
+						$parent_cat = $row['map_category']['parent'];
+						if(in_array($parent_cat, array_unique($layerID))){
+							$layer_subcat[$parent_cat][] = $row['map_category']['name'];
+						}else{
+							$layer_cat[] = $row['map_category']['name'];
+						}
+					endif;
+				else:
+						$tmp_category[$key] = $row['map_category']['name'];
+						$layer_cat[] = $row['map_category']['name'];
+				endif;
+			endif;
+		endforeach;
+		$layer_category = array_unique($layer_cat);
+		asort($layer_category);
+		array_multisort($tmp_category, SORT_ASC, $layers);
+
+		echo '<ul class="categories layer-category">';
+			foreach ($layer_category as $cat) {
+						$category = get_term_by('slug', $cat, 'layer-category');
+						echo '<li class="cat-item cat-item-'.$category->term_id.'" id="post-'.$category->term_id.'">';
+							echo'<a href="#">'.$category->name.'</a>';
+							echo "<ul class='cat-layers switch-layers cat-layer-items'>";
+								foreach ($layers as $id => $layer) {
+									if($layer['map_category']['name'] == $cat):
+										display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+									endif;
+								}
+							echo "</ul>";
+							if(isset($layer_subcat[$category->term_id])):
+								$layer_subcategory = array_unique($layer_subcat[$category->term_id]);
+								asort($layer_subcategory);
+								foreach ($layer_subcategory as $subcat):
+									echo '<ul class="children">';
+										 $sub_category = get_term_by('slug', $subcat, 'layer-category');
+										 echo '<li class="cat-item cat-item-'.$sub_category->term_id.'" id="post-'.$sub_category->term_id.'">';
+										 echo'<a href="#">'.$sub_category->name.'</a>';
+										 echo "<ul class='cat-layers switch-layers cat-layer-items'>";
+											 foreach ($layers as $id => $layer) {
+												 if($layer['map_category']['name'] == $subcat):
+													 display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+												 endif;
+											 }
+										 echo "</ul>";
+									 echo "</li>";
+									echo "</ul>";
+								endforeach;
+							endif;
+						echo "</li>";
+			}
+
+		echo "</ul>";
+	else:
+		echo "<ul class='cat-layers switch-layers cat-layer-items'>";
+			foreach ($layers as $id => $layer) {
+				display_layer_as_menu_item_on_mapNavigation($layer['ID'], 1, $layer['filtering']);
+			}
+		echo "</ul>";
+	endif;
 }
 
 //show the toggle information container
