@@ -1,7 +1,8 @@
 {
     "name": "opendevelopmentmekong/wp-odm_theme",
     "require": {
-        "select2/select2": "^4.0"
+        "select2/select2": "^4.0",
+				"mobiledetect/mobiledetectlib": "^2.8"
     },
     "authors": [
         {
