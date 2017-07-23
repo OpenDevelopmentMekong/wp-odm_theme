@@ -60,7 +60,7 @@ class OpenDev_InteractiveMap {
           );
           $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
           if ($terms_layer) { ?>
-              <div class="category-map-layers box-shadow hide_show_container mobile-dialog">
+              <div class="category-map-layers box-shadow hide_show_container <?php if (!odm_screen_manager()->is_desktop()) echo ''; ?>">
                   <?php 
                     if (!odm_screen_manager()->is_desktop()): ?>
                       <div class="close-mobile-dialog">
