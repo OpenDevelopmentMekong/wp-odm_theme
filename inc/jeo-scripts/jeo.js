@@ -141,6 +141,7 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
   /*
    * Fullscreen
    */
+  if(typeof(jeo.fullscreen) != 'undefined')
   map.addControl(new jeo.fullscreen());
 
   /*
@@ -154,6 +155,12 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
    */
   if(typeof(jeo.printmap) != 'undefined')
   map.addControl(new jeo.printmap());
+  
+  /*
+   * Layers
+   */
+   if(typeof(jeo.layers) != 'undefined')
+  map.addControl(new jeo.layers());
 
   /*
    * Geocode
