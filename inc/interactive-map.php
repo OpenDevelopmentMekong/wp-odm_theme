@@ -59,10 +59,11 @@ class OpenDev_InteractiveMap {
             'exclude' => $exclude_posts_in_cats
           );
           $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
-          if ($terms_layer) { ?>
-              <div class="category-map-layers box-shadow hide_show_container mobile-dialog">
+          if ($terms_layer):
+            $mobileOrTablet = odm_screen_manager()->is_desktop(); ?>
+              <div class="category-map-layers box-shadow hide_show_container <?php if ($mobileOrTablet): echo 'mobile-dialog'; endif; ?>">
                   <?php 
-                    if (!odm_screen_manager()->is_desktop()): ?>
+                    if ($mobileOrTablet): ?>
                       <div class="close-mobile-dialog">
                         <i class="fa fa-times-circle"></i>
                       </div>
@@ -139,13 +140,13 @@ class OpenDev_InteractiveMap {
               $map['dataReady'] = true;
               $map['baselayers'] = $base_layers;
               $map['layers'] = $layers;
-              if($map['base_layer']) {
+              if($map['base_layer']):
                   array_unshift($map['layers'], array(
                   	'type' => 'tilelayer',
                   	'tile_url' => $map['base_layer']['url']
                   ));
-              }
-            }//if terms_layer
+              endif;
+            endif;
             ?>
             <?php
             display_legend_container();
