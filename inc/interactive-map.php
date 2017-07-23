@@ -60,7 +60,7 @@ class OpenDev_InteractiveMap {
           );
           $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
           if ($terms_layer):
-            $mobileOrTablet = odm_screen_manager()->is_desktop(); ?>
+            $mobileOrTablet = !odm_screen_manager()->is_desktop(); ?>
               <div class="category-map-layers box-shadow hide_show_container <?php if ($mobileOrTablet): echo 'mobile-dialog'; endif; ?>">
                   <?php 
                     if ($mobileOrTablet): ?>
