@@ -116,12 +116,15 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 			</div>
 		</div>
 
-		//show legend box
-		display_legend_container();
 
-		//show layer information
-    display_layer_information($layers);
+		<?php
+			//show legend box
+			display_legend_container();
+
+			//show layer information
+	    display_layer_information($layers);
 		?>
+
 		<script type="text/javascript">
 		(function($) {
 				// Resize height of layer menu
@@ -444,16 +447,16 @@ function display_layer_container($layers, $show_cat = null, $is_hierarchy = fals
 }
 
 function get_all_layers($exclude_posts_in_cats = null){
-	
+
 	//Get all posts in Layer of map-category to assing to layers array for loading layer on map
 	$all_post_layers_arg =  array(
 		'post_type' => 'map-layer',
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
 		'orderby'   => 'title',
-		'order'   => 'ASC'															
+		'order'   => 'ASC'
 	);
-															
+
 	if (isset($exclude_posts_in_cats)):
 		$all_post_layers_arg['tax_query'] = array(
 			array(
@@ -463,10 +466,10 @@ function get_all_layers($exclude_posts_in_cats = null){
 				'operator' => 'NOT IN'
 	));
 	endif;
-	
+
 	$layers = array();
 	$all_post_layers =  new WP_Query( $all_post_layers_arg );
-	
+
 	if($all_post_layers->have_posts() ):
 		while ( $all_post_layers->have_posts() ) : $all_post_layers->the_post();
 			$post_ID = get_the_ID();
@@ -474,22 +477,22 @@ function get_all_layers($exclude_posts_in_cats = null){
 		endwhile;
 		wp_reset_postdata();
 	endif;
-	
+
 	return $layers;
-		
+
 }
 
 function get_all_layers_legend($exclude_posts_in_cats = null){
-	
+
 	//Get all posts in Layer of map-category to assing to layers array for loading layer on map
 	$all_post_layers_arg =  array(
 		'post_type' => 'map-layer',
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
 		'orderby'   => 'title',
-		'order'   => 'ASC'															
+		'order'   => 'ASC'
 	);
-															
+
 	if (isset($exclude_posts_in_cats)):
 		$all_post_layers_arg['tax_query'] = array(
 			array(
@@ -498,11 +501,11 @@ function get_all_layers_legend($exclude_posts_in_cats = null){
 				'field' => 'id',
 				'operator' => 'NOT IN'
 	));
-	endif; 
-	
+	endif;
+
 	$layers_legend = array();
 	$all_post_layers =  new WP_Query( $all_post_layers_arg );
-	
+
 	if($all_post_layers->have_posts() ):
 		while ( $all_post_layers->have_posts() ) : $all_post_layers->the_post();
 			$post_ID = get_the_ID();
@@ -512,9 +515,9 @@ function get_all_layers_legend($exclude_posts_in_cats = null){
 		endwhile;
 		wp_reset_postdata();
 	endif;
-	
+
 	return $layers_legend;
-		
+
 }
 
 //show the toggle information container
@@ -584,6 +587,7 @@ function get_post_meta_of_layer($post_ID, $layer_option = false){
 
 //List all layers' value into an array by post ID
 function get_selected_layers_of_map_by_mapID($map_ID) {
+	$layers = array();
 	$map_ID = $map_ID ? $map_ID : get_the_ID();
 	if(set_default_map_baselayer($map_ID)):
 		$layers[0] = set_default_map_baselayer($map_ID);

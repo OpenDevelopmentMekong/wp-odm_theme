@@ -155,7 +155,7 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
    */
   if(typeof(jeo.printmap) != 'undefined')
   map.addControl(new jeo.printmap());
-  
+
   /*
    * Layers
    */

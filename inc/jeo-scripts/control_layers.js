@@ -22,7 +22,7 @@ var original_layers_height;
 		},
 		_bindEvents: function() {
 			var self = this;
-			this._$.click(function() {		
+			this._$.click(function() {
 				$(".mobile-dialog").siblings().hide();
 				$(".mobile-dialog").css("display","contents");
 				return false;
