@@ -224,13 +224,27 @@ function odm_jeo_scripts()
     endif;
 
     if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')):
-       wp_deregister_script('jeo.fullscreen');
-       wp_enqueue_script('jeo.control_fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '0.2.0');
+       wp_deregister_script('jeo.fullscreen');       
     endif;
     
     if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/clearscreen.js')):
-       wp_deregister_script('jeo.clearscreen');
-       wp_enqueue_script('jeo.control_clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js',array('jeo'), '0.2.0');
+       wp_deregister_script('jeo.clearscreen');       
+    endif;
+    
+    if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js')):
+			wp_enqueue_script('jeo.control_clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
+    endif;
+    
+    if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js')):
+			wp_enqueue_script('jeo.control_fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js', array('jeo'), '1.0.0');
+    endif;
+    
+    if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js') && !odm_screen_manager()->is_desktop()):
+			wp_enqueue_script('jeo.control_layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.0.0');
+    endif;
+    
+		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js') && odm_screen_manager()->is_desktop()):
+			wp_enqueue_script('jeo.control_printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.0.0');
     endif;
 
     wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');    
