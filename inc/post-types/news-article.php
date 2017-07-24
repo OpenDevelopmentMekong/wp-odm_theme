@@ -25,9 +25,9 @@ class Odm_News_Article {
 			'new_item'           => __( 'New news article', 'odm' ),
 			'edit_item'          => __( 'Edit news article', 'odm' ),
 			'view_item'          => __( 'View news article', 'odm' ),
-			'all_items'          => __( 'All news articles', 'odm' ),
-			'search_items'       => __( 'Search news articles', 'odm' ),
-			'parent_item_colon'  => __( 'Parent news articles:', 'odm' ),
+			'all_items'          => __( 'All news', 'odm' ),
+			'search_items'       => __( 'Search news', 'odm' ),
+			'parent_item_colon'  => __( 'Parent news:', 'odm' ),
 			'not_found'          => __( 'No stories found.', 'odm' ),
 			'not_found_in_trash' => __( 'No stories found in trash.', 'odm' )
 		);

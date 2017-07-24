@@ -1,11 +1,16 @@
 <?php
 
 /*
+ * Composer autoload
+ */
+require 'vendor/autoload.php';
+/*
  * Managers
  */
 require_once get_stylesheet_directory().'/inc/country-manager.php';
 require_once get_stylesheet_directory().'/inc/language-manager.php';
 require_once get_stylesheet_directory().'/inc/taxonomy-manager.php';
+require_once get_stylesheet_directory().'/inc/screen-manager.php';
 require_once get_stylesheet_directory().'/inc/land-portal-manager.php';
 
 /*
@@ -25,7 +30,6 @@ require_once get_stylesheet_directory().'/inc/query-multisite.php';
 require_once get_stylesheet_directory().'/inc/theme-options.php';
 require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
-//require_once get_stylesheet_directory().'/inc/live-search/live-search.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
@@ -229,8 +233,11 @@ function odm_jeo_scripts()
     wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
 		wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
 		wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
-		wp_enqueue_script('printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.1.0');
-  }
+
+		if (odm_screen_manager()->is_desktop()):
+			wp_enqueue_script('printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.1.0');
+		endif;
+	}
 
   if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')) {
     wp_deregister_script('jeo-share-widget');
@@ -250,7 +257,7 @@ add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
-		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js'))
+		if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js') && odm_screen_manager()->is_desktop())
 			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/printmap.js', array('jeo'), '1.0.0');
 
 }
@@ -273,6 +280,7 @@ function odm_styles()
     $bower_base = get_stylesheet_directory_uri().'/bower_components/';
     wp_enqueue_style('bower-fontawesome-style',  $bower_base.'fontawesome/css/font-awesome.min.css');
     wp_enqueue_style('bower-chosen-style',  $bower_base.'chosen/chosen.css');
+    wp_enqueue_style('od-icomoon-style',  get_stylesheet_directory_uri() . '/inc/fonts/od-icomoon.css');
 
     $dist_base = get_stylesheet_directory_uri().'/dist/css/';
     wp_enqueue_style('extra-style',  $dist_base.'extra.min.css');

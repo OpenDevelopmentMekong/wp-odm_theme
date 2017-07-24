@@ -5,7 +5,7 @@
 	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created";
 	?>
 
-  <article id="content" class="single-post">
+  <article id="content" class="single-post story-content">
 
 		<section class="container section-title main-title">
 			<div class="row">
@@ -14,7 +14,7 @@
 				if (has_post_thumbnail() ): ?>
 				<div class="sixteen columns post-title story-header">
 					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail' ); ?>
-	        <header style="min-height:400px;background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('<?php echo $image[0]; ?>')">
+	        <header style="min-height:400px;background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url('<?php echo $image[0]; ?>')">
 						<div  class="container">
 							<div class="row">
 								<div class="eight columns offset-by-four">
@@ -81,7 +81,7 @@
 
       <section class="container">
     		<div class="row">
-    			<div class="sixteen columns">
+    			<div class="fourteen offset-by-one columns">
             <?php the_content(); ?>
             <?php odm_echo_extras(); ?>
           </section>

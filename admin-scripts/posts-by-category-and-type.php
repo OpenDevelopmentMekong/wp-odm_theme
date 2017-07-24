@@ -38,7 +38,7 @@ else:
 		<tr>
 	    <th>Taxonomic term</th>
 	    <th># Topics</th>
-	    <th># News articles</th>
+	    <th># News</th>
 			<th># Maps</th>
 			<th># Profiles</th>
 			<th># Announcements</th>

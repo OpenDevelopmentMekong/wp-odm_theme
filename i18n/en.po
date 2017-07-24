@@ -1169,15 +1169,15 @@ msgid "View news article"
 msgstr ""
 
 #: inc/post-types/news-article.php:28
-msgid "All news articles"
+msgid "All news"
 msgstr ""
 
 #: inc/post-types/news-article.php:29
-msgid "Search news articles"
+msgid "Search news"
 msgstr ""
 
 #: inc/post-types/news-article.php:30
-msgid "Parent news articles:"
+msgid "Parent news:"
 msgstr ""
 
 #: inc/post-types/news-article.php:31 inc/post-types/stories.php:33
@@ -2088,7 +2088,7 @@ msgid "Datasets"
 msgstr ""
 
 #: page-data.php:145
-msgid "Library publications"
+msgid "Publications"
 msgstr ""
 
 #: page-data.php:146
