@@ -234,10 +234,12 @@ function odm_jeo_scripts()
     endif;
     
     if (file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_printmap.js' && odm_screen_manager()->is_desktop())):
+      wp_deregister_script('jeo.control_printmap');
 			wp_enqueue_script('jeo.control_printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.1.0');
 		endif;
     
     if (file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_layers.js'  && !odm_screen_manager()->is_desktop())):
+      wp_deregister_script('jeo.control_layers');
 			wp_enqueue_script('jeo.control_layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.1.0');
 		endif;
 
