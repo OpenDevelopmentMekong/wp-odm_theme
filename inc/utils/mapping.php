@@ -98,23 +98,23 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 //************//
 function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is_hierarchy = false){
 	if (!empty($layers)){
-		unset($layers[0]); //basemap
-		echo '<div class="category-map-layers box-shadow hide_show_container">';
-			echo '<h2 class="sidebar_header map_headline widget_headline">'.__("Map Layers", "odm");
-				echo "<i class='fa fa-caret-down hide_show_icon'></i>";
-			echo '</h2>';
-			echo '<div class="interactive-map-layers dropdown">';
-				display_layer_container($layers,$show_cat,$is_hierarchy);
-				echo '<div class="news-marker">';
-				echo '<label><input class="news-marker-toggle" type="checkbox" />';
-				 	echo '<span class="label">'.__("Show news on map", "odm")."</span>";
-				echo '</label>';
-				echo '</div>';
-				echo '<div class="searchFeature">';
-					echo '<input type="text" name="searchFeature_by_mapID" class="hidden" value="" id="searchFeature_by_mapID" size="10" />';
-				echo '</div>';
-			echo '</div>'; //interactive-map-layers dropdown
-		echo '</div>'; //category-map-layers  box-shadow
+		unset($layers[0]); ?>
+		<div class="category-map-layers box-shadow hide_show_container mobile-dialog">
+			<h2 class="sidebar_header map_headline widget_headline"><?php _e("Map Layers", "odm"); ?>
+				<i class='fa fa-caret-down hide_show_icon'></i>
+			</h2>
+			<div class="interactive-map-layers dropdown">
+				<?php display_layer_container($layers,$show_cat,$is_hierarchy); ?>
+				<div class="news-marker">
+					<label><input class="news-marker-toggle" type="checkbox" />
+					 	<span class="label"><?php _e("Show news on map", "odm") ?></span>
+					</label>
+				</div>
+				<div class="searchFeature">
+					<input type="text" name="searchFeature_by_mapID" class="hidden" value="" id="searchFeature_by_mapID" size="10" />';
+				</div>
+			</div>
+		</div>
 
 		//show legend box
 		display_legend_container();
@@ -185,6 +185,7 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 //Query all baselayers' post meta into an array
 function query_get_layer_posts($term_id, $num = -1, $exclude_cats = null, $filter_arr = null, $layer_taxonomy=null){
 	$layer_taxonomy = $layer_taxonomy? $layer_taxonomy : "layer-category";
+	$filter_string = null;
 	if($filter_arr){
 		$filter_string = isset($filter_arr['filter_s'])? $filter_arr['filter_s'] : null;
 		$filter_taxonomy = isset($filter_arr['filter_taxonomy'])? $filter_arr['filter_taxonomy'] : null;
@@ -240,7 +241,7 @@ function get_all_layers_grouped_by_subcategory( $term_id = 0, $exclude_cats ='',
 		$layer_taxonomy = "category";
 	endif;
 
-	if(array_filter($filter_arr)){
+	if(isset($filter_arr) && array_filter($filter_arr)){
 		$filter_taxonomy = isset($filter_arr['filter_taxonomy'])? $filter_arr['filter_taxonomy'] : null;
 		if($filter_taxonomy):
 			$taxonomy_name = array_keys($filter_taxonomy);
@@ -442,25 +443,99 @@ function display_layer_container($layers, $show_cat = null, $is_hierarchy = fals
 	endif;
 }
 
+function get_all_layers($exclude_posts_in_cats = null){
+	
+	//Get all posts in Layer of map-category to assing to layers array for loading layer on map
+	$all_post_layers_arg =  array(
+		'post_type' => 'map-layer',
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'orderby'   => 'title',
+		'order'   => 'ASC'															
+	);
+															
+	if (isset($exclude_posts_in_cats)):
+		$all_post_layers_arg['tax_query'] = array(
+			array(
+				'taxonomy' => 'layer-category',
+				'terms' => $exclude_posts_in_cats,
+				'field' => 'id',
+				'operator' => 'NOT IN'
+	));
+	endif;
+	
+	$layers = array();
+	$all_post_layers =  new WP_Query( $all_post_layers_arg );
+	
+	if($all_post_layers->have_posts() ):
+		while ( $all_post_layers->have_posts() ) : $all_post_layers->the_post();
+			$post_ID = get_the_ID();
+			$layers[$post_ID] = get_post_meta_of_layer($post_ID );
+		endwhile;
+		wp_reset_postdata();
+	endif;
+	
+	return $layers;
+		
+}
+
+function get_all_layers_legend($exclude_posts_in_cats = null){
+	
+	//Get all posts in Layer of map-category to assing to layers array for loading layer on map
+	$all_post_layers_arg =  array(
+		'post_type' => 'map-layer',
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'orderby'   => 'title',
+		'order'   => 'ASC'															
+	);
+															
+	if (isset($exclude_posts_in_cats)):
+		$all_post_layers_arg['tax_query'] = array(
+			array(
+				'taxonomy' => 'layer-category',
+				'terms' => $exclude_posts_in_cats,
+				'field' => 'id',
+				'operator' => 'NOT IN'
+	));
+	endif; 
+	
+	$layers_legend = array();
+	$all_post_layers =  new WP_Query( $all_post_layers_arg );
+	
+	if($all_post_layers->have_posts() ):
+		while ( $all_post_layers->have_posts() ) : $all_post_layers->the_post();
+			$post_ID = get_the_ID();
+			if(get_legend_of_map_by($post_ID)!=""){
+				$layers_legend[$post_ID ] = get_legend_of_map_by($post_ID);
+			}
+		endwhile;
+		wp_reset_postdata();
+	endif;
+	
+	return $layers_legend;
+		
+}
+
 //show the toggle information container
 function display_layer_information($layers){
 ?>
 	<div class="box-shadow layer-toggle-info-container layer-right-screen">
 	   <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
 	   <?php
-	   foreach($layers as $individual_layer){
+	   foreach($layers as $individual_layer):
 			$get_post_content_by_id = null;
 		  $get_post_by_id = get_post($individual_layer["ID"]);
-		  if ( (odm_language_manager()->get_current_language() !== "en") ){
+		  if ( (odm_language_manager()->get_current_language() !== "en") ):
 				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
-		  }else {
+		  else:
 			 	$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link', true);
-		  }
+		  endif;
 
 		  // get post content if has
 			$get_post_content_by_id = apply_filters('translate_text', $get_post_by_id->post_content, odm_language_manager()->get_current_language());
 			$check_post_content= trim(str_replace("&nbsp;", "", strip_tags($get_post_content_by_id)));
-			if(!empty($check_post_content)){ ?>
+			if(!empty($check_post_content)): ?>
 					<div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
 						<div class="layer-toggle-info-content">
 							<h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
@@ -468,8 +543,7 @@ function display_layer_information($layers){
 						</div>
 					</div>
 			<?php
-			}
-			elseif($get_download_url!="" ){
+			elseif($get_download_url!="" ):
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
 										"notes_translated" => "Description",
@@ -484,10 +558,10 @@ function display_layer_information($layers){
 				  if($ckan_dataset_id!= ""):
 					  wpckan_get_metadata_info_of_dataset_by_id($ckan_domain, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
 				  endif;
-			}
+			endif;
 			?>
 		<?php
-	   }// foreach
+		endforeach;
 	   ?>
 	</div><!--llayer-toggle-info-containero-->
 <?php
