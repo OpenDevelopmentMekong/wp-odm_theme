@@ -3,7 +3,7 @@ var original_layers_height;
 (function($) {
 	jeo.layers = L.Control.extend({
 		options: {
-			position: 'topleft'
+			position: 'topright'
 		},
 
 		onAdd: function(map) {
@@ -25,9 +25,9 @@ var original_layers_height;
 			this._$.click(function() {
 				var visibleSiblings = [];
 				$(".hide-on-mobile-dialog").each(function(index){
-					$(this).hide();	
+					$(this).hide();
 				});
-				$(".mobile-dialog").css("display","contents");
+				$(".mobile-dialog").css("display","block"); 
 				return false;
 			});
 		}
