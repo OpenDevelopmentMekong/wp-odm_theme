@@ -233,10 +233,13 @@ function odm_jeo_scripts()
     endif;
     
     wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '0.2.0');
-    wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
     
     if (odm_screen_manager()->is_desktop()):
-			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.1.0');
+			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
+		endif;
+    
+    if (odm_screen_manager()->is_desktop()):
+			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.0.0');
 		endif;
     
     if (!odm_screen_manager()->is_desktop()):
