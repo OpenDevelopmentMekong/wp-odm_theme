@@ -231,8 +231,8 @@ function odm_jeo_scripts()
     if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/clearscreen.js')):
        wp_deregister_script('jeo.clearscreen');
     endif;
-
-    wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '1.0.0');    
+    
+    wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '0.2.0');
     
     if (odm_screen_manager()->is_desktop()):
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
