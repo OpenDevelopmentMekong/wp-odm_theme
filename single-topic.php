@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <?php if (have_posts()) : the_post();
+	global $post;
 	$options = get_option('odm_options');
   $date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created";
   ?>
@@ -10,8 +11,7 @@
       <section class="container section-title main-title">
         <header class="row">
           <div class="twelve columns post-title">
-            <h1><?php the_title(); ?></h1>
-            <?php echo_post_meta(get_post(),array('date','categories','tags'),$date_to_show); ?>
+						<?php odm_title($post); ?>            
           </div>
           <div class="four columns">
             <div class="widget share-widget">
