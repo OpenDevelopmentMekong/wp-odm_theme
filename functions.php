@@ -224,34 +224,27 @@ function odm_jeo_scripts()
        wp_enqueue_script('jeo', get_stylesheet_directory_uri() . '/inc/jeo-scripts/jeo.js', array('mapbox-js', 'underscore', 'jquery'), '0.5.0');
     endif;
 
-    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/fullscreen.js')):
+    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_fullscreen.js')):
        wp_deregister_script('jeo.fullscreen');
+       wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '0.2.0');
     endif;
 
-    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/clearscreen.js')):
-       wp_deregister_script('jeo.clearscreen');
+    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_clearscreen.js')):
+       wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
     endif;
-    
-    wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '0.2.0');
-    
-    if (odm_screen_manager()->is_desktop()):
-			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
-		endif;
-    
-    if (odm_screen_manager()->is_desktop()):
-			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.0.0');
-		endif;
-
-    if (!odm_screen_manager()->is_desktop()):
-			wp_enqueue_script('jeo.layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.0.0');
-		endif;
 
     wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
     wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
-		wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
-		wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
 
-
+    if (odm_screen_manager()->is_desktop()):
+			wp_enqueue_script('jeo.layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.1.0');
+      if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_printmap.js')):
+  			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.1.0');
+    		wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
+    		wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
+		  endif;
+		endif;
+    
   endif;
 
   if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')) {
