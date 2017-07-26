@@ -40,10 +40,10 @@ class OpenDev_InteractiveMap {
         		<div id="map_interactive_map_0" class="map"></div>
         	</div>
         	<?php
-          
+
           $layers = get_all_layers($exclude_posts_in_cats);
           $layers_legend = get_all_layers_legend($exclude_posts_in_cats);
-                  	
+
         	//Show Baselayers Navigations
         	display_baselayer_navigation(5, 'base-layers', false);
 
@@ -62,12 +62,12 @@ class OpenDev_InteractiveMap {
           if ($terms_layer):
             $mobileOrTablet = !odm_screen_manager()->is_desktop(); ?>
               <div class="category-map-layers box-shadow hide_show_container <?php if ($mobileOrTablet): echo 'mobile-dialog'; endif; ?>">
-                  <?php 
+                  <?php
                     if ($mobileOrTablet): ?>
                       <div class="close-mobile-dialog">
                         <i class="fa fa-times-circle"></i>
                       </div>
-                  <?php 
+                  <?php
                     endif; ?>
                   <h2 class="sidebar_header map_headline widget_headline">
                     <?php _e("Map Layers", "odm"); ?>
@@ -75,7 +75,7 @@ class OpenDev_InteractiveMap {
                   </h2>
                   <div class="interactive-map-layers dropdown">
                       <ul class="categories">
-                      <?php 
+                      <?php
                         foreach( $terms_layer as $term ):
                           $args_layer = array(
                              'posts_per_page' => -1,
