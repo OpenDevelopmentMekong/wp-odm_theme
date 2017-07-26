@@ -11,7 +11,7 @@
       <section class="container section-title main-title">
         <header class="row">
           <div class="twelve columns post-title">
-						<?php odm_title($post); ?>            
+						<?php odm_title($post,array('date','categories','tags'),$date_to_show); ?> 
           </div>
           <div class="four columns">
             <div class="widget share-widget">

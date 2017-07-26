@@ -550,11 +550,8 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_title($the_post,$show_meta = array('date','categories','tags') ){ 
+function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show ){ 
 
-	$options = get_option('odm_options');
-	$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created"; 
-	
 	if (odm_screen_manager()->is_desktop()): ?>
 		<h1><?php echo get_the_title($the_post) ?></h1>
 		<?php echo_post_meta($the_post,$show_meta,$date_to_show);
