@@ -6,7 +6,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 <section class="container section-title main-title">
 	<header class="row">
 		<div class="eight columns">
-			<h1><?php _e('Database','odm') ?></h1>
+			<h1 class="ellipsis"><?php _e('Database','odm') ?></h1>
 		</div>
     <div class="eight columns align-right">
 			<?php get_template_part('section', 'query-actions'); ?>
