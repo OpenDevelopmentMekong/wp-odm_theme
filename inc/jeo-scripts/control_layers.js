@@ -27,7 +27,8 @@ var original_layers_height;
 				$(".hide-on-mobile-dialog").each(function(index){
 					$(this).hide();
 				});
-				$(".mobile-dialog").css("display","block"); 
+				$(".map-container").parents(".row").css("display","block");
+				$(".category-map-layers.mobile-dialog").css("display","block");
 				return false;
 			});
 		}

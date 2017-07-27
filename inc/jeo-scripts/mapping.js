@@ -201,13 +201,6 @@
 		  }
 		});
 
-		$('.category-map-layers').on( "click", '.fa-times-circle', function(e){ 
-				$(".hide-on-mobile-dialog").each(function(index){
-					$(this).show();
-				});
-	      $(".mobile-dialog").hide();
-			});
-
 	}); //	jeo.mapReady
 
 })(jQuery);

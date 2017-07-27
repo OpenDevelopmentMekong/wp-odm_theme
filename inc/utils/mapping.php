@@ -1,13 +1,14 @@
 <?php
 // get baselayer Navigation
-function display_baselayer_navigation($num=5, $cat='base-layers', $include_children=false ){
+function display_baselayer_navigation($num=5, $cat='base-layers', $include_children=false, $hideOnMobile=true){
 	$selected_baselayer = $GLOBALS['extended_jeo_layers']->get_map_layers(get_the_ID(), "baselayer");
 	$selected_baselayer_obj = json_decode(json_encode($selected_baselayer));
 
 	$get_all_baselayers = query_get_baselayer_posts();
 	$baselayer_posts = $selected_baselayer ? $selected_baselayer_obj : $get_all_baselayers;
 	if($baselayer_posts){
-		echo '<div class="baselayer-container hideOnMobile">';
+		$hideOnMobile_class =  $hideOnMobile? ' hideOnMobile' : null;
+		echo '<div class="baselayer-container'. $hideOnMobile_class.'">';
 		echo '<img class="north-direction hide" src="'.get_bloginfo('url').'/wp-content/themes/wp-odm_theme/img/north-direction.png" />';
 		echo '<ul class="baselayer-ul box-shadow">';
 		foreach ( $baselayer_posts as $baselayer ) :
@@ -98,17 +99,22 @@ function get_post_meta_of_all_baselayer($num=5, $cat='base-layers', $include_chi
 //************//
 function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is_hierarchy = false){
 	if (!empty($layers)){
-		unset($layers[0]); ?>
-		<div class="category-map-layers box-shadow hide_show_container <?php if ($mobileOrTablet): echo 'mobile-dialog'; endif; ?>">
+		unset($layers[0]);
+		$isMobile = odm_screen_manager()->is_mobile();
+		?>
+		<div class="category-map-layers box-shadow hide_show_container <?php if ($isMobile): echo 'mobile-dialog'; endif; ?>">
 			<?php
-				if ($mobileOrTablet): ?>
+				if ($isMobile): ?>
 					<div class="close-mobile-dialog">
 						<i class="fa fa-times-circle"></i>
 					</div>
-			<?php
-				endif; ?>
+					<?php
+					 display_baselayer_navigation(5, 'base-layers', false, false);
+				endif;
+				?>
 			<h2 class="sidebar_header map_headline widget_headline"><?php _e("Map Layers", "odm"); ?>
-				<i class='fa fa-caret-down hide_show_icon'></i>
+				<?php if (!$isMobile): echo "<i class='fa fa-caret-down hide_show_icon'></i>"; endif; ?>
+
 			</h2>
 			<div class="interactive-map-layers dropdown">
 				<?php display_layer_container($layers,$show_cat,$is_hierarchy); ?>
