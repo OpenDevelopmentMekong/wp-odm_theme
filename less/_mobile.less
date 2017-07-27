@@ -223,6 +223,15 @@ and (orientation : portrait) {
 	    right: 10px !important;
 	}
 
+	.button, .dt-button, a.button, button{
+		padding: 5px;
+		height: 15px !important;
+
+		.fa-download {
+			margin-right: 0;
+		}
+	}
+
 }
 
 /* Large Mobile Screen - Change Menu Style */
@@ -255,6 +264,10 @@ and (orientation : portrait) {
 
 	.embeded-interactive-map .map-container.hide-on-mobile-dialog{
 		max-height: 300px;
+	}
+
+	.section-title{
+		padding: 0px 0 5px;
 	}
 }
 
@@ -339,32 +352,64 @@ and (orientation : portrait) {
 
 /* Small Mobile Screen */
 @media screen and (min-device-width: 360px) and (max-device-width: 450px) {
-  .alignleft, .alignright {
+	#od-head {
+		min-height: 55px;
+		padding: 0;
+		#icon-od-logo {
+			margin-right: 5px;
+
+			.svg-od-logo {
+				width: 30px;
+				height: 50px;
+			}
+		}
+		h1 {
+			font-size: 25px;
+			margin: 2px 10px 0 0;
+		}
+		h2.side-title {
+			line-height: 40px;
+			font-size: 18px;
+			margin-top: 8px;
+		}
+	}
+	.alignleft, .alignright {
     width: 50%;
   }
 
 	.interactive-map .map-container {
 		max-height: 400px;
 	}
+
 }
 
 /* Small Mobile Screen */
 @media screen and (min-device-width: 320px) and (max-device-width: 370px) {
   #od-head {
+		min-height: 55px;
     padding: 0;
     #icon-od-logo {
+			margin-right: 5px;
+
       .svg-od-logo {
-        width: 37px;
+        width: 27px;
+				height: 50px;
       }
     }
     h1 {
-      font-size: 24px;
+      font-size: 22px;
+			margin: 2px 10px 0 0;
     }
     h2.side-title {
       line-height: 40px;
       font-size: 16px;
+			margin-top: 8px;
     }
   }
+
+	.interactive-map .map-container.hide-on-mobile-dialog{
+		max-height: 300px;
+	}
 }
 
 .ellipsis {
