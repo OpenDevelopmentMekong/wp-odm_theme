@@ -226,17 +226,17 @@ function odm_jeo_scripts()
 
     if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_fullscreen.js')):
        wp_deregister_script('jeo.fullscreen');
-       wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '0.2.0');
+       wp_enqueue_script('jeo.fullscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_fullscreen.js',array('jeo'), '1.0.0');
     endif;
 
-    if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_clearscreen.js')):
+    if ( odm_screen_manager()->is_desktop() && file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_clearscreen.js')):
        wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_clearscreen.js', array('jeo'), '1.0.0');
     endif;
 
     wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
     wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
 
-    if (odm_screen_manager()->is_mobile()):
+    if (!odm_screen_manager()->is_desktop()):
 			wp_enqueue_script('jeo.layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.1.0');
     endif;
 
