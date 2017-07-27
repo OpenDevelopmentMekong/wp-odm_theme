@@ -5,24 +5,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-06-11 23:57+0200\n"
-"PO-Revision-Date: 2017-06-11 23:57+0200\n"
+"POT-Creation-Date: 2017-07-27 23:49+0200\n"
+"PO-Revision-Date: 2017-07-27 23:49+0200\n"
 "Last-Translator: Theint Naing Yoon <yoon@phandeeyar.org>, 2016\n"
 "Language-Team: Burmese (https://www.transifex.com/open-development-mekong/teams/27158/my/)\n"
+"Language: my\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: my\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: i18n\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:10
 msgid "Not found!"
@@ -30,19 +30,14 @@ msgstr "မတွေ့ရှိပါ"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from "
-"the top menu, it means the new location doesn't have an information page on "
-"this topic that the old location had. To see what information does exist for"
-" this new location you've chosen simply click any of the navigation main "
-"menu items (News, Topics, Maps, Data, etc..) from the navigation menu above "
-"this message ."
+"If you received this error after selecting a new geographic location from the top menu, it means the new location "
+"doesn't have an information page on this topic that the old location had. To see what information does exist for "
+"this new location you've chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, "
+"etc..) from the navigation menu above this message ."
 msgstr ""
-"အကယ်၍သင်သည် ထိပ်ဆုံးမီနူးတွင်းမှ ပထဝီတည်နေရာသစ်တစ်ခုကို ရွေးချယ်ပြီးသော်လည်း"
-" ဤ error ကိုရရှိနေသေးပါက တည်နေရာအဟောင်းတွင်သာရှိသော သတင်းအချက်အလက်သည် "
-"တည်နေရာအသစ်တွင်ရှိမနေသေးသောကြောင့်ဖြစ်သည်။ တည်နေရာအသစ်အတွက် "
-"မည်သည့်သတင်းအချက်ရှိပြီးဖြစ်သည်ကို ကြည့်ရှုလိုပါက ဤစာ၏အပေါ်တွင်ရှိသော "
-"navigation main menu ထဲတွင်ပါဝင်သည့် (သတင်းများ၊ ခေါင်းစဥ်များ၊ မြေပုံများ၊ "
-"Data စသည်ဖြင့်) တစ်ခုခုကိုရွေးချယ်နိုင်ပါသည်။"
+"အကယ်၍သင်သည် ထိပ်ဆုံးမီနူးတွင်းမှ ပထဝီတည်နေရာသစ်တစ်ခုကို ရွေးချယ်ပြီးသော်လည်း ဤ error ကိုရရှိနေသေးပါက တည်နေရာအဟောင်းတွင်သာရှိသော သတင်းအချက်အလက်သည် "
+"တည်နေရာအသစ်တွင်ရှိမနေသေးသောကြောင့်ဖြစ်သည်။ တည်နေရာအသစ်အတွက် မည်သည့်သတင်းအချက်ရှိပြီးဖြစ်သည်ကို ကြည့်ရှုလိုပါက ဤစာ၏အပေါ်တွင်ရှိသော navigation main menu "
+"ထဲတွင်ပါဝင်သည့် (သတင်းများ၊ ခေါင်းစဥ်များ၊ မြေပုံများ၊ Data စသည်ဖြင့်) တစ်ခုခုကိုရွေးချယ်နိုင်ပါသည်။"
 
 #: 404.php:22
 msgid "Back to the previous page"
@@ -85,7 +80,6 @@ msgid "Maps"
 msgstr "မြေပုံများ"
 
 #: archive-news-article.php:9 i18n/extra-strings.php:15
-#: inc/live-search/live-search.php:23
 msgid "News"
 msgstr "သတင်းများ"
 
@@ -155,17 +149,14 @@ msgstr "Y"
 msgid "Archives"
 msgstr "သိမ်းဆည်းထားမှုများ"
 
-#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8
-#: inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
-#: inc/utils/breadcrumbs.php:221
+#: content-embed.php:16 inc/templates/pagination.php:8 inc/templates/pagination.php:16
+#: inc/templates/pagination_solr.php:7 inc/utils/breadcrumbs.php:282 inc/utils/content.php:22
 msgid "Page"
 msgstr "စာမျက်နှာ"
 
-#: content-map-group.php:27
-#: inc/widgets/odm-contents-same-category-widget.php:90
-#: inc/widgets/odm-contents-same-category-widget.php:126
-#: inc/widgets/odm-custom-posts-widget.php:89
-#: inc/widgets/odm-custom-posts-widget.php:119
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:91
+#: inc/widgets/odm-contents-same-category-widget.php:128 inc/widgets/odm-custom-posts-widget.php:90
+#: inc/widgets/odm-custom-posts-widget.php:121
 msgid "More..."
 msgstr "နောက်ထပ်"
 
@@ -176,117 +167,115 @@ msgstr "မြေပုံများအားလုံကြည့်မည်
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
 msgstr ""
-"This website is built on <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
 
-#: functions.php:53
+#: functions.php:57
 msgid "Topic sidebar"
 msgstr "ခေါင်းစဥ် sidebar"
 
-#: functions.php:59
+#: functions.php:63
 msgid "Homepage area top left"
 msgstr "ပင်မစာမျက်နှာ ဘယ်ဘက်အပေါ်ဧရိယာ"
 
-#: functions.php:67
+#: functions.php:71
 msgid "Homepage area top right"
 msgstr "ပင်မစာမျက်နှာ ညာဘက်အပေါ်ဧရိယာ"
 
-#: functions.php:75
+#: functions.php:79
 msgid "Homepage area middle"
 msgstr "ပင်မစာမျက်နှာ အလယ်ဧရိယာ"
 
-#: functions.php:83
+#: functions.php:87
 msgid "Homepage area bottom left"
 msgstr "ပင်မစာမျက်နှာ ဘယ်ဘက်အောက်ဧရိယာ"
 
-#: functions.php:91
+#: functions.php:95
 msgid "Homepage area bottom right"
 msgstr "ပင်မစာမျက်နှာ ညာဘက်အောက်ဧရိယာ"
 
-#: functions.php:99
+#: functions.php:103
 msgid "WPCKAN Dataset detail sidebar"
 msgstr "WPCKAN Dataset sidebar အသေးစိတ်"
 
-#: functions.php:105
+#: functions.php:109
 msgid "Story top"
 msgstr "အပေါ် သတင်း"
 
-#: functions.php:111
+#: functions.php:115
 msgid "Story bottom"
 msgstr "အောက် သတင်း"
 
-#: functions.php:117
+#: functions.php:121
 msgid "Profile area right sidebar"
 msgstr "လက်ယာဘက် sidebar အား profile area အဖြစ်သုံးမည်"
 
-#: functions.php:123
+#: functions.php:127
 msgid "Profile area bottom left"
 msgstr "အောက်ခြေလက်ဝဲဘက်အား profile area အဖြစ်သုံးမည်"
 
-#: functions.php:131
+#: functions.php:135
 msgid "Profile area bottom right"
 msgstr "အောက်ခြေလက်ယာဘက်အား profile area အဖြစ်သုံးမည်"
 
-#: functions.php:139
+#: functions.php:143
 msgid "Profile with right sidebar only"
 msgstr "လက်ယာဘက် sidebar တစ်ခုတည်းအား profile အဖြစ်သုံးမည်"
 
-#: functions.php:145 inc/theme-options.php:70
+#: functions.php:149 inc/theme-options.php:70
 msgid "Category page"
 msgstr "အမျိုးအမည် စာမျက်နှာ"
 
-#: functions.php:242
+#: functions.php:257
 msgid "default"
 msgstr "မူလအတိုင်း"
 
-#: functions.php:293
+#: functions.php:305
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "သတင်းရင်းမြစ်များ"
 
-#: functions.php:294
+#: functions.php:306
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "သတင်းရင်းမြစ်"
 
-#: functions.php:295
+#: functions.php:307
 msgid "Search News Source"
 msgstr "သတင်းရင်းမြစ်ရှာဖွေမည်"
 
-#: functions.php:296
+#: functions.php:308
 msgid "All News Sources"
 msgstr "သတင်းရင်းမြစ်များအားလုံး"
 
-#: functions.php:297
+#: functions.php:309
 msgid "Parent News Source"
 msgstr "မူရင်းသတင်းရင်းမြစ်"
 
-#: functions.php:298
+#: functions.php:310
 msgid "Parent News Source:"
 msgstr "မူရင်းသတင်းရင်းမြစ်:"
 
-#: functions.php:299
+#: functions.php:311
 msgid "Edit News Source"
 msgstr "သတင်းရင်းမြစ်ကိုတည်းဖြတ်မည်"
 
-#: functions.php:300
+#: functions.php:312
 msgid "Update News Source"
 msgstr "သတင်းရင်းမြစ်ကို update လုပ်မည်"
 
-#: functions.php:301
+#: functions.php:313
 msgid "Add New News Source"
 msgstr "သတင်းရင်းမြစ်အသစ်ထည့်သွင်းမည်"
 
-#: functions.php:302
+#: functions.php:314
 msgid "New News Source Name"
 msgstr "သတင်းရင်းမြစ်အသစ် အမည်"
 
-#: functions.php:303
+#: functions.php:315
 msgid "News Source"
 msgstr "သတင်းရင်းမြစ်"
 
@@ -476,13 +465,38 @@ msgstr "မြို့ပြ စီမံခန့်ခွဲရေးနှ�
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed "
+"under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles "
+"and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} "
+"website and its accompanying database are compiled from publicly available documentation and provided without fee "
+"for general informational purposes only. This is neither a commercial research service nor a domain managed by "
+"any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge "
+"media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/"
+"C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  "
+"{ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with "
+"respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or "
+"referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of "
+"that research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on "
+"any site information provided and to hold harmless and waive any and all liability against individuals or "
+"entities associated with its development, form and content for any loss, harm or damage suffered as a result of "
+"its use."
 msgstr ""
-"ဤအရာနှင့် Open Development {country} မှထုတ်လုပ်သော၊ ထုတ်ဝေသော မည့်သည့်အကြောင်းအရာမဆို CC BY-SA 3.0 ၏အောက်တွင်မူပိုင်ခွင့်ရှိသည်။ ရင်းမြစ်အသီးသီး၏ fair-use နည်းဥပဒေများနှင့် မူပိုင်ခွင့်များအတိုင်း သတင်းဆောင်းပါးများကို ၎င်းတို့၏ ရင်းမြစ်များမှထုတ်ယူထားသည်။ Open Development {country} {ODM/C/V/Mm/T/L} website တွင်တင်ထားသည့်အကြောင်းအရာများနှင့် ပူးတွဲပါဝင်သည့် database များသည် အများသူငါ လွတ်လပ်စွာရယူနိုင်သောစာတမ်းများဖြစ်ပြီး အခကြေးငွေမယူပဲ သတင်းအချက်အလက်ဆိုင်ရာ အထွေထွေအသုံးချမှုအတွက်ဖြစ်သည်။ ဤသည်မှာ မည်သည့်အစိုးရတစ်ရပ် သို့မဟုတ် အစိုးရတွင်း  အေဂျင်စီတစ်ရပ်မှ စီးပွါးဖြစ်လုပ်ဆောင်နေသော သုတသနဝန်ဆောင်မှု သို့မဟုတ် domain မဟုတ်ချေ။ ဤသည်မှာ အကျိုးအမြတ်အတွက်မဟုတ်သည့် အစိုးရမဟုတ်သော data/open ဗဟုသုတမီဒီယာတစ်ခု ဖြစ်သည်။ သတင်းအချက်အလက်များကို ဂရုတစိုက် လေ့လာအတည်ပြုစစ်ဆေးပြီးမှသာ အများသူငါ ကြည့်ရှုနိုင်ရန်တင်ပေးခြင်းဖြစ်သည်။ မည်သို့ပင်ဆိုစေကာမူ {ODM/C/V/Mm/T/L} အနေဖြင့် မည်သည့်အခြေအနေတွင်မဆို တတိယ ရင်းမြစ်များ၏ တိကျမှု၊ ပြီးပြည့်စုံမှု သို့မဟုတ် သင့်တင့်လျောက်ပတ်မှုတို့အတွက် အာမ မခံပါ။ ဤနေရာတွင်ရှိနေသော သို့မဟုတ် ထောက်ပံ့ပေးထားသော အချက်အလက်များ၊ materials သို့မဟုတ် စာတမ်းများကို ဖော်ပြမှု သို့မဟုတ် အသုံးချမှုတို့အတွက် အချက်အလက်အားဖြင့် သို့မဟုတ် ဥပဒေအားဖြင့် တိကျမှု၊ ပြီးပြည့်စုံမှု သို့မဟုတ် သင့်တင့်လျောက်ပတ်မှုတို့ကို {ODM/C/V/Mm/T/L} မှ ကိုယ်စားမပြုပါ သို့မဟုတ် အာမ မခံပါ။ \n"
-"Site ကိုအသုံးပြုသူများကိုလည်း ၎င်းတို့၏လုပ်ဆောင်ချက်များကို အထောက်အကူပြုရန်အတွက် သုတေသနများထပ်မံလုပ်ဆောင်ရန်တိုက်တွန်းပါသည်။ သုတေသနများထပ်မံပြုလုပ်ခဲ့ပါက ကျွန်ုပ်တို့အဖွဲ့နှင့်ဆက်သွယ်ပြီး ဤ site ၏ တိကျသေချာမှုကို ပိုမိုတိုးတက်စေမည်ဖြစ်သည်။\n"
-"{ODM/C/V/Mm/T/L} website သို့မဟုတ် database ကိုရယူခြင်းဖြင့် သုံးစွဲသူများအနေဖြင့် ဤ site မှထောက်ပံ့ထားသော သတင်းအချက်အလက်ကို အသုံးပြုခြင်းအတွက် တာဝန်ယူပြီး အသုံးပြုမှုကြောင့် တစ်ဦးချင်းစီ သို့မဟုတ် ပုဂ္ဂလများ၏ဖွံ့ဖြိုးတိုးတက်မှု၊ ပုံစံနှင့် အကြောင်းအရာများဆုံးရှုံးမှု၊အန္တရာယ် ဖြစ်စေမှု သို့မဟုတ် ပျက်ဆီးစေမှုတို့မဖြစ်အောင် အသုံးပြုရမည်။"
+"ဤအရာနှင့် Open Development {country} မှထုတ်လုပ်သော၊ ထုတ်ဝေသော မည့်သည့်အကြောင်းအရာမဆို CC BY-SA 3.0 ၏အောက်တွင်မူပိုင်ခွင့်ရှိသည်။ ရင်းမြစ်အသီးသီး၏ "
+"fair-use နည်းဥပဒေများနှင့် မူပိုင်ခွင့်များအတိုင်း သတင်းဆောင်းပါးများကို ၎င်းတို့၏ ရင်းမြစ်များမှထုတ်ယူထားသည်။ Open Development {country} {ODM/"
+"C/V/Mm/T/L} website တွင်တင်ထားသည့်အကြောင်းအရာများနှင့် ပူးတွဲပါဝင်သည့် database များသည် အများသူငါ လွတ်လပ်စွာရယူနိုင်သောစာတမ်းများဖြစ်ပြီး "
+"အခကြေးငွေမယူပဲ သတင်းအချက်အလက်ဆိုင်ရာ အထွေထွေအသုံးချမှုအတွက်ဖြစ်သည်။ ဤသည်မှာ မည်သည့်အစိုးရတစ်ရပ် သို့မဟုတ် အစိုးရတွင်း  အေဂျင်စီတစ်ရပ်မှ စီးပွါးဖြစ်လုပ်ဆောင်နေသော "
+"သုတသနဝန်ဆောင်မှု သို့မဟုတ် domain မဟုတ်ချေ။ ဤသည်မှာ အကျိုးအမြတ်အတွက်မဟုတ်သည့် အစိုးရမဟုတ်သော data/open ဗဟုသုတမီဒီယာတစ်ခု ဖြစ်သည်။ သတင်းအချက်အလက်များကို "
+"ဂရုတစိုက် လေ့လာအတည်ပြုစစ်ဆေးပြီးမှသာ အများသူငါ ကြည့်ရှုနိုင်ရန်တင်ပေးခြင်းဖြစ်သည်။ မည်သို့ပင်ဆိုစေကာမူ {ODM/C/V/Mm/T/L} အနေဖြင့် မည်သည့်အခြေအနေတွင်မဆို "
+"တတိယ ရင်းမြစ်များ၏ တိကျမှု၊ ပြီးပြည့်စုံမှု သို့မဟုတ် သင့်တင့်လျောက်ပတ်မှုတို့အတွက် အာမ မခံပါ။ ဤနေရာတွင်ရှိနေသော သို့မဟုတ် ထောက်ပံ့ပေးထားသော အချက်အလက်များ၊ "
+"materials သို့မဟုတ် စာတမ်းများကို ဖော်ပြမှု သို့မဟုတ် အသုံးချမှုတို့အတွက် အချက်အလက်အားဖြင့် သို့မဟုတ် ဥပဒေအားဖြင့် တိကျမှု၊ ပြီးပြည့်စုံမှု သို့မဟုတ် သင့်တင့်လျောက်ပတ်မှုတို့ကို "
+"{ODM/C/V/Mm/T/L} မှ ကိုယ်စားမပြုပါ သို့မဟုတ် အာမ မခံပါ။ \n"
+"Site ကိုအသုံးပြုသူများကိုလည်း ၎င်းတို့၏လုပ်ဆောင်ချက်များကို အထောက်အကူပြုရန်အတွက် သုတေသနများထပ်မံလုပ်ဆောင်ရန်တိုက်တွန်းပါသည်။ သုတေသနများထပ်မံပြုလုပ်ခဲ့ပါက "
+"ကျွန်ုပ်တို့အဖွဲ့နှင့်ဆက်သွယ်ပြီး ဤ site ၏ တိကျသေချာမှုကို ပိုမိုတိုးတက်စေမည်ဖြစ်သည်။\n"
+"{ODM/C/V/Mm/T/L} website သို့မဟုတ် database ကိုရယူခြင်းဖြင့် သုံးစွဲသူများအနေဖြင့် ဤ site မှထောက်ပံ့ထားသော သတင်းအချက်အလက်ကို အသုံးပြုခြင်းအတွက် "
+"တာဝန်ယူပြီး အသုံးပြုမှုကြောင့် တစ်ဦးချင်းစီ သို့မဟုတ် ပုဂ္ဂလများ၏ဖွံ့ဖြိုးတိုးတက်မှု၊ ပုံစံနှင့် အကြောင်းအရာများဆုံးရှုံးမှု၊အန္တရာယ် ဖြစ်စေမှု သို့မဟုတ် "
+"ပျက်ဆီးစေမှုတို့မဖြစ်အောင် အသုံးပြုရမည်။"
 
 #: i18n/extra-strings.php:57
 msgid "Khmer PDF"
@@ -544,13 +558,11 @@ msgstr "ဒီဇင်ဘာ"
 msgid "Text search"
 msgstr "စာသားဖြင့်ရှာဖွေခြင်း"
 
-#: inc/advanced-navigation.php:157 page-data-old.php:40 page-data-old.php:138
-#: page-data.php:244
+#: inc/advanced-navigation.php:157 page-data-old.php:40 page-data-old.php:138 page-data.php:244
 msgid "Type your search here"
 msgstr "သင်ရှာဖွေလိုသည့်အရာကို ဤနေရာတွင်ရိုက်နှိပ်ပါ"
 
-#: inc/advanced-navigation.php:171 inc/live-search/live-search.php:24
-#: inc/utils/content.php:81 page-data-old.php:106 page-data.php:119
+#: inc/advanced-navigation.php:171 inc/utils/content.php:187 page-data-old.php:106 page-data.php:119
 msgid "Topic"
 msgstr "ခေါင်းစဥ်"
 
@@ -622,11 +634,15 @@ msgstr "သောကြာ"
 msgid "Sa"
 msgstr "စနေ"
 
-#: inc/interactive-map.php:27
+#: inc/interactive-map.php:25
 msgid "Interactive Map"
 msgstr "Interactive Map"
 
-#: inc/interactive-map.php:90 inc/utils/mapping.php:103
+#: inc/interactive-map.php:74 inc/utils/mapping.php:111
+msgid "Base Layers"
+msgstr ""
+
+#: inc/interactive-map.php:80 inc/utils/mapping.php:116
 msgid "Map Layers"
 msgstr "မြေပုံအလွှာများ"
 
@@ -690,31 +706,21 @@ msgstr "မြေပုံ တည်ဆောက်မှုပုံစံ"
 
 #: inc/layers.php:72
 msgid "Enter your HTML code to use as legend on the layer (English)"
-msgstr ""
-"မြေပုံအညွှန်းအဖြစ်အသုံးပြုရန်အတွက် သင်၏ HTML code ကိုအလွှာ(English) "
-"ပေါ်တွင်ထည့်သွင်းပါ"
+msgstr "မြေပုံအညွှန်းအဖြစ်အသုံးပြုရန်အတွက် သင်၏ HTML code ကိုအလွှာ(English) ပေါ်တွင်ထည့်သွင်းပါ"
 
 #: inc/layers.php:75
 msgid "Enter your HTML code to use as legend on the layer ("
-msgstr ""
-"မြေပုံအညွှန်းအဖြစ်အသုံးပြုရန်အတွက် သင်၏ HTML code ကိုအလွှာ( "
-"ပေါ်တွင်ထည့်သွင်းပါ"
+msgstr "မြေပုံအညွှန်းအဖြစ်အသုံးပြုရန်အတွက် သင်၏ HTML code ကိုအလွှာ( ပေါ်တွင်ထည့်သွင်းပါ"
 
 #: inc/layers.php:91
 #, php-format
 msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
-msgstr ""
-"သင်၏မြေပုံပေါ်တွင် <a href=\"%s\" target=\"_blank\">အလွှာများ</a> "
-"ကိုထည့်သွင်းပြီးစီမံခန့်ခွဲမည်။"
+msgstr "သင်၏မြေပုံပေါ်တွင် <a href=\"%s\" target=\"_blank\">အလွှာများ</a> ကိုထည့်သွင်းပြီးစီမံခန့်ခွဲမည်။"
 
 #: inc/layers.php:93
 #, php-format
-msgid ""
-" You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click "
-"here</a> to create your first!"
-msgstr ""
-"သင့်အနေဖြင့် မည်သည့်အလွှာမျှထည့်သွင်းရခြင်းမပြုလုပ်ရသေးပါက <a href=\"%s\" "
-"target=\"_blank\">ဒီမှာနှိပ်ပြီး </a> သင့်၏ ပထမဆုံးကို ဖန်တီးပါ။"
+msgid " You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click here</a> to create your first!"
+msgstr "သင့်အနေဖြင့် မည်သည့်အလွှာမျှထည့်သွင်းရခြင်းမပြုလုပ်ရသေးပါက <a href=\"%s\" target=\"_blank\">ဒီမှာနှိပ်ပြီး </a> သင့်၏ ပထမဆုံးကို ဖန်တီးပါ။"
 
 #: inc/layers.php:105
 msgid "Search for layers"
@@ -869,10 +875,8 @@ msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 
 #: inc/layers.php:450
-msgid ""
-"Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
-msgstr ""
-"Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
+msgid "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
+msgstr "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 
 #: inc/layers.php:454
 msgid "UTFGrid Template (optional)"
@@ -892,9 +896,7 @@ msgstr "TMS ဖွင့်မည်"
 
 #: inc/layers.php:464
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
-msgstr ""
-"tiles များအတွက် Y axis ကိုပြောင်းပြန်လှန်ပါ (TMS ဝန်ဆောင်မှုများအတွက် "
-"ဤအရာကိုလှည့်ပါ)"
+msgstr "tiles များအတွက် Y axis ကိုပြောင်းပြန်လှန်ပါ (TMS ဝန်ဆောင်မှုများအတွက် ဤအရာကိုလှည့်ပါ)"
 
 #: inc/layers.php:485
 msgid "WMS Service URL"
@@ -918,11 +920,11 @@ msgstr "Workspaces and အလွှာအမည် \""
 
 #: inc/layers.php:495
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
-"workspace name and <strong>Transmission_lines</strong> is layer name."
+"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and "
+"<strong>Transmission_lines</strong> is layer name."
 msgstr ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
-"workspace name and <strong>Transmission_lines</strong> is layer name."
+"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and "
+"<strong>Transmission_lines</strong> is layer name."
 
 #: inc/layers.php:500
 msgid "Workspaces:Layer Name ("
@@ -930,11 +932,11 @@ msgstr "Workspaces:အလွှာအမည် ("
 
 #: inc/layers.php:503
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
-"workspace name and <strong>Transmission_lines</strong> is layer name."
+"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and "
+"<strong>Transmission_lines</strong> is layer name."
 msgstr ""
-"ဥပမာ. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> "
-"is workspace name and <strong>Transmission_lines</strong> is layer name."
+"ဥပမာ. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and "
+"<strong>Transmission_lines</strong> is layer name."
 
 #: inc/layers.php:510
 msgid "WMS format (optional)"
@@ -961,12 +963,8 @@ msgid "Inforwindow (popup)"
 msgstr "Inforwindow (popup)"
 
 #: inc/layers.php:539 inc/layers.php:550
-msgid ""
-"Please add the attribute_name or strings to display as the title in "
-"inforwindow. "
-msgstr ""
-"Inforwindow အတွက်ခေါင်းစဉ်အဖြစ်ဖော်ပြရန်ဖို့ attribute_name သို့မဟုတ် "
-"strings ထည့်ပေးပါ။"
+msgid "Please add the attribute_name or strings to display as the title in inforwindow. "
+msgstr "Inforwindow အတွက်ခေါင်းစဉ်အဖြစ်ဖော်ပြရန်ဖို့ attribute_name သို့မဟုတ် strings ထည့်ပေးပါ။"
 
 #: inc/layers.php:540 inc/layers.php:551
 msgid "Strings or attribute_name"
@@ -982,12 +980,11 @@ msgstr "URL အသေးစိတ်ကိုကြည့်ရှုမည်"
 
 #: inc/layers.php:546 inc/layers.php:556
 msgid ""
-"To show the view detail link on infowindow, please add the URL with "
-"{{attribute_name}} or only the attribute_name that contains the link."
+"To show the view detail link on infowindow, please add the URL with {{attribute_name}} or only the attribute_name "
+"that contains the link."
 msgstr ""
-" Infowindow ပေါ်တွင် အသေးစိတ် link ကိုကြည့်ရှုရန်ပြသမှုအတွက် "
-"{{attribute_name}} သို့မဟုတ် link ပါဝင်သော attribute_name ချည်းသက်သက်ကို URL"
-" နှင့်အတူထည့်သွင်းပါ"
+" Infowindow ပေါ်တွင် အသေးစိတ် link ကိုကြည့်ရှုရန်ပြသမှုအတွက် {{attribute_name}} သို့မဟုတ် link ပါဝင်သော attribute_name ချည်းသက်သက်ကို URL "
+"နှင့်အတူထည့်သွင်းပါ"
 
 #: inc/layers.php:569
 msgid "MapBox ID"
@@ -1019,13 +1016,11 @@ msgstr "CartoDB URL (English)"
 
 #: inc/layers.php:608 inc/layers.php:616
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: "
-"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
-"11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-"
+"ab03-0e853d047bba/viz.json"
 msgstr ""
-"CartoDB visualization URL.<br/>E.g.: "
-"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
-"11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-"
+"ab03-0e853d047bba/viz.json"
 
 #: inc/layers.php:613
 msgid "CartoDB URL ("
@@ -1067,22 +1062,6 @@ msgstr "သင်၏ဇယားအတွက် ပုံစံ။ <a href=\"%s\
 #: inc/layers.php:649
 msgid "Template"
 msgstr "Template"
-
-#: inc/live-search/live-search.php:20
-msgid "Go to the advanced search"
-msgstr "အထူးရှာဖွေမှုကိုသွားမည်။"
-
-#: inc/live-search/live-search.php:21
-msgid "Close"
-msgstr "ပိတ်မည်"
-
-#: inc/live-search/live-search.php:22
-msgid "Showing all results"
-msgstr "ရလဒ်အားလုံးကိုပြသမည်"
-
-#: inc/live-search/live-search.php:25
-msgid "Map"
-msgstr "မြေပုံ"
 
 #: inc/post-types/announcements.php:19
 msgctxt "post type general name"
@@ -1333,12 +1312,8 @@ msgid "Full width content (English)"
 msgstr "အနံပြည့်အကြောင်းအရာ (အင်္ဂလိပ်)"
 
 #: inc/post-types/stories.php:95 inc/post-types/stories.php:111
-msgid ""
-"Any content can add to under the Editor content and sidebar and  full width "
-"of website even the iframe."
-msgstr ""
-"အယ်ဒီတာ အကြောင်းအရာ၊ sidebar နှင့်  iframe အတွင်းတွင်ပင်လျှင် "
-"အနံပြည့်တွင်းသို့ မည်သည့်အကြောင်းအရာကိုမဆိုထည့်သွင်းနိုင်သည်။"
+msgid "Any content can add to under the Editor content and sidebar and  full width of website even the iframe."
+msgstr "အယ်ဒီတာ အကြောင်းအရာ၊ sidebar နှင့်  iframe အတွင်းတွင်ပင်လျှင် အနံပြည့်တွင်းသို့ မည်သည့်အကြောင်းအရာကိုမဆိုထည့်သွင်းနိုင်သည်။"
 
 #: inc/post-types/stories.php:107
 msgid "Full width content (("
@@ -1475,15 +1450,10 @@ msgid "No results found."
 msgstr "ရလဒ်များမတွေ့ရှိပါ။"
 
 #: inc/templates/category-page-latest.php:17 page-data.php:17
-msgid ""
-"wp-odm_solr plugin is not properly configured. Please contact the system's "
-"administrator"
-msgstr ""
-"wp-odm_solr plugin ကို ကောင်းမွန်စွာမစီစဥ်ရသေးပါ၊ system ကိုစီမံခန့်ခွဲသူကို"
-" ကျေးဇူးပြု၍ဆက်သွယ်ပါ"
+msgid "wp-odm_solr plugin is not properly configured. Please contact the system's administrator"
+msgstr "wp-odm_solr plugin ကို ကောင်းမွန်စွာမစီစဥ်ရသေးပါ၊ system ကိုစီမံခန့်ခွဲသူကို ကျေးဇူးပြု၍ဆက်သွယ်ပါ"
 
-#: inc/templates/category-page-latest.php:63
-#: inc/templates/category-page-latest.php:84
+#: inc/templates/category-page-latest.php:63 inc/templates/category-page-latest.php:84
 msgid "Topic briefing"
 msgstr "ခေါင်းစဥ်ကို အကြမ်းဖျင်းမိတ်ဆက်"
 
@@ -1491,18 +1461,15 @@ msgstr "ခေါင်းစဥ်ကို အကြမ်းဖျင်း�
 msgid "Related briefings"
 msgstr "ဆက်နွယ်မှုရှိသည်များအတွက် အကြမ်းဖျင်းမိတ်ဆက်"
 
-#: inc/templates/pagination.php:8 inc/templates/pagination.php:16
-#: inc/templates/pagination_solr.php:7
+#: inc/templates/pagination.php:8 inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
 msgid " of"
 msgstr "၏"
 
-#: inc/templates/post-highlighted-single-1-cols.php:51
-#: inc/utils/markers.php:143 loop-latest.php:19
+#: inc/templates/post-highlighted-single-1-cols.php:51 inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
 msgstr "ဆက်လက်ဖတ်ရှုမည်"
 
-#: inc/templates/solr-result-single.php:79 inc/utils/content.php:559
-#: inc/utils/content.php:564
+#: inc/templates/solr-result-single.php:79
 msgid " "
 msgstr " "
 
@@ -1580,8 +1547,7 @@ msgstr "အမျိုးအမည်စာမျက်နှာ ပုံစ�
 
 #: inc/theme-options.php:179
 msgid "Date shown on single and archive page templates"
-msgstr ""
-"တစ်ခုတည်းနှင့် သိပ်ဆည်းထားသောစာမျက်နှာများပေါ်တွင်ပြသထားသည့်ရက်စွဲများ"
+msgstr "တစ်ခုတည်းနှင့် သိပ်ဆည်းထားသောစာမျက်နှာများပေါ်တွင်ပြသထားသည့်ရက်စွဲများ"
 
 #: inc/theme-options.php:187
 msgid "Base map settings"
@@ -1608,24 +1574,16 @@ msgid "news-article,announcement,topic,profiles"
 msgstr "သတင်းဆောင်းပါးများ၊ ကြေငြာချက်၊ ခေါင်းစဥ်၊ ပရိုဖိုင်များ"
 
 #: inc/theme-options.php:252
-msgid ""
-"(Add the WP post type name that would like to show on the category page. "
-"(separated by comma))"
-msgstr ""
-"(အမျိုးအမည်စာမျက်နှာပေါ်တွင်ပြသလိုသည့် WP post အမျိုးအစားအမည်ကိုထည့်သွင်းမည်"
-" (comma ဖြင့်ပိုင်းခြားထားသော))"
+msgid "(Add the WP post type name that would like to show on the category page. (separated by comma))"
+msgstr "(အမျိုးအမည်စာမျက်နှာပေါ်တွင်ပြသလိုသည့် WP post အမျိုးအစားအမည်ကိုထည့်သွင်းမည် (comma ဖြင့်ပိုင်းခြားထားသော))"
 
 #: inc/theme-options.php:260 inc/theme-options.php:261
 msgid "dataset, library_record, laws_record, agreement"
 msgstr "dataset၊ စာကြည့်တိုက်မှတ်တမ်း၊ ဥပဒေမှတ်တမ်း၊ သဘောတူညီချက်"
 
 #: inc/theme-options.php:263
-msgid ""
-"(Add the ckan record's type name that would like to show on the category "
-"page. (separated by comma))"
-msgstr ""
-"(အမျိုးအမည်စာမျက်နှာပေါ်တွင်ပြသလိုသော ckan မှတ်တမ်း၏ အမျိုးအစားအမည်ကို "
-"ထည့်သွင်းမည် (comma ဖြင့်ပိုင်းခြားထားသော))"
+msgid "(Add the ckan record's type name that would like to show on the category page. (separated by comma))"
+msgstr "(အမျိုးအမည်စာမျက်နှာပေါ်တွင်ပြသလိုသော ckan မှတ်တမ်း၏ အမျိုးအစားအမည်ကို ထည့်သွင်းမည် (comma ဖြင့်ပိုင်းခြားထားသော))"
 
 #: inc/theme-options.php:282
 msgid "Creation date"
@@ -1635,9 +1593,8 @@ msgstr "ဖန်တီးသည့်ရက်စွဲ"
 msgid "Modification date"
 msgstr "ပြန်လည်ပြုပြင်သည့်ရက်စွဲ"
 
-#: inc/theme-options.php:290 inc/theme-options.php:293
-#: inc/theme-options.php:300 inc/theme-options.php:303
-#: inc/theme-options.php:377 inc/utils/mapping.php:733
+#: inc/theme-options.php:290 inc/theme-options.php:293 inc/theme-options.php:300 inc/theme-options.php:303
+#: inc/theme-options.php:377 inc/utils/mapping.php:834
 msgid "None"
 msgstr "ဘာမျှမရှိပါ"
 
@@ -1749,25 +1706,25 @@ msgstr "Preview mode"
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr "(preview mode doesn't apply zoom range nor pan limits setup)"
 
-#: inc/utils/breadcrumbs.php:224
+#: inc/utils/breadcrumbs.php:62
+msgid "Blogs"
+msgstr ""
+
+#: inc/utils/breadcrumbs.php:187 inc/utils/breadcrumbs.php:286
 msgid "Search results for:"
 msgstr ": အတွက် ရှာဖွေမှုရလဒ်"
 
-#: inc/utils/content.php:486
+#: inc/utils/breadcrumbs.php:190
+msgid "Dataset detail"
+msgstr ""
+
+#: inc/utils/content.php:617
 msgid "Summary translated by "
 msgstr "အကျဥ်းချုံ့ဘာသာပြန်သူ "
 
-#: inc/utils/content.php:541
-msgid "Download: "
-msgstr "Download: "
-
-#: inc/utils/content.php:546
-msgid "English PDF"
-msgstr "English PDF"
-
-#: inc/utils/content.php:551
-msgid "English PDF not available"
-msgstr "English PDF မရရှိနိုင်ပါ"
+#: inc/utils/content.php:676
+msgid "Download:"
+msgstr ""
 
 #: inc/utils/layout.php:11
 msgid "View large image"
@@ -1778,91 +1735,91 @@ msgstr "ပုံအကြီးကိုကြည့်ရှုမည်"
 msgid "Error locating %s for inclusion"
 msgstr "ထည့်သွင်းမှုအတွက် %s ကိုရှာရာတွင် အမှားတွေ့သည်"
 
-#: inc/utils/mapping.php:184
+#: inc/utils/mapping.php:126
 msgid "Show news on map"
 msgstr "မြေပုံပေါ်တွင် သတင်းများကို ပြပါ"
 
-#: inc/utils/mapping.php:431
+#: inc/utils/mapping.php:380
 msgid "LEGEND"
 msgstr "LEGEND"
 
-#: inc/utils/mapping.php:681
+#: inc/utils/mapping.php:782
 msgid "Create Map"
 msgstr "မြေပုံဖန်တီးမည်"
 
-#: inc/utils/mapping.php:684
+#: inc/utils/mapping.php:785
 msgid "Title"
 msgstr "ခေါင်းစဥ်"
 
-#: inc/utils/mapping.php:688
+#: inc/utils/mapping.php:789
 msgid "Description"
 msgstr "ဖော်ပြချက်"
 
-#: inc/utils/mapping.php:693
+#: inc/utils/mapping.php:794
 msgid "Basemap"
 msgstr "အောက်ခံမြေပုံ"
 
-#: inc/utils/mapping.php:697
+#: inc/utils/mapping.php:798
 msgid "Map layers"
 msgstr "မြေပုံအလွှာများ"
 
-#: inc/utils/mapping.php:702
+#: inc/utils/mapping.php:803
 msgid "North Direction"
 msgstr "ဦးတည်ရာမြောက်အရပ်"
 
-#: inc/utils/mapping.php:707
+#: inc/utils/mapping.php:808
 msgid "Map tools"
 msgstr "မြေပုံ tool များ"
 
-#: inc/utils/mapping.php:710
+#: inc/utils/mapping.php:811
 msgid "Format"
 msgstr "ပုံစံ"
 
-#: inc/utils/mapping.php:712
+#: inc/utils/mapping.php:813
 msgid "Image (PNG)"
 msgstr "ရုပ်ပုံ (PNG)"
 
-#: inc/utils/mapping.php:716
+#: inc/utils/mapping.php:817
 msgid "Size"
 msgstr "အရွယ်အစား"
 
-#: inc/utils/mapping.php:718
+#: inc/utils/mapping.php:819
 msgid "A4"
 msgstr "A4"
 
-#: inc/utils/mapping.php:722
+#: inc/utils/mapping.php:823
 msgid "Layout"
 msgstr "အပြင်အဆင်"
 
-#: inc/utils/mapping.php:724
+#: inc/utils/mapping.php:825
 msgid "Landscape"
 msgstr "အလျားလိုက်"
 
-#: inc/utils/mapping.php:725
+#: inc/utils/mapping.php:826
 msgid "Portrait"
 msgstr "ဒေါင်လိုက်"
 
-#: inc/utils/mapping.php:729
+#: inc/utils/mapping.php:830
 msgid "Legend"
 msgstr "Legend"
 
-#: inc/utils/mapping.php:731
+#: inc/utils/mapping.php:832
 msgid "Left"
 msgstr "ဘယ်"
 
-#: inc/utils/mapping.php:732
+#: inc/utils/mapping.php:833
 msgid "Right"
 msgstr "ညာ"
 
-#: inc/utils/mapping.php:739
+#: inc/utils/mapping.php:840
 msgid "Show all legends"
 msgstr "Legend များအားလုံးကိုပြမည်"
 
-#: inc/utils/mapping.php:743 inc/utils/markers.php:139
+#: inc/utils/mapping.php:844 inc/utils/markers.php:139
 msgid "Print"
 msgstr "Print"
 
-#: inc/utils/mapping.php:762
+#: inc/utils/mapping.php:863
 msgid "Created date: "
 msgstr "ဖန်တီးခဲ့သည့်ရက်စွဲ"
 
@@ -1929,61 +1886,48 @@ msgstr "အမျိုးအစားတူညီသည့် ODM အကြေ�
 
 #: inc/widgets/odm-contents-same-category-widget.php:13
 msgid ""
-"Display other content from other post types tagged with the same categories "
-"as the one where the widget is integrated."
-msgstr ""
-"Post အမျိုးအစားများကို တူညီသည့်အမျိုးအစားများနှင့် ချိတ်ဆက်ထားသော widget "
-"ထည့်သွင်းထားသည့် အခြားအကြောင်းအရာများကိုပြပါ"
+"Display other content from other post types tagged with the same categories as the one where the widget is "
+"integrated."
+msgstr "Post အမျိုးအစားများကို တူညီသည့်အမျိုးအစားများနှင့် ချိတ်ဆက်ထားသော widget ထည့်သွင်းထားသည့် အခြားအကြောင်းအရာများကိုပြပါ"
 
-#: inc/widgets/odm-contents-same-category-widget.php:154
-#: inc/widgets/odm-custom-posts-widget.php:173
-#: inc/widgets/odm-taxonomy-widget.php:261
+#: inc/widgets/odm-contents-same-category-widget.php:156 inc/widgets/odm-custom-posts-widget.php:175
+#: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
 msgstr "ခေါင်းစဉ်:"
 
-#: inc/widgets/odm-contents-same-category-widget.php:159
-#: inc/widgets/odm-custom-posts-widget.php:177
+#: inc/widgets/odm-contents-same-category-widget.php:161 inc/widgets/odm-custom-posts-widget.php:179
 msgid "Select custom post type:"
 msgstr "စိတ်ကြိုက် post အမျိုးအစားရွေးချယ်မည်"
 
-#: inc/widgets/odm-contents-same-category-widget.php:168
-#: inc/widgets/odm-custom-posts-widget.php:189
+#: inc/widgets/odm-contents-same-category-widget.php:170 inc/widgets/odm-custom-posts-widget.php:191
 msgid "Select layout:"
 msgstr "အပြင်အဆင်ရွေးချယ်မည်"
 
-#: inc/widgets/odm-contents-same-category-widget.php:176
-#: inc/widgets/odm-custom-posts-widget.php:197
+#: inc/widgets/odm-contents-same-category-widget.php:178 inc/widgets/odm-custom-posts-widget.php:199
 msgid "Show post excerpt:"
 msgstr "Post ၏ တစ်စိတ်တစ်ပိုင်းကိုပြပါ"
 
-#: inc/widgets/odm-contents-same-category-widget.php:180
-#: inc/widgets/odm-custom-posts-widget.php:201
+#: inc/widgets/odm-contents-same-category-widget.php:182 inc/widgets/odm-custom-posts-widget.php:203
 msgid "Show post thumbnail:"
 msgstr "Post thumbnail ကိုပြပါ"
 
-#: inc/widgets/odm-contents-same-category-widget.php:184
-#: inc/widgets/odm-custom-posts-widget.php:205
+#: inc/widgets/odm-contents-same-category-widget.php:186 inc/widgets/odm-custom-posts-widget.php:207
 msgid "Show post meta:"
 msgstr "Post meta ကိုပြပါ"
 
-#: inc/widgets/odm-contents-same-category-widget.php:188
-#: inc/widgets/odm-custom-posts-widget.php:209
+#: inc/widgets/odm-contents-same-category-widget.php:190 inc/widgets/odm-custom-posts-widget.php:211
 msgid "Show source meta:"
 msgstr "မူရင်း ရင်းမြစ်၏ meta ကို ပြပါ:"
 
-#: inc/widgets/odm-contents-same-category-widget.php:193
-#: inc/widgets/odm-custom-posts-widget.php:214
+#: inc/widgets/odm-contents-same-category-widget.php:195 inc/widgets/odm-custom-posts-widget.php:216
 msgid "Select max number of posts to list (-1 to show all):"
-msgstr ""
-"စာရင်းသွင်းလိုသည့် အများဆုံး post အရေအတွက်ကို ရွေးချယ်မည် (-1 မှ အားလုံး)"
+msgstr "စာရင်းသွင်းလိုသည့် အများဆုံး post အရေအတွက်ကို ရွေးချယ်မည် (-1 မှ အားလုံး)"
 
-#: inc/widgets/odm-contents-same-category-widget.php:197
-#: inc/widgets/odm-custom-posts-widget.php:218
+#: inc/widgets/odm-contents-same-category-widget.php:199 inc/widgets/odm-custom-posts-widget.php:220
 msgid "Order by:"
 msgstr "စီစဉ်မည်"
 
-#: inc/widgets/odm-contents-same-category-widget.php:205
-#: inc/widgets/odm-custom-posts-widget.php:226
+#: inc/widgets/odm-contents-same-category-widget.php:207 inc/widgets/odm-custom-posts-widget.php:228
 msgid "Select location of 'More...':"
 msgstr "'နောက်ထပ်...': ၏ တည်နေရာကိုရွေးချယ်ပါ"
 
@@ -1995,7 +1939,7 @@ msgstr "ODM စိတ်ကြိုက် Post များ"
 msgid "Display entries of the spefied custom post type"
 msgstr "အသေးစိတ်ထားသော စိတ်ကြိုက် post အမျိုးအစားများထည့်သွင်းမှုကိုပြပါ"
 
-#: inc/widgets/odm-custom-posts-widget.php:185
+#: inc/widgets/odm-custom-posts-widget.php:187
 msgid "Specific list of posts (optional):"
 msgstr "Post များ၏အသေးစိတ်စာရင်း (ချွင်းချက်)"
 
@@ -2007,15 +1951,15 @@ msgstr "ODM Content Taxonomy Widget"
 msgid "Display ODM taxonomy for content"
 msgstr "အကြောင်းအရာအတွက် ODM taxonomy ကိုပြပါ"
 
-#: inc/widgets/odm-taxonomy-widget.php:265
+#: inc/widgets/odm-taxonomy-widget.php:243
 msgid "Include Category by IDs (separated by commas):"
 msgstr "ID များအလိုက်အမျိုးအစားများကိုပါဝင်စေပါ (comma များဖြင့်ခွဲခြားထားပါ)"
 
-#: inc/widgets/odm-taxonomy-widget.php:269
+#: inc/widgets/odm-taxonomy-widget.php:247
 msgid "Exclude Category by IDs (separated by commas):"
 msgstr "ID များအလိုက်အမျိုးအစားများကိုဖယ်ထုတ်ပါ (comma များဖြင့်ခွဲခြားထားပါ)"
 
-#: inc/widgets/odm-taxonomy-widget.php:273
+#: inc/widgets/odm-taxonomy-widget.php:251
 msgid "Links should take user to:"
 msgstr "Link များသည်အသုံးပြုသူကိုခေါ်ဆောင်သွားမည့်နေရာ"
 
@@ -2043,9 +1987,8 @@ msgstr "အမျိုးအစား"
 msgid "Select dataset type"
 msgstr "Dataset အမျိုးအစား ရွေးချယ်မည်"
 
-#: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85
-#: page-data-old.php:108 page-data-old.php:125 page-data.php:121
-#: page-data.php:143 page-data.php:157 page-data.php:185 page-data.php:207
+#: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85 page-data-old.php:108 page-data-old.php:125
+#: page-data.php:121 page-data.php:143 page-data.php:157 page-data.php:185 page-data.php:207
 msgid "All"
 msgstr "အားလုံး"
 
@@ -2141,35 +2084,23 @@ msgstr "သင့်လျော်မှု"
 msgid "Date modified"
 msgstr "ပြန်လည်ပြင်ဆင်သည့်ရက်စွဲ"
 
-#: page-dataset-detail.php:18
+#: page-dataset-detail.php:21
 msgid "Please provide an id as parameter"
 msgstr "ID တစ်ခုကို parameter အဖြစ်ပေးပါ"
 
-#: page-dataset-detail.php:29
+#: page-dataset-detail.php:32
 msgid "Manage on CKAN"
 msgstr "CKAN ပေါ်တွင်စီမံခန့်ခွဲမည်"
 
-#: page-dataset-detail.php:31
+#: page-dataset-detail.php:34
 msgid "Manage"
 msgstr "စီမံခန့်ခွဲမည်"
 
-#: page-dataset-detail.php:39
-msgid "Download metadata"
-msgstr "Metadata ကို download လုပ်မည်"
+#: page-dataset-detail.php:48
+msgid "Other search results"
+msgstr ""
 
-#: page-dataset-detail.php:41
-msgid "XML"
-msgstr "XML"
-
-#: page-dataset-detail.php:42
-msgid "JSON"
-msgstr "JSON"
-
-#: page-dataset-detail.php:43
-msgid "RDF"
-msgstr "RDF"
-
-#: page-no-title.php:17 page.php:19 single-topic.php:44 single.php:42
+#: page-no-title.php:17 page.php:19 single-post.php:31 single-topic.php:43 single.php:48
 msgid "Pages:"
 msgstr "စာမျက်နှာများ"
 
@@ -2197,10 +2128,43 @@ msgstr "ဆက်လက်ဖတ်ရှုမည်"
 msgid "Latest articles on"
 msgstr "နောက်ဆုံးရ သတင်းဆောင်းပါးများ"
 
-#: single-topic.php:71
+#: single-topic.php:70
 msgid "More on the Land Portal library"
 msgstr "Land Portal library အကြောင်းပိုမိုသိလိုလျှင်"
 
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
 msgstr "မြေပုံ ကတ်တလောက် "
+
+#~ msgid "Go to the advanced search"
+#~ msgstr "အထူးရှာဖွေမှုကိုသွားမည်။"
+
+#~ msgid "Close"
+#~ msgstr "ပိတ်မည်"
+
+#~ msgid "Showing all results"
+#~ msgstr "ရလဒ်အားလုံးကိုပြသမည်"
+
+#~ msgid "Map"
+#~ msgstr "မြေပုံ"
+
+#~ msgid "Download: "
+#~ msgstr "Download: "
+
+#~ msgid "English PDF"
+#~ msgstr "English PDF"
+
+#~ msgid "English PDF not available"
+#~ msgstr "English PDF မရရှိနိုင်ပါ"
+
+#~ msgid "Download metadata"
+#~ msgstr "Metadata ကို download လုပ်မည်"
+
+#~ msgid "XML"
+#~ msgstr "XML"
+
+#~ msgid "JSON"
+#~ msgstr "JSON"
+
+#~ msgid "RDF"
+#~ msgstr "RDF"
