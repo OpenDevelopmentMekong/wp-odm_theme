@@ -34,7 +34,9 @@ class OpenDev_InteractiveMap {
         $categories = get_terms('layer-category');
         ob_start();
         ?>
-        <?php printing_map_setting();?>
+        <?php if (!$isMobile): ?>
+          <?php printing_map_setting();?>
+        <?php endif; ?>
         <div class="interactive-map">
         	<div class="map-container">
         		<div id="map_interactive_map_0" class="map"></div>

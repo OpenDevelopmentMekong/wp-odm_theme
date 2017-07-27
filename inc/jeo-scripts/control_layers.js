@@ -22,6 +22,10 @@ var original_layers_height;
 		},
 		_bindEvents: function() {
 			var self = this;
+	    if ($(document).width() < 750) {
+	        this._map.setZoom(6);
+	    }
+
 			this._$.click(function() {
 				var visibleSiblings = [];
 				$(".hide-on-mobile-dialog").each(function(index){
