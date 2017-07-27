@@ -273,6 +273,7 @@ and (orientation : portrait) {
 	.section-title{
 		padding: 0px 0 5px;
 	}
+
 }
 
 /* Special header & social-buttons adaptations */
@@ -384,7 +385,7 @@ and (orientation : portrait) {
 	.interactive-map .map-container {
 		max-height: 400px;
 	}
-
+  
 }
 
 /* Small Mobile Screen */
@@ -414,6 +415,14 @@ and (orientation : portrait) {
 	.interactive-map .map-container.hide-on-mobile-dialog{
 		max-height: 300px;
 	}
+}
+
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-moz-binding: url(<q>assets/xml/ellipsis.xml#ellipsis</q>);
 }
 
 .ellipsis {
