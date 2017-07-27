@@ -10,7 +10,7 @@ Template Name: Data archive
   <section class="container section-title main-title">
 		<header class="row">
 			<div class="sixteen columns">
-				<h1><?php the_title(); ?></h1>
+				<?php odm_title($post,array()); ?> 
         <p class="access-database"><a class="button" href="<?php echo get_option('setting_ckan_url'); ?>" target="_blank"><?php _e('Access the complete database', 'odm'); ?></a></p>
 			</div>
 		</header>

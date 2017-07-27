@@ -550,6 +550,18 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
+function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show = "metadata_created" ){ 
+
+	if (odm_screen_manager()->is_desktop()): ?>
+		<h1><?php echo get_the_title($the_post) ?></h1>
+		<?php echo_post_meta($the_post,$show_meta,$date_to_show);
+	else:?>
+		<h1 class="ellipsis"><?php echo get_the_title($the_post) ?></h1>
+	<?php 
+	endif;
+	
+}
+
 function odm_excerpt($the_post, $num = 45, $read_more = '')
  {
 	  global $post;

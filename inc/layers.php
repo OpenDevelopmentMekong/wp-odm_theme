@@ -871,7 +871,7 @@
                   $layer['post_title'] = $l['title'];
                   $layers[] = $layer;
                }
-           }elseif($filter == "layer") {
+           }elseif($filter == "layer" && array_key_exists('map_category',$layers)) {
               if($layer['map_category']['name'] != "base-layers"){
                   $layers[] = $layer;
               }
