@@ -236,7 +236,7 @@ function odm_jeo_scripts()
     wp_enqueue_script('BetterWMS', get_stylesheet_directory_uri() . '/inc/jeo-scripts/L.TileLayer.BetterWMS.js', array('jeo', 'jquery'), '1.0.0');
     wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
 
-    if (!odm_screen_manager()->is_desktop()):
+    if (odm_screen_manager()->is_mobile()):
 			wp_enqueue_script('jeo.layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.1.0');
     endif;
 
