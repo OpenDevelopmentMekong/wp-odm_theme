@@ -10,8 +10,7 @@
     <section class="container section-title main-title">
         <div class="eleven columns post-title">
           <header class="row">
-          <h1><?php the_title(); ?></h1>
-          <?php echo_post_meta(get_post(),array('date','categories','tags'),$date_to_show); ?>
+						<?php odm_title($post,array('date','categories','tags'),$date_to_show); ?>        
 					</header>
 					<section class="content section-content">
             <?php

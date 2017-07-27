@@ -6,10 +6,10 @@ Template Name: Map explorer
 <?php get_header(); ?>
 
 <?php if (have_posts()) : the_post(); ?>
-
-   <section id="map">
+  
+  <section id="map">
     <?php echo do_shortcode('[odmap]'); ?>
-   </section>
+  </section>
 
 <?php endif; ?>
 

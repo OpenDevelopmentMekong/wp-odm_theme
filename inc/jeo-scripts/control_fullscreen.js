@@ -62,7 +62,7 @@
 
 				if (frame) {
 						frame.id = "iframe-fullscreen-map";
-				} 
+				}
 			}
 
 			this._map.invalidateSize(true);

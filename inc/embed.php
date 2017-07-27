@@ -205,7 +205,9 @@ function display_embedded_map($mapID, $layerID = null, $show_odlogo = null) {
   		<div class="map-container"><div id="map_embed" class="map"></div></div>
   		<?php
   			//show basemap
-  			display_baselayer_navigation();
+        if(!odm_screen_manager()->is_mobile()):
+    			display_baselayer_navigation();
+        endif;
   			$base_layers = get_post_meta_of_all_baselayer();
         $show_cat = get_post_meta($mapID, '_jeo_map_show_cat', true);
         if(isset($_GET['show_cat'])){
