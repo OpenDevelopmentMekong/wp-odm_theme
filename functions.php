@@ -254,6 +254,14 @@ function odm_jeo_scripts()
 }
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
+function odm_editorial_scripts()
+{
+	if (!odm_screen_manager()->is_desktop()):
+		wp_enqueue_script('editorial.mobile-tables', get_stylesheet_directory_uri() . '/inc/editorial-scripts/mobile-tables.js', array('jeo'), '1.0.0');
+	endif;
+}
+add_action('wp_enqueue_scripts', 'odm_editorial_scripts', 101);
+
 function odm_jeo_admin_scripts() {
     if ( file_exists( get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js'))
 			wp_enqueue_script('jeo.clearscreen', get_stylesheet_directory_uri() . '/inc/jeo-scripts/clearscreen.js', array('jeo'), '1.0.0');
