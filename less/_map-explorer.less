@@ -71,7 +71,7 @@ section#map{
 		left: 5px !important;
 	}
 }
-.interactive-map {
+.interactive-map, .embeded-interactive-map {
 	border: 0;
 	box-shadow: none;
 	position: relative;
@@ -100,36 +100,43 @@ section#map{
 		}
 
 		.leaflet-right {
-
 			.wax-legends {
 				display: none!important;
 			}
+		}
 
-		}
-		.print-map{
+		.jeo-clearscreen, .jeo-printmap, .jeo-layers, .print-map{
 			display: block;
 		}
-		.jeo-clearscreen, .jeo-printmap{
-			display: block;
-		}
+
 		.leaflet-control .print {
 			background-image: url(../../img/print.png);
 			background-position: 0px 0px;
 			background-repeat: no-repeat;
 		}
+
+		.leaflet-control .layers {
+			background-image: url(../../img/layers.png);
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+
 		.leaflet-control .hide-all-boxes-on-map {
 			background-image: url(../../img/clearscreen-button.png);
 			background-position: 1px 0px;
 			background-repeat: no-repeat;
 		}
+
 		.leaflet-control .show-all-boxes-on-map {
 		    background-image: url(../../img/clearscreen-button.png);
 		    background-position: -28px 0px;
 		    background-repeat: no-repeat;
 		}
+
 		.cartodb-popup-close-button {
 				background: #fff !important;
 		}
+
 		.cartodb-timeslider{
 			display: none !important;
 		}
@@ -707,7 +714,7 @@ section#map{
 	background: @white;
 
 	ul{
-		margin: 2px;
+		margin: 2px !important;
 		padding: 0;
 		float: left;
 
