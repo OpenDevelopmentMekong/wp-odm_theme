@@ -34,7 +34,9 @@ class OpenDev_InteractiveMap {
         $categories = get_terms('layer-category');
         ob_start();
         ?>
-        <?php if (!$isMobile): ?>
+        <?php         
+        $isMobile = odm_screen_manager()->is_mobile();
+        if (!$isMobile): ?>
           <?php printing_map_setting();?>
         <?php endif; ?>
         <div class="interactive-map">
@@ -42,7 +44,6 @@ class OpenDev_InteractiveMap {
         		<div id="map_interactive_map_0" class="map"></div>
         	</div>
         	<?php
-          $isMobile = odm_screen_manager()->is_mobile();
           $layers = get_all_layers($exclude_posts_in_cats);
           $layers_legend = get_all_layers_legend($exclude_posts_in_cats);
 
