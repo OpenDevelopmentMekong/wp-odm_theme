@@ -550,7 +550,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show ){ 
+function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show = "metadata_created" ){ 
 
 	if (odm_screen_manager()->is_desktop()): ?>
 		<h1><?php echo get_the_title($the_post) ?></h1>
