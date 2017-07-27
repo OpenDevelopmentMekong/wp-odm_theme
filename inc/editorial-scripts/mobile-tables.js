@@ -1,9 +1,7 @@
 (function($) {
   
 	$(document).ready(function(){
-		$("table").dataTable({
-      responsive: true	
-	  });
+		$("table").dataTable();
   });
 
 })(jQuery);
