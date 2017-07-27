@@ -108,6 +108,10 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 					<div class="close-mobile-dialog">
 						<i class="fa fa-times-circle"></i>
 					</div>
+					<h2 class="sidebar_header map_headline widget_headline"><?php _e("Base Layers", "odm"); ?>
+						<?php if (!$isMobile): echo "<i class='fa fa-caret-down hide_show_icon'></i>"; endif; ?>
+
+					</h2>
 					<?php
 					 display_baselayer_navigation(5, 'base-layers', false, false);
 				endif;
