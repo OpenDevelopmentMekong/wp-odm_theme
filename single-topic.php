@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 <?php if (have_posts()) : the_post();
-	global $post;
 	$options = get_option('odm_options');
   $date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created";
   ?>
