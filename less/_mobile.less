@@ -8,6 +8,7 @@
 	left: 0 !important;
 	right: 0 !important;
 	bottom: 0 !important;
+	position: relative !important;
 	padding: 2% 5% 5%;
 }
 
@@ -17,7 +18,11 @@
 
 .close-mobile-dialog{
 	width: 100%;
+	font-size: 20px;
 	text-align: right;
+  margin-bottom: -1em;
+  position: relative;
+  z-index: 999;
 }
 
 /* Only Desktop */
@@ -63,8 +68,6 @@
     left: 95%;
   }
 
-
-
 	.fa_slider_opendev.default {
 		.fa_slide{
 			.fa_slide_content{
@@ -88,6 +91,38 @@
 		}
 	}
 
+	.category-map-layers{
+		.baselayer-container{
+			position: relative;
+			max-height: 125px;
+			left: 0;
+			top: 0;
+
+
+			ul {
+		    box-shadow: none;
+
+				li{
+					text-align: center;
+					float: none;
+					border-right: 0;
+
+					.baselayer_thumbnail{
+						float: none;
+						display: block;
+						margin: 0 auto;
+						width: 32px;
+						height: 32px;
+
+						img{
+							width: 32px;
+							height: 32px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 /* Large Mobile Screen (Portrait) */
@@ -166,6 +201,28 @@ and (orientation : portrait) {
 			}
 		}
   }
+
+	.interactive-map {
+		.category-map-layers {
+			.sidebar_header{
+				padding: 8px 15px 8px 8px;
+				clear: both;
+				background: none !important;
+				color: @black;
+			}
+		}
+	}
+
+	#map .interactive-map .map-container .leaflet-top{
+    top: 10px !important;
+  }
+  #map .interactive-map .map-container .leaflet-left{
+    left: 10px !important;
+  }
+	#map .interactive-map .map-container .leaflet-right{
+	    right: 10px !important;
+	}
+
 }
 
 /* Large Mobile Screen - Change Menu Style */
@@ -195,6 +252,10 @@ and (orientation : portrait) {
       }
     }
   }
+
+	.embeded-interactive-map .map-container.hide-on-mobile-dialog{
+		max-height: 300px;
+	}
 }
 
 /* Special header & social-buttons adaptations */
@@ -281,6 +342,10 @@ and (orientation : portrait) {
   .alignleft, .alignright {
     width: 50%;
   }
+
+	.interactive-map .map-container {
+		max-height: 400px;
+	}
 }
 
 /* Small Mobile Screen */

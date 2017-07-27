@@ -185,17 +185,19 @@
 
 		});
 
-		$('.hide_show_container').on( "click", '.fa-times-circle', function(e){
+		$('.map-legend-container').on( "click", '.fa-times-circle', function(e){
 		  var get_layer_id = $(this).attr("ID");
 		  var target = $( e.target );
-		  if ( target.is( "i" ) ) {
-			  jeo.toggle_layers(map, all_layers_value[get_layer_id]);
-			  $('.layer-toggle-info-container').hide();
-			  $("#"+get_layer_id).find('i.fa-info-circle').removeClass("active");
-			  $('.map-legend-ul .'+get_layer_id).remove().fadeOut('slow');
-			  if ( !$(".map-legend-ul li").length){
-				 $('.map-legend-container').hide('slow');
-			 }
+			if(typeof(get_layer_id) != 'undefined'){
+			  if ( target.is( "i" ) ) {
+				  jeo.toggle_layers(map, all_layers_value[get_layer_id]);
+				  $('.layer-toggle-info-container').hide();
+				  $("#"+get_layer_id).find('i.fa-info-circle').removeClass("active");
+				  $('.map-legend-ul .'+get_layer_id).remove().fadeOut('slow');
+				  if ( !$(".map-legend-ul li").length){
+					 $('.map-legend-container').hide('slow');
+				 }
+				}
 		  }
 		});
 

@@ -34,19 +34,23 @@ class OpenDev_InteractiveMap {
         $categories = get_terms('layer-category');
         ob_start();
         ?>
-        <?php printing_map_setting();?>
+        <?php         
+        $isMobile = odm_screen_manager()->is_mobile();
+        if (!$isMobile): ?>
+          <?php printing_map_setting();?>
+        <?php endif; ?>
         <div class="interactive-map">
         	<div class="map-container">
         		<div id="map_interactive_map_0" class="map"></div>
         	</div>
         	<?php
-          
           $layers = get_all_layers($exclude_posts_in_cats);
           $layers_legend = get_all_layers_legend($exclude_posts_in_cats);
-                  	
-        	//Show Baselayers Navigations
-        	display_baselayer_navigation(5, 'base-layers', false);
 
+        	//Show Baselayers Navigations
+          if (!$isMobile):
+        	   display_baselayer_navigation(5, 'base-layers', false);
+          endif;
         	//Get all baselayers' post meta for loading on map
         	$base_layers = get_post_meta_of_all_baselayer();
 
@@ -60,22 +64,24 @@ class OpenDev_InteractiveMap {
           );
           $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
           if ($terms_layer):
-            $mobileOrTablet = !odm_screen_manager()->is_desktop(); ?>
-              <div class="category-map-layers box-shadow hide_show_container <?php if ($mobileOrTablet): echo 'mobile-dialog'; endif; ?>">
-                  <?php 
-                    if ($mobileOrTablet): ?>
+          ?>
+              <div class="category-map-layers box-shadow hide_show_container <?php if ($isMobile): echo 'mobile-dialog'; endif; ?>">
+                  <?php
+                    if ($isMobile): ?>
                       <div class="close-mobile-dialog">
                         <i class="fa fa-times-circle"></i>
                       </div>
-                  <?php 
-                    endif; ?>
+                      <?php
+                       display_baselayer_navigation(5, 'base-layers', false, false);
+                    endif;
+                     ?>
                   <h2 class="sidebar_header map_headline widget_headline">
                     <?php _e("Map Layers", "odm"); ?>
-                      <i class='fa fa-caret-down hide_show_icon'></i>
+              			<?php if (!$isMobile): echo "<i class='fa fa-caret-down hide_show_icon'></i>"; endif; ?>
                   </h2>
                   <div class="interactive-map-layers dropdown">
                       <ul class="categories">
-                      <?php 
+                      <?php
                         foreach( $terms_layer as $term ):
                           $args_layer = array(
                              'posts_per_page' => -1,
