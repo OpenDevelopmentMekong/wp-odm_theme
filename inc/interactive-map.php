@@ -65,12 +65,13 @@ class OpenDev_InteractiveMap {
           $terms_layer = get_terms($layer_taxonomy,$layer_term_args);
           if ($terms_layer):
           ?>
-              <div class="category-map-layers box-shadow hide_show_container <?php if ($isMobile): echo 'mobile-dialog'; endif; ?>">
+              <div class="category-map-layers <?php if (!$isMobile): echo 'box-shadow'; endif; ?> hide_show_container <?php if ($isMobile): echo 'mobile-dialog'; endif; ?>">
                   <?php
                     if ($isMobile): ?>
                       <div class="close-mobile-dialog">
                         <i class="fa fa-times-circle"></i>
                       </div>
+                      <h2 class="sidebar_header map_headline widget_headline"><?php _e("Base Layers", "odm"); ?></h2>
                       <?php
                        display_baselayer_navigation(5, 'base-layers', false, false);
                     endif;
