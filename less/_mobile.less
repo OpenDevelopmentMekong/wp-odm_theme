@@ -125,7 +125,7 @@
 	}
 }
 
-/* Large Mobile Screen (Portrait) */
+/* Large Mobile Screen (landscape) */
 @media screen
 and (min-device-width: 768px)
 and (max-device-width: 1024px)
@@ -138,11 +138,13 @@ and (orientation : landscape) {
   }
 }
 
-/* Large Mobile Screen (Landscape) */
-@media screen
-and (min-device-width: 768px)
-and (max-device-width: 1024px)
+/* Large Mobile Screen (portrait) */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px)
 and (orientation : portrait) {
+	#od-head h1 {
+    font-size: 47px;
+    margin: 10px 18px 0 0;
+	}
   .float-left {
     max-width: 77% !important;
   }
@@ -222,7 +224,7 @@ and (orientation : portrait) {
 	#map .interactive-map .map-container .leaflet-right{
 	    right: 10px !important;
 	}
-  
+
 	.button, .dt-button, a.button, button{
 		padding: 5px;
 		height: 15px !important;
@@ -339,6 +341,14 @@ and (orientation : portrait) {
 	#map .interactive-map .map-container .leaflet-right{
 	    right: 10px !important;
 	}
+
+	.layer-right-screen{
+		width: 96%!important;
+		right: 2%!important;
+		top: 10%;
+		bottom: auto !important;
+		position: absolute !important;
+	}
 }
 
 /* Small Mobile Screen */
@@ -409,6 +419,9 @@ and (orientation : portrait) {
   }
 
 	.interactive-map .map-container.hide-on-mobile-dialog{
+		max-height: 450px;
+	}
+	#embeded-interactive-map .map-container{
 		max-height: 300px;
 	}
 }

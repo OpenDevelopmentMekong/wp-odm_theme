@@ -34,7 +34,7 @@ class OpenDev_InteractiveMap {
         $categories = get_terms('layer-category');
         ob_start();
         ?>
-        <?php         
+        <?php
         $isMobile = odm_screen_manager()->is_mobile();
         if (!$isMobile): ?>
           <?php printing_map_setting();?>
@@ -174,10 +174,18 @@ class OpenDev_InteractiveMap {
                 if($('body').hasClass("admin-bar")){
                   adminbar = 35;
                 }
-                var resize_height_map_container = window.innerHeight - adminbar -40 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight  - adminbar - 78 + "px";
-                var resize_height_map_layer = window.innerHeight  - adminbar - 115+ "px";
-                var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
+
+                <?php if ($isMobile): ?>
+                  var offset_map_container = $('.map-container').offset(); 
+                  var resize_height_map_category = window.innerHeight  - adminbar - 200 + "px";
+                  var resize_height_map_layer = window.innerHeight - adminbar - offset_map_container.top+ "px";
+                  var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
+                <?php else: ?>
+                  var resize_height_map_container = window.innerHeight - adminbar -40 + "px"; //map, layer cat, and legend
+                  var resize_height_map_category = window.innerHeight  - adminbar - 78 + "px";
+                  var resize_height_map_layer = window.innerHeight  - adminbar - 115+ "px";
+                  var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
+                <?php endif; ?>
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
                 $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
