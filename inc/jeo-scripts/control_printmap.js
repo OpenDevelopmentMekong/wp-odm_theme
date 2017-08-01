@@ -211,7 +211,7 @@ var printing_map;
 				$(".printing-description").hide();
 				$(".printing-description").text("");
 				$(".baselayer-container").show();
-				$(".map-legend-container").height("5px");
+				$(".map-legend-container").height("auto");
 				$(".category-map-layers").show();
 				if ($(".map-legend-ul li").length > 2){
 					$(".map-legend-container").fadeIn();
@@ -239,7 +239,7 @@ var printing_map;
           logging: false,
           profile: false,
 					proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
-          useCORS: true,
+          useCORS: false,
 					svgRendering:true,
 					useOverflow:true,
 					onrendered: function(canvas) {
