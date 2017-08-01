@@ -236,10 +236,10 @@ var printing_map;
 			$(".print-preview-map").clone().css({"width":img_width+"px", "height":img_height+"px"}).appendTo('.clone-preview-container').addClass('clone-interactive-map');
 			html2canvas($(".clone-interactive-map"), {
 					flashcanvas: "/wp-content/themes/wp-odm_theme/inc/html2canvas/flashcanvas.min.js",
-          logging: false,
+          logging: true,
           profile: false,
-					proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
           useCORS: true,
+					proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
 					svgRendering:true,
 					useOverflow:true,
 					onrendered: function(canvas) {
