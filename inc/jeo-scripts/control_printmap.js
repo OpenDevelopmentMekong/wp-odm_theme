@@ -239,7 +239,7 @@ var printing_map;
           logging: false,
           profile: false,
 					proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
-          useCORS: false,
+          useCORS: true,
 					svgRendering:true,
 					useOverflow:true,
 					onrendered: function(canvas) {
