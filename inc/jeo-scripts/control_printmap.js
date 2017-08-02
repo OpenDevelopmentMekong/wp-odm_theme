@@ -238,8 +238,8 @@ var printing_map;
 					flashcanvas: "/wp-content/themes/wp-odm_theme/inc/html2canvas/flashcanvas.min.js",
           logging: true,
           profile: false,
-          useCORS: true,
 					proxy: '/wp-content/themes/wp-odm_theme/inc/html2canvas/proxy.php',
+          useCORS: true,
 					svgRendering:true,
 					useOverflow:true,
 					onrendered: function(canvas) {
