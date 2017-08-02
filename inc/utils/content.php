@@ -562,11 +562,10 @@ function odm_title($the_post,$show_meta = array('date','categories','tags'),$dat
 
 }
 
-function odm_excerpt($the_post, $num = 45, $read_more = '')
+function odm_excerpt($the_post, $limit = 45, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
-		$limit = $num;
 
 		if($post->post_excerpt):
 			$post_content = $post->post_excerpt;
@@ -578,31 +577,40 @@ function odm_excerpt($the_post, $num = 45, $read_more = '')
 
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
-		if(trim($stripped_content)):
-			$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
-			$stripped_content_arr = explode(' ', trim($stripped_content), $num+1);
 
-			if($stripped_content_arr):
-				array_splice($stripped_content_arr, $limit);
-				$excerpt_content = implode(' ', $stripped_content_arr);
-		    if (odm_language_manager()->get_current_language() == "km"):
-		  		$excerpt_zeo_space = explode("&#8203;", $excerpt_content, $num+1); //explode by zerowidthspace​
-					array_splice($excerpt_zeo_space, $limit);
-		  		$excerpt_content = implode("&#8203;", $excerpt_zeo_space); //implode by zerowidthspace
-				endif;
+		$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
 
-				$color_name = odm_country_manager()->get_current_country().'-color';
-				if ($read_more != ''):
-					$excerpt_words =  $excerpt_content." ... <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
-				else:
-					$excerpt_words = $excerpt_content." <a href='".get_permalink($post->ID)." ' class='".$color_name."'>...</a>";
-				endif;
-				return '<p>' . $excerpt_words . '</p>';
-			endif;
+		$excerpt_content = shorten_string_words($stripped_content,$limit,odm_language_manager()->get_current_language());
 
-			return '<p>' . $stripped_content . '</p>';
+		$color_name = odm_country_manager()->get_current_country().'-color';
+		if ($read_more != ''):
+			$excerpt_words =  $excerpt_content." ... <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
+		else:
+			$excerpt_words = $excerpt_content." <a href='".get_permalink($post->ID)." ' class='".$color_name."'>...</a>";
 		endif;
+		return '<p>' . $excerpt_words . '</p>';
+
  }
+
+function shorten_string_words($string, $limit = 40, $current_lang = "en"){
+
+	if (strlen($string) <= $limit):
+		return $string;
+	endif;
+
+	$stripped_content_arr = explode(' ', trim($string), $limit+1);
+	array_splice($stripped_content_arr, $limit);
+	$limited = implode(' ', $stripped_content_arr);
+
+	if ($current_lang == "km"):
+		$no_zero_space = explode("&#8203;", $limited, $limit+1); //explode by zerowidthspace​
+		array_splice($no_zero_space, $limit);
+		$limited = implode("&#8203;", $no_zero_space); //implode by zerowidthspace
+	endif;
+
+	return $limited;
+
+}
 
 function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
  	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
