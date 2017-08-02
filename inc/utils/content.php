@@ -386,7 +386,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = "metadata_created", $max_num_topics = null, $max_num_tags = null)
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags','sources'), $order = "metadata_created", $max_num_topics = null, $max_num_tags = null)
 {
 	global $post;
 	$post = $the_post;
@@ -550,16 +550,16 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show = "metadata_created" ){ 
+function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show = "metadata_created" ){
 
 	if (odm_screen_manager()->is_desktop()): ?>
 		<h1><?php echo get_the_title($the_post) ?></h1>
 		<?php echo_post_meta($the_post,$show_meta,$date_to_show);
 	else:?>
 		<h1 class="ellipsis"><?php echo get_the_title($the_post) ?></h1>
-	<?php 
+	<?php
 	endif;
-	
+
 }
 
 function odm_excerpt($the_post, $num = 45, $read_more = '')
