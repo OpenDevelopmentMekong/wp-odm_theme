@@ -16,7 +16,7 @@
 		  				odm_get_template('post-'.$template.'-2-cols',array(
 		  					"post" => get_post(),
 		  					"show_meta" => true,
-		  					"meta_fields" => array("date","categories","tags"),
+		  					"meta_fields" => array("date","categories","tags","sources"),
 		  					"show_source_meta" => true,
 		  					"show_thumbnail" => true,
 		  					"show_excerpt" => true,
