@@ -1,12 +1,10 @@
 <?php
-
 header('Access-Control-Max-Age:' . 5 * 60 * 1000);
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Request-Method: *');
 header('Access-Control-Allow-Methods: OPTIONS, GET');
 header('Access-Control-Allow-Headers *');
 header("Content-Type: application/javascript");
-
 // Url params
 $url = $_GET['url'];
 $callback = $_GET['callback'];
@@ -37,7 +35,7 @@ function get_url_details($url, $attempt = 1, $callback = "")
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_NOBODY, 0);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 500); 
+    curl_setopt($ch, CURLOPT_TIMEOUT, 500);
     //curl_setopt($ch, CURLOPT_PROXY, 'username:password@host:port');
     $data = curl_exec($ch);
     $error = curl_error($ch);
