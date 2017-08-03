@@ -1,0 +1,58 @@
+@media screen {
+	 #od-selector{
+		 #od-logo{
+			 display: none;
+		 }
+	 }
+  div#header { display: none }
+}
+@media only print {
+	@page {
+	  margin: 2% 0 2% 2%;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		display:block;
+    height: auto;
+	}
+
+	article{
+		overflow: visible;
+	}
+
+	#wrap-feedback{
+		display: none;
+	}
+	.show-feedbackbuttom{
+		display: none !important;
+	}
+	#od-selector{
+		display: none;
+		height: 0;
+		margin-bottom: 0;
+		background-color: none;
+
+		.country-selector{
+			display: none;
+		}
+
+		#od-head{
+			margin-top: 0;
+
+			#od-logo{
+				display: none;
+
+				#icon-od-logo {
+						margin-top: 8px;
+				}
+
+				img{
+					width: 170px;
+				}
+			}
+		}
+
+	}
+}
