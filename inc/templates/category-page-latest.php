@@ -2,7 +2,7 @@
 
 $queried_post_type = isset($_GET['queried_post_type']) ? $_GET['queried_post_type'] : 'dataset';
 $param_page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
-$param_page_solr = (isset($_GET['page']) && (int)$_GET['page'] > 0) ? ((int)$_GET['page'] -1) : 0;  
+$param_page_solr = (isset($_GET['page']) && (int)$_GET['page'] > 0) ? ((int)$_GET['page'] -1) : 0;
 $term = $wp_query->queried_object;
 
 ?>
@@ -65,7 +65,7 @@ $term = $wp_query->queried_object;
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
                         "show_meta" => true,
-												"meta_fields" => array("date","categories","tags"),
+												"meta_fields" => array("date","categories","tags","sources"),
                         "show_source_meta" => true,
                         "show_thumbnail" => true,
                         "show_excerpt" => true,
@@ -86,7 +86,7 @@ $term = $wp_query->queried_object;
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
                         "show_meta" => true,
-												"meta_fields" => array("date","categories","tags"),
+												"meta_fields" => array("date","categories","tags","sources"),
                         "show_source_meta" => true,
                         "show_thumbnail" => true,
                         "show_excerpt" => true,
@@ -123,10 +123,10 @@ $term = $wp_query->queried_object;
 
     <section class="search-results container">
       <div class="row">
-        <div class="twelve columns">					
-          <?php wp_solr_get_search_page_template("category-page"); ?>					
+        <div class="twelve columns">
+          <?php wp_solr_get_search_page_template("category-page"); ?>
 				</div>
-			
+
 	      <div class="four columns">
 	        <?php dynamic_sidebar('category-page-sidebar'); ?>
 	      </div>
