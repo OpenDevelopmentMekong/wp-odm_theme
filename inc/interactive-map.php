@@ -34,7 +34,7 @@ class OpenDev_InteractiveMap {
         $categories = get_terms('layer-category');
         ob_start();
         ?>
-        <?php         
+        <?php
         $isMobile = odm_screen_manager()->is_mobile();
         if (!$isMobile): ?>
           <?php printing_map_setting();?>

@@ -118,9 +118,7 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 
 			</h2>
 			<div class="interactive-map-layers dropdown">
-				<?php display_layer_container($layers,$show_cat,$is_hierarchy);
-				 	if (!$isMobile): ?>
-				
+				<?php display_layer_container($layers,$show_cat,$is_hierarchy); ?>
 						<div class="news-marker">
 							<label><input class="news-marker-toggle" type="checkbox" />
 							 	<span class="label"><?php _e("Show news on map", "odm") ?></span>
@@ -129,9 +127,6 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 						<div class="searchFeature">
 							<input type="text" name="searchFeature_by_mapID" class="hidden" value="" id="searchFeature_by_mapID" size="10" />';
 						</div>
-						
-					<?php 
-					endif; ?>
 			</div>
 		</div>
 
