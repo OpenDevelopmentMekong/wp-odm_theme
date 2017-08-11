@@ -10,7 +10,7 @@
     <section class="container section-title main-title">
         <div class="eleven columns post-title">
           <header class="row">
-						<?php odm_title($post,array('date','categories','tags'),$date_to_show); ?>        
+						<?php odm_title($post,array('date','categories','tags','sources'),$date_to_show); ?>        
 					</header>
 					<section class="content section-content">
             <?php
