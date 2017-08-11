@@ -1,6 +1,6 @@
 <?php
-
 $term = $wp_query->queried_object;
+$date_to_show = isset($options['single_page_date']) ? $options['single_page_date'] : "metadata_created";
 $post_types = get_post_types(array(
   'public' => true,
   '_builtin' => false
@@ -60,13 +60,16 @@ foreach($selected_posttype as $pt) {
 								echo '<div class="row">';
 								while(have_posts()) : the_post();
 	                odm_get_template('post-list-single-2-cols',array(
-				  					"post" => get_post(),
+										"post" => get_post(),
 				  					"show_meta" => true,
+				  					"meta_fields" => array("date","categories","tags", "sources"),
 				  					"show_source_meta" => true,
-										"show_thumbnail" => true,
-										"show_excerpt" => true,
-										"show_summary_translated_by_odc_team" => true,
-										"header_tag" => true
+				  					"show_thumbnail" => true,
+				  					"show_excerpt" => true,
+				  					"show_summary_translated_by_odc_team" => true,
+				  					"header_tag" => true,
+				  					"order" => $date_to_show,
+				  					"index" => $index
 				  			),true);
 								if ($index % 2 == 0):
 									echo '</div>';

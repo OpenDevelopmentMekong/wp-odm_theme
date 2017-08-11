@@ -102,7 +102,7 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 		unset($layers[0]);
 		$isMobile = odm_screen_manager()->is_mobile();
 		?>
-		<div class="category-map-layers box-shadow hide_show_container <?php if ($isMobile): echo 'mobile-dialog'; endif; ?>">
+		<div class="category-map-layers <?php if (!$isMobile): echo 'box-shadow'; endif; ?> hide_show_container <?php if ($isMobile): echo 'mobile-dialog'; endif; ?>">
 			<?php
 				if ($isMobile): ?>
 					<div class="close-mobile-dialog">
@@ -119,14 +119,14 @@ function display_map_layer_sidebar_and_legend_box($layers, $show_cat = null, $is
 			</h2>
 			<div class="interactive-map-layers dropdown">
 				<?php display_layer_container($layers,$show_cat,$is_hierarchy); ?>
-				<div class="news-marker">
-					<label><input class="news-marker-toggle" type="checkbox" />
-					 	<span class="label"><?php _e("Show news on map", "odm") ?></span>
-					</label>
-				</div>
-				<div class="searchFeature">
-					<input type="text" name="searchFeature_by_mapID" class="hidden" value="" id="searchFeature_by_mapID" size="10" />';
-				</div>
+						<div class="news-marker">
+							<label><input class="news-marker-toggle" type="checkbox" />
+							 	<span class="label"><?php _e("Show news on map", "odm") ?></span>
+							</label>
+						</div>
+						<div class="searchFeature">
+							<input type="text" name="searchFeature_by_mapID" class="hidden" value="" id="searchFeature_by_mapID" size="10" />';
+						</div>
 			</div>
 		</div>
 
