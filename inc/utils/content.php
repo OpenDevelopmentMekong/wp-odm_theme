@@ -470,28 +470,23 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
   				}
 
   			}// if news_source exists
-  			if (taxonomy_exists('public_announcement_source')) {
-  					echo '<li class="source-cateogy">';
+  			if (taxonomy_exists('public_announcement_source') && isset($post)) {
   					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
   					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
   							if ($terms_public_announcement_source) {
   									$public_announcement_sources = '';
-  									echo '<span class="icon-news"></span> ';
-  									foreach ($terms_public_announcement_source as $term) {
-  											$term_link = get_term_link($term, 'public_announcement_source');
-  											if (is_wp_error($term_link)) {
-  													continue;
-  											}
-  											//We successfully got a link. Print it out.
-  											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
-  									}
-										echo '<i class="fa fa-chain"></i> ';
-  									echo substr($public_announcement_sources, 0, -2);
+						  			echo '<li class="source-cateogy">';
+	  									foreach ($terms_public_announcement_source as $term) {
+	  											$term_link = get_term_link($term, 'public_announcement_source');
+	  											if (is_wp_error($term_link)) {
+	  													continue;
+	  											}
+	  											$public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
+	  									}
+											echo '<i class="fa fa-chain"></i> ';
+	  									echo substr($public_announcement_sources, 0, -2);
+										echo '</li>';
   							}
-  					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-  							echo '<span class="icon-news"></span> ';
-  							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-  							echo get_the_title($public_announcement_source_id);
   					}
   			}
       endif; ?>
@@ -550,7 +545,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_title($the_post,$show_meta = array('date','categories','tags'),$date_to_show = "metadata_created" ){
+function odm_title($the_post,$show_meta = array('date','categories','tags','sources'),$date_to_show = "metadata_created" ){
 
 	if (odm_screen_manager()->is_desktop()): ?>
 		<h1><?php echo get_the_title($the_post) ?></h1>
