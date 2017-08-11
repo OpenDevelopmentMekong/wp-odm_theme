@@ -12,6 +12,19 @@
 	padding: 2% 5% 5%;
 }
 
+.open-mobile-dialog, .close-mobile-dialog{
+	cursor: pointer;
+}
+
+.close-mobile-dialog{
+	width: 100%;
+	font-size: 20px;
+	text-align: right;
+  margin-bottom: -1em;
+  position: relative;
+  z-index: 999;
+}
+
 .close-mobile-dialog,
 .open-mobile-dialog {
 	cursor: pointer;
@@ -34,8 +47,8 @@
 /* Desktop and tablet */
 @media only screen and (min-device-width: 480px) {
 	.hideOnDesktopAndTablet {
-		display: none !important;
-	}
+    display: none !important;
+  }
 }
 /* Common smartphone and table screens */
 @media screen and (min-device-width: 320px) and (max-device-width: 768px) {
@@ -64,9 +77,9 @@
 		}
 	}
 
-	.back-to-top {
-		left: 95%;
-	}
+  .back-to-top {
+    left: 95%;
+  }
 
 	.fa_slider_opendev.default {
 		.fa_slide {
@@ -90,29 +103,30 @@
 		}
 	}
 
-	.category-map-layers {
-		.baselayer-container {
+	.category-map-layers{
+		.baselayer-container{
 			position: relative;
 			max-height: 125px;
 			left: 10px;
 			top: 0;
 
-			ul {
-				box-shadow: none;
 
-				li {
+			ul {
+		    box-shadow: none;
+
+				li{
 					text-align: center;
 					float: none;
 					border-right: 0;
 
-					.baselayer_thumbnail {
+					.baselayer_thumbnail{
 						float: none;
 						display: block;
 						margin: 0 auto;
 						width: 32px;
 						height: 32px;
 
-						img {
+						img{
 							width: 32px;
 							height: 32px;
 						}
@@ -199,11 +213,11 @@
 				}
 			}
 		}
-	}
+  }
 
 	.interactive-map {
 		.category-map-layers {
-			.sidebar_header {
+			.sidebar_header{
 				padding: 8px 15px 8px 8px;
 				clear: both;
 				background: none !important;
@@ -212,14 +226,20 @@
 		}
 	}
 
-	#map .interactive-map .map-container .leaflet-top {
-		top: 10px !important;
+	#map .interactive-map .map-container .leaflet-top{
+    top: 10px !important;
+  }
+  #map .interactive-map .map-container .leaflet-left{
+    left: 10px !important;
+  }
+	#map .interactive-map .map-container .leaflet-right{
+	    right: 10px !important;
 	}
 
 	.button, .dt-button, a.button, button{
 		padding: 5px;
 		height: 15px !important;
-    
+
 		.fa-download {
 			margin-right: 0;
 		}
@@ -245,7 +265,7 @@
 			margin-right: 0;
 		}
 	}
-	
+
 }
 /* Large Mobile Screen - Change Menu Style */
 @media screen and (min-device-width: 320px) and (max-device-width: 650px) {
@@ -269,22 +289,25 @@
 		height: auto;
 	}
 
-	div.sixteen.columns {
-		p {
-			iframe {
-				width: 100%;
-			}
-		}
-	}
+  div.sixteen.columns {
+    p {
+      iframe {
+        width: 100%;
+      }
+    }
+  }
 
-	.embeded-interactive-map .map-container.hide-on-mobile-dialog {
+	.embeded-interactive-map .map-container.hide-on-mobile-dialog{
 		max-height: 300px;
 	}
 
-	.section-title {
-		padding: 0 0 5px;
+
+	.section-title{
+		padding: 0px 0 5px;
 	}
+
 }
+
 /* Special header & social-buttons adaptations */
 @media (min-device-width: 550px) and (max-device-width: 650px) {
 	#od-head {
@@ -339,20 +362,17 @@
 }
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
-	.hideOnMobile {
-		display: none !important;
-	}
-
-	#map .interactive-map .map-container .leaflet-top {
-		top: 10px !important;
-	}
-
-	#map .interactive-map .map-container .leaflet-left {
-		left: 10px !important;
-	}
-
-	#map .interactive-map .map-container .leaflet-right {
-		right: 10px !important;
+  .hideOnMobile {
+    display: none !important;
+  }
+	#map .interactive-map .map-container .leaflet-top{
+    top: 10px !important;
+  }
+  #map .interactive-map .map-container .leaflet-left{
+    left: 10px !important;
+  }
+	#map .interactive-map .map-container .leaflet-right{
+	    right: 10px !important;
 	}
 }
 /* Small Mobile Screen */
@@ -370,7 +390,6 @@
 	#od-head {
 		min-height: 55px;
 		padding: 0;
-
 		#icon-od-logo {
 			margin-right: 5px;
 
@@ -379,56 +398,60 @@
 				height: 50px;
 			}
 		}
-
+		img {
+			max-width: 89% !important;
+		}
 		h1 {
 			font-size: 25px;
 			margin: 2px 10px 0 0;
 		}
-
 		h2.side-title {
 			line-height: 40px;
 			font-size: 18px;
 			margin-top: 8px;
 		}
 	}
-
-	.alignleft,
-	.alignright {
-		width: 50%;
-	}
+	.alignleft, .alignright {
+    width: 50%;
+  }
 
 	.interactive-map .map-container {
 		max-height: 400px;
 	}
+	.button.download{
+		padding: 5px;
+	}
 }
+
 /* Small Mobile Screen */
 @media screen and (min-device-width: 320px) and (max-device-width: 370px) {
+
 	#od-head {
 		min-height: 55px;
-		padding: 0;
-
-		#icon-od-logo {
+    padding: 0;
+    #icon-od-logo {
 			margin-right: 5px;
 
-			.svg-od-logo {
-				width: 27px;
+      .svg-od-logo {
+        width: 27px;
 				height: 50px;
-			}
+      }
+    }
+		img {
+			max-width: 89% !important;
 		}
-
-		h1 {
-			font-size: 22px;
+    h1 {
+      font-size: 22px;
 			margin: 2px 10px 0 0;
-		}
-
-		h2.side-title {
-			line-height: 40px;
-			font-size: 16px;
+    }
+    h2.side-title {
+      line-height: 40px;
+      font-size: 16px;
 			margin-top: 8px;
-		}
-	}
+    }
+  }
 
-	.interactive-map .map-container.hide-on-mobile-dialog {
+	.interactive-map .map-container.hide-on-mobile-dialog{
 		max-height: 300px;
 	}
 }
