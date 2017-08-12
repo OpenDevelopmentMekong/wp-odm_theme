@@ -13,14 +13,31 @@
 	  font-family: 'icomoon' !important;
 }
 
+.od-icon_budget .path1:before {
+  content: "\e900";
+  color: rgb(255, 255, 255);
+}
+.od-icon_budget .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(51, 51, 51);
+}
+.od-icon_budget .path3:before {
+  content: "\e902";
+  margin-left: -1em;
+  color: rgb(51, 51, 51);
+}
+.od-icon_document:before {
+  content: "\e903";
+}
 .od-icon_fee .path1:before {
   content: "\e904";
-  color: rgb(255, 255, 255);
+  color: rgb(51, 51, 51);
 }
 .od-icon_fee .path2:before {
   content: "\e905";
   margin-left: -1em;
-  color: rgb(51, 51, 51);
+  color: rgb(255, 255, 255);
 }
 .od-icon_fee .path3:before {
   content: "\e906";
@@ -43,33 +60,16 @@
   color: rgb(51, 51, 51);
 }
 .od-icon_fee .path7:before {
-  content: "\e90d";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.od-icon_budget .path1:before {
-  content: "\e900";
-  color: rgb(255, 255, 255);
-}
-.od-icon_budget .path2:before {
-  content: "\e901";
+  content: "\e90a";
   margin-left: -1em;
   color: rgb(51, 51, 51);
-}
-.od-icon_budget .path3:before {
-  content: "\e902";
-  margin-left: -1em;
-  color: rgb(51, 51, 51);
-}
-.od-icon_document:before {
-  content: "\e903";
 }
 .od-icon_od:before {
-  content: "\e90a";
-}
-.od-icon_school:before {
   content: "\e90b";
 }
-.od-icon_waternelectricity:before {
+.od-icon_school:before {
   content: "\e90c";
+}
+.od-icon_waternelectricity:before {
+  content: "\e90d";
 }
