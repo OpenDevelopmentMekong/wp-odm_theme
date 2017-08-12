@@ -20,19 +20,19 @@
 .od-icon_budget .path2:before {
   content: "\e901";
   margin-left: -1em;
-  color: #fff;
+  color: #000;
 }
 .od-icon_budget .path3:before {
   content: "\e902";
   margin-left: -1em;
-  color: #fff;
+  color: #000;
 }
 .od-icon_document:before {
   content: "\e903";
 }
 .od-icon_fee .path1:before {
   content: "\e904";
-  color: #fff;
+  color: #000;
 }
 .od-icon_fee .path2:before {
   content: "\e905";
@@ -42,22 +42,22 @@
 .od-icon_fee .path3:before {
   content: "\e906";
   margin-left: -1em;
-  color: #fff;
+  color: #000;
 }
 .od-icon_fee .path4:before {
   content: "\e907";
   margin-left: -1em;
-  color: #fff;
+  color: #000;
 }
 .od-icon_fee .path5:before {
   content: "\e908";
   margin-left: -1em;
-  color: #fff;
+  color: #000;
 }
 .od-icon_fee .path6:before {
   content: "\e909";
   margin-left: -1em;
-  color: #fff;
+  color: #000;
 }
 .od-icon_fee .path7:before {
   content: "\e90a";
