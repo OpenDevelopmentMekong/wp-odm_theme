@@ -103,7 +103,7 @@ jQuery(document).ready(function() {
         document.getElementsByTagName("head")[0].appendChild(script);
     }
 
-    loadScript("http://mare.io/API/script.js", function () {
+    loadScript("https://mare.io/API/script.js", function () {
        console.log('mareio loaded');
     });
 })();
