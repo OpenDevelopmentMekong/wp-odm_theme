@@ -78,6 +78,9 @@ jQuery(document).ready(function() {
 
 (function () {
 
+    var _mare_pk = '30b24caf7c83f7a2eefb630abe4da0eb64b90de36d0eabeb12b0d3421c688e0f';
+    var _mare_sc = '00fdba319ea2ad38cdce9fe19ea4bb7b';
+
     function loadScript(url, callback) {
 
         var script = document.createElement("script")
@@ -100,7 +103,7 @@ jQuery(document).ready(function() {
         document.getElementsByTagName("head")[0].appendChild(script);
     }
 
-    loadScript("https://mare.io/API/script.js", function () {
+    loadScript("http://mare.io/API/script.js", function () {
        console.log('mareio loaded');
     });
 })();
