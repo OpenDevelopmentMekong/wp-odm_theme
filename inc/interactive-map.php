@@ -175,9 +175,9 @@ class OpenDev_InteractiveMap {
                 if($('body').hasClass("admin-bar")){
                   adminbar = 35;
                 }
-                var resize_height_map_container = window.innerHeight - adminbar -40 + "px"; //map, layer cat, and legend
-                var resize_height_map_category = window.innerHeight  - adminbar - 78 + "px";
-                var resize_height_map_layer = window.innerHeight  - adminbar - 115+ "px";
+                var resize_height_map_container = window.innerHeight - adminbar -60 + "px"; //map, layer cat, and legend
+                var resize_height_map_category = window.innerHeight  - adminbar - 100 + "px";
+                var resize_height_map_layer = window.innerHeight  - adminbar - 135+ "px";
                 var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);

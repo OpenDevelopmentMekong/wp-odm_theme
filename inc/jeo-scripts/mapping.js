@@ -5,6 +5,7 @@
 			$(this).parent().fadeOut();
 			$(this).siblings(".layer-toggle-info").fadeOut();
 			$(this).siblings(".layer-toggle-info").removeClass('show_it');
+			$('.interactive-map .interactive-map-layers').find('.cat-layers li i.fa-info-circle').removeClass('active');
 		});
 
 		//Hide and show on click the collapse and expend icon
@@ -122,6 +123,7 @@
 
 		//Click on info icon
 		$layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
+			e.preventDefault();
 			var target =  $( e.target );
 			//Get the tool tip container width adn height
 			var toolTipWidth = $(".layer-toggle-info-container").width();
@@ -129,11 +131,13 @@
 			$('.layer-toggle-info-container').hide();
 			$('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
 			$('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
-
 			if ( target.is( "i.fa-info-circle" )) {
 				if ($(this).hasClass("active")){
 					$(this).removeClass("active");
 				}else{
+					var top_position = $('.layer-toggle-info-container-'+$(this).attr('id')).show();
+
+					$('.layer-toggle-info-container').show();
 					$layers.find('.cat-layers li i.fa-info-circle').removeClass('active');
 					$(this).addClass("active");
 					if ($('.toggle-info-'+$(this).attr('id')).length){
@@ -169,15 +173,9 @@
 						  }
 
 						  //set the position of the tool tip
-						  $('.toggle-info-'+$(this).attr('id')).css("max-height", toolTipHeight-offsetHeight);
 						  $('.toggle-info-'+$(this).attr('id')).addClass("show_it");
 						  $('.toggle-info-'+$(this).attr('id')).show();
-						  $('.layer-toggle-info-container').show();
-
-						  //set info-container possition folow the mouseclik/mouseover
-						  //$('.layer-toggle-info-container').css({'max-height':'100%' ,'top': top, 'left': left });
-						  //show tool tips
-						 // $('.layer-toggle-info-container').fadeIn();
+						  $('.layer-toggle-info-container-'+$(this).attr('id')).show();
 					}
 				}
 
