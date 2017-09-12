@@ -78,7 +78,6 @@
 			}
 		});
 
-  //  $layers.find('.cat-layers li.fixed').trigger('click');
 	  $('.cat-layers li.fixed').each(function() {
 				var get_layer_id = $(this).data('layer');
 				$(this).parent("ul").show();
@@ -111,13 +110,11 @@
 				$(this_item).addClass('loading');
 				jeo.toggle_layers(map, all_layers_value[get_layer_id]);
 				if( all_layers_legends && all_layers_legends[get_layer_id]){
-					var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
+					var get_legend = all_layers_legends[get_layer_id];
 					if( typeof get_legend != "undefined"){
 						display_layer_legen($(this_item).data('layer'), get_legend);
 					}//typeof get_legend != "undefined"
-
 				}
-
 			} //if has class active
 		}
 
@@ -172,7 +169,7 @@
 							  left = $(this).offset().left - toolTipWidth - (offsetWidth) + marginright;
 						  }
 
-						  //set the position of the tool tip
+						  //set the position of the tool tip 
 						  $('.toggle-info-'+$(this).attr('id')).addClass("show_it");
 						  $('.toggle-info-'+$(this).attr('id')).show();
 						  $('.layer-toggle-info-container-'+$(this).attr('id')).show();
