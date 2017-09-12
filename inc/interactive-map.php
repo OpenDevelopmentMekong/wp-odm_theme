@@ -178,18 +178,15 @@ class OpenDev_InteractiveMap {
                 var resize_height_map_container = window.innerHeight - adminbar -60 + "px"; //map, layer cat, and legend
                 var resize_height_map_category = window.innerHeight  - adminbar - 100 + "px";
                 var resize_height_map_layer = window.innerHeight  - adminbar - 135+ "px";
-                var resize_layer_toggle_info = $(".layer-toggle-info-container").height()  - adminbar -38 + "px";
 
                 $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
                 $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
                 $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
-                $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
                 $(".page-template-page-map-explorer .layer-toggle-info").css("display", "none");
                 $(window).resize(function() {
                     $(".page-template-page-map-explorer .interactive-map .map-container").css("height", resize_height_map_container);
                     $(".page-template-page-map-explorer .category-map-layers").css("max-height", resize_height_map_category);
                     $(".page-template-page-map-explorer .interactive-map-layers").css("max-height", resize_height_map_layer);
-                    $(".page-template-page-map-explorer .layer-toggle-info").css("max-height", resize_layer_toggle_info);
                 });
                 // End Resize
             })(jQuery);
