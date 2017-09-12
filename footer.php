@@ -53,6 +53,18 @@
 <?php wp_footer(); ?>
 
 </div>
+
+<script type="text/javascript">
+  var _mare_pk = '1e34dd25f7b430a1a7cb09454576b4612162fc56cff1ba7b4648e6fc9eacb7c4';
+  var _mare_sc = 'ee0c15de450f47a43b0070298881dc21';
+  (function() {
+    var mare = document.createElement('script'); mare.type = "text/javascript"; mare.async = true;
+    mare.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'mare.io/API/script.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mare, s);
+  })();
+</script>
+
+
 </body>
 </html>
 
