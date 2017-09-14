@@ -188,6 +188,7 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 		   $layer_items .= '
 		      <a class="profilepage_link" href="'. $layer_profilepage_link.'" target="_blank"><i class="fa fa-table"></i></a>';
 		  }
+			//$layer_items .= display_layer_information_by_layerID($post_ID);
 		$layer_items .= '</li>';
 
 		if($echo == 1){
@@ -535,31 +536,29 @@ function get_all_layers_legend($exclude_posts_in_cats = null){
 }
 
 //show the toggle information container
-function display_layer_information($layers){
-?>
-	<div class="box-shadow layer-toggle-info-container layer-right-screen">
-	   <div class="toggle-close-icon"><i class="fa fa-times"></i></div>
-	   <?php
+function display_layer_information($layers, $echo = true){
+	$layer_info = '<div class="box-shadow layer-toggle-info-container layer-right-screen">';
+	   $layer_info .= '<div class="toggle-close-icon"><i class="fa fa-times"></i></div>';
 	   foreach($layers as $individual_layer):
 			$get_post_content_by_id = null;
 		  $get_post_by_id = get_post($individual_layer["ID"]);
-		  if ( (odm_language_manager()->get_current_language() !== "en") ):
-				$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link_localization', true);
-		  else:
-			 	$get_download_url = get_post_meta($get_post_by_id->ID, '_layer_download_link', true);
-		  endif;
+			if ( (odm_language_manager()->get_current_language() !== "en") ){
+			  $get_download_url = get_post_meta($individual_layer["ID"], '_layer_download_link_localization', true);
+			  $get_profilepage_link = get_post_meta($individual_layer["ID"], '_layer_profilepage_link_localization', true);
+		  }else {
+			  $get_download_url = get_post_meta($individual_layer["ID"], '_layer_download_link', true);
+			  $get_profilepage_link = get_post_meta($individual_layer["ID"], '_layer_profilepage_link', true);
+		  }
 
-		  // get post content if has
 			$get_post_content_by_id = apply_filters('translate_text', $get_post_by_id->post_content, odm_language_manager()->get_current_language());
 			$check_post_content= trim(str_replace("&nbsp;", "", strip_tags($get_post_content_by_id)));
-			if(!empty($check_post_content)): ?>
-					<div class="layer-toggle-info toggle-info-<?php echo $individual_layer['ID']; ?>">
-						<div class="layer-toggle-info-content">
-							<h4><?php echo get_the_title($individual_layer['ID']); ?></h4>
-							<?php echo $get_post_content_by_id ?>
-						</div>
-					</div>
-			<?php
+			if(!empty($check_post_content)):
+					$layer_info .= '<div class="layer-toggle-info toggle-info-'. $individual_layer['ID'].'">';
+						$layer_info .= '<div class="layer-toggle-info-content">';
+							$layer_info .= '<h4>'. get_the_title($individual_layer['ID']). '</h4>';
+							$layer_info .= $get_post_content_by_id;
+						$layer_info .= '</div>';
+					$layer_info .= '</div>';
 			elseif($get_download_url!="" ):
 				  $showing_fields = array(
 									  //  "title_translated" => "Title",
@@ -569,19 +568,28 @@ function display_layer_information($layers){
 										"odm_completeness" => "Completeness",
 										"license_id" => "License"
 									);
-
-					$ckan_domain = wpckan_get_ckan_domain();
 					$ckan_dataset_id = wpckan_get_dataset_id_from_dataset_url($get_download_url);
+
 				  if($ckan_dataset_id!= ""):
-					  wpckan_get_metadata_info_of_dataset_by_id($ckan_domain, $ckan_dataset_id, $get_post_by_id, 1,  $showing_fields);
+						$metadata_params = array(
+																'ckan_dataset_id' => $ckan_dataset_id,
+																'get_layer_post' => $get_post_by_id,
+																'download_url' => $get_download_url,
+																'profile_url' => $get_profilepage_link,
+																'showing_fields' => $showing_fields,
+																'echo' => false
+															 );
+					  $layer_info .= wpckan_get_metadata_info_of_dataset_by_id($metadata_params);
 				  endif;
 			endif;
-			?>
-		<?php
 		endforeach;
-	   ?>
-	</div><!--llayer-toggle-info-containero-->
-<?php
+	$layer_info .= '</div>';
+
+	if($echo){
+		echo $layer_info;
+	}else{
+		return $layer_info;
+	}
 }
 
 //get post meta of layer by id
