@@ -17,7 +17,6 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 <section class="container">
 
   <div class="row">
-
     <div class="sixteen columns">
       <?php while (have_posts()) : the_post();
 				odm_get_template('post-grid-single-4-cols',array(
@@ -28,7 +27,6 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 			),true);
 			endwhile; ?>
     </div>
-
   </div>
 
 </section>
