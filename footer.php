@@ -35,7 +35,7 @@
   			</nav>
   		</div>
       <div class="four columns">
-  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external"><b>WordPress</b></a> using the <a href="%s" target="_blank" rel="external"><b>JEO Beta</b></a> theme and <a href="%s" target="_blank" rel="external"><b>CKAN</b></a>, the world’s leading Open Source data portal platform', 'odm'), 'http://wordpress.org', 'https://github.com/oeco/jeo', 'https://ckan.org'); ?></p>
+  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external"><b>WordPress</b></a> using the <a href="%s" target="_blank" rel="external"><b>JEO Beta</b></a> theme and <a href="%s" target="_blank" rel="external"><b>CKAN</b></a> as back-end for structured data. To experience more about ODM\'s system architecture you can visit  <a href="%s" target="_blank" rel="external"><b>our wiki</b></a>, the world’s leading Open Source data portal platform', 'odm'), 'http://wordpress.org', 'https://github.com/oeco/jeo', 'https://ckan.org', 'https://wiki.opendevelopmentmekong.net/public:system_s_architecture'); ?></p>
   		</div>
 			<?php
 		  if(odm_country_manager()->get_current_country() != 'cambodia'): ?>
