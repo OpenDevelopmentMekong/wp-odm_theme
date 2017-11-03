@@ -1,5 +1,20 @@
 <?php
 
+function populate_localizations_array(& $localizations, $taxonomy_en, $taxonomy_local_language )
+{
+	$keys = array_keys( $taxonomy_local_language );
+	foreach( $keys as $key ) {
+		if ($key == "name" && !is_array( $taxonomy_en[$key] )){
+			$name_en = $taxonomy_en[$key];
+			$localizations[$name_en] = $taxonomy_local_language[$key];
+		}
+		if( isset( $taxonomy_en[$key] ) && is_array( $taxonomy_en[$key] ) && is_array( $taxonomy_local_language[$key] )) {
+			populate_localizations_array($localizations, $taxonomy_en[$key], $taxonomy_local_language[$key] );
+		}
+	}
+	return $localizations;
+}
+
 function getMultilingualValueOrFallback($field, $lang, $fallback)
 {
     if (!isset($field[$lang]) || empty($field[$lang])):

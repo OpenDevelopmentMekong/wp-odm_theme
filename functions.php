@@ -555,6 +555,15 @@ function teslina_tinymce_config($init)
 }
 add_filter('tiny_mce_before_init', 'teslina_tinymce_config');
 
+function localize_taxonomy_terms() {
+	ob_start();
+	include( dirname(__FILE__) . '/admin-scripts/localize-taxonomy-terms.php' );
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
+}
+add_shortcode( 'admin_scripts_localize_taxonomy_terms', 'localize_taxonomy_terms' );
+
 function migrate_tags_to_related() {
 	ob_start();
 	include( dirname(__FILE__) . '/admin-scripts/migrate-tags-to-related.php' );
