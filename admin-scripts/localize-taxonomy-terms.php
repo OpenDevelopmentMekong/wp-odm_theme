@@ -24,6 +24,8 @@ else:
 
 	$localized = $qtranslate_term_name;
 
+	echo "Current status of qtranslate_term_name option: " . nl2br("\n");
+
   print_r($localized);
 
 	foreach ($localizations as $term_en => $term_local_lang):
@@ -42,6 +44,8 @@ else:
 	print_r($localized);
 
 	update_option('qtranslate_term_name',$localized);
+
+	echo nl2br("\n") . "Success!" . nl2br("\n");
 
 endif;
 
