@@ -48,7 +48,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		}
 
 		if (!$hide_empty_terms || $get_post_id):
-
+			echo "<li>";
 			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 			if ($get_post_id): // if page of the topic exists
 				echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
@@ -61,7 +61,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			endif;
 
 			echo "</span>";
-
+			echo "</li>";
 		endif;
 	}
 
@@ -75,7 +75,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
 		if (!$hide_empty_terms || $category_has_contents):
-
+			echo "<li>";
 			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
 			// add link if contetns categorized by this topic exist
@@ -90,7 +90,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			endif;
 
 			echo "</span>";
-
+			echo "</li>";
 		endif;
 
 	}
@@ -103,11 +103,12 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function walk_child_category( $children, $topic_or_category, $hide_empty_terms = false) {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
+
 		foreach($children as $child){
 
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 0, 'orderby' => 'name', ) );
-			echo "<li>";
+
 			// Display current category
 			if ($topic_or_category == 'topic'):
 				$this->print_category_linked_to_topic($child, $current_page_slug, $hide_empty_terms);
@@ -123,7 +124,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				$this->walk_child_category( $cat_children,  $topic_or_category, $hide_empty_terms);
 				echo "</ul>";
 			}
-			echo "</li>";
 		}
 	}
 
