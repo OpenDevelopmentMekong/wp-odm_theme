@@ -99,8 +99,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
 		foreach($children as $child){
+
 			// Get immediate children of current category
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
+			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 0, 'orderby' => 'name', ) );
 			echo "<li>";
 			// Display current category
 			if ($topic_or_category == 'topic'):
