@@ -39,7 +39,7 @@ Template Name: Blog Page
   					"show_source_meta" => true,
   					"show_thumbnail" => true,
   					"show_excerpt" => true,
-  					"show_summary_translated_by_odc_team" => true,
+  					"summary_translated" => true,
   					"header_tag" => true,
   					"order" => $date_to_show,
   					"index" => $index

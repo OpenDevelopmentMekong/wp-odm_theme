@@ -11,7 +11,6 @@
 	$highlight_words_query = isset($params["highlight_words_query"]) ? $params["highlight_words_query"] : null;
 	$solr_search_result = isset($params["solr_search_result"]) ? $params["solr_search_result"] : null;
 	$show_post_type = isset($params["show_post_type"]) ? $params["show_post_type"] : false;
-	$show_summary_translated_by_odc_team = isset($params["show_summary_translated_by_odc_team"]) ? $params["show_summary_translated_by_odc_team"] : false;
 	$header_tag = isset($params["header_tag"]) ? $params["header_tag"] : false;
 	$order = isset($params["order"]) ? $params["order"] : "metadata_created";
 	$extra_classes = isset($params["extra_classes"]) ? $params["extra_classes"] : null;
