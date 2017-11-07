@@ -1,4 +1,4 @@
-<?php
+_nav_item<?php
 class Odm_Taxonomy_Widget extends WP_Widget {
 
 	/**
@@ -35,7 +35,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_topic($category, $current_page_slug ="", $hide_empty_terms = false) {
+	public function print_category_linked_to_topic($category, $current_page_slug ="", $hide_empty_terms = false, $extra_classes) {
 		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
@@ -48,7 +48,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		}
 
 		if (!$hide_empty_terms || $get_post_id):
-			echo "<li>";
+			echo "<li class=\"" . $extra_classes . "\">";
 			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 			if ($get_post_id): // if page of the topic exists
 				echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
@@ -71,11 +71,11 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_category( $category, $current_page_slug ="", $hide_empty_terms = false) {
+	public function print_category_linked_to_category( $category, $current_page_slug ="", $hide_empty_terms = false, $extra_classes) {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
 		if (!$hide_empty_terms || $category_has_contents):
-			echo "<li>";
+			echo "<li class=\"" . $extra_classes . "\">";
 			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
 			// add link if contetns categorized by this topic exist
@@ -206,11 +206,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
 			}
 
-			echo "<li class='topic_nav_item'>";
 			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($category, $current_page_slug, false);
+				$this->print_category_linked_to_topic($category, $current_page_slug, false, 'topic_nav_item');
 			else:
-				$this->print_category_linked_to_category($category, $current_page_slug, false);
+				$this->print_category_linked_to_category($category, $current_page_slug, false, 'topic_nav_item');
 			endif;
 
 			if ( !empty($children) ) {
@@ -220,8 +219,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 				echo '</ul>';
 			}
-
-			echo "</li>";
 
 		}
 		echo "</ul>";
