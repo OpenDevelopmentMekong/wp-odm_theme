@@ -111,9 +111,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 			// Display current category
 			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($child, $current_page_slug, $hide_empty_terms);
+				$this->print_category_linked_to_topic($child, $current_page_slug, $hide_empty_terms, "");
 			else:
-				$this->print_category_linked_to_category($child, $current_page_slug, $hide_empty_terms);
+				$this->print_category_linked_to_category($child, $current_page_slug, $hide_empty_terms, "");
 			endif;
 
 			// if current category has children
