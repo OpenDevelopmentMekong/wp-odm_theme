@@ -35,7 +35,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_topic($category, $current_page_slug ="") {
+	public function print_category_linked_to_topic($category, $current_page_slug ="", $hide_empty_terms) {
 		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
@@ -51,7 +51,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
 		endif;
 
-		echo $category->name;
+		if ($hide_empty_terms && !$get_post_id):
+			echo $category->name;
+		endif;
 
 		if ($get_post_id):
 			echo "</a></h5>";
@@ -66,7 +68,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_category( $category, $current_page_slug ="") {
+	public function print_category_linked_to_category( $category, $current_page_slug ="", $hide_empty_terms = false) {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
@@ -76,7 +78,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo '<h5><a href="/category/' . $category->slug . '">';
     endif;
 
-		echo $category->name;
+		if ($hide_empty_terms && !$category_has_contents):
+			echo $category->name;
+		endif;
 
 		if ($category_has_contents):
 			echo "</a></h5>";
@@ -143,7 +147,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
 		  }
 
-			//if parent is showed, child need to expend 
+			//if parent is showed, child need to expend
 		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
 				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
@@ -173,6 +177,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$cat_included_id_arr = !empty($instance['od_include']) ? explode(",", $instance['od_include']) : array();
 		$cat_excluded_id_arr = !empty($instance['od_exclude']) ? explode(",", $instance['od_exclude']) : array();
 		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
+		$hide_empty_terms = isset($instance['hide_empty_terms']) ? $instance['hide_empty_terms'] : false;
 
 		echo "<div>";
 		$args = array(
@@ -193,7 +198,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			{
 				$jackpot = true;
 				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
-
 			}
 
 			echo "<li class='topic_nav_item'>";
@@ -234,7 +238,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$od_include = isset($instance['od_include']) ? $instance['od_include'] : '';
 		$od_exclude = isset($instance['od_exclude']) ? $instance['od_exclude'] : '';
 		$topic_or_category = isset($instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
-		?>
+		$hide_empty_terms = isset($instance['hide_empty_terms']) ? $instance['hide_empty_terms'] : false; ?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php _e( $title , 'odm' ); ?>">
@@ -253,6 +257,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				<option <?php if ($topic_or_category == 'topic') { echo " selected"; } ?> value="topic">Topic</option>
 				<option <?php if ($topic_or_category == 'category') { echo " selected"; } ?> value="category">Category</option>
 			</select>
+		</p>
+		<p class="<?php echo $this->get_field_id('hide_empty_terms'); ?>" id="hide_empty_terms">
+			<label for="<?php echo $this->get_field_id( 'hide_empty_terms' ); ?>"><?php _e( 'Hide empty terms:' ); ?></label>
+			<input type="checkbox" name="<?php echo $this->get_field_name('hide_empty_terms'); ?>" id="<?php echo $this->get_field_id('hide_empty_terms'); ?>" <?php if ($hide_empty_terms)  echo 'checked="true"'; ?>/>
 		</p>
 		<?php
 	}
@@ -275,6 +283,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$instance['od_include'] = $new_instance['od_include'] ;
 		$instance['od_exclude'] = $new_instance['od_exclude'] ;
 		$instance['topic_or_category'] = isset($new_instance['topic_or_category']) ? $new_instance['topic_or_category'] : 'topic';
+		$instance['hide_empty_terms'] = $new_instance['hide_empty_terms'];
 
 		return $instance;
 	}
