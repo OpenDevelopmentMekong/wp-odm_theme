@@ -51,7 +51,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
 		endif;
 
-		if (!$hide_empty_terms && $get_post_id):
+		if (!$hide_empty_terms || $get_post_id):
 			echo $category->name;
 		endif;
 
@@ -78,7 +78,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			echo '<h5><a href="/category/' . $category->slug . '">';
     endif;
 
-		if (!$hide_empty_terms && $category_has_contents):
+		if (!$hide_empty_terms || $category_has_contents):
 			echo $category->name;
 		endif;
 
