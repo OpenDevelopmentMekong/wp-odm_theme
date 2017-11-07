@@ -1,4 +1,4 @@
-_nav_item<?php
+<?php
 class Odm_Taxonomy_Widget extends WP_Widget {
 
 	/**
