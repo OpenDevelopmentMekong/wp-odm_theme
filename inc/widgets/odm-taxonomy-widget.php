@@ -46,20 +46,23 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				 $current_page = " ".$current_page_slug;
 			}
 		}
-		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
-		if ($get_post_id): // if page of the topic exists
-			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
-		endif;
 
 		if (!$hide_empty_terms || $get_post_id):
+
+			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
+			if ($get_post_id): // if page of the topic exists
+				echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
+			endif;
+
 			echo $category->name;
-		endif;
 
-		if ($get_post_id):
-			echo "</a></h5>";
-		endif;
+			if ($get_post_id):
+				echo "</a></h5>";
+			endif;
 
-		echo "</span>";
+			echo "</span>";
+
+		endif;
 	}
 
 		/**
@@ -71,22 +74,24 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function print_category_linked_to_category( $category, $current_page_slug ="", $hide_empty_terms = false) {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
-		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
-
-		// add link if contetns categorized by this topic exist
-		if ($category_has_contents):
-			echo '<h5><a href="/category/' . $category->slug . '">';
-    endif;
-
 		if (!$hide_empty_terms || $category_has_contents):
+
+			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
+
+			// add link if contetns categorized by this topic exist
+			if ($category_has_contents):
+				echo '<h5><a href="/category/' . $category->slug . '">';
+	    endif;
+
 			echo $category->name;
-		endif;
 
-		if ($category_has_contents):
-			echo "</a></h5>";
-		endif;
+			if ($category_has_contents):
+				echo "</a></h5>";
+			endif;
 
-		echo "</span>";
+			echo "</span>";
+
+		endif;
 
 	}
 	/**
