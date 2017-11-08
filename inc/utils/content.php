@@ -516,7 +516,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 			if (in_array('tags',$show_elements)): ?>
 					<?php
 					$tag_list = get_the_tags($post->ID);
-					if (isset($max_num_tags) && $max_num_tags > 0):
+					if (is_array($tag_list) && isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
 					if (!empty($tag_list)): ?>
