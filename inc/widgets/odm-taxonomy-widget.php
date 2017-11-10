@@ -13,6 +13,20 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Checks to see if a category has contents
+	 */
+	function category_has_contents( $category, $topic_or_category = "topic" ) {
+
+		if ($topic_or_category == 'topic'):
+			return get_post_or_page_id_by_title($category->name);
+		endif;
+
+		return get_category($category->term_id)->category_count > 0;
+
+	}
+
+
+	/**
 	 * Checks to see if post is a descendent of given categories
 	 * from: https://codex.wordpress.org/Function_Reference/in_category
 	 * @param mixed $categories
@@ -35,7 +49,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_topic($category, $current_page_slug ="", $hide_empty_terms = false) {
+	public function print_category_linked_to_topic($category, $current_page_slug ="") {
 		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
@@ -46,12 +60,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				 $current_page = " ".$current_page_slug;
 			}
 		}
-
-		$should_be_hidden = $hide_empty_terms && !$get_post_id;
-
-		if ($should_be_hidden):
-			echo "<div class=\"hidden\">";
-		endif;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 		if ($get_post_id): // if page of the topic exists
@@ -66,9 +74,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		echo "</span>";
 
-		if ($should_be_hidden):
-			echo "</div>";
-		endif;
 	}
 
 		/**
@@ -77,13 +82,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_category( $category, $current_page_slug ="", $hide_empty_terms = false) {
+	public function print_category_linked_to_category( $category, $current_page_slug ="") {
 		$category_has_contents = get_category($category->term_id)->category_count > 0;
-		$should_be_hidden = $hide_empty_terms && !$category_has_contents;
-
-		if ($should_be_hidden):
-			echo "<div class=\"hidden\">";
-		endif;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
@@ -100,10 +100,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		echo "</span>";
 
-		if ($should_be_hidden):
-			echo "</div>";
-		endif;
-
 	}
 	/**
 	 * Walks through a list of categories and prints all children descendant
@@ -117,12 +113,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			echo "<li>";
+			$add_hidden_class = $hide_empty_terms && !category_has_contents($child) ? "hidden" : "";
+
+			echo "<li class=\"" . $add_hidden_class ."\" >";
 			// Display current category
 			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($child, $current_page_slug, $hide_empty_terms);
+				$this->print_category_linked_to_topic($child, $current_page_slug);
 			else:
-				$this->print_category_linked_to_category($child, $current_page_slug, $hide_empty_terms);
+				$this->print_category_linked_to_category($child, $current_page_slug);
 			endif;
 
 			// if current category has children
@@ -214,7 +212,6 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			{
 				$jackpot = true;
 				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
-
 			}
 
 			echo "<li class='topic_nav_item'>";
