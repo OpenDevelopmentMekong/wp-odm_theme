@@ -33,13 +33,15 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param mixed $_post
 	 */
 	function post_is_in_descendant_category( $cats, $_post = null ) {
-		foreach ( (array) $cats as $cat ) {
+		foreach ( (array) $cats as $cat ):
 			// get_term_children() accepts integer ID only
 			$descendants = get_term_children( (int) $cat, 'category' );
-			//if ( $descendants && in_category( $descendants, $_post ) )
-			if ( $descendants)
+			if ( $descendants):
 				return true;
-		}
+			endif;
+
+		endforeach;
+
 		return false;
 	}
 
@@ -49,26 +51,29 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_topic($category, $current_page_slug ="") {
-		$post_type =  get_post_type( get_the_ID() );
+	function print_category_linked_to_topic($category, $current_page_slug ="") {
+
 		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
-		if ($get_post_id) { // if page of the topic exists
+		$has_contents = $this->category_has_contents($category,"topic");
+
+		if ($has_contents): // if page of the topic exists
 			$topic_page = get_post($get_post_id);
 			$topic_slug = $topic_page->post_name;
-			if ($topic_slug == $current_page_slug){
+			if ($topic_slug == $current_page_slug):
 				 $current_page = " ".$current_page_slug;
-			}
-		}
+			endif;
+		endif;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
-		if ($get_post_id): // if page of the topic exists
+
+		if ($has_contents): // if page of the topic exists
 			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
 		endif;
 
 		echo $category->name;
 
-		if ($get_post_id):
+		if ($has_contents):
 			echo "</a></h5>";
 		endif;
 
@@ -82,19 +87,19 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_category( $category, $current_page_slug ="") {
-		$category_has_contents = get_category($category->term_id)->category_count > 0;
+	function print_category_linked_to_category( $category, $current_page_slug ="") {
+		$has_contents = $this->category_has_contents($category,"category");
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
 		// add link if contetns categorized by this topic exist
-		if ($category_has_contents):
+		if ($has_contents):
 			echo '<h5><a href="/category/' . $category->slug . '">';
     endif;
 
 		echo $category->name;
 
-		if ($category_has_contents):
+		if ($has_contents):
 			echo "</a></h5>";
 		endif;
 
@@ -113,7 +118,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			$add_hidden_class = $hide_empty_terms && !category_has_contents($child) ? "hidden" : "";
+			$add_hidden_class = $hide_empty_terms && !$this->category_has_contents($child) ? "hidden" : "";
 
 			echo "<li class=\"" . $add_hidden_class ."\" >";
 			// Display current category
