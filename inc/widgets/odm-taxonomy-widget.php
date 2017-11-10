@@ -53,11 +53,11 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 */
 	function print_category_linked_to_topic($category, $current_page_slug ="") {
 
-		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
-		$has_contents = $this->category_has_contents($category,"topic");
 
+		$has_contents = $this->category_has_contents($category,"topic");
 		if ($has_contents): // if page of the topic exists
+			$get_post_id = get_post_or_page_id_by_title($category->name);
 			$topic_page = get_post($get_post_id);
 			$topic_slug = $topic_page->post_name;
 			if ($topic_slug == $current_page_slug):
@@ -115,6 +115,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function walk_child_category( $children, $topic_or_category , $hide_empty_terms = false) {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
+
 		foreach($children as $child){
 
 			// Get immediate children of current category
@@ -124,9 +125,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				'orderby' => 'name'
 				)
 			);
-			$add_hidden_class = $hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child);
 
-			if ($add_hidden_class):
+			if ($hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child,$topic_or_category)):
 				echo "<li class=\"hidden_taxonomy\">";
 			else:
 				echo "<li>";
@@ -247,9 +247,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 			if (!empty($children)):
 				echo '<ul>';
-
 				$this->walk_child_category( $children, $topic_or_category, $hide_empty_terms );
-
 				echo '</ul>';
 			endif;
 
