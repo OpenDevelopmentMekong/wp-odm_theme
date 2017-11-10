@@ -129,13 +129,13 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			endif;
 
 			// if current category has children
-			if ( !empty($cat_children) ) {
+			if ( !empty($cat_children) ):
 				// add a sublevel
 				echo "<ul>";
 				// display the children
 				$this->walk_child_category( $cat_children,  $topic_or_category, $hide_empty_terms);
 				echo "</ul>";
-			}
+			endif;
 			echo "</li>";
 		}
 	}
@@ -161,10 +161,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
-			if( $(this).has('ul') ){
+			if( $(this).has('ul') ):
 		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
 		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
-		  }
+		  endif;
 
 			//if parent is showed, child need to expend
 		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
@@ -209,15 +209,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$categories = get_categories( $args );
 
 		echo "<ul class='odm_taxonomy_widget_ul'>";
-		foreach($categories as $category){
+		foreach($categories as $category):
 			$jackpot = false;
 			$children = array();
 
-			if ( in_category( $category->term_id ) || $this->post_is_in_descendant_category( $category->term_id ) )
-			{
+			if (in_category($category->term_id) || $this->post_is_in_descendant_category($category->term_id)):
 				$jackpot = true;
 				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
-			}
+			endif;
 
 			echo "<li class='topic_nav_item'>";
 			if ($topic_or_category == 'topic'):
@@ -226,17 +225,17 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				$this->print_category_linked_to_category($category, $current_page_slug, false);
 			endif;
 
-			if ( !empty($children) ) {
+			if (!empty($children)):
 				echo '<ul>';
 
 				$this->walk_child_category( $children, $topic_or_category, $hide_empty_terms );
 
 				echo '</ul>';
-			}
+			endif;
 
 			echo "</li>";
 
-		}
+		endforeach;
 		echo "</ul>";
 		echo "</div>";
 
