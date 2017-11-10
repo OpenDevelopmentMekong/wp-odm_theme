@@ -130,7 +130,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				// add a sublevel
 				echo "<ul>";
 				// display the children
-				$this->walk_child_category( $cat_children,  $topic_or_category);
+				$this->walk_child_category( $cat_children,  $topic_or_category, $hide_empty_terms);
 				echo "</ul>";
 			}
 			echo "</li>";
