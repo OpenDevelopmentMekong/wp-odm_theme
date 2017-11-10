@@ -126,28 +126,30 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				)
 			);
 
-			if ($hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child,$topic_or_category)):
-				echo "<li class=\"hidden_taxonomy\">";
-			else:
+			$hidde_item = $hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child,$topic_or_category);
+			if (!$hidde_item):
+
 				echo "<li>";
-			endif;
 
-			// Display current category
-			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($child, $current_page_slug);
-			else:
-				$this->print_category_linked_to_category($child, $current_page_slug);
-			endif;
+				// Display current category
+				if ($topic_or_category == 'topic'):
+					$this->print_category_linked_to_topic($child, $current_page_slug);
+				else:
+					$this->print_category_linked_to_category($child, $current_page_slug);
+				endif;
 
-			// if current category has children
-			if ( !empty($cat_children) ):
-				// add a sublevel
-				echo "<ul>";
-				// display the children
-				$this->walk_child_category( $cat_children,  $topic_or_category, $hide_empty_terms);
-				echo "</ul>";
+				// if current category has children
+				if ( !empty($cat_children) ):
+					// add a sublevel
+					echo "<ul>";
+					// display the children
+					$this->walk_child_category( $cat_children,  $topic_or_category, $hide_empty_terms);
+					echo "</ul>";
+				endif;
+
+				echo "</li>";
+
 			endif;
-			echo "</li>";
 		}
 	}
 
