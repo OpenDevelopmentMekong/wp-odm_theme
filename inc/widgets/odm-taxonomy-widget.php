@@ -227,7 +227,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			if ( !empty($children) ) {
 				echo '<ul>';
 
-				$this->walk_child_category( $children, $topic_or_category );
+				$this->walk_child_category( $children, $topic_or_category, $hide_empty_terms );
 
 				echo '</ul>';
 			}
