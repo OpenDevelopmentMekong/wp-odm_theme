@@ -118,9 +118,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			$add_hidden_class = $hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child) ? "hidden_taxonomy" : "";
+			$add_hidden_class = $hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child);
 
-			echo "<li class=\"" . $add_hidden_class ."\" >";
+			if ($add_hidden_class):
+				echo "<li class=\"hidden_taxonomy\">";
+			else:
+				echo "<li>";
+			endif;
+
 			// Display current category
 			if ($topic_or_category == 'topic'):
 				$this->print_category_linked_to_topic($child, $current_page_slug);
