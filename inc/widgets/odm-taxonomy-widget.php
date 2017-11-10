@@ -116,8 +116,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
 		foreach($children as $child){
+
 			// Get immediate children of current category
-			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
+			$cat_children = get_categories( array(
+				'parent' => $child->term_id,
+				'hide_empty' => 1,
+				'orderby' => 'name'
+				)
+			);
 			$add_hidden_class = $hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child);
 
 			if ($add_hidden_class):
@@ -224,14 +230,19 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 			if (in_category($category->term_id) || $this->post_is_in_descendant_category($category->term_id)):
 				$jackpot = true;
-				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
+				$children = get_categories( array(
+					'parent' => $category->term_id,
+					'hide_empty' => 0,
+					'orderby' => 'term_id'
+					)
+				);
 			endif;
 
 			echo "<li class='topic_nav_item'>";
 			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($category, $current_page_slug, false);
+				$this->print_category_linked_to_topic($category, $current_page_slug);
 			else:
-				$this->print_category_linked_to_category($category, $current_page_slug, false);
+				$this->print_category_linked_to_category($category, $current_page_slug);
 			endif;
 
 			if (!empty($children)):
