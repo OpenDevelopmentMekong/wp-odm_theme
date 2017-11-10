@@ -39,13 +39,20 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
-		if ($get_post_id){ // if page of the topic exists
+		if ($get_post_id) { // if page of the topic exists
 			$topic_page = get_post($get_post_id);
 			$topic_slug = $topic_page->post_name;
 			if ($topic_slug == $current_page_slug){
 				 $current_page = " ".$current_page_slug;
 			}
 		}
+
+		$should_be_hidden = $hide_empty_terms && !$get_post_id;
+
+		if ($should_be_hidden):
+			echo "<div class=\"hidden\">";
+		endif;
+
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
 		if ($get_post_id): // if page of the topic exists
 			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
@@ -58,6 +65,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		endif;
 
 		echo "</span>";
+
+		if ($should_be_hidden):
+			echo "</div>";
+		endif;
 	}
 
 		/**
@@ -67,7 +78,12 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 * @param category $category a category object to display
 	 */
 	public function print_category_linked_to_category( $category, $current_page_slug ="", $hide_empty_terms = false) {
-		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
+		$category_has_contents = get_category($category->term_id)->category_count > 0;
+		$should_be_hidden = $hide_empty_terms && !$category_has_contents;
+
+		if ($should_be_hidden):
+			echo "<div class=\"hidden\">";
+		endif;
 
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
@@ -83,6 +99,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 		endif;
 
 		echo "</span>";
+
+		if ($should_be_hidden):
+			echo "</div>";
+		endif;
 
 	}
 	/**
