@@ -126,8 +126,14 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				)
 			);
 
-			$hidde_item = $hide_empty_terms && empty($cat_children) && !$this->category_has_contents($child,$topic_or_category);
-			if (!$hidde_item):
+			$children_have_contents = false;
+			foreach($cat_children as $child_of_child):
+				// TODO: Recursive
+				$children_have_contents = $this->category_has_contents($child_of_child,$topic_or_category);
+			endforeach;
+
+			$hide_item = $hide_empty_terms && (empty($cat_children) || !$children_have_contents) && !$this->category_has_contents($child,$topic_or_category);
+			if (!$hide_item):
 
 				echo "<li>";
 
