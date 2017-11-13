@@ -1,5 +1,11 @@
 <?php
 
+	function flatten(array $array) {
+	  $return = array();
+	  array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+	  return $return;
+	}
+
 	function parse_mapping_pairs($column_list_raw) {
 		$column_list = explode("\r\n", $column_list_raw);
 		$column_list_array = array();

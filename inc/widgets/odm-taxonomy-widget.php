@@ -118,21 +118,15 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		foreach($children as $child){
 
-			// Get immediate children of current category
-			$cat_children = get_categories( array(
-				'parent' => $child->term_id,
-				'hide_empty' => 1,
-				'orderby' => 'name'
-				)
-			);
+			$children_tree = get_list_all_children_for_category($child->term_id);
+			$children_list = flatten($children_tree);
 
 			$children_have_contents = false;
-			foreach($cat_children as $child_of_child):
-				// TODO: Recursive
+			foreach($children_list as $child_of_child):
 				$children_have_contents = $this->category_has_contents($child_of_child,$topic_or_category);
 			endforeach;
 
-			$hide_item = $hide_empty_terms && (empty($cat_children) || !$children_have_contents) && !$this->category_has_contents($child,$topic_or_category);
+			$hide_item = $hide_empty_terms && (empty($children_list) || !$children_have_contents) && !$this->category_has_contents($child,$topic_or_category);
 			if (!$hide_item):
 
 				echo "<li>";
@@ -145,7 +139,16 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				endif;
 
 				// if current category has children
-				if ( !empty($cat_children) ):
+				if ( !empty($children_list) ):
+
+					//Get immediate children of current category
+					$cat_children = get_categories( array(
+						'parent' => $child->term_id,
+						'hide_empty' => 1,
+						'orderby' => 'name'
+						)
+					);
+
 					// add a sublevel
 					echo "<ul>";
 					// display the children

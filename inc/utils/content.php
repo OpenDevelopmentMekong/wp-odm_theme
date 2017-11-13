@@ -1,5 +1,39 @@
 <?php
 
+function get_list_all_children_for_category($parentID){
+
+	$sql = "select id, parent_id, title from category where ";
+  if ( is_null($parentID) ) {
+    $sql .= "parent_id is null";
+  }
+  elseif ( is_array($parentID) ) {
+    $parentID = implode(',', $parentID);
+    $sql .= "parent_id in ({$parentID})";
+  }
+  else {
+    $sql .= "parent_id = {$parentID}";
+  }
+
+  $tree = array();
+  $idList = array();
+
+  $res = mysql_query($sql);
+  while ( $row = mysql_fetch_assoc($res) ) {
+    $row['children'] = array();
+    $tree[$row['id']] = $row;
+    $idList[] = $row['id'];
+  }
+  mysql_free_result($res);
+
+  if ( $idList ) {
+    $children = get_list_all_children_for_category($idList);
+    foreach ( $children as $child ) {
+      $tree[$child['parent_id']]['children'][] = $child;
+    }
+  }
+  return $tree;
+}
+
 function set_site_title(){
 	global $post, $page, $paged;
 
