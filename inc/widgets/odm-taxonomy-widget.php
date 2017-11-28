@@ -148,17 +148,8 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				// if current category has children
 				if ( !empty($cat_children) ):
 
-					// Get immediate children of current category
-					$cat_children = get_categories( array(
-						'taxonomy' => 'category',
-						'parent' => $child->term_id,
-						'orderby' => 'name'
-						)
-					);
-
 					// add a sublevel
 					echo "<ul>";
-					// display the children
 					$this->walk_child_category( $cat_children,  $topic_or_category, $hide_empty_terms);
 					echo "</ul>";
 				endif;
