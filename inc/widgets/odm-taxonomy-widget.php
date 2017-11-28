@@ -122,9 +122,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$cat_children = get_categories( array(
 				'taxonomy' => 'category',
 				'parent' => $child->term_id,
-				'orderby' => 'name',
-				'hierarchical' => true,
-				'hide_empty' => false
+				'orderby' => 'name'
 				)
 			);
 
