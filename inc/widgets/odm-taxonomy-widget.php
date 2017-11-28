@@ -18,7 +18,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	function category_has_contents( $category, $topic_or_category = "topic" ) {
 
 		if ($topic_or_category == 'topic'):
-			return get_post_or_page_id_by_title($category->name);
+			return get_post_or_page_id_by_title($category->name) > -1;
 		endif;
 
 		return get_category($category->term_id)->category_count > 0;
@@ -134,8 +134,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				$children_have_contents = $this->category_has_contents($child_of_child,$topic_or_category);
 			endforeach;
 
-			$hide_item = $hide_empty_terms && (empty($cat_children) || !$children_have_contents) && !$this->category_has_contents($child,$topic_or_category);
-			if (!$hide_item):
+			if (!$hide_empty_terms && ($this->category_has_contents($child,$topic_or_category) || $children_have_contents)):
 
 				echo "<li>";
 
