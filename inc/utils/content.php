@@ -516,7 +516,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 			if (in_array('tags',$show_elements)): ?>
 					<?php
 					$tag_list = get_the_tags($post->ID);
-					if (isset($max_num_tags) && $max_num_tags > 0):
+					if (is_array($tag_list) && isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
 					if (!empty($tag_list)): ?>
@@ -535,8 +535,8 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 				 	endif;
 	      endif; ?>
 			<?php
-			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
-				<?php echo_post_translated_by_od_team(get_the_ID());
+			if (in_array('summary_translated',$show_elements)): ?>
+				<?php echo_post_translated_by_country_team(get_the_ID());
 			endif; ?>
 		</ul>
 	</div>
@@ -607,7 +607,7 @@ function shorten_string_words($string, $limit = 40, $current_lang = "en"){
 
 }
 
-function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
+function echo_post_translated_by_country_team($postID, $current_lang = "en", $taxonomy ="language") {
  	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
  			$translated_term =  $site_language."-translated";
 			$team_name = "OD". ucfirst(substr(odm_country_manager()->get_current_country(), 0, 1));

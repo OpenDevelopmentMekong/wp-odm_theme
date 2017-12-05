@@ -62,11 +62,10 @@ foreach($selected_posttype as $pt) {
 	                odm_get_template('post-list-single-2-cols',array(
 										"post" => get_post(),
 				  					"show_meta" => true,
-				  					"meta_fields" => array("date","categories","tags", "sources"),
+				  					"meta_fields" => array("date","categories","tags", "sources","summary_translated"),
 				  					"show_source_meta" => true,
 				  					"show_thumbnail" => true,
 				  					"show_excerpt" => true,
-				  					"show_summary_translated_by_odc_team" => true,
 				  					"header_tag" => true,
 				  					"order" => $date_to_show,
 				  					"index" => $index

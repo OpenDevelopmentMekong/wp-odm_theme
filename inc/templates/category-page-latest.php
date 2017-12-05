@@ -65,11 +65,10 @@ $term = $wp_query->queried_object;
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
                         "show_meta" => true,
-												"meta_fields" => array("date","categories","tags","sources"),
+												"meta_fields" => array("date","categories","tags","sources","summary_translated"),
                         "show_source_meta" => true,
                         "show_thumbnail" => true,
                         "show_excerpt" => true,
-                        "show_summary_translated_by_odc_team" => true,
                         "header_tag" => true,
 												"show_more_link" => true
                     ),true);
@@ -86,11 +85,10 @@ $term = $wp_query->queried_object;
                     odm_get_template('post-highlighted-single-1-cols',array(
                         "post" => $post,
                         "show_meta" => true,
-												"meta_fields" => array("date","categories","tags","sources"),
+												"meta_fields" => array("date","categories","tags","sources","summary_translated"),
                         "show_source_meta" => true,
                         "show_thumbnail" => true,
                         "show_excerpt" => true,
-                        "show_summary_translated_by_odc_team" => true,
                         "header_tag" => false,
 												"show_more_link" => true
                     ),true);
