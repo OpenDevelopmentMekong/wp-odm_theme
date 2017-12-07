@@ -784,7 +784,7 @@ function available_custom_post_types(){
      foreach($cats as $cat) {
         if ($cat->parent == 0) {
            $top_cat_obj[] = $cat;
-					 $top_cat_names[] = apply_filters('translate_text', get_cat_name($top_cat_obj->cat_ID), 'en');
+					 $top_cat_names[] = apply_filters('translate_text', get_cat_name($cat->cat_ID), 'en');
         }
      }
      return $top_cat_names;
