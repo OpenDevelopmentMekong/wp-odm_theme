@@ -778,16 +778,12 @@ function available_custom_post_types(){
 
 
  function get_top_level_category_english_names($cats) {
-		 $top_cat_names  = array();
-     foreach($cats as $cat) {
-			$all_parent_cats = get_category_parents($cat);
-			foreach($all_parent_cats as $parent_cat) {
-        if ($parent_cat->parent == 0) {
-					$top_cat_names[] = apply_filters('translate_text', get_cat_name($parent_cat->cat_ID), 'en');
-        }
-			}
-     }
-     return $top_cat_names;
+	$top_cat_names  = array();
+  foreach($cats as $cat) {
+		$all_parent_cats = get_category_parents($cat);
+		$top_cat_names = array_merge($top_cat_names,split('/', $all_parent_cats));
+  }
+  return $top_cat_names;
  }
 
  function odm_echo_extras($postID = "") {
