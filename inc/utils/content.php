@@ -780,7 +780,7 @@ function available_custom_post_types(){
  function get_top_level_category_english_names($cats) {
      $top_cat_obj = array();
 		 $top_cat_names  = array();
-     foreach($cats as $cat) {
+     foreach(get_category_parents($cats) as $cat) {
         if ($cat->parent == 0) {
            $top_cat_obj[] = $cat;
 					 $top_cat_names[] = apply_filters('translate_text', get_cat_name($cat->cat_ID), 'en');
