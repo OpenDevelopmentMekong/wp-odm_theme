@@ -36,9 +36,8 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 
     <div class="row">
       <div class="sixteen columns">
-				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
 
-        <?php
+				<?php
 
 				$taxonomy_categories_1 = array("Agriculture and fishing", "Disaster and emergency response", "Environment and natural resources", "Extractive Industries", "Land");
 
@@ -46,19 +45,21 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 
 				$taxonomy_categories_3 = array("Aid and development", "Government", "Law and judiciary", "Population and cencuses", "Social development", "Urban administration and development");
 
+				?>
+
+				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
+      	<?php
+
 				 	while (have_posts()) : the_post();
 						$post = get_post();
-						$category = get_the_category($post->ID);
-						if(isset($category[0]->cat_ID)):
-							$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
-							if (in_array($top_level_cat,$taxonomy_categories_1)):
-								odm_get_template('post-grid-single-4-cols',array(
-			  					"post" => $post,
-			  					"show_meta" => true,
-									"meta_fields" => array("date"),
-									"order" => $date_to_show
-								),true);
-							endif;
+						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
+						if (count(array_intersect($top_level_cat_names,$taxonomy_categories_1)) > 0):
+							odm_get_template('post-grid-single-4-cols',array(
+		  					"post" => $post,
+		  					"show_meta" => true,
+								"meta_fields" => array("date"),
+								"order" => $date_to_show
+							),true);
 						endif;
 					endwhile; ?>
 
@@ -68,16 +69,13 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				<?php
 					while (have_posts()) : the_post();
 					$post = get_post();
-					$category = get_the_category($post->ID);
-					if(isset($category[0]->cat_ID)):
-						$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
-						if (in_array($top_level_cat,$taxonomy_categories_2)):
-								odm_get_template('post-grid-single-4-cols',array(
-			  					"post" => $post,
-			  					"show_meta" => true,
-									"order" => $date_to_show
-								),true);
-						endif;
+					$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
+					if (count(array_intersect($top_level_cat_names,$taxonomy_categories_2)) > 0):
+							odm_get_template('post-grid-single-4-cols',array(
+		  					"post" => $post,
+		  					"show_meta" => true,
+								"order" => $date_to_show
+							),true);
 					endif;
 					endwhile; ?>
 
@@ -88,16 +86,13 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				<?php
 					while (have_posts()) : the_post();
 						$post = get_post();
-						$category = get_the_category($post->ID);
-						if(isset($category[0]->cat_ID)):
-							$top_level_cat = get_top_level_category_english_name($category[0]->cat_ID);
-							if (in_array($top_level_cat,$taxonomy_categories_3)):
-								odm_get_template('post-grid-single-4-cols',array(
-			  					"post" => $post,
-			  					"show_meta" => true,
-									"order" => $date_to_show
-								),true);
-							endif;
+						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
+						if (count(array_intersect($top_level_cat_names,$taxonomy_categories_3)) > 0):
+							odm_get_template('post-grid-single-4-cols',array(
+		  					"post" => $post,
+		  					"show_meta" => true,
+								"order" => $date_to_show
+							),true);
 						endif;
 					endwhile; ?>
       </div>
