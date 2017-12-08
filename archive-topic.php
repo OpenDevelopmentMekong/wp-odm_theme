@@ -53,7 +53,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				 	while (have_posts()) : the_post();
 						$post = get_post();
 						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
-						if (count(array_intersect($top_level_cat_names,$taxonomy_categories_1)) > 0):
+						if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_1)):
 							odm_get_template('post-grid-single-4-cols',array(
 		  					"post" => $post,
 		  					"show_meta" => true,
@@ -70,7 +70,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 					while (have_posts()) : the_post();
 					$post = get_post();
 					$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
-					if (count(array_intersect($top_level_cat_names,$taxonomy_categories_2)) > 0):
+					if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_2)):
 							odm_get_template('post-grid-single-4-cols',array(
 		  					"post" => $post,
 		  					"show_meta" => true,
@@ -87,7 +87,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 					while (have_posts()) : the_post();
 						$post = get_post();
 						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
-						if (count(array_intersect($top_level_cat_names,$taxonomy_categories_3)) > 0):
+						if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_3)):
 							odm_get_template('post-grid-single-4-cols',array(
 		  					"post" => $post,
 		  					"show_meta" => true,
