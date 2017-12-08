@@ -26,6 +26,14 @@ class ArraysTest extends PHPUnit_Framework_TestCase
       $this->assertEquals($result,true);
     }
 
+		public function testArrayHaveCommonItemsIgnoreCase()
+    {
+      $array1 = array("Economy and Commerce", "Disaster and emergency response", "Extractive Industries");
+			$array2 = array("Land", "Extractive industries");
+      $result = arrays_have_common_items($array1,$array2);
+      $this->assertEquals($result,true);
+    }
+
 		public function testArrayHaveCommonItemsNegativeCase()
     {
       $array1 = array("Economy and Commerce", "Disaster and emergency response", "Extractive Industries");
