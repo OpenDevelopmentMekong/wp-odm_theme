@@ -781,7 +781,9 @@ function available_custom_post_types(){
 	$top_cat_names  = array();
   foreach($cats as $cat) {
 		$all_parent_cats = get_category_parents($cat);
-		$top_cat_names = array_merge($top_cat_names,split('/', $all_parent_cats));
+		foreach(split('/', $all_parent_cats) as $parent_cat_name) {
+			array_push($top_cat_names,apply_filters('translate_text', $parent_cat_name, "en"));
+		}
   }
   return $top_cat_names;
  }
