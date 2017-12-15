@@ -777,13 +777,27 @@ function available_custom_post_types(){
  }
 
 
- function get_top_level_category_english_names($cats) {
+ function get_top_level_category_names($cats) {
 	$top_cat_names  = array();
   foreach($cats as $cat) {
 		$all_parent_cats = get_category_parents($cat);
-		$top_cat_names = array_merge($top_cat_names,split('/', $all_parent_cats));
+		foreach(split('/', $all_parent_cats) as $parent_cat_name) {
+			$parent_cat_name_en = apply_filters('translate_text', $parent_cat_name, "en");
+			array_push($top_cat_names,$parent_cat_name_en);
+		}
   }
   return $top_cat_names;
+ }
+
+ function get_top_level_category_slugs($cats) {
+	$top_cat_slugs  = array();
+  foreach($cats as $cat) {
+		$all_parent_cats_slugs = get_category_parents($cat, false, '/', true, array());
+		foreach(split('/', $all_parent_cats_slugs) as $parent_cat_slug) {
+			array_push($top_cat_slugs,$parent_cat_slug);
+		}
+  }
+  return $top_cat_slugs;
  }
 
  function odm_echo_extras($postID = "") {
