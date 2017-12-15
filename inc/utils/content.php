@@ -789,6 +789,17 @@ function available_custom_post_types(){
   return $top_cat_names;
  }
 
+ function get_top_level_category_slugs($cats) {
+	$top_cat_slugs  = array();
+  foreach($cats as $cat) {
+		$all_parent_cats_slugs = get_category_parents($cat, false, '/', true, array());
+		foreach(split('/', $all_parent_cats_slugs) as $parent_cat_slug) {
+			array_push($top_cat_slugs,$parent_cat_slug);
+		}
+  }
+  return $top_cat_slugs;
+ }
+
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
 	 $news_source_info = null;
