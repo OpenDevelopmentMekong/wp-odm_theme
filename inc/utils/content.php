@@ -777,7 +777,7 @@ function available_custom_post_types(){
  }
 
 
- function get_top_level_category_english_names($cats) {
+ function get_top_level_category_names($cats) {
 	$top_cat_names  = array();
   foreach($cats as $cat) {
 		$all_parent_cats = get_category_parents($cat);
