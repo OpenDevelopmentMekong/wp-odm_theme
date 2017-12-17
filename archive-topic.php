@@ -40,7 +40,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				<?php
 				$taxonomy_categories_1 = array("agriculture-and-fishing", "disaster-and-emergency-response", "environment-and-natural-resources", "extractive-industries", "land");
 				$taxonomy_categories_2 = array("economy-and-commerce", "energy", "industry", "infrastructure", "labor", "science-and-technology");
-				$taxonomy_categories_3 = array("aid-and-development", "government", "law-and-judiciary", "population-censuses", "social-development", "urban-administration-and-development"); ?>
+				$taxonomy_categories_3 = array("aid-and-development", "government", "law-and-judiciary", "population-and-censuses", "social-development", "urban-administration-and-development"); ?>
 
 				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
       	<?php
