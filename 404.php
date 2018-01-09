@@ -13,7 +13,7 @@
 
       <div class="row">
         <div class="eight columns offset-by-four align-center">
-          <p><?php _e('If you received this error after selecting a new geographic location from the top menu, it means the new location doesn\'t have an information page on this topic that the old location had. To see what information does exist for this new location you\'ve chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, etc..) from the navigation menu above this message .','odm'); ?></p>
+          <p><?php _e('The contents you are requesting do not seem to exist. Please try using the search function on the top-right area of the screen or browsing other country sites.','odm'); ?></p>
     	  </div>
       </div>
 

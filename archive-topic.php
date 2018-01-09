@@ -38,16 +38,16 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
       <div class="sixteen columns">
 
 				<?php
-				$taxonomy_categories_1 = array("Agriculture and fishing", "Disaster and emergency response", "Environment and natural resources", "Extractive Industries", "Land");
-				$taxonomy_categories_2 = array("Economy and commerce", "Energy", "Industry", "Infrastructure", "Labor", "Science and technology");
-				$taxonomy_categories_3 = array("Aid and development", "Government", "Law and judiciary", "Population and cencuses", "Social development", "Urban administration and development"); ?>
+				$taxonomy_categories_1 = array("agriculture-and-fishing", "disaster-and-emergency-response", "environment-and-natural-resources", "extractive-industries", "land");
+				$taxonomy_categories_2 = array("economy-and-commerce", "energy", "industry", "infrastructure", "labor", "science-and-technology");
+				$taxonomy_categories_3 = array("aid-and-development", "government", "law-and-judiciary", "population-and-censuses", "social-development", "urban-administration-and-development"); ?>
 
 				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
       	<?php
 
 				 	while (have_posts()) : the_post();
 						$post = get_post();
-						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
+						$top_level_cat_names = get_top_level_category_slugs(get_the_category($post->ID));
 						if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_1)):
 							odm_get_template('post-grid-single-4-cols',array(
 		  					"post" => $post,
@@ -64,7 +64,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				<?php
 					while (have_posts()) : the_post();
 						$post = get_post();
-						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
+						$top_level_cat_names = get_top_level_category_slugs(get_the_category($post->ID));
 						if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_2)):
 								odm_get_template('post-grid-single-4-cols',array(
 			  					"post" => $post,
@@ -81,7 +81,7 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				<?php
 					while (have_posts()) : the_post();
 						$post = get_post();
-						$top_level_cat_names = get_top_level_category_english_names(get_the_category($post->ID));
+						$top_level_cat_names = get_top_level_category_slugs(get_the_category($post->ID));
 						if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_3)):
 							odm_get_template('post-grid-single-4-cols',array(
 		  					"post" => $post,
