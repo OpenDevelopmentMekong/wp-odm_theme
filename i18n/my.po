@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-07-27 23:49+0200\n"
-"PO-Revision-Date: 2017-07-27 23:49+0200\n"
+"POT-Creation-Date: 2018-01-09 11:46+0100\n"
+"PO-Revision-Date: 2018-01-09 11:46+0100\n"
 "Last-Translator: Theint Naing Yoon <yoon@phandeeyar.org>, 2016\n"
 "Language-Team: Burmese (https://www.transifex.com/open-development-mekong/teams/27158/my/)\n"
 "Language: my\n"
@@ -23,6 +23,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: bower_components\n"
 
 #: 404.php:10
 msgid "Not found!"
@@ -30,14 +31,9 @@ msgstr "မတွေ့ရှိပါ"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from the top menu, it means the new location "
-"doesn't have an information page on this topic that the old location had. To see what information does exist for "
-"this new location you've chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, "
-"etc..) from the navigation menu above this message ."
+"The contents you are requesting do not seem to exist. Please try using the search function on the top-right area "
+"of the screen or browsing other country sites."
 msgstr ""
-"အကယ်၍သင်သည် ထိပ်ဆုံးမီနူးတွင်းမှ ပထဝီတည်နေရာသစ်တစ်ခုကို ရွေးချယ်ပြီးသော်လည်း ဤ error ကိုရရှိနေသေးပါက တည်နေရာအဟောင်းတွင်သာရှိသော သတင်းအချက်အလက်သည် "
-"တည်နေရာအသစ်တွင်ရှိမနေသေးသောကြောင့်ဖြစ်သည်။ တည်နေရာအသစ်အတွက် မည်သည့်သတင်းအချက်ရှိပြီးဖြစ်သည်ကို ကြည့်ရှုလိုပါက ဤစာ၏အပေါ်တွင်ရှိသော navigation main menu "
-"ထဲတွင်ပါဝင်သည့် (သတင်းများ၊ ခေါင်းစဥ်များ၊ မြေပုံများ၊ Data စသည်ဖြင့်) တစ်ခုခုကိုရွေးချယ်နိုင်ပါသည်။"
 
 #: 404.php:22
 msgid "Back to the previous page"
@@ -103,15 +99,15 @@ msgstr "Database"
 msgid "Topics"
 msgstr "ခေါင်းစဥ်များ"
 
-#: archive-topic.php:39
+#: archive-topic.php:45
 msgid "Environment and land"
 msgstr "သဘာဝပါတ်ဝန်းကျင်နှင့် မြေယာ"
 
-#: archive-topic.php:67
+#: archive-topic.php:63
 msgid "Economy"
 msgstr "စီးပွားရေး"
 
-#: archive-topic.php:86
+#: archive-topic.php:79
 msgid "People"
 msgstr "လူများ"
 
@@ -167,115 +163,115 @@ msgstr "မြေပုံများအားလုံကြည့်မည်
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" "
-"target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\"><b>WordPress</b></a> using the <a href="
+"\"%s\" target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> theme and <a href=\"%s\" target=\"_blank\" rel="
+"\"external\"><b>CKAN</b></a> as back-end for structured data. To learn more about the system architecture, read "
+"our  <a href=\"%s\" target=\"_blank\" rel=\"external\"><b>documentation</b></a>."
 msgstr ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" "
-"target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
 
-#: functions.php:57
+#: functions.php:58
 msgid "Topic sidebar"
 msgstr "ခေါင်းစဥ် sidebar"
 
-#: functions.php:63
+#: functions.php:64
 msgid "Homepage area top left"
 msgstr "ပင်မစာမျက်နှာ ဘယ်ဘက်အပေါ်ဧရိယာ"
 
-#: functions.php:71
+#: functions.php:72
 msgid "Homepage area top right"
 msgstr "ပင်မစာမျက်နှာ ညာဘက်အပေါ်ဧရိယာ"
 
-#: functions.php:79
+#: functions.php:80
 msgid "Homepage area middle"
 msgstr "ပင်မစာမျက်နှာ အလယ်ဧရိယာ"
 
-#: functions.php:87
+#: functions.php:88
 msgid "Homepage area bottom left"
 msgstr "ပင်မစာမျက်နှာ ဘယ်ဘက်အောက်ဧရိယာ"
 
-#: functions.php:95
+#: functions.php:96
 msgid "Homepage area bottom right"
 msgstr "ပင်မစာမျက်နှာ ညာဘက်အောက်ဧရိယာ"
 
-#: functions.php:103
+#: functions.php:104
 msgid "WPCKAN Dataset detail sidebar"
 msgstr "WPCKAN Dataset sidebar အသေးစိတ်"
 
-#: functions.php:109
+#: functions.php:110
 msgid "Story top"
 msgstr "အပေါ် သတင်း"
 
-#: functions.php:115
+#: functions.php:116
 msgid "Story bottom"
 msgstr "အောက် သတင်း"
 
-#: functions.php:121
+#: functions.php:122
 msgid "Profile area right sidebar"
 msgstr "လက်ယာဘက် sidebar အား profile area အဖြစ်သုံးမည်"
 
-#: functions.php:127
+#: functions.php:128
 msgid "Profile area bottom left"
 msgstr "အောက်ခြေလက်ဝဲဘက်အား profile area အဖြစ်သုံးမည်"
 
-#: functions.php:135
+#: functions.php:136
 msgid "Profile area bottom right"
 msgstr "အောက်ခြေလက်ယာဘက်အား profile area အဖြစ်သုံးမည်"
 
-#: functions.php:143
+#: functions.php:144
 msgid "Profile with right sidebar only"
 msgstr "လက်ယာဘက် sidebar တစ်ခုတည်းအား profile အဖြစ်သုံးမည်"
 
-#: functions.php:149 inc/theme-options.php:70
+#: functions.php:150 inc/theme-options.php:70
 msgid "Category page"
 msgstr "အမျိုးအမည် စာမျက်နှာ"
 
-#: functions.php:257
+#: functions.php:258
 msgid "default"
 msgstr "မူလအတိုင်း"
 
-#: functions.php:305
+#: functions.php:303
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "သတင်းရင်းမြစ်များ"
 
-#: functions.php:306
+#: functions.php:304
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "သတင်းရင်းမြစ်"
 
-#: functions.php:307
+#: functions.php:305
 msgid "Search News Source"
 msgstr "သတင်းရင်းမြစ်ရှာဖွေမည်"
 
-#: functions.php:308
+#: functions.php:306
 msgid "All News Sources"
 msgstr "သတင်းရင်းမြစ်များအားလုံး"
 
-#: functions.php:309
+#: functions.php:307
 msgid "Parent News Source"
 msgstr "မူရင်းသတင်းရင်းမြစ်"
 
-#: functions.php:310
+#: functions.php:308
 msgid "Parent News Source:"
 msgstr "မူရင်းသတင်းရင်းမြစ်:"
 
-#: functions.php:311
+#: functions.php:309
 msgid "Edit News Source"
 msgstr "သတင်းရင်းမြစ်ကိုတည်းဖြတ်မည်"
 
-#: functions.php:312
+#: functions.php:310
 msgid "Update News Source"
 msgstr "သတင်းရင်းမြစ်ကို update လုပ်မည်"
 
-#: functions.php:313
+#: functions.php:311
 msgid "Add New News Source"
 msgstr "သတင်းရင်းမြစ်အသစ်ထည့်သွင်းမည်"
 
-#: functions.php:314
+#: functions.php:312
 msgid "New News Source Name"
 msgstr "သတင်းရင်းမြစ်အသစ် အမည်"
 
-#: functions.php:315
+#: functions.php:313
 msgid "News Source"
 msgstr "သတင်းရင်းမြစ်"
 
@@ -1445,7 +1441,7 @@ msgstr "Trash ထဲတွင် ခေါင်းစဥ်များမတ�
 msgid "On this page"
 msgstr "ဤစာမျက်နှာပေါ်တွင်"
 
-#: inc/templates/category-page-default.php:80
+#: inc/templates/category-page-default.php:82
 msgid "No results found."
 msgstr "ရလဒ်များမတွေ့ရှိပါ။"
 
@@ -1453,11 +1449,11 @@ msgstr "ရလဒ်များမတွေ့ရှိပါ။"
 msgid "wp-odm_solr plugin is not properly configured. Please contact the system's administrator"
 msgstr "wp-odm_solr plugin ကို ကောင်းမွန်စွာမစီစဥ်ရသေးပါ၊ system ကိုစီမံခန့်ခွဲသူကို ကျေးဇူးပြု၍ဆက်သွယ်ပါ"
 
-#: inc/templates/category-page-latest.php:63 inc/templates/category-page-latest.php:84
+#: inc/templates/category-page-latest.php:63 inc/templates/category-page-latest.php:83
 msgid "Topic briefing"
 msgstr "ခေါင်းစဥ်ကို အကြမ်းဖျင်းမိတ်ဆက်"
 
-#: inc/templates/category-page-latest.php:104
+#: inc/templates/category-page-latest.php:102
 msgid "Related briefings"
 msgstr "ဆက်နွယ်မှုရှိသည်များအတွက် အကြမ်းဖျင်းမိတ်ဆက်"
 
@@ -1465,7 +1461,7 @@ msgstr "ဆက်နွယ်မှုရှိသည်များအတွက
 msgid " of"
 msgstr "၏"
 
-#: inc/templates/post-highlighted-single-1-cols.php:51 inc/utils/markers.php:143 loop-latest.php:19
+#: inc/templates/post-highlighted-single-1-cols.php:50 inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
 msgstr "ဆက်လက်ဖတ်ရှုမည်"
 
@@ -1594,7 +1590,7 @@ msgid "Modification date"
 msgstr "ပြန်လည်ပြုပြင်သည့်ရက်စွဲ"
 
 #: inc/theme-options.php:290 inc/theme-options.php:293 inc/theme-options.php:300 inc/theme-options.php:303
-#: inc/theme-options.php:377 inc/utils/mapping.php:834
+#: inc/theme-options.php:377 inc/utils/mapping.php:837
 msgid "None"
 msgstr "ဘာမျှမရှိပါ"
 
@@ -1718,11 +1714,11 @@ msgstr ": အတွက် ရှာဖွေမှုရလဒ်"
 msgid "Dataset detail"
 msgstr ""
 
-#: inc/utils/content.php:617
+#: inc/utils/content.php:620
 msgid "Summary translated by "
 msgstr "အကျဥ်းချုံ့ဘာသာပြန်သူ "
 
-#: inc/utils/content.php:676
+#: inc/utils/content.php:679
 msgid "Download:"
 msgstr ""
 
@@ -1735,91 +1731,91 @@ msgstr "ပုံအကြီးကိုကြည့်ရှုမည်"
 msgid "Error locating %s for inclusion"
 msgstr "ထည့်သွင်းမှုအတွက် %s ကိုရှာရာတွင် အမှားတွေ့သည်"
 
-#: inc/utils/mapping.php:126
+#: inc/utils/mapping.php:124
 msgid "Show news on map"
 msgstr "မြေပုံပေါ်တွင် သတင်းများကို ပြပါ"
 
-#: inc/utils/mapping.php:380
+#: inc/utils/mapping.php:376
 msgid "LEGEND"
 msgstr "LEGEND"
 
-#: inc/utils/mapping.php:782
+#: inc/utils/mapping.php:785
 msgid "Create Map"
 msgstr "မြေပုံဖန်တီးမည်"
 
-#: inc/utils/mapping.php:785
+#: inc/utils/mapping.php:788
 msgid "Title"
 msgstr "ခေါင်းစဥ်"
 
-#: inc/utils/mapping.php:789
+#: inc/utils/mapping.php:792
 msgid "Description"
 msgstr "ဖော်ပြချက်"
 
-#: inc/utils/mapping.php:794
+#: inc/utils/mapping.php:797
 msgid "Basemap"
 msgstr "အောက်ခံမြေပုံ"
 
-#: inc/utils/mapping.php:798
+#: inc/utils/mapping.php:801
 msgid "Map layers"
 msgstr "မြေပုံအလွှာများ"
 
-#: inc/utils/mapping.php:803
+#: inc/utils/mapping.php:806
 msgid "North Direction"
 msgstr "ဦးတည်ရာမြောက်အရပ်"
 
-#: inc/utils/mapping.php:808
+#: inc/utils/mapping.php:811
 msgid "Map tools"
 msgstr "မြေပုံ tool များ"
 
-#: inc/utils/mapping.php:811
+#: inc/utils/mapping.php:814
 msgid "Format"
 msgstr "ပုံစံ"
 
-#: inc/utils/mapping.php:813
+#: inc/utils/mapping.php:816
 msgid "Image (PNG)"
 msgstr "ရုပ်ပုံ (PNG)"
 
-#: inc/utils/mapping.php:817
+#: inc/utils/mapping.php:820
 msgid "Size"
 msgstr "အရွယ်အစား"
 
-#: inc/utils/mapping.php:819
+#: inc/utils/mapping.php:822
 msgid "A4"
 msgstr "A4"
 
-#: inc/utils/mapping.php:823
+#: inc/utils/mapping.php:826
 msgid "Layout"
 msgstr "အပြင်အဆင်"
 
-#: inc/utils/mapping.php:825
+#: inc/utils/mapping.php:828
 msgid "Landscape"
 msgstr "အလျားလိုက်"
 
-#: inc/utils/mapping.php:826
+#: inc/utils/mapping.php:829
 msgid "Portrait"
 msgstr "ဒေါင်လိုက်"
 
-#: inc/utils/mapping.php:830
+#: inc/utils/mapping.php:833
 msgid "Legend"
 msgstr "Legend"
 
-#: inc/utils/mapping.php:832
+#: inc/utils/mapping.php:835
 msgid "Left"
 msgstr "ဘယ်"
 
-#: inc/utils/mapping.php:833
+#: inc/utils/mapping.php:836
 msgid "Right"
 msgstr "ညာ"
 
-#: inc/utils/mapping.php:840
+#: inc/utils/mapping.php:843
 msgid "Show all legends"
 msgstr "Legend များအားလုံးကိုပြမည်"
 
-#: inc/utils/mapping.php:844 inc/utils/markers.php:139
+#: inc/utils/mapping.php:847 inc/utils/markers.php:139
 msgid "Print"
 msgstr "Print"
 
-#: inc/utils/mapping.php:863
+#: inc/utils/mapping.php:866
 msgid "Created date: "
 msgstr "ဖန်တီးခဲ့သည့်ရက်စွဲ"
 
@@ -2135,6 +2131,23 @@ msgstr "Land Portal library အကြောင်းပိုမိုသိလ�
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
 msgstr "မြေပုံ ကတ်တလောက် "
+
+#~ msgid ""
+#~ "If you received this error after selecting a new geographic location from the top menu, it means the new "
+#~ "location doesn't have an information page on this topic that the old location had. To see what information "
+#~ "does exist for this new location you've chosen simply click any of the navigation main menu items (News, "
+#~ "Topics, Maps, Data, etc..) from the navigation menu above this message ."
+#~ msgstr ""
+#~ "အကယ်၍သင်သည် ထိပ်ဆုံးမီနူးတွင်းမှ ပထဝီတည်နေရာသစ်တစ်ခုကို ရွေးချယ်ပြီးသော်လည်း ဤ error ကိုရရှိနေသေးပါက တည်နေရာအဟောင်းတွင်သာရှိသော သတင်းအချက်အလက်သည် "
+#~ "တည်နေရာအသစ်တွင်ရှိမနေသေးသောကြောင့်ဖြစ်သည်။ တည်နေရာအသစ်အတွက် မည်သည့်သတင်းအချက်ရှိပြီးဖြစ်သည်ကို ကြည့်ရှုလိုပါက ဤစာ၏အပေါ်တွင်ရှိသော navigation main "
+#~ "menu ထဲတွင်ပါဝင်သည့် (သတင်းများ၊ ခေါင်းစဥ်များ၊ မြေပုံများ၊ Data စသည်ဖြင့်) တစ်ခုခုကိုရွေးချယ်နိုင်ပါသည်။"
+
+#~ msgid ""
+#~ "This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s"
+#~ "\" target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
+#~ msgstr ""
+#~ "This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s"
+#~ "\" target=\"_blank\" rel=\"external\">JEO Beta</a> theme"
 
 #~ msgid "Go to the advanced search"
 #~ msgstr "အထူးရှာဖွေမှုကိုသွားမည်။"
