@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2017-07-27 23:48+0200\n"
-"PO-Revision-Date: 2017-07-27 23:48+0200\n"
+"POT-Creation-Date: 2018-01-09 11:45+0100\n"
+"PO-Revision-Date: 2018-01-09 11:45+0100\n"
 "Last-Translator: Sam Ath TRY <tsamath.gtsc@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -24,6 +24,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: bower_components\n"
 
 #: 404.php:10
 msgid "Not found!"
@@ -31,10 +32,8 @@ msgstr "ព័ត៌មានពុំអាចរកបាន!"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from the top menu, it means the new location doesn't "
-"have an information page on this topic that the old location had. To see what information does exist for this new location "
-"you've chosen simply click any of the navigation main menu items (News, Topics, Maps, Data, etc..) from the navigation "
-"menu above this message ."
+"The contents you are requesting do not seem to exist. Please try using the search function on the top-right area of the "
+"screen or browsing other country sites."
 msgstr ""
 
 #: 404.php:22
@@ -101,15 +100,15 @@ msgstr ""
 msgid "Topics"
 msgstr "ប្រធានបទ"
 
-#: archive-topic.php:39
+#: archive-topic.php:45
 msgid "Environment and land"
 msgstr "បរិស្ថាន និងដី"
 
-#: archive-topic.php:67
+#: archive-topic.php:63
 msgid "Economy"
 msgstr "សេដ្ឋកិច្ច"
 
-#: archive-topic.php:86
+#: archive-topic.php:79
 msgid "People"
 msgstr "មនុស្ស"
 
@@ -165,113 +164,115 @@ msgstr "មើលផែនទីទាំងអស់"
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\">WordPress</a> using the <a href=\"%s\" target="
-"\"_blank\" rel=\"external\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\"><b>WordPress</b></a> using the <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> theme and <a href=\"%s\" target=\"_blank\" rel=\"external"
+"\"><b>CKAN</b></a> as back-end for structured data. To learn more about the system architecture, read our  <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>documentation</b></a>."
 msgstr ""
 
-#: functions.php:57
+#: functions.php:58
 msgid "Topic sidebar"
 msgstr "របារចំហៀងតាមប្រធានបទ"
 
-#: functions.php:63
+#: functions.php:64
 msgid "Homepage area top left"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​ខាងលើ​ផ្នែកឆ្វេង"
 
-#: functions.php:71
+#: functions.php:72
 msgid "Homepage area top right"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​ខាងលើ​​ផ្នែកខាងស្តាំ"
 
-#: functions.php:79
+#: functions.php:80
 msgid "Homepage area middle"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​ចំកណ្តាល"
 
-#: functions.php:87
+#: functions.php:88
 msgid "Homepage area bottom left"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​​ខាងក្រោម​ផ្នែកឆ្វេង"
 
-#: functions.php:95
+#: functions.php:96
 msgid "Homepage area bottom right"
 msgstr "កន្លែងទំព័រ​ដើម នៅខាងក្រោម​ផ្នែក​​ខាងស្តាំ"
 
-#: functions.php:103
+#: functions.php:104
 msgid "WPCKAN Dataset detail sidebar"
 msgstr ""
 
-#: functions.php:109
+#: functions.php:110
 msgid "Story top"
 msgstr "ដំណើររឿង នៅ​ខាងលើ​បំផុត"
 
-#: functions.php:115
+#: functions.php:116
 msgid "Story bottom"
 msgstr "ដំណើររឿង នៅ​ក្រោម​បំផុត"
 
-#: functions.php:121
+#: functions.php:122
 msgid "Profile area right sidebar"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅរបារចំហៀងខាងស្តាំ"
 
-#: functions.php:127
+#: functions.php:128
 msgid "Profile area bottom left"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅ​ក្រោម​បំផុតខាងឆ្វេង"
 
-#: functions.php:135
+#: functions.php:136
 msgid "Profile area bottom right"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅ​ក្រោម​បំផុតខាងស្តាំ"
 
-#: functions.php:143
+#: functions.php:144
 msgid "Profile with right sidebar only"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅរបារចំហៀងខាងស្តាំប៉ុណ្ណោះ"
 
-#: functions.php:149 inc/theme-options.php:70
+#: functions.php:150 inc/theme-options.php:70
 msgid "Category page"
 msgstr ""
 
-#: functions.php:257
+#: functions.php:258
 msgid "default"
 msgstr "ការ​កំណត់​ទុក​ស្រាប់"
 
-#: functions.php:305
+#: functions.php:303
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:306
+#: functions.php:304
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:307
+#: functions.php:305
 msgid "Search News Source"
 msgstr "ស្វែងរក​ប្រភពសារ​ព័ត៌មាន"
 
-#: functions.php:308
+#: functions.php:306
 msgid "All News Sources"
 msgstr "ប្រភពសារ​ព័ត៌មាន​ទាំងអស់"
 
-#: functions.php:309
+#: functions.php:307
 msgid "Parent News Source"
 msgstr "ប្រភព​សារព័ត៌មាន​ដើម"
 
-#: functions.php:310
+#: functions.php:308
 msgid "Parent News Source:"
 msgstr "ប្រភពសារ​ព័ត៌មាន​ដើម៖"
 
-#: functions.php:311
+#: functions.php:309
 msgid "Edit News Source"
 msgstr "កែប្រែ​ប្រភពសារ​ព័ត៌មាន"
 
-#: functions.php:312
+#: functions.php:310
 msgid "Update News Source"
 msgstr "ធ្វើបច្ចុប្បន្នភាពប្រភពសារ​ព័ត៌មាន"
 
-#: functions.php:313
+#: functions.php:311
 msgid "Add New News Source"
 msgstr "បន្ថែម​ប្រភពសារ​ព័ត៌មាន​ថ្មី"
 
-#: functions.php:314
+#: functions.php:312
 msgid "New News Source Name"
 msgstr "ឈ្មោះ​ប្រភពសារ​ព័ត៌មាន​ថ្មី"
 
-#: functions.php:315
+#: functions.php:313
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
@@ -1430,7 +1431,7 @@ msgstr "ពុំមានប្រធានបទនៅក្នុងធុង
 msgid "On this page"
 msgstr "នៅលើទំព័រនេះ"
 
-#: inc/templates/category-page-default.php:80
+#: inc/templates/category-page-default.php:82
 msgid "No results found."
 msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វែងរកទេ"
 
@@ -1438,11 +1439,11 @@ msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វ
 msgid "wp-odm_solr plugin is not properly configured. Please contact the system's administrator"
 msgstr ""
 
-#: inc/templates/category-page-latest.php:63 inc/templates/category-page-latest.php:84
+#: inc/templates/category-page-latest.php:63 inc/templates/category-page-latest.php:83
 msgid "Topic briefing"
 msgstr ""
 
-#: inc/templates/category-page-latest.php:104
+#: inc/templates/category-page-latest.php:102
 msgid "Related briefings"
 msgstr ""
 
@@ -1450,7 +1451,7 @@ msgstr ""
 msgid " of"
 msgstr ""
 
-#: inc/templates/post-highlighted-single-1-cols.php:51 inc/utils/markers.php:143 loop-latest.php:19
+#: inc/templates/post-highlighted-single-1-cols.php:50 inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
 msgstr "អានបន្ថែម"
 
@@ -1579,7 +1580,7 @@ msgid "Modification date"
 msgstr ""
 
 #: inc/theme-options.php:290 inc/theme-options.php:293 inc/theme-options.php:300 inc/theme-options.php:303
-#: inc/theme-options.php:377 inc/utils/mapping.php:834
+#: inc/theme-options.php:377 inc/utils/mapping.php:837
 msgid "None"
 msgstr "មិនមាន"
 
@@ -1703,11 +1704,11 @@ msgstr ""
 msgid "Dataset detail"
 msgstr ""
 
-#: inc/utils/content.php:617
+#: inc/utils/content.php:620
 msgid "Summary translated by "
 msgstr "អត្ថបទសង្ខេបបកប្រែដោយ"
 
-#: inc/utils/content.php:676
+#: inc/utils/content.php:679
 msgid "Download:"
 msgstr ""
 
@@ -1720,91 +1721,91 @@ msgstr ""
 msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: inc/utils/mapping.php:126
+#: inc/utils/mapping.php:124
 msgid "Show news on map"
 msgstr "បង្ហាញព័ត៌មានលើផែទី"
 
-#: inc/utils/mapping.php:380
+#: inc/utils/mapping.php:376
 msgid "LEGEND"
 msgstr "សញ្ញាផែនទី"
 
-#: inc/utils/mapping.php:782
+#: inc/utils/mapping.php:785
 msgid "Create Map"
 msgstr ""
 
-#: inc/utils/mapping.php:785
+#: inc/utils/mapping.php:788
 msgid "Title"
 msgstr ""
 
-#: inc/utils/mapping.php:789
+#: inc/utils/mapping.php:792
 msgid "Description"
 msgstr ""
 
-#: inc/utils/mapping.php:794
+#: inc/utils/mapping.php:797
 msgid "Basemap"
 msgstr ""
 
-#: inc/utils/mapping.php:798
+#: inc/utils/mapping.php:801
 msgid "Map layers"
 msgstr ""
 
-#: inc/utils/mapping.php:803
+#: inc/utils/mapping.php:806
 msgid "North Direction"
 msgstr ""
 
-#: inc/utils/mapping.php:808
+#: inc/utils/mapping.php:811
 msgid "Map tools"
 msgstr ""
 
-#: inc/utils/mapping.php:811
+#: inc/utils/mapping.php:814
 msgid "Format"
 msgstr ""
 
-#: inc/utils/mapping.php:813
+#: inc/utils/mapping.php:816
 msgid "Image (PNG)"
 msgstr ""
 
-#: inc/utils/mapping.php:817
+#: inc/utils/mapping.php:820
 msgid "Size"
 msgstr ""
 
-#: inc/utils/mapping.php:819
+#: inc/utils/mapping.php:822
 msgid "A4"
 msgstr ""
 
-#: inc/utils/mapping.php:823
+#: inc/utils/mapping.php:826
 msgid "Layout"
 msgstr ""
 
-#: inc/utils/mapping.php:825
+#: inc/utils/mapping.php:828
 msgid "Landscape"
 msgstr ""
 
-#: inc/utils/mapping.php:826
+#: inc/utils/mapping.php:829
 msgid "Portrait"
 msgstr ""
 
-#: inc/utils/mapping.php:830
+#: inc/utils/mapping.php:833
 msgid "Legend"
 msgstr ""
 
-#: inc/utils/mapping.php:832
+#: inc/utils/mapping.php:835
 msgid "Left"
 msgstr ""
 
-#: inc/utils/mapping.php:833
+#: inc/utils/mapping.php:836
 msgid "Right"
 msgstr ""
 
-#: inc/utils/mapping.php:840
+#: inc/utils/mapping.php:843
 msgid "Show all legends"
 msgstr ""
 
-#: inc/utils/mapping.php:844 inc/utils/markers.php:139
+#: inc/utils/mapping.php:847 inc/utils/markers.php:139
 msgid "Print"
 msgstr "បោះពុម្ព"
 
-#: inc/utils/mapping.php:863
+#: inc/utils/mapping.php:866
 msgid "Created date: "
 msgstr ""
 
