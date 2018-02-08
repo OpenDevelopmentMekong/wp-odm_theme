@@ -39,6 +39,10 @@
 
 				<div class="sixteen columns widgets">
 
+					<div class="widget share-widget">
+            <?php odm_get_template('social-share',array(),true); ?>
+          </div>
+
           <?php
             if (isset($search_query)):
               $result = WP_Odm_Solr_UNIFIED_Manager()->query_by_params($search_query);
