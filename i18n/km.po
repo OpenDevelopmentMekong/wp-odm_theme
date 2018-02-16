@@ -6,25 +6,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2018-01-18 09:25+0100\n"
-"PO-Revision-Date: 2018-01-18 09:25+0100\n"
+"POT-Creation-Date: 2018-02-16 11:02+0100\n"
+"PO-Revision-Date: 2018-02-16 11:02+0100\n"
 "Last-Translator: Sam Ath TRY <tsamath.gtsc@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
+"Language: km\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: km\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: i18n\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 "X-Poedit-SearchPathExcluded-3: bower_components\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:10
 msgid "Not found!"
@@ -32,9 +32,8 @@ msgstr "ព័ត៌មានពុំអាចរកបាន!"
 
 #: 404.php:16
 msgid ""
-"The contents you are requesting do not seem to exist. Please try using the "
-"search function on the top-right area of the screen or browsing other "
-"country sites."
+"The contents you are requesting do not seem to exist. Please try using the search function on the top-right area of the "
+"screen or browsing other country sites by clicking the links on the top-left area."
 msgstr ""
 
 #: 404.php:22
@@ -147,16 +146,13 @@ msgstr "Y"
 msgid "Archives"
 msgstr "ប័ណ្ណសារ"
 
-#: content-embed.php:16 inc/templates/pagination.php:8
-#: inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
+#: content-embed.php:16 inc/templates/pagination.php:8 inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
 #: inc/utils/breadcrumbs.php:282 inc/utils/content.php:22
 msgid "Page"
 msgstr "ទំព័រ"
 
-#: content-map-group.php:27
-#: inc/widgets/odm-contents-same-category-widget.php:91
-#: inc/widgets/odm-contents-same-category-widget.php:128
-#: inc/widgets/odm-custom-posts-widget.php:90
+#: content-map-group.php:27 inc/widgets/odm-contents-same-category-widget.php:91
+#: inc/widgets/odm-contents-same-category-widget.php:128 inc/widgets/odm-custom-posts-widget.php:90
 #: inc/widgets/odm-custom-posts-widget.php:121
 msgid "More..."
 msgstr "បន្ថែម..."
@@ -168,12 +164,10 @@ msgstr "មើលផែនទីទាំងអស់"
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\"><b>WordPress</b></a> using the <a href=\"%s\" "
-"target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> theme and <a "
-"href=\"%s\" target=\"_blank\" rel=\"external\"><b>CKAN</b></a> as back-end "
-"for structured data. To learn more about the system architecture, read our  "
-"<a href=\"%s\" target=\"_blank\" rel=\"external\"><b>documentation</b></a>."
+"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external\"><b>WordPress</b></a> using the <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> theme and <a href=\"%s\" target=\"_blank\" rel=\"external"
+"\"><b>CKAN</b></a> as back-end for structured data. To learn more about the system architecture, read our  <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>documentation</b></a>."
 msgstr ""
 
 #: functions.php:58
@@ -468,13 +462,35 @@ msgstr "ការអភិវឌ្ឍ និងការគ្រប់គ្�
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC "
+"BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted "
+"by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying "
+"database are compiled from publicly available documentation and provided without fee for general informational purposes "
+"only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; "
+"it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a "
+"careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability "
+"from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or "
+"implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or "
+"documents contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of that "
+"research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site "
+"information provided and to hold harmless and waive any and all liability against individuals or entities associated with "
+"its development, form and content for any loss, harm or damage suffered as a result of its use."
 msgstr ""
-"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 4.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ និង​មូលដ្ឋាន​ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ​នៅ​លើ​គេហទំព័រ​របស់​អូ​ឌី​ស៊ី​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​ព័ត៌មាន​ជា​សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​ណាមួយ​នោះ​ទេ​ ។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​បោះផ្សាយ​ បន្ទាប់​ពី​ការ​មើល​ បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ អូ​ឌី​ស៊ី​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​ករណី​ទាំងអស់​ទេ​។​ ​អូ​ឌី​ស៊ី​ សូម​មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
-"​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ ជាមួយនឹង​ក្រុមការងារ​យើងខ្ញុំ​។​ ​សូម​ ទំនាក់ទំនង​មក​កាន់​យើងខ្ញុំ​ ដើម្បី​ចូលរួម​ចំណែក​ធ្វើ​ឱ្យ​ភាព​សុក្រឹត​របស់​គេហទំព័​នេះ​ កាន់តែ​ល្អ​ប្រសើរ​ឡើង​។​\n"
-"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​ផ្តល់​ឱ្យ​នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​នេះ​ សម្រាប់​រាល់​ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
+"ខ្លឹមសារ​ និង​គ្រប់​ស្នារ​ដៃ​ដើម​ទាំងឡាយ​ ដែល​ផលិត​ និង​បោះពុម្ព​ដោយ​អង្គការ​ទិន្នន័យ​អំពី​ការ​អភិវឌ្ឍ​ត្រូវ​បាន​ផ្តល់​ក្រោម​អាជ្ញាប័ណ្ណ​ CC​ BY-SA​ 4.0​។​ អត្ថបទ​ព័ត៌មាន​សង្ខេប​ ត្រូវ​"
+"បាន​ដកស្រង់​ចេញពី​សារព័ត៌មាន​ ស្រប​តាម​ការ​ណែនាំ​អំពី​គោលការណ៍​នៃ​ការ​ប្រើប្រាស់​ដោយ​យុត្តិធម៌​ និង​រក្សា​សិទ្ធិ​អ្នកនិពន្ធ​ ដោយ​ប្រភព​ដើម​នៃ​អត្ថបទ​ទាំងនោះ​ ។​ ស្នាដៃ និង​មូលដ្ឋាន​"
+"ទិន្នន័យ​ភ្ជាប់​ជាមួយ​នេះ​ ​នៅ​លើ​គេហទំព័រ​របស់​អូ​ឌី​ស៊ី​ ត្រូវ​បាន​ចងក្រង​មក​ពី​ឯកសារ​ដែល​អាច​រក​បានជា​សាធារណៈ​ និង​ផ្តល់​ជូន​ដោយ​មិន​យក​កម្រៃ​ ក្នុង​គោលបំណង​បម្រើ​ដល់​ការ​ផ្សព្វផ្សាយ​"
+"ព័ត៌មាន​ជា​សាធារណៈ​តែ​ប៉ុណ្ណោះ​។​ គេហទំព័រ​នេះ​ មិនមែន​ជា​សេវា​ស្រាវជ្រាវ​ដើម្បី​ស្វែងរក​ប្រាក់​កម្រៃ​ ឬ​ ជា​វិស័យ​មួយ​ដែល​គ្រប់គ្រង​ដោយ​ភ្នាក់ងារ​រដ្ឋាភិបាល​ និង​ អន្តររដ្ឋាភិបាល​"
+"ណាមួយ​នោះ​ទេ​ ។​ ទំព័រ​នេះ​ ត្រូវ​បាន​គ្រប់គ្រង​ដោយ​ប្រព័ន្ធ​ផ្សព្វផ្សាយ​ឯកជន​មួយ​ ដែល​លើកកម្ពស់​ការ​យល់​ដឹង​ទូលាយ​/​ទិន្នន័យ​បើក​ទូលាយ​ ដោយ​មិន​ស្វែងរក​ផល​ចំណេញ​។​ ព័ត៌មាន​ ត្រូវ​បាន​"
+"បោះផ្សាយ​ បន្ទាប់​ពី​ការ​មើល​ បញ្ជាក់​ និង​ផ្ទៀងផ្ទាត់​យ៉ាង​ហ្មត់ចត់​។​ យ៉ាងណា​ក៏​ដោយ​ អូ​ឌី​ស៊ី​ មិន​អាច​ធានា​នូវ​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​ដែល​អាច​ទុកចិត្ត​បាន​ពី​ប្រភព​ភាគី​ទី​បី​នៅ​គ្រប់​"
+"ករណី​ទាំងអស់​ទេ​។​ ​អូ​ឌី​ស៊ី​ សូម​មិន​ធ្វើការ​អះអាង​ ឬ​ធានា​ ទោះជា​បាន​សម្តែង​ច្បាស់​ ឬ​មិន​ជាក់លាក់​ ជា​អង្គហេតុ​ ឬ​អង្គច្បាប់​ ពាក់ព័ន្ធ​ទៅ​នឹង​ភាព​ត្រឹមត្រូវ​ ពេញលេញ​ ឬ​ភាព​សម​ស្រប​នៃ​"
+"ទិន្នន័យ​ ស្នាដៃ​ ឬ​ ឯកសារ​ ដែល​មាន​ ឬ​ដែល​បាន​យក​មក​យោង​ជា​ឯកសារ​ ឬ​ដែល​បាន​ផ្តល់​ឲ្យ​។​\n"
+"​អ្នក​ប្រើប្រាស់​គេហទំព័រ​នេះ​ ត្រូវ​បាន​លើកទឹកចិត្ត​ឱ្យធ្វើ​ការ​សិក្សា​ស្រាវជ្រាវ​បន្ថែម​ទៀត​ ដើម្បី​គាំទ្រ​កិច្ចការ​របស់​ពួក​គេ​ និង​ចែករំលែក​លទ្ធផល​ពី​ការ​សិក្សា​ស្រាវជ្រាវ​នេះ​ "
+"ជាមួយនឹង​ក្រុមការងារ​យើងខ្ញុំ​។​ ​សូម​ ទំនាក់ទំនង​មក​កាន់​យើងខ្ញុំ​ ដើម្បី​ចូលរួម​ចំណែក​ធ្វើ​ឱ្យ​ភាព​សុក្រឹត​របស់​គេហទំព័​នេះ​ កាន់តែ​ល្អ​ប្រសើរ​ឡើង​។​\n"
+"​ការ​ចូល​មក​កាន់​គេហទំព័រ​ {​អូ​ឌី​ស៊ី​}​ នេះ​ ឬ​ប្រើប្រាស់​មូលដ្ឋាន​ទិន្នន័យ​នៅ​លើ​គេហទំព័រ​នេះ​ បាន​ន័យ​ថា​ អ្នក​ប្រើប្រាស់​យល់ព្រម​ទទួលខុសត្រូវ​ទាំងស្រុង​ សម្រាប់​ការ​ពឹងផ្អែក​លើ​គ្រប់​ព័ត៌មាន​"
+"ផ្តល់​ឱ្យ​នៅ​លើ​គេហទំព័រ​នេះ​ ហើយ​យល់ព្រម​ មិន​បង្ករ​អន្តរាយ​ និង​មិន​ទាមទារ​ឱ្យ​មានការ​ទទួលខុសត្រូវ​ពី​បុគ្គល​ ឬ​អង្គភាព​ពាក់ព័ន្ធ​នឹង​ការ​អភិវឌ្ឍ​ជា​ទម្រង់​ និង​ខ្លឹមសារ​របស់​គេហទំព័រ​"
+"នេះ​ សម្រាប់​រាល់​ការ​បាត់បង់​ ការ​ខូចប្រយោជន៍​ ឬ​ អន្តរាយ​ ដែល​កើត​ចេញពី​ការ​ប្រើប្រាស់​គេហទំព័រ​នេះ​។​"
 
 #: i18n/extra-strings.php:57
 msgid "Khmer PDF"
@@ -536,13 +552,11 @@ msgstr ""
 msgid "Text search"
 msgstr "ស្វែងរកអត្ថបទ"
 
-#: inc/advanced-navigation.php:157 page-data-old.php:40 page-data-old.php:138
-#: page-data.php:244
+#: inc/advanced-navigation.php:157 page-data-old.php:40 page-data-old.php:138 page-data.php:244
 msgid "Type your search here"
 msgstr "បញ្ចូលពាក្យស្វែងរកទីនេះ"
 
-#: inc/advanced-navigation.php:171 inc/utils/content.php:187
-#: page-data-old.php:106 page-data.php:119
+#: inc/advanced-navigation.php:171 inc/utils/content.php:187 page-data-old.php:106 page-data.php:119
 msgid "Topic"
 msgstr "ប្រធានបទ"
 
@@ -699,9 +713,7 @@ msgstr ""
 
 #: inc/layers.php:93
 #, php-format
-msgid ""
-" You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click "
-"here</a> to create your first!"
+msgid " You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click here</a> to create your first!"
 msgstr ""
 
 #: inc/layers.php:105
@@ -857,8 +869,7 @@ msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
 #: inc/layers.php:450
-msgid ""
-"Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
+msgid "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
 
 #: inc/layers.php:454
@@ -903,8 +914,8 @@ msgstr ""
 
 #: inc/layers.php:495
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is "
-"workspace name and <strong>Transmission_lines</strong> is layer name."
+"Eg. in Geoserver, Energy:Transmission_lines, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
+"strong> is layer name."
 msgstr ""
 
 #: inc/layers.php:500
@@ -913,8 +924,8 @@ msgstr ""
 
 #: inc/layers.php:503
 msgid ""
-"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is "
-"workspace name and <strong>Transmission_lines</strong> is layer name."
+"Eg. in Geoserver, Energy:Transmission_lines_kh, <strong>Engergy</strong> is workspace name and <strong>Transmission_lines</"
+"strong> is layer name."
 msgstr ""
 
 #: inc/layers.php:510
@@ -942,9 +953,7 @@ msgid "Inforwindow (popup)"
 msgstr ""
 
 #: inc/layers.php:539 inc/layers.php:550
-msgid ""
-"Please add the attribute_name or strings to display as the title in "
-"inforwindow. "
+msgid "Please add the attribute_name or strings to display as the title in inforwindow. "
 msgstr ""
 
 #: inc/layers.php:540 inc/layers.php:551
@@ -961,8 +970,8 @@ msgstr ""
 
 #: inc/layers.php:546 inc/layers.php:556
 msgid ""
-"To show the view detail link on infowindow, please add the URL with "
-"{{attribute_name}} or only the attribute_name that contains the link."
+"To show the view detail link on infowindow, please add the URL with {{attribute_name}} or only the attribute_name that "
+"contains the link."
 msgstr ""
 
 #: inc/layers.php:569
@@ -995,9 +1004,8 @@ msgstr "CartoDB URL (ភាសា​អង់គ្លេស)"
 
 #: inc/layers.php:608 inc/layers.php:616
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: "
-"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
-"11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz."
+"json"
 msgstr ""
 
 #: inc/layers.php:613
@@ -1290,9 +1298,7 @@ msgid "Full width content (English)"
 msgstr ""
 
 #: inc/post-types/stories.php:95 inc/post-types/stories.php:111
-msgid ""
-"Any content can add to under the Editor content and sidebar and  full width "
-"of website even the iframe."
+msgid "Any content can add to under the Editor content and sidebar and  full width of website even the iframe."
 msgstr ""
 
 #: inc/post-types/stories.php:107
@@ -1430,13 +1436,10 @@ msgid "No results found."
 msgstr "ពុំមានលទ្ធផលដូចដែលបានស្វែងរកទេ"
 
 #: inc/templates/category-page-latest.php:17 page-data.php:17
-msgid ""
-"wp-odm_solr plugin is not properly configured. Please contact the system's "
-"administrator"
+msgid "wp-odm_solr plugin is not properly configured. Please contact the system's administrator"
 msgstr ""
 
-#: inc/templates/category-page-latest.php:63
-#: inc/templates/category-page-latest.php:83
+#: inc/templates/category-page-latest.php:63 inc/templates/category-page-latest.php:83
 msgid "Topic briefing"
 msgstr ""
 
@@ -1444,13 +1447,11 @@ msgstr ""
 msgid "Related briefings"
 msgstr ""
 
-#: inc/templates/pagination.php:8 inc/templates/pagination.php:16
-#: inc/templates/pagination_solr.php:7
+#: inc/templates/pagination.php:8 inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
 msgid " of"
 msgstr ""
 
-#: inc/templates/post-highlighted-single-1-cols.php:50
-#: inc/utils/markers.php:143 loop-latest.php:19
+#: inc/templates/post-highlighted-single-1-cols.php:50 inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
 msgstr "អានបន្ថែម"
 
@@ -1559,9 +1560,7 @@ msgid "news-article,announcement,topic,profiles"
 msgstr "អត្ថបទសារព័ត៌មាន សេចក្តីប្រកាស ព័ត៌មានទិន្នន័យ"
 
 #: inc/theme-options.php:252
-msgid ""
-"(Add the WP post type name that would like to show on the category page. "
-"(separated by comma))"
+msgid "(Add the WP post type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
 #: inc/theme-options.php:260 inc/theme-options.php:261
@@ -1569,9 +1568,7 @@ msgid "dataset, library_record, laws_record, agreement"
 msgstr ""
 
 #: inc/theme-options.php:263
-msgid ""
-"(Add the ckan record's type name that would like to show on the category "
-"page. (separated by comma))"
+msgid "(Add the ckan record's type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
 #: inc/theme-options.php:282
@@ -1582,8 +1579,7 @@ msgstr ""
 msgid "Modification date"
 msgstr ""
 
-#: inc/theme-options.php:290 inc/theme-options.php:293
-#: inc/theme-options.php:300 inc/theme-options.php:303
+#: inc/theme-options.php:290 inc/theme-options.php:293 inc/theme-options.php:300 inc/theme-options.php:303
 #: inc/theme-options.php:377 inc/utils/mapping.php:837
 msgid "None"
 msgstr "មិនមាន"
@@ -1876,59 +1872,47 @@ msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:13
 msgid ""
-"Display other content from other post types tagged with the same categories "
-"as the one where the widget is integrated."
+"Display other content from other post types tagged with the same categories as the one where the widget is integrated."
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:156
-#: inc/widgets/odm-custom-posts-widget.php:175
+#: inc/widgets/odm-contents-same-category-widget.php:156 inc/widgets/odm-custom-posts-widget.php:175
 #: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
 msgstr "ចំណងជើង៖"
 
-#: inc/widgets/odm-contents-same-category-widget.php:161
-#: inc/widgets/odm-custom-posts-widget.php:179
+#: inc/widgets/odm-contents-same-category-widget.php:161 inc/widgets/odm-custom-posts-widget.php:179
 msgid "Select custom post type:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:170
-#: inc/widgets/odm-custom-posts-widget.php:191
+#: inc/widgets/odm-contents-same-category-widget.php:170 inc/widgets/odm-custom-posts-widget.php:191
 msgid "Select layout:"
 msgstr "ជ្រើសរើសស្រទាប់៖"
 
-#: inc/widgets/odm-contents-same-category-widget.php:178
-#: inc/widgets/odm-custom-posts-widget.php:199
+#: inc/widgets/odm-contents-same-category-widget.php:178 inc/widgets/odm-custom-posts-widget.php:199
 msgid "Show post excerpt:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:182
-#: inc/widgets/odm-custom-posts-widget.php:203
+#: inc/widgets/odm-contents-same-category-widget.php:182 inc/widgets/odm-custom-posts-widget.php:203
 msgid "Show post thumbnail:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:186
-#: inc/widgets/odm-custom-posts-widget.php:207
+#: inc/widgets/odm-contents-same-category-widget.php:186 inc/widgets/odm-custom-posts-widget.php:207
 msgid "Show post meta:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:190
-#: inc/widgets/odm-custom-posts-widget.php:211
+#: inc/widgets/odm-contents-same-category-widget.php:190 inc/widgets/odm-custom-posts-widget.php:211
 msgid "Show source meta:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:195
-#: inc/widgets/odm-custom-posts-widget.php:216
+#: inc/widgets/odm-contents-same-category-widget.php:195 inc/widgets/odm-custom-posts-widget.php:216
 msgid "Select max number of posts to list (-1 to show all):"
-msgstr ""
-"ជ្រើសរើសចំនួនអតិបរមានៃការបង្ហោះខ្លឹមសារ លើបញ្ជី  (បង្ហាញពី -១ ទៅទាំងអស់)៖"
+msgstr "ជ្រើសរើសចំនួនអតិបរមានៃការបង្ហោះខ្លឹមសារ លើបញ្ជី  (បង្ហាញពី -១ ទៅទាំងអស់)៖"
 
-#: inc/widgets/odm-contents-same-category-widget.php:199
-#: inc/widgets/odm-custom-posts-widget.php:220
+#: inc/widgets/odm-contents-same-category-widget.php:199 inc/widgets/odm-custom-posts-widget.php:220
 msgid "Order by:"
 msgstr "តម្រៀបតាម៖ "
 
-#: inc/widgets/odm-contents-same-category-widget.php:207
-#: inc/widgets/odm-custom-posts-widget.php:228
+#: inc/widgets/odm-contents-same-category-widget.php:207 inc/widgets/odm-custom-posts-widget.php:228
 msgid "Select location of 'More...':"
 msgstr ""
 
@@ -1988,9 +1972,8 @@ msgstr "ប្រភេទ"
 msgid "Select dataset type"
 msgstr "ជ្រើសរើសសំណុំទិន្នន័យ"
 
-#: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85
-#: page-data-old.php:108 page-data-old.php:125 page-data.php:121
-#: page-data.php:143 page-data.php:157 page-data.php:185 page-data.php:207
+#: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85 page-data-old.php:108 page-data-old.php:125
+#: page-data.php:121 page-data.php:143 page-data.php:157 page-data.php:185 page-data.php:207
 msgid "All"
 msgstr "ទាំងអស់"
 
@@ -2102,8 +2085,7 @@ msgstr ""
 msgid "Other search results"
 msgstr ""
 
-#: page-no-title.php:17 page.php:19 single-post.php:31 single-topic.php:43
-#: single.php:48
+#: page-no-title.php:17 page.php:19 single-post.php:31 single-topic.php:43 single.php:48
 msgid "Pages:"
 msgstr "ទំព័រ៖"
 
