@@ -13,7 +13,7 @@
 
       <div class="row">
         <div class="eight columns offset-by-four align-center">
-          <p><?php _e('The contents you are requesting do not seem to exist. Please try using the search function on the top-right area of the screen or browsing other country sites.','odm'); ?></p>
+          <p><?php _e('The contents you are requesting do not seem to exist. Please try using the search function on the top-right area of the screen or browsing other country sites by clicking the links on the top-left area.','odm'); ?></p>
     	  </div>
       </div>
 
