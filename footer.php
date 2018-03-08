@@ -35,7 +35,7 @@
   			</nav>
   		</div>
       <div class="four columns">
-  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external">WordPress</a> using the <a href="%s" target="_blank" rel="external">JEO Beta</a> theme', 'odm'), 'http://wordpress.org', 'https://github.com/oeco/jeo'); ?></p>
+  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external"><b>WordPress</b></a> using the <a href="%s" target="_blank" rel="external"><b>JEO Beta</b></a> theme and <a href="%s" target="_blank" rel="external"><b>CKAN</b></a> as back-end for structured data. To learn more about the system architecture, read our  <a href="%s" target="_blank" rel="external"><b>documentation</b></a>.', 'odm'), 'http://wordpress.org', 'https://github.com/oeco/jeo', 'https://ckan.org', 'https://wiki.opendevelopmentmekong.net/public:system_s_architecture'); ?></p>
   		</div>
 			<?php
 		  if(odm_country_manager()->get_current_country() != 'cambodia'): ?>
@@ -53,6 +53,23 @@
 <?php wp_footer(); ?>
 
 </div>
+
+<?php
+if (odm_country_manager()->is_pp()): ?>
+
+  <script type="text/javascript">
+    var _mare_pk = '1e34dd25f7b430a1a7cb09454576b4612162fc56cff1ba7b4648e6fc9eacb7c4';
+    var _mare_sc = 'ee0c15de450f47a43b0070298881dc21';
+    (function() {
+      var mare = document.createElement('script'); mare.type = "text/javascript"; mare.async = true;
+      mare.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'mare.io/API/script.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mare, s);
+    })();
+  </script>
+
+<?php
+endif; ?>
+
 </body>
 </html>
 

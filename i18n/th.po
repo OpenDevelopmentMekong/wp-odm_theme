@@ -1,67 +1,64 @@
-#
 # Translators:
-# Misharim <misharim@gmail.com>, 2015
+# Pattaraporn Tejo <pattrp.tejo@gmail.com>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: ODM odm-wptheme\n"
-"POT-Creation-Date: 2017-06-11 23:58+0200\n"
-"PO-Revision-Date: 2017-06-11 23:58+0200\n"
-"Last-Translator: Alex Corbi <a.corbi@gmail.com>\n"
-"Language-Team: Thai (http://www.transifex.com/open-development-mekong/odm-"
-"odm-wptheme/language/th/)\n"
-"Language: th\n"
+"Project-Id-Version: odm-wptheme\n"
+"POT-Creation-Date: 2018-01-18 09:25+0100\n"
+"PO-Revision-Date: 2018-01-18 09:25+0100\n"
+"Last-Translator: Pattaraporn Tejo <pattrp.tejo@gmail.com>, 2018\n"
+"Language-Team: Thai (https://www.transifex.com/open-development-mekong/teams/27158/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: i18n\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: bower_components\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:10
 msgid "Not found!"
-msgstr ""
+msgstr "หาไม่พบ!"
 
 #: 404.php:16
 msgid ""
-"If you received this error after selecting a new geographic location from "
-"the top menu, it means the new location doesn't have an information page on "
-"this topic that the old location had. To see what information does exist for "
-"this new location you've chosen simply click any of the navigation main menu "
-"items (News, Topics, Maps, Data, etc..) from the navigation menu above this "
-"message ."
+"The contents you are requesting do not seem to exist. Please try using the "
+"search function on the top-right area of the screen or browsing other "
+"country sites."
 msgstr ""
+"ไม่พบข้อมูลที่คุณต้องการ โปรดใช้ฟังก์ชันการค้นหาที่มุมขวาบนของหน้าจอ หรือ "
+"ค้นหาในเว็บไซต์ของประเทศอื่น ๆ"
 
 #: 404.php:22
 msgid "Back to the previous page"
-msgstr ""
+msgstr "ย้อนกลับไปหน้าที่แล้ว"
 
 #: 404.php:23
 msgid "Go to the current site's home"
-msgstr ""
+msgstr "กลับสู่หน้าหลัก"
 
 #: 404.php:26
 msgid "Contact us"
-msgstr ""
+msgstr "ติดต่อเรา"
 
 #: advanced-search.php:31
 msgid "Data results"
-msgstr ""
+msgstr "ผลลัพธ์"
 
 #: advanced-search.php:36
 msgid "View all data results"
-msgstr ""
+msgstr "ดูผลลัพธ์ทั้งหมด"
 
 #: archive-announcement.php:9
 msgid "Announcements"
-msgstr ""
+msgstr "ประกาศ"
 
 #: archive-dashboard.php:10
 msgid "Dashboards"
@@ -69,52 +66,51 @@ msgstr ""
 
 #: archive-dataviz.php:9
 msgid "Data visualizations"
-msgstr ""
+msgstr "การแสดงผลข้อมูล"
 
 #: archive-map-layer.php:9
 msgid "Maps catalog"
-msgstr ""
+msgstr "รายการแผนที่"
 
 #: archive-map.php:9 i18n/extra-strings.php:17
 msgid "Maps"
-msgstr ""
+msgstr "แผนที่"
 
 #: archive-news-article.php:9 i18n/extra-strings.php:15
-#: inc/live-search/live-search.php:23
 msgid "News"
-msgstr ""
+msgstr "ข่าว"
 
 #: archive-profiles.php:9
 msgid "Profiles"
-msgstr ""
+msgstr "ข้อมูลประวัติ"
 
 #: archive-site-update.php:9
 msgid "Site updates"
-msgstr ""
+msgstr "ข่าวกิจกรรม"
 
 #: archive-story.php:9
 msgid "Stories"
-msgstr ""
+msgstr "เรื่องราว"
 
 #: archive-tabular.php:9
 msgid "Database"
-msgstr ""
+msgstr "ฐานข้อมูล"
 
 #: archive-topic.php:11
 msgid "Topics"
-msgstr ""
+msgstr "บทความ"
 
-#: archive-topic.php:39
+#: archive-topic.php:45
 msgid "Environment and land"
-msgstr ""
+msgstr "สิ่งแวดล้อมและที่ดิน"
 
-#: archive-topic.php:67
+#: archive-topic.php:63
 msgid "Economy"
-msgstr ""
+msgstr "เศรษฐกิจ"
 
-#: archive-topic.php:86
+#: archive-topic.php:79
 msgid "People"
-msgstr ""
+msgstr "ประชาชน"
 
 #: archive.php:12
 #, php-format
@@ -148,143 +144,146 @@ msgstr ""
 
 #: archive.php:22
 msgid "Archives"
-msgstr ""
+msgstr "แฟ้มเอกสาร"
 
-#: content-embed.php:16 header.php:29 inc/templates/pagination.php:8
+#: content-embed.php:16 inc/templates/pagination.php:8
 #: inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
-#: inc/utils/breadcrumbs.php:221
+#: inc/utils/breadcrumbs.php:282 inc/utils/content.php:22
 msgid "Page"
-msgstr ""
+msgstr "หน้า"
 
 #: content-map-group.php:27
-#: inc/widgets/odm-contents-same-category-widget.php:90
-#: inc/widgets/odm-contents-same-category-widget.php:126
-#: inc/widgets/odm-custom-posts-widget.php:89
-#: inc/widgets/odm-custom-posts-widget.php:119
+#: inc/widgets/odm-contents-same-category-widget.php:91
+#: inc/widgets/odm-contents-same-category-widget.php:128
+#: inc/widgets/odm-custom-posts-widget.php:90
+#: inc/widgets/odm-custom-posts-widget.php:121
 msgid "More..."
-msgstr ""
+msgstr "เพิ่มเติม..."
 
 #: content-map-group.php:37
 msgid "View all maps"
-msgstr ""
+msgstr "ดูแผนที่ทั้งหมด"
 
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external"
-"\">WordPress</a> using the <a href=\"%s\" target=\"_blank\" rel=\"external"
-"\">JEO Beta</a> theme"
+"This website is built on <a href=\"%s\" target=\"_blank\" "
+"rel=\"external\"><b>WordPress</b></a> using the <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> theme and <a "
+"href=\"%s\" target=\"_blank\" rel=\"external\"><b>CKAN</b></a> as back-end "
+"for structured data. To learn more about the system architecture, read our  "
+"<a href=\"%s\" target=\"_blank\" rel=\"external\"><b>documentation</b></a>."
 msgstr ""
 
-#: functions.php:53
+#: functions.php:58
 msgid "Topic sidebar"
 msgstr ""
 
-#: functions.php:59
+#: functions.php:64
 msgid "Homepage area top left"
 msgstr ""
 
-#: functions.php:67
+#: functions.php:72
 msgid "Homepage area top right"
 msgstr ""
 
-#: functions.php:75
+#: functions.php:80
 msgid "Homepage area middle"
 msgstr ""
 
-#: functions.php:83
+#: functions.php:88
 msgid "Homepage area bottom left"
 msgstr ""
 
-#: functions.php:91
+#: functions.php:96
 msgid "Homepage area bottom right"
 msgstr ""
 
-#: functions.php:99
+#: functions.php:104
 msgid "WPCKAN Dataset detail sidebar"
 msgstr ""
 
-#: functions.php:105
+#: functions.php:110
 msgid "Story top"
 msgstr ""
 
-#: functions.php:111
+#: functions.php:116
 msgid "Story bottom"
 msgstr ""
 
-#: functions.php:117
+#: functions.php:122
 msgid "Profile area right sidebar"
 msgstr ""
 
-#: functions.php:123
+#: functions.php:128
 msgid "Profile area bottom left"
 msgstr ""
 
-#: functions.php:131
+#: functions.php:136
 msgid "Profile area bottom right"
 msgstr ""
 
-#: functions.php:139
+#: functions.php:144
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:145 inc/theme-options.php:70
+#: functions.php:150 inc/theme-options.php:70
 msgid "Category page"
 msgstr ""
 
-#: functions.php:242
+#: functions.php:258
 msgid "default"
-msgstr ""
-
-#: functions.php:293
-msgctxt "taxonomy general name"
-msgid "News Sources"
-msgstr ""
-
-#: functions.php:294
-msgctxt "taxonomy singular name"
-msgid "News Source"
-msgstr ""
-
-#: functions.php:295
-msgid "Search News Source"
-msgstr ""
-
-#: functions.php:296
-msgid "All News Sources"
-msgstr ""
-
-#: functions.php:297
-msgid "Parent News Source"
-msgstr ""
-
-#: functions.php:298
-msgid "Parent News Source:"
-msgstr ""
-
-#: functions.php:299
-msgid "Edit News Source"
-msgstr ""
-
-#: functions.php:300
-msgid "Update News Source"
-msgstr ""
-
-#: functions.php:301
-msgid "Add New News Source"
-msgstr ""
-
-#: functions.php:302
-msgid "New News Source Name"
-msgstr ""
+msgstr "ค่าเริ่มต้น"
 
 #: functions.php:303
+msgctxt "taxonomy general name"
+msgid "News Sources"
+msgstr "แหล่งข่าว"
+
+#: functions.php:304
+msgctxt "taxonomy singular name"
 msgid "News Source"
-msgstr ""
+msgstr "แหล่งข่าว"
+
+#: functions.php:305
+msgid "Search News Source"
+msgstr "ค้นหาแหล่งข่าว"
+
+#: functions.php:306
+msgid "All News Sources"
+msgstr "แหล่งข่าวทั้งหมด"
+
+#: functions.php:307
+msgid "Parent News Source"
+msgstr "แหล่งข่าวต้นฉบับ"
+
+#: functions.php:308
+msgid "Parent News Source:"
+msgstr "แหล่งข่าวต้นฉบับ:"
+
+#: functions.php:309
+msgid "Edit News Source"
+msgstr "แก้ไขแหล่งข่าว"
+
+#: functions.php:310
+msgid "Update News Source"
+msgstr "อัพเดทแหล่งข่าว"
+
+#: functions.php:311
+msgid "Add New News Source"
+msgstr "เพิ่มแหล่งข่าวใหม่"
+
+#: functions.php:312
+msgid "New News Source Name"
+msgstr "ชื่อแหล่งข่าวใหม่"
+
+#: functions.php:313
+msgid "News Source"
+msgstr "แหล่งข่าว"
 
 #: i18n/extra-strings.php:2
 msgid "Mekong"
-msgstr ""
+msgstr "ลุ่มน้ำโขง"
 
 #: i18n/extra-strings.php:3
 msgid "Cambodia"
@@ -316,183 +315,165 @@ msgstr "ภาษาอังกฤษ"
 
 #: i18n/extra-strings.php:10
 msgid "Latest news"
-msgstr ""
+msgstr "ข่าวล่าสุด"
 
 #: i18n/extra-strings.php:11
 msgid "Latest maps"
-msgstr ""
+msgstr "แผนที่ล่าสุด"
 
 #: i18n/extra-strings.php:12
 msgid "Latest issues"
-msgstr ""
+msgstr "ประเด็นล่าสุด"
 
 #: i18n/extra-strings.php:13
 msgid "Latest data"
-msgstr ""
+msgstr "ข้อมูลล่าสุด"
 
 #: i18n/extra-strings.php:14
 msgid "Briefings"
-msgstr ""
+msgstr "คำแถลงการณ์"
 
 #: i18n/extra-strings.php:16
 msgid "Issues"
-msgstr ""
+msgstr "ประเด็น"
 
 #: i18n/extra-strings.php:18
 msgid "Data"
-msgstr ""
+msgstr "ข้อมูล"
 
 #: i18n/extra-strings.php:19
 msgid "Law"
-msgstr ""
+msgstr "กฎหมาย"
 
 #: i18n/extra-strings.php:20
 msgid "Blog"
-msgstr ""
+msgstr "บล็อก"
 
 #: i18n/extra-strings.php:21
 msgid "Timelines"
-msgstr ""
+msgstr "ไทม์ไลน์"
 
 #: i18n/extra-strings.php:22 inc/layers.php:47
 msgid "Layers"
-msgstr ""
+msgstr "ชั้นข้อมูล"
 
 #: i18n/extra-strings.php:23
 msgid "Share a map"
-msgstr ""
+msgstr "แชร์แผนที่"
 
 #: i18n/extra-strings.php:24
 msgid "Search for posts, maps and briefings..."
-msgstr ""
+msgstr "ค้นหาข้อมูล แผนที่ และคำแถลงการณ์..."
 
 #: i18n/extra-strings.php:25
 msgid "Search Datasets for Mekong"
-msgstr ""
+msgstr "ค้นหาชุดข้อมูล ใน ลุ่มน้ำโขง"
 
 #: i18n/extra-strings.php:26
 msgid "Search Datasets for Cambodia"
-msgstr ""
+msgstr "ค้นหาชุดข้อมูล ใน กัมพูชา"
 
 #: i18n/extra-strings.php:27
 msgid "Search Datasets for Laos"
-msgstr ""
+msgstr "ค้นหาชุดข้อมูล ใน ลาว"
 
 #: i18n/extra-strings.php:28
 msgid "Search Datasets for Myanmar"
-msgstr ""
+msgstr "ค้นหาชุดข้อมูล ใน พม่า"
 
 #: i18n/extra-strings.php:29
 msgid "Search Datasets for Thailand"
-msgstr ""
+msgstr "ค้นหาชุดข้อมูล ใน ไทย"
 
 #: i18n/extra-strings.php:30
 msgid "Search Datasets for Vietnam"
-msgstr ""
+msgstr "ค้นหาชุดข้อมูล ใน เวียดนาม"
 
 #: i18n/extra-strings.php:31
 msgid "More information"
-msgstr ""
+msgstr "ข้อมูลเพิ่มเติม"
 
 #: i18n/extra-strings.php:32
 msgid "Announcements and Press releases"
-msgstr ""
+msgstr "ประกาศและประชาสัมพันธ์"
 
 #: i18n/extra-strings.php:34
 msgid "Agriculture and fishing"
-msgstr ""
+msgstr "เกษตรกรรมและการประมง"
 
 #: i18n/extra-strings.php:35
 msgid "Disasters and emergency response"
-msgstr ""
+msgstr "ภัยพิบัติและสภาวะฉุกเฉิน"
 
 #: i18n/extra-strings.php:36
 msgid "Environment and natural resources"
-msgstr ""
+msgstr "ทรัพยากรธรรมชาติและสิ่งแวดล้อม"
 
 #: i18n/extra-strings.php:37
 msgid "Extractive industries"
-msgstr ""
+msgstr "อุตสาหกรรมสาร"
 
 #: i18n/extra-strings.php:38
 msgid "Land"
-msgstr ""
+msgstr "ที่ดิน"
 
 #: i18n/extra-strings.php:39
 msgid "Economy and commerce"
-msgstr ""
+msgstr "เศรษฐกิจและการพานิชย์"
 
 #: i18n/extra-strings.php:40
 msgid "Energy"
-msgstr ""
+msgstr "พลังงาน"
 
 #: i18n/extra-strings.php:41
 msgid "Infrastructure"
-msgstr ""
+msgstr "โครงสร้างพื้นฐาน"
 
 #: i18n/extra-strings.php:42
 msgid "Industry"
-msgstr ""
+msgstr "อุตสาหกรรม"
 
 #: i18n/extra-strings.php:43
 msgid "Labor"
-msgstr ""
+msgstr "แรงงาน"
 
 #: i18n/extra-strings.php:44
 msgid "Science and technology"
-msgstr ""
+msgstr "วิทยาศาสตร์และเทคโนโลยี"
 
 #: i18n/extra-strings.php:45
 msgid "Aid and development"
-msgstr ""
+msgstr "ความช่วยเหลือและการพัฒนา"
 
 #: i18n/extra-strings.php:46
 msgid "Government"
-msgstr ""
+msgstr "รัฐบาล"
 
 #: i18n/extra-strings.php:47
 msgid "Law and judiciary"
-msgstr ""
+msgstr "กฎหมายและตุลาการ"
 
 #: i18n/extra-strings.php:48
 msgid "Population and censuses"
-msgstr ""
+msgstr "ประชากรและสำมะโนประชากร"
 
 #: i18n/extra-strings.php:49
 msgid "Social development"
-msgstr ""
+msgstr "การพัฒนาสังคม"
 
 #: i18n/extra-strings.php:50
 msgid "Urban administration and development"
-msgstr ""
+msgstr "การบริหารและพัฒนาบ้านเมือง"
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open "
-"Development {country} herein are licensed under a CC BY-SA 3.0. News article "
-"summaries are extracted from their sources, as guided by fair-use principles "
-"and are copyrighted by their respective sources. Materials on the Open "
-"Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database "
-"are compiled from publicly available documentation and provided without fee "
-"for general informational purposes only. This is neither a commercial "
-"research service nor a domain managed by any governmental or inter-"
-"governmental agency; it is managed as a private non-profit open data/open "
-"knowledge media group. Information is publicly posted only after a careful "
-"vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee "
-"accuracy, completeness or reliability from third party sources in every "
-"instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either "
-"expressed or implied, in fact or in law, with respect to the accuracy, "
-"completeness or appropriateness of the data, materials or documents "
-"contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their "
-"activities and to share the results of that research with our team, contact "
-"us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take "
-"full responsibility for reliance on any site information provided and to "
-"hold harmless and waive any and all liability against individuals or "
-"entities associated with its development, form and content for any loss, "
-"harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
 msgstr ""
+"ข้อความและเนื้อหาต้นฉบับใด ๆ ที่ผลิตและเผยแพร่โดย Open Development Thailand นี้ได้รับใบอนุญาตภายใต้ CC BY-SA 3.0 บทสรุปของบทความและข่าวนำมาจากแหล่งข้อมูลที่ได้รับการคุ้มครองลิขสิทธิ์ตามหลักการใช้งานข้อมูลที่เป็นธรรม เนื้อหาในเว็บไซต์ Open Development Thailand (ODT) และฐานข้อมูล อันประกอบด้วยข้อมูลที่รวบรวมจากเอกสารที่มีการเผยแพร่อย่างเปิดเผย จัดทำขึ้นโดยไม่มีค่าใช้จ่ายใด ๆ โดยมีวัตถุประสงค์เพื่อเป็นแหล่งข้อมูลทั่วไปเท่านั้น ซึ่งไม่ได้เป็นบริการการวิจัยทางการค้าหรือโดเมนที่จัดการโดยหน่วยงานของรัฐหรือหน่วยงานระหว่างรัฐบาลใด ๆ เป็นการจัดการในฐานะกลุ่มข้อมูลเปิด/ความรู้เปิดโดยภาคเอกชนที่ไม่หวังผลกำไร ภายหลังจากกระบวนการตรวจสอบข้อมูลและยืนยันอย่างถี่ถ้วนจึงจะเผยแพร่ข้อมูลต่อสาธารณะ อย่างไรก็ตาม ODT ไม่สามารถรับประกันความถูกต้อง ความสมบูรณ์ ความเชื่อถือได้ จากแหล่งข้อมูลบุคคลที่สามในทุกกรณี ทาง ODT ไม่รับรองหรือรับประกันใด ๆ ไม่ว่าจะโดยชัดแจ้งหรือโดยนัย ข้อเท็จจริงหรือกฎหมายเกี่ยวกับความถูกต้อง ความสมบูรณ์หรือความเหมาะสมของข้อมูล เนื้อหาหรือเอกสารที่มีหรืออ้างอิงไว้ในที่นี้หรือที่จัดหามา\n"
+"ผู้ใช้เว็บไซต์ได้รับการสนับสนุนให้ทำวิจัยเพิ่มเติมเพื่อสนับสนุนกิจกรรมของพวกเขา และแบ่งปันผลการวิจัยกับทีมงานของเรา ติดต่อเราเพื่อปรับปรุงความถูกต้องของเว็บไซต์\n"
+"เมื่อมีการเข้าถึงเว็บไซต์ ODT หรือเข้าถึงฐานข้อมูล หากมีการสูญเสียหรือเกิดความเสียหายเกิดขึ้นระหว่างการใช้งาน ผู้ใช้ยินยอมที่จะรับผิดชอบอย่างเต็มที่ต่อความไว้วางใจของข้อมูลบนเว็บไซต์ ไม่ทำอันตรายและปฏิเสธความรับผิดชอบใด ๆ ต่อบุคคลหรือหน่วยงานที่เกี่ยวข้องกับการพัฒนารูปแบบและเนื้อหาในเว็บไซต์ "
 
 #: i18n/extra-strings.php:57
 msgid "Khmer PDF"
@@ -504,199 +485,203 @@ msgstr ""
 
 #: i18n/extra-strings.php:59 inc/advanced-navigation.php:299
 msgid "Jan"
-msgstr ""
+msgstr "ม.ค."
 
 #: i18n/extra-strings.php:60 inc/advanced-navigation.php:300
 msgid "Feb"
-msgstr ""
+msgstr "ก.พ."
 
 #: i18n/extra-strings.php:61 inc/advanced-navigation.php:301
 msgid "Mar"
-msgstr ""
+msgstr "มี.ค."
 
 #: i18n/extra-strings.php:62 inc/advanced-navigation.php:302
 msgid "Apr"
-msgstr ""
+msgstr "เม.ย."
 
 #: i18n/extra-strings.php:63 inc/advanced-navigation.php:303
 msgid "May"
-msgstr ""
+msgstr "พ.ค."
 
 #: i18n/extra-strings.php:64 inc/advanced-navigation.php:304
 msgid "Jun"
-msgstr ""
+msgstr "มิ.ย."
 
 #: i18n/extra-strings.php:65 inc/advanced-navigation.php:305
 msgid "Jul"
-msgstr ""
+msgstr "ก.ค."
 
 #: i18n/extra-strings.php:66 inc/advanced-navigation.php:306
 msgid "Aug"
-msgstr ""
+msgstr "ส.ค."
 
 #: i18n/extra-strings.php:67 inc/advanced-navigation.php:307
 msgid "Sep"
-msgstr ""
+msgstr "ก.ย."
 
 #: i18n/extra-strings.php:68 inc/advanced-navigation.php:308
 msgid "Oct"
-msgstr ""
+msgstr "ต.ค."
 
 #: i18n/extra-strings.php:69 inc/advanced-navigation.php:309
 msgid "Nov"
-msgstr ""
+msgstr "พ.ย."
 
 #: i18n/extra-strings.php:70 inc/advanced-navigation.php:310
 msgid "Dec"
-msgstr ""
+msgstr "ธ.ค."
 
 #: inc/advanced-navigation.php:156 page-data-old.php:39
 msgid "Text search"
-msgstr ""
+msgstr "ค้นหาข้อความ"
 
 #: inc/advanced-navigation.php:157 page-data-old.php:40 page-data-old.php:138
 #: page-data.php:244
 msgid "Type your search here"
-msgstr ""
+msgstr "พิมพ์ข้อความของคุณที่นี่"
 
-#: inc/advanced-navigation.php:171 inc/live-search/live-search.php:24
-#: inc/utils/content.php:81 page-data-old.php:106 page-data.php:119
+#: inc/advanced-navigation.php:171 inc/utils/content.php:187
+#: page-data-old.php:106 page-data.php:119
 msgid "Topic"
-msgstr ""
+msgstr "หัวข้อ"
 
 #: inc/advanced-navigation.php:176 inc/advanced-navigation.php:183
 msgid "Select categories"
-msgstr ""
+msgstr "เลือกหมวดหมู่"
 
 #: inc/advanced-navigation.php:203
 msgid "Content type"
-msgstr ""
+msgstr "รูปแบบของเนื้อหา"
 
 #: inc/advanced-navigation.php:204
 msgid "Select content types"
-msgstr ""
+msgstr "เลือกรูปแบบของเนื้อหา"
 
 #: inc/advanced-navigation.php:236
 msgid "Date range"
-msgstr ""
+msgstr "ช่วงวันที่"
 
 #: inc/advanced-navigation.php:239
 msgid "From"
-msgstr ""
+msgstr "จาก"
 
 #: inc/advanced-navigation.php:242
 msgid "To"
-msgstr ""
+msgstr "ถึง"
 
 #: inc/advanced-navigation.php:249
 msgid "Search filter"
-msgstr ""
+msgstr "ค้นหาตัวกรอง"
 
 #: inc/advanced-navigation.php:250
 msgid "Clear filter"
-msgstr ""
+msgstr "ล้างตัวกรอง"
 
 #: inc/advanced-navigation.php:259 inc/advanced-navigation.php:269
 msgid "Cancel filters"
-msgstr ""
+msgstr "ยกเลิกตัวกรอง"
 
 #: inc/advanced-navigation.php:266
 msgid "More filters"
-msgstr ""
+msgstr "ตัวกรองเพิ่มเติม"
 
 #: inc/advanced-navigation.php:290
 msgid "Su"
-msgstr ""
+msgstr "อา."
 
 #: inc/advanced-navigation.php:291
 msgid "Mo"
-msgstr ""
+msgstr "จ."
 
 #: inc/advanced-navigation.php:292
 msgid "Tu"
-msgstr ""
+msgstr "อ."
 
 #: inc/advanced-navigation.php:293
 msgid "We"
-msgstr ""
+msgstr "พ."
 
 #: inc/advanced-navigation.php:294
 msgid "Th"
-msgstr ""
+msgstr "พฤ."
 
 #: inc/advanced-navigation.php:295
 msgid "Fr"
-msgstr ""
+msgstr "ศ."
 
 #: inc/advanced-navigation.php:296
 msgid "Sa"
-msgstr ""
+msgstr "อา."
 
-#: inc/interactive-map.php:27
+#: inc/interactive-map.php:25
 msgid "Interactive Map"
-msgstr ""
+msgstr "แผนที่ที่ทำงานร่วมกัน"
 
-#: inc/interactive-map.php:90 inc/utils/mapping.php:103
+#: inc/interactive-map.php:74 inc/utils/mapping.php:111
+msgid "Base Layers"
+msgstr "ชั้นแผนที่ฐาน"
+
+#: inc/interactive-map.php:80 inc/utils/mapping.php:116
 msgid "Map Layers"
-msgstr ""
+msgstr "ชั้นแผนที่"
 
 #: inc/layer-category.php:18 inc/layer-category.php:33
 msgid "Layer categories"
-msgstr ""
+msgstr "หมวดหมู่ชั้นข้อมูล"
 
 #: inc/layer-category.php:23
 msgctxt "taxonomy general name"
 msgid "Layer categories"
-msgstr ""
+msgstr "หมวดหมู่ชั้นข้อมูล"
 
 #: inc/layer-category.php:24
 msgctxt "taxonomy singular name"
 msgid "Layer category"
-msgstr ""
+msgstr "หมวดหมู่ชั้นข้อมูล"
 
 #: inc/layer-category.php:25
 msgid "Search Layer categories"
-msgstr ""
+msgstr "ค้นหาหมวดหมู่ชั้นข้อมูล"
 
 #: inc/layer-category.php:26
 msgid "All Layer categories"
-msgstr ""
+msgstr "หมวดหมู่ชั้นข้อมูลทั้งหมด"
 
 #: inc/layer-category.php:27
 msgid "Parent Layer category"
-msgstr ""
+msgstr "หมวดหมู่ชั้นข้อมูลเดิม"
 
 #: inc/layer-category.php:28
 msgid "Parent Layer category:"
-msgstr ""
+msgstr "หมวดหมู่ชั้นข้อมูลเดิม:"
 
 #: inc/layer-category.php:29
 msgid "Edit Layer category"
-msgstr ""
+msgstr "แก้ไขหมวดหมู่ชั้นข้อมูล"
 
 #: inc/layer-category.php:30
 msgid "Update Layer category"
-msgstr ""
+msgstr "ปรับปรุงหมวดหมู่ชั้นข้อมูล"
 
 #: inc/layer-category.php:31
 msgid "Add New Layer category"
-msgstr ""
+msgstr "เพิ่มหมวดหมู่ชั้นข้อมูลใหม่"
 
 #: inc/layer-category.php:32
 msgid "New Layer category Name"
-msgstr ""
+msgstr "ชื่อหมวดหมู่ชั้นข้อมูลใหม่"
 
 #: inc/layers.php:29
 msgid "Layer settings"
-msgstr ""
+msgstr "ตั้งค่าชั้นข้อมูล"
 
 #: inc/layers.php:38
 msgid "Layer legend"
-msgstr ""
+msgstr "คำอธิบายสัญลักษณ์ของชั้นข้อมูล"
 
 #: inc/layers.php:59
 msgid "Map setup"
-msgstr ""
+msgstr "ตั้งค่าแผนที่"
 
 #: inc/layers.php:72
 msgid "Enter your HTML code to use as legend on the layer (English)"
@@ -709,7 +694,7 @@ msgstr ""
 #: inc/layers.php:91
 #, php-format
 msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
-msgstr ""
+msgstr "เพิ่มและจัดการ <a href=\"%s\" target=\"_blank\">ชั้นข้อมูล</a> บนแผนที่"
 
 #: inc/layers.php:93
 #, php-format
@@ -720,71 +705,71 @@ msgstr ""
 
 #: inc/layers.php:105
 msgid "Search for layers"
-msgstr ""
+msgstr "ค้นหาขั้นข้อมูล"
 
 #: inc/layers.php:108
 msgid "Latest layers"
-msgstr ""
+msgstr "ชั้นข้อมูลล่าสุด"
 
 #: inc/layers.php:112
 msgid "Search results"
-msgstr ""
+msgstr "ค้นหาผลลัพธ์"
 
 #: inc/layers.php:116
 msgid "You are using all of your layers."
-msgstr ""
+msgstr "คุณได้เลือกชั้นข้อมูลทั้งหมดแล้ว"
 
 #: inc/layers.php:120
 msgid "No layers were found."
-msgstr ""
+msgstr "ไม่พบชั้นข้อมูลที่ค้นหา"
 
 #: inc/layers.php:128 inc/layers.php:173
 msgid "edit"
-msgstr ""
+msgstr "แก้ไข"
 
 #: inc/layers.php:128 inc/layers.php:173
 msgid "Edit"
-msgstr ""
+msgstr "แก้ไข"
 
 #: inc/layers.php:129
 msgid "Add layer"
-msgstr ""
+msgstr "เพิ่มชั้นข้อมูล"
 
 #: inc/layers.php:129
 msgid "Add"
-msgstr ""
+msgstr "เพิ่ม"
 
 #: inc/layers.php:134
 msgid "Selected layers"
-msgstr ""
+msgstr "ชั้นข้อมูลที่เลือก"
 
 #: inc/layers.php:137
 msgid "Group layers by showing category"
-msgstr ""
+msgstr "จัดกลุ่มชั้นข้อมูลโดยแสดงหมวดหมู่"
 
 #: inc/layers.php:140
 msgid "Show category layers in hierarchy"
-msgstr ""
+msgstr "แสดงลำดับชั้นข้อมูล"
 
 #: inc/layers.php:152
 msgid "Layer options"
-msgstr ""
+msgstr "ตั้งค่าชั้นข้อมูล"
 
 #: inc/layers.php:155
 msgid "Enable"
-msgstr ""
+msgstr "เปิดการใช้งาน"
 
 #: inc/layers.php:157
 msgid "Disable"
-msgstr ""
+msgstr "ปิดการใช้งาน"
 
 #: inc/layers.php:159
 msgid "Swapable"
-msgstr ""
+msgstr "สับเปลี่ยนได้"
 
 #: inc/layers.php:164
 msgid "Hidden"
-msgstr ""
+msgstr "ซ่อน"
 
 #: inc/layers.php:168
 msgid "Default swap option"
@@ -792,11 +777,11 @@ msgstr ""
 
 #: inc/layers.php:174
 msgid "Remove layer"
-msgstr ""
+msgstr "ลบชั้นข้อมูล"
 
 #: inc/layers.php:174
 msgid "Remove"
-msgstr ""
+msgstr "ลบ"
 
 #: inc/layers.php:372
 msgid "Download Page URL"
@@ -832,11 +817,11 @@ msgstr ""
 
 #: inc/layers.php:416
 msgid "Layer type"
-msgstr ""
+msgstr "รูปแบบของชั้นข้อมูล"
 
 #: inc/layers.php:419
 msgid "Tile layer"
-msgstr ""
+msgstr "เชื่อมชั้นข้อมูล"
 
 #: inc/layers.php:421
 msgid "WMS layer"
@@ -941,11 +926,11 @@ msgstr ""
 
 #: inc/layers.php:513
 msgid "E.g.: image/png or image/jpeg"
-msgstr ""
+msgstr "ตัวอย่างเช่น ไฟล์รูปภาพนามสกุล .png หรือ .jpeg"
 
 #: inc/layers.php:517 inc/layers.php:520
 msgid "Transparent"
-msgstr ""
+msgstr "โปร่งใส"
 
 #: inc/layers.php:521
 msgid "Enable it to make transparent the layer of WMS."
@@ -967,11 +952,11 @@ msgstr ""
 
 #: inc/layers.php:544 inc/layers.php:554
 msgid "View detail"
-msgstr ""
+msgstr "ดูรายละเอียด"
 
 #: inc/layers.php:545 inc/layers.php:555
 msgid "View detail URL"
-msgstr ""
+msgstr "ดูรายละเอียด URL"
 
 #: inc/layers.php:546 inc/layers.php:556
 msgid ""
@@ -989,11 +974,11 @@ msgstr ""
 
 #: inc/layers.php:596
 msgid "Visualization type"
-msgstr ""
+msgstr "รูปแบบการแสดงผล"
 
 #: inc/layers.php:599
 msgid "Visualization"
-msgstr ""
+msgstr "การแสดงผล"
 
 #: inc/layers.php:601
 msgid "Advanced (build from your tables)"
@@ -1001,7 +986,7 @@ msgstr ""
 
 #: inc/layers.php:601
 msgid "coming soon"
-msgstr ""
+msgstr "โปรดติดตามใน เร็วๆ นี้"
 
 #: inc/layers.php:605
 msgid "CartoDB URL (English)"
@@ -1009,8 +994,9 @@ msgstr ""
 
 #: inc/layers.php:608 inc/layers.php:616
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
-"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: "
+"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
+"11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
 #: inc/layers.php:613
@@ -1019,15 +1005,15 @@ msgstr ""
 
 #: inc/layers.php:621
 msgid "Username"
-msgstr ""
+msgstr "ชื่อผู้ใช้"
 
 #: inc/layers.php:624
 msgid "Your CartoDB username."
-msgstr ""
+msgstr "ชื่อผู้ใช้ CartoDB"
 
 #: inc/layers.php:628
 msgid "Table"
-msgstr ""
+msgstr "ตาราง"
 
 #: inc/layers.php:631
 msgid "The CartoDB table you'd like to visualize."
@@ -1035,7 +1021,7 @@ msgstr ""
 
 #: inc/layers.php:635
 msgid "Where (optional)"
-msgstr ""
+msgstr "สถานที่ (ถ้ามี)"
 
 #: inc/layers.php:638
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
@@ -1052,259 +1038,243 @@ msgstr ""
 
 #: inc/layers.php:649
 msgid "Template"
-msgstr ""
-
-#: inc/live-search/live-search.php:20
-msgid "Go to the advanced search"
-msgstr ""
-
-#: inc/live-search/live-search.php:21
-msgid "Close"
-msgstr ""
-
-#: inc/live-search/live-search.php:22
-msgid "Showing all results"
-msgstr ""
-
-#: inc/live-search/live-search.php:25
-msgid "Map"
-msgstr ""
+msgstr "แม่แบบ"
 
 #: inc/post-types/announcements.php:19
 msgctxt "post type general name"
 msgid "Announcements"
-msgstr ""
+msgstr "ประกาศ"
 
 #: inc/post-types/announcements.php:20
 msgctxt "post type singular name"
 msgid "Announcement"
-msgstr ""
+msgstr "ประกาศ"
 
 #: inc/post-types/announcements.php:21
 msgctxt "admin menu"
 msgid "Announcements"
-msgstr ""
+msgstr "ประกาศ"
 
 #: inc/post-types/announcements.php:22
 msgctxt "add new on admin bar"
 msgid "Announcement"
-msgstr ""
+msgstr "ประกาศ"
 
 #: inc/post-types/announcements.php:23
 msgctxt "announcement"
 msgid "Add new"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: inc/post-types/announcements.php:24
 msgid "Add new announcement"
-msgstr ""
+msgstr "เพิ่มประกาศใหม่"
 
 #: inc/post-types/announcements.php:25
 msgid "New announcement"
-msgstr ""
+msgstr "ประกาศใหม่"
 
 #: inc/post-types/announcements.php:26
 msgid "Edit announcement"
-msgstr ""
+msgstr "แก้ไขประกาศ"
 
 #: inc/post-types/announcements.php:27
 msgid "View announcement"
-msgstr ""
+msgstr "ดูประกาศ"
 
 #: inc/post-types/announcements.php:28
 msgid "All announcements"
-msgstr ""
+msgstr "ประกาศทั้งหมด"
 
 #: inc/post-types/announcements.php:29
 msgid "Search announcements"
-msgstr ""
+msgstr "ค้นหาประกาศ"
 
 #: inc/post-types/announcements.php:30
 msgid "Parent announcements:"
-msgstr ""
+msgstr "ประกาศต้นฉบับ:"
 
 #: inc/post-types/announcements.php:31
 msgid "No announcements found."
-msgstr ""
+msgstr "ไม่พบประกาศที่คุณค้นหา"
 
 #: inc/post-types/announcements.php:32
 msgid "No announcements found in trash."
-msgstr ""
+msgstr "ไม่พบประกาศที่คุณค้นหา ในถังขยะ"
 
 #: inc/post-types/news-article.php:19
 msgctxt "post type general name"
 msgid "News"
-msgstr ""
+msgstr "ข่าว"
 
 #: inc/post-types/news-article.php:20
 msgctxt "post type singular name"
 msgid "News article"
-msgstr ""
+msgstr "บทความข่าว"
 
 #: inc/post-types/news-article.php:21
 msgctxt "admin menu"
 msgid "News"
-msgstr ""
+msgstr "ข่าว"
 
 #: inc/post-types/news-article.php:22
 msgctxt "add new on admin bar"
 msgid "News article"
-msgstr ""
+msgstr "บทความข่าว"
 
 #: inc/post-types/news-article.php:23
 msgctxt "news article"
 msgid "Add new"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: inc/post-types/news-article.php:24
 msgid "Add new news article"
-msgstr ""
+msgstr "เพิ่มบทความข่าวใหม่"
 
 #: inc/post-types/news-article.php:25
 msgid "New news article"
-msgstr ""
+msgstr "บทความข่าวใหม่"
 
 #: inc/post-types/news-article.php:26
 msgid "Edit news article"
-msgstr ""
+msgstr "แก้ไขบทความข่าว"
 
 #: inc/post-types/news-article.php:27
 msgid "View news article"
-msgstr ""
+msgstr "ดูบทความข่าว"
 
 #: inc/post-types/news-article.php:28
 msgid "All news"
-msgstr ""
+msgstr "ข่าวทั้งหมด"
 
 #: inc/post-types/news-article.php:29
 msgid "Search news"
-msgstr ""
+msgstr "ค้นหาข่าว"
 
 #: inc/post-types/news-article.php:30
 msgid "Parent news:"
-msgstr ""
+msgstr "ข่าวต้นฉบับ:"
 
 #: inc/post-types/news-article.php:31 inc/post-types/stories.php:33
 msgid "No stories found."
-msgstr ""
+msgstr "ไม่พบเรื่องราวที่ค้นหา"
 
 #: inc/post-types/news-article.php:32 inc/post-types/stories.php:34
 msgid "No stories found in trash."
-msgstr ""
+msgstr "ไม่พบเรื่องราวที่คนหา ในถังขยะ"
 
 #: inc/post-types/site-updates.php:19
 msgctxt "post type general name"
 msgid "Site updates"
-msgstr ""
+msgstr "ข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:20
 msgctxt "post type singular name"
 msgid "Site update"
-msgstr ""
+msgstr "ข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:21
 msgctxt "admin menu"
 msgid "Site updates"
-msgstr ""
+msgstr "ข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:22
 msgctxt "add new on admin bar"
 msgid "Site update"
-msgstr ""
+msgstr "ข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:23
 msgctxt "site update"
 msgid "Add new"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: inc/post-types/site-updates.php:24
 msgid "Add new site update"
-msgstr ""
+msgstr "เพิ่มข่าวอัพเดทใหม่"
 
 #: inc/post-types/site-updates.php:25
 msgid "New site update"
-msgstr ""
+msgstr "ข่าวอัพเดทใหม่"
 
 #: inc/post-types/site-updates.php:26
 msgid "Edit site update"
-msgstr ""
+msgstr "แก้ไขข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:27
 msgid "View site update"
-msgstr ""
+msgstr "ดูข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:28
 msgid "All site updates"
-msgstr ""
+msgstr "ข่าวอัพเดททั้งหมด"
 
 #: inc/post-types/site-updates.php:29
 msgid "Search site updates"
-msgstr ""
+msgstr "ค้นหาข่าวอัพเดท"
 
 #: inc/post-types/site-updates.php:30
 msgid "Parent site updates:"
-msgstr ""
+msgstr "ข่าวอัพเดทต้นฉบับ:"
 
 #: inc/post-types/site-updates.php:31
 msgid "No site updates found."
-msgstr ""
+msgstr "ไม่พบข่าวอัพเดทที่ค้นหา"
 
 #: inc/post-types/site-updates.php:32
 msgid "No site updates found in trash."
-msgstr ""
+msgstr "ไม่พบข่าวอัพเดทที่ค้นหา ในถังขยะ"
 
 #: inc/post-types/stories.php:21
 msgctxt "post type general name"
 msgid "Stories"
-msgstr ""
+msgstr "เรื่องราว"
 
 #: inc/post-types/stories.php:22
 msgctxt "post type singular name"
 msgid "Story"
-msgstr ""
+msgstr "เรื่องราว"
 
 #: inc/post-types/stories.php:23
 msgctxt "admin menu"
 msgid "Stories"
-msgstr ""
+msgstr "เรื่องราว"
 
 #: inc/post-types/stories.php:24
 msgctxt "add new on admin bar"
 msgid "Story"
-msgstr ""
+msgstr "เรื่องราว"
 
 #: inc/post-types/stories.php:25
 msgctxt "story"
 msgid "Add new"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: inc/post-types/stories.php:26
 msgid "Add new story"
-msgstr ""
+msgstr "เพิ่มเรื่องราวใหม่"
 
 #: inc/post-types/stories.php:27
 msgid "New story"
-msgstr ""
+msgstr "เรื่องราวใหม่"
 
 #: inc/post-types/stories.php:28
 msgid "Edit story"
-msgstr ""
+msgstr "แก้ไขเรื่องราว"
 
 #: inc/post-types/stories.php:29
 msgid "View story"
-msgstr ""
+msgstr "ดูเรื่องราว"
 
 #: inc/post-types/stories.php:30
 msgid "All stories"
-msgstr ""
+msgstr "เรื่องราวทั้งหมด"
 
 #: inc/post-types/stories.php:31
 msgid "Search stories"
-msgstr ""
+msgstr "ค้นหาเรื่องราว"
 
 #: inc/post-types/stories.php:32
 msgid "Parent stories:"
-msgstr ""
+msgstr "เรื่องราวต้นฉบับ:"
 
 #: inc/post-types/stories.php:62
 msgid "Full Width Middle Content"
@@ -1312,7 +1282,7 @@ msgstr ""
 
 #: inc/post-types/stories.php:78
 msgid "ENGLISH"
-msgstr ""
+msgstr "ภาษาอังกฤษ"
 
 #: inc/post-types/stories.php:91
 msgid "Full width content (English)"
@@ -1331,132 +1301,132 @@ msgstr ""
 #: inc/post-types/timeline.php:20
 msgctxt "post type general name"
 msgid "Timelines"
-msgstr ""
+msgstr "ไทม์ไลน์"
 
 #: inc/post-types/timeline.php:21
 msgctxt "post type singular name"
 msgid "Timeline"
-msgstr ""
+msgstr "ไทม์ไลน์"
 
 #: inc/post-types/timeline.php:22
 msgctxt "admin menu"
 msgid "Timelines"
-msgstr ""
+msgstr "ไทม์ไลน์"
 
 #: inc/post-types/timeline.php:23
 msgctxt "add new on admin bar"
 msgid "Timeline"
-msgstr ""
+msgstr "ไทม์ไลน์"
 
 #: inc/post-types/timeline.php:24
 msgctxt "timeline"
 msgid "Add new"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: inc/post-types/timeline.php:25
 msgid "Add new timeline"
-msgstr ""
+msgstr "เพิ่มไทม์ไลน์ใหม่"
 
 #: inc/post-types/timeline.php:26
 msgid "New timeline"
-msgstr ""
+msgstr "ไทม์ไลน์ใหม่"
 
 #: inc/post-types/timeline.php:27
 msgid "Edit timeline"
-msgstr ""
+msgstr "แก้ไขไทม์ไลน์"
 
 #: inc/post-types/timeline.php:28
 msgid "View timeline"
-msgstr ""
+msgstr "ดูไทม์ไลน์"
 
 #: inc/post-types/timeline.php:29
 msgid "All timelines"
-msgstr ""
+msgstr "ไทม์ไลน์ทั้งหมด"
 
 #: inc/post-types/timeline.php:30
 msgid "Search timelines"
-msgstr ""
+msgstr "ค้นหาไทม์ไลน์"
 
 #: inc/post-types/timeline.php:31
 msgid "Parent timelines:"
-msgstr ""
+msgstr "ไทม์ไลน์ต้นฉบับ:"
 
 #: inc/post-types/timeline.php:32
 msgid "No timelines found."
-msgstr ""
+msgstr "ไม่พบไทม์ไลน์"
 
 #: inc/post-types/timeline.php:33
 msgid "No timelines found in trash."
-msgstr ""
+msgstr "ไม่พบไทม์ไลน์ในถังขยะ"
 
 #: inc/post-types/topics.php:19
 msgctxt "post type general name"
 msgid "Topics"
-msgstr ""
+msgstr "บทความ"
 
 #: inc/post-types/topics.php:20
 msgctxt "post type singular name"
 msgid "Topic"
-msgstr ""
+msgstr "หัวข้อ"
 
 #: inc/post-types/topics.php:21
 msgctxt "admin menu"
 msgid "Topics"
-msgstr ""
+msgstr "บทความ"
 
 #: inc/post-types/topics.php:22
 msgctxt "add new on admin bar"
 msgid "Topic"
-msgstr ""
+msgstr "หัวข้อ"
 
 #: inc/post-types/topics.php:23
 msgctxt "topic"
 msgid "Add new"
-msgstr ""
+msgstr "เพิ่มใหม่"
 
 #: inc/post-types/topics.php:24
 msgid "Add new topic"
-msgstr ""
+msgstr "เพิ่มหัวข้อใหม่"
 
 #: inc/post-types/topics.php:25
 msgid "New topic"
-msgstr ""
+msgstr "หัวข้อใหม่"
 
 #: inc/post-types/topics.php:26
 msgid "Edit topic"
-msgstr ""
+msgstr "แก้ไขหัวข้อ"
 
 #: inc/post-types/topics.php:27
 msgid "View topic"
-msgstr ""
+msgstr "ดูหัวข้อ"
 
 #: inc/post-types/topics.php:28
 msgid "All topics"
-msgstr ""
+msgstr "บทความทั้งหมด"
 
 #: inc/post-types/topics.php:29
 msgid "Search topics"
-msgstr ""
+msgstr "ค้นหาบทความ:"
 
 #: inc/post-types/topics.php:30
 msgid "Parent topics:"
-msgstr ""
+msgstr "บทความต้นฉบับ:"
 
 #: inc/post-types/topics.php:31
 msgid "No topics found."
-msgstr ""
+msgstr "ไม่พบเรื่องที่ค้นหา"
 
 #: inc/post-types/topics.php:32
 msgid "No topics found in trash."
-msgstr ""
+msgstr "ไม่พบเรื่องที่ค้นหา ในถังขยะ"
 
 #: inc/summary.php:76
 msgid "On this page"
 msgstr ""
 
-#: inc/templates/category-page-default.php:80
+#: inc/templates/category-page-default.php:82
 msgid "No results found."
-msgstr ""
+msgstr "ไม่พบสิ่งที่ค้นหา"
 
 #: inc/templates/category-page-latest.php:17 page-data.php:17
 msgid ""
@@ -1465,26 +1435,25 @@ msgid ""
 msgstr ""
 
 #: inc/templates/category-page-latest.php:63
-#: inc/templates/category-page-latest.php:84
+#: inc/templates/category-page-latest.php:83
 msgid "Topic briefing"
-msgstr ""
+msgstr "หัวข้อคำแถลงการณ์"
 
-#: inc/templates/category-page-latest.php:104
+#: inc/templates/category-page-latest.php:102
 msgid "Related briefings"
-msgstr ""
+msgstr "คำแถลงการณ์ที่เกี่ยวข้อง"
 
 #: inc/templates/pagination.php:8 inc/templates/pagination.php:16
 #: inc/templates/pagination_solr.php:7
 msgid " of"
 msgstr ""
 
-#: inc/templates/post-highlighted-single-1-cols.php:51
+#: inc/templates/post-highlighted-single-1-cols.php:50
 #: inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
-msgstr ""
+msgstr "อ่านต่อ"
 
-#: inc/templates/solr-result-single.php:79 inc/utils/content.php:559
-#: inc/utils/content.php:564
+#: inc/templates/solr-result-single.php:79
 msgid " "
 msgstr ""
 
@@ -1502,11 +1471,11 @@ msgstr ""
 
 #: inc/theme-options.php:56
 msgid "Style"
-msgstr ""
+msgstr "รูปแบบ"
 
 #: inc/theme-options.php:63
 msgid "Links"
-msgstr ""
+msgstr "ลิงค์"
 
 #: inc/theme-options.php:77
 msgid "Single and archive pages"
@@ -1514,11 +1483,11 @@ msgstr ""
 
 #: inc/theme-options.php:84
 msgid "Interactive map"
-msgstr ""
+msgstr "แผนที่แบบโต้ตอบ"
 
 #: inc/theme-options.php:91
 msgid "Choose a style"
-msgstr ""
+msgstr "เลือกรูปแบบ"
 
 #: inc/theme-options.php:99
 msgid "Notice Message appear above the slider"
@@ -1538,7 +1507,7 @@ msgstr ""
 
 #: inc/theme-options.php:131
 msgid "Legal disclaimer"
-msgstr ""
+msgstr "ข้อสงวนสิทธิ์การใช้งาน"
 
 #: inc/theme-options.php:139
 msgid "Contact page"
@@ -1566,11 +1535,11 @@ msgstr ""
 
 #: inc/theme-options.php:187
 msgid "Base map settings"
-msgstr ""
+msgstr "ตั้งค่าแผนที่ฐาน"
 
 #: inc/theme-options.php:210
 msgid "Notification messages"
-msgstr ""
+msgstr "ข้อความแจ้งเตือน"
 
 #: inc/theme-options.php:211
 msgid "(The notification will appear floating at the bottom of the site)"
@@ -1586,7 +1555,7 @@ msgstr ""
 
 #: inc/theme-options.php:249 inc/theme-options.php:250
 msgid "news-article,announcement,topic,profiles"
-msgstr ""
+msgstr "ข่าว บทความ ประกาศ ข้อมูลประวัติ"
 
 #: inc/theme-options.php:252
 msgid ""
@@ -1606,21 +1575,21 @@ msgstr ""
 
 #: inc/theme-options.php:282
 msgid "Creation date"
-msgstr ""
+msgstr "วันที่สร้าง"
 
 #: inc/theme-options.php:283
 msgid "Modification date"
-msgstr ""
+msgstr "วันที่ทำการแก้ไข"
 
 #: inc/theme-options.php:290 inc/theme-options.php:293
 #: inc/theme-options.php:300 inc/theme-options.php:303
-#: inc/theme-options.php:377 inc/utils/mapping.php:733
+#: inc/theme-options.php:377 inc/utils/mapping.php:837
 msgid "None"
 msgstr ""
 
 #: inc/theme-options.php:342
 msgid "Select base layer"
-msgstr ""
+msgstr "เลือกแผนที่ฐาน"
 
 #: inc/theme-options.php:356
 msgid "(USA Only)"
@@ -1628,7 +1597,7 @@ msgstr ""
 
 #: inc/theme-options.php:374
 msgid "Custom"
-msgstr ""
+msgstr "ปรับแต่ง"
 
 #: inc/theme-options.php:380
 msgid "Enter layer URL"
@@ -1636,43 +1605,43 @@ msgstr ""
 
 #: inc/theme-options.php:385 inc/theme-options.php:579
 msgid "Update preview"
-msgstr ""
+msgstr "ปรับปรุงตัวอย่าง"
 
 #: inc/theme-options.php:388
 msgid "Preview map"
-msgstr ""
+msgstr "ตัวอย่างแผนที่"
 
 #: inc/theme-options.php:394
 msgid "Map settings"
-msgstr ""
+msgstr "ตั้งค่าแผนที่"
 
 #: inc/theme-options.php:397
 msgid "Currently viewing"
-msgstr ""
+msgstr "หน้าปัจจุบัน"
 
 #: inc/theme-options.php:401 inc/theme-options.php:439
 msgid "Center"
-msgstr ""
+msgstr "ตรงกลาง"
 
 #: inc/theme-options.php:406 inc/theme-options.php:450
 msgid "Zoom"
-msgstr ""
+msgstr "ขยาย"
 
 #: inc/theme-options.php:411 inc/theme-options.php:502
 msgid "East"
-msgstr ""
+msgstr "ทิศตะวันออก"
 
 #: inc/theme-options.php:416 inc/theme-options.php:510
 msgid "North"
-msgstr ""
+msgstr "ทิศเหนือ"
 
 #: inc/theme-options.php:421 inc/theme-options.php:518
 msgid "South"
-msgstr ""
+msgstr "ทิศใต้"
 
 #: inc/theme-options.php:426 inc/theme-options.php:526
 msgid "West"
-msgstr ""
+msgstr "ทิศตะวันตก"
 
 #: inc/theme-options.php:433
 msgid "Map center & zoom"
@@ -1684,15 +1653,15 @@ msgstr ""
 
 #: inc/theme-options.php:458
 msgid "Min zoom"
-msgstr ""
+msgstr "ขยายต่ำสุด"
 
 #: inc/theme-options.php:465 inc/theme-options.php:477
 msgid "Current"
-msgstr ""
+msgstr "มุมมองปัจจุบัน"
 
 #: inc/theme-options.php:470
 msgid "Max zoom"
-msgstr ""
+msgstr "ขยายสูงสุด"
 
 #: inc/theme-options.php:496
 msgid "Pan limits"
@@ -1712,7 +1681,7 @@ msgstr ""
 
 #: inc/theme-options.php:564
 msgid "Map handlers"
-msgstr ""
+msgstr "ผู้จัดการแผนที่"
 
 #: inc/theme-options.php:571
 msgid "Disable mousewheel zooming"
@@ -1720,173 +1689,173 @@ msgstr ""
 
 #: inc/theme-options.php:581
 msgid "Preview mode"
-msgstr ""
+msgstr "โหมดตัวอย่าง"
 
 #: inc/theme-options.php:583
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
 
-#: inc/utils/breadcrumbs.php:224
+#: inc/utils/breadcrumbs.php:62
+msgid "Blogs"
+msgstr "บล็อก"
+
+#: inc/utils/breadcrumbs.php:187 inc/utils/breadcrumbs.php:286
 msgid "Search results for:"
 msgstr ""
 
-#: inc/utils/content.php:486
+#: inc/utils/breadcrumbs.php:190
+msgid "Dataset detail"
+msgstr "รายละเอียดชุดข้อมูล"
+
+#: inc/utils/content.php:620
 msgid "Summary translated by "
-msgstr ""
+msgstr "บทสรุป แปลโดย"
 
-#: inc/utils/content.php:541
-msgid "Download: "
-msgstr ""
-
-#: inc/utils/content.php:546
-msgid "English PDF"
-msgstr ""
-
-#: inc/utils/content.php:551
-msgid "English PDF not available"
-msgstr ""
+#: inc/utils/content.php:679
+msgid "Download:"
+msgstr "ดาวน์โหลด:"
 
 #: inc/utils/layout.php:11
 msgid "View large image"
-msgstr ""
+msgstr "ดูภาพขนาดใหญ่"
 
 #: inc/utils/layout.php:70
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: inc/utils/mapping.php:184
+#: inc/utils/mapping.php:124
 msgid "Show news on map"
-msgstr ""
+msgstr "แสดงข่าวบนแผนที่"
 
-#: inc/utils/mapping.php:431
+#: inc/utils/mapping.php:376
 msgid "LEGEND"
-msgstr ""
+msgstr "คำอธิบายสัญลักษณ์"
 
-#: inc/utils/mapping.php:681
+#: inc/utils/mapping.php:785
 msgid "Create Map"
-msgstr ""
+msgstr "สร้างแผนที่"
 
-#: inc/utils/mapping.php:684
+#: inc/utils/mapping.php:788
 msgid "Title"
 msgstr "หัวข้อ"
 
-#: inc/utils/mapping.php:688
+#: inc/utils/mapping.php:792
 msgid "Description"
-msgstr ""
+msgstr "คำอธิบาย"
 
-#: inc/utils/mapping.php:693
+#: inc/utils/mapping.php:797
 msgid "Basemap"
-msgstr ""
+msgstr "แผนที่ฐาน"
 
-#: inc/utils/mapping.php:697
+#: inc/utils/mapping.php:801
 msgid "Map layers"
-msgstr ""
+msgstr "ชั้นแผนที่"
 
-#: inc/utils/mapping.php:702
+#: inc/utils/mapping.php:806
 msgid "North Direction"
-msgstr ""
+msgstr "ทิศเหนือ"
 
-#: inc/utils/mapping.php:707
+#: inc/utils/mapping.php:811
 msgid "Map tools"
-msgstr ""
+msgstr "เครื่องมือแผนที่"
 
-#: inc/utils/mapping.php:710
+#: inc/utils/mapping.php:814
 msgid "Format"
-msgstr ""
+msgstr "รูปแบบ"
 
-#: inc/utils/mapping.php:712
+#: inc/utils/mapping.php:816
 msgid "Image (PNG)"
-msgstr ""
+msgstr "รูปภาพ (PNG)"
 
-#: inc/utils/mapping.php:716
+#: inc/utils/mapping.php:820
 msgid "Size"
-msgstr ""
+msgstr "ขนาด"
 
-#: inc/utils/mapping.php:718
+#: inc/utils/mapping.php:822
 msgid "A4"
-msgstr ""
+msgstr "เอ4"
 
-#: inc/utils/mapping.php:722
+#: inc/utils/mapping.php:826
 msgid "Layout"
-msgstr ""
+msgstr "การจัดวาง"
 
-#: inc/utils/mapping.php:724
+#: inc/utils/mapping.php:828
 msgid "Landscape"
-msgstr ""
+msgstr "แนวนอน"
 
-#: inc/utils/mapping.php:725
+#: inc/utils/mapping.php:829
 msgid "Portrait"
-msgstr ""
+msgstr "แนวตั้ง"
 
-#: inc/utils/mapping.php:729
+#: inc/utils/mapping.php:833
 msgid "Legend"
-msgstr ""
+msgstr "คำอธิบายสัญลักษณ์"
 
-#: inc/utils/mapping.php:731
+#: inc/utils/mapping.php:835
 msgid "Left"
-msgstr ""
+msgstr "ซ้าย"
 
-#: inc/utils/mapping.php:732
+#: inc/utils/mapping.php:836
 msgid "Right"
-msgstr ""
+msgstr "ขวา"
 
-#: inc/utils/mapping.php:739
+#: inc/utils/mapping.php:843
 msgid "Show all legends"
-msgstr ""
+msgstr "แสดงคำอธิบายสัญลักษณ์ทั้งหมด"
 
-#: inc/utils/mapping.php:743 inc/utils/markers.php:139
+#: inc/utils/mapping.php:847 inc/utils/markers.php:139
 msgid "Print"
-msgstr ""
+msgstr "พิมพ์"
 
-#: inc/utils/mapping.php:762
+#: inc/utils/mapping.php:866
 msgid "Created date: "
-msgstr ""
+msgstr "สร้างเมื่อ:"
 
 #: inc/utils/markers.php:135
 msgid "stories"
-msgstr ""
+msgstr "เรื่องราว"
 
 #: inc/utils/markers.php:137
 msgid "Copy the embed code"
-msgstr ""
+msgstr "คัดลอกที่อยู่"
 
 #: inc/utils/markers.php:138 loop-latest.php:21
 msgid "Share"
-msgstr ""
+msgstr "แชร์"
 
 #: inc/utils/markers.php:145
 msgid "Open slideshow"
-msgstr ""
+msgstr "ดูสไลด์โชว์"
 
 #: inc/utils/markers.php:146
 msgid "Watch video gallery"
-msgstr ""
+msgstr "เปิดคลังวิดีโอ"
 
 #: inc/utils/markers.php:147
 msgid "Watch video"
-msgstr ""
+msgstr "ดูวิดีโอ"
 
 #: inc/utils/markers.php:148
 msgid "View image gallery"
-msgstr ""
+msgstr "เปิดคลังรูปภาพ"
 
 #: inc/utils/markers.php:149
 msgid "View fullscreen image"
-msgstr ""
+msgstr "ขยายรูปเต็มหน้าจอ"
 
 #: inc/utils/markers.php:150
 msgid "View infographic"
-msgstr ""
+msgstr "ดูอินโฟกราฟิกส์"
 
 #: inc/utils/markers.php:151
 msgid "View infographics"
-msgstr ""
+msgstr "ดูอินโฟกราฟิกส์"
 
 #: inc/utils/markers.php:342 loop-latest.php:10
 msgctxt "reduced date format"
 msgid "m/d/Y"
-msgstr ""
+msgstr "เดือน/วัน/ปี"
 
 #: inc/widgets/odm-category-widget.php:12
 msgid "ODM Post Taxonomy"
@@ -1910,56 +1879,56 @@ msgid ""
 "as the one where the widget is integrated."
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:154
-#: inc/widgets/odm-custom-posts-widget.php:173
-#: inc/widgets/odm-taxonomy-widget.php:261
+#: inc/widgets/odm-contents-same-category-widget.php:156
+#: inc/widgets/odm-custom-posts-widget.php:175
+#: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
-msgstr ""
+msgstr "หัวข้อ:"
 
-#: inc/widgets/odm-contents-same-category-widget.php:159
-#: inc/widgets/odm-custom-posts-widget.php:177
+#: inc/widgets/odm-contents-same-category-widget.php:161
+#: inc/widgets/odm-custom-posts-widget.php:179
 msgid "Select custom post type:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:168
-#: inc/widgets/odm-custom-posts-widget.php:189
+#: inc/widgets/odm-contents-same-category-widget.php:170
+#: inc/widgets/odm-custom-posts-widget.php:191
 msgid "Select layout:"
-msgstr ""
+msgstr "เลือกการจัดวาง:"
 
-#: inc/widgets/odm-contents-same-category-widget.php:176
-#: inc/widgets/odm-custom-posts-widget.php:197
+#: inc/widgets/odm-contents-same-category-widget.php:178
+#: inc/widgets/odm-custom-posts-widget.php:199
 msgid "Show post excerpt:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:180
-#: inc/widgets/odm-custom-posts-widget.php:201
+#: inc/widgets/odm-contents-same-category-widget.php:182
+#: inc/widgets/odm-custom-posts-widget.php:203
 msgid "Show post thumbnail:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:184
-#: inc/widgets/odm-custom-posts-widget.php:205
+#: inc/widgets/odm-contents-same-category-widget.php:186
+#: inc/widgets/odm-custom-posts-widget.php:207
 msgid "Show post meta:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:188
-#: inc/widgets/odm-custom-posts-widget.php:209
+#: inc/widgets/odm-contents-same-category-widget.php:190
+#: inc/widgets/odm-custom-posts-widget.php:211
 msgid "Show source meta:"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:193
-#: inc/widgets/odm-custom-posts-widget.php:214
+#: inc/widgets/odm-contents-same-category-widget.php:195
+#: inc/widgets/odm-custom-posts-widget.php:216
 msgid "Select max number of posts to list (-1 to show all):"
 msgstr ""
 
-#: inc/widgets/odm-contents-same-category-widget.php:197
-#: inc/widgets/odm-custom-posts-widget.php:218
+#: inc/widgets/odm-contents-same-category-widget.php:199
+#: inc/widgets/odm-custom-posts-widget.php:220
 msgid "Order by:"
-msgstr ""
+msgstr "เรียงตาม:"
 
-#: inc/widgets/odm-contents-same-category-widget.php:205
-#: inc/widgets/odm-custom-posts-widget.php:226
+#: inc/widgets/odm-contents-same-category-widget.php:207
+#: inc/widgets/odm-custom-posts-widget.php:228
 msgid "Select location of 'More...':"
-msgstr ""
+msgstr "เลือกสถานที่ 'เพิ่มเติม...':"
 
 #: inc/widgets/odm-custom-posts-widget.php:15
 msgid "ODM Custom Posts"
@@ -1969,7 +1938,7 @@ msgstr ""
 msgid "Display entries of the spefied custom post type"
 msgstr ""
 
-#: inc/widgets/odm-custom-posts-widget.php:185
+#: inc/widgets/odm-custom-posts-widget.php:187
 msgid "Specific list of posts (optional):"
 msgstr ""
 
@@ -1981,175 +1950,164 @@ msgstr ""
 msgid "Display ODM taxonomy for content"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:265
+#: inc/widgets/odm-taxonomy-widget.php:243
 msgid "Include Category by IDs (separated by commas):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:269
+#: inc/widgets/odm-taxonomy-widget.php:247
 msgid "Exclude Category by IDs (separated by commas):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:273
+#: inc/widgets/odm-taxonomy-widget.php:251
 msgid "Links should take user to:"
-msgstr ""
+msgstr "ลิงก์จะเชื่อมต่อไปยัง:"
 
 #: page-data-archive.php:14
 msgid "Access the complete database"
-msgstr ""
+msgstr "สิทธิ์เข้าถึงฐานข้อมูลทั้งหมด"
 
 #: page-data-archive.php:26
 msgid "Type your search and hit enter"
-msgstr ""
+msgstr "พิมพ์ข้อความของคุณที่นี่"
 
 #: page-data-archive.php:37
 msgid "Previous page"
-msgstr ""
+msgstr "หน้าที่แล้ว"
 
 #: page-data-archive.php:39
 msgid "Next page"
-msgstr ""
+msgstr "หน้าถัดไป"
 
 #: page-data-old.php:46
 msgid "Type"
-msgstr ""
+msgstr "รูปแบบ"
 
 #: page-data-old.php:47
 msgid "Select dataset type"
-msgstr ""
+msgstr "เลือกรูปแบบชุดข้อมูล"
 
 #: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85
 #: page-data-old.php:108 page-data-old.php:125 page-data.php:121
 #: page-data.php:143 page-data.php:157 page-data.php:185 page-data.php:207
 msgid "All"
-msgstr ""
+msgstr "ทั้งหมด"
 
 #: page-data-old.php:63 page-data.php:183
 msgid "Language"
-msgstr ""
+msgstr "ภาษา"
 
 #: page-data-old.php:64 page-data.php:184
 msgid "Select language"
-msgstr ""
+msgstr "เลือกภาษา"
 
 #: page-data-old.php:81 page-data.php:155
 msgid "Country"
-msgstr ""
+msgstr "ประเทศ"
 
 #: page-data-old.php:82 page-data.php:156
 msgid "Select country"
-msgstr ""
+msgstr "เลือกประเทศ"
 
 #: page-data-old.php:107 page-data.php:120
 msgid "Select term"
-msgstr ""
+msgstr "เลือกเงื่อนไข"
 
 #: page-data-old.php:123 page-data.php:205
 msgid "License"
-msgstr ""
+msgstr "ใบอนุญาต"
 
 #: page-data-old.php:124 page-data.php:206
 msgid "Select license"
-msgstr ""
+msgstr "เลือกใบอนุญาต"
 
 #: page-data-old.php:137
 msgid "Source"
-msgstr ""
+msgstr "แหล่งข้อมูล"
 
 #: page-data-old.php:143 page-data.php:237
 msgid "Search Filter"
-msgstr ""
+msgstr "ค้นหาตัวกรอง"
 
 #: page-data-old.php:147
 msgid "Clear"
-msgstr ""
+msgstr "ล้าง"
 
 #: page-data-old.php:171
 msgid "Most viewed datasets"
-msgstr ""
+msgstr "ชุดข้อมูลที่มีการเข้าชมมากที่สุด"
 
 #: page-data-old.php:176
 msgid "Most viewed library records"
-msgstr ""
+msgstr "ข้อมูลในห้องสมุดที่มีการเข้าชมมากที่สุด"
 
 #: page-data-old.php:181
 msgid "Most viewed laws"
-msgstr ""
+msgstr "กฏหมายที่มีการเข้าชมมากที่สุด"
 
 #: page-data-old.php:232
 msgid "Records"
-msgstr ""
+msgstr "ข้อมูลบันทึก"
 
 #: page-data-old.php:243
 msgid "More on the law compendium"
-msgstr ""
+msgstr "ข้อมูลเพิ่มเติมเกี่บวกับบทสรุปกฎหมาย"
 
 #: page-data.php:141
 msgid "Dataset type"
-msgstr ""
+msgstr "รูปแบบชุดข้อมูล"
 
 #: page-data.php:144
 msgid "Datasets"
-msgstr ""
+msgstr "ชุดข้อมูล"
 
 #: page-data.php:145
 msgid "Publications"
-msgstr ""
+msgstr "บทความเชิงวิชาการ"
 
 #: page-data.php:146
 msgid "Laws"
-msgstr ""
+msgstr "กฎหมาย"
 
 #: page-data.php:147
 msgid "Agreements"
-msgstr ""
+msgstr "ข้อตกลง"
 
 #: page-data.php:228 page-data.php:229
 msgid "Sort by"
-msgstr ""
+msgstr "จัดเรียง"
 
 #: page-data.php:230
 msgid "Relevance"
-msgstr ""
+msgstr "ความสัมพันธ์"
 
 #: page-data.php:231
 msgid "Date modified"
-msgstr ""
+msgstr "แก้ไขเมื่อ"
 
-#: page-dataset-detail.php:18
+#: page-dataset-detail.php:21
 msgid "Please provide an id as parameter"
 msgstr ""
 
-#: page-dataset-detail.php:29
+#: page-dataset-detail.php:32
 msgid "Manage on CKAN"
-msgstr ""
+msgstr "จัดการบน CKAN"
 
-#: page-dataset-detail.php:31
+#: page-dataset-detail.php:34
 msgid "Manage"
-msgstr ""
+msgstr "จัดการ"
 
-#: page-dataset-detail.php:39
-msgid "Download metadata"
-msgstr ""
+#: page-dataset-detail.php:48
+msgid "Other search results"
+msgstr "ผลการค้นหาเพิ่มเติม"
 
-#: page-dataset-detail.php:41
-msgid "XML"
-msgstr ""
-
-#: page-dataset-detail.php:42
-msgid "JSON"
-msgstr ""
-
-#: page-dataset-detail.php:43
-msgid "RDF"
-msgstr ""
-
-#: page-no-title.php:17 page.php:19 single-topic.php:44 single.php:42
+#: page-no-title.php:17 page.php:19 single-post.php:31 single-topic.php:43
+#: single.php:48
 msgid "Pages:"
 msgstr ""
 
 #: page-pdf-view.php:24 page-pdf-view.php:27 section-query-actions.php:25
 msgid "Download"
-msgstr ""
+msgstr "ดาวน์โหลด"
 
 #: section-query-actions.php:13
 msgid "Content API"
@@ -2165,19 +2123,16 @@ msgstr ""
 
 #: section-sticky-posts.php:151
 msgid "Keep reading"
-msgstr ""
+msgstr "อ่านต่อ"
 
 #: single-map.php:46
 msgid "Latest articles on"
-msgstr ""
+msgstr "เรื่องล่าสุด"
 
-#: single-topic.php:71
+#: single-topic.php:70
 msgid "More on the Land Portal library"
-msgstr ""
+msgstr "ข้อมูลเพิ่มเติมเกี่ยวกับที่ดินในห้องสมุด"
 
 #: taxonomy-layer-category.php:8
 msgid "Map catalogue"
-msgstr ""
-
-#~ msgid "Vietnamese"
-#~ msgstr "ภาษาเวียตนาม"
+msgstr "รายการแผนที่"

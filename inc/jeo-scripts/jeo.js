@@ -141,19 +141,26 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
   /*
    * Fullscreen
    */
-  map.addControl(new jeo.fullscreen());
+  if(typeof(jeo.fullscreen) != 'undefined')
+    map.addControl(new jeo.fullscreen());
 
   /*
    * Clearscreen
    */
   if(typeof(jeo.clearscreen) != 'undefined')
-  map.addControl(new jeo.clearscreen());
+    map.addControl(new jeo.clearscreen());
 
   /*
    * Print map
    */
   if(typeof(jeo.printmap) != 'undefined')
-  map.addControl(new jeo.printmap());
+    map.addControl(new jeo.printmap());
+
+  /*
+   * Layers
+   */
+  if(typeof(jeo.layers) != 'undefined')
+    map.addControl(new jeo.layers());
 
   /*
    * Geocode

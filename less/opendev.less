@@ -53,7 +53,11 @@ table {
 }
 
 .tableauPlaceholder{
-    margin: 5px auto 20px;
+  margin: 5px auto 10px;
+	width: 100%;
+	border: 1px solid #ddd;
+	padding: 10px;
+	background: #f4f4f4 none repeat scroll 0;
 }
  .table-of-contents sup{
      display: none;
@@ -91,6 +95,20 @@ table {
     line-height: 24px;
     color: #777;
     font-style: italic;
+    clear: both;
+    a {
+      font-size: @font-size-h5;
+    }
+}
+blockquote{
+  padding-bottom: 15px;
+}
+blockquote, blockquote p, blockquote span {
+    font-size: @font-size-h5;
+    line-height: 24px;
+    color: #777;
+    font-style: italic;
+    margin-bottom:0;
     clear: both;
     a {
       font-size: @font-size-h5;

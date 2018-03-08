@@ -71,7 +71,7 @@ section#map{
 		left: 5px !important;
 	}
 }
-.interactive-map {
+.interactive-map, .embeded-interactive-map {
 	border: 0;
 	box-shadow: none;
 	position: relative;
@@ -100,36 +100,43 @@ section#map{
 		}
 
 		.leaflet-right {
-
 			.wax-legends {
 				display: none!important;
 			}
+		}
 
-		}
-		.print-map{
+		.jeo-clearscreen, .jeo-printmap, .jeo-layers, .print-map{
 			display: block;
 		}
-		.jeo-clearscreen, .jeo-printmap{
-			display: block;
-		}
+
 		.leaflet-control .print {
 			background-image: url(../../img/print.png);
 			background-position: 0px 0px;
 			background-repeat: no-repeat;
 		}
+
+		.leaflet-control .layers {
+			background-image: url(../../img/layers.png);
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+
 		.leaflet-control .hide-all-boxes-on-map {
 			background-image: url(../../img/clearscreen-button.png);
 			background-position: 1px 0px;
 			background-repeat: no-repeat;
 		}
+
 		.leaflet-control .show-all-boxes-on-map {
 		    background-image: url(../../img/clearscreen-button.png);
 		    background-position: -28px 0px;
 		    background-repeat: no-repeat;
 		}
+
 		.cartodb-popup-close-button {
 				background: #fff !important;
 		}
+
 		.cartodb-timeslider{
 			display: none !important;
 		}
@@ -599,18 +606,19 @@ section#map{
 } /*.map-legend-container*/
 
 .layer-right-screen {
-	width: 30%;
-	position: fixed;
+	width: 35%;
+	position: absolute;
 	z-index: 9001;
-	right: 315px;
+	right: 290px;
 	background: #fff;
-	bottom: 1%;
+	bottom: 3%;
 }
 
 .layer-toggle-info-container{
 	display: none;
-	max-height: 40%;
+	max-height: 50%;
 	height: auto;
+	overflow-y: auto;
 
 	.toggle-close-icon{
 		text-align: right;
@@ -629,7 +637,7 @@ section#map{
 
 	.layer-toggle-info {
 		background-color: @white;
-		padding: 0 10px 10px 15px;
+		padding: 0 15px 10px 15px;
 		/*display: none;*/
 		overflow-y: auto;
 		height: auto;
@@ -707,7 +715,7 @@ section#map{
 	background: @white;
 
 	ul{
-		margin: 2px;
+		margin: 2px !important;
 		padding: 0;
 		float: left;
 

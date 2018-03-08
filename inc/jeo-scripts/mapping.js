@@ -5,6 +5,7 @@
 			$(this).parent().fadeOut();
 			$(this).siblings(".layer-toggle-info").fadeOut();
 			$(this).siblings(".layer-toggle-info").removeClass('show_it');
+			$('.interactive-map .interactive-map-layers').find('.cat-layers li i.fa-info-circle').removeClass('active');
 		});
 
 		//Hide and show on click the collapse and expend icon
@@ -77,7 +78,6 @@
 			}
 		});
 
-  //  $layers.find('.cat-layers li.fixed').trigger('click');
 	  $('.cat-layers li.fixed').each(function() {
 				var get_layer_id = $(this).data('layer');
 				$(this).parent("ul").show();
@@ -110,18 +110,17 @@
 				$(this_item).addClass('loading');
 				jeo.toggle_layers(map, all_layers_value[get_layer_id]);
 				if( all_layers_legends && all_layers_legends[get_layer_id]){
-					var get_legend = all_layers_legends[get_layer_id]; //$(this).find(".legend").html();
+					var get_legend = all_layers_legends[get_layer_id];
 					if( typeof get_legend != "undefined"){
 						display_layer_legen($(this_item).data('layer'), get_legend);
 					}//typeof get_legend != "undefined"
-
 				}
-
 			} //if has class active
 		}
 
 		//Click on info icon
 		$layers.find('.cat-layers li i.fa-info-circle').on('click', function(e) {
+			e.preventDefault();
 			var target =  $( e.target );
 			//Get the tool tip container width adn height
 			var toolTipWidth = $(".layer-toggle-info-container").width();
@@ -129,11 +128,13 @@
 			$('.layer-toggle-info-container').hide();
 			$('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").hide();
 			$('.toggle-info-'+$(this).attr('id')).siblings(".layer-toggle-info").removeClass('show_it');
-
 			if ( target.is( "i.fa-info-circle" )) {
 				if ($(this).hasClass("active")){
 					$(this).removeClass("active");
 				}else{
+					var top_position = $('.layer-toggle-info-container-'+$(this).attr('id')).show();
+
+					$('.layer-toggle-info-container').show();
 					$layers.find('.cat-layers li i.fa-info-circle').removeClass('active');
 					$(this).addClass("active");
 					if ($('.toggle-info-'+$(this).attr('id')).length){
@@ -168,16 +169,10 @@
 							  left = $(this).offset().left - toolTipWidth - (offsetWidth) + marginright;
 						  }
 
-						  //set the position of the tool tip
-						  $('.toggle-info-'+$(this).attr('id')).css("max-height", toolTipHeight-offsetHeight);
+						  //set the position of the tool tip 
 						  $('.toggle-info-'+$(this).attr('id')).addClass("show_it");
 						  $('.toggle-info-'+$(this).attr('id')).show();
-						  $('.layer-toggle-info-container').show();
-
-						  //set info-container possition folow the mouseclik/mouseover
-						  //$('.layer-toggle-info-container').css({'max-height':'100%' ,'top': top, 'left': left });
-						  //show tool tips
-						 // $('.layer-toggle-info-container').fadeIn();
+						  $('.layer-toggle-info-container-'+$(this).attr('id')).show();
 					}
 				}
 
@@ -185,17 +180,19 @@
 
 		});
 
-		$('.hide_show_container').on( "click", '.fa-times-circle', function(e){
+		$('.map-legend-container').on( "click", '.fa-times-circle', function(e){
 		  var get_layer_id = $(this).attr("ID");
 		  var target = $( e.target );
-		  if ( target.is( "i" ) ) {
-			  jeo.toggle_layers(map, all_layers_value[get_layer_id]);
-			  $('.layer-toggle-info-container').hide();
-			  $("#"+get_layer_id).find('i.fa-info-circle').removeClass("active");
-			  $('.map-legend-ul .'+get_layer_id).remove().fadeOut('slow');
-			  if ( !$(".map-legend-ul li").length){
-				 $('.map-legend-container').hide('slow');
-			 }
+			if(typeof(get_layer_id) != 'undefined'){
+			  if ( target.is( "i" ) ) {
+				  jeo.toggle_layers(map, all_layers_value[get_layer_id]);
+				  $('.layer-toggle-info-container').hide();
+				  $("#"+get_layer_id).find('i.fa-info-circle').removeClass("active");
+				  $('.map-legend-ul .'+get_layer_id).remove().fadeOut('slow');
+				  if ( !$(".map-legend-ul li").length){
+					 $('.map-legend-container').hide('slow');
+				 }
+				}
 		  }
 		});
 

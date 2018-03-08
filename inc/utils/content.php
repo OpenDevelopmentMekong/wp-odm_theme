@@ -386,7 +386,7 @@ function walk_child_category_by_post_type( $children, $post_type, $current_cat =
 /** END CATEGORY */
 
 /**** Post Meta ******/
-function echo_post_meta($the_post, $show_elements = array('date','categories','tags'), $order = "metadata_created", $max_num_topics = null, $max_num_tags = null)
+function echo_post_meta($the_post, $show_elements = array('date','categories','tags','sources'), $order = "metadata_created", $max_num_topics = null, $max_num_tags = null)
 {
 	global $post;
 	$post = $the_post;
@@ -470,28 +470,23 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
   				}
 
   			}// if news_source exists
-  			if (taxonomy_exists('public_announcement_source')) {
-  					echo '<li class="source-cateogy">';
+  			if (taxonomy_exists('public_announcement_source') && isset($post)) {
   					$terms_public_announcement_source = get_the_terms($post->ID, 'public_announcement_source');
   					if ($terms_public_announcement_source && !is_wp_error($terms_public_announcement_source)) {
   							if ($terms_public_announcement_source) {
   									$public_announcement_sources = '';
-  									echo '<span class="icon-news"></span> ';
-  									foreach ($terms_public_announcement_source as $term) {
-  											$term_link = get_term_link($term, 'public_announcement_source');
-  											if (is_wp_error($term_link)) {
-  													continue;
-  											}
-  											//We successfully got a link. Print it out.
-  											 $public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
-  									}
-										echo '<i class="fa fa-chain"></i> ';
-  									echo substr($public_announcement_sources, 0, -2);
+						  			echo '<li class="source-cateogy">';
+	  									foreach ($terms_public_announcement_source as $term) {
+	  											$term_link = get_term_link($term, 'public_announcement_source');
+	  											if (is_wp_error($term_link)) {
+	  													continue;
+	  											}
+	  											$public_announcement_sources .= '<a href="'.$term_link.'">'.$term->name.'</a>, ';
+	  									}
+											echo '<i class="fa fa-chain"></i> ';
+	  									echo substr($public_announcement_sources, 0, -2);
+										echo '</li>';
   							}
-  					} elseif (get_post_meta($post->ID, 'rssmi_source_feed', true)) {
-  							echo '<span class="icon-news"></span> ';
-  							$public_announcement_source_id = get_post_meta($post->ID, 'rssmi_source_feed', true);
-  							echo get_the_title($public_announcement_source_id);
   					}
   			}
       endif; ?>
@@ -521,7 +516,7 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 			if (in_array('tags',$show_elements)): ?>
 					<?php
 					$tag_list = get_the_tags($post->ID);
-					if (isset($max_num_tags) && $max_num_tags > 0):
+					if (is_array($tag_list) && isset($max_num_tags) && $max_num_tags > 0):
 						$tag_list = array_splice($tag_list,0,$max_num_tags);
 					endif;
 					if (!empty($tag_list)): ?>
@@ -540,8 +535,8 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 				 	endif;
 	      endif; ?>
 			<?php
-			if (in_array('show_summary_translated_by_odc_team',$show_elements)): ?>
-				<?php echo_post_translated_by_od_team(get_the_ID());
+			if (in_array('summary_translated',$show_elements)): ?>
+				<?php echo_post_translated_by_country_team(get_the_ID());
 			endif; ?>
 		</ul>
 	</div>
@@ -550,11 +545,22 @@ function echo_post_meta($the_post, $show_elements = array('date','categories','t
 
 }
 
-function odm_excerpt($the_post, $num = 45, $read_more = '')
+function odm_title($the_post,$show_meta = array('date','categories','tags','sources'),$date_to_show = "metadata_created" ){
+
+	if (odm_screen_manager()->is_desktop()): ?>
+		<h1><?php echo get_the_title($the_post) ?></h1>
+		<?php echo_post_meta($the_post,$show_meta,$date_to_show);
+	else:?>
+		<h1 class="ellipsis"><?php echo get_the_title($the_post) ?></h1>
+	<?php
+	endif;
+
+}
+
+function odm_excerpt($the_post, $limit = 45, $read_more = '')
  {
 	  global $post;
 		$post = $the_post;
-		$limit = $num;
 
 		if($post->post_excerpt):
 			$post_content = $post->post_excerpt;
@@ -566,33 +572,42 @@ function odm_excerpt($the_post, $num = 45, $read_more = '')
 
 		$stripped_content = strip_tags($translated_content);
 		$stripped_content = strip_shortcodes($stripped_content);
-		if(trim($stripped_content)):
-			$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
-			$stripped_content_arr = explode(' ', trim($stripped_content), $num+1);
 
-			if($stripped_content_arr):
-				array_splice($stripped_content_arr, $limit);
-				$excerpt_content = implode(' ', $stripped_content_arr);
-		    if (odm_language_manager()->get_current_language() == "km"):
-		  		$excerpt_zeo_space = explode("&#8203;", $excerpt_content, $num+1); //explode by zerowidthspace​
-					array_splice($excerpt_zeo_space, $limit);
-		  		$excerpt_content = implode("&#8203;", $excerpt_zeo_space); //implode by zerowidthspace
-				endif;
+		$stripped_content = preg_replace( "/\&hellip;/",'', trim($stripped_content));
 
-				$color_name = odm_country_manager()->get_current_country().'-color';
-				if ($read_more != ''):
-					$excerpt_words =  $excerpt_content." ... <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
-				else:
-					$excerpt_words = $excerpt_content." <a href='".get_permalink($post->ID)." ' class='".$color_name."'>...</a>";
-				endif;
-				return '<p>' . $excerpt_words . '</p>';
-			endif;
+		$excerpt_content = shorten_string_words($stripped_content,$limit,odm_language_manager()->get_current_language());
 
-			return '<p>' . $stripped_content . '</p>';
+		$color_name = odm_country_manager()->get_current_country().'-color';
+		if ($read_more != ''):
+			$excerpt_words =  $excerpt_content." ... <a href='".get_permalink($post->ID)." ' class='".$color_name."'>".__($read_more, 'odm').'</a>';
+		else:
+			$excerpt_words = $excerpt_content." <a href='".get_permalink($post->ID)." ' class='".$color_name."'>...</a>";
 		endif;
+		return '<p>' . $excerpt_words . '</p>';
+
  }
 
-function echo_post_translated_by_od_team($postID, $current_lang = "en", $taxonomy ="language") {
+function shorten_string_words($string, $limit = 40, $current_lang = "en"){
+
+	if (strlen($string) <= $limit):
+		return $string;
+	endif;
+
+	$stripped_content_arr = explode(' ', trim($string), $limit+1);
+	array_splice($stripped_content_arr, $limit);
+	$limited = implode(' ', $stripped_content_arr);
+
+	if ($current_lang == "km"):
+		$no_zero_space = explode("&#8203;", $limited, $limit+1); //explode by zerowidthspace​
+		array_splice($no_zero_space, $limit);
+		$limited = implode("&#8203;", $no_zero_space); //implode by zerowidthspace
+	endif;
+
+	return $limited;
+
+}
+
+function echo_post_translated_by_country_team($postID, $current_lang = "en", $taxonomy ="language") {
  	    $site_language = strtolower(odm_language_manager()->get_the_language_by_language_code($current_lang)); //english
  			$translated_term =  $site_language."-translated";
 			$team_name = "OD". ucfirst(substr(odm_country_manager()->get_current_country(), 0, 1));
@@ -761,19 +776,29 @@ function available_custom_post_types(){
 	 return (strpos(get_page_template(), 'page-dataset-detail') !== false);
  }
 
- function get_top_level_category_english_name($cat_id) {
-	 global $wpdb;
-	 while ($cat_id) {
-			 $cat = get_category($cat_id); // get the object for the catid
-			 $cat_id = $cat->category_parent; // assign parent ID (if exists) to $catid
-			 $cat_parent_id = $cat->cat_ID;
-	 }
 
-	 $cat_parent_name = $wpdb->get_var($wpdb->prepare(
-							 "SELECT `name` FROM $wpdb->terms WHERE `term_id` =  %d", $cat_parent_id));
-	 $cat_parent_name = apply_filters('translate_text', $cat_parent_name, 'en');
-	 return $cat_parent_name;
-}
+ function get_top_level_category_names($cats) {
+	$top_cat_names  = array();
+  foreach($cats as $cat) {
+		$all_parent_cats = get_category_parents($cat);
+		foreach(split('/', $all_parent_cats) as $parent_cat_name) {
+			$parent_cat_name_en = apply_filters('translate_text', $parent_cat_name, "en");
+			array_push($top_cat_names,$parent_cat_name_en);
+		}
+  }
+  return $top_cat_names;
+ }
+
+ function get_top_level_category_slugs($cats) {
+	$top_cat_slugs  = array();
+  foreach($cats as $cat) {
+		$all_parent_cats_slugs = get_category_parents($cat, false, '/', true, array());
+		foreach(split('/', $all_parent_cats_slugs) as $parent_cat_slug) {
+			array_push($top_cat_slugs,$parent_cat_slug);
+		}
+  }
+  return $top_cat_slugs;
+ }
 
  function odm_echo_extras($postID = "") {
  	 $postID = $postID ? $postID : get_the_ID();
