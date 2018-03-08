@@ -15,7 +15,7 @@
 		<i class="fa fa-rss"></i>
 		<?php _e('RSS Feed', 'odm'); ?>
 	</a>
-	<?php if($use_api) : ?>
+	<?php if($use_api && (!is_post_type_archive( 'map-layer' ))  ) : ?> 
 		<a class="button geojson" target="_blank" href="<?php echo $geojson; ?>">
 			<i class="fa fa-globe"></i>
 			<?php _e('Get GeoJSON', 'odm'); ?>
