@@ -9,8 +9,19 @@ function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'thumbna
       if($view_enlarge):
 				$full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'full');
 				$thumbnail = '<a class="view-enlarge" href="#" title="' . __("View large image", "odm") . '" >'.get_the_post_thumbnail( $post_id, $size	). '</a>';
-        $thumbnail .= '<div class="popup-overlay hide"><div class="toggle-close-icon"><i class="enlarge-close fa fa-times-circle '. odm_country_manager()->get_current_country().'-color" aria-hidden="true"></i></div>
-                      <img class="popup-enlarge" src="'. $full_image_url[0] .'" title="'.get_the_title($post_id).'" /></div>';
+        $thumbnail .= '<div class="popup-overlay hide"><div class="toggle-close-icon"><i class="enlarge-close fa fa-times-circle '. odm_country_manager()->get_current_country().'-color" aria-hidden="true"></i></div>';
+        $thumbnail .= '<div class="popup-enlarge">
+                          <img class="popup-enlarge-img" src="'. $full_image_url[0] .'" title="'.get_the_title($post_id).'" />
+                          <div class="caption">'.get_the_title($post_id).'
+                          <span style="float:right"><a id="'. strtolower(odm_country_manager()->get_country_name(odm_country_manager()->get_current_country())).'-text-color" href="'.get_permalink($post_id).'">
+                            <i class="fa fa-download"></i> &nbsp;';
+                            if (odm_screen_manager()->is_desktop()):
+                              $thumbnail .= __('Download and Metadata', 'wp-odm_profile_pages');
+                            endif;
+        $thumbnail .= '     </a></span>
+                          </div>
+                        </div>
+                      </div>';
       else:
         $thumbnail = get_the_post_thumbnail( $post_id, $size);
       endif;
