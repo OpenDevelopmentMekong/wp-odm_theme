@@ -35,7 +35,7 @@
 		</div>
 		<?php
 			if ($show_thumbnail):
-				echo odm_get_thumbnail($post->ID, true, array( 300, 'auto'), $view_large_image);
+				echo odm_get_thumbnail($post->ID, true, array( 300, 'auto'), $view_large_image, $link);
 			endif; ?>
 	</div>
 </div>
