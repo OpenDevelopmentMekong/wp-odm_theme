@@ -46,26 +46,26 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				 $current_page = " ".$current_page_slug;
 			}
 		}
-		
+		$link_template = '';
 		if ($get_post_id): // if page of the topic exists
-			echo "<li class='topic_nav_item'>";
-			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
-			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
-			echo $category->name;
-			echo "</a></h5>";
-			echo "</span>";
+			$link_template .= "<li class='topic_nav_item'>";
+			$link_template .= "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
+			$link_template .= '<h5><a href="' . get_permalink( $get_post_id ) . '">';
+			$link_template .= $category->name;
+			$link_template .= "</a></h5>";
+			$link_template .= "</span>";
 
 			if ( !empty($children) ) {
-				echo '<ul>';
 
-				$this->walk_child_category( $children, 'topic' );
+				$link_template .= $this->walk_child_category( $children, 'topic' );
 
-				echo '</ul>';
 			}
 
-			echo "</li>";
+			$link_template .= "</li>";
 			
 		endif;
+
+		return $link_template;
 		
 	}
 
@@ -78,24 +78,28 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function print_category_linked_to_category( $category, $children, $current_page_slug ="") {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
+		$link_template = '';
 		// add link if contetns categorized by this topic exist
 		if ($category_has_contents):
-			echo "<li class='topic_nav_item'>";
-			echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
-			echo '<h5><a href="/category/' . $category->slug . '">';
-			echo $category->name;
-			echo "</a></h5>";
-			echo "</span>";
+
+			$link_template .= "<li class='topic_nav_item'>";
+			$link_template .= "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
+			$link_template .= '<h5><a href="/category/' . $category->slug . '">';
+			$link_template .= $category->name;
+			$link_template .= "</a></h5>";
+			$link_template .= "</span>";
+
 			if ( !empty($children) ) {
-				echo '<ul>';
+				
+				$link_template .= $this->walk_child_category( $children, 'category' );
 
-				$this->walk_child_category( $children, 'category' );
-
-				echo '</ul>';
 			}
 
-			echo "</li>";
+			$link_template .= "</li>";
+
     	endif;		
+
+    	return $link_template;
 
 	}
 
@@ -109,18 +113,37 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function walk_child_category( $children, $topic_or_category ) {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
+		$layout = '';
+		$layout .= '<ul>';
+		$content_count = 0;
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
 			
 			// Display current category
 			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($child, $cat_children, $current_page_slug);
+				$topic_layout = $this->print_category_linked_to_topic($child, $cat_children, $current_page_slug);
+				if ($topic_layout != '') :
+					$layout .= $topic_layout;
+					$content_count++;
+				endif;
 			else:
-				$this->print_category_linked_to_category($child, $cat_children, $current_page_slug);
+				$category_layout = $this->print_category_linked_to_category($child, $cat_children, $current_page_slug);
+				if ($category_layout != '') :
+					$layout .= 	$category_layout;
+					$content_count++;
+				endif;
 			endif;
-
 		}
+		$layout .= '</ul>';
+
+		if ($content_count > 0) {
+			return $layout;
+		}
+	}
+
+	public function walk_children_contents( $children, $topic_or_category ) {
+
 	}
 
 	/**
@@ -144,10 +167,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
-			if( $(this).has('ul') ){
-		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
-		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
-		  }
+			if( $(this).find('ul').has('li').length ){
+			    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
+			    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
+		  	}
 
 			//if parent is showed, child need to expend 
 		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
@@ -203,9 +226,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			}
 			
 			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($category, $children, $current_page_slug);
+				echo $this->print_category_linked_to_topic($category, $children, $current_page_slug);
 			else:
-				$this->print_category_linked_to_category($category, $children, $current_page_slug);
+				echo $this->print_category_linked_to_category($category, $children, $current_page_slug);
 			endif;
 
 		}
