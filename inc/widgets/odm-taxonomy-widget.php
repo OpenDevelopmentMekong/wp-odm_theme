@@ -35,7 +35,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_topic($category, $children, $current_page_slug ="") {
+	public function print_category_linked_to_topic($category, $current_page_slug ="") {
 		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($category->name);
 		$current_page = "";
@@ -46,40 +46,18 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				 $current_page = " ".$current_page_slug;
 			}
 		}
-
-		//Prepare Child first to show parent if there's child contents
-		$child_template = '';
-		if ( !empty($children) ) {
-
-			$child_template = $this->walk_child_category( $children, 'topic' );
-
-		}
-
-		$link_template = '';
-		if ($get_post_id || $child_template != ''): // if page of the topic exists
-
-			$link_template .= "<li class='topic_nav_item'>";
-			$link_template .= "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
-			if ($get_post_id) {
-				$link_template .= '<h5><a href="' . get_permalink( $get_post_id ) . '">';
-			}
-
-			$link_template .= $category->name;
-
-			if ($get_post_id) {
-				$link_template .= "</a></h5>";
-			}
-
-			$link_template .= "</span>";
-
-			$link_template .= $child_template;
-
-			$link_template .= "</li>";
-			
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
+		if ($get_post_id): // if page of the topic exists
+			echo '<h5><a href="' . get_permalink( $get_post_id ) . '">';
 		endif;
 
-		return $link_template;
-		
+		echo $category->name;
+
+		if ($get_post_id):
+			echo "</a></h5>";
+		endif;
+
+		echo "</span>";
 	}
 
 		/**
@@ -88,48 +66,25 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	 *
 	 * @param category $category a category object to display
 	 */
-	public function print_category_linked_to_category( $category, $children, $current_page_slug ="") {
+	public function print_category_linked_to_category( $category, $current_page_slug ="") {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
-		//Prepare Child first to show parent if there's child contents
-		$child_template = '';
+		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
 
-		if ( !empty($children) ) {
-			
-			$child_template = $this->walk_child_category( $children, 'category' );
-
-		}
-
-		$link_template = '';
 		// add link if contetns categorized by this topic exist
-		if ($category_has_contents || $child_template != ''):
+		if ($category_has_contents):
+			echo '<h5><a href="/category/' . $category->slug . '">';
+    endif;
 
-			$link_template .= "<li class='topic_nav_item'>";
-			$link_template .= "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
+		echo $category->name;
 
-			if ($category_has_contents) {
-				$link_template .= '<h5><a href="/category/' . $category->slug . '">';
-			}
+		if ($category_has_contents):
+			echo "</a></h5>";
+		endif;
 
-			$link_template .= $category->name;
-
-			if ($category_has_contents) {
-				$link_template .= "</a></h5>";
-			}
-
-			$link_template .= "</span>";
-
-			$link_template .= $child_template;
-
-			$link_template .= "</li>";
-
-    	endif;		
-
-    	return $link_template;
+		echo "</span>";
 
 	}
-
-
 	/**
 	 * Walks through a list of categories and prints all children descendant
 	 * in a hierarchy.
@@ -139,37 +94,27 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function walk_child_category( $children, $topic_or_category ) {
 		$current_page = get_post();
 		$current_page_slug = $current_page->post_name;
-		$layout = '';
-		$layout .= '<ul>';
-		$content_count = 0;
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			
+			echo "<li>";
 			// Display current category
 			if ($topic_or_category == 'topic'):
-				$topic_layout = $this->print_category_linked_to_topic($child, $cat_children, $current_page_slug);
-				if ($topic_layout != '') :
-					$layout .= $topic_layout;
-					$content_count++;
-				endif;
+				$this->print_category_linked_to_topic($child, $current_page_slug);
 			else:
-				$category_layout = $this->print_category_linked_to_category($child, $cat_children, $current_page_slug);
-				if ($category_layout != '') :
-					$layout .= 	$category_layout;
-					$content_count++;
-				endif;
+				$this->print_category_linked_to_category($child, $current_page_slug);
 			endif;
+
+			// if current category has children
+			if ( !empty($cat_children) ) {
+				// add a sublevel
+				echo "<ul>";
+				// display the children
+				$this->walk_child_category( $cat_children,  $topic_or_category);
+				echo "</ul>";
+			}
+			echo "</li>";
 		}
-		$layout .= '</ul>';
-
-		if ($content_count > 0) {
-			return $layout;
-		}
-	}
-
-	public function walk_children_contents( $children, $topic_or_category ) {
-
 	}
 
 	/**
@@ -193,10 +138,10 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
 		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
-			if( $(this).find('ul').has('li').length ){
-			    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
-			    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
-		  	}
+			if( $(this).has('ul') ){
+		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
+		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
+		  }
 
 			//if parent is showed, child need to expend 
 		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
@@ -250,12 +195,23 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
 
 			}
-			
+
+			echo "<li class='topic_nav_item'>";
 			if ($topic_or_category == 'topic'):
-				echo $this->print_category_linked_to_topic($category, $children, $current_page_slug);
+				$this->print_category_linked_to_topic($category, $current_page_slug);
 			else:
-				echo $this->print_category_linked_to_category($category, $children, $current_page_slug);
+				$this->print_category_linked_to_category($category, $current_page_slug);
 			endif;
+
+			if ( !empty($children) ) {
+				echo '<ul>';
+
+				$this->walk_child_category( $children, $topic_or_category );
+
+				echo '</ul>';
+			}
+
+			echo "</li>";
 
 		}
 		echo "</ul>";
