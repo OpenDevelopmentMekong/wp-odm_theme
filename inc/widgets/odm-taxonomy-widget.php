@@ -46,20 +46,33 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				 $current_page = " ".$current_page_slug;
 			}
 		}
+
+		//Prepare Child first to show parent if there's child contents
+		$child_template = '';
+		if ( !empty($children) ) {
+
+			$child_template = $this->walk_child_category( $children, 'topic' );
+
+		}
+
 		$link_template = '';
-		if ($get_post_id): // if page of the topic exists
+		if ($get_post_id || $child_template != ''): // if page of the topic exists
+
 			$link_template .= "<li class='topic_nav_item'>";
 			$link_template .= "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$current_page."'>";
-			$link_template .= '<h5><a href="' . get_permalink( $get_post_id ) . '">';
+			if ($get_post_id) {
+				$link_template .= '<h5><a href="' . get_permalink( $get_post_id ) . '">';
+			}
+
 			$link_template .= $category->name;
-			$link_template .= "</a></h5>";
+
+			if ($get_post_id) {
+				$link_template .= "</a></h5>";
+			}
+
 			$link_template .= "</span>";
 
-			if ( !empty($children) ) {
-
-				$link_template .= $this->walk_child_category( $children, 'topic' );
-
-			}
+			$link_template .= $child_template;
 
 			$link_template .= "</li>";
 			
@@ -78,22 +91,35 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	public function print_category_linked_to_category( $category, $children, $current_page_slug ="") {
 		$category_has_contents = (get_category($category->term_id)->category_count > 0)? true:false;
 
+		//Prepare Child first to show parent if there's child contents
+		$child_template = '';
+
+		if ( !empty($children) ) {
+			
+			$child_template = $this->walk_child_category( $children, 'category' );
+
+		}
+
 		$link_template = '';
 		// add link if contetns categorized by this topic exist
-		if ($category_has_contents):
+		if ($category_has_contents || $child_template != ''):
 
 			$link_template .= "<li class='topic_nav_item'>";
 			$link_template .= "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$category->slug."'>";
-			$link_template .= '<h5><a href="/category/' . $category->slug . '">';
+
+			if ($category_has_contents) {
+				$link_template .= '<h5><a href="/category/' . $category->slug . '">';
+			}
+
 			$link_template .= $category->name;
-			$link_template .= "</a></h5>";
+
+			if ($category_has_contents) {
+				$link_template .= "</a></h5>";
+			}
+
 			$link_template .= "</span>";
 
-			if ( !empty($children) ) {
-				
-				$link_template .= $this->walk_child_category( $children, 'category' );
-
-			}
+			$link_template .= $child_template;
 
 			$link_template .= "</li>";
 
