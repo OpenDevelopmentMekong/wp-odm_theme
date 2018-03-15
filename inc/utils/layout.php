@@ -15,13 +15,13 @@ function odm_get_thumbnail($post_id = false, $fallback = false, $size = 'thumbna
                           <div class="caption">'.get_the_title($post_id);
         if($enlarge_url):
         $thumbnail .= '<span style="float:right">
-                          <a id="'. strtolower(odm_country_manager()->get_country_name(odm_country_manager()->get_current_country())).'-text-color" href="'.$enlarge_url.'" target="_blank">
+                          <a class="button download format" href="'.$enlarge_url.'" target="_blank">
                             <i class="fa fa-download"></i> &nbsp;';
                             if (odm_screen_manager()->is_desktop()):
-                              $thumbnail .= __('Download and Metadata', 'wp-odm_profile_pages');
+                              $thumbnail .= "<span>".__('Download and Metadata', 'wp-odm_profile_pages')."</span>";
                             endif;
         $thumbnail .= '   </a>
-                        </span>';
+                        </span>';                        
         endif;
         $thumbnail .= '
                           </div>
