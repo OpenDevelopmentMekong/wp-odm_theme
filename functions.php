@@ -33,6 +33,7 @@ require_once get_stylesheet_directory().'/inc/summary.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget-v2.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
