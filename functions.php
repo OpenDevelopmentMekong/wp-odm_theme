@@ -35,6 +35,7 @@ require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget-v2.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-link-to-topic-page-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
@@ -598,4 +599,17 @@ function add_custom_meta_tags() {
 }
 add_action('wp_head', 'add_custom_meta_tags', 5);
 
+
+add_action( 'init', 'create_sdg_taxonomy' );
+function create_sdg_taxonomy() {
+	register_taxonomy(
+		'sdg',
+		'topic',
+		array(
+			'label' => __( 'SDGs' ),
+			'rewrite' => array( 'slug' => 'sdg' ),
+			'hierarchical' => true,
+		)
+	);
+}
 ?>
