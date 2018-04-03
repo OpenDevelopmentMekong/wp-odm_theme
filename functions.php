@@ -598,18 +598,4 @@ function add_custom_meta_tags() {
   set_site_meta();
 }
 add_action('wp_head', 'add_custom_meta_tags', 5);
-
-
-add_action( 'init', 'create_sdg_taxonomy' );
-function create_sdg_taxonomy() {
-	register_taxonomy(
-		'sdg',
-		'topic',
-		array(
-			'label' => __( 'SDGs' ),
-			'rewrite' => array( 'slug' => 'sdg' ),
-			'hierarchical' => true,
-		)
-	);
-}
 ?>
