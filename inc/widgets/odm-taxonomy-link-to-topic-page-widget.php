@@ -1,5 +1,5 @@
 <?php
-class Odm_SDG_Taxonomy_Widget extends WP_Widget {
+class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -257,6 +257,7 @@ class Odm_SDG_Taxonomy_Widget extends WP_Widget {
 			<select id="<?php echo $this->get_field_id( 'registed_custom_tax' ); ?>" name="<?php echo $this->get_field_name( 'registed_custom_tax' ); ?>" type="text">
 				<option value="" <?php if (!$registed_custom_tax) { echo " selected"; } ?> >Select</option>
 				<?php $registed_tax = get_taxonomies(array('public'   => true, '_builtin' => false )); ?>
+				<option <?php if ($registed_custom_tax == "category" ) { echo " selected"; } ?> value="<?php echo "category"  ?>"><?php echo "category";  ?></option>
 				<?php foreach ( $registed_tax as $taxonomy ) { ?>
 				<option <?php if ($registed_custom_tax == $taxonomy ) { echo " selected"; } ?> value="<?php echo $taxonomy  ?>"><?php echo $taxonomy;  ?></option>
 				<?php }?>
@@ -316,4 +317,4 @@ class Odm_SDG_Taxonomy_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("Odm_SDG_Taxonomy_Widget");'));
+add_action( 'widgets_init', create_function('', 'register_widget("Odm_Custom_Taxonomy_With_Topic_Widget");'));
