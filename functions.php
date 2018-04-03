@@ -35,6 +35,7 @@ require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget-v2.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-custom-posts-widget.php';
+require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-link-to-topic-page-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-contents-same-category-widget.php';
 require_once get_stylesheet_directory().'/inc/advanced-navigation.php';
 require_once get_stylesheet_directory().'/inc/category-walker.php';
@@ -597,5 +598,4 @@ function add_custom_meta_tags() {
   set_site_meta();
 }
 add_action('wp_head', 'add_custom_meta_tags', 5);
-
 ?>

@@ -134,16 +134,22 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 			$term = $wp_query->queried_object;
 			$current_page_slug = $term->slug;
 		endif;
+
+		echo $args['before_widget'];
+		if (!empty($instance['title'])):
+			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
+		endif;
+		$widget_name = strtolower(str_replace(" ", "", $instance['title']));
 	?>
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
-		$('.odm_taxonomy_widget_ul > li.topic_nav_item').each(function(){
+		$('.odm_taxonomy_widget_ul_<?php echo $widget_name;?> > li.topic_nav_item').each(function(){
 			if( $(this).has('ul') ){
 		    $('ul', this).siblings('span').removeClass("nochildimage-<?php echo odm_country_manager()->get_current_country();?>");
 		    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
 		  }
 
-			//if parent is showed, child need to expend 
+			//if parent is showed, child need to expend
 		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
 				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
@@ -155,7 +161,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 				$('span.<?php echo $current_page_slug; ?>', this).parents("li").parents("ul").siblings('span').toggleClass('plusimage-<?php echo odm_country_manager()->get_current_country();?>');
 			}
 		});
-		$('.odm_taxonomy_widget_ul > li.topic_nav_item span').click(function(event) {
+		$('.odm_taxonomy_widget_ul_<?php echo $widget_name;?> > li.topic_nav_item span').click(function(event) {
 			if($(event.target).parent("li").find('ul').length){
 				$(event.target).parent("li").find('ul:first').slideToggle('fast');
 				$(event.target).toggleClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
@@ -165,15 +171,9 @@ class Odm_Taxonomy_Widget extends WP_Widget {
     });
    </script>
 	<?php
-		echo $args['before_widget'];
-		if (!empty($instance['title'])):
-			echo $args['before_title'].apply_filters('widget_title', $instance['title']).$args['after_title'];
-		endif;
-
 		$cat_included_id_arr = !empty($instance['od_include']) ? explode(",", $instance['od_include']) : array();
 		$cat_excluded_id_arr = !empty($instance['od_exclude']) ? explode(",", $instance['od_exclude']) : array();
-		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
-
+		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic'; 
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
@@ -184,7 +184,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 
 		$categories = get_categories( $args );
 
-		echo "<ul class='odm_taxonomy_widget_ul'>";
+		echo "<ul class='odm_taxonomy_widget_ul odm_taxonomy_widget_ul_".$widget_name."'>";
 		foreach($categories as $category){
 			$jackpot = false;
 			$children = array();
