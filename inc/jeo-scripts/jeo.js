@@ -161,7 +161,8 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
    */
   if(typeof(jeo.layers) != 'undefined')
     map.addControl(new jeo.layers());
-
+  //Add scale to map  
+  L.control.scale().addTo(map);
   /*
    * Geocode
    */
