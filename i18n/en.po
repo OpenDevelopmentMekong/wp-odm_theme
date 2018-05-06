@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2018-02-16 11:01+0100\n"
-"PO-Revision-Date: 2018-02-16 11:02+0100\n"
+"POT-Creation-Date: 2018-05-06 16:39+0700\n"
+"PO-Revision-Date: 2018-05-06 16:39+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -45,6 +45,10 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
+#: ______taxonomy-layer-category.php:8 taxonomy-layer-category.php:8
+msgid "Map catalogue"
+msgstr ""
+
 #: advanced-search.php:31
 msgid "Data results"
 msgstr ""
@@ -77,6 +81,22 @@ msgstr ""
 msgid "News"
 msgstr ""
 
+#: archive-post.php:11 archive-topic.php:11
+msgid "Topics"
+msgstr ""
+
+#: archive-post.php:39 archive-topic.php:45
+msgid "Environment and land"
+msgstr ""
+
+#: archive-post.php:67 archive-topic.php:63
+msgid "Economy"
+msgstr ""
+
+#: archive-post.php:86 archive-topic.php:79
+msgid "People"
+msgstr ""
+
 #: archive-profiles.php:9
 msgid "Profiles"
 msgstr ""
@@ -93,23 +113,7 @@ msgstr ""
 msgid "Database"
 msgstr ""
 
-#: archive-topic.php:11
-msgid "Topics"
-msgstr ""
-
-#: archive-topic.php:45
-msgid "Environment and land"
-msgstr ""
-
-#: archive-topic.php:63
-msgid "Economy"
-msgstr ""
-
-#: archive-topic.php:79
-msgid "People"
-msgstr ""
-
-#: archive.php:12
+#: archive.php:12 tag.php:6
 #, php-format
 msgid "%s"
 msgstr ""
@@ -172,109 +176,109 @@ msgid ""
 "\" rel=\"external\"><b>documentation</b></a>."
 msgstr ""
 
-#: functions.php:58
+#: functions.php:60
 msgid "Topic sidebar"
 msgstr ""
 
-#: functions.php:64
+#: functions.php:66
 msgid "Homepage area top left"
 msgstr ""
 
-#: functions.php:72
+#: functions.php:74
 msgid "Homepage area top right"
 msgstr ""
 
-#: functions.php:80
+#: functions.php:82
 msgid "Homepage area middle"
 msgstr ""
 
-#: functions.php:88
+#: functions.php:90
 msgid "Homepage area bottom left"
 msgstr ""
 
-#: functions.php:96
+#: functions.php:98
 msgid "Homepage area bottom right"
 msgstr ""
 
-#: functions.php:104
+#: functions.php:106
 msgid "WPCKAN Dataset detail sidebar"
 msgstr ""
 
-#: functions.php:110
+#: functions.php:112
 msgid "Story top"
 msgstr ""
 
-#: functions.php:116
+#: functions.php:118
 msgid "Story bottom"
 msgstr ""
 
-#: functions.php:122
+#: functions.php:124
 msgid "Profile area right sidebar"
 msgstr ""
 
-#: functions.php:128
+#: functions.php:130
 msgid "Profile area bottom left"
 msgstr ""
 
-#: functions.php:136
+#: functions.php:138
 msgid "Profile area bottom right"
 msgstr ""
 
-#: functions.php:144
+#: functions.php:146
 msgid "Profile with right sidebar only"
 msgstr ""
 
-#: functions.php:150 inc/theme-options.php:70
+#: functions.php:152 inc/theme-options.php:70
 msgid "Category page"
 msgstr ""
 
-#: functions.php:258
+#: functions.php:260
 msgid "default"
 msgstr ""
 
-#: functions.php:303
+#: functions.php:305
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr ""
 
-#: functions.php:304
+#: functions.php:306
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr ""
 
-#: functions.php:305
+#: functions.php:307
 msgid "Search News Source"
 msgstr ""
 
-#: functions.php:306
+#: functions.php:308
 msgid "All News Sources"
 msgstr ""
 
-#: functions.php:307
+#: functions.php:309
 msgid "Parent News Source"
 msgstr ""
 
-#: functions.php:308
+#: functions.php:310
 msgid "Parent News Source:"
 msgstr ""
 
-#: functions.php:309
+#: functions.php:311
 msgid "Edit News Source"
 msgstr ""
 
-#: functions.php:310
+#: functions.php:312
 msgid "Update News Source"
 msgstr ""
 
-#: functions.php:311
+#: functions.php:313
 msgid "Add New News Source"
 msgstr ""
 
-#: functions.php:312
+#: functions.php:314
 msgid "New News Source Name"
 msgstr ""
 
-#: functions.php:313
+#: functions.php:315
 msgid "News Source"
 msgstr ""
 
@@ -1733,7 +1737,11 @@ msgstr ""
 msgid "View large image"
 msgstr ""
 
-#: inc/utils/layout.php:70
+#: inc/utils/layout.php:21
+msgid "Download and Metadata"
+msgstr ""
+
+#: inc/utils/layout.php:86
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
@@ -1895,6 +1903,8 @@ msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:156
 #: inc/widgets/odm-custom-posts-widget.php:175
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:252
+#: inc/widgets/odm-taxonomy-widget-v2.php:283
 #: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
 msgstr ""
@@ -1956,24 +1966,66 @@ msgstr ""
 msgid "Specific list of posts (optional):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:10
-msgid "ODM Content Taxonomy Widget"
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:10
+msgid ""
+"Custom ODM Topic Area Widget: able to custom taxonomy's url link to Topic "
+"page insted"
 msgstr ""
 
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:11
+msgid ""
+"This widget will display custom taxonomy list that its link can like to the "
+"term or link to topic.  * Please ensure that that term name and topic name "
+"are exactly the same."
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:256
+msgid "Select Taxonomy:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:267
+msgid "Include Term by IDs (separated by commas):"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:271
+msgid "Exclude Term by IDs (separated by commas):"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:275
+#: inc/widgets/odm-taxonomy-widget-v2.php:295
+#: inc/widgets/odm-taxonomy-widget.php:251
+msgid "Links should take user to:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:283
+msgid "Hide empty taxonomy:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:288
+msgid "Expend the taxonomy:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-widget-v2.php:10
+msgid "ODM Taxonomy Widget V2"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-widget-v2.php:11
 #: inc/widgets/odm-taxonomy-widget.php:11
 msgid "Display ODM taxonomy for content"
 msgstr ""
 
+#: inc/widgets/odm-taxonomy-widget-v2.php:287
 #: inc/widgets/odm-taxonomy-widget.php:243
 msgid "Include Category by IDs (separated by commas):"
 msgstr ""
 
+#: inc/widgets/odm-taxonomy-widget-v2.php:291
 #: inc/widgets/odm-taxonomy-widget.php:247
 msgid "Exclude Category by IDs (separated by commas):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:251
-msgid "Links should take user to:"
+#: inc/widgets/odm-taxonomy-widget.php:10
+msgid "ODM Content Taxonomy Widget"
 msgstr ""
 
 #: page-data-archive.php:14
@@ -2145,8 +2197,4 @@ msgstr ""
 
 #: single-topic.php:70
 msgid "More on the Land Portal library"
-msgstr ""
-
-#: taxonomy-layer-category.php:8
-msgid "Map catalogue"
 msgstr ""
