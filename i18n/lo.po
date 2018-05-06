@@ -1,34 +1,33 @@
-#
 # Translators:
+# prustar <data.opendevmekong@gmail.com>, 2018
+# Maniphet Phengsavatdy <m.phengsavatdy@gmail.com>, 2018
+# Souchitta Chemcheng <c.souchitta@gmail.com>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: ODM odm-wptheme\n"
-"POT-Creation-Date: 2018-02-16 11:02+0100\n"
-"PO-Revision-Date: 2018-02-16 11:02+0100\n"
-"Last-Translator: Alex Corbi <a.corbi@gmail.com>\n"
-"Language-Team: Lao (http://www.transifex.com/open-development-mekong/odm-odm-"
-"wptheme/language/lo/)\n"
-"Language: lao\n"
+"Project-Id-Version: odm-wptheme\n"
+"POT-Creation-Date: 2018-05-06 16:39+0700\n"
+"PO-Revision-Date: 2018-05-06 16:39+0700\n"
+"Last-Translator: Souchitta Chemcheng <c.souchitta@gmail.com>, 2018\n"
+"Language-Team: Lao (https://www.transifex.com/open-development-mekong/teams/27158/lo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: lo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: i18n\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: components\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 "X-Poedit-SearchPathExcluded-3: bower_components\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:10
 msgid "Not found!"
-msgstr ""
+msgstr "ຫາບໍ່ເຫັນ!"
 
 #: 404.php:16
 msgid ""
@@ -39,94 +38,98 @@ msgstr ""
 
 #: 404.php:22
 msgid "Back to the previous page"
-msgstr ""
+msgstr "ຍ້ອນກັບໄປໜ້າທີ່ແລ້ວ"
 
 #: 404.php:23
 msgid "Go to the current site's home"
-msgstr ""
+msgstr "ກັບຄືນສູ່ໜ້າຫຼັກ"
 
 #: 404.php:26
 msgid "Contact us"
-msgstr ""
+msgstr "ຕິດຕໍ່ພວກເຮົາ"
+
+#: ______taxonomy-layer-category.php:8 taxonomy-layer-category.php:8
+msgid "Map catalogue"
+msgstr "ລາຍການແຜນທີ່"
 
 #: advanced-search.php:31
 msgid "Data results"
-msgstr ""
+msgstr "ຜົນໄດ້ຮັບ"
 
 #: advanced-search.php:36
 msgid "View all data results"
-msgstr ""
+msgstr "ເບິ່ງຜົນໄດ້ຮັບທັງໝົດ"
 
 #: archive-announcement.php:9
 msgid "Announcements"
-msgstr ""
+msgstr "ປະກາດ"
 
 #: archive-dashboard.php:10
 msgid "Dashboards"
-msgstr ""
+msgstr "Dashboards"
 
 #: archive-dataviz.php:9
 msgid "Data visualizations"
-msgstr ""
+msgstr "ການສະແດງຜົນຂໍ້ມູນ"
 
 #: archive-map-layer.php:9
 msgid "Maps catalog"
-msgstr ""
+msgstr "ລາຍການແຜນທີ່"
 
 #: archive-map.php:9 i18n/extra-strings.php:17
 msgid "Maps"
-msgstr ""
+msgstr "ແຜນທີ່"
 
 #: archive-news-article.php:9 i18n/extra-strings.php:15
 msgid "News"
-msgstr ""
+msgstr "ຂ່າວ"
+
+#: archive-post.php:11 archive-topic.php:11
+msgid "Topics"
+msgstr "ຫົວຂໍ້"
+
+#: archive-post.php:39 archive-topic.php:45
+msgid "Environment and land"
+msgstr "ສິ່ງແວດລ້ອມ ແລະ ທີ່ດິນ"
+
+#: archive-post.php:67 archive-topic.php:63
+msgid "Economy"
+msgstr "ເສດຖະກິດ"
+
+#: archive-post.php:86 archive-topic.php:79
+msgid "People"
+msgstr "ປະຊາຊົນ"
 
 #: archive-profiles.php:9
 msgid "Profiles"
-msgstr ""
+msgstr "ຂໍ້ມູນປະຫວັດ"
 
 #: archive-site-update.php:9
 msgid "Site updates"
-msgstr ""
+msgstr "ຂ່າວອັບເດດ"
 
 #: archive-story.php:9
 msgid "Stories"
-msgstr ""
+msgstr "ເລື່ອງລາວ"
 
 #: archive-tabular.php:9
 msgid "Database"
-msgstr ""
+msgstr "ຖານຂໍ້ມູນ"
 
-#: archive-topic.php:11
-msgid "Topics"
-msgstr ""
-
-#: archive-topic.php:45
-msgid "Environment and land"
-msgstr ""
-
-#: archive-topic.php:63
-msgid "Economy"
-msgstr ""
-
-#: archive-topic.php:79
-msgid "People"
-msgstr ""
-
-#: archive.php:12
+#: archive.php:12 tag.php:6
 #, php-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: archive.php:14
 #, php-format
 msgid "Daily Archives: %s"
-msgstr ""
+msgstr "ຄັງເກັບຂໍ້ມູນປະຈຳວັນ: %s"
 
 #: archive.php:16
 #, php-format
 msgid "Monthly Archives: %s"
-msgstr ""
+msgstr "ຄັງເກັບຂໍ້ມູນປະຈຳເດືອນ: %s"
 
 #: archive.php:16
 msgctxt "monthly archives date format"
@@ -136,7 +139,7 @@ msgstr ""
 #: archive.php:18
 #, php-format
 msgid "Yearly Archives: %s"
-msgstr ""
+msgstr "ຄັງເກັບຂໍ້ມູນປະຈຳປີ: %s"
 
 #: archive.php:18
 msgctxt "yearly archives date format"
@@ -145,13 +148,13 @@ msgstr ""
 
 #: archive.php:22
 msgid "Archives"
-msgstr ""
+msgstr "ຄັງເກັບຂໍ້ມູນ"
 
 #: content-embed.php:16 inc/templates/pagination.php:8
 #: inc/templates/pagination.php:16 inc/templates/pagination_solr.php:7
 #: inc/utils/breadcrumbs.php:282 inc/utils/content.php:22
 msgid "Page"
-msgstr ""
+msgstr "ໜ້າ"
 
 #: content-map-group.php:27
 #: inc/widgets/odm-contents-same-category-widget.php:91
@@ -159,561 +162,552 @@ msgstr ""
 #: inc/widgets/odm-custom-posts-widget.php:90
 #: inc/widgets/odm-custom-posts-widget.php:121
 msgid "More..."
-msgstr ""
+msgstr "ເພີ່ມເຕີມ..."
 
 #: content-map-group.php:37
 msgid "View all maps"
-msgstr ""
+msgstr "ເບິ່ງແຜນທີ່ທັງໝົດ"
 
 #: footer.php:38
 #, php-format
 msgid ""
-"This website is built on <a href=\"%s\" target=\"_blank\" rel=\"external"
-"\"><b>WordPress</b></a> using the <a href=\"%s\" target=\"_blank\" rel="
-"\"external\"><b>JEO Beta</b></a> theme and <a href=\"%s\" target=\"_blank\" "
-"rel=\"external\"><b>CKAN</b></a> as back-end for structured data. To learn "
-"more about the system architecture, read our  <a href=\"%s\" target=\"_blank"
-"\" rel=\"external\"><b>documentation</b></a>."
+"This website is built on <a href=\"%s\" target=\"_blank\" "
+"rel=\"external\"><b>WordPress</b></a> using the <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> theme and <a "
+"href=\"%s\" target=\"_blank\" rel=\"external\"><b>CKAN</b></a> as back-end "
+"for structured data. To learn more about the system architecture, read our  "
+"<a href=\"%s\" target=\"_blank\" rel=\"external\"><b>documentation</b></a>."
 msgstr ""
+"ເວບໄຊນີ້ສ້າງຂຶ້ນຈາກ <a href=\"%s\" target=\"_blank\" "
+"rel=\"external\"><b>WordPress</b></a>ໂດຍໃຊ້  <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>JEO Beta</b></a> ແລະ <a href=\"%s\" "
+"target=\"_blank\" rel=\"external\"><b>CKAN</b></a> "
+"ເປັນສ່ວນສະໜັບສະໜູນສຳລັບຂໍ້ມູນທີ່ມີໂຄງສ້າງ. "
+"ຖ້າທ່ານສົນໃຈຮຽນຮູ້ເພີ່ມເຕີມກ່ຽວກັບລະບົບສະຖາປັດຕະຍະກຳສາດ, ກະລຸນາອ່ານ <a "
+"href=\"%s\" target=\"_blank\" rel=\"external\"><b>ເອກະສານ</b></a>."
 
-#: functions.php:58
+#: functions.php:60
 msgid "Topic sidebar"
-msgstr ""
+msgstr "ຫົວຂໍ້ທີ່ຢູ່ແຖບດ້ານຂ້າງ"
 
-#: functions.php:64
+#: functions.php:66
 msgid "Homepage area top left"
-msgstr ""
+msgstr "ດ້ານເທິງຊ້າຍຂອງໜ້າຫຼັກ"
 
-#: functions.php:72
+#: functions.php:74
 msgid "Homepage area top right"
-msgstr ""
+msgstr "ດ້ານເທິງຂວາຂອງໜ້າຫຼັກ"
 
-#: functions.php:80
+#: functions.php:82
 msgid "Homepage area middle"
-msgstr ""
+msgstr "ທາງກາງຂອງໜ້າຫຼັກ"
 
-#: functions.php:88
+#: functions.php:90
 msgid "Homepage area bottom left"
-msgstr ""
+msgstr "ດ້ານລຸ່ມຊ້າຍຂອງໜ້າຫຼັກ"
 
-#: functions.php:96
+#: functions.php:98
 msgid "Homepage area bottom right"
-msgstr ""
+msgstr "ດ້ານລຸ່ມຂວາຂອງໜ້າຫຼັກ"
 
-#: functions.php:104
+#: functions.php:106
 msgid "WPCKAN Dataset detail sidebar"
-msgstr ""
+msgstr "ແຖບດ້ານຂ້າງຂອງລາຍລະອຽດຊຸດຂໍ້ມູນ WPCKAN"
 
-#: functions.php:110
+#: functions.php:112
 msgid "Story top"
-msgstr ""
+msgstr "ດ້ານເທິງຂອງເລື່ອງ"
 
-#: functions.php:116
+#: functions.php:118
 msgid "Story bottom"
-msgstr ""
+msgstr "ດ້ານລຸ່ມຂອງເລື່ອງ"
 
-#: functions.php:122
+#: functions.php:124
 msgid "Profile area right sidebar"
-msgstr ""
+msgstr "ແຖບຂ້າງດ້ານຂວາຂອງໜ້າຂໍ້ມູນລວມ"
 
-#: functions.php:128
+#: functions.php:130
 msgid "Profile area bottom left"
-msgstr ""
+msgstr "ດ້ານລຸ່ມຊ້າຍຂອງໜ້າຂໍ້ມູນລວມ"
 
-#: functions.php:136
+#: functions.php:138
 msgid "Profile area bottom right"
-msgstr ""
+msgstr "ດ້ານລຸ່ມຂວາຂອງໜ້າຂໍ້ມູນລວມ"
 
-#: functions.php:144
+#: functions.php:146
 msgid "Profile with right sidebar only"
-msgstr ""
+msgstr "ໜ້າຂໍ້ມູນລວມທີ່ມີແຕ່ແຖບຂ້າງດ້ານຂວາເທົ່ານັ້ນ"
 
-#: functions.php:150 inc/theme-options.php:70
+#: functions.php:152 inc/theme-options.php:70
 msgid "Category page"
-msgstr ""
+msgstr "ໜ້າຂໍ້ມູນໝວດໝູ່"
 
-#: functions.php:258
+#: functions.php:260
 msgid "default"
-msgstr ""
-
-#: functions.php:303
-msgctxt "taxonomy general name"
-msgid "News Sources"
-msgstr ""
-
-#: functions.php:304
-msgctxt "taxonomy singular name"
-msgid "News Source"
-msgstr ""
+msgstr "ຄ່າຕັ້ງຕົ້ນ"
 
 #: functions.php:305
-msgid "Search News Source"
-msgstr ""
+msgctxt "taxonomy general name"
+msgid "News Sources"
+msgstr "ແຫຼ່ງຂ່າວຕ່າງໆ"
 
 #: functions.php:306
-msgid "All News Sources"
-msgstr ""
+msgctxt "taxonomy singular name"
+msgid "News Source"
+msgstr "ແຫຼ່ງຂ່າວ"
 
 #: functions.php:307
-msgid "Parent News Source"
-msgstr ""
+msgid "Search News Source"
+msgstr "ຄົ້ນຫາແຫຼ່ງຂໍ້ມູນ"
 
 #: functions.php:308
-msgid "Parent News Source:"
-msgstr ""
+msgid "All News Sources"
+msgstr "ແຫຼ່ງຂໍ້ມູນທັງໝົດ"
 
 #: functions.php:309
-msgid "Edit News Source"
-msgstr ""
+msgid "Parent News Source"
+msgstr "ແຫຼ່ງຂ່າວຕົ້ນສະບັບ"
 
 #: functions.php:310
-msgid "Update News Source"
-msgstr ""
+msgid "Parent News Source:"
+msgstr "ແຫຼ່ງຂ່າວຕົ້ນສະບັບ"
 
 #: functions.php:311
-msgid "Add New News Source"
-msgstr ""
+msgid "Edit News Source"
+msgstr "ແກ້ໄຂແຫຼ່ງຂ່າວ"
 
 #: functions.php:312
-msgid "New News Source Name"
-msgstr ""
+msgid "Update News Source"
+msgstr "ປັບປຸງແຫຼ່ງຂ່າວ"
 
 #: functions.php:313
+msgid "Add New News Source"
+msgstr "ເພີ່ມແຫຼ່ງຂ່າວໃໝ່"
+
+#: functions.php:314
+msgid "New News Source Name"
+msgstr "ຊື່ແຫຼ່ງຂ່າວໃໝ່"
+
+#: functions.php:315
 msgid "News Source"
-msgstr ""
+msgstr "ແຫຼ່ງຂ່າວ"
 
 #: i18n/extra-strings.php:2
 msgid "Mekong"
-msgstr ""
+msgstr "ແມ່ຂອງ"
 
 #: i18n/extra-strings.php:3
 msgid "Cambodia"
-msgstr ""
+msgstr "ກຳປູເຈຍ"
 
 #: i18n/extra-strings.php:4
 msgid "Laos"
-msgstr ""
+msgstr "ລາວ"
 
 #: i18n/extra-strings.php:5
 msgid "Myanmar"
-msgstr ""
+msgstr "ພະມ້າ"
 
 #: i18n/extra-strings.php:6
 msgid "Thailand"
-msgstr ""
+msgstr "ໄທ"
 
 #: i18n/extra-strings.php:7
 msgid "Vietnam"
-msgstr ""
+msgstr "ຫວຽດນາມ"
 
 #: i18n/extra-strings.php:8
 msgid "Khmer"
-msgstr ""
+msgstr "ຂະແມ"
 
 #: i18n/extra-strings.php:9 inc/layers.php:530
 msgid "English"
-msgstr ""
+msgstr "ອັງກິດ"
 
 #: i18n/extra-strings.php:10
 msgid "Latest news"
-msgstr ""
+msgstr "ຂ່າວລ່າສຸດ"
 
 #: i18n/extra-strings.php:11
 msgid "Latest maps"
-msgstr ""
+msgstr "ແຜນທີ່ລ່າສຸດ"
 
 #: i18n/extra-strings.php:12
 msgid "Latest issues"
-msgstr ""
+msgstr "ບັນຫາລ່າສຸດ"
 
 #: i18n/extra-strings.php:13
 msgid "Latest data"
-msgstr ""
+msgstr "ຂໍ້ມູນລ່າສຸດ"
 
 #: i18n/extra-strings.php:14
 msgid "Briefings"
-msgstr ""
+msgstr "ບົດອະທິບາຍ"
 
 #: i18n/extra-strings.php:16
 msgid "Issues"
-msgstr ""
+msgstr "ບັນຫາ"
 
 #: i18n/extra-strings.php:18
 msgid "Data"
-msgstr ""
+msgstr "ຂໍ້ມູນ"
 
 #: i18n/extra-strings.php:19
 msgid "Law"
-msgstr ""
+msgstr "ກົດໝາຍ"
 
 #: i18n/extra-strings.php:20
 msgid "Blog"
-msgstr ""
+msgstr "ບລັອກ"
 
 #: i18n/extra-strings.php:21
 msgid "Timelines"
-msgstr ""
+msgstr "ທາມໄລນ"
 
 #: i18n/extra-strings.php:22 inc/layers.php:47
 msgid "Layers"
-msgstr ""
+msgstr "ຊັ້ນຂໍ້ມູນ"
 
 #: i18n/extra-strings.php:23
 msgid "Share a map"
-msgstr ""
+msgstr "ແບ່ງປັນແຜນທີ່"
 
 #: i18n/extra-strings.php:24
 msgid "Search for posts, maps and briefings..."
-msgstr ""
+msgstr "ຄົ້ນຫາຂໍ້ມູນ, ແຜນທີ່ ແລະ ບົດອະທິບາຍ"
 
 #: i18n/extra-strings.php:25
 msgid "Search Datasets for Mekong"
-msgstr ""
+msgstr "ຄົ້ນຫາຊຸດຂໍ້ມູນສຳລັບແມ່ນຳ້ຂອງ"
 
 #: i18n/extra-strings.php:26
 msgid "Search Datasets for Cambodia"
-msgstr ""
+msgstr "ຄົ້ນຫາຊຸດຂໍ້ມູນໃນກຳປູເຈຍ"
 
 #: i18n/extra-strings.php:27
 msgid "Search Datasets for Laos"
-msgstr ""
+msgstr "ຄົ້ນຫາຊຸດຂໍ້ມູນໃນລາວ"
 
 #: i18n/extra-strings.php:28
 msgid "Search Datasets for Myanmar"
-msgstr ""
+msgstr "ຄົ້ນຫາຊຸດຂໍ້ມູນໃນມຽນມາ"
 
 #: i18n/extra-strings.php:29
 msgid "Search Datasets for Thailand"
-msgstr ""
+msgstr "ຄົ້ນຫາຊຸດຂໍ້ມູນໃນໄທ"
 
 #: i18n/extra-strings.php:30
 msgid "Search Datasets for Vietnam"
-msgstr ""
+msgstr "ຄົ້ນຫາຊຸດຂໍ້ມູນໃນຫວຽດນາມ"
 
 #: i18n/extra-strings.php:31
 msgid "More information"
-msgstr ""
+msgstr "ຂໍ້ມູນເພີ່ມເຕີມ"
 
 #: i18n/extra-strings.php:32
 msgid "Announcements and Press releases"
-msgstr ""
+msgstr "ປະກາດ ແລະ ບົດຂ່າວ"
 
 #: i18n/extra-strings.php:34
 msgid "Agriculture and fishing"
-msgstr ""
+msgstr "ກະສິກຳ ແລະ ປະມົງ"
 
 #: i18n/extra-strings.php:35
 msgid "Disasters and emergency response"
-msgstr ""
+msgstr "ການຕອບໂຕ້ໄພພິບັດ ແລະ ເຫດການສຸກເສີນ"
 
 #: i18n/extra-strings.php:36
 msgid "Environment and natural resources"
-msgstr ""
+msgstr "ຊັບພະຍາກອນທຳມະຊາດ ແລະ ສິ່ງແວດລ້ອມ"
 
 #: i18n/extra-strings.php:37
 msgid "Extractive industries"
-msgstr ""
+msgstr "ອຸດສາຫະກຳຂຸດຄົ້ນ"
 
 #: i18n/extra-strings.php:38
 msgid "Land"
-msgstr ""
+msgstr "ທີ່ດິນ"
 
 #: i18n/extra-strings.php:39
 msgid "Economy and commerce"
-msgstr ""
+msgstr "ເສດຖະກິດ ແລະ ການຄ້າ"
 
 #: i18n/extra-strings.php:40
 msgid "Energy"
-msgstr ""
+msgstr "ພະລັງງານ"
 
 #: i18n/extra-strings.php:41
 msgid "Infrastructure"
-msgstr ""
+msgstr "ໂຄງລ່າງພື້ນຖານ"
 
 #: i18n/extra-strings.php:42
 msgid "Industry"
-msgstr ""
+msgstr "ອຸດສາຫະກຳ"
 
 #: i18n/extra-strings.php:43
 msgid "Labor"
-msgstr ""
+msgstr "ແຮງງານ"
 
 #: i18n/extra-strings.php:44
 msgid "Science and technology"
-msgstr ""
+msgstr "ວິທະຍາສາດ ແລະ ເຕັກໂນໂລຊີ"
 
 #: i18n/extra-strings.php:45
 msgid "Aid and development"
-msgstr ""
+msgstr "ການຊ່ວຍເຫຼືອ ແລະ ການພັດທະນາ"
 
 #: i18n/extra-strings.php:46
 msgid "Government"
-msgstr ""
+msgstr "ລັດຖະບານ"
 
 #: i18n/extra-strings.php:47
 msgid "Law and judiciary"
-msgstr ""
+msgstr "ກົດໝາຍ ແລະ ຕຸລາການ"
 
 #: i18n/extra-strings.php:48
 msgid "Population and censuses"
-msgstr ""
+msgstr "ປະຊາກອນ ແລະ ການສຳຫຼວດ"
 
 #: i18n/extra-strings.php:49
 msgid "Social development"
-msgstr ""
+msgstr "ການພັດທະນາສັງຄົມ"
 
 #: i18n/extra-strings.php:50
 msgid "Urban administration and development"
-msgstr ""
+msgstr "ການຄຸ້ມຄອງ ແລະ ການພັດທະນາເຂດເທດສະບານ"
 
 #: i18n/extra-strings.php:52
 msgid ""
-"This work and any original materials produced and published by Open "
-"Development {country} herein are licensed under a CC BY-SA 3.0. News article "
-"summaries are extracted from their sources, as guided by fair-use principles "
-"and are copyrighted by their respective sources. Materials on the Open "
-"Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database "
-"are compiled from publicly available documentation and provided without fee "
-"for general informational purposes only. This is neither a commercial "
-"research service nor a domain managed by any governmental or inter-"
-"governmental agency; it is managed as a private non-profit open data/open "
-"knowledge media group. Information is publicly posted only after a careful "
-"vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee "
-"accuracy, completeness or reliability from third party sources in every "
-"instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either "
-"expressed or implied, in fact or in law, with respect to the accuracy, "
-"completeness or appropriateness of the data, materials or documents "
-"contained or referenced herein or provided.\n"
-"Site users are encouraged to do additional research in support of their "
-"activities and to share the results of that research with our team, contact "
-"us to further improve the site accuracy.\n"
-"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take "
-"full responsibility for reliance on any site information provided and to "
-"hold harmless and waive any and all liability against individuals or "
-"entities associated with its development, form and content for any loss, "
-"harm or damage suffered as a result of its use."
+"This work and any original materials produced and published by Open Development {country} herein are licensed under a CC BY-SA 3.0. News article summaries are extracted from their sources, as guided by fair-use principles and are copyrighted by their respective sources. Materials on the Open Development {country} {ODM/C/V/Mm/T/L} website and its accompanying database are compiled from publicly available documentation and provided without fee for general informational purposes only. This is neither a commercial research service nor a domain managed by any governmental or inter-governmental agency; it is managed as a private non-profit open data/open knowledge media group. Information is publicly posted only after a careful vetting and verification process. However, {ODM/C/V/Mm/T/L} cannot guarantee accuracy, completeness or reliability from third party sources in every instance.  {ODM/C/V/Mm/T/L} makes no representation or warranty, either expressed or implied, in fact or in law, with respect to the accuracy, completeness or appropriateness of the data, materials or documents contained or referenced herein or provided.\n"
+"Site users are encouraged to do additional research in support of their activities and to share the results of that research with our team, contact us to further improve the site accuracy.\n"
+"By accessing this {ODM/C/V/Mm/T/L} website or database users agree to take full responsibility for reliance on any site information provided and to hold harmless and waive any and all liability against individuals or entities associated with its development, form and content for any loss, harm or damage suffered as a result of its use."
 msgstr ""
+"ຂໍ້ມູນຕົ້ນສະບັບທີ່ຖືກຜະລິດ ແລະ ເຜີຍແຜ່ໂດຍ Open Development Laos ໄດ້ຮັບໃບອະນຸຍາດພາຍໃຕ້ CC BY-SA 3.0. ບົດສະຫຼຸບຂອງບົດຂ່າວຕ່າງໆແມ່ນຖືກນຳມາຈາກແຫຼ່ງຂໍ້ມູນ ໂດຍອີງຕາມຫຼັກການການໃຊ້ຂໍ້ມູນທີ່ຖືກຕ້ອງ ແລະ ໄດ້ຮັບການຄຸ້ມຄອງລິຂະສິດຈາກແຫຼ່ງຂໍ້ມູນ. ຂໍ້ມູນໃນເວບໄຊ Open Development Laos (ODL) ແລະ ຖານຂໍ້ມູນແມ່ນໄດ້ຖືກລວບລວມຈາກເອກະສານທີ່ໄດ້ຮັບການເຜີຍແຜ່ແບບເປີດເຜີຍໂດຍບໍ່ມີຄ່າທຳນຽມໃດໆ ເຊິ່ງມີຈຸດປະສົງເພື່ອເປັນແຫຼ່ງຂໍ້ມູນທົ່ວໄປເທົ່ານັ້ນ. ການເຜີຍແຜ່ຂໍ້ມູນນີ້ບໍ່ແມ່ນການບໍລິການການຄົ້ນຄວ້າເພື່ອການຄ້າ ຫຼື ຖືກຄວບຄຸມໂດຍໜ່ວຍງານລັດຖະບານ ຫຼື ໜ່ວຍງາຍລະຫວ່າງລັດຖະບານໃດໆ, ແຕ່ການເຜີຍແຜ່ຂໍ້ມູນນີ້ໄດ້ຮັບການຄວບຄຸມໂດຍກຸ່ມຂໍ້ມູນເປີດ/ຄວາມຮູ້ເປີດໂດຍພາກສ່ວນເອກະຊົນທີ່ບໍ່ຫວັງຜົນກຳໄລ. ຂໍ້ມູນຈະຖືກເຜີຍແຜ່ຢ່າງເປີດເຜີຍຫຼັງຈາກຜ່ານຂະບວນການກວດສອບຂໍ້ມູນ ແລະ ຢັ້ງຢືນຢ່າງຖີ່ຖ້ວນເທົ່ານັ້ນ. ເຖິງຢ່າງໃດກໍ່ຕາມ, ODL ບໍ່ສາມາດຮັບປະກັນຄວາມຖືກຕ້ອງ, ຄວາມສົບບູນ ແລະ ຄວາມໜ້າເຊື່ອຖືຂອງແຫຼ່ງຂໍ້ມູນຈາກບຸກຄົນທີສາມໄດ້. ODL ບໍ່ຮັບຮອງ ຫຼື ຮັບປະກັນ\n"
+"\n"
+"ODL ไม่รับรองหรือรับประกันใด ๆ ไม่ว่าจะโดยชัดแจ้งหรือโดยนัย ข้อเท็จจริงหรือกฎหมายเกี่ยวกับความถูกต้อง ความสมบูรณ์หรือความเหมาะสมของข้อมูล เนื้อหาหรือเอกสารที่มีหรืออ้างอิงไว้ในที่นี้หรือที่จัดหามา"
 
 #: i18n/extra-strings.php:57
 msgid "Khmer PDF"
-msgstr ""
+msgstr "PDF ເປັນພາສາຂະເໝນ"
 
 #: i18n/extra-strings.php:58
 msgid "Khmer PDF not available"
-msgstr ""
+msgstr "ບໍ່ມີ PDF ເປັນພາສາຂະເໝນ"
 
 #: i18n/extra-strings.php:59 inc/advanced-navigation.php:299
 msgid "Jan"
-msgstr ""
+msgstr "ມັງກອນ"
 
 #: i18n/extra-strings.php:60 inc/advanced-navigation.php:300
 msgid "Feb"
-msgstr ""
+msgstr "ກຸມພາ"
 
 #: i18n/extra-strings.php:61 inc/advanced-navigation.php:301
 msgid "Mar"
-msgstr ""
+msgstr "ມີນາ"
 
 #: i18n/extra-strings.php:62 inc/advanced-navigation.php:302
 msgid "Apr"
-msgstr ""
+msgstr "ເມສາ"
 
 #: i18n/extra-strings.php:63 inc/advanced-navigation.php:303
 msgid "May"
-msgstr ""
+msgstr "ພຶດສະພາ"
 
 #: i18n/extra-strings.php:64 inc/advanced-navigation.php:304
 msgid "Jun"
-msgstr ""
+msgstr "ມິຖຸນາ"
 
 #: i18n/extra-strings.php:65 inc/advanced-navigation.php:305
 msgid "Jul"
-msgstr ""
+msgstr "ກໍລະກົດ"
 
 #: i18n/extra-strings.php:66 inc/advanced-navigation.php:306
 msgid "Aug"
-msgstr ""
+msgstr "ສິງຫາ"
 
 #: i18n/extra-strings.php:67 inc/advanced-navigation.php:307
 msgid "Sep"
-msgstr ""
+msgstr "ກັນຍາ"
 
 #: i18n/extra-strings.php:68 inc/advanced-navigation.php:308
 msgid "Oct"
-msgstr ""
+msgstr "ຕຸລາ"
 
 #: i18n/extra-strings.php:69 inc/advanced-navigation.php:309
 msgid "Nov"
-msgstr ""
+msgstr "ພະຈິກ"
 
 #: i18n/extra-strings.php:70 inc/advanced-navigation.php:310
 msgid "Dec"
-msgstr ""
+msgstr "ທັນວາ"
 
 #: inc/advanced-navigation.php:156 page-data-old.php:39
 msgid "Text search"
-msgstr ""
+msgstr "ຄົ້ນຫາຂໍ້ຄວາມ"
 
 #: inc/advanced-navigation.php:157 page-data-old.php:40 page-data-old.php:138
 #: page-data.php:244
 msgid "Type your search here"
-msgstr ""
+msgstr "ພິມການຊອກຫາຂອງທ່ານຢູ່ໜີ້"
 
 #: inc/advanced-navigation.php:171 inc/utils/content.php:187
 #: page-data-old.php:106 page-data.php:119
 msgid "Topic"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/advanced-navigation.php:176 inc/advanced-navigation.php:183
 msgid "Select categories"
-msgstr ""
+msgstr "ເລືອກໝວດໝູ່"
 
 #: inc/advanced-navigation.php:203
 msgid "Content type"
-msgstr ""
+msgstr "ຮູບແບບຂອງເນື້ອຫາ"
 
 #: inc/advanced-navigation.php:204
 msgid "Select content types"
-msgstr ""
+msgstr "ເລືອກຮູບແບບຂອງເນື້ອຫາ"
 
 #: inc/advanced-navigation.php:236
 msgid "Date range"
-msgstr ""
+msgstr "ຊ່ວງວັນທີ"
 
 #: inc/advanced-navigation.php:239
 msgid "From"
-msgstr ""
+msgstr "ຈາກ"
 
 #: inc/advanced-navigation.php:242
 msgid "To"
-msgstr ""
+msgstr "ເຖິງ"
 
 #: inc/advanced-navigation.php:249
 msgid "Search filter"
-msgstr ""
+msgstr "ຄົ້ນຫາໂຕຄັດກອງ"
 
 #: inc/advanced-navigation.php:250
 msgid "Clear filter"
-msgstr ""
+msgstr "ລຶບໂຕຄັດກອງ"
 
 #: inc/advanced-navigation.php:259 inc/advanced-navigation.php:269
 msgid "Cancel filters"
-msgstr ""
+msgstr "ຍົກເລີກໂຕຄັດກອງ"
 
 #: inc/advanced-navigation.php:266
 msgid "More filters"
-msgstr ""
+msgstr "ໂຕຄັດກອງເພີ່ມເຕີມ"
 
 #: inc/advanced-navigation.php:290
 msgid "Su"
-msgstr ""
+msgstr "ອາທິດ"
 
 #: inc/advanced-navigation.php:291
 msgid "Mo"
-msgstr ""
+msgstr "ຈັນ"
 
 #: inc/advanced-navigation.php:292
 msgid "Tu"
-msgstr ""
+msgstr "ອັງຄານ"
 
 #: inc/advanced-navigation.php:293
 msgid "We"
-msgstr ""
+msgstr "ພຸດ"
 
 #: inc/advanced-navigation.php:294
 msgid "Th"
-msgstr ""
+msgstr "ພະຫັດ"
 
 #: inc/advanced-navigation.php:295
 msgid "Fr"
-msgstr ""
+msgstr "ສຸກ"
 
 #: inc/advanced-navigation.php:296
 msgid "Sa"
-msgstr ""
+msgstr "ເສົາ"
 
 #: inc/interactive-map.php:25
 msgid "Interactive Map"
-msgstr ""
+msgstr "ແຜນທີ່ແບບໂຕ້ຕອບ"
 
 #: inc/interactive-map.php:74 inc/utils/mapping.php:111
 msgid "Base Layers"
-msgstr ""
+msgstr "ພື້ນຖານຊັ້ນຂໍ້ມູນ"
 
 #: inc/interactive-map.php:80 inc/utils/mapping.php:116
 msgid "Map Layers"
-msgstr ""
+msgstr "ຊັ້ນແຜນທີ່"
 
 #: inc/layer-category.php:18 inc/layer-category.php:33
 msgid "Layer categories"
-msgstr ""
+msgstr "ຊັ້ນໝວດໝູ່"
 
 #: inc/layer-category.php:23
 msgctxt "taxonomy general name"
 msgid "Layer categories"
-msgstr ""
+msgstr "ຊັ້ນໝວດໝູ່"
 
 #: inc/layer-category.php:24
 msgctxt "taxonomy singular name"
 msgid "Layer category"
-msgstr ""
+msgstr "ຊັ້ນໝວດໝູ່"
 
 #: inc/layer-category.php:25
 msgid "Search Layer categories"
-msgstr ""
+msgstr "ຄົ້ນຫາຊັ້ນໝວດໝູ່"
 
 #: inc/layer-category.php:26
 msgid "All Layer categories"
-msgstr ""
+msgstr "ຊັ້ນໝວດໝູ່ທັງໝົດ"
 
 #: inc/layer-category.php:27
 msgid "Parent Layer category"
-msgstr ""
+msgstr "ຊັ້ນໝວດໝູ່ຕົ້ນສະບັບ"
 
 #: inc/layer-category.php:28
 msgid "Parent Layer category:"
-msgstr ""
+msgstr "ຊັ້ນໝວດໝູ່ຕົ້ນສະບັບ"
 
 #: inc/layer-category.php:29
 msgid "Edit Layer category"
-msgstr ""
+msgstr "ດັດແກ້ຊັ້ນໝວດໝູ່"
 
 #: inc/layer-category.php:30
 msgid "Update Layer category"
-msgstr ""
+msgstr "ອັບເດດຊັ້ນໝວດໝູ່"
 
 #: inc/layer-category.php:31
 msgid "Add New Layer category"
-msgstr ""
+msgstr "ເພີ່ມຊັ້ນໝວດໝູ່ໃໝ່"
 
 #: inc/layer-category.php:32
 msgid "New Layer category Name"
-msgstr ""
+msgstr "ໃສ່ຊື່ຊັ້ນໝວດໝູ່ໃໝ່"
 
 #: inc/layers.php:29
 msgid "Layer settings"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:38
 msgid "Layer legend"
-msgstr ""
+msgstr "ຄຳອະທິບາຍສັນຍາລັກຂອງຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:59
 msgid "Map setup"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າແຜນທີ່"
 
 #: inc/layers.php:72
 msgid "Enter your HTML code to use as legend on the layer (English)"
-msgstr ""
+msgstr "ໃສ່ລະຫັດ HTML ຂອງທ່ານເພື່ອນຳໃຊ້ເປັນຄຳອະທິບາຍຂອງຊັ້ນ (ພາສາອັງກິດ)"
 
 #: inc/layers.php:75
 msgid "Enter your HTML code to use as legend on the layer ("
-msgstr ""
+msgstr "ໃສ່ລະຫັດ HTML ຂອງທ່ານເພື່ອນຳໃຊ້ເປັນຄຳອະທິບາຍຂອງຊັ້ນ ("
 
 #: inc/layers.php:91
 #, php-format
 msgid "Add and manage <a href=\"%s\" target=\"_blank\">layers</a> on your map."
 msgstr ""
+"ເພີ່ມ ແລະ ຈັດການ <a href=\"%s\" target=\"_blank\">ຊັ້ນຂໍ້ມູນ</a> "
+"ເທິງແຜນທີ່ຂອງທ່ານ."
 
 #: inc/layers.php:93
 #, php-format
@@ -721,179 +715,182 @@ msgid ""
 " You haven't created any layers yet, <a href=\"%s\" target=\"_blank\">click "
 "here</a> to create your first!"
 msgstr ""
+"ທ່ານຍັງບໍ່ທັນໄດ້ສ້າງຊັ້ນຂໍ້ມູນເທື່ອ, <a href=\"%s\" "
+"target=\"_blank\">ກົດທີ່ນີ້</a> ເພື່ອສ້າງຊັ້ນຂໍ້ມູນຂອງທ່ານເອງ!"
 
 #: inc/layers.php:105
 msgid "Search for layers"
-msgstr ""
+msgstr "ຄົ້ນຫາຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:108
 msgid "Latest layers"
-msgstr ""
+msgstr "ຊັ້ນຂໍ້ມູນລ່າສຸດ"
 
 #: inc/layers.php:112
 msgid "Search results"
-msgstr ""
+msgstr "ຄົ້ນຫາຜົນໄດ້ຮັບ"
 
 #: inc/layers.php:116
 msgid "You are using all of your layers."
-msgstr ""
+msgstr "ທ່ານໄດ້ນຳໃຊ້ຊັ້ນຂໍ້ມູນທັງໝົດແລ້ວ."
 
 #: inc/layers.php:120
 msgid "No layers were found."
-msgstr ""
+msgstr "ບໍ່ມີຊັ້ນຂໍ້ມູນທີ່ທ່ານຄົ້ນຫາ."
 
 #: inc/layers.php:128 inc/layers.php:173
 msgid "edit"
-msgstr ""
+msgstr "ແກ້ໄຂ"
 
 #: inc/layers.php:128 inc/layers.php:173
 msgid "Edit"
-msgstr ""
+msgstr "ແກ້ໄຂ"
 
 #: inc/layers.php:129
 msgid "Add layer"
-msgstr ""
+msgstr "ເພີ່ມຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:129
 msgid "Add"
-msgstr ""
+msgstr "ເພີ່ມ"
 
 #: inc/layers.php:134
 msgid "Selected layers"
-msgstr ""
+msgstr "ເລືອກຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:137
 msgid "Group layers by showing category"
-msgstr ""
+msgstr "ຈັດກຸ່ມຊັ້ນຂໍ້ມູນໂດຍສະແດງໝວດໝູ່"
 
 #: inc/layers.php:140
 msgid "Show category layers in hierarchy"
-msgstr ""
+msgstr "ສະແດງລຳດັບຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:152
 msgid "Layer options"
-msgstr ""
+msgstr "ຕົວເລືອກຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:155
 msgid "Enable"
-msgstr ""
+msgstr "ເປີດການໃຊ້ງານ"
 
 #: inc/layers.php:157
 msgid "Disable"
-msgstr ""
+msgstr "ປິດການໃຊ້ງານ"
 
 #: inc/layers.php:159
 msgid "Swapable"
-msgstr ""
+msgstr "ສັບປ່ຽນໄດ້"
 
 #: inc/layers.php:164
 msgid "Hidden"
-msgstr ""
+msgstr "ເຊື່ອງ"
 
 #: inc/layers.php:168
 msgid "Default swap option"
-msgstr ""
+msgstr "ໃຫ້ຕົວເລືອກສັບປ່ຽນເປັນຄ່າຕັ້ງຕົ້ນ"
 
 #: inc/layers.php:174
 msgid "Remove layer"
-msgstr ""
+msgstr "ລຶບຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:174
 msgid "Remove"
-msgstr ""
+msgstr "ລຶບ"
 
 #: inc/layers.php:372
 msgid "Download Page URL"
-msgstr ""
+msgstr "ດາວໂຫຼດ URL ຂອງໜ້າເວບໄຊ"
 
 #: inc/layers.php:375
 msgid "Download URL (English)"
-msgstr ""
+msgstr "ດາວໂຫຼດ URL ຂອງໜ້າເວບໄຊ (ພາສາອັງກິດ)"
 
 #: inc/layers.php:378 inc/layers.php:386
 msgid "A link to a dataset's page on CKAN"
-msgstr ""
+msgstr "ລິ້ງຫາຊຸດຂໍ້ມູນຂອງເວບໄຊ CKAN"
 
 #: inc/layers.php:383
 msgid "Download URL ("
-msgstr ""
+msgstr "ດາວໂຫຼດ URL ("
 
 #: inc/layers.php:394
 msgid "Profile Page URL"
-msgstr ""
+msgstr "URL ຂອງໜ້າຂໍ້ມູນປະຫວັດ"
 
 #: inc/layers.php:397
 msgid "Profile Page URL (English)"
-msgstr ""
+msgstr "URL ຂອງໜ້າຂໍ້ມູນປະຫວັດ (ພາສາອັງກິດ)"
 
 #: inc/layers.php:400 inc/layers.php:408
 msgid "A link to profile page on Wordpress"
-msgstr ""
+msgstr "ລິ້ງຫາໜ້າຂໍ້ມູນປະຫວັດເທິງ Wordpress"
 
 #: inc/layers.php:405
 msgid "Profile Page URL ("
-msgstr ""
+msgstr "URL ຂອງໜ້າຂໍ້ມູນປະຫວັດ ("
 
 #: inc/layers.php:416
 msgid "Layer type"
-msgstr ""
+msgstr "ປະເພດຊັ້ນຂໍ້ມູນ"
 
 #: inc/layers.php:419
 msgid "Tile layer"
-msgstr ""
+msgstr "ເຊື່ອມຕໍ່ຊັ້ນຂໍ້ມູນນ"
 
 #: inc/layers.php:421
 msgid "WMS layer"
-msgstr ""
+msgstr "ຊັ້ນຂໍ້ມູນ WMS"
 
 #: inc/layers.php:424
 msgid "MapBox"
-msgstr ""
+msgstr "ກ່ອງແຜນທີ່"
 
 #: inc/layers.php:427
 msgid "CartoDB"
-msgstr ""
+msgstr "CartoDB"
 
 #: inc/layers.php:440
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: inc/layers.php:442
 msgid "http://{s}.example.com/{z}/{x}/{y}.png"
-msgstr ""
+msgstr "http://{s}.example.com/{z}/{x}/{y}.png"
 
 #: inc/layers.php:443
 msgid "Tilelayer URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.png"
-msgstr ""
+msgstr "URL ຂອງ Tilelayer. ຕົວຢ່າງ: http://{s}.example.com/{z}/{x}/{y}.png"
 
 #: inc/layers.php:447
 msgid "UTFGrid URL (optional)"
-msgstr ""
+msgstr "URL ຂອງ UTFGrid (ເສີມ)"
 
 #: inc/layers.php:449
 msgid "http://{s}.example.com/{z}/{x}/{y}.grid.json"
-msgstr ""
+msgstr "http://{s}.example.com/{z}/{x}/{y}.grid.json"
 
 #: inc/layers.php:450
 msgid ""
 "Optional UTFGrid URL. E.g.: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 msgstr ""
+"ເສີມ URL ຂອງ UTFGrid . ຕົວຢ່າງ: http://{s}.example.com/{z}/{x}/{y}.grid.json"
 
 #: inc/layers.php:454
 msgid "UTFGrid Template (optional)"
-msgstr ""
+msgstr "ຮ່າງຕາໜ່າງ UTF (ເສີມ)"
 
 #: inc/layers.php:457 inc/layers.php:652
 msgid "UTFGrid template using mustache.<br/>E.g.: City: {{city}}"
-msgstr ""
+msgstr "ຮ່າງ UTFGrid ທີ່ນຳໃຊ້ mustache. ຕົວຢ່າງ: ເມືອງ: {{ເມືອງ}}"
 
 #: inc/layers.php:461
 msgid "TMS"
-msgstr ""
+msgstr "TMS"
 
 #: inc/layers.php:463
 msgid "Enable TMS"
-msgstr ""
+msgstr "ເປີດໃຊ້ງານ TMS"
 
 #: inc/layers.php:464
 msgid "Inverses Y axis numbering for tiles (turn this on for TMS services)."
@@ -901,15 +898,16 @@ msgstr ""
 
 #: inc/layers.php:485
 msgid "WMS Service URL"
-msgstr ""
+msgstr "URL ທີ່ໃຫ້ບໍລິການ WMS"
 
 #: inc/layers.php:487
 msgid "http://{geoserver adress & port}/geoserver/wms"
-msgstr ""
+msgstr "http://{geoserver adress & port}/geoserver/wms"
 
 #: inc/layers.php:488
 msgid "Eg. WMS URL: http://geoserver.example.com:8080/geoserver/wms"
 msgstr ""
+"ຕົວຢ່າງ: URL ຂອງ WMS : http://geoserver.example.com:8080/geoserver/wms"
 
 #: inc/layers.php:492
 msgid "Workspaces:Layer Name (English)"
@@ -937,23 +935,23 @@ msgstr ""
 
 #: inc/layers.php:510
 msgid "WMS format (optional)"
-msgstr ""
+msgstr "ຮູບແບບ WMS (ເສີມ)"
 
 #: inc/layers.php:512
 msgid "image/png"
-msgstr ""
+msgstr "ໄຟລຮູບ .png"
 
 #: inc/layers.php:513
 msgid "E.g.: image/png or image/jpeg"
-msgstr ""
+msgstr "ຕົວຢ່າງ: ໄຟລຮູບ .png  ຫຼື .jpeg"
 
 #: inc/layers.php:517 inc/layers.php:520
 msgid "Transparent"
-msgstr ""
+msgstr "ໂປ່ງໃສ"
 
 #: inc/layers.php:521
 msgid "Enable it to make transparent the layer of WMS."
-msgstr ""
+msgstr "ເປີດໃຊ້ງານເພື່ອໃຫ້ຊັ້ນຂໍ້ມູນຂອງ WMS ມີຄວາມໂປ່ງໃສ."
 
 #: inc/layers.php:525
 msgid "Inforwindow (popup)"
@@ -971,11 +969,11 @@ msgstr ""
 
 #: inc/layers.php:544 inc/layers.php:554
 msgid "View detail"
-msgstr ""
+msgstr "ເບິ່ງລາຍລະອຽດ"
 
 #: inc/layers.php:545 inc/layers.php:555
 msgid "View detail URL"
-msgstr ""
+msgstr "ເບິ່ງລາຍລະອຽດ URL"
 
 #: inc/layers.php:546 inc/layers.php:556
 msgid ""
@@ -985,61 +983,62 @@ msgstr ""
 
 #: inc/layers.php:569
 msgid "MapBox ID"
-msgstr ""
+msgstr "ເລກ MapBox"
 
 #: inc/layers.php:572
 msgid "MapBox map ID. E.g.: examples.map-20v6611k"
-msgstr ""
+msgstr "ເລກແຜນທີ່ MapBox. ຕົວຢ່າງ: examples.map-20v6611k"
 
 #: inc/layers.php:596
 msgid "Visualization type"
-msgstr ""
+msgstr "ຮູບແບບການສະແດງຜົນ"
 
 #: inc/layers.php:599
 msgid "Visualization"
-msgstr ""
+msgstr "ການສະແດງຜົນ"
 
 #: inc/layers.php:601
 msgid "Advanced (build from your tables)"
-msgstr ""
+msgstr "ລະດັບສູງ (ສ້າງຈາກຕາຕະລາງຂອງທ່ານ)"
 
 #: inc/layers.php:601
 msgid "coming soon"
-msgstr ""
+msgstr "ກະລຸນາຕິດຕາມໃນໄວໆນີ້"
 
 #: inc/layers.php:605
 msgid "CartoDB URL (English)"
-msgstr ""
+msgstr "URL ຂອງ CartoDB (ພາສາອັງກິດ)"
 
 #: inc/layers.php:608 inc/layers.php:616
 msgid ""
-"CartoDB visualization URL.<br/>E.g.: http://infoamazonia.cartodb.com/api/v2/"
-"viz/621d23a0-5eaa-11e4-ab03-0e853d047bba/viz.json"
+"CartoDB visualization URL.<br/>E.g.: "
+"http://infoamazonia.cartodb.com/api/v2/viz/621d23a0-5eaa-"
+"11e4-ab03-0e853d047bba/viz.json"
 msgstr ""
 
 #: inc/layers.php:613
 msgid "CartoDB URL ("
-msgstr ""
+msgstr "URL ຂອງ CartoDB ("
 
 #: inc/layers.php:621
 msgid "Username"
-msgstr ""
+msgstr "ຊື່ຜູ້ໃຊ້"
 
 #: inc/layers.php:624
 msgid "Your CartoDB username."
-msgstr ""
+msgstr "ຊື່ຜູ້ໃຊ້ CartoDB ຂອງທ່ານ."
 
 #: inc/layers.php:628
 msgid "Table"
-msgstr ""
+msgstr "ຕາຕະລາງ"
 
 #: inc/layers.php:631
 msgid "The CartoDB table you'd like to visualize."
-msgstr ""
+msgstr "ຕາຕະລາງ CartoDB ທີ່ທ່ານຕ້ອງການສະແດງ"
 
 #: inc/layers.php:635
 msgid "Where (optional)"
-msgstr ""
+msgstr "ສະຖານທີ່ (ຖ້າມີ)"
 
 #: inc/layers.php:638
 msgid "Query data from your table.<br/>E.g.: region = \"north\""
@@ -1047,252 +1046,252 @@ msgstr ""
 
 #: inc/layers.php:642
 msgid "CartoCSS"
-msgstr ""
+msgstr "CartoCSS"
 
 #: inc/layers.php:645
 #, php-format
 msgid "Styles for your table. <a href=\"%s\" target=\"_blank\">Learn more</a>."
-msgstr ""
+msgstr "ອອກແບບຕາຕະລາງຂອງທ່ານ. <a href=\"%s\" target=\"_blank\">ຮຽນຮູ້ເພີ່ມເຕີມ</a>."
 
 #: inc/layers.php:649
 msgid "Template"
-msgstr ""
+msgstr "ແມ່ແບບ"
 
 #: inc/post-types/announcements.php:19
 msgctxt "post type general name"
 msgid "Announcements"
-msgstr ""
+msgstr "ການປະກາດຕ່າງໆ"
 
 #: inc/post-types/announcements.php:20
 msgctxt "post type singular name"
 msgid "Announcement"
-msgstr ""
+msgstr "ການປະກາດ"
 
 #: inc/post-types/announcements.php:21
 msgctxt "admin menu"
 msgid "Announcements"
-msgstr ""
+msgstr "ການປະກາດຕ່າງໆ"
 
 #: inc/post-types/announcements.php:22
 msgctxt "add new on admin bar"
 msgid "Announcement"
-msgstr ""
+msgstr "ການປະກາດ"
 
 #: inc/post-types/announcements.php:23
 msgctxt "announcement"
 msgid "Add new"
-msgstr ""
+msgstr "ເພີ່ມໃໝ່"
 
 #: inc/post-types/announcements.php:24
 msgid "Add new announcement"
-msgstr ""
+msgstr "ເພີ່ມການປະກາດໃໝ່"
 
 #: inc/post-types/announcements.php:25
 msgid "New announcement"
-msgstr ""
+msgstr "ປະກາດ"
 
 #: inc/post-types/announcements.php:26
 msgid "Edit announcement"
-msgstr ""
+msgstr " ແກ້ໄຂການປະກາດ"
 
 #: inc/post-types/announcements.php:27
 msgid "View announcement"
-msgstr ""
+msgstr "ເບິ່ງການປະກາດ"
 
 #: inc/post-types/announcements.php:28
 msgid "All announcements"
-msgstr ""
+msgstr "ການປະກາດທັງໝົດ"
 
 #: inc/post-types/announcements.php:29
 msgid "Search announcements"
-msgstr ""
+msgstr "ຄົ້ນຫາການປະກາດ"
 
 #: inc/post-types/announcements.php:30
 msgid "Parent announcements:"
-msgstr ""
+msgstr "ປະກາດຕົ້ນສະບັບ"
 
 #: inc/post-types/announcements.php:31
 msgid "No announcements found."
-msgstr ""
+msgstr "ບໍ່ພົບການປະກາດ"
 
 #: inc/post-types/announcements.php:32
 msgid "No announcements found in trash."
-msgstr ""
+msgstr "ບໍ່ພົບການປະກາດໃນຖັງຂີ້ເຫຍື້ອ"
 
 #: inc/post-types/news-article.php:19
 msgctxt "post type general name"
 msgid "News"
-msgstr ""
+msgstr "ຂ່າວ"
 
 #: inc/post-types/news-article.php:20
 msgctxt "post type singular name"
 msgid "News article"
-msgstr ""
+msgstr "ຫົວຂໍ້ຂ່າວ"
 
 #: inc/post-types/news-article.php:21
 msgctxt "admin menu"
 msgid "News"
-msgstr ""
+msgstr "ຂ່າວ"
 
 #: inc/post-types/news-article.php:22
 msgctxt "add new on admin bar"
 msgid "News article"
-msgstr ""
+msgstr "ຫົວຂໍ້ຂ່າວ"
 
 #: inc/post-types/news-article.php:23
 msgctxt "news article"
 msgid "Add new"
-msgstr ""
+msgstr "ເພີ່ມໃໝ່"
 
 #: inc/post-types/news-article.php:24
 msgid "Add new news article"
-msgstr ""
+msgstr "ເພີ່ມຫົວຂໍ້ຂ່າວໃໝ່"
 
 #: inc/post-types/news-article.php:25
 msgid "New news article"
-msgstr ""
+msgstr "ຫົວຂໍ້ຂ່າວໃໝ່"
 
 #: inc/post-types/news-article.php:26
 msgid "Edit news article"
-msgstr ""
+msgstr "ແກ້ໄຂຫົວຂໍ້ຂ່າວ"
 
 #: inc/post-types/news-article.php:27
 msgid "View news article"
-msgstr ""
+msgstr "ເບິ່ງຫົວຂໍ້ຂ່າວ"
 
 #: inc/post-types/news-article.php:28
 msgid "All news"
-msgstr ""
+msgstr "ຂ່າວທັງໝົດ"
 
 #: inc/post-types/news-article.php:29
 msgid "Search news"
-msgstr ""
+msgstr "ຄົ້ນຫາຂ່າວ"
 
 #: inc/post-types/news-article.php:30
 msgid "Parent news:"
-msgstr ""
+msgstr "ຂ່າວຕົ້ນສະບັບ:"
 
 #: inc/post-types/news-article.php:31 inc/post-types/stories.php:33
 msgid "No stories found."
-msgstr ""
+msgstr "ບໍ່ມີເລື່ອງທີ່ທ່ານຄົ້ນຫາ."
 
 #: inc/post-types/news-article.php:32 inc/post-types/stories.php:34
 msgid "No stories found in trash."
-msgstr ""
+msgstr "ບໍ່ມີເລື່ອງທີ່ທ່ານຄົ້ນຫາໃນຖັງຂີ້ເຫຍື້ອ."
 
 #: inc/post-types/site-updates.php:19
 msgctxt "post type general name"
 msgid "Site updates"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:20
 msgctxt "post type singular name"
 msgid "Site update"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:21
 msgctxt "admin menu"
 msgid "Site updates"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:22
 msgctxt "add new on admin bar"
 msgid "Site update"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:23
 msgctxt "site update"
 msgid "Add new"
-msgstr ""
+msgstr "ເພີ່ມໃໝ່"
 
 #: inc/post-types/site-updates.php:24
 msgid "Add new site update"
-msgstr ""
+msgstr "ເພີ່ມເວບໄຊອັບເດດໃໝ່"
 
 #: inc/post-types/site-updates.php:25
 msgid "New site update"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດໃໝ່"
 
 #: inc/post-types/site-updates.php:26
 msgid "Edit site update"
-msgstr ""
+msgstr "ແກ້ໄຂເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:27
 msgid "View site update"
-msgstr ""
+msgstr "ເບິ່ງເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:28
 msgid "All site updates"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດທັງໝົດ"
 
 #: inc/post-types/site-updates.php:29
 msgid "Search site updates"
-msgstr ""
+msgstr "ຄົ້ນຫາເວບໄຊອັບເດດ"
 
 #: inc/post-types/site-updates.php:30
 msgid "Parent site updates:"
-msgstr ""
+msgstr "ເວບໄຊອັບເດດຕົ້ນສະບັບ:"
 
 #: inc/post-types/site-updates.php:31
 msgid "No site updates found."
-msgstr ""
+msgstr "ບໍ່ມີເວບໄຊອັບເດດທີ່ທ່ານຄົ້ນຫາ."
 
 #: inc/post-types/site-updates.php:32
 msgid "No site updates found in trash."
-msgstr ""
+msgstr "ບໍ່ມີເວບໄຊອັບເດດທີ່ທ່ານຄົ້ນຫາໃນຖັງຂີ້ເຫຍື້ອ."
 
 #: inc/post-types/stories.php:21
 msgctxt "post type general name"
 msgid "Stories"
-msgstr ""
+msgstr "ເລື່ອງ"
 
 #: inc/post-types/stories.php:22
 msgctxt "post type singular name"
 msgid "Story"
-msgstr ""
+msgstr "ເລື່ອງ"
 
 #: inc/post-types/stories.php:23
 msgctxt "admin menu"
 msgid "Stories"
-msgstr ""
+msgstr "ເລື່ອງ"
 
 #: inc/post-types/stories.php:24
 msgctxt "add new on admin bar"
 msgid "Story"
-msgstr ""
+msgstr "ເລື່ອງ"
 
 #: inc/post-types/stories.php:25
 msgctxt "story"
 msgid "Add new"
-msgstr ""
+msgstr "ເພີ່ມໃໝ່"
 
 #: inc/post-types/stories.php:26
 msgid "Add new story"
-msgstr ""
+msgstr "ເພີ່ມເລື່ອງໃໝ່"
 
 #: inc/post-types/stories.php:27
 msgid "New story"
-msgstr ""
+msgstr "ເລື່ອງໃໝ່"
 
 #: inc/post-types/stories.php:28
 msgid "Edit story"
-msgstr ""
+msgstr "ແກ້ໄຂເລື່ອງ"
 
 #: inc/post-types/stories.php:29
 msgid "View story"
-msgstr ""
+msgstr "ເບິ່ງເລື່ອງ"
 
 #: inc/post-types/stories.php:30
 msgid "All stories"
-msgstr ""
+msgstr "ເລື່ອງທັງໝົດ"
 
 #: inc/post-types/stories.php:31
 msgid "Search stories"
-msgstr ""
+msgstr "ຄົ້ນຫາເລື່ອງ"
 
 #: inc/post-types/stories.php:32
 msgid "Parent stories:"
-msgstr ""
+msgstr "ເລື່ອງຕົ້ນສະບັບ:"
 
 #: inc/post-types/stories.php:62
 msgid "Full Width Middle Content"
@@ -1300,151 +1299,153 @@ msgstr ""
 
 #: inc/post-types/stories.php:78
 msgid "ENGLISH"
-msgstr ""
+msgstr "ພາສາອັງກິດ"
 
 #: inc/post-types/stories.php:91
 msgid "Full width content (English)"
-msgstr ""
+msgstr "ເນື້ອໃນທີ່ມີຂະໜາດເຕັມຄວາມກວ້າງ (ພາສາອັງກິດ)"
 
 #: inc/post-types/stories.php:95 inc/post-types/stories.php:111
 msgid ""
 "Any content can add to under the Editor content and sidebar and  full width "
 "of website even the iframe."
 msgstr ""
+"ສາມາດເພີ່ມເນື້ອໃນໃສ່ໂຕດັດແກ້ເນື້ອໃນ ແລະ ແຖບຂ້າງ ແລະ "
+"ຂະຫຍາຍເຕັມຄວາມກວ້າງຂອງເວັບໄຊແມ່ນແຕ່ iframe."
 
 #: inc/post-types/stories.php:107
 msgid "Full width content (("
-msgstr ""
+msgstr "ເນື້ອໃນທີ່ມີຂະໜາດເຕັມຄວາມກວ້າງ (("
 
 #: inc/post-types/timeline.php:20
 msgctxt "post type general name"
 msgid "Timelines"
-msgstr ""
+msgstr "ທາມໄລນ"
 
 #: inc/post-types/timeline.php:21
 msgctxt "post type singular name"
 msgid "Timeline"
-msgstr ""
+msgstr "ທາມໄລນ"
 
 #: inc/post-types/timeline.php:22
 msgctxt "admin menu"
 msgid "Timelines"
-msgstr ""
+msgstr "ທາມໄລນ"
 
 #: inc/post-types/timeline.php:23
 msgctxt "add new on admin bar"
 msgid "Timeline"
-msgstr ""
+msgstr "ທາມໄລນ"
 
 #: inc/post-types/timeline.php:24
 msgctxt "timeline"
 msgid "Add new"
-msgstr ""
+msgstr "ເພິ່ມໃໝ່"
 
 #: inc/post-types/timeline.php:25
 msgid "Add new timeline"
-msgstr ""
+msgstr "ເພີ່ມທາມໄລນໃໝ່"
 
 #: inc/post-types/timeline.php:26
 msgid "New timeline"
-msgstr ""
+msgstr "ທາມໄລນໃໝ່"
 
 #: inc/post-types/timeline.php:27
 msgid "Edit timeline"
-msgstr ""
+msgstr "ແກ້ໄຂທາມໄລນ"
 
 #: inc/post-types/timeline.php:28
 msgid "View timeline"
-msgstr ""
+msgstr "ບິ່ງທາມໄລນ"
 
 #: inc/post-types/timeline.php:29
 msgid "All timelines"
-msgstr ""
+msgstr "ທາມໄລນທັງໝົດ"
 
 #: inc/post-types/timeline.php:30
 msgid "Search timelines"
-msgstr ""
+msgstr "ຄົ້ນຫາທາມໄລນ"
 
 #: inc/post-types/timeline.php:31
 msgid "Parent timelines:"
-msgstr ""
+msgstr "ທາມໄລນຕົ້ນສະບັບ:"
 
 #: inc/post-types/timeline.php:32
 msgid "No timelines found."
-msgstr ""
+msgstr "ບໍ່ມີທາມໄລນທີ່ທ່ານຄົ້ນຫາ."
 
 #: inc/post-types/timeline.php:33
 msgid "No timelines found in trash."
-msgstr ""
+msgstr "ບໍ່ມີທາມໄລນທີ່ທ່ານຄົ້ນຫາໃນຖັງຂີ້ເຫຍື້ອ."
 
 #: inc/post-types/topics.php:19
 msgctxt "post type general name"
 msgid "Topics"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/post-types/topics.php:20
 msgctxt "post type singular name"
 msgid "Topic"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/post-types/topics.php:21
 msgctxt "admin menu"
 msgid "Topics"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/post-types/topics.php:22
 msgctxt "add new on admin bar"
 msgid "Topic"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/post-types/topics.php:23
 msgctxt "topic"
 msgid "Add new"
-msgstr ""
+msgstr "ເພີ່ມໃໝ່"
 
 #: inc/post-types/topics.php:24
 msgid "Add new topic"
-msgstr ""
+msgstr "ເພີ່ມຫົວຂໍ້ໃໝ່"
 
 #: inc/post-types/topics.php:25
 msgid "New topic"
-msgstr ""
+msgstr "ຫົວຂໍ້ໃໝ່"
 
 #: inc/post-types/topics.php:26
 msgid "Edit topic"
-msgstr ""
+msgstr "ແກ້ໄຂຫົວຂໍ້"
 
 #: inc/post-types/topics.php:27
 msgid "View topic"
-msgstr ""
+msgstr "ເບິ່ງຫົວຂໍ້"
 
 #: inc/post-types/topics.php:28
 msgid "All topics"
-msgstr ""
+msgstr "ຫົວຂໍ້ທັງໝົດ"
 
 #: inc/post-types/topics.php:29
 msgid "Search topics"
-msgstr ""
+msgstr "ຫົວຂໍ້ຄົ້ນຫາ"
 
 #: inc/post-types/topics.php:30
 msgid "Parent topics:"
-msgstr ""
+msgstr "ຫົວຂໍ້ຕົ້ນສະບັບ:"
 
 #: inc/post-types/topics.php:31
 msgid "No topics found."
-msgstr ""
+msgstr "ບໍ່ມີຫົວຂໍ້ທີ່ທ່ານຄົ້ນຫາ."
 
 #: inc/post-types/topics.php:32
 msgid "No topics found in trash."
-msgstr ""
+msgstr "ບໍ່ມີຫົວຂໍ້ທີ່ທ່ານຄົ້ນຫາໃນຖັງຂີ້ເຫຍື້ອ."
 
 #: inc/summary.php:76
 msgid "On this page"
-msgstr ""
+msgstr "ເທິງໜ້ານີ້"
 
 #: inc/templates/category-page-default.php:82
 msgid "No results found."
-msgstr ""
+msgstr "ບໍ່ມີສິ່ງທີ່ທ່ານຄົ້ນຫາ."
 
 #: inc/templates/category-page-latest.php:17 page-data.php:17
 msgid ""
@@ -1455,21 +1456,21 @@ msgstr ""
 #: inc/templates/category-page-latest.php:63
 #: inc/templates/category-page-latest.php:83
 msgid "Topic briefing"
-msgstr ""
+msgstr "ຫົວຂໍ້ຄຳອະທິບາຍ"
 
 #: inc/templates/category-page-latest.php:102
 msgid "Related briefings"
-msgstr ""
+msgstr "ຄຳອະທິບາຍທີ່ກ່ຽວຂ້ອງ"
 
 #: inc/templates/pagination.php:8 inc/templates/pagination.php:16
 #: inc/templates/pagination_solr.php:7
 msgid " of"
-msgstr ""
+msgstr "ຂອງ"
 
 #: inc/templates/post-highlighted-single-1-cols.php:50
 #: inc/utils/markers.php:143 loop-latest.php:19
 msgid "Read more"
-msgstr ""
+msgstr "ອ່ານເພີ່ມເຕີມ"
 
 #: inc/templates/solr-result-single.php:79
 msgid " "
@@ -1489,11 +1490,11 @@ msgstr ""
 
 #: inc/theme-options.php:56
 msgid "Style"
-msgstr ""
+msgstr "ຮູບແບບ"
 
 #: inc/theme-options.php:63
 msgid "Links"
-msgstr ""
+msgstr "ລິ້ງ"
 
 #: inc/theme-options.php:77
 msgid "Single and archive pages"
@@ -1501,71 +1502,71 @@ msgstr ""
 
 #: inc/theme-options.php:84
 msgid "Interactive map"
-msgstr ""
+msgstr "ແຜນທີ່ແບບໂຕ້ຕອບ"
 
 #: inc/theme-options.php:91
 msgid "Choose a style"
-msgstr ""
+msgstr "ເລືອກຮູບແບບ"
 
 #: inc/theme-options.php:99
 msgid "Notice Message appear above the slider"
-msgstr ""
+msgstr "ຂໍ້ຄວາມແຈ້ງເຕືອນປະກົດຢູ່ເທິງແຖບເລື່ອນ"
 
 #: inc/theme-options.php:107
 msgid "Frontpage slider id"
-msgstr ""
+msgstr "ເລກແຖບເລື່ອນຂອງໜ້າທຳອິດ"
 
 #: inc/theme-options.php:115
 msgid "Facebook url"
-msgstr ""
+msgstr "url ຂອງເຟສບຸກ"
 
 #: inc/theme-options.php:123
 msgid "Twitter url"
-msgstr ""
+msgstr "url ຂອງທວີດເຕີ"
 
 #: inc/theme-options.php:131
 msgid "Legal disclaimer"
-msgstr ""
+msgstr "ຂໍ້ສະຫງວນສິດການໃຊ້"
 
 #: inc/theme-options.php:139
 msgid "Contact page"
-msgstr ""
+msgstr "ໜ້າຂໍ້ມູນຕິດຕໍ່"
 
 #: inc/theme-options.php:147
 msgid "Data page"
-msgstr ""
+msgstr "ໜ້າຂໍ້ມູນ"
 
 #: inc/theme-options.php:155
 msgid "Category page (WP)"
-msgstr ""
+msgstr "ໜ້າຂໍ້ມູນໝວດໝູ່ (WP)"
 
 #: inc/theme-options.php:163
 msgid "Category page (CKAN)"
-msgstr ""
+msgstr "ໜ້າຂໍ້ມູນໝວດໝູ່ (CKAN)"
 
 #: inc/theme-options.php:171
 msgid "Category page template"
-msgstr ""
+msgstr "ແມ່ແບບຂອງໜ້າຂໍ້ມູນໝວດໝູ່"
 
 #: inc/theme-options.php:179
 msgid "Date shown on single and archive page templates"
-msgstr ""
+msgstr "ຮ່າງວັນທີທີ່ສະແດງຢູ່ໃນໜ້າດ່ຽວ ແລະ ໜ້າສາງຂໍ້ມູນ"
 
 #: inc/theme-options.php:187
 msgid "Base map settings"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າຖານແຜນທີ່"
 
 #: inc/theme-options.php:210
 msgid "Notification messages"
-msgstr ""
+msgstr "ຂໍ້ຄວາມແຈ້ງເຕືອນ"
 
 #: inc/theme-options.php:211
 msgid "(The notification will appear floating at the bottom of the site)"
-msgstr ""
+msgstr "(ຂໍ້ຄວາມແຈ້ງເຕືອນຈະປະກົດຢູ່ດ້ານລຸ່ມຂອງເວບໄຊ)"
 
 #: inc/theme-options.php:218 inc/theme-options.php:219
 msgid "281321"
-msgstr ""
+msgstr "281321"
 
 #: inc/theme-options.php:222
 msgid "(This id can be found on the Featured Area plugin slider's settings.)"
@@ -1573,7 +1574,7 @@ msgstr ""
 
 #: inc/theme-options.php:249 inc/theme-options.php:250
 msgid "news-article,announcement,topic,profiles"
-msgstr ""
+msgstr "ຫົວຂໍ້ຂ່າວ, ປະກາດ, ຫົວຂໍ້, ຂໍ້ມູນປະຫວັດ"
 
 #: inc/theme-options.php:252
 msgid ""
@@ -1583,7 +1584,7 @@ msgstr ""
 
 #: inc/theme-options.php:260 inc/theme-options.php:261
 msgid "dataset, library_record, laws_record, agreement"
-msgstr ""
+msgstr "ຊຸດຂໍ້ມູນ, ຂໍ້ມູນຫ້ອງສະໝຸດ, ຂໍ້ມູນກົດໝາຍ, ຂໍ້ຕົກລົງ"
 
 #: inc/theme-options.php:263
 msgid ""
@@ -1593,246 +1594,250 @@ msgstr ""
 
 #: inc/theme-options.php:282
 msgid "Creation date"
-msgstr ""
+msgstr "ມື້ທີ່ສ້າງ"
 
 #: inc/theme-options.php:283
 msgid "Modification date"
-msgstr ""
+msgstr "ວັນທີທີ່ດັດແປງ"
 
 #: inc/theme-options.php:290 inc/theme-options.php:293
 #: inc/theme-options.php:300 inc/theme-options.php:303
 #: inc/theme-options.php:377 inc/utils/mapping.php:837
 msgid "None"
-msgstr ""
+msgstr "ບໍ່ມີ"
 
 #: inc/theme-options.php:342
 msgid "Select base layer"
-msgstr ""
+msgstr "ເລືອກຖານຊັ້ນຂໍ້ມູນ"
 
 #: inc/theme-options.php:356
 msgid "(USA Only)"
-msgstr ""
+msgstr "(ສະຫະລັດອາເມລິກາ ເທົ່ານັ້ນ)"
 
 #: inc/theme-options.php:374
 msgid "Custom"
-msgstr ""
+msgstr "ແບບຕາມໃຈ"
 
 #: inc/theme-options.php:380
 msgid "Enter layer URL"
-msgstr ""
+msgstr "ໃສ່ URL ຂອງຊັ້ນ"
 
 #: inc/theme-options.php:385 inc/theme-options.php:579
 msgid "Update preview"
-msgstr ""
+msgstr "ອັບເດດຕົວຢ່າງ"
 
 #: inc/theme-options.php:388
 msgid "Preview map"
-msgstr ""
+msgstr "ເບິ່ງຕົວຢ່າງແຜນທີ່"
 
 #: inc/theme-options.php:394
 msgid "Map settings"
-msgstr ""
+msgstr "ຕັ້ງຄ່າແຜນທີ່"
 
 #: inc/theme-options.php:397
 msgid "Currently viewing"
-msgstr ""
+msgstr "ໜ້າປະຈຸບັນ"
 
 #: inc/theme-options.php:401 inc/theme-options.php:439
 msgid "Center"
-msgstr ""
+msgstr "ໃຈກາງ"
 
 #: inc/theme-options.php:406 inc/theme-options.php:450
 msgid "Zoom"
-msgstr ""
+msgstr "ຂະຫຍາຍ"
 
 #: inc/theme-options.php:411 inc/theme-options.php:502
 msgid "East"
-msgstr ""
+msgstr "ຕາເວັນອອກ"
 
 #: inc/theme-options.php:416 inc/theme-options.php:510
 msgid "North"
-msgstr ""
+msgstr "ເໜືອ"
 
 #: inc/theme-options.php:421 inc/theme-options.php:518
 msgid "South"
-msgstr ""
+msgstr "ໃຕ້"
 
 #: inc/theme-options.php:426 inc/theme-options.php:526
 msgid "West"
-msgstr ""
+msgstr "ຕາເວັນຕົກ"
 
 #: inc/theme-options.php:433
 msgid "Map center & zoom"
-msgstr ""
+msgstr "ໃຈກາງແຜນທີ່ & ຂະຫຍາຍ"
 
 #: inc/theme-options.php:435
 msgid "Set current as map center & zoom"
-msgstr ""
+msgstr "ຕັ້ງປັດຈຸບັນເປັນໃຈກາງຂອງແຜນທີ່ & ຂະຫຍາຍ"
 
 #: inc/theme-options.php:458
 msgid "Min zoom"
-msgstr ""
+msgstr "ຂະຫຍາຍໜ້ອຍສຸດ"
 
 #: inc/theme-options.php:465 inc/theme-options.php:477
 msgid "Current"
-msgstr ""
+msgstr "ປັດຈຸບັນ"
 
 #: inc/theme-options.php:470
 msgid "Max zoom"
-msgstr ""
+msgstr "ຂະຫຍາຍຫຼາຍສຸດ"
 
 #: inc/theme-options.php:496
 msgid "Pan limits"
-msgstr ""
+msgstr "ຂີດຈຳກັດການເລື່ອນ"
 
 #: inc/theme-options.php:498
 msgid "Set current as map panning limits"
-msgstr ""
+msgstr "ຕັ້ງຄ່າປັດຈຸບັນເປັນຂີດຈຳກັດການເລື່ອນ"
 
 #: inc/theme-options.php:552
 msgid "Enable geocoding service"
-msgstr ""
+msgstr "ເປີດໃຊ້ geocoding"
 
 #: inc/theme-options.php:559
 msgid "Enable geocode search service"
-msgstr ""
+msgstr "ເປີດໃຊ້ການຄົ້ນຫາ geocoding"
 
 #: inc/theme-options.php:564
 msgid "Map handlers"
-msgstr ""
+msgstr "ຜູ້ຈັດການແຜນທີ່"
 
 #: inc/theme-options.php:571
 msgid "Disable mousewheel zooming"
-msgstr ""
+msgstr "ປິດໃຊ້ການຂະຫຍາຍໂດຍໃຊ້ເມົ້າສ"
 
 #: inc/theme-options.php:581
 msgid "Preview mode"
-msgstr ""
+msgstr "ໂໝດຕົວຢ່າງ"
 
 #: inc/theme-options.php:583
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
-msgstr ""
+msgstr "(ໂໝດສະແດງຕົວຢ່າງບໍ່ສາມາດນຳໃຊ້ນຳຊ່ວງຂະຫຍາຍ ຫຼື ຂີດຈຳກັດການເລື່ອນ)"
 
 #: inc/utils/breadcrumbs.php:62
 msgid "Blogs"
-msgstr ""
+msgstr "ບລັອກ"
 
 #: inc/utils/breadcrumbs.php:187 inc/utils/breadcrumbs.php:286
 msgid "Search results for:"
-msgstr ""
+msgstr "ຜົນການຄົ້ນຫາສຳລັບ:"
 
 #: inc/utils/breadcrumbs.php:190
 msgid "Dataset detail"
-msgstr ""
+msgstr "ລາຍລະອຽດຊຸດຂໍ້ມູນ"
 
 #: inc/utils/content.php:620
 msgid "Summary translated by "
-msgstr ""
+msgstr "ບົດສະຫຼຸບແປໂດຍ"
 
 #: inc/utils/content.php:679
 msgid "Download:"
-msgstr ""
+msgstr "ດາວໂຫຼດ:"
 
 #: inc/utils/layout.php:11
 msgid "View large image"
+msgstr "ເບິ່ງຮູບຂະໜາດໃຫຍ່"
+
+#: inc/utils/layout.php:21
+msgid "Download and Metadata"
 msgstr ""
 
-#: inc/utils/layout.php:70
+#: inc/utils/layout.php:86
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
 
 #: inc/utils/mapping.php:124
 msgid "Show news on map"
-msgstr ""
+msgstr "ສະແດງຂ່າວເທິງແຜນທີ່"
 
 #: inc/utils/mapping.php:376
 msgid "LEGEND"
-msgstr ""
+msgstr "ຄຳອະທິບາຍສັນຍາລັກ"
 
 #: inc/utils/mapping.php:785
 msgid "Create Map"
-msgstr ""
+msgstr "ສ້າງແຜນທີ່"
 
 #: inc/utils/mapping.php:788
 msgid "Title"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/utils/mapping.php:792
 msgid "Description"
-msgstr ""
+msgstr "ລາຍລະອຽດ"
 
 #: inc/utils/mapping.php:797
 msgid "Basemap"
-msgstr ""
+msgstr "ແຜນທີ່ຖານ"
 
 #: inc/utils/mapping.php:801
 msgid "Map layers"
-msgstr ""
+msgstr "ຊັ້ນແຜນທີ່"
 
 #: inc/utils/mapping.php:806
 msgid "North Direction"
-msgstr ""
+msgstr "ທິດເໜືອ"
 
 #: inc/utils/mapping.php:811
 msgid "Map tools"
-msgstr ""
+msgstr "ເຄື່ອງມືແຜນທີ່"
 
 #: inc/utils/mapping.php:814
 msgid "Format"
-msgstr ""
+msgstr "ຮູບແບບ"
 
 #: inc/utils/mapping.php:816
 msgid "Image (PNG)"
-msgstr ""
+msgstr "ຮູບພາບ (PNG)"
 
 #: inc/utils/mapping.php:820
 msgid "Size"
-msgstr ""
+msgstr "ຂະໜາດ"
 
 #: inc/utils/mapping.php:822
 msgid "A4"
-msgstr ""
+msgstr "ເອ4"
 
 #: inc/utils/mapping.php:826
 msgid "Layout"
-msgstr ""
+msgstr "ການຈັດວາງ"
 
 #: inc/utils/mapping.php:828
 msgid "Landscape"
-msgstr ""
+msgstr "ທາງນອນ"
 
 #: inc/utils/mapping.php:829
 msgid "Portrait"
-msgstr ""
+msgstr "ທາງຕັ້ງ"
 
 #: inc/utils/mapping.php:833
 msgid "Legend"
-msgstr ""
+msgstr "ຄຳອະທິບາຍສັນຍາລັກ"
 
 #: inc/utils/mapping.php:835
 msgid "Left"
-msgstr ""
+msgstr "ຊ້າຍ"
 
 #: inc/utils/mapping.php:836
 msgid "Right"
-msgstr ""
+msgstr "ຂວາ"
 
 #: inc/utils/mapping.php:843
 msgid "Show all legends"
-msgstr ""
+msgstr "ສະແດງຄຳອະທິບາຍສັນຍາລັກທັງໝົດ"
 
 #: inc/utils/mapping.php:847 inc/utils/markers.php:139
 msgid "Print"
-msgstr ""
+msgstr "ພິມ"
 
 #: inc/utils/mapping.php:866
 msgid "Created date: "
-msgstr ""
+msgstr "ມື້ທີ່ສ້າງ"
 
 #: inc/utils/markers.php:135
 msgid "stories"
-msgstr ""
+msgstr "ເລື່ອງ"
 
 #: inc/utils/markers.php:137
 msgid "Copy the embed code"
@@ -1840,40 +1845,40 @@ msgstr ""
 
 #: inc/utils/markers.php:138 loop-latest.php:21
 msgid "Share"
-msgstr ""
+msgstr "ແບ່ງປັນ"
 
 #: inc/utils/markers.php:145
 msgid "Open slideshow"
-msgstr ""
+msgstr "ເປີດສໄລໂຊ"
 
 #: inc/utils/markers.php:146
 msgid "Watch video gallery"
-msgstr ""
+msgstr "ເບິ່ງຄັງວີດີໂອ"
 
 #: inc/utils/markers.php:147
 msgid "Watch video"
-msgstr ""
+msgstr "ເບິ່ງວີດີໂອ"
 
 #: inc/utils/markers.php:148
 msgid "View image gallery"
-msgstr ""
+msgstr "ເບິ່ງຄັງຮູບພາບ"
 
 #: inc/utils/markers.php:149
 msgid "View fullscreen image"
-msgstr ""
+msgstr "ເບິ່ງຮູບພາບເຕັມໜ້າຈໍ"
 
 #: inc/utils/markers.php:150
 msgid "View infographic"
-msgstr ""
+msgstr "ເບິ່ງອິນໂຟກຣາຟຟິກ"
 
 #: inc/utils/markers.php:151
 msgid "View infographics"
-msgstr ""
+msgstr "ເບິ່ງອິນໂຟກຣາຟຟິກ"
 
 #: inc/utils/markers.php:342 loop-latest.php:10
 msgctxt "reduced date format"
 msgid "m/d/Y"
-msgstr ""
+msgstr "ວ/ດ/ປ"
 
 #: inc/widgets/odm-category-widget.php:12
 msgid "ODM Post Taxonomy"
@@ -1899,9 +1904,11 @@ msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:156
 #: inc/widgets/odm-custom-posts-widget.php:175
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:252
+#: inc/widgets/odm-taxonomy-widget-v2.php:283
 #: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
-msgstr ""
+msgstr "ຫົວຂໍ້"
 
 #: inc/widgets/odm-contents-same-category-widget.php:161
 #: inc/widgets/odm-custom-posts-widget.php:179
@@ -1911,7 +1918,7 @@ msgstr ""
 #: inc/widgets/odm-contents-same-category-widget.php:170
 #: inc/widgets/odm-custom-posts-widget.php:191
 msgid "Select layout:"
-msgstr ""
+msgstr "ເລືອກການຈັດວາງ:"
 
 #: inc/widgets/odm-contents-same-category-widget.php:178
 #: inc/widgets/odm-custom-posts-widget.php:199
@@ -1936,12 +1943,12 @@ msgstr ""
 #: inc/widgets/odm-contents-same-category-widget.php:195
 #: inc/widgets/odm-custom-posts-widget.php:216
 msgid "Select max number of posts to list (-1 to show all):"
-msgstr ""
+msgstr "ເລືອກຈຳນວນສູງສຸດຂອງໂພດສ໌ເພື່ອລົງລາຍການ (-1 ເພື່ອສະແດງທັງໝົດ)"
 
 #: inc/widgets/odm-contents-same-category-widget.php:199
 #: inc/widgets/odm-custom-posts-widget.php:220
 msgid "Order by:"
-msgstr ""
+msgstr "ສັ່ງໂດຍ:"
 
 #: inc/widgets/odm-contents-same-category-widget.php:207
 #: inc/widgets/odm-custom-posts-widget.php:228
@@ -1960,147 +1967,189 @@ msgstr ""
 msgid "Specific list of posts (optional):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:10
-msgid "ODM Content Taxonomy Widget"
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:10
+msgid ""
+"Custom ODM Topic Area Widget: able to custom taxonomy's url link to Topic "
+"page insted"
 msgstr ""
 
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:11
+msgid ""
+"This widget will display custom taxonomy list that its link can like to the "
+"term or link to topic.  * Please ensure that that term name and topic name "
+"are exactly the same."
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:256
+msgid "Select Taxonomy:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:267
+msgid "Include Term by IDs (separated by commas):"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:271
+msgid "Exclude Term by IDs (separated by commas):"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:275
+#: inc/widgets/odm-taxonomy-widget-v2.php:295
+#: inc/widgets/odm-taxonomy-widget.php:251
+msgid "Links should take user to:"
+msgstr "ລິ້ງນີ້ຈະພາຜູ້ນຳໃຊ້ໄປຫາ:"
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:283
+msgid "Hide empty taxonomy:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:288
+msgid "Expend the taxonomy:"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-widget-v2.php:10
+msgid "ODM Taxonomy Widget V2"
+msgstr ""
+
+#: inc/widgets/odm-taxonomy-widget-v2.php:11
 #: inc/widgets/odm-taxonomy-widget.php:11
 msgid "Display ODM taxonomy for content"
 msgstr ""
 
+#: inc/widgets/odm-taxonomy-widget-v2.php:287
 #: inc/widgets/odm-taxonomy-widget.php:243
 msgid "Include Category by IDs (separated by commas):"
 msgstr ""
 
+#: inc/widgets/odm-taxonomy-widget-v2.php:291
 #: inc/widgets/odm-taxonomy-widget.php:247
 msgid "Exclude Category by IDs (separated by commas):"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-widget.php:251
-msgid "Links should take user to:"
+#: inc/widgets/odm-taxonomy-widget.php:10
+msgid "ODM Content Taxonomy Widget"
 msgstr ""
 
 #: page-data-archive.php:14
 msgid "Access the complete database"
-msgstr ""
+msgstr "ເຂົ້າຫາຊຸດຂໍ້ມູນທີ່ສົມບູນ"
 
 #: page-data-archive.php:26
 msgid "Type your search and hit enter"
-msgstr ""
+msgstr "ພິມສິ່ງທີ່ທ່ານຕ້ອງການຄົ້ນຫາ ແລ້ວກົດ enter"
 
 #: page-data-archive.php:37
 msgid "Previous page"
-msgstr ""
+msgstr "ໜ້າທີ່ແລ້ວ"
 
 #: page-data-archive.php:39
 msgid "Next page"
-msgstr ""
+msgstr "ໜ້າຖັດໄປ"
 
 #: page-data-old.php:46
 msgid "Type"
-msgstr ""
+msgstr "ຮູບແບບ"
 
 #: page-data-old.php:47
 msgid "Select dataset type"
-msgstr ""
+msgstr "ເລືອກຮູບແບບຊຸດຂໍ້ມູນ"
 
 #: page-data-old.php:48 page-data-old.php:65 page-data-old.php:85
 #: page-data-old.php:108 page-data-old.php:125 page-data.php:121
 #: page-data.php:143 page-data.php:157 page-data.php:185 page-data.php:207
 msgid "All"
-msgstr ""
+msgstr "ທັງໝົດ"
 
 #: page-data-old.php:63 page-data.php:183
 msgid "Language"
-msgstr ""
+msgstr "ພາສາ"
 
 #: page-data-old.php:64 page-data.php:184
 msgid "Select language"
-msgstr ""
+msgstr "ເລືອກພາສາ"
 
 #: page-data-old.php:81 page-data.php:155
 msgid "Country"
-msgstr ""
+msgstr "ປະເທດ"
 
 #: page-data-old.php:82 page-data.php:156
 msgid "Select country"
-msgstr ""
+msgstr "ເລືອກປະເທດ"
 
 #: page-data-old.php:107 page-data.php:120
 msgid "Select term"
-msgstr ""
+msgstr "ເລືອກເງື່ອນໄຂ"
 
 #: page-data-old.php:123 page-data.php:205
 msgid "License"
-msgstr ""
+msgstr "ການອະນຸຍາດ"
 
 #: page-data-old.php:124 page-data.php:206
 msgid "Select license"
-msgstr ""
+msgstr "ເລືອກໃບອະນຸຍາດ"
 
 #: page-data-old.php:137
 msgid "Source"
-msgstr ""
+msgstr "ແຫຼ່ງຂໍ້ມູນ"
 
 #: page-data-old.php:143 page-data.php:237
 msgid "Search Filter"
-msgstr ""
+msgstr "ຄົ້ນຫາໂຕກອງ"
 
 #: page-data-old.php:147
 msgid "Clear"
-msgstr ""
+msgstr "ລຶບລ້າງ"
 
 #: page-data-old.php:171
 msgid "Most viewed datasets"
-msgstr ""
+msgstr "ຊຸດຂໍ້ມູນທີ່ຖືກເຂົ້າເບິ່ງຫຼາຍທີ່ສຸດ"
 
 #: page-data-old.php:176
 msgid "Most viewed library records"
-msgstr ""
+msgstr "ຊຸດຂໍ້ມູນໃນຫ້ອງສະໝຸດທີ່ຖືກເຂົ້າເບິ່ງຫຼາຍທີ່ສຸດ"
 
 #: page-data-old.php:181
 msgid "Most viewed laws"
-msgstr ""
+msgstr "ກົດໝາຍທີ່ຖືກເຂົ້າເບິ່ງຫຼາຍທີ່ສຸດ"
 
 #: page-data-old.php:232
 msgid "Records"
-msgstr ""
+msgstr "ຂໍ້ມູນບັນທຶກ"
 
 #: page-data-old.php:243
 msgid "More on the law compendium"
-msgstr ""
+msgstr "ຂໍ້ມູນເພີ່ມເຕີມກ່ຽວກັບບົດສະຫຼຸບກົດໝາຍ"
 
 #: page-data.php:141
 msgid "Dataset type"
-msgstr ""
+msgstr "ຮູບແບບຊຸດຂໍ້ມູນ"
 
 #: page-data.php:144
 msgid "Datasets"
-msgstr ""
+msgstr "ຊຸດຂໍ້ມູນ"
 
 #: page-data.php:145
 msgid "Publications"
-msgstr ""
+msgstr "ສິ່ງພິມ"
 
 #: page-data.php:146
 msgid "Laws"
-msgstr ""
+msgstr "ກົດໝາຍ"
 
 #: page-data.php:147
 msgid "Agreements"
-msgstr ""
+msgstr "ຂໍ້ຕົກລົງ"
 
 #: page-data.php:228 page-data.php:229
 msgid "Sort by"
-msgstr ""
+msgstr "ຈັດຮຽງໂດຍ"
 
 #: page-data.php:230
 msgid "Relevance"
-msgstr ""
+msgstr "ຄວາມກ່ຽວຂ້ອງ"
 
 #: page-data.php:231
 msgid "Date modified"
-msgstr ""
+msgstr "ວັນທີທີ່ດັດແປງ"
 
 #: page-dataset-detail.php:21
 msgid "Please provide an id as parameter"
@@ -2108,24 +2157,24 @@ msgstr ""
 
 #: page-dataset-detail.php:32
 msgid "Manage on CKAN"
-msgstr ""
+msgstr "ຈັດການເທິງ CKAN"
 
 #: page-dataset-detail.php:34
 msgid "Manage"
-msgstr ""
+msgstr "ຈັດການ"
 
 #: page-dataset-detail.php:48
 msgid "Other search results"
-msgstr ""
+msgstr "ຜົນການຄົ້ນຫາເພີ່ມເຕີມ"
 
 #: page-no-title.php:17 page.php:19 single-post.php:31 single-topic.php:43
 #: single.php:48
 msgid "Pages:"
-msgstr ""
+msgstr "ໜ້າ:"
 
 #: page-pdf-view.php:24 page-pdf-view.php:27 section-query-actions.php:25
 msgid "Download"
-msgstr ""
+msgstr "ດາວໂຫຼດ"
 
 #: section-query-actions.php:13
 msgid "Content API"
@@ -2141,16 +2190,12 @@ msgstr ""
 
 #: section-sticky-posts.php:151
 msgid "Keep reading"
-msgstr ""
+msgstr "ອ່ານຕໍ່ໄປ"
 
 #: single-map.php:46
 msgid "Latest articles on"
-msgstr ""
+msgstr "ຫົວຂໍ້ລ່າສຸດກ່ຽວກັບ"
 
 #: single-topic.php:70
 msgid "More on the Land Portal library"
-msgstr ""
-
-#: taxonomy-layer-category.php:8
-msgid "Map catalogue"
-msgstr ""
+msgstr "ຂໍ້ມູນເພີ່ມເຕີມກ່ຽວກັບທີ່ດິນໃນຫ້ອງສະໝຸດ"
