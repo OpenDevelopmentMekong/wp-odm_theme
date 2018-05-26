@@ -36,7 +36,6 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 	 * @param custom_tax $custom_tax a category object to display
 	 */
 	public function print_category_linked_to_topic($custom_tax, $current_page_slug ="") {
-		$post_type =  get_post_type( get_the_ID() );
 		$get_post_id = get_post_or_page_id_by_title($custom_tax->name);
 		$current_page = "";
 		if ($get_post_id){ // if page of the topic exists
@@ -67,13 +66,12 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 	 * @param category $custom_tax a category object to display
 	 */
 	public function print_category_linked_to_custom_taxonomy( $custom_tax, $current_page_slug ="") {
-		$custom_tax_has_contents = (get_term_by('id', $custom_tax->term_id, $cus_taxonomy)->category_count > 0)? true:false;
-
+		$custom_tax_has_contents = ($custom_tax->count > 0)? true:false;
 		echo "<span class='nochildimage-".odm_country_manager()->get_current_country()." ".$custom_tax->slug."'>";
 
 		// add link if contetns categorized by this topic exist
 		if ($custom_tax_has_contents):
-			echo '<h5><a href="/'.$registed_custom_tax.'/' . $custom_tax->slug . '">';
+			echo '<h5><a href="/'.$custom_tax->taxonomy.'/' . $custom_tax->slug . '">';
     endif;
 
 		echo $custom_tax->name;
@@ -97,23 +95,51 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 		foreach($children as $child){
 			// Get immediate children of current category
 				$cat_children = get_terms( $cus_taxonomy, array('parent' => $child->term_id, 'hide_empty' => $hide_empty_taxonomy, 'orderby' => 'name', ) );
-			echo "<li>";
-			// Display current category
-			if ($topic_or_category == 'topic'):
-				$this->print_category_linked_to_topic($child, $current_page_slug);
-			else:
-				$this->print_category_linked_to_custom_taxonomy($child, $current_page_slug);
-			endif;
+			 if($hide_empty_taxonomy && ($topic_or_category=="topic")){
+				 $posts = get_posts( array(
+				    'post_type' => 'topic',
+				    'fields' => 'ids',
+				    'tax_query' => array(
+				        array(
+				            'taxonomy' => $cus_taxonomy,
+				            'field'    => 'term_id',
+				            'terms'    => array( $child->term_id )
+				        ),
+				    ),
+				) );
 
-			// if current category has children
-			if ( !empty($cat_children) ) {
-				// add a sublevel
-				echo "<ul>";
-				// display the children
-				$this->walk_child_customTax( $cat_children,  $topic_or_category, $cus_taxonomy, $hide_empty_taxonomy);
-				echo "</ul>";
+				if ( count($posts) ) {
+						echo "<li>";
+						$this->print_category_linked_to_topic($child, $current_page_slug);
+						// if current category has children
+						if ( !empty($cat_children) ) {
+							// add a sublevel
+							echo "<ul>";
+							// display the children
+							$this->walk_child_customTax( $cat_children,  $topic_or_category, $cus_taxonomy, $hide_empty_taxonomy);
+							echo "</ul>";
+						}
+						echo "</li>";
+				}
+			}else{
+				echo "<li>";
+				// Display current category
+				if ($topic_or_category == 'topic'):
+					$this->print_category_linked_to_topic($child, $current_page_slug);
+				else:
+					$this->print_category_linked_to_custom_taxonomy($child, $current_page_slug);
+				endif;
+
+				// if current category has children
+				if ( !empty($cat_children) ) {
+					// add a sublevel
+					echo "<ul>";
+					// display the children
+					$this->walk_child_customTax( $cat_children,  $topic_or_category, $cus_taxonomy, $hide_empty_taxonomy);
+					echo "</ul>";
+				}
+				echo "</li>";
 			}
-			echo "</li>";
 		}
 	}
 
@@ -141,7 +167,7 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 		$registed_custom_tax = isset( $instance['registed_custom_tax']) ? $instance['registed_custom_tax'] : 'category';
 		$hide_empty_taxonomy = (!empty($instance['hide_empty_taxonomy'])) ? true : false;
 		$is_expended = (!empty($instance['is_expended'])) ? true : false;
-		$cus_taxonomy = $registed_custom_tax;
+		$cus_taxonomy = $registed_custom_tax; 
 	?>
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -254,7 +280,7 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'registed_custom_tax' ); ?>"><?php _e( 'Select Taxonomy:' ); ?></label>
-			<select id="<?php echo $this->get_field_id( 'registed_custom_tax' ); ?>" name="<?php echo $this->get_field_name( 'registed_custom_tax' ); ?>" type="text">
+			<select id="<?php echo $this->get_field_id( 'registed_custom_tax' ); ?>" name="<?php echo $this->get_field_name( 'registed_custom_tax' ); ?>">
 				<option value="" <?php if (!$registed_custom_tax) { echo " selected"; } ?> >Select</option>
 				<?php $registed_tax = get_taxonomies(array('public'   => true, '_builtin' => false )); ?>
 				<option <?php if ($registed_custom_tax == "category" ) { echo " selected"; } ?> value="<?php echo "category"  ?>"><?php echo "category";  ?></option>
@@ -273,7 +299,7 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'topic_or_category' ); ?>"><?php _e( 'Links should take user to:' ); ?></label>
-			<select id="<?php echo $this->get_field_id( 'topic_or_category' ); ?>" name="<?php echo $this->get_field_name( 'topic_or_category' ); ?>" type="text">
+			<select id="<?php echo $this->get_field_id( 'topic_or_category' ); ?>" name="<?php echo $this->get_field_name( 'topic_or_category' ); ?>">
 				<option <?php if ($topic_or_category == 'topic') { echo " selected"; } ?> value="topic">Topic</option>
 				<option <?php if ($topic_or_category == 'category') { echo " selected"; } ?> value="category">Term</option>
 			</select>
@@ -308,7 +334,7 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 
 		$instance['od_include'] = $new_instance['od_include'] ;
 		$instance['od_exclude'] = $new_instance['od_exclude'] ;
-		$instance['topic_or_category'] = isset($new_instance['topic_or_category']) ? $new_instance['topic_or_category'] : 'topic';
+		$instance['topic_or_category'] = isset($new_instance['topic_or_category']) ? $new_instance['topic_or_category'] : '';
 		$instance['registed_custom_tax'] = isset($new_instance['registed_custom_tax']) ? $new_instance['registed_custom_tax'] : '';
 		$instance['hide_empty_taxonomy'] = $new_instance['hide_empty_taxonomy'];
 		$instance['is_expended'] = $new_instance['is_expended'];
