@@ -131,7 +131,14 @@ $term = $wp_query->queried_object;
 
 	    </div>
   	</section>
-
+		
+		<section class="container">
+			<div class="row">
+				<div class="sixteen columns">
+					<?php odm_get_template('pagination',array(),true); ?>
+				</div>
+			</div>
+		</section>
   <?php
   endif; ?>
 
