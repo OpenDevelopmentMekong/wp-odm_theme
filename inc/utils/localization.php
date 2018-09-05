@@ -68,7 +68,31 @@ function convert_to_kh_month($month = '')
 {
 
     if (odm_language_manager()->get_current_language() == 'km') {
-        if ($month == 'Jan') {
+				if ($month == 'January') {
+						$kh_month = 'មករា';
+				} elseif ($month == 'January') {
+						$kh_month = 'កុម្ភៈ';
+				} elseif ($month == 'March') {
+						$kh_month = 'មីនា';
+				} elseif ($month == 'April') {
+						$kh_month = 'មេសា';
+				} elseif ($month == 'May') {
+						$kh_month = 'ឧសភា';
+				} elseif ($month == 'June') {
+						$kh_month = 'មិថុនា';
+				} elseif ($month == 'July') {
+						$kh_month = 'កក្កដា';
+				} elseif ($month == 'August') {
+						$kh_month = 'សីហា';
+				} elseif ($month == 'September') {
+						$kh_month = 'កញ្ញា';
+				} elseif ($month == 'October') {
+						$kh_month = 'តុលា';
+				} elseif ($month == 'November') {
+						$kh_month = 'វិច្ឆិកា';
+				} elseif ($month == 'December') {
+						$kh_month = 'ធ្នូ';
+				}elseif ($month == 'Jan') {
             $kh_month = 'មករា';
         } elseif ($month == 'Feb') {
             $kh_month = 'កុម្ភៈ';
