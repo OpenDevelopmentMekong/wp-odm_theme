@@ -66,7 +66,7 @@
   <!-- notification-message -->
 	<?php
 	$options_msg = get_option('odm_options');
-	if (isset($options_msg['notice_message']) && $options_msg['notice_message'] != ''): ?>
+	if (isset($options_msg['enable_notification']) && $options_msg['notice_message']): ?>
 		<div id="notification-message" class="container">
 			<div class="sixteen columns">
 				<div class="notification-message-box">
