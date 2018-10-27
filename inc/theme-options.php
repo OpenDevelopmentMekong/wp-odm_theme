@@ -206,9 +206,19 @@ class Odm_Options
 
     function notice_message_field() {
       $notice_message = $this->options['notice_message'];
+      if (isset($this->options['enable_notification']) && $this->options['enable_notification']):
+        if(!$notice_message):
+          echo '<i style="color:red">The notification message can not empty, please add notification message.</i><br/>'; 
+        endif;
+      endif;
       ?>
       <textarea id="odm_notice_message" name="odm_options[notice_message]" rows="5" placeholder="<?php _e('Notification messages','odm'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('Notification messages','odm');?>'" rows="1" cols="68"><?php echo $notice_message; ?></textarea></br>
-      <i><?php _e("(The notification will appear floating at the bottom of the site)", 'odm'); ?></i>
+      <p>
+       <input class="odm_enable-notification" id="odm_enable_notification" type="checkbox" name="odm_options[enable_notification]" <?php if (isset($this->options['enable_notification']) && $this->options['enable_notification']) echo 'checked'; ?> />
+       <label for="odm_enable_notification"><?php _e('Enable notification', 'odm'); ?>
+         <?php _e("(will appear floating above the slider of the site)", 'odm'); ?>
+       </label>
+      </p>
       <?php
    }
 
