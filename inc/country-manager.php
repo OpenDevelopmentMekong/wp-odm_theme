@@ -8,20 +8,56 @@
 class Odm_Country_Manager {
 
   var $countries = [
-    'mekong' => array('name' => 'Mekong', 'theme' => 'mekong', 'code' => 'mekong', 'lang' => null, 'url' => 'https://opendevelopmentmekong.net', 'url_pp' => 'https://pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong'),
-    'cambodia' => array('name' => 'Cambodia', 'theme' => 'cambodia', 'code' => 'kh', 'lang' => 'km', 'url' => 'https://opendevelopmentcambodia.net', 'url_pp' => 'https://pp.opendevelopmentcambodia.net', 'twitter' => 'opendevcam'),
-    'laos' => array('name' => 'Laos', 'theme' => 'laos', 'code' => 'la', 'lang' => 'lo', 'url' => 'https://laos.opendevelopmentmekong.net', 'url_pp' => 'https://laos.pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong'),
-    'myanmar' => array('name' => 'Myanmar', 'theme' => 'myanmar', 'code' => 'mm', 'lang' => 'my', 'url' => 'https://opendevelopmentmyanmar.net', 'url_pp' => 'https://pp.opendevelopmentmyanmar.net', 'twitter' => 'opendevmekong'),
-    'thailand' => array('name' => 'Thailand', 'theme' => 'thailand', 'code' => 'th', 'lang' => 'th', 'url' => 'https://thailand.opendevelopmentmekong.net', 'url_pp' => 'https://thailand.pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong'),
-    'vietnam' => array('name' => 'Vietnam', 'theme' => 'vietnam', 'code' => 'vn', 'lang' => 'vi', 'url' => 'https://vietnam.opendevelopmentmekong.net', 'url_pp' => 'https://vietnam.pp.opendevelopmentmekong.net', 'twitter' => 'opendevmekong')
-  ];
+    'mekong' => array('name' => 'Mekong',
+		      'theme' => 'mekong',
+		      'code' => 'mekong',
+		      'lang' => null,
+		      'url' => 'https://opendevelopmentmekong.net',
+		      'url_pp' => 'https://wp.odm2.staging.derilinx.com',
+		      'twitter' => 'opendevmekong'),
+    'cambodia' => array('name' => 'Cambodia',
+			'theme' => 'cambodia',
+			'code' => 'kh',
+			'lang' => 'km',
+			'url' => 'https://opendevelopmentcambodia.net',
+			'url_pp' => 'https://odc.wp.odm2.staging.derilinx.com',
+			'twitter' => 'opendevcam'),
+    'laos' => array('name' => 'Laos',
+		    'theme' => 'laos',
+		    'code' => 'la',
+		    'lang' => 'lo',
+		    'url' => 'https://laos.opendevelopmentmekong.net',
+		    'url_pp' => 'https://odl.wp.odm2.staging.derilinx.com',
+		    'twitter' => 'opendevmekong'),
+    'myanmar' => array('name' => 'Myanmar',
+		       'theme' => 'myanmar',
+		       'code' => 'mm',
+		       'lang' => 'my',
+		       'url' => 'https://opendevelopmentmyanmar.net',
+		       'url_pp' => 'https://odmy.wp.staging.derilinx.com',
+		       'twitter' => 'opendevmekong'),
+    'thailand' => array('name' => 'Thailand',
+			'theme' => 'thailand',
+			'code' => 'th',
+			'lang' => 'th',
+			'url' => 'https://thailand.opendevelopmentmekong.net',
+			'url_pp' => 'https://odt.wp.odm2.staging.derilinx.com',
+			'twitter' => 'opendevmekong'),
+    'vietnam' => array('name' => 'Vietnam',
+		       'theme' => 'vietnam',
+		       'code' => 'vn',
+		       'lang' => 'vi',
+		       'url' => 'https://vietnam.opendevelopmentmekong.net',
+		       'url_pp' => 'https://odv.wp.odm2.staging.derilinx.com',
+		       'twitter' => 'opendevmekong')
+		    ];
 
 	function __construct() {
     //
 	}
 
   function is_pp(){
-    return strpos($_SERVER['HTTP_HOST'], 'pp.') !== false;
+    return strpos($_SERVER['HTTP_HOST'], 'staging.') !== false;
   }
 
   function get_current_country(){
