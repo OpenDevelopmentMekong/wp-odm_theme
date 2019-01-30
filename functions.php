@@ -598,4 +598,20 @@ function add_custom_meta_tags() {
   set_site_meta();
 }
 add_action('wp_head', 'add_custom_meta_tags', 5);
+
+function odm_get_main_menu() {
+  $locations = get_nav_menu_locations();
+  $menu = wp_get_nav_menu_object( $locations['header_menu'] );
+
+  $items = wp_get_nav_menu_items($menu->term_id);
+  return $items;
+}
+
+add_action('rest_api_init', function() {
+    register_rest_route('odm', 'menu', array('methods' => 'GET',
+					     'callback' =>'odm_get_main_menu'
+					     )
+			);
+  });
+
 ?>
