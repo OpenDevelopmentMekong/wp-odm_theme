@@ -164,7 +164,7 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
   //Add scale to map
   L.control.scale().addTo(map);
 
-	var credits = L.control.attribution({prefix: ''}).addTo(map);
+	var credits = L.control.attribution({prefix: '<a href="http://leafletjs.com/" target="_blank">Leaflet</a>'}).addTo(map);
 	var copyRight = conf.base_layer.copy_right? conf.base_layer.copy_right : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
 	credits.addAttribution(copyRight);
 
