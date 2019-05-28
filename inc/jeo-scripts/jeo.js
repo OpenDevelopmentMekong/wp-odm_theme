@@ -164,11 +164,11 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
   //Add scale to map
   L.control.scale().addTo(map);
 
-	var credits = L.control.attribution().addTo(map);
+	var credits = L.control.attribution({prefix: ''}).addTo(map);
 	var copyRight = conf.base_layer.copy_right? conf.base_layer.copy_right : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
 	credits.addAttribution(copyRight);
 
-	console.log(conf);
+	//console.log(conf);
   /*
    * Geocode
    */
@@ -484,7 +484,7 @@ jeo.create_layer_by_maptype = function (map, layer){
     [conf.pan_limits.north, conf.pan_limits.east]
    ];
   }
-console.log(conf);
+//console.log(conf);
   newConf.zoom = parseInt(conf.zoom);
   newConf.minZoom = parseInt(conf.min_zoom);
   newConf.maxZoom = parseInt(conf.max_zoom);
