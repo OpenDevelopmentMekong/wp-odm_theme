@@ -165,9 +165,10 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
   L.control.scale().addTo(map);
 
 	var credits = L.control.attribution().addTo(map);
-	credits.addAttribution(conf.base_layer.copy_right);
+	var copyRight = conf.base_layer.copy_right? conf.base_layer.copy_right : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
+	credits.addAttribution(copyRight);
 
-	//console.log(conf);
+	console.log(conf);
   /*
    * Geocode
    */

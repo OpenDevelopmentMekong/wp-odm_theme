@@ -342,7 +342,7 @@ class Odm_Options
     if (isset($map_data['base_layer'])) {
         $select_base_layer = $map_data['base_layer']['type'];
         $base_layer_url = $map_data['base_layer']['url'];
-        $base_layer_url_copyright = $map_data['base_layer']['copy_right']? $map_data['base_layer']['copy_right'] : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.       ';
+        $base_layer_url_copyright = $map_data['base_layer']['copy_right']? $map_data['base_layer']['copy_right'] : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
     } else {
         $select_base_layer = 'openstreetmap';
         $base_layer_url = '';
