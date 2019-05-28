@@ -208,7 +208,7 @@ class Odm_Options
       $notice_message = $this->options['notice_message'];
       if (isset($this->options['enable_notification']) && $this->options['enable_notification']):
         if(!$notice_message):
-          echo '<i style="color:red">The notification message can not empty, please add notification message.</i><br/>'; 
+          echo '<i style="color:red">The notification message can not empty, please add notification message.</i><br/>';
         endif;
       endif;
       ?>
@@ -342,9 +342,11 @@ class Odm_Options
     if (isset($map_data['base_layer'])) {
         $select_base_layer = $map_data['base_layer']['type'];
         $base_layer_url = $map_data['base_layer']['url'];
+        $base_layer_url_copyright = $map_data['base_layer']['copy_right']? $map_data['base_layer']['copy_right'] : '';
     } else {
         $select_base_layer = 'openstreetmap';
         $base_layer_url = '';
+        $base_layer_url_copyright = '';
     }
         ?>
 
@@ -390,6 +392,12 @@ class Odm_Options
      <input type="text" name="odm_options[map_data][base_layer][url]" id="baselayer_url_box" class="layer_title" size="40" placeholder="<?php _e('Enter layer URL', 'odm');
         ?>" value="<?php echo $base_layer_url;
         ?>" />
+    <p>
+      <?php _e('Enter layer copy right', 'odm'); ?>
+    </p>
+       <textarea id="baselayer_copy_right_box" name="odm_options[map_data][base_layer][copy_right]" rows="1" cols="90">
+         <?php echo $base_layer_url_copyright;?>
+       </textarea>
     </div>
 
     <p><a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odm');
