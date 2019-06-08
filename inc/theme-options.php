@@ -395,9 +395,7 @@ class Odm_Options
     <p>
       <?php _e('Enter layer copy right', 'odm'); ?>
     </p>
-       <textarea id="baselayer_copy_right_box" name="odm_options[map_data][base_layer][copy_right]" rows="1" cols="90">
-         <?php echo $base_layer_url_copyright;?>
-       </textarea>
+    <textarea id="baselayer_copy_right_box" name="odm_options[map_data][base_layer][copy_right]" rows="1" cols="90"><?php echo $base_layer_url_copyright;?></textarea>
     </div>
 
     <p><a class="button-primary preview-map" href="#"><?php _e('Update preview', 'odm');
