@@ -162,8 +162,8 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
   if(typeof(jeo.layers) != 'undefined')
     map.addControl(new jeo.layers());
   //Add scale to map
-  L.control.scale().addTo(map);
-	console.log(conf);
+  L.control.scale().addTo(map); 
+   
 	if(typeof(conf.base_layer) !="undefined"){
 		var copyRight = conf.base_layer.copy_right? conf.base_layer.copy_right : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
 		L.control.attribution({prefix: '<a href="http://leafletjs.com/" target="_blank">Leaflet</a>'}).addAttribution(copyRight).addTo(map);
@@ -171,9 +171,7 @@ var detect_lang_site = document.documentElement.lang; // or  $('html').attr('lan
 		var copyRight = conf.layers[0].copy_right? conf.layers[0].copy_right : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
 		L.control.attribution({prefix: '<a href="http://leafletjs.com/" target="_blank">Leaflet</a>'}).addAttribution(copyRight).addTo(map);
 	}
-
-
-
+ 
 	//console.log(conf);
   /*
    * Geocode
