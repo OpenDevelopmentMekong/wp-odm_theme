@@ -64,6 +64,7 @@ function set_default_map_baselayer($map_ID = null){
 		$map = odm_get_interactive_map_data();
 	endif;
 
+	$options = get_option('odm_options');
 	if(!empty($map)):
 		if($map['base_layer']):
 			$baselayer = $map['base_layer'];
@@ -72,7 +73,8 @@ function set_default_map_baselayer($map_ID = null){
 					'ID' => 0,
 					'filtering' => '',
 					'type' => 'tilelayer',
-					'tile_url' => $baselayer['url']
+					'tile_url' => $baselayer['url'],
+					'copy_right' => $options['map_data']['base_layer']['copy_right']
 				);
 
 				return $default_map;
