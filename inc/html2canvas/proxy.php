@@ -30,14 +30,19 @@ function get_url_details($url, $attempt = 1, $callback = "")
 {
     $pathinfo = pathinfo($url);
 
-    $max_attempts = 10;
+    // Fail fast, tell the client we're failed
+    // Don't loop here and take all of the php interpreters.
+    $max_attempts = 1;
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_NOBODY, 0);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 500);
+    // Timeout < the timeout on the frontend load balancer
+    // fail fast, return to client
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
     //curl_setopt($ch, CURLOPT_PROXY, 'username:password@host:port');
     $data = curl_exec($ch);
     $error = curl_error($ch);
