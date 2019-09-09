@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/OpenDevelopmentMekong/wp-odm_theme#readme",
   "devDependencies": {
-    "bower": "^1.7.9",
+    "bower": "^1.8.8",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.10",
     "gulp-concat": "^2.6.0",
