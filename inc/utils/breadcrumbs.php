@@ -203,20 +203,23 @@ function echo_the_breadcrumb_page_with_parents($separator){
 	// Get parents in the right order
 	$anc = array_reverse($anc);
 	// Parent page loop
+    $parents = '';
 	foreach ($anc as $ancestor):
 		$parents .= '<li class="item-parent item-parent-'.$ancestor.'"><a class="bread-parent bread-parent-'.$ancestor.'" href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
 	endforeach;
 	// Display parent pages
-	echo $parents;
-	echo the_separated_breadcrumb($separator, $ancestor, 'page');
+    if ($parents) {
+        echo $parents;
+        echo the_separated_breadcrumb($separator, $ancestor, 'page');
+    }
 	echo '<li class="item-current item-'.get_the_ID().'">';
-	if (!isset($_GET['map_id']) and $_GET['map_id'] != ''):
+	if (isset($_GET['map_id']) and $_GET['map_id'] != ''):
 		echo '<strong title="'.get_the_title().'">';
 	endif;
 	echo '<a class="item-current bread-current-'.get_the_ID().'" href="'.get_permalink().'" title="'.get_the_title().'">';
 	echo get_the_title();
 	echo '</a>';
-	if (!isset($_GET['map_id']) && $_GET['map_id'] != ''):
+	if (isset($_GET['map_id']) && $_GET['map_id'] != ''):
 		echo '</strong>';
 	endif;
 	echo '</li>';
