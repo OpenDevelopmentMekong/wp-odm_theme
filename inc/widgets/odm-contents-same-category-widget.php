@@ -62,20 +62,20 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 			endif;
 		endforeach;
 
-		if (!empty($categories)):
+		if (!empty($categories)){
 			$query = array(
-					'post_type'        => $supported_post_types,
-					'posts_per_page'   => $limit,
-					'tax_query' => array(
-									array(
-										'taxonomy' => 'category',
-										'field' => 'id',
-										'terms' => $categories
-									)
-							)
-				);
-			  $posts = query_posts($query);
-		endif;
+                'post_type'        => sizeof($supported_post_types) == 1 ? $supported_post_types[0] : $supported_post_types,
+                'posts_per_page'   => $limit,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'category',
+                        'field' => 'id',
+                        'terms' => $categories
+                    )
+                )
+            );
+            $posts = query_posts($query);
+		}
 
 		if($posts){
 			$selected_post_type = get_post_type_object($supported_post_types[0]);
