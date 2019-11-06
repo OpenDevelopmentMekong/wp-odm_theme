@@ -74,7 +74,7 @@ function set_default_map_baselayer($map_ID = null){
 					'filtering' => '',
 					'type' => 'tilelayer',
 					'tile_url' => $baselayer['url'],
-					'copy_right' => $options['map_data']['base_layer']['copy_right']
+					'copy_right' => isset($options['map_data']['base_layer']['copy_right']) ? $options['map_data']['base_layer']['copy_right'] : ''
 				);
 
 				return $default_map;
@@ -621,6 +621,9 @@ function get_selected_layers_of_map_by_mapID($map_ID) {
 
 	if(!empty($get_layers)){
 		foreach ($get_layers as $key => $layer) {
+			if (!isset($layer['ID'])) {
+			   continue;
+			}
 			$layer_ID = $layer['ID'];
 			$layer_postmeta = get_post_meta_of_layer($layer_ID, true);
 			if($layer['filtering']) :
