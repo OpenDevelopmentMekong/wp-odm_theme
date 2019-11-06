@@ -3,7 +3,8 @@
 
 <head>
 <?php global $post, $page, $paged; ?>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer" content="origin" />
 <meta charset="<?php bloginfo('charset'); ?>" />
 <title><?php set_site_title(); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
