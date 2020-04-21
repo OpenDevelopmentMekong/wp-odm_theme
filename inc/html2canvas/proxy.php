@@ -27,17 +27,39 @@ if (!in_array($file_details["mime_type"], array("image/jpg", "image/png")))
 }
 
 function get_url_details($url, $attempt = 1, $callback = "")
-{
+{   
+   // Whitelist Domains
+   $whitelist_domains = array(
+   "geoserver.opendevelopmentmekong.net",
+   "www.geoserver.opendevelopmentmekong.net",
+   "cartodb.s3.amazonaws.com",
+   "opendevelopmentmekong.net",
+   "opendevelopmentcambodia.net",
+   "www.opendevelopmentmekong.net",
+   "www.opendevelopmentcambodia.net"
+   );
+
     $pathinfo = pathinfo($url);
-
-    $max_attempts = 2;
-
+    $parsed_url = parse_url($url);
+    $max_attempts = 1;
+    if (!in_array($parsed_url['host'], $whitelist_domains))
+    {
+    print "error:Not Allowed. Domain not in whitelist_domains";
+    return array(
+        "pathinfo" => $pathinfo,
+        "error" => "Not Allowed. Domain not in whitelist_domains",
+        "data" => "",
+        "mime_type" => ""
+    );
+    }
+    else
+    {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_NOBODY, 0);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
     //curl_setopt($ch, CURLOPT_PROXY, 'username:password@host:port');
     $data = curl_exec($ch);
     $error = curl_error($ch);
@@ -55,4 +77,5 @@ function get_url_details($url, $attempt = 1, $callback = "")
         "data" => $data,
         "mime_type" => $mime_type
     );
+}
 }
