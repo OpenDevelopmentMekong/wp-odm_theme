@@ -30,14 +30,14 @@ function get_url_details($url, $attempt = 1, $callback = "")
 {
     $pathinfo = pathinfo($url);
 
-    $max_attempts = 10;
+    $max_attempts = 2;
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_NOBODY, 0);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 500);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     //curl_setopt($ch, CURLOPT_PROXY, 'username:password@host:port');
     $data = curl_exec($ch);
     $error = curl_error($ch);
