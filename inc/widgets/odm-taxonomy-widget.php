@@ -173,7 +173,7 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	<?php
 		$cat_included_id_arr = !empty($instance['od_include']) ? explode(",", $instance['od_include']) : array();
 		$cat_excluded_id_arr = !empty($instance['od_exclude']) ? explode(",", $instance['od_exclude']) : array();
-		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic'; 
+		$topic_or_category = isset( $instance['topic_or_category']) ? $instance['topic_or_category'] : 'topic';
 		echo "<div>";
 		$args = array(
 		  'orderby' => 'name',
@@ -280,4 +280,4 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("Odm_Taxonomy_Widget");'));
+add_action( 'widgets_init', function() { register_widget("Odm_Taxonomy_Widget"); });
