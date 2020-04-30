@@ -75,11 +75,11 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 			$link_template .= $child_template;
 
 			$link_template .= "</li>";
-			
+
 		endif;
 
 		return $link_template;
-		
+
 	}
 
 		/**
@@ -95,7 +95,7 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 		$child_template = '';
 
 		if ( !empty($children) ) {
-			
+
 			$child_template = $this->walk_child_category( $children, 'category' );
 
 		}
@@ -123,7 +123,7 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 
 			$link_template .= "</li>";
 
-    	endif;		
+    	endif;
 
     	return $link_template;
 
@@ -145,7 +145,7 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 		foreach($children as $child){
 			// Get immediate children of current category
 			$cat_children = get_categories( array('parent' => $child->term_id, 'hide_empty' => 1, 'orderby' => 'name', ) );
-			
+
 			// Display current category
 			if ($topic_or_category == 'topic'):
 				$topic_layout = $this->print_category_linked_to_topic($child, $cat_children, $current_page_slug);
@@ -198,7 +198,7 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 			    $('ul', this).siblings('span').addClass("plusimage-<?php echo odm_country_manager()->get_current_country();?>");
 		  	}
 
-			//if parent is showed, child need to expend 
+			//if parent is showed, child need to expend
 		  if( $('ul li', this).children("span").hasClass('<?php echo $current_page_slug; ?>') ){
 				$('span.<?php echo $current_page_slug; ?>', this).siblings("ul").show();
 				$('span.<?php echo $current_page_slug; ?>', this).toggleClass('minusimage-<?php echo odm_country_manager()->get_current_country();?>');
@@ -250,7 +250,7 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 				$children = get_categories( array('parent' => $category->term_id, 'hide_empty' => 0, 'orderby' => 'term_id', ) );
 
 			}
-			
+
 			if ($topic_or_category == 'topic'):
 				echo $this->print_category_linked_to_topic($category, $children, $current_page_slug);
 			else:
@@ -324,4 +324,4 @@ class Odm_Taxonomy_Widget_V2 extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("Odm_Taxonomy_Widget_V2");'));
+add_action( 'widgets_init', function() { register_widget("Odm_Taxonomy_Widget_V2"); });

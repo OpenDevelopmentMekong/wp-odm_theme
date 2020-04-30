@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: odm-wptheme\n"
-"POT-Creation-Date: 2018-05-06 16:39+0700\n"
-"PO-Revision-Date: 2018-05-06 16:58+0700\n"
+"POT-Creation-Date: 2018-10-29 00:08+0700\n"
+"PO-Revision-Date: 2018-10-29 00:09+0700\n"
 "Last-Translator: Sam Ath TRY <tsamath.gtsc@gmail.com>, 2016\n"
 "Language-Team: Khmer (https://www.transifex.com/open-development-mekong/teams/27158/km/)\n"
 "Language: km\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _;_e;__;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -47,6 +47,22 @@ msgstr "ចូលទៅ​ទំព័រ​ដើម​របស់​គេហ
 #: 404.php:26
 msgid "Contact us"
 msgstr "ទំនាក់ទំនង​មក​​យើងខ្ញុំ"
+
+#: _1 archive-topic.php:11 archive-post.php:11
+msgid "Topics"
+msgstr "ប្រធានបទ"
+
+#: _1 archive-topic.php:51 archive-post.php:39 archive-topic.php:70
+msgid "Environment and land"
+msgstr "បរិស្ថាន និងដី"
+
+#: _1 archive-topic.php:69 archive-post.php:67 archive-topic.php:88
+msgid "Economy"
+msgstr "សេដ្ឋកិច្ច"
+
+#: _1 archive-topic.php:85 archive-post.php:86 archive-topic.php:104
+msgid "People"
+msgstr "មនុស្ស"
 
 #: ______taxonomy-layer-category.php:8 taxonomy-layer-category.php:8
 msgid "Map catalogue"
@@ -83,22 +99,6 @@ msgstr "ផែនទី"
 #: archive-news-article.php:9 i18n/extra-strings.php:15
 msgid "News"
 msgstr "ព័ត៌មាន​"
-
-#: archive-post.php:11 archive-topic.php:11
-msgid "Topics"
-msgstr "ប្រធានបទ"
-
-#: archive-post.php:39 archive-topic.php:45
-msgid "Environment and land"
-msgstr "បរិស្ថាន និងដី"
-
-#: archive-post.php:67 archive-topic.php:63
-msgid "Economy"
-msgstr "សេដ្ឋកិច្ច"
-
-#: archive-post.php:86 archive-topic.php:79
-msgid "People"
-msgstr "មនុស្ស"
 
 #: archive-profiles.php:9
 msgid "Profiles"
@@ -178,109 +178,109 @@ msgstr ""
 "ជារចនាសម្ព័ន្ធនៃការគ្រប់គ្រងទិន្និន័យខាងក្រោយ។  ដើម្បីស្វែងយល់បន្ថែមពីស្ថាបត្យកម្មនៃប្រព័ន្ធយើងខ្ញុំសូមអាន <a href=\"%s\" target=\"_blank\" rel="
 "\"external\"><b>ឯកសារនេះ</b></a>."
 
-#: functions.php:60
+#: functions.php:62
 msgid "Topic sidebar"
 msgstr "របារចំហៀងតាមប្រធានបទ"
 
-#: functions.php:66
+#: functions.php:68
 msgid "Homepage area top left"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​ខាងលើ​ផ្នែកឆ្វេង"
 
-#: functions.php:74
+#: functions.php:76
 msgid "Homepage area top right"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​ខាងលើ​​ផ្នែកខាងស្តាំ"
 
-#: functions.php:82
+#: functions.php:84
 msgid "Homepage area middle"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​ចំកណ្តាល"
 
-#: functions.php:90
+#: functions.php:92
 msgid "Homepage area bottom left"
 msgstr "កន្លែងទំព័រ​ដើម នៅ​​ខាងក្រោម​ផ្នែកឆ្វេង"
 
-#: functions.php:98
+#: functions.php:100
 msgid "Homepage area bottom right"
 msgstr "កន្លែងទំព័រ​ដើម នៅខាងក្រោម​ផ្នែក​​ខាងស្តាំ"
 
-#: functions.php:106
+#: functions.php:108
 msgid "WPCKAN Dataset detail sidebar"
 msgstr ""
 
-#: functions.php:112
+#: functions.php:114
 msgid "Story top"
 msgstr "ដំណើររឿង នៅ​ខាងលើ​បំផុត"
 
-#: functions.php:118
+#: functions.php:120
 msgid "Story bottom"
 msgstr "ដំណើររឿង នៅ​ក្រោម​បំផុត"
 
-#: functions.php:124
+#: functions.php:126
 msgid "Profile area right sidebar"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅរបារចំហៀងខាងស្តាំ"
 
-#: functions.php:130
+#: functions.php:132
 msgid "Profile area bottom left"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅ​ក្រោម​បំផុតខាងឆ្វេង"
 
-#: functions.php:138
+#: functions.php:140
 msgid "Profile area bottom right"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅ​ក្រោម​បំផុតខាងស្តាំ"
 
-#: functions.php:146
+#: functions.php:148
 msgid "Profile with right sidebar only"
 msgstr "ទីតាំងព័ត៌មានទិន្នន័យ នៅរបារចំហៀងខាងស្តាំប៉ុណ្ណោះ"
 
-#: functions.php:152 inc/theme-options.php:70
+#: functions.php:154 inc/theme-options.php:70
 msgid "Category page"
 msgstr "ទំព័រតាមចំណាត់ថ្នាក់"
 
-#: functions.php:260
+#: functions.php:262
 msgid "default"
 msgstr "ការ​កំណត់​ទុក​ស្រាប់"
 
-#: functions.php:305
+#: functions.php:307
 msgctxt "taxonomy general name"
 msgid "News Sources"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:306
+#: functions.php:308
 msgctxt "taxonomy singular name"
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
-#: functions.php:307
+#: functions.php:309
 msgid "Search News Source"
 msgstr "ស្វែងរក​ប្រភពសារ​ព័ត៌មាន"
 
-#: functions.php:308
+#: functions.php:310
 msgid "All News Sources"
 msgstr "ប្រភពសារ​ព័ត៌មាន​ទាំងអស់"
 
-#: functions.php:309
+#: functions.php:311
 msgid "Parent News Source"
 msgstr "ប្រភព​សារព័ត៌មាន​ដើម"
 
-#: functions.php:310
+#: functions.php:312
 msgid "Parent News Source:"
 msgstr "ប្រភពសារ​ព័ត៌មាន​ដើម៖"
 
-#: functions.php:311
+#: functions.php:313
 msgid "Edit News Source"
 msgstr "កែប្រែ​ប្រភពសារ​ព័ត៌មាន"
 
-#: functions.php:312
+#: functions.php:314
 msgid "Update News Source"
 msgstr "ធ្វើបច្ចុប្បន្នភាពប្រភពសារ​ព័ត៌មាន"
 
-#: functions.php:313
+#: functions.php:315
 msgid "Add New News Source"
 msgstr "បន្ថែម​ប្រភពសារ​ព័ត៌មាន​ថ្មី"
 
-#: functions.php:314
+#: functions.php:316
 msgid "New News Source Name"
 msgstr "ឈ្មោះ​ប្រភពសារ​ព័ត៌មាន​ថ្មី"
 
-#: functions.php:315
+#: functions.php:317
 msgid "News Source"
 msgstr "ប្រភពសារព័ត៍មាន"
 
@@ -555,6 +555,10 @@ msgstr "វិច្ឆិកា"
 #: i18n/extra-strings.php:70 inc/advanced-navigation.php:310
 msgid "Dec"
 msgstr "ធ្នូ"
+
+#: i18n/extra-strings.php:71
+msgid "Select..."
+msgstr "ជ្រើសរើស..."
 
 #: inc/advanced-navigation.php:156 page-data-old.php:39
 msgid "Text search"
@@ -1547,156 +1551,160 @@ msgstr ""
 msgid "Base map settings"
 msgstr ""
 
-#: inc/theme-options.php:210
+#: inc/theme-options.php:215
 msgid "Notification messages"
 msgstr "សារឲ្យដំណឹង"
 
-#: inc/theme-options.php:211
-msgid "(The notification will appear floating at the bottom of the site)"
+#: inc/theme-options.php:218
+msgid "Enable notification"
 msgstr ""
 
-#: inc/theme-options.php:218 inc/theme-options.php:219
+#: inc/theme-options.php:219
+msgid "(will appear floating above the slider of the site)"
+msgstr ""
+
+#: inc/theme-options.php:228 inc/theme-options.php:229
 msgid "281321"
 msgstr ""
 
-#: inc/theme-options.php:222
+#: inc/theme-options.php:232
 msgid "(This id can be found on the Featured Area plugin slider's settings.)"
 msgstr ""
 
-#: inc/theme-options.php:249 inc/theme-options.php:250
+#: inc/theme-options.php:259 inc/theme-options.php:260
 msgid "news-article,announcement,topic,profiles"
 msgstr "អត្ថបទសារព័ត៌មាន សេចក្តីប្រកាស ព័ត៌មានទិន្នន័យ"
 
-#: inc/theme-options.php:252
+#: inc/theme-options.php:262
 msgid "(Add the WP post type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
-#: inc/theme-options.php:260 inc/theme-options.php:261
+#: inc/theme-options.php:270 inc/theme-options.php:271
 msgid "dataset, library_record, laws_record, agreement"
 msgstr ""
 
-#: inc/theme-options.php:263
+#: inc/theme-options.php:273
 msgid "(Add the ckan record's type name that would like to show on the category page. (separated by comma))"
 msgstr ""
 
-#: inc/theme-options.php:282
+#: inc/theme-options.php:292
 msgid "Creation date"
 msgstr ""
 
-#: inc/theme-options.php:283
+#: inc/theme-options.php:293
 msgid "Modification date"
 msgstr ""
 
-#: inc/theme-options.php:290 inc/theme-options.php:293 inc/theme-options.php:300 inc/theme-options.php:303
-#: inc/theme-options.php:377 inc/utils/mapping.php:837
+#: inc/theme-options.php:300 inc/theme-options.php:303 inc/theme-options.php:310 inc/theme-options.php:313
+#: inc/theme-options.php:387 inc/utils/mapping.php:837
 msgid "None"
 msgstr "មិនមាន"
 
-#: inc/theme-options.php:342
+#: inc/theme-options.php:352
 msgid "Select base layer"
 msgstr ""
 
-#: inc/theme-options.php:356
+#: inc/theme-options.php:366
 msgid "(USA Only)"
 msgstr "(សហរដ្ឋអាមេរិកប៉ុណ្ណោះ)"
 
-#: inc/theme-options.php:374
+#: inc/theme-options.php:384
 msgid "Custom"
 msgstr ""
 
-#: inc/theme-options.php:380
+#: inc/theme-options.php:390
 msgid "Enter layer URL"
 msgstr "បញ្ចូល URLរបស់ស្រទាប់ផែនទី"
 
-#: inc/theme-options.php:385 inc/theme-options.php:579
+#: inc/theme-options.php:395 inc/theme-options.php:589
 msgid "Update preview"
 msgstr "ធ្វើបច្ចុប្បន្នភាពលើការបង្ហាញ"
 
-#: inc/theme-options.php:388
+#: inc/theme-options.php:398
 msgid "Preview map"
 msgstr "មើលផែនទី"
 
-#: inc/theme-options.php:394
+#: inc/theme-options.php:404
 msgid "Map settings"
 msgstr "ការកំណត់ផែនទី"
 
-#: inc/theme-options.php:397
+#: inc/theme-options.php:407
 msgid "Currently viewing"
 msgstr "កំពុងមើល"
 
-#: inc/theme-options.php:401 inc/theme-options.php:439
+#: inc/theme-options.php:411 inc/theme-options.php:449
 msgid "Center"
 msgstr "កណ្តាល"
 
-#: inc/theme-options.php:406 inc/theme-options.php:450
+#: inc/theme-options.php:416 inc/theme-options.php:460
 msgid "Zoom"
 msgstr "ពង្រីក​/​បង្រួម"
 
-#: inc/theme-options.php:411 inc/theme-options.php:502
+#: inc/theme-options.php:421 inc/theme-options.php:512
 msgid "East"
 msgstr "ខាង​កើត"
 
-#: inc/theme-options.php:416 inc/theme-options.php:510
+#: inc/theme-options.php:426 inc/theme-options.php:520
 msgid "North"
 msgstr "ខាង​ជើង"
 
-#: inc/theme-options.php:421 inc/theme-options.php:518
+#: inc/theme-options.php:431 inc/theme-options.php:528
 msgid "South"
 msgstr "ខាង​ត្បូង"
 
-#: inc/theme-options.php:426 inc/theme-options.php:526
+#: inc/theme-options.php:436 inc/theme-options.php:536
 msgid "West"
 msgstr "ខាង​លិច"
 
-#: inc/theme-options.php:433
+#: inc/theme-options.php:443
 msgid "Map center & zoom"
 msgstr "ដាក់ផែនទីនៅកណ្តាល & ​ពង្រីក/បង្រួម"
 
-#: inc/theme-options.php:435
+#: inc/theme-options.php:445
 msgid "Set current as map center & zoom"
 msgstr ""
 
-#: inc/theme-options.php:458
+#: inc/theme-options.php:468
 msgid "Min zoom"
 msgstr "បង្រួម​ជាអប្បបរមា"
 
-#: inc/theme-options.php:465 inc/theme-options.php:477
+#: inc/theme-options.php:475 inc/theme-options.php:487
 msgid "Current"
 msgstr "ពេលនេះ"
 
-#: inc/theme-options.php:470
+#: inc/theme-options.php:480
 msgid "Max zoom"
 msgstr "ពង្រីក​ជាអតិបរមា"
 
-#: inc/theme-options.php:496
+#: inc/theme-options.php:506
 msgid "Pan limits"
 msgstr ""
 
-#: inc/theme-options.php:498
+#: inc/theme-options.php:508
 msgid "Set current as map panning limits"
 msgstr ""
 
-#: inc/theme-options.php:552
+#: inc/theme-options.php:562
 msgid "Enable geocoding service"
 msgstr "បើកសេវាកូដភូមិសាស្រ្ត"
 
-#: inc/theme-options.php:559
+#: inc/theme-options.php:569
 msgid "Enable geocode search service"
 msgstr "បើកសេវាស្វែងរកកូដភូមិសាស្រ្ត"
 
-#: inc/theme-options.php:564
+#: inc/theme-options.php:574
 msgid "Map handlers"
 msgstr ""
 
-#: inc/theme-options.php:571
+#: inc/theme-options.php:581
 msgid "Disable mousewheel zooming"
 msgstr ""
 
-#: inc/theme-options.php:581
+#: inc/theme-options.php:591
 msgid "Preview mode"
 msgstr "របៀបមើល"
 
-#: inc/theme-options.php:583
+#: inc/theme-options.php:593
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
 
@@ -1888,7 +1896,7 @@ msgid ""
 msgstr ""
 
 #: inc/widgets/odm-contents-same-category-widget.php:156 inc/widgets/odm-custom-posts-widget.php:175
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:252 inc/widgets/odm-taxonomy-widget-v2.php:283
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:278 inc/widgets/odm-taxonomy-widget-v2.php:283
 #: inc/widgets/odm-taxonomy-widget.php:239
 msgid "Title:"
 msgstr "ចំណងជើង៖"
@@ -1951,34 +1959,34 @@ msgid ""
 "that term name and topic name are exactly the same."
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:256
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:282
 #, fuzzy
 #| msgid "Select layout:"
 msgid "Select Taxonomy:"
 msgstr "ជ្រើសរើសស្រទាប់៖"
 
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:267
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:293
 #, fuzzy
 #| msgid "Exclude Category by IDs (separated by commas):"
 msgid "Include Term by IDs (separated by commas):"
 msgstr "ដកចំណាត់ថ្នាក់ចេញដោយ ID (ខណ្ឌចែកដោយសញ្ញាក្បៀស)៖"
 
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:271
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:297
 #, fuzzy
 #| msgid "Exclude Category by IDs (separated by commas):"
 msgid "Exclude Term by IDs (separated by commas):"
 msgstr "ដកចំណាត់ថ្នាក់ចេញដោយ ID (ខណ្ឌចែកដោយសញ្ញាក្បៀស)៖"
 
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:275 inc/widgets/odm-taxonomy-widget-v2.php:295
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:301 inc/widgets/odm-taxonomy-widget-v2.php:295
 #: inc/widgets/odm-taxonomy-widget.php:251
 msgid "Links should take user to:"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:283
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:309
 msgid "Hide empty taxonomy:"
 msgstr ""
 
-#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:288
+#: inc/widgets/odm-taxonomy-link-to-topic-page-widget.php:314
 msgid "Expend the taxonomy:"
 msgstr ""
 
