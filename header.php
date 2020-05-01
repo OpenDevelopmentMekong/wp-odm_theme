@@ -85,7 +85,7 @@
       <div class="row">
         <div class="sixteen columns">
         <?php
-          if (!is_front_page() && !is_page('map-explorer')) : ?>
+          if (!is_front_page() && !is_page('map-explorer') && !is_page('interactive-map')) : ?>
             <div id="main-breadcrumb">
               <?php echo_the_breadcrumbs(); ?>
             </div>
