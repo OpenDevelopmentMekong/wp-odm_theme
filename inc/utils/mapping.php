@@ -166,7 +166,7 @@ function display_layer_as_menu_item_on_mapNavigation($post_ID, $echo =1, $option
 		  <img class="list-loading" src="'. get_stylesheet_directory_uri(). '/img/loading-map.gif">
 		  <span class="list-circle-active"></span>
 		  <span class="list-circle-o"></span>
-		  <span class="layer-item-name">'.$title.'</span>';
+		  <span class="layerLabel layer-item-name">'.$title.'</span>';
 
 		  if ( (odm_language_manager()->get_current_language() !== "en") ){
 			  $get_download_link = get_post_meta($post_ID, '_layer_download_link_localization', true);

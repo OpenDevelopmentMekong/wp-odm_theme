@@ -2,11 +2,15 @@
 
 	jeo.createCallback('markerCentered');
 	var markers = function(map) {
+		//console.log(map.conf);
 		if(map.conf.disableMarkers || map.conf.admin)
 			return false;
-
+		var conf = map.conf;
+		if(typeof(conf.base_layer) !="undefined"){
+			var copyRight = conf.base_layer.copy_right? conf.base_layer.copy_right : '© <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors.';
+			L.control.attribution({prefix: '<a href="http://leafletjs.com/" target="_blank">Leaflet</a>'}).addAttribution(copyRight).addTo(map);
+		}
 		map.markers = markers;
-
 		var	layer,
 			features = [],
 			geojson,
@@ -204,7 +208,9 @@
 
 			if(marker instanceof L.Marker) {
 				activeMarker = marker;
-				marker.setIcon(activeIcon);
+				if(activeIcon.options.iconUrl){
+					marker.setIcon(activeIcon);
+				}
 				marker.setZIndexOffset(1000);
 				marker.previousOffset = 1000;
 				marker = marker.toGeoJSON();
