@@ -635,7 +635,7 @@ function echo_documents_cover ($postID = "") {
 
 		if($get_localized_cover !=""){
 			$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_localized_cover.'">';
-			$large_img = $files_mf_dir.$get_cover;
+			$large_img = $files_mf_dir.$get_localized_cover;
 		}
 		else{
 			if($get_cover !=""){
