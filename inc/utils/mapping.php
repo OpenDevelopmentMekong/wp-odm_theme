@@ -556,8 +556,8 @@ function display_layer_information($layers, $echo = true){
 			$check_post_content= trim(str_replace("&nbsp;", "", strip_tags($get_post_content_by_id)));
 			if(!empty($check_post_content)):
 					$layer_info .= '<div class="layer-toggle-info toggle-info-'. $individual_layer['ID'].'">';
-						$layer_info .= '<div class="layer-toggle-info-content">';
-							$layer_info .= '<h4>'. get_the_title($individual_layer['ID']). '</h4>';
+						$layer_info .= '<div class="layer-toggle-info-content-1">';
+							$layer_info .= '<h4 class="'.odm_country_manager()->get_current_country().'-bgcolor">'. get_the_title($individual_layer['ID']). '</h4>';
 							$layer_info .= $get_post_content_by_id;
 						$layer_info .= '</div>';
 					$layer_info .= '</div>';
