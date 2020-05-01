@@ -635,7 +635,7 @@ function echo_documents_cover ($postID = "") {
 
 		if($get_localized_cover !=""){
 			$get_img = '<img class="attachment-thumbnail" src="'.$files_mf_dir.$get_localized_cover.'">';
-			$large_img = $files_mf_dir.$get_cover;
+			$large_img = $files_mf_dir.$get_localized_cover;
 		}
 		else{
 			if($get_cover !=""){
@@ -793,7 +793,7 @@ function available_custom_post_types(){
 	$top_cat_slugs  = array();
   foreach($cats as $cat) {
 		$all_parent_cats_slugs = get_category_parents($cat, false, '/', true, array());
-		foreach(split('/', $all_parent_cats_slugs) as $parent_cat_slug) {
+		foreach(explode('/', $all_parent_cats_slugs) as $parent_cat_slug) {
 			array_push($top_cat_slugs,$parent_cat_slug);
 		}
   }

@@ -31,6 +31,7 @@ require_once get_stylesheet_directory().'/inc/theme-options.php';
 require_once get_stylesheet_directory().'/inc/layer-category.php';
 require_once get_stylesheet_directory().'/inc/summary.php';
 require_once get_stylesheet_directory().'/inc/interactive-map.php';
+require_once get_stylesheet_directory().'/inc/mapbox.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-category-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget.php';
 require_once get_stylesheet_directory().'/inc/widgets/odm-taxonomy-widget-v2.php';
@@ -220,7 +221,7 @@ function odm_jeo_scripts()
       wp_enqueue_script('opendev-sticky', get_stylesheet_directory_uri().'/inc/jeo-scripts/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
   endif;
 
-  if (is_page( array( 'map-explorer', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()):
+  if (is_page( array( 'map-explorer', 'interactive-map', 'embed' )) || is_singular('map') || is_singular('map-layer') || is_singular('profiles') || is_home()):
 
     if ( file_exists( STYLESHEETPATH . '/inc/jeo-scripts/jeo.js')):
        wp_deregister_script('jeo');

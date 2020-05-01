@@ -40,7 +40,32 @@ $date_to_show = isset($options['single_page_date']) ? $options['single_page_date
 				<?php
 				$taxonomy_categories_1 = array("agriculture-and-fishing", "disaster-and-emergency-response", "environment-and-natural-resources", "extractive-industries", "land");
 				$taxonomy_categories_2 = array("economy-and-commerce", "energy", "industry", "infrastructure", "labor", "science-and-technology");
-				$taxonomy_categories_3 = array("aid-and-development", "government", "law-and-judiciary", "population-and-censuses", "social-development", "urban-administration-and-development"); ?>
+				$taxonomy_categories_3 = array("aid-and-development", "government", "law-and-judiciary", "population-and-censuses", "social-development", "urban-administration-and-development");
+
+				$sdg = get_term_by('slug', 'sustainable-development-goals', 'category');
+				$sdg_children = get_terms( 'category', array( 'parent' => $sdg->term_id ) );
+				$taxonomy_categories_4 = array();
+			 	foreach( $sdg_children as $child ) {
+			 		array_push($taxonomy_categories_4, $child->slug);
+			 	}
+				?>
+				<h3 class="clearfix"><a href="/topics/sustainable-development-goals"><?php _e($sdg->name,'odm'); ?></a></h3>
+      	<?php
+
+				 	while (have_posts()) : the_post();
+						$post = get_post();
+						$top_level_cat_names = get_top_level_category_slugs(get_the_category($post->ID));
+						if (arrays_have_common_items($top_level_cat_names,$taxonomy_categories_4)):
+							odm_get_template('post-grid-single-4-cols',array(
+		  					"post" => $post,
+		  					"show_meta" => true,
+								"meta_fields" => array("date"),
+								"order" => $date_to_show
+							),true);
+						endif;
+					endwhile;
+
+					rewind_posts(); ?>
 
 				<h3 class="clearfix"><?php _e('Environment and land','odm'); ?></h3>
       	<?php

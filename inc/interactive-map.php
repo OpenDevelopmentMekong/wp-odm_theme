@@ -79,7 +79,9 @@ class OpenDev_InteractiveMap {
                   <h2 class="sidebar_header map_headline widget_headline">
                     <?php _e("Map Layers", "odm"); ?>
               			<?php if (!$isMobile): echo "<i class='fa fa-caret-down hide_show_icon'></i>"; endif; ?>
+              			<?php if (!$isMobile): echo "<i class='fa fa-search showFindLayerSearchbox' style='cursor: pointer; float:right; margin:5px 2em 0 0'></i>"; endif; ?>
                   </h2>
+									<input type="text" id="findLayer" placeholder="<?php _e("Find layer", "odm"); ?>" class="findLayer" style="display: none; width: 90%;margin: 5px auto;">
                   <div class="interactive-map-layers dropdown">
                       <ul class="categories">
                       <?php
@@ -108,7 +110,7 @@ class OpenDev_InteractiveMap {
                           );
                           $query_layer = new WP_Query( $args_layer );
                           $count_items_of_main_cat = 0;
-                          $main_category_li = '<li class="cat-item cat-item-'.get_the_ID().'" id="post-'.get_the_ID().'"><a href="#">'.$term->name.'</a>';
+                          $main_category_li = '<li class="cat-item cat-item-'.get_the_ID().'" id="post-'.get_the_ID().'"><a href="#" class="layerLabel">'.$term->name.'</a>';
                           $layer_items = "";
                           if($query_layer->have_posts() ):
                               $cat_layer_ul= "<ul class='cat-layers switch-layers'>";

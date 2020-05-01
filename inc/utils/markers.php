@@ -129,16 +129,17 @@
 			wp_localize_script('opendev.markers', 'opendev_markers', array(
 				'ajaxurl' => admin_url('admin-ajax.php'),
 				'query' => $this->query(),
+				'marker_active' => $this->get_icon(),
 				'markerextent' => $this->use_extent(),
 				'markerextent_defaultzoom' => $this->extent_default_zoom(),
 				'enable_clustering' => $this->use_clustering() ? true : false,
 				'stories_label' => __('stories', 'odm'),
-		    'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
-		    'copy_embed_label' => __('Copy the embed code', 'odm'),
-		    'share_label' => __('Share', 'odm'),
-		    'print_label' => __('Print', 'odm'),
-		    'embed_base_url' => home_url('/embed/'),
-		    'share_base_url' => home_url('/share/'),
+				'home' => (is_home() && !is_paged() && !isset($_REQUEST['opendev_filter_'])),
+				'copy_embed_label' => __('Copy the embed code', 'odm'),
+				'share_label' => __('Share', 'odm'),
+				'print_label' => __('Print', 'odm'),
+				'embed_base_url' => home_url('/embed/'),
+				'share_base_url' => home_url('/share/'),
 				'site_url' => home_url('/'),
 				'read_more_label' => __('Read more', 'odm'),
 				'lightbox_label' => array(
@@ -312,6 +313,7 @@
 
 	function get_icon() {
 		global $post;
+        $site_name = ucwords(odm_country_manager()->get_current_country());
 		if($this->has_location()) {
 			$marker = array(
 				'iconUrl' => get_stylesheet_directory_uri().'/img/marker_active_'.$site_name.'.png',
@@ -320,7 +322,8 @@
 				'popupAnchor' => array(0, -40),
 				'markerId' => 'none'
 			);
-			return apply_filters('jeo_marker_icon', $marker, $post);
+            return $marker;
+			//return apply_filters('jeo_marker_icon', $marker, $post);
 		}
 		return null;
 	}

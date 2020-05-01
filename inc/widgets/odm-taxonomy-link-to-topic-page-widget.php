@@ -167,7 +167,7 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 		$registed_custom_tax = isset( $instance['registed_custom_tax']) ? $instance['registed_custom_tax'] : 'category';
 		$hide_empty_taxonomy = (!empty($instance['hide_empty_taxonomy'])) ? true : false;
 		$is_expended = (!empty($instance['is_expended'])) ? true : false;
-		$cus_taxonomy = $registed_custom_tax; 
+		$cus_taxonomy = $registed_custom_tax;
 	?>
 	<script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -343,4 +343,4 @@ class Odm_Custom_Taxonomy_With_Topic_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function('', 'register_widget("Odm_Custom_Taxonomy_With_Topic_Widget");'));
+add_action( 'widgets_init', function() { register_widget("Odm_Custom_Taxonomy_With_Topic_Widget"); });
