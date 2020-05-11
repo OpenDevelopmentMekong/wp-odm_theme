@@ -280,4 +280,4 @@ class Odm_Taxonomy_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', function() { register_widget("Odm_Taxonomy_Widget"); });
+add_action( 'widgets_init', function() {register_widget("Odm_Taxonomy_Widget");});

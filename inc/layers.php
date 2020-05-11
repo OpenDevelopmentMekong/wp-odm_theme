@@ -98,8 +98,12 @@
      if($layer_query->have_posts()) {
       while($layer_query->have_posts()) {
        $layer_query->the_post();
-       $layers[] = $this->get_layer(get_the_ID());
+       $layer = $this->get_layer(get_the_ID());
        wp_reset_postdata();
+       if ($layer) {
+	 $layers[] = $layer;
+       }
+
       }
       ?>
       <input type="text" data-bind="textInput: search" placeholder="<?php _e('Search for layers', 'odm'); ?>" size="50">
@@ -867,10 +871,10 @@
            $layer['filtering'] = $l['filtering'];
 
            if($filter == "baselayer") {
-               if($layer['map_category']['name'] == "base-layers"){
+	     if(isset($layer['map_category']) && $layer['map_category']['name'] == "base-layers"){
                   $layer['post_title'] = $l['title'];
                   $layers[] = $layer;
-               }
+	     }
            }elseif($filter == "layer" && array_key_exists('map_category',$layers)) {
               if($layer['map_category']['name'] != "base-layers"){
                   $layers[] = $layer;
@@ -891,7 +895,9 @@
 
         $post = get_post($post_id);
         setup_postdata($post);
-
+	if (!$post) {
+	  return;
+	}
         $type = $this->get_layer_type();
 
         $content = apply_filters('translate_text', $post->post_content, odm_language_manager()->get_current_language());

@@ -62,7 +62,7 @@ function odm_logo()
         if(odm_language_manager()->get_current_language() == "km"):
           echo '<img src="'. get_stylesheet_directory_uri() .'/img/odc-khmer-name.png" />';
         else:
-          echo '<h1>Op<sup>e</sup>nDevelopment</h1>';
+          echo '<h1>OpenDevelopment</h1>';
           echo '<div>';
           echo '<h2 class="side-title">'.ucfirst(odm_country_manager()->get_current_country()).'</h2>';
           echo '</div>';

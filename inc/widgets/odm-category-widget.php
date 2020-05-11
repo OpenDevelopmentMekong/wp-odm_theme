@@ -134,4 +134,4 @@ class Odm_Category_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', function() { register_widget("Odm_Category_Widget"); });
+add_action( 'widgets_init', function() {register_widget("Odm_Category_Widget");});

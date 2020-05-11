@@ -16,3 +16,7 @@ sftp-config.json
 /node_modules/
 /bower_components/
 composer.lock
+package-lock.json
+
+# emacs cruft
+*~
