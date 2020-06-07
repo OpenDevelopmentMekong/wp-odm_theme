@@ -44,7 +44,6 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$limit = isset($instance['limit']) ? $instance['limit'] : -1;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
@@ -57,7 +56,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		$override_order = isset($instance['override_order']) && !empty($instance['override_order']) ? $instance['override_order'] : null;
 
 		$post_type = get_post_type_object($selected_custom_post_id);
-		$post_type_slug = $post_type->rewrite['slug'];
+		$post_type_slug = $post_type->rewrite['slug']? $post_type->rewrite['slug'] : 'blog';
 		$query_order = ($order == "metadata_modified")? "modified" : "date";
 		$query = array(
 				'posts_per_page'   => $limit,
@@ -74,7 +73,6 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		endif;
 
 		$posts = get_posts( $query );
-
 		echo $args['before_widget']; ?>
 
 		<div class="container">
@@ -94,26 +92,28 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 			<div class="sixteen columns">
 				<?php
 					$index = 1;
-					foreach($posts as $post):
-						if (should_open_row($layout_type,$index)): ?>
-							<div class="row">
-						<?php endif; ?>
-								<?php
-								$template = $this->templates[$layout_type];
-								odm_get_template($template,array(
-									"post" => $post,
-									"show_meta" => $show_meta,
-									"show_source_meta" => $show_source_meta,
-									"show_excerpt" => $show_excerpt,
-									"show_thumbnail" => $show_thumbnail,
-									"order" => $order,
-									"index" => $index
-								),true);
-								if (should_close_row($layout_type,$index)): ?>
-							</div>
-						<?php endif;
-						$index++;
-					endforeach;
+					if($posts):
+						foreach($posts as $post):
+							if (should_open_row($layout_type,$index)): ?>
+								<div class="row">
+							<?php endif; ?>
+									<?php
+									$template = $this->templates[$layout_type];
+									odm_get_template($template,array(
+										"post" => $post,
+										"show_meta" => $show_meta,
+										"show_source_meta" => $show_source_meta,
+										"show_excerpt" => $show_excerpt,
+										"show_thumbnail" => $show_thumbnail,
+										"order" => $order,
+										"index" => $index
+									),true);
+									if (should_close_row($layout_type,$index)): ?>
+								</div>
+							<?php endif;
+							$index++;
+						endforeach;
+					endif;
 				?>
 			</div>
 			<?php if ($more_location == 'bottom'): ?>
@@ -136,7 +136,7 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 * @param array $instance The widget options
 	 */
 	public function form( $instance ) {
-
+		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts';
 		$selected_custom_post_id = isset($instance['post_type']) ? $instance['post_type'] : null;
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
@@ -154,20 +154,21 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 
 		$output = 'objects';
 		$operator = 'and';
-		$post_types = get_post_types( $args, $output, $operator );
-
-		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts'; ?>
+		$post_types = get_post_types( $args, $output, $operator ); 
+		?>
 
 		 <script type="text/javascript">
 			 jQuery(function($) {
 				 $('.layout_type').change(function(){
 							var get_select_id = $(this).attr("id");
-									widget_id = get_select_id.replace("layout_type", "");
+							if(get_select_id){
+								var widget_id = get_select_id.replace("layout_type", "");
 								if( ($(this).val() == "list-1-cols") || ($(this).val() == "list-2-cols") ){
 									 $('.'+widget_id+'show_source_meta').show();
 								}else {
 										$('.'+widget_id+'show_source_meta').hide();
 								 }
+							}
 				 });
 			 });
 	  </script>
@@ -178,9 +179,15 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>
 			<select class='widefat post_type' id="<?php echo $this->get_field_id('post_type'); ?>" name="<?php echo $this->get_field_name('post_type'); ?>" type="text">
-				<?php foreach ( $post_types  as $post_type ): ?>
+				<option <?php if ($selected_custom_post_id == 'post') { echo " selected"; } ?> value="post">Post</option>
+				<?php
+				if($post_types):
+					foreach ( $post_types  as $post_type ): ?>
 					<option <?php if ($selected_custom_post_id == $post_type->name) { echo " selected"; } ?> value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name ?></option>
-				<?php endforeach; ?>
+					<?php
+					endforeach;
+				endif;
+				?>
 			</select>
 		</p>
 		<p>
@@ -243,7 +250,6 @@ class Odm_Custom_Posts_Widget extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 		$instance = array();
 		$instance['title'] = (!empty($new_instance['title'])) ? $new_instance['title'] : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? $new_instance['limit'] : -1;

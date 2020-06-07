@@ -54,18 +54,25 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : true;
 		$order = isset($instance['order']) ? $instance['order'] : 'metadata_created';
 		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
+		$default_post_type = isset($instance['post']) ? $instance['post'] : false;
 		$supported_post_types = array();
+		if ($default_post_type):
+			array_push($supported_post_types, 'post');
+		endif;
+
 		$post_types = available_custom_post_types();
-		foreach ($post_types as $post_type):
-			if (isset($instance[$post_type->name]) && $instance[$post_type->name]):
-				array_push($supported_post_types,$post_type->name);
-			endif;
-		endforeach;
+		if($post_types):
+			foreach ($post_types as $post_type):
+				if (isset($instance[$post_type->name]) && $instance[$post_type->name]):
+					array_push($supported_post_types, $post_type->name);
+				endif;
+			endforeach;
+		endif;
 
 		if (!empty($categories)){
 			$query = array(
-                'post_type'        => sizeof($supported_post_types) == 1 ? $supported_post_types[0] : $supported_post_types,
-                'posts_per_page'   => $limit,
+                'post_type'	=> sizeof($supported_post_types) == 1 ? $supported_post_types[0] : $supported_post_types,
+                'posts_per_page'	=> $limit,
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'category',
@@ -77,12 +84,12 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
             $posts = query_posts($query);
 		}
 
-		if($posts){
+		if($posts):
 			$selected_post_type = get_post_type_object($supported_post_types[0]);
 			$post_type_page = $selected_post_type->rewrite['slug'];
 			$more_url = "/".$post_type_page;
 			if(!empty($categories)):
-				$more_url = get_category_link($categories[0])."?queried_post_type=".$selected_post_type->name;
+				$more_url = get_term_link($categories[0])."?queried_post_type=".$selected_post_type->name;
 			endif;
 
 			echo $args['before_widget']; ?>
@@ -130,7 +137,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 				<?php endif; ?>
 
 			<?php echo $args['after_widget'];
-		}
+		endif;
 		wp_reset_query();
 	}
 
@@ -140,9 +147,7 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	 * @param array $instance The widget options
 	 */
 	public function form( $instance ) {
-
 	  $post_types = available_custom_post_types();
-
 		$title = !empty($instance['title']) ? $instance['title'] : 'Custom posts';
 		$layout_type = isset($instance['layout_type']) ? $instance['layout_type'] : 'grid-4-cols';
 		$show_meta = isset($instance['show_meta']) ? $instance['show_meta'] : false;
@@ -150,22 +155,31 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$show_excerpt = isset($instance['show_excerpt']) ? $instance['show_excerpt'] : false;
 		$show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
 		$order = isset($instance['order']) ? $instance['order'] : 'metadata_created';
-		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom'; ?>
+		$more_location = isset($instance['more_location']) ? $instance['more_location'] : 'bottom';
+		?>
 
 		<p>
 			<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:');?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php _e($title, 'odm');?>">
 		</p>
 
-		<p>
+		<div style="max-height:150px; overflow-y:scroll">
 			<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Select custom post type:' ); ?></label>
-			<?php foreach ( $post_types  as $post_type ): ?>
-				<p>
-					<input type="checkbox" <?php if (isset($instance[$post_type->name]) && $instance[$post_type->name]) { echo " checked"; } ?> name="<?php echo $this->get_field_name($post_type->name)?>" value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name ?></input>
-				</p>
-			<?php endforeach; ?>
-		</p>
-
+			<p>
+				<input type="checkbox" <?php if (isset($instance["post"]) && $instance["post"]) { echo " checked"; } ?> name="<?php echo $this->get_field_name('post')?>" value="post">Post</input>
+			</p>
+			<?php
+			if($post_types):
+				foreach ( $post_types  as $post_type ): ?>
+					<p>
+						<input type="checkbox" <?php if (isset($instance[$post_type->name]) && $instance[$post_type->name]) { echo " checked"; } ?>
+						name="<?php echo $this->get_field_name($post_type->name)?>" value="<?php echo $post_type->name ?>"><?php echo $post_type->labels->name; ?></input>
+					</p>
+				<?php
+				endforeach;
+			endif;
+			?>
+		</div>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'layout_type' ); ?>"><?php _e( 'Select layout:' ); ?></label>
 			<select class='widefat layout_type' id="<?php echo $this->get_field_id('layout_type'); ?>" name="<?php echo $this->get_field_name('layout_type'); ?>" type="text">
@@ -221,7 +235,6 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-
 		$instance = array();
 		$instance['title'] = (!empty($new_instance['title'])) ? $new_instance['title'] : '';
 		$instance['limit'] = (!empty($new_instance['limit'])) ? $new_instance['limit'] : -1;
@@ -231,15 +244,16 @@ class Odm_Contents_Same_Category_Widget extends WP_Widget {
 		$instance['show_excerpt'] = (!empty( $new_instance['show_excerpt'])) ? $new_instance['show_excerpt'] : false;
 		$instance['show_thumbnail'] = (!empty( $new_instance['show_thumbnail'])) ? $new_instance['show_thumbnail'] : false;
 		$instance['order'] = (!empty( $new_instance['order'])) ? $new_instance['order'] : 'metadata_created';
-		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : '';
-
+		$instance['more_location'] = (!empty( $new_instance['more_location'])) ? $new_instance['more_location'] : 'bottom';
+		$instance['post'] = (!empty( $new_instance['post']))? true : false;
 		$post_types = available_custom_post_types();
-		foreach ($post_types as $post_type):
-			$instance[$post_type->name] = (!empty($new_instance[$post_type->name])) ? true : false;
-		endforeach;
+		if($post_types):
+			foreach ($post_types as $post_type):
+				$instance[$post_type->name] = (!empty($new_instance[$post_type->name])) ? true : false;
+			endforeach;
+		endif;
 		return $instance;
 	}
-
 }
 
 add_action( 'widgets_init', function() {register_widget("Odm_Contents_Same_Category_Widget");});
