@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Open Development
  * Theme options
@@ -16,35 +15,34 @@ class Odm_Options
 
     public function enqueue_scripts()
     {
-        if (get_current_screen()->id == 'appearance_page_odm_options') {
+        if ( get_current_screen()->id == 'appearance_page_odm_options' ) {
             wp_enqueue_media();
-            wp_enqueue_script('odm-theme-options', get_stylesheet_directory_uri().'/inc/theme-options.js');
+            wp_enqueue_script( 'odm-theme-options', get_stylesheet_directory_uri().'/inc/theme-options.js' );
         }
     }
 
     public function admin_menu()
     {
-        add_theme_page(__('Open Development Style', 'odm'), __('Open Development', 'odm'), 'edit_theme_options', 'odm_options', array($this, 'admin_page'));
+        add_theme_page( __( 'Open Development Style', 'odm' ), __( 'Open Development', 'odm' ), 'edit_theme_options', 'odm_options', array( $this, 'admin_page' ) );
     }
 
     public function admin_page()
     {
-        $this->options = get_option('odm_options');
-
+        $this->options = get_option( 'odm_options' );
         ?>
-        <div class="wrap">
-          <?php screen_icon(); ?>
-          <h2><?php _e('Open Development Theme Options', 'odm');?></h2>
-          <form method="post" action="options.php">
-            <?php
-            settings_fields('odm_options_group');
-              do_settings_sections('odm_options');
-              submit_button();
-              ?>
-         </form>
-        </div>
-        <?php
 
+        <div class="wrap">
+        	<?php //screen_icon(); ?>
+        	<h2><?php _e( 'Open Development Theme Options', 'odm' );?></h2>
+        	<form method="post" action="options.php">
+				<?php
+					settings_fields('odm_options_group');
+					do_settings_sections('odm_options');
+					submit_button();
+				?>
+         	</form>
+    	</div>
+        <?php
     }
 
     public function init_theme_settings()
@@ -52,10 +50,10 @@ class Odm_Options
         mapbox_metabox_init();
 
         add_settings_section(
-         'odm_style_section',
-         __('Style', 'odm'),
-         '',
-         'odm_options'
+        	'odm_style_section',
+         	__('Style', 'odm'),
+         	'',
+         	'odm_options'
         );
 
         add_settings_section(
@@ -64,6 +62,13 @@ class Odm_Options
          '',
          'odm_options'
         );
+
+        add_settings_section(
+          'odm_header_section',
+          __('Header', 'odm'),
+          '',
+          'odm_options'
+         );
 
         add_settings_section(
          'odm_category_page_section',
@@ -124,6 +129,22 @@ class Odm_Options
          array($this, 'twitter_field'),
          'odm_options',
          'odm_links_section'
+        );
+
+        add_settings_field(
+            'odm_youtube',
+            __('YouTube URL', 'odm'),
+            array($this, 'youtube_url_field'),
+            'odm_options',
+            'odm_links_section'
+        );
+
+        add_settings_field(
+          'odm_print_icon',
+          __('Display print icon', 'odm'),
+          array($this, 'print_icon_field'),
+          'odm_options',
+          'odm_header_section'
         );
 
         add_settings_field(
@@ -249,8 +270,23 @@ class Odm_Options
     {
         $twitter = $this->options['twitter_url']; ?>
         <input id="odm_twitter_url" name="odm_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
+  	<?php
+    }
 
-  <?php
+	function youtube_url_field() {
+        $youtube = $this->options['youtube_url']; ?>
+        <input id="odm_youtube_url" name="odm_options[youtube_url]" type="text" value="<?php echo $youtube;?>" size="70" />
+	<?php
+	}
+
+    function print_icon_field() {
+      ?>
+      <p>
+       <input class="odm_print_icon" id="odm_print_icon" type="checkbox" name="odm_options[print_icon]" <?php if (isset($this->options['print_icon']) && $this->options['print_icon']) echo 'checked'; ?> />
+       <br>
+       <label><em>(Display the <strong>Print icon</strong> for print the webpage in the Social Navigation section of the website header.)</em></label>
+      </p>
+      <?php
     }
 
     public function category_page_field()
@@ -650,6 +686,17 @@ function odm_get_twitter_url()
     }
 }
 
+function odm_get_youtube_url()
+{
+    $options = get_option('odm_options');
+
+    if ( isset( $options['youtube_url'] ) ) {
+        return $options['youtube_url'];
+    } else {
+        return false;
+    }
+}
+
 function odm_get_legal_disclaimer()
 {
     $options = get_option('odm_options');
@@ -710,4 +757,13 @@ function odm_get_interactive_map_data()
     } else {
         return false;
     }
+}
+
+function odm_show_print_icon() {
+  $options = get_option('odm_options');
+  if ( isset( $options['print_icon'] ) ) {
+    return true;
+  } else {
+    return false;
+  }
 }
