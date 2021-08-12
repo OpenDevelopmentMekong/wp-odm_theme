@@ -46,9 +46,20 @@
 		background: @bg-color !important;
 	}
 
-  a.button:hover{
-    background: @primary;
-  }
+	a.button:hover{
+		background: @primary;
+	}
+
+	a.btn-printer {
+	  background: none !important;
+	  border: none !important;
+	  color: white;
+	  cursor: pointer;
+	  
+	  &:focus {
+		  outline: none;
+    }
+	}
 
 	#od-head {
 		background: @bg-color;
