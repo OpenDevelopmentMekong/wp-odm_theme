@@ -14,7 +14,8 @@
 			<div class="eleven columns">
 				<?php the_content(); ?>
 				<?php
-					$dataset_id = $_GET['id'];
+                    // this should really be only allowing [-_A-Za-z0-9] for names or uuids, but put in a library.
+                    $dataset_id = esc_attr($_GET['id']);
 					if (isset($dataset_id)):
 						echo do_shortcode('[wpckan_dataset_detail id="' . $dataset_id . '"]');
 					else:
@@ -51,7 +52,7 @@
 	                    foreach ($result["resultset"] as $document):
 	                      $link_to_dataset = wpckan_get_link_to_dataset($document->name,$search_query);?>
 	                      <li>
-	                        <h5><a target="_blank" href="<?php echo $link_to_dataset; ?>"><?php echo $document->title; ?></a></h5>
+	                        <h5><a target="_blank" href="<?php echo esc_url($link_to_dataset); ?>"><?php echo $document->title; ?></a></h5>
 	                      </li>
 	                  <?php
 	                    endforeach; ?>

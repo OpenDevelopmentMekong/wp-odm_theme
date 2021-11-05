@@ -37,7 +37,7 @@ Template Name: Data Page old Template
         <div class="<?php echo $num_columns ?> columns">
           <div class="adv-nav-input">
             <p class="label"><label for="s"><?php _e('Text search', 'odm'); ?></label></p>
-            <input type="text" id="query" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query; ?>" />
+            <input type="text" id="query" name="query" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo esc_attr($param_query); ?>" />
           </div>
         </div>
 
@@ -135,7 +135,7 @@ Template Name: Data Page old Template
         <div class="two columns">
           <div class="adv-nav-input">
             <p class="label"><label for="source"><?php _e('Source', 'odm'); ?></label></p>
-            <input type="text" id="source" name="source" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $param_query_source; ?>" />
+            <input type="text" id="source" name="source" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo esc_attr($param_query_source); ?>" />
           </div>
         </div>
 

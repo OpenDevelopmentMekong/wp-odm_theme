@@ -19,7 +19,7 @@ function get_all_parent_category($current_cat_id, $post_type, $separator = '', $
             if ($page_name_title == $current_page_name) {
                 echo '<div class="text-bgcolor bread-current-page bread-current-'.$page_id_exist.'" title="'.$page_title.'">';//strong if current page
             }
-            echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'?queried_post_type='.$queried_post_type.'" title="'.$page_title.'">';
+            echo '<a class="bread-topic bread-topic-'.$page_id_exist.' bread-topic-'.$page_slug.'" href="'.get_permalink($page_id_exist).'?queried_post_type='.esc_attr($queried_post_type).'" title="'.$page_title.'">';
         }
         echo $page_title;
 
@@ -164,7 +164,7 @@ function echo_the_breadcrumb_category($separator){
   		if ($cat === end($parent_cats)):
   				echo '<strong class="bread-current bread-cat-'.$categories[0]->term_id.' bread-cat-'.$categories[0]->category_nicename.'">';
   		endif;
-  		echo '<a href="'.get_category_link($categories[0]->term_id).'?queried_post_type='.$queried_post_type.'">'.$cat.'</a>';
+  		echo '<a href="'.get_category_link($categories[0]->term_id).'?queried_post_type='.esc_attr($queried_post_type).'">'.$cat.'</a>';
 
   		if ($cat === end($parent_cats)):
   				echo '</strong>';
@@ -184,7 +184,7 @@ function echo_the_breadcrumb_dataset_detail_page($separator){
 	$search_query = isset($_GET["search_query"]) ? base64_decode($_GET["search_query"]) : null;
 	if (isset($search_query)):
 		$search_term = wp_odm_solr_parse_query_from_string($search_query);
-		echo '<li class="item-current item-'.$search_term.'"><a class="item-current bread-current-'.$search_term.'" href="/'.$search_query.'"><strong>' . __('Search results for:','odm') . ' \'' . $search_term . '\'</strong></a></li>';
+    echo '<li class="item-current item-'.esc_attr($search_term).'"><a class="item-current bread-current-'.esc_attr($search_term).'" href="/'.esc_attr($search_query).'"><strong>' . __('Search results for:','odm') . ' \'' . esc_html($search_term) . '\'</strong></a></li>';
 		echo the_separated_breadcrumb($separator, '', 'page');
 	else:
 		echo '<li class="item-current item-dataset-detail"><a class="item-current bread-current-item-dataset-detail"><strong>' . __('Dataset detail','odm') . '</strong></a></li>';
@@ -235,7 +235,7 @@ function echo_the_breadcrumb_tag($separator){
 	// Display the tag name
 	echo '<li class="item-current item-tag-'.$terms[0]->term_id.' item-tag-'.$terms[0]->slug.'">';
 	echo '<strong class="bread-current bread-tag-'.$terms[0]->term_id.'bread-tag-'.$terms[0]->slug.'">';
-	echo '<a href="'.get_tag_link($terms[0]->term_id).'?queried_post_type='.$queried_post_type.'">';
+	echo '<a href="'.get_tag_link($terms[0]->term_id).'?queried_post_type='.esc_attr($queried_post_type).'">';
 		_e($terms[0]->name, "odm");
 	echo '</a>';
 	echo '</strong></li>';
