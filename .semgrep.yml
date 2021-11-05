@@ -13,10 +13,11 @@ rules:
       - pattern: intval(...)
       - pattern: absint(...)
       - pattern: gmdate(...)
-
+      - pattern: isset(...)
       - patterns:
         - pattern-inside: array_key_exists($KEY, ...)
         - pattern: $KEY
+      - pattern: (...)->getNumFound()
       # array lookup is probably ok
       - patterns:
         - pattern-inside: $ARRAY[$INDEX]
@@ -24,6 +25,8 @@ rules:
       # local
       - pattern: wpckan_get_dataset_title(...)
       - pattern: wpckan_get_dataset_notes(...)
+      - pattern: $F->query_by_params(...)
+      - pattern: $F->query(...)
       # maybe
       - pattern: json_encode(...)
       - pattern: filesize(...)
