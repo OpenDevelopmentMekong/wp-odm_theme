@@ -82,7 +82,7 @@ function set_site_meta(){
 		<meta name="description" content="<?php echo $dataset_description; ?>" />
 		<meta name="twitter:description" content="<?php echo $dataset_description; ?>" />
 		<meta property="og:description" content="<?php echo $dataset_description; ?>" />
-		<meta property="og:url" content="<?php echo get_site_url() . wpckan_get_link_to_dataset($dataset_id); ?>" />
+		<meta property="og:url" content="<?php echo esc_url(get_site_url() . wpckan_get_link_to_dataset($dataset_id)); ?>" />
 
 	<?php
 	endif; ?>

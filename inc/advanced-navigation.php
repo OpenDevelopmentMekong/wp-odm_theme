@@ -147,14 +147,14 @@ class odm_AdvancedNav {
 			if(!$filter_arg['con_selector'] && isset($filter_arg['post_type'])):
 				$filter_posttype = isset($_GET[$this->prefix . 'post_type']) ? $_GET[$this->prefix . 'post_type'][0] : $filter_arg['post_type'];
 				?>
-				<input type="hidden" name="<?php echo $this->prefix; ?>post_type[]" value="<?php echo $filter_posttype; ?>" />
+				<input type="hidden" name="<?php echo $this->prefix; ?>post_type[]" value="<?php echo esc_attr($filter_posttype); ?>" />
 			<?php endif; ?>
 
 			<?php if($filter_arg['search_box']): ?>
 				<div class="four columns">
 					<div class="search-input adv-nav-input">
 						<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'odm'); ?></label></p>
-						<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo $s; ?>" />
+						<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'odm'); ?>" value="<?php echo esc_attr($s); ?>" />
 					</div>
 				</div>
 			<?php endif;?>
@@ -236,10 +236,10 @@ class odm_AdvancedNav {
 						<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'odm'); ?></label></p>
 						<div class="date-range-inputs">
 							<div class="date-from-container">
-								<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" placeholder="<?php _e('From', 'odm'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? $_GET[$this->prefix . 'date_start'] : ''; ?>" />
+								<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" placeholder="<?php _e('From', 'odm'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? esc_attr($_GET[$this->prefix . 'date_start']) : ''; ?>" />
 							</div>
 							<div class="date-to-container">
-								<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end"  placeholder="<?php _e('To', 'odm'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? $_GET[$this->prefix . 'date_end'] : ''; ?>" />
+								<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end"  placeholder="<?php _e('To', 'odm'); ?>" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? esc_attr($_GET[$this->prefix . 'date_end']) : ''; ?>" />
 							</div>
 						</div>
 					</div>

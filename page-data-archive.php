@@ -23,14 +23,14 @@ Template Name: Data archive
 		<div class="sixteen columns">
 			<div id="wpckan_archive">
 				<form id="wpckan_search_form" method="GET">
-					<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'odm'); ?>" value="<?php echo $_GET['ckan_s']; ?>" />
+					<input id="wpckan_search" type="text" name="ckan_s" placeholder="<?php _e('Type your search and hit enter', 'odm'); ?>" value="<?php echo esc_attr($_GET['ckan_s']); ?>" />
 				</form>
 				<div class="row">
 					<?php
             $search = isset($_GET['ckan_s']) ? $_GET['ckan_s'] : '';
             $limit = 8;
-            $page = isset($_GET['ckan_page']) ? $_GET['ckan_page'] : 1;
-            echo do_shortcode('[wpckan_query_datasets query="'.$search.'" limit="'.$limit.'" page="'.$page.'"]'); ?>
+            $page = isset($_GET['ckan_page']) ? intval($_GET['ckan_page']) : 1;
+            echo do_shortcode('[wpckan_query_datasets query="'.esc_attr($search).'" limit="'.$limit.'" page="'.$page.'"]'); ?>
 				</div>
 				<nav id="wpckan_nav">
 					<?php if ($page > 1) : ?>
