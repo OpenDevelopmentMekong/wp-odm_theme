@@ -23,7 +23,7 @@ if (!in_array($file_details["mime_type"], array("image/jpg", "image/png")))
             'data:%s;base64,%s', $file_details["mime_type"], base64_encode($file_details["data"])
     );
 
-    print "{$callback}(" . json_encode($re_encoded_image) . ")";
+    print "{$callback}(" . json_encode($re_encoded_image) . ")"; // nosemgrep: php-arg-xss
 }
 
 function get_url_details($url, $attempt = 1, $callback = "")

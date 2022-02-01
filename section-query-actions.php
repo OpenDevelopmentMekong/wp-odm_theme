@@ -16,11 +16,11 @@
 		<?php _e('RSS Feed', 'odm'); ?>
 	</a>
 	<?php if($use_api && (!is_post_type_archive( 'map-layer' ))  ) : ?> 
-		<a class="button geojson" target="_blank" href="<?php echo $geojson; ?>">
+		<a class="button geojson" target="_blank" href="<?php echo esc_url($geojson); ?>">
 			<i class="fa fa-globe"></i>
 			<?php _e('Get GeoJSON', 'odm'); ?>
 		</a>
-		<a class="button download" target="_blank" href="<?php echo $download; ?>">
+		<a class="button download" target="_blank" href="<?php echo esc_url($download); ?>">
 			<i class="fa fa-download"></i>
 			<?php _e('Download', 'odm'); ?>
 		</a>
