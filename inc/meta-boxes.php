@@ -20,15 +20,7 @@ function odm_render_modified_date_metabox($post)
 
     $value = get_post_meta($post->ID, '_odm_modified_date_metabox', true);
 ?>
-    <input role="presentation" autocomplete="off" type="text" name="odm_modified_date_metabox" id="date-picker" value="<?php echo (!empty($value)) ? $value : get_the_modified_date('j F Y'); ?>" />
-
-    <script>
-        jQuery(document).ready(function($) {
-            $("#date-picker").datepicker({
-                dateFormat: 'd MM yy'
-            });
-        });
-    </script>
+    <input role="presentation" autocomplete="off" type="date" name="odm_modified_date_metabox" min="<?php echo get_the_date('Y-m-d'); ?>" max="<?php echo get_the_modified_date('Y-m-d'); ?>" value="<?php echo (!empty($value)) ? $value : get_the_modified_date('Y-m-d'); ?>" />
 <?php
 }
 
@@ -38,7 +30,7 @@ function odm_save_modified_date_metabox_value($post_id)
 {
     $modifiedDateNounce = 'odm_modified_date_metabox_nounce';
 
-    if (!isset($modifiedDateNounce) || !wp_verify_nonce($_POST[$modifiedDateNounce], basename(__FILE__))) {
+    if (!isset($_POST[$modifiedDateNounce]) || !wp_verify_nonce($_POST[$modifiedDateNounce], basename(__FILE__))) {
         return;
     }
 
@@ -47,6 +39,6 @@ function odm_save_modified_date_metabox_value($post_id)
     }
 
     if (array_key_exists('odm_modified_date_metabox', $_POST)) {
-        update_post_meta($post_id, '_odm_modified_date_metabox', $_POST['odm_modified_date_metabox']);
+        update_post_meta($post_id, '_odm_modified_date_metabox', sanitize_text_field($_POST['odm_modified_date_metabox']));
     }
 }

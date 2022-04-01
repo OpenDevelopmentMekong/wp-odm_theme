@@ -267,16 +267,8 @@ function odm_jeo_scripts()
 }
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
-function odm_jeo_admin_scripts() {
-    global $pagenow;
-    global $post_type;
-
-    $bower_base = get_stylesheet_directory_uri() . '/bower_components';
-
-    if ( ($pagenow == 'post.php' || $pagenow == 'post-new.php') && $post_type == 'topic') {
-        wp_enqueue_style('jquery-date-picker-style', $bower_base . '/jquery-ui/themes/smoothness/jquery-ui.min.css');
-        wp_enqueue_script('jquery-ui-datepicker');
-    }
+function odm_jeo_admin_scripts()
+{
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
 
