@@ -7,7 +7,6 @@ font/opendev.woff
 .remote-sync.json
 **.bak
 **.bak**
-**.mo
 sftp-config.json
 
 /vendor/

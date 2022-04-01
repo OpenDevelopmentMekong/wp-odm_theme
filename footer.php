@@ -35,12 +35,12 @@
   			</nav>
   		</div>
       <div class="four columns">
-  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external"><b>WordPress</b></a> using the <a href="%s" target="_blank" rel="external"><b>JEO Beta</b></a> theme and <a href="%s" target="_blank" rel="external"><b>CKAN</b></a> as back-end for structured data. To learn more about the system architecture, read our  <a href="%s" target="_blank" rel="external"><b>documentation</b></a>.', 'odm'), 'http://wordpress.org', 'https://github.com/oeco/jeo', 'https://ckan.org', 'https://wiki.opendevelopmentmekong.net/public:system_s_architecture'); ?></p>
+  			<p><?php printf(__('This website is built on <a href="%s" target="_blank" rel="external"><b>WordPress</b></a> using the <a href="%s" target="_blank" rel="external"><b>JEO Beta</b></a> theme and <a href="%s" target="_blank" rel="external"><b>CKAN</b></a> as back-end for structured data. To learn more about the system architecture, read our  <a href="%s" target="_blank" rel="external"><b>documentation</b></a>.', 'odm'), 'https://wordpress.org', 'https://github.com/oeco/jeo', 'https://ckan.org', 'https://wiki.opendevelopmentmekong.net/public:system_s_architecture'); ?></p>
   		</div>
 			<?php
 		  if(odm_country_manager()->get_current_country() != 'cambodia'): ?>
 				<div class="three columns">
-					<a href="http://ewmi.org/ODI" target="_blank"><img src="<?php echo get_stylesheet_directory_uri()?>/img/odi_logo.png"></img></a>
+					<a href="https://ewmi.org/Program/OpenDevelopmentInitiative" target="_blank"><img src="<?php echo get_stylesheet_directory_uri()?>/img/odi_logo.png"></img></a>
 				</div>
 			<?php
 			endif;
