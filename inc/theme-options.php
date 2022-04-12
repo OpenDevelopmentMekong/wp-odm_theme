@@ -204,6 +204,14 @@ class Odm_Options
         );
 
         add_settings_field(
+            'odm_single_topic_page_date',
+            __('Date shown on single topic page template', 'odm'),
+            array($this, 'single_topic_page_date_field'),
+            'odm_options',
+            'odm_single_page_section'
+        );
+
+        add_settings_field(
          'odm_interactive_map',
          __('Base map settings', 'odm'),
          array($this, 'interactive_map_field'),
@@ -323,12 +331,23 @@ class Odm_Options
 
     public function single_page_date_field()
     {
-        $selected_date = isset($this->options['single_page_date']) ? $this->options['single_page_date'] : "metadata_created";?>
+    ?>
         <select id="odm_single_page_date" name="odm_options[single_page_date]" type="text" />
           <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "metadata_created"): echo 'selected'; endif;?> value="metadata_created"><?php _e('Creation date','odm'); ?></option>
           <option <?php if (isset($this->options['single_page_date']) && $this->options['single_page_date'] == "metadata_modified"): echo 'selected'; endif;?> value="metadata_modified"><?php _e('Modification date','odm'); ?></option>
         </select>
-  <?php
+    <?php
+    }
+
+    public function single_topic_page_date_field()
+    {
+    ?>
+        <select id="odm_single_topic_page_date" name="odm_options[single_topic_page_date]" type="text">
+            <option <?php echo (isset($this->options['single_topic_page_date']) && $this->options['single_topic_page_date'] == 'metadata_created_modified') ? 'selected' : ''; ?> value="metadata_both"><?php _e('Creation and Modification date','odm'); ?></option>
+            <option <?php echo (isset($this->options['single_topic_page_date']) && $this->options['single_topic_page_date'] == 'metadata_created') ? 'selected' : '';?> value="metadata_created"><?php _e('Creation date','odm'); ?></option>
+            <option <?php echo (isset($this->options['single_topic_page_date']) && $this->options['single_topic_page_date'] == 'metadata_modified') ? 'selected' : ''; ?> value="metadata_modified"><?php _e('Modification date','odm'); ?></option>
+        </select>
+    <?php
     }
 
     public function contact_page_field()

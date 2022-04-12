@@ -48,6 +48,7 @@ require_once get_stylesheet_directory().'/inc/utils/layout.php';
 require_once get_stylesheet_directory().'/inc/utils/urls.php';
 require_once get_stylesheet_directory().'/inc/utils/arrays.php';
 require_once get_stylesheet_directory().'/inc/utils/config.php';
+require_once get_stylesheet_directory().'/inc/meta-boxes.php';
 
 /*
  * Loads the theme's translated strings. for 'odm' domains
@@ -198,14 +199,14 @@ add_action( 'admin_head', 'add_menu_icons_styles' );
 
 function odm_dependency_scripts()
 {
-	$bower_base = get_stylesheet_directory_uri().'/bower_components/';
-  wp_enqueue_script('odm-dependencies-chosen', $bower_base.'chosen/chosen.jquery.js');
-	wp_enqueue_script('odm-dependencies-moment', $bower_base.'moment/min/moment.min.js');
-  wp_enqueue_script('odm-dependencies-datatables', $bower_base.'datatables/media/js/jquery.dataTables.min.js');
-  wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'datatables-buttons/js/dataTables.buttons.js');
-  wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'datatables-buttons/js/buttons.html5.js');
-  wp_enqueue_script('odm-dependencies-datatables-buttons-print', $bower_base.'datatables-buttons/js/buttons.print.js');
-	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'jQuery.print/jQuery.print.js');
+	$bower_base = get_stylesheet_directory_uri().'/bower_components';
+    wp_enqueue_script('odm-dependencies-chosen', $bower_base.'/chosen/chosen.jquery.js');
+	wp_enqueue_script('odm-dependencies-moment', $bower_base.'/moment/min/moment.min.js');
+    wp_enqueue_script('odm-dependencies-datatables', $bower_base.'/datatables/media/js/jquery.dataTables.min.js');
+    wp_enqueue_script('odm-dependencies-datatables-buttons', $bower_base.'/datatables-buttons/js/dataTables.buttons.js');
+    wp_enqueue_script('odm-dependencies-datatables-buttons-html5', $bower_base.'/datatables-buttons/js/buttons.html5.js');
+    wp_enqueue_script('odm-dependencies-datatables-buttons-print', $bower_base.'/datatables-buttons/js/buttons.print.js');
+	wp_enqueue_script('odm-dependencies-jquery-print', $bower_base.'/jQuery.print/jQuery.print.js');
 }
 add_action('wp_enqueue_scripts', 'odm_dependency_scripts', 100);
 
@@ -241,15 +242,14 @@ function odm_jeo_scripts()
     wp_enqueue_script('mapping-script', get_stylesheet_directory_uri() . '/inc/jeo-scripts/mapping.js', array('jeo','jquery-ui'), '1.0.0');
 
     if (odm_screen_manager()->is_mobile()):
-			wp_enqueue_script('jeo.layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.1.0');
+		wp_enqueue_script('jeo.layers', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_layers.js', array('jeo'), '1.1.0');
     endif;
 
     if (odm_screen_manager()->is_desktop() && file_exists( STYLESHEETPATH . '/inc/jeo-scripts/control_printmap.js')):
-			wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.1.0');
+		wp_enqueue_script('jeo.printmap', get_stylesheet_directory_uri() . '/inc/jeo-scripts/control_printmap.js', array('jeo'), '1.1.0');
   		wp_enqueue_script('html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/html2canvas.js', array('jquery'), '0.34');
   		wp_enqueue_script('plugin.html2canvas', get_stylesheet_directory_uri() . '/inc/html2canvas/jquery.plugin.html2canvas.js', array('jquery'), '0.33');
 		endif;
-
   endif;
 
   if ( file_exists(STYLESHEETPATH . '/inc/jeo-scripts/share-widget.js')) {
@@ -267,8 +267,8 @@ function odm_jeo_scripts()
 }
 add_action('wp_enqueue_scripts', 'odm_jeo_scripts', 100);
 
-function odm_jeo_admin_scripts() {
-
+function odm_jeo_admin_scripts()
+{
 }
 add_action( 'admin_enqueue_scripts', 'odm_jeo_admin_scripts' );
 
