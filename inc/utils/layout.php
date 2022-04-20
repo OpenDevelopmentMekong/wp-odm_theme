@@ -82,25 +82,30 @@ function odm_logo()
  */
 function odm_get_template($slug, array $params = array(), $output = true) {
     if(!$output) ob_start();
+
     if (!$template_file = locate_template("inc/templates/{$slug}.php", false, false)) {
-      trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $slug), E_USER_ERROR);
+        trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $slug), E_USER_ERROR);
     }
+
     extract($params, EXTR_SKIP);
+
     require($template_file);
-    if(!$output) return ob_get_clean();
+
+    if(!$output) 
+        return ob_get_clean();
 }
 
-function should_open_row($layout_type,$index){
-  if ($layout_type == 'list-2-cols' && $index%2 == 1){
-    return true;
-  }else if ($layout_type == 'list-4-cols' && $index%4 == 1){
-    return true;
-  }else if ($layout_type == 'list-1-cols'){
-    return true;
-  }else if ($layout_type == 'blog-layout-2-cols' && ($index-1)%2 == 1){
-    return true;
-  }
-  return false;
+function should_open_row($layout_type,$index) {
+    if ($layout_type == 'list-2-cols' && $index%2 == 1) {
+        return true;
+    } elseif ($layout_type == 'list-4-cols' && $index%4 == 1) {
+        return true;
+    } elseif ($layout_type == 'list-1-cols') {
+        return true;
+    } elseif ($layout_type == 'blog-layout-2-cols' && ($index-1)%2 == 1) {
+        return true;
+    }
+    return false;
 }
 
 function should_close_row($layout_type,$index){
