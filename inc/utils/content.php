@@ -64,8 +64,10 @@ function set_site_meta()
 
         <?php
         $img_array = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail');
-        $img_url = $img_array[0];
-        if (!empty($img_url)) : ?>
+
+        if (!empty($img_array)) :
+            $img_url = $img_array[0];
+        ?>
             <meta property="og:image" content="<?php echo $img_url; ?>" />
             <meta name="twitter:image" content="<?php echo $img_url; ?>" />
         <?php
@@ -79,12 +81,12 @@ function set_site_meta()
         $dataset_title = wpckan_get_dataset_title($dataset_id);
         $dataset_description = wpckan_get_dataset_notes($dataset_id); ?>
 
-		<meta property="og:title" content="<?php echo $dataset_title; ?>" />
-		<meta name="twitter:title" content="<?php echo $dataset_title; ?>" />
-		<meta name="description" content="<?php echo $dataset_description; ?>" />
-		<meta name="twitter:description" content="<?php echo $dataset_description; ?>" />
-		<meta property="og:description" content="<?php echo $dataset_description; ?>" />
-		<meta property="og:url" content="<?php echo esc_url(get_site_url() . wpckan_get_link_to_dataset($dataset_id)); ?>" />
+        <meta property="og:title" content="<?php echo $dataset_title; ?>" />
+        <meta name="twitter:title" content="<?php echo $dataset_title; ?>" />
+        <meta name="description" content="<?php echo $dataset_description; ?>" />
+        <meta name="twitter:description" content="<?php echo $dataset_description; ?>" />
+        <meta property="og:description" content="<?php echo $dataset_description; ?>" />
+        <meta property="og:url" content="<?php echo esc_url(get_site_url() . wpckan_get_link_to_dataset($dataset_id)); ?>" />
 
     <?php
     endif; ?>
@@ -453,14 +455,15 @@ function echo_post_meta($the_post, $show_elements = array('date', 'categories', 
                     }
                     echo '</li>';
 
-                    if ( get_the_date('j F Y') !== $modified_date ) {
+                    if ( get_the_date('Y-m-d') !== $modified_date ) {
+
                         echo '<li class="date">';
                         echo '<i class="fa fa-pencil"></i> ';
 
                         if (odm_language_manager()->get_current_language() == 'km') {
-                            echo convert_date_to_kh_date($modified_date);
+                            echo convert_date_to_kh_date(date('j.M.Y', strtotime($modified_date)));
                         } else {
-                            echo $modified_date;
+                            echo date('j F Y', strtotime($modified_date));
                         }
 
                         echo '</li>';
@@ -817,7 +820,7 @@ function get_top_level_category_names($cats)
     $top_cat_names  = array();
     foreach ($cats as $cat) {
         $all_parent_cats = get_category_parents($cat);
-        foreach (split('/', $all_parent_cats) as $parent_cat_name) {
+        foreach (explode('/', $all_parent_cats) as $parent_cat_name) {
             $parent_cat_name_en = apply_filters('translate_text', $parent_cat_name, "en");
             array_push($top_cat_names, $parent_cat_name_en);
         }
