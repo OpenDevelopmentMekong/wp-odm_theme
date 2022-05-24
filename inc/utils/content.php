@@ -455,18 +455,20 @@ function echo_post_meta($the_post, $show_elements = array('date', 'categories', 
                     }
                     echo '</li>';
 
-                    if ( get_the_date('Y-m-d') !== $modified_date ) {
+                    if ($modified_date) {
+                        if ( get_the_date('Y-m-d') !== $modified_date ) {
 
-                        echo '<li class="date">';
-                        echo '<i class="fa fa-pencil"></i> ';
+                            echo '<li class="date">';
+                            echo '<i class="fa fa-pencil"></i> ';
 
-                        if (odm_language_manager()->get_current_language() == 'km') {
-                            echo convert_date_to_kh_date(date('j.M.Y', strtotime($modified_date)));
-                        } else {
-                            echo date('j F Y', strtotime($modified_date));
+                            if (odm_language_manager()->get_current_language() == 'km') {
+                                echo convert_date_to_kh_date(date('j.M.Y', strtotime($modified_date)));
+                            } else {
+                                echo date('j F Y', strtotime($modified_date));
+                            }
+
+                            echo '</li>';
                         }
-
-                        echo '</li>';
                     }
                 endif; ?>
             <?php
