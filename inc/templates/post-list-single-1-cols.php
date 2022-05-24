@@ -24,7 +24,7 @@ $extra_classes            = isset($params["extra_classes"]) ? $params["extra_cla
 
         if ($header_tag) :
             $link = isset($post->dataset_link) ? $post->dataset_link : get_permalink($post->ID); ?>
-            <li style="padding: 0">
+            <li style="padding: 0; margin: 0; list-style: none">
                 <h5>
                     <a class="item-title" href="<?php echo $link; ?>" title="<?php echo $localized_title; ?>">
                         <?php
@@ -40,7 +40,7 @@ $extra_classes            = isset($params["extra_classes"]) ? $params["extra_cla
                 </h5>
             </li>
         <?php else : ?>
-            <li style="padding: 0">
+            <li style="padding: 0; margin: 0; list-style: none">
                 <h5>
                     <a class="item-title" href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $localized_title; ?>">
                         <?php
