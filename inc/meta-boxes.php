@@ -20,7 +20,7 @@ function odm_render_modified_date_metabox($post)
 
     $value = get_post_meta($post->ID, '_odm_modified_date_metabox', true);
 ?>
-    <input role="presentation" autocomplete="off" type="date" name="odm_modified_date_metabox" value="<?php echo (!empty($value)) ? $value : get_the_modified_date('Y-m-d'); ?>" />
+    <input role="presentation" autocomplete="off" type="date" name="odm_modified_date_metabox" value="<?php echo (!empty($value)) ? $value : ''; ?>" />
 <?php
 }
 
