@@ -63,19 +63,21 @@ if (have_posts()) : the_post();
                             <?php dynamic_sidebar('topic'); ?>
 
                             <!-- Adding wpsparql widget if topic == Land -->
-                            <?php
-                            $categories = get_the_category();
-                            if ("land" ==  strtolower($categories[0]->name)) : ?>
-                                <li class="widget">
-                                    <h2 class="widget-title"><?php _e("More on the Land Portal library", "odm") ?></h2>
-                                    <?php
-                                    $filter = odm_land_portal_manager()->get_filter_values();
-                                    $more_url = odm_land_portal_manager()->get_more_url();
-                                    $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a dct:BibliographicResource ; dct:title ?llrLabel ; dct:spatial ?country . ' . $filter . ' ?country rdfs:label ?countryLabel OPTIONAL { ?llr dct:issued ?date . } } ORDER BY DESC(?date) LIMIT 10';
-                                    echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "' more_url='" . $more_url . "']");
-                                    ?>
-                                </li>
-                            <?php endif; ?>
+                            <?php /*
+                                <?php
+                                $categories = get_the_category();
+                                if ("land" ==  strtolower($categories[0]->name)) : ?>
+                                    <li class="widget">
+                                        <h2 class="widget-title"><?php _e("More on the Land Portal library", "odm") ?></h2>
+                                        <?php
+                                        $filter = odm_land_portal_manager()->get_filter_values();
+                                        $more_url = odm_land_portal_manager()->get_more_url();
+                                        $query = 'SELECT DISTINCT ?llr ?llrLabel WHERE { ?llr a dct:BibliographicResource ; dct:title ?llrLabel ; dct:spatial ?country . ' . $filter . ' ?country rdfs:label ?countryLabel OPTIONAL { ?llr dct:issued ?date . } } ORDER BY DESC(?date) LIMIT 10';
+                                        echo do_shortcode("[wpsparql_query_endpoint query='" . $query . "' more_url='" . $more_url . "']");
+                                        ?>
+                                    </li>
+                                <?php endif; ?>
+                            */ ?>
 
                             <!-- Related Widgets -->
                             <?php if (function_exists('get_group') && get_group('related_link') != '' && get_group('related_link') != null) : ?>
