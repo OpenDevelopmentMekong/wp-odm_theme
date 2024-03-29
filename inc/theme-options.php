@@ -132,6 +132,14 @@ class Odm_Options
         );
 
         add_settings_field(
+            'odm_linkedin',
+            __('LinkedIn url', 'odm'),
+            array($this, 'linkedin_field'),
+            'odm_options',
+            'odm_links_section'
+        );
+
+        add_settings_field(
             'odm_youtube',
             __('YouTube URL', 'odm'),
             array($this, 'youtube_url_field'),
@@ -278,6 +286,18 @@ class Odm_Options
     {
         $twitter = $this->options['twitter_url']; ?>
         <input id="odm_twitter_url" name="odm_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
+  	<?php
+    }
+
+    /**
+     * Create a text input for LinkedIn URL of the Orgnaization
+     *
+     * @return void
+     */
+    public function linkedin_field()
+    {
+        $linkedin = $this->options['linkedin_url']; ?>
+        <input id="odm_linkedin_url" name="odm_options[linkedin_url]" type="text" value="<?php echo $linkedin;?>" size="70" />
   	<?php
     }
 
@@ -700,6 +720,22 @@ function odm_get_twitter_url()
     $options = get_option('odm_options');
     if (isset($options['twitter_url'])) {
         return $options['twitter_url'];
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Load the existing LinkedIn URL
+ *
+ * @return boolean
+ */
+function odm_get_linkedin_url()
+{
+    $options = get_option('odm_options');
+
+    if ( isset( $options['linkedin_url'] ) ) {
+        return $options['linkedin_url'];
     } else {
         return false;
     }
