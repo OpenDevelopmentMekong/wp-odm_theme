@@ -132,6 +132,14 @@ class Odm_Options
         );
 
         add_settings_field(
+            'odm_linkedin',
+            __('LinkedIn url', 'odm'),
+            array($this, 'linkedin_field'),
+            'odm_options',
+            'odm_links_section'
+        );
+
+        add_settings_field(
             'odm_youtube',
             __('YouTube URL', 'odm'),
             array($this, 'youtube_url_field'),
@@ -234,7 +242,7 @@ class Odm_Options
     }
 
     function notice_message_field() {
-      $notice_message = $this->options['notice_message'];
+      $notice_message = $this->options['notice_message'] ?? '';
       if (isset($this->options['enable_notification']) && $this->options['enable_notification']):
         if(!$notice_message):
           echo '<i style="color:red">The notification message can not empty, please add notification message.</i><br/>';
@@ -253,7 +261,7 @@ class Odm_Options
 
     public function frontpage_slider_id_field()
     {
-        $frontpage_slider_id = $this->options['frontpage_slider_id'];?>
+        $frontpage_slider_id = $this->options['frontpage_slider_id'] ?? ''; ?>
         <input id="odm_frontpage_slider_id" name="odm_options[frontpage_slider_id]" type="text" placeholder="<?php _e('281321');
               ?>" onfocus="this.placeholder=''" onblur="this.placeholder='<?php _e('281321');
               ?>'" value="<?php echo $frontpage_slider_id;
@@ -266,7 +274,7 @@ class Odm_Options
 
     public function facebook_field()
     {
-        $facebook = $this->options['facebook_url'];
+        $facebook = $this->options['facebook_url'] ?? '';
         ?>
   <input id="odm_facebook_url" name="odm_options[facebook_url]" type="text" value="<?php echo $facebook;
         ?>" size="70" />
@@ -276,13 +284,25 @@ class Odm_Options
 
     public function twitter_field()
     {
-        $twitter = $this->options['twitter_url']; ?>
+        $twitter = $this->options['twitter_url'] ?? ''; ?>
         <input id="odm_twitter_url" name="odm_options[twitter_url]" type="text" value="<?php echo $twitter;?>" size="70" />
   	<?php
     }
 
+    /**
+     * Create a text input for LinkedIn URL of the Orgnaization
+     *
+     * @return void
+     */
+    public function linkedin_field()
+    {
+        $linkedin = $this->options['linkedin_url'] ?? ''; ?>
+        <input id="odm_linkedin_url" name="odm_options[linkedin_url]" type="text" value="<?php echo $linkedin;?>" size="70" />
+  	<?php
+    }
+
 	function youtube_url_field() {
-        $youtube = $this->options['youtube_url']; ?>
+        $youtube = $this->options['youtube_url'] ?? ''; ?>
         <input id="odm_youtube_url" name="odm_options[youtube_url]" type="text" value="<?php echo $youtube;?>" size="70" />
 	<?php
 	}
@@ -372,7 +392,7 @@ class Odm_Options
 
     public function legal_disclaimer_field()
     {
-        $disclaimer = $this->options['legal_disclaimer'];
+        $disclaimer = $this->options['legal_disclaimer'] ?? '';
         ?>
   <textarea id="odm_legal_disclaimer" name="odm_options[legal_disclaimer]" rows="5" cols="70"><?php echo $disclaimer;
         ?></textarea>
@@ -382,7 +402,7 @@ class Odm_Options
 
     public function interactive_map_field()
     {
-        $map_data = $this->options['map_data'];
+        $map_data = $this->options['map_data'] ?? '';
 
         if (!isset($map_data['server']) || !$map_data['server']) {
             $map_data['server'] = 'mapbox';
@@ -700,6 +720,22 @@ function odm_get_twitter_url()
     $options = get_option('odm_options');
     if (isset($options['twitter_url'])) {
         return $options['twitter_url'];
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Load the existing LinkedIn URL
+ *
+ * @return boolean
+ */
+function odm_get_linkedin_url()
+{
+    $options = get_option('odm_options');
+
+    if ( isset( $options['linkedin_url'] ) ) {
+        return $options['linkedin_url'];
     } else {
         return false;
     }

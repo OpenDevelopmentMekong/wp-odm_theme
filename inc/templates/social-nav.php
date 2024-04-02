@@ -10,6 +10,12 @@
 	if ($iconTwitter) : ?>
 		<a href="<?php echo $iconTwitter; ?>" target="_blank" rel="external" title="Twitter"><i class="fa fa-twitter-square"></i></a>
 	<?php endif; ?>
+
+	<?php
+	$iconLinkedIn = odm_get_linkedin_url();
+	if ($iconLinkedIn) : ?>
+		<a href="<?php echo $iconLinkedIn; ?>" target="_blank" rel="external" title="LinkedIn"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+	<?php endif; ?>
 	
 	<?php
 	$iconYoutube = odm_get_youtube_url();

@@ -33,14 +33,14 @@
   <!-- Logo and contact icons -->
   <nav id="od-head">
     <div class="container">
-        <div class="thirteen columns">
+        <div class="twelve columns">
           <div class="site-meta">
             <?php odm_logo(); ?>
           </div>
         </div>
-        <div class="three columns">
+        <div class="four columns">
           <div class="social">
-            <?php odm_get_template('social-nav',array(),true); ?>
+            <?php odm_get_template('social-nav', array(), true); ?>
           </div>
         </div>
     </div>
